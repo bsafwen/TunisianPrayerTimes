@@ -1,0 +1,529 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_PACKAGE_PROPOSAL_PENDING_ROOT_IMPACT_ACCEPTANCE",
+  "targetIds": [
+    "osm:relation:7114902",
+    "osm:relation:7169582"
+  ],
+  "sourceId": "isie-local-sectors-2023-soukra-amra-two-whole",
+  "scope": "Two exact whole-imada native paths only; names, aliases, IDs, kind, coordinates, picker ownership and prayer source intended unchanged.",
+  "nativeSource": {
+    "file": "official/soukra-amra-two-whole-20260920/soukra-amra-two-whole-source.geojson",
+    "sha256": "7a6694d74dde124cfd6cdcdfdbaa7f444adaf8ebedd4dd17aff122951cd56a4b",
+    "bytes": 24774
+  },
+  "wholeScope": {
+    "file": "official/soukra-amra-two-whole-20260920/accepted-whole-scope-successor.json",
+    "sha256": "d69ade61d3c68077431a43ea15fe9ac15d2c590d44ffafa2968f8eed42c44f75",
+    "bytes": 180079
+  },
+  "directLegalRows": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "bytes": 10636520,
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "publishedDate": "2023-09-22",
+    "annex": 1,
+    "table": "A",
+    "personallyViewedRows": [
+      {
+        "pdfPage": 4,
+        "jortPage": 5101,
+        "parent": "سكرة",
+        "imada": "البساتين",
+        "electoralCircle": "البساتين - (سكرة)",
+        "circleCount": 1,
+        "seats": 1,
+        "render": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-4.png",
+          "sha256": "b8e8fc68b00f827b24e923eff75740f13bb2d2ea5bc5c180bc03f02a583828cb",
+          "bytes": 522191
+        }
+      },
+      {
+        "pdfPage": 56,
+        "jortPage": 5153,
+        "parent": "سيدي بوزيد الشرقية",
+        "imada": "العامرة",
+        "electoralCircle": "العامرة - (سيدي بوزيد الشرقية)",
+        "circleCount": 1,
+        "seats": 1,
+        "render": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-56.png",
+          "sha256": "b2ef12ed62155271b681d819263f1f44a580e9836fc06006dadfb9d026c7eed5",
+          "bytes": 295505
+        }
+      }
+    ],
+    "codeLinkQualification": "Six-digit codes do not appear in the decree. They are joined through exact parent and imada names in INS2012 and the original source code; INS2024 same code/parent supplies the Boustan spelling variant."
+  },
+  "identity": [
+    {
+      "id": "osm:relation:7114902",
+      "officialCode": "125253",
+      "officialNameAr": "البستان",
+      "officialNameFr": "El bousten",
+      "parentAr": "سكرة",
+      "parentFr": "Soukra",
+      "identityDecision": "Established exact coded identity through original INS records, exact official parent and whole-imada electoral scope; not inferred from label resemblance.",
+      "geometryDecision": "Established complete native, continuous, closed, valid ISIE 2023 target outline with explicit EPSG:32632 controls and both active clips preserving the entire path. Current OSM outline contradicts this published official geometry.",
+      "currentToOfficialGainKm2": 0.38847109230202553,
+      "currentToOfficialLossKm2": 0.08693937239554315,
+      "sourceCrsEpsg": 32632,
+      "nativeVertexCount": 149,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "wgs84Bounds": [
+        10.216316987546843,
+        36.86420011253401,
+        10.245543230008067,
+        36.887434163067056
+      ],
+      "controlPointsLatLon": [
+        [
+          36.86319,
+          10.20794
+        ],
+        [
+          36.88881,
+          10.20835
+        ],
+        [
+          36.88833,
+          10.254
+        ],
+        [
+          36.86271,
+          10.25358
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.11735602897632656,
+        0.1173560285014535,
+        0.11735602881803554,
+        0.11735602830080416
+      ],
+      "comparisons": {
+        "sourceTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البساتين",
+          "name:ar": "البساتين",
+          "name:fr": "El Bassatine",
+          "ref:tn:codegeo": "125253"
+        },
+        "historicalReviewedMetadata": {
+          "id": "osm:relation:7114902",
+          "sourceId": "osm",
+          "name": "البساتين",
+          "aliases": [
+            "El Bassatine"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سكرة",
+          "contextAliases": [
+            "Délégation Soukra",
+            "La Soukra",
+            "معتمدية سكرة"
+          ],
+          "governorateId": 358,
+          "lat": 36.87628,
+          "lng": 10.231171,
+          "delegationId": 532,
+          "hasBoundary": true,
+          "bbox": [
+            10.216997,
+            36.865139,
+            10.245671,
+            36.887692
+          ],
+          "areaKm2": 3.1291807974184263,
+          "pickerGroupId": "osm:relation:7114902",
+          "offset": 1028048,
+          "length": 340
+        },
+        "officialVsOriginal": {
+          "officialAreaKm2": 3.4231603689585075,
+          "comparedAreaKm2": 3.1216670084816203,
+          "intersectionKm2": 3.0347253161557433,
+          "iou": 0.8645689678451277,
+          "officialCoveredByCompared": 0.8865273574895514,
+          "comparedCoveredByOfficial": 0.9721489537193894,
+          "officialOutsideComparedKm2": 0.38843505280277063,
+          "comparedOutsideOfficialKm2": 0.08694169232592609,
+          "hausdorffMeters": 364.72839930191066,
+          "centroidDistanceMeters": 94.74384789537937
+        },
+        "officialVsPacked": {
+          "officialAreaKm2": 3.4231603689585075,
+          "comparedAreaKm2": 3.1216286490516385,
+          "intersectionKm2": 3.034689276655887,
+          "iou": 0.8645592718926733,
+          "officialCoveredByCompared": 0.8865168293529839,
+          "comparedCoveredByOfficial": 0.9721493546574914,
+          "officialOutsideComparedKm2": 0.38847109230263205,
+          "comparedOutsideOfficialKm2": 0.08693937239572629,
+          "hausdorffMeters": 364.7538629847945,
+          "centroidDistanceMeters": 94.75120056346908
+        },
+        "currentAnchor": {
+          "covered": true,
+          "distanceToPolygonMeters": 0.0,
+          "distanceToBoundaryMeters": 519.3271653821689
+        }
+      },
+      "comparisonSnapshotProvenance": {
+        "sourceReview": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soukra-amra-boundary-impact-20260920\\frozen\\prior-geometry-facts.json",
+          "sha256": "c68e2bf955990e88198d8d10d515c5d0bbf0e962cd863b240703608e441263fd",
+          "bytes": 26099
+        },
+        "qualification": "historicalReviewedMetadata is preserved verbatim from the earlier pinned geometry review. It is not the current installed row; current anchors/aliases bind separately through manual-point-review and its current baseline."
+      }
+    },
+    {
+      "id": "osm:relation:7169582",
+      "officialCode": "435255",
+      "officialNameAr": "العامرة",
+      "officialNameFr": "El amra",
+      "parentAr": "سيدي بوزيد الشرقية",
+      "parentFr": "Sidi bouzid est",
+      "identityDecision": "Established exact coded identity through original INS records, exact official parent and whole-imada electoral scope; not inferred from label resemblance.",
+      "geometryDecision": "Established complete native, continuous, closed, valid ISIE 2023 target outline with explicit EPSG:32632 controls and both active clips preserving the entire path. Current OSM outline contradicts this published official geometry.",
+      "currentToOfficialGainKm2": 6.0625412265992855,
+      "currentToOfficialLossKm2": 20.796850217047577,
+      "sourceCrsEpsg": 32632,
+      "nativeVertexCount": 76,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "wgs84Bounds": [
+        9.608843255839588,
+        35.10569018377465,
+        9.708706377292787,
+        35.20014539846941
+      ],
+      "controlPointsLatLon": [
+        [
+          35.10156,
+          9.56792
+        ],
+        [
+          35.20557,
+          9.56865
+        ],
+        [
+          35.20458,
+          9.75004
+        ],
+        [
+          35.10057,
+          9.74909
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.2645756776613053,
+        0.26457567620784245,
+        0.2645756771489519,
+        0.26457567624053757
+      ],
+      "comparisons": {
+        "sourceTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "العامرة",
+          "name:ar": "العامرة",
+          "name:fr": "El Amra",
+          "ref:tn:codegeo": "435255"
+        },
+        "historicalReviewedMetadata": {
+          "id": "osm:relation:7169582",
+          "sourceId": "osm",
+          "name": "العامرة",
+          "aliases": [
+            "El Amra"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سيدي بوزيد الشرقية",
+          "contextAliases": [
+            "Délégation Sidi Bouzid Est",
+            "معتمدية سيدي بوزيد الشرقية"
+          ],
+          "governorateId": 355,
+          "lat": 35.15323,
+          "lng": 9.650934,
+          "delegationId": 628,
+          "hasBoundary": true,
+          "bbox": [
+            9.555598,
+            35.10567,
+            9.708717,
+            35.20065
+          ],
+          "areaKm2": 78.45743420197148,
+          "pickerGroupId": "osm:relation:7169582",
+          "offset": 4006080,
+          "length": 1540
+        },
+        "officialVsOriginal": {
+          "officialAreaKm2": 63.491364398811506,
+          "comparedAreaKm2": 78.2256733892607,
+          "intersectionKm2": 57.428823172214535,
+          "iou": 0.681338707124666,
+          "officialCoveredByCompared": 0.9045139243107768,
+          "comparedCoveredByOfficial": 0.7341429058263461,
+          "officialOutsideComparedKm2": 6.062541226596685,
+          "comparedOutsideOfficialKm2": 20.796850217046007,
+          "hausdorffMeters": 5340.966407478667,
+          "centroidDistanceMeters": 1548.7647534106427
+        },
+        "officialVsPacked": {
+          "officialAreaKm2": 63.491364398811506,
+          "comparedAreaKm2": 78.2256733892607,
+          "intersectionKm2": 57.428823172214535,
+          "iou": 0.681338707124666,
+          "officialCoveredByCompared": 0.9045139243107768,
+          "comparedCoveredByOfficial": 0.7341429058263461,
+          "officialOutsideComparedKm2": 6.062541226596685,
+          "comparedOutsideOfficialKm2": 20.796850217046007,
+          "hausdorffMeters": 5340.966407478667,
+          "centroidDistanceMeters": 1548.7647534099315
+        },
+        "currentAnchor": {
+          "covered": true,
+          "distanceToPolygonMeters": 0.0,
+          "distanceToBoundaryMeters": 2798.289974563367
+        }
+      },
+      "comparisonSnapshotProvenance": {
+        "sourceReview": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soukra-amra-boundary-impact-20260920\\frozen\\prior-geometry-facts.json",
+          "sha256": "c68e2bf955990e88198d8d10d515c5d0bbf0e962cd863b240703608e441263fd",
+          "bytes": 26099
+        },
+        "qualification": "historicalReviewedMetadata is preserved verbatim from the earlier pinned geometry review. It is not the current installed row; current anchors/aliases bind separately through manual-point-review and its current baseline."
+      }
+    }
+  ],
+  "conflictsAndGaps": {
+    "decisionAuthorityLimits": [
+      "Established means correspondence to the published 2023 official whole-imada source, not independently surveyed cadastral accuracy or proof of unchanged geography through September 2026.",
+      "Existing conflicts, source registration differences, legacy neighboring polygons and uncovered loss remain explicit. This two-target step is an improvement in source correctness, not a 100-percent regional mesh certification."
+    ],
+    "targetDecisions": [
+      {
+        "id": "osm:relation:7114902",
+        "officialCode": "125253",
+        "officialName": "البساتين",
+        "parent": "سكرة",
+        "identityDecision": "Established exact coded identity through original INS records, exact official parent and whole-imada electoral scope; not inferred from label resemblance.",
+        "geometryDecision": "Established complete native, continuous, closed, valid ISIE 2023 target outline with explicit EPSG:32632 controls and both active clips preserving the entire path. Current OSM outline contradicts this published official geometry.",
+        "currentToOfficialGainKm2": 0.38847109230202553,
+        "currentToOfficialLossKm2": 0.08693937239554315,
+        "stageRecommendation": "Replace the target with the accepted native whole outline, preserve its current sector anchor and canonical names/aliases, and truthfully derive the fixed village context via the existing data-only typed successor."
+      },
+      {
+        "id": "osm:relation:7169582",
+        "officialCode": "435255",
+        "officialName": "العامرة",
+        "parent": "سيدي بوزيد الشرقية",
+        "identityDecision": "Established exact coded identity through original INS records, exact official parent and whole-imada electoral scope; not inferred from label resemblance.",
+        "geometryDecision": "Established complete native, continuous, closed, valid ISIE 2023 target outline with explicit EPSG:32632 controls and both active clips preserving the entire path. Current OSM outline contradicts this published official geometry.",
+        "currentToOfficialGainKm2": 6.0625412265992855,
+        "currentToOfficialLossKm2": 20.796850217047577,
+        "stageRecommendation": "Replace the target with the accepted native whole outline and preserve its current sector anchor. Do not retain the contradicted OSM target merely to maintain the old tiling."
+      }
+    ],
+    "impactRef": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soukra-amra-boundary-impact-20260920\\decision-report.json",
+      "sha256": "b7ce36098a8393700a8efc631fa5bb643f836eb94ab3ec98b4829d3b8442688c",
+      "bytes": 41880
+    },
+    "jointCoverage": {
+      "oldUnionKm2": 81.34730203831238,
+      "newUnionKm2": 66.9145247677705,
+      "gainKm2": 6.451012318901311,
+      "lossKm2": 20.883789589443133,
+      "gainPreviouslyUncoveredAllLayersKm2": 3.910782214412515,
+      "lossUncoveredAllLayersKm2": 8.534478566879281,
+      "gainOverlapsUnchangedPolygonsKm2": 2.54023010448897,
+      "lossUncoveredSectorLayerKm2": 8.534478566879281,
+      "method": "Joint union old pair versus new pair, with both targets removed from unchanged peers; no double counting or stale other-target geometry."
+    },
+    "allCatalogConflictProjection": {
+      "before": 440,
+      "after": 447,
+      "oldIncident": 3,
+      "newIncident": 10
+    },
+    "exactPerTargetImpact": [
+      {
+        "id": "osm:relation:7114902",
+        "coverageUtmKm2": {
+          "oldAreaKm2": 3.1216286490516385,
+          "newNativeAreaKm2": 3.4231603689580834,
+          "gainKm2": 0.38847109230202553,
+          "lossKm2": 0.08693937239554315,
+          "oldOutsideOtherPolygonsKm2": 3.120569568592211,
+          "newOutsideOtherEffectivePolygonsKm2": 3.041255820064012,
+          "lossUncoveredByAnyEffectivePolygonKm2": 0.08593011798494772,
+          "lossUncoveredByEffectiveSectorsKm2": 0.08593011798494772,
+          "gainAlreadyCoveredByOldPolygonsKm2": 0.38185472284514355,
+          "gainOverlapsEffectivePolygonsKm2": 0.38185472284514355,
+          "gainOverlapsEffectiveSectorsKm2": 0.38185472284514355
+        },
+        "newConflictCounterparts": [
+          {
+            "id": "osm:relation:7114900",
+            "name": "سكرة",
+            "sourceId": "osm",
+            "intersectionKm2": 0.022379707459899895
+          },
+          {
+            "id": "osm:relation:7114901",
+            "name": "شطرانة",
+            "sourceId": "osm",
+            "intersectionKm2": 0.07872623754340435
+          },
+          {
+            "id": "osm:relation:7114904",
+            "name": "التعمير الخامس",
+            "sourceId": "isie-local-sectors-2023-identity-review",
+            "intersectionKm2": 0.0003398451533698314
+          },
+          {
+            "id": "osm:relation:7114906",
+            "name": "برج الوزير",
+            "sourceId": "osm",
+            "intersectionKm2": 0.28075659864774566
+          },
+          {
+            "id": "osm:relation:7201235",
+            "name": "الشرقية",
+            "sourceId": "osm",
+            "intersectionKm2": 0.0006370489678187703
+          }
+        ],
+        "oldParentBoundaryDiscrepancy": {
+          "delegation": {
+            "id": "osm:relation:4184709",
+            "code": "1252",
+            "oldOutsideM2": 5.64399003012121,
+            "newOutsideM2": 636.9900767412252
+          },
+          "governorate": {
+            "id": "osm:relation:1435830",
+            "code": "12",
+            "oldOutsideM2": 5.64399003012121,
+            "newOutsideM2": 636.9900767412252
+          }
+        },
+        "quantizedCopy": {
+          "coordinateScale": 1000000,
+          "packedGeometrySha256": "5a40e114ced4ad8d55cd344e872d0eb13af78781ad4ac8502bf34ec7c72cad2a",
+          "packedLength": 1204,
+          "nativeValid": true,
+          "packedValid": true,
+          "nativeAndPackedContainCurrentAnchor": true,
+          "anchor": {
+            "lat": 36.87628,
+            "lng": 10.231171
+          },
+          "sourceBoundaryDistanceM": 519.3271653822246,
+          "symmetricDifferenceM2": 168.8962571668229,
+          "hausdorffM": 0.06603928822510119,
+          "nativeHoles": 0,
+          "packedHoles": 0
+        }
+      },
+      {
+        "id": "osm:relation:7169582",
+        "coverageUtmKm2": {
+          "oldAreaKm2": 78.2256733892607,
+          "newNativeAreaKm2": 63.49136439881243,
+          "gainKm2": 6.0625412265992855,
+          "lossKm2": 20.796850217047577,
+          "oldOutsideOtherPolygonsKm2": 65.87492480489291,
+          "newOutsideOtherEffectivePolygonsKm2": 61.33054220095415,
+          "lossUncoveredByAnyEffectivePolygonKm2": 8.448548448894329,
+          "lossUncoveredByEffectiveSectorsKm2": 8.448548448894329,
+          "gainAlreadyCoveredByOldPolygonsKm2": 2.1583753816438267,
+          "gainOverlapsEffectivePolygonsKm2": 2.1583753816438267,
+          "gainOverlapsEffectiveSectorsKm2": 2.1583753816438267
+        },
+        "newConflictCounterparts": [
+          {
+            "id": "osm:relation:7169563",
+            "name": "سيدي خليف",
+            "sourceId": "osm",
+            "intersectionKm2": 0.0024838185352798504
+          },
+          {
+            "id": "osm:relation:7169566",
+            "name": "فائض",
+            "sourceId": "osm",
+            "intersectionKm2": 0.0007254633473040916
+          },
+          {
+            "id": "osm:relation:7169576",
+            "name": "العقلة",
+            "sourceId": "osm",
+            "intersectionKm2": 2.0856660695031914
+          },
+          {
+            "id": "osm:relation:7169580",
+            "name": "المكارم",
+            "sourceId": "isie-local-sectors-2023-identity-review-2",
+            "intersectionKm2": 0.005893506927958541
+          },
+          {
+            "id": "osm:relation:7169607",
+            "name": "سيدي اللافي",
+            "sourceId": "osm",
+            "intersectionKm2": 0.07278431829208748
+          }
+        ],
+        "oldParentBoundaryDiscrepancy": {
+          "delegation": {
+            "id": "osm:relation:12584562",
+            "code": "4352",
+            "oldOutsideM2": 0.0,
+            "newOutsideM2": 75033.38207010448
+          },
+          "governorate": {
+            "id": "osm:relation:1435831",
+            "code": "43",
+            "oldOutsideM2": 0.0,
+            "newOutsideM2": 0.0
+          }
+        },
+        "quantizedCopy": {
+          "coordinateScale": 1000000,
+          "packedGeometrySha256": "acb1e6cbfd50b14d78c8e418e007ee77096f8ea6889bb6cddf90f8473a00ef1b",
+          "packedLength": 620,
+          "nativeValid": true,
+          "packedValid": true,
+          "nativeAndPackedContainCurrentAnchor": true,
+          "anchor": {
+            "lat": 35.15323,
+            "lng": 9.650934
+          },
+          "sourceBoundaryDistanceM": 2798.2899745630225,
+          "symmetricDifferenceM2": 604.6727227310698,
+          "hausdorffM": 0.060824853973732086,
+          "nativeHoles": 0,
+          "packedHoles": 0
+        }
+      }
+    ],
+    "geometryFactsRef": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soukra-amra-boundary-impact-20260920\\frozen\\prior-geometry-facts.json",
+      "sha256": "c68e2bf955990e88198d8d10d515c5d0bbf0e962cd863b240703608e441263fd",
+      "bytes": 26099
+    }
+  },
+  "qualifications": [
+    "Exact authenticated whole native paths staged for adoption; no repair, snapping, cutting, filling or neighbor import.",
+    "Existing conflicts, registration differences, legacy neighboring polygons and uncovered loss remain explicit.",
+    "This two-target step improves source correctness, not a 100-percent regional mesh certification."
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "id": "sahib-amazir-names-20260921",
+  "baseMetadataSha256": "504613a8026e091ebb10397a661d15c8b5e4c1091c7c2aeee00349557a67e3f3",
+  "baseGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+  "evidence": [
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/root-identity-review.json",
+      "sha256": "283955b19b54690fc30bfefa31a959b96ee499c7b916e6e4c0e1ce93df070bf3"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/root-administrative-scope-review.json",
+      "sha256": "a376656a15474968a197c32bbb6f25e9cf12b2aa29c5dc40c9e247e90befa9e4"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/root-map-candidate-decision.json",
+      "sha256": "e1273532f72d89bb904b3f69a09e9bdcf751c49ca6a001851ac7e977ff87e176"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/north-exact-chain.json",
+      "sha256": "cc10520d49833f5db5823af0e7f8a78d6e5b8bd7cd30546830358cdd760d2750"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/sahib-north.pdf",
+      "sha256": "307eb8be97cee63d7a184e3224721187969bc2bb4e28c22628592bf911ff7e9f"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/sahib-south.pdf",
+      "sha256": "0fec368bf0faca088aba10cab06dd42538efc02f264bf684df882c11d44e82f4"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/amazir.pdf",
+      "sha256": "8e9e2fd81c4a080907049396836719468fe108d80e2c73afa7a1b3cddd202a07"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/maps-north.png",
+      "sha256": "77a81c22e4f6ccf0f2f133a3f511aea525f9c5514163262ac4f578145401b8eb"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/maps-south.png",
+      "sha256": "e46b10009785e21377f0a4b474dfd080f07afc82f68d2206e88fef0f0b87cd5a"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/maps-wrongArabicQueryReturnsSouth.png",
+      "sha256": "a6de4a0cd064d046588d3399e75ae580c713a7391aff60464512a069125a1fd5"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/maps-amazirLocality.png",
+      "sha256": "82a71061a1b0056bb01daadefe38d06ec95e5ef28637bb7c1b5caf53b3841307"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/maps-mouazirBuilding.png",
+      "sha256": "bca8adecf4f7f49a706525685e0dbc4963433dbf1e4504d3d6a6c560a274ba25"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/evidence/pre-adoption-impact.json",
+      "sha256": "f410c355b65ac8399696fae8ae674f2e75c2322704abbfc2612dd408c8308981"
+    },
+    {
+      "file": "catalog-updates/sahib-amazir-names-20260921/root-scope-decision.json",
+      "sha256": "82a127eaa662307106fd27b047fca1ec118633ef667b431fafaa277d3a7b158d"
+    }
+  ],
+  "newSources": {},
+  "updates": [
+    {
+      "id": "osm:relation:7096460",
+      "expectedFeatureSha256": "049d26bc1473935c28de2027b13f28f9267cf5e3615498b1d064c75770cba5c7",
+      "set": {
+        "name": "صاحب الجبل الشمالية",
+        "aliases": [
+          "Saheb El Jebel Nord",
+          "صاحب الجبل الجوفية"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:relation:7095947",
+      "expectedFeatureSha256": "ddfa0c4a52ae483c578145641d9a3394ff073394cf7ce5ef3d1938c0ab79504a",
+      "set": {
+        "name": "صاحب الجبل القبلية",
+        "aliases": [
+          "Saheb El Jebel Sud",
+          "صاحب الجبل الجنوبية",
+          "صاحب الجبل جنوبية"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:relation:7145415",
+      "expectedFeatureSha256": "948d2b3ab1d5c96c40186ca29e73a1396c1ea66c58367a4fa0d5aa557c1c7531",
+      "set": {
+        "name": "الأمازير",
+        "aliases": [
+          "El Amazir",
+          "الموازير",
+          "El Mouazir"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:node:1374298081",
+      "expectedFeatureSha256": "c5800d4d411c2a8fa9e1c017bfefb7440594fc6c1546868800ca3038d2909300",
+      "set": {
+        "parentName": "صاحب الجبل الشمالية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "Saheb El Jebel Nord",
+          "صاحب الجبل الجوفية",
+          "صاحب الجبل الشمالية",
+          "معتمدية الهوارية"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:node:1374298083",
+      "expectedFeatureSha256": "443905de8ee780f9ac364b79ae8569cb6fe636f199ca62562d7eb4cb082e84e1",
+      "set": {
+        "parentName": "صاحب الجبل الشمالية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "Saheb El Jebel Nord",
+          "صاحب الجبل الجوفية",
+          "صاحب الجبل الشمالية",
+          "معتمدية الهوارية"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:node:1374298091",
+      "expectedFeatureSha256": "71b52daa808eae77ba60ef0aa8d4b1b8f3c256b70762883e9025dfc8d44c76bb",
+      "set": {
+        "parentName": "صاحب الجبل الشمالية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "Saheb El Jebel Nord",
+          "صاحب الجبل الجوفية",
+          "صاحب الجبل الشمالية",
+          "معتمدية الهوارية"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:node:7025729391",
+      "expectedFeatureSha256": "98e4b192921cc43ed00f0fceb7bd8547399b6a653afe7546dbefb19f5484eb8e",
+      "set": {
+        "parentName": "صاحب الجبل الشمالية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "Saheb El Jebel Nord",
+          "صاحب الجبل الجوفية",
+          "صاحب الجبل الشمالية",
+          "معتمدية الهوارية"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:node:7025761781",
+      "expectedFeatureSha256": "499f835680ebb742dbca66f04f30ebaf07616b2494531a252c51e768ba99a1aa",
+      "set": {
+        "parentName": "صاحب الجبل الشمالية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "Saheb El Jebel Nord",
+          "صاحب الجبل الجوفية",
+          "صاحب الجبل الشمالية",
+          "معتمدية الهوارية"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:node:7025787725",
+      "expectedFeatureSha256": "e4d6fc70956d2754c3cde94641d6ab2287f5c977b24165fd725296842963e9e7",
+      "set": {
+        "parentName": "صاحب الجبل الشمالية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "Saheb El Jebel Nord",
+          "صاحب الجبل الجوفية",
+          "صاحب الجبل الشمالية",
+          "معتمدية الهوارية"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:way:751396179",
+      "expectedFeatureSha256": "2c618a940fe3299d077f89778094686074c3b730312b46b1ca9aed3fafdad294",
+      "set": {
+        "parentName": "صاحب الجبل القبلية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "Saheb El Jebel Sud",
+          "صاحب الجبل الجنوبية",
+          "صاحب الجبل القبلية",
+          "معتمدية الهوارية"
+        ]
+      },
+      "geometry": null
+    },
+    {
+      "id": "osm:way:751396180",
+      "expectedFeatureSha256": "5135cd0b83485c2569c4d3054dde0a3a3ca8f359b871ccde99cb1ac5e335505b",
+      "set": {
+        "parentName": "صاحب الجبل القبلية",
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "Saheb El Jebel Sud",
+          "صاحب الجبل الجنوبية",
+          "صاحب الجبل القبلية",
+          "معتمدية الهوارية"
+        ]
+      },
+      "geometry": null
+    }
+  ],
+  "scopeNote": "Three official Arabic name corrections and eight existing-parent context corrections. All geometry and source mappings are preserved; three boundary questions remain open."
+}

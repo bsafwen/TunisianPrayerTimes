@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "scope": "read-only cached Mellita 544 context review; no Maps/API query, compiler, source or app edits",
+  "deepseekReceipt": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\mellita544-context-review-20260921.json",
+    "sha256": "889e4bfcb15738f0f5280753ef7060902ed4fd51e22d1355a8113201071261a9",
+    "settings": "deepseek-flash, thinking enabled, max reasoning"
+  },
+  "target": {
+    "delegationId": 544,
+    "display": "قرقنة مليتة / Kerkennah Mellita",
+    "governorateId": 359,
+    "currentReference": {
+      "lat": 34.6722,
+      "lng": 11.0888
+    },
+    "publishedReference": {
+      "lat": 34.65,
+      "lng": 11.034
+    },
+    "currentToPublishedKm": 5.586994781953155
+  },
+  "sourceCandidates": [
+    {
+      "id": "osm:node:475589445",
+      "kind": "village",
+      "tags": {
+        "name": "مليتة",
+        "name:ar": "مليتة",
+        "name:cs": "Mellita",
+        "name:en": "Mellita",
+        "name:fr": "Mellita",
+        "place": "village",
+        "postal_code": "3015",
+        "wikidata": "Q12245007",
+        "wikimedia_commons": "Category:Mellita, Kerkennah",
+        "wikipedia": "ar:مليتة (قرقنة)"
+      },
+      "lat": 34.651481,
+      "lng": 11.0321837,
+      "parentSourceId": "osm:relation:273483",
+      "parentTags": {
+        "admin_level": "5",
+        "alt_name:fr": "Kerkennah",
+        "boundary": "administrative",
+        "name": "قرقنة",
+        "name:ar": "قرقنة",
+        "name:en": "Kerkennah",
+        "name:fr": "Kerkennah",
+        "name:it": "Kerkennah",
+        "official_name": "معتمدية قرقنة",
+        "official_name:ar": "معتمدية قرقنة",
+        "place": "island",
+        "population": "15501",
+        "population:date": "2014",
+        "ref:tn:codegeo": "3466",
+        "ref:tn:hasc_2": "TN.SF.KE",
+        "wikidata": "Q761460",
+        "wikipedia": "ar:قرقنة"
+      },
+      "pointInsideSector7147645": true,
+      "pointInsideKerkennahDelegation": true,
+      "distanceToPublishedKm": 0.2339286864140434,
+      "distanceToCurrentKm": 5.667541300880388
+    },
+    {
+      "id": "osm:relation:7147645",
+      "kind": "sector",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "مليتة",
+        "name:ar": "مليتة",
+        "name:fr": "Mellita",
+        "ref:tn:codegeo": "346654",
+        "wikidata": "Q12245007",
+        "wikipedia": "ar:مليتة (قرقنة)"
+      },
+      "parentSourceId": "osm:relation:273483",
+      "sourceIdentity": "Kerkennah Mellita sector code 346654; same Kerkennah context as village node"
+    },
+    {
+      "id": "osm:node:1926362523",
+      "kind": "village",
+      "tags": {
+        "alt_name": "Mellita",
+        "int_name": "Mellita",
+        "name": "مليتة",
+        "name:ar": "مليتة",
+        "name:en": "Mellita",
+        "name:fr": "Mellita",
+        "place": "village"
+      },
+      "lat": 33.8624231,
+      "lng": 10.8037314,
+      "context": "Djerba/out-of-scope same-name node"
+    }
+  ],
+  "currentCatalog": {
+    "rawNodePresent": false,
+    "feature": {
+      "id": "osm:relation:7147645",
+      "name": "مليتة",
+      "aliases": [
+        "Mellita"
+      ],
+      "kind": "sector",
+      "parentName": "قرقنة",
+      "governorateId": 359,
+      "delegationId": 544,
+      "lat": 34.643446,
+      "lng": 11.037579,
+      "pickerGroupId": "osm:relation:7147645"
+    },
+    "matchingDisplayGroup": "osm:relation:7147645",
+    "compilerInterpretation": "same-name place node is represented through the existing sector feature/aliases; no separate node choice is present. This preserves no separate node ID or node coordinate in the picker."
+  },
+  "matrix": {
+    "physicalEvidenceCategory": "no_matched_physical_witness_in_screen",
+    "candidateCount": 0,
+    "originalAdministrativeParentCandidates": [],
+    "unresolved": [
+      "No explicitly reviewed physical witness found in the active witness families inventoried here; this is an evidence gap, not absence of the place.",
+      "No exact/format-name or matching official-code original administrative parent candidate; transferred/renamed context needs individual review."
+    ],
+    "policyDecision": "No reference change approved by this evidence matrix."
+  },
+  "publishedResponses": {
+    "prayer": {
+      "id": 896569,
+      "gouvernorat": {
+        "id": 359,
+        "intituleFr": "Sfax",
+        "intituleAr": "صفاقس",
+        "intituleAn": "Sfax"
+      },
+      "delegation": {
+        "id": 544,
+        "intituleFr": "Kerkennah Mellita",
+        "intituleAr": "قرقنة مليتة",
+        "intituleAn": "Kerkennah Mellita",
+        "parent": {
+          "id": 359,
+          "intituleFr": "Sfax",
+          "intituleAr": "صفاقس",
+          "intituleAn": "Sfax"
+        }
+      },
+      "date": "2026-09-19 00:00",
+      "sobh": "04:37",
+      "dhohr": "12:17",
+      "aser": "15:39",
+      "magreb": "18:19",
+      "isha": "19:42",
+      "lat": "34.650",
+      "lng": "11.034",
+      "annee": 2026,
+      "active": true
+    },
+    "sun": {
+      "id": 858080,
+      "gouvernorat": {
+        "id": 359,
+        "intituleFr": "Sfax",
+        "intituleAr": "صفاقس",
+        "intituleAn": "Sfax"
+      },
+      "delegation": {
+        "id": 544,
+        "intituleFr": "Kerkennah Mellita",
+        "intituleAr": "قرقنة مليتة",
+        "intituleAn": "Kerkennah Mellita",
+        "parent": {
+          "id": 359,
+          "intituleFr": "Sfax",
+          "intituleAr": "صفاقس",
+          "intituleAn": "Sfax"
+        }
+      },
+      "date": "2026-09-19 00:00",
+      "lever": "06:02",
+      "pm": "12:10",
+      "coucher": "18:17",
+      "lat": "34.650",
+      "lng": "11.034",
+      "annee": 2026,
+      "active": true
+    }
+  },
+  "assessment": {
+    "materialPickerGap": "not demonstrated: the exact Kerkennah source sector is already the current catalog feature and the exact village point is inside that sector; the node itself is absent as a separate choice by same-name projection.",
+    "duplicate": "no second Kerkennah 544 picker feature found; Djerba node1926362523 is unrelated context.",
+    "nameIssue": "generic composite name caused the matrix screen to miss the exact Kerkennah candidate; no wrong-name display is demonstrated because current UI is مليتة / Mellita under parent قرقنة.",
+    "referenceLimit": "village/sector correspondence and proximity to published point do not certify that published coordinates are the service calculation point; no move or merge is proposed.",
+    "nextQuery": "If root needs one discriminating follow-up, query a primary/admin source for the exact delegation-544 service-seat/reference identity, distinguishing it from sector 346654 and village node 475589445. No Maps recapture is needed for the picker duplicate question."
+  },
+  "pins": {
+    "sourceInventory": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119"
+    },
+    "matrix": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-physical-reference-matrix-20260919\\physical-reference-evidence-matrix.json",
+      "sha256": "1a6f3e404aaf86f80856fa39252ed5fd5051fe139e0bec558d23da40cf86b24d"
+    },
+    "catalogAsset": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "cb893bfa2d446214e4f6aa50b77c68d952d31f23620ee2441832467ac52c6b7c"
+    },
+    "prayerResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\544-prayer-attempt01-398696f43bb79d63.json",
+      "sha256": "398696f43bb79d63390e10523b94ea4ac43569b150c50f08b6d1478bace7b97c"
+    },
+    "sunResponse": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\544-sun-attempt01-930cbf180ece843a.json",
+      "sha256": "930cbf180ece843a1fda8c317768661c74e98b7ce90e089f044867b58449f347"
+    }
+  }
+}

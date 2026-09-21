@@ -1,0 +1,135 @@
+{
+  "workRoot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920",
+  "repoRoot": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes",
+  "relativePackageDirectory": "official/mongi-slim-125656-20260920",
+  "targetId": "osm:relation:7115583",
+  "officialCode": "125656",
+  "sourceId": "isie-local-sector-2023-mongi-slim-ettadhamen",
+  "currentRaw": {
+    "id": "osm:relation:7115583",
+    "sourceId": "osm",
+    "name": "المنجي سليم",
+    "aliases": [
+      "Mongi Slim"
+    ],
+    "kind": "sector",
+    "parentName": "معتمدية حي التضامن",
+    "contextAliases": [
+      "Délégation Cité Ettadhamen",
+      "Ettadhamen",
+      "معتمدية حي التضامن"
+    ],
+    "governorateId": 358,
+    "lat": 36.840745,
+    "lng": 10.097937,
+    "delegationId": 534,
+    "hasBoundary": true,
+    "bbox": [
+      10.093929,
+      36.838136,
+      10.101868,
+      36.843401
+    ],
+    "areaKm2": 0.18481391242187414,
+    "pickerGroupId": "osm:relation:7115583",
+    "offset": 1041748,
+    "length": 260
+  },
+  "originalSource": {
+    "id": "osm:relation:7115583",
+    "kind": "sector",
+    "tags": {
+      "admin_level": "6",
+      "boundary": "administrative",
+      "name": "المنجي سليم",
+      "name:ar": "المنجي سليم",
+      "name:fr": "Mongi Slim",
+      "ref:tn:codegeo": "125656"
+    },
+    "geometrySummary": {
+      "sha256": "126a0b288e59f2e68a1a5b7e911fe6cf40af691c27f64465223a4f1b508f575e",
+      "type": "MultiPolygon",
+      "bbox": [
+        10.0939286,
+        36.8381357,
+        10.1018681,
+        36.8434007
+      ]
+    }
+  },
+  "officialRegistryRow": {
+    "governorateCode": "12",
+    "governorateFr": "Ariana",
+    "governorateAr": "أريانة",
+    "delegationCode": "1256",
+    "delegationFr": "Cite ettadhamen",
+    "delegationAr": "حي التضامن",
+    "sectorCode": "125656",
+    "sectorFr": "El mongi slim",
+    "sectorAr": "المنجي سليم",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 6869,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 229,
+      "Nombre_de_menages_par_Secteurs.xlsx": 229
+    }
+  },
+  "pins": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94"
+    },
+    "binary": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494"
+    },
+    "coverage": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "1d3c4413fb2b41cf02c35cced9deb0e013461f6a417969e685d95ab5fec9a517"
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43"
+    },
+    "boundaries": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "34809853b02d38bf924f2f6f4b51dd89b88882a7fb323bed137cadaa87d1ca57"
+    },
+    "generator": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1"
+    },
+    "areas": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    "scope": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\scope-facts.json",
+      "sha256": "93b351d8d54745deb844e636e51558f51bb9d6735640845f7f5fc4781535786b"
+    },
+    "native": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\native-geometry-diagnostic.json",
+      "sha256": "6410a32c5cf2ad585dfb3fe644c8e666ef2c6fd9d5d34d75d6e2f376532de133"
+    },
+    "facts": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\geometry-facts.json",
+      "sha256": "a4cecc798a255080c4d84c2cf1ca49cc15df0fedd1139b745203c07945af1d96"
+    },
+    "pdf": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\mongi-slim-ettadhamen-isie2023.pdf",
+      "sha256": "e44aaf8c122ada004c97dae2e49763847d5c9f03d02be4513ced0b46b3edaa21"
+    },
+    "receipt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\official-map-receipt.json",
+      "sha256": "fc7fc20bcd455a7c5fb8b86eacd4e4d29230a33784bc06240329905d142b4e1b"
+    }
+  },
+  "sourceNamePolicy": {
+    "nameAr": "المنجي سليم",
+    "nameFr": "Mongi Slim",
+    "aliases": [],
+    "why": "Preserve current display/aliases exactly as root authorized; official registry El mongi slim is recorded as source identity evidence but no new search alias/name edit."
+  },
+  "parentId": "osm:relation:4156579",
+  "governorateId": "osm:relation:1435830",
+  "nameGeometryPolicy": "Only native geometry+sourceId changes; retain name,aliases,kind,parent/context,anchor,nearest prayer source534,group. No child context rename. Exact derived effects remain subject to combined generator review."
+}

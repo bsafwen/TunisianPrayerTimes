@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "sourceIds": [
+    486
+  ],
+  "observations": [
+    {
+      "label": "wide-z14",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\wide-z14\\delegation_486-detail-wide-z14.json",
+        "sha256": "5e88f180a4e31d11ed592636135b7a456fdf2141ec5be8d73a3ecf2c36261267"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\wide-z14\\delegation_486-detail-wide-z14.png",
+        "sha256": "321504473a627c95ced221c73fb666c7743e9899f9a1700b0760177871fa11c4"
+      },
+      "boundaryVerified": false
+    },
+    {
+      "label": "pin-z14",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\pin-z14\\delegation_486-detail-pin-z14.json",
+        "sha256": "a837838e030bc2cbd4fae13fff0f84daf2dbd2831835205c0b8eb3f164cf44b8"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\pin-z14\\delegation_486-detail-pin-z14.png",
+        "sha256": "c79b2ac2e08069da82bd8abdb4cdd2d253ae333023701fa6432d0a1437998cc9"
+      },
+      "boundaryVerified": false
+    },
+    {
+      "label": "pin-coordinates",
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\pin-coordinates\\delegation_486-detail-pin-coordinates.json",
+        "sha256": "ca57501bd342c520dec2a1609f55031b6b98bd6e9cfc287bbd3a38bebb78a3b5"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\pin-coordinates\\delegation_486-detail-pin-coordinates.png",
+        "sha256": "1352539ff59a5fad523b2eeb36d8bae65e53a313fc98a234dcbf12240fd62f80"
+      },
+      "boundaryVerified": false
+    }
+  ],
+  "rootReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\root-visual-review.json",
+    "sha256": "5c4173c1a4dc6e52081aafbf64c319b905f9ecadda83c774b17a2a0f017565bf"
+  },
+  "qualification": "Exact coordinate public card plus wider Matrouha context; no boundary approval."
+}

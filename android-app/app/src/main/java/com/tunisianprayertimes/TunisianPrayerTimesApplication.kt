@@ -2,6 +2,7 @@ package com.tunisianprayertimes
 
 import android.app.Application
 import android.util.Log
+import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.platform.GouvernoratLoader
 import com.tunisianprayertimes.platform.PrayerDataLoader
 import com.tunisianprayertimes.platform.Preferences
@@ -22,6 +23,8 @@ class TunisianPrayerTimesApplication : Application() {
     // Always dispatch updates: publication holds the date-store lock, while
     // scheduling has its own lock and may read the store from a worker thread.
     private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+    // SharedPreferences keeps listeners weakly; retain the subscription for the process lifetime.
+    private var dhikrLocationSubscription: (() -> Unit)? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -41,7 +44,19 @@ class TunisianPrayerTimesApplication : Application() {
         GouvernoratLoader.init(this)
         SilenceController.init(this)
         TimerScheduler.init(this)
+        refreshDhikrReminders()
+        dhikrLocationSubscription = PrefsManager.observeLocationSelection(this) { refreshDhikrReminders() }
         observeOfficialDateChanges()
+    }
+
+    private fun refreshDhikrReminders() {
+        applicationScope.launch(Dispatchers.IO) {
+            try {
+                DhikrReminderScheduler.refresh(this@TunisianPrayerTimesApplication)
+            } catch (error: Exception) {
+                Log.w("Adhkar", "Could not refresh dhikr reminders", error)
+            }
+        }
     }
 
     private fun observeOfficialDateChanges() {

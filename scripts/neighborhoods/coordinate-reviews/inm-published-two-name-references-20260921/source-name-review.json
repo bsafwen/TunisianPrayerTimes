@@ -1,0 +1,40 @@
+{
+  "status": "EXACT_SOURCE_SPELLING_ALIASES_REVIEWED",
+  "diagnosis": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\two-reference-name-successors-response-20260921.json",
+    "sha256": "8d859fb14c156affe6d90f8a1424687e3f7179793be61896aa71ccffa74ba388"
+  },
+  "workerHelper": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-reference-name-successors-20260921\\source_name_helper-reviewed.py",
+    "sha256": "c9f2fccb360f58e1bb22b9eddddf3fe8e852f3ad4ccdbc676a782ba53e184d36"
+  },
+  "compiler": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "sha256": "caaf78f4b2dc0823fdf86620c8b842408c5401ded386ba5658c08e88efb193fe"
+  },
+  "cases": [
+    {
+      "id": 425,
+      "governorateId": 345,
+      "sourceArabic": "مللولش",
+      "catalogArabic": "ملولش",
+      "receipt": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\malloulech425-name-review-20260920\\installed-receipt.json",
+        "sha256": "459f0d6fe495796142c683f8fe5d7af4b8873d5fcfb93352010908c6550e4c9a"
+      }
+    },
+    {
+      "id": 534,
+      "governorateId": 358,
+      "sourceArabic": "التظامن",
+      "catalogArabic": "التضامن",
+      "receipt": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\tadhamen534-name-review-20260920\\installed-receipt.json",
+        "sha256": "631b3b60f84057ecd4af57afaefce5f370b4381cf5751fcb639f96bf2f0186c3"
+      }
+    }
+  ],
+  "rootEdits": "Reduced helper to dict-only governor input and existing repository formatting. Exact source/current Arabic tuple is bound to governor and delegation; French/English unchanged. Source bodies, hashes, dates, parent/governor equality and coordinate comparisons untouched.",
+  "coordinateApproval": false,
+  "androidTestsRun": false
+}

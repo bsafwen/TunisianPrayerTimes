@@ -1,0 +1,107 @@
+--- sedouikech_worker_adapter.py
++++ sedouikech_reviewed_adapter.py
+@@ -16,6 +16,7 @@
+ META = B / 'frozen' / 'metadata.json'
+ RECEIPTS = B / 'primary-pdfs' / 'receipts.json'
+ BIN = NATIVE / 'neighborhoods.bin'
++VALIDATION = NATIVE / 'source-validation.json'
+ TARGET = 'osm:relation:7133851'
+ A_IDX, B_IDX = 514, 515
+ A_SEQ, B_SEQ = 522, 523
+@@ -29,9 +30,9 @@
+     OUT.mkdir(parents=True, exist_ok=True)
+     p = OUT / n
+     if p.exists(): raise SystemExit('refusing to overwrite ' + str(p))
+-    p.write_text(json.dumps(o, ensure_ascii=False, indent=2) + chr(10), encoding='utf8')
++    with p.open('x', encoding='utf8') as f: f.write(json.dumps(o, ensure_ascii=False, indent=2) + chr(10))
+ def style(d):
+-    return (d.get('layer'), d.get('color'), d.get('fill'), d.get('width'), d.get('dashes'), d.get('lineCap'), d.get('lineJoin'), d.get('closePath'), d.get('even_odd'))
++    return {k:d.get(k) for k in ('type','layer','color','fill','width','dashes','lineCap','lineJoin','closePath','even_odd','stroke_opacity','fill_opacity')}
+ def line_verts(d):
+     items = d.get('items') or []
+     if not items or not all(it[0] == 'l' for it in items):
+@@ -100,8 +101,12 @@
+ TO_UTM = Transformer.from_crs(4326, 32632, always_xy=True)
+ TO_LL = Transformer.from_crs(32632, 4326, always_xy=True)
+ def utm(g): return transform(TO_UTM.transform, g)
+-inputs = [FACTS, SEL, META, RECEIPTS, BIN, PDF]
++inputs = [FACTS, SEL, META, RECEIPTS, BIN, PDF, VALIDATION]
+ before = {str(p): pin(p) for p in inputs}
++validation=read(VALIDATION)
++for p in (FACTS,SEL,META,RECEIPTS,PDF):
++    assert before[str(p)] == validation['start'][str(p)], 'Frozen input differs from prior native review'
++assert before[str(BIN)] == validation['copiedLiveBin'], 'Frozen binary differs from prior native review'
+ receipts = read(RECEIPTS)
+ row = None
+ for r in receipts:
+@@ -123,10 +128,12 @@
+         break
+ if item is None: raise SystemExit('target missing from facts')
+ meta = read(META)
++assert before[str(META)]['sha256'] == facts['inputPins']['metadata']['sha256']
+ scale = meta['coordinateScale']
+ sel = read(SEL)
+ orig_geom = shape(sel['geometries'][TARGET]['geometry'])
+ current_row = item['currentRawRow']
++assert next(x for x in meta['features'] if x['id']==TARGET) == current_row
+ packed_geom = unpack(BIN.read_bytes(), current_row, scale)
+ anchor = Point(current_row['lng'], current_row['lat'])
+ reader = pypdf.PdfReader(str(PDF))
+@@ -170,6 +177,8 @@
+ checks.append({'name': 'drawingA_continuous', 'ok': errA is None, 'error': errA})
+ checks.append({'name': 'drawingB_continuous', 'ok': errB is None, 'error': errB})
+ checks.append({'name': 'identical_style', 'ok': style(dA) == style(dB)})
++checks.append({'name': 'both_source_strokes_explicitly_open', 'ok': dA.get('closePath') is False and dB.get('closePath') is False})
++checks.append({'name': 'exact_component_line_counts', 'ok': len(dA['items'])==1023 and len(dB['items'])==309})
+ if vA is not None and vB is not None:
+     checks.append({'name': 'exact_A_start', 'ok': vA[0] == A_START, 'actual': vA[0]})
+     checks.append({'name': 'exact_A_end', 'ok': vA[-1] == A_END, 'actual': vA[-1]})
+@@ -192,16 +201,24 @@
+ checks.append({'name': 'viewport_contains_combined', 'ok': viewport_ok, 'margin': poly.boundary.distance(frame.boundary)})
+ checks.append({'name': 'active_clips_A', 'ok': errClipA is None, 'error': errClipA, 'facts': clipsA})
+ checks.append({'name': 'active_clips_B', 'ok': errClipB is None, 'error': errClipB, 'facts': clipsB})
++checks.append({'name': 'identical_active_clips', 'ok': clipsA==clipsB and errClipA is None and errClipB is None})
+ ok = all(c['ok'] for c in checks)
+ out['checks'] = checks
+ out['components'] = [
+     {'drawingIndex': A_IDX, 'seqno': A_SEQ, 'layer': dA.get('layer'), 'color': dA.get('color'), 'style': style(dA), 'firstStart': vA[0], 'lastEnd': vA[-1], 'lineItemCount': len(dA['items']), 'vertexCount': len(vA), 'continuousLineByLine': errA is None},
+     {'drawingIndex': B_IDX, 'seqno': B_SEQ, 'layer': dB.get('layer'), 'color': dB.get('color'), 'style': style(dB), 'firstStart': vB[0], 'lastEnd': vB[-1], 'lineItemCount': len(dB['items']), 'vertexCount': len(vB), 'continuousLineByLine': errB is None}
+ ]
++out['components'][0]['exactNativeVertices']=vA
++out['components'][1]['exactNativeVertices']=vB
++out['georeference']={'epsg':crs.to_epsg(),'storedCrsWkt':wkt,'viewportBBox':bbox.tolist(),'localControlPoints':lpts.tolist(),'controlPointsLatLon':gpts.tolist(),'affineMetersFromPagePoints':affine.tolist(),'controlResidualsMeters':residual.tolist(),'pageRect':list(page.rect),'cropBox':list(page.cropbox),'mediaBox':list(page.mediabox),'rotation':page.rotation,'qualification':'Affine fit residual is not surveyed geographic accuracy.'}
+ out['combined'] = {'fromDrawingIndices': [A_IDX, B_IDX], 'sharedEndpointA': vA[0], 'sharedEndpointB': vA[-1], 'concatenationRule': 'vA + vB[1:]', 'inventedSegment': False, 'vertexCount': len(combined), 'closedByExistingSharedEndpoint': combined[0] == combined[-1], 'areaPagePoints2': poly.area}
+ out['validity'] = {'isValid': poly.is_valid, 'explain': explain_validity(poly), 'repaired': False}
+-if poly.is_valid:
+-    mapped = transform(to_map, poly)
++mapped = transform(to_map, poly)
++wgs84 = transform(TO_LL.transform, mapped)
++out['nativeGeometries']={'page':mapping(poly),'utm':mapping(mapped),'wgs84':mapping(wgs84)}
++out['validity']['utmValidity']=explain_validity(mapped)
++out['validity']['wgs84Validity']=explain_validity(wgs84)
++if ok and poly.is_valid and mapped.is_valid and wgs84.is_valid:
+     out['comparisons']['officialVsOriginal'] = compare(mapped, utm(orig_geom))
+     out['comparisons']['officialVsPacked'] = compare(mapped, utm(packed_geom))
+     out['comparisons']['currentAnchor'] = pointfacts(mapped, utm(anchor))
+@@ -210,17 +227,17 @@
+ else:
+     out['comparisons']['officialVsOriginal'] = {'status': 'WITHHELD_INVALID_RING', 'explain': explain_validity(poly), 'repaired': False}
+     out['comparisons']['officialVsPacked'] = {'status': 'WITHHELD_INVALID_RING', 'explain': explain_validity(poly), 'repaired': False}
+-    out['comparisons']['currentAnchor'] = pointfacts(poly, utm(anchor))
++    out['comparisons']['currentAnchor'] = pointfacts(mapped, utm(anchor)) if ok else {'covered':None,'qualification':'Source path checks failed.'}
+ out['sourceGeographyLimits'] = [
+     'Only frozen 2023 circonscription PDF and frozen metadata/bin/original source are used; no live repo, no network, no other PDF scan.',
+     'Page-to-UTM affine residual max meters: ' + str(float(residual.max())),
+     'PDF map is an electoral circonscription rendering; it is not a cadastral survey and may differ from OSM boundary generalization.'
+ ]
+-out['existingFactDefects'] = [
+-    'native-audit marks drawing 514(seq522) and 515(seq523) INELIGIBLE NOT_CONTINUOUS_EXPLICITLY_CLOSED; candidate-summaries omits osm:relation:7133851 entirely.',
++out['existingStrictReviewScopeQualification'] = [
++    'The original strict single-drawing review correctly withheld drawing 514(seq522) and 515(seq523), because neither is individually closed. This separately recorded two-component check does not alter that original review.',
+     'facts pdfIndexMatches gives title/link but no PDF byte hash; receipt pin is required and checked here.'
+ ]
+-out['status'] = 'OK' if ok else 'WITHHELD_CHECKS_FAILED'
++out['status'] = 'EXACT_TWO_COMPONENT_OUTLINE_VALID' if ok and poly.is_valid and mapped.is_valid and wgs84.is_valid else 'WITHHELD_INVALID_NATIVE_RING' if ok else 'WITHHELD_CHECKS_FAILED'
+ after = {str(p): pin(p) for p in inputs}
+ out['inputPinsAfter'] = after
+ out['inputsUnchanged'] = before == after

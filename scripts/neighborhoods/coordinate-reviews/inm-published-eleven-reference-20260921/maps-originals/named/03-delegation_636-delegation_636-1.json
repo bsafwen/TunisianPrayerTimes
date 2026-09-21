@@ -1,0 +1,32 @@
+{
+  "observedAt": "2026-09-07T06:20:40.203308+00:00",
+  "query": "الكاف Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "El Kef"
+  ],
+  "publicUiText": [
+    "El Kef",
+    "الكاف",
+    "Tunisia",
+    "Directions to El Kef",
+    "Directions",
+    "Share El Kef",
+    "Share",
+    "Save El Kef to lists",
+    "Save",
+    "Photo",
+    "Close",
+    "الكاف Tunisia",
+    "Clear",
+    "Restaurants",
+    "Hotels",
+    "Attractions"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "الكاف"
+  ],
+  "screenshot": "delegation_636-1.png",
+  "boundaryVerified": false
+}

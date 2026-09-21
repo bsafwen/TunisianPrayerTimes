@@ -1,0 +1,182 @@
+{
+  "report": "border-measurement",
+  "source_id": "source476",
+  "place": "El Borma",
+  "status": "unresolved",
+  "source_file": "geo\\osm-areas.json",
+  "source_sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "source_sha256_expected": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "script_sha256": "2b4b5f52f4224211448782dfe191c0dc180ea3f78383478651a8a1ea75c7f8b0",
+  "script_file": "measure-border-reviewed.py",
+  "geographicApproval": false,
+  "boundaryVerified": false,
+  "crs": {
+    "geographic": "EPSG:4326",
+    "projected": "EPSG:32632",
+    "projection": "pyproj Transformer always_xy=True",
+    "distance_method": "Euclidean distance in EPSG:32632 to the selected country boundary"
+  },
+  "method_note": "Measurements use cached OSM area geometry. This is not an official surveyed boundary and no geographic approval is implied. Distances are numerical meters in EPSG:32632; nearest boundary points are inverse-projected to EPSG:4326. No conclusion is made about which country is truly correct.",
+  "country": {
+    "id": "osm:relation:192757",
+    "tags_subset": {
+      "admin_level": "2",
+      "name": "تونس",
+      "name:en": "Tunisia",
+      "name:ar": "تونس",
+      "name:fr": "Tunisie",
+      "ISO3166-1": "TN",
+      "ISO3166-1:alpha2": "TN",
+      "ref:INS": null
+    },
+    "bbox_wgs84": [
+      7.5219807,
+      30.229061,
+      11.8801133,
+      37.7612052
+    ],
+    "bbox_order": "min_lng,min_lat,max_lng,max_lat"
+  },
+  "per_point_measurements": [
+    {
+      "name": "current",
+      "lat": 31.6916,
+      "lng": 9.2043,
+      "country_covers": true,
+      "distance_to_country_boundary_m": 1992.8645946938568,
+      "nearest_boundary_point": {
+        "lat": 31.68751828244673,
+        "lng": 9.183821148698108
+      },
+      "matching_admin_levels": [
+        {
+          "id": "osm:relation:192757",
+          "admin_level": "2",
+          "name:ar": "تونس",
+          "name:fr": "Tunisie",
+          "name": "تونس",
+          "name:en": "Tunisia",
+          "ref:INS": null
+        },
+        {
+          "id": "osm:relation:1434953",
+          "admin_level": "4",
+          "name:ar": "ولاية تطاوين",
+          "name:fr": "Gouvernorat Tataouine",
+          "name": "ولاية تطاوين",
+          "name:en": "Tataouine",
+          "ref:INS": null
+        },
+        {
+          "id": "osm:relation:7143848",
+          "admin_level": "6",
+          "name:ar": "رمادة الغربية",
+          "name:fr": "Remada Ouest",
+          "name": "رمادة الغربية",
+          "name:en": null,
+          "ref:INS": null
+        }
+      ]
+    },
+    {
+      "name": "proposed",
+      "lat": 31.69,
+      "lng": 9.211,
+      "country_covers": true,
+      "distance_to_country_boundary_m": 2571.0358280454784,
+      "nearest_boundary_point": {
+        "lat": 31.68473486078694,
+        "lng": 9.184580225716948
+      },
+      "matching_admin_levels": [
+        {
+          "id": "osm:relation:192757",
+          "admin_level": "2",
+          "name:ar": "تونس",
+          "name:fr": "Tunisie",
+          "name": "تونس",
+          "name:en": "Tunisia",
+          "ref:INS": null
+        },
+        {
+          "id": "osm:relation:1434953",
+          "admin_level": "4",
+          "name:ar": "ولاية تطاوين",
+          "name:fr": "Gouvernorat Tataouine",
+          "name": "ولاية تطاوين",
+          "name:en": "Tataouine",
+          "ref:INS": null
+        },
+        {
+          "id": "osm:relation:7143848",
+          "admin_level": "6",
+          "name:ar": "رمادة الغربية",
+          "name:fr": "Remada Ouest",
+          "name": "رمادة الغربية",
+          "name:en": null,
+          "ref:INS": null
+        }
+      ]
+    },
+    {
+      "name": "catalogPoint",
+      "lat": 31.6880101,
+      "lng": 9.2186132,
+      "country_covers": true,
+      "distance_to_country_boundary_m": 3223.7284723467783,
+      "nearest_boundary_point": {
+        "lat": 31.681409434015357,
+        "lng": 9.18548705407547
+      },
+      "matching_admin_levels": [
+        {
+          "id": "osm:relation:192757",
+          "admin_level": "2",
+          "name:ar": "تونس",
+          "name:fr": "Tunisie",
+          "name": "تونس",
+          "name:en": "Tunisia",
+          "ref:INS": null
+        },
+        {
+          "id": "osm:relation:1434953",
+          "admin_level": "4",
+          "name:ar": "ولاية تطاوين",
+          "name:fr": "Gouvernorat Tataouine",
+          "name": "ولاية تطاوين",
+          "name:en": "Tataouine",
+          "ref:INS": null
+        },
+        {
+          "id": "osm:relation:7143848",
+          "admin_level": "6",
+          "name:ar": "رمادة الغربية",
+          "name:fr": "Remada Ouest",
+          "name": "رمادة الغربية",
+          "name:en": null,
+          "ref:INS": null
+        }
+      ]
+    }
+  ],
+  "current_proposed_distance_m": {
+    "haversine_m": 658.4157063074547,
+    "geod_m": 659.5287179355248,
+    "haversine_radius_m": 6371008.8,
+    "geod_model": "WGS84"
+  },
+  "counts": {
+    "areas_total": 3018,
+    "accepted_country_id_matches": 1,
+    "valid_country_matches": 1,
+    "admin_areas_considered": 2111,
+    "invalid_admin_geometries_skipped": 0,
+    "matching_admin_levels_by_point": {
+      "current": 3,
+      "proposed": 3,
+      "catalogPoint": 3
+    }
+  },
+  "source_unchanged": true,
+  "source_sha256_after": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+}

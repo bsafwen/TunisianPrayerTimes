@@ -1,0 +1,81 @@
+{
+  "osm:relation:7142943": {
+    "currentName": "المغزاوية",
+    "currentAliases": [
+      "El Maghzaouia"
+    ],
+    "officialNameAr": "المغراوية",
+    "officialNameFr": "El maghzaouia",
+    "evidence": "code 525953 same; parent 5259 same; PDF title matches official Arabic; originalIou 0.861; current anchor covered; residual 0.168 m; no curation/picker refs.",
+    "recommendation": "alias_only",
+    "rationale": "Official Arabic has ر but official French has z; current Arabic المغزاوية matches official French El maghzaouia better, so current primary may be legitimate and official Arabic may be a registry/PDF variant. Add official Arabic as alias; do not switch primary without local-usage evidence.",
+    "uncertainty": "Official registry Arabic/French internal inconsistency; no local pronunciation/usage survey; PDF title confirms printed official variant but not current-name error.",
+    "childGroupDependencies": "none in packet: pickerGroupId self, members [self], direct/referencing curation and picker groups empty; parentName/contextAliases unchanged."
+  },
+  "osm:relation:7165270": {
+    "currentName": "الدريعات",
+    "currentAliases": [
+      "Edheriaat"
+    ],
+    "officialNameAr": "الذريعات",
+    "officialNameFr": "Ed-dheriaat",
+    "evidence": "code 415456 same; parent 4154 same; PDF title matches official Arabic; originalIou 0.856; current anchor covered; residual 0.113 m; current French alias Edheriaat has dh but current Arabic lacks ذ; official Arabic/French consistent.",
+    "recommendation": "name_only_preserve_old_alias",
+    "rationale": "Official variant is internally consistent and PDF title confirms it; current Arabic is inconsistent with its own French alias, so primary switch to official Arabic is warranted; preserve current primary as alias.",
+    "uncertainty": "No local usage survey; if simplified الدريعات is locally preferred, downgrade to alias_only.",
+    "childGroupDependencies": "none in packet: pickerGroupId self, members [self], direct/referencing curation and picker groups empty; parentName/contextAliases unchanged."
+  },
+  "osm:relation:7169564": {
+    "currentName": "الدويبات الجنوبية",
+    "currentAliases": [
+      "Dheouibet Sud"
+    ],
+    "officialNameAr": "الذويبات الجنوبية",
+    "officialNameFr": "Dheouibet sud",
+    "evidence": "code 436252 same; parent 4362 same; PDF title matches official Arabic; native PDF ring invalid self-intersection; IoU/current anchor withheld; no repair; current French Dheouibet has dh but Arabic lacks ذ; official Arabic/French consistent.",
+    "recommendation": "name_only_preserve_old_alias",
+    "rationale": "Name identity is supported by code/French/parent/PDF title; invalid native ring does not disprove name identity and must remain unrepaired; official Arabic is internally consistent with French. Switch primary to official Arabic, preserve old alias.",
+    "uncertainty": "Geometry comparison withheld due invalid native ring; if policy requires valid geometry before primary switch, hold/downgrade; no local usage survey.",
+    "childGroupDependencies": "none in packet: pickerGroupId self, members [self], direct/referencing curation and picker groups empty; parentName/contextAliases unchanged."
+  },
+  "osm:relation:7127889": {
+    "currentName": "بلطش",
+    "currentAliases": [
+      "Baltech"
+    ],
+    "officialNameAr": "بلتش",
+    "officialNameFr": "Baltech",
+    "evidence": "code 345853 same; parent 3458 same; PDF title matches official Arabic; originalIou 0.936; current anchor covered; residual 0.284 m; official Arabic ت matches French t; current ط does not.",
+    "recommendation": "name_only_preserve_old_alias",
+    "rationale": "Strong geometry and official code/parent/PDF title; official Arabic/French consistent; current Arabic likely variant/typo. Switch primary to بلتش, preserve بلطش.",
+    "uncertainty": "No local usage survey; if بلطش is documented local form, downgrade to alias_only.",
+    "childGroupDependencies": "none in packet: pickerGroupId self, members [self], direct/referencing curation and picker groups empty; parentName/contextAliases unchanged."
+  },
+  "osm:relation:7133851": {
+    "currentName": "سدويكش",
+    "currentAliases": [
+      "Sedouikech"
+    ],
+    "officialNameAr": "صدويكش",
+    "officialNameFr": "Sedouikech",
+    "evidence": "code 525755 same; parent 5257 same; PDF title matches official Arabic; original STRICT omitted because two strokes drawing514 seq522 and drawing515 seq523; native-audit marks both INELIGIBLE NOT_CONTINUOUS_EXPLICITLY_CLOSED; candidate-summaries lacks id; no IoU/anchor coverage in existing facts.",
+    "recommendation": "hold",
+    "rationale": "Name evidence supports identity, but independent geometric validation of the two-component path is not yet executed. Do not switch primary or add alias until adapter confirms exact shared endpoints, continuous strokes, identical style/layer, active clips, viewport containment, valid polygon, and original/current correspondence.",
+    "uncertainty": "Two-component provenance unverified; if adapter succeeds and polygon valid, official variant becomes a candidate for name_only/alias_only review; current س vs official ص may both be legitimate, so primary switch still requires policy/local-usage decision.",
+    "childGroupDependencies": "none in packet: pickerGroupId self, members [self], direct/referencing curation and picker groups empty; parentName/contextAliases unchanged."
+  },
+  "osm:relation:7143844": {
+    "currentName": "كمبوت",
+    "currentAliases": [
+      "Kambout",
+      "ⴽⵎⴱⵓⵜ"
+    ],
+    "officialNameAr": "كنبوت",
+    "officialNameFr": "Kenbout",
+    "evidence": "code 535754 same; parent 5357 same; PDF title matches official Arabic; originalIou 0.486 weak; current anchor covered; residual 0.397 m; current Kambout/كمبوت vs official Kenbout/كنبوت substantive m/n divergence; both names internally consistent.",
+    "recommendation": "alias_only",
+    "rationale": "Official code/parent/PDF title support same-sector identity, but weak IoU 0.486 and substantive m/n divergence make primary switch unwarranted. Preserve current primary and add official كنبوت/Kenbout as alias only if variant aliases are permitted; if alias addition also requires stronger same-feature geometry, hold.",
+    "uncertainty": "Weak geometry correspondence; possible OSM/official boundary extent mismatch; no local usage evidence to decide Kambout vs Kenbout.",
+    "childGroupDependencies": "none in packet: pickerGroupId self, members [self], direct/referencing curation and picker groups empty; parentName/contextAliases unchanged."
+  }
+}

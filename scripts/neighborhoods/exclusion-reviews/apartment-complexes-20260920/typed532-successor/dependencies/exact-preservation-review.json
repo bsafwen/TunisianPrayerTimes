@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 1,
+  "method": "work_only_typed532_jawhara_exclusion_exact_preservation_review",
+  "status": "WORK_ONLY_NOT_DEPLOYABLE_NOT_CURRENT_NOT_HISTORICAL_CATALOG",
+  "contract": {
+    "file": "C:/Users/barou/Documents/Codex/2026-09-06/the-android-app-app-currently-allows/work/residential-building-screen-20260920/typed532-successor-contract.json",
+    "workRoot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\residential-building-screen-20260920",
+    "sourceDirectory": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods",
+    "exactPrefix": "exclusion-reviews/apartment-complexes-20260920/typed532-successor",
+    "ruleId": "osm:node:7390818324",
+    "excludeId": "osm:way:1346769253"
+  },
+  "activePointRule": {
+    "before": {
+      "pickerBaseDisplayReview": {
+        "file": "name-reviews/soukra-bassatine-alias-20260920/dependencies/node-7390818324-proof.json",
+        "sha256": "c1a41e8af46805322c95e6c201a8b633ea4a51737e83ed0c7b746921fe664b38",
+        "bytes": 110068
+      },
+      "currentSourceCarry": {
+        "file": "name-reviews/soukra-bassatine-alias-20260920/dependencies/alias-source-phase-carry.json",
+        "sha256": "8983129f1e8f70542dac45fd424c3cf8d6c2ffc58d2a8c44b5244fc6394d7e61",
+        "bytes": 4058
+      }
+    },
+    "after": {
+      "pickerBaseDisplayReview": {
+        "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/node-7390818324-proof.json",
+        "sha256": "2e948c8d6a9499ea37339d3e9e6842638ee3d2c758e746e548141154840e689b",
+        "bytes": 107307
+      },
+      "currentSourceCarry": {
+        "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/jawhara-source-phase-carry.json",
+        "sha256": "b0674255527f6af2ee8fa3ddb7d2d4fb3950f734a7a60de7f338a12f068d830e",
+        "bytes": 39820
+      }
+    },
+    "changedPaths": [
+      "/evidence/currentSourceCarry/bytes",
+      "/evidence/currentSourceCarry/file",
+      "/evidence/currentSourceCarry/sha256",
+      "/pickerBaseDisplayReview/bytes",
+      "/pickerBaseDisplayReview/file",
+      "/pickerBaseDisplayReview/sha256"
+    ]
+  },
+  "baseline": {
+    "old": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\name-reviews\\soukra-bassatine-alias-20260920\\dependencies\\derived-pre-display-baseline.json",
+      "sha256": "9fa05631adfb20bdbbb0c8574e7bf75608c9506f7e479fe2ac4e34d95616a07b"
+    },
+    "new": {
+      "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/derived-pre-display-baseline.json",
+      "sha256": "b5f61224ffaab98420e134860635611a64fee11aeb8a1f7d71e3d0ce510e1338",
+      "bytes": 2836476
+    },
+    "removedFeatureId": "osm:way:1346769253",
+    "featuresBefore": 3623,
+    "featuresAfter": 3622,
+    "preservedTopLevelKeys": [
+      "cells",
+      "conflicts",
+      "coordinateScale",
+      "country",
+      "gridSize",
+      "retiredLocalityIds",
+      "schemaVersion",
+      "source",
+      "sources"
+    ],
+    "qualification": "COUNTERFACTUAL PROOF-ONLY SNAPSHOT: not an actually deployed historical or current catalog; only the features row is removed, all other top-level metadata retained byte-semantically."
+  },
+  "proof": {
+    "old": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\name-reviews\\soukra-bassatine-alias-20260920\\dependencies\\node-7390818324-proof.json",
+      "sha256": "c1a41e8af46805322c95e6c201a8b633ea4a51737e83ed0c7b746921fe664b38"
+    },
+    "new": {
+      "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/node-7390818324-proof.json",
+      "sha256": "2e948c8d6a9499ea37339d3e9e6842638ee3d2c758e746e548141154840e689b",
+      "bytes": 107307
+    },
+    "changedPaths": [
+      "/completePickerGroups/after/osm:way:1346769253",
+      "/completePickerGroups/before/osm:way:1346769253",
+      "/currentSourcePhaseCarry/bytes",
+      "/currentSourcePhaseCarry/file",
+      "/currentSourcePhaseCarry/sha256",
+      "/sectorOwnedSettlementPreservation/completePickerGroups/after/osm:way:1346769253",
+      "/sectorOwnedSettlementPreservation/completePickerGroups/before/osm:way:1346769253",
+      "/sectorOwnedSettlementPreservation/curationBindings/osm:way:1346769253",
+      "/sectorOwnedSettlementPreservation/expectedAfterRawGroups/osm:way:1346769253",
+      "/sectorOwnedSettlementPreservation/expectedBeforeRawGroups/osm:way:1346769253",
+      "/sectorOwnedSettlementPreservation/localProtectedRawIds",
+      "/sectorOwnedSettlementPreservation/protectedRawRecords",
+      "/sectorOwnedSettlementPreservation/rawContextClosure/baselineMetadata/bytes",
+      "/sectorOwnedSettlementPreservation/rawContextClosure/baselineMetadata/file",
+      "/sectorOwnedSettlementPreservation/rawContextClosure/baselineMetadata/sha256",
+      "/sectorOwnedSettlementPreservation/rawContextClosure/expectedRawIds",
+      "/sectorOwnedSettlementPreservation/rawContextClosure/fullRowRepresentativeSectorCoverage/effective",
+      "/sectorOwnedSettlementPreservation/rawContextClosure/fullRowRepresentativeSectorCoverage/original",
+      "/sectorOwnedSettlementPreservation/sourceStates"
+    ],
+    "removed": {
+      "localProtectedRawIds": "osm:way:1346769253",
+      "protectedRawRecords": {
+        "id": "osm:way:1346769253",
+        "kind": "residential",
+        "currentMetadata": {
+          "id": "osm:way:1346769253",
+          "sourceId": "osm",
+          "name": "اقامة جوهرة",
+          "aliases": [
+            "Résidence Jawhara"
+          ],
+          "kind": "residential",
+          "parentName": "برج الوزير",
+          "contextAliases": [
+            "Borj Louzir",
+            "Délégation Soukra",
+            "La Soukra",
+            "برج الوزير",
+            "معتمدية سكرة"
+          ],
+          "governorateId": 358,
+          "lat": 36.864991,
+          "lng": 10.219709,
+          "delegationId": 631,
+          "hasBoundary": true,
+          "bbox": [
+            10.218957,
+            36.86459,
+            10.220475,
+            36.86551
+          ],
+          "areaKm2": 0.007053381333194259,
+          "pickerGroupId": "osm:way:1346769253",
+          "offset": 5223800,
+          "length": 68
+        },
+        "packedGeometrySha256": "bbde041ca1752802941f13ccc2d12e7087c9524d298ac2c6733d4db8f643acf5"
+      },
+      "sourceStates": {
+        "id": "osm:way:1346769253",
+        "rawPresent": true,
+        "expectedCuration": null,
+        "original": {
+          "tags": {
+            "addr:city": "سكرة",
+            "addr:street": "شارع اتحاد المغرب العربي",
+            "landuse": "residential",
+            "name:ar": "اقامة جوهرة",
+            "name:fr": "Résidence Jawhara",
+            "residential": "apartments"
+          },
+          "kind": "residential",
+          "sourceId": null,
+          "geometrySha256": "f101fd5f6cf804229d1ae48fffc8ff25ef54aba95b0a51c28b3f03da5bd53b81"
+        },
+        "effective": {
+          "tags": {
+            "addr:city": "سكرة",
+            "addr:street": "شارع اتحاد المغرب العربي",
+            "landuse": "residential",
+            "name:ar": "اقامة جوهرة",
+            "name:fr": "Résidence Jawhara",
+            "residential": "apartments"
+          },
+          "kind": "residential",
+          "sourceId": "osm",
+          "geometrySha256": "f101fd5f6cf804229d1ae48fffc8ff25ef54aba95b0a51c28b3f03da5bd53b81"
+        }
+      },
+      "curationBindings": null,
+      "expectedRawIds": "osm:way:1346769253",
+      "fullRowRepresentativeSectorCoverage": {
+        "original": "osm:way:1346769253",
+        "effective": "osm:way:1346769253"
+      },
+      "expectedBeforeRawGroups": [
+        "osm:way:1346769253"
+      ],
+      "expectedAfterRawGroups": [
+        "osm:way:1346769253"
+      ],
+      "completePickerGroups": {
+        "before": [
+          "osm:way:1346769253"
+        ],
+        "after": [
+          "osm:way:1346769253"
+        ]
+      },
+      "topLevelCompletePickerGroups": {
+        "before": [
+          "osm:way:1346769253"
+        ],
+        "after": [
+          "osm:way:1346769253"
+        ]
+      }
+    },
+    "preserved": {
+      "sourceSectorIds": {
+        "original": [
+          "osm:relation:7114900",
+          "osm:relation:7114901",
+          "osm:relation:7114902",
+          "osm:relation:7114903",
+          "osm:relation:7114904",
+          "osm:relation:7114905",
+          "osm:relation:7114906"
+        ],
+        "effective": [
+          "osm:relation:7114900",
+          "osm:relation:7114901",
+          "osm:relation:7114902",
+          "osm:relation:7114903",
+          "osm:relation:7114904",
+          "osm:relation:7114905",
+          "osm:relation:7114906"
+        ]
+      },
+      "fullSourcePointCoverage": {
+        "original": [
+          "osm:node:1080388142",
+          "osm:node:1080390577",
+          "osm:node:1205570513",
+          "osm:node:1205571123",
+          "osm:node:2157169857",
+          "osm:node:7390818324"
+        ],
+        "effective": [
+          "osm:node:1080388142",
+          "osm:node:1080390577",
+          "osm:node:1205570513",
+          "osm:node:1205571123",
+          "osm:node:2157169857",
+          "osm:node:7390818324"
+        ]
+      },
+      "sourceNamePeerIds": {
+        "original": [
+          "osm:node:7390818324",
+          "osm:relation:4184709",
+          "osm:relation:7114900",
+          "osm:relation:7147558"
+        ],
+        "effective": [
+          "osm:node:7390818324",
+          "osm:relation:4184709",
+          "osm:relation:7114900",
+          "osm:relation:7147558"
+        ]
+      },
+      "readOnlyRawNamePeers": [
+        "osm:relation:7147558"
+      ],
+      "sourceOnlyAbsorbedPoints": [],
+      "coordinateContextMembershipKeys": [
+        "osm:relation:1435830",
+        "osm:relation:4184709",
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906"
+      ],
+      "strictOwnerRecordId": "osm:relation:7114900",
+      "onlyRawChange": {
+        "id": "osm:node:7390818324",
+        "field": "pickerGroupId",
+        "before": "osm:node:7390818324",
+        "after": "delegation:532"
+      },
+      "acceptedBoundaryReplacements": [
+        "osm:relation:7114904"
+      ],
+      "sourceStatesCount": 17,
+      "protectedRawRecordsCount": 15,
+      "localProtectedRawIdsCount": 14
+    },
+    "noJawharaAssertions": "passed"
+  },
+  "sourcePhase": {
+    "originalSources": 4683,
+    "effectiveSourcesBefore": 4581,
+    "effectiveSourcesAfterJawharaExclusion": 4580,
+    "sourcePhaseSignatureAfterJawharaExclusion": "6a5f31c2f178e9289027d285588d5d2ecf14dc93b1594295283d2c396e3eca3d",
+    "municipalManifestSha256": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238",
+    "currentBoundaryManifest": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-goal-coverage-20260920\\frozen\\04-reviewed-boundaries.json",
+      "sha256": "6b1a63cb63ab71521bf0c6a8d7f65f48559320e3162a68b6724399912b68c30e",
+      "bytes": 118117
+    },
+    "guardedStates": 17,
+    "sourceInventorySignatureBefore": "124fc890376228570dd6ebfa41c464d466525f78e6bdf81c760fcc0575fa381a",
+    "sourceInventorySignatureAfter": "124fc890376228570dd6ebfa41c464d466525f78e6bdf81c760fcc0575fa381a",
+    "deriveOldPassed": true,
+    "deriveNewBeforePassed": true,
+    "deriveNewAfterSimulatedTargetAppendPassed": true,
+    "oldBaselineRows": 3623,
+    "newBaselineRows": 3622,
+    "afterSimulationTarget": "delegation:532",
+    "note": "Old and new phases separately remain unchanged across their closure calls; new effective phase removes Jawhara only. Both reconstruct current official overlays, curations, existing exclusions and municipal sources. The proof-only baseline removes Jawhara only; the other eight proposed exclusions are outside this required closure and will be checked separately."
+  },
+  "curationReplacement": {
+    "id": "osm:node:7390818324",
+    "before": {
+      "action": "preserve_point",
+      "evidence": {
+        "compilerIndependentReview": {
+          "bytes": 13016,
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-sector-owned-compiler-independent-review-v2.json",
+          "sha256": "0768fa25f652282fa0e2b750c1432f385be8f037f322ccbd4600796d9e9cb8f4"
+        },
+        "currentSourceCarry": {
+          "file": "name-reviews/soukra-bassatine-alias-20260920/dependencies/alias-source-phase-carry.json",
+          "sha256": "8983129f1e8f70542dac45fd424c3cf8d6c2ffc58d2a8c44b5244fc6394d7e61",
+          "bytes": 4058
+        },
+        "independentFiniteReview": {
+          "bytes": 15797,
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-finite-facts-independent-review.json",
+          "sha256": "63572d6db4bc00ce9f1c1cfc3969da60c6fa363e684f045c1a814de6f5260e62"
+        },
+        "independentPrimaryScopeReview": {
+          "bytes": 7728,
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-hrairia-primary-root-scope-review.json",
+          "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07"
+        },
+        "onlyRawChange": {
+          "after": "delegation:532",
+          "before": "osm:node:7390818324",
+          "field": "pickerGroupId",
+          "id": "osm:node:7390818324"
+        },
+        "sourceProposal": {
+          "bytes": 9559,
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/two-settlement-current-source-identity.json",
+          "sha256": "2564fed259bf78254b6a57911b8b0adeae31135597a189f019d6a692c4a0a038"
+        }
+      },
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "سكرة",
+        "name:ar": "سكرة",
+        "name:en": "La Soukra",
+        "name:fr": "La Soukra",
+        "place": "village",
+        "wikidata": "Q678697",
+        "wikimedia_commons": "Category:La Soukra",
+        "wikipedia": "en:La Soukra"
+      },
+      "id": "osm:node:7390818324",
+      "pickerBaseDisplayReview": {
+        "file": "name-reviews/soukra-bassatine-alias-20260920/dependencies/node-7390818324-proof.json",
+        "sha256": "c1a41e8af46805322c95e6c201a8b633ea4a51737e83ed0c7b746921fe664b38",
+        "bytes": 110068
+      },
+      "reason": "Reviewed primary inhabited-place usage and authentic source history support one manual choice with the existing base and its approved coded-sector owner. Preserve the village point, every independent locality, all sectors, source geometry, names, coordinates and prayer defaults."
+    },
+    "after": {
+      "action": "preserve_point",
+      "evidence": {
+        "compilerIndependentReview": {
+          "bytes": 13016,
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-sector-owned-compiler-independent-review-v2.json",
+          "sha256": "0768fa25f652282fa0e2b750c1432f385be8f037f322ccbd4600796d9e9cb8f4"
+        },
+        "currentSourceCarry": {
+          "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/jawhara-source-phase-carry.json",
+          "sha256": "b0674255527f6af2ee8fa3ddb7d2d4fb3950f734a7a60de7f338a12f068d830e",
+          "bytes": 39820
+        },
+        "independentFiniteReview": {
+          "bytes": 15797,
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-finite-facts-independent-review.json",
+          "sha256": "63572d6db4bc00ce9f1c1cfc3969da60c6fa363e684f045c1a814de6f5260e62"
+        },
+        "independentPrimaryScopeReview": {
+          "bytes": 7728,
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/historical/tinja-soukra-hrairia-primary-root-scope-review.json",
+          "sha256": "8c5f274acdf33c60ebe477d9bfd042db4a973bee57515bfa81b74d77286b5b07"
+        },
+        "onlyRawChange": {
+          "after": "delegation:532",
+          "before": "osm:node:7390818324",
+          "field": "pickerGroupId",
+          "id": "osm:node:7390818324"
+        },
+        "sourceProposal": {
+          "bytes": 9559,
+          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/two-settlement-current-source-identity.json",
+          "sha256": "2564fed259bf78254b6a57911b8b0adeae31135597a189f019d6a692c4a0a038"
+        }
+      },
+      "expectedKind": "village",
+      "expectedTags": {
+        "name": "سكرة",
+        "name:ar": "سكرة",
+        "name:en": "La Soukra",
+        "name:fr": "La Soukra",
+        "place": "village",
+        "wikidata": "Q678697",
+        "wikimedia_commons": "Category:La Soukra",
+        "wikipedia": "en:La Soukra"
+      },
+      "id": "osm:node:7390818324",
+      "pickerBaseDisplayReview": {
+        "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/node-7390818324-proof.json",
+        "sha256": "2e948c8d6a9499ea37339d3e9e6842638ee3d2c758e746e548141154840e689b",
+        "bytes": 107307
+      },
+      "reason": "Reviewed primary inhabited-place usage and authentic source history support one manual choice with the existing base and its approved coded-sector owner. Preserve the village point, every independent locality, all sectors, source geometry, names, coordinates and prayer defaults."
+    },
+    "changedPaths": [
+      "/evidence/currentSourceCarry/bytes",
+      "/evidence/currentSourceCarry/file",
+      "/evidence/currentSourceCarry/sha256",
+      "/pickerBaseDisplayReview/bytes",
+      "/pickerBaseDisplayReview/file",
+      "/pickerBaseDisplayReview/sha256"
+    ]
+  },
+  "warnings": [
+    "This review is work-only and not deployable/current/historical catalog.",
+    "Only Jawhara osm:way:1346769253 raw/source closure membership is removed.",
+    "Other candidate exclusions are not assumed cleared; separate active transitive proof review is required before generation.",
+    "No full curation write is performed.",
+    "The prior source-component proposal is not mutated; selected files may join later."
+  ]
+}

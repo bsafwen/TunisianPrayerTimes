@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "proposedOnly": true,
+  "action": "display_only_correction",
+  "status": "ROOT_ACCEPTED_DISPLAY_CORRECTION",
+  "id": "osm:way:164467494",
+  "currentName": "القصبة",
+  "proposedNameArabic": "القصيبة",
+  "searchAliasesToAdd": [],
+  "beforeCount": 267,
+  "afterCount": 268,
+  "inputPins": {
+    "neighborhoods.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "170e0ef109975915ceb57f445a358da722e07984828c354cd7b3285ee0f029cf",
+      "before": "170e0ef109975915ceb57f445a358da722e07984828c354cd7b3285ee0f029cf",
+      "verifiedBefore": true,
+      "after": "170e0ef109975915ceb57f445a358da722e07984828c354cd7b3285ee0f029cf",
+      "verifiedAfter": true
+    },
+    "neighborhoods.bin": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+      "before": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+      "verifiedBefore": true,
+      "after": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+      "verifiedAfter": true
+    },
+    "locality-display-names.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\locality-display-names.json",
+      "sha256": "0b66f48ddbe9730b085a7bb052c61d59c8c6d1f83a2606ed480dc6a96c39b445",
+      "before": "0b66f48ddbe9730b085a7bb052c61d59c8c6d1f83a2606ed480dc6a96c39b445",
+      "verifiedBefore": true,
+      "after": "0b66f48ddbe9730b085a7bb052c61d59c8c6d1f83a2606ed480dc6a96c39b445",
+      "verifiedAfter": true
+    }
+  },
+  "evidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\inp-arabic-locations.pdf",
+      "sha256": "701794261aea43283ed01364bd85d7ab99ddc3fbe718276d823a8b288823644d",
+      "before": "701794261aea43283ed01364bd85d7ab99ddc3fbe718276d823a8b288823644d",
+      "verifiedBefore": true,
+      "after": "701794261aea43283ed01364bd85d7ab99ddc3fbe718276d823a8b288823644d",
+      "verifiedAfter": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\inp-arabic-locations-page-20.png",
+      "sha256": "1c2ec575e8a03bd443b88c02a352d37c4f7c78b0ff27724a3a65f61a822e250d",
+      "before": "1c2ec575e8a03bd443b88c02a352d37c4f7c78b0ff27724a3a65f61a822e250d",
+      "verifiedBefore": true,
+      "after": "1c2ec575e8a03bd443b88c02a352d37c4f7c78b0ff27724a3a65f61a822e250d",
+      "verifiedAfter": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\bizerte-municipal-plan.pdf",
+      "sha256": "954203d601069f97fe3df3751611bdc622b61e2f7beeeef214be39c3091c90ce",
+      "before": "954203d601069f97fe3df3751611bdc622b61e2f7beeeef214be39c3091c90ce",
+      "verifiedBefore": true,
+      "after": "954203d601069f97fe3df3751611bdc622b61e2f7beeeef214be39c3091c90ce",
+      "verifiedAfter": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\bizerte-municipal-plan-page-10.png",
+      "sha256": "dba3557e97cc569c8174378be9ab812506531a3326456b19c40cfa0c56abf576",
+      "before": "dba3557e97cc569c8174378be9ab812506531a3326456b19c40cfa0c56abf576",
+      "verifiedBefore": true,
+      "after": "dba3557e97cc569c8174378be9ab812506531a3326456b19c40cfa0c56abf576",
+      "verifiedAfter": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\bizerte-municipal-plan-page-19.png",
+      "sha256": "db5d0c302ef925c12c790d0d961b63065944063276b5787b6ab767d8bb9575ca",
+      "before": "db5d0c302ef925c12c790d0d961b63065944063276b5787b6ab767d8bb9575ca",
+      "verifiedBefore": true,
+      "after": "db5d0c302ef925c12c790d0d961b63065944063276b5787b6ab767d8bb9575ca",
+      "verifiedAfter": true
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\frozen-input.json",
+      "sha256": "2e0fc1860a03706dc10fd921dc6d92a2697edca33b024097195c05fa2d9b610f",
+      "before": "2e0fc1860a03706dc10fd921dc6d92a2697edca33b024097195c05fa2d9b610f",
+      "verifiedBefore": true,
+      "after": "2e0fc1860a03706dc10fd921dc6d92a2697edca33b024097195c05fa2d9b610f",
+      "verifiedAfter": true
+    }
+  ],
+  "proofPin": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\ksiba-name-proof.json",
+    "sha256": "cf097c5f867db301c086103e52f862fa88f44df4c4da27c37e499dc79735eccf",
+    "verifiedBefore": true,
+    "verifiedAfter": true
+  },
+  "unchangedMetadataBinaryHashes": {
+    "neighborhoods.json": {
+      "before": "170e0ef109975915ceb57f445a358da722e07984828c354cd7b3285ee0f029cf",
+      "after": "170e0ef109975915ceb57f445a358da722e07984828c354cd7b3285ee0f029cf"
+    },
+    "neighborhoods.bin": {
+      "before": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+      "after": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+    }
+  },
+  "displayPin": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\locality-display-names.json",
+    "before": "0b66f48ddbe9730b085a7bb052c61d59c8c6d1f83a2606ed480dc6a96c39b445",
+    "after": "0b66f48ddbe9730b085a7bb052c61d59c8c6d1f83a2606ed480dc6a96c39b445"
+  },
+  "preservedRow": {
+    "id": "osm:way:164467494",
+    "sourceId": "osm",
+    "name": "القصبة",
+    "aliases": [
+      "La Ksiba"
+    ],
+    "kind": "residential",
+    "parentName": "المدينة",
+    "contextAliases": [
+      "Delegación de Bizerta Norte",
+      "Délégation Bizerte Nord",
+      "El Medina",
+      "La medina",
+      "المدينة",
+      "معتمدية بنزرت الشمالية"
+    ],
+    "governorateId": 361,
+    "lat": 37.277311,
+    "lng": 9.875893,
+    "delegationId": 634,
+    "hasBoundary": true,
+    "bbox": [
+      9.87535,
+      37.27629,
+      9.876858,
+      37.278272
+    ],
+    "areaKm2": 0.01360049491695858,
+    "pickerGroupId": "osm:way:164467494",
+    "offset": 5346040,
+    "length": 108
+  },
+  "preservedFrenchAlias": "La Ksiba",
+  "stagedPin": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\locality-display-names-staged.json",
+    "sha256": "de99df77e359a9cb521c148b85f1ec56426a2d378afcb14f644d4336e6989852",
+    "count": 268,
+    "verified": true
+  },
+  "stagedEntry": {
+    "id": "osm:way:164467494",
+    "nameAr": "القصيبة",
+    "searchAliases": []
+  },
+  "scope": "Stage a display overlay only; no repository changes, no geometry/IDs/coordinates/parents/prayer/source changes."
+}

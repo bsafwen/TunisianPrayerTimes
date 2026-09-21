@@ -1,0 +1,2101 @@
+{
+  "scope": "Bounded evidence packet for six uncorrected spelling leads in the current catalog. Work-only extractor; no production mutations, no network, no tests/APKs/generation, no DeepSeek calls.",
+  "qualification": {
+    "status": "NAME CANDIDATES ONLY",
+    "statement": "These are name candidates, not automatic corrections. Spelling variations and registry typos must remain unresolved absent primary proof. Exact normalized PDF index matches and Shapely containment facts are review evidence only; they do not prove identity, boundary correctness, or authorization to rename.",
+    "requiredReview": "Any correction needs primary-source proof and explicit review; do not use this packet to mutate production data."
+  },
+  "targets": [
+    "osm:relation:7142943",
+    "osm:relation:7165270",
+    "osm:relation:7169564",
+    "osm:relation:7127889",
+    "osm:relation:7133851",
+    "osm:relation:7143844"
+  ],
+  "counts": {
+    "targets": 6,
+    "targetsFoundInCurrentRaw": 6,
+    "targetsFoundInOriginalSource": 6,
+    "targetsWithOfficialCode": 6,
+    "targetsWithOfficialRegistryRecord": 6,
+    "targetsWithOriginalParentResolved": 6,
+    "pdfIndexLinksRead": 2155,
+    "pdfIndexMatchesTotal": 6,
+    "observationsIncluded": 6
+  },
+  "inputPins": {
+    "ledger": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+      "sha256": "4ad1bad3538f30280db915f2ca988ff30338db3e01ac71492cbdc2268379726a",
+      "bytes": 36910055
+    },
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43",
+      "bytes": 446748
+    },
+    "picker": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99",
+      "bytes": 630000
+    },
+    "registry": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "isieLinks": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+      "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+      "bytes": 818063
+    }
+  },
+  "items": [
+    {
+      "id": "osm:relation:7142943",
+      "currentRawRow": {
+        "id": "osm:relation:7142943",
+        "sourceId": "osm",
+        "name": "المغزاوية",
+        "aliases": [
+          "El Maghzaouia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي مخلوف",
+        "contextAliases": [
+          "Délégation Sidi Makhlouf",
+          "Sidi Makhlouf",
+          "معتمدية سيدي مخلوف"
+        ],
+        "governorateId": 353,
+        "lat": 33.620941,
+        "lng": 10.603522,
+        "delegationId": 496,
+        "hasBoundary": true,
+        "bbox": [
+          10.543348,
+          33.570171,
+          10.665159,
+          33.67091
+        ],
+        "areaKm2": 69.6802054082014,
+        "pickerGroupId": "osm:relation:7142943",
+        "offset": 2004368,
+        "length": 4140
+      },
+      "originalSource": {
+        "id": "osm:relation:7142943",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المغزاوية",
+          "name:ar": "المغزاوية",
+          "name:fr": "El Maghzaouia",
+          "ref:tn:codegeo": "525953"
+        },
+        "fieldsWithoutGeometry": {
+          "id": "osm:relation:7142943",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المغزاوية",
+            "name:ar": "المغزاوية",
+            "name:fr": "El Maghzaouia",
+            "ref:tn:codegeo": "525953"
+          }
+        },
+        "geometrySummary": {
+          "geometrySha256": "255fff3b6c7500032a25c0d6d49e247fb57a014ed8075ebe69cf5f4dc0cbcd7b",
+          "type": "MultiPolygon",
+          "area": 0.006752447766074949,
+          "bounds": [
+            10.5433475,
+            33.5701714,
+            10.6651585,
+            33.6709101
+          ],
+          "isValid": true
+        },
+        "fullGeometryRef": "selected-geometries.json#geometries/osm:relation:7142943"
+      },
+      "officialCode": "525953",
+      "officialRegistryRecord": {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5259",
+        "delegationFr": "Sidi makhloulf",
+        "delegationAr": "سيدي مخلوف",
+        "sectorCode": "525953",
+        "sectorFr": "El maghzaouia",
+        "sectorAr": "المغراوية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 63102,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3101,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3095
+        }
+      },
+      "officialRegistryIdentityCount": 1,
+      "officialParentFromRegistry": {
+        "code": "5259",
+        "name": "سيدي مخلوف",
+        "governorate": "مدنين"
+      },
+      "sourceSameCodeIds": [
+        "osm:relation:7142943"
+      ],
+      "originalParent": {
+        "code": "5259",
+        "name": "سيدي مخلوف",
+        "id": null,
+        "rawParentLikeTags": {
+          "ref:tn:codegeo": "525953"
+        },
+        "rawParentLikeFields": {},
+        "candidates": [
+          {
+            "candidateSourceId": "osm:relation:7142982",
+            "candidateCode": "5259",
+            "candidateName": "معتمدية سيدي مخلوف",
+            "candidateTags": {
+              "admin_level": "5",
+              "alt_name:fr": "Sidi Makhlouf",
+              "boundary": "administrative",
+              "name": "معتمدية سيدي مخلوف",
+              "name:ar": "معتمدية سيدي مخلوف",
+              "name:fr": "Délégation Sidi Makhlouf",
+              "ref:tn:codegeo": "5259",
+              "ref:tn:hasc_2": "TN.ME.SM",
+              "wikidata": "Q3483264"
+            },
+            "candidateGeometrySummary": {
+              "geometrySha256": "19a248f33b890263370d54dbbd12585cf0d259eaae098a5841ba00fdd9c5b8b1",
+              "type": "MultiPolygon",
+              "area": 0.06396015663685459,
+              "bounds": [
+                10.3414025,
+                33.3742017,
+                10.7451389,
+                33.7080889
+              ],
+              "isValid": true
+            },
+            "containment": {
+              "status": "computed",
+              "targetArea": 0.006752447766074949,
+              "parentArea": 0.06396015663685459,
+              "targetIsValid": true,
+              "parentIsValid": true,
+              "parentCoversTarget": true,
+              "targetCoversParent": false,
+              "intersects": true
+            }
+          }
+        ],
+        "wholeObjectContainment": {
+          "candidateCount": 1,
+          "anyParentCoversTarget": true,
+          "targetCoversAnyParent": false,
+          "note": "Computed only against resolved original parent candidates; no whole-catalog geometry work."
+        },
+        "candidateBasis": "official same-code delegation candidate; containment separately computed"
+      },
+      "curation": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "picker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "currentOwner": "osm:relation:7142943",
+      "currentOwnerCandidates": [
+        "osm:relation:7142943"
+      ],
+      "currentCatalog": {
+        "id": "osm:relation:7142943",
+        "sourceId": "osm",
+        "name": "المغزاوية",
+        "aliases": [
+          "El Maghzaouia"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي مخلوف",
+        "contextAliases": [
+          "Délégation Sidi Makhlouf",
+          "Sidi Makhlouf",
+          "معتمدية سيدي مخلوف"
+        ],
+        "governorateId": 353,
+        "lat": 33.620941,
+        "lng": 10.603522,
+        "delegationId": 496,
+        "hasBoundary": true,
+        "bbox": [
+          10.543348,
+          33.570171,
+          10.665159,
+          33.67091
+        ],
+        "areaKm2": 69.6802054082014,
+        "pickerGroupId": "osm:relation:7142943",
+        "offset": 2004368,
+        "length": 4140,
+        "members": [
+          "osm:relation:7142943"
+        ],
+        "governorate": "مدنين",
+        "governorateFr": "Medenine",
+        "geometrySha256": "e59672039f52591f887e9e0e9922c9bffaf85533efc5ad8900ab4532b56aedd2",
+        "fingerprint": "f7be8c3fe4ef7959bf3c319e01c1ab5d0d4917a31d668ebf8cec59bbeb915217"
+      },
+      "currentCatalogCandidates": [
+        {
+          "id": "osm:relation:7142943",
+          "sourceId": "osm",
+          "name": "المغزاوية",
+          "aliases": [
+            "El Maghzaouia"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سيدي مخلوف",
+          "contextAliases": [
+            "Délégation Sidi Makhlouf",
+            "Sidi Makhlouf",
+            "معتمدية سيدي مخلوف"
+          ],
+          "governorateId": 353,
+          "lat": 33.620941,
+          "lng": 10.603522,
+          "delegationId": 496,
+          "hasBoundary": true,
+          "bbox": [
+            10.543348,
+            33.570171,
+            10.665159,
+            33.67091
+          ],
+          "areaKm2": 69.6802054082014,
+          "pickerGroupId": "osm:relation:7142943",
+          "offset": 2004368,
+          "length": 4140,
+          "members": [
+            "osm:relation:7142943"
+          ],
+          "governorate": "مدنين",
+          "governorateFr": "Medenine",
+          "geometrySha256": "e59672039f52591f887e9e0e9922c9bffaf85533efc5ad8900ab4532b56aedd2",
+          "fingerprint": "f7be8c3fe4ef7959bf3c319e01c1ab5d0d4917a31d668ebf8cec59bbeb915217"
+        }
+      ],
+      "last3Observations": [
+        {
+          "observedAt": "2026-09-20T06:40:10.050095+00:00",
+          "query": "El Maghzaouia, Medenine, Tunisia",
+          "queryVisibleInUi": true,
+          "parserVersion": null,
+          "observationStatus": "candidate_observed",
+          "synchronizationOutcome": null,
+          "publicUiText": [
+            "El Maghzaouia",
+            "المغزاوية",
+            "Tunisia",
+            "Driving mode: 4 hr 28 min",
+            "·",
+            "4 hr 28 min",
+            "Directions to El Maghzaouia",
+            "Directions",
+            "Start",
+            "Share El Maghzaouia",
+            "Share",
+            "Save El Maghzaouia to lists",
+            "Save",
+            "About",
+            "Address: Tunisia",
+            "Add a missing place",
+            "Add your business to Maps for free",
+            "Measure distance",
+            "Close",
+            "El Maghzaouia, Medenine, Tunisia",
+            "Clear"
+          ],
+          "publicCardTitles": [
+            "El Maghzaouia"
+          ],
+          "originalArtifact": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-001\\osm_relation_7142943-1.json",
+            "sha256": "7dd89bb463bbed1f4f78416648db5855038037670b3e6790c0efb14d5ef7ca02",
+            "bytes": 1300
+          },
+          "originalScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-001\\osm_relation_7142943-1.png",
+            "sha256": "761c5e1b45c25906c81ef2792849a35dcc112e5a14741c8746a77d4f797e09da",
+            "bytes": 355372
+          },
+          "metadataSha256AtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+        }
+      ],
+      "last3ObservationsByOwner": {
+        "osm:relation:7142943": [
+          {
+            "observedAt": "2026-09-20T06:40:10.050095+00:00",
+            "query": "El Maghzaouia, Medenine, Tunisia",
+            "queryVisibleInUi": true,
+            "parserVersion": null,
+            "observationStatus": "candidate_observed",
+            "synchronizationOutcome": null,
+            "publicUiText": [
+              "El Maghzaouia",
+              "المغزاوية",
+              "Tunisia",
+              "Driving mode: 4 hr 28 min",
+              "·",
+              "4 hr 28 min",
+              "Directions to El Maghzaouia",
+              "Directions",
+              "Start",
+              "Share El Maghzaouia",
+              "Share",
+              "Save El Maghzaouia to lists",
+              "Save",
+              "About",
+              "Address: Tunisia",
+              "Add a missing place",
+              "Add your business to Maps for free",
+              "Measure distance",
+              "Close",
+              "El Maghzaouia, Medenine, Tunisia",
+              "Clear"
+            ],
+            "publicCardTitles": [
+              "El Maghzaouia"
+            ],
+            "originalArtifact": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-001\\osm_relation_7142943-1.json",
+              "sha256": "7dd89bb463bbed1f4f78416648db5855038037670b3e6790c0efb14d5ef7ca02",
+              "bytes": 1300
+            },
+            "originalScreenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-001\\osm_relation_7142943-1.png",
+              "sha256": "761c5e1b45c25906c81ef2792849a35dcc112e5a14741c8746a77d4f797e09da",
+              "bytes": 355372
+            },
+            "metadataSha256AtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+          }
+        ]
+      },
+      "pdfIndexMatches": [
+        {
+          "indexText": "المغراوية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/سيدي مخلوف/المغراوية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/سيدي مخلوف/المغراوية.pdf",
+          "parentDecodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/سيدي مخلوف",
+          "matchReasons": [
+            "officialSectorAr"
+          ],
+          "normalizedLastSegment": "المغراوية"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7165270",
+      "currentRawRow": {
+        "id": "osm:relation:7165270",
+        "sourceId": "osm",
+        "name": "الدريعات",
+        "aliases": [
+          "Edheriaat"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السبيخة",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Sbikha",
+          "معتمدية السبيخة"
+        ],
+        "governorateId": 357,
+        "lat": 35.967595,
+        "lng": 10.127494,
+        "delegationId": 521,
+        "hasBoundary": true,
+        "bbox": [
+          10.042528,
+          35.888786,
+          10.231693,
+          36.046352
+        ],
+        "areaKm2": 110.33564973234559,
+        "pickerGroupId": "osm:relation:7165270",
+        "offset": 3633072,
+        "length": 5964
+      },
+      "originalSource": {
+        "id": "osm:relation:7165270",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الدريعات",
+          "name:ar": "الدريعات",
+          "name:fr": "Edheriaat",
+          "ref:tn:codegeo": "415456"
+        },
+        "fieldsWithoutGeometry": {
+          "id": "osm:relation:7165270",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدريعات",
+            "name:ar": "الدريعات",
+            "name:fr": "Edheriaat",
+            "ref:tn:codegeo": "415456"
+          }
+        },
+        "geometrySummary": {
+          "geometrySha256": "af1d43972f227cd9426e4127c7661c3a634ce442e58cc18255615c91ef208bca",
+          "type": "MultiPolygon",
+          "area": 0.01100103023356503,
+          "bounds": [
+            10.042528,
+            35.8887859,
+            10.2316933,
+            36.0463522
+          ],
+          "isValid": true
+        },
+        "fullGeometryRef": "selected-geometries.json#geometries/osm:relation:7165270"
+      },
+      "officialCode": "415456",
+      "officialRegistryRecord": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4154",
+        "delegationFr": "Sbikha",
+        "delegationAr": "السبيخة",
+        "sectorCode": "415456",
+        "sectorFr": "Ed-dheriaat",
+        "sectorAr": "الذريعات",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 47701,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2292,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2288
+        }
+      },
+      "officialRegistryIdentityCount": 1,
+      "officialParentFromRegistry": {
+        "code": "4154",
+        "name": "السبيخة",
+        "governorate": "القيروان"
+      },
+      "sourceSameCodeIds": [
+        "osm:relation:7165270"
+      ],
+      "originalParent": {
+        "code": "4154",
+        "name": "السبيخة",
+        "id": null,
+        "rawParentLikeTags": {
+          "ref:tn:codegeo": "415456"
+        },
+        "rawParentLikeFields": {},
+        "candidates": [
+          {
+            "candidateSourceId": "osm:relation:7165234",
+            "candidateCode": "4154",
+            "candidateName": "معتمدية السبيخة",
+            "candidateTags": {
+              "admin_level": "5",
+              "alt_name:fr": "Sbikha",
+              "boundary": "administrative",
+              "name": "معتمدية السبيخة",
+              "name:ar": "معتمدية السبيخة",
+              "name:fr": "Délégation Sbikha",
+              "ref:tn:codegeo": "4154",
+              "ref:tn:hasc_2": "TN.KR.SB",
+              "wikidata": "Q3474902",
+              "wikipedia": "ar:معتمدية السبيخة"
+            },
+            "candidateGeometrySummary": {
+              "geometrySha256": "90c3108a2ab645dd6fd62beb126143d2ec61cd753bbe13038297adbf7d7ee7d1",
+              "type": "MultiPolygon",
+              "area": 0.10680600288581506,
+              "bounds": [
+                9.770735,
+                35.766,
+                10.2580158,
+                36.1383343
+              ],
+              "isValid": true
+            },
+            "containment": {
+              "status": "computed",
+              "targetArea": 0.01100103023356503,
+              "parentArea": 0.10680600288581506,
+              "targetIsValid": true,
+              "parentIsValid": true,
+              "parentCoversTarget": true,
+              "targetCoversParent": false,
+              "intersects": true
+            }
+          }
+        ],
+        "wholeObjectContainment": {
+          "candidateCount": 1,
+          "anyParentCoversTarget": true,
+          "targetCoversAnyParent": false,
+          "note": "Computed only against resolved original parent candidates; no whole-catalog geometry work."
+        },
+        "candidateBasis": "official same-code delegation candidate; containment separately computed"
+      },
+      "curation": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "picker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "currentOwner": "osm:relation:7165270",
+      "currentOwnerCandidates": [
+        "osm:relation:7165270"
+      ],
+      "currentCatalog": {
+        "id": "osm:relation:7165270",
+        "sourceId": "osm",
+        "name": "الدريعات",
+        "aliases": [
+          "Edheriaat"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية السبيخة",
+        "contextAliases": [
+          "Délégation Sbikha",
+          "Sbikha",
+          "معتمدية السبيخة"
+        ],
+        "governorateId": 357,
+        "lat": 35.967595,
+        "lng": 10.127494,
+        "delegationId": 521,
+        "hasBoundary": true,
+        "bbox": [
+          10.042528,
+          35.888786,
+          10.231693,
+          36.046352
+        ],
+        "areaKm2": 110.33564973234559,
+        "pickerGroupId": "osm:relation:7165270",
+        "offset": 3633072,
+        "length": 5964,
+        "members": [
+          "osm:relation:7165270"
+        ],
+        "governorate": "القيروان",
+        "governorateFr": "Kairouan",
+        "geometrySha256": "6bbf24099a7cddafac9249625ac6a7ed1b00f0acdbe77367838a85c39d1b3b59",
+        "fingerprint": "6791375e12d636dc23b36a0b57efea60663ff49cc45e7d318377f12fa34dd175"
+      },
+      "currentCatalogCandidates": [
+        {
+          "id": "osm:relation:7165270",
+          "sourceId": "osm",
+          "name": "الدريعات",
+          "aliases": [
+            "Edheriaat"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية السبيخة",
+          "contextAliases": [
+            "Délégation Sbikha",
+            "Sbikha",
+            "معتمدية السبيخة"
+          ],
+          "governorateId": 357,
+          "lat": 35.967595,
+          "lng": 10.127494,
+          "delegationId": 521,
+          "hasBoundary": true,
+          "bbox": [
+            10.042528,
+            35.888786,
+            10.231693,
+            36.046352
+          ],
+          "areaKm2": 110.33564973234559,
+          "pickerGroupId": "osm:relation:7165270",
+          "offset": 3633072,
+          "length": 5964,
+          "members": [
+            "osm:relation:7165270"
+          ],
+          "governorate": "القيروان",
+          "governorateFr": "Kairouan",
+          "geometrySha256": "6bbf24099a7cddafac9249625ac6a7ed1b00f0acdbe77367838a85c39d1b3b59",
+          "fingerprint": "6791375e12d636dc23b36a0b57efea60663ff49cc45e7d318377f12fa34dd175"
+        }
+      ],
+      "last3Observations": [
+        {
+          "observedAt": "2026-09-20T06:50:33.877756+00:00",
+          "query": "Edheriaat, Kairouan, Tunisia",
+          "queryVisibleInUi": true,
+          "parserVersion": null,
+          "observationStatus": "needs_visual_review",
+          "synchronizationOutcome": null,
+          "publicUiText": [
+            "Layers",
+            "Edheriaat, Kairouan, Tunisia",
+            "Close",
+            "More filters",
+            "Open now",
+            "Top rated",
+            "500+ reviews",
+            "Wheelchair accessible",
+            "Directions",
+            "Call",
+            "Share",
+            "Save",
+            "Clear"
+          ],
+          "publicCardTitles": [],
+          "originalArtifact": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-003\\osm_relation_7165270-1.json",
+            "sha256": "a5633346d2efdaa006d4bff5ae94d9ea81caae1105ca5a690e33c423475411dd",
+            "bytes": 972
+          },
+          "originalScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-003\\osm_relation_7165270-1.png",
+            "sha256": "89bd50623188c583af837fa4dfa1300007a5620071df38b9459f0425340ea4b2",
+            "bytes": 1735930
+          },
+          "metadataSha256AtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+        }
+      ],
+      "last3ObservationsByOwner": {
+        "osm:relation:7165270": [
+          {
+            "observedAt": "2026-09-20T06:50:33.877756+00:00",
+            "query": "Edheriaat, Kairouan, Tunisia",
+            "queryVisibleInUi": true,
+            "parserVersion": null,
+            "observationStatus": "needs_visual_review",
+            "synchronizationOutcome": null,
+            "publicUiText": [
+              "Layers",
+              "Edheriaat, Kairouan, Tunisia",
+              "Close",
+              "More filters",
+              "Open now",
+              "Top rated",
+              "500+ reviews",
+              "Wheelchair accessible",
+              "Directions",
+              "Call",
+              "Share",
+              "Save",
+              "Clear"
+            ],
+            "publicCardTitles": [],
+            "originalArtifact": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-003\\osm_relation_7165270-1.json",
+              "sha256": "a5633346d2efdaa006d4bff5ae94d9ea81caae1105ca5a690e33c423475411dd",
+              "bytes": 972
+            },
+            "originalScreenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-003\\osm_relation_7165270-1.png",
+              "sha256": "89bd50623188c583af837fa4dfa1300007a5620071df38b9459f0425340ea4b2",
+              "bytes": 1735930
+            },
+            "metadataSha256AtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+          }
+        ]
+      },
+      "pdfIndexMatches": [
+        {
+          "indexText": "الذريعات.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/القيروان/السبيخة/الذريعات.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/القيروان/السبيخة/الذريعات.pdf",
+          "parentDecodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/القيروان/السبيخة",
+          "matchReasons": [
+            "officialSectorAr"
+          ],
+          "normalizedLastSegment": "الذريعات"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7169564",
+      "currentRawRow": {
+        "id": "osm:relation:7169564",
+        "sourceId": "osm",
+        "name": "الدويبات الجنوبية",
+        "aliases": [
+          "Dheouibet Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أولاد حفوز",
+        "contextAliases": [
+          "Délégation Ouled Haffouz",
+          "Ouled Haffouz",
+          "معتمدية أولاد حفوز"
+        ],
+        "governorateId": 355,
+        "lat": 35.094525,
+        "lng": 9.972405,
+        "delegationId": 529,
+        "hasBoundary": true,
+        "bbox": [
+          9.919219,
+          35.04171,
+          10.017393,
+          35.14837
+        ],
+        "areaKm2": 60.08233358344609,
+        "pickerGroupId": "osm:relation:7169564",
+        "offset": 3979668,
+        "length": 2252
+      },
+      "originalSource": {
+        "id": "osm:relation:7169564",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الدويبات الجنوبية",
+          "name:ar": "الدويبات الجنوبية",
+          "name:fr": "Dheouibet Sud",
+          "ref:tn:codegeo": "436252"
+        },
+        "fieldsWithoutGeometry": {
+          "id": "osm:relation:7169564",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدويبات الجنوبية",
+            "name:ar": "الدويبات الجنوبية",
+            "name:fr": "Dheouibet Sud",
+            "ref:tn:codegeo": "436252"
+          }
+        },
+        "geometrySummary": {
+          "geometrySha256": "4357e91faec33dbda26fa54b5e18583536a4696f7e5f530baf71d482026bbc02",
+          "type": "MultiPolygon",
+          "area": 0.005925684282949975,
+          "bounds": [
+            9.919219,
+            35.04171,
+            10.017393,
+            35.14837
+          ],
+          "isValid": true
+        },
+        "fullGeometryRef": "selected-geometries.json#geometries/osm:relation:7169564"
+      },
+      "officialCode": "436252",
+      "officialRegistryRecord": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4362",
+        "delegationFr": "Ouled haffouz",
+        "delegationAr": "أولاد حفوز",
+        "sectorCode": "436252",
+        "sectorFr": "Dheouibet sud",
+        "sectorAr": "الذويبات الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 57186,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2800,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2795
+        }
+      },
+      "officialRegistryIdentityCount": 1,
+      "officialParentFromRegistry": {
+        "code": "4362",
+        "name": "أولاد حفوز",
+        "governorate": "سيدي بوزيد"
+      },
+      "sourceSameCodeIds": [
+        "osm:relation:7169564"
+      ],
+      "originalParent": {
+        "code": "4362",
+        "name": "أولاد حفوز",
+        "id": null,
+        "rawParentLikeTags": {
+          "ref:tn:codegeo": "436252"
+        },
+        "rawParentLikeFields": {},
+        "candidates": [
+          {
+            "candidateSourceId": "osm:relation:7169662",
+            "candidateCode": "4362",
+            "candidateName": "معتمدية أولاد حفوز",
+            "candidateTags": {
+              "admin_level": "5",
+              "alt_name:fr": "Ouled Haffouz",
+              "boundary": "administrative",
+              "name": "معتمدية أولاد حفوز",
+              "name:ar": "معتمدية أولاد حفوز",
+              "name:fr": "Délégation Ouled Haffouz",
+              "ref:tn:codegeo": "4362",
+              "ref:tn:hasc_2": "TN.SZ.OH",
+              "wikidata": "Q3358223"
+            },
+            "candidateGeometrySummary": {
+              "geometrySha256": "49b30cb755273fb3b8ef16bd9cb6370470d295be7ae60918f6617be8f85fc5d6",
+              "type": "MultiPolygon",
+              "area": 0.041759751525854975,
+              "bounds": [
+                9.696123,
+                34.99219,
+                10.017393,
+                35.20771
+              ],
+              "isValid": true
+            },
+            "containment": {
+              "status": "computed",
+              "targetArea": 0.005925684282949975,
+              "parentArea": 0.041759751525854975,
+              "targetIsValid": true,
+              "parentIsValid": true,
+              "parentCoversTarget": true,
+              "targetCoversParent": false,
+              "intersects": true
+            }
+          }
+        ],
+        "wholeObjectContainment": {
+          "candidateCount": 1,
+          "anyParentCoversTarget": true,
+          "targetCoversAnyParent": false,
+          "note": "Computed only against resolved original parent candidates; no whole-catalog geometry work."
+        },
+        "candidateBasis": "official same-code delegation candidate; containment separately computed"
+      },
+      "curation": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "picker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "currentOwner": "osm:relation:7169564",
+      "currentOwnerCandidates": [
+        "osm:relation:7169564"
+      ],
+      "currentCatalog": {
+        "id": "osm:relation:7169564",
+        "sourceId": "osm",
+        "name": "الدويبات الجنوبية",
+        "aliases": [
+          "Dheouibet Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية أولاد حفوز",
+        "contextAliases": [
+          "Délégation Ouled Haffouz",
+          "Ouled Haffouz",
+          "معتمدية أولاد حفوز"
+        ],
+        "governorateId": 355,
+        "lat": 35.094525,
+        "lng": 9.972405,
+        "delegationId": 529,
+        "hasBoundary": true,
+        "bbox": [
+          9.919219,
+          35.04171,
+          10.017393,
+          35.14837
+        ],
+        "areaKm2": 60.08233358344609,
+        "pickerGroupId": "osm:relation:7169564",
+        "offset": 3979668,
+        "length": 2252,
+        "members": [
+          "osm:relation:7169564"
+        ],
+        "governorate": "سيدي بوزيد",
+        "governorateFr": "Sidi Bouzid",
+        "geometrySha256": "cf6fa51776224d8b0c43370600e462376ad0869a3100d6a0a30aa25cf0dedccc",
+        "fingerprint": "07ce0c9ce11d535e8701a5b1b034c5387c0bb37f70559a6084d528f000b928ba"
+      },
+      "currentCatalogCandidates": [
+        {
+          "id": "osm:relation:7169564",
+          "sourceId": "osm",
+          "name": "الدويبات الجنوبية",
+          "aliases": [
+            "Dheouibet Sud"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية أولاد حفوز",
+          "contextAliases": [
+            "Délégation Ouled Haffouz",
+            "Ouled Haffouz",
+            "معتمدية أولاد حفوز"
+          ],
+          "governorateId": 355,
+          "lat": 35.094525,
+          "lng": 9.972405,
+          "delegationId": 529,
+          "hasBoundary": true,
+          "bbox": [
+            9.919219,
+            35.04171,
+            10.017393,
+            35.14837
+          ],
+          "areaKm2": 60.08233358344609,
+          "pickerGroupId": "osm:relation:7169564",
+          "offset": 3979668,
+          "length": 2252,
+          "members": [
+            "osm:relation:7169564"
+          ],
+          "governorate": "سيدي بوزيد",
+          "governorateFr": "Sidi Bouzid",
+          "geometrySha256": "cf6fa51776224d8b0c43370600e462376ad0869a3100d6a0a30aa25cf0dedccc",
+          "fingerprint": "07ce0c9ce11d535e8701a5b1b034c5387c0bb37f70559a6084d528f000b928ba"
+        }
+      ],
+      "last3Observations": [
+        {
+          "observedAt": "2026-09-20T07:01:33.254979+00:00",
+          "query": "Dheouibet Sud, Sidi Bouzid, Tunisia",
+          "queryVisibleInUi": true,
+          "parserVersion": null,
+          "observationStatus": "candidate_observed",
+          "synchronizationOutcome": null,
+          "publicUiText": [
+            "الدويبات الجنوبية",
+            "Dheouibet Sud",
+            "تونس‎",
+            "الاتجاهات إلى الدويبات الجنوبية",
+            "الاتجاهات",
+            "مشاركة الدويبات الجنوبية",
+            "مشاركة",
+            "حفظ الدويبات الجنوبية في القوائم",
+            "حفظ",
+            "عرض المزيد من الإجراءات لهذا المكان",
+            "المزيد",
+            "لمحة",
+            "العنوان:‏ تونس‎",
+            "إضافة مكان غير مدرج على الخريطة",
+            "إضافة مؤسستك إلى \"خرائط Google\" مجانًا",
+            "قياس المسافة",
+            "إغلاق",
+            "Dheouibet Sud, Sidi Bouzid, Tunisia",
+            "محو"
+          ],
+          "publicCardTitles": [
+            "الدويبات الجنوبية"
+          ],
+          "originalArtifact": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass3-phone-001\\osm_relation_7169564-1.json",
+            "sha256": "998abfef70c47ab4fa4dd460f1aab99e393516265bbb1343d8adf9cd35562287",
+            "bytes": 1625
+          },
+          "originalScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass3-phone-001\\osm_relation_7169564-1.png",
+            "sha256": "c9584a47b8383d02117ad311736b426a1eb051e58ce214f5176f9e12210218cc",
+            "bytes": 621341
+          },
+          "metadataSha256AtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+        }
+      ],
+      "last3ObservationsByOwner": {
+        "osm:relation:7169564": [
+          {
+            "observedAt": "2026-09-20T07:01:33.254979+00:00",
+            "query": "Dheouibet Sud, Sidi Bouzid, Tunisia",
+            "queryVisibleInUi": true,
+            "parserVersion": null,
+            "observationStatus": "candidate_observed",
+            "synchronizationOutcome": null,
+            "publicUiText": [
+              "الدويبات الجنوبية",
+              "Dheouibet Sud",
+              "تونس‎",
+              "الاتجاهات إلى الدويبات الجنوبية",
+              "الاتجاهات",
+              "مشاركة الدويبات الجنوبية",
+              "مشاركة",
+              "حفظ الدويبات الجنوبية في القوائم",
+              "حفظ",
+              "عرض المزيد من الإجراءات لهذا المكان",
+              "المزيد",
+              "لمحة",
+              "العنوان:‏ تونس‎",
+              "إضافة مكان غير مدرج على الخريطة",
+              "إضافة مؤسستك إلى \"خرائط Google\" مجانًا",
+              "قياس المسافة",
+              "إغلاق",
+              "Dheouibet Sud, Sidi Bouzid, Tunisia",
+              "محو"
+            ],
+            "publicCardTitles": [
+              "الدويبات الجنوبية"
+            ],
+            "originalArtifact": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass3-phone-001\\osm_relation_7169564-1.json",
+              "sha256": "998abfef70c47ab4fa4dd460f1aab99e393516265bbb1343d8adf9cd35562287",
+              "bytes": 1625
+            },
+            "originalScreenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass3-phone-001\\osm_relation_7169564-1.png",
+              "sha256": "c9584a47b8383d02117ad311736b426a1eb051e58ce214f5176f9e12210218cc",
+              "bytes": 621341
+            },
+            "metadataSha256AtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+          }
+        ]
+      },
+      "pdfIndexMatches": [
+        {
+          "indexText": "الذويبات الجنوبية.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سيدي بوزيد/أولاد حفوز/الذويبات الجنوبية.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سيدي بوزيد/أولاد حفوز/الذويبات الجنوبية.pdf",
+          "parentDecodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سيدي بوزيد/أولاد حفوز",
+          "matchReasons": [
+            "officialSectorAr"
+          ],
+          "normalizedLastSegment": "الذويباتالجنوبية"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7127889",
+      "currentRawRow": {
+        "id": "osm:relation:7127889",
+        "sourceId": "osm",
+        "name": "بلطش",
+        "aliases": [
+          "Baltech"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جبنيانة",
+        "contextAliases": [
+          "Délégation Jebeniana",
+          "Jebiniana",
+          "معتمدية جبنيانة"
+        ],
+        "governorateId": 359,
+        "lat": 35.100992,
+        "lng": 10.863613,
+        "delegationId": 536,
+        "hasBoundary": true,
+        "bbox": [
+          10.797337,
+          35.054637,
+          10.90658,
+          35.14735
+        ],
+        "areaKm2": 50.13308818929726,
+        "pickerGroupId": "osm:relation:7127889",
+        "offset": 1591464,
+        "length": 1780
+      },
+      "originalSource": {
+        "id": "osm:relation:7127889",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "بلطش",
+          "name:ar": "‫بلطش‬",
+          "name:fr": "Baltech",
+          "ref:tn:codegeo": "345853"
+        },
+        "fieldsWithoutGeometry": {
+          "id": "osm:relation:7127889",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بلطش",
+            "name:ar": "‫بلطش‬",
+            "name:fr": "Baltech",
+            "ref:tn:codegeo": "345853"
+          }
+        },
+        "geometrySummary": {
+          "geometrySha256": "931f0fb39f47367ee935be2d9255f50be539c9eb4d28c6e90c605dc37d54980a",
+          "type": "MultiPolygon",
+          "area": 0.004944811910730039,
+          "bounds": [
+            10.7973373,
+            35.0546369,
+            10.9065798,
+            35.1473498
+          ],
+          "isValid": true
+        },
+        "fullGeometryRef": "selected-geometries.json#geometries/osm:relation:7127889"
+      },
+      "officialCode": "345853",
+      "officialRegistryRecord": {
+        "governorateCode": "34",
+        "governorateFr": "Sfax",
+        "governorateAr": "صفاقس",
+        "delegationCode": "3458",
+        "delegationFr": "Djebeniana",
+        "delegationAr": "جبنيانة",
+        "sectorCode": "345853",
+        "sectorFr": "Baltech",
+        "sectorAr": "بلتش",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 43859,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2096,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2092
+        }
+      },
+      "officialRegistryIdentityCount": 1,
+      "officialParentFromRegistry": {
+        "code": "3458",
+        "name": "جبنيانة",
+        "governorate": "صفاقس"
+      },
+      "sourceSameCodeIds": [
+        "osm:relation:7127889"
+      ],
+      "originalParent": {
+        "code": "3458",
+        "name": "جبنيانة",
+        "id": null,
+        "rawParentLikeTags": {
+          "ref:tn:codegeo": "345853"
+        },
+        "rawParentLikeFields": {},
+        "candidates": [
+          {
+            "candidateSourceId": "osm:relation:273458",
+            "candidateCode": "3458",
+            "candidateName": "معتمدية جبنيانة",
+            "candidateTags": {
+              "admin_level": "5",
+              "alt_name:fr": "Jebiniana",
+              "boundary": "administrative",
+              "name": "معتمدية جبنيانة",
+              "name:ar": "معتمدية جبنيانة",
+              "name:fr": "Délégation Jebeniana",
+              "population": "49678",
+              "population:date": "2014",
+              "ref:tn:codegeo": "3458",
+              "ref:tn:hasc_2": "TN.SF.DJ",
+              "wikidata": "Q3176331"
+            },
+            "candidateGeometrySummary": {
+              "geometrySha256": "adbe0ca3af51c694d185ded84f760d16d6d8e60ca34c9a8210de7eeddb6425f7",
+              "type": "MultiPolygon",
+              "area": 0.02546656064554994,
+              "bounds": [
+                10.7836737,
+                34.9991969,
+                11.0276636,
+                35.1886656
+              ],
+              "isValid": true
+            },
+            "containment": {
+              "status": "computed",
+              "targetArea": 0.004944811910730039,
+              "parentArea": 0.02546656064554994,
+              "targetIsValid": true,
+              "parentIsValid": true,
+              "parentCoversTarget": true,
+              "targetCoversParent": false,
+              "intersects": true
+            }
+          }
+        ],
+        "wholeObjectContainment": {
+          "candidateCount": 1,
+          "anyParentCoversTarget": true,
+          "targetCoversAnyParent": false,
+          "note": "Computed only against resolved original parent candidates; no whole-catalog geometry work."
+        },
+        "candidateBasis": "official same-code delegation candidate; containment separately computed"
+      },
+      "curation": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "picker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "currentOwner": "osm:relation:7127889",
+      "currentOwnerCandidates": [
+        "osm:relation:7127889"
+      ],
+      "currentCatalog": {
+        "id": "osm:relation:7127889",
+        "sourceId": "osm",
+        "name": "بلطش",
+        "aliases": [
+          "Baltech"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جبنيانة",
+        "contextAliases": [
+          "Délégation Jebeniana",
+          "Jebiniana",
+          "معتمدية جبنيانة"
+        ],
+        "governorateId": 359,
+        "lat": 35.100992,
+        "lng": 10.863613,
+        "delegationId": 536,
+        "hasBoundary": true,
+        "bbox": [
+          10.797337,
+          35.054637,
+          10.90658,
+          35.14735
+        ],
+        "areaKm2": 50.13308818929726,
+        "pickerGroupId": "osm:relation:7127889",
+        "offset": 1591464,
+        "length": 1780,
+        "members": [
+          "osm:relation:7127889"
+        ],
+        "governorate": "صفاقس",
+        "governorateFr": "Sfax",
+        "geometrySha256": "011bae5b015be4daf8a704ee4dbdbf7e36be8271535cdeaacee7f9576686162a",
+        "fingerprint": "53766b6aaf81fef754ef123fcd8081584fd94b3f4bf4e98e79d4fa428388e98f"
+      },
+      "currentCatalogCandidates": [
+        {
+          "id": "osm:relation:7127889",
+          "sourceId": "osm",
+          "name": "بلطش",
+          "aliases": [
+            "Baltech"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية جبنيانة",
+          "contextAliases": [
+            "Délégation Jebeniana",
+            "Jebiniana",
+            "معتمدية جبنيانة"
+          ],
+          "governorateId": 359,
+          "lat": 35.100992,
+          "lng": 10.863613,
+          "delegationId": 536,
+          "hasBoundary": true,
+          "bbox": [
+            10.797337,
+            35.054637,
+            10.90658,
+            35.14735
+          ],
+          "areaKm2": 50.13308818929726,
+          "pickerGroupId": "osm:relation:7127889",
+          "offset": 1591464,
+          "length": 1780,
+          "members": [
+            "osm:relation:7127889"
+          ],
+          "governorate": "صفاقس",
+          "governorateFr": "Sfax",
+          "geometrySha256": "011bae5b015be4daf8a704ee4dbdbf7e36be8271535cdeaacee7f9576686162a",
+          "fingerprint": "53766b6aaf81fef754ef123fcd8081584fd94b3f4bf4e98e79d4fa428388e98f"
+        }
+      ],
+      "last3Observations": [
+        {
+          "observedAt": "2026-09-20T06:37:34.278457+00:00",
+          "query": "Baltech, Sfax, Tunisia",
+          "queryVisibleInUi": true,
+          "parserVersion": null,
+          "observationStatus": "candidate_observed",
+          "synchronizationOutcome": null,
+          "publicUiText": [
+            "Baltech",
+            "بلتش",
+            "Tunisia",
+            "Driving mode: 2 hr 30 min",
+            "·",
+            "2 hr 30 min",
+            "Directions to Baltech",
+            "Directions",
+            "Start",
+            "Share Baltech",
+            "Share",
+            "Save Baltech to lists",
+            "Save",
+            "About",
+            "Address: Tunisia",
+            "Add a missing place",
+            "Add your business to Maps for free",
+            "Measure distance",
+            "Close",
+            "Baltech, Sfax, Tunisia",
+            "Clear"
+          ],
+          "publicCardTitles": [
+            "Baltech"
+          ],
+          "originalArtifact": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-001\\osm_relation_7127889-1.json",
+            "sha256": "88dfb8d42aa22a97fa3b0859e73c6875c929f686b7eaa48bcd87b8c78791d1e6",
+            "bytes": 1207
+          },
+          "originalScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-001\\osm_relation_7127889-1.png",
+            "sha256": "76b530a10cb8a229415b962a577d6714399cfbdb10bbc54f6f2259bb93771745",
+            "bytes": 606368
+          },
+          "metadataSha256AtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+        }
+      ],
+      "last3ObservationsByOwner": {
+        "osm:relation:7127889": [
+          {
+            "observedAt": "2026-09-20T06:37:34.278457+00:00",
+            "query": "Baltech, Sfax, Tunisia",
+            "queryVisibleInUi": true,
+            "parserVersion": null,
+            "observationStatus": "candidate_observed",
+            "synchronizationOutcome": null,
+            "publicUiText": [
+              "Baltech",
+              "بلتش",
+              "Tunisia",
+              "Driving mode: 2 hr 30 min",
+              "·",
+              "2 hr 30 min",
+              "Directions to Baltech",
+              "Directions",
+              "Start",
+              "Share Baltech",
+              "Share",
+              "Save Baltech to lists",
+              "Save",
+              "About",
+              "Address: Tunisia",
+              "Add a missing place",
+              "Add your business to Maps for free",
+              "Measure distance",
+              "Close",
+              "Baltech, Sfax, Tunisia",
+              "Clear"
+            ],
+            "publicCardTitles": [
+              "Baltech"
+            ],
+            "originalArtifact": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-001\\osm_relation_7127889-1.json",
+              "sha256": "88dfb8d42aa22a97fa3b0859e73c6875c929f686b7eaa48bcd87b8c78791d1e6",
+              "bytes": 1207
+            },
+            "originalScreenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5554-001\\osm_relation_7127889-1.png",
+              "sha256": "76b530a10cb8a229415b962a577d6714399cfbdb10bbc54f6f2259bb93771745",
+              "bytes": 606368
+            },
+            "metadataSha256AtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+          }
+        ]
+      },
+      "pdfIndexMatches": [
+        {
+          "indexText": "بلتش.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/صفاقس 1/جبنيانة/بلتش.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/صفاقس 1/جبنيانة/بلتش.pdf",
+          "parentDecodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/صفاقس 1/جبنيانة",
+          "matchReasons": [
+            "officialSectorAr"
+          ],
+          "normalizedLastSegment": "بلتش"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7133851",
+      "currentRawRow": {
+        "id": "osm:relation:7133851",
+        "sourceId": "osm",
+        "name": "سدويكش",
+        "aliases": [
+          "Sedouikech"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جربة ميدون",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "معتمدية جربة ميدون"
+        ],
+        "governorateId": 353,
+        "lat": 33.7153,
+        "lng": 10.916398,
+        "delegationId": 491,
+        "hasBoundary": true,
+        "bbox": [
+          10.86447,
+          33.656053,
+          10.9881,
+          33.774555
+        ],
+        "areaKm2": 60.444383140368025,
+        "pickerGroupId": "osm:relation:7133851",
+        "offset": 1667560,
+        "length": 16284
+      },
+      "originalSource": {
+        "id": "osm:relation:7133851",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "سدويكش",
+          "name:ar": "سدويكش",
+          "name:fr": "Sedouikech",
+          "ref:tn:codegeo": "525755"
+        },
+        "fieldsWithoutGeometry": {
+          "id": "osm:relation:7133851",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "سدويكش",
+            "name:ar": "سدويكش",
+            "name:fr": "Sedouikech",
+            "ref:tn:codegeo": "525755"
+          }
+        },
+        "geometrySummary": {
+          "geometrySha256": "349aca0c5ecb7b840a3febea8f5b9dbc84a2cf23f4706afbd99ba7310e351cd1",
+          "type": "MultiPolygon",
+          "area": 0.005863911463925003,
+          "bounds": [
+            10.8644697,
+            33.6560532,
+            10.9881001,
+            33.7745548
+          ],
+          "isValid": true
+        },
+        "fullGeometryRef": "selected-geometries.json#geometries/osm:relation:7133851"
+      },
+      "officialCode": "525755",
+      "officialRegistryRecord": {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5257",
+        "delegationFr": "Djerba midoun",
+        "delegationAr": "جربة ميدون",
+        "sectorCode": "525755",
+        "sectorFr": "Sedouikech",
+        "sectorAr": "صدويكش",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 62728,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3083,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3077
+        }
+      },
+      "officialRegistryIdentityCount": 1,
+      "officialParentFromRegistry": {
+        "code": "5257",
+        "name": "جربة ميدون",
+        "governorate": "مدنين"
+      },
+      "sourceSameCodeIds": [
+        "osm:relation:7133851"
+      ],
+      "originalParent": {
+        "code": "5257",
+        "name": "جربة ميدون",
+        "id": null,
+        "rawParentLikeTags": {
+          "ref:tn:codegeo": "525755"
+        },
+        "rawParentLikeFields": {},
+        "candidates": [
+          {
+            "candidateSourceId": "osm:relation:7133841",
+            "candidateCode": "5257",
+            "candidateName": "معتمدية جربة ميدون",
+            "candidateTags": {
+              "admin_level": "5",
+              "alt_name:fr": "Djerba - Midoun",
+              "boundary": "administrative",
+              "name": "معتمدية جربة ميدون",
+              "name:ar": "معتمدية جربة ميدون",
+              "name:fr": "Délégation Djerba Midoun",
+              "ref:tn:codegeo": "5257",
+              "ref:tn:hasc_2": "TN.ME.DM",
+              "wikidata": "Q3032898"
+            },
+            "candidateGeometrySummary": {
+              "geometrySha256": "4640eb7ef3e11aedc246f8067210c9e783bd8f75f05061ab6b3373a5d2736254",
+              "type": "MultiPolygon",
+              "area": 0.01840289637712505,
+              "bounds": [
+                10.8612364,
+                33.6560532,
+                11.0608788,
+                33.8512275
+              ],
+              "isValid": true
+            },
+            "containment": {
+              "status": "computed",
+              "targetArea": 0.005863911463925003,
+              "parentArea": 0.01840289637712505,
+              "targetIsValid": true,
+              "parentIsValid": true,
+              "parentCoversTarget": true,
+              "targetCoversParent": false,
+              "intersects": true
+            }
+          }
+        ],
+        "wholeObjectContainment": {
+          "candidateCount": 1,
+          "anyParentCoversTarget": true,
+          "targetCoversAnyParent": false,
+          "note": "Computed only against resolved original parent candidates; no whole-catalog geometry work."
+        },
+        "candidateBasis": "official same-code delegation candidate; containment separately computed"
+      },
+      "curation": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "picker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "currentOwner": "osm:relation:7133851",
+      "currentOwnerCandidates": [
+        "osm:relation:7133851"
+      ],
+      "currentCatalog": {
+        "id": "osm:relation:7133851",
+        "sourceId": "osm",
+        "name": "سدويكش",
+        "aliases": [
+          "Sedouikech"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جربة ميدون",
+        "contextAliases": [
+          "Djerba - Midoun",
+          "Délégation Djerba Midoun",
+          "معتمدية جربة ميدون"
+        ],
+        "governorateId": 353,
+        "lat": 33.7153,
+        "lng": 10.916398,
+        "delegationId": 491,
+        "hasBoundary": true,
+        "bbox": [
+          10.86447,
+          33.656053,
+          10.9881,
+          33.774555
+        ],
+        "areaKm2": 60.444383140368025,
+        "pickerGroupId": "osm:relation:7133851",
+        "offset": 1667560,
+        "length": 16284,
+        "members": [
+          "osm:relation:7133851"
+        ],
+        "governorate": "مدنين",
+        "governorateFr": "Medenine",
+        "geometrySha256": "ce5ce5bd41936c3e2ab65b40512d677946199a1b8344e45e382fd37075f3b61b",
+        "fingerprint": "6707e4e67adff23aebb5088525a41b90358b6a5b44bc3a088b9b256f6e176981"
+      },
+      "currentCatalogCandidates": [
+        {
+          "id": "osm:relation:7133851",
+          "sourceId": "osm",
+          "name": "سدويكش",
+          "aliases": [
+            "Sedouikech"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية جربة ميدون",
+          "contextAliases": [
+            "Djerba - Midoun",
+            "Délégation Djerba Midoun",
+            "معتمدية جربة ميدون"
+          ],
+          "governorateId": 353,
+          "lat": 33.7153,
+          "lng": 10.916398,
+          "delegationId": 491,
+          "hasBoundary": true,
+          "bbox": [
+            10.86447,
+            33.656053,
+            10.9881,
+            33.774555
+          ],
+          "areaKm2": 60.444383140368025,
+          "pickerGroupId": "osm:relation:7133851",
+          "offset": 1667560,
+          "length": 16284,
+          "members": [
+            "osm:relation:7133851"
+          ],
+          "governorate": "مدنين",
+          "governorateFr": "Medenine",
+          "geometrySha256": "ce5ce5bd41936c3e2ab65b40512d677946199a1b8344e45e382fd37075f3b61b",
+          "fingerprint": "6707e4e67adff23aebb5088525a41b90358b6a5b44bc3a088b9b256f6e176981"
+        }
+      ],
+      "last3Observations": [
+        {
+          "observedAt": "2026-09-20T06:37:56.747949+00:00",
+          "query": "Sedouikech, Medenine, Tunisia",
+          "queryVisibleInUi": true,
+          "parserVersion": null,
+          "observationStatus": "candidate_observed",
+          "synchronizationOutcome": null,
+          "publicUiText": [
+            "View Street view imagery for Sedouikech",
+            "Sedouikech",
+            "سدويكش",
+            "Tunisia",
+            "Directions to Sedouikech",
+            "Directions",
+            "Share Sedouikech",
+            "Share",
+            "Save Sedouikech to lists",
+            "Save",
+            "Show more actions for this place",
+            "More",
+            "Photo",
+            "Video",
+            "About hotel prices and reviews",
+            "Close",
+            "Sedouikech, Medenine, Tunisia",
+            "Clear",
+            "Restaurants",
+            "Attractions",
+            "Hotels",
+            "Parks"
+          ],
+          "publicCardTitles": [
+            "Sedouikech"
+          ],
+          "originalArtifact": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5556-001\\osm_relation_7133851-1.json",
+            "sha256": "0953ca03d0b7cc37334a8bbeb30ca661355ece49b3090b538e2f99d066367616",
+            "bytes": 1288
+          },
+          "originalScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5556-001\\osm_relation_7133851-1.png",
+            "sha256": "c1fb207a8e3c22b1730d0f64893e00ad018a044c7ea4f18d879b0ec262f99034",
+            "bytes": 1812913
+          },
+          "metadataSha256AtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+        }
+      ],
+      "last3ObservationsByOwner": {
+        "osm:relation:7133851": [
+          {
+            "observedAt": "2026-09-20T06:37:56.747949+00:00",
+            "query": "Sedouikech, Medenine, Tunisia",
+            "queryVisibleInUi": true,
+            "parserVersion": null,
+            "observationStatus": "candidate_observed",
+            "synchronizationOutcome": null,
+            "publicUiText": [
+              "View Street view imagery for Sedouikech",
+              "Sedouikech",
+              "سدويكش",
+              "Tunisia",
+              "Directions to Sedouikech",
+              "Directions",
+              "Share Sedouikech",
+              "Share",
+              "Save Sedouikech to lists",
+              "Save",
+              "Show more actions for this place",
+              "More",
+              "Photo",
+              "Video",
+              "About hotel prices and reviews",
+              "Close",
+              "Sedouikech, Medenine, Tunisia",
+              "Clear",
+              "Restaurants",
+              "Attractions",
+              "Hotels",
+              "Parks"
+            ],
+            "publicCardTitles": [
+              "Sedouikech"
+            ],
+            "originalArtifact": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5556-001\\osm_relation_7133851-1.json",
+              "sha256": "0953ca03d0b7cc37334a8bbeb30ca661355ece49b3090b538e2f99d066367616",
+              "bytes": 1288
+            },
+            "originalScreenshot": {
+              "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\device-maps-batches\\firstpass2-5556-001\\osm_relation_7133851-1.png",
+              "sha256": "c1fb207a8e3c22b1730d0f64893e00ad018a044c7ea4f18d879b0ec262f99034",
+              "bytes": 1812913
+            },
+            "metadataSha256AtCapture": "0628d30350e6be9f1bee7e39642eaa1d9c88f353ad3c84dcf081b1c5119e4348"
+          }
+        ]
+      },
+      "pdfIndexMatches": [
+        {
+          "indexText": "صدويكش.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/صدويكش.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون/صدويكش.pdf",
+          "parentDecodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/جربة ميدون",
+          "matchReasons": [
+            "officialSectorAr"
+          ],
+          "normalizedLastSegment": "صدويكش"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7143844",
+      "currentRawRow": {
+        "id": "osm:relation:7143844",
+        "sourceId": "osm",
+        "name": "كمبوت",
+        "aliases": [
+          "Kambout",
+          "ⴽⵎⴱⵓⵜ"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رمادة",
+        "contextAliases": [
+          "Délégation Remada",
+          "Remada",
+          "معتمدية رمادة"
+        ],
+        "governorateId": 351,
+        "lat": 32.198026,
+        "lng": 10.07295,
+        "delegationId": 471,
+        "hasBoundary": true,
+        "bbox": [
+          9.844184,
+          31.976627,
+          10.35943,
+          32.418207
+        ],
+        "areaKm2": 1093.2821259218051,
+        "pickerGroupId": "osm:relation:7143844",
+        "offset": 2175000,
+        "length": 2268
+      },
+      "originalSource": {
+        "id": "osm:relation:7143844",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "كمبوت",
+          "name:ar": "كمبوت",
+          "name:fr": "Kambout",
+          "ref:tn:codegeo": "535754"
+        },
+        "fieldsWithoutGeometry": {
+          "id": "osm:relation:7143844",
+          "kind": "sector",
+          "tags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كمبوت",
+            "name:ar": "كمبوت",
+            "name:fr": "Kambout",
+            "ref:tn:codegeo": "535754"
+          }
+        },
+        "geometrySummary": {
+          "geometrySha256": "f723336d1998d39089123948a5530b4ab1ff567b3588664d0738955e91922cc9",
+          "type": "MultiPolygon",
+          "area": 0.10425744262832448,
+          "bounds": [
+            9.8441839,
+            31.9766272,
+            10.3594297,
+            32.4182073
+          ],
+          "isValid": true
+        },
+        "fullGeometryRef": "selected-geometries.json#geometries/osm:relation:7143844"
+      },
+      "officialCode": "535754",
+      "officialRegistryRecord": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5357",
+        "delegationFr": "Remada",
+        "delegationAr": "رمادة",
+        "sectorCode": "535754",
+        "sectorFr": "Kenbout",
+        "sectorAr": "كنبوت",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65273,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3205,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3199
+        }
+      },
+      "officialRegistryIdentityCount": 1,
+      "officialParentFromRegistry": {
+        "code": "5357",
+        "name": "رمادة",
+        "governorate": "تطاوين"
+      },
+      "sourceSameCodeIds": [
+        "osm:relation:7143844"
+      ],
+      "originalParent": {
+        "code": "5357",
+        "name": "رمادة",
+        "id": null,
+        "rawParentLikeTags": {
+          "ref:tn:codegeo": "535754"
+        },
+        "rawParentLikeFields": {},
+        "candidates": [
+          {
+            "candidateSourceId": "osm:relation:7143840",
+            "candidateCode": "5357",
+            "candidateName": "معتمدية رمادة",
+            "candidateTags": {
+              "admin_level": "5",
+              "alt_name:fr": "Remada",
+              "boundary": "administrative",
+              "name": "معتمدية رمادة",
+              "name:ar": "معتمدية رمادة",
+              "name:fr": "Délégation Remada",
+              "ref:tn:codegeo": "5357",
+              "ref:tn:hasc_2": "TN.TA.RE",
+              "wikidata": "Q3424458"
+            },
+            "candidateGeometrySummary": {
+              "geometrySha256": "6264e6882062939301bebbeafb881c73cdcfad5337a1bc8aaf9c9faa7a66ca7f",
+              "type": "MultiPolygon",
+              "area": 2.624937820556109,
+              "bounds": [
+                8.35683,
+                30.229061,
+                10.8019709,
+                32.8006221
+              ],
+              "isValid": true
+            },
+            "containment": {
+              "status": "computed",
+              "targetArea": 0.10425744262832448,
+              "parentArea": 2.624937820556109,
+              "targetIsValid": true,
+              "parentIsValid": true,
+              "parentCoversTarget": true,
+              "targetCoversParent": false,
+              "intersects": true
+            }
+          }
+        ],
+        "wholeObjectContainment": {
+          "candidateCount": 1,
+          "anyParentCoversTarget": true,
+          "targetCoversAnyParent": false,
+          "note": "Computed only against resolved original parent candidates; no whole-catalog geometry work."
+        },
+        "candidateBasis": "official same-code delegation candidate; containment separately computed"
+      },
+      "curation": {
+        "directDecisions": [],
+        "decisionsReferencingTarget": [],
+        "pendingReviewsReferencingTarget": []
+      },
+      "picker": {
+        "directGroups": [],
+        "groupsReferencingTarget": []
+      },
+      "currentOwner": "osm:relation:7143844",
+      "currentOwnerCandidates": [
+        "osm:relation:7143844"
+      ],
+      "currentCatalog": {
+        "id": "osm:relation:7143844",
+        "sourceId": "osm",
+        "name": "كمبوت",
+        "aliases": [
+          "Kambout",
+          "ⴽⵎⴱⵓⵜ"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية رمادة",
+        "contextAliases": [
+          "Délégation Remada",
+          "Remada",
+          "معتمدية رمادة"
+        ],
+        "governorateId": 351,
+        "lat": 32.198026,
+        "lng": 10.07295,
+        "delegationId": 471,
+        "hasBoundary": true,
+        "bbox": [
+          9.844184,
+          31.976627,
+          10.35943,
+          32.418207
+        ],
+        "areaKm2": 1093.2821259218051,
+        "pickerGroupId": "osm:relation:7143844",
+        "offset": 2175000,
+        "length": 2268,
+        "members": [
+          "osm:relation:7143844"
+        ],
+        "governorate": "تطاوين",
+        "governorateFr": "Tataouine",
+        "geometrySha256": "f90a1a1c72c56eb9cbdad816338b11f67e1229af4da4517668d5aa2176ad1aed",
+        "fingerprint": "dde003306512ee70badbb338cb33658e3b8a9baf35fad08592c5c53cf2ce8211"
+      },
+      "currentCatalogCandidates": [
+        {
+          "id": "osm:relation:7143844",
+          "sourceId": "osm",
+          "name": "كمبوت",
+          "aliases": [
+            "Kambout",
+            "ⴽⵎⴱⵓⵜ"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية رمادة",
+          "contextAliases": [
+            "Délégation Remada",
+            "Remada",
+            "معتمدية رمادة"
+          ],
+          "governorateId": 351,
+          "lat": 32.198026,
+          "lng": 10.07295,
+          "delegationId": 471,
+          "hasBoundary": true,
+          "bbox": [
+            9.844184,
+            31.976627,
+            10.35943,
+            32.418207
+          ],
+          "areaKm2": 1093.2821259218051,
+          "pickerGroupId": "osm:relation:7143844",
+          "offset": 2175000,
+          "length": 2268,
+          "members": [
+            "osm:relation:7143844"
+          ],
+          "governorate": "تطاوين",
+          "governorateFr": "Tataouine",
+          "geometrySha256": "f90a1a1c72c56eb9cbdad816338b11f67e1229af4da4517668d5aa2176ad1aed",
+          "fingerprint": "dde003306512ee70badbb338cb33658e3b8a9baf35fad08592c5c53cf2ce8211"
+        }
+      ],
+      "last3Observations": [
+        {
+          "observedAt": "2026-09-07T05:46:59.599545+00:00",
+          "query": "كمبوت معتمدية رمادة تطاوين Tunisia",
+          "queryVisibleInUi": true,
+          "parserVersion": null,
+          "observationStatus": "needs_visual_review",
+          "synchronizationOutcome": null,
+          "publicUiText": [
+            "Layers",
+            "كمبوت معتمدية رمادة تطاوين Tunisia",
+            "Close",
+            "More filters",
+            "Open now",
+            "Directions",
+            "Share",
+            "Save",
+            "Looking for somewhere else?",
+            "Clear"
+          ],
+          "publicCardTitles": [],
+          "originalArtifact": null,
+          "originalScreenshot": "osm_relation_7143844-1.png",
+          "metadataSha256AtCapture": null
+        }
+      ],
+      "last3ObservationsByOwner": {
+        "osm:relation:7143844": [
+          {
+            "observedAt": "2026-09-07T05:46:59.599545+00:00",
+            "query": "كمبوت معتمدية رمادة تطاوين Tunisia",
+            "queryVisibleInUi": true,
+            "parserVersion": null,
+            "observationStatus": "needs_visual_review",
+            "synchronizationOutcome": null,
+            "publicUiText": [
+              "Layers",
+              "كمبوت معتمدية رمادة تطاوين Tunisia",
+              "Close",
+              "More filters",
+              "Open now",
+              "Directions",
+              "Share",
+              "Save",
+              "Looking for somewhere else?",
+              "Clear"
+            ],
+            "publicCardTitles": [],
+            "originalArtifact": null,
+            "originalScreenshot": "osm_relation_7143844-1.png",
+            "metadataSha256AtCapture": null
+          }
+        ]
+      },
+      "pdfIndexMatches": [
+        {
+          "indexText": "كنبوت.pdf",
+          "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/رمادة/كنبوت.pdf",
+          "decodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/رمادة/كنبوت.pdf",
+          "parentDecodedPath": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/رمادة",
+          "matchReasons": [
+            "officialSectorAr"
+          ],
+          "normalizedLastSegment": "كنبوت"
+        }
+      ]
+    }
+  ],
+  "assertions": {
+    "allSixExistInCurrentRawAndOriginalSource": true,
+    "uniqueOfficialRegistryIdentityWhenCodeFound": true,
+    "allInputHashesUnchanged": true
+  }
+}

@@ -1,0 +1,882 @@
+[
+  {
+    "source": {
+      "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+        "ETag": "\"8d1a5c-636842926ae2a\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "9247324",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 9247324,
+      "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "sheet": "Population"
+    },
+    "headers": [
+      "Code_Département",
+      "District",
+      "الإقليم",
+      "Code_Gouvernorat",
+      "Gouvernorat",
+      "الولاية",
+      "Code_Delegation",
+      "Délégations",
+      "المعتمدية",
+      "Code_secteur_D",
+      "Secteurs",
+      "العمادة",
+      "Code_Secteur_Secteur",
+      "رمز العمادة_العمادة",
+      "ID_Sexe",
+      "Sexe",
+      "الجنس",
+      "Classe_Age",
+      "Tranche d'âge",
+      "الفئة العمرية",
+      "Population"
+    ],
+    "rows": [
+      {
+        "id": "osm:relation:7127889",
+        "row": 43859,
+        "values": [
+          "4",
+          "District 4",
+          "إقليم 4",
+          "34",
+          "Sfax",
+          "صفاقس",
+          "3458",
+          "Djebeniana",
+          "جبنيانة",
+          "345853",
+          "Baltech",
+          "بلتش",
+          "345853-Baltech",
+          "345853-بلتش",
+          "M",
+          " Masculin",
+          " ذكر",
+          1,
+          "00-04",
+          "00-04",
+          114
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "34",
+          "governorateFr": "Sfax",
+          "governorateAr": "صفاقس",
+          "delegationCode": "3458",
+          "delegationFr": "Djebeniana",
+          "delegationAr": "جبنيانة",
+          "sectorCode": "345853",
+          "sectorFr": "Baltech",
+          "sectorAr": "بلتش",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 43859,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2096,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2092
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7165270",
+        "row": 47701,
+        "values": [
+          "3",
+          "District 3",
+          "إقليم 3",
+          "41",
+          "Kairouan",
+          "القيروان",
+          "4154",
+          "Sbikha",
+          "السبيخة",
+          "415456",
+          "Ed-dheriaat",
+          "الذريعات",
+          "415456-Ed-dheriaat",
+          "415456-الذريعات",
+          "M",
+          " Masculin",
+          " ذكر",
+          1,
+          "00-04",
+          "00-04",
+          511
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "41",
+          "governorateFr": "Kairouan",
+          "governorateAr": "القيروان",
+          "delegationCode": "4154",
+          "delegationFr": "Sbikha",
+          "delegationAr": "السبيخة",
+          "sectorCode": "415456",
+          "sectorFr": "Ed-dheriaat",
+          "sectorAr": "الذريعات",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 47701,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2292,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2288
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7169564",
+        "row": 57186,
+        "values": [
+          "4",
+          "District 4",
+          "إقليم 4",
+          "43",
+          "Sidi bouzid",
+          "سيدي بوزيد",
+          "4362",
+          "Ouled haffouz",
+          "أولاد حفوز",
+          "436252",
+          "Dheouibet sud",
+          "الذويبات الجنوبية",
+          "436252-Dheouibet sud",
+          "436252-الذويبات الجنوبية",
+          "M",
+          " Masculin",
+          " ذكر",
+          1,
+          "00-04",
+          "00-04",
+          90
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "43",
+          "governorateFr": "Sidi bouzid",
+          "governorateAr": "سيدي بوزيد",
+          "delegationCode": "4362",
+          "delegationFr": "Ouled haffouz",
+          "delegationAr": "أولاد حفوز",
+          "sectorCode": "436252",
+          "sectorFr": "Dheouibet sud",
+          "sectorAr": "الذويبات الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 57186,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2800,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2795
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7133851",
+        "row": 62728,
+        "values": [
+          "5",
+          "District 5",
+          "إقليم 5",
+          "52",
+          "Mednine",
+          "مدنين",
+          "5257",
+          "Djerba midoun",
+          "جربة ميدون",
+          "525755",
+          "Sedouikech",
+          "صدويكش",
+          "525755-Sedouikech",
+          "525755-صدويكش",
+          "M",
+          " Masculin",
+          " ذكر",
+          1,
+          "00-04",
+          "00-04",
+          174
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5257",
+          "delegationFr": "Djerba midoun",
+          "delegationAr": "جربة ميدون",
+          "sectorCode": "525755",
+          "sectorFr": "Sedouikech",
+          "sectorAr": "صدويكش",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 62728,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3083,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3077
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7142943",
+        "row": 63102,
+        "values": [
+          "5",
+          "District 5",
+          "إقليم 5",
+          "52",
+          "Mednine",
+          "مدنين",
+          "5259",
+          "Sidi makhloulf",
+          "سيدي مخلوف",
+          "525953",
+          "El maghzaouia",
+          "المغراوية",
+          "525953-El maghzaouia",
+          "525953-المغراوية",
+          "M",
+          " Masculin",
+          " ذكر",
+          1,
+          "00-04",
+          "00-04",
+          57
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5259",
+          "delegationFr": "Sidi makhloulf",
+          "delegationAr": "سيدي مخلوف",
+          "sectorCode": "525953",
+          "sectorFr": "El maghzaouia",
+          "sectorAr": "المغراوية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 63102,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3101,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3095
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7143844",
+        "row": 65273,
+        "values": [
+          "5",
+          "District 5",
+          "إقليم 5",
+          "53",
+          "Tataouine",
+          "تطاوين",
+          "5357",
+          "Remada",
+          "رمادة",
+          "535754",
+          "Kenbout",
+          "كنبوت",
+          "535754-Kenbout",
+          "535754-كنبوت",
+          "M",
+          " Masculin",
+          " ذكر",
+          1,
+          "00-04",
+          "00-04",
+          20
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5357",
+          "delegationFr": "Remada",
+          "delegationAr": "رمادة",
+          "sectorCode": "535754",
+          "sectorFr": "Kenbout",
+          "sectorAr": "كنبوت",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65273,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3205,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3199
+          }
+        }
+      }
+    ]
+  },
+  {
+    "source": {
+      "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+        "ETag": "\"b8855-6433d8623825d\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "755797",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 755797,
+      "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+      "sheet": "Logements"
+    },
+    "headers": [
+      "Code_Département",
+      "District",
+      "الإقليم",
+      "Code_Gouvernorat",
+      "Gouvernorat",
+      "الولاية",
+      "Code_Delegation",
+      "Délégations",
+      "المعتمدية",
+      "Secteurs",
+      "العمادة",
+      "Code_Secteur",
+      "Code_Secteur_Secteur",
+      "رمز العمادة_العمادة",
+      "Milieu",
+      "Milieu_FR",
+      "Milieu_AR",
+      "Logements_Totaux",
+      "Logements_Habités"
+    ],
+    "rows": [
+      {
+        "id": "osm:relation:7127889",
+        "row": 2096,
+        "values": [
+          "4",
+          "District 4",
+          "إقليم 4",
+          "34",
+          "Sfax",
+          "صفاقس",
+          "3458",
+          "Djebeniana",
+          "جبنيانة",
+          "Baltech",
+          "بلتش",
+          345853,
+          "345853-Baltech",
+          "345853-بلتش",
+          1,
+          "Urbain",
+          "حضري",
+          2,
+          2
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "34",
+          "governorateFr": "Sfax",
+          "governorateAr": "صفاقس",
+          "delegationCode": "3458",
+          "delegationFr": "Djebeniana",
+          "delegationAr": "جبنيانة",
+          "sectorCode": "345853",
+          "sectorFr": "Baltech",
+          "sectorAr": "بلتش",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 43859,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2096,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2092
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7165270",
+        "row": 2292,
+        "values": [
+          "3",
+          "District 3",
+          "إقليم 3",
+          "41",
+          "Kairouan",
+          "القيروان",
+          "4154",
+          "Sbikha",
+          "السبيخة",
+          "Ed-dheriaat",
+          "الذريعات",
+          415456,
+          "415456-Ed-dheriaat",
+          "415456-الذريعات",
+          1,
+          "Urbain",
+          "حضري",
+          7,
+          7
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "41",
+          "governorateFr": "Kairouan",
+          "governorateAr": "القيروان",
+          "delegationCode": "4154",
+          "delegationFr": "Sbikha",
+          "delegationAr": "السبيخة",
+          "sectorCode": "415456",
+          "sectorFr": "Ed-dheriaat",
+          "sectorAr": "الذريعات",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 47701,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2292,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2288
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7169564",
+        "row": 2800,
+        "values": [
+          "4",
+          "District 4",
+          "إقليم 4",
+          "43",
+          "Sidi bouzid",
+          "سيدي بوزيد",
+          "4362",
+          "Ouled haffouz",
+          "أولاد حفوز",
+          "Dheouibet sud",
+          "الذويبات الجنوبية",
+          436252,
+          "436252-Dheouibet sud",
+          "436252-الذويبات الجنوبية",
+          2,
+          "Rural",
+          "ريفي",
+          938,
+          751
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "43",
+          "governorateFr": "Sidi bouzid",
+          "governorateAr": "سيدي بوزيد",
+          "delegationCode": "4362",
+          "delegationFr": "Ouled haffouz",
+          "delegationAr": "أولاد حفوز",
+          "sectorCode": "436252",
+          "sectorFr": "Dheouibet sud",
+          "sectorAr": "الذويبات الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 57186,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2800,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2795
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7133851",
+        "row": 3083,
+        "values": [
+          "5",
+          "District 5",
+          "إقليم 5",
+          "52",
+          "Mednine",
+          "مدنين",
+          "5257",
+          "Djerba midoun",
+          "جربة ميدون",
+          "Sedouikech",
+          "صدويكش",
+          525755,
+          "525755-Sedouikech",
+          "525755-صدويكش",
+          1,
+          "Urbain",
+          "حضري",
+          2284,
+          1581
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5257",
+          "delegationFr": "Djerba midoun",
+          "delegationAr": "جربة ميدون",
+          "sectorCode": "525755",
+          "sectorFr": "Sedouikech",
+          "sectorAr": "صدويكش",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 62728,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3083,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3077
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7142943",
+        "row": 3101,
+        "values": [
+          "5",
+          "District 5",
+          "إقليم 5",
+          "52",
+          "Mednine",
+          "مدنين",
+          "5259",
+          "Sidi makhloulf",
+          "سيدي مخلوف",
+          "El maghzaouia",
+          "المغراوية",
+          525953,
+          "525953-El maghzaouia",
+          "525953-المغراوية",
+          1,
+          "Urbain",
+          "حضري",
+          1,
+          1
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5259",
+          "delegationFr": "Sidi makhloulf",
+          "delegationAr": "سيدي مخلوف",
+          "sectorCode": "525953",
+          "sectorFr": "El maghzaouia",
+          "sectorAr": "المغراوية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 63102,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3101,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3095
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7143844",
+        "row": 3205,
+        "values": [
+          "5",
+          "District 5",
+          "إقليم 5",
+          "53",
+          "Tataouine",
+          "تطاوين",
+          "5357",
+          "Remada",
+          "رمادة",
+          "Kenbout",
+          "كنبوت",
+          535754,
+          "535754-Kenbout",
+          "535754-كنبوت",
+          1,
+          "Urbain",
+          "حضري",
+          4,
+          4
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5357",
+          "delegationFr": "Remada",
+          "delegationAr": "رمادة",
+          "sectorCode": "535754",
+          "sectorFr": "Kenbout",
+          "sectorAr": "كنبوت",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65273,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3205,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3199
+          }
+        }
+      }
+    ]
+  },
+  {
+    "source": {
+      "file": "Nombre_de_menages_par_Secteurs.xlsx",
+      "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+      "httpHeaders": {
+        "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+        "Server": "Apache/2.4.38 (Debian)",
+        "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+        "ETag": "\"9ea73-6433d95004ce0\"",
+        "Accept-Ranges": "bytes",
+        "Content-Length": "649843",
+        "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "Connection": "close"
+      },
+      "bytes": 649843,
+      "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+      "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+      "sheet": "Ménages"
+    },
+    "headers": [
+      "Code_Département",
+      "District",
+      "الإقليم",
+      "Code_Gouvernorat",
+      "Gouvernorat",
+      "الولاية",
+      "Code_Delegation",
+      "Délégations",
+      "المعتمدية",
+      "Secteurs",
+      "العمادة",
+      "Code_Secteur",
+      "Code_Secteur_Secteur",
+      "رمز العمادة_العمادة",
+      "Milieu",
+      "Milieu_FR",
+      "Milieu_AR",
+      "menage_total"
+    ],
+    "rows": [
+      {
+        "id": "osm:relation:7127889",
+        "row": 2092,
+        "values": [
+          "4",
+          "District 4",
+          "إقليم 4",
+          "34",
+          "Sfax",
+          "صفاقس",
+          "3458",
+          "Djebeniana",
+          "جبنيانة",
+          "Baltech",
+          "بلتش",
+          345853,
+          "345853-Baltech",
+          "345853-بلتش",
+          1,
+          "Urbain",
+          "حضري",
+          2
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "34",
+          "governorateFr": "Sfax",
+          "governorateAr": "صفاقس",
+          "delegationCode": "3458",
+          "delegationFr": "Djebeniana",
+          "delegationAr": "جبنيانة",
+          "sectorCode": "345853",
+          "sectorFr": "Baltech",
+          "sectorAr": "بلتش",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 43859,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2096,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2092
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7165270",
+        "row": 2288,
+        "values": [
+          "3",
+          "District 3",
+          "إقليم 3",
+          "41",
+          "Kairouan",
+          "القيروان",
+          "4154",
+          "Sbikha",
+          "السبيخة",
+          "Ed-dheriaat",
+          "الذريعات",
+          415456,
+          "415456-Ed-dheriaat",
+          "415456-الذريعات",
+          1,
+          "Urbain",
+          "حضري",
+          7
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "41",
+          "governorateFr": "Kairouan",
+          "governorateAr": "القيروان",
+          "delegationCode": "4154",
+          "delegationFr": "Sbikha",
+          "delegationAr": "السبيخة",
+          "sectorCode": "415456",
+          "sectorFr": "Ed-dheriaat",
+          "sectorAr": "الذريعات",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 47701,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2292,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2288
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7169564",
+        "row": 2795,
+        "values": [
+          "4",
+          "District 4",
+          "إقليم 4",
+          "43",
+          "Sidi bouzid",
+          "سيدي بوزيد",
+          "4362",
+          "Ouled haffouz",
+          "أولاد حفوز",
+          "Dheouibet sud",
+          "الذويبات الجنوبية",
+          436252,
+          "436252-Dheouibet sud",
+          "436252-الذويبات الجنوبية",
+          2,
+          "Rural",
+          "ريفي",
+          751
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "43",
+          "governorateFr": "Sidi bouzid",
+          "governorateAr": "سيدي بوزيد",
+          "delegationCode": "4362",
+          "delegationFr": "Ouled haffouz",
+          "delegationAr": "أولاد حفوز",
+          "sectorCode": "436252",
+          "sectorFr": "Dheouibet sud",
+          "sectorAr": "الذويبات الجنوبية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 57186,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 2800,
+            "Nombre_de_menages_par_Secteurs.xlsx": 2795
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7133851",
+        "row": 3077,
+        "values": [
+          "5",
+          "District 5",
+          "إقليم 5",
+          "52",
+          "Mednine",
+          "مدنين",
+          "5257",
+          "Djerba midoun",
+          "جربة ميدون",
+          "Sedouikech",
+          "صدويكش",
+          525755,
+          "525755-Sedouikech",
+          "525755-صدويكش",
+          1,
+          "Urbain",
+          "حضري",
+          1594
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5257",
+          "delegationFr": "Djerba midoun",
+          "delegationAr": "جربة ميدون",
+          "sectorCode": "525755",
+          "sectorFr": "Sedouikech",
+          "sectorAr": "صدويكش",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 62728,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3083,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3077
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7142943",
+        "row": 3095,
+        "values": [
+          "5",
+          "District 5",
+          "إقليم 5",
+          "52",
+          "Mednine",
+          "مدنين",
+          "5259",
+          "Sidi makhloulf",
+          "سيدي مخلوف",
+          "El maghzaouia",
+          "المغراوية",
+          525953,
+          "525953-El maghzaouia",
+          "525953-المغراوية",
+          1,
+          "Urbain",
+          "حضري",
+          1
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "52",
+          "governorateFr": "Mednine",
+          "governorateAr": "مدنين",
+          "delegationCode": "5259",
+          "delegationFr": "Sidi makhloulf",
+          "delegationAr": "سيدي مخلوف",
+          "sectorCode": "525953",
+          "sectorFr": "El maghzaouia",
+          "sectorAr": "المغراوية",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 63102,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3101,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3095
+          }
+        }
+      },
+      {
+        "id": "osm:relation:7143844",
+        "row": 3199,
+        "values": [
+          "5",
+          "District 5",
+          "إقليم 5",
+          "53",
+          "Tataouine",
+          "تطاوين",
+          "5357",
+          "Remada",
+          "رمادة",
+          "Kenbout",
+          "كنبوت",
+          535754,
+          "535754-Kenbout",
+          "535754-كنبوت",
+          1,
+          "Urbain",
+          "حضري",
+          3
+        ],
+        "expectedRegistryIdentity": {
+          "governorateCode": "53",
+          "governorateFr": "Tataouine",
+          "governorateAr": "تطاوين",
+          "delegationCode": "5357",
+          "delegationFr": "Remada",
+          "delegationAr": "رمادة",
+          "sectorCode": "535754",
+          "sectorFr": "Kenbout",
+          "sectorAr": "كنبوت",
+          "sourceRows": {
+            "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65273,
+            "Nombre_de_Logements_par_Secteurs.xlsx": 3205,
+            "Nombre_de_menages_par_Secteurs.xlsx": 3199
+          }
+        }
+      }
+    ]
+  }
+]

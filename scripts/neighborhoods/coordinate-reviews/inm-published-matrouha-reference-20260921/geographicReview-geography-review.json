@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "status": "REFERENCE_CONTEXT_REVIEWED",
+  "sourceReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-reference-context-20260921\\geography.json",
+    "sha256": "61fa1cb580cba85474b7b659877f7c7f6a478c2f5d33ce6537cd23bd4dce4765"
+  },
+  "referenceOnlyContinuity": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-reference-name-successors-20260921\\geographic-evidence-continuity.json",
+    "sha256": "c0324036a1ea53904f1de9dc44abe6f01af3d17850ef8ab4afd1f88f094c44d9"
+  },
+  "record": {
+    "delegationId": 486,
+    "name": "المطروحة",
+    "expectedGovernorate": {
+      "id": 1012,
+      "nomAr": "قبلي",
+      "nomFr": "Kébili"
+    },
+    "current": {
+      "lat": 33.3497,
+      "lng": 7.7825
+    },
+    "proposed": {
+      "lat": 33.35,
+      "lng": 7.775
+    },
+    "distanceShiftKm": 0.6974321061191945,
+    "governorateMatch": {
+      "expectedGovernorateId": 1012,
+      "current": {
+        "native": {
+          "status": "match",
+          "contained": true,
+          "expectedNativeGovernorId": "osm:relation:1434950",
+          "reason": null,
+          "contextIds": [
+            "osm:relation:1434950"
+          ]
+        },
+        "active": {
+          "status": "match",
+          "reason": null,
+          "governorateIds": [
+            1012,
+            1012
+          ]
+        },
+        "overall": "match"
+      },
+      "proposed": {
+        "native": {
+          "status": "match",
+          "contained": true,
+          "expectedNativeGovernorId": "osm:relation:1434950",
+          "reason": null,
+          "contextIds": [
+            "osm:relation:1434950"
+          ]
+        },
+        "active": {
+          "status": "match",
+          "reason": null,
+          "governorateIds": [
+            1012
+          ]
+        },
+        "overall": "match"
+      }
+    },
+    "currentNativeContext": [
+      {
+        "id": "osm:relation:7082336",
+        "name": "المطروحة",
+        "adminLevel": "6",
+        "codegeo": "635656"
+      },
+      {
+        "id": "osm:relation:7107872",
+        "name": "معتمدية الفوار",
+        "adminLevel": "5",
+        "codegeo": "6356"
+      },
+      {
+        "id": "osm:relation:1434950",
+        "name": "ولاية قبلي",
+        "adminLevel": "4",
+        "codegeo": "63"
+      },
+      {
+        "id": "osm:relation:192757",
+        "name": "تونس",
+        "adminLevel": "2",
+        "codegeo": null
+      }
+    ],
+    "proposedNativeContext": [
+      {
+        "id": "osm:relation:7082336",
+        "name": "المطروحة",
+        "adminLevel": "6",
+        "codegeo": "635656"
+      },
+      {
+        "id": "osm:relation:7107872",
+        "name": "معتمدية الفوار",
+        "adminLevel": "5",
+        "codegeo": "6356"
+      },
+      {
+        "id": "osm:relation:1434950",
+        "name": "ولاية قبلي",
+        "adminLevel": "4",
+        "codegeo": "63"
+      },
+      {
+        "id": "osm:relation:192757",
+        "name": "تونس",
+        "adminLevel": "2",
+        "codegeo": null
+      }
+    ],
+    "currentActiveContext": [
+      {
+        "id": "osm:relation:7082336",
+        "name": "المطروحة",
+        "kind": "sector",
+        "parentName": "معتمدية رجيم معتوق",
+        "governorateId": 1012,
+        "contextOnly": true,
+        "duplicateName": true
+      },
+      {
+        "id": "osm:way:207572354",
+        "name": "المطروحة",
+        "kind": "village",
+        "parentName": "معتمدية رجيم معتوق",
+        "governorateId": 1012,
+        "contextOnly": true,
+        "duplicateName": true
+      }
+    ],
+    "proposedActiveContext": [
+      {
+        "id": "osm:relation:7082336",
+        "name": "المطروحة",
+        "kind": "sector",
+        "parentName": "معتمدية رجيم معتوق",
+        "governorateId": 1012,
+        "contextOnly": true,
+        "duplicateName": true
+      }
+    ]
+  },
+  "qualification": "Both points remain within cached Matrouha sector and Kebili/Tunisia contexts. Proposal is outside smaller village polygon but is approved only as published prayer-source reference; do not move the village centroid or adopt sector as village extent."
+}

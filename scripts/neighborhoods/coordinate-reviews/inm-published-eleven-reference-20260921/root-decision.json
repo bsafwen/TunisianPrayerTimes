@@ -1,0 +1,461 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED_SCOPED_REFERENCE_CORRECTIONS_PENDING_GENERATION",
+  "createdAtUtc": "2026-09-21T01:32:04.079416+00:00",
+  "sourceIds": [
+    482,
+    1025,
+    636,
+    532,
+    555,
+    473,
+    584,
+    514,
+    467,
+    561,
+    505
+  ],
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "inputFiles": {
+    "compiler": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+    "gouvernorats.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+    "neighborhoods.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "neighborhoods.bin": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+    "retired-localities.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+    "locality-display-names.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\locality-display-names.json",
+    "prayer-source-coordinates.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\prayer-source-coordinates.json",
+    "catalog-curation.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "reviewed-boundaries.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+    "reviewed-picker-groups.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+    "municipal-sources.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\municipal-sources.json",
+    "final-exclusions.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\final-exclusions.json"
+  },
+  "inputPins": {
+    "compiler": "2fc3b4f205561e4005c9f64574b08162a4b06ae026a56c66bc8d85d5e8907371",
+    "gouvernorats.json": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+    "neighborhoods.json": "f5c9857b13a6cc729b4fd469143c498073d3f84fd9ce8e51972c1386c689d1f0",
+    "neighborhoods.bin": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "retired-localities.json": "301f8edc255204a5e5946dc13dc473293c594f21a5808572eb09905a182c3491",
+    "locality-display-names.json": "a65709c1d970b38b0003c76a0b29a7d962f36dd780458cc75a2be9fd243265a2",
+    "prayer-source-coordinates.json": "df3b2d93b4464e4d9122e04a7d8ddb91c113e178df19a99a523cbf19f2a62981",
+    "catalog-curation.json": "64034e6f2af4cfa51a225fc23516ae87894aa44623564ba2358c73a773b5bcc0",
+    "reviewed-boundaries.json": "d4986a089d0409e5bd77f682091a1d6462ad082326f05a3ad81b7f9505330890",
+    "reviewed-picker-groups.json": "7d6c7ca8f9872e55c4c5a4f75dfd216d64ae9882644eb1abfe4c0b9cee39f4c6",
+    "municipal-sources.json": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238",
+    "final-exclusions.json": "a9c77bd87a5231e5bd9d308f5b8edafc6f48b5737a77ae3a4c8a0c336a0349c7"
+  },
+  "evidence": {
+    "geographicReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-review-20260921\\geography-complete.json",
+      "sha256": "b6131dcb5b2e5a75baad8f28a2615665aefb77ff043cc66a4a1a36078e587a2e"
+    },
+    "mapsReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-phone-20260921\\maps-inventory\\maps-inventory.json",
+      "sha256": "c3ec20e82d75409fcbeba87bf6255149403c00037dd57d4e387046877b29eaad"
+    },
+    "impactReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-review-20260921\\impact.json",
+      "sha256": "3c236c5f50aa117d261dc3c618d32aafc659471ae0ca5ca039439627aaff8aa2"
+    },
+    "pairedInmReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\eleven-reference-review-20260921\\paired-inm-qualified.json",
+      "sha256": "0119549a1b047ea3b833bed451e3b843d143831aea43edc5cd722cef40e77616"
+    }
+  },
+  "expectedRawChanges": [
+    {
+      "id": "osm:node:2191295540",
+      "before": 458,
+      "after": 467
+    },
+    {
+      "id": "osm:node:616794273",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:node:7429400517",
+      "before": 630,
+      "after": 441
+    },
+    {
+      "id": "osm:node:7875668092",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875711070",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:9949605492",
+      "before": 482,
+      "after": 483
+    },
+    {
+      "id": "osm:relation:7062758",
+      "before": 532,
+      "after": 386
+    },
+    {
+      "id": "osm:relation:7082187",
+      "before": 484,
+      "after": 482
+    },
+    {
+      "id": "osm:relation:7102534",
+      "before": 467,
+      "after": 465
+    },
+    {
+      "id": "osm:relation:7103012",
+      "before": 459,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103334",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7126404",
+      "before": 514,
+      "after": 497
+    },
+    {
+      "id": "osm:relation:7164907",
+      "before": 581,
+      "after": 579
+    },
+    {
+      "id": "osm:relation:7164994",
+      "before": 579,
+      "after": 573
+    },
+    {
+      "id": "osm:relation:7165010",
+      "before": 579,
+      "after": 578
+    },
+    {
+      "id": "osm:relation:7169619",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7189439",
+      "before": 557,
+      "after": 514
+    },
+    {
+      "id": "osm:relation:7198155",
+      "before": 589,
+      "after": 636
+    },
+    {
+      "id": "osm:relation:7201588",
+      "before": 633,
+      "after": 555
+    },
+    {
+      "id": "osm:way:100982066",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:174739936",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:way:192752617",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:way:658923544",
+      "before": 468,
+      "after": 623
+    },
+    {
+      "id": "osm:way:89006660",
+      "before": 532,
+      "after": 386
+    }
+  ],
+  "expectedManualChanges": [
+    {
+      "id": "delegation:468",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7062758",
+      "before": 532,
+      "after": 386
+    },
+    {
+      "id": "osm:relation:7082187",
+      "before": 484,
+      "after": 482
+    },
+    {
+      "id": "osm:relation:7102534",
+      "before": 467,
+      "after": 465
+    },
+    {
+      "id": "osm:relation:7103012",
+      "before": 459,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103334",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7126404",
+      "before": 514,
+      "after": 497
+    },
+    {
+      "id": "osm:relation:7164907",
+      "before": 581,
+      "after": 579
+    },
+    {
+      "id": "osm:relation:7164994",
+      "before": 579,
+      "after": 573
+    },
+    {
+      "id": "osm:relation:7165010",
+      "before": 579,
+      "after": 578
+    },
+    {
+      "id": "osm:relation:7169619",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7189439",
+      "before": 557,
+      "after": 514
+    },
+    {
+      "id": "osm:relation:7198155",
+      "before": 589,
+      "after": 636
+    },
+    {
+      "id": "osm:relation:7201588",
+      "before": 633,
+      "after": 555
+    },
+    {
+      "id": "osm:way:100982066",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:658923544",
+      "before": 468,
+      "after": 623
+    },
+    {
+      "id": "osm:node:2191295540",
+      "before": 458,
+      "after": 467
+    },
+    {
+      "id": "osm:node:616794273",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:node:7429400517",
+      "before": 630,
+      "after": 441
+    },
+    {
+      "id": "osm:node:7875668092",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875711070",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:9949605492",
+      "before": 482,
+      "after": 483
+    }
+  ],
+  "expectedCurrentRawChanges": [
+    {
+      "id": "osm:node:2191295540",
+      "before": 458,
+      "after": 467
+    },
+    {
+      "id": "osm:node:616794273",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:node:9949605492",
+      "before": 482,
+      "after": 483
+    },
+    {
+      "id": "osm:relation:7062758",
+      "before": 532,
+      "after": 386
+    },
+    {
+      "id": "osm:relation:7082187",
+      "before": 484,
+      "after": 482
+    },
+    {
+      "id": "osm:relation:7102534",
+      "before": 467,
+      "after": 465
+    },
+    {
+      "id": "osm:relation:7126404",
+      "before": 514,
+      "after": 497
+    },
+    {
+      "id": "osm:relation:7169619",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7189439",
+      "before": 557,
+      "after": 514
+    },
+    {
+      "id": "osm:relation:7198155",
+      "before": 589,
+      "after": 636
+    },
+    {
+      "id": "osm:relation:7201588",
+      "before": 633,
+      "after": 555
+    },
+    {
+      "id": "osm:way:100982066",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:192752617",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:way:89006660",
+      "before": 532,
+      "after": 386
+    }
+  ],
+  "expectedCurrentManualChanges": [
+    {
+      "id": "osm:node:2191295540",
+      "before": 458,
+      "after": 467
+    },
+    {
+      "id": "osm:node:616794273",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:node:9949605492",
+      "before": 482,
+      "after": 483
+    },
+    {
+      "id": "osm:relation:7062758",
+      "before": 532,
+      "after": 386
+    },
+    {
+      "id": "osm:relation:7082187",
+      "before": 484,
+      "after": 482
+    },
+    {
+      "id": "osm:relation:7102534",
+      "before": 467,
+      "after": 465
+    },
+    {
+      "id": "osm:relation:7126404",
+      "before": 514,
+      "after": 497
+    },
+    {
+      "id": "osm:relation:7169619",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7189439",
+      "before": 557,
+      "after": 514
+    },
+    {
+      "id": "osm:relation:7198155",
+      "before": 589,
+      "after": 636
+    },
+    {
+      "id": "osm:relation:7201588",
+      "before": 633,
+      "after": 555
+    },
+    {
+      "id": "osm:way:100982066",
+      "before": 406,
+      "after": 532
+    }
+  ],
+  "decisionBasis": "Replace eleven previously undocumented prayer-source reference pairs with coordinates published by INM in matching prayer and sun records. Use them only for nearest available prayer-source selection. Public Maps captures and native/packed geographic contexts are consistent with the same governorates and locality areas.",
+  "rootVisualReview": {
+    "coordinateScreenshotsViewed": 11,
+    "correctedContactSheetsViewed": [
+      1,
+      2,
+      3
+    ],
+    "originalFourthSheetViewed": true,
+    "allCardsShowExpectedCoordinates": true,
+    "mapsContext": "Ten coordinate cards name the expected locality area. Soukra card uses the broader Ariana label; native and active sector context is Soukra. Kebili point is by the old village, Ghomrassen is at the urban edge, and Nefza is beside a watercourse. These are published reference anchors, not new settlement or building coordinates."
+  },
+  "geographicQualifications": [
+    "No GPS boundary, locality point, display name, owner, saved ID, or governorate assignment changes.",
+    "Kebili native Janoura parent and curated active Janoura parent differ historically; this batch does not certify either boundary or administrative history.",
+    "Beni Khalled proposed point lies in two active sector footprints; existing boundary overlap remains open.",
+    "No claim is made that response metadata proves INM internal prayer-calculation coordinates."
+  ],
+  "protectedSourceIds": [
+    392,
+    409,
+    567,
+    622
+  ],
+  "preserveExistingCorrectionCount": 52,
+  "expectedCorrectionCount": 63,
+  "preserveFinalExclusion": "osm:way:658923544",
+  "validation": "Generate and verify exact current14raw/12manual delta, frozen cumulative24raw/22manual delta before final exclusion, allothermetadata andgeometry conserved; compile Android only."
+}

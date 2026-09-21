@@ -1,0 +1,30 @@
+{
+  "status": "ACCEPTED_MANUAL_REPRESENTATIVE_ONLY",
+  "reviewedBy": "root",
+  "userSubmissionId": "d7400056-8630-400e-8f1f-0043cf7e7d52",
+  "canonicalId": "osm:relation:7174626",
+  "memberId": "osm:way:124689902",
+  "canonicalGeometrySource": "isie-local-sectors-2023-megrine",
+  "memberGeometrySource": "osm",
+  "before": {
+    "lat": 36.770471,
+    "lng": 10.22336
+  },
+  "after": {
+    "lat": 36.767638,
+    "lng": 10.223168
+  },
+  "finding": "Official sector representative lies outside the already grouped smaller Riadh neighborhood. Reuse the existing fine-neighborhood saved point which is covered by both compiled geometries. Same displayed name and same existing picker group; do not substitute Google geometry or change any boundary.",
+  "pointCoveredByCanonicalAndMember": true,
+  "polygonsChanged": false,
+  "limitations": "Manual pin quality correction only; no claim of fully verified boundary, GPS edge behavior, duplicates or complete geographic reliability. Chaker remains a separate unresolved user report.",
+  "evidence": {
+    "manualQueue": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\manual-locality-review-20260921\\feedback-queue-04.json",
+      "sha256": "b401685a2265ced1f7d248a75e4fd6d5a4960b6bc2f81cef944736a11bcf6bc9"
+    },
+    "metadataSha256": "30110277133722907f8376a3859ddc71faec88d59af52fcf85eed521d52a91a9",
+    "binarySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "officialAcceptanceSha256": "f2e58906e3ced6f758634108f261b3921265ddbbc9f4e4945ad41b70b7aa0f96"
+  }
+}

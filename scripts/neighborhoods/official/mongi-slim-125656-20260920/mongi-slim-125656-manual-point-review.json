@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_manual_point_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "providerId": "isie-local-sector-2023-mongi-slim-ettadhamen",
+  "boundarySource": {
+    "file": "official/mongi-slim-125656-20260920/mongi-slim-125656-native-source.geojson",
+    "sha256": "4767bfefe9a431036d3d7562169653af44c047a3b01c02821ffa99a4604a5913"
+  },
+  "baselineMetadata": {
+    "file": "official/mongi-slim-125656-20260920/evidence/baseline-neighborhoods.json",
+    "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7115583",
+      "officialCode": "125656",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7115583",
+        "sourceId": "osm",
+        "name": "المنجي سليم",
+        "aliases": [
+          "Mongi Slim"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حي التضامن",
+        "contextAliases": [
+          "Délégation Cité Ettadhamen",
+          "Ettadhamen",
+          "معتمدية حي التضامن"
+        ],
+        "governorateId": 358,
+        "lat": 36.840745,
+        "lng": 10.097937,
+        "delegationId": 534,
+        "hasBoundary": true,
+        "bbox": [
+          10.093929,
+          36.838136,
+          10.101868,
+          36.843401
+        ],
+        "areaKm2": 0.18481391242187414,
+        "pickerGroupId": "osm:relation:7115583",
+        "offset": 1041748,
+        "length": 260
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.840745,
+        "lng": 10.097937
+      },
+      "expectedNearestId": 534
+    }
+  ],
+  "evidence": [
+    {
+      "file": "official/mongi-slim-125656-20260920/sources/mongi-slim-ettadhamen-isie2023.pdf",
+      "sha256": "e44aaf8c122ada004c97dae2e49763847d5c9f03d02be4513ced0b46b3edaa21"
+    },
+    {
+      "file": "official/mongi-slim-125656-20260920/mongi-slim-125656-native-source.geojson",
+      "sha256": "4767bfefe9a431036d3d7562169653af44c047a3b01c02821ffa99a4604a5913"
+    },
+    {
+      "file": "official/mongi-slim-125656-20260920/evidence/scope-facts.json",
+      "sha256": "93b351d8d54745deb844e636e51558f51bb9d6735640845f7f5fc4781535786b"
+    },
+    {
+      "file": "official/mongi-slim-125656-20260920/evidence/native-geometry-diagnostic.json",
+      "sha256": "6410a32c5cf2ad585dfb3fe644c8e666ef2c6fd9d5d34d75d6e2f376532de133"
+    },
+    {
+      "file": "official/mongi-slim-125656-20260920/evidence/geometry-facts.json",
+      "sha256": "a4cecc798a255080c4d84c2cf1ca49cc15df0fedd1139b745203c07945af1d96"
+    },
+    {
+      "file": "official/mongi-slim-125656-20260920/evidence/official-map-receipt.json",
+      "sha256": "fc7fc20bcd455a7c5fb8b86eacd4e4d29230a33784bc06240329905d142b4e1b"
+    },
+    {
+      "file": "official/mongi-slim-125656-20260920/evidence/impact-facts.json",
+      "sha256": "87a14381536aad53a204769e7115cc032acfddfd210f1fa178fe2a434d6c7cf8"
+    },
+    {
+      "file": "official/mongi-slim-125656-20260920/evidence/impact-summary.json",
+      "sha256": "2425edbdb8578bf46275821f34c4ad835a63f88ba7fb7ee68c3cc883d4651428"
+    }
+  ]
+}

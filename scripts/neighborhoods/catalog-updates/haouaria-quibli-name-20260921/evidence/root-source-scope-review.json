@@ -1,0 +1,194 @@
+{
+  "status": "SOURCE_IDENTITY_AND_WHOLE_IMADA_SCOPE_REVIEWED_GEOMETRY_NOT_ADOPTED",
+  "atUtc": "2026-09-21T06:04:18.279341+00:00",
+  "decree": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+  },
+  "mapPagesVisuallyInspected": [
+    {
+      "key": "sector-155952",
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-155952.pdf",
+        "sha256": "06c2f1c9bbef0cc1b4f969bf92492b85bf0788a2851e7432122d615fbcd84e8b"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-155952.png",
+        "sha256": "3248b2e53fb5db60795ce63cad17671e563832653632f370357de59db26acf24"
+      },
+      "titleMatchesTarget": true
+    },
+    {
+      "key": "sector-155853",
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-155853.pdf",
+        "sha256": "d362fdccf4d3ee20668aaeea062d8e1263b9c51fea5cfdc661d97a891d67b220"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-155853.png",
+        "sha256": "1bf4878731799cf9c4dd761392f221b45ac1067551e59f6c31706d3d2bfbb678"
+      },
+      "titleMatchesTarget": true
+    },
+    {
+      "key": "sector-155955",
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-155955.pdf",
+        "sha256": "f1a9668dff16df08be11c9c1ce20e4e900e120878ae55efd399f1c3d5ceac693"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-155955.png",
+        "sha256": "8266a5103f765b36c48ceafb232b7b7558b5a4100d3b181f2ae9d1bda43c86c4"
+      },
+      "titleMatchesTarget": true
+    },
+    {
+      "key": "sector-155753",
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-155753.pdf",
+        "sha256": "0cdf81d20cad6d6379292ce432c127cca51ec99cc8083e2961cea5d6e02ab76b"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-155753.png",
+        "sha256": "5057cf46305e508f5ceb1e2fc8b9b57c481d7088765a5b4cdac30f71b2d9e91c"
+      },
+      "titleMatchesTarget": true
+    },
+    {
+      "key": "sector-515356",
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-515356.pdf",
+        "sha256": "5ac0526cefeb6eba6a17d8f10151753009ce8653f9cc14b98516f2b0413a70c8"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-515356.png",
+        "sha256": "816347615d10520e6ebbcc09a606e3b6c70ac4bdf7444c4c52e98126f1bfb93d"
+      },
+      "titleMatchesTarget": true
+    },
+    {
+      "key": "sector-515355",
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-515355.pdf",
+        "sha256": "02883ac51c51d840bbbbde442fac7266f7e3578fb3dcd51ed634cb0e075cd763"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-515355.png",
+        "sha256": "33d52684a205b8a9a3bfa7f60a170ece232cbd7caae60169f5d3b27f891cd9a9"
+      },
+      "titleMatchesTarget": true
+    },
+    {
+      "key": "sector-515951",
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-515951.pdf",
+        "sha256": "43db24b18651bc5f98d9c1b3e64e2924075c41b109a5b9750bf1e6b2c423a791"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\sector-515951.png",
+        "sha256": "22ed894367e9196fa2ed9fb8046bc49190b7f9771a09572ae226130ec885213c"
+      },
+      "titleMatchesTarget": true
+    }
+  ],
+  "scopeRows": [
+    {
+      "code": "155952",
+      "name": "الهوارية القبلية",
+      "parent": "الهوارية",
+      "pdfPageOneBased": 75,
+      "printedJortPage": 5172,
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-75.png",
+        "sha256": "281d411fb0233042bcecdf4411046fe4979f5d7bf184a7bc96ac16a0ee9c0b98"
+      },
+      "scope": "Annex1tableA: same namedimada andsinglelocal electoralcircle; one seat; no dividedrow for this target."
+    },
+    {
+      "code": "155853",
+      "name": "حارة الشعراء",
+      "parent": "حمام الغزاز",
+      "pdfPageOneBased": 76,
+      "printedJortPage": 5173,
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\scope-page-76.png",
+        "sha256": "9e308bcd7f889d174490a787ec9be2e5d9a71fa91f3e38e315a611640bd1798a"
+      },
+      "scope": "Annex1tableA: same namedimada andsinglelocal electoralcircle; one seat; no dividedrow for this target."
+    },
+    {
+      "code": "155955",
+      "name": "بوكريم",
+      "parent": "الهوارية",
+      "pdfPageOneBased": 75,
+      "printedJortPage": 5172,
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-75.png",
+        "sha256": "281d411fb0233042bcecdf4411046fe4979f5d7bf184a7bc96ac16a0ee9c0b98"
+      },
+      "scope": "Annex1tableA: same namedimada andsinglelocal electoralcircle; one seat; no dividedrow for this target."
+    },
+    {
+      "code": "155753",
+      "name": "أزمور",
+      "parent": "قليبية",
+      "pdfPageOneBased": 77,
+      "printedJortPage": 5174,
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\scope-page-77.png",
+        "sha256": "6de8ab01b6e659161ffeddb2325bbbb9a89cb9eefbce924601aab9a7dee6d808"
+      },
+      "scope": "Annex1tableA: same namedimada andsinglelocal electoralcircle; one seat; no dividedrow for this target."
+    },
+    {
+      "code": "515356",
+      "name": "ليماوة",
+      "parent": "قابس الجنوبية",
+      "pdfPageOneBased": 63,
+      "printedJortPage": 5160,
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\scope-page-63.png",
+        "sha256": "fa50f430b255c91c53b54abdc964532b149b8b21c2350185bc2abbc1e779af3c"
+      },
+      "scope": "Annex1tableA: same namedimada andsinglelocal electoralcircle; one seat; no dividedrow for this target."
+    },
+    {
+      "code": "515355",
+      "name": "المدو",
+      "parent": "قابس الجنوبية",
+      "pdfPageOneBased": 63,
+      "printedJortPage": 5160,
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\scope-page-63.png",
+        "sha256": "fa50f430b255c91c53b54abdc964532b149b8b21c2350185bc2abbc1e779af3c"
+      },
+      "scope": "Annex1tableA: same namedimada andsinglelocal electoralcircle; one seat; no dividedrow for this target."
+    },
+    {
+      "code": "515951",
+      "name": "مطماطة الجديدة",
+      "parent": "مطماطة الجديدة",
+      "pdfPageOneBased": 64,
+      "printedJortPage": 5161,
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\scope-page-64.png",
+        "sha256": "226bef1759a6ade44541a560db2f275f5c69481045be75e67daae9d67aacbbdd"
+      },
+      "scope": "Annex1tableA: same namedimada andsinglelocal electoralcircle; one seat; no dividedrow for this target."
+    }
+  ],
+  "observations": [
+    "All7maptitlepanels matchtargetnames. Blueparentlabels matchintendedadministrativecontext. Northinvalidchain wasnotrepeated.",
+    "HaouariaQuibli andHaretSharaa drawingrings alsoenclose displacedneighborlabels; namesalonecannotvalidatefootprints. Exactsourcegeometryandcross-mapadjacencyremainrequired.",
+    "Six closed targetcandidates wereextracted withoriginal edges. Boukrim has open/discontinuous subpaths requiring exactendpointdiagnostics.",
+    "Six measurable originalsource pairs reduce oldnative overlaps substantially but retain nonzero 1418-16721m2 shared-border discrepancies. No clipping/snap/repair or adoptionapproved."
+  ],
+  "extraction": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\geopdf-extraction.json",
+    "sha256": "142bf0bad8f9c1f18d24daa54db1714fbcdf0bdb116768582bd07870aa4ff5c4"
+  },
+  "sharedBorderDiagnostics": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\neighbor-boundary-reconciliation-20260921\\initial-shared-border-diagnostics.json",
+    "sha256": "1953bf0b6332f0f4e33d97188c74cc0eb205ccdbb5323e216d958b5d3102d8df"
+  }
+}

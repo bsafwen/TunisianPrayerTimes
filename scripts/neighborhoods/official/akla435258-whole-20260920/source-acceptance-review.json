@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "status": "WORK_ONLY_SOURCE_ACCEPTANCE",
+  "sourceId": "isie-local-sector-2023-akla435258-whole",
+  "targetId": "osm:relation:7169576",
+  "officialCode": "435258",
+  "officialRegistryRow": {
+    "governorateCode": "43",
+    "governorateFr": "Sidi bouzid",
+    "governorateAr": "سيدي بوزيد",
+    "delegationCode": "4352",
+    "delegationFr": "Sidi bouzid est",
+    "delegationAr": "سيدي بوزيد الشرقية",
+    "sectorCode": "435258",
+    "sectorFr": "El okla",
+    "sectorAr": "العقلة",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 54399,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 2646,
+      "Nombre_de_menages_par_Secteurs.xlsx": 2641
+    }
+  },
+  "jort": {
+    "decree": "2023-590",
+    "annex": 1,
+    "table": "A",
+    "publishedDate": "2023-09-22",
+    "pdfPageOneBased": 56,
+    "printedPage": 5153,
+    "imada": "العقلة",
+    "electoralCircle": "العقلة - (سيدي بوزيد الشرقية)",
+    "circleCount": 1,
+    "seats": 1,
+    "qualification": "The six-digit code is not printed on the decree page; identity is joined through exact imada+parent names from the pinned three registry rows and original source code. This decree establishes electoral scope, not surveyed geometry accuracy."
+  },
+  "officialSource": {
+    "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سيدي بوزيد/سيدي بوزيد الشرقية/العقلة - (سيدي بوزيد الشرقية).pdf",
+    "pdfFile": "official/akla435258-whole-20260920/sources/akla.pdf",
+    "pdfSha256": "cc1febb677f106a4225551cc043ce9414df0f4f39f1adcd8bb161007ba316f63",
+    "pdfBytes": 1320825,
+    "registryVerificationSha256": "5856754c2a32baae53483282bb5edd5b4d7fee82344521ccaae3b9d34e4be5b4",
+    "sourceInputsSha256": "14c71da09aa6e185635347d0f1b36a9216501018e0d0799fca668c59723af586"
+  },
+  "geometry": {
+    "providerFile": "official/akla435258-whole-20260920/akla435258-whole-source.geojson",
+    "providerSha256": "fc50f444d95562f9e9965c9075b75501337466217038dc3bd5bb872efac6748c",
+    "sourceGeometrySha256": "3f685fc2a3dd7d0ee644dbb701dc8f841466a147d26c5179be136c70da823c93",
+    "nativeCoordinatesFile": "official/akla435258-whole-20260920/evidence/target-native-coordinates.json",
+    "nativeCoordinatesSha256": "1c8f300ef364119f481ffa384d5f0124c22c5d13a70ddfc6d71786230ffd7529",
+    "canonicalWgs84GeometrySha256": "5494d64e764ab364abf320339c0d3431f30a602be271aba4952d04ababd058f6",
+    "crsProvider": "EPSG:4326",
+    "crsNativeEvidence": "EPSG:32632",
+    "drawingIndex": 190,
+    "nativeVertexCount": 98,
+    "sourceEdition": 2023,
+    "noRepairSnapCutFill": true,
+    "nativeGeometryValid": true
+  },
+  "baseline": {
+    "file": "official/akla435258-whole-20260920/evidence/baseline-neighborhoods.json",
+    "sha256": "f7bec8d4a169637d25825643b51bac3943f40f1965f49ad60f700934b4be22f8",
+    "bytes": 1862535,
+    "role": "Immutable current metadata proof baseline copy; not installed."
+  },
+  "scope": {
+    "file": "official/akla435258-whole-20260920/accepted-whole-scope-successor.json",
+    "sha256": "c7ab93cb48a5225ce427def975c912d6f391aff1ac16af23391fc605547b1abb",
+    "bytes": 186986,
+    "priorRecordsPreserved": 116,
+    "appendedRecords": 1
+  },
+  "anchorPreservation": {
+    "id": "osm:relation:7169576",
+    "nameAr": "العقلة",
+    "nameFr": "El Okla",
+    "aliases": [
+      "El Okla"
+    ],
+    "lat": 35.10186,
+    "lng": 9.623477,
+    "kind": "sector",
+    "delegationId": 628,
+    "pickerGroupId": "osm:relation:7169576"
+  },
+  "targetSemanticDelta": {
+    "sourceId": {
+      "before": "osm",
+      "after": "isie-local-sector-2023-akla435258-whole"
+    },
+    "bbox": {
+      "before": [
+        9.555549,
+        35.06631,
+        9.684633,
+        35.13517
+      ],
+      "after": [
+        9.561312,
+        35.066291,
+        9.684597,
+        35.132918
+      ]
+    },
+    "areaKm2": {
+      "before": 48.56746102419915,
+      "after": 43.23409532671064
+    },
+    "oldPackedLength": 572,
+    "newPackedLength": 796,
+    "packedDeltaBytes": 224,
+    "oldPackedSha256": "6d391a3e2f8adc943a1008346eaf3f98adef7bf7f7126ce84b58190289c0ea66",
+    "newPackedSha256": "b2985958f9d8d0e2aa38176fb0179e8185bd4816114a5ef706fb9a1aa65dfefc"
+  },
+  "impact": {
+    "historicalReviewSha256": "d6b64a90df56cfef5304f9ef27ebb106a83e5b75f6bda6d9e47f19b13ece3d47",
+    "historicalFactsSha256": "7bea69cae7c23e9b310bff9f43c0c23dc35bc11ace5c7ea805e90614b12569bf",
+    "dependencyReviewSha256": "dbd510c6d27f23aaf2482f558b1fe77ac26e9b55b1e15796d870c9bda7dae258",
+    "historicalComputedAgainst": {
+      "metadataSha256": "b8b1145eba4936916ddf9c750641a21000bde898c9a70975257cd98064cd30b9",
+      "binarySha256": "a1184b8d6dc083d5703f0ecdf002019a69672a1257687e9bbf0fb9ba1806ce5a",
+      "note": "Impact facts were computed against b8b1145e/a1184b8d; not recomputed by this script."
+    },
+    "currentBaseline": {
+      "metadataSha256": "f7bec8d4a169637d25825643b51bac3943f40f1965f49ad60f700934b4be22f8",
+      "binarySha256": "15a4664623f103aae7fb353c988e044176ae04fdc5752247eb500c77d1d31b08",
+      "note": "Current f7bec8d4/15a46646 rebase; unchanged El Akla semantics/payload from historical impact computation."
+    },
+    "residualOverlapKm2": 0.006865578456127774,
+    "lostCoverageKm2": 5.592233523037147,
+    "invalidCounterpartsUntouched": [
+      "osm:relation:7169566",
+      "osm:relation:7169584"
+    ],
+    "qualification": "Historical impact tradeoffs are inherited; this script did not recompute mesh/nearest/picker effects."
+  },
+  "personallyViewed": {
+    "value": true,
+    "attribution": "Inherited from accepted sourceReview.nativeReview.personallyViewedMapAndJort; this script made no personal inspection."
+  },
+  "sourceReviewHashes": {
+    "sourceReviewSha256": "66bb21c6cc59b41a0855a0418aaff1effafaa394e8c011d3e9a89bb63a9c8a4f",
+    "sourceGeometrySha256": "3f685fc2a3dd7d0ee644dbb701dc8f841466a147d26c5179be136c70da823c93",
+    "nativeCoordinatesSha256": "1c8f300ef364119f481ffa384d5f0124c22c5d13a70ddfc6d71786230ffd7529",
+    "sourcePdfSha256": "cc1febb677f106a4225551cc043ce9414df0f4f39f1adcd8bb161007ba316f63",
+    "sourceInputsSha256": "14c71da09aa6e185635347d0f1b36a9216501018e0d0799fca668c59723af586",
+    "registryVerificationSha256": "5856754c2a32baae53483282bb5edd5b4d7fee82344521ccaae3b9d34e4be5b4",
+    "impactReviewSha256": "d6b64a90df56cfef5304f9ef27ebb106a83e5b75f6bda6d9e47f19b13ece3d47",
+    "impactFactsSha256": "7bea69cae7c23e9b310bff9f43c0c23dc35bc11ace5c7ea805e90614b12569bf",
+    "dependencyReviewSha256": "dbd510c6d27f23aaf2482f558b1fe77ac26e9b55b1e15796d870c9bda7dae258"
+  },
+  "qualification": "Work-only source acceptance. 2023 ISIE cartography; no present-day survey or accuracy certification. No new personal inspection claim is made by this script."
+}

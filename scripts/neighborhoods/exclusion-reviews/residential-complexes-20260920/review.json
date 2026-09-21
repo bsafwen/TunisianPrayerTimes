@@ -1,0 +1,2052 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_product_scope_residential_complex_exclusions",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "approvedIds": [
+    "osm:way:100904214",
+    "osm:way:100904283",
+    "osm:way:100904291",
+    "osm:way:1015030934",
+    "osm:way:1017544503",
+    "osm:way:1042144007",
+    "osm:way:144557476",
+    "osm:way:144986791",
+    "osm:way:147748277",
+    "osm:way:157371427",
+    "osm:way:171920791",
+    "osm:way:171920792",
+    "osm:way:171935446",
+    "osm:way:171935448",
+    "osm:way:171935449",
+    "osm:way:191436024",
+    "osm:way:211913309",
+    "osm:way:211913318",
+    "osm:way:218736534",
+    "osm:way:221174224",
+    "osm:way:221174225",
+    "osm:way:335034436",
+    "osm:way:379347133",
+    "osm:way:499076286",
+    "osm:way:535216233",
+    "osm:way:535367874",
+    "osm:way:825272933"
+  ],
+  "policy": "Exclude supported residential complexes/estates and named property grounds from localitypicker/GPSlabels. Do not delete genuine places solely for Residence/إقامة/مساكن name. Preserve originalsource/history and savedprayerfallback using existing mechanisms.",
+  "rows": [
+    {
+      "id": "osm:way:100904214",
+      "displayName": "إقامة كاب قمرت",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.06297726110250335,
+        "bbox": [
+          10.315948,
+          36.912811,
+          10.319519,
+          36.915961
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "La Marsa Plage",
+          "المرسى الشاطئ",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 386,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:100904214",
+        "kind": "residential",
+        "lat": 36.91442,
+        "length": 460,
+        "lng": 10.317551,
+        "name": "Résidence Cap Gammarth",
+        "offset": 5294612,
+        "parentName": "المرسى الشاطئ",
+        "pickerGroupId": "osm:way:100904214",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:100904214",
+        "nameAr": "إقامة كاب قمرت",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence Cap Gammarth"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.06297726110250335,
+        "currentBbox": [
+          10.315948,
+          36.912811,
+          10.319519,
+          36.915961
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 56
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:100904214",
+          "members": [
+            "osm:way:100904214"
+          ],
+          "name": "Résidence Cap Gammarth",
+          "ownerId": "osm:way:100904214"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": "existing-screen-native-review.json"
+    },
+    {
+      "id": "osm:way:100904283",
+      "displayName": "إقامة لا بالمري",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.024145953208474544,
+        "bbox": [
+          10.300805,
+          36.889586,
+          10.303348,
+          36.891405
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Er-Rmila",
+          "La Marsa",
+          "الرميلة",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 386,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:100904283",
+        "kind": "residential",
+        "lat": 36.890502,
+        "length": 52,
+        "lng": 10.302076,
+        "name": "Résidence La Palmeraie",
+        "offset": 5295072,
+        "parentName": "الرميلة",
+        "pickerGroupId": "osm:way:100904283",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:100904283",
+        "nameAr": "إقامة لا بالمري",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "addr:city": "قمرت",
+          "addr:city:ar": "قمرت",
+          "landuse": "residential",
+          "name": "Résidence La Palmeraie",
+          "name:fr": "Résidence La Palmeraie"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.024145953208474544,
+        "currentBbox": [
+          10.300805,
+          36.889586,
+          10.303348,
+          36.891405
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 5
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:100904283",
+          "members": [
+            "osm:way:100904283"
+          ],
+          "name": "Résidence La Palmeraie",
+          "ownerId": "osm:way:100904283"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:100904291",
+      "displayName": "الإقامات الرئاسية",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.11677848960808318,
+        "bbox": [
+          10.314274,
+          36.909711,
+          10.318745,
+          36.913278
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "La Marsa Plage",
+          "المرسى الشاطئ",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 386,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:100904291",
+        "kind": "residential",
+        "lat": 36.911154,
+        "length": 180,
+        "lng": 10.31659,
+        "name": "Presidential Residences",
+        "offset": 5295124,
+        "parentName": "المرسى الشاطئ",
+        "pickerGroupId": "osm:way:100904291",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:100904291",
+        "nameAr": "الإقامات الرئاسية",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "access": "private",
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "Presidential Residences"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.11677848960808318,
+        "currentBbox": [
+          10.314274,
+          36.909711,
+          10.318745,
+          36.913278
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 21
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:100904291",
+          "members": [
+            "osm:way:100904291"
+          ],
+          "name": "Presidential Residences",
+          "ownerId": "osm:way:100904291"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": "presidential-two-property-review-20260920/final-property-review.json"
+    },
+    {
+      "id": "osm:way:1015030934",
+      "displayName": "إقامة السلطانة",
+      "current": {
+        "aliases": [
+          "Residence el soltana"
+        ],
+        "areaKm2": 0.007757809388628797,
+        "bbox": [
+          9.847953,
+          37.289967,
+          9.849247,
+          37.291119
+        ],
+        "contextAliases": [
+          "15 Octobre",
+          "15 أكتوبر",
+          "Delegación de Bizerta Norte",
+          "Délégation Bizerte Nord",
+          "معتمدية بنزرت الشمالية"
+        ],
+        "delegationId": 634,
+        "governorateId": 361,
+        "hasBoundary": true,
+        "id": "osm:way:1015030934",
+        "kind": "residential",
+        "lat": 37.290537,
+        "length": 68,
+        "lng": 9.848594,
+        "name": "إقامة السلطانة",
+        "offset": 5296940,
+        "parentName": "15 أكتوبر",
+        "pickerGroupId": "osm:way:1015030934",
+        "sourceId": "osm"
+      },
+      "overlay": null,
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "إقامة السلطانة",
+          "name:aeb": "إقامة السلطانة",
+          "name:ar": "إقامة السلطانة",
+          "name:fr": "Residence el soltana"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.007757809388628797,
+        "currentBbox": [
+          9.847953,
+          37.289967,
+          9.849247,
+          37.291119
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 7
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:1015030934",
+          "members": [
+            "osm:way:1015030934"
+          ],
+          "name": "إقامة السلطانة",
+          "ownerId": "osm:way:1015030934"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:1017544503",
+      "displayName": "إقامة أوبرا ٢",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.0027378642373562627,
+        "bbox": [
+          10.309164,
+          36.904912,
+          10.310049,
+          36.905493
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Gammarth",
+          "La Marsa",
+          "قمرت",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 386,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:1017544503",
+        "kind": "residential",
+        "lat": 36.905169,
+        "length": 52,
+        "lng": 10.309637,
+        "name": "Résidence Opéra 2",
+        "offset": 5297640,
+        "parentName": "قمرت",
+        "pickerGroupId": "osm:way:1017544503",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:1017544503",
+        "nameAr": "إقامة أوبرا ٢",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence Opéra 2"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.0027378642373562627,
+        "currentBbox": [
+          10.309164,
+          36.904912,
+          10.310049,
+          36.905493
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 5
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:1017544503",
+          "members": [
+            "osm:way:1017544503"
+          ],
+          "name": "Résidence Opéra 2",
+          "ownerId": "osm:way:1017544503"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:1042144007",
+      "displayName": "إقامة لورونجري",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.0012437732869803601,
+        "bbox": [
+          10.299106,
+          36.910814,
+          10.299593,
+          36.911376
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Gammarth",
+          "La Marsa",
+          "قمرت",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 386,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:1042144007",
+        "kind": "residential",
+        "lat": 36.911035,
+        "length": 68,
+        "lng": 10.299336,
+        "name": "Résidence de l'Orangeraie",
+        "offset": 5301172,
+        "parentName": "قمرت",
+        "pickerGroupId": "osm:way:1042144007",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:1042144007",
+        "nameAr": "إقامة لورونجري",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence de l'Orangeraie"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.0012437732869803601,
+        "currentBbox": [
+          10.299106,
+          36.910814,
+          10.299593,
+          36.911376
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 7
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:1042144007",
+          "members": [
+            "osm:way:1042144007"
+          ],
+          "name": "Résidence de l'Orangeraie",
+          "ownerId": "osm:way:1042144007"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:144557476",
+      "displayName": "سكن قرطاج",
+      "current": {
+        "aliases": [
+          "Résidence Carthage"
+        ],
+        "areaKm2": 0.011900489189854438,
+        "bbox": [
+          10.326281,
+          36.867854,
+          10.329407,
+          36.869497
+        ],
+        "contextAliases": [
+          "Cartagine",
+          "Cartago",
+          "Carthage",
+          "Carthage Byrsa",
+          "Delegación de Cartago",
+          "Delegation Karthago",
+          "Kartagina",
+          "Karthago",
+          "Καρχηδόνα",
+          "Καρχηδών",
+          "Картаген",
+          "Карфаген",
+          "Կարթագեն",
+          "Կարթագէն",
+          "قرطاج",
+          "قرطاج بيرصا",
+          "قرطاج بيرصة",
+          "قرطاجنہ",
+          "معتمدية قرطاج",
+          "کارتاژ",
+          "ܩܪܬܐܓܘ"
+        ],
+        "delegationId": 386,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:144557476",
+        "kind": "residential",
+        "lat": 36.868672,
+        "length": 84,
+        "lng": 10.327845,
+        "name": "سكن قرطاج",
+        "offset": 5333228,
+        "parentName": "قرطاج بيرصة",
+        "pickerGroupId": "osm:way:144557476",
+        "sourceId": "osm"
+      },
+      "overlay": null,
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "leisure": "garden",
+          "name": "سكن قرطاج",
+          "name:ar": "سكن قرطاج",
+          "name:fr": "Résidence Carthage"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.011900489189854438,
+        "currentBbox": [
+          10.326281,
+          36.867854,
+          10.329407,
+          36.869497
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 9
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:144557476",
+          "members": [
+            "osm:way:144557476"
+          ],
+          "name": "سكن قرطاج",
+          "ownerId": "osm:way:144557476"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:144986791",
+      "displayName": "إقامة لي بان",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.05412647112387911,
+        "bbox": [
+          10.315909,
+          36.865488,
+          10.319475,
+          36.868321
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "La Marsa El Montazeh",
+          "المرسى المنتزه",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 386,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:144986791",
+        "kind": "residential",
+        "lat": 36.866998,
+        "length": 652,
+        "lng": 10.317732,
+        "name": "Residence Les Pins",
+        "offset": 5334244,
+        "parentName": "المرسى المنتزه",
+        "pickerGroupId": "osm:way:144986791",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:144986791",
+        "nameAr": "إقامة لي بان",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "addr:city": "المرسى",
+          "addr:city:ar": "المرسى",
+          "landuse": "residential",
+          "name": "Residence Les Pins"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.05412647112387911,
+        "currentBbox": [
+          10.315909,
+          36.865488,
+          10.319475,
+          36.868321
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 80
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:144986791",
+          "members": [
+            "osm:way:144986791"
+          ],
+          "name": "Residence Les Pins",
+          "ownerId": "osm:way:144986791"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": "existing-screen-native-review.json"
+    },
+    {
+      "id": "osm:way:147748277",
+      "displayName": "إقامة دار قمرت",
+      "current": {
+        "aliases": [
+          "Résidence Dar Gammarth"
+        ],
+        "areaKm2": 0.022983711561226618,
+        "bbox": [
+          10.292544,
+          36.910328,
+          10.294802,
+          36.912439
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Gammarth",
+          "La Marsa",
+          "قمرت",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 532,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:147748277",
+        "kind": "residential",
+        "lat": 36.911341,
+        "length": 148,
+        "lng": 10.293961,
+        "name": "إقامة دار قمرت",
+        "offset": 5336020,
+        "parentName": "قمرت",
+        "pickerGroupId": "osm:way:147748277",
+        "sourceId": "osm"
+      },
+      "overlay": null,
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "إقامة دار قمرت",
+          "name:ar": "إقامة دار قمرت",
+          "name:fr": "Résidence Dar Gammarth"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.022983711561226618,
+        "currentBbox": [
+          10.292544,
+          36.910328,
+          10.294802,
+          36.912439
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 17
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:147748277",
+          "members": [
+            "osm:way:147748277"
+          ],
+          "name": "إقامة دار قمرت",
+          "ownerId": "osm:way:147748277"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:157371427",
+      "displayName": "حي إطارات المجمع الكيميائي",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.042730875857385754,
+        "bbox": [
+          10.090104,
+          34.29022,
+          10.093528,
+          34.291995
+        ],
+        "contextAliases": [
+          "Délégation Skhira",
+          "Skhira",
+          "الصخيرة",
+          "معتمدية الصخيرة"
+        ],
+        "delegationId": 546,
+        "governorateId": 359,
+        "hasBoundary": true,
+        "id": "osm:way:157371427",
+        "kind": "residential",
+        "lat": 34.291176,
+        "length": 300,
+        "lng": 10.091781,
+        "name": "Cité des Cadres Du Groupe Chimique",
+        "offset": 5341252,
+        "parentName": "الصخيرة",
+        "pickerGroupId": "osm:way:157371427",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:157371427",
+        "nameAr": "حي إطارات المجمع الكيميائي",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "Cité des Cadres Du Groupe Chimique",
+          "name:fr": "Cité des Cadres Du Groupe Chimique"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.042730875857385754,
+        "currentBbox": [
+          10.090104,
+          34.29022,
+          10.093528,
+          34.291995
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 36
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:157371427",
+          "members": [
+            "osm:way:157371427"
+          ],
+          "name": "Cité des Cadres Du Groupe Chimique",
+          "ownerId": "osm:way:157371427"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": "existing-screen-native-review.json"
+    },
+    {
+      "id": "osm:way:171920791",
+      "displayName": "إقامة ميموزا",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.0015126077092328762,
+        "bbox": [
+          10.193513,
+          36.851541,
+          10.19407,
+          36.851874
+        ],
+        "contextAliases": [
+          "Ariana Ville",
+          "Délégation Ariana Ville",
+          "El Yasmina",
+          "الياسمينة",
+          "معتمدية أريانة المدينة"
+        ],
+        "delegationId": 631,
+        "governorateId": 358,
+        "hasBoundary": true,
+        "id": "osm:way:171920791",
+        "kind": "residential",
+        "lat": 36.851714,
+        "length": 60,
+        "lng": 10.19382,
+        "name": "Résidence Mimoza",
+        "offset": 5348052,
+        "parentName": "الياسمينة",
+        "pickerGroupId": "osm:way:171920791",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:171920791",
+        "nameAr": "إقامة ميموزا",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence Mimoza"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.0015126077092328762,
+        "currentBbox": [
+          10.193513,
+          36.851541,
+          10.19407,
+          36.851874
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 6
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:171920791",
+          "members": [
+            "osm:way:171920791"
+          ],
+          "name": "Résidence Mimoza",
+          "ownerId": "osm:way:171920791"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:171920792",
+      "displayName": "إقامة ابن رشد \"العصر جديد\"",
+      "current": {
+        "aliases": [
+          "Résidence Ibn Rochd \"Ère Nouvelle\""
+        ],
+        "areaKm2": 0.004880693633889428,
+        "bbox": [
+          10.194048,
+          36.851562,
+          10.195526,
+          36.852064
+        ],
+        "contextAliases": [
+          "Ariana Ville",
+          "Délégation Ariana Ville",
+          "El Yasmina",
+          "الياسمينة",
+          "معتمدية أريانة المدينة"
+        ],
+        "delegationId": 631,
+        "governorateId": 358,
+        "hasBoundary": true,
+        "id": "osm:way:171920792",
+        "kind": "residential",
+        "lat": 36.851831,
+        "length": 100,
+        "lng": 10.195063,
+        "name": "إقامة ابن رشد \"العصر جديد\"",
+        "offset": 5348112,
+        "parentName": "الياسمينة",
+        "pickerGroupId": "osm:way:171920792",
+        "sourceId": "osm"
+      },
+      "overlay": null,
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "إقامة ابن رشد \"العصر جديد\"",
+          "name:ar": "إقامة ابن رشد \"العصر جديد\"",
+          "name:fr": "Résidence Ibn Rochd \"Ère Nouvelle\""
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.004880693633889428,
+        "currentBbox": [
+          10.194048,
+          36.851562,
+          10.195526,
+          36.852064
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 11
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:171920792",
+          "members": [
+            "osm:way:171920792"
+          ],
+          "name": "إقامة ابن رشد \"العصر جديد\"",
+          "ownerId": "osm:way:171920792"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:171935446",
+      "displayName": "إقامة المعز",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.003698214162776654,
+        "bbox": [
+          10.192474,
+          36.852769,
+          10.193565,
+          36.853424
+        ],
+        "contextAliases": [
+          "Ariana Ville",
+          "Délégation Ariana Ville",
+          "El Yasmina",
+          "الياسمينة",
+          "معتمدية أريانة المدينة"
+        ],
+        "delegationId": 631,
+        "governorateId": 358,
+        "hasBoundary": true,
+        "id": "osm:way:171935446",
+        "kind": "residential",
+        "lat": 36.85305,
+        "length": 68,
+        "lng": 10.193085,
+        "name": "Résidence El Moez",
+        "offset": 5348212,
+        "parentName": "الياسمينة",
+        "pickerGroupId": "osm:way:171935446",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:171935446",
+        "nameAr": "إقامة المعز",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "designation": "Résidence El Moez",
+          "landuse": "residential",
+          "name": "Résidence El Moez"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.003698214162776654,
+        "currentBbox": [
+          10.192474,
+          36.852769,
+          10.193565,
+          36.853424
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 7
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:171935446",
+          "members": [
+            "osm:way:171935446"
+          ],
+          "name": "Résidence El Moez",
+          "ownerId": "osm:way:171935446"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:171935448",
+      "displayName": "إقامة ابن رشيق",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.003193252345218906,
+        "bbox": [
+          10.1925,
+          36.851471,
+          10.193305,
+          36.852243
+        ],
+        "contextAliases": [
+          "Ariana Ville",
+          "Délégation Ariana Ville",
+          "El Yasmina",
+          "الياسمينة",
+          "معتمدية أريانة المدينة"
+        ],
+        "delegationId": 631,
+        "governorateId": 358,
+        "hasBoundary": true,
+        "id": "osm:way:171935448",
+        "kind": "residential",
+        "lat": 36.851853,
+        "length": 60,
+        "lng": 10.192916,
+        "name": "Résidence Ibn Rachik",
+        "offset": 5348280,
+        "parentName": "الياسمينة",
+        "pickerGroupId": "osm:way:171935448",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:171935448",
+        "nameAr": "إقامة ابن رشيق",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "designation": "Résidence Ibn Rachik",
+          "landuse": "residential",
+          "name": "Résidence Ibn Rachik"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.003193252345218906,
+        "currentBbox": [
+          10.1925,
+          36.851471,
+          10.193305,
+          36.852243
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 6
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:171935448",
+          "members": [
+            "osm:way:171935448"
+          ],
+          "name": "Résidence Ibn Rachik",
+          "ownerId": "osm:way:171935448"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:171935449",
+      "displayName": "إقامة رياض",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.0021688982206407715,
+        "bbox": [
+          10.192948,
+          36.85151,
+          10.193645,
+          36.85206
+        ],
+        "contextAliases": [
+          "Ariana Ville",
+          "Délégation Ariana Ville",
+          "El Yasmina",
+          "الياسمينة",
+          "معتمدية أريانة المدينة"
+        ],
+        "delegationId": 631,
+        "governorateId": 358,
+        "hasBoundary": true,
+        "id": "osm:way:171935449",
+        "kind": "residential",
+        "lat": 36.851708,
+        "length": 60,
+        "lng": 10.193328,
+        "name": "Résidence Riadh",
+        "offset": 5348340,
+        "parentName": "الياسمينة",
+        "pickerGroupId": "osm:way:171935449",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:171935449",
+        "nameAr": "إقامة رياض",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "designation": "Résidence Riadh",
+          "landuse": "residential",
+          "name": "Résidence Riadh"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.0021688982206407715,
+        "currentBbox": [
+          10.192948,
+          36.85151,
+          10.193645,
+          36.85206
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 6
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:171935449",
+          "members": [
+            "osm:way:171935449"
+          ],
+          "name": "Résidence Riadh",
+          "ownerId": "osm:way:171935449"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:191436024",
+      "displayName": "القصر الرئاسي",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.028153448224199323,
+        "bbox": [
+          8.716246,
+          36.18113,
+          8.719044,
+          36.183084
+        ],
+        "contextAliases": [
+          "Charfine",
+          "Délégation Kef Est",
+          "Délégation de Kef Est",
+          "Kef Est",
+          "الشرفين",
+          "معتمدية الكاف الشرقية"
+        ],
+        "delegationId": 636,
+        "governorateId": 363,
+        "hasBoundary": true,
+        "id": "osm:way:191436024",
+        "kind": "residential",
+        "lat": 36.181985,
+        "length": 172,
+        "lng": 8.717335,
+        "name": "Palais présidentiel",
+        "offset": 5405040,
+        "parentName": "الشرفين",
+        "pickerGroupId": "osm:way:191436024",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:191436024",
+        "nameAr": "القصر الرئاسي",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "barrier": "wall",
+          "landuse": "residential",
+          "leisure": "garden",
+          "name": "Palais présidentiel",
+          "name:fr": "Palais présidentiel"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.028153448224199323,
+        "currentBbox": [
+          8.716246,
+          36.18113,
+          8.719044,
+          36.183084
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 20
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:191436024",
+          "members": [
+            "osm:way:191436024"
+          ],
+          "name": "Palais présidentiel",
+          "ownerId": "osm:way:191436024"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": "presidential-two-property-review-20260920/final-property-review.json"
+    },
+    {
+      "id": "osm:way:211913309",
+      "displayName": "إقامة عزيزة",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.0012257176422093145,
+        "bbox": [
+          10.291345,
+          36.902576,
+          10.291997,
+          36.903145
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Gammarth",
+          "La Marsa",
+          "قمرت",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 532,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:211913309",
+        "kind": "residential",
+        "lat": 36.90287,
+        "length": 76,
+        "lng": 10.291664,
+        "name": "Résidence Aziza",
+        "offset": 5436988,
+        "parentName": "قمرت",
+        "pickerGroupId": "osm:way:211913309",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:211913309",
+        "nameAr": "إقامة عزيزة",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "Résidence Aziza"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.0012257176422093145,
+        "currentBbox": [
+          10.291345,
+          36.902576,
+          10.291997,
+          36.903145
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 8
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:211913309",
+          "members": [
+            "osm:way:211913309"
+          ],
+          "name": "Résidence Aziza",
+          "ownerId": "osm:way:211913309"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:211913318",
+      "displayName": "إقامة الياسمين",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.0014764395447850857,
+        "bbox": [
+          10.290761,
+          36.902221,
+          10.291431,
+          36.902844
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Gammarth",
+          "La Marsa",
+          "قمرت",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 532,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:211913318",
+        "kind": "residential",
+        "lat": 36.902442,
+        "length": 84,
+        "lng": 10.291183,
+        "name": "Résidence Les Jasmins",
+        "offset": 5437064,
+        "parentName": "قمرت",
+        "pickerGroupId": "osm:way:211913318",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:211913318",
+        "nameAr": "إقامة الياسمين",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "Résidence Les Jasmins",
+          "name:fr": "Résidence Les Jasmins"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.0014764395447850857,
+        "currentBbox": [
+          10.290761,
+          36.902221,
+          10.291431,
+          36.902844
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 9
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:211913318",
+          "members": [
+            "osm:way:211913318"
+          ],
+          "name": "Résidence Les Jasmins",
+          "ownerId": "osm:way:211913318"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:218736534",
+      "displayName": "إقامة بلآزور",
+      "current": {
+        "aliases": [
+          "Résidence Bel Azur"
+        ],
+        "areaKm2": 0.004677952425441199,
+        "bbox": [
+          10.288916,
+          36.913473,
+          10.290172,
+          36.914273
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Gammarth",
+          "La Marsa",
+          "قمرت",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 532,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:218736534",
+        "kind": "residential",
+        "lat": 36.913919,
+        "length": 92,
+        "lng": 10.289538,
+        "name": "إقامة بلآزور",
+        "offset": 5439176,
+        "parentName": "قمرت",
+        "pickerGroupId": "osm:way:218736534",
+        "sourceId": "osm"
+      },
+      "overlay": null,
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "addr:city": "قمرت",
+          "addr:city:ar": "قمرت",
+          "addr:postcode": "1057",
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "إقامة بلآزور",
+          "name:ar": "إقامة بلآزور",
+          "name:fr": "Résidence Bel Azur"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.004677952425441199,
+        "currentBbox": [
+          10.288916,
+          36.913473,
+          10.290172,
+          36.914273
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 10
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:218736534",
+          "members": [
+            "osm:way:218736534"
+          ],
+          "name": "إقامة بلآزور",
+          "ownerId": "osm:way:218736534"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:221174224",
+      "displayName": "إقامة حنبعل",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.011060957005063078,
+        "bbox": [
+          10.299879,
+          36.888169,
+          10.301767,
+          36.889415
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Er-Rmila",
+          "La Marsa",
+          "الرميلة",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 386,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:221174224",
+        "kind": "residential",
+        "lat": 36.888798,
+        "length": 52,
+        "lng": 10.300824,
+        "name": "Résidence Hannibal",
+        "offset": 5440344,
+        "parentName": "الرميلة",
+        "pickerGroupId": "osm:way:221174224",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:221174224",
+        "nameAr": "إقامة حنبعل",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "Résidence Hannibal",
+          "name:fr": "Résidence Hannibal"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.011060957005063078,
+        "currentBbox": [
+          10.299879,
+          36.888169,
+          10.301767,
+          36.889415
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 5
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:221174224",
+          "members": [
+            "osm:way:221174224"
+          ],
+          "name": "Résidence Hannibal",
+          "ownerId": "osm:way:221174224"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:221174225",
+      "displayName": "إقامة مديترانية",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.010340988192530532,
+        "bbox": [
+          10.300275,
+          36.887727,
+          10.302135,
+          36.888853
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Er-Rmila",
+          "La Marsa",
+          "الرميلة",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 386,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:221174225",
+        "kind": "residential",
+        "lat": 36.888249,
+        "length": 68,
+        "lng": 10.301213,
+        "name": "Résidence Méditérranée",
+        "offset": 5440396,
+        "parentName": "الرميلة",
+        "pickerGroupId": "osm:way:221174225",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:221174225",
+        "nameAr": "إقامة مديترانية",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "barrier": "wall",
+          "landuse": "residential",
+          "name": "Résidence Méditérranée",
+          "name:fr": "Résidence Méditérranée"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.010340988192530532,
+        "currentBbox": [
+          10.300275,
+          36.887727,
+          10.302135,
+          36.888853
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 7
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:221174225",
+          "members": [
+            "osm:way:221174225"
+          ],
+          "name": "Résidence Méditérranée",
+          "ownerId": "osm:way:221174225"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:335034436",
+      "displayName": "إقامة فولا",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.005524384410930959,
+        "bbox": [
+          10.13258,
+          36.853658,
+          10.133895,
+          36.85443
+        ],
+        "contextAliases": [
+          "Délégation Mnihla",
+          "Errafaha",
+          "Mnihla",
+          "الرفاهة",
+          "معتمدية منيهلة"
+        ],
+        "delegationId": 392,
+        "governorateId": 358,
+        "hasBoundary": true,
+        "id": "osm:way:335034436",
+        "kind": "residential",
+        "lat": 36.854235,
+        "length": 52,
+        "lng": 10.132994,
+        "name": "Résidence Folla",
+        "offset": 5483672,
+        "parentName": "الرفاهة",
+        "pickerGroupId": "osm:way:335034436",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:335034436",
+        "nameAr": "إقامة فولا",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence Folla"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.005524384410930959,
+        "currentBbox": [
+          10.13258,
+          36.853658,
+          10.133895,
+          36.85443
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 5
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:335034436",
+          "members": [
+            "osm:way:335034436"
+          ],
+          "name": "Résidence Folla",
+          "ownerId": "osm:way:335034436"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:379347133",
+      "displayName": "إقامة ابن جازر",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.03596372007075703,
+        "bbox": [
+          10.20678,
+          36.733266,
+          10.209331,
+          36.735942
+        ],
+        "contextAliases": [
+          "Délégation El Mourouj",
+          "El Mourouj",
+          "El Mourouj (1)",
+          "المروج 1",
+          "معتمدية المروج"
+        ],
+        "delegationId": 400,
+        "governorateId": 349,
+        "hasBoundary": true,
+        "id": "osm:way:379347133",
+        "kind": "residential",
+        "lat": 36.734463,
+        "length": 252,
+        "lng": 10.207777,
+        "name": "Résidence Ibn Jazar",
+        "offset": 5497284,
+        "parentName": "المروج 1",
+        "pickerGroupId": "osm:way:379347133",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:379347133",
+        "nameAr": "إقامة ابن جازر",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "addr:city": "Mourouj 1",
+          "addr:postcode": "2074",
+          "addr:street": "Avenue des martyrs",
+          "landuse": "residential",
+          "name": "Résidence Ibn Jazar"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.03596372007075703,
+        "currentBbox": [
+          10.20678,
+          36.733266,
+          10.209331,
+          36.735942
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 30
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:379347133",
+          "members": [
+            "osm:way:379347133"
+          ],
+          "name": "Résidence Ibn Jazar",
+          "ownerId": "osm:way:379347133"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:499076286",
+      "displayName": "إقامة ليكسيلانس",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.004197214178880545,
+        "bbox": [
+          10.182169,
+          36.896252,
+          10.183629,
+          36.896821
+        ],
+        "contextAliases": [
+          "Délégation Raoued",
+          "Jaafar",
+          "Raoued",
+          "جعفر",
+          "معتمدية رواد"
+        ],
+        "delegationId": 631,
+        "governorateId": 358,
+        "hasBoundary": true,
+        "id": "osm:way:499076286",
+        "kind": "residential",
+        "lat": 36.896396,
+        "length": 68,
+        "lng": 10.182572,
+        "name": "Résidence l'excellence",
+        "offset": 5505724,
+        "parentName": "جعفر",
+        "pickerGroupId": "osm:way:499076286",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:499076286",
+        "nameAr": "إقامة ليكسيلانس",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence l'excellence"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.004197214178880545,
+        "currentBbox": [
+          10.182169,
+          36.896252,
+          10.183629,
+          36.896821
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 7
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:499076286",
+          "members": [
+            "osm:way:499076286"
+          ],
+          "name": "Résidence l'excellence",
+          "ownerId": "osm:way:499076286"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:535216233",
+      "displayName": "إقامة فرح",
+      "current": {
+        "aliases": [
+          "Résidence Farah"
+        ],
+        "areaKm2": 0.003933290133883315,
+        "bbox": [
+          10.276688,
+          36.856694,
+          10.277813,
+          36.857483
+        ],
+        "contextAliases": [
+          "Kram",
+          "Le Kram",
+          "Sidi Fredj",
+          "الكرم",
+          "سيدي فرج"
+        ],
+        "delegationId": 532,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:535216233",
+        "kind": "residential",
+        "lat": 36.857198,
+        "length": 76,
+        "lng": 10.277368,
+        "name": "إقامة فرح",
+        "offset": 5507060,
+        "parentName": "سيدي فرج",
+        "pickerGroupId": "osm:way:535216233",
+        "sourceId": "osm"
+      },
+      "overlay": null,
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "إقامة فرح",
+          "name:ar": "إقامة فرح",
+          "name:fr": "Résidence Farah"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.003933290133883315,
+        "currentBbox": [
+          10.276688,
+          36.856694,
+          10.277813,
+          36.857483
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 8
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:535216233",
+          "members": [
+            "osm:way:535216233"
+          ],
+          "name": "إقامة فرح",
+          "ownerId": "osm:way:535216233"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:535367874",
+      "displayName": "إقامة ديار السلام",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.007006806988796787,
+        "bbox": [
+          10.261463,
+          36.856118,
+          10.262781,
+          36.857168
+        ],
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "Taieb Mhiri",
+          "الطيب المهيري",
+          "الطيب مهيري",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "delegationId": 532,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:535367874",
+        "kind": "residential",
+        "lat": 36.856791,
+        "length": 100,
+        "lng": 10.26213,
+        "name": "Résidence Diar Essalem",
+        "offset": 5507136,
+        "parentName": "الطيب المهيري",
+        "pickerGroupId": "osm:way:535367874",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:535367874",
+        "nameAr": "إقامة ديار السلام",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "landuse": "residential",
+          "name": "Résidence Diar Essalem"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.007006806988796787,
+        "currentBbox": [
+          10.261463,
+          36.856118,
+          10.262781,
+          36.857168
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 11
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:535367874",
+          "members": [
+            "osm:way:535367874"
+          ],
+          "name": "Résidence Diar Essalem",
+          "ownerId": "osm:way:535367874"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    },
+    {
+      "id": "osm:way:825272933",
+      "displayName": "إقامة حدائق قمرت",
+      "current": {
+        "aliases": [],
+        "areaKm2": 0.018088473897162456,
+        "bbox": [
+          10.29893,
+          36.906811,
+          10.300949,
+          36.908447
+        ],
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "Gammarth",
+          "La Marsa",
+          "قمرت",
+          "معتمدية المرسى"
+        ],
+        "delegationId": 386,
+        "governorateId": 342,
+        "hasBoundary": true,
+        "id": "osm:way:825272933",
+        "kind": "residential",
+        "lat": 36.907542,
+        "length": 140,
+        "lng": 10.299963,
+        "name": "Résidence les Jardins de Gammarth",
+        "offset": 5525588,
+        "parentName": "قمرت",
+        "pickerGroupId": "osm:way:825272933",
+        "sourceId": "osm"
+      },
+      "overlay": {
+        "id": "osm:way:825272933",
+        "nameAr": "إقامة حدائق قمرت",
+        "searchAliases": []
+      },
+      "original": {
+        "kind": "residential",
+        "tags": {
+          "contact:facebook": "https://www.facebook.com/lesjardinsdegammarth/",
+          "landuse": "residential",
+          "name": "Résidence les Jardins de Gammarth"
+        }
+      },
+      "geometry": {
+        "currentAreaKm2": 0.018088473897162456,
+        "currentBbox": [
+          10.29893,
+          36.906811,
+          10.300949,
+          36.908447
+        ],
+        "currentHasBoundary": true,
+        "originalType": "MultiPolygon",
+        "originalVertexCount": 16
+      },
+      "currentOwners": [
+        {
+          "catalogId": "osm:way:825272933",
+          "members": [
+            "osm:way:825272933"
+          ],
+          "name": "Résidence les Jardins de Gammarth",
+          "ownerId": "osm:way:825272933"
+        }
+      ],
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidenceExtra": null
+    }
+  ],
+  "preservedScreenedIds": [
+    "municipal:bouarada:cite_18",
+    "osm:node:287612727",
+    "osm:node:6681328578",
+    "osm:relation:7118028",
+    "osm:way:158297973",
+    "osm:way:129273870",
+    "osm:way:144034985",
+    "osm:way:391586656",
+    "osm:way:663536803",
+    "osm:way:702665307"
+  ],
+  "evidence": {
+    "originalScope": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\residential-complexes-full-screen-20260920\\supported-scope-proposal-interim.json",
+      "sha256": "b3e2df5f4744c0418a165630957a899979666d4496edbb56c0226b9f0702049a",
+      "bytes": 62686
+    },
+    "finalDisposition": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\residential-complexes-full-screen-20260920\\final-disposition.json",
+      "sha256": "54609f0f3e3f357dbd5c70004d81ada6d5fd944607144d33af66d3b2652b10f6",
+      "bytes": 55263
+    },
+    "propertyHistoryFiles": [
+      {
+        "file": "scripts/neighborhoods/exclusion-reviews/residential-complexes-20260920/way-100904291-history.json",
+        "sha256": "d72348bc10a2c8dd4dbef12f44368f6a49dd57305f601fbe1a47e5e067137f3d",
+        "bytes": 734
+      },
+      {
+        "file": "scripts/neighborhoods/exclusion-reviews/residential-complexes-20260920/way-191436024-history.json",
+        "sha256": "4190df331b549a0cd48df96f3b29c208ee05e113908f79f31a50dc1902134f1f",
+        "bytes": 1222
+      }
+    ],
+    "priorTwoPropertyReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-presidential-property-exclusion-20260920\\handoff.json",
+      "sha256": "0de7fa8c469012fe0501a2b9c672799936010d02fe427d9c0af3508edd71fa3f",
+      "bytes": 11726
+    },
+    "unchangedClosureReview": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\residences27-two-groups-integration-20260920\\active-closure-review.json",
+      "sha256": "463a23e226219826a9ca4ca1fffda95bbc4a05c4999703d5a030cde462db6455",
+      "bytes": 17478
+    }
+  },
+  "qualification": "Exact mapped residential complexes/estates and named properties are outside the locality product scope. No claim of nonexistence, legal ownership, certified boundary or invented replacement. Original source and review bytes remain historical evidence. Source labels containing residence are not by themselves exclusion proof.",
+  "priorCarthageHold": "The unchanged Carthage exclusion proof held Presidential Residences for later review; this accepted exact-ID property review supersedes that limited scope hold without rewriting the old proof or curation."
+}

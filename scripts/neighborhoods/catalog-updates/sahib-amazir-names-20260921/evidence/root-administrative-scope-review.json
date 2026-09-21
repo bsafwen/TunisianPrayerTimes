@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "status": "THREE_WHOLE_IMADA_CORRESPONDENCES_VISUALLY_SUPPORTED_NOT_INSTALLED",
+  "atUtc": "2026-09-21T05:13:56.482765+00:00",
+  "primarySource": {
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7096460",
+      "officialCode": "155953",
+      "conclusion": "whole_imada",
+      "pdfPage": 75,
+      "jortPage": 5172,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "صاحب الجبل الجوفية",
+      "circleName": "صاحب الجبل الجوفية",
+      "delegationCode": "1559",
+      "delegationName": "الهوارية",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "visualEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-75.png",
+        "sha256": "281d411fb0233042bcecdf4411046fe4979f5d7bf184a7bc96ac16a0ee9c0b98"
+      },
+      "reading": "Direct full-page visual reading: exactly one imada row maps to one identically named electoral-circle row with one seat. No split suffix or combined neighboring imada. Parent cell covers the row. North and South appear separately on page75; Amazir first GabesSud row page63."
+    },
+    {
+      "id": "osm:relation:7095947",
+      "officialCode": "155954",
+      "conclusion": "whole_imada",
+      "pdfPage": 75,
+      "jortPage": 5172,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "صاحب الجبل القبلية",
+      "circleName": "صاحب الجبل القبلية",
+      "delegationCode": "1559",
+      "delegationName": "الهوارية",
+      "governorateCode": "15",
+      "governorateName": "نابل",
+      "visualEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\review-75.png",
+        "sha256": "281d411fb0233042bcecdf4411046fe4979f5d7bf184a7bc96ac16a0ee9c0b98"
+      },
+      "reading": "Direct full-page visual reading: exactly one imada row maps to one identically named electoral-circle row with one seat. No split suffix or combined neighboring imada. Parent cell covers the row. North and South appear separately on page75; Amazir first GabesSud row page63."
+    },
+    {
+      "id": "osm:relation:7145415",
+      "officialCode": "515357",
+      "conclusion": "whole_imada",
+      "pdfPage": 63,
+      "jortPage": 5160,
+      "annex": 1,
+      "table": "A",
+      "imadaName": "الأمازير",
+      "circleName": "الأمازير",
+      "delegationCode": "5153",
+      "delegationName": "قابس الجنوبية",
+      "governorateCode": "51",
+      "governorateName": "قابس",
+      "visualEvidence": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\scope-page-63.png",
+        "sha256": "fa50f430b255c91c53b54abdc964532b149b8b21c2350185bc2abbc1e779af3c"
+      },
+      "reading": "Direct full-page visual reading: exactly one imada row maps to one identically named electoral-circle row with one seat. No split suffix or combined neighboring imada. Parent cell covers the row. North and South appear separately on page75; Amazir first GabesSud row page63."
+    }
+  ],
+  "note": "The PDF table pages are raster scans. Text search returned no target hits; that result is not evidence of absence. Used cached page75 and rendered locator pages62-64; visually found GabesSud/Amazir on63. This supports administrative scope of the2023 maps only and does not certify current survey accuracy."
+}

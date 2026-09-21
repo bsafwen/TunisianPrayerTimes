@@ -1,0 +1,654 @@
+{
+  "adoptionApproval": false,
+  "assessment": "bounded_read_only_impact_assessment",
+  "binaryVersion": 1,
+  "candidateGeometryAssessment": [
+    {
+      "areaDeltaKm2": 4.949751936322855e-05,
+      "candidateId": "osm:relation:7095947",
+      "candidateKey": "sahib-south",
+      "countryContainsQuantized": true,
+      "countryContainsSource": true,
+      "quantizedAreaDeg2": 0.0034862060520000396,
+      "quantizedAreaKm2": 34.511591553698665,
+      "quantizedGeometryType": "Polygon",
+      "quantizedStats": {
+        "polygonCount": 1,
+        "ringCount": 1,
+        "type": "Polygon",
+        "vertexCount": 362
+      },
+      "quantizedValid": true,
+      "sourceAreaDeg2": 0.0034862010405644715,
+      "sourceAreaKm2": 34.5115420561793,
+      "sourceGeometryType": "Polygon",
+      "sourceStats": {
+        "polygonCount": 1,
+        "ringCount": 1,
+        "type": "Polygon",
+        "vertexCount": 362
+      },
+      "sourceValid": true,
+      "targetId": "osm:relation:7095947"
+    },
+    {
+      "areaDeltaKm2": 3.2654672018850306e-05,
+      "candidateId": "osm:relation:7145415",
+      "candidateKey": "amazir",
+      "countryContainsQuantized": true,
+      "countryContainsSource": true,
+      "quantizedAreaDeg2": 0.003342348646999908,
+      "quantizedAreaKm2": 34.43847398469294,
+      "quantizedGeometryType": "Polygon",
+      "quantizedStats": {
+        "polygonCount": 1,
+        "ringCount": 1,
+        "type": "Polygon",
+        "vertexCount": 284
+      },
+      "quantizedValid": true,
+      "sourceAreaDeg2": 0.0033423454806483922,
+      "sourceAreaKm2": 34.43844133002092,
+      "sourceGeometryType": "Polygon",
+      "sourceStats": {
+        "polygonCount": 1,
+        "ringCount": 1,
+        "type": "Polygon",
+        "vertexCount": 284
+      },
+      "sourceValid": true,
+      "targetId": "osm:relation:7145415"
+    }
+  ],
+  "configPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\catalog-successor-integration-20260921\\impact-config.json",
+  "conflicts": {
+    "addedInvolvingTargets": [
+      {
+        "ids": [
+          "osm:relation:7095873",
+          "osm:relation:7095947"
+        ],
+        "intersectionKm2": 2.265771237301722,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 36.984536000000006,
+          "lng": 11.008135700935702
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7095947",
+          "osm:relation:7096460"
+        ],
+        "intersectionKm2": 0.722199904935353,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 36.9931535,
+          "lng": 10.966977627182771
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7095947",
+          "osm:relation:7096632"
+        ],
+        "intersectionKm2": 0.015785259761548168,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 36.961017,
+          "lng": 11.014410482670208
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7095947",
+          "osm:relation:7097976"
+        ],
+        "intersectionKm2": 0.8991505695673244,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 36.971321,
+          "lng": 10.91866269216064
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7095947",
+          "osm:relation:7098804"
+        ],
+        "intersectionKm2": 0.01369873478053047,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 36.958584,
+          "lng": 11.006077785714284
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7145415",
+          "osm:relation:7145419"
+        ],
+        "intersectionKm2": 0.0295980325942244,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 33.747549500000005,
+          "lng": 10.067270317753636
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7145415",
+          "osm:relation:7145421"
+        ],
+        "intersectionKm2": 0.3183073613364978,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 33.7497695,
+          "lng": 10.01263183547533
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7145415",
+          "osm:relation:7145430"
+        ],
+        "intersectionKm2": 0.43230648575393127,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 33.7230545,
+          "lng": 10.02303460508207
+        }
+      }
+    ],
+    "afterCount": 463,
+    "beforeCount": 455,
+    "changedInvolvingTargets": [],
+    "removedInvolvingTargets": [],
+    "unaffectedPairCount": 455,
+    "unaffectedPairsUnchanged": true
+  },
+  "containmentChanges": {
+    "counts": {
+      "currentFeatureFullPolygons": 3,
+      "currentFeatureStoredPoints": 0,
+      "sourcePointNodes": 0
+    },
+    "currentFeatureFullPolygons": [
+      {
+        "featureId": "osm:relation:7095947",
+        "featureName": "صاحب الجبل جنوبية",
+        "newContainingTargets": [],
+        "oldContainingTargets": [
+          "osm:relation:7095947"
+        ]
+      },
+      {
+        "featureId": "osm:relation:7145415",
+        "featureName": "الموازير",
+        "newContainingTargets": [],
+        "oldContainingTargets": [
+          "osm:relation:7145415"
+        ]
+      },
+      {
+        "featureId": "osm:way:751394002",
+        "featureName": "أبان",
+        "newContainingTargets": [
+          "osm:relation:7095947"
+        ],
+        "oldContainingTargets": []
+      }
+    ],
+    "currentFeatureStoredPoints": [],
+    "method": "covers",
+    "sourcePointNodes": []
+  },
+  "coordinateScale": 1000000.0,
+  "counts": {
+    "availableTimetables": 258,
+    "currentFeatures": 3483,
+    "excludedUnchangedGeometry": 1,
+    "geometryReplacements": 2,
+    "nativeAreas": 3018,
+    "nativeNodes": 1742,
+    "targetRecords": 3
+  },
+  "directory": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\catalog-successor-integration-20260921",
+  "evidenceNeedingReview": [],
+  "excludedTargetId": "osm:relation:7096460",
+  "holds": [],
+  "inputBytesPreserved": true,
+  "inputHashes": {
+    "binary": {
+      "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+    },
+    "candidateDecision": {
+      "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\root-map-candidate-decision.json",
+      "sha256": "e1273532f72d89bb904b3f69a09e9bdcf751c49ca6a001851ac7e977ff87e176"
+    },
+    "compiler": {
+      "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "114e1cbf4931ea8d7383896d9cb56c9b49009f2e874e3e2a5e13d1b10cf233fe"
+    },
+    "governors": {
+      "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "7a48554dd59fc69ad27b9724b2bd7215c5651046135537c7019881f56fb363af"
+    },
+    "metadata": {
+      "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "504613a8026e091ebb10397a661d15c8b5e4c1091c7c2aeee00349557a67e3f3"
+    },
+    "native": {
+      "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    }
+  },
+  "nameAliasCollisions": {
+    "automaticMerge": false,
+    "collisions": [],
+    "evidenceNeedingReview": false
+  },
+  "nameContextDependencies": {
+    "dependencies": [
+      {
+        "featureId": "osm:node:1374298081",
+        "field": "contextAliases",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:1374298081",
+        "field": "parentName",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:1374298083",
+        "field": "contextAliases",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:1374298083",
+        "field": "parentName",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:1374298091",
+        "field": "contextAliases",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:1374298091",
+        "field": "parentName",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:7025729391",
+        "field": "contextAliases",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:7025729391",
+        "field": "parentName",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:7025761781",
+        "field": "contextAliases",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:7025761781",
+        "field": "parentName",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:7025787725",
+        "field": "contextAliases",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:node:7025787725",
+        "field": "parentName",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:relation:7095947",
+        "field": "name",
+        "value": "صاحب الجبل جنوبية"
+      },
+      {
+        "featureId": "osm:relation:7096460",
+        "field": "name",
+        "value": "صاحب الجبل القبلية"
+      },
+      {
+        "featureId": "osm:relation:7145415",
+        "field": "name",
+        "value": "الموازير"
+      },
+      {
+        "featureId": "osm:way:751396179",
+        "field": "contextAliases",
+        "value": "صاحب الجبل جنوبية"
+      },
+      {
+        "featureId": "osm:way:751396179",
+        "field": "parentName",
+        "value": "صاحب الجبل جنوبية"
+      },
+      {
+        "featureId": "osm:way:751396180",
+        "field": "contextAliases",
+        "value": "صاحب الجبل جنوبية"
+      },
+      {
+        "featureId": "osm:way:751396180",
+        "field": "parentName",
+        "value": "صاحب الجبل جنوبية"
+      }
+    ],
+    "dependencyCount": 19,
+    "featuresScanned": 3483,
+    "oldNames": [
+      "الموازير",
+      "صاحب الجبل القبلية",
+      "صاحب الجبل جنوبية"
+    ]
+  },
+  "records": [
+    {
+      "currentMetadata": {
+        "aliases": [
+          "Saheb El Jebel Nord"
+        ],
+        "areaKm2": 38.21193759533948,
+        "bbox": [
+          10.893316,
+          36.988779,
+          10.985926,
+          37.054594
+        ],
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "معتمدية الهوارية"
+        ],
+        "delegationId": 466,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7096460",
+        "kind": "sector",
+        "lat": 37.021662,
+        "lng": 10.943313,
+        "name": "صاحب الجبل القبلية",
+        "parentName": "معتمدية الهوارية",
+        "pickerGroupId": "osm:relation:7096460",
+        "sourceId": "osm"
+      },
+      "geometryReplaced": false,
+      "geometryUnchanged": true,
+      "manualPointIdHold": false,
+      "nameEntry": {
+        "aliases": [
+          "Saheb El Jebel Nord",
+          "صاحب الجبل الجوفية"
+        ],
+        "id": "osm:relation:7096460",
+        "name": "صاحب الجبل الشمالية"
+      },
+      "nativeSourceAvailability": {
+        "areaId": "osm:relation:7096460",
+        "available": true
+      },
+      "nearestAvailableTimetable": {
+        "distanceKm": 7.21116293546528,
+        "id": 466,
+        "lat": 37.055,
+        "lng": 11.013
+      },
+      "nearestCurrentSource": {
+        "distanceKm": 0.3916934573980339,
+        "groupMembers": [
+          "osm:node:1374298081"
+        ],
+        "id": "osm:node:1374298081",
+        "name": "غرمان",
+        "pickerGroupId": "osm:node:1374298081"
+      },
+      "proposedMetadata": {
+        "aliases": [
+          "Saheb El Jebel Nord",
+          "صاحب الجبل الجوفية"
+        ],
+        "areaKm2": 38.21193759533948,
+        "bbox": [
+          10.893316,
+          36.988779,
+          10.985926,
+          37.054594
+        ],
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "معتمدية الهوارية"
+        ],
+        "delegationId": 466,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7096460",
+        "kind": "sector",
+        "lat": 37.021662,
+        "lng": 10.943313,
+        "name": "صاحب الجبل الشمالية",
+        "parentName": "معتمدية الهوارية",
+        "pickerGroupId": "osm:relation:7096460",
+        "sourceId": "osm"
+      },
+      "targetGroupMembers": [
+        "osm:relation:7096460"
+      ],
+      "targetId": "osm:relation:7096460"
+    },
+    {
+      "currentMetadata": {
+        "aliases": [
+          "Saheb El Jebel Sud"
+        ],
+        "areaKm2": 40.83202132704734,
+        "bbox": [
+          10.909181,
+          36.931684,
+          11.019301,
+          37.004609
+        ],
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "معتمدية الهوارية"
+        ],
+        "delegationId": 466,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7095947",
+        "kind": "sector",
+        "lat": 36.968263,
+        "lng": 10.967657,
+        "name": "صاحب الجبل جنوبية",
+        "parentName": "معتمدية الهوارية",
+        "pickerGroupId": "osm:relation:7095947",
+        "sourceId": "osm"
+      },
+      "geometryReplaced": true,
+      "geometryUnchanged": false,
+      "manualPointIdHold": false,
+      "nameEntry": {
+        "aliases": [
+          "Saheb El Jebel Sud",
+          "صاحب الجبل الجنوبية",
+          "صاحب الجبل جنوبية"
+        ],
+        "id": "osm:relation:7095947",
+        "name": "صاحب الجبل القبلية"
+      },
+      "nativeSourceAvailability": {
+        "areaId": "osm:relation:7095947",
+        "available": true
+      },
+      "nearestAvailableTimetable": {
+        "distanceKm": 9.540953453171596,
+        "id": 466,
+        "lat": 37.055,
+        "lng": 11.013
+      },
+      "nearestCurrentSource": {
+        "distanceKm": 0.43436666343170494,
+        "groupMembers": [
+          "osm:way:751396179"
+        ],
+        "id": "osm:way:751396179",
+        "name": "المخاطرية",
+        "pickerGroupId": "osm:way:751396179"
+      },
+      "proposedMetadata": {
+        "aliases": [
+          "Saheb El Jebel Sud",
+          "صاحب الجبل الجنوبية",
+          "صاحب الجبل جنوبية"
+        ],
+        "areaKm2": 34.511591553698665,
+        "bbox": [
+          10.909069,
+          36.954457,
+          11.023526,
+          37.004834
+        ],
+        "contextAliases": [
+          "Délégation El Haouaria",
+          "El Haouaria",
+          "معتمدية الهوارية"
+        ],
+        "delegationId": 466,
+        "governorateId": 350,
+        "hasBoundary": true,
+        "id": "osm:relation:7095947",
+        "kind": "sector",
+        "lat": 36.979522,
+        "lng": 10.96189,
+        "name": "صاحب الجبل القبلية",
+        "parentName": "معتمدية الهوارية",
+        "pickerGroupId": "osm:relation:7095947",
+        "sourceId": "osm"
+      },
+      "targetGroupMembers": [
+        "osm:relation:7095947"
+      ],
+      "targetId": "osm:relation:7095947"
+    },
+    {
+      "currentMetadata": {
+        "aliases": [
+          "El Mouazir"
+        ],
+        "areaKm2": 42.19498058788498,
+        "bbox": [
+          9.938021,
+          33.714275,
+          10.070979,
+          33.787985
+        ],
+        "contextAliases": [
+          "Délégation Gabès Sud",
+          "Gabès Sud",
+          "معتمدية قابس الجنوبية"
+        ],
+        "delegationId": 1023,
+        "governorateId": 347,
+        "hasBoundary": true,
+        "id": "osm:relation:7145415",
+        "kind": "sector",
+        "lat": 33.75112,
+        "lng": 9.974771,
+        "name": "الموازير",
+        "parentName": "معتمدية قابس الجنوبية",
+        "pickerGroupId": "osm:relation:7145415",
+        "sourceId": "osm"
+      },
+      "geometryReplaced": true,
+      "geometryUnchanged": false,
+      "manualPointIdHold": false,
+      "nameEntry": {
+        "aliases": [
+          "El Amazir",
+          "الموازير",
+          "El Mouazir"
+        ],
+        "id": "osm:relation:7145415",
+        "name": "الأمازير"
+      },
+      "nativeSourceAvailability": {
+        "areaId": "osm:relation:7145415",
+        "available": true
+      },
+      "nearestAvailableTimetable": {
+        "distanceKm": 8.909476533587892,
+        "id": 1023,
+        "lat": 33.67,
+        "lng": 9.99
+      },
+      "nearestCurrentSource": {
+        "distanceKm": 6.1492035707236665,
+        "groupMembers": [
+          "osm:relation:7145421",
+          "osm:way:185560569"
+        ],
+        "id": "osm:relation:7145421",
+        "name": "المدو",
+        "pickerGroupId": "osm:relation:7145421"
+      },
+      "proposedMetadata": {
+        "aliases": [
+          "El Amazir",
+          "الموازير",
+          "El Mouazir"
+        ],
+        "areaKm2": 34.43847398469294,
+        "bbox": [
+          9.953941,
+          33.715403,
+          10.070965,
+          33.784856
+        ],
+        "contextAliases": [
+          "Délégation Gabès Sud",
+          "Gabès Sud",
+          "معتمدية قابس الجنوبية"
+        ],
+        "delegationId": 1023,
+        "governorateId": 347,
+        "hasBoundary": true,
+        "id": "osm:relation:7145415",
+        "kind": "sector",
+        "lat": 33.750124,
+        "lng": 9.989557,
+        "name": "الأمازير",
+        "parentName": "معتمدية قابس الجنوبية",
+        "pickerGroupId": "osm:relation:7145415",
+        "sourceId": "osm"
+      },
+      "targetGroupMembers": [
+        "osm:relation:7145415"
+      ],
+      "targetId": "osm:relation:7145415"
+    }
+  ],
+  "replacementTargetIds": [
+    "osm:relation:7095947",
+    "osm:relation:7145415"
+  ],
+  "schemaVersion": 1,
+  "targetIds": [
+    "osm:relation:7096460",
+    "osm:relation:7095947",
+    "osm:relation:7145415"
+  ]
+}

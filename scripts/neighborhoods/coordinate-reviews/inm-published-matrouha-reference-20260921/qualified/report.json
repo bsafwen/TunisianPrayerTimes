@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "status": "QUALIFICATION_ONLY_NO_APPROVAL",
+  "inputPins": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "540a48c17888518d28a9b5e586f3e7ec7c8d7f7051c8b9f03564e7e262bdfff8"
+    },
+    "binary": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+    },
+    "governors": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "6d0214a8870529acbe50e086a77d769b4dcaf6e31f9b31a816854fd31f51a051"
+    },
+    "sourceCache": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    "candidates": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\candidates-current.json",
+      "sha256": "278502f77496ff325e947e11db7e78700c0edf9767e90fbd39ea2afad509a3b1"
+    },
+    "compiler": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "caaf78f4b2dc0823fdf86620c8b842408c5401ded386ba5658c08e88efb193fe"
+    },
+    "receipts": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses.jsonl",
+      "sha256": "5ef18afd6eded9e9a5b91424b51a0f7eef83908444e16d3628c6beb853c3912c"
+    },
+    "adapter": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\reference-pair-automation-20260921\\qualify_reference_pairs.py",
+      "sha256": "9cc51d32e7ed6dc1d071a205473e491faf6a86be3d6e1f5d47454c43069cdc5c"
+    }
+  },
+  "summary": {
+    "candidateCount": 1,
+    "qualifiedCount": 1,
+    "failedCount": 0
+  },
+  "records": [
+    {
+      "delegationId": 486,
+      "qualified": true,
+      "failure": null,
+      "originalEvidence": {
+        "prayer": {
+          "body": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\486-prayer-attempt01-0a3cba2ac92479e5.json",
+            "sha256": "0a3cba2ac92479e584a9cc331547b42cd0b6395368dd928aeb72daa5602b5ec1"
+          },
+          "retrieval": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\receipts\\486-prayer-attempt01.json",
+            "sha256": "c59fab23abe2692544bca432205807089aa08d0927050f47c16c73610ca01b37"
+          },
+          "disposition": "fresh"
+        },
+        "sun": {
+          "body": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\responses\\486-sun-attempt01-5c19f429b3508dcd.json",
+            "sha256": "5c19f429b3508dcd8d9caad901afe7f0aa5a592d05ebe84a51984331a2ba78a5"
+          },
+          "retrieval": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\all258-inm-reference-audit-20260919\\receipts\\486-sun-attempt01.json",
+            "sha256": "fa7589512e5ddb50bc3b75f5e014ab030b5e8125ec2f0e476a031f0c3b1266e3"
+          },
+          "disposition": "fresh"
+        }
+      },
+      "approval": "none",
+      "correction": {
+        "delegationId": 486,
+        "expectedGovernorateId": 1012,
+        "expectedNames": {
+          "nomAr": "المطروحة",
+          "nomFr": "Matrouha",
+          "nomEn": "Matrouha"
+        },
+        "referenceKind": "inm_published_reference",
+        "original": {
+          "lat": 33.3497,
+          "lng": 7.7825
+        },
+        "proposed": {
+          "lat": 33.35,
+          "lng": 7.775
+        },
+        "inmEvidence": {
+          "serviceDate": "2026-09-19",
+          "prayer": {
+            "file": "evidence/486-prayer.json",
+            "sha256": "0a3cba2ac92479e584a9cc331547b42cd0b6395368dd928aeb72daa5602b5ec1",
+            "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/486/"
+          },
+          "sun": {
+            "file": "evidence/486-sun.json",
+            "sha256": "5c19f429b3508dcd8d9caad901afe7f0aa5a592d05ebe84a51984331a2ba78a5",
+            "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/486/"
+          },
+          "retrievalManifest": {
+            "file": "retrieval-manifest.json",
+            "sha256": "0b97ee7700e25a70f13660cd1a2d6ae298229c4f54d3e01becc5847acbee289a"
+          }
+        }
+      },
+      "validatedReference": {
+        "delegationId": 486,
+        "governorateId": 1012,
+        "lat": 33.35,
+        "lng": 7.775,
+        "serviceDate": "2026-09-19",
+        "sourceEvidence": {
+          "prayer": {
+            "file": "evidence/486-prayer.json",
+            "sha256": "0a3cba2ac92479e584a9cc331547b42cd0b6395368dd928aeb72daa5602b5ec1",
+            "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/486/"
+          },
+          "sun": {
+            "file": "evidence/486-sun.json",
+            "sha256": "5c19f429b3508dcd8d9caad901afe7f0aa5a592d05ebe84a51984331a2ba78a5",
+            "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/486/"
+          },
+          "retrievalManifest": {
+            "file": "retrieval-manifest.json",
+            "sha256": "0b97ee7700e25a70f13660cd1a2d6ae298229c4f54d3e01becc5847acbee289a"
+          }
+        }
+      }
+    }
+  ],
+  "qualification": "Cached source identity/date/time/coordinate checks only; no new HTTP fetch or geographic approval."
+}

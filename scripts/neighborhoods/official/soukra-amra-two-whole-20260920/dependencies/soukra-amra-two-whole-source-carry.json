@@ -1,0 +1,517 @@
+{
+  "schemaVersion": 1,
+  "status": "WORK_ONLY_SOUKRA_AMRA_TWO_BOUNDARY_SOURCE_CARRY",
+  "notDeployable": true,
+  "current": false,
+  "historicalCatalog": false,
+  "scope": "Soukra532 typed successor applying two authenticated whole-sector replacements and removing exact alias-only name_tags decision; original source inventory remains unchanged; fixed village context updated to current administrative projection.",
+  "activePointRuleId": "osm:node:7390818324",
+  "oldProof": {
+    "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/node-7390818324-proof.json",
+    "sha256": "2e948c8d6a9499ea37339d3e9e6842638ee3d2c758e746e548141154840e689b",
+    "bytes": 107307
+  },
+  "oldBaseline": {
+    "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/derived-pre-display-baseline.json",
+    "sha256": "b5f61224ffaab98420e134860635611a64fee11aeb8a1f7d71e3d0ce510e1338",
+    "bytes": 2836476
+  },
+  "oldCarry": {
+    "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/jawhara-source-phase-carry.json",
+    "sha256": "b0674255527f6af2ee8fa3ddb7d2d4fb3950f734a7a60de7f338a12f068d830e",
+    "bytes": 39820
+  },
+  "newBaseline": {
+    "file": "official/soukra-amra-two-whole-20260920/dependencies/derived-pre-display-baseline.json",
+    "sha256": "3c93a38c16b04237f9861ca8f0c493199a08f52169054c42b83dc42c1b8e3760",
+    "bytes": 2836423
+  },
+  "oldBoundaryManifest": {
+    "file": "official/soukra-amra-two-whole-20260920/evidence/boundarymanifest-before-soukra-amra-two-whole.json",
+    "sha256": "6b1a63cb63ab71521bf0c6a8d7f65f48559320e3162a68b6724399912b68c30e",
+    "bytes": 118117
+  },
+  "newBoundaryManifest": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "f8dfbaf57cdd8a043eb417f237575fd092c6a77d1cfb0768ba016c6835500f11",
+    "bytes": 122679
+  },
+  "newWholeScope": {
+    "file": "official/soukra-amra-two-whole-20260920/accepted-whole-scope-successor.json",
+    "sha256": "d69ade61d3c68077431a43ea15fe9ac15d2c590d44ffafa2968f8eed42c44f75",
+    "bytes": 180079
+  },
+  "newLineageProof": {
+    "file": "official/soukra-amra-two-whole-20260920/append-only-lineage-compatibility.json",
+    "sha256": "2e5dd29064bb8f8458b7f401a3283c76fcbad935d2499ccc1669077b9c2f667b",
+    "bytes": 6627
+  },
+  "changedFields": {
+    "rawCurrent.parentName": {
+      "before": "البساتين",
+      "after": "معتمدية سكرة"
+    },
+    "rawCurrent.contextAliases": {
+      "before": [
+        "Délégation Soukra",
+        "El Bassatine",
+        "El bousten",
+        "La Soukra",
+        "البساتين",
+        "البستان",
+        "معتمدية سكرة"
+      ],
+      "after": [
+        "Délégation Soukra",
+        "La Soukra",
+        "معتمدية سكرة"
+      ]
+    },
+    "preservedSectors[7114902].expectedCuration": {
+      "before": {
+        "id": "osm:relation:7114902",
+        "action": "name_tags",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البساتين",
+          "name:ar": "البساتين",
+          "name:fr": "El Bassatine",
+          "ref:tn:codegeo": "125253"
+        },
+        "nameTags": {
+          "name": "البساتين",
+          "name:ar": "البساتين",
+          "name:fr": "El Bassatine",
+          "alt_name:ar": "البستان",
+          "alt_name:fr": "El bousten"
+        },
+        "reason": "Retain البساتين / El Bassatine for original Soukra code125253, supported by INS2012 and ISIE/JORT2023. Add the exact INS2024 same-code/parent variants البستان / El bousten as search aliases. Preserve original polygon, identity, primary name, coordinates, source532 and existing groups; the village inherits only the new search context.",
+        "evidence": [
+          {
+            "source": "Reviewed exact Soukra sector125253 identity across original source, INS2012/2024 and ISIE/JORT2023; alias-only correction.",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/soukra-bassatine-alias-20260920/proof.json",
+                "sha256": "d117e0bdcd0b61facb990b027a5207e7172a7dd8600c02ad2f01dfca88e5daaf",
+                "bytes": 9457
+              }
+            ]
+          }
+        ]
+      },
+      "after": null
+    },
+    "preservedSectors[7114902].currentMetadata": {
+      "before": {
+        "id": "osm:relation:7114902",
+        "sourceId": "osm",
+        "name": "البساتين",
+        "aliases": [
+          "El Bassatine",
+          "البستان",
+          "El bousten"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سكرة",
+        "contextAliases": [
+          "Délégation Soukra",
+          "La Soukra",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.87628,
+        "lng": 10.231171,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.216997,
+          36.865139,
+          10.245671,
+          36.887692
+        ],
+        "areaKm2": 3.1291807974184263,
+        "pickerGroupId": "osm:relation:7114902",
+        "offset": 937704,
+        "length": 340
+      },
+      "after": {
+        "id": "osm:relation:7114902",
+        "sourceId": "isie-local-sectors-2023-soukra-amra-two-whole",
+        "name": "البساتين",
+        "aliases": [
+          "El Bassatine",
+          "البستان",
+          "El bousten"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سكرة",
+        "contextAliases": [
+          "Délégation Soukra",
+          "La Soukra",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.87628,
+        "lng": 10.231171,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "bbox": [
+          10.216317,
+          36.8642,
+          10.245543,
+          36.887434
+        ],
+        "areaKm2": 3.431426365177615,
+        "pickerGroupId": "osm:relation:7114902",
+        "offset": 937704,
+        "length": 340
+      }
+    },
+    "preservedSectors[7114902].packedGeometrySha256": {
+      "before": "19768b86e4fa28b7e468410591d107338af1285f7178ba2e977ef2decbb136fc",
+      "after": "5a40e114ced4ad8d55cd344e872d0eb13af78781ad4ac8502bf34ec7c72cad2a"
+    },
+    "sourceStates[7114902].expectedCuration": {
+      "before": {
+        "id": "osm:relation:7114902",
+        "action": "name_tags",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البساتين",
+          "name:ar": "البساتين",
+          "name:fr": "El Bassatine",
+          "ref:tn:codegeo": "125253"
+        },
+        "nameTags": {
+          "name": "البساتين",
+          "name:ar": "البساتين",
+          "name:fr": "El Bassatine",
+          "alt_name:ar": "البستان",
+          "alt_name:fr": "El bousten"
+        },
+        "reason": "Retain البساتين / El Bassatine for original Soukra code125253, supported by INS2012 and ISIE/JORT2023. Add the exact INS2024 same-code/parent variants البستان / El bousten as search aliases. Preserve original polygon, identity, primary name, coordinates, source532 and existing groups; the village inherits only the new search context.",
+        "evidence": [
+          {
+            "source": "Reviewed exact Soukra sector125253 identity across original source, INS2012/2024 and ISIE/JORT2023; alias-only correction.",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/soukra-bassatine-alias-20260920/proof.json",
+                "sha256": "d117e0bdcd0b61facb990b027a5207e7172a7dd8600c02ad2f01dfca88e5daaf",
+                "bytes": 9457
+              }
+            ]
+          }
+        ]
+      },
+      "after": null
+    },
+    "sourceStates[7114902].effective": {
+      "before": {
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البساتين",
+          "name:ar": "البساتين",
+          "name:fr": "El Bassatine",
+          "ref:tn:codegeo": "125253",
+          "alt_name:ar": "البستان",
+          "alt_name:fr": "El bousten"
+        },
+        "kind": "sector",
+        "sourceId": "osm",
+        "geometrySha256": "f5a9fe0ed90f6749ed74f6723cd7fceb4f55c52518564ad31265c6e59bf0164d"
+      },
+      "after": {
+        "tags": {
+          "boundary": "administrative",
+          "admin_level": "6",
+          "ref:tn:codegeo": "125253",
+          "name:ar": "البساتين",
+          "name:fr": "El Bassatine",
+          "alt_name": "البستان;El bousten"
+        },
+        "kind": "sector",
+        "sourceId": "isie-local-sectors-2023-soukra-amra-two-whole",
+        "geometrySha256": "43b370f74dc851061c0ad1747e8dd04c015b94131954a87e30f7c9971a917182"
+      }
+    },
+    "curationBindings[7114902]": {
+      "before": {
+        "id": "osm:relation:7114902",
+        "action": "name_tags",
+        "expectedKind": "sector",
+        "expectedTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "البساتين",
+          "name:ar": "البساتين",
+          "name:fr": "El Bassatine",
+          "ref:tn:codegeo": "125253"
+        },
+        "nameTags": {
+          "name": "البساتين",
+          "name:ar": "البساتين",
+          "name:fr": "El Bassatine",
+          "alt_name:ar": "البستان",
+          "alt_name:fr": "El bousten"
+        },
+        "reason": "Retain البساتين / El Bassatine for original Soukra code125253, supported by INS2012 and ISIE/JORT2023. Add the exact INS2024 same-code/parent variants البستان / El bousten as search aliases. Preserve original polygon, identity, primary name, coordinates, source532 and existing groups; the village inherits only the new search context.",
+        "evidence": [
+          {
+            "source": "Reviewed exact Soukra sector125253 identity across original source, INS2012/2024 and ISIE/JORT2023; alias-only correction.",
+            "reviewFiles": [
+              {
+                "file": "name-reviews/soukra-bassatine-alias-20260920/proof.json",
+                "sha256": "d117e0bdcd0b61facb990b027a5207e7172a7dd8600c02ad2f01dfca88e5daaf",
+                "bytes": 9457
+              }
+            ]
+          }
+        ]
+      },
+      "after": null
+    },
+    "acceptedBoundaryReplacements": {
+      "beforeIds": [
+        "osm:relation:7114904"
+      ],
+      "afterIds": [
+        "osm:relation:7114902",
+        "osm:relation:7114904"
+      ]
+    },
+    "reviewedBoundaries": {
+      "before": {
+        "file": "reviewed-boundaries.json",
+        "sha256": "56763d3c272f84ee6f8baa3bc122bdff96b085e414e818fd3165b046ce540421"
+      },
+      "after": {
+        "file": "reviewed-boundaries.json",
+        "sha256": "f8dfbaf57cdd8a043eb417f237575fd092c6a77d1cfb0768ba016c6835500f11",
+        "bytes": 122679
+      }
+    },
+    "rawContextClosure.baselineMetadata": {
+      "before": {
+        "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/derived-pre-display-baseline.json",
+        "sha256": "b5f61224ffaab98420e134860635611a64fee11aeb8a1f7d71e3d0ce510e1338",
+        "bytes": 2836476
+      },
+      "after": {
+        "file": "official/soukra-amra-two-whole-20260920/dependencies/derived-pre-display-baseline.json",
+        "sha256": "3c93a38c16b04237f9861ca8f0c493199a08f52169054c42b83dc42c1b8e3760",
+        "bytes": 2836423
+      }
+    },
+    "rawContextClosure.fullRowRepresentativeSectorCoverage.effective": {
+      "before": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:node:7390818324",
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906",
+        "osm:way:93676034"
+      ],
+      "after": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:relation:7114900",
+        "osm:relation:7114901",
+        "osm:relation:7114902",
+        "osm:relation:7114903",
+        "osm:relation:7114904",
+        "osm:relation:7114905",
+        "osm:relation:7114906",
+        "osm:way:93676034"
+      ]
+    },
+    "rawContextClosure.fullSourcePointCoverage.effective": {
+      "before": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857",
+        "osm:node:7390818324"
+      ],
+      "after": [
+        "osm:node:1080388142",
+        "osm:node:1080390577",
+        "osm:node:1205570513",
+        "osm:node:1205571123",
+        "osm:node:2157169857"
+      ]
+    },
+    "coordinateContextMembership[7114902].effective": {
+      "before": {
+        "point": {
+          "contains": true,
+          "covers": true
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      },
+      "after": {
+        "point": {
+          "contains": false,
+          "covers": false
+        },
+        "base": {
+          "contains": false,
+          "covers": false
+        }
+      }
+    },
+    "protectedRawRecords[7114902]": {
+      "before": {
+        "id": "osm:relation:7114902",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7114902",
+          "sourceId": "osm",
+          "name": "البساتين",
+          "aliases": [
+            "El Bassatine",
+            "البستان",
+            "El bousten"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سكرة",
+          "contextAliases": [
+            "Délégation Soukra",
+            "La Soukra",
+            "معتمدية سكرة"
+          ],
+          "governorateId": 358,
+          "lat": 36.87628,
+          "lng": 10.231171,
+          "delegationId": 532,
+          "hasBoundary": true,
+          "bbox": [
+            10.216997,
+            36.865139,
+            10.245671,
+            36.887692
+          ],
+          "areaKm2": 3.1291807974184263,
+          "pickerGroupId": "osm:relation:7114902",
+          "offset": 937704,
+          "length": 340
+        },
+        "packedGeometrySha256": "19768b86e4fa28b7e468410591d107338af1285f7178ba2e977ef2decbb136fc"
+      },
+      "after": {
+        "id": "osm:relation:7114902",
+        "kind": "sector",
+        "currentMetadata": {
+          "id": "osm:relation:7114902",
+          "sourceId": "isie-local-sectors-2023-soukra-amra-two-whole",
+          "name": "البساتين",
+          "aliases": [
+            "El Bassatine",
+            "البستان",
+            "El bousten"
+          ],
+          "kind": "sector",
+          "parentName": "معتمدية سكرة",
+          "contextAliases": [
+            "Délégation Soukra",
+            "La Soukra",
+            "معتمدية سكرة"
+          ],
+          "governorateId": 358,
+          "lat": 36.87628,
+          "lng": 10.231171,
+          "delegationId": 532,
+          "hasBoundary": true,
+          "bbox": [
+            10.216317,
+            36.8642,
+            10.245543,
+            36.887434
+          ],
+          "areaKm2": 3.431426365177615,
+          "pickerGroupId": "osm:relation:7114902",
+          "offset": 937704,
+          "length": 340
+        },
+        "packedGeometrySha256": "5a40e114ced4ad8d55cd344e872d0eb13af78781ad4ac8502bf34ec7c72cad2a"
+      }
+    },
+    "protectedRawRecords[7390818324].currentMetadata": {
+      "before": {
+        "id": "osm:node:7390818324",
+        "sourceId": "osm",
+        "name": "سكرة",
+        "aliases": [
+          "La Soukra"
+        ],
+        "kind": "village",
+        "parentName": "البساتين",
+        "contextAliases": [
+          "Délégation Soukra",
+          "El Bassatine",
+          "El bousten",
+          "La Soukra",
+          "البساتين",
+          "البستان",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.8749751,
+        "lng": 10.2454267,
+        "delegationId": 532,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:7390818324"
+      },
+      "after": {
+        "id": "osm:node:7390818324",
+        "sourceId": "osm",
+        "name": "سكرة",
+        "aliases": [
+          "La Soukra"
+        ],
+        "kind": "village",
+        "parentName": "معتمدية سكرة",
+        "contextAliases": [
+          "Délégation Soukra",
+          "La Soukra",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.8749751,
+        "lng": 10.2454267,
+        "delegationId": 532,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:7390818324"
+      }
+    }
+  },
+  "preservedRemovedSourceTruth": {
+    "priorCarry": {
+      "file": "exclusion-reviews/apartment-complexes-20260920/typed532-successor/dependencies/jawhara-source-phase-carry.json",
+      "sha256": "b0674255527f6af2ee8fa3ddb7d2d4fb3950f734a7a60de7f338a12f068d830e",
+      "bytes": 39820
+    },
+    "statement": "The prior Jawhara exclusion remains in force. Its exact removed-source receipt and explanation are preserved in the immutable prior carry and are not rewritten or flattened."
+  },
+  "explanation": "The two accepted whole-sector replacements are reflected in the typed532 effective source state. The exact Soukra alias-only name_tags decision is removed and superseded by the accepted boundary replacement aliases. The fixed village point remains at its exact coordinates, name, kind, prayer source 532 and picker group; only its administrative context is updated to the truthful current projection.",
+  "qualification": "Work-only counterfactual verification snapshot. Not deployable, not current, not a historical catalog. No geometry repair, snapping, cuts, fills or neighbor changes."
+}

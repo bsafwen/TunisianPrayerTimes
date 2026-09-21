@@ -1,0 +1,80 @@
+{
+  "files": [
+    {
+      "file": "root-476-visual-review.json",
+      "sha256": "6bb9e63374a8b54da3e701c3bcf5029e658e9cb4191a0dcd71528298c2a4a613",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\root-476-visual-review.json"
+    },
+    {
+      "file": "border-measurement.json",
+      "sha256": "499600fc192053618c7adac5896adc4a984cf47296f0c06f1890a7a92068cd39",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\border-measurement.json"
+    },
+    {
+      "file": "measurement-root-review.json",
+      "sha256": "38c2b491487b45b4d13fff34214be66e264f51d44c2ece8fbb67f977a9d7b148",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\measurement-root-review.json"
+    },
+    {
+      "file": "measure-border-reviewed.py",
+      "sha256": "2b4b5f52f4224211448782dfe191c0dc180ea3f78383478651a8a1ea75c7f8b0",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\measure-border-reviewed.py"
+    },
+    {
+      "file": "paired-adapter-root-review.json",
+      "sha256": "f150bdac7a0d16e5e15c2951714f75a32d6097d4dd7c43c4a2c1b8ab0b4ff434",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\paired-adapter-root-review.json"
+    },
+    {
+      "file": "adapt-qualified-pairs-reviewed.py",
+      "sha256": "6c2b8b4f36754ed18581624412092d382a423f480ac9da3d89d28586f71f2319",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\adapt-qualified-pairs-reviewed.py"
+    },
+    {
+      "file": "capture-emulator-detail-reviewed.py",
+      "sha256": "8f84eb965f0dcec497e86e32c966c8c635293e713dc910708b9cc126841bb82d",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\capture-emulator-detail-reviewed.py"
+    },
+    {
+      "file": "delegation_476-detail-border-z11.json",
+      "sha256": "73b40f78db829fb25ba2b153dc608d58e1b52cb34a1bdf31f93fe8c078ea4bf6",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\border-z11\\delegation_476-detail-border-z11.json"
+    },
+    {
+      "file": "delegation_476-detail-border-z11.png",
+      "sha256": "0851d41f5164a2e23b78fa2f3b1825ed356ac9615e3aba51a07daae4de41821a",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\border-z11\\delegation_476-detail-border-z11.png"
+    },
+    {
+      "file": "delegation_476-detail-coordinate-z11.json",
+      "sha256": "56567afb7dfcf2f5b68f8adb5c59e502bb9e8a6876720e7d974c47a21ca68f29",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\coordinate-z11\\delegation_476-detail-coordinate-z11.json"
+    },
+    {
+      "file": "delegation_476-detail-coordinate-z11.png",
+      "sha256": "46dd86dd2c6b37303f74484851cf0216a1ba2f85eb8aa112f8d1518eb2acf020",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\coordinate-z11\\delegation_476-detail-coordinate-z11.png"
+    },
+    {
+      "file": "delegation_476-detail-expanded-country.json",
+      "sha256": "7c8c5c0ba596801ce52405c691527557549bca42c9efe91960e7a6e7a04e8b43",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\expanded-country\\delegation_476-detail-expanded-country.json"
+    },
+    {
+      "file": "delegation_476-detail-expanded-country.png",
+      "sha256": "a9b6991e59d8b9baae88b944540d4a4fadd42ef54d66703b7927d600ca627669",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\expanded-country\\delegation_476-detail-expanded-country.png"
+    },
+    {
+      "file": "delegation_476-3.json",
+      "sha256": "928f4b6c46af301ca586321c4c814cccdb299f123b0e7a8f61492dd37452ebf4",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_476-3.json"
+    },
+    {
+      "file": "delegation_476-3.png",
+      "sha256": "f3925de4ddbe080f9aa0988304454dd828213172b6f39d68a8853bc537fa93b9",
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_476-3.png"
+    }
+  ],
+  "scope": "Public maps evidence only; no boundary certification."
+}

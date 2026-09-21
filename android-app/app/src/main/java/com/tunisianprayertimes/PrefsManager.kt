@@ -108,18 +108,26 @@ object PrefsManager {
         // Apply only reviewed stable-ID label changes. GPS selections keep the
         // timetable chosen from their actual fix; no representative point is used.
         // Missing or damaged update metadata preserves the saved selection.
-        LocalityRepository.reviewedReplacement(context, localityId)?.let { replacement ->
-            return selection.copy(
+        val replacement = LocalityRepository.reviewedReplacement(context, localityId)
+        val resolved = if (replacement != null) {
+            selection.copy(
                 localityId = replacement.replacementId,
                 name = replacement.name,
                 kind = replacement.kind,
             )
+        } else if (LocalityRepository.isRetired(context, localityId)) {
+            selection.copy(localityId = null, name = null, kind = null)
+        } else {
+            (LocalityRepository.reviewedName(context, localityId)?.let { reviewed ->
+                selection.copy(name = reviewed.name, kind = reviewed.kind)
+            }) ?: selection
         }
-        if (LocalityRepository.isRetired(context, localityId)) {
-            return selection.copy(localityId = null, name = null, kind = null)
-        }
-        val reviewed = LocalityRepository.reviewedName(context, localityId) ?: return selection
-        return selection.copy(name = reviewed.name, kind = reviewed.kind)
+        // Localize last, by the final stable ID. A retired row or an absent
+        // display-name row stays exactly as resolved above.
+        val resolvedLocalityId = resolved.localityId ?: return resolved
+        return LocalityDisplayNames.nameAr(context, resolvedLocalityId)
+            ?.let { resolved.copy(name = it) }
+            ?: resolved
     }
 
     fun observeLocationSelection(context: Context, onChanged: () -> Unit): () -> Unit {

@@ -1,0 +1,63 @@
+{
+  "status": "INSTALLED_DATA_VALIDATED",
+  "at": "2026-09-20T23:20:59.141902+00:00",
+  "supersedesIncompleteReceipt": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\display-name-reviews\\masdour-20260921\\installed-receipt.json",
+    "sha256": "387cebbcefd2c6ddf3f0ebb7232e3183472f78ad076ae36021e1540431a395c4"
+  },
+  "recovery": "Rejected worker output ended with literal backslash-n. Replaced with parsed, validated staged JSON; original malformed output retained outside app.",
+  "before": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\masdour-name-review-20260921\\before-install\\locality-display-names.json",
+    "sha256": "c287581ef8d1610708e11e67861dcd93ed4f7231f2faaa4a47a0794eafaf981e"
+  },
+  "after": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\locality-display-names.json",
+    "sha256": "4f3eca5c90a5cffd7e6bba82d3ca84d7c235de67723d45013f552fd91ae8bd70"
+  },
+  "acceptance": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\display-name-reviews\\masdour-20260921\\acceptance.json",
+    "sha256": "ad07bb034337b6fe069fd02f0037cb53a77a54b02f4ec7778dc1352e57b4f57b"
+  },
+  "conservation": {
+    "existing266OverridesUnchanged": true,
+    "exactlyOneAddedOverride": {
+      "id": "osm:node:1212270314",
+      "nameAr": "المصدور",
+      "searchAliases": [
+        "مَزدُور"
+      ]
+    },
+    "allOtherCatalogPinsUnchanged": [
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+        "sha256": "cb893bfa2d446214e4f6aa50b77c68d952d31f23620ee2441832467ac52c6b7c"
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+        "sha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+        "sha256": "77145339d11170746937cd73c714c52b1717aa3b66e0ad80d26991470f94bebb"
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+        "sha256": "a651245f8c0ca8bc06df90d2047462a51daa1ca55ae79e647058d13b6a88b99e"
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+        "sha256": "64034e6f2af4cfa51a225fc23516ae87894aa44623564ba2358c73a773b5bcc0"
+      },
+      {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+        "sha256": "81d9b10c208ee5caba69ad78230cf28ba1973e731d79c33c41e79d8b754e0fb6"
+      }
+    ]
+  },
+  "checks": {
+    "jsonParsePassed": true,
+    "uniqueOverrideIds": 267,
+    "compile": ":app:compileDebugKotlin succeeded, chunk9ac129; only JSON formatting corrected afterward, no code changes"
+  },
+  "noTestsOrApk": true
+}

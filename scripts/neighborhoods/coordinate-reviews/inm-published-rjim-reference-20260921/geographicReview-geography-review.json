@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "status": "REFERENCE_CONTEXT_REVIEWED",
+  "sourceReport": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-reference-context-20260921\\geography.json",
+    "sha256": "61fa1cb580cba85474b7b659877f7c7f6a478c2f5d33ce6537cd23bd4dce4765"
+  },
+  "referenceOnlyContinuity": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\two-reference-name-successors-20260921\\geographic-evidence-continuity.json",
+    "sha256": "c0324036a1ea53904f1de9dc44abe6f01af3d17850ef8ab4afd1f88f094c44d9"
+  },
+  "currentMetadataSha256": "540a48c17888518d28a9b5e586f3e7ec7c8d7f7051c8b9f03564e7e262bdfff8",
+  "record": {
+    "delegationId": 487,
+    "name": "رجيم معتوق",
+    "expectedGovernorate": {
+      "id": 1012,
+      "nomAr": "قبلي",
+      "nomFr": "Kébili"
+    },
+    "current": {
+      "lat": 33.32,
+      "lng": 8.033
+    },
+    "proposed": {
+      "lat": 33.325,
+      "lng": 8.014
+    },
+    "distanceShiftKm": 1.8508389078859773,
+    "governorateMatch": {
+      "expectedGovernorateId": 1012,
+      "current": {
+        "native": {
+          "status": "match",
+          "contained": true,
+          "expectedNativeGovernorId": "osm:relation:1434950",
+          "reason": null,
+          "contextIds": [
+            "osm:relation:1434950"
+          ]
+        },
+        "active": {
+          "status": "match",
+          "reason": null,
+          "governorateIds": [
+            1012,
+            1012
+          ]
+        },
+        "overall": "match"
+      },
+      "proposed": {
+        "native": {
+          "status": "match",
+          "contained": true,
+          "expectedNativeGovernorId": "osm:relation:1434950",
+          "reason": null,
+          "contextIds": [
+            "osm:relation:1434950"
+          ]
+        },
+        "active": {
+          "status": "match",
+          "reason": null,
+          "governorateIds": [
+            1012
+          ]
+        },
+        "overall": "match"
+      }
+    },
+    "currentActiveContext": [
+      {
+        "id": "osm:relation:7082340",
+        "name": "رجيم معتوق",
+        "kind": "sector",
+        "parentName": "معتمدية رجيم معتوق",
+        "governorateId": 1012,
+        "contextOnly": true,
+        "duplicateName": true
+      },
+      {
+        "id": "osm:way:186759798",
+        "name": "رجيم معتوق",
+        "kind": "residential",
+        "parentName": "معتمدية رجيم معتوق",
+        "governorateId": 1012,
+        "contextOnly": true,
+        "duplicateName": true
+      }
+    ],
+    "proposedActiveContext": [
+      {
+        "id": "osm:relation:7082340",
+        "name": "رجيم معتوق",
+        "kind": "sector",
+        "parentName": "معتمدية رجيم معتوق",
+        "governorateId": 1012,
+        "contextOnly": true,
+        "duplicateName": true
+      }
+    ],
+    "currentNativeContext": [
+      {
+        "id": "osm:relation:7082340",
+        "name": "رجيم معتوق",
+        "adminLevel": "6",
+        "codegeo": "635655"
+      },
+      {
+        "id": "osm:relation:7107872",
+        "name": "معتمدية الفوار",
+        "adminLevel": "5",
+        "codegeo": "6356"
+      },
+      {
+        "id": "osm:relation:1434950",
+        "name": "ولاية قبلي",
+        "adminLevel": "4",
+        "codegeo": "63"
+      },
+      {
+        "id": "osm:relation:192757",
+        "name": "تونس",
+        "adminLevel": "2",
+        "codegeo": null
+      }
+    ],
+    "proposedNativeContext": [
+      {
+        "id": "osm:relation:7082340",
+        "name": "رجيم معتوق",
+        "adminLevel": "6",
+        "codegeo": "635655"
+      },
+      {
+        "id": "osm:relation:7107872",
+        "name": "معتمدية الفوار",
+        "adminLevel": "5",
+        "codegeo": "6356"
+      },
+      {
+        "id": "osm:relation:1434950",
+        "name": "ولاية قبلي",
+        "adminLevel": "4",
+        "codegeo": "63"
+      },
+      {
+        "id": "osm:relation:192757",
+        "name": "تونس",
+        "adminLevel": "2",
+        "codegeo": null
+      }
+    ]
+  },
+  "qualification": "Both points lie within cached Rjim Maatoug sector and Kebili/Tunisia. Legacy native parent El Faouar differs from corrected current parent Rjim Maatoug; no parent/geometry change approved. The proposed point is outside compact residential polygon; use only as published prayer reference."
+}

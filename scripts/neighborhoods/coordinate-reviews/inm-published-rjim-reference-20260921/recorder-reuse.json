@@ -1,0 +1,11 @@
+{
+  "source": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\capture-emulator-detail-reviewed.py",
+    "sha256": "957bb9777d1a4c0ed12d98a62b00ad4f2aea1be9ba53254e4aa395c8f47aea71"
+  },
+  "copy": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rjim-ariana-reference-context-20260921\\capture-emulator-detail-reviewed.py",
+    "sha256": "6b43d7659a63b0f5e8456f59a01b561c9c75e7c1eb60f9bef5c4bd972bdadc8e"
+  },
+  "onlyEdit": "Task directory literal changed; original guards and recorder logic preserved."
+}

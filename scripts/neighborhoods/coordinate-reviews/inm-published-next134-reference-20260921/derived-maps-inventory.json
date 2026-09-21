@@ -1,0 +1,3049 @@
+{
+  "schemaVersion": 1,
+  "derivedFrom": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\next134-reference-integration-20260921\\maps-review.json",
+    "sha256": "818f1178d6125a2741d33e22bbf6e429ab015ebecbe7eab875052b6c3f55de80"
+  },
+  "coordinateCount": 134,
+  "reusedNamedCount": 142,
+  "coordinateRows": [
+    {
+      "id": 386,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_386-2.json",
+        "sha256": "29b5f82b5724eae0d6c7edbb054532addaa4cf8c0b3ba5a227b4a39359f3218f"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_386-2.png",
+        "sha256": "ae58a73080e3d4ad43fc2a97186e2514e5c408f5521ce1ca989f70034c8c9da7"
+      }
+    },
+    {
+      "id": 387,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_387-2.json",
+        "sha256": "fa7928bf84d48af5c818959bb26ab0b320e94a3fd67febac753aed9de9abb932"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_387-2.png",
+        "sha256": "2f9f24d70e767588302b88d32a536f5256372f79fb35bcf8fe58dcc90f3a5117"
+      }
+    },
+    {
+      "id": 389,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_389-2.json",
+        "sha256": "da39a26781d65c4ce67ca11d9d156e3375a8f21156430f30199fc576d3433988"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_389-2.png",
+        "sha256": "4db19fdefc83cb542ab9dd6df7580c4545e93e77e2b0ab20c2366e6eb5eaadbb"
+      }
+    },
+    {
+      "id": 395,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_395-2.json",
+        "sha256": "4377a03ff5e22da1210e5c2bfe46d5ce933892219366ce975b8b941535dccbfd"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_395-2.png",
+        "sha256": "f6c41c7de6bf47cee19202aa41da5234a58ef57b88441417035d311825dee0f4"
+      }
+    },
+    {
+      "id": 399,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_399-2.json",
+        "sha256": "2dbabdb367694336a91944211e866405ed1fdb87da63ddb8b8baf3bdbe32cd9b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_399-2.png",
+        "sha256": "f56b033111c9609530bba483d435e64cc05927e973d1f124b0870ba751345ff3"
+      }
+    },
+    {
+      "id": 401,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_401-3.json",
+        "sha256": "86a2ab3154273c8990f7b090d17ca9a0abd11017f28215623550dadb5f5d3d3f"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_401-3.png",
+        "sha256": "2d6dc9dddabe17acbdd7d88e8374f518f0b14f49079109f82c49dae9a4963d27"
+      }
+    },
+    {
+      "id": 402,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_402-2.json",
+        "sha256": "b7c5e06bd5e44f11a55de88c81591ea68d47b5c16c783579b6d44cca05777a9b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_402-2.png",
+        "sha256": "8239564af8c7e9ad45f8e00dfad0e4ed7c3ff48d10968e94901dc6dd40840bc8"
+      }
+    },
+    {
+      "id": 403,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_403-2.json",
+        "sha256": "d6c92dc16e9583f0fe5c3d5a6b9169bd3444bee143d01f7117773f6513b6efd5"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_403-2.png",
+        "sha256": "55c017691dcb0f2230c5ef0cfc393d8942c56856a98be90a7ab2b9334370cdcf"
+      }
+    },
+    {
+      "id": 404,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_404-2.json",
+        "sha256": "d0618b468d5eec11e39b9c95561bc5124f9d13cdd5331470105328835e18e806"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_404-2.png",
+        "sha256": "1857e1004147e0a95fbb7604c600a2f0893451b00c0131c309d886504a3141fd"
+      }
+    },
+    {
+      "id": 406,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_406-2.json",
+        "sha256": "1d63ef16ca812aeb473ed3005087ad314caf14d2c2de1ef43245858853239786"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_406-2.png",
+        "sha256": "3bcf1f5bcbfdd3658f69ac9198519e879a31a81c807765d2cc2924ce5615a4d0"
+      }
+    },
+    {
+      "id": 410,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_410-2.json",
+        "sha256": "6ce1982773d7d093cc584f16766bd4172da6d85a282ea3ac648bd24969393546"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_410-2.png",
+        "sha256": "770a760bcc5343492f51da556f1b1f74f5022e3ca9bdac7459e4117aa476c697"
+      }
+    },
+    {
+      "id": 411,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_411-2.json",
+        "sha256": "4012d8a2349b8e81d880ad345cabccc06b1fb9fefc8b5691b5ed5182c819665f"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_411-2.png",
+        "sha256": "95db07f89c2e8a921438a11c073b271deca7d11900fa7b170e64a2d2b82791c2"
+      }
+    },
+    {
+      "id": 412,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_412-3.json",
+        "sha256": "861889929f821bbe0a0e9f948c56ea25408d34576e36d25d5e08ba53400dc5ee"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_412-3.png",
+        "sha256": "dc09990f83a7991943841ad2e66a98fce5a5c820f982caf1b6405bdeecef9ba9"
+      }
+    },
+    {
+      "id": 413,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_413-2.json",
+        "sha256": "4c3b4ad7b5c6a1d24e0d1e3b21d2894c29026dcb8133d498d047731e34511316"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_413-2.png",
+        "sha256": "362fe42d75e9c61a971650b7aed5fa51bf477e510dbcf82f8eea0d74296c0b1a"
+      }
+    },
+    {
+      "id": 414,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_414-2.json",
+        "sha256": "e4217836db99d27ac28d79a1a8c982494fe2f129cd0ef30e319ec0a727222162"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_414-2.png",
+        "sha256": "82c8509d2694be8c60aa7cc46409b3f870877d417193f51126802bd9ca5286ea"
+      }
+    },
+    {
+      "id": 415,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_415-2.json",
+        "sha256": "ac54fd410f42b1b959be9b0b00c42ee1d31c350f9985f937642459d3554e030d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_415-2.png",
+        "sha256": "ba6138d983f135818d960f6268ca5baa741e46adc4cdc4b96e4b1bd562539e25"
+      }
+    },
+    {
+      "id": 418,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_418-2.json",
+        "sha256": "f131adfbbe78af42303eb948c4e84ea1f5fd1af9d4f051f8dc5b2da2de6be30a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_418-2.png",
+        "sha256": "20041a455846f5d32ec6759f9388cb1e1ee10d0ac5f81a3013c4b88c0a0d330f"
+      }
+    },
+    {
+      "id": 419,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_419-3.json",
+        "sha256": "3c3af9f495dd21a9ea5b495d63cd1fd2c8c2925dcb20093c5fc91e0c03720d70"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_419-3.png",
+        "sha256": "ce62fbe01fb61d35eae3496028c190a2b359aa25e7188c4dd23c82fab024ac57"
+      }
+    },
+    {
+      "id": 420,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_420-2.json",
+        "sha256": "800cd650ab89d48995184eff14ada9f1c747d37afe56ed9c8b2ae6b9f922f693"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_420-2.png",
+        "sha256": "6d024e09ea5ee4e5a126f8715d79366f243f9bd1591807a6caded6c6868f7122"
+      }
+    },
+    {
+      "id": 421,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_421-2.json",
+        "sha256": "fb567d601d158a406d5ff2ff9630cef1e63af9214973dbf44bd9395df2d0cb6d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_421-2.png",
+        "sha256": "a06f3c528a17b3940146335ef899ae4bd677b0afe063471baddc5343c309a801"
+      }
+    },
+    {
+      "id": 422,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_422-2.json",
+        "sha256": "f881a574a59e72de1506546f6c777056821e7bf4e57899eef862a0382094dd8b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_422-2.png",
+        "sha256": "6798a31037087283853611232358c1e08a416a207aa55af64c73560a021fbc5c"
+      }
+    },
+    {
+      "id": 424,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_424-2.json",
+        "sha256": "d6225130ed4a491433c682fa0ba4fff95db7aaf5dc9545e67e6dc0fb6150147f"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_424-2.png",
+        "sha256": "99cc214c960cad7699ad7986436ffabe6db77c57ee33bc318fb3212a3153e7a1"
+      }
+    },
+    {
+      "id": 426,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_426-2.json",
+        "sha256": "d69795346e3a538e88949f6e90ed47274bb342a031fc1eb71b9933cae3f97e81"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_426-2.png",
+        "sha256": "4ac2cfe0a05780e0f64ca1a6b33aa615661523a5c99be96964af0c316a9bb1b1"
+      }
+    },
+    {
+      "id": 428,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_428-2.json",
+        "sha256": "7d3478fc981c1a2f2e72f790a4a9f01d292b8ff42acc3229e90e687746a3e5c9"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_428-2.png",
+        "sha256": "58483047d1a6972b72edc56544ad8a4ea0b4ae4cfbba8f38f920edfea54697c5"
+      }
+    },
+    {
+      "id": 429,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_429-2.json",
+        "sha256": "a2bebaf472aead1239b9fedeab76c16e95bf96c573ce83890bd7ee276e3ffe7e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_429-2.png",
+        "sha256": "a7a8c6a259851cb2b1e1c7326beac580606a49ae7ba5cda85a76af0816270704"
+      }
+    },
+    {
+      "id": 430,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_430-2.json",
+        "sha256": "6e7275c2642128a5362592a482c1338844ef2a82c378ae55c781d16585244cb7"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_430-2.png",
+        "sha256": "c94bf4239078ca9cc655825e6896eb4d66b8267a08f2b4f6ec7ef8b5dd916173"
+      }
+    },
+    {
+      "id": 431,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_431-4.json",
+        "sha256": "6213f2e17bce9d4e1c65fc5b0af3ffd253df52503147cbede728c055d276ab49"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_431-4.png",
+        "sha256": "486fa213a33924bb3ace781282ef6de3719101380b04a7a269069439d941ebc6"
+      }
+    },
+    {
+      "id": 435,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_435-2.json",
+        "sha256": "da4cea54827551bf8129842e51e66b1b00a2bd6838d86fdfdf89cc9d83a683ee"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_435-2.png",
+        "sha256": "c2c9b9fa3684a325de84700d33b9a5cd18bbd9b256e24e6f82a0ee55e4e28007"
+      }
+    },
+    {
+      "id": 437,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_437-2.json",
+        "sha256": "908bdd8385908a5391156c855564ea91dc2a27b5fbd75ef198142904753781d3"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_437-2.png",
+        "sha256": "eff5f2e4732ba453b8e7bd74c8f7d024ab4320ce154969a6d33fed5d12f6ea73"
+      }
+    },
+    {
+      "id": 439,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_439-2.json",
+        "sha256": "958f7bfe6ca816bedf9df97fcc729b70e2059a872956fe95e0eeca684af0ed48"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_439-2.png",
+        "sha256": "9abd127eb099d82101362596d552bc2d325e9dc0b73207ea2640cd62d67d1b96"
+      }
+    },
+    {
+      "id": 440,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_440-2.json",
+        "sha256": "b02ba192ccce372d20a6ef3bac6a12826380e501f90c5051adec2dc4d60493c8"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_440-2.png",
+        "sha256": "d6219060b44178ebc15a2978d8877b154df9309784c8ad99a93d5f23379ab9a7"
+      }
+    },
+    {
+      "id": 442,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_442-2.json",
+        "sha256": "d36d8e9c66707b887b0a060306422833af7037d21edd3532618a895fbf3f8cb3"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_442-2.png",
+        "sha256": "0e849764d66dee5f4a4954b8cc2e436acc8d9506e3ff6c58e0fb59cba06a2faa"
+      }
+    },
+    {
+      "id": 445,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_445-2.json",
+        "sha256": "2fd9b50c573b1822138aa6d499752cca2398e30289eb226ba1c9458bbcdf5e56"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_445-2.png",
+        "sha256": "ee51b514a27f51560f8f1a8e6a2c4c286701aba276605c89a1abeadf91440e40"
+      }
+    },
+    {
+      "id": 448,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_448-2.json",
+        "sha256": "519591b649561fa133c46b432fb1598d0f9968e6d000546b5cfe603b6c26e188"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_448-2.png",
+        "sha256": "98f793d254b3d2ba53c9f5922efc59060b8257ef62c48fde42d6c7be66835341"
+      }
+    },
+    {
+      "id": 449,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_449-2.json",
+        "sha256": "af343a70f1a094868a6137343f1fe99188fc887deb8358bc5ed8baf34950dc59"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_449-2.png",
+        "sha256": "95e53046a4149efe39cecb17e4572c0f0824447bba19307c4b9a5d79c7574314"
+      }
+    },
+    {
+      "id": 450,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_450-2.json",
+        "sha256": "cd98179966ced142efefe20199b6dbbb59f802128d59e326b37527c560e4b237"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_450-2.png",
+        "sha256": "1744fbb8785a39d0a17cd30b7117d528602e1821ca2e2f89bbe834a5383406a6"
+      }
+    },
+    {
+      "id": 451,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_451-2.json",
+        "sha256": "37db1ce4d63417eb9a50fcc8fe16bf8a5b7b63d8601d286f0099dbe85e391d62"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_451-2.png",
+        "sha256": "dc03e9341e7a90ab5b3e2f7827fe991409f72a426c5673d308bb5c344269656a"
+      }
+    },
+    {
+      "id": 452,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_452-2.json",
+        "sha256": "11520b6badee35be0adec62b77f299fc49dd01d333c16fcaf6ff7bbe5da81aa3"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_452-2.png",
+        "sha256": "31e4d1d476863a215fe1dc5739c973f54be008350e7d57cdda2e82d38213d0e6"
+      }
+    },
+    {
+      "id": 455,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_455-2.json",
+        "sha256": "61860a9223595d7d5839b171a7442706b7acec652effd732e37135bf54ff7af6"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_455-2.png",
+        "sha256": "3960977406917246b289dc609586069dd56b2dc56ebc201130dbe7a17be65eda"
+      }
+    },
+    {
+      "id": 457,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_457-2.json",
+        "sha256": "84228514e32c25a5c6a800907ccf21bbc9854ed03aa81d9e8e0ed51c08d9c202"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_457-2.png",
+        "sha256": "6b29ad556a05fe4e175102a3f290fdb94230955c503306874a5ff65dcfef41ed"
+      }
+    },
+    {
+      "id": 458,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_458-2.json",
+        "sha256": "cc0fd09255218dcb5d8a13dec92390b8585fcd3df9d8076e012ced8f854432ff"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_458-2.png",
+        "sha256": "fea3b18b06c3b75bf7504d49bcfa2bfa66ff66a16b865f59e5f5c46ec1c667f6"
+      }
+    },
+    {
+      "id": 459,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_459-2.json",
+        "sha256": "df4dea6136a9ec67e8a9d9f06614df85e0863d8a4b847ab4825090d5830d6f98"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_459-2.png",
+        "sha256": "ab70a1f5687a79e3ae8b0a04d41cec33fac8ed97854824f5b39b766f6c26e810"
+      }
+    },
+    {
+      "id": 460,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_460-3.json",
+        "sha256": "9d0f1645ed712f1a2a7e9a354436b46b3e4fb7cf361072274e8cf17729f2dac6"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_460-3.png",
+        "sha256": "1eb3c7e79ac173ee4eb26dc2af6069a43a3b0ffe621fa9bdef7cc2591262ec5a"
+      }
+    },
+    {
+      "id": 461,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_461-2.json",
+        "sha256": "a4245560244da9ebe3daed572807a466380f016f5bb8e01140574799a8eb987a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_461-2.png",
+        "sha256": "7ce891f79174fd8dbd7b98cf94737a74a849335c2a855cb7431c9c2fa032aeb8"
+      }
+    },
+    {
+      "id": 464,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_464-2.json",
+        "sha256": "a36c688d2770b7816616266698a2879374f8b115f88459053cab24d753e5430e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_464-2.png",
+        "sha256": "347c5e40d119776c3c97c426cd83f81206730b9939969791b068c9701b0c0a1f"
+      }
+    },
+    {
+      "id": 465,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_465-2.json",
+        "sha256": "1e72a4a46bc5bf48da4d336f73113a41ac68938b7c11029bb4cefbaa46343400"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_465-2.png",
+        "sha256": "8e2c2273d39a39286bb3d6f02344a08745ce6eca64d28ad51ad358820cfb0b3b"
+      }
+    },
+    {
+      "id": 466,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_466-2.json",
+        "sha256": "45dae3b78baf25549386da9db06cdd3322ed11525fe3458af60b001cca482ce9"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_466-2.png",
+        "sha256": "5b58c46431db1adfbad016768785eff8cc96f6b1edfb49994edf95bfdcfb6780"
+      }
+    },
+    {
+      "id": 470,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_470-2.json",
+        "sha256": "f0272444b9d47001a71d413afdb70c08631f4f166d2cb85a4ef3c034803839c7"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_470-2.png",
+        "sha256": "a2f53945f78190e37dc8a3ff882395a9765dd0730bdf53be8d3a0119aae85fb2"
+      }
+    },
+    {
+      "id": 474,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_474-2.json",
+        "sha256": "b8db24f381859d9855b7200f7c15c1f084132ef2a07c93b7f73f3eb82a1046a4"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_474-2.png",
+        "sha256": "4044b80f589957df2c48224c1870960a7a62b31f5dd20d7d905d2a79f3695a1f"
+      }
+    },
+    {
+      "id": 475,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_475-2.json",
+        "sha256": "d481d05b4828d9a6251cf0f9784c311c77297a8013c4f1b27fa150b014fbeeb9"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_475-2.png",
+        "sha256": "175abacfa7419a1d02eea6a89e632a2e6702117f9ddc868e39e612f8830ebcdf"
+      }
+    },
+    {
+      "id": 477,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_477-2.json",
+        "sha256": "4b99295bc52df3be1f1b3ce1fa89ceebdad52e892030c6c1b315e0e2499a1aa3"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_477-2.png",
+        "sha256": "0cfbed15b551fd365ab328d17936804afa9ee8d7c51bdc9995f150d438eb78a3"
+      }
+    },
+    {
+      "id": 481,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_481-2.json",
+        "sha256": "e1310cffc35dcaca845fef3d7bb2c58d4c4d1e26849728223bf6efd24963993a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_481-2.png",
+        "sha256": "fa63b096a23fa3110b1c2653eb2576b030f5e587da6dd6d2f82fe1a97f3b498d"
+      }
+    },
+    {
+      "id": 484,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_484-2.json",
+        "sha256": "fdbadf2537ced8fd3e41c2d30d7c1210d0f5e2093960b04cb2cfd4174fbb4af2"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_484-2.png",
+        "sha256": "7e791361eecf5a400ecc0533fb875bbd3c397b4084aab6e4995626556c1f0d36"
+      }
+    },
+    {
+      "id": 485,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_485-3.json",
+        "sha256": "6c16e3a61ad0e0f4133a741873a5453bcac1166596f3eadcd40cc8374fd1503a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_485-3.png",
+        "sha256": "28228b97ebd431b1d2328a57fced1fd66a7ac82974eaf3bc39726e19dd6ea5ed"
+      }
+    },
+    {
+      "id": 489,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_489-2.json",
+        "sha256": "ae8b1061de4bb58bdc90e1ea0a5dd0029fd1d8857dc621f72273e664cbf64229"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_489-2.png",
+        "sha256": "ddf37dd93e705ae075d855819e3851e4257b551ed3c7effe612aa8acded675de"
+      }
+    },
+    {
+      "id": 490,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_490-2.json",
+        "sha256": "21283d754a327991ad7cea77b5efa66d58f29f65297ef229bd770446d6013f2d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_490-2.png",
+        "sha256": "522bf126b5e7375df5b3cff522834e502078745e8e03727fe03590a77b44b60e"
+      }
+    },
+    {
+      "id": 491,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_491-2.json",
+        "sha256": "ebdb8d2d719e8ae1cd35ec915ed89b58586407b62488d118cd459a0e61561d25"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_491-2.png",
+        "sha256": "31292d65f22cb938ba67cc6d8eaa1484fc82e84b0a340440a888ebeb842b8013"
+      }
+    },
+    {
+      "id": 496,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_496-2.json",
+        "sha256": "63b0a0a6c78108c4e2235785974b1bd4c207125cd870bed86b6830ba0688adab"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_496-2.png",
+        "sha256": "b86978d6c285e2a9c5d40750b65470f848650196732bab2111c022f0e5130457"
+      }
+    },
+    {
+      "id": 497,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_497-2.json",
+        "sha256": "1dd22d7bb4cd7fdb132c5b83a4daab9972394904ecf552f5e4a4e747479c36af"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_497-2.png",
+        "sha256": "526f7b5d3c7426ae365f614e05fe79c51f437b71e66b7ea4f50018ca043bdfad"
+      }
+    },
+    {
+      "id": 502,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_502-2.json",
+        "sha256": "adb8e7a38e5f4a7ca0c115b1d8da778822feb988e603cf84fbedc89999f0eb5c"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_502-2.png",
+        "sha256": "b4483ec4ae9838c0f89ea6363c1a568ffe105aa215c8d2b3a82dcd7212f9c44d"
+      }
+    },
+    {
+      "id": 504,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_504-2.json",
+        "sha256": "0fedbe747f2b22e07ec8e4c3fde1ec7e1642983a8345752ea27cfd8a59869b1e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_504-2.png",
+        "sha256": "9e6eefa4cca6f58e3e96516060af324cb489e4ae5fc24cff27ed5953deda3b66"
+      }
+    },
+    {
+      "id": 506,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_506-2.json",
+        "sha256": "464e83b1cb92bb144034f1b4b7f433c09955f7e567e10d282c4aae437354eb8b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_506-2.png",
+        "sha256": "067d718ebe6634f15b68a2796c1d68a6da15147da821829de98db66c32cc8ce8"
+      }
+    },
+    {
+      "id": 507,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_507-2.json",
+        "sha256": "31bbbdc26841e875557c93cc6ef47bbacc5b299ff95dda9c7fd6b794b39a0218"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_507-2.png",
+        "sha256": "f9bdeb20a4df119e22024671f034781b91fa3ce76dba4bb08d3b50b0c05d5c99"
+      }
+    },
+    {
+      "id": 508,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_508-2.json",
+        "sha256": "c13882f799a781a50347f11937b4ae93324c05c8b993fe922f94be768aa141be"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_508-2.png",
+        "sha256": "19b9ee436293336242956edc0e081bac564c037b511610daa5c6290780668fd5"
+      }
+    },
+    {
+      "id": 509,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_509-2.json",
+        "sha256": "075f486a06c4bb7721a846545e2dd42e10288da03b50948fc990a7f6fbd1d702"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_509-2.png",
+        "sha256": "54c79fd5b3ca179a3721dc9ae8c18eab9494bf43a39091b6dfb648a989be3186"
+      }
+    },
+    {
+      "id": 511,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_511-2.json",
+        "sha256": "fd2d0035d74a54c6cf062028d63530b93de4e3d798986ea5f23f4507b33d2b27"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_511-2.png",
+        "sha256": "972efd4b3bacdae93907151188c41cbdf9e981a549f0117e0722e43e9ff01b2e"
+      }
+    },
+    {
+      "id": 512,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_512-2.json",
+        "sha256": "31a9c6e8450b233e25fb62a03918a9ebbd6c7dcd299cd198eebbced9ae7a23c1"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_512-2.png",
+        "sha256": "4ec407cc7316ccddde10097ad790000fcf3d3c62e0901dede1faf142e87f0730"
+      }
+    },
+    {
+      "id": 513,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_513-2.json",
+        "sha256": "75e4acf6670f98229e4db3d38ecd99e8de836ad219b453be157ed510e24e6de5"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_513-2.png",
+        "sha256": "8d267b6d437aec663666499138e599c66d22dd03ec61e12207b23bec80eb2d92"
+      }
+    },
+    {
+      "id": 515,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_515-2.json",
+        "sha256": "917bdb641fd66c5abacfe23d95e2233b442e1a56a1c22f8a717f4453785d4e01"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_515-2.png",
+        "sha256": "5d89127578128e88e09fd729022433aa5882c9af76a779da5d513ba6a483a75f"
+      }
+    },
+    {
+      "id": 517,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_517-2.json",
+        "sha256": "6a3b87a1c00073bcab4fdbe334a638c1c0ed54d83cf1e40285768b92a19f7943"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_517-2.png",
+        "sha256": "6bb0e3938ce5c0379a589abe56c45a7d204c2fa68139d4f248419878fba45af4"
+      }
+    },
+    {
+      "id": 518,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_518-2.json",
+        "sha256": "7498d610004ff4d35621925a25b500323111b3cf42b2379203b52bcdd4552de2"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_518-2.png",
+        "sha256": "e42bfc66ac1f7528023561f6667356489e12fc9ba205a2107a860de4bbb43468"
+      }
+    },
+    {
+      "id": 521,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_521-2.json",
+        "sha256": "f9d81219bffa0e536874f5933c7d0a4d34091d3dcda041998e1ca234182fc5e7"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_521-2.png",
+        "sha256": "bc173ce9d21b5b220af5a3aa575c461e521f1635d6024d75bba6cc7f80d664c6"
+      }
+    },
+    {
+      "id": 522,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_522-2.json",
+        "sha256": "3b09c32c1938d53f7acce7257b74b4a849f94bc68859d440e6f3c4daef312f68"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_522-2.png",
+        "sha256": "0d320d004a0e7281eca9628d07d96ab1e4266c5d8e85e161e4c0b838e49d5e83"
+      }
+    },
+    {
+      "id": 523,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_523-2.json",
+        "sha256": "4ade8a9c7ba083ab893ac6f7273d6622a6b34fad21fa7d4474fcb4c0af0ff355"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_523-2.png",
+        "sha256": "56f5171908d027b12a04c0c0b0bd15bb715ecaa6c5484a36f476a636dadfda1b"
+      }
+    },
+    {
+      "id": 524,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_524-2.json",
+        "sha256": "0243e36d725465b940805ca42b1ebf7a928a018e7132ae38d5ad8868bcb248e7"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_524-2.png",
+        "sha256": "5aa283e1602d3f5bdd2ebeba8ca326c6ac4c9c14c483ce2fe9b7a9cd06e8432c"
+      }
+    },
+    {
+      "id": 527,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_527-2.json",
+        "sha256": "13972327c1ac2e736a929054038310e260a3d8673e6f26a810d01b0243b99e9e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_527-2.png",
+        "sha256": "52e17e9646d1946e0472d2d36420d63b9e9f8c18ac5eabbcef980272024b01cc"
+      }
+    },
+    {
+      "id": 528,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_528-2.json",
+        "sha256": "24fb288313e5c270ab3c7ed85c38f11f1a28487c4b31d474e80afe8d7e54f7a7"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_528-2.png",
+        "sha256": "a29a3febba99ad4b1c80c936ccd0e191cd2ef1163bc1dd03e5c836d98b319a92"
+      }
+    },
+    {
+      "id": 529,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_529-2.json",
+        "sha256": "0bbc79bf00696c133cb2b8aa246e7284d24d1b0c952c92c7838fd9cafb9cdff7"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_529-2.png",
+        "sha256": "02cfb623f0f431666d3fcdad81c4ff4e1d285236583280b40e92a3752e2b223e"
+      }
+    },
+    {
+      "id": 530,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_530-2.json",
+        "sha256": "a817f53e72dd700f18a9dd6733ceb0e31336147fde945292f52ae1da4137cd80"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_530-2.png",
+        "sha256": "93fa6bebfc0bf973d4082756a0c47c80193337154302a45faf0d77a25f19e9d1"
+      }
+    },
+    {
+      "id": 535,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_535-2.json",
+        "sha256": "84f92a7f479a744f3b3d8b8a1d6de3cb385e7811e07e60ac7ae317f0ebe87845"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_535-2.png",
+        "sha256": "84bca4c0f15750b7c2cf952ecc40a1318072248e320c80bbbab4281fa00e5675"
+      }
+    },
+    {
+      "id": 536,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_536-2.json",
+        "sha256": "a7149ccf9427f9a0d3ecd18e0dbdc4d88098d9802c8ece7c637ebb47dedd78c8"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_536-2.png",
+        "sha256": "9579f6d958176c693c56ef33e99fdcb5f5f1d7ac0ed5eb2c149c4988fff818cb"
+      }
+    },
+    {
+      "id": 537,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_537-2.json",
+        "sha256": "99579a18e00018d45c453a13fc0ec31553a06c0e1c4cbeb5114db7a770e6bd9a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_537-2.png",
+        "sha256": "1edaa42ddd14793c244fc664cca3bc0d61bc85f3cfc94a87d25b0914f3411e3f"
+      }
+    },
+    {
+      "id": 538,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_538-2.json",
+        "sha256": "1be8c4fd8afbfb09eb8ecd5ef6684e5a31703dfd6143c7bd0326342f92eea262"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_538-2.png",
+        "sha256": "b80850cbd97c26e9abe2137e53391a72770f32607a446d9b0638d117e0b08d3d"
+      }
+    },
+    {
+      "id": 539,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_539-2.json",
+        "sha256": "ccf647c1a52964263bf732dc6b37dfa095649ed5faa583865819b0c1ca9f6bf2"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_539-2.png",
+        "sha256": "4520cdb7c189ee99eb4d9df41fb067886a12085fd5841291b14906dc025f3954"
+      }
+    },
+    {
+      "id": 540,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_540-2.json",
+        "sha256": "f5055e1b6602ee0dea81b0847a5087142354ff6851d1598c7f298a3f111eaa30"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_540-2.png",
+        "sha256": "357beaccfad1312ed005641e37b7307f635237f17dd4e184001b8a7f42c4e42f"
+      }
+    },
+    {
+      "id": 541,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_541-2.json",
+        "sha256": "ac235cabf6296aa836b1bae57f96619f39324e8bd18074e6bdb77a741bc8a69d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_541-2.png",
+        "sha256": "449a22f3b82854f84903999b88a8096527e2943b4967f980fe96131a2a13b4c2"
+      }
+    },
+    {
+      "id": 543,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_543-2.json",
+        "sha256": "8425b2d3546f438518912865eb78fd77fdcc15d855521d1bb136aa756149cc9b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_543-2.png",
+        "sha256": "82167b6cfe41ed12e2e5b55fde5adfc20275cb31736c45333cd9065bd52da57b"
+      }
+    },
+    {
+      "id": 545,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_545-2.json",
+        "sha256": "05985fdc0d9be9aee489f5879c18a68937b1c428b4c3267be2a8524200617a76"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_545-2.png",
+        "sha256": "c4a5ff707a9bcaaa2e089036961ec1c4d436a6dfb2f2b43265e37d8aba04b8a6"
+      }
+    },
+    {
+      "id": 547,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_547-2.json",
+        "sha256": "9f199f516d691077fb75b2e7d9679ee61f1cafd3d2c79e3028f148d92c7683d1"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_547-2.png",
+        "sha256": "ae7d0debf2f8edc99960df3d8954c2618f4893637a046b48c2348354acaf00ff"
+      }
+    },
+    {
+      "id": 549,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_549-2.json",
+        "sha256": "a4017a1ca301dbbd03445b9980bfa2ac32330ef79286d77c8ebb88277ce9773a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_549-2.png",
+        "sha256": "b309ad11c5f412ddb1ec3b9e310543dc3c377c92f3e8b434e2701cc081338334"
+      }
+    },
+    {
+      "id": 550,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_550-2.json",
+        "sha256": "7039b8b7d20a8483ecb07e06c8bf0668d9ee46d2a2f7f5345a6fc20ba7600479"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_550-2.png",
+        "sha256": "54f50adacffc99e64b0d50fc1249cb43bc942203273dcbf0474fff0e5f11e73c"
+      }
+    },
+    {
+      "id": 552,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_552-2.json",
+        "sha256": "d6f298d56f1e3324ea5d92e7df4488ae94c26c2c206b90898ee8e7dc71e84bb2"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_552-2.png",
+        "sha256": "44b06b75cc6094b4d41e037d1f1c1619a792654e3824663de99822a30a113c57"
+      }
+    },
+    {
+      "id": 558,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_558-2.json",
+        "sha256": "3e2a51544a37cb93b14cc022fa384984d8a249a8b235193f915e7293d79d813b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_558-2.png",
+        "sha256": "b0da1fb0ff86dab2b634741aa9bf8202a374aa9283d7ef1049a58868c6a2ad2a"
+      }
+    },
+    {
+      "id": 559,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_559-2.json",
+        "sha256": "2cc9ce7bff12eb22a0167a142f143c14b4c3bf95d882a00ea861607b49e14e33"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_559-2.png",
+        "sha256": "87bea6e6a2a11735c351f8369c48db961277be4bd8d2397c8ca121aaab00d42e"
+      }
+    },
+    {
+      "id": 560,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_560-2.json",
+        "sha256": "4da5af1f6e787a6432ae2e1e57984d7d65f9f04688467d2e83da09c665bc42ef"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_560-2.png",
+        "sha256": "44e1440dbb4ca369921c537ec0e89895455392b053a9a32cc344ab0b3f6578f9"
+      }
+    },
+    {
+      "id": 563,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_563-2.json",
+        "sha256": "75f67a57a2e657443b347ee1a46d1e1e4a7fbfe7a5198f08309e65cc9ae3be41"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_563-2.png",
+        "sha256": "94a0fd67d491818c7f3f69851d1e93a370d9af42e2eb92bcf51215c9d01b66cc"
+      }
+    },
+    {
+      "id": 564,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_564-2.json",
+        "sha256": "3fa145feb4b82659341e7aec0d549678b1480a56dcc6a890b1fc93b91ae8b425"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_564-2.png",
+        "sha256": "c0dd62655fe95ab9f0902e93d866b8b38a5f89cf176695efa21e41150d247171"
+      }
+    },
+    {
+      "id": 565,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_565-2.json",
+        "sha256": "398a39e874eb86afec4f1495f4b4ac1456afe168e49dad60b3624485fde87410"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_565-2.png",
+        "sha256": "b550ef24c41712619c3d1789a5c306dfb7918383a904b998534aaf1133777ad4"
+      }
+    },
+    {
+      "id": 566,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_566-2.json",
+        "sha256": "5f9771d5001aa57c94000a60f1307526771ce7ca1b1f8552417864bc44348c6d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_566-2.png",
+        "sha256": "1a7d4f47d93b30c51601d520e76d9d7757a69f7b6e68e1f581fceb0d453fc837"
+      }
+    },
+    {
+      "id": 568,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_568-2.json",
+        "sha256": "8475485bde633fe31c54bbb96368a756e907c563110c07eaaf18544fffb2fb2e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_568-2.png",
+        "sha256": "dbd9022ec2081455910d8aca557fde1569244bb768999ce45f4c6f18f607ce84"
+      }
+    },
+    {
+      "id": 571,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_571-2.json",
+        "sha256": "5c4a08c08193f8087c3a8b20cb6136489bd6ba8ba90d95947d4776edca1fe0d4"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_571-2.png",
+        "sha256": "1aedc05ace60f28b3374acbb9b22a5a103acda39dd05dd68d24f88c66871c652"
+      }
+    },
+    {
+      "id": 572,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_572-2.json",
+        "sha256": "b0ab15ca014546cfdad7268d2b8976cb8183aa856692dc43783b9d7d6012ec2b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_572-2.png",
+        "sha256": "bdaf69a43f72d7b8bab5875b8c51f0361242292ac4e46c2d924ee6033bd51e8a"
+      }
+    },
+    {
+      "id": 574,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_574-2.json",
+        "sha256": "49a73825426e9ae888fb0d52f628d540999b01e1005e5033e8e6dedd80ef3c7b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_574-2.png",
+        "sha256": "9bd33392aa3cc8db546a29ab33f3f74c4e7db5420524b55d17fc90760895c9f5"
+      }
+    },
+    {
+      "id": 575,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_575-2.json",
+        "sha256": "f8cbf6fb7f3ffdcd163599f3f39726d9a0a8127f84ddcaeda77bbf044af4f6ed"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_575-2.png",
+        "sha256": "7eb041f87c734bd1a18c4d89ce39f714151c30c5e894cd01aa34f8699f90c081"
+      }
+    },
+    {
+      "id": 578,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_578-2.json",
+        "sha256": "5d9bb636f64ac084088b5701c7c35251d299686e9f5b4c520b6455c7d6498673"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_578-2.png",
+        "sha256": "a61882fcb8530a6f1def42b61663a723ed045611bac1e2de31e1b87fedca1b4d"
+      }
+    },
+    {
+      "id": 580,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_580-2.json",
+        "sha256": "7eb2aa61c6696f8492b064e4ca1b89b6a17e7d2a590067db04de7e25a5a2e403"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_580-2.png",
+        "sha256": "23aa43156f5237bd2d8562983e8277fbf2e999aa1c92b8ea478057a12bfe1794"
+      }
+    },
+    {
+      "id": 581,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_581-2.json",
+        "sha256": "9d581604c1e511c4b056668159fc66338dc0335d0f3c67b3d8c641810bd09fef"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_581-2.png",
+        "sha256": "8bbdb456479f4645fe6528c8c38fae6c86424f6194df523411af3c9994fa8fad"
+      }
+    },
+    {
+      "id": 582,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_582-2.json",
+        "sha256": "f9a6cedfcdb4b8a71b371eb232c9763371c7ba87a3ca9f306e0a5f86e22035aa"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_582-2.png",
+        "sha256": "59730dbc460f4ab6038887f48ae0cfc01b42cec330e355db484799b980d78f21"
+      }
+    },
+    {
+      "id": 589,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_589-2.json",
+        "sha256": "b8ad1ab497f2b15dcc00e8c2c1fc5e31de7bd254a638d543fd4f42f8277725df"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_589-2.png",
+        "sha256": "c7bab89bb303f747beeeaeb70a3897ba0599ecd94974248073ffad7f9ec509fb"
+      }
+    },
+    {
+      "id": 590,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_590-2.json",
+        "sha256": "c8cac9e3864e993d8c17e5a3d5fea703c88cd248bd958f7599f3ea70324e60d7"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_590-2.png",
+        "sha256": "caac6e49bf2e50519cd7efbfd8f040f939906a1a45e066f6fcc6f618506105ad"
+      }
+    },
+    {
+      "id": 591,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_591-2.json",
+        "sha256": "bff9f3e27de3f106366396d71a86076c0505e129e9f6dfb3c712cb6b0792de4b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_591-2.png",
+        "sha256": "1a878d5f043b61639c9991446eb1d1e39818b1d19b807ca5c6e51e7f2f4345a8"
+      }
+    },
+    {
+      "id": 593,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_593-2.json",
+        "sha256": "28d857ce1926e55f78e0f0d2457fced47aea645b3b97059da20963282bd49253"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_593-2.png",
+        "sha256": "9c22a293440bae47c08a64bc9d87a9ea325b2158267831d43e69caf91a9fa31c"
+      }
+    },
+    {
+      "id": 594,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_594-2.json",
+        "sha256": "70c118f830cf68a2f6b01f5c8c4768bcc01dae569292c02849bd0ba7687123ac"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_594-2.png",
+        "sha256": "a4a33cde04bd69600a02a78d3cb6ff4a51cd6a3302fac20f2b580bc58347ed08"
+      }
+    },
+    {
+      "id": 595,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_595-2.json",
+        "sha256": "0681dfac729fd84fa932d133186cac6082548601434afdf89b8cafe14256cb12"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_595-2.png",
+        "sha256": "ea186ad10504aa158079c2ecedc20197639369e2eeaa3bf55fcc9bfa9f0aef9f"
+      }
+    },
+    {
+      "id": 597,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_597-2.json",
+        "sha256": "c3c3272e62e25ea9caef5f56881cbcfc31f51e120718c8b6ba602910f937ce6c"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_597-2.png",
+        "sha256": "e2bc5306685cc5584a8273d9457cc3d2a61dd329427d2d1ef9e937edadc1d069"
+      }
+    },
+    {
+      "id": 600,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_600-2.json",
+        "sha256": "c6b03e89d111464a6958daf44e8dc4a1068fc34de52ca513d9f5cf55ae41946b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_600-2.png",
+        "sha256": "509da7ebe51f2396f61505ee9cb6bf40073de23dbd91f2aad4b0159d6f73dcb0"
+      }
+    },
+    {
+      "id": 601,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_601-2.json",
+        "sha256": "a407683b323655cbf8493638e99e11f6f954df7ab8997c9cc50d5da378de6982"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_601-2.png",
+        "sha256": "26db4a1b7f1536ecb8653e434be1388e2be0c0ffebb439692c1043a91ced5996"
+      }
+    },
+    {
+      "id": 615,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_615-2.json",
+        "sha256": "1723b929fe28f8a1125157743d5aebe2285c53816540ab30c78421b241d7ebb8"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_615-2.png",
+        "sha256": "4276f3554f805d84015c4b386174561692644cf7989ce3c50e805ccf5b0f6998"
+      }
+    },
+    {
+      "id": 616,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_616-2.json",
+        "sha256": "f7d488733767acbf3cd386de53729bad25fd2b5bee713bfcdff5a1accfbd88c6"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_616-2.png",
+        "sha256": "57133fbea3fd6574f1ebff5bf7f488a039e46e5d9e28c28908392655118b856f"
+      }
+    },
+    {
+      "id": 617,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_617-2.json",
+        "sha256": "4b3a69380edadcad0b3acf0c30686f645f7ac6fd82c22747cc1598b86f397ec6"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_617-2.png",
+        "sha256": "7b6c3d4faabbef85b30b02a5a55ac6c464736d9e605b79ea386bb4b118d8a75a"
+      }
+    },
+    {
+      "id": 619,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_619-2.json",
+        "sha256": "363e94d41542a60e785efb60e0ad6b51070b42b10c0b072aa7a712d6690929c5"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_619-2.png",
+        "sha256": "b2e8f633f133a56568ea13815cd4cbbcc284fbb23bbf36310c581291ec3c7ea1"
+      }
+    },
+    {
+      "id": 621,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_621-2.json",
+        "sha256": "2fa626193fd1eb413e6eb744b7a8cd48a0531ce15102b228a72bf4765b7577d5"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_621-2.png",
+        "sha256": "32776f4218abc389c5527b31c261a74206045f176ee278d1bd145ee40e78bed6"
+      }
+    },
+    {
+      "id": 623,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_623-2.json",
+        "sha256": "5e3bc5871d15b8cf22fab6643782c15fa566713f5311e9f94cfb37bf2cd116ff"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_623-2.png",
+        "sha256": "a518caa6d05f2b75c6ac4554aee9eb626c006d8ac6823dca111b3a3774239702"
+      }
+    },
+    {
+      "id": 624,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_624-2.json",
+        "sha256": "ab3206c3feae20714b185b9ef742ca487fd8ce12d5c923a98e4492da80af7901"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_624-2.png",
+        "sha256": "c2a709757822fe3f0270deacb1ff43ceb7a5e60b9a95628f76e20001919fb6f7"
+      }
+    },
+    {
+      "id": 625,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_625-2.json",
+        "sha256": "86a7641abf28c231ee95397e19da126c2e66fcb5bd2db1500365673af8145db4"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_625-2.png",
+        "sha256": "bb47ee285a71ac7a19c269191b1de19c5e3b369f767470d36bac1d6df9062719"
+      }
+    },
+    {
+      "id": 627,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_627-2.json",
+        "sha256": "f22d18ade38f51b06d25f9b57e6032c9c2ea4413c888a58260390e536976aa74"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_627-2.png",
+        "sha256": "9ee8d455007aa2ac742eb271f49dbe9ff2f34f5d384fdebd0ecc25bf6a964901"
+      }
+    },
+    {
+      "id": 628,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_628-2.json",
+        "sha256": "a03a440ae946fe48d3b9545736262ccdc6eae68596c0454e8836cf76c87dbf6c"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_628-2.png",
+        "sha256": "568eda63c7272022043ecec566a3beba914f54456ee4ca570941d59770b05408"
+      }
+    },
+    {
+      "id": 629,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_629-2.json",
+        "sha256": "6379ba5834d01c1d3148dd6ac8f40c7f4b2d54871a51aa5eb43f5ed864669292"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_629-2.png",
+        "sha256": "1319b2baee5374edbe6628b3b7b9ac84a634c04cbd22359ca22a4c2d4aaad43c"
+      }
+    },
+    {
+      "id": 630,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_630-2.json",
+        "sha256": "2b15f541068dbf1bccad7019a071a029d2bb71cfdf038d586e25774cb1d6e370"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_630-2.png",
+        "sha256": "ca36aec62b4f2366083ad4f1d1c35031b3dfd16e65a0e1b9d33cdf1ec82f3e40"
+      }
+    },
+    {
+      "id": 634,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_634-2.json",
+        "sha256": "aa9387eb069a60842b60604e968e1b5fc23e470819097ef7f58f086aa609d057"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5556\\delegation_634-2.png",
+        "sha256": "69be1846aa37d82ec2488abd9cf92413fcf0b0d9157ddb5459ba1091e5f5c44b"
+      }
+    },
+    {
+      "id": 638,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_638-2.json",
+        "sha256": "fe7d7184e350d55e0a562cd862bd0358b2b3160f6cf8d38742b4dbb74d4c8c6f"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5558\\delegation_638-2.png",
+        "sha256": "f95357c02809256dc96731a4e96e08f68e8786905888de277c57062d939466ab"
+      }
+    },
+    {
+      "id": 1021,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_1021-2.json",
+        "sha256": "5c32e77f676d0bd55765ab39365558d47643a2bfc5c116d3bd30122fc30bef96"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5560\\delegation_1021-2.png",
+        "sha256": "da43ea0bf63a3f9242269b532cface8365a2665ff73afe95331f7369e8bda9da"
+      }
+    },
+    {
+      "id": 1523,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_1523-2.json",
+        "sha256": "0c3123edd9197678d28e3ba679ecd99f0042a3325b75c057cb5578bbad561065"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5562\\delegation_1523-2.png",
+        "sha256": "4f4e9d4636c1d0e792c82715e3d2d7e363970d4169b668067f801d1c2420ed97"
+      }
+    },
+    {
+      "id": 1524,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_1524-3.json",
+        "sha256": "09c27a2647035221b3e4f647ae50b65f78cfe1659467741ed59e5fbd3046606a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_1524-3.png",
+        "sha256": "375e32d3db94c347c2a6dacb93af9a304d7ea65e0c27a56d4e1baeb3963d6fcc"
+      }
+    }
+  ],
+  "reusedNamedRows": [
+    {
+      "id": 386,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_386-1.json",
+        "sha256": "f2299c50713d41eb70c28e7f6c363259f1dbdc471b2f7a1790a7458f6f9903d1"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_386-1.png",
+        "sha256": "769b07b6caf6c41ed9ab8cb5e2c2796d3699cc147826377d1c5cd03ccfe2dd71"
+      }
+    },
+    {
+      "id": 387,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_387-1.json",
+        "sha256": "414fa7ecd10376db9b64c8de2bb143a8cf9adc2b915fcabe49fbbe7cca7fdbab"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_387-1.png",
+        "sha256": "6e6959fc08032b2d6b4b72b6b25fdc9cf6d8288df2c4b3c13b541e434315a59a"
+      }
+    },
+    {
+      "id": 389,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_389-1.json",
+        "sha256": "fbe9c65285e7fc112431a7b2f6da2afbe3f9795d3cc63f127315919e33800a68"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_389-1.png",
+        "sha256": "20b25c8f163e3ce12e76cd5c65234704305497f0725debdbcdf38160b2e9900e"
+      }
+    },
+    {
+      "id": 395,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_395-1.json",
+        "sha256": "9b5bd12025ab064846a9257d3b0f1714501e52aa928ee0cacb0c657fd5aa751b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_395-1.png",
+        "sha256": "af898d72c594d170d416565f68b9661b89d56268c6451a018f99f838401ec326"
+      }
+    },
+    {
+      "id": 399,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_399-1.json",
+        "sha256": "569e8e82519feb816363ed01eccf7dc7f4445e707bbc2432180bffb0570caf81"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_399-1.png",
+        "sha256": "6f7c81d0bb1fca863e68a1a31cce1e9df859e71a0357278133f98f214b69226f"
+      }
+    },
+    {
+      "id": 401,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_401-1.json",
+        "sha256": "0260ec5c72c8abd7b7537bcd85b76acec512e1238d7d53e853b472e5fb86908f"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_401-1.png",
+        "sha256": "d3b7d62a117ffaa34d274726fff9f467e5b5eddb0b99e4baf9f4e9b7b11e91ef"
+      }
+    },
+    {
+      "id": 401,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_401-2.json",
+        "sha256": "13dc4ec5f058c032dabbbe3ccee4a8925fe928340ede10a54932e11573eceae4"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_401-2.png",
+        "sha256": "664e07a4dd196fd5ead2967451e0e5e42424fda1e381f40362d39a24719d838c"
+      }
+    },
+    {
+      "id": 402,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_402-1.json",
+        "sha256": "8c0cec2dc5663631725b7571b569a7370ff8da3ff9206f2abebd6ef9feeea66d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_402-1.png",
+        "sha256": "77c2d1e0caa373ea6ed5328c802d4e2978a300a31d92deb3381520ed9c92c029"
+      }
+    },
+    {
+      "id": 403,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_403-1.json",
+        "sha256": "42ab5f8070162a45f586399e0d7d241feb7c87444a4cf4ff7523a8ffa3658928"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_403-1.png",
+        "sha256": "518aeaa2985c4a2ccfb0db60ae156824cdcbc62caa3479f246efa8c1833dca03"
+      }
+    },
+    {
+      "id": 404,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_404-1.json",
+        "sha256": "1da78a47329d2178401bf0a67c9be4fcacfd879d62a9a9f4b171d6dc91421526"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_404-1.png",
+        "sha256": "b3365bc68759c19aedf5e01f22891fc8d80a7fe7908f0361ad8fa84518d40426"
+      }
+    },
+    {
+      "id": 406,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_406-1.json",
+        "sha256": "d386818c39ff7983d7e6f98250c92833f260012aa0f910512a0631278b8fb1fa"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_406-1.png",
+        "sha256": "4370c656f76a5d49713faab35046a5e6fb737ad382160a96c1e2909dbc467ffc"
+      }
+    },
+    {
+      "id": 410,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_410-1.json",
+        "sha256": "4e9d3456b0af3c3977137b2ca4ba292d708cfc3e8a0aea18e4177607a578b984"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_410-1.png",
+        "sha256": "29953b26ee4ded17a1d0b5b91972ea94093049fbded187e28284faa2bac0a915"
+      }
+    },
+    {
+      "id": 411,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_411-1.json",
+        "sha256": "41e2f9a9d2f359512bf655f7a451cc402dd8a00c10cf641dbb84f9c9355bb6fc"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_411-1.png",
+        "sha256": "747cd9fcf550ff8874fb0761f62238b2d333ea33033f1ca73ec32fe468f87c17"
+      }
+    },
+    {
+      "id": 412,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_412-1.json",
+        "sha256": "30b7948253c67360bed06d12d419ccb99c15ea018c892507fae5819693f624d9"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_412-1.png",
+        "sha256": "035504e43c7d03a0158838b44b989c6194e37167d7b9e7527f8426e6365603ba"
+      }
+    },
+    {
+      "id": 412,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_412-2.json",
+        "sha256": "6d05733dd4f37a7876d05104ecea2200b670e17ffbe6b0fb51b4fcaed65dfeb2"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_412-2.png",
+        "sha256": "85043b4c59766ce2e7a5b617ca5a4775714010350a80ee084a61a8b1a0a39b33"
+      }
+    },
+    {
+      "id": 413,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_413-1.json",
+        "sha256": "fb5a6ce7c8ce5cd32b9230082c34d5e333205d97e438546d6870c5f27e142af0"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_413-1.png",
+        "sha256": "7c9b51501ea633bee4f639c09b50853a3bb5b2ac525b2cb692e3d3a827b773c4"
+      }
+    },
+    {
+      "id": 414,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_414-1.json",
+        "sha256": "672c7592d28603545597e197103a86e7821a06f32f15d712f57af87c28d8534f"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_414-1.png",
+        "sha256": "c971d0823932cdcc4675839eac9c0a6538231b4b3a1fd01660fb3219918a7596"
+      }
+    },
+    {
+      "id": 415,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_415-1.json",
+        "sha256": "3a7d506c624d16682fe32d096d8455d72f678dcc0ec5653c52cbc152f6aeba4d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_415-1.png",
+        "sha256": "e8cfdbff52740e78fe5fd79906d1f41c6f1c65919a39636b700ddc3dd3266fc7"
+      }
+    },
+    {
+      "id": 418,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_418-1.json",
+        "sha256": "d286fc028eb3f0ce7cc3bd6bb06f5357f72167cc230e15bb0b5c2000d7b19e94"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_418-1.png",
+        "sha256": "54d1f6dd3bafc04fb8bbb4ab4e83eb77c81fd816515fce5d4bc83b2bd2f812c1"
+      }
+    },
+    {
+      "id": 419,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_419-1.json",
+        "sha256": "0e6629aa0da7de42bc8d89c14bf2e0457a4027f9c3777aa4a2e1a36a6abd7e70"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_419-1.png",
+        "sha256": "ef2701f696cbe72e15c1370f46ddfe4e8e3efb48c05bdd21b71be69db2685279"
+      }
+    },
+    {
+      "id": 419,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_419-2.json",
+        "sha256": "92c90cfd4ad523ab200874c69c92d03b6b86ca350a96d558e1729626ab3abd1e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_419-2.png",
+        "sha256": "d161819d3287a9df6724e1f86c484f846ec635ee2cb58fa55f6d0ea948f4c3b8"
+      }
+    },
+    {
+      "id": 420,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_420-1.json",
+        "sha256": "a0a9f0216bfcf7dd7353402fbdf8be76735fb9f4f2241203a8294b249d00b73d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_420-1.png",
+        "sha256": "df2277d6225bcd5b44c04cb32d3b59f122b674de22c7cf4930d4ba9dfd2fcc6b"
+      }
+    },
+    {
+      "id": 421,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_421-1.json",
+        "sha256": "13bf55e8a98f1fb74649fa7231db26cc78b420067a4325a2f0b954cbc7746c0e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_421-1.png",
+        "sha256": "0ed465e9f40347dce89339705976eb2aef8b5a41cd7ca0b39d1f589eda69c781"
+      }
+    },
+    {
+      "id": 422,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_422-1.json",
+        "sha256": "bab40767d26c7c3a341e180adccff171513513ff04852432d5d82d43016f539a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_422-1.png",
+        "sha256": "4a3c33b28503cb9479cd9c542d34c0f014916e1e55ee2c8eb129ba10e8e36767"
+      }
+    },
+    {
+      "id": 424,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_424-1.json",
+        "sha256": "ac037ad5eb7e6b2e9229f24f447e1c3f1d8696e122b1b3c89dd1e386d5b0acd3"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_424-1.png",
+        "sha256": "ec49b25d26e5b6b2ea8cbb1e1af5c7f6fe977eb362503d9a257fef93511d27ee"
+      }
+    },
+    {
+      "id": 426,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_426-1.json",
+        "sha256": "4962f14803183f1a5f13f4f760a38bcd477463414e190d6c63fd1cb184d0710b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_426-1.png",
+        "sha256": "a97e533965cb6f75c941071f08a2f9a74ece04733ae055b18346961428eecf82"
+      }
+    },
+    {
+      "id": 428,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_428-1.json",
+        "sha256": "97f7ef4a4b71c2a1234a0700e897d0a7da716e2a3e8eccc8c37ccd3e28ae1d3c"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_428-1.png",
+        "sha256": "3c0f724fb63a39a7014130d533bc1557f727a68133699e6df07cf83fe280e4b9"
+      }
+    },
+    {
+      "id": 429,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_429-1.json",
+        "sha256": "e0d179cdbd8caae967b4d4a3ea161c2201d09d6f1a0c520ad15f8a40b11a4852"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_429-1.png",
+        "sha256": "36fb72cf8b5b3616b46d14ed16640638d49eabcc798df9e02990b9e4d05e6790"
+      }
+    },
+    {
+      "id": 430,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_430-1.json",
+        "sha256": "a9cb5b4fea367413f5336f23060c8107e98f906e121321cf21c9a7635946dead"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_430-1.png",
+        "sha256": "f8a71a1f6aaf804722388ac9a1508bfc3770466de6261592d4cd693d127466c7"
+      }
+    },
+    {
+      "id": 431,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_431-1.json",
+        "sha256": "c3cc376e3dde308d620334f3f4f8bd6a95c70362b4bbd92fe83a61bf6bde88a1"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_431-1.png",
+        "sha256": "e558f323eefb2ec2d6a5c7452bf249f061efb567afb2744811367c89179cd2de"
+      }
+    },
+    {
+      "id": 431,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_431-2.json",
+        "sha256": "47bd756bfca596ac7b660d940215b0573aa223b60cd2f961d80ff790b69db0fb"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_431-2.png",
+        "sha256": "fde3eeb1f6ea9a9c9c31560c396b35d82a66f75bbca910778d0689b063150445"
+      }
+    },
+    {
+      "id": 431,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_431-3.json",
+        "sha256": "fe6a1e62361b9f68f73fd906529ef15663db5d80e7ebeb96d15840c642f1f47f"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_431-3.png",
+        "sha256": "7413a862ceb0906b0d41655c4b61a73f7e4b30ccb1c4a462e0edcc1548a101ed"
+      }
+    },
+    {
+      "id": 435,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_435-1.json",
+        "sha256": "f8505fd8edb49800b83a73e2c74435960aa10ef45616ea5896e47e0053c7160e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_435-1.png",
+        "sha256": "7afa86db78bd7ebb9a1239713082ea8d6e0687a7908948d852f9f3e85cdf06fb"
+      }
+    },
+    {
+      "id": 437,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_437-1.json",
+        "sha256": "e9c89bcc98a9863d2e33d5bedec7926e4b65a925d8b7f68b3c08a261a3854d80"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_437-1.png",
+        "sha256": "feb7ba1f4fe3de5f6db4d3605a34d12c5d2589df4e5b07fc0f04fb77f7d8200f"
+      }
+    },
+    {
+      "id": 439,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_439-1.json",
+        "sha256": "c7d0c9e993f34d2230b5880fbcd0680729c5722eb84bd78dfbf480e71bad0486"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_439-1.png",
+        "sha256": "d41b8109dc6da6b01b8d24cbf49cc855f45342aed0f2cf20a815cc7ecfe8f47f"
+      }
+    },
+    {
+      "id": 440,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_440-1.json",
+        "sha256": "6d7a38f95c60287473fd991abaaa191e50a4ed982c9df342fa41d57ddcdff814"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_440-1.png",
+        "sha256": "424ef3187647aeb5708f0f6ebef3f79152fab7a485165368cd9d14b3cf9f053a"
+      }
+    },
+    {
+      "id": 442,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_442-1.json",
+        "sha256": "2f9c9105f7326bd4e2084271e278e8c086f1114dc83d0d727c02342972b4f832"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_442-1.png",
+        "sha256": "d6076865033396486b50c1fb8a97a48e253c91f3b2ac2264cb1c3656236fd8d5"
+      }
+    },
+    {
+      "id": 445,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_445-1.json",
+        "sha256": "3f35df870e529cb07bb774936f55a35695222554e4000e9de9f2d5bf93909644"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_445-1.png",
+        "sha256": "62b1ca1e7a584412e1ce5b15d74f4faad4337016b73655c4e1ae4a4e0a9b07a2"
+      }
+    },
+    {
+      "id": 448,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_448-1.json",
+        "sha256": "c58ec83c0553021ae465a53b95041b766c1df39334f0db8e1b806ff3f4bad90b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_448-1.png",
+        "sha256": "30902fc45dfc04341df937b7797592044ac75435a72789e3909ee55c3da50277"
+      }
+    },
+    {
+      "id": 449,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_449-1.json",
+        "sha256": "fd706332394211c7c087c83529348f700c16921ac6ab3fa5e28c27e81819d594"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_449-1.png",
+        "sha256": "e465bd704558eeaa082cd04473d0224a49dc9eabc18ee1ad34bfebb3c0e68371"
+      }
+    },
+    {
+      "id": 450,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_450-1.json",
+        "sha256": "94a21ab815dcbd9c0ed6701dd43892ff2a928b8c2e15e1859e7ce6edcdca6f50"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_450-1.png",
+        "sha256": "c26671ccde09b9ca16f2a8528716132fc0c9aacab1df8e6eb21c0426afba4a7d"
+      }
+    },
+    {
+      "id": 451,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_451-1.json",
+        "sha256": "4a69b4cf6f6f2185850809d535fcc5c1157489e763a0b3945cb105dc2dddb3e3"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_451-1.png",
+        "sha256": "8b0ffe8006cdac2bbff94079b3d886174ff370727da630185ea497531e963f79"
+      }
+    },
+    {
+      "id": 452,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_452-1.json",
+        "sha256": "23a35cab003da681d8f6a5a2d2d4473da3c9da23717c585f133dc9b9d8a3c9e4"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_452-1.png",
+        "sha256": "ac081cd2478f2aa6b4f0b303dd9dbd011d6a1466fb4261d170cfd367d20b7bc6"
+      }
+    },
+    {
+      "id": 455,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_455-1.json",
+        "sha256": "384973dd50d68544e8363dba23a536713075a2fd74d08dfaba95d3f425cdf102"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_455-1.png",
+        "sha256": "20ec6475ca0c10459f01568c4b175c759ac086f324b6e0e24c99e9bf07b38b56"
+      }
+    },
+    {
+      "id": 457,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_457-1.json",
+        "sha256": "bfdd6d45a08ba66594d02833ce6e6083779ccc9033381172350b5f7a912f0fe2"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_457-1.png",
+        "sha256": "26c7937d18e5843ed1f75ee5a314931c70b45c429f5a8570d15f7c0a3cd960cf"
+      }
+    },
+    {
+      "id": 458,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_458-1.json",
+        "sha256": "00f39c182b2bf69a3367d30f0114bb6036e0c87fcce491c9d24246e91b141e20"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_458-1.png",
+        "sha256": "38d404bf6804165b6b87cbc6bf55f67db732d5f0f0812711cd7dc8a739ad26cd"
+      }
+    },
+    {
+      "id": 459,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_459-1.json",
+        "sha256": "8c591e6e77252c05d683ecf8ebced8f6036e4d0b7148bcd2250a5eca0bab873d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_459-1.png",
+        "sha256": "fc26ab3c2dc137c368db51ef50fa4a4dfe510fc53c8b7ba0066d47b7c0acbf40"
+      }
+    },
+    {
+      "id": 460,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_460-1.json",
+        "sha256": "2aa2a8e1b005d57cdfb920c7fbe95f943734abc3dbf07d0e957381922e536885"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_460-1.png",
+        "sha256": "851ee853d0b456ef884c06a2385b1cc3d85c1b3775406153af606868a7efdb32"
+      }
+    },
+    {
+      "id": 460,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_460-2.json",
+        "sha256": "fc65955d5ccb7faed93b455e756b188ac8d6eec6814c79790923d771f610ae41"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_460-2.png",
+        "sha256": "d003200d7e54f393bd46c0d75be2c601c3be2129833dfaa80da0967784495008"
+      }
+    },
+    {
+      "id": 461,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_461-1.json",
+        "sha256": "15b8870457b22fb0eadc835ce77a5357ba9a4dc234fd9e280fc1b9c76b50d19a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_461-1.png",
+        "sha256": "acbc1cb0852a2c3afcfc3133cb34b32def1d8118ee46bbb54ac0228ff04ec3b5"
+      }
+    },
+    {
+      "id": 464,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_464-1.json",
+        "sha256": "eb7b0a8afaad233dd57ea0aad67b8ee49bf2ee83ee3758eaae63abbb4e21c35a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_464-1.png",
+        "sha256": "3098d242c4be76d927ee2a8678d7b362552d18c66bdc62d6e1d3370d9962d95e"
+      }
+    },
+    {
+      "id": 465,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_465-1.json",
+        "sha256": "8f7aba274b8ffbfd0a0ee199f723f728aa842a47f8573303a4ded860291d06ec"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_465-1.png",
+        "sha256": "d07cff4ab7c4b4110b5fa10f0543102cf571ac719d8d68736b2c2769f316aed3"
+      }
+    },
+    {
+      "id": 466,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_466-1.json",
+        "sha256": "7b2c0065d930b38ac9a1713ad7186a2cce90c8ed9c9fed02c4fc380ecec1f7eb"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_466-1.png",
+        "sha256": "bb721005a17a0a78c9afcf0d8e73c51c6c54e984b7352da859d2a801c62ab463"
+      }
+    },
+    {
+      "id": 470,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_470-1.json",
+        "sha256": "a6f9aa6d95dc76532e9b3b8749e8334bbc31c6a2ebddb5aa2b40a1aa72121ee3"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_470-1.png",
+        "sha256": "a45fa10d8b1e19f92ca22e34f35873d3eb68f3f0a8089908246deec0da6566d2"
+      }
+    },
+    {
+      "id": 474,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_474-1.json",
+        "sha256": "a27a0040f7f75d510b0ce2cc16f6c3d5abf4b829f5e5fbb9eca572c53f53d234"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_474-1.png",
+        "sha256": "634078dabf18d4e23a7da48c1581a84cee11c3653bbf4796936a5f06da37bd35"
+      }
+    },
+    {
+      "id": 475,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_475-1.json",
+        "sha256": "77d8fea368422cd567763d6377ea1440748e3d2f7610a72758f6cf2ebcba53d1"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_475-1.png",
+        "sha256": "42ba12e6746229e53c6fdf9ec68de251b1a105801782b1125bc6f6b97fffd1c7"
+      }
+    },
+    {
+      "id": 477,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_477-1.json",
+        "sha256": "2f0c3e1eba69964321f69c50c9f5119f9b0738750800d1fb42bf7a5fbc5d3c15"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_477-1.png",
+        "sha256": "73453d5ecfb503867a08807d40dc19c904ee9550a9a627868c49a29a438b8b5d"
+      }
+    },
+    {
+      "id": 481,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_481-1.json",
+        "sha256": "cb84acd7d424b31c53de6ca6624af3817b02c3be6b2ca315781aeadf82a9a1ff"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_481-1.png",
+        "sha256": "feb578a771837d8b9a293144b117578fab83097571318ec6c8d7ee3369728da1"
+      }
+    },
+    {
+      "id": 484,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_484-1.json",
+        "sha256": "360f01a57d1f0f607688534a6321dbec2643316f3a858c574ece0e526b0a88ef"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_484-1.png",
+        "sha256": "c62f2eb7c1c2d0648602d5cde4e9b5ccda3bf16970e00e407f5e82519d847fd0"
+      }
+    },
+    {
+      "id": 485,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_485-1.json",
+        "sha256": "c7a6e09a7e83a24ee56df11019147ccaa1a4d051fb7612326a82a8d297cfd53a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_485-1.png",
+        "sha256": "32ae7cd93299af522c758df8a68d598fa0a3d21406c33e7ef93bc100f9a40c05"
+      }
+    },
+    {
+      "id": 485,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_485-2.json",
+        "sha256": "e556b2c8ab7a0006e2b593cd0cacebcbf7e18e701e1a5ebe65e8fc32386be2b3"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_485-2.png",
+        "sha256": "9fb217fdda3c659241774ef0b66ef0ad502b72f18fae7627bf1d1557f7c59b16"
+      }
+    },
+    {
+      "id": 489,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_489-1.json",
+        "sha256": "256c18a61b0870403b490480e0c62cb21d986d67eae60d4918a9949b18055f27"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_489-1.png",
+        "sha256": "a377dab4899fdc3f762f4e918b5197418eb4a1c277ad8cba1888c9d4d3dd9ec5"
+      }
+    },
+    {
+      "id": 490,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_490-1.json",
+        "sha256": "c6b10b97ac5b72e77565a4e98307a9018a273e4c8c88727ed40118c19192a2be"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_490-1.png",
+        "sha256": "e1523b3e548cb9d5eff03a9ac62c2aac37b0bb15ca094e15a99434a5ae9d0d06"
+      }
+    },
+    {
+      "id": 491,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_491-1.json",
+        "sha256": "6122765422a1b8a347b87aa0300c80a430c4eb5310c6151a633040c3e0a661a0"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_491-1.png",
+        "sha256": "eb43b7c2c3218f2901af25a4aca49373260325880056ebd9ba33ebce26a2ec64"
+      }
+    },
+    {
+      "id": 496,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_496-1.json",
+        "sha256": "df36c3a896919519064fc98e623241c1b5e4309e47307166ac83ce1c329e3673"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_496-1.png",
+        "sha256": "39ed85d1d95dc254c30e472dfd766efd08957c5e98ffc2494cf14d6f82644522"
+      }
+    },
+    {
+      "id": 497,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_497-1.json",
+        "sha256": "7c002be6cd700c3a13571459b0079cfd35093fbaa972e2f062f31b5ad9ee4a6c"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_497-1.png",
+        "sha256": "5fa9c22c157b8fc591e6507b4e358e22382d046bc44c564b99851db4e9cff2cb"
+      }
+    },
+    {
+      "id": 502,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_502-1.json",
+        "sha256": "b0950a1ead596318d7340410a97801fa46c4b1c7df59660c97ef7a600762eff3"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_502-1.png",
+        "sha256": "c1ce26bb3e3a6ce4716b45fe885b0245d89111decbfb100795f2586c0ea493ea"
+      }
+    },
+    {
+      "id": 504,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_504-1.json",
+        "sha256": "29e08047ac1fe00db79a18e7a89953bb3b4ddbea35b705a3de2a82db00de72dc"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_504-1.png",
+        "sha256": "719c2af80d824e7dd4cdd068bcf132ae1b15bb52dd3508d9a2fb3acc3ac1027a"
+      }
+    },
+    {
+      "id": 506,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_506-1.json",
+        "sha256": "7ee0b9ca1125d0ec7de05e2ff97d317190567ae6ab73af973a8d35c074c728a8"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_506-1.png",
+        "sha256": "b97c93d359412ed0d5e9505bbda5815f3f81f14c2bd5c445455da89ab945dce2"
+      }
+    },
+    {
+      "id": 507,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_507-1.json",
+        "sha256": "262f6de46e9868ef96a8d8860deadbd38de49e45ff34ba6cf6a41dfc864e3f8d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_507-1.png",
+        "sha256": "fed2c4995fdd678ef16aa5155164d829a24d18b15d4d3b39b1b5257b4fa243e6"
+      }
+    },
+    {
+      "id": 508,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_508-1.json",
+        "sha256": "42ef45e15adce0e1b8e227b4d0c3d077f8f029aedfd105388d5e98344dceda04"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_508-1.png",
+        "sha256": "5e11a3901a4b175102893f7ce59d2e395431f80ead0a9c84419e7a1f587f667b"
+      }
+    },
+    {
+      "id": 509,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_509-1.json",
+        "sha256": "574d1c1494620c0bc60c2c93907dcb55cd3471c345021d6215b6f5e49df5409d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_509-1.png",
+        "sha256": "d638d82e19d6a88b97d4e3c85ee301cb428f6f486a19d84c24682f33e2701e03"
+      }
+    },
+    {
+      "id": 511,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_511-1.json",
+        "sha256": "f867fe956ce43c1f903f9493bcfa119e53f6e5f251df831b6ae526ed5846c6a4"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_511-1.png",
+        "sha256": "cfadb077319dbeb258d85c5a8278294c305f323224a73d2f5688500429d71299"
+      }
+    },
+    {
+      "id": 512,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_512-1.json",
+        "sha256": "76d8073c2207bf536c74b8e272310739f4ba11665fcc24437fde0708d378a80d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_512-1.png",
+        "sha256": "3185f7eee636dc961ddf6ca0a16ea3025edbd0fc5b5856fb14d15544e01ba82f"
+      }
+    },
+    {
+      "id": 513,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_513-1.json",
+        "sha256": "a07920457537b960f7ac7b06ed51e068231c9b2f569359efe470ebe262880815"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_513-1.png",
+        "sha256": "40b8cc9aa6e9f3b2c18ebc2cc7ee6f55d793311eb3495ad9c43d516e85879867"
+      }
+    },
+    {
+      "id": 515,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_515-1.json",
+        "sha256": "9233c37ec1780847c252aee0d1b800ac72040e54861e033b9a0f6ed44de217fa"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_515-1.png",
+        "sha256": "f3c2c757001f2d6257bbf17a9100577bedb850efd396f9c8c1cbabd4c97445ea"
+      }
+    },
+    {
+      "id": 517,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_517-1.json",
+        "sha256": "c2c7d11e68808f7f095ad8773f25a00335b2b2abc95d8e7d975d328370b0e7a6"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_517-1.png",
+        "sha256": "63238f1e4c0fcc752a37c33adc05aabeb2bf606c4d0234bccd4494127211c930"
+      }
+    },
+    {
+      "id": 518,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_518-1.json",
+        "sha256": "3007b6ec50c30f482d5b1742820004241369310b190770c24f8a01d0948d831a"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_518-1.png",
+        "sha256": "b9d915ad160148c8b0793ecbe0533dd859566af59fe465b32ee3dca0c6246423"
+      }
+    },
+    {
+      "id": 521,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_521-1.json",
+        "sha256": "12c21e5ae9116ffb3b2f246f350014af3b0e210a197a25f08d925e29e739e476"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_521-1.png",
+        "sha256": "475600430838ffb23ca7da990788366069d2ba7bfef566f462cbff6f7a35c693"
+      }
+    },
+    {
+      "id": 522,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_522-1.json",
+        "sha256": "10955c7ac9193bff8e9e6e14da21efc9ab79d91bd6b7a97c7bf69cd64a87375b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_522-1.png",
+        "sha256": "1b5ef9be72ce392824d4dde43d7520de3bacb913c8494f3f1ca1c966cdf3dec1"
+      }
+    },
+    {
+      "id": 523,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_523-1.json",
+        "sha256": "fc234b41080c6f1673453d0f90362da8eff6366427b1205e94600e8cbb347f05"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_523-1.png",
+        "sha256": "a40d42e4e7cdd35c8b9fc55f98b66d9509d3f82991509e8685ed6cb31ac662a7"
+      }
+    },
+    {
+      "id": 524,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_524-1.json",
+        "sha256": "c7d247bc08ecff1b1fe13089650450753188af4098ab1a2186f60a4e3a0f8289"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_524-1.png",
+        "sha256": "d2a6c1115840e0dd9fc7d624ac23cda852130a845f310fc01e0519e2dad0ae12"
+      }
+    },
+    {
+      "id": 527,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_527-1.json",
+        "sha256": "16131e771b59728b0e4ad168c9cff2a408c965da6a0c99ecd65676bb4e66a37b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_527-1.png",
+        "sha256": "57234e9d5658005efd5f30302ec97be47f24bfbbde92335b6af7692579e8d20e"
+      }
+    },
+    {
+      "id": 528,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_528-1.json",
+        "sha256": "e610e298b6cbc481102563a0968e97f721316c14e600cff9e97b71b3b692f94d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_528-1.png",
+        "sha256": "c20bd00fd508eefdbcd6db696f94efbd9c18456335d7b479f77fabcb9b7db7c8"
+      }
+    },
+    {
+      "id": 529,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_529-1.json",
+        "sha256": "f7ae86c3c82a5598a1dacd383e9c9e13b8cb59de403aa9e118cf33243261cb5e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_529-1.png",
+        "sha256": "7584b67184b2e997b2a5c2ce23bd7db69f1b2957c653af51401289ae2c51540a"
+      }
+    },
+    {
+      "id": 530,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_530-1.json",
+        "sha256": "062f9869d568fe858b77f89e6106172d878fe76f1c938e05e88ce51d9fab81a0"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_530-1.png",
+        "sha256": "b5988c6d082d8a462631267489a9094070bca2f2ec5055ff6b081fe5e0fa2351"
+      }
+    },
+    {
+      "id": 535,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_535-1.json",
+        "sha256": "7b73ef6d6cbb109c216ead6060006347703dc16ae155db054bcd23b164991d9c"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_535-1.png",
+        "sha256": "a4f411b9ae0affe824d549f7bb75e2344319ece1492927dd90e494dd8cfde090"
+      }
+    },
+    {
+      "id": 536,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_536-1.json",
+        "sha256": "27044d61e9f44d15553953f9bfbb76e5d3fcfdb7ce8bfd57b6c0db2ed1f2c8a0"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_536-1.png",
+        "sha256": "6f034aeaaf404cf7be6ddc931d61dcc9a1a166862a708431360a6070f2479767"
+      }
+    },
+    {
+      "id": 537,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_537-1.json",
+        "sha256": "dc67bdebb12021bd23bcfdd3c12ce765a1bfa28bfebe9e2b635f6f5bd39c013b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_537-1.png",
+        "sha256": "9724cc09d9901aed967c7ab5c3b9ea9d4645486e73f9f4702a2440697f070b90"
+      }
+    },
+    {
+      "id": 538,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_538-1.json",
+        "sha256": "b87b940410c76a55091843e3508068039f49713bb9c65a7579d2fb8e0bde15fc"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_538-1.png",
+        "sha256": "4dc77a7a2842572cbad701b5d17bb6c74a6c3cd2cf4b5fa445c31c86f6057a4f"
+      }
+    },
+    {
+      "id": 539,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_539-1.json",
+        "sha256": "6eda4a209b0d9204ad200448fc50c4c63a4cb1d95c2636421cd2d951fbfe1e8c"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_539-1.png",
+        "sha256": "578ff98f3065b1cec222103e4c47c1cb2e79bb477349af2067cb8a75d4d20230"
+      }
+    },
+    {
+      "id": 540,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_540-1.json",
+        "sha256": "7ba5642d7c88dae568050eb4630b9d0f1ca72bd7664c5d19807eb635bc570186"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_540-1.png",
+        "sha256": "7c209a7300fe5b00202ad96c713a1f927627fcec49622e099e63f426d0161b2e"
+      }
+    },
+    {
+      "id": 541,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_541-1.json",
+        "sha256": "298f3115705449cdb59578b4767cc2ef918dbf8ff6f6aa644985894ba3860bab"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_541-1.png",
+        "sha256": "b3af39479f0a78edf1e6583cb83414afb7576c5965ee0a907dc8aa879cb881b4"
+      }
+    },
+    {
+      "id": 543,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_543-1.json",
+        "sha256": "978d61f3535229f72eb8695732ebe0558eb6ae1c5c08b835dffed89748c022b6"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_543-1.png",
+        "sha256": "207b646ac569505460a0d320c72c6a3432f77a1178fc8673669b29f5d4d0f0f7"
+      }
+    },
+    {
+      "id": 545,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_545-1.json",
+        "sha256": "166377d994dd0ad81574b8664136c4ae10b227321254f1addce96b1fea0da18e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_545-1.png",
+        "sha256": "efbc21c49122a575c3ddabebd007c4d1ea046c3483a69e5972c0420ba1bd5ecf"
+      }
+    },
+    {
+      "id": 547,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_547-1.json",
+        "sha256": "c10aec2d2b53298e7ad1fdab87ccd8a6c8b8d41f49acbc25c6de20bcb653e3c7"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_547-1.png",
+        "sha256": "184634fd7a48b1cbda65d1bb259789c7feaba94de19e45aec4ef213a569c7dd0"
+      }
+    },
+    {
+      "id": 549,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_549-1.json",
+        "sha256": "ef84348f3a466adc52c6cf71f2ae206c6a8c4f3c3fbc96e472b7c66e13d6b949"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_549-1.png",
+        "sha256": "439830135d8b74ea6976c5fccaf87d01d0b1f6cebc49eaa8447fe0ed9a850c3b"
+      }
+    },
+    {
+      "id": 550,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_550-1.json",
+        "sha256": "ea2722bc7af868d1b6b3e036b0ac9af5e6069f0074042d0c76ae681ea2f9f46e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_550-1.png",
+        "sha256": "791860024a8156c98100c72049ccafb72d14ffe9d0c3e2b3c347931c80063257"
+      }
+    },
+    {
+      "id": 552,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_552-1.json",
+        "sha256": "8445f0172b9545be827302da7c26329ed78a62479ebd8ee6c98fc6a4e3441e26"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_552-1.png",
+        "sha256": "955d499e5aecaf29cc64ccec79dd9b80477ab6f091ffb954d0a2c73a938b19be"
+      }
+    },
+    {
+      "id": 558,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_558-1.json",
+        "sha256": "88a9e97a4b90b6653868ca173e863f79826d545de4ef44c9e2c6071ebcede34b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_558-1.png",
+        "sha256": "f9445399e1cc028b410862f9df44277c480a871721c0b908c0c5aec345361a6e"
+      }
+    },
+    {
+      "id": 559,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_559-1.json",
+        "sha256": "0e6dd553975fbfb4afdb5c4762c1ea0ea5255c4ffaa50d6b0f7c5dfae914bf51"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_559-1.png",
+        "sha256": "4ef7c948a51abee8287b0db435f91f7f79d582e1056a111a01ca8546150a5cb8"
+      }
+    },
+    {
+      "id": 560,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_560-1.json",
+        "sha256": "2210ec4cfa894705f0a5bd2b82a64752d3d5be969fc601d9647f70677de93c30"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_560-1.png",
+        "sha256": "c1ce791222a0cccf99261f413274be92ea02088471f028689f13235347d8ba92"
+      }
+    },
+    {
+      "id": 563,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_563-1.json",
+        "sha256": "f524f5c5cb42f15a57f473677454d229d693285f5b0d206c49b94bbc79c786bc"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_563-1.png",
+        "sha256": "70861e65b9ca910819a4c3952a4bd57ec9be351ac2dc32c7f49ebd56c08831b9"
+      }
+    },
+    {
+      "id": 564,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_564-1.json",
+        "sha256": "879fad828450a4992bc432eff2b6ff00e44822b412acfe6f3135812c07eebf98"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_564-1.png",
+        "sha256": "87ef8ba7146231566210b4f989811dc8625df72cf259d98c40b4c826e3f9fb04"
+      }
+    },
+    {
+      "id": 565,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_565-1.json",
+        "sha256": "54126d28ec9010cfe8031b3adcc6ad3a522fc3ecf789de0dc6e3600afe6f9637"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_565-1.png",
+        "sha256": "73241b071208dbd45dc8ef4289528171f97cbd27bdff555aea5250a03f1638f5"
+      }
+    },
+    {
+      "id": 566,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_566-1.json",
+        "sha256": "e06294198a366547f7ff80bc4f9df6f20b0c62fa41c7e5708b48ef4ceb3f7555"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_566-1.png",
+        "sha256": "2381548da63c220cbd5ec930d71541612e65770243cdfe94bdcb811eaae583a9"
+      }
+    },
+    {
+      "id": 568,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_568-1.json",
+        "sha256": "b685da637690519f994fa91dfc7c9ea62bc0a5a2eeba5e7174ccf728e368e805"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_568-1.png",
+        "sha256": "ff2cef1146a84676d31b6181f4a382da7ff4a0e7aebd719b3bb9597252c27a8c"
+      }
+    },
+    {
+      "id": 571,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_571-1.json",
+        "sha256": "8392e9dd5a4cb2d88cba8f583fea1380d51bd1203f29f7af003a8b2e676bc77c"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_571-1.png",
+        "sha256": "27e01510aa648aee84e2155b5dba254c7eec70ffbfd019f4ec9ac81a4d86ee21"
+      }
+    },
+    {
+      "id": 572,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_572-1.json",
+        "sha256": "f1c440dec5c35cf8e5f0a95483a1e8b9be4d402497c9af684c028a2ff599e2f9"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_572-1.png",
+        "sha256": "d04594edba09ff1047db7c08caf37ec01491a7250625c08a5e7d492302ae18ac"
+      }
+    },
+    {
+      "id": 574,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_574-1.json",
+        "sha256": "80660f30380835952bcd08df3a1ac31fdd876a61df3419b0fd7a26c9fda52187"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_574-1.png",
+        "sha256": "e958f5613425a4edc91d0495e14a9a251fd581c1fef421b5ca1c5e8ef4d77165"
+      }
+    },
+    {
+      "id": 575,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_575-1.json",
+        "sha256": "c6e7fbd8986db39f142c32a84185a4ba998f5a055bfa396294737385e9b015f0"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_575-1.png",
+        "sha256": "dbf9a5d7fd981c090834bbd5096182ad69f46fdda335512b712e428a4ce47117"
+      }
+    },
+    {
+      "id": 578,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_578-1.json",
+        "sha256": "3eabf84fd37929d7259d3a138755209792c18899b2b9587f356c2c386d5b1c92"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_578-1.png",
+        "sha256": "3c1c63dec8626797a67e2f3cdd413aa0a166cc3c64906b4228193ab1d0bfeef9"
+      }
+    },
+    {
+      "id": 580,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_580-1.json",
+        "sha256": "d3d3f3b43dc00fc9f88ce7bb5e3f0f0d5924f85d2420a686f6dd7b85e9033038"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_580-1.png",
+        "sha256": "9d9c0940bfaba29404004f083f399b45a7e01b1a97a0bfaa8fdadfbebb62be7c"
+      }
+    },
+    {
+      "id": 581,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_581-1.json",
+        "sha256": "488599c1100c8b5b1fa3676df5bbfc6cafe121dd2a89bb72e1fdfaf3f702c791"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_581-1.png",
+        "sha256": "fe1948398eb95c771e6460243f56b46326f89f71a620dedc6e9bcf7e20534511"
+      }
+    },
+    {
+      "id": 582,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_582-1.json",
+        "sha256": "89200a09c6163a9f8ca22277e4067c6f03a278a7e4ec5a32ac74b7205b473f84"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_582-1.png",
+        "sha256": "b23bbd6fa8335b72c9f12cf77289837f898d2ce0018164551923fcd255a9f0f7"
+      }
+    },
+    {
+      "id": 589,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_589-1.json",
+        "sha256": "52c1966fd9624d9a8bd6500a497287d3ead4afad554e8f09c73e93d7f330e09e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_589-1.png",
+        "sha256": "9fa5a53f184b4c5a28994f87902874f87a8dc8cb92e97fe14265e4fe093377cf"
+      }
+    },
+    {
+      "id": 590,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_590-1.json",
+        "sha256": "2724bf547e09d589fd7fc533734f8bcc8d1d15931cb7caf5058bc6bafaee3b94"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_590-1.png",
+        "sha256": "757661f060bd5923bc7f1af58cf9519f28a581af02639a41dda9a7c45441d1ed"
+      }
+    },
+    {
+      "id": 591,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_591-1.json",
+        "sha256": "cc45357f85aba7180244c28bfd059ecdbacba676cdffa514179a1873ddef3750"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_591-1.png",
+        "sha256": "e22eb03ebfe98172ad573344b61e01460f893b24d72f082eb72a167b85492c36"
+      }
+    },
+    {
+      "id": 593,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_593-1.json",
+        "sha256": "1e71dc79dde346f858a827a5f1819c6ff062d5d7065aa1814dc78b2439d4df56"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_593-1.png",
+        "sha256": "727d3982f50d18c3ce22b91cd94c25d376461cb586dd4163c9a40022ba6caaac"
+      }
+    },
+    {
+      "id": 594,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_594-1.json",
+        "sha256": "b22422fc5d573af305eb37036a91f13ebb933257dbf7d684b44772dedf052d08"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_594-1.png",
+        "sha256": "270d7431687416c29e8b3819c861c20d1c11c6861d7b08ed91c0498d992adb45"
+      }
+    },
+    {
+      "id": 595,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_595-1.json",
+        "sha256": "15cda7241932d8f8c65b82ff51485085eaf27b8723ae470aa9126c9f0f4b4236"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_595-1.png",
+        "sha256": "6b408308ef5039f7462e9ee916528e98fbd796407c514ddc78d5a4c892c0dba2"
+      }
+    },
+    {
+      "id": 597,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_597-1.json",
+        "sha256": "481124e5a099711cc8af459b087bcea28f64ac778c0b0d6c956413bf3200fe6e"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_597-1.png",
+        "sha256": "9b5802aec29691980041fe8c5765ad2da6743ded416ce54b9f618f932a0d986c"
+      }
+    },
+    {
+      "id": 600,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_600-1.json",
+        "sha256": "2708954ed4dbdd9755e7db317db58e2cef836520620daa3cae0a980fdf6c3487"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_600-1.png",
+        "sha256": "dc7cb0df2a0998ad089a658a318f97d44242c7544d581a4a8febee48479e3bd4"
+      }
+    },
+    {
+      "id": 601,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_601-1.json",
+        "sha256": "b2d6637a29578aed8c3981bd44edc3372d22d658e87aa41e01be7fd2f2c9f7aa"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_601-1.png",
+        "sha256": "9a4b61f49b5003860f5b4f0081bc84113dd2841b5df1cdb8aa13fd99ad2edaca"
+      }
+    },
+    {
+      "id": 615,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_615-1.json",
+        "sha256": "5a25ff7fa42cc91da9a3e40c463900331f50c7805c27c530481837f9912db69c"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_615-1.png",
+        "sha256": "c759fd219d866b1954289e642d82e8b4b08068a50aa582f68134c53e0c6eabdf"
+      }
+    },
+    {
+      "id": 616,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_616-1.json",
+        "sha256": "b1803965eeef8841adaeeb35753298cdfb12e898445dbca0b9a44c0a6f23f407"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_616-1.png",
+        "sha256": "9889eb2e2c5f26f577ab650aa08165d96ad89bd3c3505c3e6393128813f4b230"
+      }
+    },
+    {
+      "id": 617,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_617-1.json",
+        "sha256": "e8682ac4dee9cea4bb8ded9f2318e677f18d90d20210978a2ca0f740e15a09f8"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_617-1.png",
+        "sha256": "a005fa6dc484603099a8ec8d9589c86a8be83828e8a6017cc122736a57aed830"
+      }
+    },
+    {
+      "id": 619,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_619-1.json",
+        "sha256": "292086bafeb0f928c6e62c69ccacb670e931fb0ad510e8ba429d71e4c08c5ef4"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_619-1.png",
+        "sha256": "f2dd4b18c11b1a64d348c94b4cf3c1ff59f942370aea96d1ca2c85f86e3b79aa"
+      }
+    },
+    {
+      "id": 621,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_621-1.json",
+        "sha256": "a05dcceea4509fafe565732ae16361453799de6b91fdc7726fa8a3b3a68e8535"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_621-1.png",
+        "sha256": "cf5aa7aa6dd0c7bbadade65d87cd937cf9ed83b92df5863f1cb8320d0e50f821"
+      }
+    },
+    {
+      "id": 623,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_623-1.json",
+        "sha256": "f4d1504c8c37acdeb42152b90161628afd98f76d1201430b990396b33103052f"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_623-1.png",
+        "sha256": "e21e92571ed22198613c93196afeeed74a6538b220066199f0acd55f41497d66"
+      }
+    },
+    {
+      "id": 624,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_624-1.json",
+        "sha256": "a99a898c53c74e853a744241479b4280600a12dacc42c14f721c9c7e15846d53"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_624-1.png",
+        "sha256": "676e72e214c1636827e27c4314fe960da03813a149a2f373f8d72c4f5f2c417b"
+      }
+    },
+    {
+      "id": 625,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_625-1.json",
+        "sha256": "c34874665bfba0f25c3c6ae4ae94075def8dd1e5bee55cc1ff44e03f9a5c0039"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_625-1.png",
+        "sha256": "9e2928d0c51dfa0d3a0e8261d259d5de0ce42064b35588c5709b150485e0233e"
+      }
+    },
+    {
+      "id": 627,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_627-1.json",
+        "sha256": "b28854a44780ec51e37b95aaca8264544e3d1746a5004999ca5280f74fe3ce65"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_627-1.png",
+        "sha256": "93c5accb96c5f9e7dc0175b0be7ef142261bf189883e8ca4e242aabe612ad568"
+      }
+    },
+    {
+      "id": 628,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_628-1.json",
+        "sha256": "5678e0e0eb6838de342e63236c3ec49f26b9ea5b071162903f2eba03fea2815b"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_628-1.png",
+        "sha256": "72c95f053b2f88b89579f6ee725902ae37197430b65734d0c0376ad0c48b215b"
+      }
+    },
+    {
+      "id": 629,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_629-1.json",
+        "sha256": "bdfbc143aa0f2fd7776bfd2f4b6586892c8fe8006adeb98ebdab87bbd7018c43"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_629-1.png",
+        "sha256": "a48cb9b11baca49a4ec504aa362bb901efbc2180db455ec2a702af206e354082"
+      }
+    },
+    {
+      "id": 630,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_630-1.json",
+        "sha256": "8d7340fc33a9dfc6db99a03954467e3adc3895564796f46622137633581253c9"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_630-1.png",
+        "sha256": "db717c343ab0db2b035149c8e7e903048a2762ff67d759bda157760b21ff1d7b"
+      }
+    },
+    {
+      "id": 634,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_634-1.json",
+        "sha256": "5ca7fce083ba184398d6ad720f549de53e1ba3fbaa81f1a12124153ec2973eb1"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_634-1.png",
+        "sha256": "643f119a8af7984d431f3687a2deed4e762c9b9939c7e2611c79512fe43e50c0"
+      }
+    },
+    {
+      "id": 638,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_638-1.json",
+        "sha256": "9a8fd169900085dd11b3a53022ceca52559e488ca09c336badcc49657d20c8df"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_638-1.png",
+        "sha256": "60bf0f292e321fad98188c10cb6aa401ab06f5b9444f11231d830cb315c56e89"
+      }
+    },
+    {
+      "id": 1021,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1021-1.json",
+        "sha256": "f23b390fdbe2370f45accc913e51f2770c3f0f9b99052e7e8565951e677b0780"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1021-1.png",
+        "sha256": "c13276a9ec3fc5698dca50cec1b323453f80ef323a5bbec91cfe55e239627716"
+      }
+    },
+    {
+      "id": 1523,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1523-1.json",
+        "sha256": "72027cb0205d4f5eecfb59e045e972467d83e0072af3bec66ec7204383980d5d"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1523-1.png",
+        "sha256": "5db7037bd815daf72d8ec0c35fec970b0bf6bcff6645b988c78734f37135b5a3"
+      }
+    },
+    {
+      "id": 1524,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1524-1.json",
+        "sha256": "0dce6401a574f2b7ec883ca9889634d388af4821b5198ccbde728cd7dafcd180"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1524-1.png",
+        "sha256": "13d35f7f825c8e4bd17310aef284845a192a86e0a791096bd35008d3f66a5c11"
+      }
+    },
+    {
+      "id": 1524,
+      "json": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1524-2.json",
+        "sha256": "1afcaa3647c0f4c10a4cc6c8ca5ee63588172ee33b8822b662b86d98f54d2462"
+      },
+      "png": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_1524-2.png",
+        "sha256": "5e872ddee5f118218d9dee9e0ec42de221b3c51b8b723d0e493f1233be41edd5"
+      }
+    }
+  ]
+}

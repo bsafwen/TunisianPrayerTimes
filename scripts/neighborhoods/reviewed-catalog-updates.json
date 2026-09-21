@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "revisions": [
+    {
+      "revision": {
+        "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/text-successors/revision-0001.json",
+        "sha256": "4b03b367d42e8b047a2621c377f0d5ec219afd616128a583548d85abb5301f6a"
+      },
+      "review": {
+        "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/text-successors/review-0001.json",
+        "sha256": "29768c010374be962245c89fb7d68396fa98eb05afb263edf0b815c638d6ab42"
+      }
+    },
+    {
+      "revision": {
+        "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/text-successors/revision-0002.json",
+        "sha256": "3a9e431df5ae5348d69385842567e17c32a2f4a04a51a662df26c49e2ce6cc2c"
+      },
+      "review": {
+        "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/text-successors/review-0002.json",
+        "sha256": "edb9b0de8947763720e857eb7acf0e3a87919da2cbdc5cc0fbd0c0ad276fe13b"
+      }
+    }
+  ]
+}

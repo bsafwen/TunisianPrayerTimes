@@ -1,8 +1,9 @@
 {
   "schemaVersion": 1,
   "administrativeScopeReview": {
-    "file": "official/two-historical-sectors-20260920/accepted-whole-scope-successor.json",
-    "sha256": "a82d380fd97d67e24fc970fa3a03cecad9935d30ec440e8e8254bf0195d39d0c"
+    "file": "official/akla435258-whole-20260920/accepted-whole-scope-successor.json",
+    "sha256": "c7ab93cb48a5225ce427def975c912d6f391aff1ac16af23391fc605547b1abb",
+    "bytes": 186986
   },
   "sources": [
     {
@@ -2547,6 +2548,347 @@
         "evidenceFile": "official/two-historical-sectors-20260920/source-package-acceptance-review.json",
         "evidenceSha256": "f82eb8a2085548fb3485200d56fe6be554fc116cd1878b3de7aea7cd168263ab"
       }
+    },
+    {
+      "id": "isie-local-sectors-2023-amdoun-two-whole",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/amdoun-two-whole-20260920/amdoun-two-whole-source.geojson",
+      "sha256": "7c1c4cd8f0043bec348c9b9467d8b194d4318daedd4656f7b72f48d43538c34d",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7189452",
+          "officialCode": "215351",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون",
+            "name:ar": "عمدون",
+            "name:fr": "Amdoun",
+            "ref:tn:codegeo": "215351"
+          },
+          "aliases": [
+            "عمدون",
+            "Amdoun"
+          ],
+          "resolvedCatalogReview": {
+            "action": "supersede_exact_installed_name_tags_with_same_canonical_boundary_identity",
+            "previousDecision": {
+              "id": "osm:relation:7189452",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "عمدون",
+                "name:ar": "عمدون",
+                "name:fr": "Amdoun",
+                "ref:tn:codegeo": "215351"
+              },
+              "action": "name_tags",
+              "nameTags": {
+                "name": "زهرة مدين",
+                "name:ar": "زهرة مدين",
+                "name:fr": "Zahret medien",
+                "alt_name:ar": "عمدون",
+                "alt_name:fr": "Amdoun"
+              },
+              "reason": "Official INS sector code 215351 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين / Zahret medien. Retain عمدون and Amdoun as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+              "evidence": [
+                {
+                  "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+                  "reviewFiles": [
+                    {
+                      "file": "name-reviews/amdoun-two-20260920/proof.json",
+                      "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+                    }
+                  ]
+                }
+              ]
+            },
+            "originalNameProof": {
+              "file": "name-reviews/amdoun-two-20260920/proof.json",
+              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+            },
+            "qualification": "Proposal only; original proof bytes retained, exact current canonical name and aliases preserved. Existing duplicate-action guard remains enabled."
+          }
+        },
+        {
+          "id": "osm:relation:7189451",
+          "officialCode": "215352",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون الجنوبية",
+            "name:ar": "عمدون الجنوبية",
+            "name:fr": "Amdoun Sud",
+            "ref:tn:codegeo": "215352"
+          },
+          "aliases": [
+            "عمدون الجنوبية",
+            "Amdoun Sud"
+          ],
+          "resolvedCatalogReview": {
+            "action": "supersede_exact_installed_name_tags_with_same_canonical_boundary_identity",
+            "previousDecision": {
+              "id": "osm:relation:7189451",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "عمدون الجنوبية",
+                "name:ar": "عمدون الجنوبية",
+                "name:fr": "Amdoun Sud",
+                "ref:tn:codegeo": "215352"
+              },
+              "action": "name_tags",
+              "nameTags": {
+                "name": "زهرة مدين الجنوبية",
+                "name:ar": "زهرة مدين الجنوبية",
+                "name:fr": "Zahret medien sud",
+                "alt_name:ar": "عمدون الجنوبية",
+                "alt_name:fr": "Amdoun Sud"
+              },
+              "reason": "Official INS sector code 215352 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين الجنوبية / Zahret medien sud. Retain عمدون الجنوبية and Amdoun Sud as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+              "evidence": [
+                {
+                  "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+                  "reviewFiles": [
+                    {
+                      "file": "name-reviews/amdoun-two-20260920/proof.json",
+                      "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+                    }
+                  ]
+                }
+              ]
+            },
+            "originalNameProof": {
+              "file": "name-reviews/amdoun-two-20260920/proof.json",
+              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+            },
+            "qualification": "Proposal only; original proof bytes retained, exact current canonical name and aliases preserved. Existing duplicate-action guard remains enabled."
+          }
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/amdoun-two-whole-20260920/manual-point-review.json",
+        "sha256": "5067bbfa1410937d96159d325cab98e782dc4eedf609b79e203bb77036cf8bca"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "geometryPolicy": "Two complete unchanged native whole-imada vectors; no repair, snapping, clipping, smoothing or neighbor expansion.",
+        "namePolicy": "All currently installed Arabic primary names and Arabic/French aliases preserved exactly; original name proof retained.",
+        "evidenceFile": "official/amdoun-two-whole-20260920/source-acceptance-review.json",
+        "evidenceSha256": "0e2e76ca70259fd1b665f8bfd95cdcae087f281f4be41e6155292f41fe35fc48",
+        "uncertainty": "Native shared registration overlap, ten projected incident conflicts and0.548214844km2 all-layer uncovered loss retained. Source-qualified2023 administrative evidence; notsurvey/presentdaycurrencycertification."
+      }
+    },
+    {
+      "id": "isie-local-sector-2023-mongi-slim-ettadhamen",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/mongi-slim-125656-20260920/mongi-slim-125656-native-source.geojson",
+      "sha256": "4767bfefe9a431036d3d7562169653af44c047a3b01c02821ffa99a4604a5913",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7115583",
+          "officialCode": "125656",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المنجي سليم",
+            "name:ar": "المنجي سليم",
+            "name:fr": "Mongi Slim",
+            "ref:tn:codegeo": "125656"
+          },
+          "aliases": []
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/mongi-slim-125656-20260920/mongi-slim-125656-manual-point-review.json",
+        "sha256": "62873a64a351a94ebdc9879a3e21b6b5244f5bb4cd229d2388750c07a572ff30"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "identityRegistry": "Exact current 125656 official registry row; source originalName MongiSlim and official registry El mongi slim are same identity; no new alias authorized.",
+        "geometryPolicy": "Unmodified complete native whole-imada vector from pinned official map receipt/diagnostic; no repair.",
+        "aliasReview": "Preserve exactly nameAr/nameFr/aliases from package-config sourceNamePolicy; standard source-entry aliases empty; no historical rename aliases.",
+        "uncertainty": "Impact facts report prepacking geometry/coverage/conflict effects. Combined generation must validate actual catalog effects.",
+        "evidenceFile": "official/mongi-slim-125656-20260920/source-package-acceptance-review.json",
+        "evidenceSha256": "fdfe1ccd641a17f659472c8d3a4cc19162010085346e5200f29a057142d91483"
+      }
+    },
+    {
+      "id": "isie-local-sectors-2023-soukra-amra-two-whole",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/soukra-amra-two-whole-20260920/soukra-amra-two-whole-source.geojson",
+      "sha256": "7a6694d74dde124cfd6cdcdfdbaa7f444adaf8ebedd4dd17aff122951cd56a4b",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7114902",
+          "officialCode": "125253",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البساتين",
+            "name:ar": "البساتين",
+            "name:fr": "El Bassatine",
+            "ref:tn:codegeo": "125253"
+          },
+          "aliases": [
+            "البستان",
+            "El bousten"
+          ],
+          "supersession": {
+            "action": "remove_exact_installed_alias_only_name_tags_decision",
+            "supersededDecision": {
+              "id": "osm:relation:7114902",
+              "action": "name_tags",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "البساتين",
+                "name:ar": "البساتين",
+                "name:fr": "El Bassatine",
+                "ref:tn:codegeo": "125253"
+              },
+              "nameTags": {
+                "name": "البساتين",
+                "name:ar": "البساتين",
+                "name:fr": "El Bassatine",
+                "alt_name:ar": "البستان",
+                "alt_name:fr": "El bousten"
+              },
+              "reason": "Retain البساتين / El Bassatine for original Soukra code125253, supported by INS2012 and ISIE/JORT2023. Add the exact INS2024 same-code/parent variants البستان / El bousten as search aliases. Preserve original polygon, identity, primary name, coordinates, source532 and existing groups; the village inherits only the new search context.",
+              "evidence": [
+                {
+                  "source": "Reviewed exact Soukra sector125253 identity across original source, INS2012/2024 and ISIE/JORT2023; alias-only correction.",
+                  "reviewFiles": [
+                    {
+                      "file": "name-reviews/soukra-bassatine-alias-20260920/proof.json",
+                      "sha256": "d117e0bdcd0b61facb990b027a5207e7172a7dd8600c02ad2f01dfca88e5daaf",
+                      "bytes": 9457
+                    }
+                  ]
+                }
+              ]
+            },
+            "reason": "The exact alias-only name_tags decision is superseded by this accepted boundary replacement, which carries the same canonical primary names and the two exact INS2024 search aliases. Original rule bytes and history remain in the ancestor catalog and are not rewritten or duplicated."
+          }
+        },
+        {
+          "id": "osm:relation:7169582",
+          "officialCode": "435255",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العامرة",
+            "name:ar": "العامرة",
+            "name:fr": "El Amra",
+            "ref:tn:codegeo": "435255"
+          },
+          "aliases": []
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/soukra-amra-two-whole-20260920/manual-point-review.json",
+        "sha256": "f8dfc7afa6fd5d0a96c837dd8a2074fc5c80679a6c58290326f33835a369e941"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "geometryPolicy": "Two complete unchanged native whole-imada vectors; no repair, snapping, clipping or neighbor expansion.",
+        "namePolicy": "All currently installed Arabic primary names and aliases preserved exactly; exact Soukra alias-only name_tags decision superseded and carried in the replacement aliases.",
+        "evidenceFile": "official/soukra-amra-two-whole-20260920/source-acceptance-review.json",
+        "evidenceSha256": "abbc835ceaf5f4ee5702d5baf9ded19963a228f3a18ed6c15b073542fd331c32",
+        "uncertainty": "Native shared registration overlap, actual conflicts/gaps retained; no survey or present-day currency certification."
+      }
+    },
+    {
+      "id": "isie-local-sector-2023-soukra125251-whole",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/سكرة/سكرة.pdf",
+      "file": "official/soukra125251-whole-20260920/soukra125251-whole-source.geojson",
+      "sha256": "69e9681041dbae1b712ba75fd56210ce4c484ea33b381c36f9330f1d59eecf1b",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7114900",
+          "officialCode": "125251",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "int_name": "Soukra",
+            "name": "سكرة",
+            "name:ar": "سكرة",
+            "name:fr": "Soukra",
+            "ref:tn:codegeo": "125251"
+          },
+          "aliases": []
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/soukra125251-whole-20260920/manual-point-review.json",
+        "sha256": "57ba25370c2eec35ac1b64ee7799d54ec137f93491d68cae96e9cf4a00e2c3d4"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "geometryPolicy": "One complete unchanged native whole-imada vector; no repair, snapping, clipping or neighbor expansion.",
+        "namePolicy": "All currently installed Arabic primary name and Soukra French name preserved exactly; no curation supersession.",
+        "evidenceFile": "official/soukra125251-whole-20260920/source-acceptance-review.json",
+        "evidenceSha256": "eed9586210c7771d19b4e72342b9937356f3b4eabed74b27633ea4937374a0dc",
+        "uncertainty": "Native shared registration overlap, actual conflicts/gaps retained; no survey or present-day currency certification."
+      }
+    },
+    {
+      "id": "isie-local-sector-2023-akla435258-whole",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سيدي بوزيد/سيدي بوزيد الشرقية/العقلة - (سيدي بوزيد الشرقية).pdf",
+      "file": "official/akla435258-whole-20260920/akla435258-whole-source.geojson",
+      "sha256": "fc50f444d95562f9e9965c9075b75501337466217038dc3bd5bb872efac6748c",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7169576",
+          "officialCode": "435258",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العقلة",
+            "name:ar": "العقلة",
+            "name:fr": "El Okla",
+            "ref:tn:codegeo": "435258"
+          },
+          "aliases": []
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/akla435258-whole-20260920/manual-point-review.json",
+        "sha256": "63d8cbeea9fcd401deb4a7ece925e1fd9d3d5ee7367ca6b0f4679900ed103faf"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "geometryPolicy": "One complete unchanged native whole-imada vector; no repair, snapping, clipping or neighbor expansion.",
+        "namePolicy": "All currently installed Arabic primary name and El Okla French spelling preserved exactly; no curation supersession.",
+        "evidenceFile": "official/akla435258-whole-20260920/source-acceptance-review.json",
+        "evidenceSha256": "4d9c5a2027762b781bd8f7647b788490e40efc135666706a348a88b8f56d5ba1",
+        "uncertainty": "Native shared registration overlap, actual conflicts/gaps retained; no survey or present-day currency certification."
+      }
     }
   ],
   "aggregateScopeReview": {
@@ -2554,7 +2896,8 @@
     "sha256": "243efca92415dfc75873cbe4210d6923b6d3a5d359a7bf3bfc2010d899599282"
   },
   "lineageCompatibility": {
-    "file": "official/two-historical-sectors-20260920/append-only-lineage-compatibility.json",
-    "sha256": "d7629a2fb0e732b87055257a73a903d49fb6f0ef457a599fc7a83bf8e2298453"
+    "file": "official/akla435258-whole-20260920/append-only-lineage-compatibility.json",
+    "sha256": "dd717801a45447b1166a43d9fe3e98602cad1737d1ea475d265a0e40ac707638",
+    "bytes": 4513
   }
 }

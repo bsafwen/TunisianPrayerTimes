@@ -1,0 +1,35 @@
+{
+  "observedAt": "2026-09-07T06:12:22.214351+00:00",
+  "query": "مدنين Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "Medenine"
+  ],
+  "publicUiText": [
+    "Medenine",
+    "مدنين",
+    "Tunisia",
+    "Directions to Medenine",
+    "Directions",
+    "Share Medenine",
+    "Share",
+    "Save Medenine to lists",
+    "Save",
+    "Photo",
+    "Video",
+    "Close",
+    "مدنين Tunisia",
+    "Clear",
+    "Restaurants",
+    "Hotels",
+    "Attractions"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "مدنين",
+    "Medenine",
+    "Medenine"
+  ],
+  "screenshot": "delegation_626-1.png",
+  "boundaryVerified": false
+}

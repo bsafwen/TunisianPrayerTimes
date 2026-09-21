@@ -1,0 +1,20 @@
+{
+  "source": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\catalog-next-actions-settled-live-20260920.json",
+    "sha256": "47c3a26fad9357ee85926ad25b0da66f943cc3903cb32073d2e5ecbb0874e1fa"
+  },
+  "selectedPointers": {
+    "$.rootLatest.combinedFiveLocality.names": {
+      "osm:relation:7115584": "التضامن 4",
+      "osm:relation:7113315": "حمام معروف الرياض",
+      "osm:relation:7189452": "زهرة مدين",
+      "osm:relation:7189451": "زهرة مدين الجنوبية"
+    },
+    "$.rootLatest.amdounMidounReview": {
+      "path": "work/amdoun-midoun-official-scope-20260920/source-and-geometry-review.json",
+      "sha256": "6c73a74089e232ce6919e2d95201e1942a3b5bc34a246a1f58cdb2a702845a1b",
+      "finding": "Amdoun sector names installed, authentic town unchanged. Existing two Amdoun shapes remain source-qualified, not equal to official maps. Midoun remains HOLD: official native ring self-intersects; town is near inconsistent map seams; no repair/merge/relocation."
+    }
+  },
+  "qualification": "The initial frozencontext selector found zero direct-value ID rows because this handoff names targets as dictionary keys; these exact two pertinent records resolve that selection gap."
+}

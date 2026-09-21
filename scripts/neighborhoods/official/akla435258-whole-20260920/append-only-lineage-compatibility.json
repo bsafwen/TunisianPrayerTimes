@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_append_only_boundary_extension",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "previousManifest": {
+    "file": "official/akla435258-whole-20260920/evidence/boundarymanifest-before-akla435258-whole.json",
+    "sha256": "98e2d2b7a6cc7df3613e28bb783eaee85367bbe6984b893ae8cb82bf8557f2fa"
+  },
+  "addedSources": [
+    {
+      "id": "isie-local-sector-2023-akla435258-whole",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سيدي بوزيد/سيدي بوزيد الشرقية/العقلة - (سيدي بوزيد الشرقية).pdf",
+      "file": "official/akla435258-whole-20260920/akla435258-whole-source.geojson",
+      "sha256": "fc50f444d95562f9e9965c9075b75501337466217038dc3bd5bb872efac6748c",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7169576",
+          "officialCode": "435258",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العقلة",
+            "name:ar": "العقلة",
+            "name:fr": "El Okla",
+            "ref:tn:codegeo": "435258"
+          },
+          "aliases": []
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/akla435258-whole-20260920/manual-point-review.json",
+        "sha256": "63d8cbeea9fcd401deb4a7ece925e1fd9d3d5ee7367ca6b0f4679900ed103faf"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "geometryPolicy": "One complete unchanged native whole-imada vector; no repair, snapping, clipping or neighbor expansion.",
+        "namePolicy": "All currently installed Arabic primary name and El Okla French spelling preserved exactly; no curation supersession.",
+        "evidenceFile": "official/akla435258-whole-20260920/source-acceptance-review.json",
+        "evidenceSha256": "4d9c5a2027762b781bd8f7647b788490e40efc135666706a348a88b8f56d5ba1",
+        "uncertainty": "Native shared registration overlap, actual conflicts/gaps retained; no survey or present-day currency certification."
+      }
+    }
+  ],
+  "scopeSuccessor": {
+    "file": "official/akla435258-whole-20260920/accepted-whole-scope-successor.json",
+    "sha256": "c7ab93cb48a5225ce427def975c912d6f391aff1ac16af23391fc605547b1abb",
+    "bytes": 186986
+  },
+  "evidence": [
+    {
+      "file": "official/hammamet-nine-20260920/evidence/root-source-stage-checked.json",
+      "sha256": "acc52c536fd817049d3b12633ffe8e834837336dd46b2c6db34393e643c5190c"
+    },
+    {
+      "file": "official/hammamet-nine-20260920/source-review.json",
+      "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+    },
+    {
+      "file": "official/sidi-mtir-20260920/source-review.json",
+      "sha256": "2525df6f764aaa8f68fc5d43ed7dfe591637e976fdce2cf52e6c67c2773a91b6"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/source-review.json",
+      "sha256": "6eaebff03cf5c50aba520ece205373c1fe395b338e4c219ead220086df0e0667"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/source-package-acceptance-review.json",
+      "sha256": "f82eb8a2085548fb3485200d56fe6be554fc116cd1878b3de7aea7cd168263ab"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/source-acceptance-review.json",
+      "sha256": "0e2e76ca70259fd1b665f8bfd95cdcae087f281f4be41e6155292f41fe35fc48"
+    },
+    {
+      "file": "official/mongi-slim-125656-20260920/source-package-acceptance-review.json",
+      "sha256": "fdfe1ccd641a17f659472c8d3a4cc19162010085346e5200f29a057142d91483"
+    },
+    {
+      "file": "official/soukra-amra-two-whole-20260920/source-acceptance-review.json",
+      "sha256": "abbc835ceaf5f4ee5702d5baf9ded19963a228f3a18ed6c15b073542fd331c32",
+      "bytes": 21681
+    },
+    {
+      "file": "official/soukra125251-whole-20260920/source-acceptance-review.json",
+      "sha256": "eed9586210c7771d19b4e72342b9937356f3b4eabed74b27633ea4937374a0dc"
+    },
+    {
+      "file": "official/akla435258-whole-20260920/source-acceptance-review.json",
+      "sha256": "4d9c5a2027762b781bd8f7647b788490e40efc135666706a348a88b8f56d5ba1"
+    }
+  ]
+}

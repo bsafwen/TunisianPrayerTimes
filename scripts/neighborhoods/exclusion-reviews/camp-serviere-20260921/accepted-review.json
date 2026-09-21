@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "status": "ROOT_ACCEPTED_PRODUCT_SCOPE_EXCLUSION_REVIEW",
+  "id": "osm:node:1190877566",
+  "action": "exclude",
+  "scope": "product_picker_and_gps_labels_only",
+  "decision": {
+    "status": "ROOT_ACCEPTED_PRODUCT_SCOPE_EXCLUSION_PENDING_STAGING",
+    "at": "2026-09-20T22:40:28.872351+00:00",
+    "ownerId": "osm:node:1190877566",
+    "action": "exclude_from_locality_picker_and_gps_labels",
+    "reason": "The exact legacy hamlet point is inside the named military academy site in the pinned source. The historical account directly identifies Camp Serviere as the former academy site name, while the current Defense Ministry identifies the institution as the military academy at Fondouk Jedid. Together these support a legacy facility/site label rather than a distinct current neighborhood for this product.",
+    "spatialEvidence": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\osm-context.json",
+      "sha256": "a0924f57a9f23263fdb99262e2dee687b0787bea0852fa3f3a033795a7e69267",
+      "nodeId": 1190877566,
+      "wayId": 679795363,
+      "originalRingVertexCount": 17,
+      "validWithoutRepair": true,
+      "containsExactNode": true
+    },
+    "qualifications": [
+      "This is a product-scope classification, not proof that the historical place never existed.",
+      "The academy polygon is contextual source evidence, not a certified official boundary to ship.",
+      "Do not merge the camp point with a surrounding locality or move prayer source coordinates.",
+      "Preserve nearby Fondouk Jedid and saved prayer delegation via existing retired-locality migration."
+    ],
+    "liveAppEdits": false
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\staged-catalog\\source-facts.json",
+    "sha256": "11f48e033afc315a279ee9e63448ee70ef79bea3c4595be492fc750e1ddbe43a",
+    "bytes": 5011
+  },
+  "spatialEvidence": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\osm-context.json",
+    "sha256": "a0924f57a9f23263fdb99262e2dee687b0787bea0852fa3f3a033795a7e69267",
+    "bytes": 13450
+  },
+  "historicalSource": {
+    "url": "https://www.fichier-pdf.fr/2018/11/16/camp-servieres-fff-/camp-servieres-fff-.pdf",
+    "cached": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\sources\\camp-servieres-fff-.pdf",
+      "sha256": "760919f6f21333b1644fbca5eb9bfdc5f80fb2e38ef7dc59d55b54c97eb80372",
+      "bytes": 1360274
+    }
+  },
+  "currentOfficialSource": {
+    "url": "https://defense.tn/academie-militaire/?lang=fr",
+    "cached": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\sources\\academie-militaire-fr.html",
+      "sha256": "f5603fc057c3cfe8d1b720a3a3161691925c48628f31143aa17c4cccde93295f",
+      "bytes": 105190
+    }
+  },
+  "pbfContext": {
+    "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "nodeId": 1190877566,
+    "academyWayId": 679795363,
+    "originalRingVertexCount": 17,
+    "validWithoutRepair": true,
+    "containsExactNode": true
+  },
+  "savedSelectionHandling": "Retire this exact ID through the generated retired-localities asset; preserve source coordinates, parent, prayer source and surrounding Fondouk Jedid.",
+  "displayHandling": {
+    "removeExactOverride": true,
+    "mergeOrRename": false
+  },
+  "qualifications": [
+    "This is a product-scope classification, not proof that the historical place never existed.",
+    "The academy polygon is contextual source evidence, not a certified official boundary to ship.",
+    "Do not merge the camp point with a surrounding locality or move prayer source coordinates.",
+    "Preserve nearby Fondouk Jedid and saved prayer delegation via existing retired-locality migration."
+  ]
+}

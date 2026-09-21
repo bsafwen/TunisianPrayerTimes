@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "sourceInventory": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\two-name-successor-points-20260921\\batch-summary.json",
+    "sha256": "1e5051c157e5dc90a562d3ee2893ec28058b8baef5b8668655af7464cab15f9b"
+  },
+  "mainLedger": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "sha256": "4882c0453b0cedeb186462d1d320a7c8735a65ae88f358b2266fdd524b4b4e04"
+  },
+  "rows": [
+    {
+      "delegationId": 425,
+      "newCoordinate": {
+        "observation": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\two-name-successor-points-20260921\\delegation_425-2.json",
+          "sha256": "ae1e0921fefc3fe2766f56097c89bd9ebcac9091229ee2aa3ebe94e5802ab852"
+        },
+        "png": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\two-name-successor-points-20260921\\delegation_425-2.png",
+          "sha256": "f60c9846ed38fa6afe535ba25a3436d150e7fae933c3e65a878a49dfb324e653"
+        }
+      },
+      "reusedNamed": [
+        {
+          "observation": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_425-1.json",
+            "sha256": "64f443683b7dd76f86746ec2cb1c91931473349f91681d13df60e14e83831f5f"
+          },
+          "screenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_425-1.png",
+            "sha256": "3560ca670c9313bf846db671c15de598a64331ad23de2b773ea8123dfe4555aa"
+          },
+          "query": "مللولش المهدية Tunisia"
+        }
+      ],
+      "rootVisualReview": {
+        "reviewed": true,
+        "finding": "Exact coordinate query visible. Mellouleche address; delegation office and mosque visible nearby.",
+        "boundaryVerified": false,
+        "internalInmCalculationPointCertified": false
+      }
+    },
+    {
+      "delegationId": 534,
+      "newCoordinate": {
+        "observation": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\two-name-successor-points-20260921\\delegation_534-2.json",
+          "sha256": "6114ea5c5248a2daf3f46de57ea9b6666b274ae43e589b10c290067aa164afe6"
+        },
+        "png": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\two-name-successor-points-20260921\\delegation_534-2.png",
+          "sha256": "13d016151058c8681ba455607257b6f4a552ecfa25770181609de72f1edd45c9"
+        }
+      },
+      "reusedNamed": [
+        {
+          "observation": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_534-1.json",
+            "sha256": "ec86839693e17d0cfc4b66f81988ab8aeec7d1c063006afd371bea38db33ccca"
+          },
+          "screenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\delegation_534-1.png",
+            "sha256": "bba8b3b2e96aede375f8facde9a97fc124b684d722d963b40c681872b8a859d1"
+          },
+          "query": "التظامن اريانة Tunisia"
+        }
+      ],
+      "rootVisualReview": {
+        "reviewed": true,
+        "finding": "Exact query visible. Urban context near hay tadhamen rue105; broader address Cebalat. Native and active Ariana context agrees. INM-published reference only.",
+        "boundaryVerified": false,
+        "internalInmCalculationPointCertified": false
+      }
+    }
+  ],
+  "coordinateScreenshotsViewed": 2,
+  "boundaryCertificationAdded": false
+}

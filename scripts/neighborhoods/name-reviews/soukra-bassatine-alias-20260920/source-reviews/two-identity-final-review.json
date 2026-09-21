@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_IDENTITIES_RESOLVED_FINITE_PROPOSAL_NOT_INSTALLED",
+  "baselineMetadata": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\finalize_source_facts.py",
+    "sha256": "faf382281463a33b749945bae21410b2ec19c8e7eb5560eb488765af75a260be",
+    "bytes": 9828
+  },
+  "sourceFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\new-primary-source-facts.json",
+    "sha256": "5bcba0f7963d08c909477f1773eca2bf533c671bfcf2ff2bd8635c15150dd203",
+    "bytes": 14287
+  },
+  "correctionProposal": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\correction-proposal.json",
+    "sha256": "3acf961b718c44202fa942f79b1d5b9527404adb0a210b3c23db036f767974a1",
+    "bytes": 8666
+  },
+  "geometryFacts": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\geometry-facts.json",
+    "sha256": "c68e2bf955990e88198d8d10d515c5d0bbf0e962cd863b240703608e441263fd",
+    "bytes": 26099
+  },
+  "modelReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\deepseek-review.json",
+    "sha256": "3ab042505ef2a835bb811818b6a60e82308bebdabca5107a32e46324cf67a1a0",
+    "bytes": 10240
+  },
+  "rawModelResponse": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\remaining-amra-soukra-20260920\\result.json",
+    "sha256": "48e9c914ad11e385682dee2b8fddcc310567ed7c6951c3109a49451b143f1eb4",
+    "bytes": 66386
+  },
+  "modelCalls": 1,
+  "modelUsage": {
+    "prompt_tokens": 16524,
+    "completion_tokens": 15389,
+    "total_tokens": 31913,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 12838
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 16524
+  },
+  "nativeFinalDecisions": [
+    {
+      "id": "osm:relation:7169582",
+      "decision": "Retain العامرة / El Amra with source code435255 and Sidi Bouzid Est parent. Official coded identity is supported; no name/alias/group removal or correction.",
+      "identityEvidence": [
+        "Original OSM ref435255/name/parent",
+        "Three original INS2024 workbook rows checked in all nine identity fields",
+        "Personally viewed INS2012 PDF/printed107",
+        "Fresh exact ISIE2023 map; native anchor contained",
+        "Personally viewed JORT590 Annex1 TableA PDF56/JORT5153 one imada to one same-name local circle"
+      ],
+      "remainingIssue": "Official-versus-current footprint is materially different (IoU0.6813,20.7969km2 old-only). This is a finite boundary-source candidate; existing Google result duplicates remain separately unlinked and are not necessary to establish official identity."
+    },
+    {
+      "id": "osm:relation:7114902",
+      "decision": "Resolve the pending identity/title hold. Retain البساتين primary and Soukra parent; add exact INS2024 search aliases البستان and El bousten through reviewed name_tags.",
+      "identityEvidence": [
+        "Original code125253",
+        "Personally viewed INS2012 PDF/printed38 samecode El Bessatine / البساتين in Soukra",
+        "Three original INS2024 workbook rows samecode/parent, El bousten / البستان",
+        "Fresh exact ISIE2023 map title البساتين-(سكرة) with97.2percent of old footprint covered, current anchor contained",
+        "Personally viewed JORT590 Annex1 TableA PDF4/JORT5101 one imada to one same-name local circle"
+      ],
+      "expectedAliasOnlyRawFields": 2,
+      "savedNameKindReceiptsExpected": 1,
+      "pendingReviewExactRemovalExpected": 1,
+      "primaryParentGroupCoordinatesPrayerAndGeometryUnchanged": true,
+      "requiredDependency": "Existing preserved village532 source/raw metadata contract must get narrow truthful successors for the sector aliases/effective name tags and child contextAliases. No compiler weakening or blanket repin."
+    }
+  ],
+  "nativeQualificationsOfModel": [
+    "DeepSeek correctly separates identity/name from boundary equality and supports Soukra aliases.",
+    "Its request for a six-digit code printed on the map is not required: newly inspected JORT whole-imada rows plus exact INS2012 name/parent/code provide the bounded code-to-circle link. JORT was inspected after the single model input froze; this is additional primary evidence, not a model execution claim.",
+    "The remaining unknown is finite integration impact/source-vintage differences, not an invented requirement that a new official outline must equal old OSM.",
+    "frozen-facts.inheritedChildren is explicitly corrected as a same-parentName discovery screen in new-primary-source-facts; all unrelated homonyms are excluded. Only7390818324 is a current Soukra child affected by alias additions."
+  ],
+  "soukraVillage": {
+    "id": "osm:node:7390818324",
+    "lat": 36.8749751,
+    "lng": 10.2454267,
+    "currentGroup": "delegation:532",
+    "insideOldBassatine": true,
+    "insideOfficialBassatine": false,
+    "officialBoundaryDistanceMeters": 23.691745435668413,
+    "futureBoundaryCaution": "Preserve authentic point and broad manual532 identity; revisit source/context guards honestly if official boundary is adopted. Do not move point or merge neighboring administrative identity."
+  },
+  "phoneAndEmulator": {
+    "queries": 0,
+    "actions": 0,
+    "reservedDevicesReleased": true,
+    "reason": "New primary sources directly resolved identity; repeated Maps requests would not establish exact administrative polygons."
+  },
+  "allOwnedHandlesTerminal": true,
+  "deepseekSession": 18599,
+  "productionWrites": false,
+  "generatorTestsBuildsApks": false,
+  "nextTaskNotStarted": true
+}

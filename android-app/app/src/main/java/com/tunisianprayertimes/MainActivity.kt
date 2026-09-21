@@ -22,6 +22,8 @@ object MainTabNavigation {
     const val DESTINATION_PRAYERS = "prayers"
     const val DESTINATION_ALARMS = "alarms"
     const val DESTINATION_QIBLA = "qibla"
+    const val DESTINATION_ADHKAR = "adhkar"
+    const val EXTRA_DHIKR_REMINDER_ID = "com.tunisianprayertimes.extra.DHIKR_REMINDER_ID"
 }
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +31,8 @@ class MainActivity : AppCompatActivity() {
     private data class MainTabRequest(
         val destination: String?,
         val sequence: Int,
+        val dhikrReminderId: String? = null,
+        val dhikrOccurrenceId: String? = null,
     )
 
     private var tabRequestSequence = 0
@@ -61,6 +65,8 @@ class MainActivity : AppCompatActivity() {
                     activity = this,
                     requestedDestination = tabRequest.destination,
                     requestedDestinationSequence = tabRequest.sequence,
+                    requestedDhikrReminderId = tabRequest.dhikrReminderId,
+                    requestedDhikrOccurrenceId = tabRequest.dhikrOccurrenceId,
                 )
             }
         }
@@ -90,6 +96,8 @@ class MainActivity : AppCompatActivity() {
         tabRequest = MainTabRequest(
             destination = destination,
             sequence = tabRequestSequence,
+            dhikrReminderId = intent.getStringExtra(MainTabNavigation.EXTRA_DHIKR_REMINDER_ID),
+            dhikrOccurrenceId = intent.getStringExtra(com.tunisianprayertimes.adhkar.DhikrReminderScheduler.EXTRA_OCCURRENCE_ID),
         )
     }
 }

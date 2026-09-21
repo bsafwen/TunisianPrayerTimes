@@ -1,0 +1,30 @@
+{
+  "observedAt": "2026-09-07T05:33:35.288804+00:00",
+  "query": "المدينة تونس Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "Tunis"
+  ],
+  "publicUiText": [
+    "View Street view imagery for Tunis",
+    "Tunis",
+    "تونس",
+    "Tunisia",
+    "Directions to Tunis",
+    "Directions",
+    "Share Tunis",
+    "Share",
+    "Save Tunis to lists",
+    "Save",
+    "Photo",
+    "Close",
+    "المدينة تونس Tunisia",
+    "Clear",
+    "Restaurants",
+    "Attractions",
+    "Hotels"
+  ],
+  "observationStatus": "candidate_observed",
+  "screenshot": "delegation_403-1.png",
+  "boundaryVerified": false
+}

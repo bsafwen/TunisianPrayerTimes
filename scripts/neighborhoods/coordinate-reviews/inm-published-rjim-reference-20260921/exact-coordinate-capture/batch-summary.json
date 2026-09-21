@@ -1,0 +1,76 @@
+{
+  "runId": "rjim-ariana-487-exact-20260921",
+  "deviceType": "emulator",
+  "deviceSerial": "emulator-5556",
+  "plan": {
+    "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rjim-ariana-reference-context-20260921\\487-exact-plan.json",
+    "sha256": "6e50259d89b46c6b1f4acb519752e7e45fda21b5b2b01f539242dbf7d4c5ac3f"
+  },
+  "outputDir": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\rjim-ariana-487-exact-20260921",
+  "startTime": "2026-09-21T08:55:19Z",
+  "endTime": "2026-09-21T08:55:35Z",
+  "totalElapsedSeconds": 15.844,
+  "completedCount": 1,
+  "rows": [
+    {
+      "id": "delegation:487",
+      "query": "33.325,8.014",
+      "status": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "33°19'30.0\"N 8°00'50.4\"E"
+      ],
+      "seconds": 15.485,
+      "artifacts": [
+        {
+          "filename": "delegation_487-2.json",
+          "sha256": "4d551e71824e40668d1d90d7adfbc5c3932faa7f60f33fa438068a40bc3a60c2"
+        },
+        {
+          "filename": "delegation_487-2.png",
+          "sha256": "aa7503f829091514a54b9b8fc29219933f70c9da6a5a1e66fa8b1ac4cdb90aad"
+        }
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "synchronizationTimedOut": false,
+      "pollCount": 2,
+      "stablePollCount": 2,
+      "syncElapsedSeconds": 7.703,
+      "launchCount": 1,
+      "syncTimeoutSeconds": 20.0,
+      "synchronizationReason": "ready signature observed in two consecutive polls",
+      "observationParserVersion": 4,
+      "synchronizationVersion": 1,
+      "readySignature": "743f72c78cffafaf374b81357641a6fd979d213301e889009c33995af5cbdc15",
+      "captureSignaturesMatch": true,
+      "preCaptureSignature": "743f72c78cffafaf374b81357641a6fd979d213301e889009c33995af5cbdc15",
+      "postCaptureSignature": "743f72c78cffafaf374b81357641a6fd979d213301e889009c33995af5cbdc15",
+      "captureStartedAt": "2026-09-21T08:55:32.874330+00:00",
+      "captureCompletedAt": "2026-09-21T08:55:33.272011+00:00",
+      "collectorPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\collector.py",
+      "collectorSha256": "ec53de637405468e226e82e3fb614401d5e93ab78895ed46d2bc723a0e8deccb",
+      "verifiedAvdName": "Pixel_10_Pro_XL",
+      "avdIdentityGuardVersion1": 1
+    }
+  ],
+  "error": null,
+  "pins": {
+    "before": {
+      "helper_sha256": "1f8351c8f9679563dc159834e353f7d92dfac884c4d90021c42399a10e0ec902",
+      "main_ledger_sha256": "4882c0453b0cedeb186462d1d320a7c8735a65ae88f358b2266fdd524b4b4e04",
+      "metadata_sha256": "540a48c17888518d28a9b5e586f3e7ec7c8d7f7051c8b9f03564e7e262bdfff8"
+    },
+    "after": {
+      "helper_sha256": "1f8351c8f9679563dc159834e353f7d92dfac884c4d90021c42399a10e0ec902",
+      "main_ledger_sha256": "4882c0453b0cedeb186462d1d320a7c8735a65ae88f358b2266fdd524b4b4e04",
+      "metadata_sha256": "540a48c17888518d28a9b5e586f3e7ec7c8d7f7051c8b9f03564e7e262bdfff8"
+    },
+    "unchanged": true
+  },
+  "helper": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_phone_catalog_v4.py",
+  "mainLedger": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+  "metadata": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+  "collectorPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\collector.py",
+  "collectorSha256": "ec53de637405468e226e82e3fb614401d5e93ab78895ed46d2bc723a0e8deccb",
+  "synchronizationPolicy": "single_guarded_searchurl_launch;20s_polling_deadline_caps_guarded_adb_reads;0.5s_public_ui_polls;2_stable_ready_or_query_anchored_correction_polls;final_bracketed_guarded_capture_outside_poll_deadline"
+}

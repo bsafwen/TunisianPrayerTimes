@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "status": "SOURCE_COMPONENT_ONLY_NOT_A_COMPLETE_MANIFEST",
+  "sources": [
+    {
+      "id": "isie-local-sectors-2023-amdoun-two-whole",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/amdoun-two-whole-20260920/amdoun-two-whole-source.geojson",
+      "sha256": "7c1c4cd8f0043bec348c9b9467d8b194d4318daedd4656f7b72f48d43538c34d",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7189452",
+          "officialCode": "215351",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون",
+            "name:ar": "عمدون",
+            "name:fr": "Amdoun",
+            "ref:tn:codegeo": "215351"
+          },
+          "aliases": [
+            "عمدون",
+            "Amdoun"
+          ],
+          "resolvedCatalogReview": {
+            "action": "supersede_exact_installed_name_tags_with_same_canonical_boundary_identity",
+            "previousDecision": {
+              "id": "osm:relation:7189452",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "عمدون",
+                "name:ar": "عمدون",
+                "name:fr": "Amdoun",
+                "ref:tn:codegeo": "215351"
+              },
+              "action": "name_tags",
+              "nameTags": {
+                "name": "زهرة مدين",
+                "name:ar": "زهرة مدين",
+                "name:fr": "Zahret medien",
+                "alt_name:ar": "عمدون",
+                "alt_name:fr": "Amdoun"
+              },
+              "reason": "Official INS sector code 215351 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين / Zahret medien. Retain عمدون and Amdoun as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+              "evidence": [
+                {
+                  "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+                  "reviewFiles": [
+                    {
+                      "file": "name-reviews/amdoun-two-20260920/proof.json",
+                      "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+                    }
+                  ]
+                }
+              ]
+            },
+            "originalNameProof": {
+              "file": "name-reviews/amdoun-two-20260920/proof.json",
+              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+            },
+            "qualification": "Proposal only; original proof bytes retained, exact current canonical name and aliases preserved. Existing duplicate-action guard remains enabled."
+          }
+        },
+        {
+          "id": "osm:relation:7189451",
+          "officialCode": "215352",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون الجنوبية",
+            "name:ar": "عمدون الجنوبية",
+            "name:fr": "Amdoun Sud",
+            "ref:tn:codegeo": "215352"
+          },
+          "aliases": [
+            "عمدون الجنوبية",
+            "Amdoun Sud"
+          ],
+          "resolvedCatalogReview": {
+            "action": "supersede_exact_installed_name_tags_with_same_canonical_boundary_identity",
+            "previousDecision": {
+              "id": "osm:relation:7189451",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "عمدون الجنوبية",
+                "name:ar": "عمدون الجنوبية",
+                "name:fr": "Amdoun Sud",
+                "ref:tn:codegeo": "215352"
+              },
+              "action": "name_tags",
+              "nameTags": {
+                "name": "زهرة مدين الجنوبية",
+                "name:ar": "زهرة مدين الجنوبية",
+                "name:fr": "Zahret medien sud",
+                "alt_name:ar": "عمدون الجنوبية",
+                "alt_name:fr": "Amdoun Sud"
+              },
+              "reason": "Official INS sector code 215352 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين الجنوبية / Zahret medien sud. Retain عمدون الجنوبية and Amdoun Sud as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+              "evidence": [
+                {
+                  "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+                  "reviewFiles": [
+                    {
+                      "file": "name-reviews/amdoun-two-20260920/proof.json",
+                      "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+                    }
+                  ]
+                }
+              ]
+            },
+            "originalNameProof": {
+              "file": "name-reviews/amdoun-two-20260920/proof.json",
+              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+            },
+            "qualification": "Proposal only; original proof bytes retained, exact current canonical name and aliases preserved. Existing duplicate-action guard remains enabled."
+          }
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/amdoun-two-whole-20260920/manual-point-review.json",
+        "sha256": "5067bbfa1410937d96159d325cab98e782dc4eedf609b79e203bb77036cf8bca"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "geometryPolicy": "Two complete unchanged native whole-imada vectors; no repair, snapping, clipping, smoothing or neighbor expansion.",
+        "namePolicy": "All currently installed Arabic primary names and Arabic/French aliases preserved exactly; original name proof retained.",
+        "evidenceFile": "official/amdoun-two-whole-20260920/source-acceptance-review.json",
+        "evidenceSha256": "0e2e76ca70259fd1b665f8bfd95cdcae087f281f4be41e6155292f41fe35fc48",
+        "uncertainty": "Native shared registration overlap, ten projected incident conflicts and0.548214844km2 all-layer uncovered loss retained. Source-qualified2023 administrative evidence; notsurvey/presentdaycurrencycertification."
+      }
+    }
+  ],
+  "administrativeScopeAddition": {
+    "file": "official/amdoun-two-whole-20260920/whole-scope-additions.json",
+    "sha256": "5b2f670fec9c937a7f6991998399f679e7c2d1c1c258242856be673e8d07f72f"
+  },
+  "aggregateScopeChange": null,
+  "currentManifest": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "34809853b02d38bf924f2f6f4b51dd89b88882a7fb323bed137cadaa87d1ca57"
+  }
+}

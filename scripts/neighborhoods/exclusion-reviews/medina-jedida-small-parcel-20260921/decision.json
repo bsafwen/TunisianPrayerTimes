@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED_SCOPED_ENTRY_RETIREMENT",
+  "reviewedBy": "root",
+  "createdAtUtc": "2026-09-21T11:06:50.432895+00:00",
+  "retireId": "osm:way:106590248",
+  "retainedId": "delegation:454",
+  "reason": "The user reports this name as the Medina Jedida delegation, separately present under Ben Arous. The small residential land-use polygon is in the saved Sidi Rezig 2/Megrine sector and lacks independent corroboration as a distinct selectable neighborhood. Retire this misleading unsupported small-area entry; do not reparent it or fabricate a Medina Jedida boundary.",
+  "qualification": "Not a claim that no informal same-name neighborhood can exist. Neither the delegation nor Sidi Rezig 2 is removed, and no whole-delegation geometry is claimed.",
+  "expectedFeature": {
+    "id": "osm:way:106590248",
+    "sourceId": "osm",
+    "name": "المدينة الجديدة",
+    "aliases": [
+      "Nouvelle Medina"
+    ],
+    "kind": "residential",
+    "parentName": "معتمدية مقرين",
+    "contextAliases": [
+      "Délégation Megrine",
+      "Mégrine",
+      "معتمدية مقرين"
+    ],
+    "governorateId": 349,
+    "lat": 36.757566,
+    "lng": 10.244981,
+    "delegationId": 454,
+    "hasBoundary": true,
+    "bbox": [
+      10.242368,
+      36.755796,
+      10.247886,
+      36.759264
+    ],
+    "areaKm2": 0.10486022632394851,
+    "pickerGroupId": "osm:way:106590248",
+    "offset": 5307180,
+    "length": 212
+  },
+  "expectedGeometrySha256": "833d9428fb5aaea64f5a4a3d466fdd0815d3e10d156e39a24491109e97c724f4",
+  "retainedDelegationBefore": {
+    "id": "delegation:454",
+    "nameAr": "المدينة الجديدة",
+    "aliases": [
+      "Medina Jedida"
+    ],
+    "searchTerms": [
+      "Ben Arous"
+    ],
+    "governorateAr": "بن عروس",
+    "parentAr": "المدينة الجديدة",
+    "kind": "delegation",
+    "lat": 36.745,
+    "lng": 10.246,
+    "hasBoundary": false,
+    "prayerSource": {
+      "id": 454,
+      "nameAr": "المدينة الجديدة",
+      "lat": 36.745,
+      "lng": 10.246
+    },
+    "fingerprint": "46a769f522f7cc582318e64e9f128a07519df04e34ffada03b05f40bb814dcd7"
+  },
+  "expectedCounts": {
+    "selectable": 3384,
+    "manual": 3334,
+    "raw": 3482,
+    "polygons": 2579,
+    "points": 903,
+    "retired": 165
+  },
+  "searchAlias": {
+    "id": "delegation:454",
+    "nameAr": "المدينة الجديدة",
+    "searchAliases": [
+      "Nouvelle Medina"
+    ]
+  },
+  "scope": "Remove one singleton residential entry and its grid/conflict references. Preserve binary, remaining metadata, source coordinates and nearest-source choices. Retain all existing text corrections by a new pinned revision chain.",
+  "evidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\medina-entry-retirement-20260921\\source\\neighborhoods\\exclusion-reviews\\medina-jedida-small-parcel-20260921\\source-and-scope.json",
+      "sha256": "3c5b0a2321cb55717a6bc25dc200792de63a21c2822d5137a66332fe94a8a9f6"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\medina-entry-retirement-20260921\\source\\neighborhoods\\exclusion-reviews\\medina-jedida-small-parcel-20260921\\maps-name.json",
+      "sha256": "e6e0c72280fc3ad4b7a9b01f16cfd91a49b9e88ac838fd8c7ca3bab0e5818899"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\medina-entry-retirement-20260921\\source\\neighborhoods\\exclusion-reviews\\medina-jedida-small-parcel-20260921\\maps-name.png",
+      "sha256": "2940d7e0ec87c3dc73a25249fbe193dd26d3b429d2e1eb6f36c2c275e2eff4a4"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\medina-entry-retirement-20260921\\source\\neighborhoods\\exclusion-reviews\\medina-jedida-small-parcel-20260921\\maps-point.json",
+      "sha256": "de88fcb89ba927869a12acc2433b1ad6c4447ce0e252c5163a7736ef7b21d1ac"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\medina-entry-retirement-20260921\\source\\neighborhoods\\exclusion-reviews\\medina-jedida-small-parcel-20260921\\maps-point.png",
+      "sha256": "761f8cba9b702c62496bd39d394af2236b55c8a740fb5e33cd3e5d83ec878c18"
+    }
+  ]
+}

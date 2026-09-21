@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "status": "ROOT_ACCEPTED_DISPLAY_CORRECTION",
+  "id": "osm:way:164467494",
+  "currentName": "القصبة",
+  "proposedNameArabic": "القصيبة",
+  "searchAliasesToAdd": [],
+  "basis": "The stored polygon encloses the inhabited peninsula south of Bizerte old-port mouth, with native French name La Ksiba. INP Arabic listed-monuments inventory PDFpage20/printed19 explicitly distinguishes القصبة (north) from القصيبة (oceanographic museum at peninsula north tip). The municipality plan pages10/19 distinguishes the named quarters and forts. Correct Arabic identity; no polygon certification.",
+  "primaryLandmarks": [
+    {
+      "nameAr": "القصبة",
+      "lat": 37.27888611111111,
+      "lng": 9.875027777777778
+    },
+    {
+      "nameAr": "القصيبة",
+      "lat": 37.27813888888889,
+      "lng": 9.876844444444444
+    }
+  ],
+  "visualReview": {
+    "timeUtc": "2026-09-21T13:36:41.262181+00:00",
+    "surface": "Existing manual review tool with exact stored app polygon over Google satellite, browser tab4",
+    "finding": "Polygon outlines the southern peninsula with densely packed houses, labelled Ksiba Restaurant, between old port and Boulevard Habib Bougatfa. Previous Google Arabic-name search selected the different northern Kasbah landmark.",
+    "geometryBoundaryCertification": false
+  },
+  "evidence": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\inp-arabic-locations.pdf",
+      "sha256": "701794261aea43283ed01364bd85d7ab99ddc3fbe718276d823a8b288823644d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\inp-arabic-locations-page-20.png",
+      "sha256": "1c2ec575e8a03bd443b88c02a352d37c4f7c78b0ff27724a3a65f61a822e250d"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\bizerte-municipal-plan.pdf",
+      "sha256": "954203d601069f97fe3df3751611bdc622b61e2f7beeeef214be39c3091c90ce"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\bizerte-municipal-plan-page-10.png",
+      "sha256": "dba3557e97cc569c8174378be9ab812506531a3326456b19c40cfa0c56abf576"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\bizerte-municipal-plan-page-19.png",
+      "sha256": "db5d0c302ef925c12c790d0d961b63065944063276b5787b6ab767d8bb9575ca"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\three-landmark-area-20260921\\frozen-input.json",
+      "sha256": "2e0fc1860a03706dc10fd921dc6d92a2697edca33b024097195c05fa2d9b610f"
+    }
+  ],
+  "inputPins": {
+    "neighborhoods.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "170e0ef109975915ceb57f445a358da722e07984828c354cd7b3285ee0f029cf"
+    },
+    "neighborhoods.bin": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+    },
+    "locality-display-names.json": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\locality-display-names.json",
+      "sha256": "0b66f48ddbe9730b085a7bb052c61d59c8c6d1f83a2606ed480dc6a96c39b445"
+    }
+  },
+  "scope": "One display overlay only. Preserve existing267overrides and metadata/geometry/IDs/coordinates/parents/prayer source. French La Ksiba remains searchable. Old Arabic is not added as a visible alternative name. Existing runtime may retain old source text as typo/backward-compatible search; this does not establish it as a valid alias."
+}

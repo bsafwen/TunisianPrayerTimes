@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "decision": "EXCLUDE_ONE_RESIDENTIAL_COMPLEX",
+  "id": "osm:way:658923544",
+  "basis": "User excludes apartment and residential complexes. Exact name, beachfront context, Maps hotel-apartment category and developer commercial apartment listing agree. Whole Maps plus-code cell lies in both source and packed target polygons.",
+  "sourceTags": {
+    "landuse": "residential",
+    "leisure": "garden",
+    "name": "La Princesse de la mer"
+  },
+  "sourceCacheSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "metadataSha256": "27431102657ed769ff07dab85af21ccbde237e2aa4fe583ee796817c40740163",
+  "packedGeometrySha256": "cc28b73830eabdbeb14527ffe93a554212528c962ef58cd709c51168aedd6605",
+  "mapsScreenshotViewedByRoot": true,
+  "plusCode": "8F8GCQW3+GJM",
+  "plusCodeCellBounds": [
+    10.75403125,
+    36.446325,
+    10.7540625,
+    36.44635
+  ],
+  "wholeCellInsideSourceAndPacked": true,
+  "publicSourceUrl": "https://www.elyssimmo-neuf.com/public/programmes/la-princesse-de-la-mer",
+  "supersedes": "Earlier Lido-neighbor review preserved this row while reviewing only Lido. This later exclusion addresses this complex under the user instruction; original evidence is retained.",
+  "limits": "This is catalog eligibility review, not a cadastral or legal ownership determination. Surrounding El Fehri sector and Dar Chaabane locality remain. Nour and Amarat are not changed.",
+  "files": [
+    {
+      "file": "maps.json",
+      "sha256": "6621c01af674fb936c13bea9f392bdc30b016a628b51c6f7528d44831665c3ba"
+    },
+    {
+      "file": "maps.png",
+      "sha256": "4e4c2bd20b2a11d92fd2245284ed8902dbbb2257e6cde68b751e8005568853d1"
+    },
+    {
+      "file": "commercial-project.html",
+      "sha256": "9cfa8c5ed844d83cd7a57d6b5de40cc325e3be60418b080166e76da96f0b80af"
+    },
+    {
+      "file": "commercial-facts.json",
+      "sha256": "9c031a707fc0fe2e7d225d1a436f33a99643fd5ed9488db3b12836c7b68aeb28"
+    },
+    {
+      "file": "official-olc.py",
+      "sha256": "88335f2c7edae04391e843131a950aa0d40e4c2ffd6bf453634b5ac422405214"
+    }
+  ]
+}

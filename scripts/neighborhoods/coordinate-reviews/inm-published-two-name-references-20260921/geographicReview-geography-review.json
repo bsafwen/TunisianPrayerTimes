@@ -1,0 +1,83 @@
+{
+  "source": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-reference-context-20260921\\geography.json",
+    "sha256": "61fa1cb580cba85474b7b659877f7c7f6a478c2f5d33ce6537cd23bd4dce4765"
+  },
+  "records": [
+    {
+      "delegationId": 425,
+      "current": {
+        "lat": 35.17,
+        "lng": 10.98
+      },
+      "proposed": {
+        "lat": 35.166,
+        "lng": 11.034
+      },
+      "distanceShiftKm": 4.928617376435733,
+      "expectedGovernorate": {
+        "id": 345,
+        "nomAr": "المهدية",
+        "nomFr": "Mahdia"
+      },
+      "countryContained": true,
+      "nativeGovernorContainment": {
+        "status": "match",
+        "contained": true,
+        "expectedNativeGovernorId": "osm:relation:1434955",
+        "reason": null,
+        "contextIds": [
+          "osm:relation:7201229",
+          "osm:relation:7152284",
+          "osm:relation:192757",
+          "osm:relation:1434955"
+        ]
+      },
+      "activeGovernorMatch": {
+        "status": "match",
+        "reason": null,
+        "governorateIds": [
+          345
+        ]
+      }
+    },
+    {
+      "delegationId": 534,
+      "current": {
+        "lat": 36.8344,
+        "lng": 10.1081
+      },
+      "proposed": {
+        "lat": 36.831,
+        "lng": 10.111
+      },
+      "distanceShiftKm": 0.4577624815047189,
+      "expectedGovernorate": {
+        "id": 358,
+        "nomAr": "اريانة",
+        "nomFr": "Ariana"
+      },
+      "countryContained": true,
+      "nativeGovernorContainment": {
+        "status": "match",
+        "contained": true,
+        "expectedNativeGovernorId": "osm:relation:1435830",
+        "reason": null,
+        "contextIds": [
+          "osm:relation:7115587",
+          "osm:relation:4156579",
+          "osm:relation:192757",
+          "osm:relation:1435830"
+        ]
+      },
+      "activeGovernorMatch": {
+        "status": "match",
+        "reason": null,
+        "governorateIds": [
+          358
+        ]
+      }
+    }
+  ],
+  "qualification": "Reused spatial measurements; installed geometry and source cache unchanged."
+}

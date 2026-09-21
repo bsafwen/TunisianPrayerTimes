@@ -1,0 +1,16 @@
+{
+  "original": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\adapt-qualified-pairs.py",
+    "sha256": "bf9e7c9728dc1ff13a266d2512efc37847a1d9478565be2763e3b588510d45b8"
+  },
+  "reviewed": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\adapt-qualified-pairs-reviewed.py",
+    "sha256": "6c2b8b4f36754ed18581624412092d382a423f480ac9da3d89d28586f71f2319"
+  },
+  "result": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\paired-stage-compatible.json",
+    "sha256": "d2a5290e743d78d50d8fbb4b2b8bf3b665d2662d1961ccdd4acf54b280a4c9d5"
+  },
+  "rootFix": "Removed guessed receipt key aliases and arbitrary-value fallback; match exact observed manifest fields only. Restricted qualification report path to WORK. No production writes.",
+  "sourceBodiesUnchanged": true
+}

@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_DISTINCT_HOMONYM_RETAINED",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\source-package\\check_alias_collisions.py",
+    "sha256": "5d0b67c93af206d62e15ed22fada12fa7e5d99de36e3cbad4b493703c1cc773a",
+    "bytes": 4656
+  },
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+      "sha256": "4ad1bad3538f30280db915f2ca988ff30338db3e01ac71492cbdc2268379726a",
+      "bytes": 36910055
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1",
+      "bytes": 776658
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    }
+  ],
+  "pureFunctionsExtractedFromPinnedCompiler": [
+    "clean",
+    "norm",
+    "is_current_name_tag",
+    "names",
+    "picker_name_keys",
+    "same_picker_name"
+  ],
+  "fullCompilerImportedOrExecuted": false,
+  "currentRawCount": 3523,
+  "currentPickerCount": 3428,
+  "newAliases": [
+    "البستان",
+    "El bousten"
+  ],
+  "normalizedKeys": [
+    "elbousten",
+    "البستان"
+  ],
+  "derivedOrderedNames": [
+    "البساتين",
+    "El Bassatine",
+    "البستان",
+    "El bousten"
+  ],
+  "rawMatches": [
+    {
+      "id": "osm:node:10168309796",
+      "name": "البستان",
+      "aliases": [
+        "El Bosten"
+      ],
+      "governorateId": 359,
+      "parentName": "البساتين",
+      "lat": 34.754243,
+      "lng": 10.769055,
+      "pickerGroupId": "osm:node:10168309796",
+      "members": null,
+      "matchedKeys": [
+        "البستان"
+      ],
+      "samePickerNameAfter": true
+    }
+  ],
+  "pickerMatches": [
+    {
+      "id": "osm:node:10168309796",
+      "name": "البستان",
+      "aliases": [
+        "El Bosten"
+      ],
+      "governorateId": 359,
+      "parentName": "البساتين",
+      "lat": 34.754243,
+      "lng": 10.769055,
+      "pickerGroupId": "osm:node:10168309796",
+      "members": [
+        "osm:node:10168309796"
+      ],
+      "matchedKeys": [
+        "البستان"
+      ],
+      "samePickerNameAfter": true
+    }
+  ],
+  "sourceMatches": [
+    {
+      "id": "osm:node:10168309796",
+      "kind": "suburb",
+      "tags": {
+        "name": "البستان",
+        "name:ar": "البستان",
+        "name:fr": "El Bosten",
+        "place": "suburb"
+      },
+      "geometryType": "Point",
+      "matchedKeys": [
+        "البستان"
+      ],
+      "sourceTargetIntersects": false
+    }
+  ],
+  "distanceKmToOnlyRawNamePeer": 240.89158456298946,
+  "sameGovernorateMatches": [],
+  "autoGroupingReason": "The only newly matched current raw/picker identity is a distant Sfax suburb in governorate359; target is Ariana358. assign_picker_groups requires equal governorate and positive geometry overlap/containment, neither true here. Source-point absorption also fails sourceTargetIntersects. Authentic primary names used for stricter sector-anchor grouping are unchanged. No merge is proposed.",
+  "exactChanges": [
+    {
+      "id": "osm:relation:7114902",
+      "field": "aliases",
+      "before": [
+        "El Bassatine"
+      ],
+      "after": [
+        "El Bassatine",
+        "البستان",
+        "El bousten"
+      ]
+    },
+    {
+      "id": "osm:node:7390818324",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Soukra",
+        "El Bassatine",
+        "La Soukra",
+        "البساتين",
+        "معتمدية سكرة"
+      ],
+      "after": [
+        "Délégation Soukra",
+        "El Bassatine",
+        "El bousten",
+        "La Soukra",
+        "البساتين",
+        "البستان",
+        "معتمدية سكرة"
+      ]
+    }
+  ],
+  "allCurrentGroupIdsMustRemainUnchanged": true,
+  "qualification": "Actual compiler name normalization and finite new-key collision screen; not a generator run or public boundary certification."
+}

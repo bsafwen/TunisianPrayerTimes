@@ -1,0 +1,725 @@
+{
+  "status": "READ_ONLY_ONE_MAP_SCOPE_FACTS",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\extract_mongi_native_reviewed.py",
+    "sha256": "57b778239ab7984d190593809967ff6304552234cf8c1482fbca6c6c3147fe76",
+    "bytes": 15745
+  },
+  "targetId": "osm:relation:7115583",
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\frozen-current-facts.json",
+      "sha256": "ff4db7cba8cde8529baa79fbaa8427a00489ab2b6b5fb79bca4cdf0dc0aa237b",
+      "bytes": 39433
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\official-map-receipt.json",
+      "sha256": "fc7fc20bcd455a7c5fb8b86eacd4e4d29230a33784bc06240329905d142b4e1b",
+      "bytes": 877
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\mongi-slim-ettadhamen-isie2023.pdf",
+      "sha256": "e44aaf8c122ada004c97dae2e49763847d5c9f03d02be4513ced0b46b3edaa21",
+      "bytes": 2088356
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494",
+      "bytes": 5590876
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "bytes": 25378903
+    }
+  ],
+  "currentPins": {
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    "binary": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494",
+      "bytes": 5590876
+    }
+  },
+  "pdfRecord": {
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\mongi-slim-ettadhamen-isie2023.pdf",
+      "sha256": "e44aaf8c122ada004c97dae2e49763847d5c9f03d02be4513ced0b46b3edaa21",
+      "bytes": 2088356
+    },
+    "receipt": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\official-map-receipt.json",
+      "sha256": "fc7fc20bcd455a7c5fb8b86eacd4e4d29230a33784bc06240329905d142b4e1b",
+      "bytes": 877
+    },
+    "targetId": "osm:relation:7115583",
+    "drawingIndex": 4,
+    "nativeVertices": 25,
+    "sourceLayer": "circonscription_isie2023",
+    "nativeColor": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "nativeContinuousExplicitlyClosed": true,
+    "nativeGeometryValid": true,
+    "fullyInsideViewport": true,
+    "minViewportMarginPagePoints": 27.003356933593754,
+    "pageRect": [
+      0.0,
+      0.0,
+      841.492919921875,
+      595.5023803710938
+    ],
+    "rotation": 0,
+    "cropBox": [
+      0.0,
+      0.0,
+      841.492919921875,
+      595.5023803710938
+    ],
+    "mediaBox": [
+      0.0,
+      0.0,
+      841.492919921875,
+      595.5023803710938
+    ],
+    "viewportBBox": [
+      4.31908,
+      590.46173,
+      841.50095,
+      5.38791
+    ],
+    "localControlPoints": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        1.0,
+        0.0
+      ],
+      [
+        1.0,
+        1.0
+      ]
+    ],
+    "controlPointsLatLon": [
+      [
+        36.83795,
+        10.0927
+      ],
+      [
+        36.84375,
+        10.09279
+      ],
+      [
+        36.84366,
+        10.10312
+      ],
+      [
+        36.83785,
+        10.10304
+      ]
+    ],
+    "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+    "epsg": 32632,
+    "affineMetersFromPagePoints": [
+      [
+        1.1008961399964645,
+        6.0102376136272636e-05
+      ],
+      [
+        -0.00030609111718149506,
+        -1.1008369194023544
+      ],
+      [
+        597427.4287316203,
+        4078102.294176176
+      ]
+    ],
+    "controlResidualsMeters": [
+      0.3674241270523473,
+      0.3674241258890051,
+      0.3674241269351114,
+      0.36742412422265003
+    ],
+    "controlResidualMaxMeters": 0.3674241270523473,
+    "axisScaleMetersPerPagePoint": [
+      1.1008961416370804,
+      1.1008369619571454
+    ],
+    "redLabels": [
+      {
+        "raw": "( )اﻟﻣﻧﯾﮭﻠﺔ- اﻟﺑﺳﺎﺗﯾن",
+        "normalized": "( )المنیھلة- البساتین",
+        "reversedNormalized": "نیتاسبلا -ةلھینملا) (",
+        "centerInsideTarget": false,
+        "bbox": [
+          35.272499084472656,
+          67.28370666503906,
+          244.45045471191406,
+          120.56827545166016
+        ]
+      },
+      {
+        "raw": "( )ﺣﻲ اﻟﺗﺿﺎﻣن- اﻟﻣﻧﺟﻲ ﺳﻠﯾم",
+        "normalized": "( )حي التضامن- المنجي سلیم",
+        "reversedNormalized": "میلس يجنملا -نماضتلا يح) (",
+        "centerInsideTarget": true,
+        "bbox": [
+          94.8398208618164,
+          364.3211669921875,
+          385.028076171875,
+          417.6057434082031
+        ]
+      },
+      {
+        "raw": "( )ﺣﻲ اﻟﺗﺿﺎﻣن- ﻣﺎرس2",
+        "normalized": "( )حي التضامن- مارس2",
+        "reversedNormalized": "2سرام -نماضتلا يح) (",
+        "centerInsideTarget": false,
+        "bbox": [
+          205.51626586914062,
+          541.8236083984375,
+          445.2981872558594,
+          595.1082153320312
+        ]
+      },
+      {
+        "raw": "4 نﻣﺎﺿﺗﻟا",
+        "normalized": "4 نماضتلا",
+        "reversedNormalized": "التضامن 4",
+        "centerInsideTarget": true,
+        "bbox": [
+          135.51116943359375,
+          430.92962646484375,
+          255.757080078125,
+          484.21417236328125
+        ]
+      },
+      {
+        "raw": " اﻟداﺋرة اﻻﻧﺗﺧﺎﺑﯾﺔ",
+        "normalized": " الدائرة الانتخابیة",
+        "reversedNormalized": "ةیباختنلاا ةرئادلا ",
+        "centerInsideTarget": false,
+        "bbox": [
+          695.7319946289062,
+          -3.117218017578125,
+          847.6636962890625,
+          42.555267333984375
+        ]
+      },
+      {
+        "raw": "(نﻣﺎﺿﺗﻟا ﻲﺣ) - مﯾﻠ",
+        "normalized": "(نماضتلا يح) - میل",
+        "reversedNormalized": "لیم - )حي التضامن(",
+        "centerInsideTarget": false,
+        "bbox": [
+          691.4129028320312,
+          36.847808837890625,
+          864.9468383789062,
+          82.52029418945312
+        ]
+      }
+    ],
+    "wgs84Bounds": [
+      10.093973811243952,
+      36.83818048317829,
+      10.1018468338559,
+      36.84341830027083
+    ],
+    "nativeVsOriginal": {
+      "aAreaKm2": 0.18245382837665117,
+      "bAreaKm2": 0.1843765490269597,
+      "intersectionKm2": 0.18121219107251313,
+      "iou": 0.9762631273062576,
+      "aCoveredByB": 0.9931947862361383,
+      "bCoveredByA": 0.9828375247766249,
+      "aOutsideBKm2": 0.0012416373041288981,
+      "bOutsideAKm2": 0.003164357954430142,
+      "hausdorffMeters": 6.501545871736635,
+      "centroidDistanceMeters": 2.5773527098133022
+    },
+    "nativeVsPacked": {
+      "aAreaKm2": 0.18245382837665117,
+      "bAreaKm2": 0.1843579751049144,
+      "intersectionKm2": 0.18121588398631872,
+      "iou": 0.9764001518953638,
+      "aCoveredByB": 0.9932150265009684,
+      "bCoveredByA": 0.9829565761025115,
+      "aOutsideBKm2": 0.0012379443903062126,
+      "bOutsideAKm2": 0.0031420911185978334,
+      "hausdorffMeters": 6.460852282781207,
+      "centroidDistanceMeters": 2.5654968702374092
+    },
+    "originalVsPacked": {
+      "aAreaKm2": 0.1843765490269597,
+      "bAreaKm2": 0.1843579751049144,
+      "intersectionKm2": 0.18434542568818424,
+      "iou": 0.9997631489286828,
+      "aCoveredByB": 0.9998311968689092,
+      "bCoveredByA": 0.9999319290813267,
+      "aOutsideBKm2": 3.112333877682309e-05,
+      "bOutsideAKm2": 1.2549416731733375e-05,
+      "hausdorffMeters": 0.06588460213207326,
+      "centroidDistanceMeters": 0.012230643992993945
+    },
+    "anchor": {
+      "lng": 10.097937,
+      "lat": 36.840745,
+      "insideOfficial": true,
+      "insideOriginal": true,
+      "insidePacked": true,
+      "distanceOfficialMeters": 0.0,
+      "distanceOriginalMeters": 0.0,
+      "distancePackedMeters": 0.0,
+      "boundaryDistanceOfficialMeters": 134.97175653949824,
+      "boundaryDistanceOriginalMeters": 137.56536263330162,
+      "boundaryDistancePackedMeters": 137.57758833142074
+    }
+  },
+  "originalVsPacked": {
+    "aAreaKm2": 0.1843765490269597,
+    "bAreaKm2": 0.1843579751049144,
+    "intersectionKm2": 0.18434542568818424,
+    "iou": 0.9997631489286828,
+    "aCoveredByB": 0.9998311968689092,
+    "bCoveredByA": 0.9999319290813267,
+    "aOutsideBKm2": 3.112333877682309e-05,
+    "bOutsideAKm2": 1.2549416731733375e-05,
+    "hausdorffMeters": 0.06588460213207326,
+    "centroidDistanceMeters": 0.012230643992993945
+  },
+  "parentComparison": {
+    "resolution": "Unique original delegation kind and exact official parent code1256, ID4156579, and current Arabic parentName match; no name/containment fallback",
+    "resolved": true,
+    "parent": {
+      "id": "osm:relation:4156579",
+      "name": "معتمدية حي التضامن",
+      "sourceId": "osm",
+      "kind": "delegation",
+      "tags": {
+        "admin_level": "5",
+        "alt_name:fr": "Ettadhamen",
+        "boundary": "administrative",
+        "name": "معتمدية حي التضامن",
+        "name:ar": "معتمدية حي التضامن",
+        "name:fr": "Délégation Cité Ettadhamen",
+        "ref:tn:codegeo": "1256",
+        "ref:tn:hasc_2": "TN.AN.ET",
+        "wikidata": "Q3059378"
+      }
+    },
+    "officialVsParent": {
+      "aAreaKm2": 0.18245382837665117,
+      "bAreaKm2": 3.397533114960863,
+      "intersectionKm2": 0.1814666454832418,
+      "iou": 0.05339578098086234,
+      "aCoveredByB": 0.9945894098129229,
+      "bCoveredByA": 0.053411295590957655,
+      "aOutsideBKm2": 0.0009871828934007365,
+      "bOutsideAKm2": 3.216066469477606,
+      "hausdorffMeters": 1994.4707690989292,
+      "centroidDistanceMeters": 982.1530274859563
+    },
+    "originalVsParent": {
+      "aAreaKm2": 0.1843765490269597,
+      "bAreaKm2": 3.397533114960863,
+      "intersectionKm2": 0.18437654902695969,
+      "iou": 0.05426777099392115,
+      "aCoveredByB": 0.9999999999999999,
+      "bCoveredByA": 0.05426777099392115,
+      "aOutsideBKm2": 0.0,
+      "bOutsideAKm2": 3.2131565659339043,
+      "hausdorffMeters": 1993.8084662170168,
+      "centroidDistanceMeters": 982.0817314109305
+    },
+    "packedVsParent": {
+      "aAreaKm2": 0.1843579751049144,
+      "bAreaKm2": 3.397533114960863,
+      "intersectionKm2": 0.1843521181379895,
+      "iou": 0.054260486682037014,
+      "aCoveredByB": 0.9999682304661809,
+      "bCoveredByA": 0.0542605802210446,
+      "aOutsideBKm2": 5.856966929972695e-06,
+      "bOutsideAKm2": 3.2131809968228815,
+      "hausdorffMeters": 1993.8587219902645,
+      "centroidDistanceMeters": 982.0790472903541
+    }
+  },
+  "currentSectorIntersections": [
+    {
+      "id": "osm:relation:7090954",
+      "name": "حي الشباب",
+      "sourceId": "osm",
+      "kind": "sector",
+      "offset": 99468,
+      "length": 1700,
+      "bbox": [
+        10.066967,
+        36.828844,
+        10.094076,
+        36.856974
+      ],
+      "official": {
+        "aAreaKm2": 0.18245382837665117,
+        "bAreaKm2": 4.452546026250678,
+        "intersectionKm2": 0.0,
+        "iou": 0.0,
+        "aCoveredByB": 0.0,
+        "bCoveredByA": 0.0,
+        "aOutsideBKm2": 0.18245382837665117,
+        "bOutsideAKm2": 4.452546026250676,
+        "hausdorffMeters": 2500.3134013070094,
+        "centroidDistanceMeters": 1615.4625258543938
+      },
+      "original": {
+        "aAreaKm2": 0.1843765490269597,
+        "bAreaKm2": 4.452546026250678,
+        "intersectionKm2": 2.7071667218515007e-10,
+        "iou": 5.838283210599997e-11,
+        "aCoveredByB": 1.468281479471479e-09,
+        "bCoveredByA": 6.080042083542715e-11,
+        "aOutsideBKm2": 0.18437654875625673,
+        "bOutsideAKm2": 4.452546025979961,
+        "hausdorffMeters": 2494.978623533458,
+        "centroidDistanceMeters": 1613.7070292155042
+      },
+      "packed": {
+        "aAreaKm2": 0.1843579751049144,
+        "bAreaKm2": 4.452546026250678,
+        "intersectionKm2": 0.0,
+        "iou": 0.0,
+        "aCoveredByB": 0.0,
+        "bCoveredByA": 0.0,
+        "aOutsideBKm2": 0.1843579751049144,
+        "bOutsideAKm2": 4.452546026250676,
+        "hausdorffMeters": 2495.019144107938,
+        "centroidDistanceMeters": 1613.7172966537441
+      },
+      "coverageConflictListed": false,
+      "coverageConflictHits": []
+    },
+    {
+      "id": "osm:relation:7115406",
+      "name": "البساتين",
+      "sourceId": "osm",
+      "kind": "sector",
+      "offset": 1037388,
+      "length": 524,
+      "bbox": [
+        10.090303,
+        36.839744,
+        10.109341,
+        36.85157
+      ],
+      "official": {
+        "aAreaKm2": 0.18245382837665117,
+        "bAreaKm2": 0.9365934674010182,
+        "intersectionKm2": 0.0009836634469819342,
+        "iou": 0.0008797920069463435,
+        "aCoveredByB": 0.005391300668963189,
+        "bCoveredByA": 0.0010502565747244979,
+        "aOutsideBKm2": 0.18147016492966492,
+        "bOutsideAKm2": 0.9356098039540253,
+        "hausdorffMeters": 1047.6053093195783,
+        "centroidDistanceMeters": 588.6088685353824
+      },
+      "original": {
+        "aAreaKm2": 0.1843765490269597,
+        "bAreaKm2": 0.9365934674010182,
+        "intersectionKm2": 1.2814565493704322e-05,
+        "iou": 1.1431806203138498e-05,
+        "aCoveredByB": 6.950214417903312e-05,
+        "bCoveredByA": 1.368210001428245e-05,
+        "aOutsideBKm2": 0.18436373446147253,
+        "bOutsideAKm2": 0.9365806528355158,
+        "hausdorffMeters": 1047.2678859390048,
+        "centroidDistanceMeters": 590.9252015083717
+      },
+      "packed": {
+        "aAreaKm2": 0.1843579751049144,
+        "bAreaKm2": 0.9365934674010182,
+        "intersectionKm2": 0.0,
+        "iou": 0.0,
+        "aCoveredByB": 0.0,
+        "bCoveredByA": 0.0,
+        "aOutsideBKm2": 0.1843579751049144,
+        "bOutsideAKm2": 0.9365934674010183,
+        "hausdorffMeters": 1047.2435491729627,
+        "centroidDistanceMeters": 590.9158518123869
+      },
+      "coverageConflictListed": false,
+      "coverageConflictHits": []
+    },
+    {
+      "id": "osm:relation:7115501",
+      "name": "خير الدين باشا",
+      "sourceId": "osm",
+      "kind": "sector",
+      "offset": 1040916,
+      "length": 396,
+      "bbox": [
+        10.100049,
+        36.839509,
+        10.109804,
+        36.845381
+      ],
+      "official": {
+        "aAreaKm2": 0.18245382837665117,
+        "bAreaKm2": 0.2979964146020141,
+        "intersectionKm2": 9.70084270748091e-05,
+        "iou": 0.00020195227198868855,
+        "aCoveredByB": 0.0005316875394609335,
+        "bCoveredByA": 0.0003255355511722101,
+        "aOutsideBKm2": 0.1823568199495708,
+        "bOutsideAKm2": 0.29789940617494454,
+        "hausdorffMeters": 710.07987435318,
+        "centroidDistanceMeters": 650.1640842414238
+      },
+      "original": {
+        "aAreaKm2": 0.1843765490269597,
+        "bAreaKm2": 0.2979964146020141,
+        "intersectionKm2": 2.1564327732543983e-06,
+        "iou": 4.4704877266282955e-06,
+        "aCoveredByB": 1.1695808304444849e-05,
+        "bCoveredByA": 7.236438653580442e-06,
+        "aOutsideBKm2": 0.18437439259418617,
+        "bOutsideAKm2": 0.2979942581692412,
+        "hausdorffMeters": 708.2227233115581,
+        "centroidDistanceMeters": 652.4253762478548
+      },
+      "packed": {
+        "aAreaKm2": 0.1843579751049144,
+        "bAreaKm2": 0.2979964146020141,
+        "intersectionKm2": 0.0,
+        "iou": 0.0,
+        "aCoveredByB": 0.0,
+        "bCoveredByA": 0.0,
+        "aOutsideBKm2": 0.1843579751049144,
+        "bOutsideAKm2": 0.2979964146020141,
+        "hausdorffMeters": 708.2302963233294,
+        "centroidDistanceMeters": 652.4135315251687
+      },
+      "coverageConflictListed": false,
+      "coverageConflictHits": []
+    },
+    {
+      "id": "osm:relation:7115582",
+      "name": "مارس 2",
+      "sourceId": "osm",
+      "kind": "sector",
+      "offset": 1041312,
+      "length": 436,
+      "bbox": [
+        10.096508,
+        36.833796,
+        10.10688,
+        36.841503
+      ],
+      "official": {
+        "aAreaKm2": 0.18245382837665117,
+        "bAreaKm2": 0.37031962526193907,
+        "intersectionKm2": 0.0001538109556199597,
+        "iou": 0.0002783305980098843,
+        "aCoveredByB": 0.0008430130350700994,
+        "bCoveredByA": 0.0004153464875407676,
+        "aOutsideBKm2": 0.1823000174210216,
+        "bOutsideAKm2": 0.37016581430632367,
+        "hausdorffMeters": 772.1193808481659,
+        "centroidDistanceMeters": 501.63913055387775
+      },
+      "original": {
+        "aAreaKm2": 0.1843765490269597,
+        "bAreaKm2": 0.37031962526193907,
+        "intersectionKm2": 1.1960768517152732e-05,
+        "iou": 2.156320339683371e-05,
+        "aCoveredByB": 6.487141982142109e-05,
+        "bCoveredByA": 3.229850027173821e-05,
+        "aOutsideBKm2": 0.1843645882584504,
+        "bOutsideAKm2": 0.37030766449341257,
+        "hausdorffMeters": 771.5470429515939,
+        "centroidDistanceMeters": 501.56019279262995
+      },
+      "packed": {
+        "aAreaKm2": 0.1843579751049144,
+        "bAreaKm2": 0.37031962526193907,
+        "intersectionKm2": 0.0,
+        "iou": 0.0,
+        "aCoveredByB": 0.0,
+        "bCoveredByA": 0.0,
+        "aOutsideBKm2": 0.1843579751049144,
+        "bOutsideAKm2": 0.37031962526193907,
+        "hausdorffMeters": 771.5599794935916,
+        "centroidDistanceMeters": 501.5575291479971
+      },
+      "coverageConflictListed": false,
+      "coverageConflictHits": []
+    },
+    {
+      "id": "osm:relation:7115584",
+      "name": "التضامن 4",
+      "sourceId": "isie-local-sector-2023-ettadhamen4-historical-rename",
+      "kind": "sector",
+      "offset": 1042008,
+      "length": 372,
+      "bbox": [
+        10.092621,
+        36.831994,
+        10.101515,
+        36.839786
+      ],
+      "official": {
+        "aAreaKm2": 0.18245382837665117,
+        "bAreaKm2": 0.34678401818992566,
+        "intersectionKm2": 0.0,
+        "iou": 0.0,
+        "aCoveredByB": 0.0,
+        "bCoveredByA": 0.0,
+        "aOutsideBKm2": 0.18245382837665117,
+        "bOutsideAKm2": 0.34678401818992566,
+        "hausdorffMeters": 688.2998510864769,
+        "centroidDistanceMeters": 571.2447461024342
+      },
+      "original": {
+        "aAreaKm2": 0.1843765490269597,
+        "bAreaKm2": 0.34678401818992566,
+        "intersectionKm2": 0.0009856757008638636,
+        "iou": 0.0018591519829340636,
+        "aCoveredByB": 0.005345992785230713,
+        "bCoveredByA": 0.002842333121372484,
+        "aOutsideBKm2": 0.18339087332608653,
+        "bOutsideAKm2": 0.3457983424890665,
+        "hausdorffMeters": 683.2727709426599,
+        "centroidDistanceMeters": 569.0068041767145
+      },
+      "packed": {
+        "aAreaKm2": 0.1843579751049144,
+        "bAreaKm2": 0.34678401818992566,
+        "intersectionKm2": 0.0009825366621552178,
+        "iou": 0.0018532851764935276,
+        "aCoveredByB": 0.005329504522904833,
+        "bCoveredByA": 0.002833281266200408,
+        "aOutsideBKm2": 0.18337543844274556,
+        "bOutsideAKm2": 0.34580148152778223,
+        "hausdorffMeters": 683.3066250817329,
+        "centroidDistanceMeters": 569.0156038589766
+      },
+      "coverageConflictListed": true,
+      "coverageConflictHits": [
+        {
+          "ids": [
+            "osm:relation:7115583",
+            "osm:relation:7115584"
+          ],
+          "reason": "overlapping_sectors",
+          "intersectionKm2": 0.0009849778983988349,
+          "sample": {
+            "lat": 36.839049,
+            "lng": 10.094894356574759
+          },
+          "names": [
+            "المنجي سليم",
+            "التضامن 4"
+          ]
+        }
+      ]
+    }
+  ],
+  "coverageConflictSummary": {
+    "coverageJson": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "1d3c4413fb2b41cf02c35cced9deb0e013461f6a417969e685d95ab5fec9a517",
+      "bytes": 1229291
+    },
+    "targetIdListedConflict": true,
+    "targetHits": [
+      {
+        "ids": [
+          "osm:relation:7115583",
+          "osm:relation:7115584"
+        ],
+        "reason": "overlapping_sectors",
+        "intersectionKm2": 0.0009849778983988349,
+        "sample": {
+          "lat": 36.839049,
+          "lng": 10.094894356574759
+        },
+        "names": [
+          "المنجي سليم",
+          "التضامن 4"
+        ]
+      }
+    ],
+    "intersectingSectorIds": [
+      "osm:relation:7090954",
+      "osm:relation:7115406",
+      "osm:relation:7115501",
+      "osm:relation:7115582",
+      "osm:relation:7115584"
+    ],
+    "intersectingSectorIdsListedConflict": [
+      "osm:relation:7115584"
+    ],
+    "candidateCount": 5,
+    "intersectingCount": 5,
+    "queryBboxWgs84": [
+      10.0939286,
+      36.8381357,
+      10.1018681,
+      36.84341830027083
+    ]
+  },
+  "curationAudit": {
+    "stalePendingReview": {
+      "id": "osm:relation:7111933",
+      "pendingReviewSource": {
+        "file": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-mongi-teboulba-20260920\\current-pending-review-facts.json",
+          "sha256": "10ad978baf334a8fe6fb6f20c2f2da10029038e9f1e6785fdff73b9ab1053634",
+          "bytes": 1118
+        },
+        "pendingCount": 2,
+        "matchCount": 1,
+        "containsStale7111933": true
+      },
+      "status": "stale Teboulba-vs-Bekalta-north contradiction remains in provided pendingReview facts"
+    },
+    "identityAccepted": "osm:relation:7111933 exact identity as Bekalta North / البقالطة الشمالية is already accepted by the frozen active-boundary source evidence; no further Teboulba research is required.",
+    "safeRemovalScope": "Remove only the stale osm:relation:7111933 entry from catalog-curation.json pendingReview after confirming the accepted replacement metadata state; do not alter active boundary/geometry sources or any other pending entry.",
+    "noFurtherTeboulbaResearch": true
+  },
+  "activeClipReview": [
+    {
+      "level": 0,
+      "outsideAreaPoints2": 0.0,
+      "minMarginPoints": 32.0440673828125
+    },
+    {
+      "level": 1,
+      "outsideAreaPoints2": 0.0,
+      "minMarginPoints": 27.003417968749996
+    }
+  ],
+  "method": "Read embedded /VP /Measure /GCS WKT and GPTS/LPTS; fit affine in stored projected CRS after page transform. Select only complete closed native red circonscription_isie2023 drawing index 4. Compare with original osm-areas.json geometry and exact packed neighborhoods.bin payload. No source generation, crop, snap, buffer, repair, union, production edits, tests or devices.",
+  "limitations": [
+    "One official map only; other red drawings are outside the target scope and were not extracted.",
+    "Native PDF path is the sole official geometry source; no vertex was invented or repaired.",
+    "Original and packed OSM geometries are the same provider lineage, not independent confirmation.",
+    "Current sectors are bbox-prefiltered around the target official/original/packed bounds; only intersecting local polygons receive geometry comparisons."
+  ]
+}

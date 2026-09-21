@@ -1,0 +1,44 @@
+{
+  "immutableSourceCopies": [
+    {
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\accepted-review.json",
+      "bundledFile": "accepted-review.json",
+      "sha256": "ec60a03b2ad130d9a22cb3983bb8b3b51697ea1c1d52e6c69a32300b411d708a"
+    },
+    {
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\root-decision.json",
+      "bundledFile": "root-decision.json",
+      "sha256": "f297b163e1665ec30a4d9de74b3efe24456327f89178fa3af9599d3f6af3bfa0"
+    },
+    {
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\osm-context.json",
+      "bundledFile": "osm-context.json",
+      "sha256": "a0924f57a9f23263fdb99262e2dee687b0787bea0852fa3f3a033795a7e69267"
+    },
+    {
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\staged-catalog\\source-facts.json",
+      "bundledFile": "source-facts.json",
+      "sha256": "11f48e033afc315a279ee9e63448ee70ef79bea3c4595be492fc750e1ddbe43a"
+    },
+    {
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\display-name-delta.json",
+      "bundledFile": "display-name-delta.json",
+      "sha256": "b4d99cf4e671fd04b6172a7daa941396e9026efd05ea8964b4bc45f10d7f4b40"
+    },
+    {
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\sources\\camp-servieres-fff-.pdf",
+      "bundledFile": "camp-servieres-fff-.pdf",
+      "sha256": "760919f6f21333b1644fbca5eb9bfdc5f80fb2e38ef7dc59d55b54c97eb80372"
+    },
+    {
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\sources\\academie-militaire-fr.html",
+      "bundledFile": "academie-militaire-fr.html",
+      "sha256": "f5603fc057c3cfe8d1b720a3a3161691925c48628f31143aa17c4cccde93295f"
+    },
+    {
+      "original": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\camp-serviere-review-20260921\\sources\\manifest.json",
+      "bundledFile": "manifest.json",
+      "sha256": "9f5c4e8d68b7f161d2742f4b1a58d69b23db6d6503c596e99ad64b104fc07ce7"
+    }
+  ]
+}

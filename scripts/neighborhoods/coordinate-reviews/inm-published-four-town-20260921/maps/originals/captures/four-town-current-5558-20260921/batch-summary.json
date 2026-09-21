@@ -1,0 +1,116 @@
+{
+  "runId": "four-town-current-5558-20260921",
+  "deviceType": "emulator",
+  "deviceSerial": "emulator-5558",
+  "plan": {
+    "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\current-emulator-5558.json",
+    "sha256": "23705dfa52ca98e5efd9fba695491d116c1e3de5cf5cb4955809a2b510b47314"
+  },
+  "outputDir": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921",
+  "startTime": "2026-09-21T00:18:37Z",
+  "endTime": "2026-09-21T00:19:03Z",
+  "totalElapsedSeconds": 26.047,
+  "completedCount": 2,
+  "rows": [
+    {
+      "id": "delegation:516",
+      "query": "36.530100,9.112400",
+      "status": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "36°31'48.4\"N 9°06'44.6\"E"
+      ],
+      "seconds": 14.891,
+      "artifacts": [
+        {
+          "filename": "delegation_516-2.json",
+          "sha256": "cba429beea45f86ffa8e08defb3e35216d674a2ecc84e338e1c4981fdb6d8bf2"
+        },
+        {
+          "filename": "delegation_516-2.png",
+          "sha256": "b4aaae358e45efc5fec265e8be247031ccfc6824cf1a16095f006ba59d4f79eb"
+        }
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "synchronizationTimedOut": false,
+      "pollCount": 2,
+      "stablePollCount": 2,
+      "syncElapsedSeconds": 7.172,
+      "launchCount": 1,
+      "syncTimeoutSeconds": 20.0,
+      "synchronizationReason": "ready signature observed in two consecutive polls",
+      "observationParserVersion": 4,
+      "synchronizationVersion": 1,
+      "readySignature": "4084b57f242c57930956b21af96788dd4c964725035849ae7f9a906f25c0a68a",
+      "captureSignaturesMatch": true,
+      "preCaptureSignature": "4084b57f242c57930956b21af96788dd4c964725035849ae7f9a906f25c0a68a",
+      "postCaptureSignature": "4084b57f242c57930956b21af96788dd4c964725035849ae7f9a906f25c0a68a",
+      "captureStartedAt": "2026-09-21T00:18:50.122272+00:00",
+      "captureCompletedAt": "2026-09-21T00:18:50.449526+00:00",
+      "collectorPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\collector.py",
+      "collectorSha256": "5449336b6d3a24172d95feb4ed20857d5b24fdec819e79e7d68ac3cfb7c99c91",
+      "verifiedAvdName": "Pixel_10_Pro_XL_TWO",
+      "avdIdentityGuardVersion1": 1
+    },
+    {
+      "id": "delegation:579",
+      "query": "35.534100,8.869400",
+      "status": "candidate_observed",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "35°32'02.8\"N 8°52'09.8\"E"
+      ],
+      "seconds": 10.625,
+      "artifacts": [
+        {
+          "filename": "delegation_579-2.json",
+          "sha256": "eef29d3a89c2c000ac8f78087adc050f35ccbc97caff45eb66fc1fd8e9456dc8"
+        },
+        {
+          "filename": "delegation_579-2.png",
+          "sha256": "5724fc5174e71bc17abcc70dbb8be9d748ffdfc0dd33433c8f150ab81813afbe"
+        }
+      ],
+      "synchronizationOutcome": "settled_candidate",
+      "synchronizationTimedOut": false,
+      "pollCount": 2,
+      "stablePollCount": 2,
+      "syncElapsedSeconds": 5.89,
+      "launchCount": 1,
+      "syncTimeoutSeconds": 20.0,
+      "synchronizationReason": "ready signature observed in two consecutive polls",
+      "observationParserVersion": 4,
+      "synchronizationVersion": 1,
+      "readySignature": "55628781a67f5a4f031a92fc60698cd165f633ff9b1c680cf12295303a3fba4e",
+      "captureSignaturesMatch": true,
+      "preCaptureSignature": "55628781a67f5a4f031a92fc60698cd165f633ff9b1c680cf12295303a3fba4e",
+      "postCaptureSignature": "55628781a67f5a4f031a92fc60698cd165f633ff9b1c680cf12295303a3fba4e",
+      "captureStartedAt": "2026-09-21T00:19:01.099223+00:00",
+      "captureCompletedAt": "2026-09-21T00:19:01.416969+00:00",
+      "collectorPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\collector.py",
+      "collectorSha256": "5449336b6d3a24172d95feb4ed20857d5b24fdec819e79e7d68ac3cfb7c99c91",
+      "verifiedAvdName": "Pixel_10_Pro_XL_TWO",
+      "avdIdentityGuardVersion1": 1
+    }
+  ],
+  "error": null,
+  "pins": {
+    "before": {
+      "helper_sha256": "1f8351c8f9679563dc159834e353f7d92dfac884c4d90021c42399a10e0ec902",
+      "main_ledger_sha256": "4882c0453b0cedeb186462d1d320a7c8735a65ae88f358b2266fdd524b4b4e04",
+      "metadata_sha256": "52c4b266907a53174e051d36d03e92678de7696b35cd1c6a7e5d985da530983e"
+    },
+    "after": {
+      "helper_sha256": "1f8351c8f9679563dc159834e353f7d92dfac884c4d90021c42399a10e0ec902",
+      "main_ledger_sha256": "4882c0453b0cedeb186462d1d320a7c8735a65ae88f358b2266fdd524b4b4e04",
+      "metadata_sha256": "52c4b266907a53174e051d36d03e92678de7696b35cd1c6a7e5d985da530983e"
+    },
+    "unchanged": true
+  },
+  "helper": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\review_phone_catalog_v4.py",
+  "mainLedger": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+  "metadata": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+  "collectorPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\collector.py",
+  "collectorSha256": "5449336b6d3a24172d95feb4ed20857d5b24fdec819e79e7d68ac3cfb7c99c91",
+  "synchronizationPolicy": "single_guarded_searchurl_launch;20s_polling_deadline_caps_guarded_adb_reads;0.5s_public_ui_polls;2_stable_ready_or_query_anchored_correction_polls;final_bracketed_guarded_capture_outside_poll_deadline"
+}

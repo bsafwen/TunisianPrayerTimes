@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_manual_point_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "providerId": "isie-local-sectors-2023-amdoun-two-whole",
+  "boundarySource": {
+    "file": "official/amdoun-two-whole-20260920/amdoun-two-whole-source.geojson",
+    "sha256": "7c1c4cd8f0043bec348c9b9467d8b194d4318daedd4656f7b72f48d43538c34d"
+  },
+  "baselineMetadata": {
+    "file": "official/amdoun-two-whole-20260920/evidence/baseline-neighborhoods.json",
+    "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7189452",
+      "officialCode": "215351",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7189452",
+        "sourceId": "osm",
+        "name": "زهرة مدين",
+        "aliases": [
+          "Zahret medien",
+          "عمدون",
+          "Amdoun"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية عمدون",
+        "contextAliases": [
+          "Délégation Amdoun",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.78194,
+        "lng": 9.088968,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.055601,
+          36.76293,
+          9.109579,
+          36.80082
+        ],
+        "areaKm2": 9.558281132863852,
+        "pickerGroupId": "osm:relation:7189452",
+        "offset": 4801484,
+        "length": 3292
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.78194,
+        "lng": 9.088968
+      },
+      "expectedNearestId": 515
+    },
+    {
+      "id": "osm:relation:7189451",
+      "officialCode": "215352",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7189451",
+        "sourceId": "osm",
+        "name": "زهرة مدين الجنوبية",
+        "aliases": [
+          "Zahret medien sud",
+          "عمدون الجنوبية",
+          "Amdoun Sud"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية عمدون",
+        "contextAliases": [
+          "Délégation Amdoun",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.76026,
+        "lng": 9.087709,
+        "delegationId": 515,
+        "hasBoundary": true,
+        "bbox": [
+          9.052248,
+          36.73371,
+          9.139952,
+          36.7867
+        ],
+        "areaKm2": 18.70448151465049,
+        "pickerGroupId": "osm:relation:7189451",
+        "offset": 4797936,
+        "length": 3548
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 36.76026,
+        "lng": 9.087709
+      },
+      "expectedNearestId": 515
+    }
+  ],
+  "evidence": [
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/impact-facts.json",
+      "sha256": "7a52055ff03c166ce51e5d6e6adcc102369b81a2dc0136b3a149f6c674a88457"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/decree-scope-addendum.json",
+      "sha256": "ca3711e4ccde56dabcd9c520fa5b62785379cf74cc03dc95233da1514dd01da4"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/evidence/original-installed-name-proof.json",
+      "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+    }
+  ]
+}

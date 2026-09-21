@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "status": "WORK_ONLY_SOUKRA125251_WHOLE_SOURCE_CARRY",
+  "notDeployable": true,
+  "current": false,
+  "historicalCatalog": false,
+  "scope": "Work-only single-sector whole-boundary successor for osm:relation:7114900 code125251; preserves village rawCurrent entirely and all original phases.",
+  "activePointRuleId": "osm:node:7390818324",
+  "oldProof": {
+    "file": "official/soukra-amra-two-whole-20260920/dependencies/node-7390818324-proof.json",
+    "sha256": "d2ad7e5a9783564828b11fbeb2d367bd22a50863be6cb0442ce9c9bff5756e43",
+    "bytes": 110997
+  },
+  "oldCarry": {
+    "file": "official/soukra-amra-two-whole-20260920/dependencies/soukra-amra-two-whole-source-carry.json",
+    "sha256": "8429a0161be78726f3d9f67decdb0503640dee7a338b1d9dfa9ea2c7fb926c5c",
+    "bytes": 18164
+  },
+  "newBaseline": {
+    "file": "official/soukra125251-whole-20260920/dependencies/derived-pre-display-baseline.json",
+    "sha256": "efdab73aa160bf8806f244b57ace454c4fea68b4b247c3a491fd587b3dacfb4f",
+    "bytes": 2836457
+  },
+  "oldBoundaryManifest": {
+    "file": "official/soukra125251-whole-20260920/evidence/boundarymanifest-before-soukra125251-whole.json",
+    "sha256": "f8dfbaf57cdd8a043eb417f237575fd092c6a77d1cfb0768ba016c6835500f11",
+    "bytes": 122679
+  },
+  "newBoundaryManifest": {
+    "file": "reviewed-boundaries.json",
+    "sha256": "98e2d2b7a6cc7df3613e28bb783eaee85367bbe6984b893ae8cb82bf8557f2fa",
+    "bytes": 124600
+  },
+  "newWholeScope": {
+    "file": "official/soukra125251-whole-20260920/accepted-whole-scope-successor.json",
+    "sha256": "5bdd0d56c6b86f7899aa7e9d2c683bc432229d0b6b5a7a235a91898f19a24dd5",
+    "bytes": 181661
+  },
+  "newLineageProof": {
+    "file": "official/soukra125251-whole-20260920/append-only-lineage-compatibility.json",
+    "sha256": "b21e4929c21d255ca2ab24cce45a4d7d990746d1ed12bc12d59c4a7e01cac4ef",
+    "bytes": 4199
+  },
+  "newProofCollection": {
+    "file": "official/soukra125251-whole-20260920/dependencies/base-locality110-strict-proposal-successor.json",
+    "sha256": "c64131bc132d598b7de93967c09e87676a415b7027498c81fd158fc5ffc48c56"
+  },
+  "changedJsonPaths": {
+    "pointProof": [
+      "/currentSourcePhaseCarry/bytes",
+      "/currentSourcePhaseCarry/file",
+      "/currentSourcePhaseCarry/sha256",
+      "/preservedSectors/0/currentMetadata/areaKm2",
+      "/preservedSectors/0/currentMetadata/bbox/0",
+      "/preservedSectors/0/currentMetadata/bbox/1",
+      "/preservedSectors/0/currentMetadata/bbox/2",
+      "/preservedSectors/0/currentMetadata/bbox/3",
+      "/preservedSectors/0/currentMetadata/sourceId",
+      "/preservedSectors/0/packedGeometrySha256",
+      "/sectorOwnedSettlementPreservation/acceptedBoundaryReplacements",
+      "/sectorOwnedSettlementPreservation/protectedRawRecords/6/currentMetadata/areaKm2",
+      "/sectorOwnedSettlementPreservation/protectedRawRecords/6/currentMetadata/bbox/0",
+      "/sectorOwnedSettlementPreservation/protectedRawRecords/6/currentMetadata/bbox/1",
+      "/sectorOwnedSettlementPreservation/protectedRawRecords/6/currentMetadata/bbox/2",
+      "/sectorOwnedSettlementPreservation/protectedRawRecords/6/currentMetadata/bbox/3",
+      "/sectorOwnedSettlementPreservation/protectedRawRecords/6/currentMetadata/sourceId",
+      "/sectorOwnedSettlementPreservation/protectedRawRecords/6/packedGeometrySha256",
+      "/sectorOwnedSettlementPreservation/rawContextClosure/baselineMetadata/bytes",
+      "/sectorOwnedSettlementPreservation/rawContextClosure/baselineMetadata/file",
+      "/sectorOwnedSettlementPreservation/rawContextClosure/baselineMetadata/sha256",
+      "/sectorOwnedSettlementPreservation/reviewedBoundaries/bytes",
+      "/sectorOwnedSettlementPreservation/reviewedBoundaries/sha256",
+      "/sectorOwnedSettlementPreservation/sourceStates/8/effective/geometrySha256",
+      "/sectorOwnedSettlementPreservation/sourceStates/8/effective/sourceId",
+      "/sectorOwnedSettlementPreservation/sourceStates/8/effective/tags/int_name",
+      "/sectorOwnedSettlementPreservation/sourceStates/8/effective/tags/name",
+      "/sectorOwnedSettlementPreservation/strictOwner/expectedRecord/identityEvidence/0/effectiveOriginalGeometrySha256",
+      "/sectorOwnedSettlementPreservation/strictOwner/expectedRecord/identityEvidence/1/method",
+      "/sectorOwnedSettlementPreservation/strictOwner/expectedRecord/identityEvidence/1/parentMembershipReview",
+      "/sectorOwnedSettlementPreservation/strictOwner/expectedRecord/members/0/expectedSourceId",
+      "/sectorOwnedSettlementPreservation/strictOwner/expectedRecord/members/0/originalGeometrySha256",
+      "/sectorOwnedSettlementPreservation/strictOwner/expectedRecord/members/0/packedGeometrySha256",
+      "/sectorOwnedSettlementPreservation/strictOwner/proofRecordObjectSha256",
+      "/sectorOwnedSettlementPreservation/strictOwner/reviewEvidence/file",
+      "/sectorOwnedSettlementPreservation/strictOwner/reviewEvidence/sha256"
+    ],
+    "baseline": [
+      "/features/499/areaKm2",
+      "/features/499/bbox/0",
+      "/features/499/bbox/1",
+      "/features/499/bbox/2",
+      "/features/499/bbox/3",
+      "/features/499/sourceId"
+    ],
+    "reviewedBoundaries": [
+      "/administrativeScopeReview/bytes",
+      "/administrativeScopeReview/file",
+      "/administrativeScopeReview/sha256",
+      "/lineageCompatibility/bytes",
+      "/lineageCompatibility/file",
+      "/lineageCompatibility/sha256",
+      "/sources"
+    ],
+    "reviewedPickerGroups": [
+      "/lineageCompatibility/file",
+      "/lineageCompatibility/sha256",
+      "/records/47/identityEvidence/0/effectiveOriginalGeometrySha256",
+      "/records/47/identityEvidence/1/method",
+      "/records/47/identityEvidence/1/parentMembershipReview",
+      "/records/47/members/0/expectedSourceId",
+      "/records/47/members/0/originalGeometrySha256",
+      "/records/47/members/0/packedGeometrySha256",
+      "/reviewEvidence/file",
+      "/reviewEvidence/sha256"
+    ],
+    "ownerProofCollection": [
+      "/records/65/identityEvidence/1/method",
+      "/records/65/identityEvidence/1/parentMembershipReview",
+      "/records/65/members/0/officialSource",
+      "/records/65/proposedBehavior"
+    ],
+    "parentMembershipReview": [
+      "/"
+    ]
+  },
+  "qualification": "Work-only counterfactual verification snapshot. Not deployable, not current, not a historical catalog. No geometry repair, snapping, cuts, fills or neighbor changes.",
+  "newPickerLineageProof": {
+    "file": "official/soukra125251-whole-20260920/append-only-picker-lineage-compatibility.json",
+    "sha256": "606f4e3561a3dd1fc2618e3b32009eaf0c75130476cad68ebf703669832a7f3d"
+  },
+  "parentMembershipReview": {
+    "file": "official/soukra125251-whole-20260920/parent-membership-review.json",
+    "sha256": "db679431efc289f1fcfa10900ff1b2a07e7308fe4a7ac028ca0e64b79ae664ef"
+  },
+  "changedJsonPathBaselines": {
+    "pointProof": {
+      "file": "official/soukra-amra-two-whole-20260920/dependencies/node-7390818324-proof.json",
+      "sha256": "d2ad7e5a9783564828b11fbeb2d367bd22a50863be6cb0442ce9c9bff5756e43",
+      "bytes": 110997
+    },
+    "reviewedPickerGroups": {
+      "file": "official/soukra125251-whole-20260920/evidence/reviewed-picker-groups-before-soukra125251-whole.json",
+      "sha256": "5acfdbf2c5a36af0ade105e0e795aa39a27f90f7749c0e708bd7db79b8196aa4"
+    },
+    "ownerProofCollection": {
+      "file": "reviews/base-locality110-strict-proposal.json",
+      "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+    },
+    "parentMembershipReview": "new complete review object"
+  }
+}

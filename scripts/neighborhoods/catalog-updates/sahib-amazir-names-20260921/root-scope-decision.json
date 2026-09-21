@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "status": "APPROVED_NAME_CONTEXT_ONLY_PENDING_GENERATION",
+  "identitySupport": {
+    "file": "catalog-updates/sahib-amazir-names-20260921/evidence/root-identity-review.json",
+    "sha256": "283955b19b54690fc30bfefa31a959b96ee499c7b916e6e4c0e1ce93df070bf3"
+  },
+  "directNameUpdates": [
+    {
+      "id": "osm:relation:7096460",
+      "name": "صاحب الجبل الشمالية",
+      "aliases": [
+        "Saheb El Jebel Nord",
+        "صاحب الجبل الجوفية"
+      ]
+    },
+    {
+      "id": "osm:relation:7095947",
+      "name": "صاحب الجبل القبلية",
+      "aliases": [
+        "Saheb El Jebel Sud",
+        "صاحب الجبل الجنوبية",
+        "صاحب الجبل جنوبية"
+      ]
+    },
+    {
+      "id": "osm:relation:7145415",
+      "name": "الأمازير",
+      "aliases": [
+        "El Amazir",
+        "الموازير",
+        "El Mouazir"
+      ]
+    }
+  ],
+  "dependentContextUpdates": [
+    {
+      "id": "osm:node:1374298081",
+      "name": "غرمان",
+      "beforeParent": "صاحب الجبل القبلية",
+      "afterParent": "صاحب الجبل الشمالية",
+      "existingFrenchParentIdentity": "Saheb El Jebel Nord",
+      "scope": "Correct the existing parent identity label; preserve coordinates, parent relationship and geometry."
+    },
+    {
+      "id": "osm:node:1374298083",
+      "name": "منزل سالم",
+      "beforeParent": "صاحب الجبل القبلية",
+      "afterParent": "صاحب الجبل الشمالية",
+      "existingFrenchParentIdentity": "Saheb El Jebel Nord",
+      "scope": "Correct the existing parent identity label; preserve coordinates, parent relationship and geometry."
+    },
+    {
+      "id": "osm:node:1374298091",
+      "name": "صاحب الجبل",
+      "beforeParent": "صاحب الجبل القبلية",
+      "afterParent": "صاحب الجبل الشمالية",
+      "existingFrenchParentIdentity": "Saheb El Jebel Nord",
+      "scope": "Correct the existing parent identity label; preserve coordinates, parent relationship and geometry."
+    },
+    {
+      "id": "osm:node:7025729391",
+      "name": "العرقوب",
+      "beforeParent": "صاحب الجبل القبلية",
+      "afterParent": "صاحب الجبل الشمالية",
+      "existingFrenchParentIdentity": "Saheb El Jebel Nord",
+      "scope": "Correct the existing parent identity label; preserve coordinates, parent relationship and geometry."
+    },
+    {
+      "id": "osm:node:7025761781",
+      "name": "سيدي داود",
+      "beforeParent": "صاحب الجبل القبلية",
+      "afterParent": "صاحب الجبل الشمالية",
+      "existingFrenchParentIdentity": "Saheb El Jebel Nord",
+      "scope": "Correct the existing parent identity label; preserve coordinates, parent relationship and geometry."
+    },
+    {
+      "id": "osm:node:7025787725",
+      "name": "برج الصالحي",
+      "beforeParent": "صاحب الجبل القبلية",
+      "afterParent": "صاحب الجبل الشمالية",
+      "existingFrenchParentIdentity": "Saheb El Jebel Nord",
+      "scope": "Correct the existing parent identity label; preserve coordinates, parent relationship and geometry."
+    },
+    {
+      "id": "osm:way:751396179",
+      "name": "المخاطرية",
+      "beforeParent": "صاحب الجبل جنوبية",
+      "afterParent": "صاحب الجبل القبلية",
+      "existingFrenchParentIdentity": "Saheb El Jebel Sud",
+      "scope": "Correct the existing parent identity label; preserve coordinates, parent relationship and geometry."
+    },
+    {
+      "id": "osm:way:751396180",
+      "name": "الغرفة",
+      "beforeParent": "صاحب الجبل جنوبية",
+      "afterParent": "صاحب الجبل القبلية",
+      "existingFrenchParentIdentity": "Saheb El Jebel Sud",
+      "scope": "Correct the existing parent identity label; preserve coordinates, parent relationship and geometry."
+    }
+  ],
+  "geometryDecision": {
+    "adopted": [],
+    "heldValidCandidates": [
+      "osm:relation:7095947",
+      "osm:relation:7145415"
+    ],
+    "reason": "Eight new sector overlaps would suppress automatic locality names in their interiors. Review neighboring official boundaries before adoption; never trim or repair source polygons.",
+    "newConflictPairs": [
+      {
+        "ids": [
+          "osm:relation:7095873",
+          "osm:relation:7095947"
+        ],
+        "intersectionKm2": 2.265771237301722,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 36.984536000000006,
+          "lng": 11.008135700935702
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7095947",
+          "osm:relation:7096460"
+        ],
+        "intersectionKm2": 0.722199904935353,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 36.9931535,
+          "lng": 10.966977627182771
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7095947",
+          "osm:relation:7096632"
+        ],
+        "intersectionKm2": 0.015785259761548168,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 36.961017,
+          "lng": 11.014410482670208
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7095947",
+          "osm:relation:7097976"
+        ],
+        "intersectionKm2": 0.8991505695673244,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 36.971321,
+          "lng": 10.91866269216064
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7095947",
+          "osm:relation:7098804"
+        ],
+        "intersectionKm2": 0.01369873478053047,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 36.958584,
+          "lng": 11.006077785714284
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7145415",
+          "osm:relation:7145419"
+        ],
+        "intersectionKm2": 0.0295980325942244,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 33.747549500000005,
+          "lng": 10.067270317753636
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7145415",
+          "osm:relation:7145421"
+        ],
+        "intersectionKm2": 0.3183073613364978,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 33.7497695,
+          "lng": 10.01263183547533
+        }
+      },
+      {
+        "ids": [
+          "osm:relation:7145415",
+          "osm:relation:7145430"
+        ],
+        "intersectionKm2": 0.43230648575393127,
+        "reason": "overlapping_sectors",
+        "sample": {
+          "lat": 33.7230545,
+          "lng": 10.02303460508207
+        }
+      }
+    ],
+    "invalidHeldCandidate": "osm:relation:7096460",
+    "invalidReason": "Exact official red-line chain is self-intersecting; no repair approved."
+  },
+  "preserved": [
+    "all 3483 IDs and record order",
+    "all geometry bytes and GPS behavior",
+    "all picker groups, kinds and governorates",
+    "all prayer-source coordinates and selections",
+    "all 266 display overrides",
+    "all historic evidence and frozen compiler proof inputs"
+  ],
+  "qualification": "Identity and naming review only. Neither existing polygons nor Google name matches certify geographic reliability."
+}

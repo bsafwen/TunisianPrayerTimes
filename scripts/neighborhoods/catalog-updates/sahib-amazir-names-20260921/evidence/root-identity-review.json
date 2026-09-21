@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "status": "IDENTITY_SUPPORTED_BOUNDARY_RECONCILIATION_OPEN_NO_APP_CHANGE",
+  "atUtc": "2026-09-21T05:06:58.597115+00:00",
+  "inputPins": {
+    "native": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    "currentMetadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "504613a8026e091ebb10397a661d15c8b5e4c1091c7c2aeee00349557a67e3f3"
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "64034e6f2af4cfa51a225fc23516ae87894aa44623564ba2358c73a773b5bcc0"
+    },
+    "registry": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\two-historical-sectors-20260920\\evidence\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    "manifest": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\manifest.json",
+      "sha256": "bf2fcb1df4096746d92d1639ad91183ec867e55d7f5490a6c5a28deacf6b60c8"
+    },
+    "extraction": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\geopdf-extraction.json",
+      "sha256": "99507934175c2eedf6ea80537e22f021a76e58e21ddf88cdee72f4c173540758"
+    }
+  },
+  "mapsScreenshotsVisuallyInspected": [
+    {
+      "context": "north",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\imported-maps\\3044f0041c15b5a37f104176a38c9d7841fcd5df186e8fc21b57d3ca7914d4cc.png",
+      "sha256": "77a81c22e4f6ccf0f2f133a3f511aea525f9c5514163262ac4f578145401b8eb"
+    },
+    {
+      "context": "south",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\imported-maps\\3c3431d7bb478ca31111fe649f58fd3454614ebcec578e81bf9d93b572e6ad86.png",
+      "sha256": "e46b10009785e21377f0a4b474dfd080f07afc82f68d2206e88fef0f0b87cd5a"
+    },
+    {
+      "context": "wrongArabicQueryReturnsSouth",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\imported-maps\\b00cf112a501199925e9c760b16c3c801d02c3a7258c317ac0b9b5aaa62f020c.png",
+      "sha256": "a6de4a0cd064d046588d3399e75ae580c713a7391aff60464512a069125a1fd5"
+    },
+    {
+      "context": "amazirLocality",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7145415-2.png",
+      "sha256": "82a71061a1b0056bb01daadefe38d06ec95e5ef28637bb7c1b5caf53b3841307"
+    },
+    {
+      "context": "mouazirBuilding",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\osm_relation_7145415-1.png",
+      "sha256": "bca8adecf4f7f49a706525685e0dbc4963433dbf1e4504d3d6a6c560a274ba25"
+    }
+  ],
+  "officialPagesVisuallyInspected": [
+    {
+      "key": "sahib-north",
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\sahib-north.pdf",
+        "sha256": "307eb8be97cee63d7a184e3224721187969bc2bb4e28c22628592bf911ff7e9f"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\sahib-north.png",
+        "sha256": "049b1f4a62526a00a5343222d8c41a4a8ad9496ef0e2c0a8eee02926c22db6b1"
+      }
+    },
+    {
+      "key": "sahib-south",
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\sahib-south.pdf",
+        "sha256": "0fec368bf0faca088aba10cab06dd42538efc02f264bf684df882c11d44e82f4"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\sahib-south.png",
+        "sha256": "0c9301f9a1d89257acad6eead679b33e8a93b9b64aac1d4b97b20539854b812b"
+      }
+    },
+    {
+      "key": "amazir",
+      "pdf": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\amazir.pdf",
+        "sha256": "8e9e2fd81c4a080907049396836719468fe108d80e2c73afa7a1b3cddd202a07"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\sahib-amazir-identity-20260921\\amazir.png",
+        "sha256": "8ebd72d30a40a6f5eb4958e80ebd1297c501994343eb5abaafe71c1dd39aba8a"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "osm:relation:7096460",
+      "code": "155953",
+      "supportedPrimaryArabic": "صاحب الجبل الشمالية",
+      "supportedArabicVariant": "صاحب الجبل الجوفية",
+      "currentIncorrectPrimary": "صاحب الجبل القبلية",
+      "identityEvidence": "INS2024 code/French Nord and saved physical-phone Google outline label establish northern identity; official ISIE map labels the coastal northern region الجوفية. The old Arabic query returned the separately mapped South, not this northern code. Full exact native-to-official footprint comparison awaits subpath analysis.",
+      "candidateNameAction": "Remove wrong South name rather than retain it as a search alias. Preserve Nord; add official الجوفية variant.",
+      "boundaryStatus": "No complete continuous ring in first extraction; do not join disconnected paths or invent closure."
+    },
+    {
+      "id": "osm:relation:7095947",
+      "code": "155954",
+      "supportedPrimaryArabic": "صاحب الجبل القبلية",
+      "identityEvidence": "INS2024 and ISIE South map align with saved Google South outline and the source carrying155954. Official polygon overlaps this source far more than7096460.",
+      "candidateNameAction": "Use official primary; preserve compatible الجنوبية and جنوبية Arabic variants and French Sud.",
+      "boundaryStatus": "Whole official ring314 extracted;34.445km2 versus40.832km2 source, IoU0.683735; full footprint conflict remains."
+    },
+    {
+      "id": "osm:relation:7145415",
+      "code": "515357",
+      "supportedPrimaryArabic": "الأمازير",
+      "identityEvidence": "INS2024 code515357 and ISIE map title/red label identify this sector. Full official ring152 is97.735% covered by source7145415, and map locates Primary School El Mouazir within it. Saved Maps has distinct El Amazir locality outline labelledالأمازير; old spelling query returns a building-category card addressed El Amazir. Building card does not justify deleting sector.",
+      "candidateNameAction": "Use الأمازير and El Amazir, retaining old الموازير/El Mouazir variants for search.",
+      "boundaryStatus": "Whole official ring152 extracted;34.332km2 versus42.195km2 source, IoU0.783212. Exact source boundary not certified."
+    }
+  ],
+  "extractionQualification": {
+    "southAndAmazirExplicitlyClosed": true,
+    "southAndAmazirInsideBothActiveClipsAndViewport": true,
+    "countryContainmentReportedByWrapper": true,
+    "countrySelectionNeedsRootIsoTNCheckBeforeAcceptance": true,
+    "noSnappingBufferClippingSimplification": true,
+    "northSubpathWorkerPid": 21300,
+    "noGeometryApprovedOrInstalled": true
+  },
+  "limits": [
+    "Official maps are2023, registry2024; current statutory or survey accuracy is not proved.",
+    "Source codes and name matches are identity evidence, not polygon certification.",
+    "App remains unchanged pending scoped name/boundary integration."
+  ]
+}

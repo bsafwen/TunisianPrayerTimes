@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_append_only_boundary_extension",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "previousManifest": {
+    "file": "official/three-boundaries-soukra-20260920/evidence/boundarymanifest-before-three-boundaries-soukra.json",
+    "sha256": "34809853b02d38bf924f2f6f4b51dd89b88882a7fb323bed137cadaa87d1ca57"
+  },
+  "addedSources": [
+    {
+      "id": "isie-local-sectors-2023-amdoun-two-whole",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/amdoun-two-whole-20260920/amdoun-two-whole-source.geojson",
+      "sha256": "7c1c4cd8f0043bec348c9b9467d8b194d4318daedd4656f7b72f48d43538c34d",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7189452",
+          "officialCode": "215351",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون",
+            "name:ar": "عمدون",
+            "name:fr": "Amdoun",
+            "ref:tn:codegeo": "215351"
+          },
+          "aliases": [
+            "عمدون",
+            "Amdoun"
+          ],
+          "resolvedCatalogReview": {
+            "action": "supersede_exact_installed_name_tags_with_same_canonical_boundary_identity",
+            "previousDecision": {
+              "id": "osm:relation:7189452",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "عمدون",
+                "name:ar": "عمدون",
+                "name:fr": "Amdoun",
+                "ref:tn:codegeo": "215351"
+              },
+              "action": "name_tags",
+              "nameTags": {
+                "name": "زهرة مدين",
+                "name:ar": "زهرة مدين",
+                "name:fr": "Zahret medien",
+                "alt_name:ar": "عمدون",
+                "alt_name:fr": "Amdoun"
+              },
+              "reason": "Official INS sector code 215351 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين / Zahret medien. Retain عمدون and Amdoun as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+              "evidence": [
+                {
+                  "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+                  "reviewFiles": [
+                    {
+                      "file": "name-reviews/amdoun-two-20260920/proof.json",
+                      "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+                    }
+                  ]
+                }
+              ]
+            },
+            "originalNameProof": {
+              "file": "name-reviews/amdoun-two-20260920/proof.json",
+              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+            },
+            "qualification": "Proposal only; original proof bytes retained, exact current canonical name and aliases preserved. Existing duplicate-action guard remains enabled."
+          }
+        },
+        {
+          "id": "osm:relation:7189451",
+          "officialCode": "215352",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "عمدون الجنوبية",
+            "name:ar": "عمدون الجنوبية",
+            "name:fr": "Amdoun Sud",
+            "ref:tn:codegeo": "215352"
+          },
+          "aliases": [
+            "عمدون الجنوبية",
+            "Amdoun Sud"
+          ],
+          "resolvedCatalogReview": {
+            "action": "supersede_exact_installed_name_tags_with_same_canonical_boundary_identity",
+            "previousDecision": {
+              "id": "osm:relation:7189451",
+              "expectedKind": "sector",
+              "expectedTags": {
+                "admin_level": "6",
+                "boundary": "administrative",
+                "name": "عمدون الجنوبية",
+                "name:ar": "عمدون الجنوبية",
+                "name:fr": "Amdoun Sud",
+                "ref:tn:codegeo": "215352"
+              },
+              "action": "name_tags",
+              "nameTags": {
+                "name": "زهرة مدين الجنوبية",
+                "name:ar": "زهرة مدين الجنوبية",
+                "name:fr": "Zahret medien sud",
+                "alt_name:ar": "عمدون الجنوبية",
+                "alt_name:fr": "Amdoun Sud"
+              },
+              "reason": "Official INS sector code 215352 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين الجنوبية / Zahret medien sud. Retain عمدون الجنوبية and Amdoun Sud as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+              "evidence": [
+                {
+                  "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+                  "reviewFiles": [
+                    {
+                      "file": "name-reviews/amdoun-two-20260920/proof.json",
+                      "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+                    }
+                  ]
+                }
+              ]
+            },
+            "originalNameProof": {
+              "file": "name-reviews/amdoun-two-20260920/proof.json",
+              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+            },
+            "qualification": "Proposal only; original proof bytes retained, exact current canonical name and aliases preserved. Existing duplicate-action guard remains enabled."
+          }
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/amdoun-two-whole-20260920/manual-point-review.json",
+        "sha256": "5067bbfa1410937d96159d325cab98e782dc4eedf609b79e203bb77036cf8bca"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "geometryPolicy": "Two complete unchanged native whole-imada vectors; no repair, snapping, clipping, smoothing or neighbor expansion.",
+        "namePolicy": "All currently installed Arabic primary names and Arabic/French aliases preserved exactly; original name proof retained.",
+        "evidenceFile": "official/amdoun-two-whole-20260920/source-acceptance-review.json",
+        "evidenceSha256": "0e2e76ca70259fd1b665f8bfd95cdcae087f281f4be41e6155292f41fe35fc48",
+        "uncertainty": "Native shared registration overlap, ten projected incident conflicts and0.548214844km2 all-layer uncovered loss retained. Source-qualified2023 administrative evidence; notsurvey/presentdaycurrencycertification."
+      }
+    },
+    {
+      "id": "isie-local-sector-2023-mongi-slim-ettadhamen",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/mongi-slim-125656-20260920/mongi-slim-125656-native-source.geojson",
+      "sha256": "4767bfefe9a431036d3d7562169653af44c047a3b01c02821ffa99a4604a5913",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "osm:relation:7115583",
+          "officialCode": "125656",
+          "action": "replace",
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المنجي سليم",
+            "name:ar": "المنجي سليم",
+            "name:fr": "Mongi Slim",
+            "ref:tn:codegeo": "125656"
+          },
+          "aliases": []
+        }
+      ],
+      "manualPointReview": {
+        "file": "official/mongi-slim-125656-20260920/mongi-slim-125656-manual-point-review.json",
+        "sha256": "62873a64a351a94ebdc9879a3e21b6b5244f5bb4cd229d2388750c07a572ff30"
+      },
+      "review": {
+        "reviewedDate": "2026-09-20",
+        "geometryEdition": 2023,
+        "identityRegistry": "Exact current 125656 official registry row; source originalName MongiSlim and official registry El mongi slim are same identity; no new alias authorized.",
+        "geometryPolicy": "Unmodified complete native whole-imada vector from pinned official map receipt/diagnostic; no repair.",
+        "aliasReview": "Preserve exactly nameAr/nameFr/aliases from package-config sourceNamePolicy; standard source-entry aliases empty; no historical rename aliases.",
+        "uncertainty": "Impact facts report prepacking geometry/coverage/conflict effects. Combined generation must validate actual catalog effects.",
+        "evidenceFile": "official/mongi-slim-125656-20260920/source-package-acceptance-review.json",
+        "evidenceSha256": "fdfe1ccd641a17f659472c8d3a4cc19162010085346e5200f29a057142d91483"
+      }
+    }
+  ],
+  "scopeSuccessor": {
+    "file": "official/three-boundaries-soukra-20260920/accepted-whole-scope-successor.json",
+    "sha256": "1b514dbb8c457ea3eb4308df86ac0a5792ceb6780fd7ae70cdcf0c774312b3fa"
+  },
+  "evidence": [
+    {
+      "file": "official/hammamet-nine-20260920/evidence/root-source-stage-checked.json",
+      "sha256": "acc52c536fd817049d3b12633ffe8e834837336dd46b2c6db34393e643c5190c"
+    },
+    {
+      "file": "official/hammamet-nine-20260920/source-review.json",
+      "sha256": "93cf10c1ce1f4c8aa9eef5cc83779f6886731f3c8d62ba3c88c786aa0b6073d8"
+    },
+    {
+      "file": "official/sidi-mtir-20260920/source-review.json",
+      "sha256": "2525df6f764aaa8f68fc5d43ed7dfe591637e976fdce2cf52e6c67c2773a91b6"
+    },
+    {
+      "file": "official/hammamet-nine-neighbours-20260920/source-review.json",
+      "sha256": "6eaebff03cf5c50aba520ece205373c1fe395b338e4c219ead220086df0e0667"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/source-package-acceptance-review.json",
+      "sha256": "f82eb8a2085548fb3485200d56fe6be554fc116cd1878b3de7aea7cd168263ab"
+    },
+    {
+      "file": "official/amdoun-two-whole-20260920/source-acceptance-review.json",
+      "sha256": "0e2e76ca70259fd1b665f8bfd95cdcae087f281f4be41e6155292f41fe35fc48"
+    },
+    {
+      "file": "official/mongi-slim-125656-20260920/source-package-acceptance-review.json",
+      "sha256": "fdfe1ccd641a17f659472c8d3a4cc19162010085346e5200f29a057142d91483"
+    }
+  ]
+}

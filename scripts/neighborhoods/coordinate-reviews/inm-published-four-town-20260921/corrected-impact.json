@@ -1,0 +1,489 @@
+{
+  "schemaVersion": 1,
+  "status": "BASELINE_REPRODUCED_EXACTLY_PROJECTION_ONLY_NO_ADOPTION",
+  "inputs": {
+    "compiler": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "c50b03c2b012accadaba8514d954c842b645a2cb81d58704f66afdbf4673a109"
+    },
+    "governors": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06"
+    },
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "52c4b266907a53174e051d36d03e92678de7696b35cd1c6a7e5d985da530983e"
+    },
+    "manualBaseline": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-nearest-source-reconciliation-20260920\\equality-facts.json",
+      "sha256": "60157e55a7bd4ac3edbe38a20aad54f2ec4c59c536dd744d45c8567d1344254b"
+    },
+    "screen": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\reference-proposal-screen-20260921\\screen-report.json",
+      "sha256": "f1059cfc60366f5c0aa64933271dc3bfcbb6cf5fc98a690f22fcbd08dd691a71"
+    }
+  },
+  "baseline": {
+    "rawRows": 3484,
+    "rawNearestMismatchCount": 0,
+    "manualRows": 3336,
+    "manualBaselineDifferencesExactlyInstalled544": [
+      {
+        "id": "osm:relation:7147638",
+        "before": 544,
+        "after": 543
+      },
+      {
+        "id": "osm:node:12189397654",
+        "before": 544,
+        "after": 543
+      },
+      {
+        "id": "osm:node:475591250",
+        "before": 544,
+        "after": 543
+      }
+    ],
+    "availableSources": 258,
+    "rejectedSources": [
+      {
+        "id": 495,
+        "reason": "no_complete_bundled_month"
+      }
+    ],
+    "rule": "Imported installed compiler distance and available_timetables; min(distance,id)."
+  },
+  "joint": {
+    "sourceIds": [
+      441,
+      468,
+      516,
+      579
+    ],
+    "rawChangedCount": 10,
+    "manualChangedCount": 10,
+    "changes": {
+      "raw": [
+        {
+          "id": "osm:relation:7103012",
+          "lat": 36.578193,
+          "lng": 10.712443,
+          "before": 459,
+          "after": 468,
+          "name": "حلفة",
+          "representativeId": null
+        },
+        {
+          "id": "osm:relation:7103334",
+          "lat": 36.515219,
+          "lng": 10.71816,
+          "before": 623,
+          "after": 468,
+          "name": "عمرون",
+          "representativeId": null
+        },
+        {
+          "id": "osm:relation:7164907",
+          "lat": 35.572655,
+          "lng": 8.96302,
+          "before": 581,
+          "after": 579,
+          "name": "عين السلسلة",
+          "representativeId": null
+        },
+        {
+          "id": "osm:relation:7164994",
+          "lat": 35.514295,
+          "lng": 8.754156,
+          "before": 579,
+          "after": 573,
+          "name": "الجوى",
+          "representativeId": null
+        },
+        {
+          "id": "osm:relation:7165010",
+          "lat": 35.421897,
+          "lng": 8.777294,
+          "before": 579,
+          "after": 578,
+          "name": "زلفان",
+          "representativeId": null
+        },
+        {
+          "id": "osm:way:174739936",
+          "lat": 36.465982,
+          "lng": 10.74479,
+          "before": 623,
+          "after": 468,
+          "name": "دار شعبان الفهري",
+          "representativeId": null
+        },
+        {
+          "id": "osm:way:658923544",
+          "lat": 36.445913,
+          "lng": 10.752974,
+          "before": 468,
+          "after": 623,
+          "name": "La Princesse de la mer",
+          "representativeId": null
+        },
+        {
+          "id": "osm:node:7429400517",
+          "lat": 35.730844,
+          "lng": 10.207996,
+          "before": 630,
+          "after": 441,
+          "name": "أولاد حمودة",
+          "representativeId": null
+        },
+        {
+          "id": "osm:node:7875668092",
+          "lat": 36.5022521,
+          "lng": 10.7036542,
+          "before": 623,
+          "after": 468,
+          "name": "دوار البطين",
+          "representativeId": null
+        },
+        {
+          "id": "osm:node:7875711070",
+          "lat": 36.5475559,
+          "lng": 10.7154299,
+          "before": 623,
+          "after": 468,
+          "name": "غرداية",
+          "representativeId": null
+        }
+      ],
+      "manual": [
+        {
+          "id": "delegation:468",
+          "lat": 36.465982,
+          "lng": 10.74479,
+          "before": 623,
+          "after": 468,
+          "name": null,
+          "representativeId": "osm:way:174739936"
+        },
+        {
+          "id": "osm:relation:7103012",
+          "lat": 36.578193,
+          "lng": 10.712443,
+          "before": 459,
+          "after": 468,
+          "name": null,
+          "representativeId": "osm:relation:7103012"
+        },
+        {
+          "id": "osm:relation:7103334",
+          "lat": 36.515219,
+          "lng": 10.71816,
+          "before": 623,
+          "after": 468,
+          "name": null,
+          "representativeId": "osm:relation:7103334"
+        },
+        {
+          "id": "osm:relation:7164907",
+          "lat": 35.572655,
+          "lng": 8.96302,
+          "before": 581,
+          "after": 579,
+          "name": null,
+          "representativeId": "osm:relation:7164907"
+        },
+        {
+          "id": "osm:relation:7164994",
+          "lat": 35.514295,
+          "lng": 8.754156,
+          "before": 579,
+          "after": 573,
+          "name": null,
+          "representativeId": "osm:relation:7164994"
+        },
+        {
+          "id": "osm:relation:7165010",
+          "lat": 35.421897,
+          "lng": 8.777294,
+          "before": 579,
+          "after": 578,
+          "name": null,
+          "representativeId": "osm:relation:7165010"
+        },
+        {
+          "id": "osm:way:658923544",
+          "lat": 36.445913,
+          "lng": 10.752974,
+          "before": 468,
+          "after": 623,
+          "name": null,
+          "representativeId": "osm:way:658923544"
+        },
+        {
+          "id": "osm:node:7429400517",
+          "lat": 35.730844,
+          "lng": 10.207996,
+          "before": 630,
+          "after": 441,
+          "name": null,
+          "representativeId": "osm:node:7429400517"
+        },
+        {
+          "id": "osm:node:7875668092",
+          "lat": 36.5022521,
+          "lng": 10.7036542,
+          "before": 623,
+          "after": 468,
+          "name": null,
+          "representativeId": "osm:node:7875668092"
+        },
+        {
+          "id": "osm:node:7875711070",
+          "lat": 36.5475559,
+          "lng": 10.7154299,
+          "before": 623,
+          "after": 468,
+          "name": null,
+          "representativeId": "osm:node:7875711070"
+        }
+      ]
+    }
+  },
+  "singleSourceProjections": [
+    {
+      "sourceIds": [
+        441
+      ],
+      "rawChangedCount": 1,
+      "manualChangedCount": 1,
+      "changes": {
+        "raw": [
+          {
+            "id": "osm:node:7429400517",
+            "lat": 35.730844,
+            "lng": 10.207996,
+            "before": 630,
+            "after": 441,
+            "name": "أولاد حمودة",
+            "representativeId": null
+          }
+        ],
+        "manual": [
+          {
+            "id": "osm:node:7429400517",
+            "lat": 35.730844,
+            "lng": 10.207996,
+            "before": 630,
+            "after": 441,
+            "name": null,
+            "representativeId": "osm:node:7429400517"
+          }
+        ]
+      }
+    },
+    {
+      "sourceIds": [
+        468
+      ],
+      "rawChangedCount": 6,
+      "manualChangedCount": 6,
+      "changes": {
+        "raw": [
+          {
+            "id": "osm:relation:7103012",
+            "lat": 36.578193,
+            "lng": 10.712443,
+            "before": 459,
+            "after": 468,
+            "name": "حلفة",
+            "representativeId": null
+          },
+          {
+            "id": "osm:relation:7103334",
+            "lat": 36.515219,
+            "lng": 10.71816,
+            "before": 623,
+            "after": 468,
+            "name": "عمرون",
+            "representativeId": null
+          },
+          {
+            "id": "osm:way:174739936",
+            "lat": 36.465982,
+            "lng": 10.74479,
+            "before": 623,
+            "after": 468,
+            "name": "دار شعبان الفهري",
+            "representativeId": null
+          },
+          {
+            "id": "osm:way:658923544",
+            "lat": 36.445913,
+            "lng": 10.752974,
+            "before": 468,
+            "after": 623,
+            "name": "La Princesse de la mer",
+            "representativeId": null
+          },
+          {
+            "id": "osm:node:7875668092",
+            "lat": 36.5022521,
+            "lng": 10.7036542,
+            "before": 623,
+            "after": 468,
+            "name": "دوار البطين",
+            "representativeId": null
+          },
+          {
+            "id": "osm:node:7875711070",
+            "lat": 36.5475559,
+            "lng": 10.7154299,
+            "before": 623,
+            "after": 468,
+            "name": "غرداية",
+            "representativeId": null
+          }
+        ],
+        "manual": [
+          {
+            "id": "delegation:468",
+            "lat": 36.465982,
+            "lng": 10.74479,
+            "before": 623,
+            "after": 468,
+            "name": null,
+            "representativeId": "osm:way:174739936"
+          },
+          {
+            "id": "osm:relation:7103012",
+            "lat": 36.578193,
+            "lng": 10.712443,
+            "before": 459,
+            "after": 468,
+            "name": null,
+            "representativeId": "osm:relation:7103012"
+          },
+          {
+            "id": "osm:relation:7103334",
+            "lat": 36.515219,
+            "lng": 10.71816,
+            "before": 623,
+            "after": 468,
+            "name": null,
+            "representativeId": "osm:relation:7103334"
+          },
+          {
+            "id": "osm:way:658923544",
+            "lat": 36.445913,
+            "lng": 10.752974,
+            "before": 468,
+            "after": 623,
+            "name": null,
+            "representativeId": "osm:way:658923544"
+          },
+          {
+            "id": "osm:node:7875668092",
+            "lat": 36.5022521,
+            "lng": 10.7036542,
+            "before": 623,
+            "after": 468,
+            "name": null,
+            "representativeId": "osm:node:7875668092"
+          },
+          {
+            "id": "osm:node:7875711070",
+            "lat": 36.5475559,
+            "lng": 10.7154299,
+            "before": 623,
+            "after": 468,
+            "name": null,
+            "representativeId": "osm:node:7875711070"
+          }
+        ]
+      }
+    },
+    {
+      "sourceIds": [
+        516
+      ],
+      "rawChangedCount": 0,
+      "manualChangedCount": 0,
+      "changes": {
+        "raw": [],
+        "manual": []
+      }
+    },
+    {
+      "sourceIds": [
+        579
+      ],
+      "rawChangedCount": 3,
+      "manualChangedCount": 3,
+      "changes": {
+        "raw": [
+          {
+            "id": "osm:relation:7164907",
+            "lat": 35.572655,
+            "lng": 8.96302,
+            "before": 581,
+            "after": 579,
+            "name": "عين السلسلة",
+            "representativeId": null
+          },
+          {
+            "id": "osm:relation:7164994",
+            "lat": 35.514295,
+            "lng": 8.754156,
+            "before": 579,
+            "after": 573,
+            "name": "الجوى",
+            "representativeId": null
+          },
+          {
+            "id": "osm:relation:7165010",
+            "lat": 35.421897,
+            "lng": 8.777294,
+            "before": 579,
+            "after": 578,
+            "name": "زلفان",
+            "representativeId": null
+          }
+        ],
+        "manual": [
+          {
+            "id": "osm:relation:7164907",
+            "lat": 35.572655,
+            "lng": 8.96302,
+            "before": 581,
+            "after": 579,
+            "name": null,
+            "representativeId": "osm:relation:7164907"
+          },
+          {
+            "id": "osm:relation:7164994",
+            "lat": 35.514295,
+            "lng": 8.754156,
+            "before": 579,
+            "after": 573,
+            "name": null,
+            "representativeId": "osm:relation:7164994"
+          },
+          {
+            "id": "osm:relation:7165010",
+            "lat": 35.421897,
+            "lng": 8.777294,
+            "before": 579,
+            "after": 578,
+            "name": null,
+            "representativeId": "osm:relation:7165010"
+          }
+        ]
+      }
+    }
+  ],
+  "supersedes": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-references-20260921\\impact.json",
+    "sha256": "35fa7709a87955dcf0ee014c6299e8c0877a3e980bc3aa502c1becdf14955097"
+  },
+  "qualification": "Original worker projection is rejected: its unexplained355raw/338manual mismatches are not intentional catalog semantics. This report reproduces the installed raw assignments exactly and reconciles every manual row with only the known544installation. The historical manual positions are unchanged; these are candidate remaps requiring semantic and geographic review."
+}

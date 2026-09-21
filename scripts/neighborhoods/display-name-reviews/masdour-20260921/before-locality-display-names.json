@@ -1,0 +1,1447 @@
+{
+  "schemaVersion": 1,
+  "names": [
+    {
+      "id": "osm:node:10044670149",
+      "nameAr": "حي البانك",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:10588208128",
+      "nameAr": "سيدي فرجاني",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:10739565994",
+      "nameAr": "فسقية السوق",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:10820734093",
+      "nameAr": "حارة كبيرة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:10844854592",
+      "nameAr": "الجبالية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:10844854593",
+      "nameAr": "أدلون",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:10990187578",
+      "nameAr": "تزدين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:10990187579",
+      "nameAr": "الحدادة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11011313761",
+      "nameAr": "هنشير البنية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11013507623",
+      "nameAr": "شقيمي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11019885887",
+      "nameAr": "قصر الخربة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11026544734",
+      "nameAr": "الخربة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11026607039",
+      "nameAr": "البراوكة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11026607040",
+      "nameAr": "بني رشيد",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11036360079",
+      "nameAr": "بوظافر",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11036399362",
+      "nameAr": "بني عيسى",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11057005334",
+      "nameAr": "سيدي رابح",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11180251348",
+      "nameAr": "فضلون",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11215399479",
+      "nameAr": "حافي راسه",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11228292293",
+      "nameAr": "سيدي الحاج مبروك",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11229148555",
+      "nameAr": "الحسيان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11229148626",
+      "nameAr": "القصبة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11233650619",
+      "nameAr": "مرجان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11233650620",
+      "nameAr": "جعابرة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11233688598",
+      "nameAr": "الجليدات",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11233688599",
+      "nameAr": "تاجديت",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11233689762",
+      "nameAr": "بحباح",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11256425593",
+      "nameAr": "تالة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11256427632",
+      "nameAr": "تالبت",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11342676210",
+      "nameAr": "سيدي محمد التواتي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11360894975",
+      "nameAr": "سيدي منصور",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11448954292",
+      "nameAr": "قصر شولين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11493025904",
+      "nameAr": "تازغدنت",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11498934614",
+      "nameAr": "بن خزيت",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11503753822",
+      "nameAr": "سيدي أحمد بن محمد",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11524754440",
+      "nameAr": "مرباح",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11539356616",
+      "nameAr": "سيدي سعيد بن صالح",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11683399241",
+      "nameAr": "بئر الحمليّة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11702067241",
+      "nameAr": "بن غزيال",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11746105080",
+      "nameAr": "مساوي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11780165926",
+      "nameAr": "سيدي سالم",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11820052133",
+      "nameAr": "قصر كاروز",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11833229908",
+      "nameAr": "تامزوط",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11833946235",
+      "nameAr": "البنية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:1190877566",
+      "nameAr": "كامب سرفيير",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11965706860",
+      "nameAr": "أباردة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:11965742169",
+      "nameAr": "ماجن",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12170591176",
+      "nameAr": "المثانية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12170591177",
+      "nameAr": "الجبلين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12170591178",
+      "nameAr": "الطريفة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12170625122",
+      "nameAr": "الجدوي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12170640622",
+      "nameAr": "الأسايدة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12170715856",
+      "nameAr": "بوهاشم",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12189397654",
+      "nameAr": "القرابة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12189733265",
+      "nameAr": "بوملال",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12198018866",
+      "nameAr": "سوف أزداي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12198018912",
+      "nameAr": "تغلة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12198018913",
+      "nameAr": "تماسيت",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12198029657",
+      "nameAr": "السواطر (الظهيرة)",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12202914812",
+      "nameAr": "بنيان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12207902692",
+      "nameAr": "تينيزة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12211699220",
+      "nameAr": "تامقرت",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12229106391",
+      "nameAr": "تاهريزيت",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12230629412",
+      "nameAr": "أوشاشنة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12231455400",
+      "nameAr": "بني باوس",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12231507427",
+      "nameAr": "تملل الملح",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12270083735",
+      "nameAr": "المحراب",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:1228573687",
+      "nameAr": "دشرة بو دبوس",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12294038471",
+      "nameAr": "تيفروين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12294172134",
+      "nameAr": "الصايغ",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12296216958",
+      "nameAr": "الهنشير",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12296413638",
+      "nameAr": "مغراوة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12297649573",
+      "nameAr": "أوراسن",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12298714536",
+      "nameAr": "البلاز",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12299565803",
+      "nameAr": "الشرقيين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12322933959",
+      "nameAr": "زيان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:1232796661",
+      "nameAr": "بروكش",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12345176897",
+      "nameAr": "بويمين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12509941321",
+      "nameAr": "الفجارنية",
+      "searchAliases": [
+        "El Fajarnia",
+        "El Fjarnia"
+      ]
+    },
+    {
+      "id": "osm:node:12526608990",
+      "nameAr": "حي العمال",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12526639027",
+      "nameAr": "العجيلات",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12526658663",
+      "nameAr": "حي العمال",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12526674882",
+      "nameAr": "ڨاع المزود",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12526684280",
+      "nameAr": "ڨاع المزود",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12534865868",
+      "nameAr": "الصغايرية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12534869979",
+      "nameAr": "اللطايفية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12563665860",
+      "nameAr": "البلوكات",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12563677142",
+      "nameAr": "العالية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12563693811",
+      "nameAr": "الصدارة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:1259515746",
+      "nameAr": "إسرندي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12732166877",
+      "nameAr": "تروڨيت",
+      "searchAliases": [
+        "تروجيت"
+      ]
+    },
+    {
+      "id": "osm:node:12764581648",
+      "nameAr": "المعمورة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12784817430",
+      "nameAr": "أذروم",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12798087645",
+      "nameAr": "أولاد علي بوليمن",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12825683205",
+      "nameAr": "توريرين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:12913570990",
+      "nameAr": "بو صباح",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13141822280",
+      "nameAr": "أولاد عمر القديمة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13155689075",
+      "nameAr": "الريغين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13159027208",
+      "nameAr": "تملل الحلو",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13235749767",
+      "nameAr": "بو شواط",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13274901586",
+      "nameAr": "تويرن",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13274901587",
+      "nameAr": "فرجين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13387964421",
+      "nameAr": "تيفجان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13387964422",
+      "nameAr": "تاجموت",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13429991965",
+      "nameAr": "كسبين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13485390154",
+      "nameAr": "الوادي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13730191446",
+      "nameAr": "بني مرزويسن",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:13751653571",
+      "nameAr": "الجوامع",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:14024804549",
+      "nameAr": "حي البانكة",
+      "searchAliases": [
+        "Hay El Banka"
+      ]
+    },
+    {
+      "id": "osm:node:14024804550",
+      "nameAr": "حي التراكن",
+      "searchAliases": [
+        "Hay Et Traken",
+        "Hay El Traken"
+      ]
+    },
+    {
+      "id": "osm:node:14024804552",
+      "nameAr": "حي التعمير",
+      "searchAliases": [
+        "Hay Et Taamir",
+        "Hay Taamir"
+      ]
+    },
+    {
+      "id": "osm:node:14024804553",
+      "nameAr": "حي المستوصف",
+      "searchAliases": [
+        "Hay El Mostaousaf",
+        "Hay El Mestoucef"
+      ]
+    },
+    {
+      "id": "osm:node:14024804554",
+      "nameAr": "حي الملعب",
+      "searchAliases": [
+        "Hay El Melab",
+        "Hay El Malab"
+      ]
+    },
+    {
+      "id": "osm:node:14025164228",
+      "nameAr": "حي عيشة",
+      "searchAliases": [
+        "Hay Aïcha",
+        "Hay Aicha"
+      ]
+    },
+    {
+      "id": "osm:node:1435053835",
+      "nameAr": "وادي الزارقة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:1796083922",
+      "nameAr": "حمام ملاق",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:1975898154",
+      "nameAr": "خاتمة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:1975898160",
+      "nameAr": "مغيط",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:1975898161",
+      "nameAr": "تاملست",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:1977376170",
+      "nameAr": "الحرية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:2095681748",
+      "nameAr": "المحجوبة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:2208907789",
+      "nameAr": "دمان الخروب",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:2248611908",
+      "nameAr": "بني عالة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:2520403775",
+      "nameAr": "المنطقة السياحية المرازقة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:2723561360",
+      "nameAr": "جوابيط",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:2880052271",
+      "nameAr": "مزرع ناجي",
+      "searchAliases": [
+        "Mezraa Naji",
+        "Mazraa Naji"
+      ]
+    },
+    {
+      "id": "osm:node:3147214790",
+      "nameAr": "حي العين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:3147214791",
+      "nameAr": "حي الواحة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:352749777",
+      "nameAr": "رحمات",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:5041242744",
+      "nameAr": "جايدان محمد",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:5604049345",
+      "nameAr": "حبحاب",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:674390466",
+      "nameAr": "عين زقزاو",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:6753470038",
+      "nameAr": "روتوندة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:6753470040",
+      "nameAr": "حي الشاطئ",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:6753470042",
+      "nameAr": "لاجار",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:6753470044",
+      "nameAr": "وسط المدينة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:6753470045",
+      "nameAr": "حي المحطة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:6753470046",
+      "nameAr": "الياسمين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:6757003472",
+      "nameAr": "الحمامات الجنوبية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:6757003474",
+      "nameAr": "الحمامات الداخلية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:node:9415158602",
+      "nameAr": "حي الجرة",
+      "searchAliases": [
+        "Hay El Jarra",
+        "Hay El Jra"
+      ]
+    },
+    {
+      "id": "osm:relation:15012741",
+      "nameAr": "القراطن",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:relation:15036285",
+      "nameAr": "حي فرينة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:relation:15793378",
+      "nameAr": "قصر الحلوف",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:relation:3152100",
+      "nameAr": "ياسمين الحمامات",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:relation:7151555",
+      "nameAr": "الغربيين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1007378962",
+      "nameAr": "حومة مجماج",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1007844850",
+      "nameAr": "الزامرين",
+      "searchAliases": [
+        "Ez Zamrine",
+        "El Zamrine"
+      ]
+    },
+    {
+      "id": "osm:way:1062690914",
+      "nameAr": "بن سلامة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1145153014",
+      "nameAr": "دوار بن يوسف",
+      "searchAliases": [
+        "Douar Ben Youssef",
+        "Douar Ben Youcef"
+      ]
+    },
+    {
+      "id": "osm:way:1188266987",
+      "nameAr": "بي حمزة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1189543717",
+      "nameAr": "بلول",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1220194442",
+      "nameAr": "وادي الربح",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1221480512",
+      "nameAr": "الهنشير",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1263889041",
+      "nameAr": "قصر رمثة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1265702650",
+      "nameAr": "الأدباش",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1265702651",
+      "nameAr": "الأدباش",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:128232827",
+      "nameAr": "بيه دي سانج",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1310655632",
+      "nameAr": "حيّ المنار",
+      "searchAliases": [
+        "Hay El Manar"
+      ]
+    },
+    {
+      "id": "osm:way:1321465756",
+      "nameAr": "حي التحرير",
+      "searchAliases": [
+        "Hay Ettahrir",
+        "Hay Et Tahrir"
+      ]
+    },
+    {
+      "id": "osm:way:1359488070",
+      "nameAr": "حي الزهراء",
+      "searchAliases": [
+        "Hay Ezzahra",
+        "Hay Ez Zahra"
+      ]
+    },
+    {
+      "id": "osm:way:1363528887",
+      "nameAr": "حي السلام",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1381299551",
+      "nameAr": "الفيلاج أولاد بنجاح",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1390960491",
+      "nameAr": "حدائق زغوان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1408126432",
+      "nameAr": "حي الهادي خليل",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1420196144",
+      "nameAr": "تجينت",
+      "searchAliases": [
+        "Tjint",
+        "Tjinet"
+      ]
+    },
+    {
+      "id": "osm:way:1485127837",
+      "nameAr": "حي شاكر",
+      "searchAliases": [
+        "Hay Chaker"
+      ]
+    },
+    {
+      "id": "osm:way:1503923521",
+      "nameAr": "الرحبة",
+      "searchAliases": [
+        "Er Rahba",
+        "El Rahba"
+      ]
+    },
+    {
+      "id": "osm:way:1550424563",
+      "nameAr": "حي الرياض (ابن عرفة)",
+      "searchAliases": [
+        "Hay Erriadh (Ibn Arafa)",
+        "Hay Erriadh",
+        "Ibn Arafa"
+      ]
+    },
+    {
+      "id": "osm:way:1550424564",
+      "nameAr": "حي الحبيب (الشرايحة)",
+      "searchAliases": [
+        "Hay El Habib (Chrayha)",
+        "Hay El Habib",
+        "Chrayha"
+      ]
+    },
+    {
+      "id": "osm:way:159149501",
+      "nameAr": "حمام الجديدي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:167106702",
+      "nameAr": "الصور يو في 4",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:171653186",
+      "nameAr": "حي الياسمين",
+      "searchAliases": [
+        "Hay El Yasmine"
+      ]
+    },
+    {
+      "id": "osm:way:173074170",
+      "nameAr": "بشاتور",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:175158149",
+      "nameAr": "الصداقية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:183796969",
+      "nameAr": "بازيم",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:185753201",
+      "nameAr": "نيوبارك الفجة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:186750635",
+      "nameAr": "برج بورقيبة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:186841416",
+      "nameAr": "القصر الجديد",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:187241394",
+      "nameAr": "برج مشاهد صالح",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:187900183",
+      "nameAr": "القدارة",
+      "searchAliases": [
+        "El Guedara",
+        "El Gdara"
+      ]
+    },
+    {
+      "id": "osm:way:188877862",
+      "nameAr": "منزلة مقر",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:188989245",
+      "nameAr": "الشوامخ",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:189086072",
+      "nameAr": "تيشة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:189193491",
+      "nameAr": "بوشمة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:190960901",
+      "nameAr": "سيدي عياد",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:191505327",
+      "nameAr": "عين مسرية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:191729667",
+      "nameAr": "الضيعة 20",
+      "searchAliases": [
+        "Edh Dhiyaa 20",
+        "El Dhiaa 20"
+      ]
+    },
+    {
+      "id": "osm:way:234090258",
+      "nameAr": "الحمامات",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:238137076",
+      "nameAr": "الأطرش",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:246736256",
+      "nameAr": "قصر جراع",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:252923901",
+      "nameAr": "حي المرجان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:255073038",
+      "nameAr": "كوتين 1",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:255373407",
+      "nameAr": "زعفرانة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:259933344",
+      "nameAr": "وافيسين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:275008604",
+      "nameAr": "وادي العسل",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:278951683",
+      "nameAr": "تيبار",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:308723930",
+      "nameAr": "شوبان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:314275502",
+      "nameAr": "الفراحتية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:314275615",
+      "nameAr": "بولونية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:314275825",
+      "nameAr": "الدغامنية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:321792273",
+      "nameAr": "قصر بوزيري",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:375922935",
+      "nameAr": "شملالي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:375940545",
+      "nameAr": "قصر خرشفة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:377951368",
+      "nameAr": "بني زلطن",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:377954530",
+      "nameAr": "بڨيعة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:377996281",
+      "nameAr": "قصر رحاش",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:378117273",
+      "nameAr": "بئر تدرخت",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:443176924",
+      "nameAr": "لفام",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:460319478",
+      "nameAr": "حي أمل",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:475872667",
+      "nameAr": "فوزري",
+      "searchAliases": [
+        "Fouzri"
+      ]
+    },
+    {
+      "id": "osm:way:492312067",
+      "nameAr": "الخليل",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:547533232",
+      "nameAr": "صخيرة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:605315367",
+      "nameAr": "الجدل",
+      "searchAliases": [
+        "El Jdel",
+        "El Jedel"
+      ]
+    },
+    {
+      "id": "osm:way:606175950",
+      "nameAr": "سمران",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:609907339",
+      "nameAr": "كاب النيقرو",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:609966860",
+      "nameAr": "دجبة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:628154928",
+      "nameAr": "منشار",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:640629366",
+      "nameAr": "شاطئ سليمان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:658923544",
+      "nameAr": "لا برانسيس دو لا مير",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:663536803",
+      "nameAr": "إقامة نور",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:668685257",
+      "nameAr": "الواديان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:685815670",
+      "nameAr": "حي الظهيرات وعرفاوين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:685824247",
+      "nameAr": "حي الشعاشعة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:686619927",
+      "nameAr": "إس آر أو",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:691393147",
+      "nameAr": "حي ذيب",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:695712524",
+      "nameAr": "المعصرة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:701316092",
+      "nameAr": "العبادلية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:702432167",
+      "nameAr": "حي النرجس",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:702432168",
+      "nameAr": "حي الماية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:702432169",
+      "nameAr": "منطقة 1",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:702443179",
+      "nameAr": "حي الشوبان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:702443180",
+      "nameAr": "حي نخيلات فرحات",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:702621052",
+      "nameAr": "حي الشرفة (منطقة 6)",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:702645420",
+      "nameAr": "حي العوينات (منطقة 7)",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:702665307",
+      "nameAr": "حي العمارات",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:718891995",
+      "nameAr": "حي السوق",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:738813565",
+      "nameAr": "حي بن يونس",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:744640885",
+      "nameAr": "محمد ناصر",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:744642242",
+      "nameAr": "عبد الباقي حمدوني",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:785408508",
+      "nameAr": "حي الضباط",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:791334739",
+      "nameAr": "بحير",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:817478953",
+      "nameAr": "الحي الجديد",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:825272931",
+      "nameAr": "أماندييه",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:825272932",
+      "nameAr": "بواريه",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:825505201",
+      "nameAr": "بالمييه",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:830722647",
+      "nameAr": "حي النور",
+      "searchAliases": [
+        "Hay Ennour",
+        "Hay El Nour"
+      ]
+    },
+    {
+      "id": "osm:way:830725032",
+      "nameAr": "حي السرور",
+      "searchAliases": [
+        "Hay Es Sourour",
+        "Hay Essourour"
+      ]
+    },
+    {
+      "id": "osm:way:830795349",
+      "nameAr": "حي دار الثقافة",
+      "searchAliases": [
+        "Hay Dar Eth Thaqafa",
+        "Hay Dar El Thaqafa"
+      ]
+    },
+    {
+      "id": "osm:way:830852683",
+      "nameAr": "حي السلام",
+      "searchAliases": [
+        "Hay Es Salem",
+        "Hay Essalem"
+      ]
+    },
+    {
+      "id": "osm:way:831150156",
+      "nameAr": "حي سيدي العودي",
+      "searchAliases": [
+        "Hay Sidi El Aoudi",
+        "Hay Sidi El Oudi"
+      ]
+    },
+    {
+      "id": "osm:way:835254834",
+      "nameAr": "حي التضامن",
+      "searchAliases": [
+        "Hay Ettadhamen",
+        "Hay Et Tadhamen"
+      ]
+    },
+    {
+      "id": "osm:way:835439602",
+      "nameAr": "حي 9 أفريل",
+      "searchAliases": [
+        "Hay 9 Avril",
+        "Hay 9 Afril"
+      ]
+    },
+    {
+      "id": "osm:way:835440347",
+      "nameAr": "حي اليقظة",
+      "searchAliases": [
+        "Hay El Yaqdha",
+        "Hay El Yakdha"
+      ]
+    },
+    {
+      "id": "osm:way:837060395",
+      "nameAr": "حي النصر",
+      "searchAliases": [
+        "Hay Ennasr",
+        "Hay El Nasr"
+      ]
+    },
+    {
+      "id": "osm:way:837554314",
+      "nameAr": "حي الرملة",
+      "searchAliases": [
+        "Hay Erramla",
+        "Hay El Ramla"
+      ]
+    },
+    {
+      "id": "osm:way:884828640",
+      "nameAr": "جي 5",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:901796422",
+      "nameAr": "حي سعيد",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:917798243",
+      "nameAr": "مرجان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:958706905",
+      "nameAr": "بن سلامة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:958708445",
+      "nameAr": "بن سلامة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:969654331",
+      "nameAr": "الطوايشة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:97396974",
+      "nameAr": "جنان بني خيار",
+      "searchAliases": [
+        "Jnan Beni Khiar",
+        "Jnane Beni Khiar"
+      ]
+    },
+    {
+      "id": "osm:way:97468468",
+      "nameAr": "مرسى بن رندان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:99721438",
+      "nameAr": "الرحمة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:999477421",
+      "nameAr": "الحي الاداري",
+      "searchAliases": [
+        "El Hay El Idari",
+        "Hay El Idari"
+      ]
+    },
+    {
+      "id": "osm:way:999537839",
+      "nameAr": "الأسايدة",
+      "searchAliases": []
+    }
+  ]
+}

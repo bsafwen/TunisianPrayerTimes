@@ -5739,6 +5739,10 @@
         "sourceProposal": {
           "file": "point-base-display-reviews/el-borma-2026-09/el-borma-display-scope-feasibility.json",
           "sha256": "aa8c49a1b54264ddbf1da92c27c8f26de012e411548da1824dbd8f4e629a1bd8"
+        },
+        "aliasSuccessorReview": {
+          "file": "dependency-successors/kambout-alias-20260920/alias-successor-scope.json",
+          "sha256": "ad1f45064c2fa1e5ae886aff4fed1b454689467f1a3edc0ca4d6bd2768a5e342"
         }
       },
       "expectedKind": "village",
@@ -5755,8 +5759,8 @@
       },
       "id": "osm:node:500182808",
       "pickerBaseDisplayReview": {
-        "file": "point-base-display-reviews/el-borma-2026-09/476-reviewed-point-base-display-identity.json",
-        "sha256": "c4848d85ea1db340ef1c61422c6e58cb09458331c957033da6d0de05b808f78d"
+        "file": "dependency-successors/kambout-alias-20260920/node-500182808-proof.json",
+        "sha256": "d5790a7c5c2c0450b4b4186cf461b51e7bf7e37cfa21c5d178c04c4842b3f392"
       },
       "reason": "Primary SITEP residential-worker locality evidence and original INM476 named-reference identity support one manual El Borma choice while keeping Remada administration, six sectors and both stored coordinates unchanged."
     },
@@ -5866,9 +5870,9 @@
           "sha256": "0768fa25f652282fa0e2b750c1432f385be8f037f322ccbd4600796d9e9cb8f4"
         },
         "currentSourceCarry": {
-          "bytes": 21438,
-          "file": "point-base-display-reviews/tinja-soukra-sector-owned-2026-09/current-f05e-source-group-carry.json",
-          "sha256": "f0c772b7d0ffbcf76228baf50f3118155811a2451e9cf6c2e820ae96b1a4ffd3"
+          "file": "official/soukra125251-whole-20260920/dependencies/soukra125251-whole-source-carry.json",
+          "sha256": "aa53a4488470439e5f13680bc32979010ada5ef83dabe0aaf6a3dbb960893fe4",
+          "bytes": 7568
         },
         "independentFiniteReview": {
           "bytes": 15797,
@@ -5905,9 +5909,9 @@
       },
       "id": "osm:node:7390818324",
       "pickerBaseDisplayReview": {
-        "bytes": 105363,
-        "file": "dependency-successors/soliman-native-20260912/node-7390818324-boundary-proof.json",
-        "sha256": "82b5e59d06a0bfe2f08dd75075e9bacf2d92d0e5132bd97a480880c84da19fc9"
+        "file": "official/soukra125251-whole-20260920/dependencies/node-7390818324-proof.json",
+        "sha256": "b05a2bcd1f67ec0ff368f441544565be9cc3f214b375094e28489169d6ac3008",
+        "bytes": 114718
       },
       "reason": "Reviewed primary inhabited-place usage and authentic source history support one manual choice with the existing base and its approved coded-sector owner. Preserve the village point, every independent locality, all sectors, source geometry, names, coordinates and prayer defaults."
     },
@@ -9016,105 +9020,940 @@
       }
     },
     {
-      "id": "osm:relation:7189452",
+      "id": "osm:relation:7142943",
       "expectedKind": "sector",
       "expectedTags": {
         "admin_level": "6",
         "boundary": "administrative",
-        "name": "عمدون",
-        "name:ar": "عمدون",
-        "name:fr": "Amdoun",
-        "ref:tn:codegeo": "215351"
+        "name": "المغزاوية",
+        "name:ar": "المغزاوية",
+        "name:fr": "El Maghzaouia",
+        "ref:tn:codegeo": "525953"
       },
       "action": "name_tags",
       "nameTags": {
-        "name": "زهرة مدين",
-        "name:ar": "زهرة مدين",
-        "name:fr": "Zahret medien",
-        "alt_name:ar": "عمدون",
-        "alt_name:fr": "Amdoun"
+        "name": "المغراوية",
+        "name:ar": "المغراوية",
+        "name:fr": "El Maghzaouia",
+        "alt_name:ar": "المغزاوية"
       },
-      "reason": "Official INS sector code 215351 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين / Zahret medien. Retain عمدون and Amdoun as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+      "reason": "Unique code525953/parent5259, exact original French identity, official INS Arabic and independently printed ISIE Arabic establish the same administrative sector under المغراوية. Existing child مغراوية also corroborates Arabic usage. The French z is not a sound basis for overruling the two official Arabic spellings. This is an official-primary recommendation, not a claim every alternative Arabic form is invalid.",
       "evidence": [
         {
-          "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+          "source": "Preserve historical variants and identity; accepted exact child deltas remain independent.",
           "reviewFiles": [
             {
-              "file": "name-reviews/amdoun-two-20260920/proof.json",
-              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+              "file": "name-reviews/six-name-20260920/proof.json",
+              "sha256": "a44b2d2737a9427805c56261796796ad959897af16a604f341ce6836b81a79fe",
+              "bytes": 18283
             }
           ]
         }
       ]
     },
     {
-      "id": "osm:relation:7189451",
+      "id": "osm:relation:7165270",
       "expectedKind": "sector",
       "expectedTags": {
         "admin_level": "6",
         "boundary": "administrative",
-        "name": "عمدون الجنوبية",
-        "name:ar": "عمدون الجنوبية",
-        "name:fr": "Amdoun Sud",
-        "ref:tn:codegeo": "215352"
+        "name": "الدريعات",
+        "name:ar": "الدريعات",
+        "name:fr": "Edheriaat",
+        "ref:tn:codegeo": "415456"
       },
       "action": "name_tags",
       "nameTags": {
-        "name": "زهرة مدين الجنوبية",
-        "name:ar": "زهرة مدين الجنوبية",
-        "name:fr": "Zahret medien sud",
-        "alt_name:ar": "عمدون الجنوبية",
-        "alt_name:fr": "Amdoun Sud"
+        "name": "الذريعات",
+        "name:ar": "الذريعات",
+        "name:fr": "Edheriaat",
+        "alt_name:ar": "الدريعات",
+        "alt_name:fr": "Ed-dheriaat"
       },
-      "reason": "Official INS sector code 215352 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين الجنوبية / Zahret medien sud. Retain عمدون الجنوبية and Amdoun Sud as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+      "reason": "Unique code415456/parent4154, corresponding French identity, matching official INS and printed ISIE Arabic, plus geographic correspondence support الذريعات as administrative primary. Preserve simplified الدريعات as a searchable source variant; no pronunciation claim.",
       "evidence": [
         {
-          "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+          "source": "Preserve historical variants and identity; accepted exact child deltas remain independent.",
           "reviewFiles": [
             {
-              "file": "name-reviews/amdoun-two-20260920/proof.json",
-              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+              "file": "name-reviews/six-name-20260920/proof.json",
+              "sha256": "a44b2d2737a9427805c56261796796ad959897af16a604f341ce6836b81a79fe",
+              "bytes": 18283
             }
           ]
         }
       ]
-    }
-  ],
-  "pendingReviews": [
+    },
     {
-      "evidence": [
-        "https://www.ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf#page=84"
-      ],
+      "id": "osm:relation:7169564",
       "expectedKind": "sector",
       "expectedTags": {
-        "name:ar": "طبلبة",
-        "ref:tn:codegeo": "325951"
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الدويبات الجنوبية",
+        "name:ar": "الدويبات الجنوبية",
+        "name:fr": "Dheouibet Sud",
+        "ref:tn:codegeo": "436252"
       },
-      "id": "osm:relation:7111933",
-      "reason": "The source title identifies Teboulba, while official code325951 identifies Bekalta Nord. Neither renaming this polygon nor linking it to Bekalta is supported by the contradictory source identity. It currently falls back to governorate context because no delegation wholly contains it.",
-      "unresolved": [
-        "Establish the correct place identity and administrative membership for this source polygon before relabelling it."
+      "action": "name_tags",
+      "nameTags": {
+        "name": "الذويبات الجنوبية",
+        "name:ar": "الذويبات الجنوبية",
+        "name:fr": "Dheouibet Sud",
+        "alt_name:ar": "الدويبات الجنوبية"
+      },
+      "reason": "Unique code436252/parent4362, exact French identity and matching INS/ISIE Arabic support الذويبات الجنوبية as administrative primary. Current contained village الذويبات corroborates the letter. Invalid self-intersecting native map geometry does not invalidate the separate coded name evidence and is not repaired or imported.",
+      "evidence": [
+        {
+          "source": "Preserve historical variants and identity; accepted exact child deltas remain independent.",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/six-name-20260920/proof.json",
+              "sha256": "a44b2d2737a9427805c56261796796ad959897af16a604f341ce6836b81a79fe",
+              "bytes": 18283
+            }
+          ]
+        }
       ]
     },
     {
-      "evidence": [
-        "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
-        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
-        "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
-        "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
-      ],
+      "id": "osm:relation:7127889",
       "expectedKind": "sector",
       "expectedTags": {
-        "name:ar": "البساتين",
-        "ref:tn:codegeo": "125253"
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بلطش",
+        "name:ar": "‫بلطش‬",
+        "name:fr": "Baltech",
+        "ref:tn:codegeo": "345853"
       },
-      "id": "osm:relation:7114902",
-      "reason": "The source labels code125253 El Bassatine / البساتين in Soukra. INS2024 retains125253 in Soukra as El bousten / البستان. The namesake125754 in Mnihla has no geometric overlap with this polygon. Retain Soukra and review the exact source identity/title separately.",
-      "unresolved": [
-        "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+      "action": "name_tags",
+      "nameTags": {
+        "name": "بلتش",
+        "name:ar": "بلتش",
+        "name:fr": "Baltech",
+        "alt_name:ar": "بلطش"
+      },
+      "reason": "Unique code345853/parent3458, exact French identity and matching official INS/ISIE Arabic, with strong geographic correspondence, support بلتش as administrative primary. Preserve بلطش as source alias. Latin t alone is not proof against ط.",
+      "evidence": [
+        {
+          "source": "Preserve historical variants and identity; accepted exact child deltas remain independent.",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/six-name-20260920/proof.json",
+              "sha256": "a44b2d2737a9427805c56261796796ad959897af16a604f341ce6836b81a79fe",
+              "bytes": 18283
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7133851",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "سدويكش",
+        "name:ar": "سدويكش",
+        "name:fr": "Sedouikech",
+        "ref:tn:codegeo": "525755"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "سدويكش",
+        "name:ar": "سدويكش",
+        "name:fr": "Sedouikech",
+        "alt_name:ar": "صدويكش"
+      },
+      "reason": "Unique code525755/parent5257, identical French Sedouikech and INS+ISIE Arabic establish صدويكش as a proved official same-sector variant. Retain current سدويكش primary and add صدويكش for search; no independent evidence establishes the existing form is a typo. The valid exact two-component outline and its substantial difference from the old polygon are separate geometry qualifications, not evidence of failed name identity.",
+      "evidence": [
+        {
+          "source": "Preserve historical variants and identity; accepted exact child deltas remain independent.",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/six-name-20260920/proof.json",
+              "sha256": "a44b2d2737a9427805c56261796796ad959897af16a604f341ce6836b81a79fe",
+              "bytes": 18283
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7143844",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "كمبوت",
+        "name:ar": "كمبوت",
+        "name:fr": "Kambout",
+        "ref:tn:codegeo": "535754"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "كمبوت",
+        "name:ar": "كمبوت",
+        "name:fr": "Kambout",
+        "alt_name:ar": "كنبوت",
+        "alt_name:fr": "Kenbout"
+      },
+      "reason": "Unique code535754/parent5357 and INS+ISIE Arabic كنبوت with French Kenbout establish proved official same-sector variants. Retain current كمبوت/Kambout/Tifinagh forms and add كنبوت/Kenbout for search; no independent evidence establishes the current m spelling is a typo. Substantial official/old footprint discrepancy is a separate geometry qualification, not failed name identity. The active El Borma proof requires an explicit successor before even this alias-only change.",
+      "evidence": [
+        {
+          "source": "Preserve historical variants and identity; accepted exact child deltas remain independent.",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/six-name-20260920/proof.json",
+              "sha256": "a44b2d2737a9427805c56261796796ad959897af16a604f341ce6836b81a79fe",
+              "bytes": 18283
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "action": "exclude",
+      "evidence": [
+        {
+          "bytes": 3934,
+          "file": "exclusion-reviews/apartment-complexes-20260920/proofs/osm_way_1346769253.json",
+          "sha256": "0211b3b5201fb4e2fe3b64a5f238f83395bffc6a1b38d62a5215b7d59b65a252"
+        }
+      ],
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "سكرة",
+        "addr:street": "شارع اتحاد المغرب العربي",
+        "landuse": "residential",
+        "name:ar": "اقامة جوهرة",
+        "name:fr": "Résidence Jawhara",
+        "residential": "apartments"
+      },
+      "id": "osm:way:1346769253",
+      "reason": "Exclude only this exact mapped apartment-complex/residential polygon from locality and GPS picker labels under the current product scope. This is not a claim of a single roof, ownership, nonexistence, legal parcel, or newly-proven geographic fact. Preserve the original source object, source phase coordinates, source/admin/place name peers, surrounding sectors, contexts and all prayer references; retire this ID without inventing a replacement."
+    },
+    {
+      "action": "exclude",
+      "evidence": [
+        {
+          "bytes": 3858,
+          "file": "exclusion-reviews/apartment-complexes-20260920/proofs/osm_way_1430310523.json",
+          "sha256": "8a2b7c195a01618e7480e7924ca6b17677ea3c00cada872c4d27940aa1eb08bb"
+        }
+      ],
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence Bel Horizon",
+        "name:en": "Bel Horizon Residence",
+        "name:fr": "Résidence Bel Horizon",
+        "residential": "apartments"
+      },
+      "id": "osm:way:1430310523",
+      "reason": "Exclude only this exact mapped apartment-complex/residential polygon from locality and GPS picker labels under the current product scope. This is not a claim of a single roof, ownership, nonexistence, legal parcel, or newly-proven geographic fact. Preserve the original source object, source phase coordinates, source/admin/place name peers, surrounding sectors, contexts and all prayer references; retire this ID without inventing a replacement."
+    },
+    {
+      "action": "exclude",
+      "evidence": [
+        {
+          "bytes": 3774,
+          "file": "exclusion-reviews/apartment-complexes-20260920/proofs/osm_way_525479443.json",
+          "sha256": "e4c00361d0d24e81c7de8d98d00b99beaef6d1beaf46fcf3fcbfa3df2e6bc91d"
+        }
+      ],
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence Sourour",
+        "residential": "apartments"
+      },
+      "id": "osm:way:525479443",
+      "reason": "Exclude only this exact mapped apartment-complex/residential polygon from locality and GPS picker labels under the current product scope. This is not a claim of a single roof, ownership, nonexistence, legal parcel, or newly-proven geographic fact. Preserve the original source object, source phase coordinates, source/admin/place name peers, surrounding sectors, contexts and all prayer references; retire this ID without inventing a replacement."
+    },
+    {
+      "action": "exclude",
+      "evidence": [
+        {
+          "bytes": 3792,
+          "file": "exclusion-reviews/apartment-complexes-20260920/proofs/osm_way_534926156.json",
+          "sha256": "3667571b41799bcdf3d228f08de2e0d000f590ad29d58a36041e7d7e3c738665"
+        }
+      ],
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence Diar Soukra",
+        "residential": "apartments"
+      },
+      "id": "osm:way:534926156",
+      "reason": "Exclude only this exact mapped apartment-complex/residential polygon from locality and GPS picker labels under the current product scope. This is not a claim of a single roof, ownership, nonexistence, legal parcel, or newly-proven geographic fact. Preserve the original source object, source phase coordinates, source/admin/place name peers, surrounding sectors, contexts and all prayer references; retire this ID without inventing a replacement."
+    },
+    {
+      "action": "exclude",
+      "evidence": [
+        {
+          "bytes": 4109,
+          "file": "exclusion-reviews/apartment-complexes-20260920/proofs/osm_way_816233951.json",
+          "sha256": "674ff5ba3ec78b0cfc201b46267f429c90a801afc8681a032857081b53a581be"
+        }
+      ],
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "الحمامات",
+        "addr:postcode": "8050",
+        "addr:street": "شارع أسد ابن الفرات",
+        "landuse": "residential",
+        "name": "Zone Résidentielle",
+        "residential": "apartments"
+      },
+      "id": "osm:way:816233951",
+      "reason": "Exclude only this exact mapped apartment-complex/residential polygon from locality and GPS picker labels under the current product scope. This is not a claim of a single roof, ownership, nonexistence, legal parcel, or newly-proven geographic fact. Preserve the original source object, source phase coordinates, source/admin/place name peers, surrounding sectors, contexts and all prayer references; retire this ID without inventing a replacement."
+    },
+    {
+      "action": "exclude",
+      "evidence": [
+        {
+          "bytes": 3783,
+          "file": "exclusion-reviews/apartment-complexes-20260920/proofs/osm_way_924818069.json",
+          "sha256": "2db876beb4104c803b2ae9695f1776f10424b6d440e2fedd52debb494eb1d51c"
+        }
+      ],
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "إقامة مريم",
+        "name:ar": "إقامة مريم",
+        "name:fr": "Résidence Mariem",
+        "residential": "apartments"
+      },
+      "id": "osm:way:924818069",
+      "reason": "Exclude only this exact mapped apartment-complex/residential polygon from locality and GPS picker labels under the current product scope. This is not a claim of a single roof, ownership, nonexistence, legal parcel, or newly-proven geographic fact. Preserve the original source object, source phase coordinates, source/admin/place name peers, surrounding sectors, contexts and all prayer references; retire this ID without inventing a replacement."
+    },
+    {
+      "action": "exclude",
+      "evidence": [
+        {
+          "bytes": 3757,
+          "file": "exclusion-reviews/apartment-complexes-20260920/proofs/osm_way_924818070.json",
+          "sha256": "5126c448c10201fbc2acaa508ca36a03278d594d32c63253f1016b9dcc053bff"
+        }
+      ],
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "إقامة ريم",
+        "name:ar": "إقامة ريم",
+        "name:fr": "Résidence Rym",
+        "residential": "apartments"
+      },
+      "id": "osm:way:924818070",
+      "reason": "Exclude only this exact mapped apartment-complex/residential polygon from locality and GPS picker labels under the current product scope. This is not a claim of a single roof, ownership, nonexistence, legal parcel, or newly-proven geographic fact. Preserve the original source object, source phase coordinates, source/admin/place name peers, surrounding sectors, contexts and all prayer references; retire this ID without inventing a replacement."
+    },
+    {
+      "action": "exclude",
+      "evidence": [
+        {
+          "bytes": 3870,
+          "file": "exclusion-reviews/apartment-complexes-20260920/proofs/osm_way_980164287.json",
+          "sha256": "fbe394c157cec2d19e0575f1c757f9e5eabe822bdad99262bbdf57bab9ed3938"
+        }
+      ],
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "إقامة فل ياسمين",
+        "name:ar": "إقامة فل ياسمين",
+        "name:fr": "Residence Fell Yasmine",
+        "residential": "apartments"
+      },
+      "id": "osm:way:980164287",
+      "reason": "Exclude only this exact mapped apartment-complex/residential polygon from locality and GPS picker labels under the current product scope. This is not a claim of a single roof, ownership, nonexistence, legal parcel, or newly-proven geographic fact. Preserve the original source object, source phase coordinates, source/admin/place name peers, surrounding sectors, contexts and all prayer references; retire this ID without inventing a replacement."
+    },
+    {
+      "action": "exclude",
+      "evidence": [
+        {
+          "bytes": 3583,
+          "file": "exclusion-reviews/apartment-complexes-20260920/proofs/osm_way_980164288.json",
+          "sha256": "2901d2dab5f9a0fc4c27564dffe1ca49f1e14d41623706bbecb517e2bbded27b"
+        }
+      ],
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Nour Hilton",
+        "residential": "apartments"
+      },
+      "id": "osm:way:980164288",
+      "reason": "Exclude only this exact mapped apartment-complex/residential polygon from locality and GPS picker labels under the current product scope. This is not a claim of a single roof, ownership, nonexistence, legal parcel, or newly-proven geographic fact. Preserve the original source object, source phase coordinates, source/admin/place name peers, surrounding sectors, contexts and all prayer references; retire this ID without inventing a replacement."
+    },
+    {
+      "id": "osm:way:100904214",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence Cap Gammarth"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:100904283",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "قمرت",
+        "addr:city:ar": "قمرت",
+        "landuse": "residential",
+        "name": "Résidence La Palmeraie",
+        "name:fr": "Résidence La Palmeraie"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:100904291",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "access": "private",
+        "barrier": "wall",
+        "landuse": "residential",
+        "name": "Presidential Residences"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:1015030934",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "إقامة السلطانة",
+        "name:aeb": "إقامة السلطانة",
+        "name:ar": "إقامة السلطانة",
+        "name:fr": "Residence el soltana"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:1017544503",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence Opéra 2"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:1042144007",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence de l'Orangeraie"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:144557476",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "leisure": "garden",
+        "name": "سكن قرطاج",
+        "name:ar": "سكن قرطاج",
+        "name:fr": "Résidence Carthage"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:144986791",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "المرسى",
+        "addr:city:ar": "المرسى",
+        "landuse": "residential",
+        "name": "Residence Les Pins"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:147748277",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "barrier": "wall",
+        "landuse": "residential",
+        "name": "إقامة دار قمرت",
+        "name:ar": "إقامة دار قمرت",
+        "name:fr": "Résidence Dar Gammarth"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:157371427",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "barrier": "wall",
+        "landuse": "residential",
+        "name": "Cité des Cadres Du Groupe Chimique",
+        "name:fr": "Cité des Cadres Du Groupe Chimique"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:171920791",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence Mimoza"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:171920792",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "إقامة ابن رشد \"العصر جديد\"",
+        "name:ar": "إقامة ابن رشد \"العصر جديد\"",
+        "name:fr": "Résidence Ibn Rochd \"Ère Nouvelle\""
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:171935446",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "designation": "Résidence El Moez",
+        "landuse": "residential",
+        "name": "Résidence El Moez"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:171935448",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "designation": "Résidence Ibn Rachik",
+        "landuse": "residential",
+        "name": "Résidence Ibn Rachik"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:171935449",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "designation": "Résidence Riadh",
+        "landuse": "residential",
+        "name": "Résidence Riadh"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:191436024",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "barrier": "wall",
+        "landuse": "residential",
+        "leisure": "garden",
+        "name": "Palais présidentiel",
+        "name:fr": "Palais présidentiel"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:211913309",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "barrier": "wall",
+        "landuse": "residential",
+        "name": "Résidence Aziza"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:211913318",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "barrier": "wall",
+        "landuse": "residential",
+        "name": "Résidence Les Jasmins",
+        "name:fr": "Résidence Les Jasmins"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:218736534",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "قمرت",
+        "addr:city:ar": "قمرت",
+        "addr:postcode": "1057",
+        "barrier": "wall",
+        "landuse": "residential",
+        "name": "إقامة بلآزور",
+        "name:ar": "إقامة بلآزور",
+        "name:fr": "Résidence Bel Azur"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:221174224",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "barrier": "wall",
+        "landuse": "residential",
+        "name": "Résidence Hannibal",
+        "name:fr": "Résidence Hannibal"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:221174225",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "barrier": "wall",
+        "landuse": "residential",
+        "name": "Résidence Méditérranée",
+        "name:fr": "Résidence Méditérranée"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:335034436",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence Folla"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:379347133",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "Mourouj 1",
+        "addr:postcode": "2074",
+        "addr:street": "Avenue des martyrs",
+        "landuse": "residential",
+        "name": "Résidence Ibn Jazar"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:499076286",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence l'excellence"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:535216233",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "إقامة فرح",
+        "name:ar": "إقامة فرح",
+        "name:fr": "Résidence Farah"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:535367874",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "Résidence Diar Essalem"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:825272933",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "contact:facebook": "https://www.facebook.com/lesjardinsdegammarth/",
+        "landuse": "residential",
+        "name": "Résidence les Jardins de Gammarth"
+      },
+      "reason": "Named residential estate/complex or accepted property outside user locality scope; original landuse=residential, bounded source footprint, no independent ownplace/admin identity identified. This is not a claim of nonexistence, singlebuilding or certifiedownership.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/residential-complexes-20260920/review.json",
+          "sha256": "a3ba0eaad847fe72af0935e85a75fff01c82218a64e8af747fd971dc038cf00a",
+          "bytes": 62903
+        }
+      ]
+    },
+    {
+      "id": "osm:way:129273870",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "addr:city": "طبرقة",
+        "landuse": "residential",
+        "name": "إقامة البلفيدير",
+        "name:ar": "إقامة البلفيدير",
+        "name:en": "Belvedere Residence",
+        "name:fr": "Résidence La Bélvèdere"
+      },
+      "reason": "Named co-owned residential estate outside locality product scope; root-approved product-scope exclusion with preserved geographic qualification.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/belvedere-20260920/review.json",
+          "sha256": "45a298f7428c736fadd6374abbc0eef385a5eedec71d0a6d50569f7dac849b5e",
+          "bytes": 4582
+        }
+      ]
+    },
+    {
+      "id": "osm:way:391586656",
+      "action": "exclude",
+      "expectedKind": "residential",
+      "expectedTags": {
+        "landuse": "residential",
+        "name": "حي إطارات المجمع الكيميائي التونسي",
+        "name:ar": "حي إطارات المجمع الكيميائي التونسي",
+        "name:fr": "Cité des Cadres GCT"
+      },
+      "reason": "Product-scope exclusion of the exact named GCT staff-housing compound; not a nonexistent place and not certified ownership/parcel; no primary operator/parcel link; failed operator lookup is not negative identity evidence.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/gct-staff-housing-20260920/review.json",
+          "sha256": "89dec8cd05722e2aa5432de449f4fae2365d755ed768c791fb065ef412e01141",
+          "bytes": 1508
+        }
+      ]
+    },
+    {
+      "id": "osm:node:1190877566",
+      "action": "exclude",
+      "expectedKind": "hamlet",
+      "expectedTags": {
+        "addr:city": "Camp Servière",
+        "addr:governorate": "Nabeul",
+        "name": "Camp Servière",
+        "place": "hamlet"
+      },
+      "reason": "Product-scope exclusion of the exact Camp Servière legacy military-academy site label; exact point is contained by the named Académie Militaire Fondouk Jedid college polygon. This does not assert nonexistence or certify the academy boundary.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/camp-serviere-20260921/accepted-review.json",
+          "sha256": "ec60a03b2ad130d9a22cb3983bb8b3b51697ea1c1d52e6c69a32300b411d708a",
+          "bytes": 4180
+        }
       ]
     }
   ],
+  "pendingReviews": [],
   "reviewedDate": "2026-09-08",
   "schemaVersion": 1,
   "scope": "Reviewed naming and administrative membership decisions. These decisions do not certify source polygon boundaries or every other catalog record.",

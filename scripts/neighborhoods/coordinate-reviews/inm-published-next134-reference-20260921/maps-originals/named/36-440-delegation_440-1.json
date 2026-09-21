@@ -1,0 +1,35 @@
+{
+  "observedAt": "2026-09-07T06:07:58.194418+00:00",
+  "query": "مساكن سوسة Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "M'saken"
+  ],
+  "publicUiText": [
+    "M'saken",
+    "مساكن",
+    "Tunisia",
+    "Directions to M'saken",
+    "Directions",
+    "Share M'saken",
+    "Share",
+    "Save M'saken to lists",
+    "Save",
+    "Photo",
+    "Video",
+    "Close",
+    "مساكن سوسة Tunisia",
+    "Clear",
+    "Restaurants",
+    "Hotels",
+    "Attractions"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "مساكن",
+    "Msaken",
+    "Msaken"
+  ],
+  "screenshot": "delegation_440-1.png",
+  "boundaryVerified": false
+}

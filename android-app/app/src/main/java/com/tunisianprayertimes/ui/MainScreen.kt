@@ -236,6 +236,7 @@ private enum class MainDestination(val labelRes: Int, val iconRes: Int) {
     Today(R.string.main_tab_today, R.drawable.ic_tab_today),
     Alarms(R.string.main_tab_alarms, R.drawable.ic_tab_alarms),
     Qibla(R.string.main_tab_qibla, R.drawable.ic_tab_qibla),
+    Adhkar(R.string.adhkar_title, R.drawable.ic_tab_adhkar),
 }
 
 private enum class WakeQuickPreset {
@@ -277,12 +278,14 @@ private fun MainDestination.analyticsName(): String = when (this) {
     MainDestination.Today -> "prayers"
     MainDestination.Alarms -> "alarms"
     MainDestination.Qibla -> "qibla"
+    MainDestination.Adhkar -> "adhkar"
 }
 
 private fun MainDestination.testTag(): String = when (this) {
     MainDestination.Today -> TestTags.MAIN_TAB_TODAY
     MainDestination.Alarms -> TestTags.MAIN_TAB_ALARMS
     MainDestination.Qibla -> TestTags.MAIN_TAB_QIBLA
+    MainDestination.Adhkar -> TestTags.MAIN_TAB_ADHKAR
 }
 
 private fun WakeQuickPreset.testTag(): String = when (this) {
@@ -304,6 +307,8 @@ fun MainScreen(
     activity: androidx.appcompat.app.AppCompatActivity,
     requestedDestination: String? = null,
     requestedDestinationSequence: Int = 0,
+    requestedDhikrReminderId: String? = null,
+    requestedDhikrOccurrenceId: String? = null,
 ) {
     val context = LocalContext.current
     val notificationManager = remember { context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager }
@@ -439,6 +444,10 @@ fun MainScreen(
         )
         syncWakeScheduling()
 
+        withContext(Dispatchers.IO) {
+            com.tunisianprayertimes.adhkar.DhikrReminderScheduler.refresh(context, rearm = true)
+        }
+
         refreshSilenceState()
     }
 
@@ -516,6 +525,7 @@ fun MainScreen(
             MainTabNavigation.DESTINATION_PRAYERS -> mainDestinations.indexOf(MainDestination.Today)
             MainTabNavigation.DESTINATION_ALARMS -> mainDestinations.indexOf(MainDestination.Alarms)
             MainTabNavigation.DESTINATION_QIBLA -> mainDestinations.indexOf(MainDestination.Qibla)
+            MainTabNavigation.DESTINATION_ADHKAR -> mainDestinations.indexOf(MainDestination.Adhkar)
             else -> -1
         }
         if (requestedIndex in mainDestinations.indices) {
@@ -531,6 +541,7 @@ fun MainScreen(
     val todayScrollState = rememberScrollState()
     val alarmsScrollState = rememberScrollState()
     val qiblaScrollState = rememberScrollState()
+    val adhkarScrollState = rememberScrollState()
     var prayerTableSelectedDate by rememberSaveable {
         mutableLongStateOf(startOfDayMillis(System.currentTimeMillis()))
     }
@@ -538,6 +549,7 @@ fun MainScreen(
         MainDestination.Today -> todayScrollState
         MainDestination.Alarms -> alarmsScrollState
         MainDestination.Qibla -> qiblaScrollState
+        MainDestination.Adhkar -> adhkarScrollState
     }
 
     LaunchedEffect(selectedDestination) {
@@ -694,7 +706,21 @@ fun MainScreen(
         )
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
+    val adhkarStateHolder = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
+    val isAdhkar = selectedDestination == MainDestination.Adhkar
+    val adhkarPalette = if (androidx.compose.foundation.isSystemInDarkTheme()) AdhkarDark else AdhkarLight
+    Box(modifier = Modifier.fillMaxSize().background(if (isAdhkar) adhkarPalette.background else BgCream)) {
+        if (isAdhkar) {
+            adhkarStateHolder.SaveableStateProvider("adhkar") {
+                AdhkarScreen(
+                    activity = activity,
+                    requestedReminderId = requestedDhikrReminderId,
+                    requestedReminderSequence = requestedDestinationSequence,
+                    requestedOccurrenceId = requestedDhikrOccurrenceId,
+                    modifier = Modifier.fillMaxSize().padding(bottom = with(density) { bottomNavigationOccupiedPx.toDp() }),
+                )
+            }
+        } else {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -991,12 +1017,14 @@ fun MainScreen(
                     MainDestination.Qibla -> {
                         QiblaCard()
                     }
+                    MainDestination.Adhkar -> Unit
                 }
 
             }
         }
 
-        Spacer(
+        }
+        if (!isAdhkar) Spacer(
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .fillMaxWidth()
@@ -1019,8 +1047,8 @@ fun MainScreen(
                         (MainContentBottomPadding - BottomNavigationMinHeight).roundToPx()
                     }
                 },
-            color = Color.White,
-            tonalElevation = 8.dp
+            color = if (isAdhkar) adhkarPalette.background else Color.White,
+            tonalElevation = if (isAdhkar) 0.dp else 8.dp
         ) {
             Column(
                 modifier = Modifier
@@ -1066,11 +1094,11 @@ fun MainScreen(
                             val selected = currentDestinationIndex == index
                             val label = stringResource(destination.labelRes)
                             val tabIndicatorColor by animateColorAsState(
-                                targetValue = if (selected) GreenPrimary else Color.Transparent,
+                                targetValue = if (selected) { if (isAdhkar) adhkarPalette.primary else GreenPrimary } else Color.Transparent,
                                 label = "bottomTabIndicator"
                             )
                             val tabContentColor by animateColorAsState(
-                                targetValue = if (selected) GreenPrimaryDark else TextMuted,
+                                targetValue = if (isAdhkar) { if (selected) adhkarPalette.primary else adhkarPalette.muted } else if (selected) GreenPrimaryDark else TextMuted,
                                 label = "bottomTabContent"
                             )
 

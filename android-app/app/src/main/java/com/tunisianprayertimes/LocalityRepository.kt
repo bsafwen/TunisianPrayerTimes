@@ -3,6 +3,7 @@ package com.tunisianprayertimes
 import android.content.Context
 import java.text.Normalizer
 import java.util.Locale
+import kotlin.math.abs
 import org.json.JSONObject
 
 data class Locality(
@@ -21,6 +22,26 @@ data class Locality(
 ) {
     val normalizedName: String by lazy { normalizeLocalitySearch(name) }
 
+    internal val searchTokens: List<String> by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        normalizeLocalitySearch(searchText).split(' ').filter { it.isNotEmpty() }
+    }
+
+    internal val fuzzySearchTokens: List<LocalityFuzzyToken> by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        searchTokens.asSequence()
+            .filter { it.length >= MIN_FUZZY_TOKEN_LENGTH }
+            .distinct()
+            .mapNotNull { token ->
+                val descriptor = localityFuzzyToken(token)
+                if (descriptor.script == null) null else descriptor
+            }
+            .toList()
+    }
+
+    internal fun prewarmSearchIndex() {
+        searchTokens.size
+        fuzzySearchTokens.size
+    }
+
     fun representsSelection(selectedId: String): Boolean = id == selectedId || selectedId in pickerMemberIds
 }
 
@@ -38,17 +59,175 @@ internal fun normalizeLocalitySearch(value: String): String =
         .replace(wordSeparators, " ")
         .trim()
 
+private const val MIN_FUZZY_TOKEN_LENGTH = 4
+private const val MAX_FUZZY_EDITS_PER_ROW = 2
+
+internal enum class LocalityFuzzyScript { ARABIC, LATIN }
+
+internal data class LocalityFuzzyToken(
+    val text: String,
+    val folded: String,
+    val script: LocalityFuzzyScript?,
+    val editLimit: Int = 0,
+)
+
+private fun foldLocalityFuzzyToken(token: String): String =
+    token.replace('ة', 'ه').replace('ی', 'ي').replace('ک', 'ك').replace("œ", "oe").replace("æ", "ae")
+
+private fun localityFuzzyToken(token: String, editLimit: Int = 0): LocalityFuzzyToken =
+    LocalityFuzzyToken(
+        text = token,
+        folded = foldLocalityFuzzyToken(token),
+        script = localityFuzzyScript(token),
+        editLimit = editLimit,
+    )
+
+private fun localityFuzzyScript(token: String): LocalityFuzzyScript? {
+    var script: LocalityFuzzyScript? = null
+    for (ch in token) {
+        if (!ch.isLetter()) return null
+        val code = ch.code
+        val current = when {
+            ch in 'a'..'z' -> LocalityFuzzyScript.LATIN
+            code in 0x00C0..0x00FF ||
+                code in 0x0100..0x017F ||
+                code in 0x0180..0x024F ||
+                code in 0x1E00..0x1EFF -> LocalityFuzzyScript.LATIN
+            code in 0x0600..0x06FF ||
+                code in 0x0750..0x077F ||
+                code in 0x08A0..0x08FF -> LocalityFuzzyScript.ARABIC
+            else -> return null
+        }
+        if (script == null) script = current
+        else if (script != current) return null
+    }
+    return script
+}
+
+private fun maxFuzzyEditsForTerm(term: String): Int = when {
+    term.length >= 8 -> 2
+    term.length >= MIN_FUZZY_TOKEN_LENGTH -> 1
+    else -> 0
+}
+
+private fun boundedOptimalStringAlignmentDistance(
+    a: String,
+    b: String,
+    maxEdits: Int,
+    checkCancellation: () -> Unit,
+): Int {
+    if (a == b) return 0
+    if (maxEdits <= 0) return maxEdits + 1
+    val aLength = a.length
+    val bLength = b.length
+    if (abs(aLength - bLength) > maxEdits) return maxEdits + 1
+    var previousPrevious = IntArray(bLength + 1)
+    var previous = IntArray(bLength + 1) { it }
+    var current = IntArray(bLength + 1)
+    for (i in 1..aLength) {
+        checkCancellation()
+        current[0] = i
+        var rowMinimum = current[0]
+        for (j in 1..bLength) {
+            val substitutionCost = if (a[i - 1] == b[j - 1]) 0 else 1
+            var value = minOf(
+                previous[j] + 1,
+                current[j - 1] + 1,
+                previous[j - 1] + substitutionCost,
+            )
+            if (i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1]) {
+                value = minOf(value, previousPrevious[j - 2] + 1)
+            }
+            current[j] = value
+            if (value < rowMinimum) rowMinimum = value
+        }
+        if (rowMinimum > maxEdits) return maxEdits + 1
+        val swap = previousPrevious
+        previousPrevious = previous
+        previous = current
+        current = swap
+    }
+    return previous[bLength]
+}
+
+private data class FuzzyLocalityMatch(
+    val locality: Locality,
+    val edits: Int,
+    val primaryRank: Int,
+    val originalIndex: Int,
+)
+
+private fun primaryLocalityRank(locality: Locality, query: LocalitySearchQuery): Int = when {
+    locality.normalizedName == query.normalized -> 3
+    locality.normalizedName.startsWith(query.normalized) -> 2
+    query.terms.all { term -> term in locality.normalizedName } -> 1
+    else -> 0
+}
+
+private fun fuzzyTermCost(
+    term: LocalityFuzzyToken,
+    tokens: List<LocalityFuzzyToken>,
+    remainingEdits: Int,
+    checkCancellation: () -> Unit,
+): Int? {
+    val termScript = term.script ?: return null
+    if (term.editLimit <= 0) return null
+    val termLimit = minOf(term.editLimit, remainingEdits)
+    var best = term.editLimit + 1
+    for (candidate in tokens) {
+        if (candidate.script != termScript) continue
+        if (candidate.folded == term.folded) return 0
+        if (termLimit <= 0) continue
+        if (abs(candidate.folded.length - term.folded.length) > termLimit) continue
+        val distance = boundedOptimalStringAlignmentDistance(
+            a = term.folded,
+            b = candidate.folded,
+            maxEdits = termLimit,
+            checkCancellation = checkCancellation,
+        )
+        if (distance < best) best = distance
+    }
+    return if (best <= termLimit) best else null
+}
+
+private fun fuzzyMatchCost(
+    locality: Locality,
+    query: LocalitySearchQuery,
+    checkCancellation: () -> Unit,
+): Int? {
+    var totalEdits = 0
+    for (term in query.fuzzyTerms) {
+        if (term.text in locality.searchText) continue
+        val remainingEdits = MAX_FUZZY_EDITS_PER_ROW - totalEdits
+        if (remainingEdits < 0) return null
+        val cost = fuzzyTermCost(
+            term = term,
+            tokens = locality.fuzzySearchTokens,
+            remainingEdits = remainingEdits,
+            checkCancellation = checkCancellation,
+        ) ?: return null
+        totalEdits += cost
+        if (totalEdits > MAX_FUZZY_EDITS_PER_ROW) return null
+    }
+    return totalEdits
+}
+
 /** Search input parsed once so each governorate group filters without re-normalizing. */
 internal class LocalitySearchQuery private constructor(
     val normalized: String,
     val terms: List<String>,
+    internal val fuzzyTerms: List<LocalityFuzzyToken>,
 ) {
     val isEmpty: Boolean get() = terms.isEmpty()
 
     companion object {
         fun parse(query: String): LocalitySearchQuery {
             val normalized = normalizeLocalitySearch(query)
-            return LocalitySearchQuery(normalized, normalized.split(' ').filter { it.isNotEmpty() })
+            val terms = normalized.split(' ').filter { it.isNotEmpty() }
+            val fuzzyTerms = terms.distinct().map { term ->
+                localityFuzzyToken(term, maxFuzzyEditsForTerm(term))
+            }
+            return LocalitySearchQuery(normalized, terms, fuzzyTerms)
         }
     }
 }
@@ -56,17 +235,38 @@ internal class LocalitySearchQuery private constructor(
 internal fun searchLocalities(localities: List<Locality>, query: String): List<Locality> =
     searchLocalities(localities, LocalitySearchQuery.parse(query))
 
-internal fun searchLocalities(localities: List<Locality>, query: LocalitySearchQuery): List<Locality> {
+internal fun searchLocalities(localities: List<Locality>, query: LocalitySearchQuery): List<Locality> =
+    searchLocalities(localities, query) { }
+
+internal fun searchLocalities(
+    localities: List<Locality>,
+    query: LocalitySearchQuery,
+    checkCancellation: () -> Unit,
+): List<Locality> {
     if (query.isEmpty) return localities
-    return localities.filter { locality -> query.terms.all { it in locality.searchText } }
-        .sortedByDescending {
-            when {
-                it.normalizedName == query.normalized -> 3
-                it.normalizedName.startsWith(query.normalized) -> 2
-                query.terms.all { term -> term in it.normalizedName } -> 1
-                else -> 0
-            }
+    val direct = mutableListOf<Locality>()
+    val fuzzy = mutableListOf<FuzzyLocalityMatch>()
+    localities.forEachIndexed { index, locality ->
+        checkCancellation()
+        if (query.terms.all { it in locality.searchText }) {
+            direct += locality
+        } else {
+            val edits = fuzzyMatchCost(locality, query, checkCancellation) ?: return@forEachIndexed
+            fuzzy += FuzzyLocalityMatch(
+                locality = locality,
+                edits = edits,
+                primaryRank = primaryLocalityRank(locality, query),
+                originalIndex = index,
+            )
         }
+    }
+    val directSorted = direct.sortedByDescending { primaryLocalityRank(it, query) }
+    val fuzzySorted = fuzzy.sortedWith(
+        compareBy<FuzzyLocalityMatch> { it.edits }
+            .thenByDescending { it.primaryRank }
+            .thenBy { it.originalIndex },
+    )
+    return directSorted + fuzzySorted.map { it.locality }
 }
 
 internal fun withAvailablePrayerSource(locality: Locality, available: List<Delegation>): Locality? {
@@ -186,6 +386,7 @@ private fun localityGroupKey(locality: Locality): String =
     "${locality.governorateId}$GROUPS_KEY_SEPARATOR${locality.normalizedName}"
 
 internal fun buildPickerCatalog(localities: List<Locality>, gouvernorats: List<Gouvernorat>): LocalityPickerCatalog {
+    localities.forEach { it.prewarmSearchIndex() }
     val rowsByGovernorate = LinkedHashMap<Int, MutableList<Locality>>()
     localities.forEach { locality ->
         rowsByGovernorate.getOrPut(locality.governorateId) { mutableListOf() } += locality
@@ -195,7 +396,25 @@ internal fun buildPickerCatalog(localities: List<Locality>, gouvernorats: List<G
     val groups = orderedIds.mapNotNull { id ->
         rowsByGovernorate[id]?.let { rows -> LocalityPickerGroup(id, rows.first().parentName, rows) }
     }
-    return LocalityPickerCatalog(localities, groups, mixedKindGroupIds(localities))
+    val typeContextIds = mixedKindGroupIds(localities).toMutableSet()
+    val governorateNames = gouvernorats.associate { it.id to it.nomAr }
+    // Disambiguate otherwise identical rows once, before filtering or composing the list.
+    // These display labels do not merge the localities or change their selection identities.
+    groups.forEach { group ->
+        val governorateName = governorateNames[group.governorateId] ?: group.fallbackName
+        group.rows.filterNot { it.id in typeContextIds }
+            .groupBy { locality ->
+                locality.name to locality.parentName.takeIf {
+                    it.isNotBlank() && it != locality.name && it != governorateName
+                }
+            }
+            .values.forEach { namesakes ->
+                if (namesakes.map { localityKindClass(it.kind) }.distinct().size > 1) {
+                    namesakes.mapTo(typeContextIds) { it.id }
+                }
+            }
+    }
+    return LocalityPickerCatalog(localities, groups, typeContextIds)
 }
 
 /** A row only needs its kind label when its namesake group mixes administrative levels. */
@@ -328,8 +547,10 @@ object LocalityRepository {
         val governors = GouvernoratRepository.loadAll(context)
         val result = governors.flatMap { gov ->
             gov.delegations.map { d ->
-                Locality("delegation:${d.id}", d.nomAr, d.nomAr, gov.id, d.id,
-                    normalizeLocalitySearch("${d.nomAr} ${d.nomFr} ${d.nomEn} ${gov.nomAr} ${gov.nomFr} ${gov.nomEn}"))
+                LocalityDisplayNames.localize(context,
+                    Locality("delegation:${d.id}", d.nomAr, d.nomAr, gov.id, d.id,
+                        normalizeLocalitySearch("${d.nomAr} ${d.nomFr} ${d.nomEn} ${gov.nomAr} ${gov.nomFr} ${gov.nomEn}"))
+                )
             }
         }.toMutableList()
         // Browsing names does not read the polygon binary or validate its geometry.

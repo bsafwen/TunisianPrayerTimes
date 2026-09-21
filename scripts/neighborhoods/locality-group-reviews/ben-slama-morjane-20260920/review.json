@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "status": "eligible_proposal",
+  "decisions": {
+    "BenSlama": {
+      "verdict": "SUPPORTED_ONE_PICKER_CHOICE",
+      "ownerId": "osm:way:1062690914",
+      "evidence": [
+        "Quarter name Ben Slama - بن سلامة and residential name بن سلامة - Ben Slama contain identical own bilingual components in reverse order.",
+        "Exact packed quarter covers the residential footprint. Existing broad village Ben Slama covers the quarter and already belongs to its compiled group; keep that existing membership.",
+        "Shared بوغرارة context of quarter/residential and source493 are consistency checks, not independent identity proof. Broad village parent ولاية مدنين remains unchanged."
+      ],
+      "representative": {
+        "id": "osm:way:1062690914",
+        "lat": 33.590742,
+        "lng": 10.702108,
+        "bundledPrayerSource": 493
+      },
+      "qualification": "Source extents remain deliberately different. Picker consolidation does not certify those extents as equal."
+    },
+    "Morjane": {
+      "verdict": "SUPPORTED_ONE_PICKER_CHOICE",
+      "ownerId": "osm:node:7090084103",
+      "evidence": [
+        "Exact source node name/name:ar is حي المرجان; name:fr=Cité El Morjane and name:en=Hay El Morjane.",
+        "The named residential way Cité El-Mordjane carries addr:place=حي المرجان and addr:city=طبرقة. This is same-object address evidence, not a claimed name:ar tag.",
+        "The exact retained neighbourhood point lies inside the named residential footprint; shared الحامدية context is additional consistency."
+      ],
+      "representative": {
+        "id": "osm:node:7090084103",
+        "lat": 36.9430258,
+        "lng": 8.794592,
+        "bundledPrayerSource": 497
+      },
+      "qualification": "Morjane/Mordjane includes an additional d, not just hyphen/spacing. The grouping rests on the Arabic source/address link plus spatial relationship, not fuzzy spelling alone."
+    }
+  },
+  "beforeGroups": {
+    "osm:node:7090084103": [
+      "osm:node:7090084103"
+    ],
+    "osm:way:1062690914": [
+      "osm:way:1062690914",
+      "osm:way:958708445"
+    ],
+    "osm:way:252923901": [
+      "osm:way:252923901"
+    ],
+    "osm:way:958706905": [
+      "osm:way:958706905"
+    ]
+  },
+  "afterGroups": {
+    "osm:way:1062690914": [
+      "osm:way:1062690914",
+      "osm:way:958706905",
+      "osm:way:958708445"
+    ],
+    "osm:node:7090084103": [
+      "osm:node:7090084103",
+      "osm:way:252923901"
+    ]
+  },
+  "rawFieldChanges": [
+    {
+      "id": "osm:way:958706905",
+      "field": "pickerGroupId",
+      "before": "osm:way:958706905",
+      "after": "osm:way:1062690914"
+    },
+    {
+      "id": "osm:way:252923901",
+      "field": "pickerGroupId",
+      "before": "osm:way:252923901",
+      "after": "osm:node:7090084103"
+    }
+  ],
+  "savedSelectionResult": "PASS_STATIC_NO_RUNTIME_COMPATIBILITY_PATCH_REQUIRED",
+  "geometryEqualityNotClaimed": true,
+  "originalSourceRelationships": [
+    {
+      "container": "osm:way:1062690914",
+      "contained": "osm:way:958706905",
+      "covers": true
+    },
+    {
+      "container": "osm:way:958708445",
+      "contained": "osm:way:1062690914",
+      "covers": true
+    },
+    {
+      "container": "osm:way:252923901",
+      "contained": "osm:node:7090084103",
+      "covers": true
+    }
+  ],
+  "packedGeometryProof": [
+    {
+      "ids": [
+        "osm:way:1062690914",
+        "osm:way:958706905"
+      ],
+      "beforeRows": [
+        {
+          "id": "osm:way:1062690914",
+          "sourceId": "osm",
+          "name": "Ben Slama - بن سلامة",
+          "aliases": [
+            "Ben Slama",
+            "بن سلامة"
+          ],
+          "kind": "quarter",
+          "parentName": "بوغرارة",
+          "contextAliases": [
+            "Boughrara",
+            "Délégation Medenine Sud",
+            "Médenine Sud",
+            "بوغرارة",
+            "معتمدية مدنين االجنوبية",
+            "معتمدية مدنين الجنوبية"
+          ],
+          "governorateId": 353,
+          "lat": 33.590742,
+          "lng": 10.702108,
+          "delegationId": 493,
+          "hasBoundary": true,
+          "bbox": [
+            10.694029,
+            33.584602,
+            10.710069,
+            33.598526
+          ],
+          "areaKm2": 1.1139795595171567,
+          "pickerGroupId": "osm:way:1062690914",
+          "offset": 5304264,
+          "length": 60
+        },
+        {
+          "id": "osm:way:958706905",
+          "sourceId": "osm",
+          "name": "بن سلامة - Ben Slama",
+          "aliases": [],
+          "kind": "residential",
+          "parentName": "بوغرارة",
+          "contextAliases": [
+            "Boughrara",
+            "Délégation Medenine Sud",
+            "Médenine Sud",
+            "بوغرارة",
+            "معتمدية مدنين االجنوبية",
+            "معتمدية مدنين الجنوبية"
+          ],
+          "governorateId": 353,
+          "lat": 33.590841,
+          "lng": 10.703345,
+          "delegationId": 493,
+          "hasBoundary": true,
+          "bbox": [
+            10.69848,
+            33.587698,
+            10.705104,
+            33.594055
+          ],
+          "areaKm2": 0.25630645504723937,
+          "pickerGroupId": "osm:way:958706905",
+          "offset": 5540816,
+          "length": 196
+        }
+      ],
+      "currentOwners": [
+        "osm:way:1062690914",
+        "osm:way:958706905"
+      ],
+      "sharedCurrentNameKeys": [],
+      "currentSamePickerName": false,
+      "spatialMatchUnderExistingCompiler": true,
+      "firstCoversSecond": true,
+      "secondCoversFirst": false,
+      "intersectionPositiveArea": true,
+      "intersectionKm2": 0.25563408799032866,
+      "anchorDistanceMeters": 115.34888192985997,
+      "sameGovernorate": true,
+      "sameParent": true,
+      "geometryPayloadSha256": {
+        "osm:way:1062690914": "36c9104d83921535f383359111320dd0cddc4270da2ac3c4752e29f1a0cd00aa",
+        "osm:way:958706905": "bf534c308892ce60fe1274afba73896a07c673077df3978e65f5226a8c6f3dc5"
+      },
+      "proposedArabicNames": [
+        "بن سلامة",
+        "بن سلامة"
+      ],
+      "wouldMeetPairwiseAutomaticGroupingPredicateWithEqualPrimary": true,
+      "qualification": "Pairwise deterministic predicate only. Complete group bridging, explicit distinct guards and typed protected snapshots also apply. Equal names plus geometry is not independent same-place certification, and no actual generation or group change is authorized."
+    },
+    {
+      "ids": [
+        "osm:node:7090084103",
+        "osm:way:252923901"
+      ],
+      "beforeRows": [
+        {
+          "id": "osm:node:7090084103",
+          "sourceId": "osm",
+          "name": "حي المرجان",
+          "aliases": [
+            "Cité El Morjane",
+            "Hay El Morjane"
+          ],
+          "kind": "neighbourhood",
+          "parentName": "الحامدية",
+          "contextAliases": [
+            "Délégation Tabarka",
+            "Délégation de Tabarka",
+            "El Hamdia",
+            "Tabarka",
+            "الحامدية",
+            "معتمدية طبرقة"
+          ],
+          "governorateId": 354,
+          "lat": 36.9430258,
+          "lng": 8.794592,
+          "delegationId": 497,
+          "hasBoundary": false,
+          "pickerGroupId": "osm:node:7090084103"
+        },
+        {
+          "id": "osm:way:252923901",
+          "sourceId": "osm",
+          "name": "Cité El-Mordjane",
+          "aliases": [],
+          "kind": "residential",
+          "parentName": "الحامدية",
+          "contextAliases": [
+            "Délégation Tabarka",
+            "Délégation de Tabarka",
+            "El Hamdia",
+            "Tabarka",
+            "الحامدية",
+            "معتمدية طبرقة"
+          ],
+          "governorateId": 354,
+          "lat": 36.943024,
+          "lng": 8.7957,
+          "delegationId": 497,
+          "hasBoundary": true,
+          "bbox": [
+            8.789059,
+            36.940172,
+            8.801884,
+            36.945938
+          ],
+          "areaKm2": 0.42284691822097303,
+          "pickerGroupId": "osm:way:252923901",
+          "offset": 5456044,
+          "length": 516
+        }
+      ],
+      "currentOwners": [
+        "osm:node:7090084103",
+        "osm:way:252923901"
+      ],
+      "sharedCurrentNameKeys": [],
+      "currentSamePickerName": false,
+      "spatialMatchUnderExistingCompiler": true,
+      "firstCoversSecond": false,
+      "secondCoversFirst": true,
+      "intersectionPositiveArea": false,
+      "intersectionKm2": 0,
+      "anchorDistanceMeters": 98.69867244132827,
+      "sameGovernorate": true,
+      "sameParent": true,
+      "geometryPayloadSha256": {
+        "osm:node:7090084103": null,
+        "osm:way:252923901": "8b4b87a19379add3fcdec4a82e2edd09376dd083a308b84f768d71a068205e22"
+      },
+      "proposedArabicNames": [
+        "حي المرجان",
+        "حي المرجان"
+      ],
+      "wouldMeetPairwiseAutomaticGroupingPredicateWithEqualPrimary": true,
+      "qualification": "Pairwise deterministic predicate only. Complete group bridging, explicit distinct guards and typed protected snapshots also apply. Equal names plus geometry is not independent same-place certification, and no actual generation or group change is authorized."
+    },
+    {
+      "ids": [
+        "osm:way:958708445",
+        "osm:way:1062690914"
+      ],
+      "beforeRows": [
+        {
+          "id": "osm:way:958708445",
+          "sourceId": "osm",
+          "name": "Ben Slama",
+          "aliases": [],
+          "kind": "village",
+          "parentName": "ولاية مدنين",
+          "contextAliases": [],
+          "governorateId": 353,
+          "lat": 33.592963,
+          "lng": 10.701186,
+          "delegationId": 493,
+          "hasBoundary": true,
+          "bbox": [
+            10.6742,
+            33.570729,
+            10.73252,
+            33.614979
+          ],
+          "areaKm2": 15.526737968448714,
+          "pickerGroupId": "osm:way:1062690914",
+          "offset": 5541012,
+          "length": 316
+        },
+        {
+          "id": "osm:way:1062690914",
+          "sourceId": "osm",
+          "name": "Ben Slama - بن سلامة",
+          "aliases": [
+            "Ben Slama",
+            "بن سلامة"
+          ],
+          "kind": "quarter",
+          "parentName": "بوغرارة",
+          "contextAliases": [
+            "Boughrara",
+            "Délégation Medenine Sud",
+            "Médenine Sud",
+            "بوغرارة",
+            "معتمدية مدنين االجنوبية",
+            "معتمدية مدنين الجنوبية"
+          ],
+          "governorateId": 353,
+          "lat": 33.590742,
+          "lng": 10.702108,
+          "delegationId": 493,
+          "hasBoundary": true,
+          "bbox": [
+            10.694029,
+            33.584602,
+            10.710069,
+            33.598526
+          ],
+          "areaKm2": 1.1139795595171567,
+          "pickerGroupId": "osm:way:1062690914",
+          "offset": 5304264,
+          "length": 60
+        }
+      ],
+      "currentOwners": [
+        "osm:way:1062690914",
+        "osm:way:1062690914"
+      ],
+      "sharedCurrentNameKeys": [
+        "benslama"
+      ],
+      "currentSamePickerName": true,
+      "spatialMatchUnderExistingCompiler": true,
+      "firstCoversSecond": true,
+      "secondCoversFirst": false,
+      "intersectionPositiveArea": true,
+      "intersectionKm2": 1.1110634224234932,
+      "anchorDistanceMeters": 260.7856313485343,
+      "sameGovernorate": true,
+      "sameParent": false,
+      "geometryPayloadSha256": {
+        "osm:way:958708445": "57df6140a987e307693432d699e4a33ffc81c5d6f4d8f203adc2983df8881639",
+        "osm:way:1062690914": "36c9104d83921535f383359111320dd0cddc4270da2ac3c4752e29f1a0cd00aa"
+      },
+      "compiledDuplicateGroupReceipts": [
+        {
+          "pointer": "/pickerDuplicateGroups/318",
+          "record": {
+            "pickerGroupId": "osm:way:1062690914",
+            "ids": [
+              "osm:way:1062690914",
+              "osm:way:958708445"
+            ]
+          }
+        }
+      ],
+      "basis": "Exact current shared normalized own-name/alias and positive polygon overlap or point containment satisfies the existing compiler grouping predicate. This is compiled grouping preservation evidence, not independent official same-place or Arabic-name attestation."
+    }
+  ],
+  "sourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ben-slama-morjane-picker-group-review-20260920\\proposal.json",
+    "sha256": "8f45d2bbc5a0fdf3e164425175131eaa66f761d76483d802d5334b94754870b4"
+  },
+  "implementationModel": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\deepseek\\ben-slama-morjane-guarded-method-20260920.json",
+    "sha256": "589aca1c33df51cd1ac6a848e0a5d6503123a1d8eac98892cc07388752f2c938"
+  },
+  "policy": "Preserve source identities, original names and aliases, all shapes, coordinates and prayer IDs; no type-label workaround, broad grouping heuristic or administrative certification."
+}

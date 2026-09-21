@@ -1,0 +1,159 @@
+{
+  "status": "FROZEN_INPUTS_NO_NEW_GEOMETRY_ANALYSIS",
+  "targetIds": [
+    "osm:relation:7189451",
+    "osm:relation:7189452"
+  ],
+  "currentRows": [
+    {
+      "id": "osm:relation:7189451",
+      "sourceId": "osm",
+      "name": "زهرة مدين الجنوبية",
+      "aliases": [
+        "Zahret medien sud",
+        "عمدون الجنوبية",
+        "Amdoun Sud"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية عمدون",
+      "contextAliases": [
+        "Délégation Amdoun",
+        "معتمدية عمدون"
+      ],
+      "governorateId": 356,
+      "lat": 36.76026,
+      "lng": 9.087709,
+      "delegationId": 515,
+      "hasBoundary": true,
+      "bbox": [
+        9.052248,
+        36.73371,
+        9.139952,
+        36.7867
+      ],
+      "areaKm2": 18.70448151465049,
+      "pickerGroupId": "osm:relation:7189451",
+      "offset": 4797936,
+      "length": 3548
+    },
+    {
+      "id": "osm:relation:7189452",
+      "sourceId": "osm",
+      "name": "زهرة مدين",
+      "aliases": [
+        "Zahret medien",
+        "عمدون",
+        "Amdoun"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية عمدون",
+      "contextAliases": [
+        "Délégation Amdoun",
+        "معتمدية عمدون"
+      ],
+      "governorateId": 356,
+      "lat": 36.78194,
+      "lng": 9.088968,
+      "delegationId": 515,
+      "hasBoundary": true,
+      "bbox": [
+        9.055601,
+        36.76293,
+        9.109579,
+        36.80082
+      ],
+      "areaKm2": 9.558281132863852,
+      "pickerGroupId": "osm:relation:7189452",
+      "offset": 4801484,
+      "length": 3292
+    }
+  ],
+  "selectedNextActions": [],
+  "nextActionsPin": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\catalog-next-actions-settled-live-20260920.json",
+    "sha256": "47c3a26fad9357ee85926ad25b0da66f943cc3903cb32073d2e5ecbb0874e1fa"
+  },
+  "priorSourceReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\source-and-geometry-review.json",
+    "sha256": "6c73a74089e232ce6919e2d95201e1942a3b5bc34a246a1f58cdb2a702845a1b"
+  },
+  "readOnlyInputs": [
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\neighborhoods.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "57106f9772ba142d325c3483fa57329328d1f4f349270fdc80c97f6283a1b494",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\neighborhoods.bin"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\gouvernorats.json",
+      "sha256": "bd131b8d673fb039a0e94ad62f3b263a385d52d0734d903f6241aa2b96682203",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\gouvernorats.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "d86c7cb90724966a0496400d522f4da071048dc08f7f175979fadd44625d64a4",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\retired-localities.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\coverage.json",
+      "sha256": "1d3c4413fb2b41cf02c35cced9deb0e013461f6a417969e685d95ab5fec9a517",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\coverage.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\catalog-curation.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-boundaries.json",
+      "sha256": "34809853b02d38bf924f2f6f4b51dd89b88882a7fb323bed137cadaa87d1ca57",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\reviewed-boundaries.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\reviewed-picker-groups.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\generate_neighborhoods.py",
+      "sha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\generate_neighborhoods.py"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\source-and-geometry-review.json",
+      "sha256": "6c73a74089e232ce6919e2d95201e1942a3b5bc34a246a1f58cdb2a702845a1b",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-source-and-geometry-review.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\geometry-facts.json",
+      "sha256": "baa703fd7ca7f8ed502b2bc9afab552cbc3b401c867684f44ab1463cc630dcb9",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-geometry-facts.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\native-geometries.json",
+      "sha256": "8ec9290dcd89849ec2af082bd3b0a3b718cbd4814ac573a79120741c4dbadfe2",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-native-geometries.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\native-path-inventory.json",
+      "sha256": "9e136d19d69e5f86c5283be86af1942b6ccc5dcf7f017cc3a790514345143ea8",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-native-path-inventory.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\source-receipts.json",
+      "sha256": "a2c6a172a96d43bd5c41fe552ac9c7cefb5fc8600c3341cef5fb1c9093151e02",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-source-receipts.json"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\frozen-source-rows.json",
+      "sha256": "17894890818f921fdda9789529a409a42aa0be7984af68c5169d93cf58275a71",
+      "snapshot": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\prior-frozen-source-rows.json"
+    }
+  ],
+  "sourcePackageOnly": true,
+  "noGenerationProductionDevicesTestsBuilds": true
+}

@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "status": "WORK_ONLY_SOURCE_FACTS",
+  "id": "osm:node:1190877566",
+  "sourceId": "osm",
+  "name": "Camp Servière",
+  "aliases": [],
+  "kind": "hamlet",
+  "parentName": "فندق الجديد",
+  "contextAliases": [
+    "Délégation Grombalia",
+    "Fondouk djedid",
+    "Grombalia",
+    "فندق الجديد",
+    "معتمدية قرمبالية"
+  ],
+  "governorateId": 350,
+  "delegationId": 464,
+  "lat": 36.64639,
+  "lng": 10.44278,
+  "hasBoundary": false,
+  "pickerGroupId": "osm:node:1190877566",
+  "currentRow": {
+    "id": "osm:node:1190877566",
+    "sourceId": "osm",
+    "name": "Camp Servière",
+    "aliases": [],
+    "kind": "hamlet",
+    "parentName": "فندق الجديد",
+    "contextAliases": [
+      "Délégation Grombalia",
+      "Fondouk djedid",
+      "Grombalia",
+      "فندق الجديد",
+      "معتمدية قرمبالية"
+    ],
+    "governorateId": 350,
+    "lat": 36.64639,
+    "lng": 10.44278,
+    "delegationId": 464,
+    "hasBoundary": false,
+    "pickerGroupId": "osm:node:1190877566"
+  },
+  "originalRecord": {
+    "id": "osm:node:1190877566",
+    "kind": "hamlet",
+    "tags": {
+      "addr:city": "Camp Servière",
+      "addr:governorate": "Nabeul",
+      "name": "Camp Servière",
+      "place": "hamlet"
+    },
+    "geometry": null
+  },
+  "academyContainment": {
+    "type": "way",
+    "id": 679795363,
+    "tags": {
+      "amenity": "college",
+      "name": "Académie Militaire Fondouk Jedid"
+    },
+    "closed": true,
+    "pointCount": 17,
+    "nodeRefs": [
+      {
+        "ref": 6365123091,
+        "valid": true,
+        "lon": 10.4365286,
+        "lat": 36.6465503
+      },
+      {
+        "ref": 6365123092,
+        "valid": true,
+        "lon": 10.4371763,
+        "lat": 36.6439808
+      },
+      {
+        "ref": 6365123093,
+        "valid": true,
+        "lon": 10.4373263,
+        "lat": 36.6439258
+      },
+      {
+        "ref": 6365123094,
+        "valid": true,
+        "lon": 10.438184,
+        "lat": 36.6436006
+      },
+      {
+        "ref": 6365123095,
+        "valid": true,
+        "lon": 10.4398734,
+        "lat": 36.6431584
+      },
+      {
+        "ref": 6365123096,
+        "valid": true,
+        "lon": 10.4451933,
+        "lat": 36.6440005
+      },
+      {
+        "ref": 6365123097,
+        "valid": true,
+        "lon": 10.450458,
+        "lat": 36.6457377
+      },
+      {
+        "ref": 6365123098,
+        "valid": true,
+        "lon": 10.4508629,
+        "lat": 36.6463125
+      },
+      {
+        "ref": 6365123099,
+        "valid": true,
+        "lon": 10.4480437,
+        "lat": 36.6504865
+      },
+      {
+        "ref": 6365123100,
+        "valid": true,
+        "lon": 10.4483708,
+        "lat": 36.6513363
+      },
+      {
+        "ref": 6365123101,
+        "valid": true,
+        "lon": 10.4480125,
+        "lat": 36.6533481
+      },
+      {
+        "ref": 6365123102,
+        "valid": true,
+        "lon": 10.4478879,
+        "lat": 36.6533981
+      },
+      {
+        "ref": 6365123103,
+        "valid": true,
+        "lon": 10.4470935,
+        "lat": 36.6530857
+      },
+      {
+        "ref": 6365123104,
+        "valid": true,
+        "lon": 10.4471403,
+        "lat": 36.6510613
+      },
+      {
+        "ref": 6365123105,
+        "valid": true,
+        "lon": 10.4440251,
+        "lat": 36.6488494
+      },
+      {
+        "ref": 6365123106,
+        "valid": true,
+        "lon": 10.4427322,
+        "lat": 36.6484245
+      },
+      {
+        "ref": 6365123091,
+        "valid": true,
+        "lon": 10.4365286,
+        "lat": 36.6465503
+      }
+    ],
+    "nearestVertexMeters": 226.27,
+    "containsTargetPoint": true,
+    "extent": {
+      "minLon": 10.4365286,
+      "minLat": 36.6431584,
+      "maxLon": 10.4508629,
+      "maxLat": 36.6533981
+    }
+  },
+  "pins": {
+    "pbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "4402e0568d2d1f03b543cdb288309e0cbc3a2df13cd12dc97aec9af10d72e6e0"
+    },
+    "retired": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\retired-localities.json",
+      "sha256": "5ac137c7c44203cb0a338229d666f73501246e1b507561561dfc9d7e0b1f4328"
+    },
+    "display": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\locality-display-names.json",
+      "sha256": "c26831df1b604f347269554d51644347737e3a5eab443dab5034f44584070f54"
+    }
+  },
+  "qualifications": [
+    "Product scope only; no nonexistence inference.",
+    "No geometry repair or replacement.",
+    "No display-name override; source name remains preserved."
+  ]
+}

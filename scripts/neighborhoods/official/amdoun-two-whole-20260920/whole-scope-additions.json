@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "primarySource": {
+    "title": "Tunisian decree2023-590 of21September2023, annex1 tableA and annex6 introduction",
+    "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "cachedPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\electoral-circle-semantics\\decree2023-590.pdf",
+    "date": "2023-09-21",
+    "jortNumber": 108,
+    "jortPublicationDate": "2023-09-22",
+    "pages": 190,
+    "generalRulePdfPage": 2,
+    "generalRuleJortPage": 5099,
+    "exceptionIntroductionPdfPage": 95,
+    "exceptionIntroductionJortPage": 5192
+  },
+  "records": [
+    {
+      "id": "osm:relation:7189452",
+      "officialCode": "215351",
+      "conclusion": "whole_imada",
+      "pdfPage": 24,
+      "jortPage": 5121,
+      "imadaName": "زهرة مدين",
+      "circleName": "زهرة مدين",
+      "delegationCode": "2153",
+      "delegationName": "عمدون",
+      "governorateCode": "21",
+      "governorateName": "باجة",
+      "visibleImadaCellSpan": 1,
+      "circleCount": 1,
+      "seats": 1,
+      "parentNameContinuesFromPdfPage": 23,
+      "parentNameContinuesFromJortPage": 5120,
+      "annex": 1,
+      "table": "A",
+      "personallyViewed": true,
+      "registry": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2153",
+        "delegationFr": "Amdoun",
+        "delegationAr": "عمدون",
+        "sectorCode": "215351",
+        "sectorFr": "Zahret medien",
+        "sectorAr": "زهرة مدين",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20638,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 922,
+          "Nombre_de_menages_par_Secteurs.xlsx": 921
+        }
+      },
+      "boundarySourceId": "isie-local-sectors-2023-amdoun-two-whole",
+      "boundarySourceFile": "official/amdoun-two-whole-20260920/amdoun-two-whole-source.geojson",
+      "boundarySourceSha256": "7c1c4cd8f0043bec348c9b9467d8b194d4318daedd4656f7b72f48d43538c34d"
+    },
+    {
+      "id": "osm:relation:7189451",
+      "officialCode": "215352",
+      "conclusion": "whole_imada",
+      "pdfPage": 24,
+      "jortPage": 5121,
+      "imadaName": "زهرة مدين الجنوبية",
+      "circleName": "زهرة مدين الجنوبية",
+      "delegationCode": "2153",
+      "delegationName": "عمدون",
+      "governorateCode": "21",
+      "governorateName": "باجة",
+      "visibleImadaCellSpan": 1,
+      "circleCount": 1,
+      "seats": 1,
+      "parentNameContinuesFromPdfPage": 23,
+      "parentNameContinuesFromJortPage": 5120,
+      "annex": 1,
+      "table": "A",
+      "personallyViewed": true,
+      "registry": {
+        "governorateCode": "21",
+        "governorateFr": "Beja",
+        "governorateAr": "باجة",
+        "delegationCode": "2153",
+        "delegationFr": "Amdoun",
+        "delegationAr": "عمدون",
+        "sectorCode": "215352",
+        "sectorFr": "Zahret medien sud",
+        "sectorAr": "زهرة مدين الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 20672,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 924,
+          "Nombre_de_menages_par_Secteurs.xlsx": 923
+        }
+      },
+      "boundarySourceId": "isie-local-sectors-2023-amdoun-two-whole",
+      "boundarySourceFile": "official/amdoun-two-whole-20260920/amdoun-two-whole-source.geojson",
+      "boundarySourceSha256": "7c1c4cd8f0043bec348c9b9467d8b194d4318daedd4656f7b72f48d43538c34d"
+    }
+  ],
+  "qualification": "Additions only. Existing110 whole scope rows and3aggregate rows are immutable predecessors."
+}

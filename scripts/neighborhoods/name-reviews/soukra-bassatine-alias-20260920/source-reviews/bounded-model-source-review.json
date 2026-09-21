@@ -1,0 +1,160 @@
+{
+  "review_scope": {
+    "reviewed_ids": [
+      "osm:relation:7169582",
+      "osm:relation:7114902"
+    ],
+    "basis": "Supplied compact-review-input.json facts only. No mutation, code generation, Maps polygon inference, parent transfer, namesake merge, or polygon certification. No independent PDF/PNG viewing or execution is claimed.",
+    "global_geometry_audit": {
+      "what_supplied_extraction_supports": "Both official footprints are supplied as native ISIE2023 vector paths that are valid, explicitly closed, fully inside the viewport, and whose active clip checks cover the whole target path. This supports completeness of the extracted page footprint.",
+      "what_it_does_not_support": "The footprints are ISIE2023 local electoral circumscriptions, not approved INS sector polygons. Affine/control residuals, about 0.12 m for Soukra and 0.26 m for Amra, are internal map-fit residuals, not ground accuracy or independent georeferencing validation. Stored CRS is EPSG:32632 per supplied WKT.",
+      "lineage_limit": "Original OSM and packed OSM polygons share lineage; their near-identical comparison values are not independent confirmation.",
+      "policy_limit": "Names alone cannot establish identity, parentage, or polygon equivalence. Geometric overlap cannot by itself prove code linkage."
+    }
+  },
+  "per_id": [
+    {
+      "id": "osm:relation:7169582",
+      "review_label": "El Amra",
+      "identity_verdict": {
+        "verdict": "High confidence for the current administrative-sector identity; retain the current object.",
+        "basis": "OSM ref:tn:codegeo 435255 matches the INS exact-code row: governorate 43 Sidi Bouzid, delegation 4352 Sidi Bouzid Est, sector 435255 العامرة / El amra. OSM parent matches معتمدية سيدي بوزيد الشرقية / Délégation Sidi Bouzid Est. INS2012 page 107 lists El Amra 43 52 55 العامرة. The supplied ISIE2023 map title is العامرة - (سيدي بوزيد الشرقية).",
+        "limit": "This is a code/name/parent match. The ISIE2023 footprint is not proven to be the INS sector 435255 polygon. The prior Maps ambiguity remains unresolved and is not primary-source proof."
+      },
+      "source_name_verdict": {
+        "current_primary": "العامرة",
+        "current_alias": "El Amra",
+        "official_exact": {
+          "sectorFr": "El amra",
+          "sectorAr": "العامرة",
+          "sectorCode": "435255"
+        },
+        "verdict": "No name correction is supported. Current primary العامرة and alias El Amra match the supplied official exact-code row and the official map title."
+      },
+      "geometry_facts_material_to_confidence": {
+        "extraction_quality": "76 native vertices; explicitly closed; valid in page and UTM coordinates; fully inside viewport; clip checks cover the target path; control residual about 0.2646 m.",
+        "official_bbox_wgs84": [
+          9.608843255839588,
+          35.10569018377465,
+          9.708706377292787,
+          35.20014539846941
+        ],
+        "current_bbox": [
+          9.555598,
+          35.10567,
+          9.708717,
+          35.20065
+        ],
+        "area_km2": {
+          "official": 63.491364398811506,
+          "current": 78.45743420197148,
+          "compared": 78.2256733892607
+        },
+        "overlap": {
+          "intersection_km2": 57.428823172214535,
+          "iou": 0.681338707124666,
+          "official_covered_by_current": 0.9045139243107768,
+          "current_covered_by_official": 0.7341429058263461
+        },
+        "exclusive_area_km2": {
+          "official_outside_current": 6.062541226596685,
+          "current_outside_official": 20.796850217046007
+        },
+        "distance": {
+          "hausdorff_m": 5340.966407478667,
+          "centroid_m": 1548.7647534106427
+        },
+        "current_anchor": {
+          "covered": true,
+          "distance_to_polygon_m": 0.0,
+          "distance_to_boundary_m": 2798.289974563367
+        },
+        "material_effect": "Identity is not disproven, but polygon equivalence is not established. The current footprint is materially larger and extends much farther west than the official footprint; about 20.8 km² of current lies outside official, only about 73.4% of current is covered by official, IoU is about 0.681, and Hausdorff distance is about 5.34 km. This prevents polygon certification or geometry import from these facts alone."
+      },
+      "name_only_correction_justified": false,
+      "minimal_evidence_backed_next_action": "Retain current identity, name, alias, and code 435255. Do not rename or merge. Treat the boundary as unresolved; next obtain a code-435255-linked official sector boundary or authoritative explanation for the western current-vs-official mismatch before any import or geometry edit.",
+      "missing_proof": [
+        "Explicit 435255 code linkage printed on or directly attached to the official map polygon.",
+        "Independent evidence that the ISIE2023 local electoral footprint equals the INS 435255 sector polygon.",
+        "Authoritative resolution of the current-outside-official area of about 20.8 km² and the about 5.34 km Hausdorff mismatch."
+      ]
+    },
+    {
+      "id": "osm:relation:7114902",
+      "review_label": "Soukra / البساتين",
+      "identity_verdict": {
+        "verdict": "Moderate-to-high confidence that the current relation is the Soukra/Ariana sector with code 125253; retain the current primary.",
+        "basis": "OSM ref:tn:codegeo 125253 matches the INS exact-code row: governorate 12 Ariana, delegation 1252 Soukra, sector 125253. OSM parent matches معتمدية سكرة / Délégation Soukra. The supplied ISIE2023 map title is البساتين - (سكرة), matching the sector and parent. INS2012 page 38 lists El Bessatine 12 52 53 under Délégation Soukra.",
+        "limit": "This is sector-level code/parent/source-title identity, not certified polygon identity. The INS2024 exact-code name variant for 125253 is البستان / El bousten, while the supplied ISIE2023 map title and INS2012 use البساتين / El Bessatine."
+      },
+      "source_name_verdict": {
+        "current_primary": "البساتين",
+        "current_alias": "El Bassatine",
+        "official_ins2024_exact": {
+          "sectorFr": "El bousten",
+          "sectorAr": "البستان",
+          "sectorCode": "125253"
+        },
+        "official_isie2023_title": "البساتين - (سكرة)",
+        "verdict": "Current primary البساتين is supported by the supplied ISIE2023 title and INS2012 El Bessatine form. It does not match the INS2024 exact-code variant البستان / El bousten. The INS2024 variant is a credible official search alias, but a primary rename to it is not justified by the supplied record."
+      },
+      "geometry_facts_material_to_confidence": {
+        "extraction_quality": "149 native vertices; explicitly closed; valid in page and UTM coordinates; fully inside viewport; clip checks cover the target path; control residual about 0.1174 m.",
+        "official_bbox_wgs84": [
+          10.216316987546843,
+          36.86420011253401,
+          10.245543230008067,
+          36.887434163067056
+        ],
+        "current_bbox": [
+          10.216997,
+          36.865139,
+          10.245671,
+          36.887692
+        ],
+        "area_km2": {
+          "official": 3.4231603689585075,
+          "current": 3.1291807974184263,
+          "compared": 3.1216670084816203
+        },
+        "overlap": {
+          "intersection_km2": 3.0347253161557433,
+          "iou": 0.8645689678451277,
+          "official_covered_by_current": 0.8865273574895514,
+          "current_covered_by_official": 0.9721489537193894
+        },
+        "exclusive_area_km2": {
+          "official_outside_current": 0.38843505280277063,
+          "current_outside_official": 0.08694169232592609
+        },
+        "distance": {
+          "hausdorff_m": 364.72839930191066,
+          "centroid_m": 94.74384789537937
+        },
+        "current_anchor": {
+          "covered": true,
+          "distance_to_polygon_m": 0.0,
+          "distance_to_boundary_m": 519.3271653821689
+        },
+        "material_effect": "Strong overlap and anchor containment support same-sector identity. They do not establish exact polygon equality. Official is about 0.30 km² larger; about 11.35% of official lies outside current; current is about 97.2% covered by official; Hausdorff is about 365 m and centroid offset about 95 m. Do not certify or import the polygon, and do not transfer parentage, from this alone."
+      },
+      "name_only_correction_justified": {
+        "primary_rename": false,
+        "alias_addition": true,
+        "rationale": "Retain البساتين as primary because the ISIE2023 map title for Soukra uses it and INS2012 uses El Bessatine. Add البستان and El bousten only as search aliases for the exact INS2024 variant. Do not merge namesakes or transfer parent."
+      },
+      "minimal_evidence_backed_next_action": "Retain current primary البساتين and parent Soukra. Do not rename primary. If alias edits are separately authorized, add the exact INS2024 variants البستان and El bousten as aliases. Keep the polygon unimported and unmodified; next obtain code-125253-linked official geometry or an explicit naming rule to resolve the variant and boundary offset.",
+      "missing_proof": [
+        "Explicit 125253 linkage printed on or directly attached to the ISIE2023 map polygon.",
+        "Independent evidence that the ISIE2023 local electoral circumscription equals INS sector 125253.",
+        "Authoritative reason for البساتين versus البستان / El bousten for the same code 125253, including applicable vintage or naming rule.",
+        "Independent boundary validation for the about 365 m Hausdorff and about 95 m centroid differences."
+      ]
+    }
+  ],
+  "final_policy_conclusions": {
+    "merge_namesakes": false,
+    "transfer_parents_from_names_or_maps": false,
+    "certify_polygons_from_these_facts": false
+  }
+}

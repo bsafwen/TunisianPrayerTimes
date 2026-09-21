@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "sourceIds": [
+    476
+  ],
+  "sourceReferenceApproved": true,
+  "rootReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\root-476-visual-review.json",
+    "sha256": "6bb9e63374a8b54da3e701c3bcf5029e658e9cb4191a0dcd71528298c2a4a613"
+  },
+  "newViews": [
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\border-z11\\delegation_476-detail-border-z11.json",
+        "sha256": "73b40f78db829fb25ba2b153dc608d58e1b52cb34a1bdf31f93fe8c078ea4bf6"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\border-z11\\delegation_476-detail-border-z11.png",
+        "sha256": "0851d41f5164a2e23b78fa2f3b1825ed356ac9615e3aba51a07daae4de41821a"
+      }
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\coordinate-z11\\delegation_476-detail-coordinate-z11.json",
+        "sha256": "56567afb7dfcf2f5b68f8adb5c59e502bb9e8a6876720e7d974c47a21ca68f29"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\coordinate-z11\\delegation_476-detail-coordinate-z11.png",
+        "sha256": "46dd86dd2c6b37303f74484851cf0216a1ba2f85eb8aa112f8d1518eb2acf020"
+      }
+    },
+    {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\expanded-country\\delegation_476-detail-expanded-country.json",
+        "sha256": "7c8c5c0ba596801ce52405c691527557549bca42c9efe91960e7a6e7a04e8b43"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\expanded-country\\delegation_476-detail-expanded-country.png",
+        "sha256": "a9b6991e59d8b9baae88b944540d4a4fadd42ef54d66703b7927d600ca627669"
+      }
+    }
+  ],
+  "reusedExactPointRecord": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\remaining136-reference-20260921-emulator-5554\\delegation_476-3.json",
+    "sha256": "928f4b6c46af301ca586321c4c814cccdb299f123b0e7a8f61492dd37452ebf4"
+  },
+  "resolvedHold": "Algeria text was a Plus Code reference locality; actual Maps address and border context identify Tunisia.",
+  "newBoundaryCertifications": 0
+}

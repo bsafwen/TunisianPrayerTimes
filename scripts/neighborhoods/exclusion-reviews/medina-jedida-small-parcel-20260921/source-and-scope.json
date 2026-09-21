@@ -1,0 +1,58 @@
+{
+  "id": "osm:way:106590248",
+  "feature": {
+    "id": "osm:way:106590248",
+    "sourceId": "osm",
+    "name": "المدينة الجديدة",
+    "aliases": [
+      "Nouvelle Medina"
+    ],
+    "kind": "residential",
+    "parentName": "معتمدية مقرين",
+    "contextAliases": [
+      "Délégation Megrine",
+      "Mégrine",
+      "معتمدية مقرين"
+    ],
+    "governorateId": 349,
+    "lat": 36.757566,
+    "lng": 10.244981,
+    "delegationId": 454,
+    "hasBoundary": true,
+    "bbox": [
+      10.242368,
+      36.755796,
+      10.247886,
+      36.759264
+    ],
+    "areaKm2": 0.10486022632394851,
+    "pickerGroupId": "osm:way:106590248",
+    "offset": 5307180,
+    "length": 212
+  },
+  "packedGeometrySha256": "833d9428fb5aaea64f5a4a3d466fdd0815d3e10d156e39a24491109e97c724f4",
+  "sourceTags": {
+    "addr:city": "المدينة الجديدة",
+    "addr:city:ar": "المدينة الجديدة",
+    "addr:postcode": "2063",
+    "landuse": "residential",
+    "name": "المدينة الجديدة",
+    "name:ar": "المدينة الجديدة",
+    "name:fr": "Nouvelle Medina"
+  },
+  "officialSectorContainment": [
+    {
+      "officialCode": "135958",
+      "nameAr": "سيدي رزيق 2",
+      "delegationAr": "مقرين",
+      "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A8%D9%86%20%D8%B9%D8%B1%D9%88%D8%B3/%D9%85%D9%82%D8%B1%D9%8A%D9%86/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%B1%D8%B2%D9%8A%D9%82%202.pdf",
+      "wholePolygonCovered": false,
+      "areaFractionCovered": 0.9993952352146284
+    }
+  ],
+  "officialSectorSource": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\megrine-isie2023-sectors.geojson",
+    "sha256": "7cceb17c68efef2520c16e09b49f85290eb841851d713bd56d4a689783358d51"
+  },
+  "qualification": "Containment in saved reviewed2023sector geometry; not proof of current legal boundary or whether an informal same-name neighborhood exists. The separate delegation454 remains selectable."
+}

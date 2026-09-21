@@ -1,0 +1,16 @@
+{
+  "status": "ACCEPTED_WITH_TWO_GUARD_REFINEMENTS",
+  "generatedScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\capture-emulator-detail.py",
+    "sha256": "d86dd47bd372445da1303f71f2289c6f33e035a1486a786fb31e1ae345a6d621"
+  },
+  "reviewedScript": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\matrouha-reference-context-20260921\\capture-emulator-detail-reviewed.py",
+    "sha256": "957bb9777d1a4c0ed12d98a62b00ad4f2aea1be9ba53254e4aa395c8f47aea71"
+  },
+  "changes": [
+    "Match exact resumed Maps package rather than substring.",
+    "Check foreground before and after post-screenshot public UI read."
+  ],
+  "scope": "Read-only recorder, existing helper pinned, output limited to evidence directory; no app or ledger changes."
+}

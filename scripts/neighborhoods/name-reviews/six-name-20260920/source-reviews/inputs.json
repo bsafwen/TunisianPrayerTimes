@@ -1,0 +1,176 @@
+{
+  "scope": "Bounded evidence extractor input freeze and assertions for six spelling followup leads.",
+  "targets": [
+    "osm:relation:7142943",
+    "osm:relation:7165270",
+    "osm:relation:7169564",
+    "osm:relation:7127889",
+    "osm:relation:7133851",
+    "osm:relation:7143844"
+  ],
+  "inputPaths": {
+    "ledger": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+    "metadata": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "curation": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+    "picker": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+    "registry": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+    "source": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+    "isieLinks": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json"
+  },
+  "inputPinsBefore": {
+    "ledger": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+      "sha256": "4ad1bad3538f30280db915f2ca988ff30338db3e01ac71492cbdc2268379726a",
+      "bytes": 36910055
+    },
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43",
+      "bytes": 446748
+    },
+    "picker": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99",
+      "bytes": 630000
+    },
+    "registry": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "isieLinks": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+      "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+      "bytes": 818063
+    }
+  },
+  "inputPinsAfter": {
+    "ledger": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+      "sha256": "4ad1bad3538f30280db915f2ca988ff30338db3e01ac71492cbdc2268379726a",
+      "bytes": 36910055
+    },
+    "metadata": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+      "bytes": 1871324
+    },
+    "curation": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+      "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43",
+      "bytes": 446748
+    },
+    "picker": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+      "sha256": "f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99",
+      "bytes": 630000
+    },
+    "registry": {
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "bytes": 1133114
+    },
+    "source": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+      "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+      "bytes": 25453997
+    },
+    "isieLinks": {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+      "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+      "bytes": 818063
+    }
+  },
+  "frozenManifest": {
+    "ledger": {
+      "copied": null,
+      "pin": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\outputs\\phone-maps-review\\ledger.json",
+        "sha256": "4ad1bad3538f30280db915f2ca988ff30338db3e01ac71492cbdc2268379726a",
+        "bytes": 36910055
+      },
+      "reason": "large input; selected rows plus source hash stored separately"
+    },
+    "metadata": {
+      "copied": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\metadata.json",
+      "pin": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+        "sha256": "ebddec69d0063d20f95e2d3d038966f55fc60f0db508b8fcb52bedbd86009e94",
+        "bytes": 1871324
+      }
+    },
+    "curation": {
+      "copied": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\curation.json",
+      "pin": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\catalog-curation.json",
+        "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43",
+        "bytes": 446748
+      }
+    },
+    "picker": {
+      "copied": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\picker.json",
+      "pin": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\reviewed-picker-groups.json",
+        "sha256": "f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99",
+        "bytes": 630000
+      }
+    },
+    "registry": {
+      "copied": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\registry.json",
+      "pin": {
+        "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\residential-base-display-reviews\\current-official-sector-registry.json",
+        "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+        "bytes": 1133114
+      }
+    },
+    "source": {
+      "copied": null,
+      "pin": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\soliman-current-original-source-inventory-20260912.json",
+        "sha256": "b3d7864b6d780cbcf01d59dd971de055624d6826d5260a48a6443693f5a19119",
+        "bytes": 25453997
+      },
+      "reason": "large input; selected rows plus source hash stored separately"
+    },
+    "isieLinks": {
+      "copied": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\isieLinks.json",
+      "pin": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+        "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+        "bytes": 818063
+      }
+    }
+  },
+  "sourceSelectedRowsFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\frozen\\source-selected-rows.json",
+  "assertions": {
+    "allSixTargetsUnique": true,
+    "allSixFoundInCurrentRaw": true,
+    "allSixFoundInOriginalSource": true,
+    "officialRegistryCodesUnique": true,
+    "allInputHashesUnchanged": true,
+    "noDeepSeekCalls": true,
+    "noNetwork": true,
+    "noWholeCatalogGeometryWork": true
+  },
+  "counts": {
+    "targets": 6,
+    "targetsFoundInCurrentRaw": 6,
+    "targetsFoundInOriginalSource": 6,
+    "targetsWithOfficialCode": 6,
+    "targetsWithOfficialRegistryRecord": 6,
+    "targetsWithOriginalParentResolved": 6,
+    "pdfIndexLinksRead": 2155,
+    "pdfIndexMatchesTotal": 6,
+    "observationsIncluded": 6
+  }
+}

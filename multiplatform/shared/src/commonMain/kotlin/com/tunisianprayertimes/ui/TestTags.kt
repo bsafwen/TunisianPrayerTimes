@@ -26,6 +26,7 @@ object TestTags {
     const val MAIN_TAB_TODAY = "main_tab_today"
     const val MAIN_TAB_ALARMS = "main_tab_alarms"
     const val MAIN_TAB_QIBLA = "main_tab_qibla"
+    const val MAIN_TAB_ADHKAR = "main_tab_adhkar"
 
     const val WAKE_ALARM_ADD_BUTTON = "wake_alarm_add_button"
     const val WAKE_QUICK_ADD_SHEET = "wake_quick_add_sheet"

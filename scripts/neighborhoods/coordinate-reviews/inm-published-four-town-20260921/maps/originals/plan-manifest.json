@@ -1,0 +1,82 @@
+{
+  "plans": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\current-emulator-5554.json",
+      "sha256": "8261dd69736dcf997bd2748d7572cebae6669e5e041f3d84093d459b7bd640e8",
+      "serial": "emulator-5554",
+      "mode": "current",
+      "queries": [
+        {
+          "id": "delegation:441",
+          "query": "35.679200,10.323100"
+        },
+        {
+          "id": "delegation:468",
+          "query": "36.460000,10.760000"
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\published-emulator-5556.json",
+      "sha256": "778cc9268c36c40b24a434fb27e3f703663ed0f4e73b992e86d3736932612ea1",
+      "serial": "emulator-5556",
+      "mode": "published",
+      "queries": [
+        {
+          "id": "delegation:441",
+          "query": "35.681000,10.310000"
+        },
+        {
+          "id": "delegation:468",
+          "query": "36.463000,10.747000"
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\current-emulator-5558.json",
+      "sha256": "23705dfa52ca98e5efd9fba695491d116c1e3de5cf5cb4955809a2b510b47314",
+      "serial": "emulator-5558",
+      "mode": "current",
+      "queries": [
+        {
+          "id": "delegation:516",
+          "query": "36.530100,9.112400"
+        },
+        {
+          "id": "delegation:579",
+          "query": "35.534100,8.869400"
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\published-emulator-5560.json",
+      "sha256": "959843350513358b7eed3b90bbc0a047cedf19889ecec8bf9d1545cf05782fa8",
+      "serial": "emulator-5560",
+      "mode": "published",
+      "queries": [
+        {
+          "id": "delegation:516",
+          "query": "36.522000,9.106000"
+        },
+        {
+          "id": "delegation:579",
+          "query": "35.541000,8.884000"
+        }
+      ]
+    }
+  ],
+  "collector": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\collector.py",
+    "sha256": "5449336b6d3a24172d95feb4ed20857d5b24fdec819e79e7d68ac3cfb7c99c91"
+  },
+  "reusedCollector": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\mellita544-phone-20260921\\collector.py",
+    "sha256": "e18d12d51fd12102ec41d82764bce8063b8d21a1d69a2c770fd9c0d77f05363e"
+  },
+  "inputs": {
+    "metadata": "52c4b266907a53174e051d36d03e92678de7696b35cd1c6a7e5d985da530983e",
+    "governorates": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06",
+    "screen": "f1059cfc60366f5c0aa64933271dc3bfcbb6cf5fc98a690f22fcbd08dd691a71"
+  },
+  "scope": "Eight new exact-coordinate context captures; no existing exact-query observation established. Original source/ledger files remain read-only; no boundary claim."
+}

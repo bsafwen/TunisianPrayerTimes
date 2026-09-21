@@ -1,0 +1,795 @@
+{
+  "status": "TWO_SOURCE_GEOMETRY_FACTS_NOT_APPROVED_FOR_IMPORT",
+  "producer": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\extract_two_maps.py",
+    "sha256": "50556eca9d341f72e9b772d0df1b1bcf6d8f69afe2daee94f2ca73301951e808",
+    "bytes": 8673
+  },
+  "reusedWorkflow": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-midoun-official-scope-20260920\\extract.py",
+    "sha256": "53aeeac37f3a9180cb77a81c59b34146f9143c761a54451630482f25193eca49",
+    "bytes": 10929
+  },
+  "frozenInputs": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\frozen-source-rows.json",
+    "sha256": "23fa4c716418c08b9dd27ac7d9bb8a59aa429b99b776c117addd30096c886f7a",
+    "bytes": 23571
+  },
+  "records": [
+    {
+      "slug": "soukra-bassatine",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\soukra-bassatine.pdf",
+        "sha256": "5005a33e933838323d9bf269995c1df38b0ce9aed2ab4b41c61b984ac8f2b0b3",
+        "bytes": 1646208,
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/سكرة/البساتين.pdf",
+        "index": 30,
+        "indexSource": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+          "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+          "bytes": 818063
+        },
+        "retrievedAt": "2026-09-20T12:29:03.303062+00:00",
+        "httpStatus": 200,
+        "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%A3%D8%B1%D9%8A%D8%A7%D9%86%D8%A9/%D8%B3%D9%83%D8%B1%D8%A9/%D8%A7%D9%84%D8%A8%D8%B3%D8%A7%D8%AA%D9%8A%D9%86.pdf"
+      },
+      "sourcePageOneBased": 1,
+      "titlePersonallyViewed": "البساتين - (سكرة)",
+      "legendPersonallyViewed": {
+        "black": "الولاية",
+        "blue": "المعتمدية",
+        "red": "الدائرة / العمادة"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\soukra-bassatine.png",
+        "sha256": "949bfbdabb99db7bdac520ebad725323d322eb3a04e8a1a1117282250e951443",
+        "bytes": 2076052
+      },
+      "drawingIndex": 491,
+      "seqno": 499,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 149,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "nativeValidityPageCoordinates": "Valid Geometry",
+      "nativeValidityUtmCoordinates": "Valid Geometry",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 26.643310546875004,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          36.86319,
+          10.20794
+        ],
+        [
+          36.88881,
+          10.20835
+        ],
+        [
+          36.88833,
+          10.254
+        ],
+        [
+          36.86271,
+          10.25358
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          4.8601892942884115,
+          -0.0009478740172663087
+        ],
+        [
+          -0.000578536815737607,
+          -4.858725058809796
+        ],
+        [
+          607651.7261226268,
+          4083243.9176362073
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.11735602897632656,
+        0.1173560285014535,
+        0.11735602881803554,
+        0.11735602830080416
+      ],
+      "axisScaleMetersPerPagePoint": [
+        4.860189386719497,
+        4.8587250932534864
+      ],
+      "redLabels": [
+        {
+          "raw": "ﺷطراﻧﺔ",
+          "reversedNormalized": "ةنارطش",
+          "bbox": [
+            443.6056213378906,
+            31.639236450195312,
+            523.1664428710938,
+            84.9238052368164
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "( )ﺳﻛرة- اﻟﺑﺳﺎﺗﯾن",
+          "reversedNormalized": "نیتاسبلا -ةركس) (",
+          "bbox": [
+            207.13592529296875,
+            246.22630310058594,
+            395.07110595703125,
+            299.5108642578125
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "( )ﺳﻛرة- ﺳﻛرة",
+          "reversedNormalized": "ةركس -ةركس) (",
+          "bbox": [
+            655.6005249023438,
+            171.3368377685547,
+            797.089599609375,
+            224.62139892578125
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾﻗرﺷﻟا",
+          "reversedNormalized": "الشرقیة",
+          "bbox": [
+            378.9993591308594,
+            481.3359375,
+            470.081787109375,
+            534.6205444335938
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "لﺎﺿﻓ راد",
+          "reversedNormalized": "دار فضال",
+          "bbox": [
+            491.1155090332031,
+            399.24560546875,
+            594.0792236328125,
+            452.5301818847656
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "اﻟﺗﻌﻣﯾر اﻟﺧﺎﻣس",
+          "reversedNormalized": "سماخلا ریمعتلا",
+          "bbox": [
+            185.00064086914062,
+            210.9418487548828,
+            346.65228271484375,
+            264.2264099121094
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": " اﻟداﺋرة اﻻﻧﺗﺧﺎﺑﯾﺔ",
+          "reversedNormalized": "ةیباختنلاا ةرئادلا ",
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "( )ﺳﻛرة- اﻟﺑﺳﺎﺗﯾن",
+          "reversedNormalized": "نیتاسبلا -ةركس) (",
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            852.3458251953125,
+            82.52029418945312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "wgs84Bounds": [
+        10.216316987546843,
+        36.86420011253401,
+        10.245543230008067,
+        36.887434163067056
+      ],
+      "comparisons": {
+        "osm:relation:7114902": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "البساتين",
+            "name:ar": "البساتين",
+            "name:fr": "El Bassatine",
+            "ref:tn:codegeo": "125253"
+          },
+          "currentRow": {
+            "id": "osm:relation:7114902",
+            "sourceId": "osm",
+            "name": "البساتين",
+            "aliases": [
+              "El Bassatine"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية سكرة",
+            "contextAliases": [
+              "Délégation Soukra",
+              "La Soukra",
+              "معتمدية سكرة"
+            ],
+            "governorateId": 358,
+            "lat": 36.87628,
+            "lng": 10.231171,
+            "delegationId": 532,
+            "hasBoundary": true,
+            "bbox": [
+              10.216997,
+              36.865139,
+              10.245671,
+              36.887692
+            ],
+            "areaKm2": 3.1291807974184263,
+            "pickerGroupId": "osm:relation:7114902",
+            "offset": 1028048,
+            "length": 340
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 3.4231603689585075,
+            "comparedAreaKm2": 3.1216670084816203,
+            "intersectionKm2": 3.0347253161557433,
+            "iou": 0.8645689678451277,
+            "officialCoveredByCompared": 0.8865273574895514,
+            "comparedCoveredByOfficial": 0.9721489537193894,
+            "officialOutsideComparedKm2": 0.38843505280277063,
+            "comparedOutsideOfficialKm2": 0.08694169232592609,
+            "hausdorffMeters": 364.72839930191066,
+            "centroidDistanceMeters": 94.74384789537937
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 3.4231603689585075,
+            "comparedAreaKm2": 3.1216286490516385,
+            "intersectionKm2": 3.034689276655887,
+            "iou": 0.8645592718926733,
+            "officialCoveredByCompared": 0.8865168293529839,
+            "comparedCoveredByOfficial": 0.9721493546574914,
+            "officialOutsideComparedKm2": 0.38847109230263205,
+            "comparedOutsideOfficialKm2": 0.08693937239572629,
+            "hausdorffMeters": 364.7538629847945,
+            "centroidDistanceMeters": 94.75120056346908
+          },
+          "currentAnchor": {
+            "covered": true,
+            "distanceToPolygonMeters": 0.0,
+            "distanceToBoundaryMeters": 519.3271653821689
+          }
+        }
+      }
+    },
+    {
+      "slug": "amra-est",
+      "source": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\amra-est.pdf",
+        "sha256": "24b62f227bedb478e7f4a5c1987408c01bc509908fd927259988fca2a7ee9d94",
+        "bytes": 1015257,
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سيدي بوزيد/سيدي بوزيد الشرقية/العامرة - (سيدي بوزيد الشرقية).pdf",
+        "index": 1538,
+        "indexSource": {
+          "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\isie-local-boundary-index-links.json",
+          "sha256": "44fddae0a73f306f3f61dc305d8e27db51e83d57a1ff335fdad60aec5ead2651",
+          "bytes": 818063
+        },
+        "retrievedAt": "2026-09-20T12:29:03.303062+00:00",
+        "httpStatus": 200,
+        "resolvedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9/%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%B1%D8%A9%20-%20(%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF%20%D8%A7%D9%84%D8%B4%D8%B1%D9%82%D9%8A%D8%A9).pdf"
+      },
+      "sourcePageOneBased": 1,
+      "titlePersonallyViewed": "العامرة - (سيدي بوزيد الشرقية)",
+      "legendPersonallyViewed": {
+        "black": "الولاية",
+        "blue": "المعتمدية",
+        "red": "الدائرة / العمادة"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\remaining-amra-soukra-20260920\\amra-est.png",
+        "sha256": "6b0e917ef67f62d91dc631ebfd6ef2511707c361d0a637679c72f7e4b248b22c",
+        "bytes": 1915328
+      },
+      "drawingIndex": 50,
+      "seqno": 58,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 76,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "nativeValidityPageCoordinates": "Valid Geometry",
+      "nativeValidityUtmCoordinates": "Valid Geometry",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 26.643310546875004,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          35.10156,
+          9.56792
+        ],
+        [
+          35.20557,
+          9.56865
+        ],
+        [
+          35.20458,
+          9.75004
+        ],
+        [
+          35.10057,
+          9.74909
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          19.723697992335936,
+          -0.0005444745394228446
+        ],
+        [
+          -0.00021956177397441934,
+          -19.716120370996578
+        ],
+        [
+          551675.0008354691,
+          3896087.954301498
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.2645756776613053,
+        0.26457567620784245,
+        0.2645756771489519,
+        0.26457567624053757
+      ],
+      "axisScaleMetersPerPagePoint": [
+        19.723697999851073,
+        19.716120372219116
+      ],
+      "redLabels": [
+        {
+          "raw": "ﺑﻧور",
+          "reversedNormalized": "رونب",
+          "bbox": [
+            41.03126907348633,
+            216.34254455566406,
+            100.78952026367188,
+            269.6271057128906
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "اﻟﻣﻛﺎرم",
+          "reversedNormalized": "مراكملا",
+          "bbox": [
+            186.08041381835938,
+            8.236282348632812,
+            270.68212890625,
+            61.520851135253906
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "( )ﺳﯾدي ﺑوزﯾد اﻟﺷرﻗﯾﺔ- اﻟﻌﺎﻣرة",
+          "reversedNormalized": "ةرماعلا -ةیقرشلا دیزوب يدیس) (",
+          "bbox": [
+            298.7364501953125,
+            366.12139892578125,
+            613.0480346679688,
+            419.4059753417969
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "ﺳﯾدي اﻟﻼﻓﻲ",
+          "reversedNormalized": "يفلالا يدیس",
+          "bbox": [
+            678.6356201171875,
+            103.64830017089844,
+            801.4016723632812,
+            156.932861328125
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "فﯾﻠﺧ يدﯾﺳ",
+          "reversedNormalized": "سیدي خلیف",
+          "bbox": [
+            682.23486328125,
+            416.167724609375,
+            802.8408203125,
+            469.4523010253906
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﻓﺎﺋض",
+          "reversedNormalized": "ضئاف",
+          "bbox": [
+            614.5692138671875,
+            519.5007934570312,
+            686.2091064453125,
+            572.785400390625
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ةرﺎﺑﻛﻟا",
+          "reversedNormalized": "الكبارة",
+          "bbox": [
+            770.5960693359375,
+            35.95979309082031,
+            850.8771362304688,
+            89.2443618774414
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "( )ﺳﯾدي ﺑوزﯾد اﻟﺷرﻗﯾﺔ- اﻟﻌﻘﻠﺔ",
+          "reversedNormalized": "ةلقعلا -ةیقرشلا دیزوب يدیس) (",
+          "bbox": [
+            125.79324340820312,
+            542.543701171875,
+            427.50311279296875,
+            595.8283081054688
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "اﻟﺣﻧﯾﺔ",
+          "reversedNormalized": "ةینحلا",
+          "bbox": [
+            781.2138061523438,
+            518.0606079101562,
+            856.8143310546875,
+            571.34521484375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "اﻟﻣﻛﺎرم اﻟﺷرﻗﯾﺔ",
+          "reversedNormalized": "ةیقرشلا مراكملا",
+          "bbox": [
+            73.24442291259766,
+            43.52073669433594,
+            235.2560577392578,
+            96.80530548095703
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ةدوﺳﻷا",
+          "reversedNormalized": "الأسودة",
+          "bbox": [
+            6.6585798263549805,
+            499.6982421875,
+            96.66067504882812,
+            552.9828491210938
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": " اﻟداﺋرة اﻻﻧﺗﺧﺎﺑﯾﺔ",
+          "reversedNormalized": "ةیباختنلاا ةرئادلا ",
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "(ﺔﯾﻗرﺷﻟا دﯾزوﺑ يدﯾ",
+          "reversedNormalized": "یدي بوزید الشرقیة(",
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            862.0661010742188,
+            82.52029418945312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "wgs84Bounds": [
+        9.608843255839588,
+        35.10569018377465,
+        9.708706377292787,
+        35.20014539846941
+      ],
+      "comparisons": {
+        "osm:relation:7169582": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "العامرة",
+            "name:ar": "العامرة",
+            "name:fr": "El Amra",
+            "ref:tn:codegeo": "435255"
+          },
+          "currentRow": {
+            "id": "osm:relation:7169582",
+            "sourceId": "osm",
+            "name": "العامرة",
+            "aliases": [
+              "El Amra"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية سيدي بوزيد الشرقية",
+            "contextAliases": [
+              "Délégation Sidi Bouzid Est",
+              "معتمدية سيدي بوزيد الشرقية"
+            ],
+            "governorateId": 355,
+            "lat": 35.15323,
+            "lng": 9.650934,
+            "delegationId": 628,
+            "hasBoundary": true,
+            "bbox": [
+              9.555598,
+              35.10567,
+              9.708717,
+              35.20065
+            ],
+            "areaKm2": 78.45743420197148,
+            "pickerGroupId": "osm:relation:7169582",
+            "offset": 4006080,
+            "length": 1540
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 63.491364398811506,
+            "comparedAreaKm2": 78.2256733892607,
+            "intersectionKm2": 57.428823172214535,
+            "iou": 0.681338707124666,
+            "officialCoveredByCompared": 0.9045139243107768,
+            "comparedCoveredByOfficial": 0.7341429058263461,
+            "officialOutsideComparedKm2": 6.062541226596685,
+            "comparedOutsideOfficialKm2": 20.796850217046007,
+            "hausdorffMeters": 5340.966407478667,
+            "centroidDistanceMeters": 1548.7647534106427
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 63.491364398811506,
+            "comparedAreaKm2": 78.2256733892607,
+            "intersectionKm2": 57.428823172214535,
+            "iou": 0.681338707124666,
+            "officialCoveredByCompared": 0.9045139243107768,
+            "comparedCoveredByOfficial": 0.7341429058263461,
+            "officialOutsideComparedKm2": 6.062541226596685,
+            "comparedOutsideOfficialKm2": 20.796850217046007,
+            "hausdorffMeters": 5340.966407478667,
+            "centroidDistanceMeters": 1548.7647534099315
+          },
+          "currentAnchor": {
+            "covered": true,
+            "distanceToPolygonMeters": 0.0,
+            "distanceToBoundaryMeters": 2798.289974563367
+          }
+        }
+      }
+    }
+  ],
+  "qualifications": [
+    "Native official map geometry and source names are analyzed separately. No repair, snapping, inferred identity, parent transfer or import.",
+    "Map control residual is not a claimed ground accuracy. Original OSM and packed OSM share source lineage."
+  ]
+}

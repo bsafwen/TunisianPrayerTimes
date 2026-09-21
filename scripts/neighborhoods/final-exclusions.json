@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "exclusions": [
+    {
+      "id": "osm:way:658923544",
+      "expectedFeature": {
+        "id": "osm:way:658923544",
+        "sourceId": "osm",
+        "name": "La Princesse de la mer",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "الفهري",
+        "contextAliases": [
+          "Dar Châabane El Fehri",
+          "Délégation Dar Chaabane El Fehri",
+          "El Fehri",
+          "الفهري",
+          "معتمدية دار شعبان الفهري"
+        ],
+        "governorateId": 350,
+        "lat": 36.445913,
+        "lng": 10.752974,
+        "delegationId": 623,
+        "hasBoundary": true,
+        "bbox": [
+          10.751302,
+          36.44451,
+          10.754474,
+          36.447569
+        ],
+        "areaKm2": 0.05325226966821019,
+        "pickerGroupId": "osm:way:658923544",
+        "offset": 5513648,
+        "length": 116
+      },
+      "expectedGeometrySha256": "cc28b73830eabdbeb14527ffe93a554212528c962ef58cd709c51168aedd6605",
+      "reason": "User excludes apartment and residential complexes. Exact name, beachfront context, Maps hotel-apartment category and developer commercial apartment listing agree. Whole Maps plus-code cell lies in both source and packed target polygons.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/la-princesse-20260921/commercial-facts.json",
+          "sha256": "9c031a707fc0fe2e7d225d1a436f33a99643fd5ed9488db3b12836c7b68aeb28"
+        },
+        {
+          "file": "exclusion-reviews/la-princesse-20260921/commercial-project.html",
+          "sha256": "9cfa8c5ed844d83cd7a57d6b5de40cc325e3be60418b080166e76da96f0b80af"
+        },
+        {
+          "file": "exclusion-reviews/la-princesse-20260921/decision.json",
+          "sha256": "19a38cc2c3399a2e3d4f798bf41911b3deb3b955abe4fef16fab143fef3c9a9a"
+        },
+        {
+          "file": "exclusion-reviews/la-princesse-20260921/maps.json",
+          "sha256": "6621c01af674fb936c13bea9f392bdc30b016a628b51c6f7528d44831665c3ba"
+        },
+        {
+          "file": "exclusion-reviews/la-princesse-20260921/maps.png",
+          "sha256": "4e4c2bd20b2a11d92fd2245284ed8902dbbb2257e6cde68b751e8005568853d1"
+        },
+        {
+          "file": "exclusion-reviews/la-princesse-20260921/official-olc.py",
+          "sha256": "88335f2c7edae04391e843131a950aa0d40e4c2ffd6bf453634b5ac422405214"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:106590248",
+      "expectedFeature": {
+        "id": "osm:way:106590248",
+        "sourceId": "osm",
+        "name": "المدينة الجديدة",
+        "aliases": [
+          "Nouvelle Medina"
+        ],
+        "kind": "residential",
+        "parentName": "معتمدية مقرين",
+        "contextAliases": [
+          "Délégation Megrine",
+          "Mégrine",
+          "معتمدية مقرين"
+        ],
+        "governorateId": 349,
+        "lat": 36.757566,
+        "lng": 10.244981,
+        "delegationId": 454,
+        "hasBoundary": true,
+        "bbox": [
+          10.242368,
+          36.755796,
+          10.247886,
+          36.759264
+        ],
+        "areaKm2": 0.10486022632394851,
+        "pickerGroupId": "osm:way:106590248",
+        "offset": 5307180,
+        "length": 212
+      },
+      "expectedGeometrySha256": "833d9428fb5aaea64f5a4a3d466fdd0815d3e10d156e39a24491109e97c724f4",
+      "reason": "The user reports this name as the Medina Jedida delegation, separately present under Ben Arous. The small residential land-use polygon is in the saved Sidi Rezig 2/Megrine sector and lacks independent corroboration as a distinct selectable neighborhood. Retire this misleading unsupported small-area entry; do not reparent it or fabricate a Medina Jedida boundary.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/decision.json",
+          "sha256": "c1cc76eb7951a37f205e1186447530c35cbfdcdb57cd2400444ae79d7a5f4ac2"
+        },
+        {
+          "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/source-and-scope.json",
+          "sha256": "3c5b0a2321cb55717a6bc25dc200792de63a21c2822d5137a66332fe94a8a9f6"
+        },
+        {
+          "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/maps-name.json",
+          "sha256": "e6e0c72280fc3ad4b7a9b01f16cfd91a49b9e88ac838fd8c7ca3bab0e5818899"
+        },
+        {
+          "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/maps-name.png",
+          "sha256": "2940d7e0ec87c3dc73a25249fbe193dd26d3b429d2e1eb6f36c2c275e2eff4a4"
+        },
+        {
+          "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/maps-point.json",
+          "sha256": "de88fcb89ba927869a12acc2433b1ad6c4447ce0e252c5163a7736ef7b21d1ac"
+        },
+        {
+          "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/maps-point.png",
+          "sha256": "761f8cba9b702c62496bd39d394af2236b55c8a740fb5e33cd3e5d83ec878c18"
+        }
+      ]
+    }
+  ]
+}

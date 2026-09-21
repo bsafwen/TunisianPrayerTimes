@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
   "reviewEvidence": {
-    "file": "reviews/base-locality110-strict-proposal.json",
-    "sha256": "96b96d4e9c0d0905906f45a2a80c8daba53b5745a13cbe208a89e29b2b67f7c3"
+    "file": "official/soukra125251-whole-20260920/dependencies/base-locality110-strict-proposal-successor.json",
+    "sha256": "c64131bc132d598b7de93967c09e87676a415b7027498c81fd158fc5ffc48c56"
   },
   "checkpointEvidence": {
     "reviewedMetadataSha256": "a7faedb58371f0484742577c58526413a83f44ae24325183016f343734a46ddd",
@@ -4534,7 +4534,7 @@
         {
           "id": "osm:relation:7114900",
           "expectedKind": "sector",
-          "expectedSourceId": "osm",
+          "expectedSourceId": "isie-local-sector-2023-soukra125251-whole",
           "expectedName": "سكرة",
           "expectedParentName": "معتمدية سكرة",
           "expectedDelegationId": 532,
@@ -4549,8 +4549,8 @@
             "name:fr": "Soukra",
             "ref:tn:codegeo": "125251"
           },
-          "originalGeometrySha256": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f",
-          "packedGeometrySha256": "db4b5309477bcfe72d8156e17be76fe3a94f2bc0e12f9967c08132815471e1e1"
+          "originalGeometrySha256": "7619632b7b5e163239ce954cbb3d97b69c366536def4563bf2c568fb305df60f",
+          "packedGeometrySha256": "f3c89d91daefed0c930741fbc5db4fad35206fad5483cafc2c341eb60f969ca0"
         }
       ],
       "identityEvidence": [
@@ -4585,10 +4585,10 @@
             "name:fr": "Soukra",
             "ref:tn:codegeo": "125251"
           },
-          "effectiveOriginalGeometrySha256": "d25a53fd9c871094f03c1a8ee31425d607240345026382fc60b06cb1c9954b1f"
+          "effectiveOriginalGeometrySha256": "7619632b7b5e163239ce954cbb3d97b69c366536def4563bf2c568fb305df60f"
         },
         {
-          "method": "current_coded_namesake_administrative_parent",
+          "method": "reviewed_official_boundary_parent_membership",
           "id": "osm:relation:4184709",
           "code": "1252",
           "name": "معتمدية سكرة",
@@ -4613,6 +4613,10 @@
             "delegationCode": "1252",
             "delegationAr": "سكرة",
             "delegationFr": "Soukra"
+          },
+          "parentMembershipReview": {
+            "file": "official/soukra125251-whole-20260920/parent-membership-review.json",
+            "sha256": "db679431efc289f1fcfa10900ff1b2a07e7308fe4a7ac028ca0e64b79ae664ef"
           }
         }
       ]
@@ -16564,6 +16568,281 @@
         "prayerSourceIsNotDisplayIdentity": true,
         "ownerIsExistingSuburbPoint": true
       }
+    },
+    {
+      "id": "osm:way:958706905",
+      "status": "eligible_proposal",
+      "method": "reviewed_named_neighbourhood_residential_display_identity",
+      "targetPickerGroupId": "osm:way:1062690914",
+      "expectedExistingMemberIds": [
+        "osm:way:958706905"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:way:1062690914",
+        "osm:way:958708445"
+      ],
+      "expectedGovernorateId": 353,
+      "expectedDelegationId": 493,
+      "expectedParentName": "بوغرارة",
+      "relationship": "quarter_residential",
+      "nameEvidence": {
+        "arabic": "بن سلامة",
+        "latin": "Ben Slama",
+        "residentialLatin": "بن سلامة - Ben Slama"
+      },
+      "members": [
+        {
+          "id": "osm:way:1062690914",
+          "expectedMetadata": {
+            "id": "osm:way:1062690914",
+            "sourceId": "osm",
+            "name": "Ben Slama - بن سلامة",
+            "aliases": [
+              "Ben Slama",
+              "بن سلامة"
+            ],
+            "kind": "quarter",
+            "parentName": "بوغرارة",
+            "contextAliases": [
+              "Boughrara",
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "بوغرارة",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.590742,
+            "lng": 10.702108,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.694029,
+              33.584602,
+              10.710069,
+              33.598526
+            ],
+            "areaKm2": 1.1139795595171567
+          },
+          "expectedOriginalTags": {
+            "name": "Ben Slama - بن سلامة",
+            "place": "quarter"
+          },
+          "expectedEffectiveTags": {
+            "name": "Ben Slama - بن سلامة",
+            "place": "quarter"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "2310b19f0490259a1bb06b26d7e5b5594da19297afb3c961e27b62b721e3f993",
+          "packedGeometrySha256": "36c9104d83921535f383359111320dd0cddc4270da2ac3c4752e29f1a0cd00aa"
+        },
+        {
+          "id": "osm:way:958706905",
+          "expectedMetadata": {
+            "id": "osm:way:958706905",
+            "sourceId": "osm",
+            "name": "بن سلامة - Ben Slama",
+            "aliases": [],
+            "kind": "residential",
+            "parentName": "بوغرارة",
+            "contextAliases": [
+              "Boughrara",
+              "Délégation Medenine Sud",
+              "Médenine Sud",
+              "بوغرارة",
+              "معتمدية مدنين االجنوبية",
+              "معتمدية مدنين الجنوبية"
+            ],
+            "governorateId": 353,
+            "lat": 33.590841,
+            "lng": 10.703345,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.69848,
+              33.587698,
+              10.705104,
+              33.594055
+            ],
+            "areaKm2": 0.25630645504723937
+          },
+          "expectedOriginalTags": {
+            "landuse": "residential",
+            "name": "بن سلامة - Ben Slama"
+          },
+          "expectedEffectiveTags": {
+            "landuse": "residential",
+            "name": "بن سلامة - Ben Slama"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "167997ba16f8fc1fddc4cddd7204be09532d6924c2abb09f1540a246c86b0b67",
+          "packedGeometrySha256": "bf534c308892ce60fe1274afba73896a07c673077df3978e65f5226a8c6f3dc5"
+        },
+        {
+          "id": "osm:way:958708445",
+          "expectedMetadata": {
+            "id": "osm:way:958708445",
+            "sourceId": "osm",
+            "name": "Ben Slama",
+            "aliases": [],
+            "kind": "village",
+            "parentName": "ولاية مدنين",
+            "contextAliases": [],
+            "governorateId": 353,
+            "lat": 33.592963,
+            "lng": 10.701186,
+            "delegationId": 493,
+            "hasBoundary": true,
+            "bbox": [
+              10.6742,
+              33.570729,
+              10.73252,
+              33.614979
+            ],
+            "areaKm2": 15.526737968448714
+          },
+          "expectedOriginalTags": {
+            "name": "Ben Slama",
+            "place": "village",
+            "population": "5000",
+            "website": "https://www.google.fr/maps/place/Ben+slama,+Tunisie/@33.5895597,10.6855773,14z/data=!3m1!4b1!4m5!3m4!1s0x13aacc02f262d99d:0xcb03af34e6589aac!8m2!3d33.5904608!4d10.7069707"
+          },
+          "expectedEffectiveTags": {
+            "name": "Ben Slama",
+            "place": "village",
+            "population": "5000",
+            "website": "https://www.google.fr/maps/place/Ben+slama,+Tunisie/@33.5895597,10.6855773,14z/data=!3m1!4b1!4m5!3m4!1s0x13aacc02f262d99d:0xcb03af34e6589aac!8m2!3d33.5904608!4d10.7069707"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "d26e5e37817d1e837f0afacdcd4b5cb0bca24de9b9c86a5afdbb1fd9f3a6d47c",
+          "packedGeometrySha256": "57df6140a987e307693432d699e4a33ffc81c5d6f4d8f203adc2983df8881639"
+        }
+      ],
+      "qualifications": {
+        "displayIdentityOnly": true,
+        "noBoundaryEqualityClaim": true,
+        "allRawGeometryAndCoordinatesRetained": true,
+        "prayerSourceIsNotIdentityEvidence": true
+      }
+    },
+    {
+      "id": "osm:way:252923901",
+      "status": "eligible_proposal",
+      "method": "reviewed_named_neighbourhood_residential_display_identity",
+      "targetPickerGroupId": "osm:node:7090084103",
+      "expectedExistingMemberIds": [
+        "osm:way:252923901"
+      ],
+      "expectedTargetMemberIds": [
+        "osm:node:7090084103"
+      ],
+      "expectedGovernorateId": 354,
+      "expectedDelegationId": 497,
+      "expectedParentName": "الحامدية",
+      "relationship": "neighbourhood_point_residential",
+      "nameEvidence": {
+        "arabic": "حي المرجان",
+        "latin": "Cité El Morjane",
+        "residentialLatin": "Cité El-Mordjane"
+      },
+      "members": [
+        {
+          "id": "osm:node:7090084103",
+          "expectedMetadata": {
+            "id": "osm:node:7090084103",
+            "sourceId": "osm",
+            "name": "حي المرجان",
+            "aliases": [
+              "Cité El Morjane",
+              "Hay El Morjane"
+            ],
+            "kind": "neighbourhood",
+            "parentName": "الحامدية",
+            "contextAliases": [
+              "Délégation Tabarka",
+              "Délégation de Tabarka",
+              "El Hamdia",
+              "Tabarka",
+              "الحامدية",
+              "معتمدية طبرقة"
+            ],
+            "governorateId": 354,
+            "lat": 36.9430258,
+            "lng": 8.794592,
+            "delegationId": 497,
+            "hasBoundary": false
+          },
+          "expectedOriginalTags": {
+            "name": "حي المرجان",
+            "name:ar": "حي المرجان",
+            "name:en": "Hay El Morjane",
+            "name:fr": "Cité El Morjane",
+            "place": "neighbourhood"
+          },
+          "expectedEffectiveTags": {
+            "name": "حي المرجان",
+            "name:ar": "حي المرجان",
+            "name:en": "Hay El Morjane",
+            "name:fr": "Cité El Morjane",
+            "place": "neighbourhood"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "f258aca358f4b95b644e46178846b1b712dd4818e41ac5a30790b8a7c29388ad",
+          "packedGeometrySha256": null
+        },
+        {
+          "id": "osm:way:252923901",
+          "expectedMetadata": {
+            "id": "osm:way:252923901",
+            "sourceId": "osm",
+            "name": "Cité El-Mordjane",
+            "aliases": [],
+            "kind": "residential",
+            "parentName": "الحامدية",
+            "contextAliases": [
+              "Délégation Tabarka",
+              "Délégation de Tabarka",
+              "El Hamdia",
+              "Tabarka",
+              "الحامدية",
+              "معتمدية طبرقة"
+            ],
+            "governorateId": 354,
+            "lat": 36.943024,
+            "lng": 8.7957,
+            "delegationId": 497,
+            "hasBoundary": true,
+            "bbox": [
+              8.789059,
+              36.940172,
+              8.801884,
+              36.945938
+            ],
+            "areaKm2": 0.42284691822097303
+          },
+          "expectedOriginalTags": {
+            "addr:city": "طبرقة",
+            "addr:place": "حي المرجان",
+            "landuse": "residential",
+            "name": "Cité El-Mordjane"
+          },
+          "expectedEffectiveTags": {
+            "addr:city": "طبرقة",
+            "addr:place": "حي المرجان",
+            "landuse": "residential",
+            "name": "Cité El-Mordjane"
+          },
+          "expectedCuration": null,
+          "originalGeometrySha256": "b33dd7970da012ad785fe04fe17e107804ce5df057c1233aa4f4fed5e881e34f",
+          "packedGeometrySha256": "8b4b87a19379add3fcdec4a82e2edd09376dd083a308b84f768d71a068205e22"
+        }
+      ],
+      "qualifications": {
+        "displayIdentityOnly": true,
+        "noBoundaryEqualityClaim": true,
+        "allRawGeometryAndCoordinatesRetained": true,
+        "prayerSourceIsNotIdentityEvidence": true
+      }
     }
   ],
   "localReviewEvidence": {
@@ -16602,6 +16881,10 @@
     {
       "file": "locality-display-reviews/mellassine-2026-09-19/eligible-picker-proof.json",
       "sha256": "227b2a837624e954ee86ab4f653a2fea23e217ad5d01da3fd3fef0c315cff774"
+    },
+    {
+      "file": "locality-group-reviews/ben-slama-morjane-20260920/grouping-evidence.json",
+      "sha256": "8d6f3eea0e6704b498b1a936089cf3db529b988c4ce113780a507f484d7ac3f0"
     }
   ],
   "distinctPairs": [
@@ -16836,5 +17119,9 @@
         "sha256": "464bd47b7934b51cba6b5edd0782f0f2b7bdbfff11540cfbef0efc5e6b5f3b27"
       }
     }
-  ]
+  ],
+  "lineageCompatibility": {
+    "file": "official/soukra125251-whole-20260920/append-only-picker-lineage-compatibility.json",
+    "sha256": "606f4e3561a3dd1fc2618e3b32009eaf0c75130476cad68ebf703669832a7f3d"
+  }
 }

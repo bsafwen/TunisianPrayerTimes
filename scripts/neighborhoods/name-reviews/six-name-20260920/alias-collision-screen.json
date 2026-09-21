@@ -1,0 +1,70 @@
+{
+  "items": [
+    {
+      "id": "osm:relation:7142943",
+      "keys": [
+        "المغراوية"
+      ],
+      "matches": {
+        "raw": [],
+        "picker": []
+      }
+    },
+    {
+      "id": "osm:relation:7165270",
+      "keys": [
+        "eddheriaat",
+        "الذريعات"
+      ],
+      "matches": {
+        "raw": [],
+        "picker": []
+      }
+    },
+    {
+      "id": "osm:relation:7169564",
+      "keys": [
+        "الذويباتالجنوبية"
+      ],
+      "matches": {
+        "raw": [],
+        "picker": []
+      }
+    },
+    {
+      "id": "osm:relation:7127889",
+      "keys": [
+        "بلتش"
+      ],
+      "matches": {
+        "raw": [],
+        "picker": []
+      }
+    },
+    {
+      "id": "osm:relation:7133851",
+      "keys": [
+        "صدويكش"
+      ],
+      "matches": {
+        "raw": [],
+        "picker": []
+      }
+    },
+    {
+      "id": "osm:relation:7143844",
+      "keys": [
+        "kenbout",
+        "كنبوت"
+      ],
+      "matches": {
+        "raw": [],
+        "picker": []
+      }
+    }
+  ],
+  "compilerSha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1",
+  "metadataSha256": "1bfd506fc596021401117d1c31dd13f2017ff8273516b275edffc5ddb1e7433a",
+  "ledgerSha256": "539500e4cd011e7d37b6709053a344efe80d4d80bd8a89acb97cbe35430d9a8d",
+  "qualification": "Normalized exact new-name-key screen; no names alone authorize a merge."
+}

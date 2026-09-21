@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "sourceIds": [
+    487
+  ],
+  "observations": {
+    "wide": {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rjim-ariana-reference-context-20260921\\487-pin-z14\\delegation_487-detail-pin-z14.json",
+        "sha256": "29980a09869a2736b9e7a28a4d8ca4b0bc787845978d68e4a0a27285f0496b37"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rjim-ariana-reference-context-20260921\\487-pin-z14\\delegation_487-detail-pin-z14.png",
+        "sha256": "3de28b7d1d5f15399908e0097edff562a9af57af61362c35c60cba1050a48543"
+      },
+      "qualification": "geo query resolved to a named feature, not an exact coordinate card."
+    },
+    "exact": {
+      "record": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\rjim-ariana-487-exact-20260921\\delegation_487-2.json",
+        "sha256": "4d551e71824e40668d1d90d7adfbc5c3932faa7f60f33fa438068a40bc3a60c2"
+      },
+      "screenshot": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\rjim-ariana-487-exact-20260921\\delegation_487-2.png",
+        "sha256": "aa7503f829091514a54b9b8fc29219933f70c9da6a5a1e66fa8b1ac4cdb90aad"
+      },
+      "batch": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\maps-evidence-automation-20260921\\captures\\rjim-ariana-487-exact-20260921\\batch-summary.json",
+        "sha256": "c06b5376c4346805e8b756220f821567df8cd7c2a061dfe4b6f95cfeba75ff7d"
+      }
+    }
+  },
+  "rootReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\rjim-ariana-reference-context-20260921\\root-487-visual-review.json",
+    "sha256": "de80c182a6562cf6f8b88901ae5b6dd4392cbf0f813ddb08e1f2b982af84517d"
+  },
+  "qualification": "Named town context and independent exact coordinate card; no polygon approval."
+}

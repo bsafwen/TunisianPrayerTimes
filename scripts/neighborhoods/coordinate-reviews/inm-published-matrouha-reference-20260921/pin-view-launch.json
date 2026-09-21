@@ -1,0 +1,7 @@
+{
+  "serial": "emulator-5554",
+  "openedAtUtc": "2026-09-21T08:43:40.146029+00:00",
+  "uri": "geo:33.35,7.775?z=14&q=33.35%2C7.775",
+  "sourceDocumentation": "https://developer.android.com/guide/components/google-maps-intents",
+  "output": "Starting: Intent { act=android.intent.action.VIEW dat=geo: pkg=com.google.android.apps.maps }\r\nWarning: Activity not started, intent has been delivered to currently running top-most instance.\r\nStatus: ok\r\nLaunchState: UNKNOWN (0)\r\nActivity: com.google.android.apps.maps/com.google.android.maps.MapsActivity\r\nTotalTime: 0\r\nWaitTime: 4\r\nComplete\r\n"
+}

@@ -1,0 +1,656 @@
+{
+  "schemaVersion": 1,
+  "status": "WORK_ONLY_SOURCE_ACCEPTANCE",
+  "sourceId": "isie-local-sector-2023-soukra125251-whole",
+  "targetId": "osm:relation:7114900",
+  "officialCode": "125251",
+  "officialRegistryRow": {
+    "governorateCode": "12",
+    "governorateFr": "Ariana",
+    "governorateAr": "أريانة",
+    "delegationCode": "1252",
+    "delegationFr": "Soukra",
+    "delegationAr": "سكرة",
+    "sectorCode": "125251",
+    "sectorFr": "Soukra",
+    "sectorAr": "سكرة",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5849,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 184,
+      "Nombre_de_menages_par_Secteurs.xlsx": 184
+    }
+  },
+  "jort": {
+    "pdfPageOneBased": 4,
+    "printedPage": 5101,
+    "publishedDate": "2023-09-22",
+    "imada": "سكرة",
+    "electoralCircle": "سكرة (سكرة)",
+    "circleCount": 1,
+    "seats": 1
+  },
+  "nativeSource": {
+    "file": "official/soukra125251-whole-20260920/soukra125251-whole-source.geojson",
+    "sha256": "69e9681041dbae1b712ba75fd56210ce4c484ea33b381c36f9330f1d59eecf1b",
+    "bytes": 55835
+  },
+  "sourcePdf": {
+    "file": "official/soukra125251-whole-20260920/sources/soukra.pdf",
+    "sha256": "a581f140a5a8ed1b8191dcb7b4e2e40d154f21fb754240a0e3e134588ffa3033",
+    "bytes": 1616082
+  },
+  "geometry": {
+    "epsg": 32632,
+    "drawingIndex": 923,
+    "nativeVertexCount": 567,
+    "sourceEdition": 2023,
+    "noRepairSnapCutFill": true
+  },
+  "anchorPreservation": {
+    "id": "osm:relation:7114900",
+    "nameAr": "سكرة",
+    "nameFr": "Soukra",
+    "lat": 36.876348,
+    "lng": 10.258199,
+    "kind": "sector",
+    "delegationId": 532,
+    "pickerGroupId": "delegation:532"
+  },
+  "impact": {
+    "reviewSha256": "c03cc422282b2054ca2c69577cbacc06d722b1ad4e9abed3649e5034de526241",
+    "factsSha256": "e16746d291eb7783707800caaefedecb0f4c8f672eb96660485d02a2e140d76f",
+    "reviewScope": "Read-only Soukra125251 impact against b8b1145e/a1184b8d prior two-target baseline; original full work evidence retained.",
+    "coverage": {
+      "native": {
+        "oldAreaKm2": 8.447826302882566,
+        "newAreaKm2": 21.31725106943103,
+        "gainKm2": 12.956043374877831,
+        "lossKm2": 0.08661860832930811,
+        "gainComponentAreasKm2": [
+          12.93236753760974,
+          0.00027170049402483535,
+          7.815176415357858e-06,
+          3.295981700061975e-05,
+          7.322596319727495e-06,
+          0.000268743287929007,
+          0.00022052467200878165,
+          0.00046875094409877944,
+          0.003287462087378009,
+          0.01358051205686976,
+          0.00015160917019108275,
+          0.004765854505913422,
+          2.9451072798594337e-06,
+          0.0002253179184052002,
+          0.00012301911635817893,
+          6.800021006971645e-05,
+          0.00011987482687382169,
+          7.342528095693992e-05
+        ],
+        "lossComponentAreasKm2": [
+          8.31715363077266e-06,
+          1.357708384176966e-05,
+          0.001756828230712434,
+          0.0048147993023659194,
+          1.853966563883759e-08,
+          0.004869964904626075,
+          5.563375371790458e-05,
+          0.0004427669936018635,
+          0.00020228757122343912,
+          0.0038953814200445107,
+          0.00043741651869099883,
+          6.033067056971083e-05,
+          3.0580425200051196e-05,
+          0.00041010881838535315,
+          0.0019175588670893675,
+          8.123701814179234e-07,
+          0.04527129560199891,
+          0.02243093010376196
+        ],
+        "lossUncoveredAllLayersKm2": 0.06250963001303199,
+        "lossUncoveredAllLayersComponentAreasKm2": [
+          8.317153630772661e-06,
+          1.3577083843270526e-05,
+          0.0017568282307124392,
+          0.004814799302365922,
+          1.853966563883759e-08,
+          0.004869964904626078,
+          5.563375371790471e-05,
+          0.00044276699360186353,
+          0.00020228757122343904,
+          0.0038953814200445303,
+          0.0004374165186909991,
+          6.033067056971089e-05,
+          3.058042520005117e-05,
+          0.00011791567085035423,
+          0.045179248513304834,
+          0.00036861875918417936,
+          0.00015313753878669047,
+          2.636646698328386e-05,
+          3.603690938583295e-06,
+          7.283680509144125e-05
+        ],
+        "lossUncoveredSectorLayerKm2": 0.06480343457337323,
+        "lossUncoveredSectorLayerComponentAreasKm2": [
+          8.317153630772661e-06,
+          1.3577083843270526e-05,
+          0.0017568282307124392,
+          0.004814799302365922,
+          1.853966563883759e-08,
+          0.004869964904626078,
+          5.563375371790471e-05,
+          0.00044276699360186353,
+          0.00020228757122343904,
+          0.0038953814200445303,
+          0.0004374165186909991,
+          6.033067056971089e-05,
+          3.058042520005117e-05,
+          0.00041010881838535304,
+          0.001917558867089367,
+          8.123701813633637e-07,
+          0.04526248868884034,
+          0.00036861875918417936,
+          0.00015313753878669047,
+          2.636646698328386e-05,
+          3.603690938583295e-06,
+          7.283680509144125e-05
+        ],
+        "gainNewlyCoveredAllLayersKm2": 12.798922502821899,
+        "gainNewlyCoveredAllLayersComponentAreasKm2": [
+          12.79891799764063,
+          1.3047836483982293e-06,
+          3.2003976195979445e-06
+        ],
+        "gainNewlyCoveredSectorLayerKm2": 12.798922502821899,
+        "gainNewlyCoveredSectorLayerComponentAreasKm2": [
+          12.79891799764063,
+          1.3047836483982293e-06,
+          3.2003976195979445e-06
+        ],
+        "gainAlreadyCoveredByPeersKm2": 0.15712087205593947,
+        "lossStillCoveredByPeersKm2": 0.02410897831628436,
+        "peerUnionAreaKm2": 84.09547739708766,
+        "peerSectorUnionAreaKm2": 83.5839109456053
+      },
+      "packed": {
+        "oldAreaKm2": 8.447826302882566,
+        "newAreaKm2": 21.31734375254047,
+        "gainKm2": 12.956123049708166,
+        "lossKm2": 0.08660560005018729,
+        "gainComponentAreasKm2": [
+          12.932453238954112,
+          0.0002682787616399678,
+          7.724183668366698e-06,
+          3.202751899709774e-05,
+          5.924816017931107e-06,
+          0.00026461162900124464,
+          0.00022196345604645238,
+          0.00047201723389942644,
+          0.0033004136362764095,
+          0.013584222091810967,
+          0.00015227594493106523,
+          0.004745796134950836,
+          3.1604674788486326e-06,
+          0.00022759281892616433,
+          0.00012485723384983124,
+          6.631115783684282e-05,
+          0.00011852001476343628,
+          7.411365395935421e-05
+        ],
+        "lossComponentAreasKm2": [
+          8.318682761006915e-06,
+          1.4078031523280715e-05,
+          0.0017638277131572942,
+          0.004817392215501678,
+          3.1056260424156235e-08,
+          0.004885186000738351,
+          5.489228947867245e-05,
+          0.00043882172072733615,
+          0.00020177950591328435,
+          0.00391188584977228,
+          0.0004390502081834115,
+          5.8210976901389243e-05,
+          3.0514330477054884e-05,
+          0.00040825340834848867,
+          0.001906511864895329,
+          1.051600285917269e-06,
+          0.04524331126799278,
+          0.022422483327269312
+        ],
+        "lossUncoveredAllLayersKm2": 0.06251673595081901,
+        "lossUncoveredAllLayersComponentAreasKm2": [
+          8.318682761006915e-06,
+          1.4078031523280715e-05,
+          0.0017638277131572897,
+          0.004817392215501679,
+          3.1056260424156235e-08,
+          0.0048851860007383405,
+          5.4892289478672636e-05,
+          0.00043882172072733626,
+          0.00020177950591328421,
+          0.0039118858497722885,
+          0.00043905020818341156,
+          5.8210976901389243e-05,
+          3.051433047705487e-05,
+          0.00011780159177807471,
+          0.045151434131379314,
+          0.00036829984373026924,
+          0.00015078693330468807,
+          2.475067678924225e-05,
+          3.6722851257581217e-06,
+          7.60019073162092e-05
+        ],
+        "lossUncoveredSectorLayerKm2": 0.06479801460395705,
+        "lossUncoveredSectorLayerComponentAreasKm2": [
+          8.318682761006915e-06,
+          1.4078031523280715e-05,
+          0.0017638277131572897,
+          0.004817392215501679,
+          3.1056260424156235e-08,
+          0.0048851860007383405,
+          5.4892289478672636e-05,
+          0.00043882172072733626,
+          0.00020177950591328421,
+          0.0039118858497722885,
+          0.00043905020818341156,
+          5.8210976901389243e-05,
+          3.051433047705487e-05,
+          0.0004082534083484886,
+          0.001906511864895329,
+          1.051600285917269e-06,
+          0.04523469750276569,
+          0.00036829984373026924,
+          0.00015078693330468807,
+          2.475067678924225e-05,
+          3.6722851257581217e-06,
+          7.60019073162092e-05
+        ],
+        "gainNewlyCoveredAllLayersKm2": 12.799029198232278,
+        "gainNewlyCoveredAllLayersComponentAreasKm2": [
+          12.799024557726767,
+          1.3047836489472517e-06,
+          3.335721862477997e-06
+        ],
+        "gainNewlyCoveredSectorLayerKm2": 12.799029198232278,
+        "gainNewlyCoveredSectorLayerComponentAreasKm2": [
+          12.799024557726767,
+          1.3047836489472517e-06,
+          3.335721862477997e-06
+        ],
+        "gainAlreadyCoveredByPeersKm2": 0.15709385147587643,
+        "lossStillCoveredByPeersKm2": 0.02408886409937759,
+        "peerUnionAreaKm2": 84.09547739708766,
+        "peerSectorUnionAreaKm2": 83.5839109456053
+      }
+    },
+    "legacyParentDisagreement": {
+      "delegation": {
+        "id": "osm:relation:4184709",
+        "code": "1252",
+        "kind": "delegation",
+        "oldOutsideM2": 131.3955796810934,
+        "nativeOutsideM2": 12955457.171910945,
+        "packedOutsideM2": 12955535.055847244,
+        "oldCoveredM2": 8447694.90730286,
+        "nativeCoveredM2": 8361793.897520069,
+        "packedCoveredM2": 8361808.696693278
+      },
+      "governorate": {
+        "id": "osm:relation:1435830",
+        "code": "12",
+        "kind": "governorate",
+        "oldOutsideM2": 112.16248727762577,
+        "nativeOutsideM2": 156584.96823430705,
+        "packedOutsideM2": 156556.14517815466,
+        "oldCoveredM2": 8447714.140395276,
+        "nativeCoveredM2": 21160666.101196732,
+        "packedCoveredM2": 21160787.607362356
+      }
+    },
+    "conflicts": {
+      "before": {
+        "count": 1,
+        "records": [
+          {
+            "ids": [
+              "osm:relation:7114900",
+              "osm:relation:7114902"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.022379707459899895,
+            "sample": {
+              "lat": 36.878995,
+              "lng": 10.24120403991651
+            }
+          }
+        ],
+        "counterpartIds": [
+          "osm:relation:7114902"
+        ]
+      },
+      "afterNative": {
+        "count": 7,
+        "records": [
+          {
+            "ids": [
+              "osm:relation:7062337",
+              "osm:relation:7114900"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.031785370228585685,
+            "sample": {
+              "lat": 36.922384635245756,
+              "lng": 10.263968772179965
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7062736",
+              "osm:relation:7114900"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.013772315228560946,
+            "sample": {
+              "lat": 36.89216958890037,
+              "lng": 10.279650051957548
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7062758",
+              "osm:relation:7114900"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.09279076270176714,
+            "sample": {
+              "lat": 36.89912040683143,
+              "lng": 10.284197112859301
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7079364",
+              "osm:relation:7114900"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.013707724435701755,
+            "sample": {
+              "lat": 36.86458961439165,
+              "lng": 10.283680304383742
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7114900",
+              "osm:relation:7114901"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.0006079285723893732,
+            "sample": {
+              "lat": 36.882389771313996,
+              "lng": 10.236741816768962
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7114900",
+              "osm:relation:7114902"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.0005187886144603465,
+            "sample": {
+              "lat": 36.881704835260194,
+              "lng": 10.237616639726157
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7114900",
+              "osm:relation:7117932"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.0048330454221283846,
+            "sample": {
+              "lat": 36.862046254649954,
+              "lng": 10.257915620298633
+            }
+          }
+        ],
+        "counterpartIds": [
+          "osm:relation:7062337",
+          "osm:relation:7062736",
+          "osm:relation:7062758",
+          "osm:relation:7079364",
+          "osm:relation:7114901",
+          "osm:relation:7114902",
+          "osm:relation:7117932"
+        ]
+      },
+      "afterPacked": {
+        "count": 7,
+        "records": [
+          {
+            "ids": [
+              "osm:relation:7062337",
+              "osm:relation:7114900"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.0317744734542546,
+            "sample": {
+              "lat": 36.9223845,
+              "lng": 10.263968824246987
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7062736",
+              "osm:relation:7114900"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.013778483574165744,
+            "sample": {
+              "lat": 36.8921695,
+              "lng": 10.279649847594758
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7062758",
+              "osm:relation:7114900"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.0927822766135038,
+            "sample": {
+              "lat": 36.8991205,
+              "lng": 10.284197120192307
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7079364",
+              "osm:relation:7114900"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.013712257962998865,
+            "sample": {
+              "lat": 36.8645895,
+              "lng": 10.283680217521994
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7114900",
+              "osm:relation:7114901"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.0006095545639646292,
+            "sample": {
+              "lat": 36.88239,
+              "lng": 10.23674179095441
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7114900",
+              "osm:relation:7114902"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.000526628952223296,
+            "sample": {
+              "lat": 36.881705,
+              "lng": 10.237616316255068
+            }
+          },
+          {
+            "ids": [
+              "osm:relation:7114900",
+              "osm:relation:7117932"
+            ],
+            "reason": "overlapping_sectors",
+            "intersectionKm2": 0.004812792486329484,
+            "sample": {
+              "lat": 36.8620465,
+              "lng": 10.257917145077698
+            }
+          }
+        ],
+        "counterpartIds": [
+          "osm:relation:7062337",
+          "osm:relation:7062736",
+          "osm:relation:7062758",
+          "osm:relation:7079364",
+          "osm:relation:7114901",
+          "osm:relation:7114902",
+          "osm:relation:7117932"
+        ]
+      },
+      "projectedCatalogCount": 453,
+      "unchangedNonIncidentCount": 446,
+      "peerMetrics": [
+        {
+          "id": "osm:relation:7062337",
+          "name": "المرسى الشاطئ",
+          "kind": "sector",
+          "oldIntersectionM2": 0.0,
+          "nativeIntersectionM2": 31708.946739138417,
+          "packedIntersectionM2": 31698.075828180918,
+          "gainOverlapM2": 31708.946739138417,
+          "lossCoveredByPeerM2": 0.0
+        },
+        {
+          "id": "osm:relation:7062736",
+          "name": "البحر الأزرق",
+          "kind": "sector",
+          "oldIntersectionM2": 0.0,
+          "nativeIntersectionM2": 13741.453172707521,
+          "packedIntersectionM2": 13747.612690290465,
+          "gainOverlapM2": 13741.45317270753,
+          "lossCoveredByPeerM2": 0.0
+        },
+        {
+          "id": "osm:relation:7062758",
+          "name": "قمرت",
+          "kind": "sector",
+          "oldIntersectionM2": 0.0,
+          "nativeIntersectionM2": 92564.41913244051,
+          "packedIntersectionM2": 92555.95394441087,
+          "gainOverlapM2": 92564.41913244051,
+          "lossCoveredByPeerM2": 0.0
+        },
+        {
+          "id": "osm:relation:7079364",
+          "name": "سيدي فرج",
+          "kind": "sector",
+          "oldIntersectionM2": 0.0,
+          "nativeIntersectionM2": 13676.601801128953,
+          "packedIntersectionM2": 13681.124671061141,
+          "gainOverlapM2": 13676.601801127183,
+          "lossCoveredByPeerM2": 4.997409893130363e-09
+        },
+        {
+          "id": "osm:relation:7114901",
+          "name": "شطرانة",
+          "kind": "sector",
+          "oldIntersectionM2": 0.0,
+          "nativeIntersectionM2": 606.4369550434844,
+          "packedIntersectionM2": 608.0591574711348,
+          "gainOverlapM2": 606.436955046115,
+          "lossCoveredByPeerM2": 0.0
+        },
+        {
+          "id": "osm:relation:7114902",
+          "name": "البساتين",
+          "kind": "sector",
+          "oldIntersectionM2": 22323.23431002661,
+          "nativeIntersectionM2": 517.5620220618462,
+          "packedIntersectionM2": 525.383975884268,
+          "gainOverlapM2": 9.50146798298126,
+          "lossCoveredByPeerM2": 21815.17375593274
+        },
+        {
+          "id": "osm:relation:7117932",
+          "name": "الطيب المهيري",
+          "kind": "sector",
+          "oldIntersectionM2": 0.0,
+          "nativeIntersectionM2": 4821.37393184561,
+          "packedIntersectionM2": 4801.169500631377,
+          "gainOverlapM2": 4821.373931842216,
+          "lossCoveredByPeerM2": 0.0
+        },
+        {
+          "id": "osm:way:128946405",
+          "name": "العوينة",
+          "kind": "town",
+          "oldIntersectionM2": 77232.053632403,
+          "nativeIntersectionM2": 93436.2248050357,
+          "packedIntersectionM2": 93433.06915095639,
+          "gainOverlapM2": 18497.975732974242,
+          "lossCoveredByPeerM2": 2293.8045603516193
+        },
+        {
+          "id": "osm:way:93676034",
+          "name": "السوادية",
+          "kind": "residential",
+          "oldIntersectionM2": 226246.2551361879,
+          "nativeIntersectionM2": 226246.25513618786,
+          "packedIntersectionM2": 226246.25513618786,
+          "gainOverlapM2": 0.0,
+          "lossCoveredByPeerM2": 0.0
+        }
+      ]
+    },
+    "qualifications": "Use current resolver: an accuracy disk must fit a candidate and conflicts suppress ambiguous peers. In uncovered/conflicting positions the locality label may be unavailable while actual GPS still selects the nearest usable timetable. This source correction is not a complete regional mesh or100% neighborhood guarantee."
+  },
+  "qualification": "Work-only acceptance review. Original C review metadata is historical snapshot evidence; no survey or 100-percent regional certification.",
+  "sourceScopeEvidence": {
+    "reviewSha256": "589aa1d22cd8da2b25257b1ce57d69b5fb757b8e4aa6e6ab819e217b21d14d65",
+    "visualScopeReviewSha256": "c01cf2d621befe235f46b4fbf0bb1da167a10443cd26218604f4d5367ff35cd7",
+    "jortPdfSha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+    "jortUrl": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+    "codeQualification": "One electoral circle corresponds to the whole named imada, not a numbered part. Numeric code125251 is joined from exact name and parent in the frozen registry; it is not printed on the decree/map.",
+    "title": "سكرة - (سكرة)",
+    "nativeVector": {
+      "type": "Polygon",
+      "wgs84Valid": true,
+      "bounds": [
+        10.236500393936987,
+        36.86177391362246,
+        10.288673424737038,
+        36.93777976543425
+      ],
+      "drawingIndex": 923,
+      "seqno": 931,
+      "nativeVertexCount": 567,
+      "continuousExplicitlyClosed": true,
+      "pageAndProjectedValid": true,
+      "epsg": 32632,
+      "maxControlResidualMeters": 0.13866411616480429,
+      "residualIsNotGroundAccuracy": true,
+      "fullyInsideViewport": true,
+      "minimumViewportMarginPagePoints": 26.643310546875004,
+      "activeClipCount": 2,
+      "everyClipCoversWholePath": true,
+      "areaKm2": 21.317251069431812,
+      "noRepairSnapBufferQuantization": true
+    }
+  }
+}

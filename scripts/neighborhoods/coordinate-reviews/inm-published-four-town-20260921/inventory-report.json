@@ -1,0 +1,756 @@
+{
+  "scope": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921",
+  "manifest": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plan-manifest.json",
+    "sha256": "b8fff826f0e8908b0b541378f93dc4854769c708edef7f34ec49098e49b993e9"
+  },
+  "manifestPins": {
+    "collector_sha256": "5449336b6d3a24172d95feb4ed20857d5b24fdec819e79e7d68ac3cfb7c99c91",
+    "metadata_sha256": "52c4b266907a53174e051d36d03e92678de7696b35cd1c6a7e5d985da530983e"
+  },
+  "plans": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\current-emulator-5554.json",
+      "declaredSha256": "8261dd69736dcf997bd2748d7572cebae6669e5e041f3d84093d459b7bd640e8",
+      "sha256": "8261dd69736dcf997bd2748d7572cebae6669e5e041f3d84093d459b7bd640e8",
+      "serial": "emulator-5554",
+      "mode": "current",
+      "queries": [
+        {
+          "id": "delegation:441",
+          "query": "35.679200,10.323100"
+        },
+        {
+          "id": "delegation:468",
+          "query": "36.460000,10.760000"
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\published-emulator-5556.json",
+      "declaredSha256": "778cc9268c36c40b24a434fb27e3f703663ed0f4e73b992e86d3736932612ea1",
+      "sha256": "778cc9268c36c40b24a434fb27e3f703663ed0f4e73b992e86d3736932612ea1",
+      "serial": "emulator-5556",
+      "mode": "published",
+      "queries": [
+        {
+          "id": "delegation:441",
+          "query": "35.681000,10.310000"
+        },
+        {
+          "id": "delegation:468",
+          "query": "36.463000,10.747000"
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\current-emulator-5558.json",
+      "declaredSha256": "23705dfa52ca98e5efd9fba695491d116c1e3de5cf5cb4955809a2b510b47314",
+      "sha256": "23705dfa52ca98e5efd9fba695491d116c1e3de5cf5cb4955809a2b510b47314",
+      "serial": "emulator-5558",
+      "mode": "current",
+      "queries": [
+        {
+          "id": "delegation:516",
+          "query": "36.530100,9.112400"
+        },
+        {
+          "id": "delegation:579",
+          "query": "35.534100,8.869400"
+        }
+      ]
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\published-emulator-5560.json",
+      "declaredSha256": "959843350513358b7eed3b90bbc0a047cedf19889ecec8bf9d1545cf05782fa8",
+      "sha256": "959843350513358b7eed3b90bbc0a047cedf19889ecec8bf9d1545cf05782fa8",
+      "serial": "emulator-5560",
+      "mode": "published",
+      "queries": [
+        {
+          "id": "delegation:516",
+          "query": "36.522000,9.106000"
+        },
+        {
+          "id": "delegation:579",
+          "query": "35.541000,8.884000"
+        }
+      ]
+    }
+  ],
+  "batches": [
+    {
+      "runId": "four-town-current-5554-20260921",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\batch-summary.json",
+      "sha256": "32dd04f373faa0973d82d59fd7ab50b615033b77e76f4de2527e76d97bd3df18",
+      "outputDir": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921",
+      "mode": "current",
+      "serial": "emulator-5554",
+      "avd": "Pixel_10_Pro_XL_THREE",
+      "plan": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\current-emulator-5554.json",
+        "declaredSha256": "8261dd69736dcf997bd2748d7572cebae6669e5e041f3d84093d459b7bd640e8",
+        "summarySha256": "8261dd69736dcf997bd2748d7572cebae6669e5e041f3d84093d459b7bd640e8"
+      },
+      "records": [
+        {
+          "id": "delegation:441",
+          "delegationId": "delegation:441",
+          "query": "35.679200,10.323100",
+          "mode": "current",
+          "serial": "emulator-5554",
+          "avd": "Pixel_10_Pro_XL_THREE",
+          "observationStatus": "candidate_observed",
+          "publicCardTitles": [
+            "35°40'45.1\"N 10°19'23.2\"E"
+          ],
+          "publicUiText": [
+            "35°40'45.1\"N 10°19'23.2\"E",
+            "35.679200, 10.323100",
+            "Directions to 35°40'45.1\"N 10°19'23.2\"E",
+            "Directions",
+            "Share 35°40'45.1\"N 10°19'23.2\"E",
+            "Share",
+            "Save 35°40'45.1\"N 10°19'23.2\"E to lists",
+            "Save",
+            "Add label",
+            "About",
+            "35.6792000, 10.3231000",
+            "M8HF+M6Q Sidi Al-Hani, Tunisia",
+            "Plus Codes work like street addresses, search for it to find this location again.",
+            "Add a missing place",
+            "Measure distance",
+            "Close",
+            "35.679200,10.323100",
+            "Clear"
+          ],
+          "captureJson": {
+            "kind": "json",
+            "filename": "delegation_441-2.json",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_441-2.json",
+            "declaredSha256": "395a0b65fad59c4d3229f45460ff4e4966930f689f098a9e11698e2645627c57",
+            "sha256": "395a0b65fad59c4d3229f45460ff4e4966930f689f098a9e11698e2645627c57",
+            "exists": true
+          },
+          "screenshotPng": {
+            "kind": "png",
+            "filename": "delegation_441-2.png",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_441-2.png",
+            "declaredSha256": "5904f12df1aad74f1d4e3ff755756c101bec6bbfd2021593624c0f3243370178",
+            "sha256": "5904f12df1aad74f1d4e3ff755756c101bec6bbfd2021593624c0f3243370178",
+            "exists": true
+          },
+          "captureScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_441-2.png",
+            "sha256": "5904f12df1aad74f1d4e3ff755756c101bec6bbfd2021593624c0f3243370178"
+          },
+          "captureSignatures": {
+            "ready": "e783aee99b5ec826e6e8ca681b98fca80618451511aa9ea9f36967da58fdb1d3",
+            "pre": "e783aee99b5ec826e6e8ca681b98fca80618451511aa9ea9f36967da58fdb1d3",
+            "post": "e783aee99b5ec826e6e8ca681b98fca80618451511aa9ea9f36967da58fdb1d3",
+            "captureSignaturesMatch": true
+          }
+        },
+        {
+          "id": "delegation:468",
+          "delegationId": "delegation:468",
+          "query": "36.460000,10.760000",
+          "mode": "current",
+          "serial": "emulator-5554",
+          "avd": "Pixel_10_Pro_XL_THREE",
+          "observationStatus": "candidate_observed",
+          "publicCardTitles": [
+            "36°27'36.0\"N 10°45'36.0\"E"
+          ],
+          "publicUiText": [
+            "36°27'36.0\"N 10°45'36.0\"E",
+            "36.460000, 10.760000",
+            "Directions to 36°27'36.0\"N 10°45'36.0\"E",
+            "Directions",
+            "Share 36°27'36.0\"N 10°45'36.0\"E",
+            "Share",
+            "Save 36°27'36.0\"N 10°45'36.0\"E to lists",
+            "Save",
+            "Add label",
+            "About",
+            "36.4600000, 10.7600000",
+            "FQ65+2X5 Dar Chaabane Al Fehri, Tunisia",
+            "Plus Codes work like street addresses, search for it to find this location again.",
+            "Add a missing place",
+            "Measure distance",
+            "Close",
+            "36.460000,10.760000",
+            "Clear"
+          ],
+          "captureJson": {
+            "kind": "json",
+            "filename": "delegation_468-2.json",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_468-2.json",
+            "declaredSha256": "5995fadd7c29b50fe667391f7dfaed400d9e45ce2f8c666e5a5cff7f1816a972",
+            "sha256": "5995fadd7c29b50fe667391f7dfaed400d9e45ce2f8c666e5a5cff7f1816a972",
+            "exists": true
+          },
+          "screenshotPng": {
+            "kind": "png",
+            "filename": "delegation_468-2.png",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_468-2.png",
+            "declaredSha256": "8e64173b7b51861edc07a059d17692a62c9a0ad6e81040e3bcccc7fe9a3a240d",
+            "sha256": "8e64173b7b51861edc07a059d17692a62c9a0ad6e81040e3bcccc7fe9a3a240d",
+            "exists": true
+          },
+          "captureScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_468-2.png",
+            "sha256": "8e64173b7b51861edc07a059d17692a62c9a0ad6e81040e3bcccc7fe9a3a240d"
+          },
+          "captureSignatures": {
+            "ready": "7edd75b1accca97026964a89797290dda0b3e7105c94441f045ec1dc0c11f124",
+            "pre": "7edd75b1accca97026964a89797290dda0b3e7105c94441f045ec1dc0c11f124",
+            "post": "7edd75b1accca97026964a89797290dda0b3e7105c94441f045ec1dc0c11f124",
+            "captureSignaturesMatch": true
+          }
+        }
+      ]
+    },
+    {
+      "runId": "four-town-current-5558-20260921",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\batch-summary.json",
+      "sha256": "d3f9e256b6d0beec4d1a6de12b37ef2211adb04980df67cd265c49b8fa36373b",
+      "outputDir": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921",
+      "mode": "current",
+      "serial": "emulator-5558",
+      "avd": "Pixel_10_Pro_XL_TWO",
+      "plan": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\current-emulator-5558.json",
+        "declaredSha256": "23705dfa52ca98e5efd9fba695491d116c1e3de5cf5cb4955809a2b510b47314",
+        "summarySha256": "23705dfa52ca98e5efd9fba695491d116c1e3de5cf5cb4955809a2b510b47314"
+      },
+      "records": [
+        {
+          "id": "delegation:516",
+          "delegationId": "delegation:516",
+          "query": "36.530100,9.112400",
+          "mode": "current",
+          "serial": "emulator-5558",
+          "avd": "Pixel_10_Pro_XL_TWO",
+          "observationStatus": "candidate_observed",
+          "publicCardTitles": [
+            "36°31'48.4\"N 9°06'44.6\"E"
+          ],
+          "publicUiText": [
+            "36°31'48.4\"N 9°06'44.6\"E",
+            "36.530100, 9.112400",
+            "Directions to 36°31'48.4\"N 9°06'44.6\"E",
+            "Directions",
+            "Share 36°31'48.4\"N 9°06'44.6\"E",
+            "Share",
+            "Save 36°31'48.4\"N 9°06'44.6\"E to lists",
+            "Save",
+            "Add label",
+            "About",
+            "36.5301000, 9.1124000",
+            "G4J6+2XR Thibar, Tunisia",
+            "Plus Codes work like street addresses, search for it to find this location again.",
+            "Measure distance",
+            "Close",
+            "36.530100,9.112400",
+            "Clear"
+          ],
+          "captureJson": {
+            "kind": "json",
+            "filename": "delegation_516-2.json",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_516-2.json",
+            "declaredSha256": "cba429beea45f86ffa8e08defb3e35216d674a2ecc84e338e1c4981fdb6d8bf2",
+            "sha256": "cba429beea45f86ffa8e08defb3e35216d674a2ecc84e338e1c4981fdb6d8bf2",
+            "exists": true
+          },
+          "screenshotPng": {
+            "kind": "png",
+            "filename": "delegation_516-2.png",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_516-2.png",
+            "declaredSha256": "b4aaae358e45efc5fec265e8be247031ccfc6824cf1a16095f006ba59d4f79eb",
+            "sha256": "b4aaae358e45efc5fec265e8be247031ccfc6824cf1a16095f006ba59d4f79eb",
+            "exists": true
+          },
+          "captureScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_516-2.png",
+            "sha256": "b4aaae358e45efc5fec265e8be247031ccfc6824cf1a16095f006ba59d4f79eb"
+          },
+          "captureSignatures": {
+            "ready": "4084b57f242c57930956b21af96788dd4c964725035849ae7f9a906f25c0a68a",
+            "pre": "4084b57f242c57930956b21af96788dd4c964725035849ae7f9a906f25c0a68a",
+            "post": "4084b57f242c57930956b21af96788dd4c964725035849ae7f9a906f25c0a68a",
+            "captureSignaturesMatch": true
+          }
+        },
+        {
+          "id": "delegation:579",
+          "delegationId": "delegation:579",
+          "query": "35.534100,8.869400",
+          "mode": "current",
+          "serial": "emulator-5558",
+          "avd": "Pixel_10_Pro_XL_TWO",
+          "observationStatus": "candidate_observed",
+          "publicCardTitles": [
+            "35°32'02.8\"N 8°52'09.8\"E"
+          ],
+          "publicUiText": [
+            "35°32'02.8\"N 8°52'09.8\"E",
+            "35.534100, 8.869400",
+            "Directions to 35°32'02.8\"N 8°52'09.8\"E",
+            "Directions",
+            "Share 35°32'02.8\"N 8°52'09.8\"E",
+            "Share",
+            "Save 35°32'02.8\"N 8°52'09.8\"E to lists",
+            "Save",
+            "Add label",
+            "About",
+            "35.5341000, 8.8694000",
+            "GVM9+JQJ El Aayoun, Tunisia",
+            "Plus Codes work like street addresses, search for it to find this location again.",
+            "Measure distance",
+            "Close",
+            "35.534100,8.869400",
+            "Clear"
+          ],
+          "captureJson": {
+            "kind": "json",
+            "filename": "delegation_579-2.json",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_579-2.json",
+            "declaredSha256": "eef29d3a89c2c000ac8f78087adc050f35ccbc97caff45eb66fc1fd8e9456dc8",
+            "sha256": "eef29d3a89c2c000ac8f78087adc050f35ccbc97caff45eb66fc1fd8e9456dc8",
+            "exists": true
+          },
+          "screenshotPng": {
+            "kind": "png",
+            "filename": "delegation_579-2.png",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_579-2.png",
+            "declaredSha256": "5724fc5174e71bc17abcc70dbb8be9d748ffdfc0dd33433c8f150ab81813afbe",
+            "sha256": "5724fc5174e71bc17abcc70dbb8be9d748ffdfc0dd33433c8f150ab81813afbe",
+            "exists": true
+          },
+          "captureScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_579-2.png",
+            "sha256": "5724fc5174e71bc17abcc70dbb8be9d748ffdfc0dd33433c8f150ab81813afbe"
+          },
+          "captureSignatures": {
+            "ready": "55628781a67f5a4f031a92fc60698cd165f633ff9b1c680cf12295303a3fba4e",
+            "pre": "55628781a67f5a4f031a92fc60698cd165f633ff9b1c680cf12295303a3fba4e",
+            "post": "55628781a67f5a4f031a92fc60698cd165f633ff9b1c680cf12295303a3fba4e",
+            "captureSignaturesMatch": true
+          }
+        }
+      ]
+    },
+    {
+      "runId": "four-town-published-5556-20260921",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\batch-summary.json",
+      "sha256": "d939fac8798c83e229113f0c709f6de3b66f11c6f96bc6a977540bed7c2603a8",
+      "outputDir": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921",
+      "mode": "published",
+      "serial": "emulator-5556",
+      "avd": "Pixel_10_Pro_XL",
+      "plan": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\published-emulator-5556.json",
+        "declaredSha256": "778cc9268c36c40b24a434fb27e3f703663ed0f4e73b992e86d3736932612ea1",
+        "summarySha256": "778cc9268c36c40b24a434fb27e3f703663ed0f4e73b992e86d3736932612ea1"
+      },
+      "records": [
+        {
+          "id": "delegation:441",
+          "delegationId": "delegation:441",
+          "query": "35.681000,10.310000",
+          "mode": "published",
+          "serial": "emulator-5556",
+          "avd": "Pixel_10_Pro_XL",
+          "observationStatus": "candidate_observed",
+          "publicCardTitles": [
+            "35°40'51.6\"N 10°18'36.0\"E"
+          ],
+          "publicUiText": [
+            "View Street view imagery for 35°40'51.6\"N 10°18'36.0\"E",
+            "35°40'51.6\"N 10°18'36.0\"E",
+            "35.681000, 10.310000",
+            "Directions to 35°40'51.6\"N 10°18'36.0\"E",
+            "Directions",
+            "Share 35°40'51.6\"N 10°18'36.0\"E",
+            "Share",
+            "Save 35°40'51.6\"N 10°18'36.0\"E to lists",
+            "Save",
+            "Add label",
+            "About",
+            "35.6810000, 10.3100000",
+            "M8J6+92R Sidi Al-Hani, Tunisia",
+            "Plus Codes work like street addresses, search for it to find this location again.",
+            "Add a missing place",
+            "Measure distance",
+            "Close",
+            "35.681000,10.310000",
+            "Clear"
+          ],
+          "captureJson": {
+            "kind": "json",
+            "filename": "delegation_441-2.json",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_441-2.json",
+            "declaredSha256": "db8be1d37d4d340540e178a1d9b83c50703babfab67ddaead92d90052e2f1108",
+            "sha256": "db8be1d37d4d340540e178a1d9b83c50703babfab67ddaead92d90052e2f1108",
+            "exists": true
+          },
+          "screenshotPng": {
+            "kind": "png",
+            "filename": "delegation_441-2.png",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_441-2.png",
+            "declaredSha256": "bc3474154302751c4328ff4197fcf551b271fc00bf501d326cb2b3c4215b98c3",
+            "sha256": "bc3474154302751c4328ff4197fcf551b271fc00bf501d326cb2b3c4215b98c3",
+            "exists": true
+          },
+          "captureScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_441-2.png",
+            "sha256": "bc3474154302751c4328ff4197fcf551b271fc00bf501d326cb2b3c4215b98c3"
+          },
+          "captureSignatures": {
+            "ready": "e20c798b4e858ab5b51dbe3dcd13b1bbc50615459f2b492ee84ed798e79e33db",
+            "pre": "e20c798b4e858ab5b51dbe3dcd13b1bbc50615459f2b492ee84ed798e79e33db",
+            "post": "e20c798b4e858ab5b51dbe3dcd13b1bbc50615459f2b492ee84ed798e79e33db",
+            "captureSignaturesMatch": true
+          }
+        },
+        {
+          "id": "delegation:468",
+          "delegationId": "delegation:468",
+          "query": "36.463000,10.747000",
+          "mode": "published",
+          "serial": "emulator-5556",
+          "avd": "Pixel_10_Pro_XL",
+          "observationStatus": "candidate_observed",
+          "publicCardTitles": [
+            "36°27'46.8\"N 10°44'49.2\"E"
+          ],
+          "publicUiText": [
+            "36°27'46.8\"N 10°44'49.2\"E",
+            "36.463000, 10.747000",
+            "Directions to 36°27'46.8\"N 10°44'49.2\"E",
+            "Directions",
+            "Share 36°27'46.8\"N 10°44'49.2\"E",
+            "Share",
+            "Save 36°27'46.8\"N 10°44'49.2\"E to lists",
+            "Save",
+            "Add label",
+            "About",
+            "36.4630000, 10.7470000",
+            "FP7W+5RR Dar Chaabane Al Fehri, Tunisia",
+            "Plus Codes work like street addresses, search for it to find this location again.",
+            "Add a missing place",
+            "Measure distance",
+            "Close",
+            "36.463000,10.747000",
+            "Clear"
+          ],
+          "captureJson": {
+            "kind": "json",
+            "filename": "delegation_468-2.json",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_468-2.json",
+            "declaredSha256": "1bcd83d7910fb50e6721b4860c62ebbd99cdc2c23b0e68b51c53cef76c984a92",
+            "sha256": "1bcd83d7910fb50e6721b4860c62ebbd99cdc2c23b0e68b51c53cef76c984a92",
+            "exists": true
+          },
+          "screenshotPng": {
+            "kind": "png",
+            "filename": "delegation_468-2.png",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_468-2.png",
+            "declaredSha256": "45a70349d3c85f7e666423b16c50825bff50001a0f935e5b39c0b6d86ac87641",
+            "sha256": "45a70349d3c85f7e666423b16c50825bff50001a0f935e5b39c0b6d86ac87641",
+            "exists": true
+          },
+          "captureScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_468-2.png",
+            "sha256": "45a70349d3c85f7e666423b16c50825bff50001a0f935e5b39c0b6d86ac87641"
+          },
+          "captureSignatures": {
+            "ready": "cdb5a8605be6260910028060f5625fb01347a2a85d19a7a647c36a2e3ffbd738",
+            "pre": "cdb5a8605be6260910028060f5625fb01347a2a85d19a7a647c36a2e3ffbd738",
+            "post": "cdb5a8605be6260910028060f5625fb01347a2a85d19a7a647c36a2e3ffbd738",
+            "captureSignaturesMatch": true
+          }
+        }
+      ]
+    },
+    {
+      "runId": "four-town-published-5560-20260921",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\batch-summary.json",
+      "sha256": "a5c4ca75a0af6d2a8ada6a347990f18a3cef9c381a56c8299460dd104229afaa",
+      "outputDir": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921",
+      "mode": "published",
+      "serial": "emulator-5560",
+      "avd": "Pixel_10_Pro_XL_FOUR",
+      "plan": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\plans\\published-emulator-5560.json",
+        "declaredSha256": "959843350513358b7eed3b90bbc0a047cedf19889ecec8bf9d1545cf05782fa8",
+        "summarySha256": "959843350513358b7eed3b90bbc0a047cedf19889ecec8bf9d1545cf05782fa8"
+      },
+      "records": [
+        {
+          "id": "delegation:516",
+          "delegationId": "delegation:516",
+          "query": "36.522000,9.106000",
+          "mode": "published",
+          "serial": "emulator-5560",
+          "avd": "Pixel_10_Pro_XL_FOUR",
+          "observationStatus": "candidate_observed",
+          "publicCardTitles": [
+            "36°31'19.2\"N 9°06'21.6\"E"
+          ],
+          "publicUiText": [
+            "36°31'19.2\"N 9°06'21.6\"E",
+            "36.522000, 9.106000",
+            "Directions to 36°31'19.2\"N 9°06'21.6\"E",
+            "Directions",
+            "Share 36°31'19.2\"N 9°06'21.6\"E",
+            "Share",
+            "Save 36°31'19.2\"N 9°06'21.6\"E to lists",
+            "Save",
+            "Add label",
+            "About",
+            "36.5220000, 9.1060000",
+            "G4C4+Q9X Thibar, Tunisia",
+            "Plus Codes work like street addresses, search for it to find this location again.",
+            "Add a missing place",
+            "Measure distance",
+            "Close",
+            "36.522000,9.106000",
+            "Clear"
+          ],
+          "captureJson": {
+            "kind": "json",
+            "filename": "delegation_516-2.json",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_516-2.json",
+            "declaredSha256": "986676975c972e78fc8b3c27d781fdec96a2558389486ff205293537b58cc5ab",
+            "sha256": "986676975c972e78fc8b3c27d781fdec96a2558389486ff205293537b58cc5ab",
+            "exists": true
+          },
+          "screenshotPng": {
+            "kind": "png",
+            "filename": "delegation_516-2.png",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_516-2.png",
+            "declaredSha256": "9edebba0cb2029a8997348fe1cde1a2d2cfa4b9b8c2a73f9ccfcba7cf0d523f4",
+            "sha256": "9edebba0cb2029a8997348fe1cde1a2d2cfa4b9b8c2a73f9ccfcba7cf0d523f4",
+            "exists": true
+          },
+          "captureScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_516-2.png",
+            "sha256": "9edebba0cb2029a8997348fe1cde1a2d2cfa4b9b8c2a73f9ccfcba7cf0d523f4"
+          },
+          "captureSignatures": {
+            "ready": "987df9096d1319dd1031f9de5d3e1e95b70007cf5f3c1426cba759997a97f21e",
+            "pre": "987df9096d1319dd1031f9de5d3e1e95b70007cf5f3c1426cba759997a97f21e",
+            "post": "987df9096d1319dd1031f9de5d3e1e95b70007cf5f3c1426cba759997a97f21e",
+            "captureSignaturesMatch": true
+          }
+        },
+        {
+          "id": "delegation:579",
+          "delegationId": "delegation:579",
+          "query": "35.541000,8.884000",
+          "mode": "published",
+          "serial": "emulator-5560",
+          "avd": "Pixel_10_Pro_XL_FOUR",
+          "observationStatus": "candidate_observed",
+          "publicCardTitles": [
+            "35°32'27.6\"N 8°53'02.4\"E"
+          ],
+          "publicUiText": [
+            "35°32'27.6\"N 8°53'02.4\"E",
+            "35.541000, 8.884000",
+            "Directions to 35°32'27.6\"N 8°53'02.4\"E",
+            "Directions",
+            "Share 35°32'27.6\"N 8°53'02.4\"E",
+            "Share",
+            "Save 35°32'27.6\"N 8°53'02.4\"E to lists",
+            "Save",
+            "Add label",
+            "About",
+            "35.5410000, 8.8840000",
+            "GVRM+9JR El Aayoun, Tunisia",
+            "Plus Codes work like street addresses, search for it to find this location again.",
+            "Add a missing place",
+            "Measure distance",
+            "Close",
+            "35.541000,8.884000",
+            "Clear"
+          ],
+          "captureJson": {
+            "kind": "json",
+            "filename": "delegation_579-2.json",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_579-2.json",
+            "declaredSha256": "dd2ac09a9357a501d382260379c59d798ad0a6be4d9def14e417cba87c82cc36",
+            "sha256": "dd2ac09a9357a501d382260379c59d798ad0a6be4d9def14e417cba87c82cc36",
+            "exists": true
+          },
+          "screenshotPng": {
+            "kind": "png",
+            "filename": "delegation_579-2.png",
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_579-2.png",
+            "declaredSha256": "88cc7d6cc97d36e77266b76b76a022e12532a9887ce1a7cd22a90f324a734f02",
+            "sha256": "88cc7d6cc97d36e77266b76b76a022e12532a9887ce1a7cd22a90f324a734f02",
+            "exists": true
+          },
+          "captureScreenshot": {
+            "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_579-2.png",
+            "sha256": "88cc7d6cc97d36e77266b76b76a022e12532a9887ce1a7cd22a90f324a734f02"
+          },
+          "captureSignatures": {
+            "ready": "89a721e8926f1fab64e6d147b408b3bfc1d1d77d3b9ea5638ca50a0118797b5c",
+            "pre": "89a721e8926f1fab64e6d147b408b3bfc1d1d77d3b9ea5638ca50a0118797b5c",
+            "post": "89a721e8926f1fab64e6d147b408b3bfc1d1d77d3b9ea5638ca50a0118797b5c",
+            "captureSignaturesMatch": true
+          }
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "json",
+      "filename": "delegation_441-2.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_441-2.json",
+      "declaredSha256": "395a0b65fad59c4d3229f45460ff4e4966930f689f098a9e11698e2645627c57",
+      "sha256": "395a0b65fad59c4d3229f45460ff4e4966930f689f098a9e11698e2645627c57",
+      "exists": true
+    },
+    {
+      "kind": "png",
+      "filename": "delegation_441-2.png",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_441-2.png",
+      "declaredSha256": "5904f12df1aad74f1d4e3ff755756c101bec6bbfd2021593624c0f3243370178",
+      "sha256": "5904f12df1aad74f1d4e3ff755756c101bec6bbfd2021593624c0f3243370178",
+      "exists": true
+    },
+    {
+      "kind": "json",
+      "filename": "delegation_468-2.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_468-2.json",
+      "declaredSha256": "5995fadd7c29b50fe667391f7dfaed400d9e45ce2f8c666e5a5cff7f1816a972",
+      "sha256": "5995fadd7c29b50fe667391f7dfaed400d9e45ce2f8c666e5a5cff7f1816a972",
+      "exists": true
+    },
+    {
+      "kind": "png",
+      "filename": "delegation_468-2.png",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5554-20260921\\delegation_468-2.png",
+      "declaredSha256": "8e64173b7b51861edc07a059d17692a62c9a0ad6e81040e3bcccc7fe9a3a240d",
+      "sha256": "8e64173b7b51861edc07a059d17692a62c9a0ad6e81040e3bcccc7fe9a3a240d",
+      "exists": true
+    },
+    {
+      "kind": "json",
+      "filename": "delegation_516-2.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_516-2.json",
+      "declaredSha256": "cba429beea45f86ffa8e08defb3e35216d674a2ecc84e338e1c4981fdb6d8bf2",
+      "sha256": "cba429beea45f86ffa8e08defb3e35216d674a2ecc84e338e1c4981fdb6d8bf2",
+      "exists": true
+    },
+    {
+      "kind": "png",
+      "filename": "delegation_516-2.png",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_516-2.png",
+      "declaredSha256": "b4aaae358e45efc5fec265e8be247031ccfc6824cf1a16095f006ba59d4f79eb",
+      "sha256": "b4aaae358e45efc5fec265e8be247031ccfc6824cf1a16095f006ba59d4f79eb",
+      "exists": true
+    },
+    {
+      "kind": "json",
+      "filename": "delegation_579-2.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_579-2.json",
+      "declaredSha256": "eef29d3a89c2c000ac8f78087adc050f35ccbc97caff45eb66fc1fd8e9456dc8",
+      "sha256": "eef29d3a89c2c000ac8f78087adc050f35ccbc97caff45eb66fc1fd8e9456dc8",
+      "exists": true
+    },
+    {
+      "kind": "png",
+      "filename": "delegation_579-2.png",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-current-5558-20260921\\delegation_579-2.png",
+      "declaredSha256": "5724fc5174e71bc17abcc70dbb8be9d748ffdfc0dd33433c8f150ab81813afbe",
+      "sha256": "5724fc5174e71bc17abcc70dbb8be9d748ffdfc0dd33433c8f150ab81813afbe",
+      "exists": true
+    },
+    {
+      "kind": "json",
+      "filename": "delegation_441-2.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_441-2.json",
+      "declaredSha256": "db8be1d37d4d340540e178a1d9b83c50703babfab67ddaead92d90052e2f1108",
+      "sha256": "db8be1d37d4d340540e178a1d9b83c50703babfab67ddaead92d90052e2f1108",
+      "exists": true
+    },
+    {
+      "kind": "png",
+      "filename": "delegation_441-2.png",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_441-2.png",
+      "declaredSha256": "bc3474154302751c4328ff4197fcf551b271fc00bf501d326cb2b3c4215b98c3",
+      "sha256": "bc3474154302751c4328ff4197fcf551b271fc00bf501d326cb2b3c4215b98c3",
+      "exists": true
+    },
+    {
+      "kind": "json",
+      "filename": "delegation_468-2.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_468-2.json",
+      "declaredSha256": "1bcd83d7910fb50e6721b4860c62ebbd99cdc2c23b0e68b51c53cef76c984a92",
+      "sha256": "1bcd83d7910fb50e6721b4860c62ebbd99cdc2c23b0e68b51c53cef76c984a92",
+      "exists": true
+    },
+    {
+      "kind": "png",
+      "filename": "delegation_468-2.png",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5556-20260921\\delegation_468-2.png",
+      "declaredSha256": "45a70349d3c85f7e666423b16c50825bff50001a0f935e5b39c0b6d86ac87641",
+      "sha256": "45a70349d3c85f7e666423b16c50825bff50001a0f935e5b39c0b6d86ac87641",
+      "exists": true
+    },
+    {
+      "kind": "json",
+      "filename": "delegation_516-2.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_516-2.json",
+      "declaredSha256": "986676975c972e78fc8b3c27d781fdec96a2558389486ff205293537b58cc5ab",
+      "sha256": "986676975c972e78fc8b3c27d781fdec96a2558389486ff205293537b58cc5ab",
+      "exists": true
+    },
+    {
+      "kind": "png",
+      "filename": "delegation_516-2.png",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_516-2.png",
+      "declaredSha256": "9edebba0cb2029a8997348fe1cde1a2d2cfa4b9b8c2a73f9ccfcba7cf0d523f4",
+      "sha256": "9edebba0cb2029a8997348fe1cde1a2d2cfa4b9b8c2a73f9ccfcba7cf0d523f4",
+      "exists": true
+    },
+    {
+      "kind": "json",
+      "filename": "delegation_579-2.json",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_579-2.json",
+      "declaredSha256": "dd2ac09a9357a501d382260379c59d798ad0a6be4d9def14e417cba87c82cc36",
+      "sha256": "dd2ac09a9357a501d382260379c59d798ad0a6be4d9def14e417cba87c82cc36",
+      "exists": true
+    },
+    {
+      "kind": "png",
+      "filename": "delegation_579-2.png",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\four-town-reference-phone-20260921\\captures\\four-town-published-5560-20260921\\delegation_579-2.png",
+      "declaredSha256": "88cc7d6cc97d36e77266b76b76a022e12532a9887ce1a7cd22a90f324a734f02",
+      "sha256": "88cc7d6cc97d36e77266b76b76a022e12532a9887ce1a7cd22a90f324a734f02",
+      "exists": true
+    }
+  ],
+  "counts": {
+    "plans": 4,
+    "batches": 4,
+    "records": 8,
+    "json": 8,
+    "png": 8
+  },
+  "unchangedBaselineReceiptPins": {
+    "helper_sha256": "1f8351c8f9679563dc159834e353f7d92dfac884c4d90021c42399a10e0ec902",
+    "main_ledger_sha256": "4882c0453b0cedeb186462d1d320a7c8735a65ae88f358b2266fdd524b4b4e04",
+    "metadata_sha256": "52c4b266907a53174e051d36d03e92678de7696b35cd1c6a7e5d985da530983e",
+    "collector_sha256": "5449336b6d3a24172d95feb4ed20857d5b24fdec819e79e7d68ac3cfb7c99c91"
+  },
+  "baselinePinsUnchanged": true,
+  "errors": [],
+  "ok": true
+}

@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "status": "REVIEWED_SAME_CODE_SOUKRA_SEARCH_ALIASES",
+  "id": "osm:relation:7114902",
+  "scope": "Preserve primary البساتين / El Bassatine and add exact INS2024 variants البستان / El bousten for the same Soukra sector125253. Resolve the obsolete identity-only pending review. No boundary adoption.",
+  "expectedKind": "sector",
+  "originalTags": {
+    "admin_level": "6",
+    "boundary": "administrative",
+    "name": "البساتين",
+    "name:ar": "البساتين",
+    "name:fr": "El Bassatine",
+    "ref:tn:codegeo": "125253"
+  },
+  "proposedNameTags": {
+    "name": "البساتين",
+    "name:ar": "البساتين",
+    "name:fr": "El Bassatine",
+    "alt_name:ar": "البستان",
+    "alt_name:fr": "El bousten"
+  },
+  "officialRecord": {
+    "governorateCode": "12",
+    "governorateFr": "Ariana",
+    "governorateAr": "أريانة",
+    "delegationCode": "1252",
+    "delegationFr": "Soukra",
+    "delegationAr": "سكرة",
+    "sectorCode": "125253",
+    "sectorFr": "El bousten",
+    "sectorAr": "البستان",
+    "sourceRows": {
+      "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5917,
+      "Nombre_de_Logements_par_Secteurs.xlsx": 186,
+      "Nombre_de_menages_par_Secteurs.xlsx": 186
+    }
+  },
+  "officialRegistry": {
+    "file": "original-sector-point-reviews/oued-zbib-2026-09/official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "bytes": 1133114
+  },
+  "primarySources": [
+    {
+      "file": "name-reviews/amdoun-two-20260920/primary/ins-2012.pdf",
+      "sha256": "d11dc600430ffc31fb2bd50f903c2037b9337b52d6bc68b81778c3da9319b580",
+      "bytes": 749971,
+      "url": "https://ins.tn/sites/default/files/publication/pdf/code%20geographique%202012_1.pdf",
+      "pdfPageOneBased": 38,
+      "exactRow": "12 52 53 / El Bessatine / البساتين; parent Soukra / سكرة"
+    },
+    {
+      "file": "official/two-historical-sectors-20260920/evidence/decree2023-590.pdf",
+      "sha256": "bfb3fe752b9900eaf873198b009968243f1b0bd2c119836cfd4fbbfc07e1e10f",
+      "bytes": 10636520,
+      "url": "https://www.isie.tn/wp-content/uploads/2023/09/Decret2023_590Arabe.pdf",
+      "pdfPageOneBased": 4,
+      "jortPage": 5101,
+      "annex": 1,
+      "table": "A",
+      "exactScope": "Soukra imada البساتين maps to the single circle البساتين - (سكرة). Codes joined through exact parent and INS2012 row."
+    },
+    {
+      "file": "name-reviews/soukra-bassatine-alias-20260920/primary/soukra-bassatine.pdf",
+      "sha256": "5005a33e933838323d9bf269995c1df38b0ce9aed2ab4b41c61b984ac8f2b0b3",
+      "bytes": 1646208,
+      "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/سكرة/البساتين.pdf",
+      "pdfPageOneBased": 1,
+      "mapTitle": "البساتين - (سكرة)",
+      "httpStatus": 200,
+      "retrievedAt": "2026-09-20T12:29:03.303062+00:00"
+    }
+  ],
+  "reviewFiles": [
+    {
+      "file": "name-reviews/soukra-bassatine-alias-20260920/source-reviews/new-primary-source-facts.json",
+      "sha256": "5bcba0f7963d08c909477f1773eca2bf533c671bfcf2ff2bd8635c15150dd203",
+      "bytes": 14287
+    },
+    {
+      "file": "name-reviews/soukra-bassatine-alias-20260920/source-reviews/two-map-geometry-facts.json",
+      "sha256": "c68e2bf955990e88198d8d10d515c5d0bbf0e962cd863b240703608e441263fd",
+      "bytes": 26099
+    },
+    {
+      "file": "name-reviews/soukra-bassatine-alias-20260920/source-reviews/original-workbook-rows.json",
+      "sha256": "7d5044edcaa4d2cb21f4d5bd40797a37c1afc575386cd691dd6d9af5c8f65bc5",
+      "bytes": 12278
+    },
+    {
+      "file": "name-reviews/soukra-bassatine-alias-20260920/source-reviews/two-identity-final-review.json",
+      "sha256": "209e996f5c7c3289fa2d453480271ff623ae448ae3a1b9c96388ec7032e0fbfc",
+      "bytes": 6226
+    },
+    {
+      "file": "name-reviews/soukra-bassatine-alias-20260920/source-reviews/bounded-model-source-review.json",
+      "sha256": "3ab042505ef2a835bb811818b6a60e82308bebdabca5107a32e46324cf67a1a0",
+      "bytes": 10240
+    },
+    {
+      "file": "name-reviews/soukra-bassatine-alias-20260920/source-reviews/normalized-alias-collision-review.json",
+      "sha256": "a3a23ea710103c802f798e19439b061851e76d3e17fa062e36e95980a77c761b",
+      "bytes": 4604
+    },
+    {
+      "file": "name-reviews/soukra-bassatine-alias-20260920/original-source-extract.json",
+      "sha256": "2be16400e100e7ffa0666054007c91e87fd6a822e61fe2c3fbdb3b2df92e4366"
+    }
+  ],
+  "primaryIdentityChain": [
+    "Original OSM exact code125253 is unique in the authoritative source inventory, under Soukra1252/Ariana12.",
+    "INS2012 page38 uses the current primary البساتين / El Bessatine under the same code and parent.",
+    "JORT2023 Annex1TableA gives the complete imada البساتين one Soukra electoral circle; ISIE2023 exact map title agrees. The decree/map do not themselves print the six-digit code.",
+    "Three original INS2024 workbook rows use the same125253/1252/12 identity with البستان / El bousten. This is supported alias evidence, not a transfer to Mnihla125754."
+  ],
+  "expectedBeforeMetadata": [
+    {
+      "id": "osm:relation:7114902",
+      "sourceId": "osm",
+      "name": "البساتين",
+      "aliases": [
+        "El Bassatine"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية سكرة",
+      "contextAliases": [
+        "Délégation Soukra",
+        "La Soukra",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.87628,
+      "lng": 10.231171,
+      "delegationId": 532,
+      "hasBoundary": true,
+      "bbox": [
+        10.216997,
+        36.865139,
+        10.245671,
+        36.887692
+      ],
+      "areaKm2": 3.1291807974184263,
+      "pickerGroupId": "osm:relation:7114902",
+      "offset": 1028048,
+      "length": 340
+    },
+    {
+      "id": "osm:node:7390818324",
+      "sourceId": "osm",
+      "name": "سكرة",
+      "aliases": [
+        "La Soukra"
+      ],
+      "kind": "village",
+      "parentName": "البساتين",
+      "contextAliases": [
+        "Délégation Soukra",
+        "El Bassatine",
+        "La Soukra",
+        "البساتين",
+        "معتمدية سكرة"
+      ],
+      "governorateId": 358,
+      "lat": 36.8749751,
+      "lng": 10.2454267,
+      "delegationId": 532,
+      "hasBoundary": false,
+      "pickerGroupId": "delegation:532"
+    }
+  ],
+  "expectedRawFieldChanges": [
+    {
+      "id": "osm:relation:7114902",
+      "field": "aliases",
+      "before": [
+        "El Bassatine"
+      ],
+      "after": [
+        "El Bassatine",
+        "البستان",
+        "El bousten"
+      ]
+    },
+    {
+      "id": "osm:node:7390818324",
+      "field": "contextAliases",
+      "before": [
+        "Délégation Soukra",
+        "El Bassatine",
+        "La Soukra",
+        "البساتين",
+        "معتمدية سكرة"
+      ],
+      "after": [
+        "Délégation Soukra",
+        "El Bassatine",
+        "El bousten",
+        "La Soukra",
+        "البساتين",
+        "البستان",
+        "معتمدية سكرة"
+      ]
+    }
+  ],
+  "nameTagsConsumerOrder": [
+    "البساتين",
+    "El Bassatine",
+    "البستان",
+    "El bousten"
+  ],
+  "allGroupsCoordinatesPrayerSourcesAndGeometryPreserved": true,
+  "distinctAliasHomonym": {
+    "id": "osm:node:10168309796",
+    "governorateId": 359,
+    "distanceKm": 240.89158456298946,
+    "decision": "Preserve separate Sfax suburb. No source-point absorption or display merge."
+  },
+  "pendingReviewResolution": {
+    "evidence": [
+      "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+      "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+      "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+      "https://www.isie.tn/ar/%D8%A7%D9%84%D8%AF%D9%88%D8%A7%D8%A6%D8%B1-%D8%A7%D9%84%D9%85%D8%AD%D9%84%D9%8A%D8%A9/"
+    ],
+    "expectedKind": "sector",
+    "expectedTags": {
+      "name:ar": "البساتين",
+      "ref:tn:codegeo": "125253"
+    },
+    "id": "osm:relation:7114902",
+    "reason": "The source labels code125253 El Bassatine / البساتين in Soukra. INS2024 retains125253 in Soukra as El bousten / البستان. The namesake125754 in Mnihla has no geometric overlap with this polygon. Retain Soukra and review the exact source identity/title separately.",
+    "unresolved": [
+      "Review the source polygon identity and label. Do not infer a parent transfer from the identical or similar name of another official sector."
+    ]
+  },
+  "geometryQualification": "The official footprint differs from the retained old polygon (IoU about0.86456); the authentic Soukra village point is outside that official footprint. These facts are disclosed, not repaired, imported or certified in this name-only package. Existing group/manual selection and polygons remain intact.",
+  "historicalReviewQualification": "Copied two-ID reviews retain original workstation paths/hashes as historical provenance. Operational proof references above are relative to scripts/neighborhoods. El Amra has supported identity and no change. The model review preceded the additional personally viewed JORT whole-imada evidence; no claim it reviewed those pages."
+}

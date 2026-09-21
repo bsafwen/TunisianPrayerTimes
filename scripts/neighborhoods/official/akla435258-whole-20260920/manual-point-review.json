@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "method": "reviewed_official_manual_point_choices",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "providerId": "isie-local-sector-2023-akla435258-whole",
+  "boundarySource": {
+    "file": "official/akla435258-whole-20260920/akla435258-whole-source.geojson",
+    "sha256": "fc50f444d95562f9e9965c9075b75501337466217038dc3bd5bb872efac6748c"
+  },
+  "baselineMetadata": {
+    "file": "official/akla435258-whole-20260920/evidence/baseline-neighborhoods.json",
+    "sha256": "f7bec8d4a169637d25825643b51bac3943f40f1965f49ad60f700934b4be22f8"
+  },
+  "records": [
+    {
+      "id": "osm:relation:7169576",
+      "officialCode": "435258",
+      "mode": "previous_metadata",
+      "expectedBeforeMetadata": {
+        "id": "osm:relation:7169576",
+        "sourceId": "osm",
+        "name": "العقلة",
+        "aliases": [
+          "El Okla"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سيدي بوزيد الشرقية",
+        "contextAliases": [
+          "Délégation Sidi Bouzid Est",
+          "معتمدية سيدي بوزيد الشرقية"
+        ],
+        "governorateId": 355,
+        "lat": 35.10186,
+        "lng": 9.623477,
+        "delegationId": 628,
+        "hasBoundary": true,
+        "bbox": [
+          9.555549,
+          35.06631,
+          9.684633,
+          35.13517
+        ],
+        "areaKm2": 48.56746102419915,
+        "pickerGroupId": "osm:relation:7169576",
+        "offset": 3999920,
+        "length": 572
+      },
+      "expectedCuration": null,
+      "point": {
+        "lat": 35.10186,
+        "lng": 9.623477
+      },
+      "expectedNearestId": 628
+    }
+  ],
+  "evidence": [
+    {
+      "file": "official/akla435258-whole-20260920/source-acceptance-review.json",
+      "sha256": "4d9c5a2027762b781bd8f7647b788490e40efc135666706a348a88b8f56d5ba1"
+    },
+    {
+      "file": "official/akla435258-whole-20260920/accepted-whole-scope-successor.json",
+      "sha256": "c7ab93cb48a5225ce427def975c912d6f391aff1ac16af23391fc605547b1abb"
+    }
+  ]
+}

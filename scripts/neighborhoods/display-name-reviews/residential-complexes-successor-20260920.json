@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "predecessor": {
+    "file": "scripts/neighborhoods/display-name-reviews/arabic-french-localization-20260920.json",
+    "sha256": "a654d596ab1648525b4325701958eca6adba97bbd6fb5582c11eb309aa3e5d77"
+  },
+  "previousAssetSha256": "3137a8848bd3a9f56d3180d78d9091a2f98bce221ac1920a969478725dfae1a4",
+  "assetSha256": "c26831df1b604f347269554d51644347737e3a5eab443dab5034f44584070f54",
+  "excludedIds": [
+    "osm:way:100904214",
+    "osm:way:100904283",
+    "osm:way:100904291",
+    "osm:way:1015030934",
+    "osm:way:1017544503",
+    "osm:way:1042144007",
+    "osm:way:144557476",
+    "osm:way:144986791",
+    "osm:way:147748277",
+    "osm:way:157371427",
+    "osm:way:171920791",
+    "osm:way:171920792",
+    "osm:way:171935446",
+    "osm:way:171935448",
+    "osm:way:171935449",
+    "osm:way:191436024",
+    "osm:way:211913309",
+    "osm:way:211913318",
+    "osm:way:218736534",
+    "osm:way:221174224",
+    "osm:way:221174225",
+    "osm:way:335034436",
+    "osm:way:379347133",
+    "osm:way:499076286",
+    "osm:way:535216233",
+    "osm:way:535367874",
+    "osm:way:825272933"
+  ],
+  "removedEntries": [
+    {
+      "id": "osm:way:100904214",
+      "nameAr": "إقامة كاب قمرت",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:100904283",
+      "nameAr": "إقامة لا بالمري",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:100904291",
+      "nameAr": "الإقامات الرئاسية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1017544503",
+      "nameAr": "إقامة أوبرا ٢",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:1042144007",
+      "nameAr": "إقامة لورونجري",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:144986791",
+      "nameAr": "إقامة لي بان",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:157371427",
+      "nameAr": "حي إطارات المجمع الكيميائي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:171920791",
+      "nameAr": "إقامة ميموزا",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:171935446",
+      "nameAr": "إقامة المعز",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:171935448",
+      "nameAr": "إقامة ابن رشيق",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:171935449",
+      "nameAr": "إقامة رياض",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:191436024",
+      "nameAr": "القصر الرئاسي",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:211913309",
+      "nameAr": "إقامة عزيزة",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:211913318",
+      "nameAr": "إقامة الياسمين",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:221174224",
+      "nameAr": "إقامة حنبعل",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:221174225",
+      "nameAr": "إقامة مديترانية",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:335034436",
+      "nameAr": "إقامة فولا",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:379347133",
+      "nameAr": "إقامة ابن جازر",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:499076286",
+      "nameAr": "إقامة ليكسيلانس",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:535367874",
+      "nameAr": "إقامة ديار السلام",
+      "searchAliases": []
+    },
+    {
+      "id": "osm:way:825272933",
+      "nameAr": "إقامة حدائق قمرت",
+      "searchAliases": []
+    }
+  ],
+  "counts": {
+    "before": 288,
+    "after": 267,
+    "rawSurvivors": 3487
+  },
+  "validation": {
+    "remainingEntriesOrderAndSearchAliasesExact": true,
+    "allSurvivingOwnAndParentLabelsArabic": true,
+    "originalFrenchSearchNamesAndAliasesUnchanged": true,
+    "sourceNamesGroupsGeographyUnchangedByLanguageFilter": true
+  },
+  "originalProvenanceRemainsHistoricalAndUnmodified": true
+}

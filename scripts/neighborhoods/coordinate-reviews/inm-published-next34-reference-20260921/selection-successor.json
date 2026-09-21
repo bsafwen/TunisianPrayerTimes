@@ -1,0 +1,4180 @@
+{
+  "schemaVersion": 2,
+  "method": "reviewed_prayer_selection_after_frozen_display_validation",
+  "status": "APPROVED_SCOPED_REFERENCE_CORRECTIONS_PENDING_GENERATION",
+  "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "predecessorCoordinates": {
+    "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-prayer-source-coordinates.json",
+    "sha256": "1aabe8cba5b1047a8f5f063e52aed17e2862827a45f41899db6ec75b20481804"
+  },
+  "predecessorSelectionReview": {
+    "file": "coordinate-reviews/inm-published-ten-reference-20260921/selection-successor.json",
+    "sha256": "0b776e17eb64e5b31adb4fcd895cb99e722b1fd4e0e2d7e0b72d223524ffb2bd"
+  },
+  "baselineGovernors": {
+    "file": "coordinate-reviews/inm-published-four-town-20260921/before-gouvernorats.json",
+    "sha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06"
+  },
+  "baselineCoordinates": {
+    "file": "coordinate-reviews/inm-published-four-town-20260921/before-prayer-source-coordinates.json",
+    "sha256": "f56e4c570c5d4c6136dd8d8b9b811b51882452da6cdf5b001a00224c7e8a63c2"
+  },
+  "baselineMetadata": {
+    "file": "coordinate-reviews/inm-published-four-town-20260921/before-neighborhoods.json",
+    "sha256": "52c4b266907a53174e051d36d03e92678de7696b35cd1c6a7e5d985da530983e"
+  },
+  "baselineGeometry": {
+    "file": "coordinate-reviews/inm-published-four-town-20260921/before-neighborhoods.bin",
+    "sha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+  },
+  "geographicReview": {
+    "file": "coordinate-reviews/inm-published-next34-reference-20260921/geographicReview-geography-review.json",
+    "sha256": "0b6e982dc2a523e6ed2f0d8fa0f57da97fdf3934eb43e247e826bcd65a7cf957"
+  },
+  "mapsReview": {
+    "file": "coordinate-reviews/inm-published-next34-reference-20260921/mapsReview-maps-review.json",
+    "sha256": "59ebe7ecc5d6b8673f494f0edc5d68cbffa498b731ceb89c80095a1e3af4f937"
+  },
+  "impactReview": {
+    "file": "coordinate-reviews/inm-published-next34-reference-20260921/impactReview-impact.json",
+    "sha256": "b6119fd76c3113476fabe2bfdfcdbad48156980924439128260ab878c614aef2"
+  },
+  "manualRows": {
+    "file": "coordinate-reviews/inm-published-next34-reference-20260921/manual-rows.json",
+    "sha256": "95407c25f8c5139286a36bed22242995df4b2659a649fda74d72a1bc4de61006"
+  },
+  "identityInputs": {
+    "municipalSources": {
+      "file": "municipal-sources.json",
+      "sha256": "46a62369aab433cb65b075322f19fa1f1e46057679ebf3657a19a85a6f2dd238"
+    },
+    "curation": {
+      "file": "catalog-curation.json",
+      "sha256": "64034e6f2af4cfa51a225fc23516ae87894aa44623564ba2358c73a773b5bcc0"
+    },
+    "reviewedBoundaries": {
+      "file": "reviewed-boundaries.json",
+      "sha256": "d4986a089d0409e5bd77f682091a1d6462ad082326f05a3ad81b7f9505330890"
+    },
+    "reviewedPickerGroups": {
+      "file": "reviewed-picker-groups.json",
+      "sha256": "7d6c7ca8f9872e55c4c5a4f75dfd216d64ae9882644eb1abfe4c0b9cee39f4c6"
+    }
+  },
+  "approvedCorrections": [
+    {
+      "delegationId": 441,
+      "expectedGovernorateId": 348,
+      "expectedNames": {
+        "nomAr": "سيدي الهاني",
+        "nomFr": "Sidi Elheni",
+        "nomEn": "Sidi Elheni"
+      },
+      "referenceKind": "inm_published_reference",
+      "original": {
+        "lat": 35.6792,
+        "lng": 10.3231
+      },
+      "proposed": {
+        "lat": 35.681,
+        "lng": 10.31
+      },
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/originals/441-prayer-attempt01-ed389659db6374f9.json",
+          "sha256": "ed389659db6374f9ce781c198b880b897c60bf06a0d6b85299807e0c806baa03",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/348/441/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/originals/441-sun-attempt01-9cc28e573e2ddaba.json",
+          "sha256": "9cc28e573e2ddaba2acbfdd0feab75b0fe952e737db27200295dd9797577672d",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/348/441/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/retrieval-manifest.json",
+          "sha256": "1e23351a047856cf388bcea8a92333bbcfd0088aa8c951451017cb1dab6322a0"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-four-town",
+      "originalSourceAssetSha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-four-town-20260921/before-gouvernorats.json",
+        "sha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 468,
+      "expectedGovernorateId": 350,
+      "expectedNames": {
+        "nomAr": "دار شعبان الفهري",
+        "nomFr": "Dar Chaabane Elfehri",
+        "nomEn": "Dar Chaabane Elfehri"
+      },
+      "referenceKind": "inm_published_reference",
+      "original": {
+        "lat": 36.46,
+        "lng": 10.76
+      },
+      "proposed": {
+        "lat": 36.463,
+        "lng": 10.747
+      },
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/originals/468-prayer-attempt01-bfba2f0c3a453c69.json",
+          "sha256": "bfba2f0c3a453c69803f11813c615e2de04c95dbce52ffabe811b32f9a3b73f7",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/350/468/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/originals/468-sun-attempt01-3a6fd03c30476a3e.json",
+          "sha256": "3a6fd03c30476a3e5580766e45ac860d4b27df778a1b1c19719e4f0d40099788",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/350/468/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/retrieval-manifest.json",
+          "sha256": "1e23351a047856cf388bcea8a92333bbcfd0088aa8c951451017cb1dab6322a0"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-four-town",
+      "originalSourceAssetSha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-four-town-20260921/before-gouvernorats.json",
+        "sha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 516,
+      "expectedGovernorateId": 356,
+      "expectedNames": {
+        "nomAr": "تيبار",
+        "nomFr": "Tibar",
+        "nomEn": "Tibar"
+      },
+      "referenceKind": "inm_published_reference",
+      "original": {
+        "lat": 36.5301,
+        "lng": 9.1124
+      },
+      "proposed": {
+        "lat": 36.522,
+        "lng": 9.106
+      },
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/originals/516-prayer-attempt01-d43275ef7997ecb7.json",
+          "sha256": "d43275ef7997ecb79ac4c24d378f9c3278aa3808cc865c5f2864f708092a9817",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/356/516/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/originals/516-sun-attempt01-2c9fd37123d725c7.json",
+          "sha256": "2c9fd37123d725c7f6c5cd46a39fdab9a34d2f67e94c1691768682718e23c832",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/356/516/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/retrieval-manifest.json",
+          "sha256": "1e23351a047856cf388bcea8a92333bbcfd0088aa8c951451017cb1dab6322a0"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-four-town",
+      "originalSourceAssetSha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-four-town-20260921/before-gouvernorats.json",
+        "sha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 579,
+      "expectedGovernorateId": 362,
+      "expectedNames": {
+        "nomAr": "العيون",
+        "nomFr": "El Ayoun",
+        "nomEn": "El Ayoun"
+      },
+      "referenceKind": "inm_published_reference",
+      "original": {
+        "lat": 35.5341,
+        "lng": 8.8694
+      },
+      "proposed": {
+        "lat": 35.541,
+        "lng": 8.884
+      },
+      "inmEvidence": {
+        "serviceDate": "2026-09-19",
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/originals/579-prayer-attempt01-e81599e985ec0896.json",
+          "sha256": "e81599e985ec08968ea16db3a067f27fd4f5a4ff37797b4232a53c1b893e17a4",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/362/579/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/originals/579-sun-attempt01-a4a61139c68cd037.json",
+          "sha256": "a4a61139c68cd0379178ec2e51b77342e34ad5b23d984aedc7b780b8fd7f4408",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/362/579/"
+        },
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-four-town-20260921/timetable-evidence/retrieval-manifest.json",
+          "sha256": "1e23351a047856cf388bcea8a92333bbcfd0088aa8c951451017cb1dab6322a0"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-four-town",
+      "originalSourceAssetSha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-four-town-20260921/before-gouvernorats.json",
+        "sha256": "6f8e61640a7491cc774f3e9d9bf585e2f9236e6d4f38c8686e06a95563d82a06"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 482,
+      "expectedGovernorateId": 1012,
+      "original": {
+        "lat": 33.7072,
+        "lng": 8.9697
+      },
+      "proposed": {
+        "lat": 33.687,
+        "lng": 8.97
+      },
+      "expectedNames": {
+        "nomFr": "Kebili",
+        "nomAr": "قبلي",
+        "nomEn": "Kebili"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/482-prayer-attempt01-1ec80ba0e176230d.json",
+          "sha256": "1ec80ba0e176230dacf41a810ffc22e521c2c3f62c2859752404a7b74f4593a6",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/1012/482/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/482-sun-attempt01-ad1562ae6d00201b.json",
+          "sha256": "ad1562ae6d00201bd64c687c8f5746993c51fb2493a570ecc8cd2d806256f19a",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/1012/482/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 1025,
+      "expectedGovernorateId": 347,
+      "original": {
+        "lat": 33.96,
+        "lng": 9.99
+      },
+      "proposed": {
+        "lat": 33.959,
+        "lng": 10.005
+      },
+      "expectedNames": {
+        "nomFr": "Metouia",
+        "nomAr": "المطوية",
+        "nomEn": "Metouia"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/1025-prayer-attempt01-5d802780e04f434f.json",
+          "sha256": "5d802780e04f434f840428012aabe141dce0741836d25657ec11ace158e2f92c",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/347/1025/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/1025-sun-attempt01-ccde8b7e0ad16090.json",
+          "sha256": "ccde8b7e0ad16090e4e231910990d9ab03b323b838374d729a3116d3687f20e5",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/347/1025/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 636,
+      "expectedGovernorateId": 363,
+      "original": {
+        "lat": 36.1747,
+        "lng": 8.7049
+      },
+      "proposed": {
+        "lat": 36.184,
+        "lng": 8.715
+      },
+      "expectedNames": {
+        "nomFr": "Le Kef",
+        "nomAr": "الكاف",
+        "nomEn": "Le Kef"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/636-prayer-attempt01-592bcc9d1359d181.json",
+          "sha256": "592bcc9d1359d18121753d895296839fd12febb78cee8362659b63a99faa446d",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/636/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/636-sun-attempt01-f45ff86132694624.json",
+          "sha256": "f45ff861326946249a9e820d7f7576ac9d57172f606138ba12ae2cac698d2aae",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/636/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 532,
+      "expectedGovernorateId": 358,
+      "original": {
+        "lat": 36.8791,
+        "lng": 10.2656
+      },
+      "proposed": {
+        "lat": 36.868,
+        "lng": 10.265
+      },
+      "expectedNames": {
+        "nomFr": "Soukra",
+        "nomAr": "سكرة",
+        "nomEn": "Soukra"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/532-prayer-attempt01-93e450a5f98cb639.json",
+          "sha256": "93e450a5f98cb639168389816e5a0c673c0ed3d717a80a706972b78a9957c77b",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/532/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/532-sun-attempt01-9f13248f32930ba3.json",
+          "sha256": "9f13248f32930ba3d81835fbb519e04bf72a0f1bcd53211d24f5284b42d9287f",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/358/532/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 555,
+      "expectedGovernorateId": 360,
+      "original": {
+        "lat": 36.752,
+        "lng": 10.008
+      },
+      "proposed": {
+        "lat": 36.761,
+        "lng": 10.016
+      },
+      "expectedNames": {
+        "nomFr": "Mornaguia",
+        "nomAr": "المرناقية",
+        "nomEn": "Mornaguia"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/555-prayer-attempt01-e834b171316cbf1f.json",
+          "sha256": "e834b171316cbf1ffb392c980e14bc9e5f85c99069c31fd6ef61d0efc6a122b5",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/555/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/555-sun-attempt01-be4e0ade249d8364.json",
+          "sha256": "be4e0ade249d8364e340ad9dfcb60d931f66ca6b80df5e2aef8db850bb8a5e70",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/555/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 473,
+      "expectedGovernorateId": 351,
+      "original": {
+        "lat": 33.06,
+        "lng": 10.34
+      },
+      "proposed": {
+        "lat": 33.067,
+        "lng": 10.33
+      },
+      "expectedNames": {
+        "nomFr": "Ghomrassen",
+        "nomAr": "غمراسن",
+        "nomEn": "Ghomrassen"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/473-prayer-attempt01-006cf7a926932040.json",
+          "sha256": "006cf7a926932040fa2ab30e574d0be0e269802248ba4b405f51cadac96d712d",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/351/473/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/473-sun-attempt01-ea9fed8b8e93b1c6.json",
+          "sha256": "ea9fed8b8e93b1c6fe0caa8ddd922c418a1e3ba652cc84935bcccc676bf70f0a",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/351/473/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 584,
+      "expectedGovernorateId": 363,
+      "original": {
+        "lat": 36.07,
+        "lng": 9.03
+      },
+      "proposed": {
+        "lat": 36.078,
+        "lng": 9.021
+      },
+      "expectedNames": {
+        "nomFr": "Le Sers",
+        "nomAr": "السرس",
+        "nomEn": "Le Sers"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/584-prayer-attempt01-40a78353e2022884.json",
+          "sha256": "40a78353e2022884356c37d12f139a03d0449a13bab055fbd14d42e7f987d317",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/584/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/584-sun-attempt01-5d47bae3ad5f3fc9.json",
+          "sha256": "5d47bae3ad5f3fc986f50350ade4dae7a06af89740dcb81cd7b73b2c287ffdf6",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/584/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 514,
+      "expectedGovernorateId": 356,
+      "original": {
+        "lat": 36.97,
+        "lng": 9.07
+      },
+      "proposed": {
+        "lat": 36.976,
+        "lng": 9.081
+      },
+      "expectedNames": {
+        "nomFr": "Nefza",
+        "nomAr": "نفزة",
+        "nomEn": "Nefza"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/514-prayer-attempt01-d198e7388fd217d9.json",
+          "sha256": "d198e7388fd217d988fb4d52bb8f3bdbd28b73c048104a20dff1710f83b39eff",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/356/514/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/514-sun-attempt01-cd8fd966cd1a49c9.json",
+          "sha256": "cd8fd966cd1a49c992d6103e4d8ab63ca997c3a87c24ae6bb0a5e3c38e8d2ae4",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/356/514/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 467,
+      "expectedGovernorateId": 350,
+      "original": {
+        "lat": 36.65,
+        "lng": 10.58
+      },
+      "proposed": {
+        "lat": 36.649,
+        "lng": 10.592
+      },
+      "expectedNames": {
+        "nomFr": "Beni Khalled",
+        "nomAr": "بني خلاد",
+        "nomEn": "Beni Khalled"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/467-prayer-attempt01-66348dfbe13e4309.json",
+          "sha256": "66348dfbe13e4309f95b4abf048edb02bdd3f9d9104ed844b27c2ca60035fb00",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/350/467/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/467-sun-attempt01-1b9bfa8fd52d3653.json",
+          "sha256": "1b9bfa8fd52d36538a3a8f3b1a4fd145a92c729db3a9b8377f53a1d2bae8acf9",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/350/467/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 561,
+      "expectedGovernorateId": 361,
+      "original": {
+        "lat": 37.24,
+        "lng": 9.92
+      },
+      "proposed": {
+        "lat": 37.235,
+        "lng": 9.91
+      },
+      "expectedNames": {
+        "nomFr": "Menzel Jemil",
+        "nomAr": "منزل جميل",
+        "nomEn": "Menzel Jemil"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/561-prayer-attempt01-faa186685b6af127.json",
+          "sha256": "faa186685b6af127a4eeb888085891d37f39ae0d347d79896fdd5a0f50231f92",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/361/561/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/561-sun-attempt01-d1ace3d041b47710.json",
+          "sha256": "d1ace3d041b47710a72ab9203ef228e84d5704c22a8d90405b17e2c8c7075603",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/361/561/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 505,
+      "expectedGovernorateId": 355,
+      "original": {
+        "lat": 34.6,
+        "lng": 9.6
+      },
+      "proposed": {
+        "lat": 34.607,
+        "lng": 9.607
+      },
+      "expectedNames": {
+        "nomFr": "Meknassi",
+        "nomAr": "المكناسي",
+        "nomEn": "Meknassi"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/505-prayer-attempt01-60ab2c226c4d5aee.json",
+          "sha256": "60ab2c226c4d5aee19372505fe68ff144f7d9b8d55b3b3154bd670654394eeba",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/355/505/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/originals/505-sun-attempt01-77cf2b86e9d78fb6.json",
+          "sha256": "77cf2b86e9d78fb6c38a4bcdf525c6f0e281d295b48b5cbc720ae4cfe500f86e",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/355/505/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-eleven-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "1824919bb13d66b1af80e3bff0c4187a49be357962837f44b8895afff324e5a5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-eleven-reference",
+      "originalSourceAssetSha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-eleven-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "b760d2f201ce5e43c9b796e2b675970d08e644b45cc8c76c704e9cec4e55746a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 531,
+      "expectedGovernorateId": 358,
+      "original": {
+        "lat": 36.9562,
+        "lng": 10.2168
+      },
+      "proposed": {
+        "lat": 36.953,
+        "lng": 10.188
+      },
+      "expectedNames": {
+        "nomAr": "رواد",
+        "nomFr": "Raoued",
+        "nomEn": "Raoued"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/531-prayer-attempt01-5a798aa30a2f8f7d.json",
+          "sha256": "5a798aa30a2f8f7d53386a52181842b081d1e46fd629165f9f9da1c750c9848b",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/531/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/531-sun-attempt01-93c73b6028584e77.json",
+          "sha256": "93c73b6028584e77b64330b5931d2b0128e66c7609adbc1bd09f697973890b3f",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/358/531/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "ac584ab8965d470a579011c0316b72cf1d99c710bd36319eb45a12605d5816e3"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-ten-reference-20260921",
+      "originalSourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-ten-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 498,
+      "expectedGovernorateId": 354,
+      "original": {
+        "lat": 36.79,
+        "lng": 8.68
+      },
+      "proposed": {
+        "lat": 36.776,
+        "lng": 8.686
+      },
+      "expectedNames": {
+        "nomAr": "عين دراهم",
+        "nomFr": "Ain Drahem",
+        "nomEn": "Ain Drahem"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/498-prayer-attempt01-c86bea3d922f4a85.json",
+          "sha256": "c86bea3d922f4a8513d6254e4754b84f097a931112f03596d2ccb2a9a57d9b97",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/354/498/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/498-sun-attempt01-7c997438d8e46627.json",
+          "sha256": "7c997438d8e466276a7e80ecb4cd0787d658c374a8c0b103d2d2646182381f9c",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/354/498/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "ac584ab8965d470a579011c0316b72cf1d99c710bd36319eb45a12605d5816e3"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-ten-reference-20260921",
+      "originalSourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-ten-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 433,
+      "expectedGovernorateId": 348,
+      "original": {
+        "lat": 36.29,
+        "lng": 10.44
+      },
+      "proposed": {
+        "lat": 36.299,
+        "lng": 10.454
+      },
+      "expectedNames": {
+        "nomAr": "بوفيشة",
+        "nomFr": "Bouficha",
+        "nomEn": "Bouficha"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/433-prayer-attempt01-12535f1dcb708082.json",
+          "sha256": "12535f1dcb708082be546baad113630794ba310d487d1a8a735cf1ce727045e9",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/348/433/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/433-sun-attempt01-596bc3bbff03d7e3.json",
+          "sha256": "596bc3bbff03d7e395e2b172379e8d5b76adef968d99ea628a92a7b2b8be8231",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/348/433/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "ac584ab8965d470a579011c0316b72cf1d99c710bd36319eb45a12605d5816e3"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-ten-reference-20260921",
+      "originalSourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-ten-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 519,
+      "expectedGovernorateId": 356,
+      "original": {
+        "lat": 36.54,
+        "lng": 9.68
+      },
+      "proposed": {
+        "lat": 36.542,
+        "lng": 9.663
+      },
+      "expectedNames": {
+        "nomAr": "قبلاط",
+        "nomFr": "Goubellat",
+        "nomEn": "Goubellat"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/519-prayer-attempt01-85a8c5286ce0093f.json",
+          "sha256": "85a8c5286ce0093f1f93b091cd614de5055a5814ee9ab30291a01583200e7d83",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/356/519/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/519-sun-attempt01-6daf02598ce03ab5.json",
+          "sha256": "6daf02598ce03ab57b5d4a4642dbc1915761c770470632e436a2d37701161131",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/356/519/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "ac584ab8965d470a579011c0316b72cf1d99c710bd36319eb45a12605d5816e3"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-ten-reference-20260921",
+      "originalSourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-ten-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 525,
+      "expectedGovernorateId": 357,
+      "original": {
+        "lat": 35.84,
+        "lng": 9.58
+      },
+      "proposed": {
+        "lat": 35.849,
+        "lng": 9.592
+      },
+      "expectedNames": {
+        "nomAr": "الوسلاتية",
+        "nomFr": "Oueslatia",
+        "nomEn": "Oueslatia"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/525-prayer-attempt01-1fb969df97fa1a15.json",
+          "sha256": "1fb969df97fa1a151be1641549de6a76df51c228ef2116982910ac9fdc7f2657",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/357/525/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/525-sun-attempt01-aa0ba5fd6823d38c.json",
+          "sha256": "aa0ba5fd6823d38c7c52b36b45e554d558eabfe7aded9f61a07d5c4679591c0b",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/357/525/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "ac584ab8965d470a579011c0316b72cf1d99c710bd36319eb45a12605d5816e3"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-ten-reference-20260921",
+      "originalSourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-ten-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 605,
+      "expectedGovernorateId": 365,
+      "original": {
+        "lat": 34.37,
+        "lng": 8.15
+      },
+      "proposed": {
+        "lat": 34.383,
+        "lng": 8.15
+      },
+      "expectedNames": {
+        "nomAr": "الرديف",
+        "nomFr": "Redyef",
+        "nomEn": "Redyef"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/605-prayer-attempt01-d48f19fe1c3d7ec1.json",
+          "sha256": "d48f19fe1c3d7ec1698d8fd5667723b6b22447bd011486d9699cdadf1bd6a5c6",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/365/605/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/605-sun-attempt01-ccfec647871d5d02.json",
+          "sha256": "ccfec647871d5d021b26122f324e05641570883966967cbf7c21fcbefc8f01ac",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/365/605/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "ac584ab8965d470a579011c0316b72cf1d99c710bd36319eb45a12605d5816e3"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-ten-reference-20260921",
+      "originalSourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-ten-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 583,
+      "expectedGovernorateId": 363,
+      "original": {
+        "lat": 35.8876,
+        "lng": 8.8887
+      },
+      "proposed": {
+        "lat": 35.899,
+        "lng": 8.881
+      },
+      "expectedNames": {
+        "nomAr": "القصور",
+        "nomFr": "El Ksour",
+        "nomEn": "El Ksour"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/583-prayer-attempt01-1b171f74e4b11780.json",
+          "sha256": "1b171f74e4b11780e75a17b29ca5c64243776cb85dc0418ba32849c7f1109e17",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/583/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/583-sun-attempt01-91cfdbdca508ed8f.json",
+          "sha256": "91cfdbdca508ed8f042666c4c36c4130abb4c4f54e5409b1258a1afc2468f9b0",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/583/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "ac584ab8965d470a579011c0316b72cf1d99c710bd36319eb45a12605d5816e3"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-ten-reference-20260921",
+      "originalSourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-ten-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 446,
+      "expectedGovernorateId": 349,
+      "original": {
+        "lat": 36.71,
+        "lng": 10.16
+      },
+      "proposed": {
+        "lat": 36.7,
+        "lng": 10.169
+      },
+      "expectedNames": {
+        "nomAr": "فوشانة",
+        "nomFr": "Fouchana",
+        "nomEn": "Fouchana"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/446-prayer-attempt01-1c2d7b22405af3c7.json",
+          "sha256": "1c2d7b22405af3c714346f4ea6c22e31915851c011d1d77a361484624f7ef4e9",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/349/446/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/446-sun-attempt01-1f89a9156783fbda.json",
+          "sha256": "1f89a9156783fbda99a9a00a14829eb3f69fae0666315a413b8712f043a2dce3",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/349/446/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "ac584ab8965d470a579011c0316b72cf1d99c710bd36319eb45a12605d5816e3"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-ten-reference-20260921",
+      "originalSourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-ten-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 573,
+      "expectedGovernorateId": 362,
+      "original": {
+        "lat": 35.583,
+        "lng": 8.6672
+      },
+      "proposed": {
+        "lat": 35.572,
+        "lng": 8.67
+      },
+      "expectedNames": {
+        "nomAr": "تالة",
+        "nomFr": "Tala",
+        "nomEn": "Tala"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/573-prayer-attempt01-08f7ce2b6c1ca4a4.json",
+          "sha256": "08f7ce2b6c1ca4a43716a47924a5db3ca45c19f6ae24c0d312669515dd075af0",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/362/573/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/573-sun-attempt01-c7fd96dec7f8d200.json",
+          "sha256": "c7fd96dec7f8d20033e98119310a96e31183679ae37376e7578684b564552c87",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/362/573/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "ac584ab8965d470a579011c0316b72cf1d99c710bd36319eb45a12605d5816e3"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-ten-reference-20260921",
+      "originalSourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-ten-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 592,
+      "expectedGovernorateId": 364,
+      "original": {
+        "lat": 35.74,
+        "lng": 10.71
+      },
+      "proposed": {
+        "lat": 35.751,
+        "lng": 10.711
+      },
+      "expectedNames": {
+        "nomAr": "الساحلين",
+        "nomFr": "Sahline",
+        "nomEn": "Sahline"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/592-prayer-attempt01-24ecd4362b9dbb66.json",
+          "sha256": "24ecd4362b9dbb664dd57bfb27219cca44642941b548cfe7a42ca85779fdcedf",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/364/592/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/originals/592-sun-attempt01-5c499948877da3ff.json",
+          "sha256": "5c499948877da3ff8c021ef584214821d603bc09e57d40f5d1f4202212a6ce9c",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/364/592/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-ten-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "ac584ab8965d470a579011c0316b72cf1d99c710bd36319eb45a12605d5816e3"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-ten-reference-20260921",
+      "originalSourceAssetSha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-ten-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "44099c76a8200d9bf731babcb3620a7a91f6c34f6d5bc8c56ae1327aaf84a5fb"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 397,
+      "expectedGovernorateId": 342,
+      "original": {
+        "lat": 36.789,
+        "lng": 10.1213
+      },
+      "proposed": {
+        "lat": 36.79,
+        "lng": 10.107
+      },
+      "expectedNames": {
+        "nomAr": "الحرايرية",
+        "nomFr": "El Hrairia",
+        "nomEn": "El Hrairia"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/397-prayer-attempt01-eeaddcd12350d269.json",
+          "sha256": "eeaddcd12350d269055471be9d420e6a7154a306ce6aa797c5c5bcee089137c9",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/397/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/397-sun-attempt01-538aaa4330aa2d32.json",
+          "sha256": "538aaa4330aa2d3258c9cf41cf39c8340e4e827c4bd77d0d2504b3fcdbdd9583",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/397/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 398,
+      "expectedGovernorateId": 342,
+      "original": {
+        "lat": 36.775,
+        "lng": 10.105
+      },
+      "proposed": {
+        "lat": 36.77,
+        "lng": 10.116
+      },
+      "expectedNames": {
+        "nomAr": "سيدي حسين",
+        "nomFr": "Sidi Hassine",
+        "nomEn": "Sidi Hassine"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/398-prayer-attempt01-bda8441d99d6381d.json",
+          "sha256": "bda8441d99d6381d4ee459260c75bba73490cb453765a27dd99119e028beae78",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/398/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/398-sun-attempt01-b915e8a2f118d440.json",
+          "sha256": "b915e8a2f118d4403736de3e7722e87983465148303746694196510e220410ef",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/398/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 400,
+      "expectedGovernorateId": 342,
+      "original": {
+        "lat": 36.7474,
+        "lng": 10.1871
+      },
+      "proposed": {
+        "lat": 36.76,
+        "lng": 10.191
+      },
+      "expectedNames": {
+        "nomAr": "كبارية",
+        "nomFr": "El Kabaria",
+        "nomEn": "El Kabaria"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/400-prayer-attempt01-f135a44973d82e78.json",
+          "sha256": "f135a44973d82e7827178ad25c54171f2cf8bb235c8e2d398481a02609c01b89",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/400/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/400-sun-attempt01-ceb3d309f0647509.json",
+          "sha256": "ceb3d309f0647509aa277b8d33b84d9950529ba75cc9361fd8f32da20384d9e8",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/400/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 405,
+      "expectedGovernorateId": 342,
+      "original": {
+        "lat": 36.7936,
+        "lng": 10.1605
+      },
+      "proposed": {
+        "lat": 36.785,
+        "lng": 10.165
+      },
+      "expectedNames": {
+        "nomAr": "السيجومي",
+        "nomFr": "Sijoumi",
+        "nomEn": "Sijoumi"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/405-prayer-attempt01-cfe0466197a632d3.json",
+          "sha256": "cfe0466197a632d3588ad4f4961b60c938af5487dfa35b87741b43d0d43d6962",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/342/405/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/405-sun-attempt01-f05150956e07c116.json",
+          "sha256": "f05150956e07c11633cb47c1a6e12af0d631c4a5e02002a218e6630b9ae6acfb",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/342/405/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 423,
+      "expectedGovernorateId": 345,
+      "original": {
+        "lat": 35.43,
+        "lng": 10.99
+      },
+      "proposed": {
+        "lat": 35.421,
+        "lng": 10.987
+      },
+      "expectedNames": {
+        "nomAr": "قصور الساف",
+        "nomFr": "Ksour Essef",
+        "nomEn": "Ksour Essef"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/423-prayer-attempt01-53cea267241191f6.json",
+          "sha256": "53cea267241191f6e206bc68cd732f6f836f4cbc0a1dc08a8e56f1ddc74bd8ef",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/345/423/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/423-sun-attempt01-aa1e7969284cc7b5.json",
+          "sha256": "aa1e7969284cc7b540b38aa16fe076fd27886c7ff9016daa5786dd3d92463bbd",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/345/423/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 427,
+      "expectedGovernorateId": 345,
+      "original": {
+        "lat": 35.46,
+        "lng": 10.74
+      },
+      "proposed": {
+        "lat": 35.46,
+        "lng": 10.727
+      },
+      "expectedNames": {
+        "nomAr": "بومرداس",
+        "nomFr": "Boumerdes",
+        "nomEn": "Boumerdes"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/427-prayer-attempt01-37293e61c878cf96.json",
+          "sha256": "37293e61c878cf96f5aaffb1a1725c49a0cbb18fa0d9cd694b294e7af70a6e54",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/345/427/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/427-sun-attempt01-6f086d62944074a0.json",
+          "sha256": "6f086d62944074a07c28c219a7450d8bdb031982c32e56154f424e5ed16603e8",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/345/427/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 438,
+      "expectedGovernorateId": 348,
+      "original": {
+        "lat": 35.86,
+        "lng": 10.605
+      },
+      "proposed": {
+        "lat": 35.858,
+        "lng": 10.594
+      },
+      "expectedNames": {
+        "nomAr": "حمام سوسة",
+        "nomFr": "Hammam Sousse",
+        "nomEn": "Hammam Sousse"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/438-prayer-attempt01-097dd3bec80a2289.json",
+          "sha256": "097dd3bec80a2289d97ef486b4c94cee40390f8cdef0ebfb6a0793baa072303d",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/348/438/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/438-sun-attempt01-3c343a8143503e26.json",
+          "sha256": "3c343a8143503e26fe9180af0f0d1ad7e171b8a3e0324c09edd341581d656088",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/348/438/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 444,
+      "expectedGovernorateId": 349,
+      "original": {
+        "lat": 36.68,
+        "lng": 10.27
+      },
+      "proposed": {
+        "lat": 36.685,
+        "lng": 10.288
+      },
+      "expectedNames": {
+        "nomAr": "مرناق",
+        "nomFr": "Mornag",
+        "nomEn": "Mornag"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/444-prayer-attempt01-fd4c4de3f9b03045.json",
+          "sha256": "fd4c4de3f9b03045edebbca0ae09f2650719f67d801faad366873dae5c6ef23c",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/349/444/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/444-sun-attempt01-e842dbc373975696.json",
+          "sha256": "e842dbc3739756967634d8536fbc36f0e1ab7a639a7aaf2b96ad6a3bed24ab29",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/349/444/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 447,
+      "expectedGovernorateId": 349,
+      "original": {
+        "lat": 36.7134,
+        "lng": 10.2096
+      },
+      "proposed": {
+        "lat": 36.721,
+        "lng": 10.216
+      },
+      "expectedNames": {
+        "nomAr": "المروج",
+        "nomFr": "El Mourouj",
+        "nomEn": "El Mourouj"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/447-prayer-attempt01-3e6aea297fbf5273.json",
+          "sha256": "3e6aea297fbf5273b97f3c117ff97e753c3a77b43f1385f36211c69651b5935d",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/349/447/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/447-sun-attempt01-e1f4f7214a7bf653.json",
+          "sha256": "e1f4f7214a7bf6531494cb22370e557cef855bb29bc5870ad50bcd8164ddd299",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/349/447/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 453,
+      "expectedGovernorateId": 349,
+      "original": {
+        "lat": 36.727,
+        "lng": 10.2993
+      },
+      "proposed": {
+        "lat": 36.709,
+        "lng": 10.29
+      },
+      "expectedNames": {
+        "nomAr": "بومهل البساتين",
+        "nomFr": "Boumhel Bassatine",
+        "nomEn": "Boumhel Bassatine"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/453-prayer-attempt01-4a81da7aad86a70a.json",
+          "sha256": "4a81da7aad86a70aff8a3bfa1cda0decd138e887a23832c3e731060c47673467",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/349/453/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/453-sun-attempt01-d22b987b1a3f47ab.json",
+          "sha256": "d22b987b1a3f47ab8d13a5d5163369f3e154cb4d245db6975e1eae88b4e0c558",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/349/453/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 456,
+      "expectedGovernorateId": 350,
+      "original": {
+        "lat": 36.78,
+        "lng": 11.01
+      },
+      "proposed": {
+        "lat": 36.784,
+        "lng": 10.986
+      },
+      "expectedNames": {
+        "nomAr": "منزل تميم",
+        "nomFr": "Menzel Temime",
+        "nomEn": "Menzel Temime"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/456-prayer-attempt01-cbed3d5223a88910.json",
+          "sha256": "cbed3d5223a889101faf07e338ac264f56866d65377fba3bb835520f63dddbaa",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/350/456/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/456-sun-attempt01-88331497ad1f2779.json",
+          "sha256": "88331497ad1f27796f91cc1382c6f9b0200c24895069b69332fbe7ec13d117c6",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/350/456/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 462,
+      "expectedGovernorateId": 350,
+      "original": {
+        "lat": 36.78,
+        "lng": 10.62
+      },
+      "proposed": {
+        "lat": 36.792,
+        "lng": 10.629
+      },
+      "expectedNames": {
+        "nomAr": "تاكلسة",
+        "nomFr": "Takelsa",
+        "nomEn": "Takelsa"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/462-prayer-attempt01-aac175ade1d8497d.json",
+          "sha256": "aac175ade1d8497d75aed173b319858f8c603293394645bd8b237c8d82834806",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/350/462/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/462-sun-attempt01-48e8ca982cd4ea92.json",
+          "sha256": "48e8ca982cd4ea9208a8f1d0d5e97fe6a4dd3ab63682eb2ff8eb1052d4c6f13f",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/350/462/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 471,
+      "expectedGovernorateId": 351,
+      "original": {
+        "lat": 32.32,
+        "lng": 10.39
+      },
+      "proposed": {
+        "lat": 32.316,
+        "lng": 10.4
+      },
+      "expectedNames": {
+        "nomAr": "رمادة",
+        "nomFr": "Remada",
+        "nomEn": "Remada"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/471-prayer-attempt01-52d8d69f73688837.json",
+          "sha256": "52d8d69f736888373c6901da86fe0f3c91d3ddd1c7e7f981cdb4494d4079a969",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/351/471/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/471-sun-attempt01-6105ccbd073c8988.json",
+          "sha256": "6105ccbd073c89887c4da861976f98a37c84b6d5600870963ba7882762791543",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/351/471/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 492,
+      "expectedGovernorateId": 353,
+      "original": {
+        "lat": 33.81,
+        "lng": 11.01
+      },
+      "proposed": {
+        "lat": 33.821,
+        "lng": 10.997
+      },
+      "expectedNames": {
+        "nomAr": "جربة ميدون",
+        "nomFr": "Djerba Midoun",
+        "nomEn": "Djerba Midoun"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/492-prayer-attempt01-eebffb6c14668ef3.json",
+          "sha256": "eebffb6c14668ef3f794bbfb3f819d3d605105d5e2c230dc0f5bdd6f6cce8582",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/353/492/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/492-sun-attempt01-d0fd4d79b00742b5.json",
+          "sha256": "d0fd4d79b00742b58d4bcac1304e9fb65a0ce626c4683a2c696932921ad70e38",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/353/492/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 493,
+      "expectedGovernorateId": 353,
+      "original": {
+        "lat": 33.7323,
+        "lng": 10.7605
+      },
+      "proposed": {
+        "lat": 33.725,
+        "lng": 10.749
+      },
+      "expectedNames": {
+        "nomAr": "جربة آجيم",
+        "nomFr": "Djerba Ajim",
+        "nomEn": "Djerba Ajim"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/493-prayer-attempt01-a72a08288eb6c1bb.json",
+          "sha256": "a72a08288eb6c1bbcea3a2bea2c20b7c7e14e5635aee287ffbd12836a0960fcf",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/353/493/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/493-sun-attempt01-cb45e4ce6c2d1432.json",
+          "sha256": "cb45e4ce6c2d1432b233e1da241421caa5056406cfe61daac653fdbe4c86d283",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/353/493/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 494,
+      "expectedGovernorateId": 353,
+      "original": {
+        "lat": 33.875,
+        "lng": 10.8575
+      },
+      "proposed": {
+        "lat": 33.866,
+        "lng": 10.85
+      },
+      "expectedNames": {
+        "nomAr": "جربة حومة السوق",
+        "nomFr": "Djerba Houmt Souk",
+        "nomEn": "Djerba Houmt Souk"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/494-prayer-attempt01-c6d2aeb2a6647f58.json",
+          "sha256": "c6d2aeb2a6647f58859135ce497d8a104226a640e1325acba310820bcdd17cc3",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/353/494/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/494-sun-attempt01-c08645c8f7a26a7a.json",
+          "sha256": "c08645c8f7a26a7afb08770eeb4082c0d44d377f941aa806b6601f556cd6d0fb",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/353/494/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 501,
+      "expectedGovernorateId": 354,
+      "original": {
+        "lat": 36.45,
+        "lng": 8.45
+      },
+      "proposed": {
+        "lat": 36.448,
+        "lng": 8.436
+      },
+      "expectedNames": {
+        "nomAr": "غار الدماء",
+        "nomFr": "Ghardimaou",
+        "nomEn": "Ghardimaou"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/501-prayer-attempt01-95944be16c7389b8.json",
+          "sha256": "95944be16c7389b8c8cc1b15c0383af05fd0077a9ee3831f561f365bb301c535",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/354/501/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/501-sun-attempt01-6496dbe5d2d34dd2.json",
+          "sha256": "6496dbe5d2d34dd2f876b55f562306cc7993b790742581b3ebd77d0ab64d7f53",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/354/501/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 503,
+      "expectedGovernorateId": 354,
+      "original": {
+        "lat": 36.6853,
+        "lng": 8.9025
+      },
+      "proposed": {
+        "lat": 36.706,
+        "lng": 8.944
+      },
+      "expectedNames": {
+        "nomAr": "بلطة بوعوان",
+        "nomFr": "Balta Bou Aouane",
+        "nomEn": "Balta Bou Aouane"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/503-prayer-attempt01-b68e01e6729a8a07.json",
+          "sha256": "b68e01e6729a8a0757a80931c71cf0bad5fd2c9336bef2b5debfc653348d9d97",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/354/503/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/503-sun-attempt01-d71e05cbdc9b295d.json",
+          "sha256": "d71e05cbdc9b295d69fc04294fe404f3846a7361bcbb192856665e46bd78fbda",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/354/503/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 520,
+      "expectedGovernorateId": 356,
+      "original": {
+        "lat": 36.64,
+        "lng": 9.61
+      },
+      "proposed": {
+        "lat": 36.653,
+        "lng": 9.611
+      },
+      "expectedNames": {
+        "nomAr": "مجاز الباب",
+        "nomFr": "Mejez El Bab",
+        "nomEn": "Mejez El Bab"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/520-prayer-attempt01-970ec50549d7d80e.json",
+          "sha256": "970ec50549d7d80e82b7acbd758e8e565fa9ba611e81d4fe7d743f275bbbbaaa",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/356/520/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/520-sun-attempt01-321f3bbc35675c74.json",
+          "sha256": "321f3bbc35675c74168ffcf102c37ee6dd60d3e5f6cbd13c1124d1b9f648bf08",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/356/520/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 533,
+      "expectedGovernorateId": 358,
+      "original": {
+        "lat": 36.8607,
+        "lng": 10.1087
+      },
+      "proposed": {
+        "lat": 36.875,
+        "lng": 10.113
+      },
+      "expectedNames": {
+        "nomAr": "المنيهلة",
+        "nomFr": "Mnihla",
+        "nomEn": "Mnihla"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/533-prayer-attempt01-ed160bb834f2c32e.json",
+          "sha256": "ed160bb834f2c32e8a341450b7ebe36697dc65dafec9adc1b66fa22918985a42",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/358/533/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/533-sun-attempt01-1ce97870cf201f03.json",
+          "sha256": "1ce97870cf201f031fba6f68a8b976605a896d27cbb6c5de56401c0e48b3240c",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/358/533/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 548,
+      "expectedGovernorateId": 359,
+      "original": {
+        "lat": 34.7955,
+        "lng": 10.7831
+      },
+      "proposed": {
+        "lat": 34.793,
+        "lng": 10.806
+      },
+      "expectedNames": {
+        "nomAr": "ساقية الداير",
+        "nomFr": "Sakiet Eddaier",
+        "nomEn": "Sakiet Eddaier"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/548-prayer-attempt01-972d0797112cd25f.json",
+          "sha256": "972d0797112cd25fdd5fedc21481bce95d087be2478eb1d02afba35243390934",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/359/548/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/548-sun-attempt01-3e11279eff1ef67d.json",
+          "sha256": "3e11279eff1ef67dda165ce686e332a981c8ff075158260642e6d6223d24e44e",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/359/548/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 556,
+      "expectedGovernorateId": 360,
+      "original": {
+        "lat": 36.83,
+        "lng": 9.85
+      },
+      "proposed": {
+        "lat": 36.833,
+        "lng": 9.833
+      },
+      "expectedNames": {
+        "nomAr": "طبربة",
+        "nomFr": "Tebourba",
+        "nomEn": "Tebourba"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/556-prayer-attempt01-4b6829cc2125cd33.json",
+          "sha256": "4b6829cc2125cd33a72088ca74f70c2fac20271ce0692054fa0e9340a8e76cbe",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/556/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/556-sun-attempt01-64a5f9a2af583314.json",
+          "sha256": "64a5f9a2af58331466c38fbbe64e1db9ac67d358e398a5bf34dcffbce33959dd",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/556/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 562,
+      "expectedGovernorateId": 361,
+      "original": {
+        "lat": 37.16,
+        "lng": 9.79
+      },
+      "proposed": {
+        "lat": 37.15,
+        "lng": 9.783
+      },
+      "expectedNames": {
+        "nomAr": "منزل برقيبة",
+        "nomFr": "Menzel Bourguiba",
+        "nomEn": "Menzel Bourguiba"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/562-prayer-attempt01-98c2259956a20427.json",
+          "sha256": "98c2259956a204273b315936112dae1ed90737b414d772793614a817cf510a8c",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/361/562/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/562-sun-attempt01-b2b67208129e7fbb.json",
+          "sha256": "b2b67208129e7fbb97b0a6cbe70765f944554410a603620c8870d6000ab9a25d",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/361/562/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 577,
+      "expectedGovernorateId": 362,
+      "original": {
+        "lat": 34.95,
+        "lng": 8.57
+      },
+      "proposed": {
+        "lat": 34.943,
+        "lng": 8.555
+      },
+      "expectedNames": {
+        "nomAr": "فريانة",
+        "nomFr": "Feriana",
+        "nomEn": "Feriana"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/577-prayer-attempt01-b5b680baeaa17557.json",
+          "sha256": "b5b680baeaa17557674f6c5bf4d7e164af74f4ec5c33f9609319bf40b2adaa9a",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/362/577/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/577-sun-attempt01-aea72e7ced3049d3.json",
+          "sha256": "aea72e7ced3049d339c5ba84672c55cebcc8290e699d1f456ae3f1ca487ea895",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/362/577/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 587,
+      "expectedGovernorateId": 363,
+      "original": {
+        "lat": 35.6576,
+        "lng": 8.5886
+      },
+      "proposed": {
+        "lat": 35.666,
+        "lng": 8.584
+      },
+      "expectedNames": {
+        "nomAr": "القلعة الخصبة",
+        "nomFr": "Kalâa El Khasba",
+        "nomEn": "Kalâa El Khasba"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/587-prayer-attempt01-10faa480c286f7d8.json",
+          "sha256": "10faa480c286f7d88c741029f3520d66772d45b5a73cabe5cbdf9dd7b64be05e",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/363/587/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/587-sun-attempt01-4cb87b5fd2ca2634.json",
+          "sha256": "4cb87b5fd2ca26341b7c149e1856b1dd90c9845ae19b32214d3ea25f8feb36ad",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/363/587/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 598,
+      "expectedGovernorateId": 364,
+      "original": {
+        "lat": 35.63,
+        "lng": 10.89
+      },
+      "proposed": {
+        "lat": 35.632,
+        "lng": 10.901
+      },
+      "expectedNames": {
+        "nomAr": "المكنين",
+        "nomFr": "Moknine",
+        "nomEn": "Moknine"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/598-prayer-attempt01-ead46f7842e513e4.json",
+          "sha256": "ead46f7842e513e4254e8b43b0b9a576208e5cdc9643d2c30cd9fc97c4e15ec6",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/364/598/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/598-sun-attempt01-06ce2ccfc825e2d6.json",
+          "sha256": "06ce2ccfc825e2d65cc0376eea8152ffab2868ef3df38933af9cd027e35c0996",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/364/598/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 599,
+      "expectedGovernorateId": 364,
+      "original": {
+        "lat": 35.68,
+        "lng": 10.84
+      },
+      "proposed": {
+        "lat": 35.689,
+        "lng": 10.842
+      },
+      "expectedNames": {
+        "nomAr": "قصيبة المديوني",
+        "nomFr": "Ksibet Medyouni",
+        "nomEn": "Ksibet Medyouni"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/599-prayer-attempt01-bb780087766d814c.json",
+          "sha256": "bb780087766d814cf9cba0c4dc155f9aa1d99d963fb590cf1920727d14bf53cb",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/364/599/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/599-sun-attempt01-b6dbffc30545a9a6.json",
+          "sha256": "b6dbffc30545a9a63fc82088781f20681cbca5377ccaa74a2a56eb3c93a3e7fa",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/364/599/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 602,
+      "expectedGovernorateId": 364,
+      "original": {
+        "lat": 35.65,
+        "lng": 10.88
+      },
+      "proposed": {
+        "lat": 35.65,
+        "lng": 10.9
+      },
+      "expectedNames": {
+        "nomAr": "قصر هلال",
+        "nomFr": "Ksar Helal",
+        "nomEn": "Ksar Helal"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/602-prayer-attempt01-8379eff2ac5ec38f.json",
+          "sha256": "8379eff2ac5ec38f6867bd6765a28452fed22c1e44b9d55f3c36c8fa95020d1c",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/364/602/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/602-sun-attempt01-eee6f8a5dc1bc611.json",
+          "sha256": "eee6f8a5dc1bc6119d06fb0ccc2e29063a0ca94292c75279f19af1c8fc71c94b",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/364/602/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 606,
+      "expectedGovernorateId": 365,
+      "original": {
+        "lat": 34.33,
+        "lng": 8.4
+      },
+      "proposed": {
+        "lat": 34.316,
+        "lng": 8.402
+      },
+      "expectedNames": {
+        "nomAr": "المتلوي",
+        "nomFr": "Metlaoui",
+        "nomEn": "Metlaoui"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/606-prayer-attempt01-6f2d0161febe7d5c.json",
+          "sha256": "6f2d0161febe7d5cd759ba49e1fc4bf3306f4f8b25df3d54f8d8bd4233762039",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/365/606/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/606-sun-attempt01-7b978569e95cf07e.json",
+          "sha256": "7b978569e95cf07e21f33085be47cf274f14b6ffc3c6430b29215c29d77bcef5",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/365/606/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 620,
+      "expectedGovernorateId": 347,
+      "original": {
+        "lat": 33.8815,
+        "lng": 10.0982
+      },
+      "proposed": {
+        "lat": 33.893,
+        "lng": 10.103
+      },
+      "expectedNames": {
+        "nomAr": "قابس",
+        "nomFr": "Gabes",
+        "nomEn": "Gabes"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/620-prayer-attempt01-8f56ff6b47cdc566.json",
+          "sha256": "8f56ff6b47cdc566f9b29290d27617f04c97c4dde10e0f2bf52370b4c5d55530",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/347/620/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/620-sun-attempt01-f437335d57c71229.json",
+          "sha256": "f437335d57c71229a665b6f40613747ff4ba2fd334ecbaeadee4bca0cc62df5c",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/347/620/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 626,
+      "expectedGovernorateId": 353,
+      "original": {
+        "lat": 33.3399,
+        "lng": 10.5055
+      },
+      "proposed": {
+        "lat": 33.345,
+        "lng": 10.494
+      },
+      "expectedNames": {
+        "nomAr": "مدنين",
+        "nomFr": "Medenine",
+        "nomEn": "Medenine"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/626-prayer-attempt01-252ff38365ac176f.json",
+          "sha256": "252ff38365ac176f962aa87f9ffa2da1cecd5aea4b3b9648087d681742b4f467",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/353/626/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/626-sun-attempt01-9b88fa6a720374df.json",
+          "sha256": "9b88fa6a720374dfab38e54814077ce145bcdd17712db0813e8dfcab8fadcf17",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/353/626/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 632,
+      "expectedGovernorateId": 359,
+      "original": {
+        "lat": 34.7406,
+        "lng": 10.7603
+      },
+      "proposed": {
+        "lat": 34.733,
+        "lng": 10.75
+      },
+      "expectedNames": {
+        "nomAr": "صفاقس",
+        "nomFr": "Sfax",
+        "nomEn": "Sfax"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/632-prayer-attempt01-65048ccdf7b4ff81.json",
+          "sha256": "65048ccdf7b4ff8127b1125fc654349adcf9a90fa019595e8e7f5109d9a925dd",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/359/632/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/632-sun-attempt01-77411be065ab00fc.json",
+          "sha256": "77411be065ab00fc374638b2ae6302d2bf92275bc9fc5cc6cf0a3efa5a8f4719",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/359/632/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 633,
+      "expectedGovernorateId": 360,
+      "original": {
+        "lat": 36.8081,
+        "lng": 10.0863
+      },
+      "proposed": {
+        "lat": 36.824,
+        "lng": 10.069
+      },
+      "expectedNames": {
+        "nomAr": "منوبة",
+        "nomFr": "Manouba",
+        "nomEn": "Manouba"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/633-prayer-attempt01-b2cfff3291976394.json",
+          "sha256": "b2cfff3291976394b74281b48658dae014ab9030b98868f2d3090bfb183f1cfc",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/360/633/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/633-sun-attempt01-7736c71921ecc805.json",
+          "sha256": "7736c71921ecc805dc4d6bf89251d90d311662aa502a053a7305f5a9780dd944",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/360/633/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    },
+    {
+      "delegationId": 637,
+      "expectedGovernorateId": 364,
+      "original": {
+        "lat": 35.7643,
+        "lng": 10.8113
+      },
+      "proposed": {
+        "lat": 35.775,
+        "lng": 10.831
+      },
+      "expectedNames": {
+        "nomAr": "المنستير",
+        "nomFr": "Monastir",
+        "nomEn": "Monastir"
+      },
+      "referenceKind": "inm_published_reference",
+      "inmEvidence": {
+        "prayer": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/637-prayer-attempt01-83c1a3968b65993a.json",
+          "sha256": "83c1a3968b65993ab0ff493c451ecca2d21e6bbab5578dc4e274d8ba3cd77ec7",
+          "url": "https://www.meteo.tn/horaire_gouvernorat/2026-09-19/364/637/"
+        },
+        "sun": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/originals/637-sun-attempt01-38618d57d41a169c.json",
+          "sha256": "38618d57d41a169c600323d28ff61d7d31238a6623d7de9a65d695c82491ec6d",
+          "url": "https://www.meteo.tn/lever_coucher_gouvernorat/2026-09-19/364/637/"
+        },
+        "serviceDate": "2026-09-19",
+        "retrievalManifest": {
+          "file": "coordinate-reviews/inm-published-next34-reference-20260921/timetable-evidence/derived-retrieval-manifest.json",
+          "sha256": "7d4c2ba8bb734deaa15db0cace3dadebea21f04a754adce8537fcafdbce0f3d5"
+        }
+      },
+      "reviewedDate": "2026-09-21",
+      "originalProvenance": {
+        "kind": "legacy-undocumented",
+        "sourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "reviewBatchId": "2026-09-21-inm-published-next34-reference-20260921",
+      "originalSourceAssetSha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a",
+      "originalSourceAssetEvidence": {
+        "file": "coordinate-reviews/inm-published-next34-reference-20260921/predecessor-gouvernorats.json",
+        "sha256": "0f7a9e2a026471a6b15c3b5c14576e0e5ad051ee13538de45bf42877b0b10c7a"
+      },
+      "qualification": "Published nearest-selection reference; no internal calculation or boundary certification."
+    }
+  ],
+  "expectedRawChanges": [
+    {
+      "id": "osm:node:10118270176",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:node:10168275561",
+      "before": 632,
+      "after": 547
+    },
+    {
+      "id": "osm:node:10739565994",
+      "before": 523,
+      "after": 525
+    },
+    {
+      "id": "osm:node:1115570559",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:node:11233688598",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:1143501777",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:1144116784",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:11983749556",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12171078121",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12229092546",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:node:12373562064",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:12563677142",
+      "before": 525,
+      "after": 523
+    },
+    {
+      "id": "osm:node:12798087645",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:13411824367",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:1374298064",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:1435053835",
+      "before": 559,
+      "after": 556
+    },
+    {
+      "id": "osm:node:2191295540",
+      "before": 458,
+      "after": 467
+    },
+    {
+      "id": "osm:node:2593122311",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:3145829327",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:node:616794273",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:node:6677938930",
+      "before": 427,
+      "after": 597
+    },
+    {
+      "id": "osm:node:7023800964",
+      "before": 466,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7026501958",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7036738535",
+      "before": 545,
+      "after": 548
+    },
+    {
+      "id": "osm:node:7429400517",
+      "before": 630,
+      "after": 441
+    },
+    {
+      "id": "osm:node:7855480160",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:node:7875668092",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875711070",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:9949605492",
+      "before": 482,
+      "after": 483
+    },
+    {
+      "id": "osm:relation:7062758",
+      "before": 532,
+      "after": 386
+    },
+    {
+      "id": "osm:relation:7082187",
+      "before": 484,
+      "after": 482
+    },
+    {
+      "id": "osm:relation:7090538",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7090541",
+      "before": 633,
+      "after": 554
+    },
+    {
+      "id": "osm:relation:7090953",
+      "before": 554,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7095859",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7098933",
+      "before": 556,
+      "after": 551
+    },
+    {
+      "id": "osm:relation:7099051",
+      "before": 551,
+      "after": 556
+    },
+    {
+      "id": "osm:relation:7100415",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:relation:7102534",
+      "before": 467,
+      "after": 465
+    },
+    {
+      "id": "osm:relation:7103012",
+      "before": 459,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103334",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7105911",
+      "before": 603,
+      "after": 599
+    },
+    {
+      "id": "osm:relation:7109667",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7110097",
+      "before": 600,
+      "after": 602
+    },
+    {
+      "id": "osm:relation:7110674",
+      "before": 602,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7112718",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7114421",
+      "before": 535,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7114433",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114434",
+      "before": 596,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114550",
+      "before": 533,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7115792",
+      "before": 535,
+      "after": 533
+    },
+    {
+      "id": "osm:relation:7118024",
+      "before": 397,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7119647",
+      "before": 565,
+      "after": 562
+    },
+    {
+      "id": "osm:relation:7125598",
+      "before": 525,
+      "after": 414
+    },
+    {
+      "id": "osm:relation:7126403",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7126404",
+      "before": 514,
+      "after": 497
+    },
+    {
+      "id": "osm:relation:7126520",
+      "before": 503,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7126584",
+      "before": 502,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7134903",
+      "before": 503,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7137747",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:relation:7145397",
+      "before": 1019,
+      "after": 620
+    },
+    {
+      "id": "osm:relation:7147546",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147559",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147595",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7150174",
+      "before": 606,
+      "after": 638
+    },
+    {
+      "id": "osm:relation:7152260",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152261",
+      "before": 619,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152266",
+      "before": 423,
+      "after": 1084
+    },
+    {
+      "id": "osm:relation:7164907",
+      "before": 581,
+      "after": 579
+    },
+    {
+      "id": "osm:relation:7164933",
+      "before": 580,
+      "after": 577
+    },
+    {
+      "id": "osm:relation:7164994",
+      "before": 579,
+      "after": 573
+    },
+    {
+      "id": "osm:relation:7165008",
+      "before": 573,
+      "after": 587
+    },
+    {
+      "id": "osm:relation:7165010",
+      "before": 579,
+      "after": 578
+    },
+    {
+      "id": "osm:relation:7169619",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7174563",
+      "before": 444,
+      "after": 453
+    },
+    {
+      "id": "osm:relation:7174573",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7174584",
+      "before": 622,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7189409",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7189439",
+      "before": 557,
+      "after": 514
+    },
+    {
+      "id": "osm:relation:7198155",
+      "before": 589,
+      "after": 636
+    },
+    {
+      "id": "osm:relation:7201476",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201551",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201552",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201553",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201554",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:relation:7201556",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201573",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201581",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201582",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201583",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201588",
+      "before": 633,
+      "after": 555
+    },
+    {
+      "id": "osm:relation:7201607",
+      "before": 399,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7201652",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7201655",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7202753",
+      "before": 401,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7202777",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:8893246",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:way:100982066",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:1145153014",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:way:160288460",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:way:173445090",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:way:174739936",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:way:180268046",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:way:183796969",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:way:192752617",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:way:26289690",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:way:432446576",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:456466522",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:way:492312067",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:658923544",
+      "before": 468,
+      "after": 623
+    },
+    {
+      "id": "osm:way:89006660",
+      "before": 532,
+      "after": 386
+    }
+  ],
+  "expectedManualChanges": [
+    {
+      "id": "delegation:468",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "delegation:598",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7062758",
+      "before": 532,
+      "after": 386
+    },
+    {
+      "id": "osm:relation:7082187",
+      "before": 484,
+      "after": 482
+    },
+    {
+      "id": "osm:relation:7090538",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7090541",
+      "before": 633,
+      "after": 554
+    },
+    {
+      "id": "osm:relation:7090953",
+      "before": 554,
+      "after": 633
+    },
+    {
+      "id": "osm:way:456466522",
+      "before": 553,
+      "after": 633
+    },
+    {
+      "id": "osm:relation:7098933",
+      "before": 556,
+      "after": 551
+    },
+    {
+      "id": "osm:relation:7099051",
+      "before": 551,
+      "after": 556
+    },
+    {
+      "id": "osm:relation:7100415",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:relation:7102534",
+      "before": 467,
+      "after": 465
+    },
+    {
+      "id": "osm:relation:7103012",
+      "before": 459,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7103334",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:relation:7105911",
+      "before": 603,
+      "after": 599
+    },
+    {
+      "id": "osm:relation:7109667",
+      "before": 599,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7110097",
+      "before": 600,
+      "after": 602
+    },
+    {
+      "id": "osm:relation:7110674",
+      "before": 602,
+      "after": 600
+    },
+    {
+      "id": "osm:relation:7112718",
+      "before": 598,
+      "after": 597
+    },
+    {
+      "id": "osm:relation:7114421",
+      "before": 535,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7114433",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114434",
+      "before": 596,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7114550",
+      "before": 533,
+      "after": 531
+    },
+    {
+      "id": "osm:relation:7115792",
+      "before": 535,
+      "after": 533
+    },
+    {
+      "id": "osm:relation:7118024",
+      "before": 397,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7119647",
+      "before": 565,
+      "after": 562
+    },
+    {
+      "id": "osm:relation:7125598",
+      "before": 525,
+      "after": 414
+    },
+    {
+      "id": "osm:relation:7126403",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7126404",
+      "before": 514,
+      "after": 497
+    },
+    {
+      "id": "osm:relation:7126520",
+      "before": 503,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7126584",
+      "before": 502,
+      "after": 498
+    },
+    {
+      "id": "osm:relation:7134903",
+      "before": 503,
+      "after": 502
+    },
+    {
+      "id": "osm:relation:7137747",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:relation:7145397",
+      "before": 1019,
+      "after": 620
+    },
+    {
+      "id": "osm:relation:7147546",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147559",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7147595",
+      "before": 549,
+      "after": 632
+    },
+    {
+      "id": "osm:relation:7150174",
+      "before": 606,
+      "after": 638
+    },
+    {
+      "id": "osm:relation:7152260",
+      "before": 428,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152261",
+      "before": 619,
+      "after": 427
+    },
+    {
+      "id": "osm:relation:7152266",
+      "before": 423,
+      "after": 1084
+    },
+    {
+      "id": "osm:relation:7164907",
+      "before": 581,
+      "after": 579
+    },
+    {
+      "id": "osm:relation:7164933",
+      "before": 580,
+      "after": 577
+    },
+    {
+      "id": "osm:relation:7164994",
+      "before": 579,
+      "after": 573
+    },
+    {
+      "id": "osm:relation:7165008",
+      "before": 573,
+      "after": 587
+    },
+    {
+      "id": "osm:relation:7165010",
+      "before": 579,
+      "after": 578
+    },
+    {
+      "id": "osm:relation:7169619",
+      "before": 505,
+      "after": 510
+    },
+    {
+      "id": "osm:relation:7174563",
+      "before": 444,
+      "after": 453
+    },
+    {
+      "id": "osm:relation:7174573",
+      "before": 400,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7174584",
+      "before": 622,
+      "after": 447
+    },
+    {
+      "id": "osm:relation:7189409",
+      "before": 515,
+      "after": 503
+    },
+    {
+      "id": "osm:relation:7189439",
+      "before": 557,
+      "after": 514
+    },
+    {
+      "id": "osm:relation:7198155",
+      "before": 589,
+      "after": 636
+    },
+    {
+      "id": "osm:relation:7201476",
+      "before": 405,
+      "after": 395
+    },
+    {
+      "id": "osm:relation:7201551",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:1143501777",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:relation:7201553",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201554",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:relation:7201556",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:relation:7201573",
+      "before": 405,
+      "after": 396
+    },
+    {
+      "id": "osm:relation:7201581",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201582",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201583",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:relation:7201588",
+      "before": 633,
+      "after": 555
+    },
+    {
+      "id": "osm:relation:7201607",
+      "before": 399,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7201652",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7201655",
+      "before": 446,
+      "after": 398
+    },
+    {
+      "id": "osm:relation:7202753",
+      "before": 401,
+      "after": 400
+    },
+    {
+      "id": "osm:relation:7202777",
+      "before": 402,
+      "after": 405
+    },
+    {
+      "id": "osm:way:100982066",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:way:1145153014",
+      "before": 501,
+      "after": 500
+    },
+    {
+      "id": "osm:way:160288460",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:way:183796969",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:way:432446576",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:492312067",
+      "before": 633,
+      "after": 397
+    },
+    {
+      "id": "osm:way:658923544",
+      "before": 468,
+      "after": 623
+    },
+    {
+      "id": "osm:node:10168275561",
+      "before": 632,
+      "after": 547
+    },
+    {
+      "id": "osm:node:10739565994",
+      "before": 523,
+      "after": 525
+    },
+    {
+      "id": "osm:node:1115570559",
+      "before": 405,
+      "after": 402
+    },
+    {
+      "id": "osm:node:11233688598",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:1144116784",
+      "before": 405,
+      "after": 403
+    },
+    {
+      "id": "osm:node:11983749556",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12171078121",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:12229092546",
+      "before": 491,
+      "after": 494
+    },
+    {
+      "id": "osm:node:12373562064",
+      "before": 494,
+      "after": 492
+    },
+    {
+      "id": "osm:node:12563677142",
+      "before": 525,
+      "after": 523
+    },
+    {
+      "id": "osm:node:12798087645",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:13411824367",
+      "before": 493,
+      "after": 491
+    },
+    {
+      "id": "osm:node:1374298064",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:1435053835",
+      "before": 559,
+      "after": 556
+    },
+    {
+      "id": "osm:node:2191295540",
+      "before": 458,
+      "after": 467
+    },
+    {
+      "id": "osm:node:2593122311",
+      "before": 547,
+      "after": 632
+    },
+    {
+      "id": "osm:node:3145829327",
+      "before": 398,
+      "after": 397
+    },
+    {
+      "id": "osm:node:616794273",
+      "before": 406,
+      "after": 532
+    },
+    {
+      "id": "osm:node:6677938930",
+      "before": 427,
+      "after": 597
+    },
+    {
+      "id": "osm:node:7023800964",
+      "before": 466,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7026501958",
+      "before": 457,
+      "after": 456
+    },
+    {
+      "id": "osm:node:7036738535",
+      "before": 545,
+      "after": 548
+    },
+    {
+      "id": "osm:node:7429400517",
+      "before": 630,
+      "after": 441
+    },
+    {
+      "id": "osm:node:7855480160",
+      "before": 548,
+      "after": 547
+    },
+    {
+      "id": "osm:node:7875668092",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:7875711070",
+      "before": 623,
+      "after": 468
+    },
+    {
+      "id": "osm:node:9949605492",
+      "before": 482,
+      "after": 483
+    }
+  ],
+  "availableSourceIds": [
+    386,
+    387,
+    388,
+    389,
+    390,
+    391,
+    392,
+    393,
+    394,
+    395,
+    396,
+    397,
+    398,
+    399,
+    400,
+    401,
+    402,
+    403,
+    404,
+    405,
+    406,
+    409,
+    410,
+    411,
+    412,
+    413,
+    414,
+    415,
+    416,
+    417,
+    418,
+    419,
+    420,
+    421,
+    422,
+    423,
+    424,
+    425,
+    426,
+    427,
+    428,
+    429,
+    430,
+    431,
+    433,
+    434,
+    435,
+    436,
+    437,
+    438,
+    439,
+    440,
+    441,
+    442,
+    443,
+    444,
+    445,
+    446,
+    447,
+    448,
+    449,
+    450,
+    451,
+    452,
+    453,
+    454,
+    455,
+    456,
+    457,
+    458,
+    459,
+    460,
+    461,
+    462,
+    463,
+    464,
+    465,
+    466,
+    467,
+    468,
+    469,
+    470,
+    471,
+    472,
+    473,
+    474,
+    475,
+    476,
+    477,
+    478,
+    479,
+    480,
+    481,
+    482,
+    483,
+    484,
+    485,
+    486,
+    487,
+    488,
+    489,
+    490,
+    491,
+    492,
+    493,
+    494,
+    496,
+    497,
+    498,
+    499,
+    500,
+    501,
+    502,
+    503,
+    504,
+    505,
+    506,
+    507,
+    508,
+    509,
+    510,
+    511,
+    512,
+    513,
+    514,
+    515,
+    516,
+    517,
+    518,
+    519,
+    520,
+    521,
+    522,
+    523,
+    524,
+    525,
+    526,
+    527,
+    528,
+    529,
+    530,
+    531,
+    532,
+    533,
+    534,
+    535,
+    536,
+    537,
+    538,
+    539,
+    540,
+    541,
+    542,
+    543,
+    544,
+    545,
+    546,
+    547,
+    548,
+    549,
+    550,
+    551,
+    552,
+    553,
+    554,
+    555,
+    556,
+    557,
+    558,
+    559,
+    560,
+    561,
+    562,
+    563,
+    564,
+    565,
+    566,
+    567,
+    568,
+    569,
+    570,
+    571,
+    572,
+    573,
+    574,
+    575,
+    576,
+    577,
+    578,
+    579,
+    580,
+    581,
+    582,
+    583,
+    584,
+    585,
+    586,
+    587,
+    588,
+    589,
+    590,
+    591,
+    592,
+    593,
+    594,
+    595,
+    596,
+    597,
+    598,
+    599,
+    600,
+    601,
+    602,
+    603,
+    604,
+    605,
+    606,
+    607,
+    608,
+    609,
+    610,
+    611,
+    612,
+    615,
+    616,
+    617,
+    618,
+    619,
+    620,
+    621,
+    622,
+    623,
+    624,
+    625,
+    626,
+    627,
+    628,
+    629,
+    630,
+    631,
+    632,
+    633,
+    634,
+    635,
+    636,
+    637,
+    638,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024,
+    1025,
+    1084,
+    1522,
+    1523,
+    1524
+  ],
+  "rejectedSources": [
+    {
+      "id": 495,
+      "reason": "no_complete_bundled_month"
+    }
+  ],
+  "qualification": "Frozen display proofs remain historical. Current nearest-selection uses the cumulative reviewed published references after full baseline identity and geometry conservation checks."
+}

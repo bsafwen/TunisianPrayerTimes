@@ -1,0 +1,26 @@
+{
+  "status": "ACCEPTED_DISPLAY_SPELLING_ONLY",
+  "id": "osm:node:1212270314",
+  "decision": "Bilingual official municipal names support rendering Mazdour as المصدور. Existing source name remains searchable. No point/sector merge, source remap or boundary approval.",
+  "evidenceLimitation": "Saved Maps card is parent/broader-place evidence and does not establish a child boundary or settlement footprint.",
+  "primarySources": [
+    "https://lake.jort.tn/journal-officiel/fr/2023/018.pdf",
+    "https://www.emploi.rn.tn/fichiers/20260306063707.pdf"
+  ],
+  "primarySourceFindings": [
+    "French official journal page400 names commune Mazdour Menzel Harb.",
+    "Arabic official journal copy page319 names المصدور منزل حرب in Monastir table."
+  ],
+  "proof": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\display-name-reviews\\masdour-20260921\\proof.json",
+    "sha256": "ba954408807dfb52af13f35b823b69108a00308b5d8ce3141111e55e493a016e"
+  },
+  "proposal": {
+    "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\display-name-reviews\\masdour-20260921\\proposal.json",
+    "sha256": "7b381b555665e411c31a5ba25f22d0dab65d87b3c1d78f2fc191a157f6e188ff"
+  },
+  "before": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\masdour-name-review-20260921\\before-install\\locality-display-names.json",
+    "sha256": "c287581ef8d1610708e11e67861dcd93ed4f7231f2faaa4a47a0794eafaf981e"
+  }
+}

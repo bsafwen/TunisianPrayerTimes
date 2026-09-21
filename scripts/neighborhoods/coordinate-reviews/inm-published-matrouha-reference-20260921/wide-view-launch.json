@@ -1,0 +1,8 @@
+{
+  "serial": "emulator-5554",
+  "avd": "Pixel_10_Pro_XL_THREE",
+  "openedAtUtc": "2026-09-21T08:40:29.791930+00:00",
+  "url": "https://www.google.com/maps/@?api=1&map_action=map&center=33.35%2C7.775&zoom=14&basemap=roadmap",
+  "scope": "Requested wider viewport around INM published Matrouha reference; URL center is a requested location, not geographic proof.",
+  "launchOutput": "Starting: Intent { act=android.intent.action.VIEW dat=https://www.google.com/... pkg=com.google.android.apps.maps }\r\nWarning: Activity not started, intent has been delivered to currently running top-most instance.\r\nStatus: ok\r\nLaunchState: UNKNOWN (0)\r\nActivity: com.google.android.apps.maps/com.google.android.maps.MapsActivity\r\nTotalTime: 0\r\nWaitTime: 5\r\nComplete\r\n"
+}

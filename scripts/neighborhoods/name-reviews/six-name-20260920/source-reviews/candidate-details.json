@@ -1,0 +1,1925 @@
+{
+  "items": [
+    {
+      "id": "osm:relation:7142943",
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "المغزاوية",
+        "name:ar": "المغزاوية",
+        "name:fr": "El Maghzaouia",
+        "ref:tn:codegeo": "525953"
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "52",
+        "governorateFr": "Mednine",
+        "governorateAr": "مدنين",
+        "delegationCode": "5259",
+        "delegationFr": "Sidi makhloulf",
+        "delegationAr": "سيدي مخلوف",
+        "sectorCode": "525953",
+        "sectorFr": "El maghzaouia",
+        "sectorAr": "المغراوية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 63102,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3101,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3095
+        }
+      },
+      "source": {
+        "id": "osm:relation:7142943",
+        "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/سيدي مخلوف/المغراوية.pdf",
+        "statusCode": 200,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.pdf",
+        "sha256": "71e12a872fc481bd0d01556762594184bfc29bc455287c9874f13ac0f966375d",
+        "bytes": 604111,
+        "retrievedAt": "2026-09-20T12:36:15.4921380+00:00"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.png",
+        "sha256": "191dec0522826545b16cca3dfc4b1b96513bc45ea2113f134fe0c6f658a782cd",
+        "bytes": 2056492
+      },
+      "text": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7142943.txt",
+        "sha256": "4a9f86900ca1f0e77a3e9a9124aa2009ae590cf6a6004d4f60f63e2a1e88c75c",
+        "bytes": 1219
+      },
+      "sourcePageOneBased": 1,
+      "drawingIndex": 581,
+      "seqno": 586,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 950,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "nativeValidityPageCoordinates": "Valid Geometry",
+      "nativeValidityUtmCoordinates": "Valid Geometry",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 59.02362060546875,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              842.4609985351562,
+              0.0
+            ],
+            [
+              842.4609985351562,
+              595.9949951171875
+            ],
+            [
+              0.0,
+              595.9949951171875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.800350189208984,
+              4.7987060546875
+            ],
+            [
+              842.4609985351562,
+              4.7987060546875
+            ],
+            [
+              842.4609985351562,
+              590.7164916992188
+            ],
+            [
+              4.800350189208984,
+              590.7164916992188
+            ],
+            [
+              4.800350189208984,
+              4.7987060546875
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.32031,
+        590.70369,
+        841.98099,
+        5.26576
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          33.55879,
+          10.49693
+        ],
+        [
+          33.68797,
+          10.49916
+        ],
+        [
+          33.68509,
+          10.72017
+        ],
+        [
+          33.55593,
+          10.71761
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          24.464007635059605,
+          0.00036042628222913883
+        ],
+        [
+          0.0008954495056059386,
+          -24.47213532515707
+        ],
+        [
+          638848.7976410636,
+          3728685.3210583404
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.16842821284228485,
+        0.16842821518187986,
+        0.16842821603936178,
+        0.16842821057023816
+      ],
+      "axisScaleMetersPerPagePoint": [
+        24.464007637714673,
+        24.472135341539577
+      ],
+      "redLabels": [
+        {
+          "raw": "ﺔﯾوارﻐﻣﻟا",
+          "reversedNormalized": "المغراویة",
+          "bbox": [
+            282.9804992675781,
+            266.9169921875,
+            389.04107666015625,
+            320.4106750488281
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "يودﺑ",
+          "reversedNormalized": "بدوي",
+          "bbox": [
+            232.57684326171875,
+            493.8941345214844,
+            300.7276916503906,
+            547.3878173828125
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺳﯾدي ﻣﺧﻠوف",
+          "reversedNormalized": "فولخم يدیس",
+          "bbox": [
+            104.40756225585938,
+            537.56201171875,
+            241.6600799560547,
+            591.0557250976562
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": " ﺔﯾﺑﺎﺧﺗﻧﻻا ةرﺋادﻟا",
+          "reversedNormalized": "الدائرة الانتخابیة ",
+          "bbox": [
+            689.0899047851562,
+            -0.3019256591796875,
+            854.1740112304688,
+            49.50253677368164
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾوارﻐﻣﻟا",
+          "reversedNormalized": "المغراویة",
+          "bbox": [
+            580.842041015625,
+            -3.3456802368164062,
+            686.902587890625,
+            50.14800262451172
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "wgs84Bounds": [
+        10.551750143750237,
+        33.57017868583052,
+        10.664871844424527,
+        33.67324703299365
+      ],
+      "comparisons": {
+        "osm:relation:7142943": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "المغزاوية",
+            "name:ar": "المغزاوية",
+            "name:fr": "El Maghzaouia",
+            "ref:tn:codegeo": "525953"
+          },
+          "currentRow": {
+            "id": "osm:relation:7142943",
+            "sourceId": "osm",
+            "name": "المغزاوية",
+            "aliases": [
+              "El Maghzaouia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية سيدي مخلوف",
+            "contextAliases": [
+              "Délégation Sidi Makhlouf",
+              "Sidi Makhlouf",
+              "معتمدية سيدي مخلوف"
+            ],
+            "governorateId": 353,
+            "lat": 33.620941,
+            "lng": 10.603522,
+            "delegationId": 496,
+            "hasBoundary": true,
+            "bbox": [
+              10.543348,
+              33.570171,
+              10.665159,
+              33.67091
+            ],
+            "areaKm2": 69.6802054082014,
+            "pickerGroupId": "osm:relation:7142943",
+            "offset": 2004368,
+            "length": 4140
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 73.96310987074905,
+            "comparedAreaKm2": 69.48054789511687,
+            "intersectionKm2": 66.37417526783914,
+            "iou": 0.8612251323932066,
+            "officialCoveredByCompared": 0.897395679871065,
+            "comparedCoveredByOfficial": 0.9552914776670025,
+            "officialOutsideComparedKm2": 7.588934602910002,
+            "comparedOutsideOfficialKm2": 3.106372627277807,
+            "hausdorffMeters": 2662.5224293742176,
+            "centroidDistanceMeters": 478.6898792943372
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 73.96310987074905,
+            "comparedAreaKm2": 69.4810852309902,
+            "intersectionKm2": 66.37442420355707,
+            "iou": 0.8612251396367185,
+            "officialCoveredByCompared": 0.8973990455450933,
+            "comparedCoveredByOfficial": 0.9552876726506931,
+            "officialOutsideComparedKm2": 7.588685667192204,
+            "comparedOutsideOfficialKm2": 3.106661027433337,
+            "hausdorffMeters": 2662.515535802008,
+            "centroidDistanceMeters": 478.67405514206536
+          },
+          "currentAnchor": {
+            "covered": true,
+            "distanceToPolygonMeters": 0.0,
+            "distanceToBoundaryMeters": 3182.71816533863
+          }
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7165270",
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الدريعات",
+        "name:ar": "الدريعات",
+        "name:fr": "Edheriaat",
+        "ref:tn:codegeo": "415456"
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "41",
+        "governorateFr": "Kairouan",
+        "governorateAr": "القيروان",
+        "delegationCode": "4154",
+        "delegationFr": "Sbikha",
+        "delegationAr": "السبيخة",
+        "sectorCode": "415456",
+        "sectorFr": "Ed-dheriaat",
+        "sectorAr": "الذريعات",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 47701,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2292,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2288
+        }
+      },
+      "source": {
+        "id": "osm:relation:7165270",
+        "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/القيروان/السبيخة/الذريعات.pdf",
+        "statusCode": 200,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.pdf",
+        "sha256": "b006f584b2ea730c11c466f0bb5043136c0a7d81428532818b29a59dc94f1d2e",
+        "bytes": 1281053,
+        "retrievedAt": "2026-09-20T12:36:15.7744766+00:00"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.png",
+        "sha256": "e3693e0cd77d10921dc54a421ed871897be0eef2a582891231fdef6b8ca04bad",
+        "bytes": 3203322
+      },
+      "text": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7165270.txt",
+        "sha256": "cf4462f6ee30a2ec671e300708d14aa3a3d4d454adbd195ea5efd7d3549bf63c",
+        "bytes": 2610
+      },
+      "sourcePageOneBased": 1,
+      "drawingIndex": 334,
+      "seqno": 342,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 675,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "nativeValidityPageCoordinates": "Valid Geometry",
+      "nativeValidityUtmCoordinates": "Valid Geometry",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 26.643310546875004,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          35.89985,
+          10.01319
+        ],
+        [
+          36.04286,
+          10.01502
+        ],
+        [
+          36.04046,
+          10.26706
+        ],
+        [
+          35.89746,
+          10.26478
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          27.124948160406273,
+          -0.0003189871501112337
+        ],
+        [
+          0.00018608380287332693,
+          -27.115300957997533
+        ],
+        [
+          591316.0518455285,
+          3989315.57953417
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.11264473432290338,
+        0.11264473245315676,
+        0.11264473264059499,
+        0.11264473282494276
+      ],
+      "axisScaleMetersPerPagePoint": [
+        27.124948162281903,
+        27.115300958636052
+      ],
+      "redLabels": [
+        {
+          "raw": "تﺎﻌﯾرذﻟا",
+          "reversedNormalized": "الذریعات",
+          "bbox": [
+            201.55711364746094,
+            228.94410705566406,
+            299.8404541015625,
+            282.2286682128906
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "مﻠﻌﻟا",
+          "reversedNormalized": "العلم",
+          "bbox": [
+            84.04212188720703,
+            435.97021484375,
+            145.2406768798828,
+            489.2547912597656
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "بﺳﯾﺳ",
+          "reversedNormalized": "سیسب",
+          "bbox": [
+            552.302490234375,
+            213.8222198486328,
+            622.5020751953125,
+            267.1067810058594
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "اﻟﻌوﯾﺛﺔ",
+          "reversedNormalized": "ةثیوعلا",
+          "bbox": [
+            603.9514770507812,
+            72.68440246582031,
+            687.8329467773438,
+            125.9689712524414
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﻔﯾطﻘﻟا",
+          "reversedNormalized": "القطیفة",
+          "bbox": [
+            186.2603759765625,
+            366.4814453125,
+            272.66241455078125,
+            419.7660217285156
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "اﻟﺑﻼﻟﻣﺔ",
+          "reversedNormalized": "ةمللابلا",
+          "bbox": [
+            737.1231689453125,
+            482.0560302734375,
+            823.8853149414062,
+            535.3406372070312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "رادﻧﻛ",
+          "reversedNormalized": "كندار",
+          "bbox": [
+            785.5328369140625,
+            360.00067138671875,
+            848.5314331054688,
+            413.28521728515625
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "وادي اﻟﺧرﯾوعﺑﺋر اﻟﺷﺎوش",
+          "reversedNormalized": "شواشلا رئبعویرخلا يداو",
+          "bbox": [
+            17.996170043945312,
+            24.438308715820312,
+            310.113525390625,
+            91.04459381103516
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "تاوﯾرﻔﻟا",
+          "reversedNormalized": "الفریوات",
+          "bbox": [
+            6.4786200523376465,
+            138.5727081298828,
+            106.20198059082031,
+            191.85726928710938
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "رﻣﺎﻋ دﻻوأ",
+          "reversedNormalized": "أولاد عامر",
+          "bbox": [
+            708.869140625,
+            44.60087585449219,
+            825.5148315429688,
+            97.88544464111328
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "دﯾدﺟﻟا رﺋﺑﻟا",
+          "reversedNormalized": "البئر الجدید",
+          "bbox": [
+            596.7530517578125,
+            542.9036865234375,
+            720.2396240234375,
+            596.1882934570312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": " ﺔﯾﺑﺎﺧﺗﻧﻻا ةرﺋادﻟا",
+          "reversedNormalized": "الدائرة الانتخابیة ",
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "تﺎﻌﯾرذﻟا",
+          "reversedNormalized": "الذریعات",
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            775.65576171875,
+            82.52029418945312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "wgs84Bounds": [
+        10.042801305764318,
+        35.90457756816248,
+        10.237064849942408,
+        36.03592697461741
+      ],
+      "comparisons": {
+        "osm:relation:7165270": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدريعات",
+            "name:ar": "الدريعات",
+            "name:fr": "Edheriaat",
+            "ref:tn:codegeo": "415456"
+          },
+          "currentRow": {
+            "id": "osm:relation:7165270",
+            "sourceId": "osm",
+            "name": "الدريعات",
+            "aliases": [
+              "Edheriaat"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية السبيخة",
+            "contextAliases": [
+              "Délégation Sbikha",
+              "Sbikha",
+              "معتمدية السبيخة"
+            ],
+            "governorateId": 357,
+            "lat": 35.967595,
+            "lng": 10.127494,
+            "delegationId": 521,
+            "hasBoundary": true,
+            "bbox": [
+              10.042528,
+              35.888786,
+              10.231693,
+              36.046352
+            ],
+            "areaKm2": 110.33564973234559,
+            "pickerGroupId": "osm:relation:7165270",
+            "offset": 3633072,
+            "length": 5964
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 101.55824947546229,
+            "comparedAreaKm2": 110.04158544693979,
+            "intersectionKm2": 97.61124463372951,
+            "iou": 0.8563246934323177,
+            "officialCoveredByCompared": 0.9611355565685836,
+            "comparedCoveredByOfficial": 0.8870396063204308,
+            "officialOutsideComparedKm2": 3.947004841732742,
+            "comparedOutsideOfficialKm2": 12.430340813210254,
+            "hausdorffMeters": 2227.6119086826734,
+            "centroidDistanceMeters": 486.1018695576623
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 101.55824947546229,
+            "comparedAreaKm2": 110.04161257573463,
+            "intersectionKm2": 97.61125638385722,
+            "iou": 0.8563246809836614,
+            "officialCoveredByCompared": 0.9611356722669909,
+            "comparedCoveredByOfficial": 0.8870394944156023,
+            "officialOutsideComparedKm2": 3.9469930916050084,
+            "comparedOutsideOfficialKm2": 12.430356191877664,
+            "hausdorffMeters": 2227.6020729415086,
+            "centroidDistanceMeters": 486.1070530971125
+          },
+          "currentAnchor": {
+            "covered": true,
+            "distanceToPolygonMeters": 0.0,
+            "distanceToBoundaryMeters": 2954.580348235079
+          }
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7169564",
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "الدويبات الجنوبية",
+        "name:ar": "الدويبات الجنوبية",
+        "name:fr": "Dheouibet Sud",
+        "ref:tn:codegeo": "436252"
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "43",
+        "governorateFr": "Sidi bouzid",
+        "governorateAr": "سيدي بوزيد",
+        "delegationCode": "4362",
+        "delegationFr": "Ouled haffouz",
+        "delegationAr": "أولاد حفوز",
+        "sectorCode": "436252",
+        "sectorFr": "Dheouibet sud",
+        "sectorAr": "الذويبات الجنوبية",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 57186,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2800,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2795
+        }
+      },
+      "source": {
+        "id": "osm:relation:7169564",
+        "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/سيدي بوزيد/أولاد حفوز/الذويبات الجنوبية.pdf",
+        "statusCode": 200,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.pdf",
+        "sha256": "53c46020cbd02c66b59fd2f3b9814139afacbf01d797026fc033ba1cd512a0a0",
+        "bytes": 1096750,
+        "retrievedAt": "2026-09-20T12:36:16.0549683+00:00"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.png",
+        "sha256": "7b944877dfcb29e2ca5e62ba8b3c933197df572260a4d71887093e964b52efc2",
+        "bytes": 2785357
+      },
+      "text": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7169564.txt",
+        "sha256": "c00d9aebedd643fd3f42e39d739dfc91695d2c8e7c6fc385dd6b680d30664732",
+        "bytes": 2775
+      },
+      "sourcePageOneBased": 1,
+      "drawingIndex": 316,
+      "seqno": 324,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 417,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": false,
+      "nativeValidityPageCoordinates": "Ring Self-intersection[274.261627197266 148.698791503906]",
+      "nativeValidityUtmCoordinates": "Self-intersection[584944.366215515 3887284.86603483]",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 26.643310546875004,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          35.03742,
+          9.8659
+        ],
+        [
+          35.15393,
+          9.86713
+        ],
+        [
+          35.15231,
+          10.0702
+        ],
+        [
+          35.0358,
+          10.06868
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          22.096126925409788,
+          1.813540663505012e-05
+        ],
+        [
+          0.00031899372379484703,
+          -22.087105910133687
+        ],
+        [
+          578884.1990562131,
+          3890569.187017639
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.19566354952053897,
+        0.19566354850950923,
+        0.19566354999868996,
+        0.1956635458230289
+      ],
+      "axisScaleMetersPerPagePoint": [
+        22.09612692541723,
+        22.087105912437224
+      ],
+      "redLabels": [
+        {
+          "raw": "ةدوﺳﻛ",
+          "reversedNormalized": "كسودة",
+          "bbox": [
+            65.68601989746094,
+            237.2251739501953,
+            142.3665008544922,
+            290.5097351074219
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ةدرارﺷﻟا",
+          "reversedNormalized": "الشراردة",
+          "bbox": [
+            560.5807495117188,
+            295.1925048828125,
+            661.3843994140625,
+            348.47705078125
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "وﻠﺣﻟا رﺋﺑ",
+          "reversedNormalized": "بئر الحلو",
+          "bbox": [
+            756.1990966796875,
+            100.76795959472656,
+            857.7228393554688,
+            154.05252075195312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾﺑرﻐﻟا مﺷﺧﻟا",
+          "reversedNormalized": "الخشم الغربیة",
+          "bbox": [
+            231.6107177734375,
+            507.6192626953125,
+            377.0601501464844,
+            560.9038696289062
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "ﺔﯾﺑوﻧﺟﻟا تﺎﺑﯾوذﻟا",
+          "reversedNormalized": "الذویبات الجنوبیة",
+          "bbox": [
+            251.5864715576172,
+            349.559326171875,
+            429.8001403808594,
+            402.8439025878906
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "ﺔﯾﺷاوﺷﻟا",
+          "reversedNormalized": "الشواشیة",
+          "bbox": [
+            68.02552795410156,
+            510.85968017578125,
+            174.22982788085938,
+            564.144287109375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾﻟﺎﻣﺷﻟا تﺎﺑﯾوذﻟا",
+          "reversedNormalized": "الذویبات الشمالیة",
+          "bbox": [
+            208.39566040039062,
+            21.197891235351562,
+            385.8895568847656,
+            74.48246002197266
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "زوﻔﺣ دﻻوأ",
+          "reversedNormalized": "أولاد حفوز",
+          "bbox": [
+            36.89215087890625,
+            350.99951171875,
+            156.41807556152344,
+            404.2840881347656
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺗﻠﯾل اﻟﻌﺟﻠﺔ",
+          "reversedNormalized": "ةلجعلا لیلت",
+          "bbox": [
+            742.162109375,
+            493.93756103515625,
+            859.5281372070312,
+            547.22216796875
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾﻗرﺷﻟا مﺷﺧﻟا",
+          "reversedNormalized": "الخشم الشرقیة",
+          "bbox": [
+            483.91705322265625,
+            536.782958984375,
+            637.2875366210938,
+            590.0675659179688
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": " ﺔﯾﺑﺎﺧﺗﻧﻻا ةرﺋادﻟا",
+          "reversedNormalized": "الدائرة الانتخابیة ",
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾﺑوﻧﺟﻟا تﺎﺑﯾوذﻟا",
+          "reversedNormalized": "الذویبات الجنوبیة",
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            844.0648803710938,
+            82.52029418945312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "wgs84Bounds": [
+        9.918548372213854,
+        35.04168941950699,
+        10.017336035531711,
+        35.14791251340179
+      ],
+      "comparisons": {
+        "osm:relation:7169564": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الدويبات الجنوبية",
+            "name:ar": "الدويبات الجنوبية",
+            "name:fr": "Dheouibet Sud",
+            "ref:tn:codegeo": "436252"
+          },
+          "currentRow": {
+            "id": "osm:relation:7169564",
+            "sourceId": "osm",
+            "name": "الدويبات الجنوبية",
+            "aliases": [
+              "Dheouibet Sud"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية أولاد حفوز",
+            "contextAliases": [
+              "Délégation Ouled Haffouz",
+              "Ouled Haffouz",
+              "معتمدية أولاد حفوز"
+            ],
+            "governorateId": 355,
+            "lat": 35.094525,
+            "lng": 9.972405,
+            "delegationId": 529,
+            "hasBoundary": true,
+            "bbox": [
+              9.919219,
+              35.04171,
+              10.017393,
+              35.14837
+            ],
+            "areaKm2": 60.08233358344609,
+            "pickerGroupId": "osm:relation:7169564",
+            "offset": 3979668,
+            "length": 2252
+          },
+          "officialVsOriginal": {
+            "status": "WITHHELD_INVALID_RING",
+            "aValidity": "Self-intersection[584944.366215515 3887284.86603483]",
+            "bValidity": "Valid Geometry",
+            "qualification": "Area and overlap ratios withheld because at least one geometry is invalid; unchanged native path retained.",
+            "boundaryHausdorffMeters": 1492.4793043668983
+          },
+          "officialVsPacked": {
+            "status": "WITHHELD_INVALID_RING",
+            "aValidity": "Self-intersection[584944.366215515 3887284.86603483]",
+            "bValidity": "Valid Geometry",
+            "qualification": "Area and overlap ratios withheld because at least one geometry is invalid; unchanged native path retained.",
+            "boundaryHausdorffMeters": 1492.4793043668983
+          },
+          "currentAnchor": {
+            "covered": null,
+            "nativeRingValid": false,
+            "distanceToBoundaryMeters": 2310.1663675832174,
+            "literalRingWindingNumber": -1,
+            "literalRingCrossingCount": 1,
+            "literalNonzeroFillContains": true,
+            "literalEvenOddFillContains": true,
+            "qualification": "Unrepaired self-intersecting native ring: ordinary valid-polygon containment withheld; literal nonzero/even-odd winding reported separately."
+          }
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7127889",
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "بلطش",
+        "name:ar": "‫بلطش‬",
+        "name:fr": "Baltech",
+        "ref:tn:codegeo": "345853"
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "34",
+        "governorateFr": "Sfax",
+        "governorateAr": "صفاقس",
+        "delegationCode": "3458",
+        "delegationFr": "Djebeniana",
+        "delegationAr": "جبنيانة",
+        "sectorCode": "345853",
+        "sectorFr": "Baltech",
+        "sectorAr": "بلتش",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 43859,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 2096,
+          "Nombre_de_menages_par_Secteurs.xlsx": 2092
+        }
+      },
+      "source": {
+        "id": "osm:relation:7127889",
+        "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/صفاقس 1/جبنيانة/بلتش.pdf",
+        "statusCode": 200,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.pdf",
+        "sha256": "4aacc2971854e536557137477b70f6c16b82cd87b48bd3c7bed520e080d9c166",
+        "bytes": 1062665,
+        "retrievedAt": "2026-09-20T12:36:16.3337003+00:00"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.png",
+        "sha256": "34002dafb2e750c0695676491648a48a8de5259b5200c698515c9f0caa731bcc",
+        "bytes": 2769287
+      },
+      "text": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7127889.txt",
+        "sha256": "b1c975814c754ebd5ab11118535f35b099372008065d735a139dbeab8dd32900",
+        "bytes": 2544
+      },
+      "sourcePageOneBased": 1,
+      "drawingIndex": 174,
+      "seqno": 182,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 712,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "nativeValidityPageCoordinates": "Valid Geometry",
+      "nativeValidityUtmCoordinates": "Valid Geometry",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 26.643310546875004,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          35.05193,
+          10.76296
+        ],
+        [
+          35.15385,
+          10.76516
+        ],
+        [
+          35.15114,
+          10.94279
+        ],
+        [
+          35.04922,
+          10.94037
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          19.33561703508373,
+          0.0005040508163820003
+        ],
+        [
+          -0.00048032656786745065,
+          -19.328637387599883
+        ],
+        [
+          660696.8159243497,
+          3891628.6266048267
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.28350081985923614,
+        0.28350081518955084,
+        0.28350081753773226,
+        0.2835008138588962
+      ],
+      "axisScaleMetersPerPagePoint": [
+        19.335617041653656,
+        19.328637393568066
+      ],
+      "redLabels": [
+        {
+          "raw": "ﺑﻠﺗش",
+          "reversedNormalized": "شتلب",
+          "bbox": [
+            256.2654724121094,
+            168.09645080566406,
+            323.2247314453125,
+            221.38101196289062
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "اﻟﺣﻧﺷﺔ",
+          "reversedNormalized": "ةشنحلا",
+          "bbox": [
+            64.06636810302734,
+            162.6957550048828,
+            149.3881072998047,
+            215.98031616210938
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﻘﻧﺎﺟﻌﻟا",
+          "reversedNormalized": "العجانقة",
+          "bbox": [
+            566.5194702148438,
+            31.279190063476562,
+            660.4824829101562,
+            84.56375885009766
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "اﻟﻘﻼﻟﺟﺔ( )ﺟﺑﻧﯾﺎﻧﺔ- اﻟﺣوض",
+          "reversedNormalized": "ضوحلا -ةناینبج) (ةجللاقلا",
+          "bbox": [
+            419.67071533203125,
+            447.85174560546875,
+            783.3955078125,
+            511.5776062011719
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "ﺔﻧﺎﯾﻧﺑﺟ",
+          "reversedNormalized": "جبنیانة",
+          "bbox": [
+            691.5928344726562,
+            517.3405151367188,
+            767.9133911132812,
+            570.6251220703125
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾرطﺑ",
+          "reversedNormalized": "بطریة",
+          "bbox": [
+            786.07275390625,
+            243.7059783935547,
+            859.512939453125,
+            296.99053955078125
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "جﺎﺣﻟﺎﺑ نﺳﺣ يدﯾﺳ",
+          "reversedNormalized": "سیدي حسن بالحاج",
+          "bbox": [
+            110.85640716552734,
+            -6.8856048583984375,
+            293.7506103515625,
+            46.398963928222656
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": " ﺔﯾﺑﺎﺧﺗﻧﻻا ةرﺋادﻟا",
+          "reversedNormalized": "الدائرة الانتخابیة ",
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺑﻠﺗش",
+          "reversedNormalized": "شتلب",
+          "bbox": [
+            691.4129028320312,
+            36.847808837890625,
+            748.652099609375,
+            82.52029418945312
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        }
+      ],
+      "wgs84Bounds": [
+        10.798122277902522,
+        35.054605339154676,
+        10.90663880083021,
+        35.14793059572442
+      ],
+      "comparisons": {
+        "osm:relation:7127889": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "بلطش",
+            "name:ar": "‫بلطش‬",
+            "name:fr": "Baltech",
+            "ref:tn:codegeo": "345853"
+          },
+          "currentRow": {
+            "id": "osm:relation:7127889",
+            "sourceId": "osm",
+            "name": "بلطش",
+            "aliases": [
+              "Baltech"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية جبنيانة",
+            "contextAliases": [
+              "Délégation Jebeniana",
+              "Jebiniana",
+              "معتمدية جبنيانة"
+            ],
+            "governorateId": 359,
+            "lat": 35.100992,
+            "lng": 10.863613,
+            "delegationId": 536,
+            "hasBoundary": true,
+            "bbox": [
+              10.797337,
+              35.054637,
+              10.90658,
+              35.14735
+            ],
+            "areaKm2": 50.13308818929726,
+            "pickerGroupId": "osm:relation:7127889",
+            "offset": 1591464,
+            "length": 1780
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 49.923386023154144,
+            "comparedAreaKm2": 50.01150242669456,
+            "intersectionKm2": 48.31275502690346,
+            "iou": 0.9358922582891362,
+            "officialCoveredByCompared": 0.9677379455891937,
+            "comparedCoveredByOfficial": 0.9660328660935336,
+            "officialOutsideComparedKm2": 1.610630996250736,
+            "comparedOutsideOfficialKm2": 1.6987473997912073,
+            "hausdorffMeters": 1078.5421587887943,
+            "centroidDistanceMeters": 48.53447722801307
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 49.923386023154144,
+            "comparedAreaKm2": 50.01159292962668,
+            "intersectionKm2": 48.312809214816596,
+            "iou": 0.9358926496126356,
+            "officialCoveredByCompared": 0.9677390310106254,
+            "comparedCoveredByOfficial": 0.9660322014297662,
+            "officialOutsideComparedKm2": 1.6105768083374805,
+            "comparedOutsideOfficialKm2": 1.6987837148101572,
+            "hausdorffMeters": 1078.5658275305068,
+            "centroidDistanceMeters": 48.53205169091434
+          },
+          "currentAnchor": {
+            "covered": true,
+            "distanceToPolygonMeters": 0.0,
+            "distanceToBoundaryMeters": 1810.7519668550226
+          }
+        }
+      }
+    },
+    {
+      "id": "osm:relation:7143844",
+      "originalSourceTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "كمبوت",
+        "name:ar": "كمبوت",
+        "name:fr": "Kambout",
+        "ref:tn:codegeo": "535754"
+      },
+      "officialRegistryRecord": {
+        "governorateCode": "53",
+        "governorateFr": "Tataouine",
+        "governorateAr": "تطاوين",
+        "delegationCode": "5357",
+        "delegationFr": "Remada",
+        "delegationAr": "رمادة",
+        "sectorCode": "535754",
+        "sectorFr": "Kenbout",
+        "sectorAr": "كنبوت",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 65273,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 3205,
+          "Nombre_de_menages_par_Secteurs.xlsx": 3199
+        }
+      },
+      "source": {
+        "id": "osm:relation:7143844",
+        "requestedUrl": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/تطاوين/رمادة/كنبوت.pdf",
+        "statusCode": 200,
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.pdf",
+        "sha256": "f06b6aedbc2edd5b0e9662dd447b63bd9456c3b033c1db6616d64d3b4453cdde",
+        "bytes": 917623,
+        "retrievedAt": "2026-09-20T12:36:16.8830403+00:00"
+      },
+      "render": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.png",
+        "sha256": "3d739070e9c7ec738ac2f4d2926445760350da205cb56d4c96de981d17450074",
+        "bytes": 2525383
+      },
+      "text": {
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\six-spelling-followup-20260920\\primary-pdfs\\osm_relation_7143844.txt",
+        "sha256": "c3d8878055698a8407617126d2341edd0a4e0fa3bfffc9e22e8aff2de997dbeb",
+        "bytes": 535
+      },
+      "sourcePageOneBased": 1,
+      "drawingIndex": 1020,
+      "seqno": 1028,
+      "sourceLayer": "circonscription_isie2023",
+      "nativeVertexCount": 94,
+      "nativeContinuousExplicitlyClosed": true,
+      "nativeGeometryValid": true,
+      "nativeValidityPageCoordinates": "Valid Geometry",
+      "nativeValidityUtmCoordinates": "Valid Geometry",
+      "fullyInsideViewport": true,
+      "minViewportMarginPagePoints": 26.643310546875004,
+      "activeClipChecks": [
+        {
+          "level": 0,
+          "clipVertices": [
+            [
+              0.0,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              0.0
+            ],
+            [
+              841.8609008789062,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              596.2352294921875
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "coversWholeTargetPath": true
+        },
+        {
+          "level": 1,
+          "clipVertices": [
+            [
+              4.319079875946045,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              5.0406494140625
+            ],
+            [
+              841.8609008789062,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              590.4745483398438
+            ],
+            [
+              4.319079875946045,
+              5.0406494140625
+            ]
+          ],
+          "coversWholeTargetPath": true
+        }
+      ],
+      "pageRect": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "rotation": 0,
+      "cropBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "mediaBox": [
+        0.0,
+        0.0,
+        841.492919921875,
+        595.5023803710938
+      ],
+      "viewportBBox": [
+        4.31908,
+        590.46173,
+        841.50095,
+        5.38791
+      ],
+      "localControlPoints": [
+        [
+          0.0,
+          1.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          1.0,
+          0.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "controlPointsLatLon": [
+        [
+          32.00842,
+          9.87123
+        ],
+        [
+          32.36811,
+          9.87467
+        ],
+        [
+          32.36244,
+          10.48121
+        ],
+        [
+          32.00284,
+          10.4754
+        ]
+      ],
+      "storedCrsWkt": "PROJCS[\"WGS_1984_UTM_Zone_32N\",GEOGCS[\"GCS_WGS_1984\",DATUM[\"D_WGS_1984\",SPHEROID[\"WGS_1984\",6378137.0,298.257223563]],PRIMEM[\"Greenwich\",0.0],UNIT[\"Degree\",0.0174532925199433]],PROJECTION[\"Transverse_Mercator\"],PARAMETER[\"False_Easting\",500000.0],PARAMETER[\"False_Northing\",0.0],PARAMETER[\"Central_Meridian\",9.0],PARAMETER[\"Scale_Factor\",0.9996],PARAMETER[\"Latitude_Of_Origin\",0.0],UNIT[\"Meter\",1.0]]",
+      "epsg": 32632,
+      "affineMetersFromPagePoints": [
+        [
+          68.17549963603994,
+          0.0003090298551661134
+        ],
+        [
+          -0.00037846118675588514,
+          -68.15223325168881
+        ],
+        [
+          581992.1866460323,
+          3581918.5588915683
+        ]
+      ],
+      "controlResidualsMeters": [
+        0.3967030715289569,
+        0.396703073566227,
+        0.3967030751467646,
+        0.3967030761834259
+      ],
+      "axisScaleMetersPerPagePoint": [
+        68.17549963674034,
+        68.15223325273965
+      ],
+      "redLabels": [
+        {
+          "raw": "توﺑﻧﻛ",
+          "reversedNormalized": "كنبوت",
+          "bbox": [
+            306.47479248046875,
+            233.98475646972656,
+            380.2746887207031,
+            287.2693176269531
+          ],
+          "centerCoveredByTarget": true,
+          "bboxIntersectsTarget": true
+        },
+        {
+          "raw": "رﻣﺎدة اﻟﻐرﺑﯾﺔ",
+          "reversedNormalized": "ةیبرغلا ةدامر",
+          "bbox": [
+            133.35162353515625,
+            54.32209777832031,
+            267.63970947265625,
+            107.6066665649414
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "فﯾرﻛﻧ",
+          "reversedNormalized": "نكریف",
+          "bbox": [
+            595.6732788085938,
+            503.2987060546875,
+            674.1537475585938,
+            556.5833129882812
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "ﺔﯾﻗرﺷﻟا ةدﺎﻣر",
+          "reversedNormalized": "رمادة الشرقیة",
+          "bbox": [
+            663.1588745117188,
+            101.12800598144531,
+            805.3680419921875,
+            154.41256713867188
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": " ﺔﯾﺑﺎﺧﺗﻧﻻا ةرﺋادﻟا",
+          "reversedNormalized": "الدائرة الانتخابیة ",
+          "bbox": [
+            695.7319946289062,
+            -3.117218017578125,
+            847.6636962890625,
+            42.555267333984375
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": false
+        },
+        {
+          "raw": "توﺑﻧﻛ",
+          "reversedNormalized": "كنبوت",
+          "bbox": [
+            643.9030151367188,
+            35.767669677734375,
+            707.26318359375,
+            81.44015502929688
+          ],
+          "centerCoveredByTarget": false,
+          "bboxIntersectsTarget": true
+        }
+      ],
+      "wgs84Bounds": [
+        9.99463936419959,
+        32.02255134199837,
+        10.35928512196668,
+        32.34789119089628
+      ],
+      "comparisons": {
+        "osm:relation:7143844": {
+          "sourceTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "كمبوت",
+            "name:ar": "كمبوت",
+            "name:fr": "Kambout",
+            "ref:tn:codegeo": "535754"
+          },
+          "currentRow": {
+            "id": "osm:relation:7143844",
+            "sourceId": "osm",
+            "name": "كمبوت",
+            "aliases": [
+              "Kambout",
+              "ⴽⵎⴱⵓⵜ"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية رمادة",
+            "contextAliases": [
+              "Délégation Remada",
+              "Remada",
+              "معتمدية رمادة"
+            ],
+            "governorateId": 351,
+            "lat": 32.198026,
+            "lng": 10.07295,
+            "delegationId": 471,
+            "hasBoundary": true,
+            "bbox": [
+              9.844184,
+              31.976627,
+              10.35943,
+              32.418207
+            ],
+            "areaKm2": 1093.2821259218051,
+            "pickerGroupId": "osm:relation:7143844",
+            "offset": 2175000,
+            "length": 2268
+          },
+          "officialVsOriginal": {
+            "officialAreaKm2": 573.2090117532365,
+            "comparedAreaKm2": 1089.656944035348,
+            "intersectionKm2": 543.8980186823724,
+            "iou": 0.4860711380961982,
+            "officialCoveredByCompared": 0.9488650867835929,
+            "comparedCoveredByOfficial": 0.4991461043400909,
+            "officialOutsideComparedKm2": 29.310993070864708,
+            "comparedOutsideOfficialKm2": 545.7589253529765,
+            "hausdorffMeters": 14400.122975657607,
+            "centroidDistanceMeters": 5531.4179218729905
+          },
+          "officialVsPacked": {
+            "officialAreaKm2": 573.2090117532365,
+            "comparedAreaKm2": 1089.656568273021,
+            "intersectionKm2": 543.8983839021724,
+            "iou": 0.48607178636348325,
+            "officialCoveredByCompared": 0.9488657239330317,
+            "comparedCoveredByOfficial": 0.4991466116376357,
+            "officialOutsideComparedKm2": 29.310627851064204,
+            "comparedOutsideOfficialKm2": 545.7581843708489,
+            "hausdorffMeters": 14400.11518223737,
+            "centroidDistanceMeters": 5531.420740945139
+          },
+          "currentAnchor": {
+            "covered": true,
+            "distanceToPolygonMeters": 0.0,
+            "distanceToBoundaryMeters": 6454.154433260946
+          }
+        }
+      }
+    }
+  ]
+}

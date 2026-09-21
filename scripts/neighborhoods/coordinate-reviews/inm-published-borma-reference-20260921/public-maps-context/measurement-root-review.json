@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "original": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\measure-border.py",
+    "sha256": "68b2f652bbaf1afc9a84367ee4bedca0e980c5a7ede1dcc0e7f5368a7f4613ef"
+  },
+  "reviewed": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\measure-border-reviewed.py",
+    "sha256": "2b4b5f52f4224211448782dfe191c0dc180ea3f78383478651a8a1ea75c7f8b0"
+  },
+  "result": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\borma-border-context-20260921\\border-measurement.json",
+    "sha256": "499600fc192053618c7adac5896adc4a984cf47296f0c06f1890a7a92068cd39"
+  },
+  "worker": "deepseek-flash",
+  "reasoning": "max",
+  "rootFix": "Corrected WORK parent path resolution in two literal substitutions before execution; numerical and read-only logic preserved.",
+  "productWrites": false,
+  "networkCallsByMeasurement": false
+}

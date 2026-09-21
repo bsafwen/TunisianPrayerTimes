@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "status": "FINITE_CURRENT_CONSUMER_SCREEN_NOT_A_GENERATION_GUARANTEE",
+  "inputPins": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\catalog-curation.json",
+      "sha256": "35ea613c991a8eb91800ba21546d8ed0b2c76550a5947bcb96857502f2d38b43",
+      "bytes": 446748
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\reviewed-boundaries.json",
+      "sha256": "34809853b02d38bf924f2f6f4b51dd89b88882a7fb323bed137cadaa87d1ca57",
+      "bytes": 108873
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\reviewed-picker-groups.json",
+      "sha256": "f9e5f75aa8618e9008cf8639237f85128fda3bc1d6cdf71c15684451ad678e99",
+      "bytes": 630000
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\amdoun-two-boundary-review-20260920\\frozen\\generate_neighborhoods.py",
+      "sha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1",
+      "bytes": 776658
+    }
+  ],
+  "directActiveTargetDecisions": [
+    {
+      "id": "osm:relation:7189452",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عمدون",
+        "name:ar": "عمدون",
+        "name:fr": "Amdoun",
+        "ref:tn:codegeo": "215351"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "زهرة مدين",
+        "name:ar": "زهرة مدين",
+        "name:fr": "Zahret medien",
+        "alt_name:ar": "عمدون",
+        "alt_name:fr": "Amdoun"
+      },
+      "reason": "Official INS sector code 215351 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين / Zahret medien. Retain عمدون and Amdoun as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+      "evidence": [
+        {
+          "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/amdoun-two-20260920/proof.json",
+              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7189451",
+      "expectedKind": "sector",
+      "expectedTags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "عمدون الجنوبية",
+        "name:ar": "عمدون الجنوبية",
+        "name:fr": "Amdoun Sud",
+        "ref:tn:codegeo": "215352"
+      },
+      "action": "name_tags",
+      "nameTags": {
+        "name": "زهرة مدين الجنوبية",
+        "name:ar": "زهرة مدين الجنوبية",
+        "name:fr": "Zahret medien sud",
+        "alt_name:ar": "عمدون الجنوبية",
+        "alt_name:fr": "Amdoun Sud"
+      },
+      "reason": "Official INS sector code 215352 and the reviewed source/official-map identity establish the current Arabic and French sector names زهرة مدين الجنوبية / Zahret medien sud. Retain عمدون الجنوبية and Amdoun Sud as searchable Amdoun aliases. Preserve source polygon, coordinates, kind, prayer-source mapping and distinct picker identity; only the existing child inherits the corrected sector context.",
+      "evidence": [
+        {
+          "source": "Two Amdoun official-sector name identities; original coded source, official registry, INS2012 and exact ISIE2023 maps. Name-only correction with unchanged unequal geometry.",
+          "reviewFiles": [
+            {
+              "file": "name-reviews/amdoun-two-20260920/proof.json",
+              "sha256": "fade018e81fcb616f446e3fb860298561a323279f0f062e2eabf64f27a6911bd"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "otherTargetDecisionsInBoundaryAndPickerManifests": [],
+  "duplicateActionGuard": {
+    "file": "scripts/generate_neighborhoods.py",
+    "sha256": "fe3f24fdd27acab400bae59f710949d6591172a638f8048df4b34a44d4bd20f1",
+    "line": 10272,
+    "message": "Official boundary identity and name curation need a joint review",
+    "resolution": "Explicitly remove only the two exact installed name_tags decisions after moving identical consumed names/aliases and original proof links into these reviewed boundary records; do not bypass the guard."
+  },
+  "manualPointGuard": "previous_metadata review requires expectedCuration=None after the exact two supersessions; both native/packed footprints and source/code are checked.",
+  "childConsumers": [
+    {
+      "currentRow": {
+        "id": "osm:node:4099579144",
+        "sourceId": "osm",
+        "name": "عمدون",
+        "aliases": [
+          "Amdoun",
+          "Zahret Medien",
+          "زهرة مدين",
+          "Zahret Median"
+        ],
+        "kind": "town",
+        "parentName": "زهرة مدين الجنوبية",
+        "contextAliases": [
+          "Amdoun Sud",
+          "Délégation Amdoun",
+          "Zahret medien sud",
+          "زهرة مدين الجنوبية",
+          "عمدون الجنوبية",
+          "معتمدية عمدون"
+        ],
+        "governorateId": 356,
+        "lat": 36.7686376,
+        "lng": 9.0894667,
+        "delegationId": 515,
+        "hasBoundary": false,
+        "pickerGroupId": "delegation:515"
+      },
+      "memberships": {
+        "osm:relation:7189452": {
+          "oldPackedCoversWholeFootprint": false,
+          "newNativeCoversWholeFootprint": false,
+          "newPackedCoversWholeFootprint": false
+        },
+        "osm:relation:7189451": {
+          "oldPackedCoversWholeFootprint": true,
+          "newNativeCoversWholeFootprint": true,
+          "newPackedCoversWholeFootprint": true
+        }
+      },
+      "exactCurrentSectorNameReference": true
+    }
+  ],
+  "pickerOwners": [
+    "osm:relation:7189452",
+    "osm:relation:7189451",
+    "delegation:515"
+  ],
+  "sourceProviderInventoryBeforeAfter": [
+    31,
+    32
+  ],
+  "reviewedBoundaryCountBeforeAfter": [
+    113,
+    115
+  ],
+  "wholeScopeCountBeforeAfter": [
+    110,
+    112
+  ],
+  "aggregateScopeCountBeforeAfter": [
+    3,
+    3
+  ],
+  "sourcePhaseLineage": "Existing validated append-only chain must retain the exact current31-source manifest and previous scope/proof bytes. Append one provider with two whole records; no aggregate scope change.",
+  "broadHistoricalEvidence": "ID occurrences in global original-source facts, old full-catalog projections and point-retention baselines are historical input evidence. No such snapshots or original names are rewritten.",
+  "guardLimitation": "Direct manifest consumers and generic overlay/manual/lineage guards reviewed; a later authorized isolated generation must validate all transitive active contracts before installation.",
+  "noBlindRepins": true
+}

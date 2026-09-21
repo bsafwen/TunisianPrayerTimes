@@ -1,0 +1,52 @@
+{
+  "observedAt": "2026-09-07T10:13:47.277583+00:00",
+  "query": "العروسة سليانة Tunisia",
+  "queryVisibleInUi": false,
+  "publicCardTitles": [],
+  "publicUiText": [
+    "Layers",
+    "تيجمة مطماطة الجديدة قابس Tunisia",
+    "Close",
+    "More filters",
+    "Open now",
+    "Top rated",
+    "3+ reviews",
+    "Directions",
+    "Share",
+    "Save",
+    "Looking for somewhere else?",
+    "Add a missing place",
+    "Clear"
+  ],
+  "observationStatus": "needs_visual_review",
+  "catalogNamesVisibleOutsideSearch": [],
+  "screenshot": "delegation_419-2.png",
+  "boundaryVerified": false,
+  "identityReviewBatch": {
+    "batchId": "2026-09-07-same-subtitle-13",
+    "sourceId": "delegation:419",
+    "currentMetadataSha256": "68ff6b405f80ee8873fb15337c43d158df2b5e38a1d357498efdd0f3574d7427",
+    "currentCatalogFingerprint": "aacdbe8c93a640e075ac14e78a3fdaf452ed59bfa3a270dc08abfbc1f3948f35",
+    "pairAuditSha256": "6cc8687bb78c1ff554771d9c6acba365446409d297a40891c4599ceca61d1c87"
+  },
+  "manualVisualReview": {
+    "reviewedAt": "2026-09-07T10:18:08.309542+00:00",
+    "reviewer": "picker_display_fix",
+    "visuallyInspected": true,
+    "classification": "matching_locality_card",
+    "displayedTitle": "El Aroussa",
+    "finding": "The screenshot clearly shows the requested العروسة سليانة Tunisia search and El Aroussa / العروسة locality card near C47/C49. The earlier accessibility dump still contains the preceding Tijma query and no card title; preserve that timing mismatch rather than call it a rewrite or edit the raw observation. Name agreement with the reused sector screenshot does not resolve differing member names.",
+    "visibleSearchTextFromScreenshot": "العروسة سليانة Tunisia",
+    "rawPublicSearchTextCandidates": [
+      "تيجمة مطماطة الجديدة قابس Tunisia"
+    ],
+    "uiDumpAndScreenshotTimingMismatch": true,
+    "partiallyLoadingCardObserved": false,
+    "boundaryVerified": false,
+    "administrativeMembershipVerifiedByPhone": false,
+    "distinctSourceIdentityVerified": false,
+    "manualResultSelectionPerformed": false,
+    "mergeSupportedByPhoneEvidence": false,
+    "limitation": "The result only characterizes this public search. Same cards can serve separate source points, related landmarks do not establish residential extents, and unrelated POIs provide no locality corroboration. No source rows are merged or boundary-certified from these observations."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "observedAt": "2026-09-07T06:19:07.930739+00:00",
+  "query": "تالة القصرين Tunisia",
+  "queryVisibleInUi": true,
+  "publicCardTitles": [
+    "Thala"
+  ],
+  "publicUiText": [
+    "Thala",
+    "تالة",
+    "Tunisia",
+    "Directions to Thala",
+    "Directions",
+    "Share Thala",
+    "Share",
+    "Save Thala to lists",
+    "Save",
+    "Photo",
+    "Video",
+    "Close",
+    "تالة القصرين Tunisia",
+    "Clear",
+    "Restaurants",
+    "Hotels",
+    "Attractions"
+  ],
+  "observationStatus": "candidate_observed",
+  "catalogNamesVisibleOutsideSearch": [
+    "تالة"
+  ],
+  "screenshot": "delegation_573-1.png",
+  "boundaryVerified": false
+}

@@ -1,0 +1,10 @@
+{
+  "workerReview": "Accepted after correcting metadata field nameAr to name; previous entries unchanged",
+  "status": "INSTALLED",
+  "id": "osm:way:164467494",
+  "beforeCount": 267,
+  "afterCount": 268,
+  "nameAr": "القصيبة",
+  "metadataBinaryUnchanged": true,
+  "displaySha256": "de99df77e359a9cb521c148b85f1ec56426a2d378afcb14f644d4336e6989852"
+}
