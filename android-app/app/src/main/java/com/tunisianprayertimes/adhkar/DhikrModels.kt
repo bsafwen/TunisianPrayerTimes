@@ -18,6 +18,9 @@ data class DhikrTime(
 data class DhikrReminder(
     val id: String = UUID.randomUUID().toString(),
     val dhikrId: String,
+    /** Set for a whole-collection reminder (morning/evening); personal repetition targets are omitted. */
+    val collection: DhikrCategory? = null,
+    val vibrate: Boolean = true,
     val targetCount: Int = 100,
     val daysOfWeek: Set<Int> = (1..7).toSet(),
     val start: DhikrTime = DhikrTime(),
@@ -47,6 +50,8 @@ internal fun DhikrTime.toJson(): JSONObject = JSONObject()
 internal fun DhikrReminder.toJson(): JSONObject = JSONObject()
     .put("id", id)
     .put("dhikrId", dhikrId)
+    .put("collection", collection?.name ?: JSONObject.NULL)
+    .put("vibrate", vibrate)
     .put("targetCount", targetCount)
     .put("daysOfWeek", JSONArray(daysOfWeek.sorted()))
     .put("start", start.toJson())
@@ -68,6 +73,8 @@ internal fun dhikrReminderFromJson(json: JSONObject): DhikrReminder {
     return DhikrReminder(
         id = json.getString("id"),
         dhikrId = json.getString("dhikrId"),
+        collection = if (json.isNull("collection")) null else runCatching { DhikrCategory.valueOf(json.getString("collection")) }.getOrNull(),
+        vibrate = json.optBoolean("vibrate", true),
         targetCount = json.getInt("targetCount"),
         daysOfWeek = (0 until days.length()).map { days.getInt(it) }.toSet(),
         start = readTime(json.getJSONObject("start")),
@@ -80,6 +87,26 @@ internal fun dhikrReminderFromJson(json: JSONObject): DhikrReminder {
         notBeforeMillis = json.optLong("notBeforeMillis", 0),
     )
 }
+
+internal fun DhikrEntry.toJson(): JSONObject = JSONObject()
+    .put("id", id)
+    .put("title", title)
+    .put("text", text)
+    .put("reference", reference)
+    .put("defaultCount", defaultCount)
+
+/** Personal entries always load as custom with no category; malformed records are dropped. */
+internal fun dhikrEntryFromJson(json: JSONObject): DhikrEntry? = runCatching {
+    DhikrEntry(
+        id = json.getString("id"),
+        title = json.getString("title"),
+        text = json.getString("text"),
+        reference = json.optString("reference"),
+        defaultCount = json.optInt("defaultCount", 1).coerceIn(1, 100_000),
+        categories = emptySet(),
+        custom = true,
+    )
+}.getOrNull()
 
 enum class DhikrOccurrenceStatus { OPEN, COMPLETED, SKIPPED, REPLACED }
 
@@ -96,6 +123,8 @@ data class DhikrSession(
     val itemIds: List<String>, val counts: Map<String, Int> = emptyMap(), val index: Int = 0,
     val category: DhikrCategory? = null, val occurrenceId: String? = null,
     val updatedAtMillis: Long = System.currentTimeMillis(),
+    /** Items the reader moved past without counting; a skip still satisfies list completion. */
+    val skippedIds: Set<String> = emptySet(),
 ) {
     val itemId: String get() = itemIds[index.coerceIn(0, itemIds.lastIndex)]
 }
@@ -108,6 +137,36 @@ data class DhikrState(
     val lastSessionId: String? = null,
     val textSize: Int = 28,
     val countHaptics: Boolean = false,
+    /** Personal entries written by the user, newest first. */
+    val customEntries: List<DhikrEntry> = emptyList(),
+    /** Ids the user explicitly added to a collection that does not contain them by default. */
+    val collectionAdditions: Map<DhikrCategory, Set<String>> = emptyMap(),
+    /** Ids the user explicitly removed from a collection that contains them by default. */
+    val collectionRemovals: Map<DhikrCategory, Set<String>> = emptyMap(),
+)
+
+/** Resolves built-in and personal entries through one lookup. */
+fun DhikrState.findDhikr(id: String): DhikrEntry? =
+    customEntries.firstOrNull { it.id == id } ?: DhikrCatalog.find(id)
+
+val DhikrState.allEntries: List<DhikrEntry> get() = DhikrCatalog.entries + customEntries
+
+/** Collection membership is the catalog default adjusted by the user's additions and removals. */
+fun DhikrState.isInCollection(entry: DhikrEntry, category: DhikrCategory): Boolean = when {
+    entry.id in collectionRemovals[category].orEmpty() -> false
+    category in entry.categories -> true
+    else -> entry.id in collectionAdditions[category].orEmpty()
+}
+
+fun DhikrState.collectionEntries(category: DhikrCategory): List<DhikrEntry> =
+    allEntries.filter { isInCollection(it, category) }
+
+/** Snapshot captured when a personal dhikr is deleted so the action can be undone. */
+data class CustomDhikrRemoval(
+    val entry: DhikrEntry,
+    val reminders: List<DhikrReminder>,
+    val sessions: List<DhikrSession>,
+    val favourite: Boolean,
 )
 
 /** Matching only: never normalize the stored/displayed religious text. */
@@ -116,11 +175,22 @@ fun normalizeDhikrSearch(value: String): String = java.text.Normalizer.normalize
     .replace('ى', 'ي').replace('ؤ', 'و').replace('ئ', 'ي').replace('ة', 'ه').lowercase().trim()
 
 fun DhikrState.target(session: DhikrSession, itemId: String = session.itemId): Int =
-    session.occurrenceId?.let { occurrences[it]?.target } ?: DhikrCatalog.find(itemId)?.defaultCount ?: 1
+    if (session.category == null) session.occurrenceId?.let { occurrences[it]?.target }
+        ?: findDhikr(itemId)?.defaultCount ?: 1
+    else findDhikr(itemId)?.defaultCount ?: 1
 
-fun DhikrState.isComplete(session: DhikrSession): Boolean = session.itemIds.all { (session.counts[it] ?: 0) >= target(session, it) }
+fun DhikrState.isComplete(session: DhikrSession): Boolean =
+    session.itemIds.all { it in session.skippedIds || (session.counts[it] ?: 0) >= target(session, it) }
 
-/** Notification count is independent of recitation count. Minimum spacing: 15 minutes. */
+/** Custom cadences honor the configured interval down to this floor; receive-time burst spacing is 2 minutes. */
+const val MIN_DHIKR_INTERVAL_MINUTES = 5
+/** Validation caps a window at one day, so 5-minute nudges need at most 289 entries. */
+private const val MAX_NUDGES_PER_WINDOW = 300
+
+/**
+ * Notification count is independent of recitation count. Custom and hourly cadences fire every
+ * configured interval exactly; gentle/balanced spread at most 3/5 nudges across the window.
+ */
 fun dhikrNudgeTimes(reminder: DhikrReminder, window: DhikrWindow): List<Long> {
     val duration = window.endMillis - window.startMillis
     if (duration <= 0) return emptyList()
@@ -131,8 +201,8 @@ fun dhikrNudgeTimes(reminder: DhikrReminder, window: DhikrWindow): List<Long> {
             (0 until count).map { window.startMillis + it * maxOf(minimum, duration / count) }.filter { it < window.endMillis }
         }
         else -> {
-            val step = (if (reminder.cadence == DhikrCadence.HOURLY) 60 else reminder.intervalMinutes.coerceAtLeast(15)) * 60_000L
-            generateSequence(window.startMillis) { it + step }.takeWhile { it < window.endMillis }.take(32).toList()
+            val step = (if (reminder.cadence == DhikrCadence.HOURLY) 60 else reminder.intervalMinutes.coerceAtLeast(MIN_DHIKR_INTERVAL_MINUTES)) * 60_000L
+            generateSequence(window.startMillis) { it + step }.takeWhile { it < window.endMillis }.take(MAX_NUDGES_PER_WINDOW).toList()
         }
     }
 }

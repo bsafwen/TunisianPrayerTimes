@@ -1,68 +1,58 @@
-# Adhkar redesign — implementation and verification
+# Adhkar — approved mockup implementation
 
-Implemented in the existing Android/Compose app on 21 September 2026, using the supplied screenshot, interactive prototype, and Arabic-first brief as design references.
+Implemented in the existing Android/Compose app. The four attached screens are the visual target; all controls are wired to the real adhkar state, repository, scheduler, and catalog.
 
-## Delivered experience
+## Delivered screens
 
-- Compact Adhkar header, Today/Library destinations, contextual resume card, secondary suggestion, and six categories. The shared prayer masthead is absent from this tab; prayer attribution remains in the prayer section. Bottom-navigation order is preserved.
-- Full-screen Arabic reader with licensed Noto Naskh Arabic, adjustable text, explicit counting, undo, favourites, optional count haptics, sources, and deliberate collection navigation. Short landscape screens use separate text and counter panes.
-- Search, Arabic normalization for matching only, saved favourites, useful empty results, and retained library context. The 35 existing entries remain packaged for offline reading, including home entry/exit and daily activities.
-- Scrollable reminder sheet with fixed Save/preview actions, target and weekday controls, fixed/prayer-relative times, explicit next-day ranges, cadence independent of repetition targets, visible validation errors, and actual notification/channel restrictions.
-- Friday preset: the user's exact salawat, personal target 100, Friday, 08:00–Maghrib, gentle cadence. Existing Friday routines open for editing. Opening the preset or its simulated preview does not schedule anything.
-- Reminder management: enabled state, delivery eligibility, edit, skip an occurrence, delete with undo, and preserved reading history.
+1. **Home** — shared green prayer masthead, compact "الأذكار" title with search action, centered Today/Library tabs, gold morning and teal evening reading cards, compact "تذكيراتي" rows for salawat, tahlil, morning, and evening, and "تصفح حسب الحالة" shortcuts. Bottom navigation is unchanged from the other tabs.
+2. **Reminder editor** — full-height sheet with the selected-dhikr card, target stepper, time-window and cadence rows, notification/vibration toggles, quick templates, and a fixed primary save button. Morning/evening collection reminders omit the personal repetition-target controls.
+3. **Reader and counter** — large Noto Naskh Arabic text, inline source reference (opens the source sheet), circular progress counter with dedicated counting action, undo, previous/next controls in the card header and below, remaining count, progress segments, and text-size adjustment via "Aa" (with the count-haptics switch preserved there).
+4. **Library and search** — "مكتبة الأذكار" title, search field, category chips, real collection cards with catalog entry counts, and الأخيرة/المفضلة tabs with real reading history and favourites.
 
-## State and scheduling decisions
+## Functional notes
 
-- Content, reminder rules, dated occurrences, reading sessions, and delivery records are separate. Occurrence IDs include rule ID, revision, and local start date. Each occurrence snapshots its personal target.
-- A standalone reading never satisfies a scheduled goal. Session position and accepted counts are committed together in local preferences before publishing updated UI state. Previous rules/counters migrate without silently resetting progress.
-- Schedule/target edits replace the rule revision, stop the old open occurrence's nudges, retain its counts/target, and take effect in future periods. Enable/disable preserves the current occurrence's progress; delete preserves all history.
-- Prayer anchors use the existing selected-city prayer repository. Fixed times and prayer wall-clock values follow the device timezone, consistent with the existing Android scheduling approach; overnight occurrences belong to their start date. No new location collection or prayer engine was added.
-- One identifiable inexact alarm is pending per enabled rule. Gentle/balanced modes produce at most 3/5 nudges. Notification actions resume or snooze; neither counts a recitation. Snooze must remain inside the occurrence window.
-- Delivery rechecks the saved event, occurrence, current rule revision, enabled state, completion, expiry, permission, channel, and active-reader presence. Stable event records prevent duplicates; late delivery does not replay a backlog. A two-minute global spacing guard suppresses bursts.
-- Existing startup, schedule-refresh, city-change, and boot/clock-change integrations are reused, with a six-hour repair worker. Android can defer these gentle reminders; exact delivery is not promised. The Adhkar channel starts with vibration and no sound, subject to the user's channel settings and Do Not Disturb.
+- Reminder templates (home rows, quick templates) are never enabled until the user saves: home template rows start with the switch off and only save when switched on; quick templates only fill the editor.
+- Collection reminders add `DhikrReminder.collection` (MORNING/EVENING). Their occurrence opens the whole collection session, and the notification title uses the collection name.
+- Per-reminder vibration adds `DhikrReminder.vibrate`, applied through the notification builder. On Android 8+ the adhkar channel governs vibration, so the switch is effective only where the platform allows per-notification patterns; the channel settings link remains.
+- LTR digits are used throughout the tab, matching the rest of the app.
+
+## Deviations from the mockups (and why)
+
+| Mockup element | Implementation | Reason |
+| --- | --- | --- |
+| Library has no Today/Library tabs | Tabs remain on the library page | Needed to return to the Today page; no other back affordance exists |
+| Illustrative counts (118، 96، 120 …) | Real catalog counts (7، 8، 6، 9، 2، 12) | "Do not copy unverified collection totals" |
+| "من فضله" virtue box | Omitted; source reference shown inline | Catalog has no verified virtue field; unverified virtues must not ship |
+| "الخروج من المنزل" and similar chips | The six real catalog categories | Catalog has no such category |
+| Undo labeled "إعادة" | Labeled "تراجع" | The control decrements one count; the label must match the action |
+| Reader haptics control | Moved into the "Aa" dialog | Keeps the mockup layout while preserving the existing setting |
+| Templates shown enabled | Off until saved | Explicit brief requirement |
+
+## Verification
+
+- `:app:compileDebugKotlin` — passed.
+- `:app:testDebugUnitTest --tests com.tunisianprayertimes.adhkar.AdhkarFlowTest` — **14 passed, 0 failed**.
+- `AdhkarReaderInstrumentedTest` on the API 37 emulator — **2 passed** (editor validation without saving; notification deep link, counting, undo, recreation, repeated open requests).
+- Screenshots captured from the running app (Pixel-class emulator, 1344×2992): home, home shortcuts, library, reminder editor, templates, collection reminder, reader.
+
+| Home | Library |
+| --- | --- |
+| ![Home](20-home.png) | ![Library](22-library.png) |
+
+| Reminder editor | Reader |
+| --- | --- |
+| ![Editor](23-reminder-editor.png) | ![Reader](26-reader.png) |
+
+Additional captures: [home shortcuts](21-home-situations.png), [quick templates](24-reminder-templates.png), [collection reminder](25-collection-reminder.png).
 
 ## Main files
 
-| Area | Files relative to repository root |
+| Area | Files |
 | --- | --- |
-| Today, Library, reminder management | `android-app/app/src/main/java/com/tunisianprayertimes/ui/AdhkarScreen.kt` |
-| Reader and responsive controls | `android-app/app/src/main/java/com/tunisianprayertimes/ui/AdhkarReader.kt` |
+| Home, library, reminder management | `android-app/app/src/main/java/com/tunisianprayertimes/ui/AdhkarScreen.kt` |
+| Reader and counter | `android-app/app/src/main/java/com/tunisianprayertimes/ui/AdhkarReader.kt` |
 | Reminder editor | `android-app/app/src/main/java/com/tunisianprayertimes/ui/AdhkarReminderEditor.kt` |
-| Palette, typography, system bars | `android-app/app/src/main/java/com/tunisianprayertimes/ui/AdhkarDesign.kt` |
-| Persistent model and delivery | `android-app/app/src/main/java/com/tunisianprayertimes/adhkar/DhikrModels.kt`, `DhikrRepository.kt`, `DhikrReminderScheduler.kt` |
-| Navigation and notification links | `android-app/app/src/main/java/com/tunisianprayertimes/MainActivity.kt`, `ui/MainScreen.kt` |
-| Catalog metadata and source notes | `android-app/app/src/main/java/com/tunisianprayertimes/adhkar/DhikrCatalog.kt`, `docs/adhkar-sources.md` |
-| Assets | `android-app/app/src/main/res/drawable/ic_adhkar_*.xml`, `res/font/`, `assets/font-licenses/` |
-| Focused verification | `android-app/app/src/test/java/com/tunisianprayertimes/adhkar/AdhkarFlowTest.kt`, `src/androidTest/java/com/tunisianprayertimes/AdhkarReaderInstrumentedTest.kt` |
-
-Noto Naskh Arabic is from [Google Fonts](https://github.com/google/fonts/tree/main/ofl/notonaskharabic); the UI face is [Noto Sans Arabic UI](https://github.com/notofonts/noto-fonts/tree/main/hinted/ttf/NotoSansArabicUI). Their SIL Open Font Licenses are included in app assets. Fonts were obtained from their upstream distributions, not extracted from the prototype.
-
-## Verification performed
-
-- `:app:compileDebugKotlin` — passed. A debug build and test package were generated only for the requested emulator verification; no release was generated.
-- `:app:testDebugUnitTest --tests com.tunisianprayertimes.adhkar.AdhkarFlowTest` — **14 passed, 0 failed**. Covers persistence, undo bounds, collection backtracking, independent counters, legacy migration, favourites/search normalization, revision/history/delete undo, Friday anchors on successive weeks, cadence independence, overnight ranges, DST, notification deduplication and links, stale-event rejection, active-reader suppression, snooze limits, permission/channel restrictions, and delayed delivery without catch-up bursts.
-- `AdhkarReaderInstrumentedTest` on the API 37 emulator — **2 passed**. A notification-style deep link opens the exact occurrence; opening/scrolling does not count; a count and undo survive activity recreation; a second open request does not count. An invalid target shows an error beside the fixed Save action without creating/enabling a rule. The test restores the emulator's prior Adhkar state.
-- Manual emulator checks: 360 dp and 412 dp normal layouts; 320 dp with 150% system text; portrait/landscape reader; light/dark themes and system-bar contrast; source sheet and long text scrolling; explicit next/back and undo; search focus and empty-result recovery; separate home entries; reminder body scrolling with fixed actions.
-- Calculated contrast ratios: main text/ivory **10.97:1**, secondary text/ivory **5.04:1**, white/forest **9.58:1**, dark-theme secondary text/background **9.12:1**. Gold is decorative.
-- Whitespace checks passed for the modified tracked implementation files. No unrelated staged work was reset or included in a commit.
-
-## Screenshots
-
-These are unedited captures of the running Android app, not prototype renders. The emulator's existing reading progress is shown. The capture day was Monday, so Today correctly shows a resumed session rather than a permanent Friday promotion. Reminder captures show an existing routine; the fresh preset's gentle defaults are verified separately in the tests.
-
-| Today, 412 dp | Reader, 412 dp |
-| --- | --- |
-| ![Today](11-today-412.png) | ![Reader](12-reader-412.png) |
-
-| Reminder, 360 dp | Library, 412 dp |
-| --- | --- |
-| ![Reminder](03-reminder.png) | ![Library](14-library-412.png) |
-
-Additional captures: [cadence](03b-reminder-cadence.png), [summary](03c-reminder-summary.png), [dark Today](06-today-dark-412.png), [landscape reader](07-reader-landscape.png), [320 dp / large text](08-reader-large-320.png), [large-text editor](09-reminder-large-320.png), [dark editor](10-reminder-dark.png), [empty search](13-search-empty.png).
-
-## Remaining release checks
-
-- No externally approved replacement content dataset was supplied. The existing source-linked catalog was retained, with immutable IDs/version metadata. The exact user-supplied composite salawat is explicitly identified as user wording, not falsely attributed to a single narration. Religious-content editorial approval, particularly this wording, remains a release requirement.
-- Actual vibration and long-running background delivery under physical-device/OEM battery policies require a device check. Automated tests cover delivery logic and restrictions, not physical vibration or every vendor's deferral behavior.
-- Accessibility semantics, scalable layouts, labelled controls, and contrast were checked; a full spoken TalkBack/keyboard accessibility audit remains outstanding. Not every boot, city-change, unavailable-data, and permission-transition combination has been exercised on hardware.
-- Android notification permission and the Adhkar channel must be enabled by the user for delivery. Reading and saved rules remain available when delivery is blocked. The notification preview is explicitly simulated.
+| Palette, tokens, shared components | `android-app/app/src/main/java/com/tunisianprayertimes/ui/AdhkarDesign.kt` |
+| Model, persistence, delivery | `android-app/app/src/main/java/com/tunisianprayertimes/adhkar/` |
+| Shared masthead | `android-app/app/src/main/java/com/tunisianprayertimes/ui/MainScreen.kt` |
+| Icons | `android-app/app/src/main/res/drawable/ic_adhkar_heart*.xml`, `ic_adhkar_list.xml` |

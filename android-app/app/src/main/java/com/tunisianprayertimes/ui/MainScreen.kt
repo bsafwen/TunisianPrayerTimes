@@ -708,8 +708,7 @@ fun MainScreen(
 
     val adhkarStateHolder = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
     val isAdhkar = selectedDestination == MainDestination.Adhkar
-    val adhkarPalette = if (androidx.compose.foundation.isSystemInDarkTheme()) AdhkarDark else AdhkarLight
-    Box(modifier = Modifier.fillMaxSize().background(if (isAdhkar) adhkarPalette.background else BgCream)) {
+    Box(modifier = Modifier.fillMaxSize().background(BgCream)) {
         if (isAdhkar) {
             adhkarStateHolder.SaveableStateProvider("adhkar") {
                 AdhkarScreen(
@@ -1024,7 +1023,7 @@ fun MainScreen(
         }
 
         }
-        if (!isAdhkar) Spacer(
+        Spacer(
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .fillMaxWidth()
@@ -1047,8 +1046,8 @@ fun MainScreen(
                         (MainContentBottomPadding - BottomNavigationMinHeight).roundToPx()
                     }
                 },
-            color = if (isAdhkar) adhkarPalette.background else Color.White,
-            tonalElevation = if (isAdhkar) 0.dp else 8.dp
+            color = Color.White,
+            tonalElevation = 8.dp
         ) {
             Column(
                 modifier = Modifier
@@ -1094,11 +1093,11 @@ fun MainScreen(
                             val selected = currentDestinationIndex == index
                             val label = stringResource(destination.labelRes)
                             val tabIndicatorColor by animateColorAsState(
-                                targetValue = if (selected) { if (isAdhkar) adhkarPalette.primary else GreenPrimary } else Color.Transparent,
+                                targetValue = if (selected) GreenPrimary else Color.Transparent,
                                 label = "bottomTabIndicator"
                             )
                             val tabContentColor by animateColorAsState(
-                                targetValue = if (isAdhkar) { if (selected) adhkarPalette.primary else adhkarPalette.muted } else if (selected) GreenPrimaryDark else TextMuted,
+                                targetValue = if (selected) GreenPrimaryDark else TextMuted,
                                 label = "bottomTabContent"
                             )
 
@@ -1266,7 +1265,7 @@ fun MainScreen(
 }
 
 @Composable
-private fun IslamicHeader() {
+internal fun IslamicHeader() {
     Column(
         modifier = Modifier
             .fillMaxWidth()

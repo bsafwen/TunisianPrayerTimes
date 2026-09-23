@@ -2,6 +2,7 @@ package com.tunisianprayertimes.adhkar
 
 import android.content.Context
 import android.content.SharedPreferences
+import java.util.UUID
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -51,6 +52,60 @@ class DhikrRepository(context: Context) {
     fun toggleFavourite(id: String) = update {
         it.copy(favourites = if (id in it.favourites) it.favourites - id else it.favourites + id)
     }
+    /** Adds or edits a personal dhikr. A blank id means a new entry; edits keep the stored id. */
+    fun saveCustom(entry: DhikrEntry): DhikrEntry {
+        val title = entry.title.trim()
+        val text = entry.text.trim()
+        require(title.isNotEmpty() && text.isNotEmpty() && entry.defaultCount in 1..100_000)
+        val id = entry.id.ifBlank { "personal_" + UUID.randomUUID() }
+        require(DhikrCatalog.find(id) == null) { "معرّف الذكر محجوز" }
+        val saved = entry.copy(id = id, title = title, text = text, reference = entry.reference.trim(),
+            categories = emptySet(), custom = true)
+        update { old ->
+            if (old.customEntries.any { it.id == id }) old.copy(customEntries = old.customEntries.map { if (it.id == id) saved else it })
+            else old.copy(customEntries = listOf(saved) + old.customEntries)
+        }
+        return saved
+    }
+    /** Removes the entry with its reminders and reading sessions; the snapshot supports undo. */
+    fun deleteCustom(id: String): CustomDhikrRemoval? {
+        val current = state.value
+        val entry = current.customEntries.find { it.id == id } ?: return null
+        val removal = CustomDhikrRemoval(entry, current.reminders.filter { it.dhikrId == id },
+            current.sessions.values.filter { id in it.itemIds }, id in current.favourites)
+        val sessionIds = removal.sessions.map { it.id }.toSet()
+        update { old -> old.copy(
+            customEntries = old.customEntries.filterNot { it.id == id },
+            reminders = old.reminders.filterNot { it.dhikrId == id },
+            sessions = old.sessions.filterKeys { it !in sessionIds },
+            favourites = old.favourites - id,
+            lastSessionId = old.lastSessionId?.takeIf { it !in sessionIds },
+        ) }
+        DhikrReminderScheduler.refresh(app)
+        return removal
+    }
+    /** Adds or removes an entry from one collection; other collections are untouched. */
+    fun setCollectionMembership(category: DhikrCategory, id: String, member: Boolean) {
+        require(state.value.findDhikr(id) != null)
+        update { old ->
+            val additions = old.collectionAdditions[category].orEmpty().let { if (member) it + id else it - id }
+            val removals = old.collectionRemovals[category].orEmpty().let { if (member) it - id else it + id }
+            old.copy(
+                collectionAdditions = old.collectionAdditions.updatedWith(category, additions),
+                collectionRemovals = old.collectionRemovals.updatedWith(category, removals),
+            )
+        }
+    }
+    fun restoreCustom(removal: CustomDhikrRemoval) {
+        update { old -> old.copy(
+            customEntries = old.customEntries.filterNot { it.id == removal.entry.id } + removal.entry,
+            reminders = old.reminders.filterNot { rule -> removal.reminders.any { it.id == rule.id } } + removal.reminders,
+            sessions = old.sessions + removal.sessions.associateBy { it.id },
+            favourites = if (removal.favourite) old.favourites + removal.entry.id else old.favourites,
+            lastSessionId = removal.sessions.maxByOrNull { it.updatedAtMillis }?.id ?: old.lastSessionId,
+        ) }
+        DhikrReminderScheduler.refresh(app)
+    }
     fun setTextSize(size: Int) = update { it.copy(textSize = size.coerceIn(24, 40)) }
     fun setHaptics(enabled: Boolean) = update { it.copy(countHaptics = enabled) }
 
@@ -88,7 +143,8 @@ class DhikrRepository(context: Context) {
     }
     fun openSession(items: List<String>, category: DhikrCategory? = null, occurrenceId: String? = null,
                     fresh: Boolean = false): String {
-        require(items.isNotEmpty() && items.all { DhikrCatalog.find(it) != null })
+        val known = state.value
+        require(items.isNotEmpty() && items.all { known.findDhikr(it) != null })
         var selected = ""
         update { old ->
             val occurrence = occurrenceId?.let { old.occurrences[it] }
@@ -97,7 +153,7 @@ class DhikrRepository(context: Context) {
                 it.itemIds == items && it.category == category && it.occurrenceId == occurrenceId
             }.maxByOrNull { it.updatedAtMillis }
             val migratedCounts = if (occurrence != null) mapOf(occurrence.dhikrId to occurrence.count)
-                else if (fresh) emptyMap() else items.associateWith { store.legacyCount("reading|" + it).coerceAtMost(DhikrCatalog.find(it)!!.defaultCount) }
+                else if (fresh) emptyMap() else items.associateWith { store.legacyCount("reading|" + it).coerceAtMost(old.findDhikr(it)!!.defaultCount) }
             val session = existing?.copy(updatedAtMillis = System.currentTimeMillis())
                 ?: DhikrSession(itemIds = items, category = category, occurrenceId = occurrenceId, counts = migratedCounts)
             selected = session.id
@@ -125,11 +181,48 @@ class DhikrRepository(context: Context) {
         }
         if (state.value.sessions[sessionId]?.occurrenceId != null) DhikrReminderScheduler.refresh(app)
     }
+    /** Navigation is free and wraps around; completion is never a constraint. */
     fun move(sessionId: String, direction: Int) = update { old ->
         val session = old.sessions[sessionId] ?: return@update old
-        if (direction > 0 && (session.counts[session.itemId] ?: 0) < old.target(session)) return@update old
-        val updated = session.copy(index = (session.index + direction).coerceIn(0, session.itemIds.lastIndex), updatedAtMillis = System.currentTimeMillis())
+        val size = session.itemIds.size
+        if (size <= 1 || direction == 0) return@update old
+        val index = ((session.index + direction) % size + size) % size
+        val updated = session.copy(index = index, updatedAtMillis = System.currentTimeMillis())
         old.copy(sessions = old.sessions + (sessionId to updated), lastSessionId = sessionId)
+    }
+    /** Marks the current item skipped and advances; skipped items no longer block list completion. */
+    fun skipItem(sessionId: String) = update { old ->
+        val session = old.sessions[sessionId] ?: return@update old
+        val updated = session.copy(
+            skippedIds = session.skippedIds + session.itemId,
+            index = (session.index + 1).coerceAtMost(session.itemIds.lastIndex),
+            updatedAtMillis = System.currentTimeMillis(),
+        )
+        old.copy(sessions = old.sessions + (sessionId to updated), lastSessionId = sessionId)
+    }
+    /**
+     * Removes the current item from this reading list. A collection session also removes it
+     * from the collection so it does not return on the next read; arbitrary lists only change
+     * for this session. Removing the last remaining item closes the session.
+     */
+    fun removeItem(sessionId: String) {
+        update { old ->
+            val session = old.sessions[sessionId] ?: return@update old
+            val itemId = session.itemId
+            val collection = session.category
+            val items = session.itemIds.filterNot { it == itemId }
+            val sessions = if (items.isEmpty()) old.sessions - sessionId else old.sessions + (sessionId to session.copy(
+                itemIds = items, counts = session.counts - itemId, skippedIds = session.skippedIds - itemId,
+                index = session.index.coerceIn(0, items.lastIndex), updatedAtMillis = System.currentTimeMillis()))
+            old.copy(
+                sessions = sessions,
+                collectionAdditions = if (collection == null) old.collectionAdditions
+                    else old.collectionAdditions.updatedWith(collection, old.collectionAdditions[collection].orEmpty() - itemId),
+                collectionRemovals = if (collection == null) old.collectionRemovals
+                    else old.collectionRemovals.updatedWith(collection, old.collectionRemovals[collection].orEmpty() + itemId),
+                lastSessionId = old.lastSessionId?.takeIf { it != sessionId || items.isNotEmpty() },
+            )
+        }
     }
     private class Store(private val prefs: SharedPreferences) {
         val state = MutableStateFlow(read())
@@ -151,10 +244,18 @@ class DhikrRepository(context: Context) {
     }
 }
 internal fun JSONArray.objects(): List<JSONObject> = (0 until length()).mapNotNull { optJSONObject(it) }
+private fun Map<DhikrCategory, Set<String>>.updatedWith(category: DhikrCategory, ids: Set<String>): Map<DhikrCategory, Set<String>> =
+    if (ids.isEmpty()) this - category else this + (category to ids)
+private fun Map<DhikrCategory, Set<String>>.toJson(): JSONObject = JSONObject().apply {
+    forEach { (category, ids) -> put(category.name, JSONArray(ids.toList())) }
+}
 private fun JSONObject.stringList(key: String) = optJSONArray(key)?.let { array -> (0 until array.length()).map { array.getString(it) } }.orEmpty()
 private fun JSONObject.countMap(key: String): Map<String, Int> = optJSONObject(key)?.let { json -> json.keys().asSequence().associateWith { json.optInt(it).coerceAtLeast(0) } }.orEmpty()
 private fun DhikrState.toJson(): JSONObject = JSONObject()
     .put("rules", JSONArray(reminders.map { it.toJson() }))
+    .put("custom", JSONArray(customEntries.map { it.toJson() }))
+    .put("collectionAdditions", collectionAdditions.toJson())
+    .put("collectionRemovals", collectionRemovals.toJson())
     .put("favourites", JSONArray(favourites.toList())).put("lastSessionId", lastSessionId ?: JSONObject.NULL)
     .put("textSize", textSize).put("countHaptics", countHaptics)
     .put("occurrences", JSONArray(occurrences.values.map { o -> JSONObject()
@@ -164,24 +265,36 @@ private fun DhikrState.toJson(): JSONObject = JSONObject()
     .put("sessions", JSONArray(sessions.values.map { s -> JSONObject()
         .put("id", s.id).put("items", JSONArray(s.itemIds)).put("counts", JSONObject(s.counts)).put("index", s.index)
         .put("category", s.category?.name ?: JSONObject.NULL).put("occurrenceId", s.occurrenceId ?: JSONObject.NULL)
-        .put("updated", s.updatedAtMillis) }))
+        .put("updated", s.updatedAtMillis).put("skipped", JSONArray(s.skippedIds.toList())) }))
 private fun dhikrStateFromJson(json: JSONObject): DhikrState {
+    val customEntries = json.optJSONArray("custom")?.objects().orEmpty().mapNotNull { dhikrEntryFromJson(it) }
+    val knownIds = (DhikrCatalog.entries.map { it.id } + customEntries.map { it.id }).toSet()
     val occurrences = json.optJSONArray("occurrences")?.objects().orEmpty().mapNotNull { o -> runCatching {
         DhikrOccurrence(o.getString("id"), o.getString("ruleId"), o.optInt("revision", 1), o.getString("date"),
             o.getString("dhikrId"), o.getInt("target"), o.getLong("start"), o.getLong("end"), o.optInt("count"),
             DhikrOccurrenceStatus.valueOf(o.getString("status")), o.optLong("snooze"))
     }.getOrNull() }.associateBy { it.id }
     val sessions = json.optJSONArray("sessions")?.objects().orEmpty().mapNotNull { s -> runCatching {
-        val items = s.stringList("items").filter { DhikrCatalog.find(it) != null }
+        val items = s.stringList("items").filter { it in knownIds }
         if (items.isEmpty()) return@runCatching null
         DhikrSession(s.getString("id"), items, s.countMap("counts"), s.optInt("index").coerceIn(0, items.lastIndex),
             if (s.isNull("category")) null else DhikrCategory.valueOf(s.getString("category")),
-            if (s.isNull("occurrenceId")) null else s.getString("occurrenceId"), s.optLong("updated"))
+            if (s.isNull("occurrenceId")) null else s.getString("occurrenceId"), s.optLong("updated"),
+            s.stringList("skipped").filter { it in items }.toSet())
     }.getOrNull() }.associateBy { it.id }
+    fun readMembership(key: String): Map<DhikrCategory, Set<String>> = json.optJSONObject(key)?.let { obj ->
+        obj.keys().asSequence().mapNotNull { name ->
+            val category = runCatching { DhikrCategory.valueOf(name) }.getOrNull() ?: return@mapNotNull null
+            val ids = obj.optJSONArray(name)?.let { array -> (0 until array.length()).mapNotNull { runCatching { array.getString(it) }.getOrNull() } }
+                .orEmpty().filter { it in knownIds }.toSet()
+            if (ids.isEmpty()) null else category to ids
+        }.toMap()
+    }.orEmpty()
     return DhikrState(json.optJSONArray("rules")?.objects().orEmpty().mapNotNull { runCatching { dhikrReminderFromJson(it) }.getOrNull() },
         occurrences, sessions, json.stringList("favourites").toSet(),
         if (json.isNull("lastSessionId")) null else json.optString("lastSessionId"), json.optInt("textSize", 28).coerceIn(24, 40),
-        json.optBoolean("countHaptics"))
+        json.optBoolean("countHaptics"), customEntries,
+        readMembership("collectionAdditions"), readMembership("collectionRemovals"))
 }
 /** Lifecycle-controlled presence, not a background timer. */
 object DhikrReadingPresence {

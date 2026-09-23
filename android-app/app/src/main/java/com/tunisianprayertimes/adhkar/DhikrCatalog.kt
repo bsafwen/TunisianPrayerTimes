@@ -2,6 +2,7 @@ package com.tunisianprayertimes.adhkar
 
 enum class DhikrCategory(val title: String) {
     SALAH("بعد الصلاة"),
+    PRAYER("الصلاة"),
     MORNING("الصباح"),
     EVENING("المساء"),
     SLEEP("النوم"),
@@ -18,6 +19,10 @@ data class DhikrEntry(
     val categories: Set<DhikrCategory>,
     val contentVersion: String = "2026-09-21",
     val editorialNote: String = "مراجعة المصادر موثقة؛ يُعرض النص دون تغيير",
+    /** Plain-Arabic meaning of the wording, compiled from the source books. */
+    val explanation: String = "",
+    /** True for entries the user wrote; they are stored with the reading state, not shipped in [entries]. */
+    val custom: Boolean = false,
 )
 
 /**
@@ -28,7 +33,7 @@ data class DhikrEntry(
 object DhikrCatalog {
     const val SALAWAT_ID = "salawat_ibrahimiyya"
 
-    val entries: List<DhikrEntry> = listOf(
+    private val baseEntries: List<DhikrEntry> = listOf(
         DhikrEntry(
             id = "salah_istighfar",
             title = "الاستغفار بعد الصلاة",
@@ -164,7 +169,7 @@ object DhikrCatalog {
             text = "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ، لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ، مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ، وَلَا يَئُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ.",
             reference = "البقرة 255؛ صحيح البخاري 2311",
             defaultCount = 1,
-            categories = setOf(DhikrCategory.SLEEP)
+            categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP)
         ),
         DhikrEntry(
             id = "sleep_tasbih",
@@ -311,6 +316,47 @@ object DhikrCatalog {
             categories = setOf(DhikrCategory.EVENING)
         )
     )
+
+    /** Meanings compiled from «معاني الأذكار» and «٣١ فائدة في أذكار الصباح والمساء». */
+    private val explanations: Map<String, String> = mapOf(
+        "salah_istighfar" to "الاستغفار بعد العبادة يجبر ما وقع فيها من تقصير ظاهر أو باطن.",
+        "salah_salam" to "«أنت السلام»: السلام اسم من أسمائه، ومنه السلام؛ فيسأل العبد سلامة صلاته من الردّ والنقص.",
+        "salah_tasbih" to "التسبيح نفي النقائص عن الله، والتحميد إثبات الكمال له، والتكبير إثبات أنه أكبر من كل شيء.",
+        "salah_tahmid" to "الحمد وصف الله بالكمال مع محبته وتعظيمه؛ فبهذا يفترق عن المدح المجرد.",
+        "salah_takbir" to "التكبير إثبات أن الله أكبر من كل شيء ومن كل ما يخطر بالبال.",
+        "salah_tahlil" to "التهليل إثبات انفراد الله بالملك والحمد والقدرة، وهو تمام المائة بعد التسبيح والتحميد والتكبير.",
+        "morning_kingdom" to "إقرار بأن الملك والحمد لله وحده، والتجاء إليه، وسؤال خير اليوم وخير ما بعده، والاستعاذة من شرهما ومن الكسل وسوء الكبر وعذاب النار والقبر.",
+        "evening_kingdom" to "مثل لفظ الصباح لكن بالليلة؛ و«سوء الكبر» ما يصحب الهرم من ذهاب العقل والخرف والعجز.",
+        "sayyid_istighfar" to "يجمع الاعتراف بربوبية الله وتوحيده وإنعامه، وبعبودية العبد وتقصيره وذنبه، مع القيام بالعهد بحسب الطاقة.",
+        "bismillah_protection" to "الالتجاء إلى الله والاعتصام به؛ فلا يضر مع اسمه شيء في الأرض ولا في السماء، وهو السميع العليم.",
+        "subhanallah_bihamdih" to "تنزيه الله عن كل نقص مع إثبات كماله وحمده؛ فاجتمع النفي والإثبات، وهو من أفضل الأذكار.",
+        "surah_ikhlas" to "«الصمد»: المقصود في الحوائج كلها، الغني عن خلقه، الكامل في صفاته؛ ليس له كفؤ ولا ولد ولا والد.",
+        "surah_falaq" to "استعاذة برب الصبح من شرّ كل ذي شرّ، ومن شر الليل إذا دخل، والسواحر، والحاسد إذا حسد.",
+        "surah_nas" to "استعاذة برب الناس وملكهم وإلههم من الوسواس الخناس الذي يتراجع عند ذكر الله.",
+        "sleep_bismika" to "بذكر اسمك أحيَا وعليه أموت؛ والموت والحياة يحتملان النوم واليقظة والبعث.",
+        "ayat_kursi" to "إثبات وحدانية الله وقيوميته، وتنزيهه عن النوم، وعموم علمه، وأن حفظ السماوات والأرض لا يثقله ولا يتعبه.",
+        "sleep_tasbih" to "التسبيح نفي النقائص عن الله؛ ثلاثًا وثلاثين عند النوم.",
+        "sleep_tahmid" to "الحمد إثبات الكمال لله؛ ثلاثًا وثلاثين عند النوم.",
+        "sleep_takbir" to "التكبير إثبات أن الله أكبر من كل شيء؛ أربعًا وثلاثين عند النوم.",
+        "sleep_submission" to "تسليم النفس وتفويض الأمر والالتجاء إلى الله رغبة ورهبة، مع الإيمان بكتابه ونبيه، ويكون آخر ما يقال.",
+        "home_enter" to "ذكر الله عند الدخول يمنع مشاركة الشيطان، والسلام على أهل البيت تحية وأمان.",
+        "home_leave" to "الخروج باسم الله والتوكل عليه والاستعانة بحوله وقوته.",
+        "before_food" to "التسمية قبل الطعام سبب للبركة ومنع مشاركة الشيطان.",
+        "food_forgot_bismillah" to "من نسي التسمية في أوله سماها في أوله وآخره؛ ليعمّ الذكر أجزاء الطعام كلها.",
+        "after_food_drink" to "حمد الله بعد الطعام والشراب شكر للنعمة.",
+        "toilet_enter" to "الاستعاذة عند إرادة الدخول من ذكران الشياطين وإناثهم.",
+        "toilet_leave" to "طلب المغفرة عند التخفف من أذى الجسد؛ وتذكّر أذى الإثم. وقيل: اعترافًا بالعجز عن شكر نعمة الطعام.",
+        "mosque_enter" to "داخل المسجد يسأل الله فتح أبواب رحمته؛ لأنه يدخل ليعمل بما يقربه من ثوابه.",
+        "mosque_leave" to "الخارج يسأل من فضل الله؛ لأنه وقت الاشتغال بابتغاء الرزق الحلال.",
+        "travel" to "تنزيه الله على تسخير المركوب، وتذكير بالمعاد، وسؤال البر والتقوى وتيسير السفر وحفظ الأهل.",
+        "waking" to "حمد الله على الإحياء بعد النومة التي تشبه الموت، وتذكير بالنشور إليه.",
+        "worry" to "الهم لما يُتوقّع، والحزن لما فات؛ والاستعاذة تشمل العجز والكسل والبخل والجبن وثقل الدين وغلبة الناس.",
+        "evening_refuge" to "الاعتصام بكلمات الله التامات الكاملات من شرّ كل ما خلق؛ وقيل: هي القرآن.",
+    )
+
+    val entries: List<DhikrEntry> =
+        baseEntries.map { entry -> explanations[entry.id]?.let { entry.copy(explanation = it) } ?: entry } +
+            DhikrAdditionalCatalog.entries
 
     fun find(id: String): DhikrEntry? = entries.firstOrNull { it.id == id }
 }

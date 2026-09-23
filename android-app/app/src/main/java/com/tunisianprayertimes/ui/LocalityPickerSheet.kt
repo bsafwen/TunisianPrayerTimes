@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -64,6 +65,7 @@ internal fun LocalityPickerSheet(
     val state = rememberModalBottomSheetState(skipPartiallyExpanded = true)
     val initialIndex = remember(catalog, selectedId) { catalog.selectionScrollIndex(selectedId) }
     val listState = rememberLazyListState(initialFirstVisibleItemIndex = initialIndex)
+    val scrollGuard = rememberSheetScrollGuard(listState)
     val focusRequester = remember { FocusRequester() }
     val governorateNames = remember(gouvernorats) { gouvernorats.associate { it.id to it.nomAr } }
     val search = remember(query) { LocalitySearchQuery.parse(query) }
@@ -144,7 +146,8 @@ internal fun LocalityPickerSheet(
                     textAlign = TextAlign.Center, color = TextMuted, fontSize = 14.sp,
                 )
             } else {
-                LazyColumn(state = listState, modifier = Modifier.fillMaxWidth().weight(1f).testTag("locality_list")) {
+                LazyColumn(state = listState, modifier = Modifier.fillMaxWidth().weight(1f)
+                    .nestedScroll(scrollGuard).testTag("locality_list")) {
                     groups.forEach { (governorId, governorName, rows) ->
                         stickyHeader(key = "governorate:$governorId") {
                             Text(
