@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "properties": {
+    "caseId": { "type": "string" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": { "type": "string" },
+          "assessment": { "type": "string" },
+          "evidence": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["category", "assessment", "evidence"],
+        "additionalProperties": false
+      }
+    },
+    "unresolved": { "type": "array", "items": { "type": "string" } },
+    "recommendedNextSteps": { "type": "array", "items": { "type": "string" } }
+  },
+  "required": ["caseId", "findings", "unresolved", "recommendedNextSteps"],
+  "additionalProperties": false
+}
