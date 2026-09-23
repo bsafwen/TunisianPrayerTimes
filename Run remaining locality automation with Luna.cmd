@@ -14,7 +14,9 @@ if errorlevel 1 goto failed
 "%PYTHON%" -B -X utf8 "%SCRIPT%" --config "%CONFIG%" run --all-governorates
 if errorlevel 1 goto failed
 echo.
-echo The automatic pass finished. Tell Codex so its results can be reviewed.
+"%PYTHON%" -B -X utf8 -c "import json,sys; r=json.load(open(sys.argv[1],encoding='utf-8')); print('Run status:',r['batch']['status'],'Recorded cases:',r['recordedCases'])" "%TASK_ROOT%\work\locality-automation\last-run.json"
+echo The runner stopped. A PAUSED status means the full automatic pass is unfinished.
+echo Tell Codex the displayed status so its results can be reviewed.
 pause
 exit /b 0
 :failed
