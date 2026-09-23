@@ -126,6 +126,47 @@ object SilenceScheduler {
         return null
     }
 
+    /**
+     * End of the enabled prayer/Eid silence window that currently contains
+     * [now], or null when no window is active. Deferral consumers use this to
+     * resume after silence instead of polling blindly.
+     */
+    fun currentSilenceWindowEnd(context: Context): Long? {
+        RamadanOverrideChecker.loadCachedOverrideIfNeeded()
+        val now = Calendar.getInstance()
+        EidSilenceWindows.nearby(context, now).firstOrNull { it.contains(now.timeInMillis) }?.let { return it.end }
+        val delegationId = PrefsManager.getDelegationId(context)
+        val todayTimes = PrayerTimesRepository.loadDayPrayerTimes(
+            context, delegationId,
+            now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DAY_OF_MONTH),
+        ) ?: return null
+        val isFriday = now.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+        val jomoaaH = PrefsManager.getJomoaaTimeHour(context)
+        val jomoaaM = PrefsManager.getJomoaaTimeMinute(context)
+        for (prayerTime in scheduledPrayersForDate(context, todayTimes, now, isFriday, jomoaaH, jomoaaM)) {
+            if (!PrefsManager.isPrayerSilenceEnabled(context, prayerTime.prayer)) continue
+            val config = PrefsManager.getConfig(context, prayerTime.prayer)
+            val silenceTime = if (config.delayMode == DelayMode.FIXED_TIME && config.delayFixedHour >= 0 && config.delayFixedMinute >= 0) {
+                (now.clone() as Calendar).apply {
+                    set(Calendar.HOUR_OF_DAY, config.delayFixedHour)
+                    set(Calendar.MINUTE, config.delayFixedMinute)
+                    set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
+                }
+            } else {
+                (now.clone() as Calendar).apply {
+                    set(Calendar.HOUR_OF_DAY, prayerTime.hour)
+                    set(Calendar.MINUTE, prayerTime.minute)
+                    set(Calendar.SECOND, 0); set(Calendar.MILLISECOND, 0)
+                    add(Calendar.MINUTE, config.delayMinutes)
+                }
+            }
+            val unsilenceTime = resolveUnsilenceTime(now, prayerTime, silenceTime, config)
+            if (hasInvalidAdhanRelativeEnd(config, silenceTime, unsilenceTime)) continue
+            if (!now.before(silenceTime) && now.before(unsilenceTime)) return unsilenceTime.timeInMillis
+        }
+        return null
+    }
+
     @VisibleForTesting
     @Synchronized
     internal fun scheduleAllInternal(context: Context, now: Calendar, allowDelegationBridge: Boolean = true) {

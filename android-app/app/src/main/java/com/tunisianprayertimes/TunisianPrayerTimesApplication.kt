@@ -52,7 +52,9 @@ class TunisianPrayerTimesApplication : Application() {
     private fun refreshDhikrReminders() {
         applicationScope.launch(Dispatchers.IO) {
             try {
-                DhikrReminderScheduler.refresh(this@TunisianPrayerTimesApplication)
+                // Rearm on process start: alarms can be dropped by force-stop or OEM
+                // cleanup while the prefs still claim they are scheduled.
+                DhikrReminderScheduler.refresh(this@TunisianPrayerTimesApplication, rearm = true)
             } catch (error: Exception) {
                 Log.w("Adhkar", "Could not refresh dhikr reminders", error)
             }
