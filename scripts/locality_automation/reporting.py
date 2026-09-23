@@ -392,10 +392,15 @@ def render_report(snapshot: dict, cases: dict, diagnostics: dict, job_states: li
         },
         "modelCost": {
             "requests": _int_or_none(cost_src.get("requests")),
+            "deepseekRequests": _int_or_none(cost_src.get("deepseekRequests")),
             "promptTokens": _int_or_none(cost_src.get("promptTokens")),
             "completionTokens": _int_or_none(cost_src.get("completionTokens")),
+            "codexRequests": _int_or_none(cost_src.get("codexRequests")),
+            "codexInputTokens": _int_or_none(cost_src.get("codexInputTokens")),
+            "codexOutputTokens": _int_or_none(cost_src.get("codexOutputTokens")),
             "estimatedUsdLow": _num_or_none(cost_src.get("estimatedUsdLow")),
             "estimatedUsdHigh": _num_or_none(cost_src.get("estimatedUsdHigh")),
+            "qualification": cost_src.get("qualification"),
         },
         "installedFixes": install_out,
         "issues": issues,
@@ -565,9 +570,12 @@ def _render_html(report):
                           _value_html(entry.get("sha256")) if isinstance(entry, dict) else _value_html(None)])
     add(_section("Outputs and links", (_table(["Pin", "File", "SHA-256"], link_rows) if link_rows else '<p class="small">No pins provided.</p>')
         + '<div class="note">Saved evidence packets are linked separately above when available.</div>'))
-    add(_section("Model cost (as calculated by the caller)", _tiles([("Requests", cost.get("requests")), ("Prompt tokens", cost.get("promptTokens")),
-        ("Completion tokens", cost.get("completionTokens")), ("Estimated USD low", cost.get("estimatedUsdLow")), ("Estimated USD high", cost.get("estimatedUsdHigh"))])
-        + '<div class="note">Cost figures are copied as provided; no credentials, keys or extra caller fields are included.</div>'))
+    add(_section("Model usage (as calculated by the caller)", _tiles([("All requests", cost.get("requests")),
+        ("DeepSeek requests", cost.get("deepseekRequests")), ("DeepSeek prompt tokens", cost.get("promptTokens")),
+        ("DeepSeek completion tokens", cost.get("completionTokens")), ("DeepSeek estimated USD low", cost.get("estimatedUsdLow")),
+        ("DeepSeek estimated USD high", cost.get("estimatedUsdHigh")), ("Codex Luna requests", cost.get("codexRequests")),
+        ("Codex input tokens", cost.get("codexInputTokens")), ("Codex output tokens", cost.get("codexOutputTokens"))])
+        + '<div class="note">%s</div>' % _esc(cost.get("qualification"))))
     add('<footer>Generated %s from the provided inputs only &mdash; no JavaScript, no network fetches, no re-computation of the accepted metric.</footer>' % _esc(report.get("generatedAtUtc")))
     add("</main></body></html>")
     return "".join(out)

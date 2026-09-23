@@ -30,7 +30,9 @@ def report(config, latest=None):
                     investigations.append({"id": advice["caseId"], "issue": "Model analysis failed or uncertain; no automatic retry."})
                 for attempt in advice.get("attempts", []):
                     for issue in attempt.get("advice", {}).get("unresolved", []):
-                        investigations.append({"id": advice["caseId"], "issue": str(issue), "source": "DeepSeek advisory; unverified", "evidence": advice_pin})
+                        investigations.append({"id": advice["caseId"], "issue": str(issue),
+                                               "source": str(attempt.get("provider", "Model")) + " advisory; unverified",
+                                               "evidence": advice_pin})
     if latest and latest.get("directory") not in batches:
         states.extend(latest.get("jobs", []))
     snap["installState"] = {"historicalInstalledCount": snap["report"]["counts"].get("installedReferenceCorrections"),
