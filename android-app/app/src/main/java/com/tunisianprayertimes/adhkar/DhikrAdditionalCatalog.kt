@@ -130,12 +130,13 @@ internal object DhikrAdditionalCatalog {
         ),
         DhikrEntry(
             id = "tahlil_ashr",
-            title = "التهليل في الصباح والمساء",
+            title = "التهليل بالصيغة الجامعة",
             text = "لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ، وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.",
-            reference = "أورده المصدران في أذكار الصباح والمساء؛ مرة واحدة أو عشر مرات",
-            defaultCount = 10,
-            categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING),
-            explanation = "إفراد الله بالعبادة والملك والحمد، والإقرار بعموم قدرته؛ وورد أنه حرز من الشيطان.",
+            reference = "الصباح والمساء: أورده المصدران مرة أو عشرًا؛ خلال اليوم مائة مرة: صحيح البخاري 3293؛ صحيح مسلم 2691",
+            defaultCount = 100,
+            categories = setOf(DhikrCategory.DAILY, DhikrCategory.MORNING, DhikrCategory.EVENING),
+            explanation = "إفراد الله بالعبادة والملك والحمد والإقرار بعموم قدرته؛ ويختلف عدد التكرار باختلاف المجموعة والرواية.",
+            collectionCountOverrides = mapOf(DhikrCategory.MORNING to 10, DhikrCategory.EVENING to 10),
         ),
 
         // --- Adhan and prayer ---
@@ -309,6 +310,15 @@ internal object DhikrAdditionalCatalog {
             defaultCount = 1,
             categories = setOf(DhikrCategory.SLEEP),
             explanation = "«فُكَّ رهاني»: خلّص نفسي المرهونة بعملها، و«النديّ الأعلى»: الملأ الأعلى من الملائكة.",
+        ),
+        DhikrEntry(
+            id = "sleep_rahma_hifz",
+            title = "دعاء باسمك ربي عند النوم",
+            text = "بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، إِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ.",
+            reference = "صحيح البخاري 6320",
+            defaultCount = 1,
+            categories = setOf(DhikrCategory.SLEEP),
+            explanation = "يقال عند النوم تفويضًا للنفس إلى الله؛ فإن قبضها في النوم سُئل لها الرحمة، وإن ردّها سُئل حفظها كما يحفظ عباده الصالحين.",
         ),
         DhikrEntry(
             id = "waking_afiyah",

@@ -6,7 +6,10 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,6 +24,8 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.LiveRegionMode
@@ -40,6 +45,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.*
+import kotlin.math.abs
 
 /**
  * Calm reading surface: dhikr text first, a compact counter with increment/undo and
@@ -63,11 +69,13 @@ import com.tunisianprayertimes.adhkar.*
         occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED)
     var sources by remember { mutableStateOf(false) }
     var textSettings by remember { mutableStateOf(false) }
-    var showExplanation by remember { mutableStateOf(false) }
+    var showExplanation by remember(session.itemId) { mutableStateOf(false) }
     var menu by remember { mutableStateOf(false) }
     var confirmRemove by remember { mutableStateOf(false) }
     val lifecycle = LocalLifecycleOwner.current
     val view = LocalView.current
+    val swipeThresholdPx = with(LocalDensity.current) { 72.dp.toPx() }
+    val explanationRequester = remember(entry.id) { BringIntoViewRequester() }
     DisposableEffect(session.occurrenceId, lifecycle) {
         fun presence(active: Boolean) { DhikrReadingPresence.occurrenceId = if (active) session.occurrenceId else null }
         presence(lifecycle.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED))
@@ -81,9 +89,13 @@ import com.tunisianprayertimes.adhkar.*
     LaunchedEffect(session.occurrenceId) {
         kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) { DhikrReminderScheduler.refresh(activity) }
     }
+    LaunchedEffect(showExplanation, entry.id) {
+        if (showExplanation) explanationRequester.bringIntoView()
+    }
     val canNavigate = session.itemIds.size > 1
     val canRemove = session.category != null || session.itemIds.size > 1
     val canCount = open && !complete
+    val canAdvanceFromCounter = complete && canNavigate
     val canUndo = count > 0 && open
     val sessionDone = session.itemIds.count { it in session.skippedIds || (session.counts[it] ?: 0) >= state.target(session, it) }
     fun countOnce() {
@@ -142,6 +154,20 @@ import com.tunisianprayertimes.adhkar.*
 
                 // Dhikr text scrolls; the counter and navigation below stay put.
                 Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState())
+                    .pointerInput(session.itemId, canNavigate, swipeThresholdPx) {
+                        if (!canNavigate) return@pointerInput
+                        var horizontalDrag = 0f
+                        detectHorizontalDragGestures(
+                            onHorizontalDrag = { _, dragAmount -> horizontalDrag += dragAmount },
+                            onDragEnd = {
+                                if (abs(horizontalDrag) >= swipeThresholdPx) {
+                                    onMove(if (horizontalDrag < 0f) 1 else -1)
+                                }
+                                horizontalDrag = 0f
+                            },
+                            onDragCancel = { horizontalDrag = 0f },
+                        )
+                    }
                     .padding(horizontal = 24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                     Spacer(Modifier.height(28.dp))
                     Text(entry.text, fontFamily = AdhkarReadingFont, fontSize = state.textSize.sp,
@@ -169,7 +195,8 @@ import com.tunisianprayertimes.adhkar.*
                         if (showExplanation) {
                             Spacer(Modifier.height(12.dp))
                             Surface(shape = RoundedCornerShape(18.dp), color = AdhkarSurface,
-                                border = BorderStroke(1.dp, AdhkarBorder), modifier = Modifier.fillMaxWidth()) {
+                                border = BorderStroke(1.dp, AdhkarBorder), modifier = Modifier.fillMaxWidth()
+                                    .bringIntoViewRequester(explanationRequester)) {
                                 Text(entry.explanation, Modifier.fillMaxWidth().padding(18.dp), color = p.forest,
                                     fontSize = 15.sp, lineHeight = 30.sp, textAlign = TextAlign.Right)
                             }
@@ -191,10 +218,13 @@ import com.tunisianprayertimes.adhkar.*
                     CounterButton(icon = R.drawable.ic_adhkar_plus, description = "زيادة العدد", enabled = canCount,
                         size = 60, onClick = ::countOnce, tag = "adhkar_increment")
                     Box(Modifier.size(124.dp).clip(CircleShape)
-                        .clickable(enabled = canCount) { countOnce() }
+                        .clickable(enabled = canCount || canAdvanceFromCounter) {
+                            if (canAdvanceFromCounter) onMove(1) else countOnce()
+                        }
                         .testTag("adhkar_count")
                         .semantics {
-                            contentDescription = "إتمام قراءة واحدة للذكر كاملًا"
+                            contentDescription = if (canAdvanceFromCounter) "الانتقال إلى الذكر التالي"
+                                else "إتمام قراءة واحدة للذكر كاملًا"
                             stateDescription = latinNumber(count) + " من " + latinNumber(target)
                             liveRegion = LiveRegionMode.Polite
                         },

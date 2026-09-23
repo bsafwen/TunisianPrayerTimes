@@ -142,20 +142,25 @@ class DhikrRepository(context: Context) {
         return accepted
     }
     fun openSession(items: List<String>, category: DhikrCategory? = null, occurrenceId: String? = null,
-                    fresh: Boolean = false): String {
+                    fresh: Boolean = false, targetCountOverride: Int? = null): String {
         val known = state.value
         require(items.isNotEmpty() && items.all { known.findDhikr(it) != null })
+        require(targetCountOverride == null || targetCountOverride in 1..100_000)
         var selected = ""
         update { old ->
             val occurrence = occurrenceId?.let { old.occurrences[it] }
             require(occurrenceId == null || occurrence != null)
             val existing = if (fresh) null else old.sessions.values.filter {
-                it.itemIds == items && it.category == category && it.occurrenceId == occurrenceId
+                it.itemIds == items && it.category == category && it.occurrenceId == occurrenceId &&
+                    it.targetCountOverride == targetCountOverride
             }.maxByOrNull { it.updatedAtMillis }
             val migratedCounts = if (occurrence != null) mapOf(occurrence.dhikrId to occurrence.count)
-                else if (fresh) emptyMap() else items.associateWith { store.legacyCount("reading|" + it).coerceAtMost(old.findDhikr(it)!!.defaultCount) }
+                else if (fresh) emptyMap() else items.associateWith {
+                    store.legacyCount("reading|" + it).coerceAtMost(targetCountOverride ?: old.findDhikr(it)!!.countForCollection(category))
+                }
             val session = existing?.copy(updatedAtMillis = System.currentTimeMillis())
-                ?: DhikrSession(itemIds = items, category = category, occurrenceId = occurrenceId, counts = migratedCounts)
+                ?: DhikrSession(itemIds = items, category = category, occurrenceId = occurrenceId, counts = migratedCounts,
+                    targetCountOverride = targetCountOverride)
             selected = session.id
             old.copy(sessions = old.sessions + (session.id to session), lastSessionId = session.id)
         }
@@ -265,7 +270,8 @@ private fun DhikrState.toJson(): JSONObject = JSONObject()
     .put("sessions", JSONArray(sessions.values.map { s -> JSONObject()
         .put("id", s.id).put("items", JSONArray(s.itemIds)).put("counts", JSONObject(s.counts)).put("index", s.index)
         .put("category", s.category?.name ?: JSONObject.NULL).put("occurrenceId", s.occurrenceId ?: JSONObject.NULL)
-        .put("updated", s.updatedAtMillis).put("skipped", JSONArray(s.skippedIds.toList())) }))
+        .put("updated", s.updatedAtMillis).put("skipped", JSONArray(s.skippedIds.toList()))
+        .put("targetCountOverride", s.targetCountOverride ?: JSONObject.NULL) }))
 private fun dhikrStateFromJson(json: JSONObject): DhikrState {
     val customEntries = json.optJSONArray("custom")?.objects().orEmpty().mapNotNull { dhikrEntryFromJson(it) }
     val knownIds = (DhikrCatalog.entries.map { it.id } + customEntries.map { it.id }).toSet()
@@ -280,7 +286,9 @@ private fun dhikrStateFromJson(json: JSONObject): DhikrState {
         DhikrSession(s.getString("id"), items, s.countMap("counts"), s.optInt("index").coerceIn(0, items.lastIndex),
             if (s.isNull("category")) null else DhikrCategory.valueOf(s.getString("category")),
             if (s.isNull("occurrenceId")) null else s.getString("occurrenceId"), s.optLong("updated"),
-            s.stringList("skipped").filter { it in items }.toSet())
+            s.stringList("skipped").filter { it in items }.toSet(),
+            if (s.has("targetCountOverride") && !s.isNull("targetCountOverride"))
+                s.optInt("targetCountOverride").takeIf { it in 1..100_000 } else null)
     }.getOrNull() }.associateBy { it.id }
     fun readMembership(key: String): Map<DhikrCategory, Set<String>> = json.optJSONObject(key)?.let { obj ->
         obj.keys().asSequence().mapNotNull { name ->
