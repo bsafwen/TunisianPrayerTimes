@@ -1,10 +1,11 @@
 # Adhkar catalog sources
 
-The bundled Arabic catalog is a selection, not an exhaustive adhkar collection. Arabic texts and references were checked on 2026-09-21 against the sources linked below. Punctuation, vowel marks, and Quranic spelling are normalized for readable Arabic text; Quran quotations retain their complete wording. The source collection and hadith number are also displayed with each entry offline.
+The bundled Arabic catalog is a selection, not an exhaustive adhkar collection. Previously listed Arabic texts and references were checked on 2026-09-21; entries added or expanded on 2026-09-23 were checked against the sources linked below. Punctuation, vowel marks, and Quranic spelling are normalized for readable Arabic text; Quran quotations retain their complete wording. The source collection and hadith number are also displayed with each entry offline.
 
 ## Editorial conventions
 
 - `defaultCount` is the count for the entry's specified occasion. A value of 1 is the reading default when the narration does not specify repetitions; it does not imply an exclusive religious limit.
+- Each dhikr has one master catalog entry with a stable ID. Collections reuse that entry through membership rather than copying its text; collection-specific count defaults belong to that membership context.
 - User reminder targets and time windows are personal settings. In particular, 100 salawat between 08:00 and Maghrib on Friday is a customizable personal goal, not a prescribed count or time window attributed to these hadiths.
 - The requested salawat text is preserved as user-supplied wording. Related narrations are listed below for editorial review; the exact composite is not attributed to a single narration. Its catalog metadata explicitly requires editorial approval before public release. It is cataloged under daily dhikr, not as an additional prescribed post-prayer formula.
 - After-prayer tasbih, tahmid, and takbir follow the 33/33/33 variant, followed by tahlil once (Muslim 597). Bedtime tasbih, tahmid, and takbir use separate entries for the 33/33/34 variant (Muslim 2727).
@@ -23,8 +24,13 @@ The bundled Arabic catalog is a selection, not an exhaustive adhkar collection. 
 | Sayyid al-istighfar | [Sahih al-Bukhari 6306](https://sunnah.com/bukhari:6306) |
 | Bismillah protection | [Sunan Abi Dawud 5088](https://sunnah.com/abudawud:5088), graded sahih by Al-Albani on the source page |
 | Subhan Allah wa bihamdih, 100 morning/evening | [Sahih Muslim 2692](https://sunnah.com/muslim:2692) |
+| Tahlil 100 times in one day (same standalone entry as morning/evening tahlil) | [Sahih al-Bukhari 3293](https://sunnah.com/bukhari:3293), [Sahih Muslim 2691](https://sunnah.com/muslim:2691) |
+| Asking for guidance, piety, chastity, and sufficiency | [Sahih Muslim 2721](https://sunnah.com/muslim:2721a) |
+| La hawla wa la quwwata illa billah | [Sahih al-Bukhari 6384](https://sunnah.com/bukhari:6384) |
 | Al-Ikhlas, Al-Falaq, An-Nas | [Quran 112](https://quran.com/112), [Quran 113](https://quran.com/113), [Quran 114](https://quran.com/114); occasion/count: [Sunan Abi Dawud 5082](https://sunnah.com/abudawud:5082), graded hasan by Al-Albani, and [Sahih al-Bukhari 5017](https://sunnah.com/bukhari:5017) |
 | Bedtime bismika and waking | [Sahih al-Bukhari 6324](https://sunnah.com/bukhari:6324) |
+| Bedtime supplication (Bismika Rabbi wada'tu janbi) | [Sahih al-Bukhari 6320](https://sunnah.com/bukhari:6320) |
+| Last two verses of al-Baqarah at night | [Quran 2:285–286](https://quran.com/2/285-286), [Sahih al-Bukhari 5009](https://sunnah.com/bukhari:5009) |
 | Ayat al-Kursi before sleep | [Quran 2:255](https://quran.com/2/255), [Sahih al-Bukhari 2311](https://sunnah.com/bukhari:2311) |
 | Bedtime submission supplication | [Sahih al-Bukhari 6311](https://sunnah.com/bukhari:6311) |
 | Bedtime tasbih, tahmid, takbir | [Sahih Muslim 2727a](https://sunnah.com/muslim:2727a) |

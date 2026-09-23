@@ -125,6 +125,8 @@ data class DhikrSession(
     val updatedAtMillis: Long = System.currentTimeMillis(),
     /** Items the reader moved past without counting; a skip still satisfies list completion. */
     val skippedIds: Set<String> = emptySet(),
+    /** A manual reminder reading can keep its chosen goal without joining scheduled progress. */
+    val targetCountOverride: Int? = null,
 ) {
     val itemId: String get() = itemIds[index.coerceIn(0, itemIds.lastIndex)]
 }
@@ -159,7 +161,10 @@ fun DhikrState.isInCollection(entry: DhikrEntry, category: DhikrCategory): Boole
 }
 
 fun DhikrState.collectionEntries(category: DhikrCategory): List<DhikrEntry> =
-    allEntries.filter { isInCollection(it, category) }
+    allEntries.filter { isInCollection(it, category) }.map { entry ->
+        val count = entry.countForCollection(category)
+        if (count == entry.defaultCount) entry else entry.copy(defaultCount = count)
+    }
 
 /** Snapshot captured when a personal dhikr is deleted so the action can be undone. */
 data class CustomDhikrRemoval(
@@ -174,10 +179,13 @@ fun normalizeDhikrSearch(value: String): String = java.text.Normalizer.normalize
     .replace(Regex("[\\p{M}ـ]"), "")
     .replace('ى', 'ي').replace('ؤ', 'و').replace('ئ', 'ي').replace('ة', 'ه').lowercase().trim()
 
-fun DhikrState.target(session: DhikrSession, itemId: String = session.itemId): Int =
-    if (session.category == null) session.occurrenceId?.let { occurrences[it]?.target }
-        ?: findDhikr(itemId)?.defaultCount ?: 1
-    else findDhikr(itemId)?.defaultCount ?: 1
+fun DhikrState.target(session: DhikrSession, itemId: String = session.itemId): Int {
+    val entry = findDhikr(itemId)
+    return if (session.category == null)
+        session.targetCountOverride ?: session.occurrenceId?.let { occurrences[it]?.target }
+            ?: entry?.countForCollection(null) ?: 1
+    else entry?.countForCollection(session.category) ?: 1
+}
 
 fun DhikrState.isComplete(session: DhikrSession): Boolean =
     session.itemIds.all { it in session.skippedIds || (session.counts[it] ?: 0) >= target(session, it) }

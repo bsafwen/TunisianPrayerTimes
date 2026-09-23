@@ -23,7 +23,12 @@ data class DhikrEntry(
     val explanation: String = "",
     /** True for entries the user wrote; they are stored with the reading state, not shipped in [entries]. */
     val custom: Boolean = false,
+    /** A collection may prescribe a different reading count while reusing this same catalog entry. */
+    val collectionCountOverrides: Map<DhikrCategory, Int> = emptyMap(),
 )
+
+fun DhikrEntry.countForCollection(category: DhikrCategory?): Int =
+    category?.let(collectionCountOverrides::get) ?: defaultCount
 
 /**
  * Offline Arabic reading catalog. Source links and editorial notes are in docs/adhkar-sources.md.
@@ -204,6 +209,14 @@ object DhikrCatalog {
             categories = setOf(DhikrCategory.SLEEP)
         ),
         DhikrEntry(
+            id = "sleep_last_two_baqarah",
+            title = "آخر آيتين من سورة البقرة",
+            text = "آمَنَ الرَّسُولُ بِمَا أُنْزِلَ إِلَيْهِ مِنْ رَبِّهِ وَالْمُؤْمِنُونَ ۚ كُلٌّ آمَنَ بِاللَّهِ وَمَلَائِكَتِهِ وَكُتُبِهِ وَرُسُلِهِ ۚ لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِنْ رُسُلِهِ ۚ وَقَالُوا سَمِعْنَا وَأَطَعْنَا ۖ غُفْرَانَكَ رَبَّنَا وَإِلَيْكَ الْمَصِيرُ ۝\nلَا يُكَلِّفُ اللَّهُ نَفْسًا إِلَّا وُسْعَهَا ۚ لَهَا مَا كَسَبَتْ وَعَلَيْهَا مَا اكْتَسَبَتْ ۗ رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا ۚ رَبَّنَا وَلَا تَحْمِلْ عَلَيْنَا إِصْرًا كَمَا حَمَلْتَهُ عَلَى الَّذِينَ مِنْ قَبْلِنَا ۚ رَبَّنَا وَلَا تُحَمِّلْنَا مَا لَا طَاقَةَ لَنَا بِهِ ۖ وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا ۚ أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ ۝",
+            reference = "البقرة 285–286؛ صحيح البخاري 5009",
+            defaultCount = 1,
+            categories = setOf(DhikrCategory.SLEEP)
+        ),
+        DhikrEntry(
             id = "home_enter",
             title = "ذكر الله والسلام عند دخول المنزل",
             text = "بِسْمِ اللَّهِ.\nالسَّلَامُ عَلَيْكُمْ.",
@@ -308,6 +321,22 @@ object DhikrCatalog {
             categories = setOf(DhikrCategory.DAILY)
         ),
         DhikrEntry(
+            id = "dua_huda_tuqa",
+            title = "سؤال الهدى والتقوى والعفاف والغنى",
+            text = "اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى.",
+            reference = "صحيح مسلم 2721",
+            defaultCount = 1,
+            categories = setOf(DhikrCategory.DAILY)
+        ),
+        DhikrEntry(
+            id = "la_hawla_quwwata",
+            title = "لا حول ولا قوة إلا بالله",
+            text = "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ.",
+            reference = "صحيح البخاري 6384",
+            defaultCount = 1,
+            categories = setOf(DhikrCategory.DAILY)
+        ),
+        DhikrEntry(
             id = "evening_refuge",
             title = "الاستعاذة بكلمات الله التامات",
             text = "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ.",
@@ -339,6 +368,7 @@ object DhikrCatalog {
         "sleep_tahmid" to "الحمد إثبات الكمال لله؛ ثلاثًا وثلاثين عند النوم.",
         "sleep_takbir" to "التكبير إثبات أن الله أكبر من كل شيء؛ أربعًا وثلاثين عند النوم.",
         "sleep_submission" to "تسليم النفس وتفويض الأمر والالتجاء إلى الله رغبة ورهبة، مع الإيمان بكتابه ونبيه، ويكون آخر ما يقال.",
+        "sleep_last_two_baqarah" to "خاتمة سورة البقرة؛ يُقرأ بهما ليلًا، ووصفهما النبي ﷺ بأنهما كفتا من قرأهما.",
         "home_enter" to "ذكر الله عند الدخول يمنع مشاركة الشيطان، والسلام على أهل البيت تحية وأمان.",
         "home_leave" to "الخروج باسم الله والتوكل عليه والاستعانة بحوله وقوته.",
         "before_food" to "التسمية قبل الطعام سبب للبركة ومنع مشاركة الشيطان.",
@@ -351,6 +381,8 @@ object DhikrCatalog {
         "travel" to "تنزيه الله على تسخير المركوب، وتذكير بالمعاد، وسؤال البر والتقوى وتيسير السفر وحفظ الأهل.",
         "waking" to "حمد الله على الإحياء بعد النومة التي تشبه الموت، وتذكير بالنشور إليه.",
         "worry" to "الهم لما يُتوقّع، والحزن لما فات؛ والاستعاذة تشمل العجز والكسل والبخل والجبن وثقل الدين وغلبة الناس.",
+        "dua_huda_tuqa" to "سؤال الله الهداية إلى الحق، والتقوى بطاعته، والعفاف عن الحرام، والغنى والكفاية عن الخلق.",
+        "la_hawla_quwwata" to "تفويض الاستعانة والقوة إلى الله؛ وقد وصفها النبي ﷺ بأنها كنز من كنوز الجنة.",
         "evening_refuge" to "الاعتصام بكلمات الله التامات الكاملات من شرّ كل ما خلق؛ وقيل: هي القرآن.",
     )
 
