@@ -3,6 +3,7 @@ from pathlib import Path
 import hashlib
 import json
 import os
+import shutil
 import subprocess
 import urllib.request
 from urllib.parse import urlsplit
@@ -16,6 +17,47 @@ Assess names, administrative identity, duplicate/building risks, source disagree
 Do not infer whole boundary correctness from name, point containment or valid geometry. Do not invent source URLs.
 No tool access: do not claim fresh verification. Do not produce executable code, edits, install approval or numerical confidence.
 If evidence is ambiguous, report exactly what remains unresolved so independent cases can continue."""
+
+ADVICE_SCHEMA = Path(__file__).with_name("advice_schema.json")
+
+
+class ModelBackendUnavailable(RuntimeError):
+    """A provider-wide failure should pause the queue before more cases are recorded."""
+
+
+def _providers(config):
+    model = config["model"]
+    if model["provider"] == "deepseek":
+        primary = {"name": "deepseek", "kind": "existing_worker"}
+    elif model["provider"] == "codex_cli":
+        primary = {"name": model["name"], "kind": "codex_cli", "model": model["name"],
+                   "reasoningEffort": model["reasoning"], "cliExecutable": model.get("cliExecutable", "codex"),
+                   "timeoutSeconds": model.get("timeoutSeconds")}
+    else:
+        raise ValueError("Unknown primary model provider")
+    return [primary, *model.get("fallbacks", [])]
+
+
+def provider_pins(config):
+    if config["model"]["provider"] == "deepseek":
+        return [config["helpers"]["deepseek"]]
+    if config["model"]["provider"] == "codex_cli":
+        return [pin(ADVICE_SCHEMA)]
+    raise ValueError("Unknown primary model provider")
+
+
+def _advisory_attempt(provider, response, case_id):
+    choice = response["choices"][0]
+    if choice.get("finish_reason") != "stop":
+        raise ValueError("Model response incomplete")
+    content = choice["message"]["content"].strip()
+    if content.startswith("```json\n") and content.endswith("```"):
+        content = content[8:-3].strip()
+    advice = json.loads(content)
+    if advice.get("caseId") != case_id or not all(isinstance(advice.get(k), list) for k in ("findings", "unresolved", "recommendedNextSteps")):
+        raise ValueError("Model returned incompatible advice schema")
+    return {"provider": provider["name"], "status": "advisory", "advice": advice,
+            "usage": response.get("usage"), "model": response.get("model")}
 
 
 def prepare(config, case, evidence, input_pins):
@@ -44,7 +86,7 @@ def execute(config, request_path):
         verify(item)
     attempt_dir = Path(request_path).parent
     attempts = []
-    providers = [{"name": "deepseek", "kind": "existing_worker"}] + config["model"].get("fallbacks", [])
+    providers = _providers(config)
     for number, provider in enumerate(providers):
         receipt = attempt_dir / f"attempt-{number}.json"
         if receipt.exists():
@@ -53,7 +95,15 @@ def execute(config, request_path):
             # Durable start marker prevents duplicate API charges after a crash/timeout.
             marker = attempt_dir / f"attempt-{number}.started.json"
             if marker.exists():
-                attempt = {"provider": provider["name"], "status": "uncertain", "reason": "Previous request may have reached provider; no automatic retry."}
+                # Codex writes its final answer before the worker writes the receipt.
+                # Recover that answer after an interruption without paying twice.
+                if provider["kind"] == "codex_cli" and (attempt_dir / "codex-last-message.json").exists():
+                    try:
+                        attempt = _advisory_attempt(provider, _saved_codex_response(provider, attempt_dir), request["caseId"])
+                    except (ValueError, KeyError, TypeError, OSError):
+                        attempt = {"provider": provider["name"], "status": "uncertain", "reason": "Previous request may have reached provider; no automatic retry."}
+                else:
+                    attempt = {"provider": provider["name"], "status": "uncertain", "reason": "Previous request may have reached provider; no automatic retry."}
             else:
                 write(marker, {"startedAt": now(), "provider": provider["name"], "request": pin(request_path)})
                 try:
@@ -71,19 +121,16 @@ def execute(config, request_path):
                             if result.returncode:
                                 raise ValueError(f"DeepSeek worker failed ({result.returncode}); see local log")
                         response = read(raw_out)["response"]
+                    elif provider["kind"] == "codex_cli":
+                        response = _codex_cli(provider, packet, attempt_dir)
                     else:
                         response = _external(provider, packet)
-                    choice = response["choices"][0]
-                    if choice.get("finish_reason") != "stop":
-                        raise ValueError("Model response incomplete")
-                    content = choice["message"]["content"].strip()
-                    if content.startswith("```json\n") and content.endswith("```"):
-                        content = content[8:-3].strip()
-                    advice = json.loads(content)
-                    if advice.get("caseId") != request["caseId"] or not all(isinstance(advice.get(k), list) for k in ("findings", "unresolved", "recommendedNextSteps")):
-                        raise ValueError("Model returned incompatible advice schema")
-                    attempt = {"provider": provider["name"], "status": "advisory", "advice": advice, "usage": response.get("usage"), "model": response.get("model")}
+                    attempt = _advisory_attempt(provider, response, request["caseId"])
                 except Exception as exc:
+                    if isinstance(exc, ModelBackendUnavailable):
+                        write(Path(config["workspace"]) / "control.json",
+                              {"schemaVersion": 1, "paused": True, "requestedAt": now(),
+                               "reason": "Codex model backend unavailable; inspect the local model log."}, replace=True)
                     # Provider response bodies/keys are deliberately not included in public reports.
                     attempt = {"provider": provider["name"], "status": "failed", "reason": type(exc).__name__ + ": model request or schema failed; see local artifacts"}
             write(receipt, attempt)
@@ -94,6 +141,47 @@ def execute(config, request_path):
               "acceptance": "ADVISORY_ONLY", "verifiedChecksAdded": 0, "createdAt": now()}
     write(out, result)
     return result
+
+
+def _saved_codex_response(provider, attempt_dir):
+    content = (attempt_dir / "codex-last-message.json").read_text(encoding="utf-8")
+    usage = None
+    events = attempt_dir / "codex-events.jsonl"
+    if events.exists():
+        for line in events.read_text(encoding="utf-8").splitlines():
+            try:
+                event = json.loads(line)
+            except ValueError:
+                continue
+            if event.get("type") == "turn.completed":
+                usage = event.get("usage")
+    return {"choices": [{"finish_reason": "stop", "message": {"content": content}}],
+            "usage": usage, "model": provider["model"]}
+
+
+def _codex_cli(provider, packet, attempt_dir):
+    executable = shutil.which(provider["cliExecutable"])
+    if not executable:
+        raise ModelBackendUnavailable("Codex CLI is not available")
+    verify(pin(ADVICE_SCHEMA))
+    command = [executable, "exec", "--model", provider["model"],
+               "-c", 'model_reasoning_effort="' + provider["reasoningEffort"] + '"',
+               "--ephemeral", "--ignore-user-config", "--ignore-rules", "--sandbox", "read-only",
+               "--skip-git-repo-check", "-C", str(attempt_dir),
+               "--output-schema", str(ADVICE_SCHEMA),
+               "--output-last-message", str(attempt_dir / "codex-last-message.json"), "--json", "-"]
+    prompt = PROMPT + "\nUse only the supplied packet; do not call tools.\n\nEVIDENCE_PACKET_JSON:\n" + json.dumps(packet, ensure_ascii=False, allow_nan=False)
+    with (attempt_dir / "codex-events.jsonl").open("w", encoding="utf-8") as events, \
+            (attempt_dir / "codex-stderr.log").open("w", encoding="utf-8") as errors:
+        try:
+            completed = subprocess.run(command, input=prompt, text=True, encoding="utf-8",
+                                       stdout=events, stderr=errors, shell=False,
+                                       timeout=provider.get("timeoutSeconds"))
+        except subprocess.TimeoutExpired as exc:
+            raise ModelBackendUnavailable("Codex CLI timed out") from exc
+    if completed.returncode or not (attempt_dir / "codex-last-message.json").exists():
+        raise ModelBackendUnavailable("Codex CLI failed; see local events and stderr logs")
+    return _saved_codex_response(provider, attempt_dir)
 
 
 def _external(provider, packet):
