@@ -55,6 +55,14 @@ python scripts/run_locality_automation.py --config CONFIG run --all-governorates
 
 `--all-governorates` continues one governorate at a time after each automatic pass, keeping unresolved cases for investigation. It can incur substantially more API usage than the default Ben Arous run. A completed automatic pass does not mark the geographic validation goal complete.
 
+### Resume the saved full run with GPT-6 Luna
+
+The task-local config can select `model.provider: "codex_cli"`, `model.name: "gpt-6-luna"`, and `model.reasoning: "max"`. This uses the signed-in Codex CLI in a read-only, ephemeral session for each new evidence packet; it does not require an OpenAI API key. Pause the running queue before changing the config. The completed case ledger is preserved. A partially finished DeepSeek batch receives a separate Luna revision, so a few unrecorded cases may receive a second advisory review. Paid/usage-uncertain requests are not silently retried.
+
+After the config is changed, resume with the commands above and use `run --all-governorates`. Luna usage consumes the signed-in Codex account's allowance. The report keeps the historical DeepSeek dollar estimate separate from Luna token counts; it does not infer a dollar cost for Codex usage. If the Codex backend becomes unavailable, new dispatches pause and the current batch remains unrecorded for review.
+
+For this saved task, double-click **Run remaining locality automation with Luna.cmd** in the repository folder. It uses `work/locality-automation-luna-resume.json` and continues from the paused Gabes governorate through the remaining governorates.
+
 `helper-plan` prepares a pinned plan for existing acquisition, extraction, exact-chain/retrace, append, impact, overlap-width, centre, matrix, diagnostic-stage, prayer, metric-publication and queue helpers. It does not execute it. `run-plan` executes such a plan after resume. Supply explicit result paths where a helper has several outputs. Configured exact-path repairs and metric publication require their existing evidence/review inputs; model advice is never converted into those inputs automatically.
 
 ## Installation package contract

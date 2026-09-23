@@ -144,7 +144,12 @@ def run_batch(config, config_file, *, limit=12, allowed=None, workers=None):
     selected = candidates[:limit]
     if not selected:
         return {"status": "AUTOMATIC_PASS_COMPLETE", "qualification": "Unresolved cases remain reported; geographic verification is not complete.", "jobs": []}
-    root = workspace / "batches" / key([x[0] for x in selected])[:24]
+    batch_identity = [x[0] for x in selected]
+    if config["model"]["provider"] != "deepseek":
+        # A paused legacy batch may still contain DeepSeek jobs. Preserve its
+        # immutable plan and give the new provider a separate revision.
+        batch_identity = {"cases": batch_identity, "model": config["model"]}
+    root = workspace / "batches" / key(batch_identity)[:24]
     root.mkdir(parents=True, exist_ok=True)
     save_once(root / "cases.json", {"cases": [c for _, c in selected], "catalog": snap["pins"]["catalog"]})
     states, issues, extracted = [], [], {}
@@ -254,7 +259,8 @@ def run_batch(config, config_file, *, limit=12, allowed=None, workers=None):
         if Path(out).exists():
             model_jobs.append({"id": "advice-" + ident, "kind": "offline", "importedOutputs": [pin(out)], "inputs": [pin(request)], "governorate": config["governorate"]})
         else:
-            model_jobs.append(_self_job(config, config_file, "advice-" + ident, "model-worker", ["--request", request], [pin(request), config["helpers"]["deepseek"], *inputs], [out], "model"))
+            model_jobs.append(_self_job(config, config_file, "advice-" + ident, "model-worker", ["--request", request],
+                                        [pin(request), *models.provider_pins(config), *inputs], [out], "model"))
     states.append(_run_wave(config, root, "models", model_jobs, allowed, workers))
     # All case problems are recorded. No case uncertainty interrupts siblings.
     paused = read(workspace / "control.json").get("paused", True)

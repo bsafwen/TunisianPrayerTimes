@@ -200,7 +200,8 @@ def _external(provider, packet):
 
 
 def usage(workspace):
-    totals = {"requests": 0, "promptTokens": 0, "completionTokens": 0, "unpricedRequests": 0}
+    totals = {"requests": 0, "deepseekRequests": 0, "promptTokens": 0, "completionTokens": 0,
+              "codexRequests": 0, "codexInputTokens": 0, "codexOutputTokens": 0, "unpricedRequests": 0}
     # Only this program's bounded model cache, never the task's historical work tree.
     for f in (Path(workspace) / "models").glob("*/attempt-*.json"):
         if f.name.endswith(".started.json"):
@@ -208,12 +209,19 @@ def usage(workspace):
         a = read(f)
         totals["requests"] += 1
         u = a.get("usage")
+        if a.get("provider") == "gpt-6-luna":
+            totals["codexRequests"] += 1
+            totals["codexInputTokens"] += (u or {}).get("input_tokens", 0)
+            totals["codexOutputTokens"] += (u or {}).get("output_tokens", 0)
+            totals["unpricedRequests"] += 1
+            continue
         if not u or a.get("provider") != "deepseek":
             totals["unpricedRequests"] += 1
             continue
+        totals["deepseekRequests"] += 1
         totals["promptTokens"] += u.get("prompt_tokens", 0)
         totals["completionTokens"] += u.get("completion_tokens", 0)
     totals["estimatedUsdLow"] = (totals["promptTokens"] * .15 + totals["completionTokens"] * .60) / 1e6
     totals["estimatedUsdHigh"] = totals["estimatedUsdLow"] * 2
-    totals["qualification"] = "Indicative DeepSeek range using uncached rates checked 2026-09-22; failed/unknown and fallback usage excluded, provider billing is authoritative."
+    totals["qualification"] = "Estimated USD applies only to DeepSeek requests at rates checked 2026-09-22. Codex CLI requests consume the signed-in account's usage; no dollar charge is inferred. Provider billing is authoritative."
     return totals
