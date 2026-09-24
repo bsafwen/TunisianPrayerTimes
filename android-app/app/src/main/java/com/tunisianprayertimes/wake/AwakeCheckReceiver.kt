@@ -30,6 +30,11 @@ class AwakeCheckReceiver : BroadcastReceiver() {
                     try {
                         val alarmId = wakeAlarmIdFromEventId(eventId)
                         val config = alarmId?.let { PrayerWakeRepository(appContext).getWakeAlarm(it) }
+                        val checkTriggerAtMillis = intent.getLongExtra(EXTRA_WAKE_TRIGGER_AT_MILLIS, 0L)
+                            .takeIf { millis -> millis > 0L }
+                            ?: intent.getLongExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, 0L)
+                                .takeIf { millis -> millis > 0L }
+                                ?: System.currentTimeMillis()
                         // Completed one-off alarms are removed before their awake check runs.
                         // A stored disabled parent still invalidates an already-delivered check.
                         if (config != null && !config.enabled) {

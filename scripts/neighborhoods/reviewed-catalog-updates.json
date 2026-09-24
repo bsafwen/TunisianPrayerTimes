@@ -20,6 +20,26 @@
         "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/text-successors/review-0002.json",
         "sha256": "edb9b0de8947763720e857eb7acf0e3a87919da2cbdc5cc0fbd0c0ad276fe13b"
       }
+    },
+    {
+      "revision": {
+        "file": "catalog-updates/mourouj5-parent-20260924/revision-0001.json",
+        "sha256": "fe8ec6b7d5890e05e09b7d84bd22c5cbcd1cc64a7c21ddabeebf1e84b46608f1"
+      },
+      "review": {
+        "file": "catalog-updates/mourouj5-parent-20260924/review-0001.json",
+        "sha256": "61ff4953322a16e7cb6e87588b338fd0647a55a3d26629ad86bafa4e0bbaf607"
+      }
+    },
+    {
+      "revision": {
+        "file": "catalog-updates/mourouj5-parent-20260924/revision-0002.json",
+        "sha256": "97e1b3965ba3cfd4aa13a3079b5a4543b1e20f7ea32b8bcc428b8ae1f894c24c"
+      },
+      "review": {
+        "file": "catalog-updates/mourouj5-parent-20260924/review-0002.json",
+        "sha256": "08a7cf8b15efd40ee19248fe4f2e4e45f6a8e30a6ec3f1d2d08080fc9413698b"
+      }
     }
   ]
 }

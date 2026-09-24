@@ -29,6 +29,7 @@ object WakeAlarmComputer {
         val subAlarmId: String? = null,
         val signedOffsetMinutes: Int = 0,
         val playback: WakePlaybackOptions,
+        val occurrenceAtMillis: Long = triggerAtMillis,
     )
 
     data class ComputeResult(
@@ -57,7 +58,9 @@ object WakeAlarmComputer {
 
             val mainAlarm = nextFutureTrigger(
                 now = now,
-                candidates = triggers.filterNot { trigger -> trigger.isSubAlarm },
+                candidates = triggers.filterNot { trigger ->
+                    trigger.isSubAlarm
+                },
             )
 
             val subAlarms = triggers
@@ -72,20 +75,21 @@ object WakeAlarmComputer {
         val sortedPrayerDays = prayerDays
             .filter { day -> day.date.wakeScheduleDay() in scheduledDays }
             .sortedBy { day -> day.date.timeInMillis }
+        val candidates = sortedPrayerDays.flatMap { day ->
+            listOfNotNull(mainTriggerForDay(day, config)) + config.subAlarms.mapNotNull { subAlarm ->
+                subTriggerForDay(day, config, subAlarm)
+            }
+        }.filterNot { trigger -> config.isSkippingWakeOccurrence(trigger.occurrenceAtMillis) }
         val mainAlarm = nextFutureTrigger(
             now = now,
-            candidates = sortedPrayerDays.mapNotNull { day ->
-                mainTriggerForDay(day, config)
-            },
+            candidates = candidates.filterNot { trigger -> trigger.isSubAlarm },
         )
 
         val subAlarms = config.subAlarms
             .mapNotNull { subAlarm ->
                 nextFutureTrigger(
                     now = now,
-                    candidates = sortedPrayerDays.mapNotNull { day ->
-                        subTriggerForDay(day, config, subAlarm)
-                    },
+                    candidates = candidates.filter { trigger -> trigger.subAlarmId == subAlarm.id },
                 )
             }
             .sortedBy { trigger -> trigger.triggerAtMillis }
@@ -118,6 +122,7 @@ object WakeAlarmComputer {
                     subTriggerForDay(day, config, subAlarm)
                 }
             }
+            .filterNot { trigger -> config.isSkippingWakeOccurrence(trigger.occurrenceAtMillis) }
             .sortedBy { trigger -> trigger.triggerAtMillis }
     }
 
@@ -129,6 +134,7 @@ object WakeAlarmComputer {
         return ScheduledWakeTrigger(
             alarmId = config.id,
             triggerAtMillis = occurrence.triggerAtMillis,
+            occurrenceAtMillis = occurrence.triggerAtMillis,
             prayer = config.prayer,
             effectivePrayer = occurrence.effectivePrayer,
             mainAlarmMode = config.mainAlarm.mode,
@@ -146,6 +152,7 @@ object WakeAlarmComputer {
         return ScheduledWakeTrigger(
             alarmId = config.id,
             triggerAtMillis = mainOccurrence.triggerAtMillis + subAlarm.signedOffsetMinutes.toMillis(),
+            occurrenceAtMillis = mainOccurrence.triggerAtMillis,
             prayer = config.prayer,
             effectivePrayer = mainOccurrence.effectivePrayer,
             mainAlarmMode = config.mainAlarm.mode,
@@ -216,6 +223,7 @@ object WakeAlarmComputer {
             ScheduledWakeTrigger(
                 alarmId = config.id,
                 triggerAtMillis = mainOccurrence.triggerAtMillis,
+                occurrenceAtMillis = mainOccurrence.triggerAtMillis,
                 prayer = config.prayer,
                 effectivePrayer = mainOccurrence.effectivePrayer,
                 mainAlarmMode = config.mainAlarm.mode,
@@ -226,6 +234,7 @@ object WakeAlarmComputer {
             ScheduledWakeTrigger(
                 alarmId = config.id,
                 triggerAtMillis = mainOccurrence.triggerAtMillis + subAlarm.signedOffsetMinutes.toMillis(),
+                occurrenceAtMillis = mainOccurrence.triggerAtMillis,
                 prayer = config.prayer,
                 effectivePrayer = mainOccurrence.effectivePrayer,
                 mainAlarmMode = config.mainAlarm.mode,

@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.SilenceStatus
+import com.tunisianprayertimes.isSkippingWakeOccurrence
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -29,11 +30,29 @@ class WakeAlarmReceiver : BroadcastReceiver() {
                     return@launch
                 }
 
+                val occurrenceAtMillis = triggerPayload.resolvedOccurrenceAtMillis()
+                if (config?.isSkippingWakeOccurrence(occurrenceAtMillis) == true) {
+                    result = "skipped"
+                    Log.d(TAG, "Ignoring skipped recurring wake occurrence eventId=${triggerPayload.eventId}")
+                    WakeAlarmScheduler.scheduleAll(context)
+                    return@launch
+                }
+
                 ManualSilenceScheduler.syncExpiredTimer(context)
                 val payload = WakeAutoSilenceConflictController.withRuntimeConflictIfNeeded(
                     context = context,
                     payload = triggerPayload,
                 )
+                val latestConfig = alarmId?.let { PrayerWakeRepository(context).getWakeAlarm(it) }
+                if (latestConfig?.enabled == false) {
+                    result = "disabled"
+                    return@launch
+                }
+                if (latestConfig?.isSkippingWakeOccurrence(occurrenceAtMillis) == true) {
+                    result = "skipped"
+                    WakeAlarmScheduler.scheduleAll(context)
+                    return@launch
+                }
                 Log.d("WakeFlow", "WakeAlarmReceiver.onReceive eventId=${payload.eventId}")
                 AnalyticsTracker.wakeAlarmFired(context, payload)
 
@@ -41,7 +60,7 @@ class WakeAlarmReceiver : BroadcastReceiver() {
                 if (alarmId != null && WakeAlarmScheduler.isSilencedAlarm(context, alarmId)) {
                     Log.d("WakeFlow", "Silenced alarm fired — restoring audio state")
                     WakeAlarmScheduler.releaseSilenceForRingingAlarm(context, alarmId)
-                }
+				}
 
                 val liftedAutoSilence = WakeAutoSilenceConflictController.liftAutoSilenceIfNeeded(context, payload)
                 if (SilenceStatus.isAppControlledSilenceActive(context) && !liftedAutoSilence) {

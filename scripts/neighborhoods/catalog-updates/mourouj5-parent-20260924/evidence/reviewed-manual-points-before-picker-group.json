@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "baseMetadataSha256": "cc1de4682da3b216008b329c5b350a133b0dbe907b4b28aed477761e8704581b",
+  "baseGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+  "evidence": [
+    {
+      "file": "manual-point-reviews/riadh-group-member-20260921/root-review.json",
+      "sha256": "155fb02b119e1962039a5ae5c383e33ef6a3c4a8e2c30a26090ffa34b315df59"
+    },
+    {
+      "file": "manual-point-reviews/chaker-inhabited-overlap-20260921/root-review.json",
+      "sha256": "a0d2d168e61291dcf3291dbf685331cb150d02eb85395fe303f2d4cfe3a04be4"
+    },
+    {
+      "file": "manual-point-reviews/zraoua-modern-village-20260921/root-review.json",
+      "sha256": "1edb9eb1bd544b293266677fa2ade3cb84211ef71928964bafc8e9a1d80e5f74"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "osm:relation:7174626",
+      "expectedFeatureSha256": "62a82a9bb166386b6c97c86b5de021f0aa79cf3c38517b913f1efca5ba131313",
+      "memberId": "osm:way:124689902",
+      "expectedMemberSha256": "8e068a62b3f1cfda7494297409bee1863876f38a79e16fbb94a2892d2097a48f",
+      "expectedNearestId": 448
+    },
+    {
+      "id": "osm:relation:7174628",
+      "expectedFeatureSha256": "40a2e753e611c144c88a7388a4e2ce95835349f934613f21dc8511a8e6a3ff7e",
+      "memberId": "osm:way:1485127837",
+      "expectedMemberSha256": "7fe9b4db9448f3c244cc867cff917fee72b246f70a0f5963693c88cf100de809",
+      "expectedNearestId": 448,
+      "mode": "overlap_representative",
+      "expectedPoint": {
+        "lat": 36.782498,
+        "lng": 10.235313
+      },
+      "nameAssociation": {
+        "targetNameAr": "مقرين شاكر",
+        "memberNameAr": "حي شاكر",
+        "claim": "manual_representative_only"
+      }
+    },
+    {
+      "id": "osm:relation:7145390",
+      "memberId": "osm:node:1738650159",
+      "mode": "settlement_representative",
+      "expectedFeatureSha256": "0fa3b271710a6c67cb9f85eb4bef73b58bc340b1d0d030045addfd3461c6dd2e",
+      "expectedMemberSha256": "28d2bfaa34b71d66f446a26627442240188d2b37c3a70c4d41773faf5bcbccce",
+      "expectedBeforeNearestId": 1022,
+      "expectedNearestId": 1023,
+      "expectedPoint": {
+        "lat": 33.660037,
+        "lng": 9.79566
+      },
+      "nameAssociation": {
+        "targetNameAr": "الزراوة",
+        "memberNameAr": "الزراوة الجديدة",
+        "claim": "manual_representative_only"
+      }
+    }
+  ]
+}

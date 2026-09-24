@@ -21,10 +21,67 @@ class WakeAlarmQueue {
         private set
 
     private val pending = ArrayDeque<WakeTriggerPayload>()
+    private val skippedPending = mutableMapOf<Pair<String, Long>, List<SkippedPendingPayload>>()
 
     val pendingCount: Int get() = pending.size
 
     fun pendingEventIds(): List<String> = pending.map { it.eventId }
+
+    /** Drop queued triggers belonging to the recurring occurrence just marked to skip. */
+    fun removePendingForSkippedOccurrence(alarmId: String, occurrenceAtMillis: Long): Int {
+        val key = alarmId to occurrenceAtMillis
+        val entries = pending.mapIndexedNotNull { index, payload ->
+            if (wakeAlarmIdFromEventId(payload.eventId) == alarmId &&
+                payload.resolvedOccurrenceAtMillis() == occurrenceAtMillis
+            ) {
+                SkippedPendingPayload(index, payload)
+            } else {
+                null
+            }
+        }
+        if (entries.isEmpty()) return 0
+        skippedPending[key] = entries
+        val retained = pending.filterNot { payload ->
+            wakeAlarmIdFromEventId(payload.eventId) == alarmId &&
+                payload.resolvedOccurrenceAtMillis() == occurrenceAtMillis
+        }
+        val removedCount = pending.size - retained.size
+        if (removedCount > 0) {
+            pending.clear()
+            pending.addAll(retained)
+        }
+        return removedCount
+    }
+
+    fun restorePendingForOccurrence(alarmId: String, occurrenceAtMillis: Long): Int {
+        val removed = skippedPending.remove(alarmId to occurrenceAtMillis).orEmpty()
+        if (removed.isEmpty()) return 0
+        val restored = pending.toMutableList()
+        var restoredCount = 0
+        removed.forEach { entry ->
+            if (current?.eventId != entry.payload.eventId &&
+                restored.none { payload -> payload.eventId == entry.payload.eventId }
+            ) {
+                restored.add(entry.index.coerceIn(0, restored.size), entry.payload)
+                restoredCount++
+            }
+        }
+        pending.clear()
+        pending.addAll(restored)
+        return restoredCount
+    }
+
+    fun discardSkippedOccurrence(alarmId: String, occurrenceAtMillis: Long) {
+        skippedPending.remove(alarmId to occurrenceAtMillis)
+    }
+
+    fun discardSkippedOccurrencesForAlarm(alarmId: String, exceptOccurrenceAtMillis: Long? = null) {
+        skippedPending.keys
+            .filter { (pendingAlarmId, occurrenceAtMillis) ->
+                pendingAlarmId == alarmId && occurrenceAtMillis != exceptOccurrenceAtMillis
+            }
+            .forEach(skippedPending::remove)
+    }
 
     /**
      * Handle an incoming payload.
@@ -90,6 +147,7 @@ class WakeAlarmQueue {
     fun clear() {
         current = null
         pending.clear()
+        skippedPending.clear()
     }
 
     /**
@@ -123,6 +181,11 @@ class WakeAlarmQueue {
         private const val KEY_PENDING_COUNT = "pending_count"
         private const val KEY_PENDING_PREFIX = "pending_"
     }
+
+    private data class SkippedPendingPayload(
+        val index: Int,
+        val payload: WakeTriggerPayload,
+    )
 }
 
 /**
@@ -136,4 +199,3 @@ class WakeAlarmQueue {
 object WakeAlarmQueueHolder {
     val queue = WakeAlarmQueue()
 }
-

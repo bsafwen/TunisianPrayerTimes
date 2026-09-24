@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.edit
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.PrayerWakeStore
+import com.tunisianprayertimes.isRepeatingWakeAlarm
 import com.tunisianprayertimes.supportsWakeAlarm
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.distinctUntilChanged
@@ -39,6 +40,23 @@ class PrayerWakeRepository(private val context: Context) {
         return wakeStore.first().alarmFor(id)
     }
 
+    suspend fun setWakeAlarmSkipOccurrence(id: String, occurrenceAtMillis: Long?): PrayerWakeConfig? {
+        require(id.isNotBlank()) { "Wake alarm id must not be blank." }
+        var updatedConfig: PrayerWakeConfig? = null
+        context.prayerWakeDataStore.edit { preferences ->
+            val current = decodePrayerWakeStore(preferences[prayerWakeStoreKey])
+            val existing = current.alarmFor(id) ?: return@edit
+            if (occurrenceAtMillis != null && !existing.isRepeatingWakeAlarm()) return@edit
+            val replacement = existing.copy(skipNextOccurrenceAtMillis = occurrenceAtMillis)
+            updatedConfig = replacement
+            val updated = current.alarms.map { config ->
+                if (config.id == id) replacement else config
+            }
+            preferences[prayerWakeStoreKey] = encodePrayerWakeStore(PrayerWakeStore(alarms = updated))
+        }
+        return updatedConfig
+    }
+
     suspend fun saveWakeConfig(config: PrayerWakeConfig) {
         require(config.prayer.supportsWakeAlarm()) {
             "Wake alarms are only supported for supported prayer rows."
@@ -51,7 +69,17 @@ class PrayerWakeRepository(private val context: Context) {
                 ?: current.alarms.firstOrNull { existing -> existing.prayer == config.prayer }?.id
                 ?: generatedAlarmId(config.prayer, current.alarms.size)
 
-            val updatedConfig = config.copy(id = resolvedId)
+            val existing = current.alarmFor(resolvedId)
+            val scheduleChanged = existing != null && (
+                existing.prayer != config.prayer ||
+                    existing.mainAlarm != config.mainAlarm ||
+                    existing.repeatMode != config.repeatMode ||
+                    existing.scheduledDays != config.scheduledDays
+                )
+            val updatedConfig = config.copy(
+                id = resolvedId,
+                skipNextOccurrenceAtMillis = if (scheduleChanged) null else config.skipNextOccurrenceAtMillis,
+            )
             if (!updatedConfig.enabled) {
                 awakeCheckEventIdsToCancel = buildSet {
                     add(wakeMainEventId(resolvedId))

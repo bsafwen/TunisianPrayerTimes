@@ -18,6 +18,8 @@ import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.WAKE_RECURRING_LOOKAHEAD_DAYS
 import com.tunisianprayertimes.WakeMainAlarmMode
+import com.tunisianprayertimes.hasPendingWakeOccurrenceSkip
+import com.tunisianprayertimes.isRepeatingWakeAlarm
 import com.tunisianprayertimes.nap.NapSilenceController
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
@@ -151,16 +153,82 @@ object WakeAlarmScheduler {
 			.alarms
 			.any { config -> config.hasFutureWakeTriggers(System.currentTimeMillis()) }
 
+	suspend fun toggleSkipNextWakeOccurrence(context: Context, alarmId: String): PrayerWakeConfig? {
+		val repository = PrayerWakeRepository(context)
+		val config = repository.getWakeAlarm(alarmId) ?: return null
+		if (!config.isRepeatingWakeAlarm()) return null
+		val now = Calendar.getInstance()
+		if (config.hasPendingWakeOccurrenceSkip(now.timeInMillis)) {
+			val skippedOccurrence = config.skipNextOccurrenceAtMillis
+			val updated = repository.setWakeAlarmSkipOccurrence(alarmId, null) ?: return null
+			skippedOccurrence?.let { occurrenceAtMillis ->
+				WakeAlarmQueueHolder.queue.restorePendingForOccurrence(alarmId, occurrenceAtMillis)
+			}
+			return updated
+		}
+		if (!config.enabled) return null
+
+		val prayerDays = loadPrayerDayContexts(context, PrefsManager.getDelegationId(context), now)
+		val nextOccurrenceAtMillis = nextWakeOccurrenceAtMillis(now, config, prayerDays)
+			?: return null
+		val updated = repository.setWakeAlarmSkipOccurrence(alarmId, nextOccurrenceAtMillis) ?: return null
+		WakeAlarmQueueHolder.queue.discardSkippedOccurrencesForAlarm(alarmId, nextOccurrenceAtMillis)
+		WakeAlarmQueueHolder.queue.removePendingForSkippedOccurrence(alarmId, nextOccurrenceAtMillis)
+		return updated
+	}
+
 	suspend fun scheduleAll(context: Context) {
 		val repo = PrayerWakeRepository(context)
-		val configs = repo.getCurrentStore().alarms
-		scheduleAllInternal(context, Calendar.getInstance(), configs)
+		val now = Calendar.getInstance()
+		var configs = repo.getCurrentStore().alarms
+		val staleSkipCutoffMillis = now.timeInMillis - TimeUnit.MINUTES.toMillis(REPAIR_AFTER_LAST_ALARM_DELAY_MINUTES)
+		configs
+			.filter { config ->
+				config.skipNextOccurrenceAtMillis != null &&
+					(!config.isRepeatingWakeAlarm() || !config.hasPendingWakeOccurrenceSkip(staleSkipCutoffMillis))
+			}
+			.forEach { config ->
+				config.skipNextOccurrenceAtMillis?.let { occurrenceAtMillis ->
+					WakeAlarmQueueHolder.queue.discardSkippedOccurrence(config.id, occurrenceAtMillis)
+				}
+				runCatching { repo.setWakeAlarmSkipOccurrence(config.id, null) }
+			}
+		configs = repo.getCurrentStore().alarms
+		val configsWithPendingSkips = configs.filter { config ->
+			config.enabled && config.isRepeatingWakeAlarm() && config.hasPendingWakeOccurrenceSkip(now.timeInMillis)
+		}
+		if (configsWithPendingSkips.isNotEmpty()) {
+			val prayerDays = loadPrayerDayContexts(context, PrefsManager.getDelegationId(context), now)
+			configsWithPendingSkips.forEach { config ->
+				val previousOccurrenceAtMillis = config.skipNextOccurrenceAtMillis ?: return@forEach
+				val nextOccurrenceAtMillis = nextWakeOccurrenceAtMillis(now, config, prayerDays)
+				if (nextOccurrenceAtMillis != null && nextOccurrenceAtMillis != previousOccurrenceAtMillis) {
+					if (repo.setWakeAlarmSkipOccurrence(config.id, nextOccurrenceAtMillis) != null) {
+						WakeAlarmQueueHolder.queue.discardSkippedOccurrence(config.id, previousOccurrenceAtMillis)
+						WakeAlarmQueueHolder.queue.discardSkippedOccurrencesForAlarm(config.id, nextOccurrenceAtMillis)
+						WakeAlarmQueueHolder.queue.removePendingForSkippedOccurrence(config.id, nextOccurrenceAtMillis)
+					}
+				}
+			}
+			configs = repo.getCurrentStore().alarms
+		}
+		scheduleAllInternal(context, now, configs)
 		// Auto-delete one-off (FROM_NOW) alarms once all their triggers are in the past
 		val nowMillis = System.currentTimeMillis()
 		configs
 			.filter { config -> config.isExpiredOneOffWakeAlarm(nowMillis) }
 			.forEach { config -> runCatching { repo.deleteWakeAlarm(config.id) } }
 	}
+
+	private fun nextWakeOccurrenceAtMillis(
+		now: Calendar,
+		config: PrayerWakeConfig,
+		prayerDays: List<WakeAlarmComputer.PrayerDayContext>,
+	): Long? = WakeAlarmComputer
+		.compute(now, config.copy(skipNextOccurrenceAtMillis = null), prayerDays)
+		.allTriggers
+		.minByOrNull { trigger -> trigger.triggerAtMillis }
+		?.occurrenceAtMillis
 
 	fun cancelAll(context: Context) {
 		cancelEventIds(context, scheduledEventIds(context))
@@ -274,7 +342,10 @@ object WakeAlarmScheduler {
 		}
 
 		persistScheduledEventIds(context, scheduledEventIds)
-		if (scheduledEventIds.isNotEmpty()) {
+		val needsRepairForSkippedOccurrences = enabledConfigs.any { config ->
+			config.skipNextOccurrenceAtMillis != null && config.isRepeatingWakeAlarm()
+		}
+		if (scheduledEventIds.isNotEmpty() || needsRepairForSkippedOccurrences) {
 			scheduleRepairAlarm(context, alarmManager, now, latestTriggerAtMillis)
 		} else {
 			cancelRepairAlarm(context)
@@ -397,6 +468,8 @@ object WakeAlarmScheduler {
 				subAlarmId = payload.subAlarmId,
 				offsetMinutes = payload.offsetMinutes,
 				offsetDirection = payload.offsetDirection,
+				triggerAtMillis = payload.triggerAtMillis,
+				occurrenceAtMillis = payload.occurrenceAtMillis,
 			)
 			.setAction(eventId)
 			.setData(wakeEventUri(eventId))
@@ -518,6 +591,8 @@ object WakeAlarmScheduler {
 				null
 			},
 			isSubAlarm = isSubAlarm,
+			triggerAtMillis = triggerAtMillis,
+			occurrenceAtMillis = occurrenceAtMillis,
 			subAlarmId = subAlarmId,
 			offsetMinutes = if (isSubAlarm) abs(signedOffsetMinutes) else null,
 			offsetDirection = if (isSubAlarm) signedOffsetMinutes.toOffsetDirection() else null,

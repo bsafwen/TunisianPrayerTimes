@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "mourouj5-parent-delegation-20260924",
+  "baseMetadataSha256": "30110277133722907f8376a3859ddc71faec88d59af52fcf85eed521d52a91a9",
+  "baseGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+  "evidence": [
+    {
+      "file": "catalog-updates/mourouj5-parent-20260924/evidence/isie-district-tunisie-2025.csv",
+      "sha256": "933a06439f01b9c11008dcc14ecd52169f91599a654aaf3d6555c52edf30a4f3"
+    },
+    {
+      "file": "catalog-updates/mourouj5-parent-20260924/evidence/fetch-record.json",
+      "sha256": "4d3edc2c5c671d6c5e6b2c46ade3ca32b8d5f17f133985b803a9a746993e0b54"
+    },
+    {
+      "file": "catalog-updates/mourouj5-parent-20260924/evidence/decision-evidence.json",
+      "sha256": "408cb7f7210792b1e1da4b1ae04a82f91bcbe3b91cbb7fd3f2736848264579df"
+    }
+  ],
+  "newSources": {},
+  "updates": [
+    {
+      "id": "osm:node:332247375",
+      "expectedFeatureSha256": "f26f4502a94de084268c8b976c5ee512e55da779a9fcb40176ce262c953d93ed",
+      "set": {
+        "parentName": "معتمدية المروج",
+        "contextAliases": [
+          "Délégation El Mourouj",
+          "El Mourouj",
+          "معتمدية المروج"
+        ]
+      },
+      "geometry": null
+    }
+  ],
+  "scopeNote": "Correct the Mourouj 5 parent label to the ISIE-listed delegation and remove only two aliases that falsely identify it as Mourouj 4. Preserve all geometry, identity, coordinates, timetable selection and other aliases."
+}

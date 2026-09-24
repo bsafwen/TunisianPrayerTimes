@@ -45,11 +45,9 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -101,6 +99,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.AbsoluteAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
@@ -111,7 +110,6 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathOperation
 import androidx.compose.ui.graphics.StrokeCap
@@ -190,6 +188,8 @@ import com.tunisianprayertimes.WakeMainAlarmConfig
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.WakePlaybackOptions
 import com.tunisianprayertimes.WakeRepeatMode
+import com.tunisianprayertimes.hasPendingWakeOccurrenceSkip
+import com.tunisianprayertimes.isRepeatingWakeAlarm
 import com.tunisianprayertimes.formatArabicMinutes
 import com.tunisianprayertimes.wake.PrayerWakeRepository
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
@@ -207,8 +207,6 @@ import com.tunisianprayertimes.ui.theme.Gold
 import com.tunisianprayertimes.ui.theme.GoldLight
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
-import com.tunisianprayertimes.ui.theme.HeaderEnd
-import com.tunisianprayertimes.ui.theme.HeaderStart
 import com.tunisianprayertimes.ui.theme.NextPrayerBg
 import com.tunisianprayertimes.ui.theme.PrayerNameColor
 import com.tunisianprayertimes.ui.theme.RamadanBg
@@ -725,16 +723,55 @@ fun MainScreen(
                 .fillMaxSize()
                 .background(BgCream)
                 .padding(bottom = with(density) { bottomNavigationOccupiedPx.toDp() })
+                .statusBarsPadding()
                 .verticalScroll(selectedDestinationScrollState)
         ) {
-            IslamicHeader()
-
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp)
             ) {
-                Spacer(Modifier.height(8.dp))
+                if (selectedDestination == MainDestination.Today) {
+                    FlowRow(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 12.dp, bottom = 10.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.prayer_page_title),
+                            fontSize = 23.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = GreenPrimaryDark,
+                        )
+                        LocationPickerCard(
+                            delegationId = delegationId,
+                            openRequested = locationPickerRequested,
+                            onOpenRequestHandled = { locationPickerRequested = false },
+                            onDelegationSelected = { delegation ->
+                                delegationId = delegation.id
+                                PrefsManager.setDelegationId(context, delegation.id)
+                                rescheduleIfEnabled()
+                            },
+                            onOutsideTunisia = {
+                                autoSilenceEnabled = false
+                                PrefsManager.setEnabled(context, false)
+                            },
+                            modifier = Modifier.widthIn(max = 160.dp),
+                        )
+                    }
+                } else {
+                    Text(
+                        text = stringResource(selectedDestination.labelRes),
+                        fontSize = 25.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = GreenPrimaryDark,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 12.dp, bottom = 8.dp),
+                    )
+                }
 
                 when (selectedDestination) {
                     MainDestination.Today -> {
@@ -780,21 +817,6 @@ fun MainScreen(
                         ) {
                             BatteryBanner(context = context)
                         }
-
-                        LocationPickerCard(
-                            delegationId = delegationId,
-                            openRequested = locationPickerRequested,
-                            onOpenRequestHandled = { locationPickerRequested = false },
-                            onDelegationSelected = { delegation ->
-                                delegationId = delegation.id
-                                PrefsManager.setDelegationId(context, delegation.id)
-                                rescheduleIfEnabled()
-                            },
-                            onOutsideTunisia = {
-                                autoSilenceEnabled = false
-                                PrefsManager.setEnabled(context, false)
-                            }
-                        )
 
                         PrayerSettingsCard(
                             delegationId = delegationId,
@@ -1023,20 +1045,6 @@ fun MainScreen(
         }
 
         }
-        Spacer(
-            modifier = Modifier
-                .align(Alignment.TopCenter)
-                .fillMaxWidth()
-                .windowInsetsTopHeight(WindowInsets.statusBars)
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(HeaderStart, HeaderEnd),
-                        start = Offset(0f, 0f),
-                        end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
-                    )
-                )
-        )
-
         Surface(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -1219,7 +1227,8 @@ fun MainScreen(
                     }
                     if (config.enabled &&
                         config.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW &&
-                        config.silenceUntilAlarm
+                        config.silenceUntilAlarm &&
+                        WakeAlarmComputer.compute(Calendar.getInstance(), config, emptyList()).allTriggers.isNotEmpty()
                     ) {
                         WakeAlarmScheduler.activateSilenceUntilAlarm(context, config.id)
                         refreshSilenceState()
@@ -1261,60 +1270,6 @@ fun MainScreen(
                 },
             )
         }
-    }
-}
-
-@Composable
-internal fun IslamicHeader() {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(
-                brush = Brush.linearGradient(
-                    colors = listOf(HeaderStart, HeaderEnd),
-                    start = Offset(0f, 0f),
-                    end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY)
-                )
-            )
-            .statusBarsPadding()
-            .padding(top = 2.dp, bottom = 6.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // Bismillah
-        Image(
-            painter = painterResource(R.drawable.basmalah),
-            contentDescription = "بِسْمِ اللهِ الرَّحْمَٰنِ الرَّحِيمِ",
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(28.dp)
-                .padding(horizontal = 42.dp),
-            contentScale = ContentScale.Fit,
-            colorFilter = ColorFilter.tint(Gold)
-        )
-
-        Image(
-            painter = painterResource(R.drawable.mosque_silhouette),
-            contentDescription = stringResource(R.string.app_name),
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(40.dp),
-            contentScale = ContentScale.Fit,
-            colorFilter = ColorFilter.tint(Color(0xB3FFFFFF))
-        )
-
-        Text(
-            text = stringResource(R.string.subtitle),
-            fontSize = 13.sp,
-            color = Color(0xFFB2DFDB),
-            textAlign = TextAlign.Center
-        )
-
-        Text(
-            text = stringResource(R.string.source),
-            fontSize = 10.sp,
-            color = Color(0x80B2DFDB),
-            textAlign = TextAlign.Center
-        )
     }
 }
 
@@ -1525,6 +1480,7 @@ private fun LocationPickerCard(
     onOutsideTunisia: () -> Unit = {},
     openRequested: Boolean = false,
     onOpenRequestHandled: () -> Unit = {},
+    modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
     val gouvernorats = remember { GouvernoratRepository.loadAll(context) }
@@ -1721,53 +1677,43 @@ private fun LocationPickerCard(
         }
     }
 
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .testTag(TestTags.LOCATION_PICKER)
-            .padding(top = 12.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+    Column(modifier = modifier.testTag(TestTags.LOCATION_PICKER)) {
+        Card(
+            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp),
+            shape = RoundedCornerShape(24.dp),
+            colors = CardDefaults.cardColors(containerColor = Color.White),
+            border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.2f)),
+            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(
-                    text = stringResource(R.string.location_title),
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = PrayerNameColor
-                )
-                Spacer(Modifier.width(12.dp))
                 Text(
                     text = selectedLocation.name
                         ?: if (selectedLocation.fromGps) stringResource(R.string.location_current_position)
                         else savedDelegation?.displayName()
                         ?: stringResource(R.string.hint_search_delegation),
                     fontSize = 14.sp,
-                    color = if (savedDelegation != null) TextDark else TextMuted,
+                    fontWeight = FontWeight.Medium,
+                    color = if (savedDelegation != null || selectedLocation.fromGps) GreenPrimaryDark else TextMuted,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
                         .weight(1f)
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(GoldLight.copy(alpha = 0.25f))
+                        .heightIn(min = 48.dp)
                         .clickable {
                             refreshSources()
                             showSheet = true
                         }
-                        .padding(horizontal = 12.dp, vertical = 8.dp)
+                        .padding(horizontal = 12.dp, vertical = 13.dp)
                 )
-                Spacer(Modifier.width(8.dp))
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
-                        .size(36.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(GreenPrimary.copy(alpha = 0.1f))
+                        .size(48.dp)
+                        .clip(CircleShape)
+                        .background(GreenPrimary.copy(alpha = 0.08f))
                         .clickable(enabled = !locating) {
                             if (DelegationLocator.hasLocationPermission(context)) {
                                 startLocationLookup()
@@ -1786,27 +1732,27 @@ private fun LocationPickerCard(
                         painter = painterResource(R.drawable.ic_location),
                         contentDescription = stringResource(R.string.gps_auto_detect),
                         tint = GreenPrimary,
-                        modifier = Modifier.size(18.dp)
+                        modifier = Modifier.size(20.dp)
                     )
                 }
             }
-            if (savedSourceUnavailable) {
-                Text(
-                    text = stringResource(if (allDelegations.isEmpty()) {
-                        R.string.location_no_current_prayer_data
-                    } else R.string.location_saved_source_unavailable),
-                    fontSize = 12.sp,
-                    color = TextMuted,
-                    modifier = Modifier.padding(top = 6.dp),
-                )
-            } else if (selectedLocation.fromGps && selectedLocation.name == null) {
-                Text(
-                    text = stringResource(R.string.location_neighborhood_unavailable),
-                    fontSize = 12.sp,
-                    color = TextMuted,
-                    modifier = Modifier.padding(top = 6.dp),
-                )
-            }
+        }
+        if (savedSourceUnavailable) {
+            Text(
+                text = stringResource(if (allDelegations.isEmpty()) {
+                    R.string.location_no_current_prayer_data
+                } else R.string.location_saved_source_unavailable),
+                fontSize = 12.sp,
+                color = TextMuted,
+                modifier = Modifier.padding(top = 6.dp),
+            )
+        } else if (selectedLocation.fromGps && selectedLocation.name == null) {
+            Text(
+                text = stringResource(R.string.location_neighborhood_unavailable),
+                fontSize = 12.sp,
+                color = TextMuted,
+                modifier = Modifier.padding(top = 6.dp),
+            )
         }
     }
 
@@ -4420,6 +4366,12 @@ private fun WakeAlarmCard(
     val context = LocalContext.current
     val wakeRepository = remember(context) { PrayerWakeRepository(context) }
     val coroutineScope = rememberCoroutineScope()
+    val nowMillis by produceState(initialValue = System.currentTimeMillis()) {
+        while (true) {
+            delay(60_000L)
+            value = System.currentTimeMillis()
+        }
+    }
     var alarmPendingDeletion by remember { mutableStateOf<PrayerWakeConfig?>(null) }
     val displayState = wakeAlarmDisplayState(wakeAlarms)
     val loadedWakeAlarms = displayState.visibleWakeAlarms
@@ -4478,6 +4430,7 @@ private fun WakeAlarmCard(
             WakeAlarmListPanel(
                 wakeAlarms = loadedWakeAlarms,
                 delegationId = delegationId,
+                nowMillis = nowMillis,
                 onEditAlarm = onEditAlarm,
                 onEnabledChange = { wakeAlarm, enabled ->
                     coroutineScope.launch {
@@ -4488,6 +4441,12 @@ private fun WakeAlarmCard(
                     }
                 },
                 onDeleteRequest = { alarm -> alarmPendingDeletion = alarm },
+                onSkipNext = { alarm ->
+                    coroutineScope.launch {
+                        WakeAlarmScheduler.toggleSkipNextWakeOccurrence(context, alarm.id)
+                        onConfigChanged()
+                    }
+                },
             )
         }
     }
@@ -4687,9 +4646,11 @@ private fun roundedClockTimeAfter(minutesFromNow: Int): ClockTime {
 private fun WakeAlarmListPanel(
     wakeAlarms: List<PrayerWakeConfig>,
     delegationId: Int,
+    nowMillis: Long,
     onEditAlarm: (PrayerWakeConfig) -> Unit,
     onEnabledChange: (PrayerWakeConfig, Boolean) -> Unit,
     onDeleteRequest: (PrayerWakeConfig) -> Unit,
+    onSkipNext: (PrayerWakeConfig) -> Unit,
 ) {
     val context = LocalContext.current
     Column(
@@ -4706,9 +4667,11 @@ private fun WakeAlarmListPanel(
                 alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
                 wakeConfig = wakeAlarm,
                 nextAlarmMillis = nextMillis,
+                nowMillis = nowMillis,
                 onClick = { onEditAlarm(wakeAlarm) },
                 onEnabledChange = { enabled -> onEnabledChange(wakeAlarm, enabled) },
                 onDeleteRequest = { onDeleteRequest(wakeAlarm) },
+                onSkipNext = { onSkipNext(wakeAlarm) },
             )
         }
     }
@@ -4858,13 +4821,9 @@ private fun NextPrayerHeroCard(
         formatCountdownRemaining(countdown.triggerAtMillis, currentTimeMillis),
     )
     val shape = MainHeroCardShape
-    val heroStartColor by animateColorAsState(
-        targetValue = if (isPhoneSilenced) SilencedHeroStart else GreenPrimaryDark,
-        label = "nextPrayerHeroStart"
-    )
-    val heroEndColor by animateColorAsState(
-        targetValue = if (isPhoneSilenced) SilencedHeroEnd else GreenPrimary,
-        label = "nextPrayerHeroEnd"
+    val silencedOverlayColor by animateColorAsState(
+        targetValue = if (isPhoneSilenced) SilencedHeroStart.copy(alpha = 0.3f) else Color.Transparent,
+        label = "nextPrayerHeroSilencedOverlay"
     )
     val countdownPillBackgroundColor by animateColorAsState(
         targetValue = if (isPhoneSilenced) SilencedHeroPillBackground else Color.White.copy(alpha = 0.90f),
@@ -4878,93 +4837,178 @@ private fun NextPrayerHeroCard(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(MainHeroCardHeight)
+            .heightIn(min = 148.dp)
             .testTag(TestTags.STATUS_CARD)
             .clip(shape)
-            .background(
-                Brush.linearGradient(
-                    colors = listOf(heroStartColor, heroEndColor),
-                    start = Offset(0f, 0f),
-                    end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
-                )
-            )
-            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.24f)), shape)
+            .background(Brush.horizontalGradient(listOf(GreenPrimary, GreenPrimaryDark)))
+            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.24f)), shape),
     ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 18.dp, vertical = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(14.dp),
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    text = stringResource(R.string.next_prayer_countdown_title),
-                    fontSize = 12.sp,
-                    color = Color.White.copy(alpha = 0.78f),
-                    fontWeight = FontWeight.Bold,
-                    maxLines = 1,
-                    modifier = Modifier.weight(1f),
-                )
+        Image(
+            painter = painterResource(R.drawable.prayer_hero_background),
+            contentDescription = null,
+            // Fill the card without stretching the crescent; crop from the empty right side.
+            contentScale = ContentScale.Crop,
+            alignment = AbsoluteAlignment.CenterLeft,
+            modifier = Modifier.matchParentSize(),
+        )
+        Box(Modifier.matchParentSize().background(silencedOverlayColor))
 
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
-                    PhoneStatusNotice(
+        BoxWithConstraints(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 17.dp, vertical = 13.dp)
+                .heightIn(min = 122.dp),
+        ) {
+            val sideBySide = maxWidth >= 270.dp && LocalDensity.current.fontScale <= 1.3f
+            if (sideBySide) {
+                NextPrayerHeroDetails(
+                    prayer = countdown.prayer,
+                    prayerName = prayerName,
+                    prayerTimeLineText = prayerTimeLineText,
+                    remainingText = remainingText,
+                    countdownPillBackgroundColor = countdownPillBackgroundColor,
+                    countdownPillTextColor = countdownPillTextColor,
+                    isPhoneSilenced = isPhoneSilenced,
+                    hasDnd = hasDnd,
+                    silenceReason = silenceReason,
+                    modifier = Modifier.width(maxWidth * 0.55f).align(Alignment.TopStart),
+                )
+                NextPrayerHeroVerse(
+                    modifier = Modifier
+                        .width(maxWidth * 0.45f)
+                        .padding(bottom = 18.dp)
+                        .align(Alignment.BottomEnd),
+                )
+            } else {
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    NextPrayerHeroDetails(
+                        prayer = countdown.prayer,
+                        prayerName = prayerName,
+                        prayerTimeLineText = prayerTimeLineText,
+                        remainingText = remainingText,
+                        countdownPillBackgroundColor = countdownPillBackgroundColor,
+                        countdownPillTextColor = countdownPillTextColor,
                         isPhoneSilenced = isPhoneSilenced,
                         hasDnd = hasDnd,
                         silenceReason = silenceReason,
+                        modifier = Modifier.fillMaxWidth(),
                     )
+                    NextPrayerHeroVerse(modifier = Modifier.fillMaxWidth())
                 }
-            }
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.Bottom,
-            ) {
-                Column(
-                    modifier = Modifier.weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                ) {
-                    Text(
-                        text = prayerName,
-                        fontSize = 28.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White,
-                        maxLines = 1,
-                        softWrap = false,
-                        autoSize = TextAutoSize.StepBased(maxFontSize = 28.sp),
-                    )
-                    Text(
-                        text = prayerTimeLineText,
-                        fontSize = 14.sp,
-                        color = Color.White.copy(alpha = 0.82f),
-                        fontWeight = FontWeight.SemiBold,
-                        maxLines = 1,
-                    )
-                }
-
-                Text(
-                    text = remainingText,
-                    fontSize = 14.sp,
-                    color = countdownPillTextColor,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-                    maxLines = 1,
-                    softWrap = false,
-                    autoSize = TextAutoSize.StepBased(maxFontSize = 14.sp),
-                    modifier = Modifier
-                        .padding(start = 12.dp)
-                        .clip(RoundedCornerShape(50))
-                        .background(countdownPillBackgroundColor)
-                        .padding(horizontal = 12.dp, vertical = 6.dp),
-                )
             }
         }
     }
+}
+
+@Composable
+private fun NextPrayerHeroDetails(
+    prayer: Prayer,
+    prayerName: String,
+    prayerTimeLineText: String,
+    remainingText: String,
+    countdownPillBackgroundColor: Color,
+    countdownPillTextColor: Color,
+    isPhoneSilenced: Boolean,
+    hasDnd: Boolean,
+    silenceReason: PhoneSilenceReason?,
+    modifier: Modifier = Modifier,
+) {
+    val largeText = LocalDensity.current.fontScale > 1.3f
+    val iconRes = when (prayer) {
+        Prayer.FAJR, Prayer.DHUHR, Prayer.ASR -> R.drawable.ic_adhkar_sun
+        Prayer.MAGHRIB, Prayer.ISHA -> R.drawable.ic_adhkar_moon
+        Prayer.JOMOAA, Prayer.AID_FITR, Prayer.AID_ADHA -> R.drawable.ic_adhkar_mosque
+    }
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        Text(
+            text = stringResource(R.string.next_prayer_countdown_title),
+            fontSize = 12.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = Color.White.copy(alpha = 0.78f),
+        )
+        PhoneStatusNotice(
+            isPhoneSilenced = isPhoneSilenced,
+            hasDnd = hasDnd,
+            silenceReason = silenceReason,
+        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(34.dp)
+                    .clip(CircleShape)
+                    .background(Color.White.copy(alpha = 0.13f)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    painter = painterResource(iconRes),
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(22.dp),
+                )
+            }
+            Text(
+                text = prayerName,
+                fontSize = 29.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                maxLines = if (largeText) 2 else 1,
+                softWrap = largeText,
+                autoSize = if (largeText) null else TextAutoSize.StepBased(maxFontSize = 29.sp),
+            )
+        }
+        Text(
+            text = prayerTimeLineText,
+            fontSize = 15.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = Color.White.copy(alpha = 0.9f),
+        )
+        Row(
+            modifier = Modifier
+                .clip(RoundedCornerShape(50))
+                .background(countdownPillBackgroundColor)
+                .padding(horizontal = 10.dp, vertical = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
+            Text(
+                text = remainingText,
+                fontSize = 13.sp,
+                color = countdownPillTextColor,
+                fontWeight = FontWeight.Bold,
+                maxLines = 1,
+                softWrap = false,
+                autoSize = TextAutoSize.StepBased(maxFontSize = 13.sp),
+                modifier = Modifier.weight(1f, fill = false),
+            )
+            Icon(
+                painter = painterResource(R.drawable.ic_adhkar_clock),
+                contentDescription = null,
+                tint = countdownPillTextColor,
+                modifier = Modifier.size(16.dp),
+            )
+        }
+    }
+}
+
+@Composable
+private fun NextPrayerHeroVerse(modifier: Modifier = Modifier) {
+    val largeText = LocalDensity.current.fontScale > 1.3f
+    Text(
+        text = stringResource(R.string.next_prayer_verse),
+        modifier = modifier,
+        fontSize = 13.sp,
+        color = Color.White.copy(alpha = 0.91f),
+        textAlign = TextAlign.Center,
+        maxLines = if (largeText) Int.MAX_VALUE else 1,
+        softWrap = largeText,
+        autoSize = if (largeText) null else TextAutoSize.StepBased(maxFontSize = 13.sp),
+    )
 }
 
 @Composable
@@ -5350,11 +5394,16 @@ private fun WakeAlarmRow(
     alarmName: String,
     wakeConfig: PrayerWakeConfig,
     nextAlarmMillis: Long?,
+    nowMillis: Long,
     onClick: () -> Unit,
     onEnabledChange: (Boolean) -> Unit,
     onDeleteRequest: () -> Unit,
+    onSkipNext: () -> Unit,
 ) {
     val enabled = wakeConfig.enabled
+    val isRepeatingAlarm = wakeConfig.isRepeatingWakeAlarm()
+    val isSkipPending = wakeConfig.hasPendingWakeOccurrenceSkip(nowMillis)
+    val showSkipNextAction = isRepeatingAlarm && (isSkipPending || (enabled && nextAlarmMillis != null))
     val alarmDisplayName = wakeAlarmDisplayName(wakeConfig)
     val summaryText = wakeSummaryText(alarmDisplayName, wakeConfig)
     val wakeCheckChip = stringResource(R.string.wake_alarm_feature_wake_check)
@@ -5432,6 +5481,24 @@ private fun WakeAlarmRow(
                         verticalArrangement = Arrangement.spacedBy(6.dp),
                     ) {
                         featureChips.forEach { chip -> WakeAlarmFeatureChip(text = chip) }
+                    }
+                }
+
+                if (showSkipNextAction) {
+                    TextButton(
+                        onClick = onSkipNext,
+                        contentPadding = PaddingValues(horizontal = 4.dp, vertical = 0.dp),
+                        modifier = Modifier.testTag(TestTags.wakeAlarmSkipNextButton(wakeConfig.id)),
+                    ) {
+                        Text(
+                            text = stringResource(
+                                if (isSkipPending) R.string.wake_alarm_undo_skip_next
+                                else R.string.wake_alarm_skip_next,
+                            ),
+                            color = GreenPrimaryDark,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.SemiBold,
+                        )
                     }
                 }
             }

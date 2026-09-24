@@ -1,7 +1,8 @@
-"""Apply pinned text corrections after historical catalog validation.
+"""Apply pinned text corrections and narrowly reviewed picker display groups.
 
-Only names, aliases and existing-parent labels may change. Existing boundary
-bytes, source defaults and picker identities remain exactly as validated.
+Text edits preserve picker identities. A display-group link may change only a
+hash-pinned raw point's pickerGroupId to an existing same-name sector, while
+preserving source features, coordinates, geometry and prayer defaults.
 """
 import copy
 import hashlib
@@ -62,13 +63,22 @@ def _validate_revision(revision):
 
 
 def _validate_update(update):
-    if not isinstance(update, dict) or set(update) != {"id", "expectedFeatureSha256", "set", "geometry"}:
+    required = {"id", "expectedFeatureSha256", "set", "geometry"}
+    optional = {"expectedPickerGroupTargetSha256"}
+    if not isinstance(update, dict) or not required <= set(update) or not set(update) <= required | optional:
         raise ValueError("invalid update schema")
     if not isinstance(update["id"], str) or not update["id"] or not isinstance(update["expectedFeatureSha256"], str) or len(update["expectedFeatureSha256"]) != 64:
         raise ValueError("invalid update identity/hash")
     values = update["set"]
-    if not isinstance(values, dict) or not set(values) <= {"name", "aliases", "parentName", "contextAliases", "sourceId"}:
+    if not isinstance(values, dict) or not set(values) <= {"name", "aliases", "parentName", "contextAliases", "sourceId", "pickerGroupId"}:
         raise ValueError("invalid update fields")
+    has_picker_group = "pickerGroupId" in values
+    if has_picker_group != ("expectedPickerGroupTargetSha256" in update):
+        raise ValueError("picker display updates require an exact target-feature hash")
+    if has_picker_group and (set(values) != {"pickerGroupId"} or not isinstance(values["pickerGroupId"], str) or not values["pickerGroupId"]):
+        raise ValueError("picker display updates must change pickerGroupId only")
+    if "expectedPickerGroupTargetSha256" in update and (not isinstance(update["expectedPickerGroupTargetSha256"], str) or len(update["expectedPickerGroupTargetSha256"]) != 64):
+        raise ValueError("invalid picker group target hash")
     if "name" in values and (not isinstance(values["name"], str) or not values["name"].strip() or not any("\u0600" <= char <= "\u06ff" for char in values["name"])):
         raise ValueError("name must be nonblank Arabic")
     for key in ("aliases", "contextAliases"):
@@ -97,6 +107,33 @@ def _validate_root_review(review):
         raise ValueError("invalid root review hash")
 
 
+def _validate_picker_display_group(uid, update, current, members_by_group):
+    owner = current[uid]
+    target_id = update["set"]["pickerGroupId"]
+    target = current.get(target_id)
+    if target is None or target_id == uid:
+        raise ValueError("picker display target is missing or identical to its point")
+    if object_sha256(target) != update["expectedPickerGroupTargetSha256"]:
+        raise ValueError("picker display target differs from reviewed feature")
+    if (not uid.startswith("osm:node:") or owner.get("sourceId") != "osm"
+            or owner.get("hasBoundary") is not False
+            or not target_id.startswith("osm:relation:") or target.get("sourceId") != "osm"
+            or target.get("kind") != "sector" or target.get("hasBoundary") is not True):
+        raise ValueError("picker display review must link an OSM point to an OSM sector")
+    if (not owner.get("name") or not any("\u0600" <= char <= "\u06ff" for char in owner["name"])
+            or owner.get("name") != target.get("name")
+            or not owner.get("parentName") or owner.get("parentName") != target.get("parentName")
+            or owner.get("contextAliases") != target.get("contextAliases")
+            or owner.get("governorateId") != target.get("governorateId")
+            or owner.get("delegationId") != target.get("delegationId")):
+        raise ValueError("picker display members do not share the reviewed current identity")
+    if (owner.get("pickerGroupId") != uid or target.get("pickerGroupId") != target_id
+            or sorted(members_by_group.get(uid, [])) != [uid]
+            or sorted(members_by_group.get(target_id, [])) != [target_id]):
+        raise ValueError("picker display members must be separate singleton groups before review")
+    return target
+
+
 def derive_revision(catalog, blob, revision, directory, references, *, pack_geometry, detect_conflicts, distance):
     """Apply explicit text edits after the generator validates geometry and sources.
 
@@ -123,7 +160,15 @@ def derive_revision(catalog, blob, revision, directory, references, *, pack_geom
     revised = copy.deepcopy(catalog)
     by_id = {f['id']: f for f in revised['features']}
     retired = set(catalog.get('retiredLocalityIds', []))
+    members_by_group = {}
+    for feature in rows:
+        group_id = feature.get("pickerGroupId")
+        if not isinstance(group_id, str) or not group_id:
+            raise ValueError("Invalid picker group inventory")
+        members_by_group.setdefault(group_id, []).append(feature["id"])
+    picker_group_count_before = len(members_by_group)
     changed, seen, renamed = {}, set(), []
+    picker_group_changes, touched_groups = [], set()
     for update in revision['updates']:
         _validate_update(update)
         uid = update['id']
@@ -131,19 +176,30 @@ def derive_revision(catalog, blob, revision, directory, references, *, pack_geom
             raise ValueError('Repeated, retired or missing update ID')
         seen.add(uid)
         if update['geometry'] is not None or 'sourceId' in update['set']:
-            raise ValueError('This integration permits text corrections only')
+            raise ValueError('Reviewed catalog revisions cannot change geometry or source mappings')
         if object_sha256(current[uid]) != update['expectedFeatureSha256']:
             raise ValueError('Feature differs from reviewed baseline')
         changed[uid] = sorted(k for k, v in update['set'].items() if current[uid].get(k) != v)
         if not changed[uid]:
             raise ValueError('Empty reviewed change')
+        if 'pickerGroupId' in changed[uid]:
+            _validate_picker_display_group(uid, update, current, members_by_group)
+            old_group = current[uid]['pickerGroupId']
+            new_group = update['set']['pickerGroupId']
+            picker_group_changes.append({
+                'id': uid, 'before': old_group, 'after': new_group,
+                'targetFeatureSha256': update['expectedPickerGroupTargetSha256'],
+            })
+            touched_groups.update((old_group, new_group))
+        else:
+            touched_groups.add(current[uid]['pickerGroupId'])
         by_id[uid].update(copy.deepcopy(update['set']))
         if 'name' in changed[uid]:
             renamed.append(uid)
     # No geometry decoding, relayout, regrouping or conflict regeneration is
     # needed for names. Preserve the entire previous spatial catalog exactly.
     if any(revised[k] != catalog[k] for k in catalog if k != 'features'):
-        raise ValueError('Non-text catalog state changed')
+        raise ValueError('Non-feature catalog state changed')
     for before, after in zip(rows, revised['features']):
         allowed = set(changed.get(before['id'], []))
         if ({k: v for k, v in before.items() if k not in allowed}
@@ -152,13 +208,17 @@ def derive_revision(catalog, blob, revision, directory, references, *, pack_geom
     if _metadata_hash(catalog) != revision['baseMetadataSha256']:
         raise ValueError('Original input mutated')
     report = {'revisionId':revision['id'], 'scopeNote':revision['scopeNote'],
-        'changedFields':changed, 'geometryIDs':[], 'renamedIDs':sorted(renamed),
+        'changedFields':changed, 'pickerGroupChanges':picker_group_changes,
+        'geometryIDs':[], 'renamedIDs':sorted(renamed),
         'nearestChanges':{}, 'rawPointDiscrepancies':[], 'conflictDiff':{'added':[],'removed':[]},
-        'counts':{'features':len(rows),'updates':len(seen),'geometryUpdates':0,'renamed':len(renamed),'newSources':0},
+        'counts':{'features':len(rows),'updates':len(seen),'geometryUpdates':0,'renamed':len(renamed),'newSources':0,
+                  'displayGroupUpdates':len(picker_group_changes),
+                  'pickerGroupCountBefore':picker_group_count_before,
+                  'pickerGroupCountAfter':len({feature['pickerGroupId'] for feature in revised['features']})},
         'hashes':{'beforeMetadataSha256':revision['baseMetadataSha256'],
                   'beforeGeometrySha256':revision['baseGeometrySha256'],
                   'afterMetadataSha256':_metadata_hash(revised),'afterGeometrySha256':_sha(blob)},
-        'touchedGroups':sorted({current[uid]['pickerGroupId'] for uid in seen})}
+        'touchedGroups':sorted(touched_groups)}
     return revised, blob, report
 
 

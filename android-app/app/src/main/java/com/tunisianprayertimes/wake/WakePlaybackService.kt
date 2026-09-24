@@ -179,6 +179,8 @@ class WakePlaybackService : Service() {
                     subAlarmId = current.subAlarmId,
                     offsetMinutes = current.offsetMinutes,
                     offsetDirection = current.offsetDirection,
+                    triggerAtMillis = current.triggerAtMillis,
+                    occurrenceAtMillis = current.occurrenceAtMillis,
                 ),
             )
         startActivity(activityIntent)
@@ -279,6 +281,8 @@ class WakePlaybackService : Service() {
                     subAlarmId = payload.subAlarmId,
                     offsetMinutes = payload.offsetMinutes,
                     offsetDirection = payload.offsetDirection,
+                    triggerAtMillis = payload.triggerAtMillis,
+                    occurrenceAtMillis = payload.occurrenceAtMillis,
                 ),
             )
 
@@ -321,6 +325,8 @@ class WakePlaybackService : Service() {
                 subAlarmId = payload.subAlarmId,
                 offsetMinutes = payload.offsetMinutes,
                 offsetDirection = payload.offsetDirection,
+                triggerAtMillis = payload.triggerAtMillis,
+                occurrenceAtMillis = payload.occurrenceAtMillis,
             )
             .putExtra(EXTRA_AWAKE_CHECK_ENABLED, payload.awakeCheckEnabled)
             .putExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, payload.awakeCheckDelayMinutes)
@@ -377,6 +383,8 @@ class WakePlaybackService : Service() {
                     subAlarmId = payload.subAlarmId,
                     offsetMinutes = payload.offsetMinutes,
                     offsetDirection = payload.offsetDirection,
+                    triggerAtMillis = payload.triggerAtMillis,
+                    occurrenceAtMillis = payload.occurrenceAtMillis,
                 ),
             )
 

@@ -33,6 +33,7 @@ internal object WakeDismissalCoordinator {
                 customRingtoneUri = payload.customRingtoneUri,
                 autoSilenceOverrideAllowed = payload.autoSilenceOverrideAllowed,
                 autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
+                wakeTriggerAtMillis = payload.triggerAtMillis,
             )
         }
     }

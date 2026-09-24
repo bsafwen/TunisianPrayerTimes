@@ -25,15 +25,58 @@ def read(path):
     return json.loads(Path(path).read_text(encoding="utf-8-sig"))
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--pins", required=True)
-    parser.add_argument("--output", required=True)
-    args = parser.parse_args()
-    output = Path(args.output).resolve()
+def _index_features(metadata):
+    features = metadata.get("features")
+    if not isinstance(features, list):
+        raise ValueError("Pinned metadata features must be a list")
+    by_id = {}
+    for feature in features:
+        if not isinstance(feature, dict):
+            raise ValueError("Pinned metadata feature must be an object")
+        feature_id = feature.get("id")
+        if not isinstance(feature_id, str) or not feature_id:
+            raise ValueError("Pinned metadata feature has an invalid ID")
+        if feature_id in by_id:
+            raise ValueError(f"Duplicate pinned metadata ID: {feature_id}")
+        group_id = feature.get("pickerGroupId") or feature_id
+        if not isinstance(group_id, str) or not group_id:
+            raise ValueError(f"Invalid picker group for pinned metadata ID: {feature_id}")
+        by_id[feature_id] = feature
+    return by_id
+
+
+def _resolve_selectable_ids(raw_ids, by_id, metadata_features):
+    """Collapse historical member IDs using the app's picker group owner."""
+    resolved, seen = [], set()
+    for raw_id in raw_ids:
+        feature = metadata_features.get(raw_id)
+        group_id = (feature.get("pickerGroupId") or raw_id) if feature else raw_id
+        if group_id != raw_id:
+            row = by_id.get(group_id)
+            members = row.get("members") if row else None
+            if (row is None or row.get("id") != group_id
+                    or not isinstance(members, list) or raw_id not in members):
+                raise ValueError(
+                    f"Grouped selectable ID {raw_id} has no matching helper group {group_id}"
+                )
+            location_id = group_id
+        elif raw_id in by_id:
+            location_id = raw_id
+        else:
+            raise ValueError(
+                f"Selectable ID {raw_id} is missing from the helper and is not a verified grouped member"
+            )
+        if location_id not in seen:
+            seen.add(location_id)
+            resolved.append(location_id)
+    return resolved
+
+
+def export_catalog(pins_path, output_path):
+    output = Path(output_path).resolve()
     if output.exists():
         raise ValueError("Output already exists; use a new snapshot filename")
-    all_pins = read(args.pins)
+    all_pins = read(pins_path)
     keys = ("helper", "metadata", "binary", "governors", "displayNames", "coverage")
     pins = {k: all_pins[k] for k in keys}
 
@@ -43,10 +86,12 @@ def main():
                 raise ValueError(f"Input changed: {key}")
 
     verify()
+    metadata = read(pins["metadata"]["file"])
+    metadata_features = _index_features(metadata)
     coverage = read(pins["coverage"]["file"])["prayerSelection"]
     displays = {r["id"]: r for r in read(pins["displayNames"]["file"])["names"]}
-    govs = read(pins["governors"]["file"])["gouvernorats"]
-    sources = {r["id"]: r for g in govs for r in g["delegations"]}
+    gov_rows = read(pins["governors"]["file"])["gouvernorats"]
+    sources = {r["id"]: r for g in gov_rows for r in g["delegations"]}
     spec = importlib.util.spec_from_file_location("review_export_helper", pins["helper"]["file"])
     helper = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(helper)
@@ -59,9 +104,10 @@ def main():
     manual = {r["id"]: r for r in coverage["currentManualSelections"]}
     if len(manual) != len(coverage["currentManualSelections"]):
         raise ValueError("Duplicate selectable IDs")
-    ids = list(manual)
-    ids += [f"delegation:{i}" for i in coverage["currentSourceIds"]
-            if f"delegation:{i}" not in manual]
+    requested_ids = list(manual)
+    requested_ids += [f"delegation:{i}" for i in coverage["currentSourceIds"]
+                      if f"delegation:{i}" not in manual]
+    ids = _resolve_selectable_ids(requested_ids, by_id, metadata_features)
     locations = []
     for location_id in ids:
         r = by_id[location_id]
@@ -71,13 +117,18 @@ def main():
         if not (math.isfinite(lat) and math.isfinite(lng)
                 and -90 <= lat <= 90 and -180 <= lng <= 180):
             raise ValueError(f"Invalid coordinates: {location_id}")
-        source_id = selected["sourceId"] if selected else int(location_id.split(":")[1])
+        if selected:
+            source_id = selected["sourceId"]
+        elif location_id.startswith("delegation:"):
+            source_id = int(location_id.split(":")[1])
+        else:
+            source_id = r.get("delegationId")
         if source_id not in coverage["currentSourceIds"]:
             raise ValueError(f"Unavailable prayer source: {location_id}")
         source = sources[source_id]
         override = displays.get(location_id, {})
-        aliases = (r.get("aliases", []) + override.get("searchAliases", []))
-        search_terms = (r.get("contextAliases", []) + [r.get("governorateFr", "")])
+        aliases = r.get("aliases", []) + override.get("searchAliases", [])
+        search_terms = r.get("contextAliases", []) + [r.get("governorateFr", "")]
         item = {
             "id": location_id,
             "nameAr": override.get("nameAr", r["name"]),
@@ -103,8 +154,16 @@ def main():
     with output.open("x", encoding="utf-8") as f:
         json.dump(catalog, f, ensure_ascii=False, indent=2)
         f.write("\n")
-    print(json.dumps({"locations": len(locations), "catalog": str(output),
-                      "sha256": digest(output)}))
+    return {"locations": len(locations), "catalog": str(output),
+            "sha256": digest(output)}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--pins", required=True)
+    parser.add_argument("--output", required=True)
+    args = parser.parse_args()
+    print(json.dumps(export_catalog(args.pins, args.output)))
 
 
 if __name__ == "__main__":

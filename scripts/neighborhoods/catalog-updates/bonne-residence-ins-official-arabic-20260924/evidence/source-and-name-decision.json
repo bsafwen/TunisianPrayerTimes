@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "caseId": "osm:relation:7118028",
+  "governorate": "تونس",
+  "parent": "معتمدية باردو",
+  "productFinding": "Keep this Bardo place: the Interior Ministry lists الاقامة الطيبة as an imada, the INS lists code 116056 as الإقامة الطيبة / Bonne residence, and the OSM relation carrying that code was mislabeled اقامة جميلة.",
+  "osmSource": {
+    "localPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\tunisia-260905.osm.pbf",
+    "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "relation": {
+      "id": 7118028,
+      "version": 2,
+      "timestamp": "2017-04-12 01:15:51+00:00",
+      "tags": {
+        "admin_level": "6",
+        "boundary": "administrative",
+        "name": "اقامة جميلة",
+        "name:ar": "اقامة جميلة",
+        "name:fr": "Bonne Résidence",
+        "ref:tn:codegeo": "116056",
+        "type": "boundary"
+      },
+      "memberCount": 5,
+      "outerMemberCount": 5
+    },
+    "bundledFeature": {
+      "id": "osm:relation:7118028",
+      "name": "اقامة جميلة",
+      "aliases": [
+        "Bonne Résidence"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية باردو",
+      "governorateId": 342,
+      "delegationId": 394,
+      "lat": 36.805123,
+      "lng": 10.146389,
+      "hasBoundary": true,
+      "bbox": [
+        10.137411,
+        36.801167,
+        10.151563,
+        36.809165
+      ],
+      "areaKm2": 0.47724145541504936,
+      "pickerGroupId": "osm:relation:7118028"
+    },
+    "bundledGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+  },
+  "officialINSRegistry": {
+    "path": "residential-base-display-reviews/current-official-sector-registry.json",
+    "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "dataset": "INS RGPH 2024 official published census sector hierarchy",
+    "scope": "2082 unique sector codes present identically in the three official workbook raw-data sheets; no claim these cover every currently legally existing sector or informal neighborhood.",
+    "sector": {
+      "governorateCode": "11",
+      "governorateFr": "Tunis",
+      "governorateAr": "تونس",
+      "delegationCode": "1160",
+      "delegationFr": "Le bardo",
+      "delegationAr": "باردو",
+      "sectorCode": "116056",
+      "sectorFr": "Bonne residence",
+      "sectorAr": "الإقامة الطيبة",
+      "sourceRows": {
+        "Population_Secteur_Age_Sexe_Dynamique.xlsx": 2552,
+        "Nombre_de_Logements_par_Secteurs.xlsx": 79,
+        "Nombre_de_menages_par_Secteurs.xlsx": 79
+      }
+    },
+    "sourceWorkbooks": [
+      {
+        "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+          "ETag": "\"8d1a5c-636842926ae2a\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "9247324",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 9247324,
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sheet": "Population"
+      },
+      {
+        "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+          "ETag": "\"b8855-6433d8623825d\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "755797",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 755797,
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+        "sheet": "Logements"
+      },
+      {
+        "file": "Nombre_de_menages_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+          "ETag": "\"9ea73-6433d95004ce0\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "649843",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 649843,
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+        "sheet": "Ménages"
+      }
+    ]
+  },
+  "officialMinistryRegistry": {
+    "url": "https://opendata.interieur.gov.tn/ar/catalog/secteurs-territoriaux-par-gouvernorat-et-delegation",
+    "title": "المناطق الترابية (العمادات) حسب الولايات والمعتمديات",
+    "governorate": "تونس",
+    "delegation": "باردو",
+    "imadaNameAsPublished": "الاقامة الطيبة",
+    "containsGeometry": false,
+    "containsINSCodeCrosswalk": false
+  },
+  "googleMapsVisualCrossCheck": {
+    "date": "2026-09-24",
+    "device": "emulator-5556 / Pixel_10_Pro_XL_TWO",
+    "query": "الإقامة الطيبة باردو تونس",
+    "googleLabel": "Bonne Residence",
+    "googleArabicSubtitle": "الإقامة الطيبة",
+    "observation": "After collapsing the result sheet and panning left and right, the red outline had the same broad triangular footprint and followed the same visible streets and landmarks as the app's OSM polygon displayed over the Google basemap in the manual review tool. The visual check does not establish exact coordinate equivalence or official boundary status.",
+    "screenshotsOutsideRepository": "work/interior-google-map-check-20260924/",
+    "geometryExtractedOrCopied": false
+  },
+  "decision": "Correct the Arabic picker label to the official imada name الإقامة الطيبة; retain Bonne Résidence as the supported French search alias and remove the incorrect اقامة جميلة label from search. Keep identity, parent, coordinates, geometry bytes, picker group, and prayer delegation unchanged. This text correction does not certify the polygon boundary.",
+  "geometryLimit": "Neither the Interior Ministry listing nor the INS workbooks contain boundary geometry. Google Maps visually corroborates the OSM outline's broad footprint, but exact coordinate equivalence and legal boundary status remain unverified."
+}

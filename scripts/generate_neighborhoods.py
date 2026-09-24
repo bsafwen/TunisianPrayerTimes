@@ -12209,9 +12209,9 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
     # exclusions change only the exported catalog after those checks pass.
     result, selection_report, final_exclusion_report = apply_final_exclusions(
         result, blob, selection_report, final_exclusions)
-    # Current spelling and parent-label reviews run after all historical proofs.
-    # Only textual updates are enabled here; boundary adoption needs a separate
-    # geographic and prayer-selection review before this scope can be widened.
+    # Reviewed spelling/parent-label edits and exact-identity display groups run
+    # after historical proofs. Display grouping changes metadata only; it does
+    # not adopt, certify or rewrite source geometry.
     catalog_update_report = None
     if reviewed_catalog_updates is not None and Path(reviewed_catalog_updates).exists():
         spec = importlib.util.spec_from_file_location(
@@ -12225,16 +12225,16 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
             result, original_blob, reviewed_catalog_updates, current_timetables,
             pack_geometry=packed_geometry_bytes, detect_conflicts=detect_conflicts, distance=distance)
         if bytes(blob) != original_blob or set(result) != set(original_result):
-            raise ValueError('Reviewed catalog naming updates changed geometry or schema')
+            raise ValueError('Reviewed catalog updates changed geometry or schema')
         if any(result[key] != original_result[key] for key in result if key != 'features'):
-            raise ValueError('Reviewed catalog naming updates changed non-text catalog state')
+            raise ValueError('Reviewed catalog updates changed non-feature catalog state')
         if len(result['features']) != len(original_result['features']):
             raise ValueError('Reviewed catalog naming updates changed feature count')
-        text_fields = {'name', 'aliases', 'parentName', 'contextAliases'}
+        reviewed_metadata_fields = {'name', 'aliases', 'parentName', 'contextAliases', 'pickerGroupId'}
         for before, after in zip(original_result['features'], result['features']):
-            if ({k: v for k, v in before.items() if k not in text_fields}
-                    != {k: v for k, v in after.items() if k not in text_fields}):
-                raise ValueError('Reviewed catalog naming updates changed identity or spatial data')
+            if ({k: v for k, v in before.items() if k not in reviewed_metadata_fields}
+                    != {k: v for k, v in after.items() if k not in reviewed_metadata_fields}):
+                raise ValueError('Reviewed catalog updates changed identity, source or spatial data')
     reviewed_manual_points_report = None
     if reviewed_manual_points is not None and Path(reviewed_manual_points).exists():
         manual_module_spec = importlib.util.spec_from_file_location(
@@ -12267,6 +12267,12 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
     point_only = [f for f in result['features'] if not f['hasBoundary']]
     excluded_ids.update(removed)
     conflicts = result['conflicts']
+    picker_group_members = defaultdict(list)
+    for feature in result['features']:
+        picker_group_members[feature['pickerGroupId']].append(feature['id'])
+    picker_groups = [{'pickerGroupId': group_id, 'ids': sorted(member_ids)}
+                     for group_id, member_ids in sorted(picker_group_members.items())
+                     if len(member_ids) > 1]
     (output/'neighborhoods.bin').write_bytes(blob)
     (output/'neighborhoods.json').write_text(json.dumps(result, ensure_ascii=False, separators=(',', ':'))+'\n', encoding='utf-8', newline='\n')
     # Preference cleanup runs before the larger picker catalog is preloaded.
@@ -12302,7 +12308,7 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
               'prayerSourceCoordinates': prayer_source_coordinate_report,
               'reviewedBoundaries': official_report,
               'reviewedPickerGroups': reviewed_picker_report,
-              'pickerGroupCount': len({feature['pickerGroupId'] for feature in features + point_only}),
+              'pickerGroupCount': len(picker_group_members),
               'pickerDuplicateGroups': picker_groups,
               'polygonsBySource': dict(Counter(f['sourceId'] for f in features)),
               'conflictCount': len(conflicts),
@@ -12329,7 +12335,7 @@ def build(pbf, output, report_dir, municipal_manifest=MUNICIPAL_MANIFEST,
     if selection_report is not None:
         report['prayerSelection'] = selection_report
         report['displayIdentityValidationContext'] = {
-            'scope': 'Existing display proof reports describe their pinned historical identity and prayer-reference context. reviewedCatalogUpdates, when present, gives later textual corrections. reviewedManualPoints, when present, gives later manual representative pin corrections; those reports retain historical before-correction metadata hashes and are checked separately. Geometry, IDs and groups remain unchanged. Explicit reviewedManualPoints settlement choices may amend current manual prayer-selection source IDs; historical source-change reports retain their original context.',
+            'scope': 'Existing display proof reports describe their pinned historical identity and prayer-reference context. reviewedCatalogUpdates, when present, gives later textual corrections and picker display-group links guarded by exact hashes; those links preserve raw IDs, coordinates, geometry and prayer fields and make no boundary-accuracy claim. reviewedManualPoints, when present, gives later manual representative pin corrections; those reports retain historical before-correction metadata hashes and are checked separately. Explicit reviewedManualPoints settlement choices may amend current manual prayer-selection source IDs; historical source-change reports retain their original context.',
             'baselineGovernors': selection_context['review']['baselineGovernors'],
             'baselineCoordinates': selection_context['review']['baselineCoordinates'],
             'historicalReportKeys': [key for key in report if key not in ('reviewedCatalogUpdates', 'reviewedManualPoints')

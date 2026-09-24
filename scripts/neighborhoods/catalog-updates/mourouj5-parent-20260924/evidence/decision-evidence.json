@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "caseId": "osm:node:332247375",
+  "reportedIssue": "The current parent label and two contextual aliases identify this locality as Mourouj 4, while the user reports Mourouj 5 as a distinct locality.",
+  "source": {
+    "provider": "ISIE",
+    "url": "https://www.isie.tn/wp-content/uploads/2025/11/district_tunisie.csv",
+    "csvSha256": "933a06439f01b9c11008dcc14ecd52169f91599a654aaf3d6555c52edf30a4f3",
+    "fetchRecordSha256": "4d3edc2c5c671d6c5e6b2c46ade3ca32b8d5f17f133985b803a9a746993e0b54"
+  },
+  "localityCode": "304004",
+  "delegationCode": "BA04",
+  "matchingRows": [
+    {
+      "code_cv": "30400109",
+      "code_loc": "304004",
+      "lib_loc_ar": "المروج 5",
+      "code_del": "BA04",
+      "lib_dlg_ar": "المروج",
+      "code_gouv": "BA",
+      "lib_gouv_ar": "بن عروس"
+    },
+    {
+      "code_cv": "30400401",
+      "code_loc": "304004",
+      "lib_loc_ar": "المروج 5",
+      "code_del": "BA04",
+      "lib_dlg_ar": "المروج",
+      "code_gouv": "BA",
+      "lib_gouv_ar": "بن عروس"
+    },
+    {
+      "code_cv": "30400402",
+      "code_loc": "304004",
+      "lib_loc_ar": "المروج 5",
+      "code_del": "BA04",
+      "lib_dlg_ar": "المروج",
+      "code_gouv": "BA",
+      "lib_gouv_ar": "بن عروس"
+    },
+    {
+      "code_cv": "30400403",
+      "code_loc": "304004",
+      "lib_loc_ar": "المروج 5",
+      "code_del": "BA04",
+      "lib_dlg_ar": "المروج",
+      "code_gouv": "BA",
+      "lib_gouv_ar": "بن عروس"
+    },
+    {
+      "code_cv": "30400404",
+      "code_loc": "304004",
+      "lib_loc_ar": "المروج 5",
+      "code_del": "BA04",
+      "lib_dlg_ar": "المروج",
+      "code_gouv": "BA",
+      "lib_gouv_ar": "بن عروس"
+    },
+    {
+      "code_cv": "30400405",
+      "code_loc": "304004",
+      "lib_loc_ar": "المروج 5",
+      "code_del": "BA04",
+      "lib_dlg_ar": "المروج",
+      "code_gouv": "BA",
+      "lib_gouv_ar": "بن عروس"
+    }
+  ],
+  "finding": "The 2025 ISIE table labels locality code 304004 as المروج 5 and assigns it to delegation BA04, المروج. The shipped Mourouj 1, 3, 4 and 5 sector features use parentName معتمدية المروج.",
+  "scopedChange": {
+    "parentName": "معتمدية المروج",
+    "removeContextAliases": [
+      "El Mourouj (4)",
+      "المروج 4"
+    ],
+    "preserveContextAliases": [
+      "Délégation El Mourouj",
+      "El Mourouj",
+      "معتمدية المروج"
+    ]
+  },
+  "limits": "This register supports the locality and delegation display labels. It does not provide a Mourouj 5 polygon and does not establish boundary containment or boundary accuracy."
+}
