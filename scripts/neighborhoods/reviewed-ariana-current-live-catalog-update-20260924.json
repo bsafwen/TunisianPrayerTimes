@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "revisions": [
+    {
+      "revision": {
+        "file": "catalog-updates/ariana-ministry-identity-cleanup-20260924/revision-current-live.json",
+        "sha256": "fcfb95f90b28b9b33bb198ccb502ba99bb2ddea716061a5b2615e3be5fe3a381"
+      },
+      "review": {
+        "file": "catalog-updates/ariana-ministry-identity-cleanup-20260924/review-current-live.json",
+        "sha256": "1d98634706cf8a6727a5ef8496cb0b9fe02eb8c12f55307dbdbc63f5ae089f26"
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "decision": "retire_three_unsupported_small_residential_picker_rows",
+  "reason": "These three French-only names identify separate, tiny OSM residential land-use parcels wholly inside the officially named Qammart imada. Their OSM tags contain no administrative reference or evidence of neighborhood-scale identity. The Qammart sector remains selectable and supplies the place label.",
+  "uncertainty": "The evidence establishes their OSM land-use classification and small contained footprints, not the exact building type. Do not infer that every residential polygon is an apartment complex or retire larger named neighborhoods automatically.",
+  "inputAssetSha256": {
+    "neighborhoodsJson": "2a3ecd1d4bcdd75e837c3d39827b435c5f46c0e6c8d681131d1860d3d6a1be1c",
+    "neighborhoodsBin": "ce01bfd302ac3010637745816b728f8f98610aa3b7b9dcf8b017c50d575d5154"
+  },
+  "osmTagSnapshot": {
+    "file": "osm-tag-snapshot.json",
+    "sha256": "2e47b838c589e941f923fdcf206c4307ee553f240b805f9b4940869e6bde00a4",
+    "pbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "extractedAreasSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "survivingSector": {
+    "id": "osm:relation:7062758",
+    "name": "قمرت",
+    "parentName": "معتمدية المرسى",
+    "sourceId": "isie-best-effort-imada-tunis-qammart-20260924",
+    "officialCode": "117157"
+  },
+  "exclusions": [
+    {
+      "id": "osm:way:825272931",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Amendier",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:825272931"
+      },
+      "packedGeometrySha256": "1179fe854665eb25fe59e365483591d481a9982e8839e1a47c9a31528d8eed55",
+      "areaKm2": 0.0010710307738146863,
+      "qammartCoverRatio": 1.0,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Amendier"
+      }
+    },
+    {
+      "id": "osm:way:825272932",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Poirier",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:825272932"
+      },
+      "packedGeometrySha256": "49166a0516a7d4f3215b4b2565cb3146fc32bf3c9e8934d8443ca3ef1ce54008",
+      "areaKm2": 0.0030715411068814777,
+      "qammartCoverRatio": 1.0,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Poirier"
+      }
+    },
+    {
+      "id": "osm:way:825505201",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Palmier",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:825505201"
+      },
+      "packedGeometrySha256": "2cd92b7f9c5a202e90a65c03f08a3d39d3ef015ffa56eee810a5a95d9ec5a02f",
+      "areaKm2": 0.0036473159644957688,
+      "qammartCoverRatio": 1.0,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Palmier"
+      }
+    }
+  ]
+}

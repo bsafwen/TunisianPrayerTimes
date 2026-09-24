@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "baseBuilder": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/build_current_live_snapshot.py",
+  "sources": [
+    {
+      "id": "isie-kabouti-preservation-mask-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/kabouti-preservation-ring.geojson",
+      "geojsonSha256": "39170fe05560114a9a9b4e9933e7e232ea1db32b7595e3952eb62a9bae164911",
+      "reviewFile": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/source-review.json",
+      "reviewSha256": "cb8b346797bba3c8f9a258f00d3232e0629525ff85c9cf6cbd2a691646526aa9"
+    }
+  ],
+  "records": [],
+  "clips": [
+    {
+      "id": "osm:relation:7174569",
+      "clipById": "osm:relation:7104940",
+      "sourceId": "osm-isie-reviewed-clip-kabouti-tarif-seam-20260924",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "الكبوطي",
+        "aliases": ["Kabouti"],
+        "kind": "sector",
+        "parentName": "معتمدية مرناق",
+        "contextAliases": ["Délégation Mornag", "Mornag", "معتمدية مرناق"],
+        "governorateId": 349,
+        "delegationId": 444,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7174569"
+      },
+      "expectedClipper": {
+        "sourceId": "isie-local-sectors-2023-hammamet-nine-neighbours",
+        "name": "جبل طريف",
+        "aliases": ["Djebel terif", "Jbal Trif"],
+        "kind": "sector",
+        "parentName": "معتمدية قرمبالية",
+        "contextAliases": ["Délégation Grombalia", "Grombalia", "معتمدية قرمبالية"],
+        "governorateId": 350,
+        "delegationId": 464,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7104940"
+      },
+      "expectedPackedGeometrySha256": "8cbed01460c7777bba2b267d3df2d235e9536f830573cfd276ead594ed080884",
+      "expectedClipperGeometrySha256": "349ed839d80091d208479d0fffbe5dc24ccbf5adb6cbc1133b5ef7c37396e30a",
+      "minRemovedAreaKm2": 0.54,
+      "maxRemovedAreaKm2": 0.55,
+      "minPreservedOverlapKm2": 0.00085,
+      "maxPreservedOverlapKm2": 0.0011,
+      "maxPreserveGeometryMismatchM2": 50.0,
+      "preserveBufferGridUnits": 1,
+      "preserveOverlapSource": {
+        "sourceId": "isie-kabouti-preservation-mask-20260924",
+        "featureId": "kabouti-red-sector-preservation-ring"
+      },
+      "crossGovernoratePolicy": "native_governorate_boundary",
+      "crossGovernorateEvidence": [
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/evidence/kabouti.pdf",
+          "sha256": "f9a2edf4a8f8e07c86c6d8d054f3c98cb296af4d8f5e6630f94ffe1aa01d9a9a"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/evidence/jebel-tarif.pdf",
+          "sha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168"
+        }
+      ],
+      "reason": "The paired ISIE 2023 maps support the broad recorded cross-governorate overlap on the جبل طريف side of the shared administrative linework. Subtract from الكبوطي only the installed pair overlap outside its extracted red-sector ring buffered by one app-grid unit. Preserve the small ring-supported patch as unresolved so the existing runtime conflict rule suppresses both names there.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/source-review.json",
+          "sha256": "cb8b346797bba3c8f9a258f00d3232e0629525ff85c9cf6cbd2a691646526aa9"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/evidence/partial-clip-impact.json",
+          "sha256": "ab3fbec8720f45e19a664d578f220cc884ebd0f8dd4d6dd5c831422653d53924"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/evidence/kabouti.pdf",
+          "sha256": "f9a2edf4a8f8e07c86c6d8d054f3c98cb296af4d8f5e6630f94ffe1aa01d9a9a"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/evidence/jebel-tarif.pdf",
+          "sha256": "b588a1fcc7910ee29f2c2f5756175c5ddcbebd00de53553ad64e435937203168"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/kabouti-preservation-ring.geojson",
+          "sha256": "39170fe05560114a9a9b4e9933e7e232ea1db32b7595e3952eb62a9bae164911"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-kabouti-tarif-reconciliation-20260924/build_preservation_source.py",
+          "sha256": "1c248ad079889018e14013d27d22911bf6ef50a99362d3f912849a3cd82af25b"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "status": "installed",
+  "installedAtLocalDate": "2026-09-24",
+  "targetId": "osm:relation:7174614",
+  "clipperId": "osm:relation:7109196",
+  "method": "Apply one reviewed partial clip on top of a compressed, SHA-pinned snapshot of the then-current live catalog; keep the source-supported junction overlap for existing runtime conflict suppression.",
+  "inputs": {
+    "manifestSha256": "53bdfc234bcb30d5d5e5125876f5dbcde6542aee6d2d8ce7ebc2ee2c836b0146",
+    "baseBuilderSha256": "cdcdf71d5f9fc0d2dea81537edda26f601cbadbc2098d1246db3f3943971933d",
+    "overlayBuilderSha256": "872cd6b69bd1002f84e1598c97109f2ce8a6ad7e2656772658b5b067744a6f3c",
+    "driverSha256": "8a8932081a971d25106ec634f5d976b82ca3d626371afef347fcae5ec949a368",
+    "baseNeighborhoodsJsonSha256": "d5a2ed14e35705414490667bbf161fdd632b8a170d6fd669aaa090b7bdd571f5",
+    "baseNeighborhoodsBinSha256": "5993c9d410313045946671970cdba929a61e20f27f24e5c32d0b1ab8fee92d09",
+    "preservationGeojsonSha256": "2f6958dfb7975029f0e7bbe6c24ff6eefdf5182d93f572dc607e879785d3b7fa",
+    "sourceReviewSha256": "5a868a04e1879ebcd2ea2c03d099d6f77e5e282ac37df05598fcee9de94dca41",
+    "overlayReportSha256": "7f6215dbdf9af3f6599ed8603f0ca03001cc7c657e3686415ac7676b5867cf8e"
+  },
+  "outputs": {
+    "neighborhoodsJsonSha256": "d9e8dd2a9ab5e227afa7d30a61ab5dd25ac383a24d2b97fa03914351134dfa9c",
+    "neighborhoodsBinSha256": "4b0727226a5ed143cf9704e0c820b39d70ef21ba28a05b809dc84c12932342a7"
+  },
+  "verification": {
+    "status": "passed",
+    "changedSelectableRows": [
+      "osm:relation:7174614"
+    ],
+    "preservedUntouchedPolygonPayloads": 2571,
+    "pointRowsPreserved": true,
+    "countryPayloadPreserved": true,
+    "changedDerivedTopLevelFields": [
+      "conflicts",
+      "country",
+      "features",
+      "sources"
+    ],
+    "clip": {
+      "removedAreaKm2": 0.4688241790533936,
+      "remainingAreaKm2": 53.28533092857261,
+      "preservedOverlapKm2": 0.006607353476155717,
+      "remainingOverlapKm2": 0.0066021640270596225,
+      "formerOverlapGpsWinnerId": "osm:relation:7109196",
+      "preservedOverlapGpsWinnerId": null,
+      "preservedOverlapGpsConflictSuppressed": true
+    },
+    "inputPins": {
+      "manifestSha256": "53bdfc234bcb30d5d5e5125876f5dbcde6542aee6d2d8ce7ebc2ee2c836b0146",
+      "baseBuilderSha256": "cdcdf71d5f9fc0d2dea81537edda26f601cbadbc2098d1246db3f3943971933d",
+      "overlayBuilderSha256": "872cd6b69bd1002f84e1598c97109f2ce8a6ad7e2656772658b5b067744a6f3c",
+      "driverSha256": "8a8932081a971d25106ec634f5d976b82ca3d626371afef347fcae5ec949a368"
+    },
+    "baseAssetSha256": {
+      "neighborhoodsJson": "d5a2ed14e35705414490667bbf161fdd632b8a170d6fd669aaa090b7bdd571f5",
+      "neighborhoodsBin": "5993c9d410313045946671970cdba929a61e20f27f24e5c32d0b1ab8fee92d09"
+    },
+    "stagedAssetSha256": {
+      "neighborhoodsJson": "d9e8dd2a9ab5e227afa7d30a61ab5dd25ac383a24d2b97fa03914351134dfa9c",
+      "neighborhoodsBin": "4b0727226a5ed143cf9704e0c820b39d70ef21ba28a05b809dc84c12932342a7"
+    },
+    "overlayReportSha256": "7f6215dbdf9af3f6599ed8603f0ca03001cc7c657e3686415ac7676b5867cf8e",
+    "overlayBuilderOutput": {
+      "outputDir": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ben-arous-nonsectors-review-20260924\\oued-sidi-current-chain\\stage",
+      "status": "passed",
+      "stagedAssetSha256": {
+        "neighborhoodsJson": "d9e8dd2a9ab5e227afa7d30a61ab5dd25ac383a24d2b97fa03914351134dfa9c",
+        "neighborhoodsBin": "4b0727226a5ed143cf9704e0c820b39d70ef21ba28a05b809dc84c12932342a7"
+      },
+      "sectorOverlapKm2": {
+        "osm:relation:7174614": {
+          "sectorOverlapKm2Before": 0.5356953780154576,
+          "sectorOverlapKm2After": 0.06690942084030198
+        }
+      },
+      "audit": {
+        "passed": true,
+        "invalidPolygonCount": 0,
+        "representativePointFailures": 0,
+        "missingBboxGridEntries": 0,
+        "conflictSamplesEvaluated": 485,
+        "behavioralRegressionFixturesPassed": 9,
+        "realCoordinateRegressionCasesPassed": 3
+      }
+    },
+    "installState": "installed"
+  }
+}

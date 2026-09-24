@@ -1,0 +1,507 @@
+{
+  "schemaVersion": 1,
+  "baseBuilder": "scripts/neighborhoods/official/tunis-souk-jedid-five-boundaries-20260924/build_best_effort_overlay.py",
+  "evidencePins": {
+    "tunisMarsaBorderReview": {
+      "file": "work/interior-imada-triage-20260924/tunis-marsa-border-review.json",
+      "sha256": "6c75f03e514454e4cbdc1b295984efe3dfdec7e7759bf94db65f69f533640639"
+    },
+    "qammartMarsaCombinedReview": {
+      "file": "work/interior-imada-triage-20260924/qammart-marsa-combined-review.json",
+      "sha256": "2f437feac9b053206b129aa30f998bd8a6df7986d695253254b28494f235e456"
+    },
+    "baieDesSingesReview": {
+      "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/review-evidence.json",
+      "sha256": "89ba588735fdf4fc97e27068e7690d1a95da30facfc0b591b37dac68719e585a"
+    },
+    "baieDesSingesPriorTriage": {
+      "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/prior-triage-extract.json",
+      "sha256": "fc7d8f35179007e994b574cc0c8df80c8cdb82bb17f26e71301f3ef36d3bbbef"
+    },
+    "tunisLatinPrimaryPriorTriage": {
+      "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/prior-triage-extract.json",
+      "sha256": "56d1fe6bea40db74dd19c8b999296b61ff4c565fd39cfb6b1d670c0e52632e55"
+    },
+    "tunisLatinPrimaryReview": {
+      "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/review-evidence.json",
+      "sha256": "ab6e2f2ab73f4805f260e92c766c1bc9bc5144a5ca196beebcd18a2ee8d9e7b8"
+    },
+    "tunisLatinPrimaryOsmSnapshot": {
+      "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/osm-tag-snapshot.json",
+      "sha256": "e38acdd413401293b90565dd98a009063bc94ea93a4c9773c892e5e468a4d8d6"
+    },
+    "previousFourExclusionManifest": {
+      "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/geometry-overlay-manifest.json",
+      "sha256": "a7a5dd94676a2aef741ba1b3738f3328c7786a4f904ee40e59afc7ebe42c8364"
+    }
+  },
+  "sources": [
+    {
+      "id": "isie-best-effort-imada-tunis-taieb-mehiri-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/tunis-taieb-mehiri-best-effort-20260924/candidate-source.geojson",
+      "geojsonSha256": "e52492ec65b98af53affb7d29ae2487cc13cd0b730cf1aabf01b3a3e79be8622",
+      "reviewFile": "scripts/neighborhoods/official/tunis-taieb-mehiri-best-effort-20260924/source-review.json",
+      "reviewSha256": "0393bcc9cbeb0c84a746d6862dda40f8fa140736b415cb44d63059d9a73de41e"
+    },
+    {
+      "id": "isie-best-effort-imada-tunis-qammart-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/qammart-candidate-source.geojson",
+      "geojsonSha256": "461ee4a806347f01eedfe9de59deba6354fa9172ecd9f2a14c95aba5223330e3",
+      "reviewFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/qammart-source-review.json",
+      "reviewSha256": "1ec0bf3e9d2cbed17ce92a5aa76a9662981e3337b062c79297a52b382d75fe64"
+    },
+    {
+      "id": "isie-best-effort-imada-tunis-marsa-beach-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/marsa-beach-candidate-source.geojson",
+      "geojsonSha256": "b8c3b9faa6d862cc24dcba12ceee5a80b26708b6b783fe1cdbb4a579a48d1a6e",
+      "reviewFile": "scripts/neighborhoods/official/tunis-marsa-two-best-effort-20260924/marsa-beach-source-review.json",
+      "reviewSha256": "4c4fae3c51e173bb3dbf22d8bd6b691e00f8f49182804780abcd938dbfe99700"
+    }
+  ],
+  "records": [
+    {
+      "action": "replace",
+      "id": "osm:relation:7117932",
+      "sourceId": "isie-best-effort-imada-tunis-taieb-mehiri-20260924",
+      "sourceFeatureId": "osm:relation:7117932",
+      "officialCode": "116954",
+      "ministryName": "الطيب المهيري",
+      "ministryParent": "حلق الوادي",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "الطيب المهيري",
+        "aliases": [
+          "Taieb Mhiri",
+          "الطيب مهيري"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية حلق الوادي",
+        "contextAliases": [
+          "Delegación de La Goleta",
+          "Délégation La Goulette",
+          "حلق الوادي",
+          "معتمدية حلق الوادي"
+        ],
+        "governorateId": 342,
+        "delegationId": 388,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7117932"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7062758",
+      "sourceId": "isie-best-effort-imada-tunis-qammart-20260924",
+      "sourceFeatureId": "osm:relation:7062758",
+      "officialCode": "117157",
+      "ministryName": "قمرت",
+      "ministryParent": "المرسى",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "قمرت",
+        "aliases": [
+          "Gammarth"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المرسى",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7062758"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7062337",
+      "sourceId": "isie-best-effort-imada-tunis-marsa-beach-20260924",
+      "sourceFeatureId": "osm:relation:7062337",
+      "officialCode": "117151",
+      "ministryName": "المرسى الشاطئ",
+      "ministryParent": "المرسى",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "المرسى الشاطئ",
+        "aliases": [
+          "La Marsa Plage"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية المرسى",
+        "contextAliases": [
+          "Al Marsa",
+          "Al-Marsa",
+          "Délégation La Marsa",
+          "La Marsa",
+          "معتمدية المرسى"
+        ],
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7062337"
+      }
+    }
+  ],
+  "exclusions": [
+    {
+      "id": "osm:way:825272931",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Amendier",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:825272931"
+      },
+      "packedGeometrySha256": "1179fe854665eb25fe59e365483591d481a9982e8839e1a47c9a31528d8eed55",
+      "reason": "Tiny French-only OSM residential parcel wholly inside the reviewed Qammart imada; unsupported as a separate selectable locality.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/review-evidence.json",
+          "sha256": "3e4154f2e7c2f0ac739d2424abfa59c13057f7f7cd8866412d57696aa0f89c10"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/osm-tag-snapshot.json",
+          "sha256": "2e47b838c589e941f923fdcf206c4307ee553f240b805f9b4940869e6bde00a4"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/build_evidence.py",
+          "sha256": "61eb11cfdf2090b264f215bb99b20718c575c44e8255a31f5332fc97d53e5158"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:825272932",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Poirier",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:825272932"
+      },
+      "packedGeometrySha256": "49166a0516a7d4f3215b4b2565cb3146fc32bf3c9e8934d8443ca3ef1ce54008",
+      "reason": "Tiny French-only OSM residential parcel wholly inside the reviewed Qammart imada; unsupported as a separate selectable locality.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/review-evidence.json",
+          "sha256": "3e4154f2e7c2f0ac739d2424abfa59c13057f7f7cd8866412d57696aa0f89c10"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/osm-tag-snapshot.json",
+          "sha256": "2e47b838c589e941f923fdcf206c4307ee553f240b805f9b4940869e6bde00a4"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/build_evidence.py",
+          "sha256": "61eb11cfdf2090b264f215bb99b20718c575c44e8255a31f5332fc97d53e5158"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:825505201",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Palmier",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "قمرت",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:825505201"
+      },
+      "packedGeometrySha256": "2cd92b7f9c5a202e90a65c03f08a3d39d3ef015ffa56eee810a5a95d9ec5a02f",
+      "reason": "Tiny French-only OSM residential parcel wholly inside the reviewed Qammart imada; unsupported as a separate selectable locality.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/review-evidence.json",
+          "sha256": "3e4154f2e7c2f0ac739d2424abfa59c13057f7f7cd8866412d57696aa0f89c10"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/osm-tag-snapshot.json",
+          "sha256": "2e47b838c589e941f923fdcf206c4307ee553f240b805f9b4940869e6bde00a4"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-qammart-three-small-residential-20260924/build_evidence.py",
+          "sha256": "61eb11cfdf2090b264f215bb99b20718c575c44e8255a31f5332fc97d53e5158"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:128232827",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Baie des Singes",
+        "aliases": [],
+        "kind": "residential",
+        "parentName": "المرسى الشاطئ",
+        "governorateId": 342,
+        "delegationId": 386,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:128232827"
+      },
+      "packedGeometrySha256": "c95295492ee8d7f80b417573f1cd1069233079a633e78728d339bac81ae40ff3",
+      "reason": "Tiny Latin-only OSM residential parcel lacks separate neighborhood identity or Arabic primary; current sector 117151 overlaps 98.68%, not full containment.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/review-evidence.json",
+          "sha256": "89ba588735fdf4fc97e27068e7690d1a95da30facfc0b591b37dac68719e585a"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/osm-tag-snapshot.json",
+          "sha256": "bd7b30482d40b885c40ecb95d35dd0ee17e30bbfcf7e268ee86c824ae40d8fdb"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/prior-triage-extract.json",
+          "sha256": "fc7d8f35179007e994b574cc0c8df80c8cdb82bb17f26e71301f3ef36d3bbbef"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-baie-des-singes-20260924/build_evidence.py",
+          "sha256": "caffe5d757160ddcdbdf61f1e5d4dc8cf94f358d5f135bb5143827ef3395f8b6"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:1188266987",
+      "targetType": "polygon",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "B HAMZA",
+        "kind": "residential",
+        "parentName": "معتمدية سيدي حسين",
+        "governorateId": 342,
+        "delegationId": 398,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:1188266987",
+        "aliases": []
+      },
+      "reason": "Deferred unresolved from first-release selectable catalog: Latin-only landuse=residential outline has ambiguous locality identity; its edges cross official Attar sector 116454. This does not establish that the locality is false or absent.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/review-evidence.json",
+          "sha256": "ab6e2f2ab73f4805f260e92c766c1bc9bc5144a5ca196beebcd18a2ee8d9e7b8"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/osm-tag-snapshot.json",
+          "sha256": "e38acdd413401293b90565dd98a009063bc94ea93a4c9773c892e5e468a4d8d6"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/prior-triage-extract.json",
+          "sha256": "56d1fe6bea40db74dd19c8b999296b61ff4c565fd39cfb6b1d670c0e52632e55"
+        }
+      ],
+      "packedGeometrySha256": "fbf45ab2e856c5356e36a2b08fa2817f5c76d35c4a75002d3fcbde65b984bc8b"
+    },
+    {
+      "id": "osm:way:1363528887",
+      "targetType": "polygon",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Cité Essalem",
+        "kind": "residential",
+        "parentName": "حي السلام",
+        "governorateId": 342,
+        "delegationId": 390,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:1363528887",
+        "aliases": []
+      },
+      "reason": "Deferred unresolved from first-release selection: a small Latin-only residential subarea wholly inside official sector 115958 حي السلام; available evidence does not determine whether Cité Essalem is a distinct named locality or an informal subset.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/review-evidence.json",
+          "sha256": "ab6e2f2ab73f4805f260e92c766c1bc9bc5144a5ca196beebcd18a2ee8d9e7b8"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/osm-tag-snapshot.json",
+          "sha256": "e38acdd413401293b90565dd98a009063bc94ea93a4c9773c892e5e468a4d8d6"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/prior-triage-extract.json",
+          "sha256": "56d1fe6bea40db74dd19c8b999296b61ff4c565fd39cfb6b1d670c0e52632e55"
+        }
+      ],
+      "packedGeometrySha256": "5a421284712062541c76909aa472644d167a94b7c42d20d250481c53c3440dd9"
+    },
+    {
+      "id": "osm:node:10044670149",
+      "targetType": "point",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "Cité el Bank",
+        "kind": "neighbourhood",
+        "parentName": "سيدي عمر",
+        "governorateId": 342,
+        "delegationId": 387,
+        "hasBoundary": false,
+        "pickerGroupId": "osm:node:10044670149",
+        "aliases": [],
+        "lat": 36.8502352,
+        "lng": 10.3083211
+      },
+      "reason": "Deferred unresolved from first-release selection: OSM place=neighbourhood is point-only and Latin-only, with no defensible Arabic primary name. This does not establish that the locality is false or absent.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/review-evidence.json",
+          "sha256": "ab6e2f2ab73f4805f260e92c766c1bc9bc5144a5ca196beebcd18a2ee8d9e7b8"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/osm-tag-snapshot.json",
+          "sha256": "e38acdd413401293b90565dd98a009063bc94ea93a4c9773c892e5e468a4d8d6"
+        },
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/tunis-latin-primary-deferred-20260924/prior-triage-extract.json",
+          "sha256": "56d1fe6bea40db74dd19c8b999296b61ff4c565fd39cfb6b1d670c0e52632e55"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:512547872",
+      "targetType": "polygon",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "البستان 1",
+        "kind": "residential",
+        "parentName": "المروج 5",
+        "governorateId": 349,
+        "delegationId": 447,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:512547872"
+      },
+      "packedGeometrySha256": "977d1591423fc1af9da99afb0ba457d5f08716a5c70dd78c116b1807d9832ea7",
+      "reason": "Public Maps place result identifies this small OSM residential parcel as Résidence El Boustène, a housing complex/building rather than a distinct neighborhood. Official المروج 5 remains selectable.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/ben-arous-bosten-two-complexes-20260924/review-evidence.json",
+          "sha256": "b275fedc29bf39baffbe67852ee1225677e9e258ab41dea080851b646cc1a49e"
+        }
+      ]
+    },
+    {
+      "id": "osm:way:512547869",
+      "targetType": "polygon",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "البستان 2",
+        "kind": "residential",
+        "parentName": "معتمدية المروج",
+        "governorateId": 349,
+        "delegationId": 447,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:way:512547869"
+      },
+      "packedGeometrySha256": "e3a9b1d92e8fff0080e03a3d0ceb48104621492ea0915c4d330e6903d12050a3",
+      "reason": "Public Maps place result identifies this small OSM residential parcel as Résidence El Boustène, a housing complex/building rather than a distinct neighborhood. Official المروج 5 remains selectable.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/exclusion-reviews/ben-arous-bosten-two-complexes-20260924/review-evidence.json",
+          "sha256": "b275fedc29bf39baffbe67852ee1225677e9e258ab41dea080851b646cc1a49e"
+        }
+      ]
+    }
+  ],
+  "clips": [
+    {
+      "id": "osm:relation:7174562",
+      "clipById": "osm:relation:7174585",
+      "sourceId": "osm-isie-reviewed-clip-ben-arous-borj-cedria-20260924",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "الرسالة",
+        "kind": "sector",
+        "parentName": "معتمدية مرناق",
+        "governorateId": 349,
+        "delegationId": 444,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7174562"
+      },
+      "expectedClipper": {
+        "sourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+        "name": "برج السدرية",
+        "kind": "sector",
+        "parentName": "معتمدية حمام الشط",
+        "governorateId": 349,
+        "delegationId": 452,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7174585"
+      },
+      "expectedPackedGeometrySha256": "b3e4494c4f131ed35f30a5265c143a21b47048fbdf5f3f2b1eea1eaf43a9742e",
+      "expectedClipperGeometrySha256": "ab68b1cd97087a4fb558087c6289c6b51bd76e63c4200fe01e0aaddf9614788e",
+      "minRemovedAreaKm2": 1.1,
+      "maxRemovedAreaKm2": 1.4,
+      "reason": "ISIE Borj Cedria PDF boundary is used as provisional priority on this shared border; remaining OSM sector extent and exact seam require further geographic review.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-borj-cedria-seam-20260924/source-review.json",
+          "sha256": "14ee40b4449cc71fabd6353aac82ad917f84bd8b4323c180f74ec258c9ccf4cc"
+        },
+        {
+          "file": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/borj-cedria-1.pdf",
+          "sha256": "7ec8756584b1483d34bf1a548558deacc2c20559a9bd469514a7685951d819cc"
+        },
+        {
+          "file": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/borj-cedria-2.pdf",
+          "sha256": "07d984e4d0c9e95043c195071818e3407c38cd9e03fd1617899613c86d083849"
+        }
+      ]
+    },
+    {
+      "id": "osm:relation:7174583",
+      "clipById": "osm:relation:7174585",
+      "sourceId": "osm-isie-reviewed-clip-ben-arous-borj-cedria-20260924",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "بئر الباي",
+        "kind": "sector",
+        "parentName": "معتمدية حمام الشط",
+        "governorateId": 349,
+        "delegationId": 452,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7174583"
+      },
+      "expectedClipper": {
+        "sourceId": "isie-local-sectors-2023-soliman-thirteen-native",
+        "name": "برج السدرية",
+        "kind": "sector",
+        "parentName": "معتمدية حمام الشط",
+        "governorateId": 349,
+        "delegationId": 452,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7174585"
+      },
+      "expectedPackedGeometrySha256": "7aedd711895295b71fad58a287d9bd9ba23a378a712757ea417c649aca07fe87",
+      "expectedClipperGeometrySha256": "ab68b1cd97087a4fb558087c6289c6b51bd76e63c4200fe01e0aaddf9614788e",
+      "minRemovedAreaKm2": 0.2,
+      "maxRemovedAreaKm2": 0.32,
+      "reason": "ISIE Borj Cedria PDF boundary is used as provisional priority on this shared border; remaining OSM sector extent and exact seam require further geographic review.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-borj-cedria-seam-20260924/source-review.json",
+          "sha256": "14ee40b4449cc71fabd6353aac82ad917f84bd8b4323c180f74ec258c9ccf4cc"
+        },
+        {
+          "file": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/borj-cedria-1.pdf",
+          "sha256": "7ec8756584b1483d34bf1a548558deacc2c20559a9bd469514a7685951d819cc"
+        },
+        {
+          "file": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/borj-cedria-2.pdf",
+          "sha256": "07d984e4d0c9e95043c195071818e3407c38cd9e03fd1617899613c86d083849"
+        }
+      ]
+    }
+  ]
+}

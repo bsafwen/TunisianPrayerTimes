@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "status": "READ_ONLY_IDENTITY_REVIEW",
+  "governorate": "أريانة",
+  "scope": "Identity matching for the 10 Ministry name-and-parent preflight exceptions only. No polygon accuracy or legal boundary review was performed.",
+  "counts": {
+    "ministryImadas": 48,
+    "appSectors": 48,
+    "preflightExactNameParentMatches": 38,
+    "preflightExceptions": 10,
+    "uniqueInsCodeCandidates": 48,
+    "appCodesPresent": 48,
+    "distinctAppCodes": 48,
+    "officialInsCodesMatched": 48,
+    "codeVerifierExactNormalizedNameParentMatches": 37,
+    "codeVerifierExceptions": 11,
+    "officialInsCodesNotInstalled": 0,
+    "preflightCasesLikelyOneToOne": 9,
+    "preflightCasesUnclear": 1,
+    "confirmedMissingOrWrongIdentity": 0,
+    "additionalMinistryVsInsNameVariants": 2
+  },
+  "inputs": {
+    "preflightSummary": {
+      "path": "work/governorate-preflight-ariana-20260924/preflight-summary.json",
+      "sha256": "2e7e7c1c877b0cef4c69f0d340e4610f363b2806f91dd6258b496fc200706b38",
+      "ministrySourceSha256": "8feb1ab95c822f3fac0d30e53ee7d1ec25c1ae672cae32e26d2ef8b72eda5060"
+    },
+    "ministryInventoryCsv": {
+      "path": "work/governorate-preflight-ariana-20260924/ministry-imada-inventory.csv",
+      "sha256": "2ddaafc9afbb054781b69ddc66f1b0b4a138dbf92acbd7cc5f7c82e96867a871",
+      "limitation": "Contains governorate, delegation, and name only; no sector codes."
+    },
+    "appCatalog": {
+      "path": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes/android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "63908a83db9b024bddbd8ff75e11806e987a95742cde1571ac7c0286b46460e7"
+    },
+    "insRegistry": {
+      "path": "outputs/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    "osmSourceAreas": {
+      "path": "work/geo/osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+    },
+    "codeVerifier": {
+      "path": "work/ariana-five-device-first-pass-20260924/code-verification.json",
+      "sha256": "4af377555ead21df09ccf5d5313e61cfe5b6f3cd0f6dbf1323c43f4de1192a14",
+      "script": "scripts/neighborhoods/verify_official_sector_codes.py",
+      "method": "OSM ref:tn:codegeo candidate checked against unique INS sector code, Arabic name, and administrative parent."
+    }
+  },
+  "cases": [
+    {
+      "ministry": {"name": "المنزه الخامس", "delegation": "أريانة المدينة"},
+      "app": {"id": "osm:relation:7115051", "name": "المنزه 5", "parent": "معتمدية أريانة المدينة", "insCode": "125154"},
+      "insRegistry": {"name": "المنزه الخامس", "parent": "اريانةالمدينة", "uniqueCodeMatch": true},
+      "classification": "spelling_or_alias",
+      "oneToOneLikelyMatch": true,
+      "evidence": "The unique app code maps to the exact Ministry and INS imada name under the same delegation; only the numeral format differs.",
+      "safeRecommendation": "Use the Ministry Arabic name for display and retain المنزه 5 as a search alias.",
+      "polygonReliabilityAssessed": false
+    },
+    {
+      "ministry": {"name": "المنزه السادس", "delegation": "أريانة المدينة"},
+      "app": {"id": "osm:relation:7115052", "name": "المنزه 6", "parent": "معتمدية أريانة المدينة", "insCode": "125155"},
+      "insRegistry": {"name": "المنزه السادس", "parent": "اريانةالمدينة", "uniqueCodeMatch": true},
+      "classification": "spelling_or_alias",
+      "oneToOneLikelyMatch": true,
+      "evidence": "The unique app code maps to the exact Ministry and INS imada name under the same delegation; only the numeral format differs.",
+      "safeRecommendation": "Use the Ministry Arabic name for display and retain المنزه 6 as a search alias.",
+      "polygonReliabilityAssessed": false
+    },
+    {
+      "ministry": {"name": "قلعة الاندلس", "delegation": "قلعة الأندلس"},
+      "app": {"id": "osm:relation:7114424", "name": "قلعة الأندلس الشرقية", "parent": "معتمدية قلعة الأندلس", "insCode": "125451"},
+      "insRegistry": {"name": "قلعة الاندلس الشرقية", "parent": "قلعة الأندلس", "uniqueCodeMatch": true},
+      "classification": "unclear",
+      "oneToOneLikelyMatch": false,
+      "evidence": "This is the sole same-parent unclaimed app row. Its code confirms an eastern imada in INS, but the Ministry inventory gives the unqualified name and has no code establishing that it means the eastern imada.",
+      "safeRecommendation": "Keep the mapping unresolved; do not rename the row or retire it until an official name/code crosswalk or map confirms equivalence.",
+      "polygonReliabilityAssessed": false
+    },
+    {
+      "ministry": {"name": "بوحنش", "delegation": "قلعة الأندلس"},
+      "app": {"id": "osm:relation:7114421", "name": "بو حناش", "parent": "معتمدية قلعة الأندلس", "insCode": "125454"},
+      "insRegistry": {"name": "بوحنش", "parent": "قلعة الأندلس", "uniqueCodeMatch": true},
+      "classification": "spelling_or_alias",
+      "oneToOneLikelyMatch": true,
+      "evidence": "The unique app code maps to بوحنش under the same delegation; the app spelling adds spacing and an alif.",
+      "safeRecommendation": "Use بوحنش for display and retain بو حناش as a search alias.",
+      "polygonReliabilityAssessed": false
+    },
+    {
+      "ministry": {"name": "2 مارس", "delegation": "حي التضامن"},
+      "app": {"id": "osm:relation:7115582", "name": "مارس 2", "parent": "معتمدية حي التضامن", "insCode": "125655"},
+      "insRegistry": {"name": "2مارس", "parent": "حي التضامن", "uniqueCodeMatch": true},
+      "classification": "spelling_or_alias",
+      "oneToOneLikelyMatch": true,
+      "evidence": "The unique app code maps to the same imada under the same delegation; the word and number order differs.",
+      "safeRecommendation": "Use the Ministry form 2 مارس for display and retain مارس 2 as a search alias.",
+      "polygonReliabilityAssessed": false
+    },
+    {
+      "ministry": {"name": "المنيهلة", "delegation": "المنيهلة"},
+      "app": {"id": "osm:relation:7115407", "name": "المنيهلة", "parent": "معتمدية منيهلة", "insCode": "125751"},
+      "insRegistry": {"name": "المنيهلة", "parent": "المنيهلة", "uniqueCodeMatch": true},
+      "classification": "parent_discrepancy",
+      "oneToOneLikelyMatch": true,
+      "evidence": "Unique code and imada name match; the app parent omits the definite article.",
+      "safeRecommendation": "Normalize the displayed parent to معتمدية المنيهلة.",
+      "polygonReliabilityAssessed": false
+    },
+    {
+      "ministry": {"name": "الرفاهة", "delegation": "المنيهلة"},
+      "app": {"id": "osm:relation:7115408", "name": "الرفاهة", "parent": "معتمدية منيهلة", "insCode": "125752"},
+      "insRegistry": {"name": "الرفاهة", "parent": "المنيهلة", "uniqueCodeMatch": true},
+      "classification": "parent_discrepancy",
+      "oneToOneLikelyMatch": true,
+      "evidence": "Unique code and imada name match; the app parent omits the definite article.",
+      "safeRecommendation": "Normalize the displayed parent to معتمدية المنيهلة.",
+      "polygonReliabilityAssessed": false
+    },
+    {
+      "ministry": {"name": "النصر", "delegation": "المنيهلة"},
+      "app": {"id": "osm:relation:7115409", "name": "النصر", "parent": "معتمدية منيهلة", "insCode": "125753"},
+      "insRegistry": {"name": "النصر", "parent": "المنيهلة", "uniqueCodeMatch": true},
+      "classification": "parent_discrepancy",
+      "oneToOneLikelyMatch": true,
+      "evidence": "Unique code and imada name match; the app parent omits the definite article.",
+      "safeRecommendation": "Normalize the displayed parent to معتمدية المنيهلة.",
+      "polygonReliabilityAssessed": false
+    },
+    {
+      "ministry": {"name": "البساتين", "delegation": "المنيهلة"},
+      "app": {"id": "osm:relation:7115406", "name": "البساتين", "parent": "معتمدية منيهلة", "insCode": "125754"},
+      "insRegistry": {"name": "البساتين", "parent": "المنيهلة", "uniqueCodeMatch": true},
+      "classification": "parent_discrepancy",
+      "oneToOneLikelyMatch": true,
+      "evidence": "Unique code and imada name match; the app parent omits the definite article. The code distinguishes this from the separate البساتين sector in سكرة.",
+      "safeRecommendation": "Normalize the displayed parent to معتمدية المنيهلة.",
+      "polygonReliabilityAssessed": false
+    },
+    {
+      "ministry": {"name": "15 أكتوبر", "delegation": "المنيهلة"},
+      "app": {"id": "osm:relation:7115405", "name": "15 أكتوبر", "parent": "معتمدية منيهلة", "insCode": "125755"},
+      "insRegistry": {"name": "15أكتوبر", "parent": "المنيهلة", "uniqueCodeMatch": true},
+      "classification": "parent_discrepancy",
+      "oneToOneLikelyMatch": true,
+      "evidence": "Unique code and imada name match after removing spacing; the app parent omits the definite article.",
+      "safeRecommendation": "Normalize the displayed parent to معتمدية المنيهلة.",
+      "polygonReliabilityAssessed": false
+    }
+  ],
+  "additionalNameVariantsOutsideThePreflightTen": [
+    {
+      "appId": "osm:relation:7114902",
+      "appName": "البساتين",
+      "ministryParent": "سكرة",
+      "insCode": "125253",
+      "insName": "البستان",
+      "classification": "ministry_vs_ins_name_variant",
+      "recommendation": "The app name matches the Ministry row. Preserve it for this Ministry-focused release and track the INS singular form as a source spelling difference."
+    },
+    {
+      "appId": "osm:relation:7115587",
+      "appName": "حي التضامن",
+      "ministryParent": "حي التضامن",
+      "insCode": "125651",
+      "insName": "التضامن",
+      "classification": "ministry_vs_ins_name_variant",
+      "recommendation": "The app name matches the Ministry row. Preserve it for this Ministry-focused release and track the INS omission of حي as a source naming difference."
+    }
+  ],
+  "conclusion": "Nine Ministry exceptions have unique likely 1:1 app matches supported by shared INS code and name/parent context. One Qalaat entry remains unclear because the Ministry's unqualified name cannot be tied by code to the INS eastern row. No confirmed missing or wrong identity is established. Code and name evidence does not establish polygon reliability."
+}

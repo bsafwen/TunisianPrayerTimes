@@ -375,6 +375,25 @@ requires a matching reviewed record; an electoral map title alone is insufficien
 Reviewed parent membership takes precedence over old administrative geometry;
 smaller areas inherit it only through one fully containing reviewed sector.
 
+New `best_effort_imada` records are provisional selectable footprints associated
+with an official imada code and its code-matched governorate/delegation; they do
+not assert that a decree-reviewed electoral circle exactly covers the whole imada.
+Their source review must state a clear, nonempty uncertainty note. Source hashes,
+official codes, parent lookup and valid-geometry checks still apply. Overlaps stay
+in the normal conflict audit. Ambiguous GPS labels remain excluded in overlap
+areas; gaps are not filled. Existing `whole_imada` and exhaustive-part records retain
+their per-imada scope reviews.
+
+The first-release Tunis/Souk Jedid five-record source is applied after the
+historical catalog review chain, whose prayer-selection proof pins the previous
+catalog and geometry exactly. Its `official/tunis-souk-jedid-five-boundaries-20260924/build_best_effort_overlay.py`
+builder uses pinned compressed baseline assets and the reviewed source manifest,
+checks that unrelated feature geometry is unchanged, rebuilds cells and conflicts,
+and verifies the exact release asset hashes. Run it with `--output-dir` outside the
+repository; the builder does not install assets. The compact acceptance and
+exception record is beside the builder. The ordinary full generator still stops
+at the old frozen-catalog prayer-selection proof when this source is enabled.
+
 The original vectors were georeferenced from each PDF's WGS84/UTM32N control
 points. Jawhara needed an explicitly reviewed `make_valid` repair; both resulting
 components, including its tiny triangle, survive compiler precision. Zelfan loses

@@ -1,0 +1,70 @@
+{
+  "status": "read_only_partial_clip_impact",
+  "catalogSha256": "d9e8dd2a9ab5e227afa7d30a61ab5dd25ac383a24d2b97fa03914351134dfa9c",
+  "geometrySha256": "4b0727226a5ed143cf9704e0c820b39d70ef21ba28a05b809dc84c12932342a7",
+  "kaboutiPdfSha256": "f9a2edf4a8f8e07c86c6d8d054f3c98cb296af4d8f5e6630f94ffe1aa01d9a9a",
+  "kaboutiPdfHashMatches": true,
+  "conflictPairDeclared": {
+    "ids": [
+      "osm:relation:7104940",
+      "osm:relation:7174569"
+    ],
+    "reason": "overlapping_sectors",
+    "intersectionKm2": 0.5460239368616702,
+    "sample": {
+      "lat": 36.544824,
+      "lng": 10.374872537625418
+    }
+  },
+  "preservationPolicy": {
+    "marginGridUnits": 1,
+    "coordinateScale": 1000000,
+    "marginDegrees": 1e-06,
+    "policy": "Preserve installed pair overlap inside the Kabouti GeoPDF candidate plus one stored-coordinate unit; subtract the rest from Kabouti only."
+  },
+  "areasKm2": {
+    "installedPairOverlap": 0.5447161430645052,
+    "sourceSupportedOverlapBeforeMargin": 0.0008738695749981385,
+    "preservedOverlapIncludingMargin": 0.0009637669454965655,
+    "removedFromKabouti": 0.5437523761190218,
+    "remainingPairOverlap": 0.0009637669455281426,
+    "removedAreaUncoveredByUnchangedTarif": 2.2646915672012686e-14
+  },
+  "geometryValidity": {
+    "installedKaboutiValid": true,
+    "candidateKaboutiRingValid": true,
+    "preservedOverlapValid": true,
+    "removedOverlapValid": true,
+    "clippedKaboutiValidBeforePacking": true,
+    "clippedKaboutiTypeBeforePacking": "Polygon",
+    "clippedKaboutiValidAfterAppGridRounding": true,
+    "clippedKaboutiTypeAfterAppGridRounding": "Polygon"
+  },
+  "runtimeSamples": {
+    "broadInterior": {
+      "lat": 36.544824,
+      "lng": 10.374872537625418,
+      "currentConflictPairSample": true,
+      "afterClipContainingBoundaryIds": [
+        "osm:relation:7104940"
+      ],
+      "tarifBoundaryClearanceMeters": 197.68375051827732,
+      "kaboutiBoundaryClearanceMeters": 197.68375051830392,
+      "fiveMeterAccuracyLeavesTarifEligible": true,
+      "findWinnerAfterPairSuppression": "osm:relation:7104940",
+      "effect": "Kabouti is removed from this broad contested interior; Tarif remains the only member of this pair and is returned. The configured pair conflict no longer suppresses it."
+    },
+    "preservedSliver": {
+      "lat": 36.54284250786615,
+      "lng": 10.364519002590912,
+      "afterClipContainingBoundaryIds": [
+        "osm:relation:7104940",
+        "osm:relation:7174569"
+      ],
+      "kaboutiBoundaryClearanceMeters": 0.8955712736633963,
+      "tarifBoundaryClearanceMeters": 0.9914676755696238,
+      "findWinnerAfterPairSuppression": null,
+      "effect": "The retained source-supported interior remains strictly inside both boundaries. Because this pair is listed in catalog conflicts, runtime find() suppresses both Tarif and Kabouti there; an independent third locality would remain eligible."
+    }
+  }
+}

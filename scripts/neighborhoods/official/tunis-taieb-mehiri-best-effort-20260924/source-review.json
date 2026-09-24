@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "status": "provisional_best_effort_boundary_candidate",
+  "targetId": "osm:relation:7117932",
+  "officialCode": "116954",
+  "ministryParent": "حلق الوادي",
+  "ministryName": "الطيب المهيري",
+  "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%AD%D9%84%D9%82%20%D8%A7%D9%84%D9%88%D8%A7%D8%AF%D9%8A/%D8%A7%D9%84%D8%B7%D9%8A%D8%A8%20%D8%A7%D9%84%D9%85%D9%87%D9%8A%D8%B1%D9%8A%20-%20%28%D8%AD%D9%84%D9%82%20%D8%A7%D9%84%D9%88%D8%A7%D8%AF%D9%8A%29.pdf",
+  "sourcePdfSha256": "db245adfeca3c7119b625e674146b89c664a14422f2f9cde9a177444a17c5202",
+  "sourceGeojsonSha256": "e52492ec65b98af53affb7d29ae2487cc13cd0b730cf1aabf01b3a3e79be8622",
+  "drawingIndex": 770,
+  "pdfGeoreferenceControlMaxResidualMeters": 0.2410923184951304,
+  "mapLabelCenterInsideDrawing": true,
+  "oldAreaKm2": 17.243026340962494,
+  "candidateAreaKm2": 15.747982938510692,
+  "oldNewIntersectionKm2": 15.64688631378544,
+  "pairwiseSectorOverlapBeforeKm2": 1.2453716358717715,
+  "pairwiseSectorOverlapAfterKm2": 0.03805273425099988,
+  "googleMapsCheck": "Public Google Maps place-card search on emulator-5562 displayed a red area for Taieb Mhiri around El Aouina, Berges du Lac II, and La Goulette; visual corroboration only, no Google coordinates imported.",
+  "uncertainty": "The ISIE outline is a 2023 electoral-circle map, not a surveyed current legal imada boundary. Residual source disagreement with other sectors remains; exact Google boundary coordinates were not extracted."
+}

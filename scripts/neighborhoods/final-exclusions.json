@@ -122,6 +122,52 @@
           "sha256": "761f8cba9b702c62496bd39d394af2236b55c8a740fb5e33cd3e5d83ec878c18"
         }
       ]
+    },
+    {
+      "id": "osm:way:180208886",
+      "expectedFeature": {
+        "id": "osm:way:180208886",
+        "sourceId": "osm",
+        "name": "بوشوشة",
+        "aliases": [
+          "Bouchoucha"
+        ],
+        "kind": "residential",
+        "parentName": "ولاية تونس",
+        "contextAliases": [],
+        "governorateId": 342,
+        "lat": 36.805551,
+        "lng": 10.145759,
+        "delegationId": 394,
+        "hasBoundary": true,
+        "bbox": [
+          10.137303,
+          36.801243,
+          10.151544,
+          36.80924
+        ],
+        "areaKm2": 0.4897849127098116,
+        "pickerGroupId": "osm:relation:7118029",
+        "offset": 5376156,
+        "length": 180
+      },
+      "expectedGeometrySha256": "728ab50e6cbef2e0d1cae5fa3deae6e631ad6f397834f5192811c2733490ff5d",
+      "expectedPickerGroupSurvivorSha256": "e829f84ce863afa6ae9a5ee2ac1a31879cb54045dc4355f8e9c1488ae234a22a",
+      "reason": "This OSM residential polygon is named بوشوشة but overlaps 96.85% with administrative sector relation 7118028 (Bonne Résidence) and 1.11% with Bouchoucha sector relation 7118029. The native Google Maps Bouchoucha area was visually matched to sector 7118029 on emulator-5556; no Maps geometry is used. Retire only the residential row and preserve the canonical sector and all geometry bytes.",
+      "evidence": [
+        {
+          "file": "exclusion-reviews/bouchoucha-way-180208886-20260924/geometry-comparison.json",
+          "sha256": "f5edcc9a5c52e92a8f80ad4c61b64d5e2525fe7a469e54736626290135cbbcfd"
+        },
+        {
+          "file": "exclusion-reviews/bouchoucha-way-180208886-20260924/review-evidence.json",
+          "sha256": "bb86fcb071ebdf3272b8d8b2b18c7016aefd5bcb2e6314efc382bbb530adb016"
+        },
+        {
+          "file": "exclusion-reviews/bouchoucha-way-180208886-20260924/measure_overlap.py",
+          "sha256": "ec543908ae99c950f82f1c961c1fe6ac954af10d32c0204581e65d9f5855cc81"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "work/geo/osm-areas.json",
+  "sourceFileSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+  "sourcePbf": "geofabrik tunisia extract",
+  "sourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+  "selectionMethod": "Exact id match from the pinned source extraction; canonical record SHA-256 uses UTF-8 JSON with sorted keys and compact separators.",
+  "records": [
+    {
+      "id": "osm:way:1188266987",
+      "tags": {
+        "landuse": "residential",
+        "name": "B HAMZA"
+      },
+      "geometryType": "MultiPolygon",
+      "geometrySha256": "83e043235388b90f84d9dee9c38657b52a65006a2fdf7de1c8547aa899e1a7f8",
+      "point": null,
+      "recordSha256": "63b03963148f17fb4e093d2011649adfe65e9fbb6f023bde000f2eb42430e34c"
+    },
+    {
+      "id": "osm:way:1363528887",
+      "tags": {
+        "landuse": "residential",
+        "name": "Cité Essalem",
+        "official_name": "Cité Essalem",
+        "residential": "urban"
+      },
+      "geometryType": "MultiPolygon",
+      "geometrySha256": "b630b7a0ac3362d3ea43b407c006d233dbebf20f556c6f90b14fa75f2a9d3c8d",
+      "point": null,
+      "recordSha256": "2fdc0b38f5f4c6e59bed32aa21175f0cd85ee8ec26a7f4987fc160273b537671"
+    },
+    {
+      "id": "osm:node:10044670149",
+      "tags": {
+        "name": "Cité el Bank",
+        "place": "neighbourhood"
+      },
+      "geometryType": null,
+      "geometrySha256": null,
+      "point": {
+        "lat": 36.8502352,
+        "lng": 10.3083211
+      },
+      "recordSha256": "d67b90d492c2e9c78f8482d47f143daf3b31117bb9c27c48ee578b1f5b39f416"
+    }
+  ]
+}

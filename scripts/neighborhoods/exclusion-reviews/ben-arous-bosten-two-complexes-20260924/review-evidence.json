@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "status": "ACCEPTED_BEST_EFFORT_FIRST_RELEASE_EXCLUSION",
+  "date": "2026-09-24",
+  "scope": "Two optional OSM residential polygons wholly or nearly wholly inside official المروج 5, Ben Arous",
+  "catalogPins": {
+    "jsonSha256": "ace70c65daf99481ef03dd691e348abf895982e07d2b8c07c7c953c01a42e8d3",
+    "binSha256": "fa19fef388b1dc6d3579a0be6f82491eaacc136022627ab25bda54379908c7f6"
+  },
+  "officialParent": {
+    "id": "osm:relation:7174576",
+    "name": "المروج 5",
+    "code": "135354"
+  },
+  "decision": "Exclude these two residence/complex entries from picker and GPS polygon candidates; keep the official imada. Preserve IDs in retired-localities for saved-selection migration.",
+  "limits": "Google Maps was used to check public place identity only; no Google boundary, coordinates, or imagery are shipped. This does not resolve other البستان names elsewhere or certify the official parent boundary.",
+  "rows": [
+    {
+      "id": "osm:way:512547872",
+      "nameInApp": "البستان 1",
+      "kindInApp": "residential",
+      "areaKm2": 0.010796328046240982,
+      "sourceTagSha256": "ce1e6031e33ae1dde9406d691986a54c6918ecad5f7b99761c27ca1fee80617f",
+      "sourceTags": {
+        "building:levels": "2",
+        "landuse": "residential",
+        "name": "البستان 1",
+        "name:ar": "البستان 1",
+        "name:en": "Al Boustan 1",
+        "name:fr": "Al Boustan 1"
+      },
+      "parentSectorOverlap": [
+        {
+          "sectorId": "osm:relation:7174576",
+          "name": "المروج 5",
+          "targetOverlapPercent": 100.0
+        }
+      ],
+      "pickerGroupId": "osm:way:512547872",
+      "mapsObservation": {
+        "device": "emulator-5554",
+        "query": "البستان 1 المروج 5",
+        "visibleTitle": "Résidence El Boustène 1",
+        "visibleArabicSubtitle": "إقامة البستان 1",
+        "visibleCategoryOrStatus": "Permanently closed; result is a residence/building entry",
+        "screenshotLocalPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ben-arous-nonsectors-review-20260924\\emulator-5554-bosten.png",
+        "screenshotSha256": "02f262a1fdd51952585db393833edae450a222adb1fe5d5078325b8872386c18"
+      },
+      "assessment": "The OSM polygon is a tiny named residential parcel, and the public Maps result at this area identifies the name as a residence/complex, not a neighborhood."
+    },
+    {
+      "id": "osm:way:512547869",
+      "nameInApp": "البستان 2",
+      "kindInApp": "residential",
+      "areaKm2": 0.024773725584613535,
+      "sourceTagSha256": "02ae2aa1c8561369c969b29dce9552fa99d6a92cac6219e570b76c3359784b72",
+      "sourceTags": {
+        "building:levels": "2",
+        "landuse": "residential",
+        "name": "البستان 2",
+        "name:ar": "البستان 2",
+        "name:en": "Al Boustan 2",
+        "name:fr": "Al Boustan 2"
+      },
+      "parentSectorOverlap": [
+        {
+          "sectorId": "osm:relation:7174576",
+          "name": "المروج 5",
+          "targetOverlapPercent": 99.67352
+        },
+        {
+          "sectorId": "osm:relation:7174575",
+          "name": "المروج 4",
+          "targetOverlapPercent": 0.32648
+        }
+      ],
+      "pickerGroupId": "osm:way:512547869",
+      "mapsObservation": {
+        "device": "emulator-5556",
+        "query": "البستان 2 المروج 5",
+        "visibleTitle": "Résidence El Boustène 2",
+        "visibleArabicSubtitle": "إقامة البستان 2",
+        "visibleCategoryOrStatus": "Housing complex",
+        "screenshotLocalPath": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\ben-arous-nonsectors-review-20260924\\emulator-5556-bosten.png",
+        "screenshotSha256": "de35f7b52bc5283c07b8c79719d329a896172827390143d156cffbff4593bbe1"
+      },
+      "assessment": "The OSM polygon is a tiny named residential parcel, and the public Maps result at this area identifies the name as a residence/complex, not a neighborhood."
+    }
+  ]
+}

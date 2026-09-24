@@ -1,0 +1,462 @@
+{
+  "schemaVersion": 1,
+  "reviewStatus": "staged_unaccepted_candidate",
+  "packageId": "tunis-souk-jedid-five-boundaries-20260924",
+  "reviewedDate": "2026-09-24",
+  "method": "best_effort_imada_geometry_and_identity_stage_review",
+  "sourceSha256": "225c7633750678391d0f0adc211f0273bb9baf81e7bb1a0c2ef19e4f467fa92e",
+  "inputPlanSha256": "e2145efd3fd1b4fab0676451b298186ab570ee36eb18045f060666664be2f6db",
+  "osmAreas": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\osm-areas.json",
+    "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce"
+  },
+  "appBaseline": {
+    "metadataSha256": "75322d6eab8acc95201aa80ae46512a82b1900b1e37801e54dcfe92b175287c2",
+    "geometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "boundarySectorCount": 2083
+  },
+  "records": [
+    {
+      "id": "isie:sector:115653",
+      "officialCode": "115653",
+      "action": "add",
+      "scopeKind": "best_effort_imada",
+      "names": {
+        "ar": "حي بن خلدون الثاني",
+        "fr": "Cite ibn khaldoun ii"
+      },
+      "expectedParents": {
+        "governorate": "تونس",
+        "governorateOsmId": "osm:relation:1435835",
+        "governorateOsmNameAr": "ولاية تونس",
+        "delegation": "العمران الأعلى",
+        "delegationOsmId": "osm:relation:4132537",
+        "delegationOsmNameAr": "معتمدية العمران الأعلى"
+      },
+      "sourcePdf": {
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D8%B9%D9%85%D8%B1%D8%A7%D9%86%20%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D9%89/%D8%AD%D9%8A%20%D8%A8%D9%86%20%D8%AE%D9%84%D8%AF%D9%88%D9%86%20%D8%A7%D9%84%D8%AB%D8%A7%D9%86%D9%8A.pdf",
+        "sha256": "cfb2dc51603a3b6dd4818f8f37966cef5a9b68ee6f2d0a0a3de026910e4d7f92"
+      },
+      "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+      "uncertainty": "The ISIE vector repeats on the adjacent Ahmed map, but its large printed label center falls 74 m outside the line. It is an electoral map, not a current surveyed imada boundary.",
+      "geometrySource": {
+        "kind": "geojson_feature",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\interior-imada-geopdf-extraction-20260924\\first-release-selected-geometries.geojson",
+        "sha256": "ab858a182a2dc125a4e206d88d9fdbe3b2ad556c3c3f02ef5b6e29f63be3c878",
+        "featureIndex": 0,
+        "featureProperties": {
+          "drawingIndex": 226,
+          "nativeVertexCount": 33,
+          "projectedCrs": "EPSG:32632",
+          "areaKm2": 0.3523543276867958
+        }
+      },
+      "geometrySha256": "0c91b0c54028bd68b315a09b639107a6ea0ab219d1af1227772ea72698b1db6d",
+      "validity": {
+        "valid": true,
+        "type": "Polygon",
+        "componentCount": 1,
+        "areaSquareDegrees": 3.561161975045694e-05,
+        "withinTunisia": true
+      },
+      "appQuantization": {
+        "coordinateScale": 1000000,
+        "componentCountBefore": 1,
+        "componentCountAfter": 1,
+        "componentCountDelta": 0,
+        "componentCountChanged": false,
+        "holeCountBefore": 0,
+        "holeCountAfter": 0,
+        "areaBeforeSquareDegrees": 3.561161975045694e-05,
+        "areaAfterSquareDegrees": 3.561096050000549e-05,
+        "symmetricDifferenceAreaSquareDegrees": 4.43485151958431e-09,
+        "areaBeforeSquareMetersApprox": 352547.1119629135,
+        "areaAfterSquareMetersApprox": 352540.585508843,
+        "symmetricDifferenceAreaSquareMetersApprox": 43.90390906051482,
+        "geometrySha256Before": "0c91b0c54028bd68b315a09b639107a6ea0ab219d1af1227772ea72698b1db6d",
+        "geometrySha256After": "356989f9cb9bbf751200773b789097b9cd4b734bc1e3c49fa08f4f04616a6667"
+      },
+      "appOverlapCount": 3,
+      "candidateOverlapCount": 2
+    },
+    {
+      "id": "osm:relation:7201523",
+      "officialCode": "115652",
+      "action": "replace",
+      "scopeKind": "best_effort_imada",
+      "names": {
+        "ar": "الرمانة",
+        "fr": "El Romana"
+      },
+      "expectedParents": {
+        "governorate": "تونس",
+        "governorateOsmId": "osm:relation:1435835",
+        "governorateOsmNameAr": "ولاية تونس",
+        "delegation": "العمران الأعلى",
+        "delegationOsmId": "osm:relation:4132537",
+        "delegationOsmNameAr": "معتمدية العمران الأعلى"
+      },
+      "sourcePdf": {
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D8%B9%D9%85%D8%B1%D8%A7%D9%86%20%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D9%89/%D8%A7%D9%84%D8%B1%D9%85%D8%A7%D9%86%D8%A9.pdf",
+        "sha256": "0df1089255ac1bde70a0d24c094fc010dc7093067e77a7f03b13a25b34c26c86"
+      },
+      "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+      "uncertainty": "The source outline is an electoral-map interpretation; independent PDF registration leaves a tiny Hay overlap and does not certify current ground accuracy.",
+      "geometrySource": {
+        "kind": "geojson_feature",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\interior-imada-geopdf-extraction-20260924\\first-release-selected-geometries.geojson",
+        "sha256": "ab858a182a2dc125a4e206d88d9fdbe3b2ad556c3c3f02ef5b6e29f63be3c878",
+        "featureIndex": 1,
+        "featureProperties": {
+          "drawingIndex": 302,
+          "nativeVertexCount": 28,
+          "projectedCrs": "EPSG:32632",
+          "areaKm2": 0.2223256224194899
+        }
+      },
+      "geometrySha256": "ff534b3475944439e3ede44add945a986cd7c503e3428f390374aa12133076b8",
+      "validity": {
+        "valid": true,
+        "type": "Polygon",
+        "componentCount": 1,
+        "areaSquareDegrees": 2.2468053884839874e-05,
+        "withinTunisia": true
+      },
+      "appQuantization": {
+        "coordinateScale": 1000000,
+        "componentCountBefore": 1,
+        "componentCountAfter": 1,
+        "componentCountDelta": 0,
+        "componentCountChanged": false,
+        "holeCountBefore": 0,
+        "holeCountAfter": 0,
+        "areaBeforeSquareDegrees": 2.2468053884839874e-05,
+        "areaAfterSquareDegrees": 2.2467683500001938e-05,
+        "symmetricDifferenceAreaSquareDegrees": 5.481779482169208e-09,
+        "areaBeforeSquareMetersApprox": 222447.05237408727,
+        "areaAfterSquareMetersApprox": 222443.38578581344,
+        "symmetricDifferenceAreaSquareMetersApprox": 54.27263323158104,
+        "geometrySha256Before": "ff534b3475944439e3ede44add945a986cd7c503e3428f390374aa12133076b8",
+        "geometrySha256After": "3abb657fbb12061789780e5bef78c736156c84c1e03151d6c08c44219990e14b"
+      },
+      "appOverlapCount": 4,
+      "candidateOverlapCount": 2
+    },
+    {
+      "id": "osm:relation:7201520",
+      "officialCode": "115658",
+      "action": "replace",
+      "scopeKind": "best_effort_imada",
+      "names": {
+        "ar": "أحمد التليلي",
+        "fr": "Ahmed Tlili"
+      },
+      "expectedParents": {
+        "governorate": "تونس",
+        "governorateOsmId": "osm:relation:1435835",
+        "governorateOsmNameAr": "ولاية تونس",
+        "delegation": "العمران الأعلى",
+        "delegationOsmId": "osm:relation:4132537",
+        "delegationOsmNameAr": "معتمدية العمران الأعلى"
+      },
+      "sourcePdf": {
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%AA%D9%88%D9%86%D8%B3%202/%D8%A7%D9%84%D8%B9%D9%85%D8%B1%D8%A7%D9%86%20%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D9%89/%D8%A3%D8%AD%D9%85%D8%AF%20%D8%A7%D9%84%D8%AA%D9%84%D9%8A%D9%84%D9%8A.pdf",
+        "sha256": "3b86ba4813953951e45c15d49a3d3ad5de5e7b5094d4b7f804a2cb31499c42af"
+      },
+      "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+      "uncertainty": "The map title and strong fit to the old coded sector identify this path, but no target-name label center is inside it. Small registration overlaps remain.",
+      "geometrySource": {
+        "kind": "geojson_feature",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\interior-imada-geopdf-extraction-20260924\\first-release-selected-geometries.geojson",
+        "sha256": "ab858a182a2dc125a4e206d88d9fdbe3b2ad556c3c3f02ef5b6e29f63be3c878",
+        "featureIndex": 2,
+        "featureProperties": {
+          "drawingIndex": 233,
+          "nativeVertexCount": 24,
+          "projectedCrs": "EPSG:32632",
+          "areaKm2": 0.29544018293215357
+        }
+      },
+      "geometrySha256": "22c7e3ae6539ff6843147e6460fdec89feb645483c7208b6393d62e5faa8aff7",
+      "validity": {
+        "valid": true,
+        "type": "Polygon",
+        "componentCount": 1,
+        "areaSquareDegrees": 2.986002666508033e-05,
+        "withinTunisia": true
+      },
+      "appQuantization": {
+        "coordinateScale": 1000000,
+        "componentCountBefore": 1,
+        "componentCountAfter": 1,
+        "componentCountDelta": 0,
+        "componentCountChanged": false,
+        "holeCountBefore": 0,
+        "holeCountAfter": 0,
+        "areaBeforeSquareDegrees": 2.986002666508033e-05,
+        "areaAfterSquareDegrees": 2.986079700000973e-05,
+        "symmetricDifferenceAreaSquareDegrees": 5.256136643786652e-09,
+        "areaBeforeSquareMetersApprox": 295602.41925375845,
+        "areaAfterSquareMetersApprox": 295610.0434320476,
+        "symmetricDifferenceAreaSquareMetersApprox": 52.03405510280152,
+        "geometrySha256Before": "22c7e3ae6539ff6843147e6460fdec89feb645483c7208b6393d62e5faa8aff7",
+        "geometrySha256After": "b1d3da24feed1704f95d094be85edd3385d886227c5671bbcf8d0d1fc07452b1"
+      },
+      "appOverlapCount": 4,
+      "candidateOverlapCount": 2
+    },
+    {
+      "id": "isie:sector:435958",
+      "officialCode": "435958",
+      "action": "add",
+      "scopeKind": "best_effort_imada",
+      "names": {
+        "ar": "أولاد الفالح",
+        "fr": "Ouled el faleh"
+      },
+      "expectedParents": {
+        "governorate": "سيدي بوزيد",
+        "governorateOsmId": "osm:relation:1435831",
+        "governorateOsmNameAr": "ولاية سيدي بوزيد",
+        "delegation": "سوق الجديد",
+        "delegationOsmId": "osm:relation:7169618",
+        "delegationOsmNameAr": "معتمدية سوق الجديد"
+      },
+      "sourcePdf": {
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF/%D8%B3%D9%88%D9%82%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF/%D8%A3%D9%88%D9%84%D8%A7%D8%AF%20%D8%A7%D9%84%D9%81%D8%A7%D9%84%D8%AD.pdf",
+        "sha256": "edd854d4ba640d40fa63dd3088bd8867d705aae01b562c5ce23e4427ab91e7e2"
+      },
+      "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+      "uncertainty": "The label is inside the native ISIE outline and the same outline recurs on the neighbor map. This is an electoral map, not a current cadastral survey.",
+      "geometrySource": {
+        "kind": "geojson_feature",
+        "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\interior-imada-geopdf-extraction-20260924\\first-release-selected-geometries.geojson",
+        "sha256": "ab858a182a2dc125a4e206d88d9fdbe3b2ad556c3c3f02ef5b6e29f63be3c878",
+        "featureIndex": 3,
+        "featureProperties": {
+          "drawingIndex": 4,
+          "nativeVertexCount": 63,
+          "projectedCrs": "EPSG:32632",
+          "areaKm2": 17.17665569254438
+        }
+      },
+      "geometrySha256": "85c40a65bc1317e270fb2c75aaa1400b12f3a6d7103e4de6e18304d2b0cbbc9e",
+      "validity": {
+        "valid": true,
+        "type": "Polygon",
+        "componentCount": 1,
+        "areaSquareDegrees": 0.0016939700442233422,
+        "withinTunisia": true
+      },
+      "appQuantization": {
+        "coordinateScale": 1000000,
+        "componentCountBefore": 1,
+        "componentCountAfter": 1,
+        "componentCountDelta": 0,
+        "componentCountChanged": false,
+        "holeCountBefore": 0,
+        "holeCountAfter": 0,
+        "areaBeforeSquareDegrees": 0.0016939700442233422,
+        "areaAfterSquareDegrees": 0.0016939769465000008,
+        "symmetricDifferenceAreaSquareDegrees": 3.4713017045025787e-08,
+        "areaBeforeSquareMetersApprox": 17189074.53795913,
+        "areaAfterSquareMetersApprox": 17189144.595888928,
+        "symmetricDifferenceAreaSquareMetersApprox": 352.2492573043776,
+        "geometrySha256Before": "85c40a65bc1317e270fb2c75aaa1400b12f3a6d7103e4de6e18304d2b0cbbc9e",
+        "geometrySha256After": "b915152f0f48ecedcc8eef8eae7e1fbce4c2b8985644bcf88aa086c068818903"
+      },
+      "appOverlapCount": 2,
+      "candidateOverlapCount": 1
+    },
+    {
+      "id": "osm:relation:7169675",
+      "officialCode": "435955",
+      "action": "replace",
+      "scopeKind": "best_effort_imada",
+      "names": {
+        "ar": "الرميلية",
+        "fr": "Erremelia"
+      },
+      "expectedParents": {
+        "governorate": "سيدي بوزيد",
+        "governorateOsmId": "osm:relation:1435831",
+        "governorateOsmNameAr": "ولاية سيدي بوزيد",
+        "delegation": "سوق الجديد",
+        "delegationOsmId": "osm:relation:7169618",
+        "delegationOsmNameAr": "معتمدية سوق الجديد"
+      },
+      "sourcePdf": {
+        "url": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A8%D9%88%D8%B2%D9%8A%D8%AF/%D8%B3%D9%88%D9%82%20%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF/%D8%A7%D9%84%D8%B1%D9%85%D9%8A%D9%84%D9%8A%D8%A9.pdf",
+        "sha256": "07054199838177bf16a443b213e6ad4647fee55243a9252e231cf1ca882fec80"
+      },
+      "geometryMethod": "Pinned 2026-09-05 OSM الرميلية polygon minus the native ISIE أولاد الفالح candidate, computed in EPSG:32632 and transformed to WGS84; mixed-source derived geometry.",
+      "uncertainty": "This is a derived split of an old OSM polygon, not the native ISIE الرميلية outline. It differs from that outline by about 3.19 km²; nine components include small registration fragments. It avoids material new overlaps with unchanged app neighbors but is not surveyed accuracy.",
+      "geometrySource": {
+        "kind": "difference",
+        "minuendOsmId": "osm:relation:7169675",
+        "minuendSourceTags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "الرميلية",
+          "name:ar": "الرميلية",
+          "name:fr": "Erremelia",
+          "ref:tn:codegeo": "435955"
+        },
+        "subtrahendRecordId": "isie:sector:435958",
+        "minuendGeometrySha256": "d243778a72279e047a77daf588cfc5636564b619c489dfd2d102a1a769eaf9b3",
+        "subtrahendGeometrySha256": "85c40a65bc1317e270fb2c75aaa1400b12f3a6d7103e4de6e18304d2b0cbbc9e",
+        "differenceCrs": "EPSG:32632",
+        "resultGeometrySha256": "ab8cb31d2be09b9c8861e46a12d34c377265e82d7f0c2506ed1bce8c0a1a3453"
+      },
+      "geometrySha256": "ab8cb31d2be09b9c8861e46a12d34c377265e82d7f0c2506ed1bce8c0a1a3453",
+      "validity": {
+        "valid": true,
+        "type": "MultiPolygon",
+        "componentCount": 9,
+        "areaSquareDegrees": 0.006988711917228112,
+        "withinTunisia": true
+      },
+      "appQuantization": {
+        "coordinateScale": 1000000,
+        "componentCountBefore": 9,
+        "componentCountAfter": 10,
+        "componentCountDelta": 1,
+        "componentCountChanged": true,
+        "holeCountBefore": 0,
+        "holeCountAfter": 0,
+        "areaBeforeSquareDegrees": 0.006988711917228112,
+        "areaAfterSquareDegrees": 0.006988699807999987,
+        "symmetricDifferenceAreaSquareDegrees": 2.947682457332887e-08,
+        "areaBeforeSquareMetersApprox": 70946624.78575483,
+        "areaAfterSquareMetersApprox": 70946501.88273755,
+        "symmetricDifferenceAreaSquareMetersApprox": 299.1171400796496,
+        "geometrySha256Before": "ab8cb31d2be09b9c8861e46a12d34c377265e82d7f0c2506ed1bce8c0a1a3453",
+        "geometrySha256After": "8c8ec05cfe19e969b44f90dda52e411bc11f31e8dd68ddd5b6bc06f405e52b94"
+      },
+      "appOverlapCount": 2,
+      "candidateOverlapCount": 1
+    }
+  ],
+  "overlapAudit": {
+    "method": "app 1e-6 quantized candidate polygons compared with current app sector polygons; replaced IDs removed from baseline; candidate-to-candidate checked separately",
+    "currentAppOverlaps": [
+      {
+        "candidateId": "osm:relation:7201523",
+        "currentAppId": "osm:relation:7201525",
+        "intersectionAreaSquareDegrees": 3.3752900000623157e-07,
+        "intersectionAreaSquareMetersApprox": 3341.7940184650943
+      },
+      {
+        "candidateId": "osm:relation:7201520",
+        "currentAppId": "osm:relation:7201524",
+        "intersectionAreaSquareDegrees": 2.7265000000226793e-07,
+        "intersectionAreaSquareMetersApprox": 2699.806397560751
+      },
+      {
+        "candidateId": "osm:relation:7201523",
+        "currentAppId": "osm:relation:7201530",
+        "intersectionAreaSquareDegrees": 2.5571450000425917e-07,
+        "intersectionAreaSquareMetersApprox": 2531.7758754454553
+      },
+      {
+        "candidateId": "isie:sector:115653",
+        "currentAppId": "osm:relation:7201525",
+        "intersectionAreaSquareDegrees": 2.168635000020865e-07,
+        "intersectionAreaSquareMetersApprox": 2146.8344020773657
+      },
+      {
+        "candidateId": "osm:relation:7201523",
+        "currentAppId": "osm:relation:7201481",
+        "intersectionAreaSquareDegrees": 8.88734999964636e-08,
+        "intersectionAreaSquareMetersApprox": 879.7838414845755
+      },
+      {
+        "candidateId": "isie:sector:435958",
+        "currentAppId": "osm:relation:7169613",
+        "intersectionAreaSquareDegrees": 7.044200001209726e-08,
+        "intersectionAreaSquareMetersApprox": 714.8846962600364
+      },
+      {
+        "candidateId": "osm:relation:7201520",
+        "currentAppId": "osm:relation:7201518",
+        "intersectionAreaSquareDegrees": 6.632500000119811e-08,
+        "intersectionAreaSquareMetersApprox": 656.5964760041679
+      },
+      {
+        "candidateId": "isie:sector:435958",
+        "currentAppId": "osm:relation:7169661",
+        "intersectionAreaSquareDegrees": 5.392950001500826e-08,
+        "intersectionAreaSquareMetersApprox": 547.1038766801357
+      },
+      {
+        "candidateId": "isie:sector:115653",
+        "currentAppId": "osm:relation:7201524",
+        "intersectionAreaSquareDegrees": 3.920300000387077e-08,
+        "intersectionAreaSquareMetersApprox": 388.0810137478402
+      },
+      {
+        "candidateId": "isie:sector:115653",
+        "currentAppId": "osm:relation:7201546",
+        "intersectionAreaSquareDegrees": 1.611349999966317e-08,
+        "intersectionAreaSquareMetersApprox": 159.51741148158908
+      },
+      {
+        "candidateId": "osm:relation:7201520",
+        "currentAppId": "osm:relation:7201530",
+        "intersectionAreaSquareDegrees": 1.5975500000560722e-08,
+        "intersectionAreaSquareMetersApprox": 158.1626931745559
+      },
+      {
+        "candidateId": "osm:relation:7201520",
+        "currentAppId": "osm:relation:7201521",
+        "intersectionAreaSquareDegrees": 6.7574999999377715e-09,
+        "intersectionAreaSquareMetersApprox": 66.89378734654747
+      },
+      {
+        "candidateId": "osm:relation:7201523",
+        "currentAppId": "osm:relation:7118022",
+        "intersectionAreaSquareDegrees": 6.554999998190957e-10,
+        "intersectionAreaSquareMetersApprox": 6.490135443513282
+      },
+      {
+        "candidateId": "osm:relation:7169675",
+        "currentAppId": "osm:relation:7169613",
+        "intersectionAreaSquareDegrees": 6.019321918046089e-10,
+        "intersectionAreaSquareMetersApprox": 6.111190568859456
+      },
+      {
+        "candidateId": "osm:relation:7169675",
+        "currentAppId": "osm:relation:7169661",
+        "intersectionAreaSquareDegrees": 2.9131541866985123e-11,
+        "intersectionAreaSquareMetersApprox": 0.29559643706306815
+      }
+    ],
+    "candidatePairOverlaps": [
+      {
+        "leftCandidateId": "isie:sector:115653",
+        "rightCandidateId": "osm:relation:7201520",
+        "intersectionAreaSquareDegrees": 1.3394000000158796e-08,
+        "intersectionAreaSquareMetersApprox": 132.5956038273289
+      },
+      {
+        "leftCandidateId": "isie:sector:115653",
+        "rightCandidateId": "osm:relation:7201523",
+        "intersectionAreaSquareDegrees": 4.488000004949399e-09,
+        "intersectionAreaSquareMetersApprox": 44.43325093347812
+      },
+      {
+        "leftCandidateId": "osm:relation:7201523",
+        "rightCandidateId": "osm:relation:7201520",
+        "intersectionAreaSquareDegrees": 2.82499999907023e-09,
+        "intersectionAreaSquareMetersApprox": 27.968301818007603
+      },
+      {
+        "leftCandidateId": "isie:sector:435958",
+        "rightCandidateId": "osm:relation:7169675",
+        "intersectionAreaSquareDegrees": 5.25999998897379e-10,
+        "intersectionAreaSquareMetersApprox": 5.337289158254862
+      }
+    ]
+  },
+  "decisionBoundary": "Structural and geometric checks only. A passing report is not a human acceptance decision for boundary identity, source interpretation, or suitability."
+}

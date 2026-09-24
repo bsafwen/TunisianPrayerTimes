@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "status": "ACCEPTED_BEST_EFFORT_FIRST_RELEASE_NAME_CORRECTION",
+  "date": "2026-09-24",
+  "id": "osm:node:4394953973",
+  "sourceTagSnapshot": {
+    "name": "حمام الأتف",
+    "name:ar": "حمام الأتف",
+    "name:en": "Hammam-Lif",
+    "name:fr": "Hammam-Lif",
+    "name:fa": "حمام الانف",
+    "wikipedia": "ar:حمام الأنف",
+    "wikidata": "Q1573684"
+  },
+  "officialDelegationEvidence": {
+    "file": "android-app/app/src/main/assets/gouvernorats.json",
+    "sha256": "e131bf573e8ce468da0790b7c26fa0637d2ea7fc1fe2f564ab84711ff334c926",
+    "delegationId": 451,
+    "nameAr": "حمام الأنف",
+    "nameFr": "Hammam Lif"
+  },
+  "decision": "Correct only the point-only town primary display name to حمام الأنف. Preserve its ID, aliases, coordinates, parent, picker group, and delegation routing. Do not claim this point establishes a boundary.",
+  "uncertainty": "The saved point is an OSM town label; the name correction does not validate its coordinate or the containing imada polygon."
+}

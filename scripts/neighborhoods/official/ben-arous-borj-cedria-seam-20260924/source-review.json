@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "status": "provisional_best_effort_boundary_reconciliation",
+  "date": "2026-09-24",
+  "scope": "Ben Arous: two OSM imada polygons overlapping the ISIE-derived complete Borj Cedria imada",
+  "catalogPins": {
+    "neighborhoodsJsonSha256": "b598138496710f14cca3dc96fb134faf1cba583f54092b5d1ef901eecaefbf36",
+    "neighborhoodsBinSha256": "c1181a74e0dbd220911ea438ea1084f74dff0cabd3fc84b4b46ea4907ba1b881"
+  },
+  "officialMaps": [
+    {
+      "file": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/borj-cedria-1.pdf",
+      "sha256": "7ec8756584b1483d34bf1a548558deacc2c20559a9bd469514a7685951d819cc"
+    },
+    {
+      "file": "scripts/neighborhoods/official/soliman-thirteen-native-20260912/maps/borj-cedria-2.pdf",
+      "sha256": "07d984e4d0c9e95043c195071818e3407c38cd9e03fd1617899613c86d083849"
+    }
+  ],
+  "identityEvidence": {
+    "insRegistryFile": "scripts/neighborhoods/residential-base-display-reviews/current-official-sector-registry.json",
+    "insRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "borjCedriaOfficialCode": "135552",
+    "borjCedriaMapInterpretation": "Decree 2023-590 identifies Borj Cedria 1 and 2 as components of the single administrative imada; both complete PDF map boundaries are already assembled in the current ISIE-sourced polygon."
+  },
+  "method": "Subtract the current complete ISIE-sourced Borj Cedria polygon from only two older OSM sector polygons, preserving their remaining shape. Rebuild packed geometry, grid and conflict records. GPS in each removed overlap should resolve to Borj Cedria.",
+  "termsReview": {
+    "file": "scripts/neighborhoods/official/tunis-taieb-mehiri-best-effort-20260924/isie-terms-review.json",
+    "url": "https://www.isie.tn/tos",
+    "pageSha256Rechecked20260924": "3921e957275fa4d8c053d30eabfab89fdeda0ad52ce25378fece4e0dd31d670d",
+    "scope": "ISIE-owned published content is reusable under the page's terms; third-party layers in a map PDF are outside that grant. No Google basemap imagery is shipped."
+  },
+  "limits": "These two clips reconcile only the shared border with Borj Cedria. They do not certify the remaining OSM boundaries or all Ben Arous geography. Independent official neighbor maps were not available during this pass. The ISIE terms do not establish that every layer of each map PDF belongs to ISIE.",
+  "rows": [
+    {
+      "id": "osm:relation:7174562",
+      "officialCode": "136262",
+      "officialName": "الرسالة",
+      "officialDelegation": "مرناق",
+      "sourceIdBefore": "osm",
+      "clipById": "osm:relation:7174585",
+      "removedOverlapKm2FromCurrentAudit": 1.206143,
+      "currentGpsInOverlap": "no locality label because conflict exclusion rejects both sectors",
+      "boundaryDecision": "Prefer the ISIE-derived complete Borj Cedria imada on its side of the shared line; retain the rest of the OSM neighbor as provisional.",
+      "identityDecision": "Keep this official imada selectable exactly once with unchanged Arabic name and administrative parent."
+    },
+    {
+      "id": "osm:relation:7174583",
+      "officialCode": "135551",
+      "officialName": "بئر الباي",
+      "officialDelegation": "حمام الشط",
+      "sourceIdBefore": "osm",
+      "clipById": "osm:relation:7174585",
+      "removedOverlapKm2FromCurrentAudit": 0.257483,
+      "currentGpsInOverlap": "no locality label because conflict exclusion rejects both sectors",
+      "boundaryDecision": "Prefer the ISIE-derived complete Borj Cedria imada on its side of the shared line; retain the rest of the OSM neighbor as provisional.",
+      "identityDecision": "Keep this official imada selectable exactly once with unchanged Arabic name and administrative parent."
+    }
+  ]
+}

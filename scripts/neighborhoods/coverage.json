@@ -797,7 +797,7 @@
       }
     }
   },
-  "polygonCount": 2579,
+  "polygonCount": 2578,
   "pointOnlyCount": 903,
   "curation": {
     "decisions": [
@@ -10894,10 +10894,18 @@
     "manifestSha256": "64034e6f2af4cfa51a225fc23516ae87894aa44623564ba2358c73a773b5bcc0"
   },
   "finalExclusions": {
-    "manifestSha256": "1314e8386a2d9070cd424eea8492f6a33627e68cfaca687687a5db5ee0ca59ce",
+    "manifestSha256": "d240c9da55e1b86ace5473cace1ecb1575ba576bd869264828dbb81ce3508bb2",
     "excludedIds": [
       "osm:way:106590248",
+      "osm:way:180208886",
       "osm:way:658923544"
+    ],
+    "excludedPickerGroupMembers": [
+      {
+        "id": "osm:way:180208886",
+        "groupId": "osm:relation:7118029",
+        "survivingId": "osm:relation:7118029"
+      }
     ],
     "evidenceReferences": [
       {
@@ -10947,6 +10955,18 @@
       {
         "file": "exclusion-reviews/medina-jedida-small-parcel-20260921/maps-point.png",
         "sha256": "761f8cba9b702c62496bd39d394af2236b55c8a740fb5e33cd3e5d83ec878c18"
+      },
+      {
+        "file": "exclusion-reviews/bouchoucha-way-180208886-20260924/geometry-comparison.json",
+        "sha256": "f5edcc9a5c52e92a8f80ad4c61b64d5e2525fe7a469e54736626290135cbbcfd"
+      },
+      {
+        "file": "exclusion-reviews/bouchoucha-way-180208886-20260924/review-evidence.json",
+        "sha256": "bb86fcb071ebdf3272b8d8b2b18c7016aefd5bcb2e6314efc382bbb530adb016"
+      },
+      {
+        "file": "exclusion-reviews/bouchoucha-way-180208886-20260924/measure_overlap.py",
+        "sha256": "ec543908ae99c950f82f1c961c1fe6ac954af10d32c0204581e65d9f5855cc81"
       }
     ],
     "geometryBytesPreserved": true
@@ -21913,6 +21933,56 @@
             }
           ],
           "protectedMetadata": {
+            "osm:relation:7169555": {
+              "id": "osm:relation:7169555",
+              "sourceId": "osm",
+              "name": "الزيتونة",
+              "aliases": [
+                "Ezzitouna"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية الهيشرية",
+              "contextAliases": [
+                "El Hichria",
+                "El hichria",
+                "الهيشرية",
+                "معتمدية الهيشرية"
+              ],
+              "governorateId": 355,
+              "lat": 34.91343,
+              "lng": 9.490654,
+              "delegationId": 1522,
+              "hasBoundary": true,
+              "bbox": [
+                9.429199,
+                34.86001,
+                9.555021,
+                34.96783
+              ],
+              "areaKm2": 64.4717506661667
+            },
+            "osm:node:7938334020": {
+              "id": "osm:node:7938334020",
+              "sourceId": "osm",
+              "name": "أولاد سليمان",
+              "aliases": [
+                "Ouled Slimane"
+              ],
+              "kind": "village",
+              "parentName": "السلامة",
+              "contextAliases": [
+                "Bir El Hafey",
+                "Délégation Bir El Hafey",
+                "Essalama",
+                "السلامة",
+                "معتمدية بئر الحفي"
+              ],
+              "governorateId": 355,
+              "lat": 34.8298106,
+              "lng": 9.3767845,
+              "delegationId": 1522,
+              "hasBoundary": false
+            },
             "osm:node:10006882480": {
               "id": "osm:node:10006882480",
               "sourceId": "osm",
@@ -21935,61 +22005,6 @@
               "lng": 9.3945627,
               "delegationId": 1522,
               "hasBoundary": false
-            },
-            "osm:relation:7169579": {
-              "id": "osm:relation:7169579",
-              "sourceId": "osm",
-              "name": "السلامة",
-              "aliases": [
-                "Essalama"
-              ],
-              "kind": "sector",
-              "parentName": "معتمدية بئر الحفي",
-              "contextAliases": [
-                "Bir El Hafey",
-                "Délégation Bir El Hafey",
-                "معتمدية بئر الحفي"
-              ],
-              "governorateId": 355,
-              "lat": 34.817035,
-              "lng": 9.380515,
-              "delegationId": 1522,
-              "hasBoundary": true,
-              "bbox": [
-                9.336023,
-                34.76424,
-                9.419267,
-                34.86839
-              ],
-              "areaKm2": 39.349879524052916
-            },
-            "osm:relation:7169594": {
-              "id": "osm:relation:7169594",
-              "sourceId": "osm",
-              "name": "الفريو",
-              "aliases": [
-                "El Friou"
-              ],
-              "kind": "sector",
-              "parentName": "معتمدية الهيشرية",
-              "contextAliases": [
-                "El Hichria",
-                "El hichria",
-                "الهيشرية",
-                "معتمدية الهيشرية"
-              ],
-              "governorateId": 355,
-              "lat": 34.83883,
-              "lng": 9.426865,
-              "delegationId": 1522,
-              "hasBoundary": true,
-              "bbox": [
-                9.336821,
-                34.78474,
-                9.460985,
-                34.8968
-              ],
-              "areaKm2": 48.094809342379875
             },
             "osm:relation:7169598": {
               "id": "osm:relation:7169598",
@@ -22019,34 +22034,12 @@
               ],
               "areaKm2": 71.5698031846261
             },
-            "osm:node:7938334020": {
-              "id": "osm:node:7938334020",
+            "osm:relation:7169594": {
+              "id": "osm:relation:7169594",
               "sourceId": "osm",
-              "name": "أولاد سليمان",
+              "name": "الفريو",
               "aliases": [
-                "Ouled Slimane"
-              ],
-              "kind": "village",
-              "parentName": "السلامة",
-              "contextAliases": [
-                "Bir El Hafey",
-                "Délégation Bir El Hafey",
-                "Essalama",
-                "السلامة",
-                "معتمدية بئر الحفي"
-              ],
-              "governorateId": 355,
-              "lat": 34.8298106,
-              "lng": 9.3767845,
-              "delegationId": 1522,
-              "hasBoundary": false
-            },
-            "osm:relation:7169555": {
-              "id": "osm:relation:7169555",
-              "sourceId": "osm",
-              "name": "الزيتونة",
-              "aliases": [
-                "Ezzitouna"
+                "El Friou"
               ],
               "kind": "sector",
               "parentName": "معتمدية الهيشرية",
@@ -22057,17 +22050,44 @@
                 "معتمدية الهيشرية"
               ],
               "governorateId": 355,
-              "lat": 34.91343,
-              "lng": 9.490654,
+              "lat": 34.83883,
+              "lng": 9.426865,
               "delegationId": 1522,
               "hasBoundary": true,
               "bbox": [
-                9.429199,
-                34.86001,
-                9.555021,
-                34.96783
+                9.336821,
+                34.78474,
+                9.460985,
+                34.8968
               ],
-              "areaKm2": 64.4717506661667
+              "areaKm2": 48.094809342379875
+            },
+            "osm:relation:7169579": {
+              "id": "osm:relation:7169579",
+              "sourceId": "osm",
+              "name": "السلامة",
+              "aliases": [
+                "Essalama"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية بئر الحفي",
+              "contextAliases": [
+                "Bir El Hafey",
+                "Délégation Bir El Hafey",
+                "معتمدية بئر الحفي"
+              ],
+              "governorateId": 355,
+              "lat": 34.817035,
+              "lng": 9.380515,
+              "delegationId": 1522,
+              "hasBoundary": true,
+              "bbox": [
+                9.336023,
+                34.76424,
+                9.419267,
+                34.86839
+              ],
+              "areaKm2": 39.349879524052916
             }
           },
           "preservedNonCatalogPlace": {
@@ -22134,6 +22154,88 @@
             }
           ],
           "protectedMetadata": {
+            "osm:relation:7169623": {
+              "id": "osm:relation:7169623",
+              "sourceId": "osm",
+              "name": "العمران",
+              "aliases": [
+                "El Omrane"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية منزل بوزيان",
+              "contextAliases": [
+                "Délégation Menzel Bouzaïane",
+                "Menzel Bouzaiane",
+                "معتمدية منزل بوزيان"
+              ],
+              "governorateId": 355,
+              "lat": 34.534265,
+              "lng": 9.408895,
+              "delegationId": 510,
+              "hasBoundary": true,
+              "bbox": [
+                9.296494,
+                34.48005,
+                9.483094,
+                34.58764
+              ],
+              "areaKm2": 112.52674055785418
+            },
+            "osm:relation:7169625": {
+              "id": "osm:relation:7169625",
+              "sourceId": "osm",
+              "name": "العمرية",
+              "aliases": [
+                "El Omria"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية منزل بوزيان",
+              "contextAliases": [
+                "Délégation Menzel Bouzaïane",
+                "Menzel Bouzaiane",
+                "معتمدية منزل بوزيان"
+              ],
+              "governorateId": 355,
+              "lat": 34.619485,
+              "lng": 9.319933,
+              "delegationId": 609,
+              "hasBoundary": true,
+              "bbox": [
+                9.254797,
+                34.56627,
+                9.367293,
+                34.67527
+              ],
+              "areaKm2": 63.324793421105525
+            },
+            "osm:way:170079232": {
+              "id": "osm:way:170079232",
+              "sourceId": "osm",
+              "name": "منزل بوزيان",
+              "aliases": [
+                "Menzel Bouzaiane",
+                "Menzel Buzeyyan"
+              ],
+              "kind": "residential",
+              "parentName": "معتمدية منزل بوزيان",
+              "contextAliases": [
+                "Délégation Menzel Bouzaïane",
+                "Menzel Bouzaiane",
+                "معتمدية منزل بوزيان"
+              ],
+              "governorateId": 355,
+              "lat": 34.575518,
+              "lng": 9.430558,
+              "delegationId": 510,
+              "hasBoundary": true,
+              "bbox": [
+                9.416893,
+                34.568103,
+                9.442874,
+                34.583705
+              ],
+              "areaKm2": 2.0119038664196083
+            },
             "osm:relation:7169626": {
               "id": "osm:relation:7169626",
               "sourceId": "osm",
@@ -22160,6 +22262,88 @@
                 34.72013
               ],
               "areaKm2": 87.47118616592712
+            },
+            "osm:relation:7169630": {
+              "id": "osm:relation:7169630",
+              "sourceId": "osm",
+              "name": "منزل بوزيان",
+              "aliases": [
+                "Menzel Bouzaiane",
+                "Menzel Buzeyyan"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية منزل بوزيان",
+              "contextAliases": [
+                "Délégation Menzel Bouzaïane",
+                "Menzel Bouzaiane",
+                "معتمدية منزل بوزيان"
+              ],
+              "governorateId": 355,
+              "lat": 34.56963,
+              "lng": 9.417792,
+              "delegationId": 510,
+              "hasBoundary": true,
+              "bbox": [
+                9.413628,
+                34.56481,
+                9.442923,
+                34.574315
+              ],
+              "areaKm2": 1.0736418015965854
+            },
+            "osm:relation:7169627": {
+              "id": "osm:relation:7169627",
+              "sourceId": "osm",
+              "name": "الخرشف",
+              "aliases": [
+                "El Khorchef"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية منزل بوزيان",
+              "contextAliases": [
+                "Délégation Menzel Bouzaïane",
+                "Menzel Bouzaiane",
+                "معتمدية منزل بوزيان"
+              ],
+              "governorateId": 355,
+              "lat": 34.71392,
+              "lng": 9.51199,
+              "delegationId": 505,
+              "hasBoundary": true,
+              "bbox": [
+                9.412854,
+                34.65107,
+                9.564053,
+                34.7768
+              ],
+              "areaKm2": 94.30669654710242
+            },
+            "osm:relation:7169629": {
+              "id": "osm:relation:7169629",
+              "sourceId": "osm",
+              "name": "النوامر",
+              "aliases": [
+                "En-Nouamer"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية منزل بوزيان",
+              "contextAliases": [
+                "Délégation Menzel Bouzaïane",
+                "Menzel Bouzaiane",
+                "معتمدية منزل بوزيان"
+              ],
+              "governorateId": 355,
+              "lat": 34.609435,
+              "lng": 9.428348,
+              "delegationId": 510,
+              "hasBoundary": true,
+              "bbox": [
+                9.34387,
+                34.56763,
+                9.524574,
+                34.65107
+              ],
+              "areaKm2": 105.05514555393863
             },
             "osm:way:192749364": {
               "id": "osm:way:192749364",
@@ -22190,115 +22374,6 @@
               ],
               "areaKm2": 0.482324976787041
             },
-            "osm:relation:7169623": {
-              "id": "osm:relation:7169623",
-              "sourceId": "osm",
-              "name": "العمران",
-              "aliases": [
-                "El Omrane"
-              ],
-              "kind": "sector",
-              "parentName": "معتمدية منزل بوزيان",
-              "contextAliases": [
-                "Délégation Menzel Bouzaïane",
-                "Menzel Bouzaiane",
-                "معتمدية منزل بوزيان"
-              ],
-              "governorateId": 355,
-              "lat": 34.534265,
-              "lng": 9.408895,
-              "delegationId": 510,
-              "hasBoundary": true,
-              "bbox": [
-                9.296494,
-                34.48005,
-                9.483094,
-                34.58764
-              ],
-              "areaKm2": 112.52674055785418
-            },
-            "osm:relation:7169627": {
-              "id": "osm:relation:7169627",
-              "sourceId": "osm",
-              "name": "الخرشف",
-              "aliases": [
-                "El Khorchef"
-              ],
-              "kind": "sector",
-              "parentName": "معتمدية منزل بوزيان",
-              "contextAliases": [
-                "Délégation Menzel Bouzaïane",
-                "Menzel Bouzaiane",
-                "معتمدية منزل بوزيان"
-              ],
-              "governorateId": 355,
-              "lat": 34.71392,
-              "lng": 9.51199,
-              "delegationId": 505,
-              "hasBoundary": true,
-              "bbox": [
-                9.412854,
-                34.65107,
-                9.564053,
-                34.7768
-              ],
-              "areaKm2": 94.30669654710242
-            },
-            "osm:way:170079232": {
-              "id": "osm:way:170079232",
-              "sourceId": "osm",
-              "name": "منزل بوزيان",
-              "aliases": [
-                "Menzel Bouzaiane",
-                "Menzel Buzeyyan"
-              ],
-              "kind": "residential",
-              "parentName": "معتمدية منزل بوزيان",
-              "contextAliases": [
-                "Délégation Menzel Bouzaïane",
-                "Menzel Bouzaiane",
-                "معتمدية منزل بوزيان"
-              ],
-              "governorateId": 355,
-              "lat": 34.575518,
-              "lng": 9.430558,
-              "delegationId": 510,
-              "hasBoundary": true,
-              "bbox": [
-                9.416893,
-                34.568103,
-                9.442874,
-                34.583705
-              ],
-              "areaKm2": 2.0119038664196083
-            },
-            "osm:relation:7169625": {
-              "id": "osm:relation:7169625",
-              "sourceId": "osm",
-              "name": "العمرية",
-              "aliases": [
-                "El Omria"
-              ],
-              "kind": "sector",
-              "parentName": "معتمدية منزل بوزيان",
-              "contextAliases": [
-                "Délégation Menzel Bouzaïane",
-                "Menzel Bouzaiane",
-                "معتمدية منزل بوزيان"
-              ],
-              "governorateId": 355,
-              "lat": 34.619485,
-              "lng": 9.319933,
-              "delegationId": 609,
-              "hasBoundary": true,
-              "bbox": [
-                9.254797,
-                34.56627,
-                9.367293,
-                34.67527
-              ],
-              "areaKm2": 63.324793421105525
-            },
             "osm:relation:7169628": {
               "id": "osm:relation:7169628",
               "sourceId": "osm",
@@ -22325,61 +22400,6 @@
                 34.76043
               ],
               "areaKm2": 92.57852823871077
-            },
-            "osm:relation:7169630": {
-              "id": "osm:relation:7169630",
-              "sourceId": "osm",
-              "name": "منزل بوزيان",
-              "aliases": [
-                "Menzel Bouzaiane",
-                "Menzel Buzeyyan"
-              ],
-              "kind": "sector",
-              "parentName": "معتمدية منزل بوزيان",
-              "contextAliases": [
-                "Délégation Menzel Bouzaïane",
-                "Menzel Bouzaiane",
-                "معتمدية منزل بوزيان"
-              ],
-              "governorateId": 355,
-              "lat": 34.56963,
-              "lng": 9.417792,
-              "delegationId": 510,
-              "hasBoundary": true,
-              "bbox": [
-                9.413628,
-                34.56481,
-                9.442923,
-                34.574315
-              ],
-              "areaKm2": 1.0736418015965854
-            },
-            "osm:relation:7169629": {
-              "id": "osm:relation:7169629",
-              "sourceId": "osm",
-              "name": "النوامر",
-              "aliases": [
-                "En-Nouamer"
-              ],
-              "kind": "sector",
-              "parentName": "معتمدية منزل بوزيان",
-              "contextAliases": [
-                "Délégation Menzel Bouzaïane",
-                "Menzel Bouzaiane",
-                "معتمدية منزل بوزيان"
-              ],
-              "governorateId": 355,
-              "lat": 34.609435,
-              "lng": 9.428348,
-              "delegationId": 510,
-              "hasBoundary": true,
-              "bbox": [
-                9.34387,
-                34.56763,
-                9.524574,
-                34.65107
-              ],
-              "areaKm2": 105.05514555393863
             }
           },
           "preservedNonCatalogPlace": {
@@ -22461,33 +22481,6 @@
               ],
               "areaKm2": 89.0042614669994
             },
-            "osm:relation:7154917": {
-              "id": "osm:relation:7154917",
-              "sourceId": "osm",
-              "name": "حطام",
-              "aliases": [
-                "Hattem"
-              ],
-              "kind": "sector",
-              "parentName": "معتمدية حزوة",
-              "contextAliases": [
-                "Délégation Hazoua",
-                "Hazoua",
-                "معتمدية حزوة"
-              ],
-              "governorateId": 352,
-              "lat": 33.956571,
-              "lng": 7.642963,
-              "delegationId": 477,
-              "hasBoundary": true,
-              "bbox": [
-                7.521981,
-                33.777659,
-                7.756975,
-                34.10768
-              ],
-              "areaKm2": 585.4789786175553
-            },
             "osm:relation:7154925": {
               "id": "osm:relation:7154925",
               "sourceId": "osm",
@@ -22543,6 +22536,33 @@
                 33.748678
               ],
               "areaKm2": 1.9124028100719948
+            },
+            "osm:relation:7154917": {
+              "id": "osm:relation:7154917",
+              "sourceId": "osm",
+              "name": "حطام",
+              "aliases": [
+                "Hattem"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية حزوة",
+              "contextAliases": [
+                "Délégation Hazoua",
+                "Hazoua",
+                "معتمدية حزوة"
+              ],
+              "governorateId": 352,
+              "lat": 33.956571,
+              "lng": 7.642963,
+              "delegationId": 477,
+              "hasBoundary": true,
+              "bbox": [
+                7.521981,
+                33.777659,
+                7.756975,
+                34.10768
+              ],
+              "areaKm2": 585.4789786175553
             }
           },
           "preservedNonCatalogPlace": {
@@ -22571,8 +22591,8 @@
           },
           "reviewedPrimaryNameKey": "الصمار",
           "memberPrayerSources": {
-            "osm:way:187313013": 472,
-            "osm:relation:7143872": 472
+            "osm:relation:7143872": 472,
+            "osm:way:187313013": 472
           },
           "finalGroups": [
             {
@@ -22612,6 +22632,80 @@
             }
           ],
           "protectedMetadata": {
+            "osm:node:11820052133": {
+              "id": "osm:node:11820052133",
+              "sourceId": "osm",
+              "name": "Ksar Karrouz",
+              "aliases": [],
+              "kind": "hamlet",
+              "parentName": "الصمار",
+              "contextAliases": [
+                "Délégation Smâr",
+                "Smar",
+                "Smâr",
+                "الصمار",
+                "معتمدية الصمار"
+              ],
+              "governorateId": 351,
+              "lat": 33.0211915,
+              "lng": 10.8365297,
+              "delegationId": 472,
+              "hasBoundary": false
+            },
+            "osm:way:385166772": {
+              "id": "osm:way:385166772",
+              "sourceId": "osm",
+              "name": "الغرياني",
+              "aliases": [
+                "Ghariani"
+              ],
+              "kind": "residential",
+              "parentName": "معتمدية الصمار",
+              "contextAliases": [
+                "Délégation Smâr",
+                "Smâr",
+                "معتمدية الصمار"
+              ],
+              "governorateId": 351,
+              "lat": 32.997292,
+              "lng": 10.903358,
+              "delegationId": 472,
+              "hasBoundary": true,
+              "bbox": [
+                10.897009,
+                32.993144,
+                10.918573,
+                33.001428
+              ],
+              "areaKm2": 0.5616549897605382
+            },
+            "osm:relation:7143861": {
+              "id": "osm:relation:7143861",
+              "sourceId": "osm",
+              "name": "كرشاو",
+              "aliases": [
+                "Kerchaou"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية الصمار",
+              "contextAliases": [
+                "Délégation Smâr",
+                "Smâr",
+                "معتمدية الصمار"
+              ],
+              "governorateId": 351,
+              "lat": 33.03986,
+              "lng": 10.773711,
+              "delegationId": 472,
+              "hasBoundary": true,
+              "bbox": [
+                10.68316,
+                32.978037,
+                10.868559,
+                33.102222
+              ],
+              "areaKm2": 122.91053330988213
+            },
             "osm:way:187313013": {
               "id": "osm:way:187313013",
               "sourceId": "osm",
@@ -22669,6 +22763,55 @@
               ],
               "areaKm2": 187.1517478709892
             },
+            "osm:node:5239666199": {
+              "id": "osm:node:5239666199",
+              "sourceId": "osm",
+              "name": "بني مهيرة",
+              "aliases": [
+                "Beni Mhira"
+              ],
+              "kind": "village",
+              "parentName": "قصر مهيرة",
+              "contextAliases": [
+                "Beni Mhira",
+                "Ksar Mehira",
+                "بني مهيرة",
+                "قصر مهيرة",
+                "معتمدية بني مهيرة"
+              ],
+              "governorateId": 351,
+              "lat": 32.8634378,
+              "lng": 10.8172175,
+              "delegationId": 1524,
+              "hasBoundary": false
+            },
+            "osm:relation:7143872": {
+              "id": "osm:relation:7143872",
+              "sourceId": "osm",
+              "name": "الصمار",
+              "aliases": [
+                "Smar"
+              ],
+              "kind": "sector",
+              "parentName": "معتمدية الصمار",
+              "contextAliases": [
+                "Délégation Smâr",
+                "Smâr",
+                "معتمدية الصمار"
+              ],
+              "governorateId": 351,
+              "lat": 33.031397,
+              "lng": 10.909537,
+              "delegationId": 472,
+              "hasBoundary": true,
+              "bbox": [
+                10.747496,
+                32.967417,
+                11.036571,
+                33.095072
+              ],
+              "areaKm2": 167.95718024780138
+            },
             "osm:way:187313004": {
               "id": "osm:way:187313004",
               "sourceId": "osm",
@@ -22698,129 +22841,6 @@
                 33.035322
               ],
               "areaKm2": 0.27909749162048814
-            },
-            "osm:node:11820052133": {
-              "id": "osm:node:11820052133",
-              "sourceId": "osm",
-              "name": "Ksar Karrouz",
-              "aliases": [],
-              "kind": "hamlet",
-              "parentName": "الصمار",
-              "contextAliases": [
-                "Délégation Smâr",
-                "Smar",
-                "Smâr",
-                "الصمار",
-                "معتمدية الصمار"
-              ],
-              "governorateId": 351,
-              "lat": 33.0211915,
-              "lng": 10.8365297,
-              "delegationId": 472,
-              "hasBoundary": false
-            },
-            "osm:node:5239666199": {
-              "id": "osm:node:5239666199",
-              "sourceId": "osm",
-              "name": "بني مهيرة",
-              "aliases": [
-                "Beni Mhira"
-              ],
-              "kind": "village",
-              "parentName": "قصر مهيرة",
-              "contextAliases": [
-                "Beni Mhira",
-                "Ksar Mehira",
-                "بني مهيرة",
-                "قصر مهيرة",
-                "معتمدية بني مهيرة"
-              ],
-              "governorateId": 351,
-              "lat": 32.8634378,
-              "lng": 10.8172175,
-              "delegationId": 1524,
-              "hasBoundary": false
-            },
-            "osm:way:385166772": {
-              "id": "osm:way:385166772",
-              "sourceId": "osm",
-              "name": "الغرياني",
-              "aliases": [
-                "Ghariani"
-              ],
-              "kind": "residential",
-              "parentName": "معتمدية الصمار",
-              "contextAliases": [
-                "Délégation Smâr",
-                "Smâr",
-                "معتمدية الصمار"
-              ],
-              "governorateId": 351,
-              "lat": 32.997292,
-              "lng": 10.903358,
-              "delegationId": 472,
-              "hasBoundary": true,
-              "bbox": [
-                10.897009,
-                32.993144,
-                10.918573,
-                33.001428
-              ],
-              "areaKm2": 0.5616549897605382
-            },
-            "osm:relation:7143872": {
-              "id": "osm:relation:7143872",
-              "sourceId": "osm",
-              "name": "الصمار",
-              "aliases": [
-                "Smar"
-              ],
-              "kind": "sector",
-              "parentName": "معتمدية الصمار",
-              "contextAliases": [
-                "Délégation Smâr",
-                "Smâr",
-                "معتمدية الصمار"
-              ],
-              "governorateId": 351,
-              "lat": 33.031397,
-              "lng": 10.909537,
-              "delegationId": 472,
-              "hasBoundary": true,
-              "bbox": [
-                10.747496,
-                32.967417,
-                11.036571,
-                33.095072
-              ],
-              "areaKm2": 167.95718024780138
-            },
-            "osm:relation:7143861": {
-              "id": "osm:relation:7143861",
-              "sourceId": "osm",
-              "name": "كرشاو",
-              "aliases": [
-                "Kerchaou"
-              ],
-              "kind": "sector",
-              "parentName": "معتمدية الصمار",
-              "contextAliases": [
-                "Délégation Smâr",
-                "Smâr",
-                "معتمدية الصمار"
-              ],
-              "governorateId": 351,
-              "lat": 33.03986,
-              "lng": 10.773711,
-              "delegationId": 472,
-              "hasBoundary": true,
-              "bbox": [
-                10.68316,
-                32.978037,
-                10.868559,
-                33.102222
-              ],
-              "areaKm2": 122.91053330988213
             }
           },
           "preservedNonCatalogPlace": {
@@ -23895,13 +23915,6 @@
       ]
     },
     {
-      "pickerGroupId": "osm:relation:7118029",
-      "ids": [
-        "osm:relation:7118029",
-        "osm:way:180208886"
-      ]
-    },
-    {
       "pickerGroupId": "osm:relation:7118636",
       "ids": [
         "osm:relation:7118636",
@@ -24399,7 +24412,7 @@
   "polygonsBySource": {
     "isie-local-sectors-2023-megrine": 8,
     "bouarada-archive-2018": 21,
-    "osm": 2438,
+    "osm": 2437,
     "isie-local-sectors-2023-le-kram": 6,
     "isie-local-sectors-2023-arima-joufia-receivers": 2,
     "isie-local-sectors-2023-soliman-thirteen-native": 13,
@@ -31728,7 +31741,7 @@
     "sector": 2083,
     "neighbourhood": 28,
     "locality": 9,
-    "residential": 373,
+    "residential": 372,
     "town": 21,
     "suburb": 8,
     "quarter": 7,
@@ -31736,7 +31749,7 @@
     "hamlet": 16
   },
   "polygonsByGovernorate": {
-    "تونس": 196,
+    "تونس": 195,
     "زغوان": 55,
     "سليانة": 116,
     "المهدية": 100,
@@ -31773,7 +31786,7 @@
   ],
   "missingGovernorate": [],
   "geometryBytes": 5590148,
-  "metadataBytes": 1863437,
+  "metadataBytes": 1863055,
   "pointOnlyPlaces": [
     {
       "id": "osm:node:10002024787",
@@ -39449,6 +39462,56 @@
           }
         ],
         "protectedMetadata": {
+          "osm:relation:7114432": {
+            "id": "osm:relation:7114432",
+            "sourceId": "osm",
+            "name": "المزاوغة",
+            "aliases": [
+              "Mezaougha"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية زرمدين",
+            "contextAliases": [
+              "Délégation Zeramdine",
+              "Zéramdine",
+              "معتمدية زرمدين"
+            ],
+            "governorateId": 364,
+            "lat": 35.597031,
+            "lng": 10.563759,
+            "delegationId": 440,
+            "hasBoundary": true,
+            "bbox": [
+              10.523078,
+              35.540473,
+              10.617882,
+              35.649825
+            ],
+            "areaKm2": 60.04081156096141
+          },
+          "osm:node:10118270176": {
+            "id": "osm:node:10118270176",
+            "sourceId": "osm",
+            "name": "المليشات",
+            "aliases": [
+              "Mlichette"
+            ],
+            "kind": "village",
+            "parentName": "معتمدية زرمدين",
+            "contextAliases": [
+              "Délégation Zeramdine",
+              "Melichet",
+              "Zéramdine",
+              "المليشات",
+              "المليشيات",
+              "معتمدية زرمدين"
+            ],
+            "governorateId": 364,
+            "lat": 35.51208,
+            "lng": 10.5316808,
+            "delegationId": 428,
+            "hasBoundary": false
+          },
           "osm:relation:7114434": {
             "id": "osm:relation:7114434",
             "sourceId": "osm",
@@ -39476,6 +39539,33 @@
             ],
             "areaKm2": 28.225618094190033
           },
+          "osm:relation:7114248": {
+            "id": "osm:relation:7114248",
+            "sourceId": "isie-local-sectors-2023-zeramdine-north",
+            "name": "زرمدين الشمالية",
+            "aliases": [
+              "Zéramdine Nord"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية زرمدين",
+            "contextAliases": [
+              "Délégation Zeramdine",
+              "Zéramdine",
+              "معتمدية زرمدين"
+            ],
+            "governorateId": 364,
+            "lat": 35.575518,
+            "lng": 10.698052,
+            "delegationId": 596,
+            "hasBoundary": true,
+            "bbox": [
+              10.65686,
+              35.548028,
+              10.748599,
+              35.602797
+            ],
+            "areaKm2": 24.891092093890315
+          },
           "osm:way:139010911": {
             "id": "osm:way:139010911",
             "sourceId": "osm",
@@ -39499,57 +39589,6 @@
               35.591172
             ],
             "areaKm2": 4.679754201247533
-          },
-          "osm:node:10118270176": {
-            "id": "osm:node:10118270176",
-            "sourceId": "osm",
-            "name": "المليشات",
-            "aliases": [
-              "Mlichette"
-            ],
-            "kind": "village",
-            "parentName": "معتمدية زرمدين",
-            "contextAliases": [
-              "Délégation Zeramdine",
-              "Melichet",
-              "Zéramdine",
-              "المليشات",
-              "المليشيات",
-              "معتمدية زرمدين"
-            ],
-            "governorateId": 364,
-            "lat": 35.51208,
-            "lng": 10.5316808,
-            "delegationId": 428,
-            "hasBoundary": false
-          },
-          "osm:relation:7114249": {
-            "id": "osm:relation:7114249",
-            "sourceId": "isie-local-sectors-2023-zeramdine-south",
-            "name": "زرمدين الجنوبية",
-            "aliases": [
-              "Zéramdine Sud",
-              "زرميدين الجنوبية"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية زرمدين",
-            "contextAliases": [
-              "Délégation Zeramdine",
-              "Zéramdine",
-              "معتمدية زرمدين"
-            ],
-            "governorateId": 364,
-            "lat": 35.556191,
-            "lng": 10.726994,
-            "delegationId": 596,
-            "hasBoundary": true,
-            "bbox": [
-              10.660002,
-              35.513969,
-              10.776687,
-              35.598505
-            ],
-            "areaKm2": 45.025091797120176
           },
           "osm:relation:7114433": {
             "id": "osm:relation:7114433",
@@ -39581,12 +39620,13 @@
             "areaKm2": 70.25271562267092,
             "manualPointId": "osm:node:10118270176"
           },
-          "osm:relation:7114432": {
-            "id": "osm:relation:7114432",
-            "sourceId": "osm",
-            "name": "المزاوغة",
+          "osm:relation:7114249": {
+            "id": "osm:relation:7114249",
+            "sourceId": "isie-local-sectors-2023-zeramdine-south",
+            "name": "زرمدين الجنوبية",
             "aliases": [
-              "Mezaougha"
+              "Zéramdine Sud",
+              "زرميدين الجنوبية"
             ],
             "kind": "sector",
             "parentName": "معتمدية زرمدين",
@@ -39596,44 +39636,17 @@
               "معتمدية زرمدين"
             ],
             "governorateId": 364,
-            "lat": 35.597031,
-            "lng": 10.563759,
-            "delegationId": 440,
-            "hasBoundary": true,
-            "bbox": [
-              10.523078,
-              35.540473,
-              10.617882,
-              35.649825
-            ],
-            "areaKm2": 60.04081156096141
-          },
-          "osm:relation:7114248": {
-            "id": "osm:relation:7114248",
-            "sourceId": "isie-local-sectors-2023-zeramdine-north",
-            "name": "زرمدين الشمالية",
-            "aliases": [
-              "Zéramdine Nord"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية زرمدين",
-            "contextAliases": [
-              "Délégation Zeramdine",
-              "Zéramdine",
-              "معتمدية زرمدين"
-            ],
-            "governorateId": 364,
-            "lat": 35.575518,
-            "lng": 10.698052,
+            "lat": 35.556191,
+            "lng": 10.726994,
             "delegationId": 596,
             "hasBoundary": true,
             "bbox": [
-              10.65686,
-              35.548028,
-              10.748599,
-              35.602797
+              10.660002,
+              35.513969,
+              10.776687,
+              35.598505
             ],
-            "areaKm2": 24.891092093890315
+            "areaKm2": 45.025091797120176
           }
         },
         "preservedRawSource": 596,
@@ -39716,34 +39729,6 @@
           }
         ],
         "protectedMetadata": {
-          "osm:relation:7104929": {
-            "id": "osm:relation:7104929",
-            "sourceId": "isie-local-sectors-2023-hammamet-nine",
-            "name": "الحمامات الشرقية",
-            "aliases": [
-              "Hammamet Est",
-              "Hammamet est"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية الحمامات",
-            "contextAliases": [
-              "Délégation Hammamet",
-              "Hammamet",
-              "معتمدية الحمامات"
-            ],
-            "governorateId": 350,
-            "lat": 36.399951,
-            "lng": 10.621608,
-            "delegationId": 461,
-            "hasBoundary": true,
-            "bbox": [
-              10.611451,
-              36.39216,
-              10.642284,
-              36.40926
-            ],
-            "areaKm2": 2.7022464496523515
-          },
           "osm:relation:7105070": {
             "id": "osm:relation:7105070",
             "sourceId": "isie-local-sectors-2023-hammamet-nine",
@@ -39773,13 +39758,13 @@
             ],
             "areaKm2": 134.3687749403321
           },
-          "osm:relation:7104932": {
-            "id": "osm:relation:7104932",
+          "osm:relation:7104929": {
+            "id": "osm:relation:7104929",
             "sourceId": "isie-local-sectors-2023-hammamet-nine",
-            "name": "ياسمين الحمامات",
+            "name": "الحمامات الشرقية",
             "aliases": [
-              "Yasmin hammamet",
-              "Yasmine Hammamet"
+              "Hammamet Est",
+              "Hammamet est"
             ],
             "kind": "sector",
             "parentName": "معتمدية الحمامات",
@@ -39789,29 +39774,24 @@
               "معتمدية الحمامات"
             ],
             "governorateId": 350,
-            "lat": 36.3746888,
-            "lng": 10.5411468,
+            "lat": 36.399951,
+            "lng": 10.621608,
             "delegationId": 461,
             "hasBoundary": true,
             "bbox": [
-              10.492338,
-              36.367646,
-              10.558163,
-              36.416674
+              10.611451,
+              36.39216,
+              10.642284,
+              36.40926
             ],
-            "areaKm2": 16.922792620779198
+            "areaKm2": 2.7022464496523515
           },
-          "osm:relation:7104931": {
-            "id": "osm:relation:7104931",
-            "sourceId": "isie-local-sectors-2023-hammamet-nine",
-            "name": "براكة الساحل",
-            "aliases": [
-              "Barraket essahel",
-              "Manaret El Hammamet",
-              "Mnaret El Hammamet",
-              "منارة الحمامات"
-            ],
-            "kind": "sector",
+          "osm:relation:3152100": {
+            "id": "osm:relation:3152100",
+            "sourceId": "osm",
+            "name": "Yasmine Hammamet",
+            "aliases": [],
+            "kind": "residential",
             "parentName": "معتمدية الحمامات",
             "contextAliases": [
               "Délégation Hammamet",
@@ -39819,45 +39799,17 @@
               "معتمدية الحمامات"
             ],
             "governorateId": 350,
-            "lat": 36.4047613,
-            "lng": 10.5602519,
+            "lat": 36.388077,
+            "lng": 10.551723,
             "delegationId": 461,
             "hasBoundary": true,
             "bbox": [
-              10.495592,
-              36.387351,
-              10.576837,
-              36.445382
+              10.544058,
+              36.379217,
+              10.558766,
+              36.396975
             ],
-            "areaKm2": 20.524514004725216
-          },
-          "osm:relation:7144606": {
-            "id": "osm:relation:7144606",
-            "sourceId": "isie-local-sectors-2023-hammamet-nine",
-            "name": "الاطرش",
-            "aliases": [
-              "El atrach",
-              "Latrach"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية الحمامات",
-            "contextAliases": [
-              "Délégation Hammamet",
-              "Hammamet",
-              "معتمدية الحمامات"
-            ],
-            "governorateId": 350,
-            "lat": 36.474958,
-            "lng": 10.484984,
-            "delegationId": 463,
-            "hasBoundary": true,
-            "bbox": [
-              10.39782,
-              36.434612,
-              10.561444,
-              36.511431
-            ],
-            "areaKm2": 67.20434624289183
+            "areaKm2": 1.0248585866954305
           },
           "osm:relation:7104930": {
             "id": "osm:relation:7104930",
@@ -39912,41 +39864,14 @@
             ],
             "areaKm2": 9.709992130967194
           },
-          "osm:way:238137076": {
-            "id": "osm:way:238137076",
-            "sourceId": "osm",
-            "name": "Latrach",
-            "aliases": [],
-            "kind": "residential",
-            "parentName": "الاطرش",
-            "contextAliases": [
-              "Délégation Hammamet",
-              "El atrach",
-              "Hammamet",
-              "Latrach",
-              "الاطرش",
-              "معتمدية الحمامات"
-            ],
-            "governorateId": 350,
-            "lat": 36.468976,
-            "lng": 10.502956,
-            "delegationId": 463,
-            "hasBoundary": true,
-            "bbox": [
-              10.499474,
-              36.466227,
-              10.50445,
-              36.471579
-            ],
-            "areaKm2": 0.0957802694154521
-          },
-          "osm:relation:7104928": {
-            "id": "osm:relation:7104928",
+          "osm:relation:7104926": {
+            "id": "osm:relation:7104926",
             "sourceId": "isie-local-sectors-2023-hammamet-nine",
-            "name": "المرازقة",
+            "name": "بئر بورقبة",
             "aliases": [
-              "Mrezga",
-              "El Mrezga"
+              "Bir Bouregba",
+              "Bir bou regba",
+              "بير بورقبة"
             ],
             "kind": "sector",
             "parentName": "معتمدية الحمامات",
@@ -39956,17 +39881,47 @@
               "معتمدية الحمامات"
             ],
             "governorateId": 350,
-            "lat": 36.422055,
-            "lng": 10.662188,
+            "lat": 36.455911,
+            "lng": 10.559755,
             "delegationId": 461,
             "hasBoundary": true,
             "bbox": [
-              10.634769,
-              36.404919,
-              10.683173,
-              36.453206
+              10.5418,
+              36.41131,
+              10.624273,
+              36.49125
             ],
-            "areaKm2": 12.526372332628283
+            "areaKm2": 22.506333846717382
+          },
+          "osm:relation:7104931": {
+            "id": "osm:relation:7104931",
+            "sourceId": "isie-local-sectors-2023-hammamet-nine",
+            "name": "براكة الساحل",
+            "aliases": [
+              "Barraket essahel",
+              "Manaret El Hammamet",
+              "Mnaret El Hammamet",
+              "منارة الحمامات"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.4047613,
+            "lng": 10.5602519,
+            "delegationId": 461,
+            "hasBoundary": true,
+            "bbox": [
+              10.495592,
+              36.387351,
+              10.576837,
+              36.445382
+            ],
+            "areaKm2": 20.524514004725216
           },
           "osm:relation:7104927": {
             "id": "osm:relation:7104927",
@@ -39996,39 +39951,41 @@
             ],
             "areaKm2": 26.167507147440432
           },
-          "osm:relation:3152100": {
-            "id": "osm:relation:3152100",
+          "osm:way:238137076": {
+            "id": "osm:way:238137076",
             "sourceId": "osm",
-            "name": "Yasmine Hammamet",
+            "name": "Latrach",
             "aliases": [],
             "kind": "residential",
-            "parentName": "معتمدية الحمامات",
+            "parentName": "الاطرش",
             "contextAliases": [
               "Délégation Hammamet",
+              "El atrach",
               "Hammamet",
+              "Latrach",
+              "الاطرش",
               "معتمدية الحمامات"
             ],
             "governorateId": 350,
-            "lat": 36.388077,
-            "lng": 10.551723,
-            "delegationId": 461,
+            "lat": 36.468976,
+            "lng": 10.502956,
+            "delegationId": 463,
             "hasBoundary": true,
             "bbox": [
-              10.544058,
-              36.379217,
-              10.558766,
-              36.396975
+              10.499474,
+              36.466227,
+              10.50445,
+              36.471579
             ],
-            "areaKm2": 1.0248585866954305
+            "areaKm2": 0.0957802694154521
           },
-          "osm:relation:7104926": {
-            "id": "osm:relation:7104926",
+          "osm:relation:7144606": {
+            "id": "osm:relation:7144606",
             "sourceId": "isie-local-sectors-2023-hammamet-nine",
-            "name": "بئر بورقبة",
+            "name": "الاطرش",
             "aliases": [
-              "Bir Bouregba",
-              "Bir bou regba",
-              "بير بورقبة"
+              "El atrach",
+              "Latrach"
             ],
             "kind": "sector",
             "parentName": "معتمدية الحمامات",
@@ -40038,17 +39995,73 @@
               "معتمدية الحمامات"
             ],
             "governorateId": 350,
-            "lat": 36.455911,
-            "lng": 10.559755,
+            "lat": 36.474958,
+            "lng": 10.484984,
+            "delegationId": 463,
+            "hasBoundary": true,
+            "bbox": [
+              10.39782,
+              36.434612,
+              10.561444,
+              36.511431
+            ],
+            "areaKm2": 67.20434624289183
+          },
+          "osm:relation:7104928": {
+            "id": "osm:relation:7104928",
+            "sourceId": "isie-local-sectors-2023-hammamet-nine",
+            "name": "المرازقة",
+            "aliases": [
+              "Mrezga",
+              "El Mrezga"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.422055,
+            "lng": 10.662188,
             "delegationId": 461,
             "hasBoundary": true,
             "bbox": [
-              10.5418,
-              36.41131,
-              10.624273,
-              36.49125
+              10.634769,
+              36.404919,
+              10.683173,
+              36.453206
             ],
-            "areaKm2": 22.506333846717382
+            "areaKm2": 12.526372332628283
+          },
+          "osm:relation:7104932": {
+            "id": "osm:relation:7104932",
+            "sourceId": "isie-local-sectors-2023-hammamet-nine",
+            "name": "ياسمين الحمامات",
+            "aliases": [
+              "Yasmin hammamet",
+              "Yasmine Hammamet"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية الحمامات",
+            "contextAliases": [
+              "Délégation Hammamet",
+              "Hammamet",
+              "معتمدية الحمامات"
+            ],
+            "governorateId": 350,
+            "lat": 36.3746888,
+            "lng": 10.5411468,
+            "delegationId": 461,
+            "hasBoundary": true,
+            "bbox": [
+              10.492338,
+              36.367646,
+              10.558163,
+              36.416674
+            ],
+            "areaKm2": 16.922792620779198
           }
         },
         "preservedRawSource": 461,
@@ -40147,12 +40160,13 @@
           }
         ],
         "protectedMetadata": {
-          "osm:relation:7142955": {
-            "id": "osm:relation:7142955",
+          "osm:relation:7142925": {
+            "id": "osm:relation:7142925",
             "sourceId": "osm",
-            "name": "شارب الراجل",
+            "name": "الشهبانية",
             "aliases": [
-              "Chareb Errajel"
+              "Chahbania",
+              "Chehbania"
             ],
             "kind": "sector",
             "parentName": "معتمدية بنقردان",
@@ -40163,17 +40177,17 @@
               "معتمدية بنقردان"
             ],
             "governorateId": 353,
-            "lat": 33.235986,
-            "lng": 11.115134,
-            "delegationId": 488,
+            "lat": 33.235192,
+            "lng": 10.755632,
+            "delegationId": 626,
             "hasBoundary": true,
             "bbox": [
-              10.939838,
-              33.149972,
-              11.214176,
-              33.322122
+              10.523536,
+              33.096122,
+              10.889968,
+              33.374342
             ],
-            "areaKm2": 144.78692095876255
+            "areaKm2": 504.29358491194654
           },
           "osm:relation:7142953": {
             "id": "osm:relation:7142953",
@@ -40204,63 +40218,6 @@
             ],
             "areaKm2": 152.38787468839624
           },
-          "osm:relation:7142961": {
-            "id": "osm:relation:7142961",
-            "sourceId": "osm",
-            "name": "النفاتية",
-            "aliases": [
-              "Ennafatia",
-              "Neffatia"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية بنقردان",
-            "contextAliases": [
-              "Ben Gardane",
-              "Délégation Ben Gardane",
-              "معتمدية بن قردان",
-              "معتمدية بنقردان"
-            ],
-            "governorateId": 353,
-            "lat": 33.205582,
-            "lng": 10.914081,
-            "delegationId": 472,
-            "hasBoundary": true,
-            "bbox": [
-              10.719997,
-              33.082562,
-              11.016963,
-              33.334932
-            ],
-            "areaKm2": 328.81897826349535
-          },
-          "osm:relation:7142956": {
-            "id": "osm:relation:7142956",
-            "sourceId": "osm",
-            "name": "الطابعي",
-            "aliases": [
-              "Ettabai"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية بنقردان",
-            "contextAliases": [
-              "Ben Gardane",
-              "Délégation Ben Gardane",
-              "معتمدية بن قردان",
-              "معتمدية بنقردان"
-            ],
-            "governorateId": 353,
-            "lat": 33.020902,
-            "lng": 11.082841,
-            "delegationId": 488,
-            "hasBoundary": true,
-            "bbox": [
-              11.021484,
-              32.913253,
-              11.211223,
-              33.129444
-            ],
-            "areaKm2": 139.42725720250718
-          },
           "osm:relation:7142923": {
             "id": "osm:relation:7142923",
             "sourceId": "osm",
@@ -40289,187 +40246,6 @@
               33.153762
             ],
             "areaKm2": 4.183616053197875
-          },
-          "osm:relation:7142924": {
-            "id": "osm:relation:7142924",
-            "sourceId": "osm",
-            "name": "جميلة",
-            "aliases": [
-              "Jamila"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية بنقردان",
-            "contextAliases": [
-              "Ben Gardane",
-              "Délégation Ben Gardane",
-              "معتمدية بن قردان",
-              "معتمدية بنقردان"
-            ],
-            "governorateId": 353,
-            "lat": 32.963734,
-            "lng": 11.444014,
-            "delegationId": 488,
-            "hasBoundary": true,
-            "bbox": [
-              11.226986,
-              32.770065,
-              11.560502,
-              33.158766
-            ],
-            "areaKm2": 553.4182429246171
-          },
-          "osm:relation:7142928": {
-            "id": "osm:relation:7142928",
-            "sourceId": "osm",
-            "name": "العامرية",
-            "aliases": [
-              "El Amria"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية بنقردان",
-            "contextAliases": [
-              "Ben Gardane",
-              "Délégation Ben Gardane",
-              "معتمدية بن قردان",
-              "معتمدية بنقردان"
-            ],
-            "governorateId": 353,
-            "lat": 32.752528,
-            "lng": 11.182154,
-            "delegationId": 1524,
-            "hasBoundary": true,
-            "bbox": [
-              11.084824,
-              32.376744,
-              11.341852,
-              33.128241
-            ],
-            "areaKm2": 925.0556559836017
-          },
-          "osm:relation:7142925": {
-            "id": "osm:relation:7142925",
-            "sourceId": "osm",
-            "name": "الشهبانية",
-            "aliases": [
-              "Chahbania",
-              "Chehbania"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية بنقردان",
-            "contextAliases": [
-              "Ben Gardane",
-              "Délégation Ben Gardane",
-              "معتمدية بن قردان",
-              "معتمدية بنقردان"
-            ],
-            "governorateId": 353,
-            "lat": 33.235192,
-            "lng": 10.755632,
-            "delegationId": 626,
-            "hasBoundary": true,
-            "bbox": [
-              10.523536,
-              33.096122,
-              10.889968,
-              33.374342
-            ],
-            "areaKm2": 504.29358491194654
-          },
-          "osm:way:26303952": {
-            "id": "osm:way:26303952",
-            "sourceId": "osm",
-            "name": "بنقردان",
-            "aliases": [
-              "Ben Gardanas",
-              "Ben Gardane",
-              "Ben Guerdane",
-              "Bin Kirdan",
-              "Μπεν Γκερντάν",
-              "Бен Кардан",
-              "Бен-Гардан",
-              "בן גרדאן",
-              "بن قردان",
-              "مدينة بنقردان",
-              "ベンカルダン",
-              "本加爾丹",
-              "벤가르단"
-            ],
-            "kind": "residential",
-            "parentName": "معتمدية بنقردان",
-            "contextAliases": [
-              "Ben Gardane",
-              "Délégation Ben Gardane",
-              "معتمدية بن قردان",
-              "معتمدية بنقردان"
-            ],
-            "governorateId": 353,
-            "lat": 33.127308,
-            "lng": 11.203432,
-            "delegationId": 488,
-            "hasBoundary": true,
-            "bbox": [
-              11.148555,
-              33.074441,
-              11.257023,
-              33.180135
-            ],
-            "areaKm2": 55.569214920640555
-          },
-          "osm:relation:7142926": {
-            "id": "osm:relation:7142926",
-            "sourceId": "osm",
-            "name": "المعمرات",
-            "aliases": [
-              "El Maamerat"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية بنقردان",
-            "contextAliases": [
-              "Ben Gardane",
-              "Délégation Ben Gardane",
-              "معتمدية بن قردان",
-              "معتمدية بنقردان"
-            ],
-            "governorateId": 353,
-            "lat": 32.68868,
-            "lng": 11.366596,
-            "delegationId": 488,
-            "hasBoundary": true,
-            "bbox": [
-              11.155293,
-              32.24992,
-              11.599935,
-              33.126691
-            ],
-            "areaKm2": 1750.8984000634173
-          },
-          "osm:relation:7142917": {
-            "id": "osm:relation:7142917",
-            "sourceId": "osm",
-            "name": "الصياح",
-            "aliases": [
-              "Essayah"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية بنقردان",
-            "contextAliases": [
-              "Ben Gardane",
-              "Délégation Ben Gardane",
-              "معتمدية بن قردان",
-              "معتمدية بنقردان"
-            ],
-            "governorateId": 353,
-            "lat": 33.203044,
-            "lng": 11.243523,
-            "delegationId": 488,
-            "hasBoundary": true,
-            "bbox": [
-              11.212531,
-              33.138992,
-              11.561593,
-              33.267052
-            ],
-            "areaKm2": 145.62102693567053
           },
           "osm:relation:7142960": {
             "id": "osm:relation:7142960",
@@ -40527,6 +40303,243 @@
               33.153812
             ],
             "areaKm2": 2.8621225059743316
+          },
+          "osm:relation:7142955": {
+            "id": "osm:relation:7142955",
+            "sourceId": "osm",
+            "name": "شارب الراجل",
+            "aliases": [
+              "Chareb Errajel"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.235986,
+            "lng": 11.115134,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              10.939838,
+              33.149972,
+              11.214176,
+              33.322122
+            ],
+            "areaKm2": 144.78692095876255
+          },
+          "osm:relation:7142924": {
+            "id": "osm:relation:7142924",
+            "sourceId": "osm",
+            "name": "جميلة",
+            "aliases": [
+              "Jamila"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 32.963734,
+            "lng": 11.444014,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.226986,
+              32.770065,
+              11.560502,
+              33.158766
+            ],
+            "areaKm2": 553.4182429246171
+          },
+          "osm:way:26303952": {
+            "id": "osm:way:26303952",
+            "sourceId": "osm",
+            "name": "بنقردان",
+            "aliases": [
+              "Ben Gardanas",
+              "Ben Gardane",
+              "Ben Guerdane",
+              "Bin Kirdan",
+              "Μπεν Γκερντάν",
+              "Бен Кардан",
+              "Бен-Гардан",
+              "בן גרדאן",
+              "بن قردان",
+              "مدينة بنقردان",
+              "ベンカルダン",
+              "本加爾丹",
+              "벤가르단"
+            ],
+            "kind": "residential",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.127308,
+            "lng": 11.203432,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.148555,
+              33.074441,
+              11.257023,
+              33.180135
+            ],
+            "areaKm2": 55.569214920640555
+          },
+          "osm:relation:7142956": {
+            "id": "osm:relation:7142956",
+            "sourceId": "osm",
+            "name": "الطابعي",
+            "aliases": [
+              "Ettabai"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.020902,
+            "lng": 11.082841,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.021484,
+              32.913253,
+              11.211223,
+              33.129444
+            ],
+            "areaKm2": 139.42725720250718
+          },
+          "osm:relation:7142961": {
+            "id": "osm:relation:7142961",
+            "sourceId": "osm",
+            "name": "النفاتية",
+            "aliases": [
+              "Ennafatia",
+              "Neffatia"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.205582,
+            "lng": 10.914081,
+            "delegationId": 472,
+            "hasBoundary": true,
+            "bbox": [
+              10.719997,
+              33.082562,
+              11.016963,
+              33.334932
+            ],
+            "areaKm2": 328.81897826349535
+          },
+          "osm:relation:7142928": {
+            "id": "osm:relation:7142928",
+            "sourceId": "osm",
+            "name": "العامرية",
+            "aliases": [
+              "El Amria"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 32.752528,
+            "lng": 11.182154,
+            "delegationId": 1524,
+            "hasBoundary": true,
+            "bbox": [
+              11.084824,
+              32.376744,
+              11.341852,
+              33.128241
+            ],
+            "areaKm2": 925.0556559836017
+          },
+          "osm:relation:7142917": {
+            "id": "osm:relation:7142917",
+            "sourceId": "osm",
+            "name": "الصياح",
+            "aliases": [
+              "Essayah"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 33.203044,
+            "lng": 11.243523,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.212531,
+              33.138992,
+              11.561593,
+              33.267052
+            ],
+            "areaKm2": 145.62102693567053
+          },
+          "osm:relation:7142926": {
+            "id": "osm:relation:7142926",
+            "sourceId": "osm",
+            "name": "المعمرات",
+            "aliases": [
+              "El Maamerat"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بنقردان",
+            "contextAliases": [
+              "Ben Gardane",
+              "Délégation Ben Gardane",
+              "معتمدية بن قردان",
+              "معتمدية بنقردان"
+            ],
+            "governorateId": 353,
+            "lat": 32.68868,
+            "lng": 11.366596,
+            "delegationId": 488,
+            "hasBoundary": true,
+            "bbox": [
+              11.155293,
+              32.24992,
+              11.599935,
+              33.126691
+            ],
+            "areaKm2": 1750.8984000634173
           }
         },
         "preservedRawSource": 488,
@@ -40583,13 +40596,18 @@
           }
         ],
         "protectedMetadata": {
-          "osm:relation:7117932": {
-            "id": "osm:relation:7117932",
-            "sourceId": "osm",
-            "name": "الطيب المهيري",
+          "osm:relation:7117933": {
+            "id": "osm:relation:7117933",
+            "sourceId": "isie-local-sectors-2023-la-goulette",
+            "name": "حلق الوادي",
             "aliases": [
-              "Taieb Mhiri",
-              "الطيب مهيري"
+              "La Goulette",
+              "La Goleta",
+              "La Goletta",
+              "Хальк-эль-Уэд",
+              "לה גולט",
+              "حلق الوادی",
+              "Ḥalq al-Wādī"
             ],
             "kind": "sector",
             "parentName": "معتمدية حلق الوادي",
@@ -40600,17 +40618,17 @@
               "معتمدية حلق الوادي"
             ],
             "governorateId": 342,
-            "lat": 36.836049,
-            "lng": 10.278915,
-            "delegationId": 406,
+            "lat": 36.814918,
+            "lng": 10.293156,
+            "delegationId": 388,
             "hasBoundary": true,
             "bbox": [
-              10.239206,
-              36.810457,
-              10.30779,
-              36.862359
+              10.279918,
+              36.806349,
+              10.310993,
+              36.823185
             ],
-            "areaKm2": 17.2850050701517
+            "areaKm2": 2.174070745156123
           },
           "osm:relation:7117891": {
             "id": "osm:relation:7117891",
@@ -40667,6 +40685,35 @@
               36.826627
             ],
             "areaKm2": 0.6846235628996585
+          },
+          "osm:relation:7117932": {
+            "id": "osm:relation:7117932",
+            "sourceId": "osm",
+            "name": "الطيب المهيري",
+            "aliases": [
+              "Taieb Mhiri",
+              "الطيب مهيري"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية حلق الوادي",
+            "contextAliases": [
+              "Delegación de La Goleta",
+              "Délégation La Goulette",
+              "حلق الوادي",
+              "معتمدية حلق الوادي"
+            ],
+            "governorateId": 342,
+            "lat": 36.836049,
+            "lng": 10.278915,
+            "delegationId": 406,
+            "hasBoundary": true,
+            "bbox": [
+              10.239206,
+              36.810457,
+              10.30779,
+              36.862359
+            ],
+            "areaKm2": 17.2850050701517
           },
           "osm:relation:7117890": {
             "id": "osm:relation:7117890",
@@ -40731,40 +40778,6 @@
               36.825935
             ],
             "areaKm2": 2.1205906386256106
-          },
-          "osm:relation:7117933": {
-            "id": "osm:relation:7117933",
-            "sourceId": "isie-local-sectors-2023-la-goulette",
-            "name": "حلق الوادي",
-            "aliases": [
-              "La Goulette",
-              "La Goleta",
-              "La Goletta",
-              "Хальк-эль-Уэд",
-              "לה גולט",
-              "حلق الوادی",
-              "Ḥalq al-Wādī"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية حلق الوادي",
-            "contextAliases": [
-              "Delegación de La Goleta",
-              "Délégation La Goulette",
-              "حلق الوادي",
-              "معتمدية حلق الوادي"
-            ],
-            "governorateId": 342,
-            "lat": 36.814918,
-            "lng": 10.293156,
-            "delegationId": 388,
-            "hasBoundary": true,
-            "bbox": [
-              10.279918,
-              36.806349,
-              10.310993,
-              36.823185
-            ],
-            "areaKm2": 2.174070745156123
           }
         },
         "preservedRawSource": 388,
@@ -40845,12 +40858,14 @@
           }
         ],
         "protectedMetadata": {
-          "osm:relation:7145405": {
-            "id": "osm:relation:7145405",
+          "osm:relation:7145427": {
+            "id": "osm:relation:7145427",
             "sourceId": "osm",
-            "name": "بني زلطن",
+            "name": "هداج",
             "aliases": [
-              "Beni Zalten"
+              "Haddaj",
+              "Heddaj",
+              "الحادج"
             ],
             "kind": "sector",
             "parentName": "معتمدية مطماطة الجديدة",
@@ -40859,17 +40874,17 @@
               "معتمدية مطماطة الجديدة"
             ],
             "governorateId": 347,
-            "lat": 33.55923,
-            "lng": 10.104193,
-            "delegationId": 1022,
+            "lat": 33.604175,
+            "lng": 10.044489,
+            "delegationId": 1023,
             "hasBoundary": true,
             "bbox": [
-              10.055744,
-              33.486025,
-              10.157798,
-              33.632265
+              9.989387,
+              33.485885,
+              10.150423,
+              33.722675
             ],
-            "areaKm2": 89.1128152966732
+            "areaKm2": 175.33305034114767
           },
           "osm:relation:7145430": {
             "id": "osm:relation:7145430",
@@ -40896,32 +40911,6 @@
               33.737595
             ],
             "areaKm2": 111.7649425377035
-          },
-          "osm:relation:7145390": {
-            "id": "osm:relation:7145390",
-            "sourceId": "osm",
-            "name": "الزراوة",
-            "aliases": [
-              "Ezzeraoua"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية مطماطة الجديدة",
-            "contextAliases": [
-              "Délégation Nouvelle Matmata",
-              "معتمدية مطماطة الجديدة"
-            ],
-            "governorateId": 347,
-            "lat": 33.61011,
-            "lng": 9.694064,
-            "delegationId": 1022,
-            "hasBoundary": true,
-            "bbox": [
-              9.54085,
-              33.539315,
-              9.850216,
-              33.684145
-            ],
-            "areaKm2": 244.6237495865523
           },
           "osm:way:377951368": {
             "id": "osm:way:377951368",
@@ -40950,6 +40939,58 @@
               33.550413
             ],
             "areaKm2": 0.6926374699136989
+          },
+          "osm:relation:7145389": {
+            "id": "osm:relation:7145389",
+            "sourceId": "osm",
+            "name": "بني عيسى",
+            "aliases": [
+              "Beni Aissa"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مطماطة الجديدة",
+            "contextAliases": [
+              "Délégation Nouvelle Matmata",
+              "معتمدية مطماطة الجديدة"
+            ],
+            "governorateId": 347,
+            "lat": 33.660595,
+            "lng": 9.881841,
+            "delegationId": 1023,
+            "hasBoundary": true,
+            "bbox": [
+              9.807792,
+              33.571815,
+              9.959215,
+              33.749055
+            ],
+            "areaKm2": 133.26512613720965
+          },
+          "osm:relation:7145405": {
+            "id": "osm:relation:7145405",
+            "sourceId": "osm",
+            "name": "بني زلطن",
+            "aliases": [
+              "Beni Zalten"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية مطماطة الجديدة",
+            "contextAliases": [
+              "Délégation Nouvelle Matmata",
+              "معتمدية مطماطة الجديدة"
+            ],
+            "governorateId": 347,
+            "lat": 33.55923,
+            "lng": 10.104193,
+            "delegationId": 1022,
+            "hasBoundary": true,
+            "bbox": [
+              10.055744,
+              33.486025,
+              10.157798,
+              33.632265
+            ],
+            "areaKm2": 89.1128152966732
           },
           "osm:way:186705198": {
             "id": "osm:way:186705198",
@@ -40982,14 +41023,12 @@
             ],
             "areaKm2": 1.7793987143776042
           },
-          "osm:relation:7145427": {
-            "id": "osm:relation:7145427",
+          "osm:relation:7145390": {
+            "id": "osm:relation:7145390",
             "sourceId": "osm",
-            "name": "هداج",
+            "name": "الزراوة",
             "aliases": [
-              "Haddaj",
-              "Heddaj",
-              "الحادج"
+              "Ezzeraoua"
             ],
             "kind": "sector",
             "parentName": "معتمدية مطماطة الجديدة",
@@ -40998,43 +41037,17 @@
               "معتمدية مطماطة الجديدة"
             ],
             "governorateId": 347,
-            "lat": 33.604175,
-            "lng": 10.044489,
-            "delegationId": 1023,
+            "lat": 33.61011,
+            "lng": 9.694064,
+            "delegationId": 1022,
             "hasBoundary": true,
             "bbox": [
-              9.989387,
-              33.485885,
-              10.150423,
-              33.722675
+              9.54085,
+              33.539315,
+              9.850216,
+              33.684145
             ],
-            "areaKm2": 175.33305034114767
-          },
-          "osm:relation:7145389": {
-            "id": "osm:relation:7145389",
-            "sourceId": "osm",
-            "name": "بني عيسى",
-            "aliases": [
-              "Beni Aissa"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية مطماطة الجديدة",
-            "contextAliases": [
-              "Délégation Nouvelle Matmata",
-              "معتمدية مطماطة الجديدة"
-            ],
-            "governorateId": 347,
-            "lat": 33.660595,
-            "lng": 9.881841,
-            "delegationId": 1023,
-            "hasBoundary": true,
-            "bbox": [
-              9.807792,
-              33.571815,
-              9.959215,
-              33.749055
-            ],
-            "areaKm2": 133.26512613720965
+            "areaKm2": 244.6237495865523
           }
         },
         "preservedRawSource": 1023,
@@ -41137,6 +41150,35 @@
             ],
             "areaKm2": 38.649817076967395
           },
+          "osm:way:176000340": {
+            "id": "osm:way:176000340",
+            "sourceId": "osm",
+            "name": "ديار بن سالم",
+            "aliases": [
+              "Diar Ben Salem"
+            ],
+            "kind": "residential",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Diar Ben Salem",
+              "Délégation Beni Khiar",
+              "ديار بن سالم",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.511438,
+            "lng": 10.802282,
+            "delegationId": 460,
+            "hasBoundary": true,
+            "bbox": [
+              10.797189,
+              36.507325,
+              10.80765,
+              36.51631
+            ],
+            "areaKm2": 0.3266502045733793
+          },
           "osm:way:176000341": {
             "id": "osm:way:176000341",
             "sourceId": "osm",
@@ -41166,6 +41208,89 @@
               36.54787
             ],
             "areaKm2": 0.8709552943982057
+          },
+          "osm:relation:7103012": {
+            "id": "osm:relation:7103012",
+            "sourceId": "osm",
+            "name": "حلفة",
+            "aliases": [
+              "Halfa"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.578193,
+            "lng": 10.712443,
+            "delegationId": 459,
+            "hasBoundary": true,
+            "bbox": [
+              10.685768,
+              36.559449,
+              10.747808,
+              36.596706
+            ],
+            "areaKm2": 11.267188458433031
+          },
+          "osm:way:174740047": {
+            "id": "osm:way:174740047",
+            "sourceId": "osm",
+            "name": "المعمورة",
+            "aliases": [
+              "Maâmoura"
+            ],
+            "kind": "residential",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "El Maamoura",
+              "المعمورة",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.463385,
+            "lng": 10.805036,
+            "delegationId": 460,
+            "hasBoundary": true,
+            "bbox": [
+              10.798175,
+              36.455933,
+              10.812269,
+              36.471267
+            ],
+            "areaKm2": 1.547068466531967
+          },
+          "osm:relation:7102855": {
+            "id": "osm:relation:7102855",
+            "sourceId": "osm",
+            "name": "ديار بن سالم",
+            "aliases": [
+              "Diar Ben Salem"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية بني خيار",
+            "contextAliases": [
+              "Béni Khiar",
+              "Délégation Beni Khiar",
+              "معتمدية بني خيار"
+            ],
+            "governorateId": 350,
+            "lat": 36.504351,
+            "lng": 10.798,
+            "delegationId": 460,
+            "hasBoundary": true,
+            "bbox": [
+              10.76126,
+              36.486053,
+              10.821013,
+              36.52278
+            ],
+            "areaKm2": 11.575104541410985
           },
           "osm:way:97396877": {
             "id": "osm:way:97396877",
@@ -41224,33 +41349,6 @@
             ],
             "areaKm2": 11.770145046566963
           },
-          "osm:relation:7102855": {
-            "id": "osm:relation:7102855",
-            "sourceId": "osm",
-            "name": "ديار بن سالم",
-            "aliases": [
-              "Diar Ben Salem"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية بني خيار",
-            "contextAliases": [
-              "Béni Khiar",
-              "Délégation Beni Khiar",
-              "معتمدية بني خيار"
-            ],
-            "governorateId": 350,
-            "lat": 36.504351,
-            "lng": 10.798,
-            "delegationId": 460,
-            "hasBoundary": true,
-            "bbox": [
-              10.76126,
-              36.486053,
-              10.821013,
-              36.52278
-            ],
-            "areaKm2": 11.575104541410985
-          },
           "osm:relation:7103009": {
             "id": "osm:relation:7103009",
             "sourceId": "osm",
@@ -41277,91 +41375,6 @@
               36.566397
             ],
             "areaKm2": 33.20706196077058
-          },
-          "osm:relation:7103012": {
-            "id": "osm:relation:7103012",
-            "sourceId": "osm",
-            "name": "حلفة",
-            "aliases": [
-              "Halfa"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية بني خيار",
-            "contextAliases": [
-              "Béni Khiar",
-              "Délégation Beni Khiar",
-              "معتمدية بني خيار"
-            ],
-            "governorateId": 350,
-            "lat": 36.578193,
-            "lng": 10.712443,
-            "delegationId": 459,
-            "hasBoundary": true,
-            "bbox": [
-              10.685768,
-              36.559449,
-              10.747808,
-              36.596706
-            ],
-            "areaKm2": 11.267188458433031
-          },
-          "osm:way:176000340": {
-            "id": "osm:way:176000340",
-            "sourceId": "osm",
-            "name": "ديار بن سالم",
-            "aliases": [
-              "Diar Ben Salem"
-            ],
-            "kind": "residential",
-            "parentName": "معتمدية بني خيار",
-            "contextAliases": [
-              "Béni Khiar",
-              "Diar Ben Salem",
-              "Délégation Beni Khiar",
-              "ديار بن سالم",
-              "معتمدية بني خيار"
-            ],
-            "governorateId": 350,
-            "lat": 36.511438,
-            "lng": 10.802282,
-            "delegationId": 460,
-            "hasBoundary": true,
-            "bbox": [
-              10.797189,
-              36.507325,
-              10.80765,
-              36.51631
-            ],
-            "areaKm2": 0.3266502045733793
-          },
-          "osm:way:174740047": {
-            "id": "osm:way:174740047",
-            "sourceId": "osm",
-            "name": "المعمورة",
-            "aliases": [
-              "Maâmoura"
-            ],
-            "kind": "residential",
-            "parentName": "معتمدية بني خيار",
-            "contextAliases": [
-              "Béni Khiar",
-              "Délégation Beni Khiar",
-              "El Maamoura",
-              "المعمورة",
-              "معتمدية بني خيار"
-            ],
-            "governorateId": 350,
-            "lat": 36.463385,
-            "lng": 10.805036,
-            "delegationId": 460,
-            "hasBoundary": true,
-            "bbox": [
-              10.798175,
-              36.455933,
-              10.812269,
-              36.471267
-            ],
-            "areaKm2": 1.547068466531967
           }
         },
         "preservedRawSource": 460,
@@ -41419,6 +41432,32 @@
           }
         ],
         "protectedMetadata": {
+          "osm:relation:7189438": {
+            "id": "osm:relation:7189438",
+            "sourceId": "osm",
+            "name": "تيبار",
+            "aliases": [
+              "Tibar"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية تيبار",
+            "contextAliases": [
+              "Délégation Tibar",
+              "معتمدية تيبار"
+            ],
+            "governorateId": 356,
+            "lat": 36.528105,
+            "lng": 9.121965,
+            "delegationId": 516,
+            "hasBoundary": true,
+            "bbox": [
+              9.058241,
+              36.50875,
+              9.170241,
+              36.54754
+            ],
+            "areaKm2": 30.88826931704252
+          },
           "osm:way:278951683": {
             "id": "osm:way:278951683",
             "sourceId": "osm",
@@ -41474,84 +41513,6 @@
             ],
             "areaKm2": 30.028512929339485
           },
-          "osm:relation:7189438": {
-            "id": "osm:relation:7189438",
-            "sourceId": "osm",
-            "name": "تيبار",
-            "aliases": [
-              "Tibar"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية تيبار",
-            "contextAliases": [
-              "Délégation Tibar",
-              "معتمدية تيبار"
-            ],
-            "governorateId": 356,
-            "lat": 36.528105,
-            "lng": 9.121965,
-            "delegationId": 516,
-            "hasBoundary": true,
-            "bbox": [
-              9.058241,
-              36.50875,
-              9.170241,
-              36.54754
-            ],
-            "areaKm2": 30.88826931704252
-          },
-          "osm:relation:7189425": {
-            "id": "osm:relation:7189425",
-            "sourceId": "osm",
-            "name": "النشيمة",
-            "aliases": [
-              "En-Nechima"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية تيبار",
-            "contextAliases": [
-              "Délégation Tibar",
-              "معتمدية تيبار"
-            ],
-            "governorateId": 356,
-            "lat": 36.57249,
-            "lng": 9.087046,
-            "delegationId": 516,
-            "hasBoundary": true,
-            "bbox": [
-              9.067611,
-              36.54237,
-              9.12257,
-              36.6025
-            ],
-            "areaKm2": 19.199638022616195
-          },
-          "osm:relation:7189445": {
-            "id": "osm:relation:7189445",
-            "sourceId": "osm",
-            "name": "دجبة",
-            "aliases": [
-              "Djebba"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية تيبار",
-            "contextAliases": [
-              "Délégation Tibar",
-              "معتمدية تيبار"
-            ],
-            "governorateId": 356,
-            "lat": 36.480995,
-            "lng": 9.115037,
-            "delegationId": 516,
-            "hasBoundary": true,
-            "bbox": [
-              9.075354,
-              36.45188,
-              9.161269,
-              36.51066
-            ],
-            "areaKm2": 34.322889404284915
-          },
           "osm:way:609966860": {
             "id": "osm:way:609966860",
             "sourceId": "osm",
@@ -41579,6 +41540,58 @@
               36.485167
             ],
             "areaKm2": 0.03979182288783873
+          },
+          "osm:relation:7189445": {
+            "id": "osm:relation:7189445",
+            "sourceId": "osm",
+            "name": "دجبة",
+            "aliases": [
+              "Djebba"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية تيبار",
+            "contextAliases": [
+              "Délégation Tibar",
+              "معتمدية تيبار"
+            ],
+            "governorateId": 356,
+            "lat": 36.480995,
+            "lng": 9.115037,
+            "delegationId": 516,
+            "hasBoundary": true,
+            "bbox": [
+              9.075354,
+              36.45188,
+              9.161269,
+              36.51066
+            ],
+            "areaKm2": 34.322889404284915
+          },
+          "osm:relation:7189425": {
+            "id": "osm:relation:7189425",
+            "sourceId": "osm",
+            "name": "النشيمة",
+            "aliases": [
+              "En-Nechima"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية تيبار",
+            "contextAliases": [
+              "Délégation Tibar",
+              "معتمدية تيبار"
+            ],
+            "governorateId": 356,
+            "lat": 36.57249,
+            "lng": 9.087046,
+            "delegationId": 516,
+            "hasBoundary": true,
+            "bbox": [
+              9.067611,
+              36.54237,
+              9.12257,
+              36.6025
+            ],
+            "areaKm2": 19.199638022616195
           }
         },
         "preservedRawSource": 516,
@@ -41667,39 +41680,12 @@
           }
         ],
         "protectedMetadata": {
-          "osm:relation:7169616": {
-            "id": "osm:relation:7169616",
+          "osm:relation:7164909": {
+            "id": "osm:relation:7164909",
             "sourceId": "osm",
-            "name": "العيون",
+            "name": "توشة",
             "aliases": [
-              "El Ayoun"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية سبالة أولاد عسكر",
-            "contextAliases": [
-              "Cebbala Ouled Asker",
-              "Délégation Cebalet Ouled Asker",
-              "معتمدية سبالة أولاد عسكر"
-            ],
-            "governorateId": 355,
-            "lat": 35.316769,
-            "lng": 9.213206,
-            "delegationId": 575,
-            "hasBoundary": true,
-            "bbox": [
-              9.150073,
-              35.260769,
-              9.266885,
-              35.373939
-            ],
-            "areaKm2": 72.41001482630023
-          },
-          "osm:relation:7164958": {
-            "id": "osm:relation:7164958",
-            "sourceId": "osm",
-            "name": "العيون",
-            "aliases": [
-              "El Ayoun"
+              "Tiwicha"
             ],
             "kind": "sector",
             "parentName": "معتمدية العيون",
@@ -41709,17 +41695,46 @@
               "معتمدية العيون"
             ],
             "governorateId": 362,
-            "lat": 35.53483,
-            "lng": 8.857928,
+            "lat": 35.48391,
+            "lng": 8.947932,
             "delegationId": 579,
             "hasBoundary": true,
             "bbox": [
-              8.775711,
-              35.49804,
-              8.935946,
-              35.57091
+              8.861469,
+              35.42516,
+              9.017764,
+              35.54236
             ],
-            "areaKm2": 70.60716148975733
+            "areaKm2": 116.34420706860571
+          },
+          "osm:way:218369508": {
+            "id": "osm:way:218369508",
+            "sourceId": "osm",
+            "name": "القرين",
+            "aliases": [
+              "El Grine"
+            ],
+            "kind": "residential",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "El Grine",
+              "القرين",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.389656,
+            "lng": 8.859342,
+            "delegationId": 579,
+            "hasBoundary": true,
+            "bbox": [
+              8.857866,
+              35.38758,
+              8.861784,
+              35.391566
+            ],
+            "areaKm2": 0.0642023888178047
           },
           "osm:relation:7164954": {
             "id": "osm:relation:7164954",
@@ -41748,87 +41763,32 @@
             ],
             "areaKm2": 56.28956648192294
           },
-          "osm:way:543781477": {
-            "id": "osm:way:543781477",
+          "osm:relation:7169616": {
+            "id": "osm:relation:7169616",
             "sourceId": "osm",
             "name": "العيون",
             "aliases": [
               "El Ayoun"
             ],
-            "kind": "village",
-            "parentName": "معتمدية العيون",
-            "contextAliases": [
-              "Délégation El Ayoun",
-              "El Ayoun",
-              "العيون",
-              "معتمدية العيون"
-            ],
-            "governorateId": 362,
-            "lat": 35.540705,
-            "lng": 8.883288,
-            "delegationId": 579,
-            "hasBoundary": true,
-            "bbox": [
-              8.879452,
-              35.537452,
-              8.88807,
-              35.54359
-            ],
-            "areaKm2": 0.2935188380899148
-          },
-          "osm:relation:7164951": {
-            "id": "osm:relation:7164951",
-            "sourceId": "osm",
-            "name": "البواجر",
-            "aliases": [
-              "El Baouajer"
-            ],
             "kind": "sector",
-            "parentName": "معتمدية العيون",
+            "parentName": "معتمدية سبالة أولاد عسكر",
             "contextAliases": [
-              "Délégation El Ayoun",
-              "El Ayoun",
-              "معتمدية العيون"
+              "Cebbala Ouled Asker",
+              "Délégation Cebalet Ouled Asker",
+              "معتمدية سبالة أولاد عسكر"
             ],
-            "governorateId": 362,
-            "lat": 35.57768,
-            "lng": 8.841307,
-            "delegationId": 579,
+            "governorateId": 355,
+            "lat": 35.316769,
+            "lng": 9.213206,
+            "delegationId": 575,
             "hasBoundary": true,
             "bbox": [
-              8.758392,
-              35.5435,
-              8.921328,
-              35.61458
+              9.150073,
+              35.260769,
+              9.266885,
+              35.373939
             ],
-            "areaKm2": 69.38454940286692
-          },
-          "osm:relation:7164953": {
-            "id": "osm:relation:7164953",
-            "sourceId": "osm",
-            "name": "البرك",
-            "aliases": [
-              "El Brek"
-            ],
-            "kind": "sector",
-            "parentName": "معتمدية العيون",
-            "contextAliases": [
-              "Délégation El Ayoun",
-              "El Ayoun",
-              "معتمدية العيون"
-            ],
-            "governorateId": 362,
-            "lat": 35.47146,
-            "lng": 8.841217,
-            "delegationId": 579,
-            "hasBoundary": true,
-            "bbox": [
-              8.80048,
-              35.43245,
-              8.887663,
-              35.511
-            ],
-            "areaKm2": 41.402243597792086
+            "areaKm2": 72.41001482630023
           },
           "osm:node:7179613734": {
             "id": "osm:node:7179613734",
@@ -41880,32 +41840,32 @@
             ],
             "areaKm2": 58.46114315591408
           },
-          "osm:relation:7164909": {
-            "id": "osm:relation:7164909",
+          "osm:relation:7154907": {
+            "id": "osm:relation:7154907",
             "sourceId": "osm",
-            "name": "توشة",
+            "name": "العيون",
             "aliases": [
-              "Tiwicha"
+              "El Ayoun"
             ],
             "kind": "sector",
-            "parentName": "معتمدية العيون",
+            "parentName": "معتمدية نفطة",
             "contextAliases": [
-              "Délégation El Ayoun",
-              "El Ayoun",
-              "معتمدية العيون"
+              "Délégation Nefta",
+              "Nefta",
+              "معتمدية نفطة"
             ],
-            "governorateId": 362,
-            "lat": 35.48391,
-            "lng": 8.947932,
-            "delegationId": 579,
+            "governorateId": 352,
+            "lat": 33.675485,
+            "lng": 7.991699,
+            "delegationId": 477,
             "hasBoundary": true,
             "bbox": [
-              8.861469,
-              35.42516,
-              9.017764,
-              35.54236
+              7.847054,
+              33.506932,
+              8.144824,
+              33.87025
             ],
-            "areaKm2": 116.34420706860571
+            "areaKm2": 678.6894079043768
           },
           "osm:way:560461423": {
             "id": "osm:way:560461423",
@@ -41937,61 +41897,114 @@
             ],
             "areaKm2": 0.036345874276352684
           },
-          "osm:way:218369508": {
-            "id": "osm:way:218369508",
+          "osm:relation:7164951": {
+            "id": "osm:relation:7164951",
             "sourceId": "osm",
-            "name": "القرين",
+            "name": "البواجر",
             "aliases": [
-              "El Grine"
+              "El Baouajer"
             ],
-            "kind": "residential",
+            "kind": "sector",
             "parentName": "معتمدية العيون",
             "contextAliases": [
               "Délégation El Ayoun",
               "El Ayoun",
-              "El Grine",
-              "القرين",
               "معتمدية العيون"
             ],
             "governorateId": 362,
-            "lat": 35.389656,
-            "lng": 8.859342,
+            "lat": 35.57768,
+            "lng": 8.841307,
             "delegationId": 579,
             "hasBoundary": true,
             "bbox": [
-              8.857866,
-              35.38758,
-              8.861784,
-              35.391566
+              8.758392,
+              35.5435,
+              8.921328,
+              35.61458
             ],
-            "areaKm2": 0.0642023888178047
+            "areaKm2": 69.38454940286692
           },
-          "osm:relation:7154907": {
-            "id": "osm:relation:7154907",
+          "osm:relation:7164958": {
+            "id": "osm:relation:7164958",
             "sourceId": "osm",
             "name": "العيون",
             "aliases": [
               "El Ayoun"
             ],
             "kind": "sector",
-            "parentName": "معتمدية نفطة",
+            "parentName": "معتمدية العيون",
             "contextAliases": [
-              "Délégation Nefta",
-              "Nefta",
-              "معتمدية نفطة"
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "معتمدية العيون"
             ],
-            "governorateId": 352,
-            "lat": 33.675485,
-            "lng": 7.991699,
-            "delegationId": 477,
+            "governorateId": 362,
+            "lat": 35.53483,
+            "lng": 8.857928,
+            "delegationId": 579,
             "hasBoundary": true,
             "bbox": [
-              7.847054,
-              33.506932,
-              8.144824,
-              33.87025
+              8.775711,
+              35.49804,
+              8.935946,
+              35.57091
             ],
-            "areaKm2": 678.6894079043768
+            "areaKm2": 70.60716148975733
+          },
+          "osm:way:543781477": {
+            "id": "osm:way:543781477",
+            "sourceId": "osm",
+            "name": "العيون",
+            "aliases": [
+              "El Ayoun"
+            ],
+            "kind": "village",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "العيون",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.540705,
+            "lng": 8.883288,
+            "delegationId": 579,
+            "hasBoundary": true,
+            "bbox": [
+              8.879452,
+              35.537452,
+              8.88807,
+              35.54359
+            ],
+            "areaKm2": 0.2935188380899148
+          },
+          "osm:relation:7164953": {
+            "id": "osm:relation:7164953",
+            "sourceId": "osm",
+            "name": "البرك",
+            "aliases": [
+              "El Brek"
+            ],
+            "kind": "sector",
+            "parentName": "معتمدية العيون",
+            "contextAliases": [
+              "Délégation El Ayoun",
+              "El Ayoun",
+              "معتمدية العيون"
+            ],
+            "governorateId": 362,
+            "lat": 35.47146,
+            "lng": 8.841217,
+            "delegationId": 579,
+            "hasBoundary": true,
+            "bbox": [
+              8.80048,
+              35.43245,
+              8.887663,
+              35.511
+            ],
+            "areaKm2": 41.402243597792086
           }
         },
         "preservedRawSource": 579,
@@ -42841,7 +42854,7 @@
           "removed": []
         },
         "counts": {
-          "features": 3482,
+          "features": 3481,
           "updates": 11,
           "geometryUpdates": 0,
           "renamed": 3,
@@ -42851,9 +42864,9 @@
           "pickerGroupCountAfter": 3334
         },
         "hashes": {
-          "beforeMetadataSha256": "16d4fd8c64a07d275821b7af00b2fe422a23078db8c2dc2673941ce12238cb04",
+          "beforeMetadataSha256": "b481b40495190ed4ffca0afb428ef4c449a87adc8f1ae25e6e62175b166e118b",
           "beforeGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
-          "afterMetadataSha256": "b5b4ca0c0d77342b741c5e8a65097ea285a4a8c80bf1525ea92136ae30beb298",
+          "afterMetadataSha256": "f0eb7e564de728ccdfafb73a7eef97abd71f8c411e62c2eda105471406610e90",
           "afterGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
         },
         "touchedGroups": [
@@ -42895,7 +42908,7 @@
           "removed": []
         },
         "counts": {
-          "features": 3482,
+          "features": 3481,
           "updates": 2,
           "geometryUpdates": 0,
           "renamed": 1,
@@ -42905,9 +42918,9 @@
           "pickerGroupCountAfter": 3334
         },
         "hashes": {
-          "beforeMetadataSha256": "b5b4ca0c0d77342b741c5e8a65097ea285a4a8c80bf1525ea92136ae30beb298",
+          "beforeMetadataSha256": "f0eb7e564de728ccdfafb73a7eef97abd71f8c411e62c2eda105471406610e90",
           "beforeGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
-          "afterMetadataSha256": "30110277133722907f8376a3859ddc71faec88d59af52fcf85eed521d52a91a9",
+          "afterMetadataSha256": "7301325e7befe71648a8e63a68940703d9c6b99aab857765f6fddf344017179a",
           "afterGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
         },
         "touchedGroups": [
@@ -42934,7 +42947,7 @@
           "removed": []
         },
         "counts": {
-          "features": 3482,
+          "features": 3481,
           "updates": 1,
           "geometryUpdates": 0,
           "renamed": 0,
@@ -42944,9 +42957,9 @@
           "pickerGroupCountAfter": 3334
         },
         "hashes": {
-          "beforeMetadataSha256": "30110277133722907f8376a3859ddc71faec88d59af52fcf85eed521d52a91a9",
+          "beforeMetadataSha256": "7301325e7befe71648a8e63a68940703d9c6b99aab857765f6fddf344017179a",
           "beforeGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
-          "afterMetadataSha256": "cc1de4682da3b216008b329c5b350a133b0dbe907b4b28aed477761e8704581b",
+          "afterMetadataSha256": "25dc644aa08bba2e1d22240613f6d8d8ea83db400f1582e9fa27d7e4e608d8a0",
           "afterGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
         },
         "touchedGroups": [
@@ -42978,7 +42991,7 @@
           "removed": []
         },
         "counts": {
-          "features": 3482,
+          "features": 3481,
           "updates": 1,
           "geometryUpdates": 0,
           "renamed": 0,
@@ -42988,14 +43001,53 @@
           "pickerGroupCountAfter": 3333
         },
         "hashes": {
-          "beforeMetadataSha256": "cc1de4682da3b216008b329c5b350a133b0dbe907b4b28aed477761e8704581b",
+          "beforeMetadataSha256": "25dc644aa08bba2e1d22240613f6d8d8ea83db400f1582e9fa27d7e4e608d8a0",
           "beforeGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
-          "afterMetadataSha256": "dce183ded4f6a8db5801e7d216a29495046aafd426adccbbc3f8976cc946ed90",
+          "afterMetadataSha256": "f6589f98defdd38e8454c94df61a21eacb005c75218e7a60afb7d9fb7e76a899",
           "afterGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
         },
         "touchedGroups": [
           "osm:node:332247375",
           "osm:relation:7174576"
+        ]
+      },
+      {
+        "revisionId": "bonne-residence-ins-official-arabic-20260924",
+        "scopeNote": "Use the Arabic imada name in the Interior Ministry's official Bardo list, corroborated by the INS RGPH 2024 spelling for sector code 116056 and the OSM relation's matching code and French name. Retain only the supported French search alias; remove the incorrect old Arabic label. Text only: no exclusion, polygon or identity claim, parent change, delegation remap, or boundary accuracy certification.",
+        "changedFields": {
+          "osm:relation:7118028": [
+            "name"
+          ]
+        },
+        "pickerGroupChanges": [],
+        "geometryIDs": [],
+        "renamedIDs": [
+          "osm:relation:7118028"
+        ],
+        "nearestChanges": {},
+        "rawPointDiscrepancies": [],
+        "conflictDiff": {
+          "added": [],
+          "removed": []
+        },
+        "counts": {
+          "features": 3481,
+          "updates": 1,
+          "geometryUpdates": 0,
+          "renamed": 1,
+          "newSources": 0,
+          "displayGroupUpdates": 0,
+          "pickerGroupCountBefore": 3333,
+          "pickerGroupCountAfter": 3333
+        },
+        "hashes": {
+          "beforeMetadataSha256": "f6589f98defdd38e8454c94df61a21eacb005c75218e7a60afb7d9fb7e76a899",
+          "beforeGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+          "afterMetadataSha256": "0f3018c500c377e22ff34ce8b66946a48e764134bd1f8624610a86bf379777f3",
+          "afterGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1"
+        },
+        "touchedGroups": [
+          "osm:relation:7118028"
         ]
       }
     ],
@@ -43003,6 +43055,7 @@
       "osm:relation:7095873",
       "osm:relation:7095947",
       "osm:relation:7096460",
+      "osm:relation:7118028",
       "osm:relation:7145415"
     ]
   },
@@ -43050,8 +43103,8 @@
       }
     ],
     "unchangedGeometrySha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
-    "beforeMetadataSha256": "dce183ded4f6a8db5801e7d216a29495046aafd426adccbbc3f8976cc946ed90",
-    "afterMetadataSha256": "866c43201270401a4972df7d27548508a8f99274be06c655eb7a3fa6988ee78d",
+    "beforeMetadataSha256": "0f3018c500c377e22ff34ce8b66946a48e764134bd1f8624610a86bf379777f3",
+    "afterMetadataSha256": "75322d6eab8acc95201aa80ae46512a82b1900b1e37801e54dcfe92b175287c2",
     "limitations": "Manual representative pin correction only: the target latitude/longitude is either copied from an existing grouped member pin, derived as the representative point of the current target/member boundary intersection, or, in explicit settlement_representative mode, copied from a reviewed point-only settlement member. Default and overlap modes leave polygons, IDs, picker groups and prayer-selection source IDs unchanged. Explicit settlement_representative mode may change the target delegationId to the reviewed nearest available source while leaving identity, polygon and picker group unchanged. This report does not certify or review the target boundary and is not boundary/GPS certification."
   },
   "prayerSelection": {
@@ -68368,6 +68421,7 @@
     "qualification": "Historical display proofs retain their prior prayer-reference context. This section and exported raw delegationId values give current nearest-prayer selection. Final exclusions, when present, remove explicitly reviewed facilities; retained identities and geometry are unchanged. reviewedManualPoints updates current manual-representative pins and any explicit representative source amendment; historical source-change rows retain their original review context.",
     "excludedAfterSelectionIds": [
       "osm:way:106590248",
+      "osm:way:180208886",
       "osm:way:658923544"
     ]
   },

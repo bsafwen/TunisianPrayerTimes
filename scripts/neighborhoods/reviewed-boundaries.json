@@ -2889,6 +2889,96 @@
         "evidenceSha256": "4d9c5a2027762b781bd8f7647b788490e40efc135666706a348a88b8f56d5ba1",
         "uncertainty": "Native shared registration overlap, actual conflicts/gaps retained; no survey or present-day currency certification."
       }
+    },
+    {
+      "id": "isie-best-effort-imada-tunis-souk-jedid-five-boundaries-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "url": "https://www.isie.tn/ar/الدوائر-المحلية/",
+      "file": "official/tunis-souk-jedid-five-boundaries-20260924/candidate-source.geojson",
+      "sha256": "225c7633750678391d0f0adc211f0273bb9baf81e7bb1a0c2ef19e4f467fa92e",
+      "sourceSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "records": [
+        {
+          "id": "isie:sector:115653",
+          "officialCode": "115653",
+          "action": "add",
+          "scopeKind": "best_effort_imada",
+          "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+          "uncertainty": "The ISIE vector repeats on the adjacent Ahmed map, but its large printed label center falls 74 m outside the line. It is an electoral map, not a current surveyed imada boundary.",
+          "aliases": []
+        },
+        {
+          "id": "osm:relation:7201523",
+          "officialCode": "115652",
+          "action": "replace",
+          "scopeKind": "best_effort_imada",
+          "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+          "uncertainty": "The source outline is an electoral-map interpretation; independent PDF registration leaves a tiny Hay overlap and does not certify current ground accuracy.",
+          "aliases": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الرمانة",
+            "name:ar": "الرمانة",
+            "name:fr": "El Romana",
+            "ref:tn:codegeo": "115652"
+          }
+        },
+        {
+          "id": "osm:relation:7201520",
+          "officialCode": "115658",
+          "action": "replace",
+          "scopeKind": "best_effort_imada",
+          "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+          "uncertainty": "The map title and strong fit to the old coded sector identify this path, but no target-name label center is inside it. Small registration overlaps remain.",
+          "aliases": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "أحمد التليلي",
+            "name:ar": "أحمد التليلي",
+            "name:fr": "Ahmed Tlili",
+            "ref:tn:codegeo": "115658"
+          }
+        },
+        {
+          "id": "isie:sector:435958",
+          "officialCode": "435958",
+          "action": "add",
+          "scopeKind": "best_effort_imada",
+          "geometryMethod": "Native ISIE GeoPDF red line-only continuous explicitly closed vector path on circonscription_isie2023, georeferenced through embedded GeoPDF controls; no raster tracing or geometry repair.",
+          "uncertainty": "The label is inside the native ISIE outline and the same outline recurs on the neighbor map. This is an electoral map, not a current cadastral survey.",
+          "aliases": []
+        },
+        {
+          "id": "osm:relation:7169675",
+          "officialCode": "435955",
+          "action": "replace",
+          "scopeKind": "best_effort_imada",
+          "geometryMethod": "Pinned 2026-09-05 OSM الرميلية polygon minus the native ISIE أولاد الفالح candidate, computed in EPSG:32632 and transformed to WGS84; mixed-source derived geometry.",
+          "uncertainty": "This is a derived split of an old OSM polygon, not the native ISIE الرميلية outline. It differs from that outline by about 3.19 km²; nine components include small registration fragments. It avoids material new overlaps with unchanged app neighbors but is not surveyed accuracy.",
+          "aliases": [],
+          "expectedOriginalTags": {
+            "admin_level": "6",
+            "boundary": "administrative",
+            "name": "الرميلية",
+            "name:ar": "الرميلية",
+            "name:fr": "Erremelia",
+            "ref:tn:codegeo": "435955"
+          }
+        }
+      ],
+      "review": {
+        "reviewedDate": "2026-09-24",
+        "geometryEdition": 2023,
+        "geometryPolicy": "Candidate geometry is used exactly as staged or as the stated set difference; no clipping, buffering, snapping, repair or simplification. App 1e-6 quantization is validated and component/hole loss fails staging.",
+        "identityRegistry": "INS official sector codes and code-matched governorate/delegation parents; identity evidence remains subject to human review.",
+        "acceptance": "Staged best-effort imada candidate only; this record does not assert decree-reviewed whole-imada geometry.",
+        "repair": "No automatic geometry repair or topology cleanup. Any derived set operation is recorded per record.",
+        "uncertainty": "These provisional footprints do not certify whole-imada coverage or present-day boundary accuracy. Review the per-record source interpretation and all reported overlaps; runtime conflict handling excludes overlapping sector claims only at their intersections, and gaps are not filled.",
+        "evidenceFile": "official/tunis-souk-jedid-five-boundaries-20260924/source-review.json",
+        "evidenceSha256": "936f5e5a7f336b654426668c54ddb0b80262001465412d6f60b3f96d56d92b20"
+      }
     }
   ],
   "aggregateScopeReview": {
@@ -2896,8 +2986,8 @@
     "sha256": "243efca92415dfc75873cbe4210d6923b6d3a5d359a7bf3bfc2010d899599282"
   },
   "lineageCompatibility": {
-    "file": "official/akla435258-whole-20260920/append-only-lineage-compatibility.json",
-    "sha256": "dd717801a45447b1166a43d9fe3e98602cad1737d1ea475d265a0e40ac707638",
-    "bytes": 4513
+    "file": "official/tunis-souk-jedid-five-boundaries-20260924/append-only-lineage-compatibility.json",
+    "sha256": "0e84b24c6f55a12abc6fa92fb415f1a0df4084fab54fafb8892b2ccc1bbe0f56",
+    "bytes": 6772
   }
 }

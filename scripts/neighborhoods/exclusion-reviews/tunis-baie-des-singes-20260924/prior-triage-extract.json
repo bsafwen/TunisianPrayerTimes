@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "sourceReport": "work/interior-imada-triage-20260924/tunis-latin-name-triage-20260924.json",
+  "sourceReportSha256": "8d08610c2127a3d2d8d103a5dd79f0213e735433e0e88f3f1aa82a051fe00439",
+  "sourceReportAssetPins": {
+    "repo": "C:/Users/barou/Desktop/Workspace/TunisianPrayerTimes",
+    "installedNeighborhoodsJsonSha256": "9940982ec572277c4940c03490c1a523c77cfad9f074138691869b1cc6f3a051",
+    "installedNeighborhoodsBinSha256": "44858cfc2ac13adb09200b94b36d3b01882fea5f830c3031847e5adfd99ba204",
+    "osmAreasSnapshotSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "osmAreasSourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "osmAreasSourcePbfUrl": "https://download.geofabrik.de/africa/tunisia-260905.osm.pbf",
+    "osmAreasSourceTimestamp": "2026-09-05T20:22:06Z",
+    "officialSectorRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+    "officialSectorRegistryPath": "scripts/neighborhoods/touil-reviews/current-official-sector-registry.json",
+    "insSectorWorkbookSources": [
+      {
+        "file": "Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "url": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "resolvedUrl": "https://ins.tn/sites/default/files-ftp3/files/2025-05/Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.225093+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Sun, 01 Jun 2025 15:18:34 GMT",
+          "ETag": "\"8d1a5c-636842926ae2a\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "9247324",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 9247324,
+        "sha256": "70f8f9f872862d6947d08fc1b2775c66cf6b4d114a55f68092e7a4ce70d5d9ae",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Population_Secteur_Age_Sexe_Dynamique.xlsx",
+        "sheet": "Population"
+      },
+      {
+        "file": "Nombre_de_Logements_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20Logements%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:09:54.081090+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:09:53 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:29:42 GMT",
+          "ETag": "\"b8855-6433d8623825d\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "755797",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 755797,
+        "sha256": "c2ab64d030e5737948ac51db8c42eca0665be280724fe3504529fbfa00498831",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_Logements_par_Secteurs.xlsx",
+        "sheet": "Logements"
+      },
+      {
+        "file": "Nombre_de_menages_par_Secteurs.xlsx",
+        "url": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "resolvedUrl": "https://www.ins.tn/sites/default/files-ftp3/files/2025-11/Nombre%20de%20m%C3%A9nages%20par%20Secteurs.xlsx",
+        "retrievedAt": "2026-09-07T06:11:47.271805+00:00",
+        "httpHeaders": {
+          "Date": "Mon, 07 Sep 2026 06:11:46 GMT",
+          "Server": "Apache/2.4.38 (Debian)",
+          "Last-Modified": "Mon, 10 Nov 2025 13:33:52 GMT",
+          "ETag": "\"9ea73-6433d95004ce0\"",
+          "Accept-Ranges": "bytes",
+          "Content-Length": "649843",
+          "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "Connection": "close"
+        },
+        "bytes": 649843,
+        "sha256": "fea29d86630decb32b217be7b3f2fdb8bf5863e5fe9127a2374380714ff60ab1",
+        "localFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\current-official-catalog\\Nombre_de_menages_par_Secteurs.xlsx",
+        "sheet": "Ménages"
+      }
+    ]
+  },
+  "targetEvidence": {
+    "id": "osm:way:128232827",
+    "displayName": "Baie des Singes",
+    "aliases": [],
+    "kind": "residential",
+    "sourceId": "osm",
+    "hasBoundary": true,
+    "parentName": "المرسى الشاطئ",
+    "contextAliases": [
+      "Al Marsa",
+      "Al-Marsa",
+      "Délégation La Marsa",
+      "La Marsa",
+      "La Marsa Plage",
+      "المرسى الشاطئ",
+      "معتمدية المرسى"
+    ],
+    "governorateId": 342,
+    "prayerDelegationId": 386,
+    "appMetadata": {
+      "lat": 36.916833,
+      "lng": 10.310222,
+      "areaKm2": 0.007401809356934251,
+      "bbox": [
+        10.309523,
+        36.916126,
+        10.311224,
+        36.917446
+      ],
+      "pickerGroupId": "osm:way:128232827"
+    },
+    "osmSource": {
+      "id": "osm:way:128232827",
+      "tags": {
+        "landuse": "residential",
+        "name": "Baie des Singes"
+      },
+      "geometryType": "MultiPolygon",
+      "point": null,
+      "tagsSha256": "4a478cdba6f158317e8c285e97dd4c8aa7e8f4308db13732afde8a6c7dae9c63",
+      "recordSha256": "cd4368e4cf296d94a58f00b991254fee4d86567229be96e83db5b46681968b23"
+    },
+    "administrativeContext": {
+      "delegationCode": "1171",
+      "delegationArabic": "المرسى",
+      "sectorCode": "117151",
+      "sectorArabic": "المرسى الشاطئ",
+      "sectorId": "osm:relation:7062337",
+      "insRegistryRecord": {
+        "governorateCode": "11",
+        "governorateFr": "Tunis",
+        "governorateAr": "تونس",
+        "delegationCode": "1171",
+        "delegationFr": "La marsa",
+        "delegationAr": "المرسى",
+        "sectorCode": "117151",
+        "sectorFr": "La marsa plage",
+        "sectorAr": "المرسى الشاطئ",
+        "sourceRows": {
+          "Population_Secteur_Age_Sexe_Dynamique.xlsx": 5203,
+          "Nombre_de_Logements_par_Secteurs.xlsx": 163,
+          "Nombre_de_menages_par_Secteurs.xlsx": 163
+        }
+      },
+      "osmSectorSnapshot": {
+        "id": "osm:relation:7062337",
+        "tags": {
+          "admin_level": "6",
+          "boundary": "administrative",
+          "name": "المرسى الشاطئ",
+          "name:ar": "المرسى الشاطئ",
+          "name:fr": "La Marsa Plage",
+          "ref:tn:codegeo": "117151"
+        },
+        "tagsSha256": "918e5d124000e530e2049a49282fbe117c7dddc883906aaf974c539777e2adcc",
+        "recordSha256": "2b3a85d94860dc07ba84938b9a1dc527126c04a3a97f64f969e31ca5e2ab4b51",
+        "osmGeometryType": "MultiPolygon",
+        "installedCatalogSourceId": "isie-best-effort-imada-tunis-marsa-beach-20260924"
+      }
+    },
+    "prayerMappingInterpretation": "delegationId 386 resolves to La Marsa (administrative delegation); parentName is the more specific official sector.",
+    "geometryAudit": {
+      "method": "current packed app geometries projected to UTM 32N for area ratios",
+      "targetAreaKm2": 0.007384365844637261,
+      "currentParentIntersectionKm2": 0.007286715449761512,
+      "currentTargetOverlapPercent": 98.67760621656272,
+      "currentParentCoversTarget": false,
+      "parentGeometryId": "osm:relation:7062337",
+      "currentParentSourceId": "isie-best-effort-imada-tunis-marsa-beach-20260924",
+      "rawOsmTargetAreaKm2": 0.007382839861841874,
+      "rawOsmParentCoversTarget": true,
+      "rawOsmTargetOverlapPercent": 100.0
+    },
+    "classification": "retire_unsupported_selectable_neighborhood",
+    "recommendation": "Retire this selectable row unless a locality-specific official or municipal source is produced; do not invent an Arabic transliteration.",
+    "reason": "The OSM object is a valid but tiny landuse=residential polygon tagged only with the Latin name. No Arabic or place=neighbourhood/official_name tag or INS sector identity exists for Baie des Singes; the INS identity of the enclosing sector is 117151 المرسى الشاطئ. Current installed official boundary covers 98.68% of this polygon; the pinned pre-overlay OSM parent geometry covered it fully, so this is an edge difference after the sector geometry update, not evidence that Baie is a separate administrative unit.",
+    "evidenceGap": "A reliable locality source explicitly identifying this polygon as a distinct neighborhood (ideally Arabic name plus map/boundary); a hotel POI result is not that evidence.",
+    "priorEvidence": "Google Maps name search returned a hotel POI. This is weak context only and was not treated as proof that the polygon is the hotel or a legal neighborhood."
+  },
+  "scopeNote": "Copied relevant row from the prior task-work triage. The prior report is the source of the 98.677606% current-sector overlap and 100% overlap against the pinned old OSM relation; this package embeds the source geometry and rechecks these figures."
+}

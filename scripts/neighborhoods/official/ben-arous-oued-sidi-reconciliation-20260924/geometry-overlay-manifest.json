@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "baseBuilder": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/build_current_live_snapshot.py",
+  "sources": [
+    {
+      "id": "isie-sidi-salem-seam-preservation-20260924",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/sidi-salem-preserved-junction.geojson",
+      "geojsonSha256": "2f6958dfb7975029f0e7bbe6c24ff6eefdf5182d93f572dc607e879785d3b7fa",
+      "reviewFile": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/source-review.json",
+      "reviewSha256": "5a868a04e1879ebcd2ea2c03d099d6f77e5e282ac37df05598fcee9de94dca41"
+    }
+  ],
+  "records": [],
+  "clips": [
+    {
+      "id": "osm:relation:7174614",
+      "clipById": "osm:relation:7109196",
+      "sourceId": "osm-isie-reviewed-clip-oued-ezzit-sidi-salem-seam-20260924",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "سيدي سالم القارصي",
+        "aliases": [
+          "Sidi Salem El Garsi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مرناق",
+        "contextAliases": [
+          "Délégation Mornag",
+          "Mornag",
+          "معتمدية مرناق"
+        ],
+        "governorateId": 349,
+        "delegationId": 616,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7174614"
+      },
+      "expectedClipper": {
+        "sourceId": "isie-local-sectors-2023-hammamet-nine-neighbours",
+        "name": "وادي الزيت",
+        "aliases": [
+          "Oued Ezzit",
+          "Oued ezzit"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية زغوان",
+        "contextAliases": [
+          "Délégation Zaghouan",
+          "Zaghouan",
+          "معتمدية زغوان"
+        ],
+        "governorateId": 343,
+        "delegationId": 409,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7109196"
+      },
+      "expectedPackedGeometrySha256": "26a72d34a296c0341b6ee93b7cee5ec67074ed3bb71bd91f847c1f48081f75fc",
+      "expectedClipperGeometrySha256": "407c81633198090ad7d6accdacffe90005a065d59835f822d4ae0305bcf18525",
+      "minRemovedAreaKm2": 0.46,
+      "maxRemovedAreaKm2": 0.48,
+      "minPreservedOverlapKm2": 0.006,
+      "maxPreservedOverlapKm2": 0.0068,
+      "maxPreserveGeometryMismatchM2": 50.0,
+      "preserveBufferGridUnits": 1,
+      "preserveOverlapSource": {
+        "sourceId": "isie-sidi-salem-seam-preservation-20260924",
+        "featureId": "sidi-salem-el-garsi-red-sector-ring"
+      },
+      "crossGovernoratePolicy": "native_governorate_boundary",
+      "crossGovernorateEvidence": [
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/evidence/oued-ezzit.pdf",
+          "sha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/evidence/sidi-salem-el-garsi.pdf",
+          "sha256": "2eb8c032560c328b6e8d2fec370384095c47f7300c0cd23e6d14e5f3135a4b26"
+        }
+      ],
+      "reason": "The paired ISIE maps place the broad installed overlap on the Zaghouan/Oued Ezzit side of the native black governorate line. Remove only the intersection of the installed Sidi Salem polygon with the Oued Ezzit geometry outside the pinned Sidi Salem red-sector ring. Preserve the small source-supported junction overlap, about 0.0064 km2, unresolved for safe runtime conflict suppression.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/source-review.json",
+          "sha256": "5a868a04e1879ebcd2ea2c03d099d6f77e5e282ac37df05598fcee9de94dca41"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/evidence/official-seam-analysis.json",
+          "sha256": "823b79780a3c0638fda8e88dd5436e160162e0632319669b226934d4d3752e48"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/evidence/oued-ezzit.pdf",
+          "sha256": "0a4d25fd54e5efb7d9c7768c4feb549d0cf61c2c6c2624dfe6d5969b1f8ab84b"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/evidence/sidi-salem-el-garsi.pdf",
+          "sha256": "2eb8c032560c328b6e8d2fec370384095c47f7300c0cd23e6d14e5f3135a4b26"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/evidence/sidi-salem-el-garsi-extraction-metadata.json",
+          "sha256": "31ffd24cb938913ce2306d657841be05d330ce355e5b9cd33a464bfc8347f0a0"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/sidi-salem-preserved-junction.geojson",
+          "sha256": "2f6958dfb7975029f0e7bbe6c24ff6eefdf5182d93f572dc607e879785d3b7fa"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/build_preservation_source.py",
+          "sha256": "6ae976a8730e9fc16ca49de4a039a100a6c489c2f0778ea59196d1d7c42cbed4"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/evidence/oued-native-junction-focus.png",
+          "sha256": "6d7c913b54146632dbdd3e5b27780d8a9c3f22751903ebaabb98f03b0a6af772"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/evidence/oued-seam-focus.png",
+          "sha256": "3296b8e55b0064c0bb498ee556ed4c219a18ff46928483c18ec5140ee9fbfbe5"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/evidence/sidi-native-junction-focus.png",
+          "sha256": "7eab4bc63bd537a09df61c43130f7f9c7ea9baccb99d53b7b00c453064485e7f"
+        },
+        {
+          "file": "scripts/neighborhoods/official/ben-arous-oued-sidi-reconciliation-20260924/evidence/sidi-seam-focus.png",
+          "sha256": "a4c147b6b12765e12109754c749891b14f0180a0eadcd97d99a90ba1c04f2b01"
+        }
+      ]
+    }
+  ]
+}

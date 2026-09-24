@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "caseId": "bouchoucha-way-180208886-20260924",
+  "decision": {
+    "action": "exclude the residential member from the active locality catalog",
+    "excludedId": "osm:way:180208886",
+    "survivingId": "osm:relation:7118029",
+    "pickerGroupMembersBefore": [
+      "osm:relation:7118029",
+      "osm:way:180208886"
+    ],
+    "pickerGroupMembersAfter": [
+      "osm:relation:7118029"
+    ],
+    "pickerGroupCountBefore": 3333,
+    "pickerGroupCountAfter": 3333,
+    "rawFeatureCountBefore": 3482,
+    "rawFeatureCountAfter": 3481,
+    "scope": "Remove only the residential way. Preserve the same-governorate sector, its polygon, both source identities as history, and all unrelated locality data."
+  },
+  "sourcePbf": {
+    "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\tunisia-260905.osm.pbf",
+    "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "provider": "OpenStreetMap contributors / Geofabrik",
+    "url": "https://download.geofabrik.de/africa/tunisia-260905.osm.pbf",
+    "timestamp": "2026-09-05T20:22:06Z"
+  },
+  "candidateFeature": {
+    "id": "osm:way:180208886",
+    "nameAr": "بوشوشة",
+    "nameEn": "Bouchoucha",
+    "kind": "residential",
+    "sourceId": "osm",
+    "governorateId": 342,
+    "delegationId": 394,
+    "pickerGroupId": "osm:relation:7118029",
+    "hasBoundary": true,
+    "offset": 5376156,
+    "length": 180,
+    "geometrySliceSha256": "728ab50e6cbef2e0d1cae5fa3deae6e631ad6f397834f5192811c2733490ff5d"
+  },
+  "survivingSector": {
+    "id": "osm:relation:7118029",
+    "nameAr": "بوشوشة",
+    "aliases": [
+      "Bouchoucha"
+    ],
+    "kind": "sector",
+    "sourceId": "osm",
+    "governorateId": 342,
+    "delegationId": 394,
+    "pickerGroupId": "osm:relation:7118029",
+    "hasBoundary": true,
+    "geometrySliceSha256": "2eb00a1a6852b6751152ca43190f405d1f07e4c585506aa085a8a01d42c34416",
+    "featureSha256": "e829f84ce863afa6ae9a5ee2ac1a31879cb54045dc4355f8e9c1488ae234a22a"
+  },
+  "spatialComparison": {
+    "evidenceFile": "exclusion-reviews/bouchoucha-way-180208886-20260924/geometry-comparison.json",
+    "candidateAreaOverlapPercent": {
+      "osm:relation:7118028": 96.85285350987438,
+      "osm:relation:7118029": 1.115204616853704
+    },
+    "interpretation": "The residential polygon aligns almost entirely with relation 7118028 and barely overlaps the Bouchoucha sector 7118029. These comparisons support excluding the residential feature, not transferring its geometry or certifying sector boundaries."
+  },
+  "nativeMapsReview": {
+    "provider": "Google Maps native area",
+    "device": "emulator-5556",
+    "taskProvidedVisualReview": "The native Bouchoucha area visually matches the northern official sector osm:relation:7118029.",
+    "mapGeometryUsed": false,
+    "geometryWasCopied": false,
+    "boundaryVerificationClaim": false,
+    "supportingPhoneLedger": {
+      "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\targeted-phone-snapshots\\osm_relation_7118029-2\\ledger.json",
+      "sha256": "5a26a48f78697364ba7fb5b6fda6309091a5507ca6825602cab873ac939758bd",
+      "entryId": "osm:relation:7118029",
+      "entryFingerprint": "70f7f1903286f70fd0ca2e24012a0c13ef9831c8871a85de70d68df39fea8849",
+      "observationTime": "2026-09-19T19:13:57.208945+00:00",
+      "query": "بوشوشة باردو تونس Tunisia",
+      "queryVisibleInUi": true,
+      "publicCardTitles": [
+        "بوشوشة"
+      ],
+      "screenshotReference": "osm_relation_7118029-1.png",
+      "ledgerBoundaryVerified": false
+    },
+    "limitation": "The pinned phone ledger captures a public name/search observation and marks boundaryVerified false. The sector association is the task-provided visual review on emulator-5556; no Google geometry is stored or used."
+  },
+  "preservation": {
+    "packedGeometryFileSha256": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "survivingSectorGeometrySha256Unchanged": true,
+    "otherRowsAreNotRetargeted": true,
+    "babSaadounChanged": false
+  },
+  "catalogUpdateHashRebase": {
+    "reason": "The final exclusion runs before reviewed catalog updates, so removing one raw feature changes each active revision base catalog hash.",
+    "activeRevisionManifest": "reviewed-catalog-updates.json",
+    "revisions": [
+      {
+        "revisionId": "sahib-amazir-names-20260921-medina-entry-retirement",
+        "oldBaseMetadataSha256": "16d4fd8c64a07d275821b7af00b2fe422a23078db8c2dc2673941ce12238cb04",
+        "newBaseMetadataSha256": "b481b40495190ed4ffca0afb428ef4c449a87adc8f1ae25e6e62175b166e118b",
+        "oldAfterMetadataSha256": "b5b4ca0c0d77342b741c5e8a65097ea285a4a8c80bf1525ea92136ae30beb298",
+        "newAfterMetadataSha256": "f0eb7e564de728ccdfafb73a7eef97abd71f8c411e62c2eda105471406610e90",
+        "expectedFeatureHashesRecomputed": true,
+        "changedFieldsPreserved": true,
+        "renamedIdsPreserved": true,
+        "updateIdsAndValuesPreserved": true,
+        "geometryHashUnchanged": true,
+        "featureCount": 3481
+      },
+      {
+        "revisionId": "haouaria-quibli-name-20260921-medina-entry-retirement",
+        "oldBaseMetadataSha256": "b5b4ca0c0d77342b741c5e8a65097ea285a4a8c80bf1525ea92136ae30beb298",
+        "newBaseMetadataSha256": "f0eb7e564de728ccdfafb73a7eef97abd71f8c411e62c2eda105471406610e90",
+        "oldAfterMetadataSha256": "30110277133722907f8376a3859ddc71faec88d59af52fcf85eed521d52a91a9",
+        "newAfterMetadataSha256": "7301325e7befe71648a8e63a68940703d9c6b99aab857765f6fddf344017179a",
+        "expectedFeatureHashesRecomputed": true,
+        "changedFieldsPreserved": true,
+        "renamedIdsPreserved": true,
+        "updateIdsAndValuesPreserved": true,
+        "geometryHashUnchanged": true,
+        "featureCount": 3481
+      },
+      {
+        "revisionId": "mourouj5-parent-delegation-20260924",
+        "oldBaseMetadataSha256": "30110277133722907f8376a3859ddc71faec88d59af52fcf85eed521d52a91a9",
+        "newBaseMetadataSha256": "7301325e7befe71648a8e63a68940703d9c6b99aab857765f6fddf344017179a",
+        "oldAfterMetadataSha256": "cc1de4682da3b216008b329c5b350a133b0dbe907b4b28aed477761e8704581b",
+        "newAfterMetadataSha256": "25dc644aa08bba2e1d22240613f6d8d8ea83db400f1582e9fa27d7e4e608d8a0",
+        "expectedFeatureHashesRecomputed": true,
+        "changedFieldsPreserved": true,
+        "renamedIdsPreserved": true,
+        "updateIdsAndValuesPreserved": true,
+        "geometryHashUnchanged": true,
+        "featureCount": 3481
+      },
+      {
+        "revisionId": "mourouj5-display-group-20260924",
+        "oldBaseMetadataSha256": "cc1de4682da3b216008b329c5b350a133b0dbe907b4b28aed477761e8704581b",
+        "newBaseMetadataSha256": "25dc644aa08bba2e1d22240613f6d8d8ea83db400f1582e9fa27d7e4e608d8a0",
+        "oldAfterMetadataSha256": "dce183ded4f6a8db5801e7d216a29495046aafd426adccbbc3f8976cc946ed90",
+        "newAfterMetadataSha256": "f6589f98defdd38e8454c94df61a21eacb005c75218e7a60afb7d9fb7e76a899",
+        "expectedFeatureHashesRecomputed": true,
+        "changedFieldsPreserved": true,
+        "renamedIdsPreserved": true,
+        "updateIdsAndValuesPreserved": true,
+        "geometryHashUnchanged": true,
+        "featureCount": 3481
+      }
+    ],
+    "manualPointsBaseMetadataSha256": {
+      "before": "dce183ded4f6a8db5801e7d216a29495046aafd426adccbbc3f8976cc946ed90",
+      "after": "f6589f98defdd38e8454c94df61a21eacb005c75218e7a60afb7d9fb7e76a899"
+    },
+    "manualPointDecisionsAndEvidenceChanged": false,
+    "reviewedDecisionValuesChanged": false,
+    "geometrySha256BeforeAndAfter": "daa6a02848078697f1b5ff71002e6797f5081c6cf2365369b44d530c06bc2fb1",
+    "method": "Replay each existing accepted text/display revision on the newly excluded baseline, recompute only catalog/feature hash pins and accepted review digest fields, and verify its changed field map, renamed IDs, update IDs/values, and geometry remain unchanged."
+  }
+}

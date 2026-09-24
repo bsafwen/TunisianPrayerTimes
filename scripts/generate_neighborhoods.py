@@ -185,6 +185,8 @@ from pathlib import Path
 
 _final_exclusion_HEX = set("0123456789abcdef")
 _final_exclusion_KINDS = {"residential", "quarter", "neighbourhood"}
+_final_exclusion_KEYS = {"id", "expectedFeature", "expectedGeometrySha256", "reason", "evidence"}
+_final_exclusion_GROUP_SURVIVOR_KEY = "expectedPickerGroupSurvivorSha256"
 
 def _final_exclusion_sha_ok(value):
     return isinstance(value, str) and len(value) == 64 and all(c in _final_exclusion_HEX for c in value)
@@ -198,6 +200,10 @@ def _final_exclusion_file_sha(path):
         return h.hexdigest()
     except OSError as exc:
         raise ValueError(f"cannot read evidence file {path!r}") from exc
+
+def _final_exclusion_feature_sha(feature):
+    data = json.dumps(feature, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(data).hexdigest()
 
 def _final_exclusion_need(cond, msg):
     if not cond:
@@ -229,7 +235,10 @@ def apply_final_exclusions(result, blob, selection_report, manifest_path):
     seen = set()
     info = []
     for i, ex in enumerate(exclusions):
-        _final_exclusion_need(isinstance(ex, dict) and set(ex) == {"id", "expectedFeature", "expectedGeometrySha256", "reason", "evidence"}, f"manifest.exclusions[{i}] has wrong keys")
+        _final_exclusion_need(
+            isinstance(ex, dict) and (set(ex) == _final_exclusion_KEYS
+                                      or set(ex) == _final_exclusion_KEYS | {_final_exclusion_GROUP_SURVIVOR_KEY}),
+            f"manifest.exclusions[{i}] has wrong keys")
         eid = ex["id"]
         _final_exclusion_need(isinstance(eid, str) and eid, f"manifest.exclusions[{i}].id must be a nonempty string")
         _final_exclusion_need(not eid.startswith("delegation:") and eid not in seen, f"duplicate exclusion id {eid!r}")
@@ -239,6 +248,9 @@ def apply_final_exclusions(result, blob, selection_report, manifest_path):
         _final_exclusion_need(isinstance(ex["reason"], str) and ex["reason"].strip(), f"exclusion {eid!r}.reason must be nonempty")
         geom = ex["expectedGeometrySha256"]
         _final_exclusion_need(geom is None or _final_exclusion_sha_ok(geom), f"exclusion {eid!r}.expectedGeometrySha256 must be 64 lowercase hex or null")
+        survivor_sha = ex.get(_final_exclusion_GROUP_SURVIVOR_KEY)
+        _final_exclusion_need(survivor_sha is None or _final_exclusion_sha_ok(survivor_sha),
+                              f"exclusion {eid!r}.{_final_exclusion_GROUP_SURVIVOR_KEY} must be 64 lowercase hex")
         ev = ex["evidence"]
         _final_exclusion_need(isinstance(ev, list) and ev, f"exclusion {eid!r}.evidence must be a list")
         refs = []
@@ -259,7 +271,7 @@ def apply_final_exclusions(result, blob, selection_report, manifest_path):
             _final_exclusion_need(_final_exclusion_sha_ok(digest), f"exclusion {eid!r}.evidence[{j}].sha256 must be 64 lowercase hex")
             _final_exclusion_need(_final_exclusion_file_sha(ep) == digest, f"exclusion {eid!r} evidence sha256 mismatch: {rel!r}")
             refs.append({"file": rel, "sha256": digest})
-        info.append((eid, expected, geom, refs))
+        info.append((eid, expected, geom, refs, survivor_sha))
     _final_exclusion_need(isinstance(result.get("features"), list), "result.features must be a list")
     _final_exclusion_need(isinstance(result.get("cells"), dict), "result.cells must be an object")
     _final_exclusion_need(isinstance(result.get("conflicts"), list), "result.conflicts must be a list")
@@ -275,7 +287,9 @@ def apply_final_exclusions(result, blob, selection_report, manifest_path):
     retired = result["retiredLocalityIds"]
     _final_exclusion_need(all(isinstance(x, str) and x for x in retired), "result.retiredLocalityIds must contain nonempty strings")
     retired_set = set(retired)
-    for eid, expected, geom, refs in info:
+    excluded_ids = set(seen)
+    excluded_group_members = []
+    for eid, expected, geom, refs, survivor_sha in info:
         _final_exclusion_need(eid not in retired_set, f"exclusion id {eid!r} is already retired")
         _final_exclusion_need(eid in id_to_idx, f"exclusion id {eid!r} is not present in result.features")
         row = features[id_to_idx[eid]]
@@ -283,9 +297,38 @@ def apply_final_exclusions(result, blob, selection_report, manifest_path):
         _final_exclusion_need(row.get("sourceId") == "osm", f"exclusion {eid!r} sourceId must be osm")
         kind = row.get("kind")
         _final_exclusion_need(isinstance(kind, str) and kind in _final_exclusion_KINDS, f"exclusion {eid!r} kind must be residential, quarter, or neighbourhood")
-        _final_exclusion_need(row.get("pickerGroupId") == eid, f"exclusion {eid!r} pickerGroupId must equal id")
-        members = [f for f in features if f.get("pickerGroupId") == eid]
-        _final_exclusion_need(len(members) == 1 and members[0].get("id") == eid, f"exclusion {eid!r} is not the only picker group member")
+        group_id = row.get("pickerGroupId")
+        if group_id == eid:
+            _final_exclusion_need(survivor_sha is None,
+                                  f"singleton exclusion {eid!r} cannot pin a group survivor")
+            members = [f for f in features if f.get("pickerGroupId") == eid]
+            _final_exclusion_need(len(members) == 1 and members[0].get("id") == eid,
+                                  f"exclusion {eid!r} is not the only picker group member")
+        else:
+            _final_exclusion_need(kind == "residential",
+                                  f"grouped exclusion {eid!r} must be a residential member")
+            _final_exclusion_need(survivor_sha is not None,
+                                  f"grouped exclusion {eid!r} requires a pinned picker group survivor")
+            _final_exclusion_need(isinstance(group_id, str) and group_id.startswith("osm:relation:"),
+                                  f"grouped exclusion {eid!r} survivor must be an OSM relation")
+            _final_exclusion_need(group_id not in excluded_ids,
+                                  f"grouped exclusion {eid!r} cannot exclude its group survivor")
+            _final_exclusion_need(group_id in id_to_idx,
+                                  f"grouped exclusion {eid!r} survivor is missing")
+            survivor = features[id_to_idx[group_id]]
+            members = [f for f in features if f.get("pickerGroupId") == group_id]
+            _final_exclusion_need(
+                len(members) == 2 and sorted(f.get("id") for f in members) == sorted((eid, group_id)),
+                f"grouped exclusion {eid!r} must be the only noncanonical member of its two-feature picker group")
+            _final_exclusion_need(
+                survivor.get("id") == group_id and survivor.get("pickerGroupId") == group_id
+                and survivor.get("sourceId") == "osm" and survivor.get("kind") == "sector"
+                and survivor.get("hasBoundary") is True
+                and survivor.get("governorateId") == row.get("governorateId"),
+                f"grouped exclusion {eid!r} survivor must be a same-governorate canonical OSM sector")
+            _final_exclusion_need(_final_exclusion_feature_sha(survivor) == survivor_sha,
+                                  f"grouped exclusion {eid!r} survivor differs from reviewed feature")
+            excluded_group_members.append({"id": eid, "groupId": group_id, "survivingId": group_id})
         hb = row.get("hasBoundary")
         _final_exclusion_need(type(hb) is bool, f"exclusion {eid!r} hasBoundary must be boolean")
         if hb:
@@ -297,7 +340,6 @@ def apply_final_exclusions(result, blob, selection_report, manifest_path):
             _final_exclusion_need(hashlib.sha256(bview[off:off + length]).hexdigest() == geom, f"exclusion {eid!r} geometry sha256 mismatch")
         else:
             _final_exclusion_need(geom is None, f"exclusion {eid!r} point requires null expectedGeometrySha256")
-    excluded_ids = set(seen)
     old_to_new = {}
     new_features = []
     for old, f in enumerate(features):
@@ -366,7 +408,8 @@ def apply_final_exclusions(result, blob, selection_report, manifest_path):
     report = {
         "manifestSha256": hashlib.sha256(mbytes).hexdigest(),
         "excludedIds": sorted(excluded_ids),
-        "evidenceReferences": [ref for _, _, _, refs in info for ref in refs],
+        "excludedPickerGroupMembers": excluded_group_members,
+        "evidenceReferences": [ref for _, _, _, refs, _ in info for ref in refs],
         "geometryBytesPreserved": True,
     }
     return new_result, new_selection_report, report
@@ -380,6 +423,21 @@ def _selection_require(condition, message):
 def _selection_ref(directory, reference, label):
     _selection_require(isinstance(reference, dict) and set(reference) == {'file', 'sha256'}, label + ' reference')
     return aggregate_review_file(directory, reference, label)
+
+
+def _selection_identity_ref(directory, reference, label):
+    if label != 'reviewedBoundaries':
+        return _selection_ref(directory, reference, label)
+    _selection_require(isinstance(reference, dict) and set(reference) == {'file', 'sha256'},
+                       label + ' reference')
+    active_path = (directory / reference['file']).resolve()
+    _selection_require(active_path.is_relative_to(directory.resolve()), label + ' reference escapes source directory')
+    try:
+        active_sha = hashlib.sha256(active_path.read_bytes()).hexdigest()
+    except OSError as exc:
+        raise ValueError('Prayer selection successor: unable to read ' + label + ' manifest') from exc
+    return load_reviewed_boundary_manifest_for_lineage(
+        directory, reference, active_path, {'manifestSha256': active_sha})
 
 
 def _selection_changes(rows, available):
@@ -424,7 +482,7 @@ def prayer_selection_review(directory):
     _selection_require(isinstance(identity, dict) and set(identity) == {
         'municipalSources', 'curation', 'reviewedBoundaries', 'reviewedPickerGroups'}, 'identity input inventory')
     for key, ref in identity.items():
-        _selection_ref(directory, ref, key)
+        _selection_identity_ref(directory, ref, key)
     old = json.loads(loaded['baselineCoordinates'])
     _selection_require(isinstance(old, dict) and 'selectionSuccessor' not in old
                        and isinstance(old.get('corrections'), list) and len(old['corrections']) == 48, 'baseline corrections')
@@ -530,8 +588,10 @@ def load_prayer_selection_successor(manifest_path, runtime_governors, assets, so
     _selection_require(set(identity_input_paths) == set(review['identityInputs']), 'identity path keys')
     for key, path in identity_input_paths.items():
         ref = review['identityInputs'][key]
-        _selection_require(Path(path).resolve() == (directory / ref['file']).resolve()
-                           and hashlib.sha256(Path(path).read_bytes()).hexdigest() == ref['sha256'], 'identity path changed: ' + key)
+        resolved_path = Path(path).resolve()
+        _selection_require(resolved_path == (directory / ref['file']).resolve(), 'identity path changed: ' + key)
+        _selection_require(resolved_path == (directory / ref['file']).resolve()
+                           and hashlib.sha256(resolved_path.read_bytes()).hexdigest() == ref['sha256'], 'identity path changed: ' + key)
     old_governors = json.loads(context['loaded']['baselineGovernors'])['gouvernorats']
     proposed = copy.deepcopy(old_governors)
     by_id = {d['id']: (g, d) for g in proposed for d in g['delegations']}
@@ -905,14 +965,17 @@ def load_reviewed_boundary_manifest_for_lineage(directory, reference, reviewed_b
             scope_kind = record.get('scopeKind', 'whole_imada')
             if (not isinstance(record_id, str) or not record_id or record_id in new_record_ids or record_id in old_record_ids
                     or record.get('action') not in ('replace', 'add')
-                    or scope_kind not in ('whole_imada', 'exhaustive_electoral_parts')
+                    or scope_kind not in ('whole_imada', 'exhaustive_electoral_parts', 'best_effort_imada')
                     or (scope_kind == 'exhaustive_electoral_parts' and not has_aggregate_successor)):
                 raise ValueError('new source record id/action/scopeKind invalid')
             new_record_ids.add(record_id)
             if scope_kind == 'whole_imada':
                 whole_record_ids.append(record_id)
-            else:
+            elif scope_kind == 'exhaustive_electoral_parts':
                 aggregate_record_ids.append(record_id)
+            else:
+                # best_effort_imada adds no decree-scope successor record.
+                pass
     if has_aggregate_successor and not aggregate_record_ids: raise ValueError('aggregateScopeSuccessor requires at least one new aggregate id')
     active_exclusions = {'sources', 'administrativeScopeReview', 'lineageCompatibility'}
     previous_exclusions = {'sources', 'administrativeScopeReview', 'lineageCompatibility'}
@@ -1012,7 +1075,7 @@ def load_reviewed_boundaries(manifest_path, areas, source_sha256):
         if norm(record['imadaName']) != norm(circle_name):
             raise ValueError(f'Administrative circle name correspondence needs review: {identifier}')
         scope_records[identifier] = record
-    whole_ids, aggregate_ids = set(), set()
+    whole_ids, aggregate_ids, best_effort_ids = set(), set(), set()
     for source in manifest['sources']:
         for record in source.get('records', []):
             scope_kind = record.get('scopeKind', 'whole_imada')
@@ -1020,10 +1083,14 @@ def load_reviewed_boundaries(manifest_path, areas, source_sha256):
                 whole_ids.add(record.get('id'))
             elif scope_kind == 'exhaustive_electoral_parts':
                 aggregate_ids.add(record.get('id'))
+            elif scope_kind == 'best_effort_imada':
+                best_effort_ids.add(record.get('id'))
             else:
                 raise ValueError('Unknown reviewed boundary administrative scope kind')
     if whole_ids & aggregate_ids:
         raise ValueError('Boundary cannot have both whole-circle and aggregate scope')
+    if (whole_ids | aggregate_ids) & best_effort_ids:
+        raise ValueError('Boundary cannot have both reviewed and best-effort scope')
     expected_ids = whole_ids
     if set(scope_records) != expected_ids:
         raise ValueError('Administrative scope review inventory needs review')
@@ -1070,6 +1137,11 @@ def load_reviewed_boundaries(manifest_path, areas, source_sha256):
                 or not isinstance(collection.get('features'), list)
                 or len(collection['features']) != len(records)):
             raise ValueError('Unexpected reviewed boundary feature count')
+        if any(isinstance(record, dict) and record.get('scopeKind') == 'best_effort_imada' for record in records):
+            review = source.get('review')
+            uncertainty = review.get('uncertainty') if isinstance(review, dict) else None
+            if not isinstance(uncertainty, str) or not clean(uncertainty):
+                raise ValueError('Best-effort boundary source needs a nonempty uncertainty note')
         features = {feature.get('id'): feature for feature in collection['features']}
         if len(features) != len(records) or set(features) != {record.get('id') for record in records}:
             raise ValueError('Reviewed boundary identity inventory mismatch')
@@ -1083,6 +1155,7 @@ def load_reviewed_boundaries(manifest_path, areas, source_sha256):
             feature = features[identifier]
             properties = feature.get('properties', {})
             is_aggregate = identifier in aggregate_records
+            is_best_effort = identifier in best_effort_ids
             if (feature.get('type') != 'Feature' or properties.get('sourceId') != source['id']
                     or (not is_aggregate and (not properties.get('sourcePdfURL', '').startswith('https://www.isie.tn/')
                                              or not re.fullmatch(r'[0-9a-f]{64}', properties.get('sourcePdfSha256', ''))))):
@@ -1093,9 +1166,13 @@ def load_reviewed_boundaries(manifest_path, areas, source_sha256):
                     or properties.get('delegationCode') != code[:4]
                     or properties.get('governorateCode') != code[:2]):
                 raise ValueError('Reviewed official boundary codes disagree')
-            scope_record = aggregate_records[identifier] if is_aggregate else scope_records[identifier]
-            if (scope_record.get('officialCode') != code
-                    or scope_record.get('boundarySourceSha256') != source['sha256']):
+            # Best-effort imports keep the shared identity/geometry checks but
+            # intentionally make no per-record decree-scope claim.
+            scope_record = (aggregate_records[identifier] if is_aggregate else
+                            scope_records[identifier] if not is_best_effort else None)
+            if (not is_best_effort and
+                    (scope_record.get('officialCode') != code
+                     or scope_record.get('boundarySourceSha256') != source['sha256'])):
                 raise ValueError('Administrative scope review identity or boundary source changed')
             if code in seen_codes:
                 raise ValueError(f'Duplicate reviewed official boundary code: {code}')

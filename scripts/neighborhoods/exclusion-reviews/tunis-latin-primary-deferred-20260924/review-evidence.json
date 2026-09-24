@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "deferred_unresolved_from_first_release",
+  "reviewedDate": "2026-09-24",
+  "scope": "Tunis governorate only. These optional OSM rows are withheld pending defensible names/identity evidence; they are not Ministry imadas.",
+  "sourcePins": {
+    "installedNeighborhoodsJsonSha256": "9ebbf34d964ea31e0b09c8ba3bfa547893d9121e9302d9e4b2c2ec6da7a22e97",
+    "installedNeighborhoodsBinSha256": "12529d03b2ea39ecc85f0bc63e067ff7744cb842a3daee28029dfdb37f5b5755",
+    "installedRetiredLocalitiesSha256": "d5d494ffa0511a1400c27561741a2c5ac105dac8de3d5dc1debf5780e9346aa2",
+    "pinnedOsmAreasSha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+    "sourcePbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+    "priorTriageSha256": "8d08610c2127a3d2d8d103a5dd79f0213e735433e0e88f3f1aa82a051fe00439"
+  },
+  "records": [
+    {
+      "id": "osm:way:1188266987",
+      "status": "unresolved_deferred",
+      "currentName": "B HAMZA",
+      "reason": "OSM has only landuse=residential and a Latin name. The extent is not identity proof and about 2.83% falls outside current official Attar sector 116454. The Google search was an unrelated doctor POI. This does not prove the locality is absent.",
+      "evidenceGap": "An authoritative Arabic/locality name and a map or boundary tying that name to this exact polygon, including its edge relationship to Attar 116454."
+    },
+    {
+      "id": "osm:way:1363528887",
+      "status": "unresolved_deferred",
+      "currentName": "Cité Essalem",
+      "reason": "OSM tags a small Latin-named residential polygon with official_name=Cité Essalem, but the feature is fully covered by the official INS sector حي السلام, code 115958. Existing evidence cannot resolve whether this is a distinct informal locality or a residential subset. This does not prove the locality is absent.",
+      "evidenceGap": "A municipal or other authoritative source identifying Cité Essalem as a distinct locality and clarifying its Arabic name or relation to sector 115958."
+    },
+    {
+      "id": "osm:node:10044670149",
+      "status": "unresolved_deferred",
+      "currentName": "Cité el Bank",
+      "reason": "OSM explicitly tags place=neighbourhood but supplies only a Latin name and a single point, with no neighborhood polygon. INS identifies only containing sector سيدي عمر, code 117056. This does not prove the locality is absent.",
+      "evidenceGap": "An authoritative Arabic locality name source and, if polygon-based GPS reliability is required, a reviewed neighborhood boundary."
+    }
+  ],
+  "administrativeAndPrayerScope": "parentName and the cited INS sector are administrative context; app delegationId is the nearest prayer/meteo delegation and must not be treated as proof of administrative parent or locality identity.",
+  "priorMapEvidence": "Google Maps searches returned unrelated doctor, housing-complex/residential-area, or bank POIs. They are not locality-boundary evidence and do not resolve these records."
+}

@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted_for_name_only_projection",
+  "reviewedDate": "2026-09-24",
+  "scope": "Tunis governorate only: 14 Ministry-primary display name corrections for app sectors linked by OSM code and INS parent.",
+  "policy": "Change only name and aliases. Preserve each previous Arabic primary spelling as a search alias; deduplicate aliases while retaining their order. Preserve IDs, geometry, parent, governorate, source, picker group, and prayer-source delegation.",
+  "sourcePins": {
+    "ministryToInsCrosswalk": {
+      "path": "work/interior-imada-audit-20260924/ministry_to_ins_crosswalk.csv",
+      "sha256": "d9f033773a7020927e7121fbeb5d86ee91f749e172e0cdf74932265b1f060380",
+      "retrievedDate": "2026-09-24"
+    },
+    "insRegistry": {
+      "path": "scripts/neighborhoods/catalog-updates/haouaria-quibli-name-20260921/evidence/current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+      "dataset": "INS RGPH 2024 sector registry"
+    },
+    "osmAreas": {
+      "path": "work/geo/osm-areas.json",
+      "sha256": "346a79dca9013b427cf7ce4e11fb31ca03fa575ee7a68c865701c463c504a1ce",
+      "pbfSha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd",
+      "codeTag": "ref:tn:codegeo"
+    },
+    "currentOverlayBeforeNameCorrections": {
+      "path": "android-app/app/src/main/assets/neighborhoods.json",
+      "sha256": "6dddbc57ecdd86755777fb19ea4be72c687f9b1282fc7d0bb406e1a8fae7cbf9",
+      "builderOutputSha256": "6dddbc57ecdd86755777fb19ea4be72c687f9b1282fc7d0bb406e1a8fae7cbf9",
+      "binarySha256": "8c0c1a6c5d2bc310dae01a487a47ed5967449f8826730959bdbcb0afdfb5c94e"
+    }
+  },
+  "acceptedMappings": [
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "قرطاج",
+      "ministryName": "قرطاج بيرصا",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "115153",
+      "insDelegation": "قرطاج",
+      "insName": "قرطاج بيرصا",
+      "appId": "osm:relation:7116451",
+      "previousName": "قرطاج بيرصة",
+      "previousAliases": [
+        "Carthage Byrsa",
+        "قرطاج بيرصا"
+      ],
+      "parentName": "قرطاج",
+      "sourceId": "isie-local-sectors-2023-carthage",
+      "prayerDelegationId": 387,
+      "pickerGroupId": "osm:relation:7116451",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "e90bbe7714c165a5f6c9f2d6296efa6aefaa1755faf57ee90e111064e174af10",
+      "expectedOsmCodegeo": "115153"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "المنزه",
+      "ministryName": "غرة جوان",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "115851",
+      "insDelegation": "المنزه",
+      "insName": "غرة جوان",
+      "appId": "osm:relation:7201543",
+      "previousName": "جوان 01",
+      "previousAliases": [
+        "01 Juin",
+        "يونيو 1",
+        "جوان 1"
+      ],
+      "parentName": "معتمدية المنزه",
+      "sourceId": "osm",
+      "prayerDelegationId": 391,
+      "pickerGroupId": "osm:relation:7201543",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "81aaf936612db2c52557b12b551a11ced9d25cb674a0b23a7ee45ce35ef45e44",
+      "expectedOsmCodegeo": "115851"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "حي الخضراء",
+      "ministryName": "علي البلهوان",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "115955",
+      "insDelegation": "حي الخضراء",
+      "insName": "علي البلهوان",
+      "appId": "osm:relation:7201238",
+      "previousName": "علي بلهوان",
+      "previousAliases": [
+        "Ali Belhouane"
+      ],
+      "parentName": "معتمدية حي الخضراء",
+      "sourceId": "osm",
+      "prayerDelegationId": 389,
+      "pickerGroupId": "osm:relation:7201238",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "bbf6a24093578bccc5aacd366a66f86ea8f04c2f575125a01df85ade7f6f7074",
+      "expectedOsmCodegeo": "115955"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "باردو",
+      "ministryName": "باردو الشمالي",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "116052",
+      "insDelegation": "باردو",
+      "insName": "باردو الشمالي",
+      "appId": "osm:relation:7118021",
+      "previousName": "باردو الشمالية",
+      "previousAliases": [
+        "Bardo Nord"
+      ],
+      "parentName": "معتمدية باردو",
+      "sourceId": "osm",
+      "prayerDelegationId": 394,
+      "pickerGroupId": "osm:relation:7118021",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "dd8cda559d692004e4f86bdf692bdc1baf0b43784a9de0dbb2553702c348a56d",
+      "expectedOsmCodegeo": "116052"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "باردو",
+      "ministryName": "باردو الجنوبي",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "116053",
+      "insDelegation": "باردو",
+      "insName": "باردو الجنوبي",
+      "appId": "osm:relation:7118026",
+      "previousName": "باردو الجنوبية",
+      "previousAliases": [
+        "Bardo Sud"
+      ],
+      "parentName": "معتمدية باردو",
+      "sourceId": "osm",
+      "prayerDelegationId": 396,
+      "pickerGroupId": "osm:relation:7118026",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "95321880b17b414dc4082a0db6f2b7fe84a86d23942ec4182429757871fae4a6",
+      "expectedOsmCodegeo": "116053"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "باردو",
+      "ministryName": "قصر السعيد الثاني",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "116060",
+      "insDelegation": "باردو",
+      "insName": "قصر السعيد الثاني",
+      "appId": "osm:relation:7118032",
+      "previousName": "قصر سعيد 2",
+      "previousAliases": [
+        "Ksar - Said 2"
+      ],
+      "parentName": "معتمدية باردو",
+      "sourceId": "osm",
+      "prayerDelegationId": 534,
+      "pickerGroupId": "osm:relation:7118032",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "ee849011a5ff258fdba2ff5291748b569673d9b55d862f6a919f7b39d19ce0fc",
+      "expectedOsmCodegeo": "116060"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "باردو",
+      "ministryName": "ابن سيناء",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "116064",
+      "insDelegation": "باردو",
+      "insName": "إبن سيناء",
+      "appId": "osm:relation:7118033",
+      "previousName": "ابن سينا",
+      "previousAliases": [
+        "Ibn Sina"
+      ],
+      "parentName": "معتمدية باردو",
+      "sourceId": "osm",
+      "prayerDelegationId": 534,
+      "pickerGroupId": "osm:relation:7118033",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "b0894f3156f82c461940a01793f0f974eb305deb770495434cb12532b4365c3c",
+      "expectedOsmCodegeo": "116064"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "سيدي حسين",
+      "ministryName": "مغيرة انزال",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "116457",
+      "insDelegation": "سيدي حسين",
+      "insName": "مغيرة إنزال",
+      "appId": "osm:relation:7201655",
+      "previousName": "المغيرة إنزال",
+      "previousAliases": [
+        "Meghiret Inzel"
+      ],
+      "parentName": "معتمدية سيدي حسين",
+      "sourceId": "osm",
+      "prayerDelegationId": 398,
+      "pickerGroupId": "osm:relation:7201655",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "e8a851830273cb07e8f1b68c9bbbe402e52ccde3b8b11a12d7ae0152db20503d",
+      "expectedOsmCodegeo": "116457"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "الكبارية",
+      "ministryName": "ابن سيناء(1)",
+      "ministryToInsStatus": "safe_orthographic_or_direction_variant_same_parent",
+      "insCode": "116656",
+      "insDelegation": "الكبارية",
+      "insName": "إبن سينا 1",
+      "appId": "osm:relation:7202751",
+      "previousName": "ابن سينا 1",
+      "previousAliases": [
+        "Ibn Sina 1",
+        "إبن سينا 1"
+      ],
+      "parentName": "الكبارية",
+      "sourceId": "osm",
+      "prayerDelegationId": 400,
+      "pickerGroupId": "osm:relation:7202751",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "d53d09cf805bfbe635ee61df069e335c6bf03f53eb6a9dd1c68bbd4d0e0a700d",
+      "expectedOsmCodegeo": "116656"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "الكبارية",
+      "ministryName": "ابن سيناء(2)",
+      "ministryToInsStatus": "safe_orthographic_or_direction_variant_same_parent",
+      "insCode": "116657",
+      "insDelegation": "الكبارية",
+      "insName": "إبن سينا 2",
+      "appId": "osm:relation:7202756",
+      "previousName": "ابن سينا 2",
+      "previousAliases": [
+        "Ibn Sina 2",
+        "إبن سينا 2"
+      ],
+      "parentName": "الكبارية",
+      "sourceId": "osm",
+      "prayerDelegationId": 400,
+      "pickerGroupId": "osm:relation:7202756",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "cdd85636455475f008549b759ba2617c1e3971f9ad750644a277aa29f1032c91",
+      "expectedOsmCodegeo": "116657"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "حلق الوادي",
+      "ministryName": "حلق الوادي كازينو",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "116952",
+      "insDelegation": "حلق الوادي",
+      "insName": "حلق الوادي كازينو",
+      "appId": "osm:relation:7117889",
+      "previousName": "حلق الوادي الكازينو",
+      "previousAliases": [
+        "La Goulette Casino"
+      ],
+      "parentName": "معتمدية حلق الوادي",
+      "sourceId": "isie-local-sectors-2023-la-goulette",
+      "prayerDelegationId": 388,
+      "pickerGroupId": "osm:relation:7117889",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "592af541d4f99c3b0f3356ece76d53b66ecd4084421c0934595e341242c7d314",
+      "expectedOsmCodegeo": "116952"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "المرسى",
+      "ministryName": "المرسى المدينة",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "117152",
+      "insDelegation": "المرسى",
+      "insName": "المرسى المدينة",
+      "appId": "osm:relation:7062770",
+      "previousName": "المرسى مدينة",
+      "previousAliases": [
+        "La Marsa Medina",
+        "المرسى المدينة"
+      ],
+      "parentName": "معتمدية المرسى",
+      "sourceId": "osm",
+      "prayerDelegationId": 386,
+      "pickerGroupId": "osm:relation:7062770",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "bbcbf2bbbca421cd684f67dfecfbb81c431010ad17b288c6acceb10bd06bdb75",
+      "expectedOsmCodegeo": "117152"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "المرسى",
+      "ministryName": "المرسى الحدائق",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "117153",
+      "insDelegation": "المرسى",
+      "insName": "المرسى الحدائق",
+      "appId": "osm:relation:7062740",
+      "previousName": "المرسى حدائق",
+      "previousAliases": [
+        "La Marsa Hadayek",
+        "المرسى الحدائق"
+      ],
+      "parentName": "معتمدية المرسى",
+      "sourceId": "osm",
+      "prayerDelegationId": 386,
+      "pickerGroupId": "osm:relation:7062740",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "1f7fd2a9db32b702dc8172704cdb863df8a1b61446e92f2014b6bea3283d7982",
+      "expectedOsmCodegeo": "117153"
+    },
+    {
+      "governorate": "تونس",
+      "governorateId": 342,
+      "ministryDelegation": "المرسى",
+      "ministryName": "المرسى الرياض",
+      "ministryToInsStatus": "exact_governorate_delegation_name",
+      "insCode": "117154",
+      "insDelegation": "المرسى",
+      "insName": "المرسى الرياض",
+      "appId": "osm:relation:7062769",
+      "previousName": "مرسى الرياض",
+      "previousAliases": [
+        "La Marsa Erriadh"
+      ],
+      "parentName": "معتمدية المرسى",
+      "sourceId": "osm",
+      "prayerDelegationId": 386,
+      "pickerGroupId": "osm:relation:7062769",
+      "geometryHasBoundary": true,
+      "packedGeometrySha256": "973beb8a047a3227d31607a2e46232500568e776ca8211bee2126fdc77c06de3",
+      "expectedOsmCodegeo": "117154"
+    }
+  ],
+  "preservedDistinctIdentities": [
+    {
+      "insCode": "116152",
+      "appId": "osm:relation:7201551",
+      "name": "علي البلهوان",
+      "aliases": [
+        "Ali Belhouane"
+      ],
+      "parentName": "معتمدية السيجومي",
+      "governorateId": 342,
+      "sourceId": "osm",
+      "prayerDelegationId": 403,
+      "pickerGroupId": "osm:relation:7201551",
+      "expectedOsmCodegeo": "116152",
+      "packedGeometrySha256": "431ef0066a2973b481e609c24604617cc3599139782a7c4e6ecf86be3aed66f8"
+    }
+  ],
+  "limitations": [
+    "Name and code/parent correspondence are reviewed; this review does not re-certify geometry or administrative boundary accuracy."
+  ]
+}
