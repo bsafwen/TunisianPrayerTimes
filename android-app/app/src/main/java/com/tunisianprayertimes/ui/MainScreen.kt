@@ -738,6 +738,7 @@ fun MainScreen(
                             .padding(top = 12.dp, bottom = 10.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalArrangement = Arrangement.spacedBy(8.dp),
+                        itemVerticalAlignment = Alignment.CenterVertically,
                     ) {
                         Text(
                             text = stringResource(R.string.prayer_page_title),
@@ -1692,7 +1693,7 @@ private fun LocationPickerCard(
                 Text(
                     text = selectedLocation.name
                         ?: if (selectedLocation.fromGps) stringResource(R.string.location_current_position)
-                        else savedDelegation?.displayName()
+                        else savedDelegation?.nomAr
                         ?: stringResource(R.string.hint_search_delegation),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
@@ -4375,7 +4376,7 @@ private fun WakeAlarmCard(
     var alarmPendingDeletion by remember { mutableStateOf<PrayerWakeConfig?>(null) }
     val displayState = wakeAlarmDisplayState(wakeAlarms)
     val loadedWakeAlarms = displayState.visibleWakeAlarms
-    val nextAlarm = remember(loadedWakeAlarms, delegationId) {
+    val nextAlarm = remember(loadedWakeAlarms, delegationId, nowMillis) {
         loadedWakeAlarms
             .mapNotNull { alarm ->
                 nextWakeAlarmTrigger(context, delegationId, alarm)?.let { trigger ->
@@ -4690,41 +4691,120 @@ private fun WakeNextAlarmPanel(
             .fillMaxWidth()
             .heightIn(min = MainHeroCardHeight)
             .clip(shape)
-            .background(
-                Brush.linearGradient(
-                    colors = listOf(GreenPrimaryDark, GreenPrimary),
-                    start = Offset(0f, 0f),
-                    end = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
-                )
-            )
+            .background(Brush.horizontalGradient(listOf(GreenPrimary, GreenPrimaryDark)))
             .border(BorderStroke(1.dp, Gold.copy(alpha = 0.24f)), shape),
     ) {
-        Column(
+        Image(
+            painter = painterResource(R.drawable.prayer_hero_background),
+            contentDescription = null,
+            contentScale = ContentScale.Crop,
+            alignment = AbsoluteAlignment.CenterLeft,
+            modifier = Modifier.matchParentSize(),
+        )
+        BoxWithConstraints(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 18.dp, vertical = 15.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
+                .padding(horizontal = 17.dp, vertical = 13.dp)
+                .heightIn(min = 122.dp),
         ) {
-            Text(
-                text = stringResource(R.string.wake_alarm_next_title),
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White.copy(alpha = 0.78f),
+            val sideBySide = maxWidth >= 270.dp && LocalDensity.current.fontScale <= 1.3f
+            WakeNextAlarmDetails(
+                timeText = formatTimeOfDay(trigger.triggerAtMillis),
+                dateText = formatWakeAlarmDate(trigger.triggerAtMillis),
+                summaryText = summaryText,
+                modifier = if (sideBySide) {
+                    Modifier.width(maxWidth * 0.55f).align(Alignment.TopStart)
+                } else {
+                    Modifier.fillMaxWidth().align(Alignment.TopStart)
+                },
             )
+        }
+    }
+}
+
+@Composable
+private fun WakeNextAlarmDetails(
+    timeText: String,
+    dateText: String,
+    summaryText: String,
+    modifier: Modifier = Modifier,
+) {
+    val largeText = LocalDensity.current.fontScale > 1.3f
+    val alarmIconSize = 34.dp
+    val alarmTextInset = alarmIconSize + 8.dp
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        Text(
+            text = stringResource(R.string.wake_alarm_next_title),
+            fontSize = 12.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = Color.White.copy(alpha = 0.78f),
+            modifier = Modifier.padding(start = alarmTextInset),
+        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(alarmIconSize)
+                    .clip(CircleShape)
+                    .background(Gold.copy(alpha = 0.22f))
+                    .border(BorderStroke(1.dp, Gold.copy(alpha = 0.55f)), CircleShape),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_tab_alarms),
+                    contentDescription = null,
+                    tint = Color(0xFFFFD479),
+                    modifier = Modifier.size(22.dp),
+                )
+            }
             Text(
-                text = formatWakeAlarmDateTime(trigger.triggerAtMillis),
-                fontSize = 23.sp,
+                text = timeText,
+                fontSize = 29.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
-                lineHeight = 30.sp,
+                maxLines = 1,
+                softWrap = false,
+                autoSize = if (largeText) null else TextAutoSize.StepBased(maxFontSize = 29.sp),
+                style = TextStyle(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
             )
+        }
+        Text(
+            text = dateText,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Medium,
+            color = Color.White.copy(alpha = 0.9f),
+            maxLines = 2,
+            modifier = Modifier.padding(start = alarmTextInset),
+        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(50))
+                .background(Color.White.copy(alpha = 0.91f))
+                .padding(horizontal = 10.dp, vertical = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
             Text(
                 text = summaryText,
-                fontSize = 13.sp,
-                color = Color.White.copy(alpha = 0.82f),
-                lineHeight = 18.sp,
-                maxLines = 3,
+                fontSize = 12.sp,
+                lineHeight = 16.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = GreenPrimaryDark,
+                maxLines = if (largeText) Int.MAX_VALUE else 3,
                 overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(1f),
+            )
+            Icon(
+                painter = painterResource(R.drawable.ic_adhkar_bell),
+                contentDescription = null,
+                tint = Gold,
+                modifier = Modifier.size(16.dp),
             )
         }
     }
@@ -4876,7 +4956,7 @@ private fun NextPrayerHeroCard(
                 NextPrayerHeroVerse(
                     modifier = Modifier
                         .width(maxWidth * 0.45f)
-                        .padding(bottom = 18.dp)
+                        .padding(bottom = 4.dp)
                         .align(Alignment.BottomEnd),
                 )
             } else {
@@ -4914,6 +4994,9 @@ private fun NextPrayerHeroDetails(
     modifier: Modifier = Modifier,
 ) {
     val largeText = LocalDensity.current.fontScale > 1.3f
+    val prayerIconSize = 34.dp
+    val prayerIconSpacing = 8.dp
+    val prayerTextInset = prayerIconSize + prayerIconSpacing
     val iconRes = when (prayer) {
         Prayer.FAJR, Prayer.DHUHR, Prayer.ASR -> R.drawable.ic_adhkar_sun
         Prayer.MAGHRIB, Prayer.ISHA -> R.drawable.ic_adhkar_moon
@@ -4928,19 +5011,21 @@ private fun NextPrayerHeroDetails(
             fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
             color = Color.White.copy(alpha = 0.78f),
+            modifier = Modifier.padding(start = prayerTextInset),
         )
         PhoneStatusNotice(
             isPhoneSilenced = isPhoneSilenced,
             hasDnd = hasDnd,
             silenceReason = silenceReason,
+            modifier = Modifier.padding(start = prayerTextInset),
         )
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            horizontalArrangement = Arrangement.spacedBy(prayerIconSpacing),
         ) {
             Box(
                 modifier = Modifier
-                    .size(34.dp)
+                    .size(prayerIconSize)
                     .clip(CircleShape)
                     .background(Color.White.copy(alpha = 0.13f)),
                 contentAlignment = Alignment.Center,
@@ -4967,6 +5052,7 @@ private fun NextPrayerHeroDetails(
             fontSize = 15.sp,
             fontWeight = FontWeight.SemiBold,
             color = Color.White.copy(alpha = 0.9f),
+            modifier = Modifier.padding(start = prayerTextInset),
         )
         Row(
             modifier = Modifier
@@ -5404,6 +5490,10 @@ private fun WakeAlarmRow(
     val isRepeatingAlarm = wakeConfig.isRepeatingWakeAlarm()
     val isSkipPending = wakeConfig.hasPendingWakeOccurrenceSkip(nowMillis)
     val showSkipNextAction = isRepeatingAlarm && (isSkipPending || (enabled && nextAlarmMillis != null))
+    val skipActionDescription = stringResource(
+        if (isSkipPending) R.string.wake_alarm_undo_skip_next else R.string.wake_alarm_skip_next,
+    )
+    val deleteActionDescription = stringResource(R.string.wake_alarm_delete_action)
     val alarmDisplayName = wakeAlarmDisplayName(wakeConfig)
     val summaryText = wakeSummaryText(alarmDisplayName, wakeConfig)
     val wakeCheckChip = stringResource(R.string.wake_alarm_feature_wake_check)
@@ -5441,7 +5531,6 @@ private fun WakeAlarmRow(
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 Row(
-                    verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     Text(
@@ -5449,11 +5538,16 @@ private fun WakeAlarmRow(
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
                         color = GreenPrimaryDark,
+                        maxLines = if (LocalDensity.current.fontScale > 1.3f) Int.MAX_VALUE else 2,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f, fill = false).alignByBaseline(),
                     )
                     Text(
                         text = alarmName,
                         fontSize = 11.sp,
                         color = TextMuted,
+                        maxLines = 1,
+                        modifier = Modifier.alignByBaseline(),
                     )
                 }
                 Text(
@@ -5484,53 +5578,69 @@ private fun WakeAlarmRow(
                     }
                 }
 
-                if (showSkipNextAction) {
-                    TextButton(
-                        onClick = onSkipNext,
-                        contentPadding = PaddingValues(horizontal = 4.dp, vertical = 0.dp),
-                        modifier = Modifier.testTag(TestTags.wakeAlarmSkipNextButton(wakeConfig.id)),
-                    ) {
-                        Text(
-                            text = stringResource(
-                                if (isSkipPending) R.string.wake_alarm_undo_skip_next
-                                else R.string.wake_alarm_skip_next,
-                            ),
-                            color = GreenPrimaryDark,
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight.SemiBold,
-                        )
-                    }
-                }
             }
 
             Column(
-                horizontalAlignment = Alignment.End,
+                horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 Switch(
                     checked = enabled,
                     onCheckedChange = onEnabledChange,
-                    modifier = Modifier.testTag(TestTags.wakeAlarmEnabledSwitch(wakeConfig.id)),
-                )
-
-                OutlinedButton(
-                    onClick = onDeleteRequest,
-                    shape = RoundedCornerShape(9.dp),
-                    border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.45f)),
-                    colors = ButtonDefaults.outlinedButtonColors(
-                        containerColor = SilenceRed.copy(alpha = 0.06f),
-                        contentColor = SilenceRed,
-                    ),
-                    contentPadding = PaddingValues(0.dp),
                     modifier = Modifier
-                        .testTag(TestTags.wakeAlarmDeleteButton(wakeConfig.id))
-                        .size(36.dp),
+                        .heightIn(min = 48.dp)
+                        .testTag(TestTags.wakeAlarmEnabledSwitch(wakeConfig.id))
+                        .semantics { contentDescription = alarmName },
+                )
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    Icon(
-                        painter = painterResource(R.drawable.ic_delete),
-                        contentDescription = stringResource(R.string.wake_alarm_delete_action),
-                        modifier = Modifier.size(16.dp),
-                    )
+                    if (showSkipNextAction) {
+                        OutlinedButton(
+                            onClick = onSkipNext,
+                            shape = RoundedCornerShape(10.dp),
+                            border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.35f)),
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                containerColor = GreenPrimary.copy(alpha = 0.07f),
+                                contentColor = GreenPrimaryDark,
+                            ),
+                            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 0.dp),
+                            modifier = Modifier
+                                .heightIn(min = 48.dp)
+                                .testTag(TestTags.wakeAlarmSkipNextButton(wakeConfig.id))
+                                .semantics { contentDescription = skipActionDescription },
+                        ) {
+                            Text(
+                                text = stringResource(
+                                    if (isSkipPending) R.string.wake_alarm_undo_skip_next_short
+                                    else R.string.wake_alarm_skip_next_short,
+                                ),
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.SemiBold,
+                            )
+                        }
+                    }
+                    OutlinedButton(
+                        onClick = onDeleteRequest,
+                        shape = RoundedCornerShape(10.dp),
+                        border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.45f)),
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            containerColor = SilenceRed.copy(alpha = 0.06f),
+                            contentColor = SilenceRed,
+                        ),
+                        contentPadding = PaddingValues(0.dp),
+                        modifier = Modifier
+                            .testTag(TestTags.wakeAlarmDeleteButton(wakeConfig.id))
+                            .size(48.dp)
+                            .semantics { contentDescription = deleteActionDescription },
+                    ) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_delete),
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp),
+                        )
+                    }
                 }
             }
         }
@@ -6572,6 +6682,11 @@ private fun formatWakeAlarmOffset(signedOffsetMinutes: Int): String = stringReso
 
 private fun formatWakeAlarmDateTime(timeInMillis: Long): String {
     val formatter = SimpleDateFormat("EEE d MMM - HH:mm", Locale.forLanguageTag("ar-TN-u-nu-latn"))
+    return formatter.format(Date(timeInMillis))
+}
+
+private fun formatWakeAlarmDate(timeInMillis: Long): String {
+    val formatter = SimpleDateFormat("EEE d MMM", Locale.forLanguageTag("ar-TN-u-nu-latn"))
     return formatter.format(Date(timeInMillis))
 }
 
