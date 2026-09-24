@@ -56,7 +56,9 @@ import kotlin.math.abs
 @Composable internal fun DhikrReader(
     activity: AppCompatActivity, state: DhikrState, session: DhikrSession, now: Long,
     onDismiss: () -> Unit, onCount: (Int) -> Unit, onMove: (Int) -> Unit, onSkip: () -> Unit, onRemove: () -> Unit,
-    onTextSize: (Int) -> Unit, onHaptics: (Boolean) -> Unit, onNewSession: () -> Unit, onReminder: () -> Unit,
+    onAddToCollection: () -> Unit, onReorderCollection: () -> Unit,
+    onTextSize: (Int) -> Unit, onHaptics: (Boolean) -> Unit,
+    onNewSession: () -> Unit, onReminder: () -> Unit,
 ) {
     val p = LocalAdhkarPalette.current
     val entry = state.findDhikr(session.itemId) ?: return
@@ -133,6 +135,16 @@ import kotlin.math.abs
                             DropdownMenuItem(leadingIcon = { DhikrIcon(R.drawable.ic_adhkar_next, tint = p.primary, modifier = Modifier.size(20.dp)) },
                                 text = { Text("تخطّي الذكر") },
                                 onClick = { menu = false; onSkip() })
+                            if (session.category != null) DropdownMenuItem(
+                                leadingIcon = { DhikrIcon(R.drawable.ic_adhkar_plus, tint = p.primary, modifier = Modifier.size(20.dp)) },
+                                text = { Text("إضافة ذكر إلى القائمة") },
+                                onClick = { menu = false; onAddToCollection() },
+                                modifier = Modifier.testTag("adhkar_reader_add_to_list"))
+                            if (session.category != null && session.itemIds.size > 1) DropdownMenuItem(
+                                leadingIcon = { DhikrIcon(R.drawable.ic_adhkar_reorder, tint = p.primary, modifier = Modifier.size(20.dp)) },
+                                text = { Text("ترتيب") },
+                                onClick = { menu = false; onReorderCollection() },
+                                modifier = Modifier.testTag("adhkar_reader_reorder_list"))
                             if (canRemove) DropdownMenuItem(
                                 leadingIcon = { DhikrIcon(R.drawable.ic_delete, tint = MaterialTheme.colorScheme.error, modifier = Modifier.size(20.dp)) },
                                 text = { Text("إزالة من القائمة", color = MaterialTheme.colorScheme.error) },
@@ -297,7 +309,7 @@ import kotlin.math.abs
         if (confirmRemove) AlertDialog(onDismissRequest = { confirmRemove = false },
             title = { Text("إزالة الذكر من القائمة؟") },
             text = { Text(if (session.category != null)
-                "سيُزال «" + entry.title + "» من هذه القراءة ومن " + collectionTitle(session.category) + ". يمكنك إضافته لاحقًا من المكتبة."
+                "سيُزال «" + entry.title + "» من هذه القراءة ومن مجموعة " + collectionTitle(session.category) + " فقط. سيبقى متاحًا في مكتبة الأذكار، ويمكنك إضافته إلى المجموعة لاحقًا."
                 else "سيُزال «" + entry.title + "» من هذه القراءة فقط.",
                 color = p.muted) },
             confirmButton = { TextButton(onClick = { confirmRemove = false; onRemove() },

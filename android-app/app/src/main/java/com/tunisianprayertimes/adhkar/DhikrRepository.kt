@@ -90,9 +90,84 @@ class DhikrRepository(context: Context) {
         update { old ->
             val additions = old.collectionAdditions[category].orEmpty().let { if (member) it + id else it - id }
             val removals = old.collectionRemovals[category].orEmpty().let { if (member) it - id else it + id }
+            val order = if (member) old.collectionEntries(category).map { it.id }.let { ids ->
+                if (id in ids) ids else ids + id
+            } else null
             old.copy(
                 collectionAdditions = old.collectionAdditions.updatedWith(category, additions),
                 collectionRemovals = old.collectionRemovals.updatedWith(category, removals),
+                collectionOrders = order?.let { old.collectionOrders + (category to it) } ?: old.collectionOrders,
+            )
+        }
+    }
+    /** Adds a dhikr to the current collection and its active reading list. */
+    fun addToCollectionSession(sessionId: String, id: String) {
+        require(state.value.findDhikr(id) != null)
+        update { old ->
+            val session = old.sessions[sessionId] ?: return@update old
+            val category = session.category ?: return@update old
+            val additions = old.collectionAdditions[category].orEmpty() + id
+            val removals = old.collectionRemovals[category].orEmpty() - id
+            val order = old.collectionEntries(category).map { it.id }.let { ids -> if (id in ids) ids else ids + id }
+            val updatedSession = if (id in session.itemIds) session else session.copy(
+                itemIds = session.itemIds + id,
+                updatedAtMillis = System.currentTimeMillis(),
+            )
+            old.copy(
+                collectionAdditions = old.collectionAdditions.updatedWith(category, additions),
+                collectionRemovals = old.collectionRemovals.updatedWith(category, removals),
+                collectionOrders = old.collectionOrders + (category to order),
+                sessions = old.sessions + (sessionId to updatedSession),
+            )
+        }
+    }
+    /** Moves an entry within its collection and keeps the current reading on the same dhikr. */
+    fun moveCollectionEntry(sessionId: String, id: String, direction: Int) {
+        if (direction != -1 && direction != 1) return
+        update { old ->
+            val session = old.sessions[sessionId] ?: return@update old
+            val category = session.category ?: return@update old
+            val ids = old.collectionEntries(category).map { it.id }.toMutableList()
+            val from = ids.indexOf(id)
+            val to = from + direction
+            if (from < 0 || to !in ids.indices) return@update old
+
+            val moved = ids.removeAt(from)
+            ids.add(to, moved)
+            val idSet = ids.toSet()
+            val updatedSession = session.copy(
+                itemIds = ids,
+                counts = session.counts.filterKeys { it in idSet },
+                index = ids.indexOf(session.itemId).coerceAtLeast(0),
+                skippedIds = session.skippedIds.intersect(idSet),
+                updatedAtMillis = System.currentTimeMillis(),
+            )
+            old.copy(
+                collectionOrders = old.collectionOrders + (category to ids),
+                sessions = old.sessions + (sessionId to updatedSession),
+            )
+        }
+    }
+    /** Saves a drag-reordered collection and preserves the currently selected dhikr. */
+    fun reorderCollection(sessionId: String, orderedIds: List<String>) {
+        update { old ->
+            val session = old.sessions[sessionId] ?: return@update old
+            val category = session.category ?: return@update old
+            val currentIds = old.collectionEntries(category).map { it.id }
+            if (orderedIds.size != currentIds.size || orderedIds.distinct().size != orderedIds.size ||
+                orderedIds.toSet() != currentIds.toSet()) return@update old
+
+            val idSet = orderedIds.toSet()
+            val updatedSession = session.copy(
+                itemIds = orderedIds,
+                counts = session.counts.filterKeys { it in idSet },
+                index = orderedIds.indexOf(session.itemId).coerceAtLeast(0),
+                skippedIds = session.skippedIds.intersect(idSet),
+                updatedAtMillis = System.currentTimeMillis(),
+            )
+            old.copy(
+                collectionOrders = old.collectionOrders + (category to orderedIds),
+                sessions = old.sessions + (sessionId to updatedSession),
             )
         }
     }
@@ -207,8 +282,9 @@ class DhikrRepository(context: Context) {
     }
     /**
      * Removes the current item from this reading list. A collection session also removes it
-     * from the collection so it does not return on the next read; arbitrary lists only change
-     * for this session. Removing the last remaining item closes the session.
+     * from that collection so it does not return on the next read; the shared dhikr entry stays
+     * in the library. Arbitrary lists only change for this session. Removing the last remaining
+     * item closes the session.
      */
     fun removeItem(sessionId: String) {
         update { old ->
@@ -254,6 +330,9 @@ private fun Map<DhikrCategory, Set<String>>.updatedWith(category: DhikrCategory,
 private fun Map<DhikrCategory, Set<String>>.toJson(): JSONObject = JSONObject().apply {
     forEach { (category, ids) -> put(category.name, JSONArray(ids.toList())) }
 }
+private fun Map<DhikrCategory, List<String>>.toOrderJson(): JSONObject = JSONObject().apply {
+    forEach { (category, ids) -> put(category.name, JSONArray(ids)) }
+}
 private fun JSONObject.stringList(key: String) = optJSONArray(key)?.let { array -> (0 until array.length()).map { array.getString(it) } }.orEmpty()
 private fun JSONObject.countMap(key: String): Map<String, Int> = optJSONObject(key)?.let { json -> json.keys().asSequence().associateWith { json.optInt(it).coerceAtLeast(0) } }.orEmpty()
 private fun DhikrState.toJson(): JSONObject = JSONObject()
@@ -261,6 +340,7 @@ private fun DhikrState.toJson(): JSONObject = JSONObject()
     .put("custom", JSONArray(customEntries.map { it.toJson() }))
     .put("collectionAdditions", collectionAdditions.toJson())
     .put("collectionRemovals", collectionRemovals.toJson())
+    .put("collectionOrders", collectionOrders.toOrderJson())
     .put("favourites", JSONArray(favourites.toList())).put("lastSessionId", lastSessionId ?: JSONObject.NULL)
     .put("textSize", textSize).put("countHaptics", countHaptics)
     .put("occurrences", JSONArray(occurrences.values.map { o -> JSONObject()
@@ -298,11 +378,20 @@ private fun dhikrStateFromJson(json: JSONObject): DhikrState {
             if (ids.isEmpty()) null else category to ids
         }.toMap()
     }.orEmpty()
+    val collectionOrders = json.optJSONObject("collectionOrders")?.let { obj ->
+        obj.keys().asSequence().mapNotNull { name ->
+            val category = runCatching { DhikrCategory.valueOf(name) }.getOrNull() ?: return@mapNotNull null
+            val ids = obj.optJSONArray(name)?.let { array ->
+                (0 until array.length()).mapNotNull { index -> runCatching { array.getString(index) }.getOrNull() }
+            }.orEmpty().filter { it in knownIds }.distinct()
+            if (ids.isEmpty()) null else category to ids
+        }.toMap()
+    }.orEmpty()
     return DhikrState(json.optJSONArray("rules")?.objects().orEmpty().mapNotNull { runCatching { dhikrReminderFromJson(it) }.getOrNull() },
         occurrences, sessions, json.stringList("favourites").toSet(),
         if (json.isNull("lastSessionId")) null else json.optString("lastSessionId"), json.optInt("textSize", 28).coerceIn(24, 40),
         json.optBoolean("countHaptics"), customEntries,
-        readMembership("collectionAdditions"), readMembership("collectionRemovals"))
+        readMembership("collectionAdditions"), readMembership("collectionRemovals"), collectionOrders)
 }
 /** Lifecycle-controlled presence, not a background timer. */
 object DhikrReadingPresence {

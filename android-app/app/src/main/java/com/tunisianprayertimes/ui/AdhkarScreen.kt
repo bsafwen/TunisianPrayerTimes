@@ -65,6 +65,8 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
     var customDraft by remember { mutableStateOf<DhikrEntry?>(null) }
     var customEditor by remember { mutableStateOf(false) }
     var collectionEdit by remember { mutableStateOf<DhikrEntry?>(null) }
+    var addToCollectionSessionId by remember { mutableStateOf<String?>(null) }
+    var reorderCollectionSessionId by remember { mutableStateOf<String?>(null) }
     var draft by rememberSaveable(saver = androidx.compose.runtime.saveable.Saver<MutableState<DhikrReminder?>, String>(
         save = { it.value?.toJson()?.toString() ?: "" },
         restore = { mutableStateOf(if (it.isEmpty()) null else dhikrReminderFromJson(org.json.JSONObject(it))) },
@@ -262,6 +264,8 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                         onMove = { direction -> mutate({ repo.move(id, direction) }) },
                         onSkip = { mutate({ repo.skipItem(id) }) },
                         onRemove = { mutate({ repo.removeItem(id) }) },
+                        onAddToCollection = { addToCollectionSessionId = id },
+                        onReorderCollection = { reorderCollectionSessionId = id },
                         onTextSize = { size -> mutate({ repo.setTextSize(size) }) },
                         onHaptics = { enabled -> mutate({ repo.setHaptics(enabled) }) },
                         onNewSession = { openItems(session.itemIds, session.category, fresh = true,
@@ -274,6 +278,31 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                         isMember = { state.isInCollection(entry, it) },
                         onToggle = { category, member -> mutate({ repo.setCollectionMembership(category, entry.id, member) }) },
                         onDismiss = { collectionEdit = null })
+                }
+                addToCollectionSessionId?.let { sessionId ->
+                    val session = state.sessions[sessionId]
+                    val collection = session?.category
+                    if (session != null && collection != null) {
+                        DhikrCollectionAddDialog(
+                            category = collection,
+                            state = state,
+                            onAdd = { entry -> mutate({ repo.addToCollectionSession(sessionId, entry.id) }) },
+                            onDismiss = { addToCollectionSessionId = null },
+                        )
+                    } else LaunchedEffect(sessionId) { addToCollectionSessionId = null }
+                }
+                reorderCollectionSessionId?.let { sessionId ->
+                    val session = state.sessions[sessionId]
+                    val collection = session?.category
+                    if (session != null && collection != null) {
+                        DhikrCollectionOrderDialog(
+                            category = collection,
+                            state = state,
+                            onMove = { entryId, direction -> mutate({ repo.moveCollectionEntry(sessionId, entryId, direction) }) },
+                            onReorder = { entryIds -> mutate({ repo.reorderCollection(sessionId, entryIds) }) },
+                            onDismiss = { reorderCollectionSessionId = null },
+                        )
+                    } else LaunchedEffect(sessionId) { reorderCollectionSessionId = null }
                 }
                 if (customEditor) DhikrCustomEditor(initial = customDraft, onDismiss = { customEditor = false; customDraft = null },
                     onSave = { entry, reportError ->
@@ -340,9 +369,8 @@ private fun AdhkarTodayPage(
     val p = LocalAdhkarPalette.current
     val slots = remember { reminderSlots() }
     val savedRules = remember(state.reminders) { slots.associate { it.key to savedRuleFor(it.key, state.reminders) } }
-    LazyColumn(state = listState, modifier = Modifier.fillMaxSize().testTag("adhkar_today_content"),
-        contentPadding = PaddingValues(bottom = 24.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        item { IslamicHeader() }
+    LazyColumn(state = listState, modifier = Modifier.fillMaxSize().statusBarsPadding().testTag("adhkar_today_content"),
+        contentPadding = PaddingValues(top = 8.dp, bottom = 24.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
             Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text("الأذكار", Modifier.weight(1f), color = AdhkarHeading, fontSize = 30.sp, fontWeight = FontWeight.Bold)
@@ -525,9 +553,8 @@ private fun AdhkarLibraryPage(
     val favouriteEntries = remember(state.favourites, state.customEntries) {
         state.allEntries.filter { it.id in state.favourites }
     }
-    LazyColumn(state = listState, modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(bottom = 24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        item { IslamicHeader() }
+    LazyColumn(state = listState, modifier = Modifier.fillMaxSize().statusBarsPadding(),
+        contentPadding = PaddingValues(top = 8.dp, bottom = 24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item {
             Row(Modifier.fillMaxWidth().padding(horizontal = 20.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text("مكتبة الأذكار", Modifier.weight(1f), color = AdhkarHeading, fontSize = 28.sp, fontWeight = FontWeight.Bold)

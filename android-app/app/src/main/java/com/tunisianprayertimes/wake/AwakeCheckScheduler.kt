@@ -19,6 +19,7 @@ internal object AwakeCheckScheduler {
         customRingtoneUri: String?,
         autoSilenceOverrideAllowed: Boolean = false,
         autoSilenceConflictPrayer: Prayer? = null,
+        wakeTriggerAtMillis: Long = 0L,
     ): Boolean {
         val resolvedEventId = eventId?.takeIf { it.isNotBlank() } ?: return false
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -31,6 +32,7 @@ internal object AwakeCheckScheduler {
             customRingtoneUri = customRingtoneUri,
             autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
             autoSilenceConflictPrayer = autoSilenceConflictPrayer,
+            wakeTriggerAtMillis = wakeTriggerAtMillis,
             flags = PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
 
@@ -89,6 +91,7 @@ internal object AwakeCheckScheduler {
         customRingtoneUri: String?,
         autoSilenceOverrideAllowed: Boolean,
         autoSilenceConflictPrayer: Prayer?,
+        wakeTriggerAtMillis: Long = 0L,
         flags: Int,
     ): PendingIntent {
         val intent = Intent(context, AwakeCheckReceiver::class.java)
@@ -96,6 +99,7 @@ internal object AwakeCheckScheduler {
             .setData(wakeEventUri("awake-check:$eventId"))
             .putExtra(EXTRA_EVENT_ID, eventId)
             .putExtra(EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED, autoSilenceOverrideAllowed)
+            .putExtra(EXTRA_WAKE_TRIGGER_AT_MILLIS, wakeTriggerAtMillis)
             .apply {
                 triggerAtMillis?.let { putExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, it) }
                 ringtonePresetName?.let { putExtra(EXTRA_RINGTONE, it) }

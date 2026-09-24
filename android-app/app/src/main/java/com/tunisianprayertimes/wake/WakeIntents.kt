@@ -32,6 +32,8 @@ const val EXTRA_AUTO_SILENCE_CONFLICT_PRAYER = "extra_auto_silence_conflict_pray
 const val EXTRA_AWAKE_CHECK_ENABLED = "extra_awake_check_enabled"
 const val EXTRA_AWAKE_CHECK_DELAY_MINUTES = "extra_awake_check_delay_minutes"
 const val EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS = "extra_awake_check_trigger_at_millis"
+const val EXTRA_WAKE_TRIGGER_AT_MILLIS = "extra_wake_trigger_at_millis"
+const val EXTRA_WAKE_OCCURRENCE_AT_MILLIS = "extra_wake_occurrence_at_millis"
 const val EXTRA_IS_SUBALARM = "extra_is_subalarm"
 const val EXTRA_SUBALARM_ID = "extra_subalarm_id"
 const val EXTRA_OFFSET_MINUTES = "extra_offset_minutes"
@@ -85,9 +87,11 @@ data class WakeTriggerPayload(
     val wakeUpCheckChallenge: WakeUpCheckChallenge? = null,
     val wakeUpCheckSeed: Long? = null,
     val isSubAlarm: Boolean,
+    val triggerAtMillis: Long = 0L,
     val subAlarmId: String? = null,
     val offsetMinutes: Int? = null,
     val offsetDirection: OffsetDirection? = null,
+    val occurrenceAtMillis: Long = 0L,
 )
 
 fun wakeMainEventId(alarmId: String): String = "wake:main:$alarmId"
@@ -133,6 +137,8 @@ fun Intent.populateWakeTriggerPayload(
     subAlarmId: String? = null,
     offsetMinutes: Int? = null,
     offsetDirection: OffsetDirection? = null,
+    triggerAtMillis: Long = 0L,
+    occurrenceAtMillis: Long = 0L,
 ): Intent = apply {
     putExtra(EXTRA_EVENT_ID, eventId)
     putExtra(EXTRA_PRAYER, prayer.name)
@@ -157,6 +163,8 @@ fun Intent.populateWakeTriggerPayload(
     autoSilenceConflictPrayer?.let { putExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER, it.name) }
     putExtra(EXTRA_AWAKE_CHECK_ENABLED, awakeCheckEnabled)
     putExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, awakeCheckDelayMinutes.normalizedAwakeCheckDelayMinutes())
+    putExtra(EXTRA_WAKE_TRIGGER_AT_MILLIS, triggerAtMillis)
+    putExtra(EXTRA_WAKE_OCCURRENCE_AT_MILLIS, occurrenceAtMillis)
     putExtra(EXTRA_IS_SUBALARM, isSubAlarm)
     subAlarmId?.let { putExtra(EXTRA_SUBALARM_ID, it) }
     offsetMinutes?.let { putExtra(EXTRA_OFFSET_MINUTES, it) }
@@ -265,6 +273,8 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
         wakeUpCheckChallenge = wakeUpCheckChallenge,
         wakeUpCheckSeed = wakeUpCheckSeed,
         isSubAlarm = getBooleanExtra(EXTRA_IS_SUBALARM, false),
+        triggerAtMillis = getLongExtra(EXTRA_WAKE_TRIGGER_AT_MILLIS, 0L),
+        occurrenceAtMillis = getLongExtra(EXTRA_WAKE_OCCURRENCE_AT_MILLIS, 0L),
         subAlarmId = getStringExtra(EXTRA_SUBALARM_ID),
         offsetMinutes = if (hasExtra(EXTRA_OFFSET_MINUTES)) getIntExtra(EXTRA_OFFSET_MINUTES, 0) else null,
         offsetDirection = rawDirection?.let { direction ->
@@ -307,10 +317,23 @@ fun WakeTriggerPayload.toBundle(): Bundle =
         wakeUpCheckChallenge = wakeUpCheckChallenge,
         wakeUpCheckSeed = wakeUpCheckSeed,
         isSubAlarm = isSubAlarm,
+        triggerAtMillis = triggerAtMillis,
+        occurrenceAtMillis = occurrenceAtMillis,
         subAlarmId = subAlarmId,
         offsetMinutes = offsetMinutes,
         offsetDirection = offsetDirection,
     ).extras ?: Bundle()
+
+/** Recover the source occurrence for older intents that predate the explicit field. */
+fun WakeTriggerPayload.resolvedOccurrenceAtMillis(): Long {
+    if (occurrenceAtMillis > 0L) return occurrenceAtMillis
+    val signedOffsetMinutes = when (offsetDirection) {
+        OffsetDirection.BEFORE -> -(offsetMinutes ?: 0)
+        OffsetDirection.AFTER -> offsetMinutes ?: 0
+        null -> 0
+    }
+    return triggerAtMillis - signedOffsetMinutes * 60_000L
+}
 
 fun Bundle.toWakeTriggerPayload(): WakeTriggerPayload? =
     Intent().apply { putExtras(this@toWakeTriggerPayload) }.toWakeTriggerPayload()

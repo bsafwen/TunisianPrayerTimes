@@ -145,6 +145,8 @@ data class DhikrState(
     val collectionAdditions: Map<DhikrCategory, Set<String>> = emptyMap(),
     /** Ids the user explicitly removed from a collection that contains them by default. */
     val collectionRemovals: Map<DhikrCategory, Set<String>> = emptyMap(),
+    /** User-defined ordering for collection entries; entries not listed here follow catalog order. */
+    val collectionOrders: Map<DhikrCategory, List<String>> = emptyMap(),
 )
 
 /** Resolves built-in and personal entries through one lookup. */
@@ -160,11 +162,17 @@ fun DhikrState.isInCollection(entry: DhikrEntry, category: DhikrCategory): Boole
     else -> entry.id in collectionAdditions[category].orEmpty()
 }
 
-fun DhikrState.collectionEntries(category: DhikrCategory): List<DhikrEntry> =
-    allEntries.filter { isInCollection(it, category) }.map { entry ->
+fun DhikrState.collectionEntries(category: DhikrCategory): List<DhikrEntry> {
+    val entries = allEntries.filter { isInCollection(it, category) }
+    val order = collectionOrders[category].orEmpty().withIndex().associate { it.value to it.index }
+    val orderedEntries = if (order.isEmpty()) entries else entries.withIndex()
+        .sortedWith(compareBy<IndexedValue<DhikrEntry>> { order[it.value.id] ?: Int.MAX_VALUE }.thenBy { it.index })
+        .map { it.value }
+    return orderedEntries.map { entry ->
         val count = entry.countForCollection(category)
         if (count == entry.defaultCount) entry else entry.copy(defaultCount = count)
     }
+}
 
 /** Snapshot captured when a personal dhikr is deleted so the action can be undone. */
 data class CustomDhikrRemoval(

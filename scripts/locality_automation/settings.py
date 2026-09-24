@@ -73,6 +73,8 @@ def snapshot(config):
     if override:
         manual["catalog"] = override["catalog"]
         manual["refreshNeeded"] = override.get("manualToolRefreshNeeded", False)
+        if isinstance(override.get("manualToolUrl"), str):
+            manual["url"] = override["manualToolUrl"]
     catalog = read_pin(manual["catalog"])
     # Current authoritative catalog source fingerprints, never old controller totals.
     for p in catalog["sourcePins"].values():

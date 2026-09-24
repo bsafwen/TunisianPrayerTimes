@@ -4,6 +4,7 @@
     <string name="subtitle">مواقيت الصلاة في تونس</string>
     <string name="source">مصدر البيانات: المعهد الوطني للرصد الجوي (meteo.tn)</string>
     <string name="main_tab_today">الصلاة</string>
+    <string name="prayer_page_title">مواقيت الصلاة</string>
     <string name="main_tab_alarms">المنبهات</string>
     <string name="main_tab_qibla">القبلة</string>
     <string name="status_normal">الهاتف في الوضع العادي 🔔</string>
@@ -59,6 +60,7 @@
     <string name="next_prayer_countdown_at">عند %1$s</string>
     <string name="next_prayer_countdown_at_tomorrow">غدًا عند %1$s</string>
     <string name="next_prayer_countdown_tomorrow">غدًا</string>
+    <string name="next_prayer_verse">﴿ وَأَقِمِ الصَّلَاةَ لِذِكْرِي ﴾</string>
     <string name="col_prayer">الصلاة</string>
     <string name="col_time">الوقت</string>
     <string name="col_delay">التأخير</string>
@@ -344,6 +346,8 @@
     <string name="wake_alarm_delete_message">سيتم حذف منبه %1$s وكل التنبيهات الإضافية التابعة له.</string>
     <string name="wake_alarm_delete_keep">إبقاء المنبه</string>
     <string name="wake_alarm_delete_confirm">حذف المنبه</string>
+    <string name="wake_alarm_skip_next">تخطي المنبه التالي</string>
+    <string name="wake_alarm_undo_skip_next">إلغاء تخطي المنبه التالي</string>
     <string name="wake_editor_progressive_volume_title">رفع الصوت تدريجيًا</string>
     <string name="wake_editor_progressive_volume_subtitle">يبدأ المنبه بصوت منخفض ثم يرتفع خلال أول 30 ثانية.</string>
     <string name="wake_editor_preview_title">الموعد القادم</string>

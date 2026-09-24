@@ -1,6 +1,40 @@
 # Locality automation
 
-## Start here
+## Review the completed automatic pass
+
+The full automatic pass has finished. Its recorded cases and issue lines are
+investigation inputs, not geographic certifications. The post-run reviewer
+builds an ordered queue for **one governorate at a time**, starting with Ben
+Arous. It groups explicitly linked boundary cases, puts current user problem
+reports first, and sends only concrete high-priority questions to GPT-6 Luna
+at **max** reasoning. Boundary links without source-supported diagnostics stay
+in the human queue: the first two Luna boundary reviews added no verified
+geographic checks. New review requests do not use DeepSeek.
+
+From the repository folder, double-click **Review locality reports with
+Luna.cmd**. It publishes the Ben Arous queue, reviews at most eight eligible
+units with up to three concurrent Luna workers, and prints the saved output
+paths. Repeating the command reuses content-addressed results; uncertain paid
+requests are not silently retried. To inspect the queue without making model
+requests, run:
+
+```text
+$taskRoot = 'C:\Users\barou\Documents\Codex\2026-09-06\the-android-app-app-currently-allows'
+& "$taskRoot\work\geo\venv\Scripts\python.exe" -B -X utf8 scripts\run_locality_review.py --config "$taskRoot\work\locality-automation-luna-resume.json" prepare
+```
+
+Run that PowerShell command from the Git repository. An explicit `--governorate "ولاية"`
+before `prepare` or `run` selects the next governorate. The generated JSON
+and HTML are in `work/locality-automation/review/`; focused advisory receipts
+are in its `advisories/` directory. The HTML links back to the existing manual
+locality tool and verified cached official PDFs and map thumbnails. It also
+flags exact duplicate picker labels using a read-only point-versus-polygon
+audit in `display-collisions-current.json`; that audit does not merge entries.
+Model findings never change the app catalog,
+award verification, or resolve a case by themselves. A human disposition
+applies only to its exact source fingerprint.
+
+## Original automatic-pass launcher (completed)
 
 From the repository folder, double-click **Run locality automation.cmd**.
 
@@ -10,7 +44,10 @@ Send **work/locality-automation/report/run-summary.json** from the Codex task fo
 
 Double-click **Show locality report.cmd** to refresh the report without starting investigations. **Pause locality automation.cmd** stops new dispatches and lets running jobs finish. Starting Run again resumes saved work; failed or uncertain paid requests are not retried automatically.
 
-**Delivery status:** written and statically checked only. The user requested that the program not be run before delivery. No end-to-end execution, Android tests, APK/AAB generation, new locality batch, or installation was performed during development. First execution may reveal integration issues; keep the reports and logs if it does.
+**Original delivery status:** the full-run program was written and statically
+checked before delivery because the user asked not to run it then. The user
+later ran the automatic pass to completion; the review process above handles
+its resulting reports. Keep the original reports and logs for audit.
 
 ## What runs automatically
 
@@ -88,6 +125,9 @@ work/locality-automation/
   report/report.html            readable dashboard
   report/run-summary.json       report to send back
   report/investigations.json     unresolved issues
+  review/gov-*.json              ordered one-governorate review queues
+  review/gov-*.html              readable review queues and evidence links
+  review/advisories/             focused Luna advisory receipts
 ```
 
 The program has no recurring scheduler and does not use Codex while running. Reports update after each batch. It does not commit, push, create releases, run Android tests, or publish data.
