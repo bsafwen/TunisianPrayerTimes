@@ -2,6 +2,7 @@ package com.tunisianprayertimes.ui
 
 import android.Manifest
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.provider.Settings
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -54,6 +55,7 @@ import kotlinx.coroutines.sync.withLock
 @Composable
 fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = null,
     requestedReminderSequence: Int = 0, requestedOccurrenceId: String? = null, modifier: Modifier = Modifier) {
+    remember(activity) { DhikrReminderScheduler.ensureChannel(activity) }
     val repo = remember(activity) { DhikrRepository(activity) }
     val state by repo.state.collectAsStateWithLifecycle()
     var page by rememberSaveable { mutableStateOf("today") }
@@ -72,7 +74,10 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
         restore = { mutableStateOf(if (it.isEmpty()) null else dhikrReminderFromJson(org.json.JSONObject(it))) },
     )) { mutableStateOf<DhikrReminder?>(null) }
     var permissionPrompt by remember { mutableStateOf(false) }
-    var permissionAvailable by remember { mutableStateOf(DhikrReminderScheduler.notificationsEnabled(activity)) }
+    var permissionPromptVibrate by remember { mutableStateOf(true) }
+    var exactAlarmPrompt by remember { mutableStateOf(false) }
+    var exactAlarmPromptAfterNotifications by remember { mutableStateOf(false) }
+    var exactAlarmsAvailable by remember { mutableStateOf(DhikrReminderScheduler.exactAlarmsEnabled(activity)) }
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     var focusSearch by remember { mutableStateOf(false) }
     var consumedRequest by rememberSaveable { mutableIntStateOf(-1) }
@@ -92,10 +97,20 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             if (isActive) { if (error != null) onFailure(error) else after() }
         }
     }
+    fun promptForReminderAccess(rule: DhikrReminder) {
+        if (!rule.enabled) return
+        val missingExactAlarmAccess = !DhikrReminderScheduler.exactAlarmsEnabled(activity)
+        if (!DhikrReminderScheduler.notificationsEnabled(activity, rule.vibrate)) {
+            permissionPromptVibrate = rule.vibrate
+            permissionPrompt = true
+            exactAlarmPromptAfterNotifications = missingExactAlarmAccess
+        } else if (missingExactAlarmAccess) exactAlarmPrompt = true
+    }
     fun openItems(items: List<String>, collection: DhikrCategory? = null, occurrence: DhikrOccurrence? = null,
-        fresh: Boolean = false, targetCountOverride: Int? = null) {
+        fresh: Boolean = false, targetCountOverride: Int? = null, collectionReading: Boolean = false) {
         var id = ""
-        mutate({ id = repo.openSession(items, collection, occurrence?.id, fresh, targetCountOverride) }) {
+        mutate({ id = repo.openSession(items, collection, occurrence?.id, fresh, targetCountOverride,
+            collectionReading = collectionReading) }) {
             readerId = id; keyboardFocus.clearFocus()
         }
     }
@@ -105,30 +120,41 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             scope.launch { snackbar.showSnackbar("لا توجد أذكار في هذه المجموعة. أضف أذكارًا إليها من قائمة الذكر.") }
             return
         }
-        openItems(items, value)
+        openItems(items, value, collectionReading = true)
+    }
+    fun showEmptyReminderCollection() {
+        showReminders = false
+        page = "library"
+        category = null
+        query = ""
+        scope.launch { snackbar.showSnackbar("مجموعة التذكير فارغة. ابحث عن ذكر في المكتبة ثم اختر «المجموعات» لإضافته.") }
     }
     fun openOccurrence(value: DhikrOccurrence) {
-        val collection = state.reminders.find { it.id == value.ruleId }?.collection
-        if (collection != null) {
-            val items = state.collectionEntries(collection).map { it.id }.ifEmpty { listOf(value.dhikrId) }
-            openItems(items, collection, value)
-        } else openItems(listOf(value.dhikrId), occurrence = value)
+        val current = repo.state.value
+        val rule = current.reminders.find { it.id == value.ruleId && it.revision == value.revision }
+        val items = reminderSessionItems(current, value)
+        if (items.isEmpty()) {
+            if (rule?.collection != null) showEmptyReminderCollection()
+            else scope.launch { snackbar.showSnackbar("هذا التذكير لم يعد متاحًا. يمكنك القراءة من المكتبة.") }
+        } else openItems(items, rule?.collection, value, collectionReading = rule?.collection != null)
     }
-    fun openDeepLink(occurrence: DhikrOccurrence): String {
-        val collection = state.reminders.find { it.id == occurrence.ruleId }?.collection
-        return if (collection != null)
-            repo.openSession(state.collectionEntries(collection).map { it.id }.ifEmpty { listOf(occurrence.dhikrId) }, collection, occurrence.id)
-        else repo.openSession(listOf(occurrence.dhikrId), occurrenceId = occurrence.id)
+    fun openDeepLink(occurrence: DhikrOccurrence): String? {
+        val current = repo.state.value
+        val rule = current.reminders.find { it.id == occurrence.ruleId && it.revision == occurrence.revision }
+        val items = reminderSessionItems(current, occurrence)
+        return if (items.isEmpty()) null else repo.openSession(items, rule?.collection, occurrence.id,
+            collectionReading = rule?.collection != null)
     }
     fun openReminder(rule: DhikrReminder) {
-        val scheduledRule = state.reminders.firstOrNull {
-            it.id == rule.id && it.revision == rule.revision && it.enabled
-        }
         var occurrence: DhikrOccurrence? = null
         mutate({
+            val scheduledRule = repo.state.value.reminders.firstOrNull {
+                it.id == rule.id && it.revision == rule.revision && it.enabled
+            }
             if (scheduledRule != null) {
-                val window = DhikrReminderScheduler.currentOrNextWindow(activity, scheduledRule, now)
-                    ?.takeIf { now in it.startMillis until it.endMillis }
+                val openNow = System.currentTimeMillis()
+                val window = DhikrReminderScheduler.currentOrNextWindow(activity, scheduledRule, openNow)
+                    ?.takeIf { openNow in it.startMillis until it.endMillis }
                 if (window != null) occurrence = repo.ensureOccurrence(scheduledRule, window)
             }
         }) {
@@ -140,14 +166,15 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                 openOccurrence(current)
             } else {
                 val collection = rule.collection
-                val items = collection?.let { state.collectionEntries(it).map(DhikrEntry::id) }
+                val items = collection?.let { repo.state.value.collectionEntries(it).map(DhikrEntry::id) }
                     ?: listOf(rule.dhikrId)
                 if (items.isEmpty()) {
-                    scope.launch { snackbar.showSnackbar("لا توجد أذكار في هذه القائمة حاليًا.") }
+                    showEmptyReminderCollection()
                 } else {
                     showReminders = false
                     openItems(items, collection,
-                        targetCountOverride = if (collection == null) rule.targetCount else null)
+                        targetCountOverride = if (collection == null) rule.targetCount else null,
+                        collectionReading = collection != null)
                 }
             }
         }
@@ -155,7 +182,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
     fun saveWithReport(rule: DhikrReminder) {
         mutate({ repo.save(rule) }, onFailure = {
             scope.launch { snackbar.showSnackbar(DhikrReminderScheduler.validate(activity, rule) ?: "تعذّر حفظ التذكير. حاول مرة أخرى.") }
-        }) { if (rule.enabled && !permissionAvailable) permissionPrompt = true }
+        }) { promptForReminderAccess(rule) }
     }
     fun removeCustom(entry: DhikrEntry) {
         var removal: CustomDhikrRemoval? = null
@@ -171,20 +198,54 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
         }
     }
     val permissions = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
-        permissionAvailable = DhikrReminderScheduler.notificationsEnabled(activity)
+        now = System.currentTimeMillis()
         mutate({ DhikrReminderScheduler.refresh(activity, rearm = true) })
+        if (exactAlarmPromptAfterNotifications) {
+            exactAlarmPromptAfterNotifications = false
+            exactAlarmPrompt = !DhikrReminderScheduler.exactAlarmsEnabled(activity)
+        }
     }
     DisposableEffect(lifecycle) {
         val observer = LifecycleEventObserver { _, event ->
             if (event == Lifecycle.Event.ON_RESUME) {
                 now = System.currentTimeMillis()
-                permissionAvailable = DhikrReminderScheduler.notificationsEnabled(activity)
+                DhikrReminderScheduler.ensureChannel(activity)
+                exactAlarmsAvailable = DhikrReminderScheduler.exactAlarmsEnabled(activity)
+                if (!permissionPrompt && exactAlarmPromptAfterNotifications) {
+                    exactAlarmPromptAfterNotifications = false
+                    exactAlarmPrompt = !exactAlarmsAvailable
+                }
+                mutate({ DhikrReminderScheduler.refresh(activity, rearm = true) }, onFailure = {
+                    scope.launch { snackbar.showSnackbar("تعذّر تحديث مواعيد تذكيرات الأذكار.") }
+                })
             }
         }
         lifecycle.lifecycle.addObserver(observer)
         onDispose { lifecycle.lifecycle.removeObserver(observer) }
     }
     LaunchedEffect(Unit) { while (true) { delay(30_000); now = System.currentTimeMillis() } }
+    LaunchedEffect(readerId, now) {
+        val id = readerId ?: return@LaunchedEffect
+        val session = repo.state.value.sessions[id] ?: return@LaunchedEffect
+        val collection = session.category ?: return@LaunchedEffect
+        if (session.occurrenceId != null || session.collectionPeriodKey == null ||
+            collection !in setOf(DhikrCategory.MORNING, DhikrCategory.EVENING)) return@LaunchedEffect
+        val currentKey = withContext(Dispatchers.IO) { collectionReadingPeriodKey(activity, collection, null, now) }
+        if (session.collectionPeriodKey == currentKey) return@LaunchedEffect
+        val items = repo.state.value.collectionEntries(collection).map(DhikrEntry::id)
+        if (items.isEmpty()) {
+            readerId = null
+            showEmptyReminderCollection()
+            return@LaunchedEffect
+        }
+        val nextId = withContext(Dispatchers.IO) {
+            repo.openSession(items, collection, now = now, collectionReading = true)
+        }
+        if (readerId == id) {
+            readerId = nextId
+            scope.launch { snackbar.showSnackbar("بدأت فترة أذكار جديدة؛ حُفظت قراءتك السابقة.") }
+        }
+    }
     LaunchedEffect(requestedReminderSequence, requestedReminderId, requestedOccurrenceId) {
         if (consumedRequest == requestedReminderSequence || (requestedReminderId == null && requestedOccurrenceId == null)) return@LaunchedEffect
         consumedRequest = requestedReminderSequence
@@ -196,8 +257,18 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             } else null
         }
         if (occurrence != null) {
-            readerId = withContext(Dispatchers.IO) { openDeepLink(occurrence) }
-            keyboardFocus.clearFocus()
+            val opened = withContext(Dispatchers.IO) { runCatching { openDeepLink(occurrence) }.getOrNull() }
+            if (opened != null) {
+                readerId = opened
+                keyboardFocus.clearFocus()
+            } else {
+                val current = repo.state.value
+                val collection = current.reminders.find {
+                    it.id == occurrence.ruleId && it.revision == occurrence.revision
+                }?.collection
+                if (collection != null && current.collectionEntries(collection).isEmpty()) showEmptyReminderCollection()
+                else snackbar.showSnackbar("هذا التذكير لم يعد متاحًا. يمكنك القراءة من المكتبة.")
+            }
         } else snackbar.showSnackbar("هذه الفترة لم تعد متاحة. يمكنك القراءة من المكتبة.")
     }
 
@@ -218,7 +289,9 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                         onOpenCollection = ::openCollection,
                         onOpenReminder = ::openReminder,
                         onEditDraft = { draft = it },
-                        onToggleRule = { rule, enabled -> mutate({ repo.setEnabled(rule.id, enabled) }) { if (enabled && !permissionAvailable) permissionPrompt = true } },
+                        onToggleRule = { rule, enabled -> mutate({ repo.setEnabled(rule.id, enabled) }) {
+                            if (enabled) promptForReminderAccess(rule.copy(enabled = true))
+                        } },
                         onSavePreset = { rule -> saveWithReport(rule) },
                     )
                 } else {
@@ -242,12 +315,27 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                 SnackbarHost(snackbar, Modifier.align(Alignment.BottomCenter).padding(16.dp))
                 if (showReminders) {
                     DhikrRemindersSheet(
-                        activity = activity, state = state, now = now, permissionAvailable = permissionAvailable,
+                        activity = activity, state = state, now = now, exactAlarmsAvailable = exactAlarmsAvailable,
                         onClose = { showReminders = false },
                         onDraft = { draft = it },
-                        onToggle = { rule, enabled -> mutate({ repo.setEnabled(rule.id, enabled) }) { if (enabled && !permissionAvailable) permissionPrompt = true } },
+                        onToggle = { rule, enabled -> mutate({ repo.setEnabled(rule.id, enabled) }) {
+                            if (enabled) promptForReminderAccess(rule.copy(enabled = true))
+                        } },
                         onRead = ::openReminder,
-                        onSkip = { rule -> mutate({ DhikrReminderScheduler.currentOrNextWindow(activity, rule)?.let { repo.skip(repo.ensureOccurrence(rule, it).id) } }) },
+                        onSkip = { rule -> mutate({
+                            val currentRule = repo.state.value.reminders.firstOrNull {
+                                it.id == rule.id && it.revision == rule.revision && it.enabled
+                            }
+                            if (currentRule != null) {
+                                val skipNow = System.currentTimeMillis()
+                                val window = DhikrReminderScheduler.currentOrNextWindow(activity, currentRule, skipNow)
+                                if (window != null && skipNow < window.endMillis) {
+                                    val existing = repo.state.value.occurrences[window.progressKey]
+                                    if (existing == null || existing.status == DhikrOccurrenceStatus.OPEN)
+                                        repo.skip(repo.ensureOccurrence(currentRule, window).id)
+                                }
+                            }
+                        }) },
                         onDelete = { rule ->
                             mutate({ repo.delete(rule.id) }) {
                                 scope.launch {
@@ -268,8 +356,16 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                         onReorderCollection = { reorderCollectionSessionId = id },
                         onTextSize = { size -> mutate({ repo.setTextSize(size) }) },
                         onHaptics = { enabled -> mutate({ repo.setHaptics(enabled) }) },
-                        onNewSession = { openItems(session.itemIds, session.category, fresh = true,
-                            targetCountOverride = session.targetCountOverride) },
+                        onNewSession = {
+                            val collectionReading = session.collectionPeriodKey != null
+                            val items = if (collectionReading && session.category != null)
+                                repo.state.value.collectionEntries(session.category).map(DhikrEntry::id)
+                            else session.itemIds
+                            if (items.isEmpty()) showEmptyReminderCollection()
+                            else openItems(items, session.category, fresh = true,
+                                targetCountOverride = session.targetCountOverride,
+                                collectionReading = collectionReading)
+                        },
                         onReminder = { draft = defaultDhikrReminder(session.itemId, session.category,
                             session.category?.let { state.collectionEntries(it) } ?: state.allEntries) })
                 } }
@@ -312,24 +408,45 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                     },
                     onDelete = ::removeCustom)
                 draft?.let { rule ->
-                    DhikrReminderEditor(activity, rule, onDismiss = { draft = null }, onSave = { saved, reportError ->
+                    DhikrReminderEditor(activity, rule, exactAlarmsAvailable,
+                        onDismiss = { draft = null }, onSave = { saved, reportError ->
                         mutate({ repo.save(saved) }, onFailure = {
                             reportError(DhikrReminderScheduler.validate(activity, saved) ?: "تعذّر حفظ التذكير. حاول مرة أخرى.")
                         }) {
                             draft = null
-                            if (saved.enabled && !permissionAvailable) permissionPrompt = true
+                            promptForReminderAccess(saved)
                         }
                     })
                 }
-                if (permissionPrompt) AlertDialog(onDismissRequest = { permissionPrompt = false },
+                if (permissionPrompt) AlertDialog(onDismissRequest = {
+                    permissionPrompt = false
+                    if (exactAlarmPromptAfterNotifications) {
+                        exactAlarmPromptAfterNotifications = false
+                        exactAlarmPrompt = !DhikrReminderScheduler.exactAlarmsEnabled(activity)
+                    }
+                },
                     title = { Text("السماح بتذكيرات الأذكار") },
                     text = { Text("يبقى الذكر والعدّ متاحين دون إشعارات. اسمح بها لتلقي دعوة هادئة للمتابعة خلال الفترة التي اخترتها.") },
                     confirmButton = { TextButton(onClick = {
                         permissionPrompt = false
                         if (Build.VERSION.SDK_INT >= 33 && androidx.core.content.ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED)
                             permissions.launch(Manifest.permission.POST_NOTIFICATIONS)
-                        else openDhikrNotificationSettings(activity)
-                    }) { Text("السماح") } }, dismissButton = { TextButton(onClick = { permissionPrompt = false }) { Text("لاحقًا") } })
+                        else openDhikrNotificationSettings(activity, permissionPromptVibrate)
+                    }) { Text("السماح") } }, dismissButton = { TextButton(onClick = {
+                        permissionPrompt = false
+                        if (exactAlarmPromptAfterNotifications) {
+                            exactAlarmPromptAfterNotifications = false
+                            exactAlarmPrompt = !DhikrReminderScheduler.exactAlarmsEnabled(activity)
+                        }
+                    }) { Text("لاحقًا") } })
+                if (exactAlarmPrompt && !permissionPrompt) AlertDialog(onDismissRequest = { exactAlarmPrompt = false },
+                    title = { Text("تفعيل المنبّهات والتذكيرات") },
+                    text = { Text("قد تتأخر تذكيرات الأذكار أو تفوت فترة الذكر دون صلاحية المنبّهات الدقيقة. فعّلها من إعدادات الهاتف.") },
+                    confirmButton = { TextButton(onClick = {
+                        exactAlarmPrompt = false
+                        openDhikrExactAlarmSettings(activity)
+                    }) { Text("فتح الإعدادات") } },
+                    dismissButton = { TextButton(onClick = { exactAlarmPrompt = false }) { Text("لاحقًا") } })
             }
         }
     }
@@ -369,6 +486,8 @@ private fun AdhkarTodayPage(
     val p = LocalAdhkarPalette.current
     val slots = remember { reminderSlots() }
     val savedRules = remember(state.reminders) { slots.associate { it.key to savedRuleFor(it.key, state.reminders) } }
+    val savedSlotsById = slots.mapNotNull { slot -> savedRules[slot.key]?.let { it.id to slot } }.toMap()
+    val unsavedSlots = slots.filter { savedRules[it.key] == null }
     LazyColumn(state = listState, modifier = Modifier.fillMaxSize().statusBarsPadding().testTag("adhkar_today_content"),
         contentPadding = PaddingValues(top = 8.dp, bottom = 24.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
@@ -411,14 +530,27 @@ private fun AdhkarTodayPage(
                     actionModifier = Modifier.testTag("adhkar_reminders_action"))
             }
         }
-        items(slots, key = { it.key }) { slot ->
-            val saved = savedRules[slot.key]
-            HomeReminderRow(slot = slot, saved = saved,
-                onRead = { onOpenReminder(saved ?: slot.preset.copy(enabled = false)) },
-                onEdit = { onEditDraft(saved ?: slot.preset) },
+        items(state.reminders, key = { it.id }) { rule ->
+            val entry = state.findDhikr(rule.dhikrId)
+            val icon = when (val category = rule.collection ?: entry?.categories?.firstOrNull()) {
+                DhikrCategory.MORNING -> R.drawable.ic_adhkar_sun
+                DhikrCategory.EVENING -> R.drawable.ic_adhkar_moon
+                null -> R.drawable.ic_adhkar_leaf
+                else -> categoryIcon(category)
+            }
+            val slot = savedSlotsById[rule.id] ?: AdhkarReminderSlot(rule.id, rule,
+                reminderTitle(rule, state).ifBlank { "تذكير محفوظ" }, icon, p.primary, AdhkarSoftGreen)
+            HomeReminderRow(slot = slot, saved = rule,
+                onRead = { onOpenReminder(rule) },
+                onEdit = { onEditDraft(rule) },
+                onToggle = { checked -> onToggleRule(rule, checked) })
+        }
+        items(unsavedSlots, key = { it.key }) { slot ->
+            HomeReminderRow(slot = slot, saved = null,
+                onRead = { onOpenReminder(slot.preset.copy(enabled = false)) },
+                onEdit = { onEditDraft(slot.preset) },
                 onToggle = { checked ->
-                    if (saved != null) onToggleRule(saved, checked)
-                    else if (checked) onSavePreset(slot.preset.copy(enabled = true))
+                    if (checked) onSavePreset(slot.preset.copy(enabled = true))
                 })
         }
         item {
@@ -490,7 +622,7 @@ private fun HomeReminderRow(
 ) {
     val p = LocalAdhkarPalette.current
     var menu by remember { mutableStateOf(false) }
-    AdhkarCard(Modifier.fillMaxWidth(), onClick = onRead) {
+    AdhkarCard(Modifier.fillMaxWidth().testTag("adhkar_home_reminder_" + slot.key), onClick = onRead) {
         Row(Modifier.fillMaxWidth().padding(start = 14.dp, end = 10.dp, top = 10.dp, bottom = 10.dp),
             verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(46.dp).clip(RoundedCornerShape(14.dp)).background(slot.iconBackground), contentAlignment = Alignment.Center) {
@@ -745,7 +877,7 @@ private fun DhikrEntryCard(entry: DhikrEntry, favourite: Boolean, onFavourite: (
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun DhikrRemindersSheet(
-    activity: AppCompatActivity, state: DhikrState, now: Long, permissionAvailable: Boolean,
+    activity: AppCompatActivity, state: DhikrState, now: Long, exactAlarmsAvailable: Boolean,
     onClose: () -> Unit,
     onDraft: (DhikrReminder) -> Unit,
     onToggle: (DhikrReminder, Boolean) -> Unit,
@@ -763,6 +895,17 @@ private fun DhikrRemindersSheet(
             LazyColumn(state = listState,
                 modifier = Modifier.nestedScroll(scrollGuard),
                 contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+                if (state.reminders.any { it.enabled } && !exactAlarmsAvailable) item {
+                    Surface(color = MaterialTheme.colorScheme.errorContainer, shape = RoundedCornerShape(16.dp)) {
+                        Column(Modifier.fillMaxWidth().padding(16.dp)) {
+                            Text("تذكيرات الأذكار قد تتأخر", fontWeight = FontWeight.SemiBold,
+                                color = MaterialTheme.colorScheme.onErrorContainer)
+                            Text("فعّل صلاحية «المنبّهات والتذكيرات» لتصل إشعارات الأذكار في وقتها.",
+                                color = MaterialTheme.colorScheme.onErrorContainer, fontSize = 13.sp, lineHeight = 22.sp)
+                            TextButton(onClick = { openDhikrExactAlarmSettings(activity) }) { Text("تفعيل المنبّهات والتذكيرات") }
+                        }
+                    }
+                }
                 item {
                     Surface(onClick = { onDraft(fridayDhikrPreset()) }, color = AdhkarSoftGreen,
                         border = BorderStroke(1.dp, p.primary.copy(alpha = .35f)), shape = RoundedCornerShape(16.dp)) {
@@ -781,7 +924,7 @@ private fun DhikrRemindersSheet(
                     }
                 }
                 items(state.reminders, key = { it.id }) { rule ->
-                    DhikrReminderRow(activity, state, rule, now, permissionAvailable,
+                    DhikrReminderRow(activity, state, rule, now,
                         onToggle = { enabled -> onToggle(rule, enabled) },
                         onEdit = { onDraft(rule) },
                         onRead = { onRead(rule) },
@@ -809,23 +952,29 @@ internal fun DhikrSheetHeader(title: String, onClose: () -> Unit) {
 }
 
 @Composable
-private fun DhikrReminderRow(activity: AppCompatActivity, state: DhikrState, rule: DhikrReminder, now: Long, permission: Boolean,
+private fun DhikrReminderRow(activity: AppCompatActivity, state: DhikrState, rule: DhikrReminder, now: Long,
     onToggle: (Boolean) -> Unit, onEdit: () -> Unit, onRead: () -> Unit, onSkip: () -> Unit, onDelete: () -> Unit) {
     val p = LocalAdhkarPalette.current
     var menu by remember { mutableStateOf(false) }
     val window = remember(rule, now) { DhikrReminderScheduler.currentOrNextWindow(activity, rule, now) }
     val occurrence = window?.let { state.occurrences[it.progressKey] }
+    val collectionEmpty = rule.collection?.let { state.collectionEntries(it).isEmpty() } == true
+    val canSkip = rule.enabled && !collectionEmpty && window != null && now < window.endMillis &&
+        (occurrence == null || occurrence.status == DhikrOccurrenceStatus.OPEN)
+    val notificationsAvailable = DhikrReminderScheduler.notificationsEnabled(activity, rule.vibrate)
+    val vibrationOff = rule.vibrate && activity.getSystemService(android.app.NotificationManager::class.java)
+        .getNotificationChannel(DhikrReminderScheduler.CHANNEL_ID)?.shouldVibrate() == false
     AdhkarCard(Modifier.fillMaxWidth().testTag("adhkar_read_reminder_" + rule.id), onClick = onRead) {
         Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(reminderTitle(rule), Modifier.weight(1f).heightIn(min = 48.dp)
+                Text(reminderTitle(rule, state), Modifier.weight(1f).heightIn(min = 48.dp)
                     .wrapContentHeight(), fontWeight = FontWeight.SemiBold, color = AdhkarHeading)
                 Switch(rule.enabled, onToggle, modifier = Modifier.testTag("adhkar_enable_" + rule.id))
                 Box {
                     IconButton(onClick = { menu = true }) { DhikrIcon(R.drawable.ic_adhkar_more, "خيارات التذكير") }
                     DropdownMenu(menu, onDismissRequest = { menu = false }) {
                         DropdownMenuItem(text = { Text("تعديل") }, onClick = { menu = false; onEdit() })
-                        DropdownMenuItem(text = { Text("تخطّي هذه الفترة") }, enabled = window != null, onClick = { menu = false; onSkip() })
+                        DropdownMenuItem(text = { Text("تخطّي هذه الفترة") }, enabled = canSkip, onClick = { menu = false; onSkip() })
                         DropdownMenuItem(text = { Text("حذف") }, onClick = { menu = false; onDelete() })
                     }
                 }
@@ -833,19 +982,26 @@ private fun DhikrReminderRow(activity: AppCompatActivity, state: DhikrState, rul
             Text(dhikrRuleSummary(rule), fontSize = 12.sp, lineHeight = 22.sp, color = p.muted)
             val status = when {
                 !rule.enabled -> "متوقف"
+                collectionEmpty -> "هذه المجموعة فارغة · اضغط لفتح المكتبة"
                 occurrence?.status == DhikrOccurrenceStatus.SKIPPED -> "تم تخطّي هذه الفترة"
                 occurrence?.status == DhikrOccurrenceStatus.COMPLETED -> "اكتمل هدف هذه الفترة"
                 window == null -> "المواقيت غير متاحة"
-                !permission -> "الإشعارات غير متاحة"
-                occurrence != null && occurrence.snoozedUntilMillis > now -> "مؤجل لمدة 30 دقيقة"
+                !notificationsAvailable -> "الإشعارات غير متاحة"
+                vibrationOff -> "الاهتزاز متوقف لقناة تذكيرات الأذكار"
+                occurrence != null && occurrence.snoozedUntilMillis > now -> "مؤجل حتى " + formatDhikrTime(occurrence.snoozedUntilMillis, now)
                 now < window.startMillis -> "الفترة القادمة: " + formatDhikrWindow(window)
                 rule.collection != null -> "الفترة الحالية · قراءة المجموعة"
                 else -> "الفترة الحالية · " + latinNumber(occurrence?.count ?: 0) + " من " + latinNumber(rule.targetCount)
             }
             Text(status, color = p.primary, fontSize = 12.sp, lineHeight = 22.sp)
-            val nextNudge = remember(rule, now) { if (rule.enabled) DhikrReminderScheduler.nextNudge(activity, rule, now) else null }
+            val nextNudge = remember(rule, state, now, notificationsAvailable) {
+                if (rule.enabled) DhikrReminderScheduler.nextNudge(activity, rule, now) else null
+            }
             if (nextNudge != null) Text("التذكير القادم: " + formatDhikrTime(nextNudge, now), color = AdhkarHeading, fontSize = 12.sp, lineHeight = 22.sp)
-            if (rule.enabled && !permission) TextButton(onClick = { openDhikrNotificationSettings(activity) }) { Text("إعدادات الإشعارات") }
+            if (rule.enabled && !notificationsAvailable) TextButton(onClick = { openDhikrNotificationSettings(activity, rule.vibrate) }) { Text("إعدادات الإشعارات") }
+            if (rule.enabled && notificationsAvailable && vibrationOff) TextButton(onClick = {
+                openDhikrNotificationSettings(activity, true)
+            }) { Text("تفعيل الاهتزاز") }
         }
     }
 }
@@ -891,8 +1047,17 @@ internal fun compactReminderSummary(rule: DhikrReminder): String {
     }.joinToString(" · ")
 }
 
-internal fun reminderTitle(rule: DhikrReminder): String =
-    rule.collection?.let(::collectionTitle) ?: DhikrCatalog.find(rule.dhikrId)?.title.orEmpty()
+internal fun reminderTitle(rule: DhikrReminder, state: DhikrState): String =
+    rule.collection?.let(::collectionTitle) ?: state.findDhikr(rule.dhikrId)?.title.orEmpty()
+
+/** Use the current collection membership; the representative dhikr is not a fallback for an empty list. */
+internal fun reminderSessionItems(state: DhikrState, occurrence: DhikrOccurrence): List<String> {
+    val rule = state.reminders.firstOrNull {
+        it.id == occurrence.ruleId && it.revision == occurrence.revision
+    } ?: return emptyList()
+    return rule.collection?.let { state.collectionEntries(it).map(DhikrEntry::id) }
+        ?: listOf(occurrence.dhikrId).filter { state.findDhikr(it) != null }
+}
 
 internal fun fridayDhikrPreset() = DhikrReminder(dhikrId = DhikrCatalog.SALAWAT_ID, targetCount = 100, daysOfWeek = setOf(5),
     start = DhikrTime(minuteOfDay = 480), end = DhikrTime(DhikrTimeKind.MAGHRIB), cadence = DhikrCadence.GENTLE)
@@ -956,9 +1121,20 @@ internal fun formatDhikrTime(millis: Long, now: Long = System.currentTimeMillis(
     else time.format(DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.forLanguageTag("ar"))) + " · " + clock
 }
 internal fun collectionTitle(category: DhikrCategory) = if (category == DhikrCategory.SALAH) "أذكار بعد الصلاة" else "أذكار " + category.title
-internal fun openDhikrNotificationSettings(activity: AppCompatActivity) {
+internal fun openDhikrNotificationSettings(activity: AppCompatActivity, vibrate: Boolean = true) {
     DhikrReminderScheduler.ensureChannel(activity)
     val enabled = androidx.core.app.NotificationManagerCompat.from(activity).areNotificationsEnabled()
     activity.startActivity(Intent(if (enabled) Settings.ACTION_CHANNEL_NOTIFICATION_SETTINGS else Settings.ACTION_APP_NOTIFICATION_SETTINGS)
-        .putExtra(Settings.EXTRA_APP_PACKAGE, activity.packageName).putExtra(Settings.EXTRA_CHANNEL_ID, DhikrReminderScheduler.CHANNEL_ID))
+        .putExtra(Settings.EXTRA_APP_PACKAGE, activity.packageName)
+        .putExtra(Settings.EXTRA_CHANNEL_ID, DhikrReminderScheduler.channelId(vibrate)))
+}
+
+internal fun openDhikrExactAlarmSettings(activity: AppCompatActivity) {
+    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return
+    val app = Uri.parse("package:" + activity.packageName)
+    runCatching {
+        activity.startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).setData(app))
+    }.onFailure {
+        activity.startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).setData(app))
+    }
 }

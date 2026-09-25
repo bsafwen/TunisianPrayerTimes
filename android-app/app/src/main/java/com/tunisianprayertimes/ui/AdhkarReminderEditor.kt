@@ -34,8 +34,9 @@ import java.time.*
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable internal fun DhikrReminderEditor(activity: AppCompatActivity, initial: DhikrReminder,
-    onDismiss: () -> Unit, onSave: (DhikrReminder, (String) -> Unit) -> Unit) {
+    exactAlarmsAvailable: Boolean, onDismiss: () -> Unit, onSave: (DhikrReminder, (String) -> Unit) -> Unit) {
     val p = LocalAdhkarPalette.current
+    remember(activity) { DhikrReminderScheduler.ensureChannel(activity) }
     var selectedId by rememberSaveable(initial.id) { mutableStateOf(initial.dhikrId) }
     var collectionName by rememberSaveable(initial.id) { mutableStateOf(initial.collection?.name) }
     var target by rememberSaveable(initial.id) { mutableStateOf(initial.targetCount.toString()) }
@@ -220,12 +221,29 @@ import java.time.*
                         fontWeight = FontWeight.SemiBold, fontSize = 13.sp, modifier = Modifier.testTag("adhkar_next_nudge"))
                 }
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    if (collection != null && DhikrRepository(activity).state.value.collectionEntries(collection).isEmpty()) {
+                        Text("هذه المجموعة فارغة. يتوقف تذكيرها حتى تضيف إليها ذكرًا.",
+                            color = MaterialTheme.colorScheme.error, fontSize = 13.sp, lineHeight = 24.sp)
+                    }
+                    val selectedChannel = activity.getSystemService(NotificationManager::class.java)
+                        .getNotificationChannel(DhikrReminderScheduler.channelId(vibrate))
                     Text(when {
-                        !DhikrReminderScheduler.notificationsEnabled(activity) -> "الإشعارات غير مسموحة حاليًا. سيبقى تذكيرك محفوظًا."
-                        activity.getSystemService(NotificationManager::class.java).getNotificationChannel(DhikrReminderScheduler.CHANNEL_ID)?.shouldVibrate() == false -> "اهتزاز الإشعار متوقف في إعدادات قناة الأذكار"
-                        else -> "اهتزاز دون صوت، وفق إعدادات الهاتف"
+                        !enabled -> "إشعارات هذا التذكير متوقفة."
+                        selectedChannel == null || !DhikrReminderScheduler.notificationsEnabled(activity, vibrate) ->
+                            "إشعارات الأذكار غير متاحة حاليًا. سيبقى تذكيرك محفوظًا."
+                        selectedChannel.importance < NotificationManager.IMPORTANCE_HIGH ->
+                            "قد لا تظهر نافذة التذكير لأن أولوية قناة الأذكار منخفضة."
+                        vibrate && !selectedChannel.shouldVibrate() -> "الاهتزاز متوقف في إعدادات قناة هذا التذكير."
+                        !vibrate && selectedChannel.shouldVibrate() -> "قناة هذا التذكير مضبوطة على الاهتزاز رغم إيقافه هنا."
+                        vibrate -> "إشعار مع اهتزاز دون صوت، وفق إعدادات الهاتف."
+                        else -> "إشعار دون صوت أو اهتزاز، وفق إعدادات الهاتف."
                     }, color = p.muted, fontSize = 13.sp, lineHeight = 24.sp)
-                    TextButton(onClick = { openDhikrNotificationSettings(activity) }) { Text("إعدادات قناة الأذكار") }
+                    TextButton(onClick = { openDhikrNotificationSettings(activity, vibrate) }) { Text("إعدادات قناة الأذكار") }
+                    if (enabled && !exactAlarmsAvailable) {
+                        Text("صلاحية «المنبّهات والتذكيرات» غير مفعّلة. قد يتأخر الإشعار أو تفوت فترة الذكر.",
+                            color = MaterialTheme.colorScheme.error, fontSize = 13.sp, lineHeight = 24.sp)
+                        TextButton(onClick = { openDhikrExactAlarmSettings(activity) }) { Text("تفعيل المنبّهات والتذكيرات") }
+                    }
                 }
             }
             HorizontalDivider(color = AdhkarBorder)
@@ -278,7 +296,7 @@ import java.time.*
                     cadence == DhikrCadence.BALANCED.name) { cadence = DhikrCadence.BALANCED.name },
                 Triple("كل ساعة" + expected(edited.copy(cadence = DhikrCadence.HOURLY)),
                     cadence == DhikrCadence.HOURLY.name) { cadence = DhikrCadence.HOURLY.name },
-            ) + listOf(5, 10, 15, 30, 120, 180).map { minutes ->
+            ) + listOf(15, 30, 45, 120, 180).map { minutes ->
                 Triple("كل " + latinNumber(minutes) + " دقيقة" + expected(edited.copy(cadence = DhikrCadence.CUSTOM, intervalMinutes = minutes)),
                     cadence == DhikrCadence.CUSTOM.name && customInterval == minutes) {
                     cadence = DhikrCadence.CUSTOM.name
@@ -305,7 +323,7 @@ import java.time.*
                 TextButton(onClick = { cadence = DhikrCadence.CUSTOM.name; cadenceDialog = false },
                     enabled = customInterval != null && customInterval in MIN_DHIKR_INTERVAL_MINUTES..1440) { Text("تعيين") }
             }
-            Text("يتكرر التذكير خلال الفترة بهذا الفاصل، من 5 دقائق إلى 24 ساعة.",
+            Text("الفاصل من 15 دقيقة إلى 24 ساعة. قد يؤخّر الهاتف بعض الإشعارات في وضع توفير البطارية.",
                 color = p.muted, fontSize = 11.sp, lineHeight = 18.sp)
         } }, confirmButton = { TextButton(onClick = { cadenceDialog = false }) { Text("إغلاق") } })
     if (preview) AlertDialog(onDismissRequest = { preview = false }, title = { Text("معاينة الإشعار") },
@@ -313,7 +331,7 @@ import java.time.*
             Text(selectedEntry.title, fontWeight = FontWeight.Bold)
             Text("لحظة للذكر · متابعة هدفك الشخصي")
             Text("متابعة الذكر     ·     بعد 30 دقيقة", color = p.primary)
-            Text("هذه معاينة داخل التطبيق، لا ترسل إشعارًا. يظهر التأجيل فقط إذا بقيت 30 دقيقة ضمن الفترة.", fontSize = 12.sp, color = p.muted)
+            Text("هذه معاينة داخل التطبيق، لا ترسل إشعارًا. يؤجل الزر التذكير حتى 30 دقيقة دون تجاوز نهاية الفترة.", fontSize = 12.sp, color = p.muted)
         } }, confirmButton = { TextButton(onClick = { preview = false }) { Text("تم") } })
 }
 

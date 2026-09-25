@@ -4,6 +4,8 @@ import android.app.AlarmManager
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import android.util.Log
+import com.tunisianprayertimes.adhkar.DhikrReminderReceiver
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import com.tunisianprayertimes.wake.WakeAlarmVerifyWorker
@@ -81,7 +83,12 @@ object ScheduleRefreshCoordinator {
         context: Context,
         skipSilenceWhileManualSilence: Boolean = false,
     ): RefreshResult {
-        DhikrReminderScheduler.refresh(context.applicationContext, rearm = true)
+        try {
+            DhikrReminderScheduler.refresh(context.applicationContext, rearm = true)
+        } catch (error: Exception) {
+            Log.w("ScheduleRefresh", "Could not restore Adhkar reminders", error)
+            runCatching { DhikrReminderReceiver.enqueueFailureRepair(context.applicationContext) }
+        }
         return RefreshResult(
             silenceResult = syncSilence(
                 context = context,

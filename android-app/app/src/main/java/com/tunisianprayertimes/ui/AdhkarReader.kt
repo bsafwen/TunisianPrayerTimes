@@ -67,8 +67,12 @@ import kotlin.math.abs
     val complete = count >= target
     val skipped = entry.id in session.skippedIds
     val occurrence = session.occurrenceId?.let { state.occurrences[it] }
-    val open = occurrence == null || (now in occurrence.startMillis until occurrence.endMillis &&
-        occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED)
+    val liveRule = occurrence?.let { current -> state.reminders.any {
+        it.id == current.ruleId && it.enabled && it.revision == current.revision
+    } } == true
+    val open = if (session.occurrenceId == null) true else occurrence != null && liveRule &&
+        now in occurrence.startMillis until occurrence.endMillis &&
+        occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED
     var sources by remember { mutableStateOf(false) }
     var textSettings by remember { mutableStateOf(false) }
     var showExplanation by remember(session.itemId) { mutableStateOf(false) }
@@ -134,6 +138,7 @@ import kotlin.math.abs
                                 onClick = { menu = false; onReminder() })
                             DropdownMenuItem(leadingIcon = { DhikrIcon(R.drawable.ic_adhkar_next, tint = p.primary, modifier = Modifier.size(20.dp)) },
                                 text = { Text("تخطّي الذكر") },
+                                enabled = open,
                                 onClick = { menu = false; onSkip() })
                             if (session.category != null) DropdownMenuItem(
                                 leadingIcon = { DhikrIcon(R.drawable.ic_adhkar_plus, tint = p.primary, modifier = Modifier.size(20.dp)) },
@@ -185,7 +190,9 @@ import kotlin.math.abs
                     Text(entry.text, fontFamily = AdhkarReadingFont, fontSize = state.textSize.sp,
                         lineHeight = (state.textSize * 1.9f).sp, color = p.forest, textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.bodyLarge.copy(textDirection = TextDirection.ContentOrRtl),
-                        modifier = Modifier.fillMaxWidth().testTag("adhkar_reader_text"))
+                        modifier = Modifier.fillMaxWidth()
+                            .clickable(enabled = canCount, onClickLabel = "زيادة العدد", onClick = ::countOnce)
+                            .testTag("adhkar_reader_text"))
                     Spacer(Modifier.height(20.dp))
                     if (entry.reference.isNotBlank() || entry.custom) {
                         Text(entry.reference.ifBlank { "ذكر خاص" }, color = p.muted, fontSize = 13.sp,
@@ -214,7 +221,7 @@ import kotlin.math.abs
                             }
                         }
                     }
-                    if (state.isComplete(session) || !open) {
+                    if (session.occurrenceId == null || state.isComplete(session) || !open) {
                         Spacer(Modifier.height(8.dp))
                         TextButton(onClick = onNewSession, modifier = Modifier.testTag("adhkar_new_session")) {
                             Text(if (session.occurrenceId != null) "بدء قراءة مستقلة" else "بدء جلسة جديدة",
