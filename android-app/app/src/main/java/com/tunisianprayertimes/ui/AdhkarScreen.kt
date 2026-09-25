@@ -184,6 +184,15 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             scope.launch { snackbar.showSnackbar(DhikrReminderScheduler.validate(activity, rule) ?: "تعذّر حفظ التذكير. حاول مرة أخرى.") }
         }) { promptForReminderAccess(rule) }
     }
+    fun deleteReminder(rule: DhikrReminder, afterDelete: () -> Unit = {}) {
+        mutate({ repo.delete(rule.id) }) {
+            afterDelete()
+            scope.launch {
+                if (snackbar.showSnackbar("حُذف التذكير؛ حُفظ تقدم القراءة.", "تراجع", duration = SnackbarDuration.Long) == SnackbarResult.ActionPerformed)
+                    mutate({ repo.restore(rule) })
+            }
+        }
+    }
     fun removeCustom(entry: DhikrEntry) {
         var removal: CustomDhikrRemoval? = null
         mutate({ removal = repo.deleteCustom(entry.id) }) {
@@ -292,6 +301,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                         onToggleRule = { rule, enabled -> mutate({ repo.setEnabled(rule.id, enabled) }) {
                             if (enabled) promptForReminderAccess(rule.copy(enabled = true))
                         } },
+                        onDeleteRule = { rule -> deleteReminder(rule) },
                         onSavePreset = { rule -> saveWithReport(rule) },
                     )
                 } else {
@@ -336,14 +346,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                                 }
                             }
                         }) },
-                        onDelete = { rule ->
-                            mutate({ repo.delete(rule.id) }) {
-                                scope.launch {
-                                    if (snackbar.showSnackbar("حُذف التذكير؛ حُفظ تقدم القراءة.", "تراجع", duration = SnackbarDuration.Long) == SnackbarResult.ActionPerformed)
-                                        mutate({ repo.restore(rule) })
-                                }; showReminders = false
-                            }
-                        },
+                        onDelete = { rule -> deleteReminder(rule) { showReminders = false } },
                     )
                 }
                 readerId?.let { id -> state.sessions[id]?.let { session ->
@@ -481,6 +484,7 @@ private fun AdhkarTodayPage(
     onOpenReminder: (DhikrReminder) -> Unit,
     onEditDraft: (DhikrReminder) -> Unit,
     onToggleRule: (DhikrReminder, Boolean) -> Unit,
+    onDeleteRule: (DhikrReminder) -> Unit,
     onSavePreset: (DhikrReminder) -> Unit,
 ) {
     val p = LocalAdhkarPalette.current
@@ -530,6 +534,10 @@ private fun AdhkarTodayPage(
                     actionModifier = Modifier.testTag("adhkar_reminders_action"))
             }
         }
+        if (state.reminders.isEmpty()) item {
+            Text("لا توجد تذكيرات محفوظة بعد.", color = p.muted,
+                modifier = Modifier.padding(horizontal = 20.dp))
+        }
         items(state.reminders, key = { it.id }) { rule ->
             val entry = state.findDhikr(rule.dhikrId)
             val icon = when (val category = rule.collection ?: entry?.categories?.firstOrNull()) {
@@ -543,7 +551,13 @@ private fun AdhkarTodayPage(
             HomeReminderRow(slot = slot, saved = rule,
                 onRead = { onOpenReminder(rule) },
                 onEdit = { onEditDraft(rule) },
-                onToggle = { checked -> onToggleRule(rule, checked) })
+                onToggle = { checked -> onToggleRule(rule, checked) },
+                onDelete = { onDeleteRule(rule) })
+        }
+        if (unsavedSlots.isNotEmpty()) item {
+            Box(Modifier.padding(horizontal = 20.dp)) {
+                AdhkarSectionHeader("تذكيرات مقترحة")
+            }
         }
         items(unsavedSlots, key = { it.key }) { slot ->
             HomeReminderRow(slot = slot, saved = null,
@@ -619,6 +633,7 @@ private fun HomeReminderRow(
     onRead: () -> Unit,
     onEdit: () -> Unit,
     onToggle: (Boolean) -> Unit,
+    onDelete: (() -> Unit)? = null,
 ) {
     val p = LocalAdhkarPalette.current
     var menu by remember { mutableStateOf(false) }
@@ -639,10 +654,13 @@ private fun HomeReminderRow(
                 modifier = Modifier.testTag("adhkar_home_toggle_" + slot.key))
             Box {
                 IconButton(onClick = { menu = true }, modifier = Modifier.testTag("adhkar_home_menu_" + slot.key)) {
-                    DhikrIcon(R.drawable.ic_adhkar_more, "إعدادات التذكير")
+                    DhikrIcon(R.drawable.ic_adhkar_more, "خيارات التذكير")
                 }
                 DropdownMenu(menu, onDismissRequest = { menu = false }) {
                     DropdownMenuItem(text = { Text("إعدادات التذكير") }, onClick = { menu = false; onEdit() })
+                    if (saved != null && onDelete != null) {
+                        DropdownMenuItem(text = { Text("حذف التذكير") }, onClick = { menu = false; onDelete() })
+                    }
                 }
             }
         }
