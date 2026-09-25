@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "baseBuilder": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/build_base_snapshot.py",
+  "sources": [
+    {
+      "id": "isie-boumerdes-native-preservation-20260925",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/boumerdes-native-candidate.geojson",
+      "geojsonSha256": "87fa6a0c1f36fe0a376ad8dbbbdb31ab170982599068e768c552273b6f9b7647",
+      "reviewFile": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/source-review.json",
+      "reviewSha256": "ea169a3840f6a9e433e28b028bcf22b889bf8d4beefe9b4d5bd685c973dbca8c"
+    }
+  ],
+  "records": [],
+  "clips": [
+    {
+      "id": "osm:relation:7152245",
+      "clipById": "osm:relation:7114531",
+      "sourceId": "osm-isie-reviewed-clip-boumerdes-ghnada-seam-20260925",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "بومرداس",
+        "kind": "sector",
+        "parentName": "معتمدية بومرداس",
+        "governorateId": 345,
+        "delegationId": 427,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7152245"
+      },
+      "expectedClipper": {
+        "sourceId": "isie-local-sectors-2023-beni-hassan",
+        "name": "الغنادة",
+        "kind": "sector",
+        "parentName": "معتمدية بني حسان",
+        "governorateId": 364,
+        "delegationId": 427,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7114531"
+      },
+      "expectedPackedGeometrySha256": "b09a511c78d693463f847ec701761a9e9867e4c6edd49b9e4df6dffbb86dfa09",
+      "expectedClipperGeometrySha256": "73378e07af1c5b35adaea0011dcd4956088b1f179d216e1f8f5c2f731704cd70",
+      "minRemovedAreaKm2": 0.65,
+      "maxRemovedAreaKm2": 0.7,
+      "minPreservedOverlapKm2": 0.001,
+      "maxPreservedOverlapKm2": 0.006,
+      "maxPreserveGeometryMismatchM2": 50.0,
+      "preserveBufferGridUnits": 1,
+      "preserveOverlapSource": {
+        "sourceId": "isie-boumerdes-native-preservation-20260925",
+        "featureId": "osm:relation:7152245"
+      },
+      "crossGovernoratePolicy": "native_governorate_boundary",
+      "crossGovernorateEvidence": [
+        {
+          "file": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/boumerdes.pdf",
+          "sha256": "115afadb29dc0c378ec43d3484b6665d8335e4ac55fdf11ded90c4ea8d72eaea"
+        },
+        {
+          "file": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/el-ghnada.pdf",
+          "sha256": "4e13a286c20ab30b624f6b5ee107e23df9f3e40e3bb15fa5843437c7bc80c56e"
+        }
+      ],
+      "reason": "Paired ISIE 2023 maps draw the Monastir/Mahdia governorate line between Ghnada and Boumerdes. Remove only the unsupported portion of the installed OSM Boumerdes/Ghnada overlap, preserving the small overlap also present in Boumerdes' closed native red source ring. The native ring is a geographic guide, not a complete replacement: using it alone creates substantial overlaps with other OSM neighbors. The remaining seam and ground accuracy are unverified.",
+      "evidence": [
+        {
+          "file": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/source-review.json",
+          "sha256": "ea169a3840f6a9e433e28b028bcf22b889bf8d4beefe9b4d5bd685c973dbca8c"
+        },
+        {
+          "file": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/boumerdes-native-candidate.geojson",
+          "sha256": "87fa6a0c1f36fe0a376ad8dbbbdb31ab170982599068e768c552273b6f9b7647"
+        },
+        {
+          "file": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/boumerdes.pdf",
+          "sha256": "115afadb29dc0c378ec43d3484b6665d8335e4ac55fdf11ded90c4ea8d72eaea"
+        },
+        {
+          "file": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/el-ghnada.pdf",
+          "sha256": "4e13a286c20ab30b624f6b5ee107e23df9f3e40e3bb15fa5843437c7bc80c56e"
+        }
+      ]
+    }
+  ]
+}

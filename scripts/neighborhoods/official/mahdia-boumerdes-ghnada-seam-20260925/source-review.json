@@ -1,0 +1,28 @@
+{
+  "status": "provisional_best_effort_boundary_candidate",
+  "sourceGeojsonSha256": "87fa6a0c1f36fe0a376ad8dbbbdb31ab170982599068e768c552273b6f9b7647",
+  "targetId": "osm:relation:7152245",
+  "officialCode": "335251",
+  "sourceDrawingIndex": 533,
+  "method": "Closed native red ISIE path, EPSG:32632 from embedded PDF control points; one app-grid unit preservation margin, one-sided clip of OSM Boumerdes by installed ISIE Ghnada.",
+  "sourceMapPins": [
+    {
+      "file": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/boumerdes.pdf",
+      "sha256": "115afadb29dc0c378ec43d3484b6665d8335e4ac55fdf11ded90c4ea8d72eaea"
+    },
+    {
+      "file": "scripts/neighborhoods/official/mahdia-boumerdes-ghnada-seam-20260925/el-ghnada.pdf",
+      "sha256": "4e13a286c20ab30b624f6b5ee107e23df9f3e40e3bb15fa5843437c7bc80c56e"
+    }
+  ],
+  "before": {
+    "overlapKm2": 0.687966
+  },
+  "candidate": {
+    "removedKm2": 0.686578,
+    "preservedOverlapKm2": 0.001388,
+    "targetValid": true,
+    "targetRetainsRepresentativePoint": true
+  },
+  "uncertainty": "Paired ISIE 2023 maps draw the Monastir/Mahdia governorate line between Ghnada and Boumerdes. Remove only the unsupported portion of the installed OSM Boumerdes/Ghnada overlap, preserving the small overlap also present in Boumerdes' closed native red source ring. The native ring is a geographic guide, not a complete replacement: using it alone creates substantial overlaps with other OSM neighbors. The remaining seam and ground accuracy are unverified."
+}
