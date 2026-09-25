@@ -34,12 +34,18 @@ object SilenceStatus {
      * when the end is unknown (silence until stopped, wake-until-alarm, or a
      * stale state that the repair path will reconcile).
      */
-    fun appSilenceEndsAt(context: Context): Long? {
+    fun appSilenceEndsAt(context: Context, nowMillis: Long = System.currentTimeMillis()): Long? {
         if (!isAppControlledSilenceActive(context)) return null
         if (PrefsManager.isManualSilenceActive(context)) {
             val endsAt = PrefsManager.getManualSilenceEndsAtMillis(context)
-            return endsAt.takeIf { it > System.currentTimeMillis() }
+            return endsAt.takeIf { it > nowMillis }
         }
-        return SilenceScheduler.currentSilenceWindowEnd(context)
+        return if (PrefsManager.isAutoSilenceActive(context)) {
+            SilenceScheduler.currentSilenceWindowEnd(context)
+        } else {
+            // Wake-alarm silence lasts until its alarm rings or is removed. A
+            // nearby prayer window does not describe the end of that silence.
+            null
+        }
     }
 }

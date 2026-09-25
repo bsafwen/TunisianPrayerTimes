@@ -79,7 +79,11 @@ internal fun dhikrReminderFromJson(json: JSONObject): DhikrReminder {
         daysOfWeek = (0 until days.length()).map { days.getInt(it) }.toSet(),
         start = readTime(json.getJSONObject("start")),
         end = readTime(json.getJSONObject("end")),
-        intervalMinutes = json.getInt("intervalMinutes"),
+        // Older versions offered 5–14 minute reminders. Keep those saved rules
+        // active at the supported cadence instead of making validation reject them.
+        intervalMinutes = json.getInt("intervalMinutes").let {
+            if (it in 5 until MIN_DHIKR_INTERVAL_MINUTES) MIN_DHIKR_INTERVAL_MINUTES else it
+        },
         enabled = json.optBoolean("enabled", true),
         cadence = runCatching { DhikrCadence.valueOf(json.getString("cadence")) }.getOrDefault(DhikrCadence.CUSTOM),
         endNextDay = if (json.has("endNextDay") && !json.isNull("endNextDay")) json.getBoolean("endNextDay") else null,
@@ -127,6 +131,8 @@ data class DhikrSession(
     val skippedIds: Set<String> = emptySet(),
     /** A manual reminder reading can keep its chosen goal without joining scheduled progress. */
     val targetCountOverride: Int? = null,
+    /** Stable occasion for a full collection reading; individual dhikr sessions leave this null. */
+    val collectionPeriodKey: String? = null,
 ) {
     val itemId: String get() = itemIds[index.coerceIn(0, itemIds.lastIndex)]
 }
@@ -198,9 +204,9 @@ fun DhikrState.target(session: DhikrSession, itemId: String = session.itemId): I
 fun DhikrState.isComplete(session: DhikrSession): Boolean =
     session.itemIds.all { it in session.skippedIds || (session.counts[it] ?: 0) >= target(session, it) }
 
-/** Custom cadences honor the configured interval down to this floor; receive-time burst spacing is 2 minutes. */
-const val MIN_DHIKR_INTERVAL_MINUTES = 5
-/** Validation caps a window at one day, so 5-minute nudges need at most 289 entries. */
+/** Android can defer closely spaced while-idle alarms; avoid offering a 5-minute cadence. */
+const val MIN_DHIKR_INTERVAL_MINUTES = 15
+/** Validation caps a window at one day; this comfortably exceeds the maximum custom count. */
 private const val MAX_NUDGES_PER_WINDOW = 300
 
 /**

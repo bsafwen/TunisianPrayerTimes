@@ -1,12 +1,14 @@
 package com.tunisianprayertimes.adhkar
 
 import android.app.Application
+import android.app.AlarmManager
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.media.AudioManager
 import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.PrefsManager
+import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.SilenceStatus
 import com.tunisianprayertimes.ui.fridayDhikrPreset
 import org.junit.*
@@ -15,6 +17,7 @@ import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.Shadows
 import org.robolectric.annotation.Config
+import org.robolectric.shadows.ShadowAlarmManager
 import java.time.*
 import java.util.TimeZone
 import org.json.JSONObject
@@ -93,6 +96,88 @@ class AdhkarFlowTest {
         val fresh = repo.openSession(listOf("salah_istighfar"), fresh = true)
         assertNotEquals(first, fresh)
         assertEquals(0, repo.state.value.sessions.getValue(fresh).counts["salah_istighfar"] ?: 0)
+    }
+    @Test fun morningCollectionResetsAtNextFajrAndSurvivesRestartBeforeThen() {
+        val items = listOf("sayyid_istighfar", "ayat_kursi")
+        val firstFajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), friday)!!
+        val nextFajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), friday.plusDays(1))!!
+        val first = repo.openSession(items, DhikrCategory.MORNING, now = firstFajr,
+            collectionReading = true)
+        repo.count(first, 1, firstFajr + 1)
+        repo.skipItem(first, firstFajr + 2)
+        repo.skipItem(first, firstFajr + 3)
+        DhikrRepository.clearMemoryCache()
+        val restored = DhikrRepository(context)
+
+        val beforeNextFajr = restored.openSession(items, DhikrCategory.MORNING,
+            now = nextFajr - 1, collectionReading = true)
+        assertEquals(first, beforeNextFajr)
+        assertEquals(1, restored.state.value.sessions.getValue(first).counts[items.first()])
+        assertTrue(items.last() in restored.state.value.sessions.getValue(first).skippedIds)
+
+        val next = restored.openSession(items, DhikrCategory.MORNING, now = nextFajr,
+            collectionReading = true)
+        assertNotEquals(first, next)
+        assertTrue(restored.state.value.sessions.getValue(next).counts.isEmpty())
+        assertTrue(restored.state.value.sessions.getValue(next).skippedIds.isEmpty())
+        assertEquals(0, restored.state.value.sessions.getValue(next).index)
+    }
+    @Test fun eveningCollectionResetsAtAsrAndKeepsProgressAcrossListEdits() {
+        val items = listOf("sayyid_istighfar", "ayat_kursi")
+        val firstAsr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.ASR), friday)!!
+        val nextAsr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.ASR), friday.plusDays(1))!!
+        val first = repo.openSession(items, DhikrCategory.EVENING, now = firstAsr,
+            collectionReading = true)
+        repo.count(first, 1, firstAsr + 1)
+        val reordered = repo.openSession(items.reversed(), DhikrCategory.EVENING,
+            now = firstAsr + 2, collectionReading = true)
+        assertEquals(first, reordered)
+        assertEquals(1, repo.state.value.sessions.getValue(first).counts[items.first()])
+        val expandedItems = items.reversed() + "salah_salam"
+        assertEquals(first, repo.openSession(expandedItems, DhikrCategory.EVENING,
+            now = firstAsr + 3, collectionReading = true))
+        assertEquals(1, repo.state.value.sessions.getValue(first).counts[items.first()])
+        val beforeNextAsr = repo.openSession(expandedItems, DhikrCategory.EVENING,
+            now = nextAsr - 1, collectionReading = true)
+        assertEquals(first, beforeNextAsr)
+        val next = repo.openSession(expandedItems, DhikrCategory.EVENING,
+            now = nextAsr, collectionReading = true)
+        assertNotEquals(first, next)
+        assertTrue(repo.state.value.sessions.getValue(next).counts.isEmpty())
+        val newReading = repo.openSession(expandedItems, DhikrCategory.EVENING, fresh = true,
+            now = nextAsr + 1, collectionReading = true)
+        assertNotEquals(next, newReading)
+        assertEquals(newReading, repo.openSession(expandedItems, DhikrCategory.EVENING,
+            now = nextAsr + 1, collectionReading = true))
+    }
+    @Test fun fullCollectionAndIndividualDhikrUseSeparateCounters() {
+        val items = listOf("sayyid_istighfar", "ayat_kursi")
+        val fajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), friday)!!
+        val collection = repo.openSession(items, DhikrCategory.MORNING, now = fajr,
+            collectionReading = true)
+        repo.count(collection, 1, fajr + 1)
+        val individual = repo.openSession(listOf(items.first()), DhikrCategory.MORNING, now = fajr + 2)
+        assertNotEquals(collection, individual)
+        assertEquals(0, repo.state.value.sessions.getValue(individual).counts[items.first()] ?: 0)
+    }
+    @Test fun scheduledCollectionGetsFreshCountersForEachWindow() {
+        val items = listOf("sayyid_istighfar", "ayat_kursi")
+        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING,
+            daysOfWeek = (1..7).toSet())
+        repo.save(rule)
+        val firstWindow = window(rule)
+        val secondWindow = window(rule, friday.plusDays(1))
+        val firstOccurrence = repo.ensureOccurrence(rule, firstWindow)
+        val secondOccurrence = repo.ensureOccurrence(rule, secondWindow)
+        val first = repo.openSession(items, DhikrCategory.MORNING, firstOccurrence.id,
+            now = firstWindow.startMillis, collectionReading = true)
+        repo.count(first, 1, firstWindow.startMillis + 1)
+        val second = repo.openSession(items, DhikrCategory.MORNING, secondOccurrence.id,
+            now = secondWindow.startMillis, collectionReading = true)
+        assertNotEquals(first, second)
+        assertTrue(repo.state.value.sessions.getValue(second).counts.isEmpty())
+        assertTrue(repo.state.value.sessions.getValue(second).skippedIds.isEmpty())
+        assertEquals(0, repo.state.value.occurrences.getValue(secondOccurrence.id).count)
     }
     @Test fun arabicSearchAndFavouritePreserveExactText() {
         assertEquals(normalizeDhikrSearch("أَذْكَارُ الْمَسَاءِ"), normalizeDhikrSearch("اذكار المساء"))
@@ -195,15 +280,156 @@ class AdhkarFlowTest {
         assertEquals(0, repo.state.value.sessions.getValue(id).index)
     }
     @Test fun customIntervalDrivesNudgeFrequency() {
-        val rule = rule(100).copy(cadence = DhikrCadence.CUSTOM, intervalMinutes = 5,
+        val rule = rule(100).copy(cadence = DhikrCadence.CUSTOM, intervalMinutes = 15,
             start = DhikrTime(minuteOfDay = 480), end = DhikrTime(minuteOfDay = 600))
         val window = window(rule)
         val times = dhikrNudgeTimes(rule, window)
-        assertEquals(24, times.size)
+        assertEquals(8, times.size)
         assertEquals(window.startMillis, times.first())
-        assertEquals(window.startMillis + 115 * 60_000L, times.last())
+        assertEquals(window.startMillis + 105 * 60_000L, times.last())
         assertNull(DhikrReminderScheduler.validate(context, rule))
-        assertNotNull(DhikrReminderScheduler.validate(context, rule.copy(intervalMinutes = 4)))
+        assertNotNull(DhikrReminderScheduler.validate(context, rule.copy(intervalMinutes = 5)))
+        val restored = dhikrReminderFromJson(rule.copy(intervalMinutes = 5).toJson())
+        assertEquals(15, restored.intervalMinutes)
+        assertNull(DhikrReminderScheduler.validate(context, restored))
+    }
+    @Test fun collectionGoalWaitsForEveryItemAndSkipAllStopsNudges() {
+        val rule = rule(1).copy(dhikrId = "sayyid_istighfar", collection = DhikrCategory.MORNING)
+        repo.save(rule)
+        val window = window(rule)
+        val occurrence = repo.ensureOccurrence(rule, window)
+        val items = listOf("sayyid_istighfar", "ayat_kursi")
+        val session = repo.openSession(items, DhikrCategory.MORNING, occurrence.id, now = window.startMillis)
+
+        repo.count(session, 1, window.startMillis + 1)
+        assertEquals(DhikrOccurrenceStatus.OPEN, repo.state.value.occurrences.getValue(occurrence.id).status)
+        assertEquals(0, repo.state.value.occurrences.getValue(occurrence.id).count)
+        repo.move(session, 1)
+        repo.count(session, 1, window.startMillis + 2)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+        assertEquals(1, repo.state.value.occurrences.getValue(occurrence.id).count)
+        repo.count(session, -1, window.startMillis + 3)
+        assertEquals(DhikrOccurrenceStatus.OPEN, repo.state.value.occurrences.getValue(occurrence.id).status)
+        repo.skipItem(session, window.startMillis + 4)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+
+        val next = repo.ensureOccurrence(rule, window(rule, friday.plusWeeks(1)))
+        val skipped = repo.openSession(items, DhikrCategory.MORNING, next.id, now = next.startMillis)
+        repo.skipItem(skipped, next.startMillis + 1)
+        assertEquals(DhikrOccurrenceStatus.OPEN, repo.state.value.occurrences.getValue(next.id).status)
+        repo.skipItem(skipped, next.startMillis + 2)
+        assertEquals(DhikrOccurrenceStatus.SKIPPED, repo.state.value.occurrences.getValue(next.id).status)
+        assertTrue(DhikrReminderScheduler.nextNudge(context, rule, next.startMillis + 3)!! >= next.endMillis)
+    }
+    @Test fun collectionMembershipKeepsOneSessionAndReopensExpandedGoal() {
+        val rule = rule(1).copy(dhikrId = "sayyid_istighfar", collection = DhikrCategory.MORNING)
+        repo.save(rule)
+        val occurrence = repo.ensureOccurrence(rule, window(rule))
+        val start = occurrence.startMillis
+        val items = listOf("sayyid_istighfar", "ayat_kursi")
+        val session = repo.openSession(items, DhikrCategory.MORNING, occurrence.id, now = start)
+        repo.count(session, 1, start + 1)
+        val reopened = repo.openSession(items.reversed(), DhikrCategory.MORNING, occurrence.id, now = start + 2)
+        assertEquals(session, reopened)
+        assertEquals(1, repo.state.value.sessions.getValue(session).counts["sayyid_istighfar"])
+        assertEquals(1, repo.state.value.sessions.values.count { it.occurrenceId == occurrence.id })
+        repo.move(session, -1)
+        repo.count(session, 1, start + 3)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+        repo.addToCollectionSession(session, "salah_salam", start + 4)
+        assertEquals(DhikrOccurrenceStatus.OPEN, repo.state.value.occurrences.getValue(occurrence.id).status)
+        repo.move(session, 1)
+        repo.move(session, 1)
+        repo.count(session, 1, start + 5)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+        repo.removeItem(session, start + 6)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+    }
+    @Test fun collectionMembershipDialogReconcilesTheActiveReminderWithoutReopeningReader() {
+        repo.state.value.collectionEntries(DhikrCategory.PRAYER).map { it.id }.forEach {
+            repo.setCollectionMembership(DhikrCategory.PRAYER, it, false)
+        }
+        val first = repo.saveCustom(DhikrEntry(id = "personal_first", title = "First", text = "First text",
+            reference = "", defaultCount = 1, categories = emptySet()))
+        val second = repo.saveCustom(DhikrEntry(id = "personal_second", title = "Second", text = "Second text",
+            reference = "", defaultCount = 1, categories = emptySet()))
+        repo.setCollectionMembership(DhikrCategory.PRAYER, first.id, true)
+        val rule = rule(1).copy(dhikrId = first.id, collection = DhikrCategory.PRAYER)
+        repo.save(rule)
+        val window = window(rule)
+        val occurrence = repo.ensureOccurrence(rule, window)
+        val session = repo.openSession(listOf(first.id), DhikrCategory.PRAYER, occurrence.id, now = window.startMillis)
+        repo.count(session, 1, window.startMillis + 1)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+
+        repo.setCollectionMembership(DhikrCategory.PRAYER, second.id, true, window.startMillis + 2)
+        assertEquals(listOf(first.id, second.id), repo.state.value.sessions.getValue(session).itemIds)
+        assertEquals(1, repo.state.value.sessions.getValue(session).counts[first.id])
+        assertEquals(DhikrOccurrenceStatus.OPEN, repo.state.value.occurrences.getValue(occurrence.id).status)
+        DhikrReminderScheduler.refresh(context, nowMillis = window.startMillis + 2)
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        assertEquals(occurrence.id, JSONObject(prefs.getString("event:" + rule.id, null)!!).getString("occurrence"))
+
+        repo.setCollectionMembership(DhikrCategory.PRAYER, second.id, false, window.startMillis + 3)
+        assertEquals(listOf(first.id), repo.state.value.sessions.getValue(session).itemIds)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+        DhikrReminderScheduler.refresh(context, nowMillis = window.startMillis + 3)
+        assertNotEquals(occurrence.id, JSONObject(prefs.getString("event:" + rule.id, null)!!).getString("occurrence"))
+    }
+    @Test fun editingPersonalDhikrCountReconcilesAnActiveCollectionReminder() {
+        val entry = repo.saveCustom(DhikrEntry(id = "personal_goal", title = "Goal", text = "Goal text",
+            reference = "", defaultCount = 1, categories = emptySet()))
+        repo.setCollectionMembership(DhikrCategory.PRAYER, entry.id, true)
+        val rule = rule(1).copy(dhikrId = entry.id, collection = DhikrCategory.PRAYER)
+        repo.save(rule)
+        val window = window(rule)
+        val occurrence = repo.ensureOccurrence(rule, window)
+        val session = repo.openSession(listOf(entry.id), DhikrCategory.PRAYER, occurrence.id, now = window.startMillis)
+        repo.count(session, 1, window.startMillis + 1)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+
+        repo.saveCustom(entry.copy(defaultCount = 2), window.startMillis + 2)
+        assertEquals(1, repo.state.value.sessions.getValue(session).counts[entry.id])
+        assertEquals(DhikrOccurrenceStatus.OPEN, repo.state.value.occurrences.getValue(occurrence.id).status)
+        DhikrReminderScheduler.refresh(context, nowMillis = window.startMillis + 2)
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        assertEquals(occurrence.id, JSONObject(prefs.getString("event:" + rule.id, null)!!).getString("occurrence"))
+
+        repo.saveCustom(entry, window.startMillis + 3)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+        DhikrReminderScheduler.refresh(context, nowMillis = window.startMillis + 3)
+        assertNotEquals(occurrence.id, JSONObject(prefs.getString("event:" + rule.id, null)!!).getString("occurrence"))
+    }
+    @Test fun completedAndExpiredGoalsCannotBeSkippedButUpcomingCan() {
+        val rule = rule(1); repo.save(rule)
+        val completed = repo.ensureOccurrence(rule, window(rule))
+        val session = repo.openSession(listOf(rule.dhikrId), occurrenceId = completed.id, now = completed.startMillis)
+        repo.count(session, 1, completed.startMillis + 1)
+        repo.skip(completed.id, completed.startMillis + 2)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(completed.id).status)
+        val expired = repo.ensureOccurrence(rule, window(rule, friday.plusWeeks(1)))
+        repo.skip(expired.id, expired.endMillis)
+        assertEquals(DhikrOccurrenceStatus.OPEN, repo.state.value.occurrences.getValue(expired.id).status)
+        repo.skip(expired.id, expired.startMillis - 1)
+        assertEquals(DhikrOccurrenceStatus.SKIPPED, repo.state.value.occurrences.getValue(expired.id).status)
+    }
+    @Test fun editedOrDisabledRuleCannotChangeOldLinkedProgress() {
+        val rule = rule(3); repo.save(rule)
+        val occurrence = repo.ensureOccurrence(rule, window(rule))
+        val session = repo.openSession(listOf(rule.dhikrId), occurrenceId = occurrence.id, now = occurrence.startMillis)
+        repo.setEnabled(rule.id, false)
+        repo.count(session, 1, occurrence.startMillis + 1)
+        assertEquals(0, repo.state.value.occurrences.getValue(occurrence.id).count)
+        repo.setEnabled(rule.id, true)
+        repo.save(rule.copy(targetCount = 5), occurrence.startMillis + 2)
+        repo.count(session, 1, occurrence.startMillis + 3)
+        assertEquals(0, repo.state.value.occurrences.getValue(occurrence.id).count)
+    }
+    @Test fun validationAndResolutionAgreeOnTomorrowStart() {
+        val rule = rule().copy(start = DhikrTime(DhikrTimeKind.ISHA),
+            end = DhikrTime(DhikrTimeKind.ISHA, offsetMinutes = 1), endNextDay = true)
+        assertNotNull(DhikrReminderScheduler.validate(context, rule))
+        assertNull(DhikrReminderScheduler.resolveWindow(context, rule, friday))
     }
     @Test fun nextNudgeReportsUpcomingReminder() {
         val rule = rule(1).copy(cadence = DhikrCadence.CUSTOM, intervalMinutes = 30,
@@ -272,9 +498,55 @@ class AdhkarFlowTest {
         val notifications = context.getSystemService(NotificationManager::class.java).activeNotifications
         assertEquals(1, notifications.size)
         assertEquals(0, repo.state.value.occurrences.getValue(window.progressKey).count)
-        assertEquals(listOf("متابعة الذكر", "بعد 30 دقيقة"), notifications.single().notification.actions.map { it.title.toString() })
+        assertEquals(listOf("متابعة الذكر", "تأجيل"), notifications.single().notification.actions.map { it.title.toString() })
         val open = Shadows.shadowOf(notifications.single().notification.contentIntent).savedIntent
         assertEquals(window.progressKey, open.getStringExtra(DhikrReminderScheduler.EXTRA_OCCURRENCE_ID))
+    }
+    @Test fun earlyBroadcastKeepsItsNudgeUntilTheIntendedTime() {
+        val rule = rule(); repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        val scheduled = event()
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+
+        deliver(scheduled, window.startMillis - 80_000L)
+        assertEquals(scheduled, prefs.getString("event:" + rule.id, null))
+        assertFalse(prefs.contains("done:" + JSONObject(scheduled).getString("eventId")))
+        assertEquals(0, context.getSystemService(NotificationManager::class.java).activeNotifications.size)
+
+        deliver(scheduled, window.startMillis)
+        assertEquals(1, context.getSystemService(NotificationManager::class.java).activeNotifications.size)
+        assertEquals("shown", JSONObject(prefs.getString("done:" + JSONObject(scheduled).getString("eventId"), "{}")!!).getString("outcome"))
+    }
+    @Test fun reminderVibrationSettingSelectsTheRightChannel() {
+        val rule = rule().copy(vibrate = false); repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        deliver(event(), window.startMillis)
+        val manager = context.getSystemService(NotificationManager::class.java)
+        assertEquals(DhikrReminderScheduler.QUIET_CHANNEL_ID, manager.activeNotifications.single().notification.channelId)
+        assertFalse(manager.getNotificationChannel(DhikrReminderScheduler.QUIET_CHANNEL_ID).shouldVibrate())
+        assertTrue(manager.getNotificationChannel(DhikrReminderScheduler.CHANNEL_ID).shouldVibrate())
+    }
+    @Test fun nearbyRemindersAreDeferredInsteadOfDiscarded() {
+        val first = rule(); val second = rule().copy(dhikrId = "salah_istighfar")
+        repo.save(first); repo.save(second)
+        val window = window(first)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        val firstEvent = prefs.getString("event:" + first.id, null)!!
+        val secondEvent = prefs.getString("event:" + second.id, null)!!
+
+        deliver(firstEvent, window.startMillis)
+        deliver(secondEvent, window.startMillis + 1)
+        val deferred = prefs.getString("event:" + second.id, null)!!
+        assertEquals(window.startMillis + 2 * 60_000L, JSONObject(deferred).getLong("at"))
+        assertFalse(prefs.contains("done:" + JSONObject(secondEvent).getString("eventId")))
+        assertEquals(window.startMillis + 2 * 60_000L,
+            DhikrReminderScheduler.nextNudge(context, second, window.startMillis + 1))
+
+        deliver(deferred, window.startMillis + 2 * 60_000L)
+        assertEquals(2, context.getSystemService(NotificationManager::class.java).activeNotifications.size)
     }
     @Test fun completionSkipAndDisableRejectAlreadyDispatchedAlarms() {
         val rule = rule(1); repo.save(rule)
@@ -304,14 +576,38 @@ class AdhkarFlowTest {
         deliver(event, window.endMillis + 1)
         assertEquals(0, context.getSystemService(NotificationManager::class.java).activeNotifications.size)
     }
-    @Test fun snoozeIsOccurrenceSpecificAndCannotCrossEnd() {
+    @Test fun snoozeIsOccurrenceSpecificAndStopsAtWindowEnd() {
         val rule = rule(); repo.save(rule)
         val window = window(rule)
         val occurrence = repo.ensureOccurrence(rule, window)
         assertTrue(repo.snooze(occurrence.id, window.startMillis))
         assertEquals(window.startMillis + 30 * 60_000, repo.state.value.occurrences.getValue(occurrence.id).snoozedUntilMillis)
-        assertFalse(repo.snooze(occurrence.id, window.endMillis - 10 * 60_000))
+        assertTrue(repo.snooze(occurrence.id, window.endMillis - 10 * 60_000))
+        assertEquals(window.endMillis - 1, repo.state.value.occurrences.getValue(occurrence.id).snoozedUntilMillis)
+        assertFalse(repo.snooze(occurrence.id, window.endMillis - 1))
         assertEquals(0, repo.state.value.occurrences.getValue(occurrence.id).count)
+    }
+    @Test fun notificationSnoozeReplacesCurrentNudgeAndRejectsStaleDelivery() {
+        val rule = rule(1).copy(start = DhikrTime(minuteOfDay = 480), end = DhikrTime(minuteOfDay = 540))
+        repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        val original = event()
+        deliver(original, window.startMillis)
+        val manager = context.getSystemService(NotificationManager::class.java)
+        val snooze = Shadows.shadowOf(manager.activeNotifications.single().notification.actions[1].actionIntent).savedIntent
+        val clickedAt = window.startMillis + 10 * 60_000L
+        DhikrReminderScheduler.receive(context, snooze, clickedAt)
+
+        assertEquals(0, manager.activeNotifications.size)
+        val pending = event()
+        assertTrue(JSONObject(pending).getString("eventId").contains(":snooze:"))
+        assertEquals(clickedAt + 30 * 60_000L, JSONObject(pending).getLong("at"))
+        deliver(original, clickedAt + 1)
+        assertEquals(0, manager.activeNotifications.size)
+        deliver(pending, clickedAt + 30 * 60_000L)
+        deliver(pending, clickedAt + 30 * 60_000L)
+        assertEquals(1, manager.activeNotifications.size)
     }
     @Test fun daylightSavingWindowUsesLocalInstants() {
         TimeZone.setDefault(TimeZone.getTimeZone("Europe/Paris"))
@@ -320,6 +616,23 @@ class AdhkarFlowTest {
         val autumn = window(rule, LocalDate.of(2026, 10, 25))
         assertEquals(2 * 60 * 60_000L, spring.endMillis - spring.startMillis)
         assertEquals(4 * 60 * 60_000L, autumn.endMillis - autumn.startMillis)
+    }
+    @Test fun prayerRelativeReminderUsesBundledYearFallbackAfter2026() {
+        val delegation = PrefsManager.getDelegationId(context)
+        val source = PrayerTimesRepository.loadDayPrayerTimes(context, delegation, 2026, 1, 1)!!
+        val nextYear = LocalDate.of(2027, 1, 1)
+        val fajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), nextYear)!!
+        val localFajr = Instant.ofEpochMilli(fajr).atZone(ZoneId.systemDefault()).toLocalTime()
+        assertEquals(source.fajr.hour, localFajr.hour)
+        assertEquals(source.fajr.minute, localFajr.minute)
+        val rule = rule().copy(start = DhikrTime(DhikrTimeKind.FAJR), end = DhikrTime(DhikrTimeKind.MAGHRIB))
+        assertNotNull(DhikrReminderScheduler.resolveWindow(context, rule, nextYear))
+
+        val leapDay = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), LocalDate.of(2028, 2, 29))!!
+        val feb28 = PrayerTimesRepository.loadDayPrayerTimes(context, delegation, 2026, 2, 28)!!
+        val localLeapFajr = Instant.ofEpochMilli(leapDay).atZone(ZoneId.systemDefault()).toLocalTime()
+        assertEquals(feb28.fajr.hour, localLeapFajr.hour)
+        assertEquals(feb28.fajr.minute, localLeapFajr.minute)
     }
     @Test @Config(sdk = [33]) fun permissionAndChannelRestrictionsKeepReadingAvailable() {
         val rule = rule(); repo.save(rule)
@@ -339,6 +652,50 @@ class AdhkarFlowTest {
         manager.deleteNotificationChannel(DhikrReminderScheduler.CHANNEL_ID)
         manager.createNotificationChannel(android.app.NotificationChannel(DhikrReminderScheduler.CHANNEL_ID, "Blocked", NotificationManager.IMPORTANCE_NONE))
         assertFalse(DhikrReminderScheduler.notificationsEnabled(context))
+    }
+    @Test @Config(sdk = [33]) fun blockedNotificationRetriesAndReleasesWhenPermissionReturns() {
+        val rule = rule(); repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        val original = event()
+        val eventId = JSONObject(original).getString("eventId")
+        val app = context as Application
+        Shadows.shadowOf(app).denyPermissions(android.Manifest.permission.POST_NOTIFICATIONS)
+
+        deliver(original, window.startMillis)
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        val deferred = JSONObject(prefs.getString("event:" + rule.id, null)!!)
+        assertEquals(window.startMillis + 15 * 60_000L, deferred.getLong("at"))
+        assertEquals(eventId, deferred.getString("eventId"))
+        assertFalse(prefs.contains("done:" + eventId))
+        assertNull(DhikrReminderScheduler.nextNudge(context, rule, window.startMillis + 1))
+
+        Shadows.shadowOf(app).grantPermissions(android.Manifest.permission.POST_NOTIFICATIONS)
+        DhikrReminderScheduler.refresh(context, nowMillis = window.startMillis + 1)
+        val released = prefs.getString("event:" + rule.id, null)!!
+        assertEquals(window.startMillis + 1, JSONObject(released).getLong("at"))
+        assertEquals(eventId, JSONObject(released).getString("eventId"))
+        deliver(released, window.startMillis + 1)
+        assertEquals(1, context.getSystemService(NotificationManager::class.java).activeNotifications.size)
+    }
+    @Test fun emptyCollectionSuspendsAndMembershipRestoresReminder() {
+        val members = repo.state.value.collectionEntries(DhikrCategory.MORNING).map { it.id }
+        val rule = rule(1).copy(dhikrId = members.first(), collection = DhikrCategory.MORNING)
+        repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        assertNotNull(prefs.getString("event:" + rule.id, null))
+
+        members.forEach { repo.setCollectionMembership(DhikrCategory.MORNING, it, false) }
+        DhikrReminderScheduler.refresh(context, nowMillis = window.startMillis - 1)
+        assertTrue(repo.state.value.collectionEntries(DhikrCategory.MORNING).isEmpty())
+        assertNull(prefs.getString("event:" + rule.id, null))
+        assertNull(DhikrReminderScheduler.nextNudge(context, rule, window.startMillis - 1))
+
+        repo.setCollectionMembership(DhikrCategory.MORNING, members.first(), true)
+        DhikrReminderScheduler.refresh(context, nowMillis = window.startMillis - 1)
+        assertNotNull(prefs.getString("event:" + rule.id, null))
     }
     @Test fun delayedDeliveryDoesNotReplayMissedNudges() {
         val rule = rule().copy(cadence = DhikrCadence.HOURLY); repo.save(rule)
@@ -376,6 +733,30 @@ class AdhkarFlowTest {
         assertEquals(1, notificationManager.activeNotifications.size)
         assertEquals(0, repo.state.value.occurrences.getValue(window.progressKey).count)
     }
+    @Test fun silenceReleaseMovesDeferredReminderForward() {
+        val rule = rule(1); repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        val original = event()
+        val notificationManager = context.getSystemService(NotificationManager::class.java)
+        Shadows.shadowOf(notificationManager).setNotificationPolicyAccessGranted(true)
+        PrefsManager.markManualSilenceActive(context, AudioManager.RINGER_MODE_NORMAL, NotificationManager.INTERRUPTION_FILTER_ALL)
+        PrefsManager.setManualSilenceEndsAtMillis(context, window.startMillis + 20 * 60_000)
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+        deliver(original, window.startMillis)
+
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        val deferred = JSONObject(prefs.getString("event:" + rule.id, null)!!)
+        assertEquals("silence", deferred.getString("deferredFor"))
+        PrefsManager.clearManualSilenceState(context)
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+        DhikrReminderScheduler.refresh(context, nowMillis = window.startMillis + 1)
+        val released = prefs.getString("event:" + rule.id, null)!!
+        assertEquals(window.startMillis + 1, JSONObject(released).getLong("at"))
+        assertEquals(deferred.getString("eventId"), JSONObject(released).getString("eventId"))
+        deliver(released, window.startMillis + 1)
+        assertEquals(1, notificationManager.activeNotifications.size)
+    }
     @Test fun nudgeCoveredEntirelyBySilenceIsNotDelivered() {
         val rule = rule(1); repo.save(rule)
         val window = window(rule)
@@ -390,7 +771,71 @@ class AdhkarFlowTest {
         deliver(event, window.startMillis)
         assertEquals(0, notificationManager.activeNotifications.size)
         val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        val deferred = prefs.getString("event:" + rule.id, null)!!
+        assertEquals(window.endMillis - 1, JSONObject(deferred).getLong("at"))
+        assertFalse(prefs.contains("done:" + JSONObject(event).getString("eventId")))
+        deliver(deferred, window.endMillis - 1)
         assertTrue(prefs.contains("done:" + JSONObject(event).getString("eventId")))
+        assertEquals(0, notificationManager.activeNotifications.size)
         assertEquals(0, repo.state.value.occurrences.getValue(window.progressKey).count)
+    }
+    @Test fun plannedSilenceEndingAfterWindowReleasesNudgeWhenStoppedEarly() {
+        val rule = rule(1).copy(start = DhikrTime(minuteOfDay = 480), end = DhikrTime(minuteOfDay = 540))
+        repo.save(rule)
+        val window = window(rule)
+        val notificationManager = context.getSystemService(NotificationManager::class.java)
+        Shadows.shadowOf(notificationManager).setNotificationPolicyAccessGranted(true)
+        PrefsManager.markManualSilenceActive(context, AudioManager.RINGER_MODE_NORMAL, NotificationManager.INTERRUPTION_FILTER_ALL)
+        PrefsManager.setManualSilenceEndsAtMillis(context, window.endMillis + 30 * 60_000)
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        val deferred = JSONObject(prefs.getString("event:" + rule.id, null)!!)
+        assertEquals(window.endMillis - 1, deferred.getLong("at"))
+        assertEquals("silence", deferred.getString("deferredFor"))
+        val releasedAt = window.startMillis + 50 * 60_000L
+        PrefsManager.clearManualSilenceState(context)
+        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_ALL)
+        DhikrReminderScheduler.refresh(context, nowMillis = releasedAt)
+        val released = prefs.getString("event:" + rule.id, null)!!
+        assertEquals(releasedAt, JSONObject(released).getLong("at"))
+        assertEquals(deferred.getString("eventId"), JSONObject(released).getString("eventId"))
+        deliver(released, releasedAt)
+        assertEquals(1, notificationManager.activeNotifications.size)
+    }
+    @Test fun lateFinalNudgeIsDeliveredOnceWithoutReplayingEarlierSlots() {
+        val rule = rule(1).copy(start = DhikrTime(minuteOfDay = 480), end = DhikrTime(minuteOfDay = 540))
+        repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        val original = event()
+        val late = window.startMillis + 50 * 60_000L
+        deliver(original, late)
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        assertNotEquals(window.progressKey, JSONObject(prefs.getString("event:" + rule.id, null)!!).getString("occurrence"))
+        assertEquals(1, context.getSystemService(NotificationManager::class.java).activeNotifications.size)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = late + 1)
+        assertNotEquals(window.progressKey, JSONObject(prefs.getString("event:" + rule.id, null)!!).getString("occurrence"))
+    }
+    @Test @Config(sdk = [31]) fun exactReminderHasIndependentInexactBackup() {
+        ShadowAlarmManager.setCanScheduleExactAlarms(true)
+        val rule = rule(1); repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        val alarmManager = context.getSystemService(AlarmManager::class.java)
+        val alarms = Shadows.shadowOf(alarmManager).scheduledAlarms
+        val exact = alarms.single { Shadows.shadowOf(it.operation).savedIntent.data.toString().contains("/v3/") }
+        val backup = alarms.single { Shadows.shadowOf(it.operation).savedIntent.data.toString().contains("/v3-backup/") }
+        assertEquals(window.startMillis, exact.triggerAtTime)
+        assertEquals(window.startMillis, backup.triggerAtTime)
+
+        // Model the platform canceling exact alarms when access is revoked.
+        alarmManager.cancel(requireNotNull(exact.operation))
+        ShadowAlarmManager.setCanScheduleExactAlarms(false)
+        DhikrReminderScheduler.receive(context, Shadows.shadowOf(backup.operation).savedIntent, window.startMillis)
+        assertEquals(1, context.getSystemService(NotificationManager::class.java).activeNotifications.size)
+        val oldEvent = JSONObject(Shadows.shadowOf(backup.operation).savedIntent.getStringExtra("event")!!)
+        assertTrue(context.getSharedPreferences("adhkar_schedule_v2", 0).contains("done:" + oldEvent.getString("eventId")))
     }
 }

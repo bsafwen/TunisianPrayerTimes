@@ -20,9 +20,14 @@ import com.tunisianprayertimes.WAKE_RECURRING_LOOKAHEAD_DAYS
 import com.tunisianprayertimes.WakeMainAlarmMode
 import com.tunisianprayertimes.hasPendingWakeOccurrenceSkip
 import com.tunisianprayertimes.isRepeatingWakeAlarm
+import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.nap.NapSilenceController
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import kotlin.math.abs
 
 object WakeAlarmScheduler {
@@ -34,6 +39,7 @@ object WakeAlarmScheduler {
 	private const val KEY_SILENCE_PAUSED_FOR_ALARM_ID = "silence_paused_for_alarm_id"
 	private const val REPAIR_REQUEST_CODE = 70_001
 	private const val REPAIR_AFTER_LAST_ALARM_DELAY_MINUTES = 2L
+	private val reminderRefreshScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
 	fun activateSilenceUntilAlarm(context: Context, alarmId: String): Boolean {
 		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
@@ -59,6 +65,7 @@ object WakeAlarmScheduler {
 			alarmIds = remainingAlarmIds,
 			pausedForAlarmId = if (remainingAlarmIds.isNotEmpty() && temporarilyLifted) alarmId else null,
 		)
+		if (temporarilyLifted) refreshDhikrRemindersAfterSilenceRelease(context)
 		Log.d(TAG, "Silence released for ringing alarm $alarmId")
 		return true
 	}
@@ -68,14 +75,14 @@ object WakeAlarmScheduler {
 		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
 		val remainingAlarmIds = silencedAlarmIds(context) - alarmId
 		val pausedForAlarmId = prefs.getString(KEY_SILENCE_PAUSED_FOR_ALARM_ID, null)
-		if (remainingAlarmIds.isEmpty() && pausedForAlarmId == null && shouldUseWakeSilence(context)) {
-			NapSilenceController.disableNapSilence(context)
-		}
+		val lifted = remainingAlarmIds.isEmpty() && pausedForAlarmId == null &&
+			shouldUseWakeSilence(context) && NapSilenceController.disableNapSilence(context)
 		persistSilencedAlarmIds(
 			context = context,
 			alarmIds = remainingAlarmIds,
 			pausedForAlarmId = pausedForAlarmId?.takeIf { remainingAlarmIds.isNotEmpty() },
 		)
+		if (lifted) refreshDhikrRemindersAfterSilenceRelease(context)
 		Log.d(TAG, "Silence removed for alarm $alarmId")
 		return true
 	}
@@ -114,6 +121,14 @@ object WakeAlarmScheduler {
 
 	private fun shouldUseWakeSilence(context: Context): Boolean =
 		!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)
+
+	private fun refreshDhikrRemindersAfterSilenceRelease(context: Context) {
+		val app = context.applicationContext
+		reminderRefreshScope.launch {
+			runCatching { DhikrReminderScheduler.refresh(app, rearm = true) }
+				.onFailure { error -> Log.w(TAG, "Could not refresh reminders after wake silence", error) }
+		}
+	}
 
 	private fun silencedAlarmIds(context: Context): Set<String> {
 		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
