@@ -1,0 +1,19 @@
+{
+  "status": "installed_borj_bourguiba_picker_merge",
+  "installedAtUtc": "2026-09-25T01:09:30.836253+00:00",
+  "beforeSha256": {
+    "catalog": "e2016b6878f7663d0cfd09076eaaeeb85a5b774ef987a36f3a6e84e6e16137d6",
+    "packed": "a34bdf230220f2a400aefc693f9f1055ad6d9ad59fd640f04c0418485a02d8cd",
+    "display": "606ab74455c124b52a635aebb5adf36b6055edfa16fc2c0fd35f5ef88c7474a2"
+  },
+  "afterCatalogSha256": "d920c17fe018db9f77cf3bc747ac8b11336ae2c62c74fcb877acaaa4088c4c4f",
+  "unchangedPackedSha256": "a34bdf230220f2a400aefc693f9f1055ad6d9ad59fd640f04c0418485a02d8cd",
+  "unchangedDisplaySha256": "606ab74455c124b52a635aebb5adf36b6055edfa16fc2c0fd35f5ef88c7474a2",
+  "centerSeparationMeters": 301.9,
+  "oldPickerGroupIds": [
+    "osm:node:1974940233",
+    "osm:way:186750635"
+  ],
+  "newPickerGroupId": "osm:node:1974940233",
+  "note": "Same-name village point and nearby residential footprint in the same Kambout parent. Targeted Google searches returned an unrelated Tunis landmark and did not support this decision; the merge is best-effort OSM identity consolidation, not a boundary validation."
+}

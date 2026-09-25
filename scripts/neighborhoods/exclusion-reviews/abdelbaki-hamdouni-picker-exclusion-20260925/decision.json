@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "decisionId": "abdelbaki-hamdouni-picker-exclusion-20260925",
+  "featureId": "osm:way:744642242",
+  "name": "Abdelbaki HAMDOUNI",
+  "action": "exclude_exact_feature_from_shipped_picker_and_gps_label_catalog",
+  "sourceReview": {
+    "workspacePath": "work/official-imada-evidence-20260924-v2/release-integration/residential-extras-review/review.json",
+    "sha256": "f61b2b0ba1dfb7a0f1d556f62a070d7fdb9a3ceeedff3b143d42fa6b6bafffc2"
+  },
+  "basis": "The pinned read-only review classifies this exact tiny residential way as clear_residential_complex_or_building: its sole OSM identity is an individual's full name and landuse=residential, with no place or boundary identity. The review recommends only this exact-ID picker exclusion.",
+  "scope": "This removes the one feature record from the shipped locality/GPS-label catalog and records its ID as retired for stale saved-selection handling. It does not change source/master geometry: the neighborhoods.bin bytes are preserved unchanged, and a byte-for-byte pre-change backup is retained. It makes no claim that the source object, structure, ownership, or area does not exist.",
+  "expectedEffects": {
+    "pickerFeatureRowsRemoved": 1,
+    "staticPickerEntriesRemoved": 1,
+    "gpsLabelFeatureRemoved": true,
+    "savedSelectionFallback": "Retired raw locality ID resolves to null locality ID/name/kind while preserving the saved delegation ID and fromGps flag; the existing delegation timetable source remains unchanged.",
+    "representativePointContainingSector": "osm:relation:7169639",
+    "geometryBytesChanged": false,
+    "otherFeatureRowsChanged": 0,
+    "displayNameAssetChanged": false
+  }
+}

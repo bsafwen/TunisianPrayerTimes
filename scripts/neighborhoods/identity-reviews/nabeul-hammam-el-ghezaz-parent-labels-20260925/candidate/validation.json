@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "package": "nabeul-hammam-el-ghezaz-parent-labels-20260925",
+  "mode": "staged",
+  "expectedBaseJsonSha256": "d0bcd450fdb00f1328be3f8fb49872bf7d1718a6fa7b1a544b48bdf85cf9e977",
+  "expectedBaseBinSha256": "a34bdf230220f2a400aefc693f9f1055ad6d9ad59fd640f04c0418485a02d8cd",
+  "candidateJsonSha256": "e2016b6878f7663d0cfd09076eaaeeb85a5b774ef987a36f3a6e84e6e16137d6",
+  "targetIds": [
+    "osm:relation:7097006",
+    "osm:relation:7096631",
+    "osm:relation:7096632",
+    "osm:relation:7097007"
+  ],
+  "oldParentName": "معتمدية حمام الغزاز",
+  "newParentName": "معتمدية حمام الأغزاز",
+  "semanticChanges": [
+    [
+      "features[101].parentName",
+      "معتمدية حمام الغزاز",
+      "معتمدية حمام الأغزاز"
+    ],
+    [
+      "features[102].parentName",
+      "معتمدية حمام الغزاز",
+      "معتمدية حمام الأغزاز"
+    ],
+    [
+      "features[103].parentName",
+      "معتمدية حمام الغزاز",
+      "معتمدية حمام الأغزاز"
+    ],
+    [
+      "features[104].parentName",
+      "معتمدية حمام الغزاز",
+      "معتمدية حمام الأغزاز"
+    ]
+  ],
+  "untouchedChecks": [
+    "feature count/order/IDs",
+    "all geometry-derived feature fields including bbox, area, offset, length",
+    "sourceId",
+    "name and aliases/contextAliases",
+    "pickerGroupId",
+    "meteo delegationId",
+    "coordinates",
+    "conflicts, cells, source catalog metadata",
+    "neighborhoods.bin bytes"
+  ],
+  "targetsBefore": {
+    "osm:relation:7097006": {
+      "id": "osm:relation:7097006",
+      "sourceId": "osm",
+      "name": "حمام الغزاز",
+      "aliases": [
+        "Hammam El Ghezaz"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية حمام الغزاز",
+      "contextAliases": [
+        "Délégation Hammam El Ghezaz",
+        "Hammam Ghezèze",
+        "معتمدية حمام الغزاز"
+      ],
+      "governorateId": 350,
+      "lat": 36.888269,
+      "lng": 11.067492,
+      "delegationId": 469,
+      "hasBoundary": true,
+      "bbox": [
+        11.035618,
+        36.853145,
+        11.136681,
+        36.923175
+      ],
+      "areaKm2": 28.003741294727643,
+      "pickerGroupId": "delegation:469",
+      "offset": 159136,
+      "length": 3876
+    },
+    "osm:relation:7096631": {
+      "id": "osm:relation:7096631",
+      "sourceId": "osm",
+      "name": "دار علوش",
+      "aliases": [
+        "Dar Allouch"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية حمام الغزاز",
+      "contextAliases": [
+        "Délégation Hammam El Ghezaz",
+        "Hammam Ghezèze",
+        "معتمدية حمام الغزاز"
+      ],
+      "governorateId": 350,
+      "lat": 36.957869,
+      "lng": 11.064843,
+      "delegationId": 469,
+      "hasBoundary": true,
+      "bbox": [
+        11.012796,
+        36.901681,
+        11.106366,
+        37.014037
+      ],
+      "areaKm2": 58.070648975067684,
+      "pickerGroupId": "osm:relation:7096631",
+      "offset": 153224,
+      "length": 5340
+    },
+    "osm:relation:7096632": {
+      "id": "osm:relation:7096632",
+      "sourceId": "osm",
+      "name": "حارة الشعراء",
+      "aliases": [
+        "Hart Ech Choara"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية حمام الغزاز",
+      "contextAliases": [
+        "Délégation Hammam El Ghezaz",
+        "Hammam Ghezèze",
+        "معتمدية حمام الغزاز"
+      ],
+      "governorateId": 350,
+      "lat": 36.959485,
+      "lng": 11.023552,
+      "delegationId": 466,
+      "hasBoundary": true,
+      "bbox": [
+        11.008595,
+        36.947508,
+        11.036194,
+        36.971641
+      ],
+      "areaKm2": 3.1417375468922404,
+      "pickerGroupId": "osm:relation:7096632",
+      "offset": 158564,
+      "length": 572
+    },
+    "osm:relation:7097007": {
+      "id": "osm:relation:7097007",
+      "sourceId": "osm",
+      "name": "وزدرة",
+      "aliases": [
+        "Ouezdra"
+      ],
+      "kind": "sector",
+      "parentName": "معتمدية حمام الغزاز",
+      "contextAliases": [
+        "Délégation Hammam El Ghezaz",
+        "Hammam Ghezèze",
+        "معتمدية حمام الغزاز"
+      ],
+      "governorateId": 350,
+      "lat": 36.895126,
+      "lng": 11.09853,
+      "delegationId": 469,
+      "hasBoundary": true,
+      "bbox": [
+        11.082765,
+        36.880693,
+        11.116594,
+        36.90969
+      ],
+      "areaKm2": 5.520009501542369,
+      "pickerGroupId": "osm:relation:7097007",
+      "offset": 163012,
+      "length": 1292
+    }
+  },
+  "targetsAfter": {
+    "osm:relation:7097006": {
+      "id": "osm:relation:7097006",
+      "sourceId": "osm",
+      "name": "حمام الغزاز",
+      "aliases": [
+        "Hammam El Ghezaz"
+      ],
+      "parentName": "معتمدية حمام الأغزاز",
+      "contextAliases": [
+        "Délégation Hammam El Ghezaz",
+        "Hammam Ghezèze",
+        "معتمدية حمام الغزاز"
+      ],
+      "lat": 36.888269,
+      "lng": 11.067492,
+      "delegationId": 469,
+      "bbox": [
+        11.035618,
+        36.853145,
+        11.136681,
+        36.923175
+      ],
+      "areaKm2": 28.003741294727643,
+      "pickerGroupId": "delegation:469",
+      "offset": 159136,
+      "length": 3876
+    },
+    "osm:relation:7096631": {
+      "id": "osm:relation:7096631",
+      "sourceId": "osm",
+      "name": "دار علوش",
+      "aliases": [
+        "Dar Allouch"
+      ],
+      "parentName": "معتمدية حمام الأغزاز",
+      "contextAliases": [
+        "Délégation Hammam El Ghezaz",
+        "Hammam Ghezèze",
+        "معتمدية حمام الغزاز"
+      ],
+      "lat": 36.957869,
+      "lng": 11.064843,
+      "delegationId": 469,
+      "bbox": [
+        11.012796,
+        36.901681,
+        11.106366,
+        37.014037
+      ],
+      "areaKm2": 58.070648975067684,
+      "pickerGroupId": "osm:relation:7096631",
+      "offset": 153224,
+      "length": 5340
+    },
+    "osm:relation:7096632": {
+      "id": "osm:relation:7096632",
+      "sourceId": "osm",
+      "name": "حارة الشعراء",
+      "aliases": [
+        "Hart Ech Choara"
+      ],
+      "parentName": "معتمدية حمام الأغزاز",
+      "contextAliases": [
+        "Délégation Hammam El Ghezaz",
+        "Hammam Ghezèze",
+        "معتمدية حمام الغزاز"
+      ],
+      "lat": 36.959485,
+      "lng": 11.023552,
+      "delegationId": 466,
+      "bbox": [
+        11.008595,
+        36.947508,
+        11.036194,
+        36.971641
+      ],
+      "areaKm2": 3.1417375468922404,
+      "pickerGroupId": "osm:relation:7096632",
+      "offset": 158564,
+      "length": 572
+    },
+    "osm:relation:7097007": {
+      "id": "osm:relation:7097007",
+      "sourceId": "osm",
+      "name": "وزدرة",
+      "aliases": [
+        "Ouezdra"
+      ],
+      "parentName": "معتمدية حمام الأغزاز",
+      "contextAliases": [
+        "Délégation Hammam El Ghezaz",
+        "Hammam Ghezèze",
+        "معتمدية حمام الغزاز"
+      ],
+      "lat": 36.895126,
+      "lng": 11.09853,
+      "delegationId": 469,
+      "bbox": [
+        11.082765,
+        36.880693,
+        11.116594,
+        36.90969
+      ],
+      "areaKm2": 5.520009501542369,
+      "pickerGroupId": "osm:relation:7097007",
+      "offset": 163012,
+      "length": 1292
+    }
+  },
+  "catalogJsonAfterSha256": null,
+  "catalogBinAfterSha256": null,
+  "installed": false
+}

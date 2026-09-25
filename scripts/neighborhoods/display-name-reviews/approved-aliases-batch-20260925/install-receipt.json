@@ -1,0 +1,192 @@
+{
+  "status": "installed_reviewed_feature_scoped_arabic_aliases",
+  "installedAtUtc": "2026-09-25T01:48:23.398600+00:00",
+  "sourceSha256": {
+    "catalog": "d920c17fe018db9f77cf3bc747ac8b11336ae2c62c74fcb877acaaa4088c4c4f",
+    "display": "606ab74455c124b52a635aebb5adf36b6055edfa16fc2c0fd35f5ef88c7474a2",
+    "decisions": "f27dfbd0e5aa82be86232b3e3142afd067e49d89b62d7fa390e8e57ae4e8555e"
+  },
+  "installedDisplaySha256": "7b59ee47e9f975973612a8e3ebdcbbd349ea2e07def961a42e185c587754171d",
+  "approvedSafeCases": 32,
+  "aliasesAdded": 29,
+  "alreadyPresentOnTarget": [
+    {
+      "id": "osm:relation:7169584",
+      "alias": "الأسودة",
+      "caseId": "identity-exception:355:7386e41afd51"
+    },
+    {
+      "id": "osm:relation:7169572",
+      "alias": "الحنية ابازيد",
+      "caseId": "identity-exception:355:a91ad28b3cc7"
+    },
+    {
+      "id": "osm:relation:7169628",
+      "alias": "قلال",
+      "caseId": "identity-exception:355:4df7bd4d9fca"
+    }
+  ],
+  "aliasesAddedRows": [
+    {
+      "id": "osm:relation:7165271",
+      "alias": "الرحيمة",
+      "caseId": "identity-exception:357:4a9cbdf46e79"
+    },
+    {
+      "id": "osm:relation:7165359",
+      "alias": "وادي الخريوع",
+      "caseId": "identity-exception:357:9052c91eb4a2"
+    },
+    {
+      "id": "osm:relation:7114434",
+      "alias": "منزل الحياة",
+      "caseId": "identity-exception:364:616534d3f715"
+    },
+    {
+      "id": "osm:relation:7118635",
+      "alias": "الحبيب الحداد",
+      "caseId": "identity-exception:361:3e62ca3180c9"
+    },
+    {
+      "id": "osm:relation:7121412",
+      "alias": "السحابنة",
+      "caseId": "identity-exception:361:9ee6eb60af8c"
+    },
+    {
+      "id": "osm:relation:7119627",
+      "alias": "الشلاغمية",
+      "caseId": "identity-exception:361:e4f032394eb4"
+    },
+    {
+      "id": "osm:relation:7124443",
+      "alias": "الشنانة",
+      "caseId": "identity-exception:361:fb9341ccb79e"
+    },
+    {
+      "id": "osm:relation:7118641",
+      "alias": "اللواتة",
+      "caseId": "identity-exception:361:d17e1eddb755"
+    },
+    {
+      "id": "osm:relation:7119207",
+      "alias": "الماتلين",
+      "caseId": "identity-exception:361:ef5cdf3810ba"
+    },
+    {
+      "id": "osm:relation:7121413",
+      "alias": "المشارقة",
+      "caseId": "identity-exception:361:27c9dcae1f95"
+    },
+    {
+      "id": "osm:relation:7118636",
+      "alias": "الهناء",
+      "caseId": "identity-exception:361:a97be2e9e5c9"
+    },
+    {
+      "id": "osm:relation:7118629",
+      "alias": "حسن النوري",
+      "caseId": "identity-exception:361:46b0648cd82a"
+    },
+    {
+      "id": "osm:relation:7124232",
+      "alias": "حشاد",
+      "caseId": "identity-exception:361:df1541d5e443"
+    },
+    {
+      "id": "osm:relation:7119584",
+      "alias": "سيدي علي الشباب",
+      "caseId": "identity-exception:361:9cae11a28daa"
+    },
+    {
+      "id": "osm:relation:7143826",
+      "alias": "الزهراء",
+      "caseId": "identity-exception:351:7afc4bddd725"
+    },
+    {
+      "id": "osm:relation:7144487",
+      "alias": "البئر الأخضر",
+      "caseId": "identity-exception:354:c3ae55340140"
+    },
+    {
+      "id": "osm:relation:7134297",
+      "alias": "الجواودة",
+      "caseId": "identity-exception:354:0b9625cbdc14"
+    },
+    {
+      "id": "osm:relation:7126581",
+      "alias": "الخمائرية",
+      "caseId": "identity-exception:354:554d0da071fd"
+    },
+    {
+      "id": "osm:relation:7138846",
+      "alias": "الدخايلية",
+      "caseId": "identity-exception:354:015a5d7e2829"
+    },
+    {
+      "id": "osm:relation:7126381",
+      "alias": "الريحان",
+      "caseId": "identity-exception:354:17aa468eee5d"
+    },
+    {
+      "id": "osm:relation:7134893",
+      "alias": "السمران",
+      "caseId": "identity-exception:354:9ebd791085ac"
+    },
+    {
+      "id": "osm:relation:7134900",
+      "alias": "الشواولة",
+      "caseId": "identity-exception:354:349ee711c467"
+    },
+    {
+      "id": "osm:relation:7137970",
+      "alias": "المراسن",
+      "caseId": "identity-exception:354:901df9fdcc14"
+    },
+    {
+      "id": "osm:relation:7126404",
+      "alias": "الناظور",
+      "caseId": "identity-exception:354:bd7dce55427f"
+    },
+    {
+      "id": "osm:relation:7147572",
+      "alias": "الحي التعويضي",
+      "caseId": "identity-exception:359:d6381139f7c7"
+    },
+    {
+      "id": "osm:relation:7090539",
+      "alias": "الدندان الجنوبي",
+      "caseId": "identity-exception:360:0abcefd3db4e"
+    },
+    {
+      "id": "osm:relation:7098038",
+      "alias": "الزاهرة",
+      "caseId": "identity-exception:360:e5a5d0b03eab"
+    },
+    {
+      "id": "osm:relation:7102307",
+      "alias": "المرناقية الشمالية",
+      "caseId": "identity-exception:360:0e94a0e2a906"
+    },
+    {
+      "id": "osm:relation:7090956",
+      "alias": "خالد بن الوليد",
+      "caseId": "identity-exception:360:7c4a027bd4f0"
+    }
+  ],
+  "heldCases": 7,
+  "heldCaseIds": [
+    "identity-exception:354:ed10158b1bc3",
+    "identity-exception:355:2cb1ca219681",
+    "identity-exception:355:cf2ca5e41b42",
+    "identity-exception:355:12a39225035b",
+    "identity-exception:355:3406fed165d7",
+    "identity-exception:359:43ece3fe8e2c",
+    "identity-exception:359:84ae073ab402"
+  ],
+  "heldDisplayRowsUnchanged": true,
+  "catalogGeometryPickerGroupsPrayerMappingChanged": false,
+  "catalogSha256After": "d920c17fe018db9f77cf3bc747ac8b11336ae2c62c74fcb877acaaa4088c4c4f",
+  "featureCount": 3474,
+  "displayRecordCountBefore": 733,
+  "displayRecordCountAfter": 762
+}

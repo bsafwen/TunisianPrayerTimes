@@ -168,51 +168,6 @@
           "sha256": "ec543908ae99c950f82f1c961c1fe6ac954af10d32c0204581e65d9f5855cc81"
         }
       ]
-    },
-    {
-      "id": "osm:way:744642242",
-      "expectedFeature": {
-        "id": "osm:way:744642242",
-        "sourceId": "osm",
-        "name": "Abdelbaki HAMDOUNI",
-        "aliases": [],
-        "kind": "residential",
-        "parentName": "سيدي بوزيد الغربية",
-        "contextAliases": [
-          "Delegación Sidi Buzid Oeste",
-          "Délégation Sidi Bouzid Ouest",
-          "Sidi Bouzid Ouest",
-          "سيدي بوزيد الغربية",
-          "معتمدية سيدي بوزيد الغربية"
-        ],
-        "governorateId": 355,
-        "lat": 35.03987,
-        "lng": 9.477209,
-        "delegationId": 628,
-        "hasBoundary": true,
-        "bbox": [
-          9.476977,
-          35.039703,
-          9.477539,
-          35.04004
-        ],
-        "areaKm2": 0.0008630019212394251,
-        "pickerGroupId": "osm:way:744642242",
-        "offset": 5526080,
-        "length": 100
-      },
-      "expectedGeometrySha256": "35c3be336b8040be5b7559c4fd01e1fbe5ba55eac72e12610a67643ab8608fcb",
-      "reason": "Exclude this exact tiny named residential parcel from selectable locality and GPS labels under the reviewed product scope; preserve its original geometry bytes and source evidence.",
-      "evidence": [
-        {
-          "file": "exclusion-reviews/abdelbaki-hamdouni-picker-exclusion-20260925/decision.json",
-          "sha256": "17680624375c0f044c84bbee224b73c42b4cd84415a9afa55bd38598457e8aa8"
-        },
-        {
-          "file": "exclusion-reviews/abdelbaki-hamdouni-picker-exclusion-20260925/source-review.json",
-          "sha256": "f61b2b0ba1dfb7a0f1d556f62a070d7fdb9a3ceeedff3b143d42fa6b6bafffc2"
-        }
-      ]
     }
   ]
 }

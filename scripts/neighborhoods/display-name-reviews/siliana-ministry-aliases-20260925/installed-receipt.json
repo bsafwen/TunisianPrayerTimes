@@ -1,0 +1,50 @@
+{
+  "status": "installed_siliana_ministry_search_aliases",
+  "installedAtUtc": "2026-09-24T23:53:53.946938+00:00",
+  "currentCatalogSha256": "fb5ac069d93d57ffb0d3d9c286a7460e4b51417a18962568ea71c178a40ff1de",
+  "pinnedReviewCatalogSha256": "b56e0f6c7fe69db19fd88676508856fe3827a4707d5d9642c47be5b3a46553f4",
+  "sourceProposalSha256": "fd4f3c7c5f098dea3b68f183d7507db7498832c5ef9d510639d2c41ff53b80c1",
+  "pinnedIdentityReviewSha256": "b2231d4ac5bd787f828344a6c35695d85e2845c1a760573a86575c366ba21a6f",
+  "baseDisplaySha256": "0dff778a80ac5508e0199fe6803199f720245ada2cf4d0b11423f9138a88eedd",
+  "installedDisplaySha256": "e4637d42ce9deb04c2407ca5477c13647fd09bda5984faa8203a4cfbfa14f834",
+  "identityProofSha256": "d425275c45c7e8353f5356755ab6f7a70630d0593895a21472e8871937785086",
+  "proposedSafeAliases": 9,
+  "aliasesAdded": 8,
+  "featureIds": [
+    "osm:relation:7125035",
+    "osm:relation:7125518",
+    "osm:relation:7125787",
+    "osm:relation:7126051",
+    "osm:relation:7126058",
+    "osm:relation:7126205",
+    "osm:relation:7126318",
+    "osm:relation:7126319"
+  ],
+  "excludedAliasCases": [
+    {
+      "featureId": "osm:relation:7126320",
+      "alias": "الدخانية",
+      "collidingFeatureId": "osm:way:184043911",
+      "reason": "The same Arabic label already names a nested residential feature; it has a distinct pickerGroupId, so adding this search alias would make one query resolve to two selectable rows.",
+      "nestedFeaturePickerGroupId": "osm:way:184043911",
+      "sectorPickerGroupId": "osm:relation:7126320",
+      "nestedResidentialGroupedOrHiddenUnderSector": false
+    }
+  ],
+  "newDisplayRows": 7,
+  "existingDisplayRowsUpdated": 1,
+  "preservedExistingDisplayRecord": {
+    "id": "osm:relation:7126051",
+    "nameAr": "مرج مقدم",
+    "searchAliases": [
+      "MARJ MOKADDEM"
+    ]
+  },
+  "heldNameConflictIds": [
+    "osm:relation:7125032",
+    "osm:relation:7125183",
+    "osm:relation:7125778"
+  ],
+  "displayNameCorrectionsAdded": 0,
+  "geometryOrCatalogChanged": false
+}

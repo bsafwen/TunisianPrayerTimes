@@ -1,0 +1,169 @@
+{
+  "baseCatalogSha256": "b56e0f6c7fe69db19fd88676508856fe3827a4707d5d9642c47be5b3a46553f4",
+  "status": "review_only_not_installed",
+  "safeMinistrySearchAliases": [
+    {
+      "id": "osm:relation:7106876",
+      "insSectorCode": "315153",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "على البلهوان",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7113315",
+      "insSectorCode": "315256",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "حمام معروف",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7108100",
+      "insSectorCode": "315752",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "الزعارنة الغربية",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7107643",
+      "insSectorCode": "315753",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "الزعارنةالشرقية",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7106321",
+      "insSectorCode": "315857",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "المهاذبة",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7106110",
+      "insSectorCode": "316053",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "قريميط الشرقية",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7106113",
+      "insSectorCode": "316054",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "قـريميط الغربية",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7106115",
+      "insSectorCode": "316062",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "منزل دار بلواعر",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7105251",
+      "insSectorCode": "316152",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "وادي الخروب",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7106295",
+      "insSectorCode": "316252",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "البئر الجديد",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7106292",
+      "insSectorCode": "316256",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "القماطة",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7113807",
+      "insSectorCode": "316354",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "أولاد علي بلهاني",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7111280",
+      "insSectorCode": "316453",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "الجديديين",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7111278",
+      "insSectorCode": "316455",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "الحبيب ثامر",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7111276",
+      "insSectorCode": "316456",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "المردين",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7111284",
+      "insSectorCode": "316457",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "المناعمة",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7111287",
+      "insSectorCode": "316464",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "بني ربيع",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    },
+    {
+      "id": "osm:relation:7108095",
+      "insSectorCode": "316555",
+      "field": "aliases",
+      "operation": "append_if_absent",
+      "value": "وادي ولاية",
+      "reason": "exact pinned Ministry spelling; unique against Sousse INS sector labels"
+    }
+  ],
+  "displayNames": [
+    {
+      "id": "osm:relation:7151555",
+      "insSectorCode": "316458",
+      "field": "name",
+      "from": "El Gharbine",
+      "to": "الغربيين",
+      "preserveFormerNameAsAlias": "El Gharbine",
+      "reason": "current picker title is Latin; pinned INS sector name and Arabic OSM name are الغربيين"
+    }
+  ],
+  "excludedAliasCases": [
+    {
+      "appId": "osm:relation:7106871",
+      "insSectorCode": "315356",
+      "value": "سهلول",
+      "reason": "same name belongs to another INS sector code(s): 315554"
+    }
+  ]
+}

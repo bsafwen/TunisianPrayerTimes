@@ -1,0 +1,31 @@
+{
+  "status": "installed_sousse_ministry_search_aliases",
+  "installedAtUtc": "2026-09-24T23:13:16.031469+00:00",
+  "catalogSha256": "fb5ac069d93d57ffb0d3d9c286a7460e4b51417a18962568ea71c178a40ff1de",
+  "sourceProposalSha256": "e68aec8581de50108d239026b1b5d736cb0d550892ab04868746f9d4a60c6266",
+  "baseDisplaySha256": "4069a9a99a5d9b7e5974071b29f6360efbf30a34f724a40256c00f84ecd790f2",
+  "installedDisplaySha256": "0dff778a80ac5508e0199fe6803199f720245ada2cf4d0b11423f9138a88eedd",
+  "aliasesAdded": 18,
+  "featureIds": [
+    "osm:relation:7106876",
+    "osm:relation:7113315",
+    "osm:relation:7108100",
+    "osm:relation:7107643",
+    "osm:relation:7106321",
+    "osm:relation:7106110",
+    "osm:relation:7106113",
+    "osm:relation:7106115",
+    "osm:relation:7105251",
+    "osm:relation:7106295",
+    "osm:relation:7106292",
+    "osm:relation:7113807",
+    "osm:relation:7111280",
+    "osm:relation:7111278",
+    "osm:relation:7111276",
+    "osm:relation:7111284",
+    "osm:relation:7111287",
+    "osm:relation:7108095"
+  ],
+  "displayNameCorrectionsAdded": 0,
+  "note": "El Gharbine already displays as الغربيين through the existing runtime override; the ambiguous unqualified سهلول alias stays excluded."
+}

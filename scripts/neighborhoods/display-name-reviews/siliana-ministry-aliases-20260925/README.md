@@ -1,0 +1,9 @@
+# Siliana Ministry search aliases
+
+This package installs eight of the nine proposed safe Ministry spellings in `proposed-text-deltas.json` as runtime search aliases. The `الدخانية` alias for `osm:relation:7126320` is explicitly excluded: it also names nested residential feature `osm:way:184043911` in the same delegation, and the two currently have different `pickerGroupId` values. That residential is not grouped or hidden under the sector. Keep the alias held pending the separate picker-group correction review; this package does not recommend removing either catalog feature. The three name-conflict cases remain held as well.
+
+The pinned identity review and source proposal refer to catalog SHA-256 `b56e0f6c7fe69db19fd88676508856fe3827a4707d5d9642c47be5b3a46553f4`. The current app catalog has a different SHA-256. Before writing, `install.py` therefore compares each current feature ID, Arabic name, parent, kind, governorate ID, and its proposal/review INS-code links against the pinned review. It fails if any of those fields differ. The generated `identity-proof.json` records each comparison and the catalog hashes.
+
+Seven targets receive a new runtime display-name record. `osm:relation:7126051` already has a record; the installer appends `مرج المقدم` to `searchAliases` while preserving `nameAr` (`مرج مقدم`) and the existing Latin alias (`MARJ MOKADDEM`). The installer checks the starting catalog, display asset, proposal, and review hashes; directly compares all nine proposal identities to the pinned review; validates the documented duplicate alias collision; checks uniqueness for the eight installed aliases; and verifies the final asset write. It saves the byte-for-byte pre-install asset as `before-locality-display-names.json` and records the installed hashes and exclusion in `installed-receipt.json`.
+
+Run `python install.py` from this directory. The script is pinned to the reviewed current files and will stop if they change.

@@ -1,0 +1,1999 @@
+{
+  "schemaVersion": 1,
+  "status": "manual_read_only_review",
+  "purpose": "Classify 33 nested small landuse=residential extras as clear residential complexes/buildings, plausible neighborhoods/localities, or uncertain; suggest picker exclusions separately without deleting master catalog entries.",
+  "summary": {
+    "reviewed": 33,
+    "safeExclusionCandidates": 1,
+    "plausibleNeighborhoodOrLocality": 25,
+    "uncertain": 7,
+    "sourceFeatureNamesAndFieldsIncluded": true
+  },
+  "classificationDefinitions": {
+    "clear_residential_complex_or_building": "Direct name and geometry-role evidence indicates housing development/individual residential parcel rather than a named locality; candidate picker exclusion only.",
+    "plausible_neighborhood_or_locality": "Named locality, settlement, ksar, or recognizable neighborhood; preserve pending stronger evidence.",
+    "uncertain": "Name/source tags do not distinguish a residential parcel from a local place."
+  },
+  "sourceFiles": {
+    "work/official-imada-evidence-20260924-v2/non-arabic-extra-audit/non-arabic-extra-audit.json": "a6486ce1f0a6e9901d5fac54d12aa71ed248eb72b580160afde588177dfacff5",
+    "release-integration/arabic-name-priority/manifest.json": "366102db13a07013e7993b60a5e9679cb39c71b06a2c87317b71d7856579d9d1",
+    "work/official-imada-evidence-20260924-v2/non-arabic-extra-audit/README.md": "e0ce8c7f3e12601f02a4fa4491b2849bbca1abb396b26a9f2048352a6c1aec77",
+    "work/official-imada-evidence-20260924-v2/06-nabeul/boundary-risk/staged-install/output-20260925-provenance-final/neighborhoods.json": "dc10a93f037890bacdb0940200d828f5bb5d1d6e52212526a0dc742ea0326064",
+    "work/official-imada-evidence-20260924-v2/arabic-label-pass-20260925/captures/capture-results.json": "91ddf0c3eea5a92ff746b14435e96f372dfe1e28fa17e124e877554636bae817",
+    "work/official-imada-evidence-20260924-v2/arabic-label-pass-20260925/triage/reviewed-candidates/safe-arabic-display-candidates.json": "08c092031f2e32510bab0f9e78af253114e92958d3e23e46d606f41e419f67cf"
+  },
+  "sourcePins": {
+    "catalogJson": {
+      "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "b56e0f6c7fe69db19fd88676508856fe3827a4707d5d9642c47be5b3a46553f4"
+    },
+    "catalogBin": {
+      "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "2291a7edd788f260f87705ed083aac5a55420332891e1e912af91e62ebebda54"
+    },
+    "insRegistry": {
+      "path": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\scripts\\neighborhoods\\official\\arima-joufia-receivers-20260912\\identity\\current-official-sector-registry.json",
+      "sha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec"
+    },
+    "osmPbf": {
+      "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\geo\\tunisia-260905.osm.pbf",
+      "sha256": "7edc8fa6fc00635c4507ab3718552c015533210b46c4d95099b43a76f21939fd"
+    },
+    "ministrySnapshot": {
+      "path": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\interieur_catalog_page.html",
+      "sha256": "8feb1ab95c822f3fac0d30e53ee7d1ec25c1ae672cae32e26d2ef8b72eda5060"
+    }
+  },
+  "sourceConsistency": {
+    "auditRows": 33,
+    "manifestRows": 33,
+    "idsMatch": true,
+    "manifestAuditHashMatchesActual": true
+  },
+  "rows": [
+    {
+      "id": "osm:way:817478953",
+      "name": "nouvelle cite",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "الزاوية",
+      "governorateId": 345,
+      "delegationId": 619,
+      "hasBoundary": true,
+      "areaKm2": 0.05822577078172575,
+      "bbox": [
+        10.707976,
+        35.297696,
+        10.712259,
+        35.301215
+      ],
+      "pickerGroupId": "osm:way:817478953",
+      "pickerRepresentativeId": "osm:way:817478953",
+      "pickerRepresentativeName": "nouvelle cite",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "nouvelle cite"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7152225",
+          "name": "الزاوية",
+          "parentName": "معتمدية الجم",
+          "delegationId": 619,
+          "areaKm2": 12.134354176841038,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "uncertain",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“nouvelle cite” suggests a planned housing district, but its broad 0.0582 km² polygon could also denote a neighborhood. No building, place, or boundary tag settles the role.",
+      "recommendedPickerAction": "manual_review_no_exclusion",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:702443179",
+      "name": "Cité El Chobbéne",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "المطوية الجنوبية",
+      "governorateId": 347,
+      "delegationId": 1025,
+      "hasBoundary": true,
+      "areaKm2": 0.07787829534534803,
+      "bbox": [
+        9.997544,
+        33.956121,
+        10.002003,
+        33.959351
+      ],
+      "pickerGroupId": "osm:way:702443179",
+      "pickerRepresentativeId": "osm:way:702443179",
+      "pickerRepresentativeName": "Cité El Chobbéne",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Cité El Chobbéne"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7145440",
+          "name": "المطوية الجنوبية",
+          "parentName": "معتمدية المطوية",
+          "delegationId": 1025,
+          "areaKm2": 41.15208843364106,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "Saved Google Maps Arabic-locale capture shows “Cité El Chobbène - حي الشبان” with subtitle “Métouia, Tunisia”, corroborating a named neighborhood. The map result and Tunisian use of Cité support preservation in the picker; this is not evidence of a building complex.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood",
+          "The word “Cité” is not treated as proof of a residential complex; it can denote a Tunisian neighborhood."
+        ],
+        "independentMapCapture": {
+          "visibleResultTitle": "Cité El Chobbène - حي الشبان",
+          "subtitle": "Métouia, Tunisia",
+          "captureEventFile": "work/official-imada-evidence-20260924-v2/arabic-label-pass-20260925/captures/capture-results.json",
+          "captureEventLabel": "arabic-label-008-osm-way-702443179",
+          "captureEventFileSha256": "91ddf0c3eea5a92ff746b14435e96f372dfe1e28fa17e124e877554636bae817",
+          "screenshot": "work/official-imada-evidence-20260924-v2/arabic-label-pass-20260925/captures/emulator-5554-arabic-label-008-osm-way-702443179.png",
+          "screenshotSha256": "f02edad8b7443cbea05d77615b933ee9490df83a27527c13dfbfe116f0bfe554",
+          "candidateAuditFile": "work/official-imada-evidence-20260924-v2/arabic-label-pass-20260925/triage/reviewed-candidates/safe-arabic-display-candidates.json",
+          "candidateAuditSha256": "08c092031f2e32510bab0f9e78af253114e92958d3e23e46d606f41e419f67cf",
+          "auditStatus": "supplemental_identity_and_delegation_context_corroborated; parent subdivision not visible on card"
+        }
+      }
+    },
+    {
+      "id": "osm:way:377954530",
+      "name": "Beguia",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "بني زلطن",
+      "governorateId": 347,
+      "delegationId": 1022,
+      "hasBoundary": true,
+      "areaKm2": 0.03025719996123285,
+      "bbox": [
+        10.072689,
+        33.534438,
+        10.076944,
+        33.536723
+      ],
+      "pickerGroupId": "osm:way:377954530",
+      "pickerRepresentativeId": "osm:way:377954530",
+      "pickerRepresentativeName": "Beguia",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Beguia"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7145405",
+          "name": "بني زلطن",
+          "parentName": "معتمدية مطماطة الجديدة",
+          "delegationId": 1022,
+          "areaKm2": 89.1128152966732,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Beguia” is a distinct named place-like label; no source evidence establishes a building complex.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:1265702650",
+      "name": "El Adbech",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "عين تونين",
+      "governorateId": 347,
+      "delegationId": 1022,
+      "hasBoundary": true,
+      "areaKm2": 0.05228457126955565,
+      "bbox": [
+        10.080554,
+        33.478131,
+        10.083967,
+        33.483146
+      ],
+      "pickerGroupId": "osm:way:189085992",
+      "pickerRepresentativeId": "osm:way:189085992",
+      "pickerRepresentativeName": "الأدباش",
+      "separatePickerRow": false,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "El Adbech"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7145435",
+          "name": "عين تونين",
+          "parentName": "معتمدية دخيلة توجان",
+          "delegationId": 1022,
+          "areaKm2": 42.341847883866436,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“El Adbech” is a named place and shares a picker representative with a separate Arabic polygon; removing this member would require checking group membership carefully.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:1265702651",
+      "name": "El Adbech",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "عين تونين",
+      "governorateId": 347,
+      "delegationId": 1022,
+      "hasBoundary": true,
+      "areaKm2": 0.010069491066740944,
+      "bbox": [
+        10.084576,
+        33.479842,
+        10.085687,
+        33.481344
+      ],
+      "pickerGroupId": "osm:way:189085992",
+      "pickerRepresentativeId": "osm:way:189085992",
+      "pickerRepresentativeName": "الأدباش",
+      "separatePickerRow": false,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "El Adbech"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7145435",
+          "name": "عين تونين",
+          "parentName": "معتمدية دخيلة توجان",
+          "delegationId": 1022,
+          "areaKm2": 42.341847883866436,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“El Adbech” is a named place and shares a picker representative with a separate Arabic polygon; removing this member would require checking group membership carefully.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:189086072",
+      "name": "Teicha",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "عين تونين",
+      "governorateId": 347,
+      "delegationId": 1022,
+      "hasBoundary": true,
+      "areaKm2": 0.09112424365653869,
+      "bbox": [
+        10.128191,
+        33.468255,
+        10.134073,
+        33.472969
+      ],
+      "pickerGroupId": "osm:way:189086072",
+      "pickerRepresentativeId": "osm:way:189086072",
+      "pickerRepresentativeName": "Teicha",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Teicha"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7145435",
+          "name": "عين تونين",
+          "parentName": "معتمدية دخيلة توجان",
+          "delegationId": 1022,
+          "areaKm2": 42.341847883866436,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Teicha” is a distinct settlement-style name; residential tagging alone does not establish a single housing complex.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:884828640",
+      "name": "G5",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "الميدة",
+      "governorateId": 350,
+      "delegationId": 457,
+      "hasBoundary": true,
+      "areaKm2": 0.0033175658783087575,
+      "bbox": [
+        10.857735,
+        36.724717,
+        10.858893,
+        36.725621
+      ],
+      "pickerGroupId": "osm:way:884828640",
+      "pickerRepresentativeId": "osm:way:884828640",
+      "pickerRepresentativeName": "G5",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "G5"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7100595",
+          "name": "الميدة",
+          "parentName": "معتمدية الميدة",
+          "delegationId": 457,
+          "areaKm2": 34.94250715762156,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "uncertain",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“G5” is an opaque label; only landuse=residential and containment are known.",
+      "recommendedPickerAction": "manual_review_no_exclusion",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:686619927",
+      "name": "SRO",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "قربة الغربية",
+      "governorateId": 350,
+      "delegationId": 459,
+      "hasBoundary": true,
+      "areaKm2": 5.757250448368339e-05,
+      "bbox": [
+        10.857113,
+        36.560189,
+        10.857221,
+        36.560297
+      ],
+      "pickerGroupId": "osm:way:686619927",
+      "pickerRepresentativeId": "osm:way:686619927",
+      "pickerRepresentativeName": "SRO",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "SRO"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7102517",
+          "name": "قربة الغربية",
+          "parentName": "معتمدية قربة",
+          "delegationId": 459,
+          "areaKm2": 12.086232462747809,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "uncertain",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“SRO” is an opaque acronym on an extremely small residential polygon; it could be an institutional/building abbreviation or a place label.",
+      "recommendedPickerAction": "manual_review_no_exclusion",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:378117273",
+      "name": "Bir Tedrekhet",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "الدويرات",
+      "governorateId": 351,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "areaKm2": 0.002424411648517045,
+      "bbox": [
+        10.243567,
+        32.793671,
+        10.244674,
+        32.79451
+      ],
+      "pickerGroupId": "osm:way:378117273",
+      "pickerRepresentativeId": "osm:way:378117273",
+      "pickerRepresentativeName": "Bir Tedrekhet",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Bir Tedrekhet"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7143876",
+          "name": "رأس الوادي",
+          "parentName": "معتمدية تطاوين الجنوبية",
+          "delegationId": 624,
+          "areaKm2": 708.5587393602234,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Bir Tedrekhet” is a named place-style label, likely a settlement/well locality.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:321792273",
+      "name": "Ksar Bouziri",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "القلعة الغربية",
+      "governorateId": 351,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "areaKm2": 0.023584166719297906,
+      "bbox": [
+        10.457799,
+        32.811929,
+        10.459544,
+        32.814466
+      ],
+      "pickerGroupId": "osm:way:321792273",
+      "pickerRepresentativeId": "osm:way:321792273",
+      "pickerRepresentativeName": "Ksar Bouziri",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Ksar Bouziri"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7143833",
+          "name": "القلعة الغربية",
+          "parentName": "معتمدية تطاوين الشمالية",
+          "delegationId": 624,
+          "areaKm2": 303.7983126068618,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Ksar Bouziri” is a named ksar/locality-style label; no parcel-only evidence.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:377996281",
+      "name": "Ksar Rahache",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "رأس الوادي",
+      "governorateId": 351,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "areaKm2": 0.010459317450409861,
+      "bbox": [
+        10.249327,
+        32.756559,
+        10.250801,
+        32.758289
+      ],
+      "pickerGroupId": "osm:way:377996281",
+      "pickerRepresentativeId": "osm:way:377996281",
+      "pickerRepresentativeName": "Ksar Rahache",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Ksar Rahache"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7143876",
+          "name": "رأس الوادي",
+          "parentName": "معتمدية تطاوين الجنوبية",
+          "delegationId": 624,
+          "areaKm2": 708.5587393602234,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Ksar Rahache” is a named ksar/locality-style label; no parcel-only evidence.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:186750635",
+      "name": "Borj Bourguiba",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "كمبوت",
+      "governorateId": 351,
+      "delegationId": 471,
+      "hasBoundary": true,
+      "areaKm2": 0.04640696403370559,
+      "bbox": [
+        10.029008,
+        32.205619,
+        10.032324,
+        32.208956
+      ],
+      "pickerGroupId": "osm:way:186750635",
+      "pickerRepresentativeId": "osm:way:186750635",
+      "pickerRepresentativeName": "Borj Bourguiba",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Borj Bourguiba"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7143844",
+          "name": "كمبوت",
+          "parentName": "معتمدية رمادة",
+          "delegationId": 471,
+          "areaKm2": 1093.2821259218051,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Borj Bourguiba” is a named place-style label; residential landuse does not settle its locality role.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:791334739",
+      "name": "BHIR",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "وادي الغار",
+      "governorateId": 351,
+      "delegationId": 624,
+      "hasBoundary": true,
+      "areaKm2": 0.09409924840552066,
+      "bbox": [
+        10.603577,
+        32.972223,
+        10.608434,
+        32.97578
+      ],
+      "pickerGroupId": "osm:way:791334739",
+      "pickerRepresentativeId": "osm:way:791334739",
+      "pickerRepresentativeName": "BHIR",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "BHIR"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7143860",
+          "name": "وادي الغار",
+          "parentName": "معتمدية تطاوين الشمالية",
+          "delegationId": 624,
+          "areaKm2": 187.2125786794487,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "uncertain",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“BHIR” is an opaque named residential area; no reliable semantic evidence resolves parcel versus place.",
+      "recommendedPickerAction": "manual_review_no_exclusion",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:999537839",
+      "name": "El Asaida",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "القرع",
+      "governorateId": 353,
+      "delegationId": 494,
+      "hasBoundary": true,
+      "areaKm2": 0.05882581012644932,
+      "bbox": [
+        10.771209,
+        33.823726,
+        10.774788,
+        33.828067
+      ],
+      "pickerGroupId": "osm:way:999537839",
+      "pickerRepresentativeId": "osm:way:999537839",
+      "pickerRepresentativeName": "El Asaida",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "El Asaida"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7133844",
+          "name": "القرع",
+          "parentName": "معتمدية جربة أجيم",
+          "delegationId": 491,
+          "areaKm2": 38.99499545857881,
+          "sameDelegationId": false,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“El Asaida” is settlement-like and shares parent context with other named places.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:1007378962",
+      "name": "Houmt Majmaj",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "القرع",
+      "governorateId": 353,
+      "delegationId": 491,
+      "hasBoundary": true,
+      "areaKm2": 0.05690969015725874,
+      "bbox": [
+        10.827234,
+        33.803183,
+        10.832363,
+        33.807345
+      ],
+      "pickerGroupId": "osm:way:1007378962",
+      "pickerRepresentativeId": "osm:way:1007378962",
+      "pickerRepresentativeName": "Houmt Majmaj",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Houmt Majmaj"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7133844",
+          "name": "القرع",
+          "parentName": "معتمدية جربة أجيم",
+          "delegationId": 491,
+          "areaKm2": 38.99499545857881,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Houmt Majmaj” uses a settlement-like houmt name; keep pending evidence.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:187241394",
+      "name": "Burj Machehed Salah",
+      "aliases": [
+        "Borj Machehed Salah",
+        "برج مشاهد صالح"
+      ],
+      "arabicAliasesAlreadyInCatalog": [
+        "برج مشاهد صالح"
+      ],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "المعمرات",
+      "governorateId": 353,
+      "delegationId": 470,
+      "hasBoundary": true,
+      "areaKm2": 0.06476686456678331,
+      "bbox": [
+        11.181249,
+        32.303191,
+        11.185218,
+        32.306099
+      ],
+      "pickerGroupId": "osm:way:187241394",
+      "pickerRepresentativeId": "osm:way:187241394",
+      "pickerRepresentativeName": "Burj Machehed Salah",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Burj Machehed Salah"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "arabic_alternatives_exist_but_no_canonical_source_label",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7142926",
+          "name": "المعمرات",
+          "parentName": "معتمدية بنقردان",
+          "delegationId": 488,
+          "areaKm2": 1750.8984000634173,
+          "sameDelegationId": false,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Burj Machehed Salah” is a named place-style label, not an evident apartment complex.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:relation:15793378",
+      "name": "Ksar Hallouf",
+      "aliases": [
+        "قصر الحلوف"
+      ],
+      "arabicAliasesAlreadyInCatalog": [
+        "قصر الحلوف"
+      ],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "المنزلة",
+      "governorateId": 353,
+      "delegationId": 489,
+      "hasBoundary": true,
+      "areaKm2": 0.0536333315766151,
+      "bbox": [
+        10.152223,
+        33.290249,
+        10.156608,
+        33.29476
+      ],
+      "pickerGroupId": "osm:relation:15793378",
+      "pickerRepresentativeId": "osm:relation:15793378",
+      "pickerRepresentativeName": "Ksar Hallouf",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Ksar Hallouf"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "arabic_alternatives_exist_but_no_canonical_source_label",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7142968",
+          "name": "المنزلة",
+          "parentName": "معتمدية بني خداش",
+          "delegationId": 489,
+          "areaKm2": 279.8845192892987,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Ksar Hallouf” is a named ksar/locality-style relation; do not exclude based on residential landuse.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:188877862",
+      "name": "Menzelet Mogr",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "المنزلة",
+      "governorateId": 353,
+      "delegationId": 489,
+      "hasBoundary": true,
+      "areaKm2": 0.04360509972527042,
+      "bbox": [
+        10.100097,
+        33.31006,
+        10.102951,
+        33.3127
+      ],
+      "pickerGroupId": "osm:way:188877862",
+      "pickerRepresentativeId": "osm:way:188877862",
+      "pickerRepresentativeName": "Menzelet Mogr",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Menzelet Mogr"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7142968",
+          "name": "المنزلة",
+          "parentName": "معتمدية بني خداش",
+          "delegationId": 489,
+          "areaKm2": 279.8845192892987,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Menzelet Mogr” is settlement-like (menzel); role unverified.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:375940545",
+      "name": "Ksar Kherachfa",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "وادي الخيل",
+      "governorateId": 353,
+      "delegationId": 489,
+      "hasBoundary": true,
+      "areaKm2": 0.05088390583337346,
+      "bbox": [
+        10.287557,
+        33.189117,
+        10.291138,
+        33.19134
+      ],
+      "pickerGroupId": "osm:way:375940545",
+      "pickerRepresentativeId": "osm:way:375940545",
+      "pickerRepresentativeName": "Ksar Kherachfa",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Ksar Kherachfa"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7142967",
+          "name": "وادي الخيل",
+          "parentName": "معتمدية بني خداش",
+          "delegationId": 489,
+          "areaKm2": 59.50079519369738,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Ksar Kherachfa” is a named ksar/locality-style label.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:701316092",
+      "name": "El Abadliya",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "السعيدة الشرقية",
+      "governorateId": 355,
+      "delegationId": 504,
+      "hasBoundary": true,
+      "areaKm2": 0.012214861048754012,
+      "bbox": [
+        9.932027,
+        34.921535,
+        9.934055,
+        34.922867
+      ],
+      "pickerGroupId": "osm:way:701316092",
+      "pickerRepresentativeId": "osm:way:701316092",
+      "pickerRepresentativeName": "El Abadliya",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "El Abadliya"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7169597",
+          "name": "السعيدة الشرقية",
+          "parentName": "معتمدية السعيدة",
+          "delegationId": 504,
+          "areaKm2": 58.43318946645858,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“El Abadliya” is a named place-style label; no direct complex/building cue.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:744640885",
+      "name": "Mohamed Naceur",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "الصداقية",
+      "governorateId": 355,
+      "delegationId": 628,
+      "hasBoundary": true,
+      "areaKm2": 1.7017255292037035e-05,
+      "bbox": [
+        9.403034,
+        35.053415,
+        9.403095,
+        35.05347
+      ],
+      "pickerGroupId": "osm:way:744640885",
+      "pickerRepresentativeId": "osm:way:744640885",
+      "pickerRepresentativeName": "Mohamed Naceur",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Mohamed Naceur"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7169592",
+          "name": "الصداقية",
+          "parentName": "معتمدية سيدي بوزيد الغربية",
+          "delegationId": 628,
+          "areaKm2": 48.76242276293181,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "uncertain",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Mohamed Naceur” is a personal-name-like label on a near-point residential polygon; could be a house/parcel or locally named place.",
+      "recommendedPickerAction": "manual_review_no_exclusion",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:175158149",
+      "name": "Sadaguia",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "الصداقية",
+      "governorateId": 355,
+      "delegationId": 628,
+      "hasBoundary": true,
+      "areaKm2": 0.0963900072855631,
+      "bbox": [
+        9.423254,
+        35.082286,
+        9.428672,
+        35.086089
+      ],
+      "pickerGroupId": "osm:way:175158149",
+      "pickerRepresentativeId": "osm:way:175158149",
+      "pickerRepresentativeName": "Sadaguia",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Sadaguia"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7169592",
+          "name": "الصداقية",
+          "parentName": "معتمدية سيدي بوزيد الغربية",
+          "delegationId": 628,
+          "areaKm2": 48.76242276293181,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Sadaguia” has an Arabic catalog alias الصداقية, reinforcing locality identity; preserve.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:744642242",
+      "name": "Abdelbaki HAMDOUNI",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "سيدي بوزيد الغربية",
+      "governorateId": 355,
+      "delegationId": 628,
+      "hasBoundary": true,
+      "areaKm2": 0.0008630019212394251,
+      "bbox": [
+        9.476977,
+        35.039703,
+        9.477539,
+        35.04004
+      ],
+      "pickerGroupId": "osm:way:744642242",
+      "pickerRepresentativeId": "osm:way:744642242",
+      "pickerRepresentativeName": "Abdelbaki HAMDOUNI",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Abdelbaki HAMDOUNI"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7169639",
+          "name": "سيدي بوزيد الغربية",
+          "parentName": "معتمدية سيدي بوزيد الغربية",
+          "delegationId": 628,
+          "areaKm2": 1.2698576055218627,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "clear_residential_complex_or_building",
+      "manualReviewRecommended": true,
+      "reviewRationale": "Recommend exclude from location picker: polygon name is an individual person’s full name, paired only with landuse=residential and no place/boundary identity. This is consistent with a named residential parcel/house, not a settlement.",
+      "recommendedPickerAction": "exclude_from_location_picker_candidate",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:460319478",
+      "name": "cité Amal",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "سيدي الرايس",
+      "governorateId": 356,
+      "delegationId": 520,
+      "hasBoundary": true,
+      "areaKm2": 0.01113798415311741,
+      "bbox": [
+        9.628547,
+        36.644082,
+        9.630054,
+        36.645552
+      ],
+      "pickerGroupId": "osm:way:460319478",
+      "pickerRepresentativeId": "osm:way:460319478",
+      "pickerRepresentativeName": "cité Amal",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "cité Amal"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7189456",
+          "name": "سيدي الرايس",
+          "parentName": "معتمدية مجاز الباب",
+          "delegationId": 520,
+          "areaKm2": 36.546189815064245,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“cité Amal” is an explicitly named cité/neighborhood. Likely a residential quarter, but it may still be a recognizable neighborhood location, so not a safe exclusion under the user’s building/complex constraint alone.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:738813565",
+      "name": "cite ben youns",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "البساتين",
+      "governorateId": 359,
+      "delegationId": 632,
+      "hasBoundary": true,
+      "areaKm2": 0.00024675435861071037,
+      "bbox": [
+        10.762081,
+        34.750085,
+        10.762338,
+        34.750287
+      ],
+      "pickerGroupId": "osm:way:738813565",
+      "pickerRepresentativeId": "osm:way:738813565",
+      "pickerRepresentativeName": "cite ben youns",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "cite ben youns"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7147585",
+          "name": "البساتين",
+          "parentName": "معتمدية صفاقس المدينة",
+          "delegationId": 632,
+          "areaKm2": 2.576599104757761,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“cite ben youns” explicitly names a cité/neighborhood; tiny geometry is insufficient for exclusion.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:695712524",
+      "name": "Huilerie",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "برج التومي",
+      "governorateId": 360,
+      "delegationId": 551,
+      "hasBoundary": true,
+      "areaKm2": 0.00500045969107516,
+      "bbox": [
+        9.714361,
+        36.754157,
+        9.715409,
+        36.754766
+      ],
+      "pickerGroupId": "osm:way:695712524",
+      "pickerRepresentativeId": "osm:way:695712524",
+      "pickerRepresentativeName": "Huilerie",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Huilerie"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7101527",
+          "name": "برج التومي",
+          "parentName": "معتمدية البطان",
+          "delegationId": 551,
+          "areaKm2": 60.3664396226245,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "uncertain",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Huilerie” means oil mill and is ambiguous between a site/building and a named neighborhood; current tags only identify residential landuse.",
+      "recommendedPickerAction": "manual_review_no_exclusion",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:492312067",
+      "name": "El Khalil",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "سيدي عمر",
+      "governorateId": 360,
+      "delegationId": 397,
+      "hasBoundary": true,
+      "areaKm2": 0.005455227693049005,
+      "bbox": [
+        10.09715,
+        36.802285,
+        10.098394,
+        36.803432
+      ],
+      "pickerGroupId": "osm:way:492312067",
+      "pickerRepresentativeId": "osm:way:492312067",
+      "pickerRepresentativeName": "El Khalil",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "El Khalil"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7090536",
+          "name": "سيدي عمر",
+          "parentName": "معتمدية منوبة",
+          "delegationId": 633,
+          "areaKm2": 6.069092973323629,
+          "sameDelegationId": false,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "uncertain",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“El Khalil” could be a person/family or locality name; the small residential polygon provides no decisive distinction.",
+      "recommendedPickerAction": "manual_review_no_exclusion",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:173074170",
+      "name": "Bechateur",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "مرنيصة",
+      "governorateId": 361,
+      "delegationId": 634,
+      "hasBoundary": true,
+      "areaKm2": 0.048712497386088904,
+      "bbox": [
+        9.73362,
+        37.332797,
+        9.737357,
+        37.334978
+      ],
+      "pickerGroupId": "osm:way:173074170",
+      "pickerRepresentativeId": "osm:way:173074170",
+      "pickerRepresentativeName": "Bechateur",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7118644",
+          "name": "مرنيصة",
+          "parentName": "معتمدية بنزرت الجنوبية",
+          "delegationId": 634,
+          "areaKm2": 41.152644514147184,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Bechateur” is a known place-style label and appears as a parent context elsewhere; source omits name tag but catalog carries name.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:547533232",
+      "name": "Skhira",
+      "aliases": [
+        "صخيرة"
+      ],
+      "arabicAliasesAlreadyInCatalog": [
+        "صخيرة"
+      ],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "توشة",
+      "governorateId": 362,
+      "delegationId": 579,
+      "hasBoundary": true,
+      "areaKm2": 0.07103107206675682,
+      "bbox": [
+        8.896742,
+        35.46288,
+        8.900344,
+        35.466331
+      ],
+      "pickerGroupId": "osm:way:547533232",
+      "pickerRepresentativeId": "osm:way:547533232",
+      "pickerRepresentativeName": "Skhira",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Skhira"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "arabic_alternatives_exist_but_no_canonical_source_label",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7164909",
+          "name": "توشة",
+          "parentName": "معتمدية العيون",
+          "delegationId": 579,
+          "areaKm2": 116.34420706860571,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Skhira” is a named place and has Arabic alias صخيرة; preserve as plausible locality.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:191505327",
+      "name": "Aïn Mesria",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "أبة",
+      "governorateId": 363,
+      "delegationId": 590,
+      "hasBoundary": true,
+      "areaKm2": 0.09779124164556655,
+      "bbox": [
+        8.737631,
+        35.908732,
+        8.743604,
+        35.914207
+      ],
+      "pickerGroupId": "osm:way:191505327",
+      "pickerRepresentativeId": "osm:way:191505327",
+      "pickerRepresentativeName": "Aïn Mesria",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Aïn Mesria"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7140681",
+          "name": "أبة",
+          "parentName": "معتمدية الدهماني",
+          "delegationId": 590,
+          "areaKm2": 103.501253760018,
+          "sameDelegationId": true,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Aïn Mesria” is a named place-style label, not an evident housing complex.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:314275615",
+      "name": "Boulounia",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "قطيس",
+      "governorateId": 365,
+      "delegationId": 610,
+      "hasBoundary": true,
+      "areaKm2": 0.03399188887895023,
+      "bbox": [
+        8.809243,
+        34.613873,
+        8.812357,
+        34.616932
+      ],
+      "pickerGroupId": "osm:way:314275615",
+      "pickerRepresentativeId": "osm:way:314275615",
+      "pickerRepresentativeName": "Boulounia",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Boulounia"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7150231",
+          "name": "قطيس",
+          "parentName": "معتمدية قفصة الشمالية",
+          "delegationId": 638,
+          "areaKm2": 81.89199513765872,
+          "sameDelegationId": false,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Boulounia” is a named settlement-style label; residential landuse is insufficient for exclusion.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:314275825",
+      "name": "Edghamnia",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "قطيس",
+      "governorateId": 365,
+      "delegationId": 610,
+      "hasBoundary": true,
+      "areaKm2": 0.061938827898953684,
+      "bbox": [
+        8.823884,
+        34.584716,
+        8.827735,
+        34.587958
+      ],
+      "pickerGroupId": "osm:way:314275825",
+      "pickerRepresentativeId": "osm:way:314275825",
+      "pickerRepresentativeName": "Edghamnia",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "Edghamnia"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7150231",
+          "name": "قطيس",
+          "parentName": "معتمدية قفصة الشمالية",
+          "delegationId": 638,
+          "areaKm2": 81.89199513765872,
+          "sameDelegationId": false,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“Edghamnia” is a named settlement-style label; residential landuse is insufficient for exclusion.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    },
+    {
+      "id": "osm:way:314275502",
+      "name": "El Frahtia",
+      "aliases": [],
+      "arabicAliasesAlreadyInCatalog": [],
+      "kind": "residential",
+      "sourceId": "osm",
+      "parentName": "قطيس",
+      "governorateId": 365,
+      "delegationId": 610,
+      "hasBoundary": true,
+      "areaKm2": 0.036701651215442284,
+      "bbox": [
+        8.804628,
+        34.618976,
+        8.807579,
+        34.621487
+      ],
+      "pickerGroupId": "osm:way:314275502",
+      "pickerRepresentativeId": "osm:way:314275502",
+      "pickerRepresentativeName": "El Frahtia",
+      "separatePickerRow": true,
+      "osmTags": {
+        "landuse": "residential",
+        "name": "El Frahtia"
+      },
+      "officialInsRowsByCodegeo": [],
+      "arabicDisplayCandidate": null,
+      "arabicDisplayStatus": "no_source_backed_arabic_primary",
+      "smallResidentialBoundaryAtOrBelow0_1Km2": true,
+      "fullyNestedSameGovernorateOfficialSectorCandidates": [
+        {
+          "id": "osm:relation:7150231",
+          "name": "قطيس",
+          "parentName": "معتمدية قفصة الشمالية",
+          "delegationId": 638,
+          "areaKm2": 81.89199513765872,
+          "sameDelegationId": false,
+          "sameParentName": false
+        }
+      ],
+      "residentialParcelReviewCandidate": true,
+      "geometryValid": true,
+      "classification": "plausible_neighborhood_or_locality",
+      "manualReviewRecommended": true,
+      "reviewRationale": "“El Frahtia” is a named settlement-style label; residential landuse is insufficient for exclusion.",
+      "recommendedPickerAction": "preserve_pending_source_check",
+      "reviewEvidence": {
+        "sourceFacts": [
+          "OSM-derived catalog primary name/kind/area/parent context and tags",
+          "Pinned extra-audit containment by a named same-governorate sector"
+        ],
+        "limits": [
+          "No current map imagery or independent gazetteer confirmation was consulted",
+          "area and landuse=residential alone do not establish building/complex vs neighborhood"
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "No app edits, deletion, API lookup, or emulator use.",
+    "A picker exclusion would affect selection membership only; it does not mean remove the entry from the app catalog.",
+    "Review is derived from pinned OSM snapshot tags and names plus existing containment audit. Independent map evidence was not consulted."
+  ]
+}

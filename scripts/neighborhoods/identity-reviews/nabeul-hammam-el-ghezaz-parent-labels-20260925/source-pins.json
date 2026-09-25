@@ -1,0 +1,18 @@
+{
+  "currentBaseJsonSha256": "d0bcd450fdb00f1328be3f8fb49872bf7d1718a6fa7b1a544b48bdf85cf9e977",
+  "currentBaseBinSha256": "a34bdf230220f2a400aefc693f9f1055ad6d9ad59fd640f04c0418485a02d8cd",
+  "ministrySnapshotHtmlSha256": "8feb1ab95c822f3fac0d30e53ee7d1ec25c1ae672cae32e26d2ef8b72eda5060",
+  "ministryInventoryCsvSha256": "2ddaafc9afbb054781b69ddc66f1b0b4a138dbf92acbd7cc5f7c82e96867a871",
+  "insRegistrySha256": "23b3ee87c07971eb48b456799833f1996ade5d0bdc10d7bf6b0e3bf6798c9eec",
+  "identityTriageSha256": "73df456728c3090373153917a8647a77a1db4af53c8d9187ec8297119a340a68",
+  "identityAssessmentSha256": "c241429654e2eaa12693dc01d59dd411b82d84379b2b1e57c8bc73172d4980c0",
+  "targets": [
+    "osm:relation:7097006",
+    "osm:relation:7096631",
+    "osm:relation:7096632",
+    "osm:relation:7097007"
+  ],
+  "officialParent": "حمام الأغزاز",
+  "catalogParentAfterPrefix": "معتمدية حمام الأغزاز",
+  "note": "Identity crosswalk supports display parent spelling only. No geometry/alias/name/delegation ID change is authorized."
+}
