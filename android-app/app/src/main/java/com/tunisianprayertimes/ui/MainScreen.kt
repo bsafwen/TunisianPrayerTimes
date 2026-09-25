@@ -5518,57 +5518,93 @@ private fun WakeAlarmRow(
             color = GreenPrimary.copy(alpha = 0.14f)
         )
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 14.dp, vertical = 12.dp),
-            verticalAlignment = Alignment.Top,
-        ) {
+        Column(modifier = Modifier.fillMaxWidth()) {
             Column(
                 modifier = Modifier
-                    .weight(1f)
-                    .padding(end = 12.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp),
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
-                    Text(
-                        text = alarmDisplayName,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = GreenPrimaryDark,
-                        maxLines = if (LocalDensity.current.fontScale > 1.3f) Int.MAX_VALUE else 2,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.weight(1f, fill = false).alignByBaseline(),
-                    )
-                    Text(
-                        text = alarmName,
-                        fontSize = 11.sp,
-                        color = TextMuted,
-                        maxLines = 1,
-                        modifier = Modifier.alignByBaseline(),
-                    )
-                }
-                Text(
-                    text = summaryText,
-                    fontSize = 12.sp,
-                    color = TextDark,
-                    lineHeight = 16.sp,
-                )
-                if (nextAlarmMillis != null) {
-                    Text(
-                        text = stringResource(
-                            R.string.wake_alarm_row_next_at,
-                            formatWakeAlarmDateTime(nextAlarmMillis),
-                        ),
-                        fontSize = 11.sp,
-                        color = GreenPrimaryDark,
-                        lineHeight = 15.sp,
-                        fontWeight = FontWeight.Medium,
+                    Column(
+                        modifier = Modifier.weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(2.dp),
+                    ) {
+                        if (nextAlarmMillis != null) {
+                            Text(
+                                text = formatTimeOfDay(nextAlarmMillis),
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = GreenPrimaryDark,
+                                maxLines = 1,
+                                style = TextStyle(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
+                            )
+                        }
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Text(
+                                text = alarmDisplayName,
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = GreenPrimaryDark,
+                                maxLines = if (LocalDensity.current.fontScale > 1.3f) Int.MAX_VALUE else 2,
+                                overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier.weight(1f, fill = false).alignByBaseline(),
+                            )
+                            Text(
+                                text = alarmName,
+                                fontSize = 11.sp,
+                                color = TextMuted,
+                                maxLines = 1,
+                                modifier = Modifier.alignByBaseline(),
+                            )
+                        }
+                    }
+                    Switch(
+                        checked = enabled,
+                        onCheckedChange = onEnabledChange,
+                        modifier = Modifier
+                            .heightIn(min = 48.dp)
+                            .testTag(TestTags.wakeAlarmEnabledSwitch(wakeConfig.id))
+                            .semantics { contentDescription = alarmName },
                     )
                 }
 
+                if (nextAlarmMillis != null) {
+                    val dateText = stringResource(
+                        R.string.wake_alarm_row_next_at,
+                        formatWakeAlarmDate(nextAlarmMillis),
+                    )
+                    FlowRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(2.dp),
+                    ) {
+                        Text(
+                            text = dateText,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = GreenPrimaryDark,
+                            lineHeight = 16.sp,
+                        )
+                        Text(
+                            text = summaryText,
+                            fontSize = 12.sp,
+                            color = TextDark,
+                            lineHeight = 16.sp,
+                        )
+                    }
+                } else {
+                    Text(
+                        text = summaryText,
+                        fontSize = 12.sp,
+                        color = TextDark,
+                        lineHeight = 16.sp,
+                    )
+                }
                 if (featureChips.isNotEmpty()) {
                     FlowRow(
                         horizontalArrangement = Arrangement.spacedBy(6.dp),
@@ -5577,35 +5613,20 @@ private fun WakeAlarmRow(
                         featureChips.forEach { chip -> WakeAlarmFeatureChip(text = chip) }
                     }
                 }
-
             }
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(8.dp),
+            HorizontalDivider(color = GreenPrimary.copy(alpha = 0.1f))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                Switch(
-                    checked = enabled,
-                    onCheckedChange = onEnabledChange,
-                    modifier = Modifier
-                        .heightIn(min = 48.dp)
-                        .testTag(TestTags.wakeAlarmEnabledSwitch(wakeConfig.id))
-                        .semantics { contentDescription = alarmName },
-                )
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                ) {
+                Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterStart) {
                     if (showSkipNextAction) {
-                        OutlinedButton(
+                        TextButton(
                             onClick = onSkipNext,
-                            shape = RoundedCornerShape(10.dp),
-                            border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.35f)),
-                            colors = ButtonDefaults.outlinedButtonColors(
-                                containerColor = GreenPrimary.copy(alpha = 0.07f),
-                                contentColor = GreenPrimaryDark,
-                            ),
-                            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 0.dp),
+                            colors = ButtonDefaults.textButtonColors(contentColor = GreenPrimaryDark),
+                            contentPadding = PaddingValues(horizontal = 8.dp),
                             modifier = Modifier
                                 .heightIn(min = 48.dp)
                                 .testTag(TestTags.wakeAlarmSkipNextButton(wakeConfig.id))
@@ -5616,31 +5637,28 @@ private fun WakeAlarmRow(
                                     if (isSkipPending) R.string.wake_alarm_undo_skip_next_short
                                     else R.string.wake_alarm_skip_next_short,
                                 ),
-                                fontSize = 12.sp,
+                                fontSize = 13.sp,
                                 fontWeight = FontWeight.SemiBold,
                             )
                         }
                     }
-                    OutlinedButton(
-                        onClick = onDeleteRequest,
-                        shape = RoundedCornerShape(10.dp),
-                        border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.45f)),
-                        colors = ButtonDefaults.outlinedButtonColors(
-                            containerColor = SilenceRed.copy(alpha = 0.06f),
-                            contentColor = SilenceRed,
-                        ),
-                        contentPadding = PaddingValues(0.dp),
-                        modifier = Modifier
-                            .testTag(TestTags.wakeAlarmDeleteButton(wakeConfig.id))
-                            .size(48.dp)
-                            .semantics { contentDescription = deleteActionDescription },
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_delete),
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp),
-                        )
-                    }
+                }
+                TextButton(
+                    onClick = onDeleteRequest,
+                    colors = ButtonDefaults.textButtonColors(contentColor = SilenceRed),
+                    contentPadding = PaddingValues(horizontal = 8.dp),
+                    modifier = Modifier
+                        .heightIn(min = 48.dp)
+                        .testTag(TestTags.wakeAlarmDeleteButton(wakeConfig.id))
+                        .semantics { contentDescription = deleteActionDescription },
+                ) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_delete),
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp),
+                    )
+                    Spacer(Modifier.width(4.dp))
+                    Text(text = deleteActionDescription, fontSize = 13.sp)
                 }
             }
         }

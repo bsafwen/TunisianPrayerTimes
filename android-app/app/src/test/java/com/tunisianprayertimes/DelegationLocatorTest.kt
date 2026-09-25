@@ -145,14 +145,16 @@ class DelegationLocatorTest {
             accuracy = 2_000f
         }
         assertEquals(fine, chooseBestLocation(listOf(coarse, fine), now))
-        val result = DelegationLocator.resolveGpsLocation(context, fine.latitude, fine.longitude)
+        val result = DelegationLocator.resolveGpsLocation(
+            context, fine.latitude, fine.longitude, fine.accuracy.toDouble()
+        )
             as DelegationLocationResult.Success
         assertEquals("النصر 2", result.locality?.name)
     }
 
     @Test
     fun `GPS returns neighborhood label and independently nearest timetable`() {
-        val result = DelegationLocator.resolveGpsLocation(context, 36.8428, 10.1465)
+        val result = DelegationLocator.resolveGpsLocation(context, 36.8428, 10.1465, accuracyMeters = 5.0)
             as DelegationLocationResult.Success
         assertEquals("المنزه 9 أ", result.locality?.name)
         assertEquals(GouvernoratRepository.findNearestDelegation(context, 36.8428, 10.1465)?.id, result.delegation.id)
@@ -175,9 +177,9 @@ class DelegationLocatorTest {
         DelegationLocator.updateDelegationFromLastLocation(context)
         assertEquals("بوشوشة", PrefsManager.getLocationSelection(context).name)
         assertEquals(394, PrefsManager.getDelegationId(context))
-        DelegationLocator.locationProvider = FakeLocationProvider(testLocation(36.805274, 10.126553))
+        DelegationLocator.locationProvider = FakeLocationProvider(testLocation(36.814158, 10.132327))
         assertFalse(DelegationLocator.updateDelegationFromLastLocation(context))
-        assertEquals("خزندار", PrefsManager.getLocationSelection(context).name)
+        assertEquals("باردو الشمالي", PrefsManager.getLocationSelection(context).name)
         assertEquals(394, PrefsManager.getDelegationId(context))
     }
 
