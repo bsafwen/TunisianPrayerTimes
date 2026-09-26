@@ -14,6 +14,12 @@ data class DhikrTime(
     val offsetMinutes: Int = 0,
 )
 
+data class DhikrInterval(
+    val start: DhikrTime,
+    val end: DhikrTime,
+    val endNextDay: Boolean? = false,
+)
+
 /** Weekdays use ISO numbering: Monday = 1, Sunday = 7. */
 data class DhikrReminder(
     val id: String = UUID.randomUUID().toString(),
@@ -32,7 +38,11 @@ data class DhikrReminder(
     val endNextDay: Boolean? = false,
     val revision: Int = 1,
     val notBeforeMillis: Long = 0,
+    val extraIntervals: List<DhikrInterval> = emptyList(),
 )
+
+fun DhikrReminder.intervals(): List<DhikrInterval> =
+    listOf(DhikrInterval(start, end, endNextDay)) + extraIntervals
 
 /** The end is exclusive. An overnight window keeps the selected starting day's key. */
 data class DhikrWindow(
@@ -40,12 +50,20 @@ data class DhikrWindow(
     val endMillis: Long,
     val progressKey: String,
     val date: LocalDate,
+    val intervalIndex: Int = 0,
+    val progressStartMillis: Long = startMillis,
+    val progressEndMillis: Long = endMillis,
 )
 
 internal fun DhikrTime.toJson(): JSONObject = JSONObject()
     .put("kind", kind.name)
     .put("minuteOfDay", minuteOfDay)
     .put("offsetMinutes", offsetMinutes)
+
+private fun DhikrInterval.toJson(): JSONObject = JSONObject()
+    .put("start", start.toJson())
+    .put("end", end.toJson())
+    .put("endNextDay", endNextDay ?: JSONObject.NULL)
 
 internal fun DhikrReminder.toJson(): JSONObject = JSONObject()
     .put("id", id)
@@ -62,6 +80,9 @@ internal fun DhikrReminder.toJson(): JSONObject = JSONObject()
     .put("endNextDay", endNextDay ?: JSONObject.NULL)
     .put("revision", revision)
     .put("notBeforeMillis", notBeforeMillis)
+    .apply {
+        if (extraIntervals.isNotEmpty()) put("extraIntervals", JSONArray(extraIntervals.map { it.toJson() }))
+    }
 
 internal fun dhikrReminderFromJson(json: JSONObject): DhikrReminder {
     fun readTime(value: JSONObject) = DhikrTime(
@@ -70,6 +91,20 @@ internal fun dhikrReminderFromJson(json: JSONObject): DhikrReminder {
         offsetMinutes = value.optInt("offsetMinutes", 0),
     )
     val days = json.getJSONArray("daysOfWeek")
+    val extraIntervals = json.optJSONArray("extraIntervals")?.let { array ->
+        (0 until array.length()).mapNotNull { index -> runCatching {
+            val value = array.getJSONObject(index)
+            DhikrInterval(
+                start = readTime(value.getJSONObject("start")),
+                end = readTime(value.getJSONObject("end")),
+                endNextDay = when {
+                    !value.has("endNextDay") -> false
+                    value.isNull("endNextDay") -> null
+                    else -> value.getBoolean("endNextDay")
+                },
+            )
+        }.getOrNull() }
+    }.orEmpty()
     return DhikrReminder(
         id = json.getString("id"),
         dhikrId = json.getString("dhikrId"),
@@ -89,6 +124,7 @@ internal fun dhikrReminderFromJson(json: JSONObject): DhikrReminder {
         endNextDay = if (json.has("endNextDay") && !json.isNull("endNextDay")) json.getBoolean("endNextDay") else null,
         revision = json.optInt("revision", 1),
         notBeforeMillis = json.optLong("notBeforeMillis", 0),
+        extraIntervals = extraIntervals,
     )
 }
 
@@ -227,4 +263,37 @@ fun dhikrNudgeTimes(reminder: DhikrReminder, window: DhikrWindow): List<Long> {
             generateSequence(window.startMillis) { it + step }.takeWhile { it < window.endMillis }.take(MAX_NUDGES_PER_WINDOW).toList()
         }
     }
+}
+
+/** Spread gentle and balanced nudges across the day, with at least one in each chosen interval. */
+fun dhikrNudgeTimes(reminder: DhikrReminder, windows: List<DhikrWindow>): List<Long> {
+    val ordered = windows.filter { it.endMillis > it.startMillis }.sortedBy { it.startMillis }
+    if (ordered.size == 1) return dhikrNudgeTimes(reminder, ordered.single())
+    if (reminder.cadence == DhikrCadence.HOURLY || reminder.cadence == DhikrCadence.CUSTOM)
+        return ordered.flatMap { dhikrNudgeTimes(reminder, it) }.sorted()
+
+    val baseCap = if (reminder.cadence == DhikrCadence.GENTLE) 3 else 5
+    val minimum = 15 * 60_000L
+    return ordered.groupBy { it.date }.values.flatMap { dayWindows ->
+        // Adding an interval is an explicit request for coverage, even above the usual cap.
+        val dailyCap = maxOf(baseCap, dayWindows.size)
+        val selected = dayWindows
+        val counts = IntArray(selected.size) { 1 }
+        val capacities = selected.map { window ->
+            minOf(dailyCap, ((window.endMillis - window.startMillis - 1) / minimum + 1).toInt())
+        }
+        var remaining = dailyCap - selected.size
+        while (remaining > 0) {
+            val next = selected.indices.filter { counts[it] < capacities[it] }
+                .maxByOrNull { (selected[it].endMillis - selected[it].startMillis) / (counts[it] + 1) }
+                ?: break
+            counts[next]++
+            remaining--
+        }
+        selected.flatMapIndexed { index, window ->
+            val duration = window.endMillis - window.startMillis
+            val step = maxOf(minimum, duration / counts[index])
+            (0 until counts[index]).map { window.startMillis + it * step }.filter { it < window.endMillis }
+        }
+    }.sorted()
 }

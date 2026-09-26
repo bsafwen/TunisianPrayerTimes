@@ -87,10 +87,10 @@ internal fun DhikrCollectionOrderDialog(
 
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("ترتيب أذكار " + collectionTitle(category), color = AdhkarHeading, fontWeight = FontWeight.Bold) },
+        title = { Text("ترتيب " + collectionTitle(category), color = AdhkarHeading, fontWeight = FontWeight.Bold) },
         text = {
             Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                Text("اضغط مطولًا على الذكر واسحبه إلى موضعه. يمكنك أيضًا استخدام السهمين. يُحفظ الترتيب للقراءات التالية.",
+                Text("اضغط مطولًا على الذكر، ثم اسحبه إلى موضعه. يمكنك أيضًا استخدام السهمين. سيُحفظ ترتيب الأذكار في هذه المجموعة.",
                     color = p.muted, fontSize = 13.sp, lineHeight = 21.sp)
                 Column(
                     Modifier.fillMaxWidth().heightIn(max = 360.dp)

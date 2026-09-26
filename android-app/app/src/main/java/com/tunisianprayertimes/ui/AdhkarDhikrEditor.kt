@@ -55,13 +55,13 @@ import com.tunisianprayertimes.adhkar.DhikrEntry
         containerColor = p.background, modifier = Modifier.testTag("adhkar_custom_editor")) {
         Column(Modifier.fillMaxWidth().fillMaxHeight(.9f).imePadding()) {
             Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text(if (initial == null) "إضافة ذكر خاص" else "تعديل الذكر", Modifier.weight(1f), textAlign = TextAlign.Center,
+                Text(if (initial == null) "إضافة ذكر" else "تعديل الذكر", Modifier.weight(1f), textAlign = TextAlign.Center,
                     fontSize = 20.sp, fontWeight = FontWeight.Bold, color = AdhkarHeading)
                 IconButton(onClick = { if (!saving) onDismiss() }) { DhikrIcon(R.drawable.ic_adhkar_back, "رجوع") }
             }
             Column(Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 10.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                Text("اكتب ذكرك كما تريده، وسيظهر في «أذكاري» مع إمكانية القراءة والعدّ وربطه بتذكير.",
+                Text("اكتب الذكر بالطريقة التي تناسبك. سيظهر في «أذكاري»، ويمكنك قراءته وعدّ مرات تكراره وإنشاء تذكير له.",
                     color = p.muted, fontSize = 13.sp, lineHeight = 24.sp)
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     Text("عنوان الذكر", color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
@@ -87,7 +87,7 @@ import com.tunisianprayertimes.adhkar.DhikrEntry
                 }
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     Text("العدد الافتراضي عند القراءة", color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-                    Text("يمكنك تغيير العدد لاحقًا من تذكير هذا الذكر.", color = p.muted, fontSize = 12.sp)
+                    Text("يمكنك تغيير العدد لاحقًا عند إعداد تذكير لهذا الذكر.", color = p.muted, fontSize = 12.sp)
                 }
                 Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -114,7 +114,7 @@ import com.tunisianprayertimes.adhkar.DhikrEntry
                 }
                 if (text.isNotBlank()) AdhkarCard(Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(title.ifBlank { "ذكر خاص" }, color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
+                        Text(title.ifBlank { "ذكر جديد" }, color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 15.sp)
                         Text(text, fontFamily = AdhkarReadingFont, fontSize = 24.sp, lineHeight = 44.sp,
                             color = p.forest, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
                         if (reference.isNotBlank()) Text(reference, color = p.muted, fontSize = 12.sp, textAlign = TextAlign.Center,

@@ -48,13 +48,13 @@ object DhikrReminderScheduler {
         val notificationManager = manager(context)
         notificationManager.deleteNotificationChannel(LEGACY_CHANNEL_ID)
         notificationManager.createNotificationChannel(NotificationChannel(CHANNEL_ID, "تذكيرات الأذكار", NotificationManager.IMPORTANCE_HIGH).apply {
-            description = "تذكيرات هادئة خلال الفترة التي تختارها"
+            description = "تذكيرات الأذكار في الأوقات التي تختارها"
             setSound(null, null)
             enableVibration(true)
             vibrationPattern = longArrayOf(0, 250, 120, 250)
             setShowBadge(false)
         })
-        notificationManager.createNotificationChannel(NotificationChannel(QUIET_CHANNEL_ID, "تذكيرات الأذكار بلا اهتزاز", NotificationManager.IMPORTANCE_HIGH).apply {
+        notificationManager.createNotificationChannel(NotificationChannel(QUIET_CHANNEL_ID, "تذكيرات الأذكار دون اهتزاز", NotificationManager.IMPORTANCE_HIGH).apply {
             description = "تذكيرات الأذكار دون صوت أو اهتزاز"
             setSound(null, null)
             enableVibration(false)
@@ -78,10 +78,10 @@ object DhikrReminderScheduler {
         rule.collection?.let { state.collectionEntries(it).isNotEmpty() } ?: true
     internal fun structuralError(context: Context, rule: DhikrReminder): String? = when {
         rule.id.isBlank() || '|' in rule.id || !isKnownDhikr(context, rule.dhikrId) -> "اختر ذكرًا."
-        rule.targetCount !in 1..100_000 -> "أدخل هدفًا من 1 إلى 100,000."
+        rule.targetCount !in 1..100_000 -> "أدخل هدفًا بين 1 و100,000."
         rule.daysOfWeek.isEmpty() || rule.daysOfWeek.any { it !in 1..7 } -> "اختر يومًا واحدًا على الأقل."
-        rule.intervalMinutes !in MIN_DHIKR_INTERVAL_MINUTES..1440 && rule.cadence == DhikrCadence.CUSTOM -> "اختر فاصلًا من 15 دقيقة إلى 24 ساعة."
-        listOf(rule.start, rule.end).any { it.minuteOfDay !in 0..1439 || it.offsetMinutes !in -720..720 } -> "تحقق من الوقت وفرق الدقائق."
+        rule.intervalMinutes !in MIN_DHIKR_INTERVAL_MINUTES..1440 && rule.cadence == DhikrCadence.CUSTOM -> "اختر فاصلًا بين 15 دقيقة و24 ساعة."
+        rule.intervals().any { interval -> listOf(interval.start, interval.end).any { it.minuteOfDay !in 0..1439 || it.offsetMinutes !in -720..720 } } -> "راجع أوقات البداية والنهاية، والتعديلات بالدقائق."
         else -> null
     }
     fun validate(context: Context, rule: DhikrReminder): String? {
@@ -90,38 +90,70 @@ object DhikrReminderScheduler {
         for (offset in 0L..8L) {
             val date = LocalDate.now().plusDays(offset)
             if (date.dayOfWeek.value !in rule.daysOfWeek) continue
-            val bounds = bounds(context, rule, date) ?: continue
+            val bounds = resolvedBounds(context, rule, date) ?: continue
             available = true
             windowError(context, rule, date, bounds)?.let { return it }
         }
-        if (!available) return "مواقيت الصلاة المطلوبة غير متاحة لهذا الموقع. اختر وقتًا ثابتًا أو موقعًا تتوفر له المواقيت."
+        if (!available) return "مواقيت الصلاة المطلوبة غير متاحة لموقعك. اختر أوقاتًا ثابتة أو غيّر موقعك."
         val duplicate = DhikrRepository(context).state.value.reminders.any {
             it.id != rule.id && it.dhikrId == rule.dhikrId && it.daysOfWeek == rule.daysOfWeek &&
-                it.start == rule.start && it.end == rule.end && it.endNextDay == rule.endNextDay
+                it.intervals().toSet() == rule.intervals().toSet()
         }
-        return if (duplicate) "يوجد تذكير بهذا الذكر في الفترة نفسها. يمكنك تعديله من تذكيراتي." else null
+        return if (duplicate) "يوجد تذكير لهذا الذكر في الأيام والأوقات نفسها. يمكنك تعديله من «تذكيراتي»." else null
     }
-    fun resolveWindow(context: Context, rule: DhikrReminder, date: LocalDate): DhikrWindow? {
-        if (date.dayOfWeek.value !in rule.daysOfWeek || structuralError(context, rule) != null) return null
-        val (start, end) = bounds(context, rule, date) ?: return null
-        if (start < rule.notBeforeMillis || windowError(context, rule, date, start to end) != null) return null
-        return DhikrWindow(start, end, rule.id + "|" + rule.revision + "|" + date, date)
+    fun resolveWindows(context: Context, rule: DhikrReminder, date: LocalDate): List<DhikrWindow> {
+        if (date.dayOfWeek.value !in rule.daysOfWeek || structuralError(context, rule) != null) return emptyList()
+        val bounds = resolvedBounds(context, rule, date) ?: return emptyList()
+        if (windowError(context, rule, date, bounds) != null) return emptyList()
+        val eligible = bounds.filter { it.second.first >= rule.notBeforeMillis }
+        if (eligible.isEmpty()) return emptyList()
+        val progressStart = eligible.minOf { it.second.first }
+        val progressEnd = eligible.maxOf { it.second.second }
+        val key = rule.id + "|" + rule.revision + "|" + date
+        return eligible.sortedBy { it.second.first }.map { (index, interval) ->
+            DhikrWindow(interval.first, interval.second, key, date, index, progressStart, progressEnd)
+        }
     }
-    private fun windowError(context: Context, rule: DhikrReminder, date: LocalDate, bounds: Pair<Long, Long>): String? {
-        val (start, end) = bounds
-        if (end <= start) return "النهاية تسبق البداية. اختر «اليوم التالي» للفترة الليلية."
-        val nextDayLimit = Instant.ofEpochMilli(start).atZone(ZoneId.systemDefault()).plusDays(1).toInstant().toEpochMilli()
-        if (end > nextDayLimit) return "اختر فترة لا تتجاوز يومًا واحدًا."
-        val nextStart = resolveTime(context, rule.start, date.plusDays(1)) ?: nextDayLimit
-        if (end > nextStart) return "تنتهي الفترة بعد بداية فترة اليوم التالي. قدّم وقت النهاية."
+    fun resolveWindow(context: Context, rule: DhikrReminder, date: LocalDate): DhikrWindow? =
+        resolveWindows(context, rule, date).firstOrNull()
+    private fun windowError(context: Context, rule: DhikrReminder, date: LocalDate,
+                            bounds: List<Pair<Int, Pair<Long, Long>>>): String? {
+        val sorted = bounds.sortedBy { it.second.first }
+        for ((_, interval) in sorted) {
+            val (start, end) = interval
+            if (end <= start) return "يجب أن يكون وقت النهاية بعد وقت البداية. إذا كانت الفترة ليلية، فعّل «تنتهي في اليوم التالي»."
+            val nextDayLimit = Instant.ofEpochMilli(start).atZone(ZoneId.systemDefault()).plusDays(1).toInstant().toEpochMilli()
+            if (end > nextDayLimit) return "اختر فترة لا تتجاوز يومًا واحدًا."
+        }
+        if (sorted.zipWithNext().any { (first, second) -> first.second.second > second.second.first })
+            return "فترات التذكير متداخلة. غيّر وقت بداية إحداها أو نهايتها."
+        val nextDate = date.plusDays(1)
+        val nextBounds = resolvedBounds(context, rule, nextDate)
+        // Even on an unselected weekday, an overnight interval cannot run into
+        // the time its own next occurrence would begin.
+        if (nextBounds != null && bounds.any { (index, interval) ->
+                nextBounds.any { it.first == index && interval.second > it.second.first }
+            }) return "تنتهي هذه الفترة بعد بدء فترة اليوم التالي. اختر وقت نهاية أبكر."
+        val nextStart = if (nextDate.dayOfWeek.value in rule.daysOfWeek)
+            nextBounds?.minOfOrNull { it.second.first }
+        else null
+        if (nextStart != null && sorted.any { it.second.second > nextStart })
+            return "تنتهي هذه الفترة بعد بدء فترة اليوم التالي. اختر وقت نهاية أبكر."
         return null
     }
-    private fun bounds(context: Context, rule: DhikrReminder, date: LocalDate): Pair<Long, Long>? {
-        val start = resolveTime(context, rule.start, date) ?: return null
-        var end = resolveTime(context, rule.end, if (rule.endNextDay == true) date.plusDays(1) else date) ?: return null
-        if (rule.endNextDay == null && end <= start) end = resolveTime(context, rule.end, date.plusDays(1)) ?: return null
-        return start to end
+    private fun resolvedBounds(context: Context, rule: DhikrReminder, date: LocalDate): List<Pair<Int, Pair<Long, Long>>>? {
+        return rule.intervals().mapIndexed { index, interval ->
+            val start = resolveTime(context, interval.start, date) ?: return null
+            var end = resolveTime(context, interval.end,
+                if (interval.endNextDay == true) date.plusDays(1) else date) ?: return null
+            if (interval.endNextDay == null && end <= start)
+                end = resolveTime(context, interval.end, date.plusDays(1)) ?: return null
+            index to (start to end)
+        }
     }
+    private fun nudgeSlots(context: Context, rule: DhikrReminder, window: DhikrWindow): List<IndexedValue<Long>> =
+        dhikrNudgeTimes(rule, resolveWindows(context, rule, window.date)).withIndex()
+            .filter { it.value in window.startMillis until window.endMillis }
     fun currentOrNextWindow(context: Context, rule: DhikrReminder, nowMillis: Long = System.currentTimeMillis()): DhikrWindow? =
         windows(context, rule, nowMillis).firstOrNull()
     /**
@@ -146,20 +178,21 @@ object DhikrReminderScheduler {
                 if (!coveredBySilence) return maxOf(now, scheduled.getLong("at"))
                 continue
             }
-            if (occurrence != null && occurrence.snoozedUntilMillis > now && occurrence.snoozedUntilMillis < window.endMillis)
+            if (occurrence != null && occurrence.snoozedUntilMillis > now &&
+                occurrence.snoozedUntilMillis in window.startMillis until window.endMillis)
                 return occurrence.snoozedUntilMillis
-            val times = dhikrNudgeTimes(rule, window)
-            val index = times.indices.firstOrNull { times[it] >= now && !prefs.contains("done:" + window.progressKey + ":" + it) }
+            val slots = nudgeSlots(context, rule, window)
+            val slot = slots.firstOrNull { it.value >= now && !prefs.contains("done:" + window.progressKey + ":" + it.index) }
                 ?: if (now in window.startMillis until window.endMillis)
-                    times.indices.lastOrNull { !prefs.contains("done:" + window.progressKey + ":" + it) }
+                    slots.lastOrNull { !prefs.contains("done:" + window.progressKey + ":" + it.index) }
                 else null
-            if (index != null) return maxOf(now, times[index])
+            if (slot != null) return maxOf(now, slot.value)
         }
         return null
     }
     private fun windows(context: Context, rule: DhikrReminder, now: Long): List<DhikrWindow> {
         val today = Instant.ofEpochMilli(now).atZone(ZoneId.systemDefault()).toLocalDate()
-        return (-2L..8L).mapNotNull { resolveWindow(context, rule, today.plusDays(it)) }
+        return (-2L..8L).flatMap { resolveWindows(context, rule, today.plusDays(it)) }
             .filter { it.endMillis > now }.sortedBy { it.startMillis }
     }
     fun resolveTime(context: Context, time: DhikrTime, date: LocalDate): Long? {
@@ -230,20 +263,21 @@ object DhikrReminderScheduler {
             for (window in windows(app, rule, nowMillis)) {
                 val occurrence = repo.ensureOccurrence(rule, window)
                 if (occurrence.status != DhikrOccurrenceStatus.OPEN || occurrence.count >= occurrence.target) continue
-                val times = dhikrNudgeTimes(rule, window)
+                val slots = nudgeSlots(app, rule, window)
                 val snooze = occurrence.snoozedUntilMillis
                 val previous = prefs.getString("event:" + rule.id, null)?.let { runCatching { JSONObject(it) }.getOrNull() }
                 val signature = window.startMillis.toString() + ":" + window.endMillis + ":" + rule.toJson()
                 val snoozeId = occurrence.id + ":snooze:" + snooze
-                val unconsumedSnooze = snooze > 0 && !prefs.contains("done:" + snoozeId) && snooze < window.endMillis
-                val index = times.indices.firstOrNull { times[it] >= nowMillis && !prefs.contains("done:" + occurrence.id + ":" + it) }
+                val unconsumedSnooze = snooze in window.startMillis until window.endMillis &&
+                    !prefs.contains("done:" + snoozeId)
+                val slot = slots.firstOrNull { it.value >= nowMillis && !prefs.contains("done:" + occurrence.id + ":" + it.index) }
                     // If the last nudge was missed but its window is still open,
                     // recover just that nudge. Never replay a series of missed alerts.
                     ?: if (nowMillis in window.startMillis until window.endMillis)
-                        times.indices.lastOrNull { !prefs.contains("done:" + occurrence.id + ":" + it) }
+                        slots.lastOrNull { !prefs.contains("done:" + occurrence.id + ":" + it.index) }
                     else null
-                val intended = if (unconsumedSnooze) maxOf(snooze, nowMillis) else index?.let { maxOf(times[it], nowMillis) }
-                val eventId = if (unconsumedSnooze) snoozeId else index?.let { occurrence.id + ":" + it }
+                val intended = if (unconsumedSnooze) maxOf(snooze, nowMillis) else slot?.let { maxOf(it.value, nowMillis) }
+                val eventId = if (unconsumedSnooze) snoozeId else slot?.let { occurrence.id + ":" + it.index }
                 val wasDeferredForSilence = previous?.optString("deferredFor") == "silence"
                 val wasDeferredForBlockedNotification = previous?.optString("deferredFor") == "notification_blocked"
                 val retained = previous?.takeIf {
@@ -271,7 +305,8 @@ object DhikrReminderScheduler {
                     // the retry. Release the same unconsumed nudge immediately.
                     JSONObject(requireNotNull(retained).toString()).put("at", maxOf(nowMillis, window.startMillis)).apply { remove("deferredFor") }
                 } else retained ?: JSONObject().put("rule", rule.id).put("occurrence", occurrence.id).put("date", window.date.toString())
-                    .put("signature", signature).put("eventId", eventId).put("at", requireNotNull(deliveryAt)).apply {
+                    .put("windowStart", window.startMillis).put("signature", signature).put("eventId", eventId)
+                    .put("at", requireNotNull(deliveryAt)).apply {
                         if (deferredForSilence) put("deferredFor", "silence")
                     }
                 // Give each instant a distinct PendingIntent. A rule-wide PendingIntent could
@@ -298,10 +333,14 @@ object DhikrReminderScheduler {
         manager(app).activeNotifications.filter { it.notification.channelId == CHANNEL_ID || it.notification.channelId == QUIET_CHANNEL_ID }.forEach { notification ->
             val occurrence = repo.state.value.occurrences[notification.tag]
             val rule = rules.firstOrNull { it.id == occurrence?.ruleId }
+            val activeInterval = rule?.let { currentRule ->
+                runCatching { resolveWindows(app, currentRule, LocalDate.parse(occurrence!!.date)) }
+                    .getOrDefault(emptyList()).any { nowMillis in it.startMillis until it.endMillis }
+            } == true
             if (occurrence == null || occurrence.status != DhikrOccurrenceStatus.OPEN ||
-                nowMillis !in occurrence.startMillis until occurrence.endMillis ||
+                !activeInterval ||
                 rules.none { it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision } ||
-                (rule != null && !hasReminderContent(repo.state.value, rule)) ||
+                !hasReminderContent(repo.state.value, rule) ||
                 occurrence.snoozedUntilMillis > nowMillis || DhikrReadingPresence.occurrenceId == occurrence.id ||
                 !notificationsEnabled(app, rule?.vibrate ?: true)) manager(app).cancel(notification.tag, notification.id)
         }
@@ -336,7 +375,11 @@ object DhikrReminderScheduler {
             return@synchronized
         }
         val rule = repo.state.value.reminders.find { it.id == ruleId && it.enabled }
-        val window = rule?.let { runCatching { resolveWindow(context, it, LocalDate.parse(event.getString("date"))) }.getOrNull() }
+        val window = rule?.let { currentRule -> runCatching {
+            val resolved = resolveWindows(context, currentRule, LocalDate.parse(event.getString("date")))
+            if (event.has("windowStart")) resolved.firstOrNull { it.startMillis == event.optLong("windowStart") }
+            else resolved.firstOrNull()
+        }.getOrNull() }
         val hasContent = rule != null && hasReminderContent(repo.state.value, rule)
         val occurrence = if (hasContent && window != null) repo.ensureOccurrence(rule!!, window) else null
         ensureChannel(context)
@@ -382,7 +425,7 @@ object DhikrReminderScheduler {
             deferEvent(context, prefs, ruleId, event, nextUnspaced)
             return@synchronized
         }
-        val posted = eligible && !reading && postNotification(context, occurrence!!, now)
+        val posted = eligible && !reading && postNotification(context, occurrence!!, window!!, now)
         if (eligible && !reading && !posted && now + 60_000L < window!!.endMillis) {
             deferEvent(context, prefs, ruleId, event, now + 60_000L)
             return@synchronized
@@ -395,7 +438,7 @@ object DhikrReminderScheduler {
         if (eligible) {
             // One late delivery represents the nudge for this moment. Mark older
             // cadence slots elapsed so a repair does not replay a burst of alerts.
-            dhikrNudgeTimes(rule!!, window!!).forEachIndexed { index, time ->
+            dhikrNudgeTimes(rule!!, resolveWindows(context, rule, window!!.date)).forEachIndexed { index, time ->
                 val key = "done:" + occurrence!!.id + ":" + index
                 if (time <= now && !prefs.contains(key) && key != "done:" + event.optString("eventId"))
                     done.putString(key, JSONObject().put("intended", time).put("actual", now)
@@ -414,12 +457,12 @@ object DhikrReminderScheduler {
         prefs.edit().putString("event:" + ruleId, event.toString()).commit()
         scheduleDelivery(context, ruleId, event)
     }
-    private fun postNotification(context: Context, occurrence: DhikrOccurrence, now: Long): Boolean {
+    private fun postNotification(context: Context, occurrence: DhikrOccurrence, window: DhikrWindow, now: Long): Boolean {
         val entry = DhikrRepository(context).state.value.findDhikr(occurrence.dhikrId) ?: return false
         val rule = DhikrRepository(context).state.value.reminders.find { it.id == occurrence.ruleId }
         val collection = rule?.collection
         val title = collection?.let { if (it == DhikrCategory.SALAH) "أذكار بعد الصلاة" else "أذكار " + it.title } ?: entry.title
-        val body = if (collection != null) "لحظة لقراءة المجموعة" else "لحظة للذكر • " + occurrence.count + " من " + occurrence.target
+        val body = if (collection != null) "حان وقت قراءة الأذكار" else "حان وقت الذكر • " + occurrence.count + " من " + occurrence.target
         val openIntent = Intent(context, MainActivity::class.java)
             .setData(Uri.parse("tunisianprayertimes://adhkar/open/" + Uri.encode(occurrence.id)))
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
@@ -431,9 +474,9 @@ object DhikrReminderScheduler {
             .setCategory(NotificationCompat.CATEGORY_REMINDER).setContentIntent(open).setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .setTimeoutAfter((occurrence.endMillis - now).coerceAtLeast(1)).addAction(0, "متابعة الذكر", open)
+            .setTimeoutAfter((window.endMillis - now).coerceAtLeast(1)).addAction(0, "متابعة الذكر", open)
         builder.setVibrate(if (rule?.vibrate == false) longArrayOf(0L) else longArrayOf(0, 250, 120, 250))
-        if (now < occurrence.endMillis - 1) {
+        if (now + 35 * 60_000L <= window.endMillis) {
             val snooze = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_SNOOZE)
                 .setData(Uri.parse("tunisianprayertimes://adhkar/snooze/" + Uri.encode(occurrence.id)))
                 .putExtra("occurrence", occurrence.id)

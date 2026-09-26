@@ -3,6 +3,7 @@ package com.tunisianprayertimes.adhkar
 import android.content.Context
 import android.content.SharedPreferences
 import java.time.Instant
+import java.time.LocalDate
 import java.time.ZoneId
 import java.util.UUID
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -261,9 +262,9 @@ class DhikrRepository(context: Context) {
         update { old ->
             val existing = old.occurrences[window.progressKey]
             val legacy = if (rule.revision == 1) store.legacyCount(rule.id + "|" + window.date) else 0
-            val occurrence = existing?.copy(startMillis = window.startMillis, endMillis = window.endMillis)
+            val occurrence = existing?.copy(startMillis = window.progressStartMillis, endMillis = window.progressEndMillis)
                 ?: DhikrOccurrence(window.progressKey, rule.id, rule.revision, window.date.toString(), rule.dhikrId,
-                    rule.targetCount, window.startMillis, window.endMillis, legacy.coerceAtMost(rule.targetCount),
+                    rule.targetCount, window.progressStartMillis, window.progressEndMillis, legacy.coerceAtMost(rule.targetCount),
                     if (legacy >= rule.targetCount) DhikrOccurrenceStatus.COMPLETED else DhikrOccurrenceStatus.OPEN)
             old.copy(occurrences = old.occurrences + (occurrence.id to occurrence))
         }
@@ -282,13 +283,19 @@ class DhikrRepository(context: Context) {
         var accepted = false
         update { old ->
             val occurrence = old.occurrences[occurrenceId]
+            val rule = occurrence?.let { current -> old.reminders.firstOrNull {
+                it.id == current.ruleId && it.enabled && it.revision == current.revision
+            } }
+            val activeWindow = if (rule == null || occurrence == null) null else
+                runCatching { LocalDate.parse(occurrence.date) }.getOrNull()
+                    ?.let { DhikrReminderScheduler.resolveWindows(app, rule, it) }
+                    ?.firstOrNull { it.progressKey == occurrence.id && now in it.startMillis until it.endMillis }
+            val snoozeUntil = now + 30 * 60_000L
             if (occurrence == null || occurrence.status != DhikrOccurrenceStatus.OPEN ||
-                now !in occurrence.startMillis until occurrence.endMillis - 1 ||
-                old.reminders.none { it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision }) old
-            else {
+                activeWindow == null || snoozeUntil > activeWindow.endMillis - 5 * 60_000L) old else {
                 accepted = true
                 old.copy(occurrences = old.occurrences + (occurrence.id to occurrence.copy(
-                    snoozedUntilMillis = minOf(now + 30 * 60_000L, occurrence.endMillis - 1))))
+                    snoozedUntilMillis = snoozeUntil)))
             }
         }
         DhikrReminderScheduler.refresh(app, nowMillis = now)

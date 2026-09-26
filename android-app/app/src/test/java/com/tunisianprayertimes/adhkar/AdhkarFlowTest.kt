@@ -43,6 +43,9 @@ class AdhkarFlowTest {
     private fun rule(target: Int = 100) = DhikrReminder(dhikrId = DhikrCatalog.SALAWAT_ID, targetCount = target,
         daysOfWeek = setOf(5), start = DhikrTime(minuteOfDay = 480), end = DhikrTime(minuteOfDay = 1080))
     private fun window(rule: DhikrReminder, date: LocalDate = friday) = requireNotNull(DhikrReminderScheduler.resolveWindow(context, rule, date))
+    private fun splitRule(target: Int = 3) = rule(target).copy(end = DhikrTime(minuteOfDay = 600),
+        extraIntervals = listOf(DhikrInterval(DhikrTime(minuteOfDay = 960), DhikrTime(minuteOfDay = 1080), false)))
+    private fun splitWindows(rule: DhikrReminder) = DhikrReminderScheduler.resolveWindows(context, rule, friday)
     private fun event(): String = context.getSharedPreferences("adhkar_schedule_v2", 0).all.entries.first { it.key.startsWith("event:") }.value as String
     private fun deliver(value: String, at: Long) = DhikrReminderScheduler.receive(context, Intent().setAction(DhikrReminderScheduler.ACTION_REMIND).putExtra("event", value), at)
 
@@ -292,6 +295,123 @@ class AdhkarFlowTest {
         val restored = dhikrReminderFromJson(rule.copy(intervalMinutes = 5).toJson())
         assertEquals(15, restored.intervalMinutes)
         assertNull(DhikrReminderScheduler.validate(context, restored))
+    }
+    @Test fun splitDailyWindowsShareOneGoalButNeverNudgeInTheGap() {
+        val rule = splitRule()
+        assertNull(DhikrReminderScheduler.validate(context, rule))
+        val windows = splitWindows(rule)
+        assertEquals(2, windows.size)
+        assertEquals(windows[0].progressKey, windows[1].progressKey)
+        val times = dhikrNudgeTimes(rule, windows)
+        assertTrue(times.isNotEmpty())
+        assertTrue("Gentle cadence is capped across the day", times.size <= 3)
+        assertTrue(times.all { time -> windows.any { time in it.startMillis until it.endMillis } })
+        assertTrue(times.none { it in windows[0].endMillis until windows[1].startMillis })
+
+        repo.save(rule)
+        val gapNudge = DhikrReminderScheduler.nextNudge(context, rule, windows[0].endMillis + 60_000L)
+        assertTrue(gapNudge != null && gapNudge in windows[1].startMillis until windows[1].endMillis)
+        val morning = repo.ensureOccurrence(rule, windows[0])
+        val afternoon = repo.ensureOccurrence(rule, windows[1])
+        assertEquals(morning.id, afternoon.id)
+        val session = repo.openSession(listOf(rule.dhikrId), occurrenceId = morning.id, now = windows[0].startMillis)
+        repo.count(session, 1, windows[0].startMillis + 1)
+        repo.count(session, 1, windows[0].endMillis + 60_000L)
+        assertEquals("Reading remains available between notification intervals", 2,
+            repo.state.value.occurrences.getValue(morning.id).count)
+        repo.count(session, 1, windows[1].startMillis + 1)
+        val completed = repo.state.value.occurrences.getValue(morning.id)
+        assertEquals(3, completed.count)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, completed.status)
+    }
+    @Test fun splitDailyWindowEventsHaveDistinctIdsAndBothCanDeliver() {
+        val rule = splitRule(100).copy(cadence = DhikrCadence.HOURLY)
+        repo.save(rule)
+        val windows = splitWindows(rule)
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = windows[0].startMillis - 1)
+        val morning = JSONObject(prefs.getString("event:" + rule.id, null)!!)
+        assertEquals(windows[0].progressKey, morning.getString("occurrence"))
+        assertTrue(morning.getLong("at") in windows[0].startMillis until windows[0].endMillis)
+        deliver(morning.toString(), morning.getLong("at"))
+        assertEquals("shown", JSONObject(prefs.getString("done:" + morning.getString("eventId"), "{}")!!).getString("outcome"))
+
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = windows[1].startMillis - 1)
+        val afternoon = JSONObject(prefs.getString("event:" + rule.id, null)!!)
+        assertEquals(windows[1].progressKey, afternoon.getString("occurrence"))
+        assertNotEquals(morning.getString("eventId"), afternoon.getString("eventId"))
+        assertTrue(afternoon.getLong("at") in windows[1].startMillis until windows[1].endMillis)
+        deliver(afternoon.toString(), afternoon.getLong("at"))
+        assertEquals("shown", JSONObject(prefs.getString("done:" + afternoon.getString("eventId"), "{}")!!).getString("outcome"))
+    }
+    @Test fun completingMorningGoalSuppressesLaterIntervalNudges() {
+        val rule = splitRule(1)
+        repo.save(rule)
+        val windows = splitWindows(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = windows[0].startMillis - 1)
+        val occurrence = repo.ensureOccurrence(rule, windows[0])
+        val session = repo.openSession(listOf(rule.dhikrId), occurrenceId = occurrence.id, now = windows[0].startMillis)
+        repo.count(session, 1, windows[0].startMillis + 1)
+        DhikrReminderScheduler.refresh(context, nowMillis = windows[1].startMillis - 1)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+        val pending = context.getSharedPreferences("adhkar_schedule_v2", 0).getString("event:" + rule.id, null)
+        if (pending != null) assertNotEquals(occurrence.id, JSONObject(pending).getString("occurrence"))
+        val next = DhikrReminderScheduler.nextNudge(context, rule, windows[1].startMillis - 1)
+        assertTrue(next == null || next >= windows[1].endMillis)
+    }
+    @Test fun skippingSplitReminderForTodaySuppressesSecondIntervalButNotNextWeek() {
+        val rule = splitRule()
+        repo.save(rule)
+        val windows = splitWindows(rule)
+        val gap = windows[0].endMillis + 60_000L
+        val prefs = context.getSharedPreferences("adhkar_schedule_v2", 0)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = gap)
+        val pendingAfternoon = JSONObject(prefs.getString("event:" + rule.id, null)!!)
+        assertEquals(windows[0].progressKey, pendingAfternoon.getString("occurrence"))
+        assertTrue(pendingAfternoon.getLong("at") in windows[1].startMillis until windows[1].endMillis)
+
+        repo.skip(windows[0].progressKey, gap)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = gap)
+        assertEquals(DhikrOccurrenceStatus.SKIPPED,
+            repo.state.value.occurrences.getValue(windows[0].progressKey).status)
+        val nextWeek = window(rule, friday.plusWeeks(1))
+        assertEquals(nextWeek.startMillis, DhikrReminderScheduler.nextNudge(context, rule, gap))
+        assertEquals(nextWeek.progressKey,
+            JSONObject(prefs.getString("event:" + rule.id, null)!!).getString("occurrence"))
+
+        deliver(pendingAfternoon.toString(), windows[1].startMillis)
+        assertTrue(context.getSystemService(NotificationManager::class.java).activeNotifications.isEmpty())
+    }
+    @Test fun overlappingDailyIntervalsAreRejectedAndLegacyJsonHasOneInterval() {
+        val overlap = splitRule().copy(extraIntervals = listOf(DhikrInterval(
+            DhikrTime(minuteOfDay = 540), DhikrTime(minuteOfDay = 660), false)))
+        assertNotNull(DhikrReminderScheduler.validate(context, overlap))
+
+        val legacyJson = rule().toJson().apply { remove("extraIntervals") }
+        val restored = dhikrReminderFromJson(legacyJson)
+        assertTrue(restored.extraIntervals.isEmpty())
+        assertEquals(1, DhikrReminderScheduler.resolveWindows(context, restored, friday).size)
+    }
+    @Test fun gentleCadenceCoversEachOfFourIntervals() {
+        val rule = splitRule().copy(end = DhikrTime(minuteOfDay = 540), extraIntervals = listOf(
+            DhikrInterval(DhikrTime(minuteOfDay = 600), DhikrTime(minuteOfDay = 660), false),
+            DhikrInterval(DhikrTime(minuteOfDay = 720), DhikrTime(minuteOfDay = 780), false),
+            DhikrInterval(DhikrTime(minuteOfDay = 840), DhikrTime(minuteOfDay = 900), false)))
+        assertNull(DhikrReminderScheduler.validate(context, rule))
+        val windows = splitWindows(rule)
+        assertEquals(4, windows.size)
+        val times = dhikrNudgeTimes(rule, windows)
+        assertTrue(times.size >= windows.size)
+        assertTrue(windows.all { window -> times.any { it in window.startMillis until window.endMillis } })
+    }
+    @Test fun reversedIntervalOrderIsStillADuplicateReminder() {
+        val saved = splitRule()
+        repo.save(saved)
+        val reversed = saved.copy(id = "reversed_interval_rule", start = saved.extraIntervals.single().start,
+            end = saved.extraIntervals.single().end, endNextDay = saved.extraIntervals.single().endNextDay,
+            extraIntervals = listOf(DhikrInterval(saved.start, saved.end, saved.endNextDay)))
+        val error = DhikrReminderScheduler.validate(context, reversed)
+        assertTrue(error?.contains("يوجد تذكير") == true)
     }
     @Test fun collectionGoalWaitsForEveryItemAndSkipAllStopsNudges() {
         val rule = rule(1).copy(dhikrId = "sayyid_istighfar", collection = DhikrCategory.MORNING)
@@ -582,10 +702,23 @@ class AdhkarFlowTest {
         val occurrence = repo.ensureOccurrence(rule, window)
         assertTrue(repo.snooze(occurrence.id, window.startMillis))
         assertEquals(window.startMillis + 30 * 60_000, repo.state.value.occurrences.getValue(occurrence.id).snoozedUntilMillis)
-        assertTrue(repo.snooze(occurrence.id, window.endMillis - 10 * 60_000))
-        assertEquals(window.endMillis - 1, repo.state.value.occurrences.getValue(occurrence.id).snoozedUntilMillis)
+        assertFalse(repo.snooze(occurrence.id, window.endMillis - 10 * 60_000))
+        assertEquals(window.startMillis + 30 * 60_000, repo.state.value.occurrences.getValue(occurrence.id).snoozedUntilMillis)
         assertFalse(repo.snooze(occurrence.id, window.endMillis - 1))
         assertEquals(0, repo.state.value.occurrences.getValue(occurrence.id).count)
+    }
+    @Test fun nearEndNotificationDoesNotOfferAnUndeliverableSnooze() {
+        val rule = rule().copy(end = DhikrTime(minuteOfDay = 540))
+        repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        deliver(event(), window.endMillis - 10 * 60_000L)
+        val notification = context.getSystemService(NotificationManager::class.java).activeNotifications.single().notification
+        assertEquals(listOf("متابعة الذكر"), notification.actions.map { it.title.toString() })
+
+        DhikrReminderScheduler.receive(context, Intent().setAction(DhikrReminderScheduler.ACTION_SNOOZE)
+            .putExtra("occurrence", window.progressKey), window.endMillis - 5 * 60_000L)
+        assertEquals(0L, repo.state.value.occurrences.getValue(window.progressKey).snoozedUntilMillis)
     }
     @Test fun notificationSnoozeReplacesCurrentNudgeAndRejectsStaleDelivery() {
         val rule = rule(1).copy(start = DhikrTime(minuteOfDay = 480), end = DhikrTime(minuteOfDay = 540))
