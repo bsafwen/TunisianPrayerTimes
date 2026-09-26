@@ -30,7 +30,7 @@ internal fun DhikrCollectionsDialog(
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                 Text(entry.title, color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-                Text("اختر المجموعات التي يظهر فيها الذكر. ينطبق ذلك على قراءة المجموعة وتذكيراتها.",
+                Text("اختر المجموعات التي تريد أن يظهر فيها هذا الذكر. سيظهر فيها عند القراءة وفي تذكيراتها.",
                     color = p.muted, fontSize = 12.sp, lineHeight = 20.sp)
                 adhkarCategoryOrder.forEach { category ->
                     val checked = isMember(category)

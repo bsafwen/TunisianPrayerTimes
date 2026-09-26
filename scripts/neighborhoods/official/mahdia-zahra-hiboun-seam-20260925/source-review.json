@@ -1,0 +1,29 @@
+{
+  "status": "provisional_best_effort_boundary_candidate",
+  "sourceGeojsonSha256": "ec9676c4a9d01a16815b183ee08763424e220f49b08bf8dc0c70458087135785",
+  "targetId": "osm:relation:7152287",
+  "officialCode": "335159",
+  "sourceDrawingIndex": 628,
+  "sourceMapControlResidualM": 0.16825241755795767,
+  "method": "One-sided app-grid clip of OSM Zahra by installed official Hiboun, preserving overlap also present in Zahra's closed native red ISIE ring.",
+  "sourceMapPins": [
+    {
+      "file": "scripts/neighborhoods/official/mahdia-zahra-hiboun-seam-20260925/el-zahra.pdf",
+      "sha256": "d3095e2cb8ef1b65bdbf6a9bf3f932a2a25655fb39dde089366cb7970e74ce55"
+    },
+    {
+      "file": "scripts/neighborhoods/official/mahdia-zahra-hiboun-seam-20260925/hiboun.pdf",
+      "sha256": "4c93df7b54f7b9aa7356f3936ced541336cba298e17aa41c6c0d3e7fe57bfa50"
+    }
+  ],
+  "before": {
+    "overlapKm2": 0.023993
+  },
+  "candidate": {
+    "removedKm2": 0.020701,
+    "preservedOverlapKm2": 0.003291,
+    "targetValid": true,
+    "targetRetainsRepresentativePoint": true
+  },
+  "uncertainty": "The ISIE 2023 Zahra map draws a red northern divider against Hiboun. The installed Hiboun ring is separately source-reviewed. Remove only the part of the older OSM Zahra polygon that crosses the Hiboun ring outside Zahra's closed native red ring, while preserving the small source-supported residual with one app-grid-unit margin. A wholesale Zahra replacement would overlap the installed Zgana polygon by about 8.23 km2. This local seam is best effort, and its ground accuracy and residual overlap remain unverified."
+}
