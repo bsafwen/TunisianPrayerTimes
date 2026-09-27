@@ -1,15 +1,18 @@
 package com.tunisianprayertimes.ui
 
 import android.app.Application
+import android.telephony.TelephonyManager
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithText
 import androidx.test.core.app.ApplicationProvider
 import com.tunisianprayertimes.R
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.Shadows
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
@@ -23,7 +26,8 @@ class QiblaCardTest {
         get() = ApplicationProvider.getApplicationContext()
 
     @Test
-    fun withoutLocationPermission_showsBearingFromSelectedDelegation() {
+    fun inTunisia_withoutLocationPermission_showsBearingFromSelectedDelegation() {
+        setNetworkCountry("tn")
         val delegationLabel = context.getString(R.string.qibla_location_selected, "مدينة تونس")
         compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
         compose.waitUntil(timeoutMillis = 10_000) {
@@ -35,6 +39,27 @@ class QiblaCardTest {
         compose.onNodeWithText(context.getString(R.string.qibla_location_permission_required)).assertExists()
         // While the delegation loads, the status line must not claim the location is missing.
         compose.onNodeWithText(context.getString(R.string.qibla_location_required)).assertDoesNotExist()
+    }
+
+    @Test
+    fun abroad_withoutLocationPermission_doesNotFallBackToTheTunisianDelegation() {
+        setNetworkCountry("fr")
+        val permissionHint = context.getString(R.string.qibla_location_permission_required)
+        compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
+        compose.waitUntil(timeoutMillis = 10_000) {
+            compose.onAllNodesWithText(permissionHint).fetchSemanticsNodes().isNotEmpty()
+        }
+
+        compose.onNodeWithText(context.getString(R.string.qibla_location_selected, "مدينة تونس")).assertDoesNotExist()
+        compose.onNodeWithText(context.getString(R.string.qibla_degrees_value, 113.0)).assertDoesNotExist()
+        val locationRequired = compose.onAllNodesWithText(context.getString(R.string.qibla_location_required))
+            .fetchSemanticsNodes()
+        assertTrue(locationRequired.isNotEmpty())
+    }
+
+    private fun setNetworkCountry(countryIso: String) {
+        val telephonyManager = context.getSystemService(TelephonyManager::class.java)
+        Shadows.shadowOf(telephonyManager).setNetworkCountryIso(countryIso)
     }
 
     private companion object {

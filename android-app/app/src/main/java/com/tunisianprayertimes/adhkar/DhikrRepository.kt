@@ -342,7 +342,8 @@ class DhikrRepository(context: Context) {
                         it.occurrenceId == null && it.category == category && it.collectionPeriodKey == periodKey &&
                             it.targetCountOverride == targetCountOverride
                     }.maxByOrNull { it.updatedAtMillis }
-                        ?: if (category == DhikrCategory.MORNING || category == DhikrCategory.EVENING) null
+                        ?: if (category == DhikrCategory.MORNING || category == DhikrCategory.EVENING ||
+                            category == DhikrCategory.NIGHT) null
                         else old.sessions.values.filter {
                             it.occurrenceId == null && it.category == category && it.collectionPeriodKey == null &&
                                 it.itemIds == items && it.targetCountOverride == targetCountOverride
@@ -603,6 +604,7 @@ internal fun collectionReadingPeriodKey(context: Context, category: DhikrCategor
     val startKind = when (category) {
         DhikrCategory.MORNING -> DhikrTimeKind.FAJR
         DhikrCategory.EVENING -> DhikrTimeKind.ASR
+        DhikrCategory.NIGHT -> DhikrTimeKind.MAGHRIB
         else -> return "manual:${category.name}"
     }
     val date = Instant.ofEpochMilli(now).atZone(ZoneId.systemDefault()).toLocalDate()

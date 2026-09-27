@@ -5,11 +5,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.Intent
-import android.hardware.GeomagneticField
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.location.Location
 import android.net.Uri
 import android.os.Build
 import android.os.SystemClock
@@ -82,12 +82,18 @@ import com.tunisianprayertimes.CompassTrustSample
 import com.tunisianprayertimes.CompassTrustState
 import com.tunisianprayertimes.Delegation
 import com.tunisianprayertimes.DelegationLocator
+import com.tunisianprayertimes.GeomagneticFieldValues
 import com.tunisianprayertimes.GouvernoratRepository
+import com.tunisianprayertimes.MagneticFieldZone
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.AnalyticsTracker
-import com.tunisianprayertimes.calculateQiblaBearing
+import com.tunisianprayertimes.WorldMagneticModel
+import com.tunisianprayertimes.calculateQibla
 import com.tunisianprayertimes.headingAccuracyDegreesFromRotationVector
+import com.tunisianprayertimes.isPhoneLikelyInTunisia
 import com.tunisianprayertimes.isPhoneTooTilted
+import com.tunisianprayertimes.locationBearingUncertaintyDegrees
+import com.tunisianprayertimes.magneticFieldZone
 import com.tunisianprayertimes.normalizeDegrees
 import com.tunisianprayertimes.screenTiltDegrees
 import com.tunisianprayertimes.shortestSignedAngleDegrees
@@ -118,6 +124,12 @@ private const val QIBLA_STABILITY_DELTA_DEGREES = 3.0
 private const val QIBLA_UNSTABLE_MESSAGE_MS = 800L
 // Phone compasses are good to a few degrees at best; a tighter target only measures steadiness.
 private const val QIBLA_VISIBLE_ALIGNMENT_DEGREES = 3.0
+// A last-known position is shown while a live fix is found, but only if it is this recent.
+private const val QIBLA_LAST_KNOWN_LOCATION_MAX_AGE_MS = 60 * 60 * 1_000L
+// A first fix whose own error moves the bearing by less than this is kept as it is.
+private const val QIBLA_PRECISE_FIX_TARGET_DEGREES = 1.0
+// Within this distance the Kaaba is usually in sight, and GPS error dominates the bearing.
+private const val QIBLA_NEAR_KAABA_METERS = 500.0
 
 private val QIBLA_CARDINAL_LABELS = listOf(
     "شمال" to 0.0,
@@ -128,6 +140,7 @@ private val QIBLA_CARDINAL_LABELS = listOf(
 
 private enum class QiblaLocationSource {
     CurrentLocation,
+    LastKnownLocation,
     SelectedDelegation,
 }
 
@@ -180,12 +193,14 @@ fun QiblaCard(selectedDelegationId: Int) {
     var currentLongitude by rememberSaveable { mutableStateOf(cachedLocation?.longitude) }
     var currentAltitudeMeters by rememberSaveable { mutableStateOf(cachedLocation?.altitudeMeters ?: 0.0) }
     var currentAccuracyMeters by rememberSaveable { mutableStateOf(cachedLocation?.accuracyMeters) }
+    var currentLocationIsLastKnown by rememberSaveable { mutableStateOf(false) }
 
     val currentLocation = remember(
         currentLatitude,
         currentLongitude,
         currentAltitudeMeters,
         currentAccuracyMeters,
+        currentLocationIsLastKnown,
     ) {
         val latitude = currentLatitude
         val longitude = currentLongitude
@@ -195,13 +210,27 @@ fun QiblaCard(selectedDelegationId: Int) {
                 longitude = longitude,
                 altitudeMeters = currentAltitudeMeters,
                 accuracyMeters = currentAccuracyMeters,
+                source = if (currentLocationIsLastKnown) {
+                    QiblaLocationSource.LastKnownLocation
+                } else {
+                    QiblaLocationSource.CurrentLocation
+                },
             )
         } else {
             null
         }
     }
-    var delegationLookupFinished by remember(selectedDelegationId) { mutableStateOf(false) }
-    val selectedDelegation by produceState<Delegation?>(initialValue = null, selectedDelegationId) {
+    // Abroad, a Tunisian delegation would point the qibla the wrong way.
+    val phoneLikelyInTunisia = remember { isPhoneLikelyInTunisia(context) }
+    var delegationLookupFinished by remember(selectedDelegationId, phoneLikelyInTunisia) {
+        mutableStateOf(!phoneLikelyInTunisia)
+    }
+    val selectedDelegation by produceState<Delegation?>(
+        initialValue = null,
+        selectedDelegationId,
+        phoneLikelyInTunisia,
+    ) {
+        if (!phoneLikelyInTunisia) return@produceState
         value = withContext(Dispatchers.IO) {
             runCatching { GouvernoratRepository.loadAll(context) }.getOrNull()
                 ?.asSequence()
@@ -232,9 +261,17 @@ fun QiblaCard(selectedDelegationId: Int) {
     val activeLocation = deviceLocation ?: delegationLocation
 
     LaunchedEffect(deviceLocation) {
-        deviceLocation?.let { location ->
-            cachedRealtimeQiblaLocation = location
-        }
+        deviceLocation
+            ?.takeIf { location -> location.source == QiblaLocationSource.CurrentLocation }
+            ?.let { location -> cachedRealtimeQiblaLocation = location }
+    }
+
+    fun applyDeviceLocation(location: Location, lastKnown: Boolean) {
+        currentLatitude = location.latitude
+        currentLongitude = location.longitude
+        currentAltitudeMeters = if (location.hasAltitude()) location.altitude else 0.0
+        currentAccuracyMeters = if (location.hasAccuracy()) location.accuracy else null
+        currentLocationIsLastKnown = lastKnown
     }
 
     fun detectCurrentLocation() {
@@ -244,10 +281,29 @@ fun QiblaCard(selectedDelegationId: Int) {
 
         locating = true
         scope.launch {
-            val location = DelegationLocator.detectCurrentLocation(context)
+            if (currentLatitude == null) {
+                // Show a recent known position at once while a live fix is found.
+                DelegationLocator.lastKnownLocation(context, QIBLA_LAST_KNOWN_LOCATION_MAX_AGE_MS)
+                    ?.let { location -> applyDeviceLocation(location, lastKnown = true) }
+            }
+            // The first source to answer wins: the bearing barely needs GPS precision.
+            val firstFix = DelegationLocator.detectFirstLocation(context)
+            if (firstFix != null) {
+                applyDeviceLocation(firstFix, lastKnown = false)
+            }
+            // Close to Mecca a coarse fix skews the bearing, so wait for the most accurate one.
+            val refinedFix = if (firstFix != null && needsPreciserQiblaFix(firstFix)) {
+                DelegationLocator.detectCurrentLocation(context)
+                    ?.takeIf { location -> isMoreAccurate(location, than = firstFix) }
+            } else {
+                null
+            }
+            if (refinedFix != null) {
+                applyDeviceLocation(refinedFix, lastKnown = false)
+            }
             locating = false
 
-            if (location == null) {
+            if (firstFix == null) {
                 AnalyticsTracker.qiblaComputeResult(
                     context = context,
                     source = "current_location",
@@ -262,10 +318,6 @@ fun QiblaCard(selectedDelegationId: Int) {
                 return@launch
             }
 
-            currentLatitude = location.latitude
-            currentLongitude = location.longitude
-            currentAltitudeMeters = if (location.hasAltitude()) location.altitude else 0.0
-            currentAccuracyMeters = if (location.hasAccuracy()) location.accuracy else null
             AnalyticsTracker.qiblaComputeResult(
                 context = context,
                 source = "current_location",
@@ -342,24 +394,36 @@ fun QiblaCard(selectedDelegationId: Int) {
         }
     }
 
-    val geomagneticField = remember(activeLocation) {
-        activeLocation?.let(::geomagneticFieldAt)
+    val magneticField = remember(activeLocation) {
+        activeLocation?.let(::magneticFieldAt)
     }
-    val magneticDeclinationDegrees = geomagneticField?.declination ?: 0f
-    // GeomagneticField reports nanotesla; the magnetometer reports microtesla.
-    val expectedFieldStrengthMicroTesla = geomagneticField?.fieldStrength?.div(1_000f)
+    val magneticDeclinationDegrees = magneticField?.declinationDegrees ?: 0.0
+    // The model reports nanotesla; the magnetometer reports microtesla.
+    val expectedFieldStrengthMicroTesla = magneticField?.totalIntensityNanoTesla?.div(1_000.0)?.toFloat()
+    val magneticZone = magneticField
+        ?.let { field -> magneticFieldZone(field.horizontalIntensityNanoTesla) }
+        ?: MagneticFieldZone.Normal
+    val qiblaSolution = remember(activeLocation) {
+        activeLocation?.let { location -> calculateQibla(location.latitude, location.longitude) }
+    }
+    val qiblaBearing = qiblaSolution?.bearingDegrees
+    val nearKaabaDistanceMeters = qiblaSolution?.distanceMeters
+        ?.takeIf { distanceMeters -> distanceMeters < QIBLA_NEAR_KAABA_METERS }
+    val locationBearingUncertainty = if (qiblaSolution != null && activeLocation != null) {
+        locationBearingUncertaintyDegrees(qiblaSolution.distanceMeters, activeLocation.accuracyMeters)
+    } else {
+        null
+    }
+    val locationTooCoarse = (locationBearingUncertainty ?: 0.0) > QIBLA_VISIBLE_ALIGNMENT_DEGREES
+    // Near the magnetic poles, or with the Kaaba in sight, a compass arrow misleads more than it helps.
+    val compassGuidanceAvailable = magneticZone != MagneticFieldZone.Blackout && nearKaabaDistanceMeters == null
     val compassState = rememberCompassState(
-        enabled = activeLocation != null,
+        enabled = activeLocation != null && compassGuidanceAvailable,
         expectedFieldStrengthMicroTesla = expectedFieldStrengthMicroTesla,
     )
-    val qiblaBearing = remember(activeLocation) {
-        activeLocation?.let { location ->
-            calculateQiblaBearing(location.latitude, location.longitude)
-        }
-    }
     // A heading taken with the phone held upright is unreliable, so guidance pauses until it is flat.
     val headingDegrees = compassState.headingDegrees
-        ?.takeUnless { compassState.isTooTilted }
+        ?.takeIf { compassGuidanceAvailable && !compassState.isTooTilted }
         ?.let { magneticHeadingDegrees ->
             normalizeDegrees(magneticHeadingDegrees.toDouble() + magneticDeclinationDegrees)
         }
@@ -398,8 +462,11 @@ fun QiblaCard(selectedDelegationId: Int) {
     }
     val visualTurnDegrees = turnDegrees ?: visibleTurnDegrees
     val qiblaRotation = visualTurnDegrees ?: 0.0
+    // A weak magnetic field or a coarse fix: the arrow still helps, but "aligned" would overclaim.
+    val alignmentIsApproximate = magneticZone != MagneticFieldZone.Normal || locationTooCoarse
     val isQiblaAligned = qiblaStabilityStatus == QiblaStabilityStatus.Stable &&
         compassState.trust == CompassTrust.Good &&
+        !alignmentIsApproximate &&
         isExactVisibleQiblaDirection(visibleTurnDegrees)
     val rawDirectionText = qiblaDirectionText(
         compassState = compassState,
@@ -407,11 +474,17 @@ fun QiblaCard(selectedDelegationId: Int) {
         // While the delegation is still loading, say the compass is starting rather than
         // flashing the "location needed" message for the status text's minimum display time.
         hasLocation = activeLocation != null || !delegationLookupFinished,
+        locating = locating,
+        nearKaabaDistanceMeters = nearKaabaDistanceMeters,
+        magneticZone = magneticZone,
+        alignmentIsApproximate = alignmentIsApproximate,
         stabilityStatus = qiblaStabilityStatus,
     )
     var displayedDirectionText by remember { mutableStateOf<String?>(null) }
     var directionTextShownAtMs by remember { mutableStateOf(0L) }
-    val rawBannerMessage = compassAccuracyMessage(compassState)
+    val rawBannerMessage = compassAccuracyMessage(compassState).takeIf { compassGuidanceAvailable }
+        ?: locationPrecisionMessage(locationTooCoarse = locationTooCoarse && nearKaabaDistanceMeters == null)
+        ?: magneticZoneMessage(magneticZone)
         ?: if (!locationPermissionGranted) {
             QiblaBannerMessage(
                 text = stringResource(R.string.qibla_location_permission_required),
@@ -552,7 +625,7 @@ fun QiblaCard(selectedDelegationId: Int) {
             val bannerMessage = displayedBannerMessage
             QiblaGuidanceBar(
                 message = bannerMessage?.text,
-                onClick = if (bannerMessage?.requestsLocationPermission == true && !locationPermissionGranted) {
+                onClick = if (bannerMessage?.requestsLocationPermission == true) {
                     { requestQiblaLocationPermission(fromWarning = true) }
                 } else {
                     null
@@ -884,13 +957,23 @@ private fun qiblaDirectionText(
     compassState: CompassState,
     turnDegrees: Double?,
     hasLocation: Boolean,
+    locating: Boolean,
+    nearKaabaDistanceMeters: Double?,
+    magneticZone: MagneticFieldZone,
+    alignmentIsApproximate: Boolean,
     stabilityStatus: QiblaStabilityStatus,
 ): String {
     if (!hasLocation) {
-        return stringResource(R.string.qibla_location_required)
+        return stringResource(if (locating) R.string.qibla_locating else R.string.qibla_location_required)
+    }
+    if (nearKaabaDistanceMeters != null) {
+        return stringResource(R.string.qibla_near_kaaba, nearKaabaDistanceMeters.roundToInt())
     }
     if (!compassState.hasCompass) {
         return stringResource(R.string.qibla_compass_unavailable)
+    }
+    if (magneticZone == MagneticFieldZone.Blackout) {
+        return stringResource(R.string.qibla_weak_field_blackout)
     }
     if (compassState.isTooTilted) {
         return stringResource(R.string.qibla_hold_phone_flat)
@@ -904,6 +987,7 @@ private fun qiblaDirectionText(
             stabilityStatus == QiblaStabilityStatus.Unstable -> stringResource(R.string.qibla_compass_unstable)
             stabilityStatus != QiblaStabilityStatus.Stable -> stringResource(R.string.qibla_compass_settling)
             compassState.trust != CompassTrust.Good -> stringResource(R.string.qibla_aligned_unverified)
+            alignmentIsApproximate -> stringResource(R.string.qibla_aligned_approximate)
             else -> stringResource(R.string.qibla_aligned)
         }
     }
@@ -939,6 +1023,21 @@ private fun compassAccuracyMessage(compassState: CompassState): QiblaBannerMessa
 }
 
 @Composable
+private fun locationPrecisionMessage(locationTooCoarse: Boolean): QiblaBannerMessage? {
+    if (!locationTooCoarse) return null
+    return QiblaBannerMessage(
+        text = stringResource(R.string.qibla_location_too_coarse),
+        requestsLocationPermission = true,
+    )
+}
+
+@Composable
+private fun magneticZoneMessage(magneticZone: MagneticFieldZone): QiblaBannerMessage? {
+    if (magneticZone != MagneticFieldZone.Caution) return null
+    return QiblaBannerMessage(stringResource(R.string.qibla_weak_field_caution))
+}
+
+@Composable
 private fun qiblaLocationText(location: QiblaLocationState?, locating: Boolean): String {
     return when {
         location == null -> stringResource(R.string.qibla_location_required)
@@ -948,6 +1047,13 @@ private fun qiblaLocationText(location: QiblaLocationState?, locating: Boolean):
                 stringResource(R.string.qibla_location_selected_locating, delegationName)
             } else {
                 stringResource(R.string.qibla_location_selected, delegationName)
+            }
+        }
+        location.source == QiblaLocationSource.LastKnownLocation -> {
+            if (locating) {
+                stringResource(R.string.qibla_location_last_known_locating)
+            } else {
+                stringResource(R.string.qibla_location_last_known)
             }
         }
         location.accuracyMeters != null ->
@@ -1191,13 +1297,25 @@ private fun compassReadingFromRotationMatrix(
     )
 }
 
-private fun geomagneticFieldAt(location: QiblaLocationState): GeomagneticField {
-    return GeomagneticField(
-        location.latitude.toFloat(),
-        location.longitude.toFloat(),
-        location.altitudeMeters.toFloat(),
-        System.currentTimeMillis(),
+private fun magneticFieldAt(location: QiblaLocationState): GeomagneticFieldValues {
+    return WorldMagneticModel.fieldAt(
+        latitudeDegrees = location.latitude,
+        longitudeDegrees = location.longitude,
+        altitudeMeters = location.altitudeMeters,
+        timeMillis = System.currentTimeMillis(),
     )
+}
+
+private fun needsPreciserQiblaFix(location: Location): Boolean {
+    if (!location.hasAccuracy()) return true
+    val distanceMeters = calculateQibla(location.latitude, location.longitude).distanceMeters
+    val uncertaintyDegrees = locationBearingUncertaintyDegrees(distanceMeters, location.accuracy) ?: return true
+    return uncertaintyDegrees > QIBLA_PRECISE_FIX_TARGET_DEGREES
+}
+
+private fun isMoreAccurate(candidate: Location, than: Location): Boolean {
+    if (!candidate.hasAccuracy()) return false
+    return !than.hasAccuracy() || candidate.accuracy < than.accuracy
 }
 
 private fun vectorMagnitude(values: FloatArray): Float {

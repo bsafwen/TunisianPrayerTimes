@@ -148,6 +148,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.3.0")
     implementation("androidx.work:work-runtime-ktx:2.10.1")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
+    implementation("net.sf.geographiclib:GeographicLib-Java:2.1")
 
     // Compose
     implementation(platform("androidx.compose:compose-bom:2025.04.01"))

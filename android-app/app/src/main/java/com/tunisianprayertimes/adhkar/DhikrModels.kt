@@ -6,7 +6,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 enum class DhikrTimeKind { FIXED, FAJR, SHURUK, DHUHR, ASR, MAGHRIB, ISHA }
-enum class DhikrCadence { GENTLE, BALANCED, HOURLY, CUSTOM }
+enum class DhikrCadence { ONCE, GENTLE, BALANCED, HOURLY, CUSTOM }
 
 data class DhikrTime(
     val kind: DhikrTimeKind = DhikrTimeKind.FIXED,
@@ -24,7 +24,7 @@ data class DhikrInterval(
 data class DhikrReminder(
     val id: String = UUID.randomUUID().toString(),
     val dhikrId: String,
-    /** Set for a whole-collection reminder (morning/evening); personal repetition targets are omitted. */
+    /** Set for a whole-collection reminder; personal repetition targets are omitted. */
     val collection: DhikrCategory? = null,
     val vibrate: Boolean = true,
     val targetCount: Int = 100,
@@ -261,6 +261,7 @@ fun dhikrNudgeTimes(reminder: DhikrReminder, window: DhikrWindow): List<Long> {
     if (duration <= 0) return emptyList()
     val minimum = 15 * 60_000L
     return when (reminder.cadence) {
+        DhikrCadence.ONCE -> listOf(window.startMillis)
         DhikrCadence.GENTLE, DhikrCadence.BALANCED -> {
             val count = minOf(if (reminder.cadence == DhikrCadence.GENTLE) 3 else 5, ((duration - 1) / minimum + 1).toInt())
             (0 until count).map { window.startMillis + it * maxOf(minimum, duration / count) }.filter { it < window.endMillis }
@@ -276,6 +277,8 @@ fun dhikrNudgeTimes(reminder: DhikrReminder, window: DhikrWindow): List<Long> {
 fun dhikrNudgeTimes(reminder: DhikrReminder, windows: List<DhikrWindow>): List<Long> {
     val ordered = windows.filter { it.endMillis > it.startMillis }.sortedBy { it.startMillis }
     if (ordered.size == 1) return dhikrNudgeTimes(reminder, ordered.single())
+    if (reminder.cadence == DhikrCadence.ONCE)
+        return ordered.groupBy { it.date }.values.map { it.first().startMillis }.sorted()
     if (reminder.cadence == DhikrCadence.HOURLY || reminder.cadence == DhikrCadence.CUSTOM)
         return ordered.flatMap { dhikrNudgeTimes(reminder, it) }.sorted()
 

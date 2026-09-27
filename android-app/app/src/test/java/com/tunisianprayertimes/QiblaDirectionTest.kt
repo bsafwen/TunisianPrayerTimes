@@ -1,14 +1,15 @@
 package com.tunisianprayertimes
 
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class QiblaDirectionTest {
 
-    // Reference azimuths come from GeographicLib (Karney's geodesic solver) on WGS84.
+    // Reference azimuths and distances come from GeographicLib's Python release (Karney, WGS84).
     @Test
-    fun qiblaBearing_matchesWgs84GeodesicAcrossTunisia() {
+    fun qiblaBearing_acrossTunisia() {
         assertBearing(112.5173, calculateQiblaBearing(36.797, 10.177)) // Bab Bhar, Tunis
         assertBearing(105.7507, calculateQiblaBearing(33.924, 8.131)) // Tozeur
         assertBearing(111.1907, calculateQiblaBearing(36.952, 8.758)) // Tabarka
@@ -18,7 +19,7 @@ class QiblaDirectionTest {
     }
 
     @Test
-    fun qiblaBearing_matchesWgs84GeodesicElsewhere() {
+    fun qiblaBearing_elsewhere() {
         assertBearing(119.0395, calculateQiblaBearing(48.8566, 2.3522)) // Paris
         assertBearing(58.3960, calculateQiblaBearing(40.7128, -74.0060)) // New York
         assertBearing(295.0247, calculateQiblaBearing(-6.2088, 106.8456)) // Jakarta
@@ -26,24 +27,38 @@ class QiblaDirectionTest {
     }
 
     @Test
-    fun sphericalBearing_readsAboutATenthOfADegreeHigherInTunis() {
-        val spherical = sphericalQiblaBearing(36.797, 10.177)
-        assertBearing(112.6454, spherical)
-        val difference = spherical - calculateQiblaBearing(36.797, 10.177)
-        assertTrue("difference was $difference", difference in 0.09..0.14)
+    fun qiblaBearing_nearKaabaAntipode_staysOnTheEllipsoid() {
+        // Vincenty's method does not converge here; the sphere would be 28° off at Tematangi.
+        assertBearing(210.1522, calculateQiblaBearing(-21.683, -140.617)) // Tematangi atoll
+        assertBearing(119.5669, calculateQiblaBearing(-21.833, -138.917)) // Mururoa atoll
+        assertBearing(58.5968, calculateQiblaBearing(-20.783, -138.567)) // Tureia atoll
     }
 
     @Test
-    fun qiblaBearing_atKaabaAntipode_fallsBackToSphere() {
-        val bearing = calculateQiblaBearing(-21.422487, -140.173794)
-        assertTrue(bearing.isFinite())
-        assertTrue(bearing >= 0.0 && bearing < 360.0)
-        assertEquals(sphericalQiblaBearing(-21.422487, -140.173794), bearing, 1e-9)
+    fun qiblaBearing_isFiniteAtTheKaabaAndAtItsAntipode() {
+        val bearings = listOf(
+            calculateQiblaBearing(21.422487, 39.826206),
+            calculateQiblaBearing(-21.422487, -140.173794),
+        )
+        for (bearing in bearings) {
+            assertTrue("bearing was $bearing", bearing.isFinite() && bearing >= 0.0 && bearing < 360.0)
+        }
     }
 
     @Test
-    fun qiblaBearing_atKaaba_isFinite() {
-        assertEquals(0.0, calculateQiblaBearing(21.422487, 39.826206), 0.0)
+    fun qiblaDistance_followsTheGeodesic() {
+        assertEquals(3_330_255.6, calculateQibla(36.797, 10.177).distanceMeters, 1.0)
+        assertEquals(223.8, calculateQibla(21.4205, 39.8266).distanceMeters, 0.5)
+        assertEquals(19_963_262.0, calculateQibla(-21.683, -140.617).distanceMeters, 1.0)
+    }
+
+    @Test
+    fun locationUncertainty_growsAsTheKaabaGetsCloser() {
+        assertEquals(0.0573, locationBearingUncertaintyDegrees(3_000_000.0, 3_000f)!!, 1e-3)
+        assertEquals(1.7191, locationBearingUncertaintyDegrees(100_000.0, 3_000f)!!, 1e-3)
+        assertEquals(180.0, locationBearingUncertaintyDegrees(1_000.0, 3_000f)!!, 0.0)
+        assertNull(locationBearingUncertaintyDegrees(100_000.0, null))
+        assertNull(locationBearingUncertaintyDegrees(100_000.0, 0f))
     }
 
     @Test

@@ -12,6 +12,7 @@ The bundled Arabic catalog is a selection, not an exhaustive adhkar collection. 
 - Al-Ikhlas, Al-Falaq, and An-Nas are each read three times in the morning/evening. At bedtime, Bukhari 5017 describes reading the three surahs, blowing into the cupped hands, and wiping the body, repeated three times. The source label mentions the associated bedtime action.
 - The home-entry card combines saying Allah's name and greeting the household, drawing on Muslim 2018 and Quran 24:61. It is not represented as a single verbatim narrated formula. The longer home-entry supplication often cited from Abu Dawud 5096 is deliberately not used because of differing authenticity assessments.
 - The evening refuge card uses the Muslim narration without a fixed repetition count, hence the reading default of 1; it does not infer a threefold count from that narration.
+- The optional night reminder groups the last two verses of al-Baqarah with Sayyid al-istighfar. Their sources describe recitation at night; the suggested alert 15 minutes after Maghrib is a convenient personal setting, not a prescribed post-prayer formula or required time.
 
 ## Source mapping
 

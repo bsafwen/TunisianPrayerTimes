@@ -101,7 +101,7 @@ object DhikrReminderScheduler {
         }
         if (!available) return "مواقيت الصلاة المطلوبة غير متاحة لموقعك. اختر أوقاتًا ثابتة أو غيّر موقعك."
         val duplicate = DhikrRepository(context).state.value.reminders.any {
-            it.id != rule.id && it.dhikrId == rule.dhikrId && it.daysOfWeek == rule.daysOfWeek &&
+            it.id != rule.id && it.collection == rule.collection && it.dhikrId == rule.dhikrId && it.daysOfWeek == rule.daysOfWeek &&
                 it.intervals().toSet() == rule.intervals().toSet()
         }
         return if (duplicate) "يوجد تذكير لهذا الذكر في الأيام والأوقات نفسها. يمكنك تعديله من «تذكيراتي»." else null

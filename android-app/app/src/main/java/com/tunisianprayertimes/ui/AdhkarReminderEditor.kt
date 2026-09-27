@@ -122,13 +122,16 @@ import java.time.*
                                 DhikrIcon(when {
                                     selectedEntry.id == DhikrCatalog.SALAWAT_ID -> R.drawable.ic_adhkar_salawat
                                     selectedEntry.custom -> R.drawable.ic_adhkar_leaf
-                                    else -> categoryIcon(selectedEntry.categories.first())
+                                    else -> categoryIcon(collection ?: selectedEntry.categories.first())
                                 }, modifier = Modifier.size(28.dp))
                             }
                             Column(Modifier.weight(1f)) {
-                                Text(selectedEntry.title, color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 16.sp,
+                                Text(collection?.let(::collectionTitle) ?: selectedEntry.title,
+                                    color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 16.sp,
                                     maxLines = 1, overflow = TextOverflow.Ellipsis)
-                                Text(selectedEntry.text, color = p.muted, fontSize = 12.sp, lineHeight = 20.sp,
+                                Text(if (collection == DhikrCategory.NIGHT) "سيد الاستغفار · آخر آيتين من سورة البقرة"
+                                    else if (collection != null) "مجموعة كاملة" else selectedEntry.text,
+                                    color = p.muted, fontSize = 12.sp, lineHeight = 20.sp,
                                     maxLines = 2, overflow = TextOverflow.Ellipsis)
                             }
                             DhikrIcon(R.drawable.ic_adhkar_next, tint = p.muted, modifier = Modifier.size(18.dp))
@@ -224,6 +227,9 @@ import java.time.*
                         selected = collection == DhikrCategory.EVENING,
                         modifier = Modifier.weight(1f)) { applyTemplate(eveningCollectionPreset(), clearCollection = false) }
                 }
+                TemplateCard("أذكار الليل بعد المغرب", "سيد الاستغفار · آخر آيتين من سورة البقرة",
+                    R.drawable.ic_adhkar_moon, selected = collection == DhikrCategory.NIGHT,
+                    modifier = Modifier.fillMaxWidth()) { applyTemplate(nightCollectionPreset(), clearCollection = false) }
                 Column {
                     FieldTitle("الأيام")
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
@@ -356,6 +362,8 @@ import java.time.*
                 ?.let { dhikrNudgeTimes(value, it).count { at -> at >= now } }
                 ?.takeIf { it > 0 }?.let { " · إشعارات متوقعة: " + latinNumber(it) }.orEmpty()
             val options: List<Triple<String, Boolean, () -> Unit>> = listOf(
+                Triple("مرة واحدة يوميًا" + expected(edited.copy(cadence = DhikrCadence.ONCE)),
+                    cadence == DhikrCadence.ONCE.name) { cadence = DhikrCadence.ONCE.name },
                 Triple("خفيف · " + regularCadenceLabel(3, intervals.size) + expected(edited.copy(cadence = DhikrCadence.GENTLE)),
                     cadence == DhikrCadence.GENTLE.name) { cadence = DhikrCadence.GENTLE.name },
                 Triple("متوازن · " + regularCadenceLabel(5, intervals.size) + expected(edited.copy(cadence = DhikrCadence.BALANCED)),
@@ -389,7 +397,7 @@ import java.time.*
                 TextButton(onClick = { cadence = DhikrCadence.CUSTOM.name; cadenceDialog = false },
                     enabled = customInterval != null && customInterval in MIN_DHIKR_INTERVAL_MINUTES..1440) { Text("تعيين") }
             }
-            Text("في الخيارين «خفيف» و«متوازن»، يصلك تذكير واحد على الأقل خلال كل فترة ما دام الهدف اليومي غير مكتمل. قد يزيد العدد عن 3 أو 5 إذا أضفت فترات أكثر. يمكنك اختيار فاصل من 15 دقيقة إلى 24 ساعة، وقد يؤخّر الهاتف بعض الإشعارات في وضع توفير البطارية.",
+            Text("«مرة واحدة يوميًا» ترسل إشعارًا واحدًا عند بداية أول فترة. في الخيارين «خفيف» و«متوازن»، يصلك تذكير واحد على الأقل خلال كل فترة ما دام الهدف اليومي غير مكتمل. قد يزيد العدد عن 3 أو 5 إذا أضفت فترات أكثر. يمكنك اختيار فاصل من 15 دقيقة إلى 24 ساعة، وقد يؤخّر الهاتف بعض الإشعارات في وضع توفير البطارية.",
                 color = p.muted, fontSize = 11.sp, lineHeight = 18.sp)
         } }, confirmButton = { TextButton(onClick = { cadenceDialog = false }) { Text("إغلاق") } })
     if (preview) AlertDialog(onDismissRequest = { preview = false }, title = { Text("معاينة الإشعار") },
@@ -429,6 +437,7 @@ private fun regularCadenceLabel(limit: Int, intervalCount: Int): String =
     if (intervalCount > limit) "تذكير واحد لكل فترة" else "حتى " + latinNumber(limit) + " تذكيرات يوميًا"
 
 private fun cadenceLabel(cadence: String, interval: String, intervalCount: Int): String = when (DhikrCadence.valueOf(cadence)) {
+    DhikrCadence.ONCE -> "مرة واحدة يوميًا"
     DhikrCadence.GENTLE -> regularCadenceLabel(3, intervalCount)
     DhikrCadence.BALANCED -> regularCadenceLabel(5, intervalCount)
     DhikrCadence.HOURLY -> "كل ساعة"

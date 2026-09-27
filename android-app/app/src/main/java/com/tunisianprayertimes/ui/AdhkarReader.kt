@@ -2,6 +2,9 @@ package com.tunisianprayertimes.ui
 
 import android.view.HapticFeedbackConstants
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animate
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -10,6 +13,7 @@ import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -19,16 +23,19 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.liveRegion
 import androidx.compose.ui.semantics.semantics
@@ -36,6 +43,7 @@ import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
@@ -45,6 +53,8 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import kotlin.math.abs
 
 /**
@@ -105,6 +115,16 @@ import kotlin.math.abs
         if (showExplanation) explanationRequester.bringIntoView()
     }
     val canNavigate = session.itemIds.size > 1
+    val currentIndex = session.index.coerceIn(0, session.itemIds.lastIndex)
+    val previousEntry = if (canNavigate) state.findDhikr(session.itemIds[(currentIndex - 1 + session.itemIds.size) % session.itemIds.size]) else null
+    val nextEntry = if (canNavigate) state.findDhikr(session.itemIds[(currentIndex + 1) % session.itemIds.size]) else null
+    val swipeScope = rememberCoroutineScope()
+    val swipeOffset = remember(session.id, session.itemId) { mutableFloatStateOf(0f) }
+    val swipeAnimation = remember(session.id, session.itemId) { mutableStateOf<Job?>(null) }
+    val readingScroll = remember(session.id, session.itemId) { ScrollState(0) }
+    DisposableEffect(session.id, session.itemId) {
+        onDispose { swipeAnimation.value?.cancel() }
+    }
     val canRemove = session.category != null || session.itemIds.size > 1
     val canCount = open && count < Int.MAX_VALUE && (session.category == null || !complete)
     val canAdvanceOnTap = complete && canNavigate
@@ -217,23 +237,76 @@ import kotlin.math.abs
                     }
                 }
 
-                // Dhikr text scrolls; the counter and navigation below stay put.
-                Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState())
-                    .pointerInput(session.itemId, canNavigate, swipeThresholdPx) {
-                        if (!canNavigate) return@pointerInput
-                        var horizontalDrag = 0f
-                        detectHorizontalDragGestures(
-                            onHorizontalDrag = { _, dragAmount -> horizontalDrag += dragAmount },
-                            onDragEnd = {
-                                if (abs(horizontalDrag) >= swipeThresholdPx) {
-                                    onMove(if (horizontalDrag < 0f) 1 else -1)
-                                }
-                                horizontalDrag = 0f
-                            },
-                            onDragCancel = { horizontalDrag = 0f },
-                        )
+                // Dragging right reveals the next dhikr on the left; dragging left reveals the previous on the right.
+                // The session changes only after the destination has finished sliding into place.
+                BoxWithConstraints(Modifier.weight(1f).fillMaxWidth().clipToBounds()) {
+                    val paneWidthPx = constraints.maxWidth.toFloat()
+                    fun settleSwipe(direction: Int?) {
+                        swipeAnimation.value?.cancel()
+                        swipeAnimation.value = swipeScope.launch {
+                            val destination = when (direction) {
+                                1 -> paneWidthPx
+                                -1 -> -paneWidthPx
+                                else -> 0f
+                            }
+                            animate(swipeOffset.floatValue, destination,
+                                animationSpec = tween(180, easing = FastOutSlowInEasing)) { value, _ ->
+                                swipeOffset.floatValue = value
+                            }
+                            if (direction == null) swipeOffset.floatValue = 0f else onMove(direction)
+                        }
                     }
-                    .padding(horizontal = 24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                    val drag = swipeOffset.floatValue
+                    val preview = if (drag > 0f) nextEntry else previousEntry
+                    if (drag != 0f && preview != null) {
+                        Box(Modifier.fillMaxSize()
+                            .graphicsLayer { translationX = drag - if (drag > 0f) paneWidthPx else -paneWidthPx }
+                            .background(p.background).clearAndSetSemantics { }) {
+                            Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())
+                                .padding(horizontal = 24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                                Spacer(Modifier.height(28.dp))
+                                Text(preview.text, fontFamily = AdhkarReadingFont, fontSize = state.textSize.sp,
+                                    lineHeight = (state.textSize * 1.9f).sp, color = p.forest,
+                                    textAlign = TextAlign.Center,
+                                    style = MaterialTheme.typography.bodyLarge.copy(textDirection = TextDirection.ContentOrRtl),
+                                    modifier = Modifier.fillMaxWidth())
+                                Spacer(Modifier.height(20.dp))
+                                if (preview.reference.isNotBlank() || preview.custom) {
+                                    Text(preview.reference.ifBlank { "ذكر أضفته" }, color = p.muted,
+                                        fontSize = 13.sp, textAlign = TextAlign.Center)
+                                }
+                            }
+                            Text((if (drag > 0f) "التالي · " else "السابق · ") + preview.title,
+                                Modifier.align(Alignment.TopCenter).fillMaxWidth().padding(horizontal = 24.dp),
+                                color = p.primary, fontSize = 11.sp, fontWeight = FontWeight.SemiBold,
+                                textAlign = TextAlign.Center, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                        }
+                    }
+                    // Dhikr text scrolls; the counter and navigation below stay put.
+                    Column(Modifier.fillMaxSize()
+                        .graphicsLayer { translationX = swipeOffset.floatValue }
+                        .background(p.background).verticalScroll(readingScroll)
+                        .pointerInput(session.id, session.itemId, canNavigate, paneWidthPx, swipeThresholdPx) {
+                            if (!canNavigate) return@pointerInput
+                            detectHorizontalDragGestures(
+                                onDragStart = { swipeAnimation.value?.cancel() },
+                                onHorizontalDrag = { change, dragAmount ->
+                                    change.consume()
+                                    swipeOffset.floatValue = (swipeOffset.floatValue + dragAmount)
+                                        .coerceIn(-paneWidthPx, paneWidthPx)
+                                },
+                                onDragEnd = {
+                                    val direction = when {
+                                        abs(swipeOffset.floatValue) < swipeThresholdPx -> null
+                                        swipeOffset.floatValue > 0f -> 1
+                                        else -> -1
+                                    }
+                                    settleSwipe(direction)
+                                },
+                                onDragCancel = { settleSwipe(null) },
+                            )
+                        }
+                        .padding(horizontal = 24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                     Spacer(Modifier.height(28.dp))
                     Text(entry.text, fontFamily = AdhkarReadingFont, fontSize = state.textSize.sp,
                         lineHeight = (state.textSize * 1.9f).sp, color = p.forest, textAlign = TextAlign.Center,
@@ -279,6 +352,7 @@ import kotlin.math.abs
                         }
                     }
                     Spacer(Modifier.height(24.dp))
+                    }
                 }
 
                 // Counter: increment on the right, undo on the left, tap the ring to count too.
