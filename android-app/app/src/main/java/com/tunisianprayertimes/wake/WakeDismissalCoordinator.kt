@@ -24,16 +24,35 @@ internal object WakeDismissalCoordinator {
             wakeupCheckCompleted = wakeupCheckCompleted,
         )
 
-        if (payload.awakeCheckEnabled) {
+        scheduleAwakeCheckIfReady(context, payload)
+    }
+
+    fun recordSuperseded(context: Context, payload: WakeTriggerPayload) {
+        if (payload.awakeCheckGroupSize > 1) scheduleAwakeCheckIfReady(context, payload)
+    }
+
+    private fun scheduleAwakeCheckIfReady(context: Context, payload: WakeTriggerPayload) {
+        if (payload.awakeCheckEnabled && !WakeOccurrenceSkipRegistry.contains(payload) &&
+            AwakeCheckGroupTracker.isFinalDismissal(context, payload)
+        ) {
+            // Equal-time final extras share one pending confirmation and restart its delay.
+            val awakeCheckEventId = wakeAlarmIdFromEventId(payload.eventId)
+                ?.let(::wakeMainEventId)
+                ?: payload.eventId
             AwakeCheckScheduler.schedule(
                 context = context,
-                eventId = payload.eventId,
+                eventId = awakeCheckEventId,
                 delayMinutes = payload.awakeCheckDelayMinutes,
-                ringtonePresetName = payload.ringtone.name,
-                customRingtoneUri = payload.customRingtoneUri,
+                ringtonePresetName = (payload.awakeCheckRingtone ?: payload.ringtone).name,
+                customRingtoneUri = if (payload.awakeCheckRingtone != null) {
+                    payload.awakeCheckCustomRingtoneUri
+                } else {
+                    payload.customRingtoneUri
+                },
                 autoSilenceOverrideAllowed = payload.autoSilenceOverrideAllowed,
                 autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
                 wakeTriggerAtMillis = payload.triggerAtMillis,
+                occurrenceAtMillis = payload.resolvedOccurrenceAtMillis(),
             )
         }
     }

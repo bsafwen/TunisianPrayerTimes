@@ -479,7 +479,6 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                         DhikrCollectionOrderDialog(
                             category = collection,
                             state = state,
-                            onMove = { entryId, direction -> mutate({ repo.moveCollectionEntry(sessionId, entryId, direction) }) },
                             onReorder = { entryIds -> mutate({ repo.reorderCollection(sessionId, entryIds) }) },
                             onDismiss = { reorderCollectionSessionId = null },
                         )
@@ -791,7 +790,7 @@ private fun AdhkarLibraryPage(
         } else {
             item {
                 Box(Modifier.padding(horizontal = 20.dp)) {
-                    AdhkarSectionHeader("المجموعات", action = "عرض الكل", onAction = { onCategory(null) })
+                    AdhkarSectionHeader("المجموعات")
                 }
             }
             item {

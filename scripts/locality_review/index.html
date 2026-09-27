@@ -876,6 +876,10 @@ function updatePriorBanner(){
     when ? ' · ' + when : '',
     ''
   ));
+  if (prior.id && prior.id !== form.id){
+    ui.priorBanner.appendChild(el('p', {class:'hint'},
+      'Originally saved for an earlier place ID (' + prior.id + '). Recheck this sector before saving an updated answer.'));
+  }
 
   if (prior.verdict === 'problem' && prior.issues && prior.issues.length){
     ui.priorBanner.appendChild(el('p', null, 'Reported issues: ' + prior.issues.map(issueLabel).join(', ')));
@@ -948,7 +952,7 @@ function isDirty(){
 
 function loadFormFor(id){
   var loc = locById(id);
-  var prior = currentReview(id);
+  var prior = currentReview(id) || staleReview(id);
   form.id = id;
   form.fingerprint = loc ? loc.fingerprint : null;
   form.prior = prior;

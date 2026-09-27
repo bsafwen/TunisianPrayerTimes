@@ -49,6 +49,11 @@ class WakePlaybackService : Service() {
         }
 
         val triggerPayload = intent?.toWakeTriggerPayload() ?: return START_NOT_STICKY
+        if (WakeOccurrenceSkipRegistry.contains(triggerPayload)) {
+            android.util.Log.d("WakeFlow", "Service ignored skipped occurrence eventId=${triggerPayload.eventId}")
+            if (WakeAlarmQueueHolder.queue.current == null) stopSelf(startId)
+            return START_NOT_STICKY
+        }
         val payload = WakeAutoSilenceConflictController.withRuntimeConflictIfNeeded(
             context = this,
             payload = triggerPayload,
@@ -69,10 +74,17 @@ class WakePlaybackService : Service() {
         // Queue-aware: hand the payload to the process-global queue first.
         // Only refresh notification + playback + activity if it became the
         // active alarm. If queued, keep showing the existing alarm.
+        val previousPayload = WakeAlarmQueueHolder.queue.current
         val result = WakeAlarmQueueHolder.queue.handleIncoming(payload)
 
         when (result) {
             IncomingResult.BECAME_CURRENT -> {
+                if (previousPayload != null &&
+                    (previousPayload.eventId != payload.eventId ||
+                        previousPayload.resolvedOccurrenceAtMillis() != payload.resolvedOccurrenceAtMillis())
+                ) {
+                    WakeDismissalCoordinator.recordSuperseded(this, previousPayload)
+                }
                 presentCurrent()
                 launchActivityForCurrent()
             }
@@ -173,6 +185,9 @@ class WakePlaybackService : Service() {
                     autoSilenceConflictPrayer = current.autoSilenceConflictPrayer,
                     awakeCheckEnabled = current.awakeCheckEnabled,
                     awakeCheckDelayMinutes = current.awakeCheckDelayMinutes,
+                    awakeCheckGroupSize = current.awakeCheckGroupSize,
+                    awakeCheckRingtone = current.awakeCheckRingtone,
+                    awakeCheckCustomRingtoneUri = current.awakeCheckCustomRingtoneUri,
                     wakeUpCheckChallenge = current.wakeUpCheckChallenge,
                     wakeUpCheckSeed = current.wakeUpCheckSeed,
                     isSubAlarm = current.isSubAlarm,
@@ -275,6 +290,9 @@ class WakePlaybackService : Service() {
                     autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
                     awakeCheckEnabled = payload.awakeCheckEnabled,
                     awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
+                    awakeCheckGroupSize = payload.awakeCheckGroupSize,
+                    awakeCheckRingtone = payload.awakeCheckRingtone,
+                    awakeCheckCustomRingtoneUri = payload.awakeCheckCustomRingtoneUri,
                     wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
                     wakeUpCheckSeed = payload.wakeUpCheckSeed,
                     isSubAlarm = payload.isSubAlarm,
@@ -319,6 +337,9 @@ class WakePlaybackService : Service() {
                 autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
                 awakeCheckEnabled = payload.awakeCheckEnabled,
                 awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
+                awakeCheckGroupSize = payload.awakeCheckGroupSize,
+                awakeCheckRingtone = payload.awakeCheckRingtone,
+                awakeCheckCustomRingtoneUri = payload.awakeCheckCustomRingtoneUri,
                 wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
                 wakeUpCheckSeed = payload.wakeUpCheckSeed,
                 isSubAlarm = payload.isSubAlarm,
@@ -328,12 +349,6 @@ class WakePlaybackService : Service() {
                 triggerAtMillis = payload.triggerAtMillis,
                 occurrenceAtMillis = payload.occurrenceAtMillis,
             )
-            .putExtra(EXTRA_AWAKE_CHECK_ENABLED, payload.awakeCheckEnabled)
-            .putExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, payload.awakeCheckDelayMinutes)
-            .putExtra(EXTRA_RINGTONE, payload.ringtone.name)
-            .apply {
-                payload.customRingtoneUri?.let { putExtra(EXTRA_CUSTOM_RINGTONE_URI, it) }
-            }
 
         return PendingIntent.getBroadcast(
             context,
@@ -377,6 +392,9 @@ class WakePlaybackService : Service() {
                     autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
                     awakeCheckEnabled = payload.awakeCheckEnabled,
                     awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
+                    awakeCheckGroupSize = payload.awakeCheckGroupSize,
+                    awakeCheckRingtone = payload.awakeCheckRingtone,
+                    awakeCheckCustomRingtoneUri = payload.awakeCheckCustomRingtoneUri,
                     wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
                     wakeUpCheckSeed = payload.wakeUpCheckSeed,
                     isSubAlarm = payload.isSubAlarm,

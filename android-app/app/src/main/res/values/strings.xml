@@ -438,8 +438,8 @@
     <string name="wake_editor_save">حفظ</string>
 
     <string name="wake_editor_awake_check_title">التحقق من الاستيقاظ</string>
-    <string name="wake_editor_awake_check_subtitle">بعد إيقاف المنبه، سيتحقق التطبيق من أنك لا تزال مستيقظا. إذا لم تؤكد خلال دقيقة، سيهتز الهاتف بقوة لدقيقتين ثم يرن تدريجيا.</string>
-    <string name="wake_editor_awake_check_subtitle_compact">بعد إيقاف المنبه، إن لم تؤكد استيقاظك سيهتز الهاتف بقوة لدقيقتين ثم يرن تدريجيا.</string>
+    <string name="wake_editor_awake_check_subtitle">بعد إيقاف آخر تنبيه للمنبه، سيتحقق التطبيق من أنك لا تزال مستيقظا. إذا لم تؤكد خلال دقيقة، سيهتز الهاتف بقوة لدقيقتين ثم يرن تدريجيا.</string>
+    <string name="wake_editor_awake_check_subtitle_compact">بعد إيقاف آخر تنبيه للمنبه، إن لم تؤكد استيقاظك سيهتز الهاتف بقوة لدقيقتين ثم يرن تدريجيا.</string>
     <string name="awake_check_channel_name">التحقق من الاستيقاظ</string>
     <string name="awake_check_channel_description">إشعارات للتحقق من أنك لا تزال مستيقظا بعد إيقاف المنبه</string>
     <string name="awake_check_title">هل أنت مستيقظ؟</string>

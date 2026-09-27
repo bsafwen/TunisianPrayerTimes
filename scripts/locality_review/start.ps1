@@ -9,6 +9,7 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $catalogPath = (Resolve-Path -LiteralPath $Catalog).Path
+$catalogSha = (Get-FileHash -LiteralPath $catalogPath -Algorithm SHA256).Hash.ToLowerInvariant()
 $dataPath = [System.IO.Path]::GetFullPath($DataDir)
 $snapshot = Get-Content -LiteralPath $catalogPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $scorePath = $null
@@ -24,7 +25,7 @@ $url = "http://127.0.0.1:$Port"
 $health = $null
 try { $health = Invoke-RestMethod -Uri "$url/api/health" -TimeoutSec 2 } catch {}
 if ($null -ne $health) {
-    if ($health.app -ne 'manual-locality-review' -or $health.catalogFingerprint -ne $snapshot.catalogFingerprint -or $health.scoreReportSha256 -ne $scoreHash -or [bool]$health.mapsEnabled -ne $mapsExpected) {
+    if ($health.app -ne 'manual-locality-review' -or $health.catalogFingerprint -ne $snapshot.catalogFingerprint -or $health.catalogFileSha256 -ne $catalogSha -or $health.scoreReportSha256 -ne $scoreHash -or [bool]$health.mapsEnabled -ne $mapsExpected) {
         throw "Port $Port is in use by a different review snapshot or another application."
     }
 } else {
@@ -44,7 +45,7 @@ if ($null -ne $health) {
         try { $health = Invoke-RestMethod -Uri "$url/api/health" -TimeoutSec 1 } catch {}
     } while ($null -eq $health -and (Get-Date) -lt $deadline)
     if ($null -eq $health) { throw 'Review server has not responded yet. Check server.stderr.log before starting another copy.' }
-    if ($health.app -ne 'manual-locality-review' -or $health.catalogFingerprint -ne $snapshot.catalogFingerprint -or $health.scoreReportSha256 -ne $scoreHash -or [bool]$health.mapsEnabled -ne $mapsExpected) { throw 'Unexpected application answered on the review port.' }
+    if ($health.app -ne 'manual-locality-review' -or $health.catalogFingerprint -ne $snapshot.catalogFingerprint -or $health.catalogFileSha256 -ne $catalogSha -or $health.scoreReportSha256 -ne $scoreHash -or [bool]$health.mapsEnabled -ne $mapsExpected) { throw 'Unexpected application answered on the review port.' }
 }
 if (-not $NoBrowser) { Start-Process -FilePath "$url/?q=megrine" }
 Write-Output "$url/?q=megrine"

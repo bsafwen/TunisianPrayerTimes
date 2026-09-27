@@ -103,7 +103,7 @@ internal val AdhkarHeart = Color(0xFFE23B3B)
     }
 }
 
-/** Right-aligned section title with an optional trailing action (styled like "عرض الكل"). */
+/** Right-aligned section title with an optional trailing action. */
 @Composable internal fun AdhkarSectionHeader(
     title: String,
     action: String? = null,

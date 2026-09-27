@@ -73,6 +73,12 @@ class WakeAlertActivity : AppCompatActivity() {
 
     private val dismissReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
+            if (intent.action == ACTION_SYNC_WAKE_ALERT) {
+                payload = queue.current
+                pendingCount = queue.pendingCount
+                if (payload == null) finish()
+                return
+            }
             val eventId = intent.wakeEventId()
             android.util.Log.d("WakeFlow", "Activity.dismissReceiver eventId=$eventId current=${queue.current?.eventId}")
             if (!queue.handleDismiss(eventId)) {
@@ -146,15 +152,24 @@ class WakeAlertActivity : AppCompatActivity() {
 
         setContent {
             TunisianPrayerTimesTheme {
+                val displayedPayload = payload
                 WakeAlertScreen(
-                    payload = payload,
+                    payload = displayedPayload,
                     pendingCount = pendingCount,
                     onStop = { wakeupCheckCompleted ->
                         android.util.Log.d(
                             "WakeFlow",
-                            "Activity.onStopButton payloadEventId=${payload?.eventId} queueCurrent=${queue.current?.eventId}",
+                            "Activity.onStopButton payloadEventId=${displayedPayload?.eventId} queueCurrent=${queue.current?.eventId}",
                         )
-                        payload?.let { p ->
+                        if (displayedPayload !== queue.current) {
+                            // Skip can remove the displayed alarm before its sync broadcast arrives.
+                            // A Stop tap for that stale screen must not dismiss the promoted alarm.
+                            payload = queue.current
+                            pendingCount = queue.pendingCount
+                            signalServiceCurrentChanged()
+                            if (payload == null) finish()
+                        } else if (displayedPayload != null) {
+                            val p = displayedPayload
                             WakeDismissalCoordinator.recordDismissal(
                                 context = this@WakeAlertActivity,
                                 payload = p,
@@ -165,14 +180,14 @@ class WakeAlertActivity : AppCompatActivity() {
                                 context = this@WakeAlertActivity,
                                 payload = p,
                             )
-                        }
-                        val advanced = advanceToNextPayload()
-                        // Ask the service to refresh notification + ringtone
-                        // for whatever is now current, or stop itself if the
-                        // queue is empty.
-                        signalServiceCurrentChanged()
-                        if (!advanced) {
-                            finish()
+                            val advanced = advanceToNextPayload()
+                            // Ask the service to refresh notification + ringtone
+                            // for whatever is now current, or stop itself if the
+                            // queue is empty.
+                            signalServiceCurrentChanged()
+                            if (!advanced) {
+                                finish()
+                            }
                         }
                     },
 
@@ -222,7 +237,7 @@ class WakeAlertActivity : AppCompatActivity() {
         ContextCompat.registerReceiver(
             this,
             dismissReceiver,
-            IntentFilter(ACTION_DISMISS_WAKE_ALERT),
+            IntentFilter(ACTION_DISMISS_WAKE_ALERT).apply { addAction(ACTION_SYNC_WAKE_ALERT) },
             ContextCompat.RECEIVER_NOT_EXPORTED,
         )
     }

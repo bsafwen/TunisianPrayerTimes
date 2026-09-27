@@ -63,6 +63,9 @@ class PrayerWakeRepository(private val context: Context) {
         }
 
         var awakeCheckEventIdsToCancel = emptySet<String>()
+        var skippedAlarmIdToClear: String? = null
+        var scheduledMetadataAlarmIdToClear: String? = null
+        var awakeCheckGroupAlarmIdToClear: String? = null
         context.prayerWakeDataStore.edit { preferences ->
             val current = decodePrayerWakeStore(preferences[prayerWakeStoreKey])
             val resolvedId = config.id.takeIf { id -> id.isNotBlank() }
@@ -74,12 +77,24 @@ class PrayerWakeRepository(private val context: Context) {
                 existing.prayer != config.prayer ||
                     existing.mainAlarm != config.mainAlarm ||
                     existing.repeatMode != config.repeatMode ||
-                    existing.scheduledDays != config.scheduledDays
+                    existing.scheduledDays != config.scheduledDays ||
+                    existing.subAlarms != config.subAlarms
                 )
             val updatedConfig = config.copy(
                 id = resolvedId,
                 skipNextOccurrenceAtMillis = if (scheduleChanged) null else config.skipNextOccurrenceAtMillis,
             )
+            if (existing != null && existing != updatedConfig) {
+                scheduledMetadataAlarmIdToClear = resolvedId
+            }
+            if (scheduleChanged || !updatedConfig.enabled) {
+                awakeCheckGroupAlarmIdToClear = resolvedId
+            }
+            if (scheduleChanged || !updatedConfig.enabled ||
+                (existing?.skipNextOccurrenceAtMillis != null && updatedConfig.skipNextOccurrenceAtMillis == null)
+            ) {
+                skippedAlarmIdToClear = resolvedId
+            }
             if (!updatedConfig.enabled) {
                 awakeCheckEventIdsToCancel = buildSet {
                     add(wakeMainEventId(resolvedId))
@@ -91,6 +106,11 @@ class PrayerWakeRepository(private val context: Context) {
             preferences[prayerWakeStoreKey] = encodePrayerWakeStore(PrayerWakeStore(alarms = updated))
         }
         // Awake checks use separate PendingIntents from the regular wake alarm schedule.
+        skippedAlarmIdToClear?.let(WakeOccurrenceSkipRegistry::clearAlarm)
+        scheduledMetadataAlarmIdToClear?.let { alarmId ->
+            WakeAlarmScheduler.invalidateScheduledTriggerMetadata(context, alarmId)
+        }
+        awakeCheckGroupAlarmIdToClear?.let { alarmId -> AwakeCheckGroupTracker.clearAlarm(context, alarmId) }
         awakeCheckEventIdsToCancel.forEach { eventId -> AwakeCheckScheduler.cancel(context, eventId) }
     }
 
@@ -140,6 +160,9 @@ class PrayerWakeRepository(private val context: Context) {
             }
         }
         WakeAlarmScheduler.removeSilenceUntilAlarm(context, id)
+        WakeOccurrenceSkipRegistry.clearAlarm(id)
+        WakeAlarmScheduler.invalidateScheduledTriggerMetadata(context, id)
+        AwakeCheckGroupTracker.clearAlarm(context, id)
     }
 
     suspend fun clearAllWakeConfigs() {

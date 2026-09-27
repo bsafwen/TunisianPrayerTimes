@@ -16,6 +16,7 @@ import kotlinx.coroutines.launch
 class WakeAlarmReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val triggerPayload = intent.toWakeTriggerPayload() ?: return
+        WakeAlarmScheduler.markDelivered(context, triggerPayload)
         val pendingResult = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
             var result = "success"
