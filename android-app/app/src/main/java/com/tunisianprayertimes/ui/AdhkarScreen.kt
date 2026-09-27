@@ -283,7 +283,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
         val session = repo.state.value.sessions[id] ?: return@LaunchedEffect
         val collection = session.category ?: return@LaunchedEffect
         if (session.occurrenceId != null || session.collectionPeriodKey == null ||
-            collection !in setOf(DhikrCategory.MORNING, DhikrCategory.EVENING)) return@LaunchedEffect
+            collection !in setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.NIGHT)) return@LaunchedEffect
         val currentKey = withContext(Dispatchers.IO) { collectionReadingPeriodKey(activity, collection, null, now) }
         if (session.collectionPeriodKey == currentKey) return@LaunchedEffect
         val items = repo.state.value.collectionEntries(collection).map(DhikrEntry::id)
@@ -675,6 +675,7 @@ private fun AdhkarTodayPage(
             val icon = when (val category = rule.collection ?: entry?.categories?.firstOrNull()) {
                 DhikrCategory.MORNING -> R.drawable.ic_adhkar_sun
                 DhikrCategory.EVENING -> R.drawable.ic_adhkar_moon
+                DhikrCategory.NIGHT -> R.drawable.ic_adhkar_moon
                 null -> R.drawable.ic_adhkar_leaf
                 else -> categoryIcon(category)
             }
@@ -1157,6 +1158,8 @@ private fun reminderSlots(): List<AdhkarReminderSlot> = listOf(
         R.drawable.ic_adhkar_sun, AdhkarGoldAccent, AdhkarSoftGold),
     AdhkarReminderSlot("evening", eveningCollectionPreset(), "أذكار المساء",
         R.drawable.ic_adhkar_moon, Color(0xFF0F6B5D), AdhkarSoftGreen),
+    AdhkarReminderSlot("night", nightCollectionPreset(), "أذكار الليل بعد المغرب",
+        R.drawable.ic_adhkar_moon, Color(0xFF0F6B5D), AdhkarSoftGreen),
 )
 
 private fun savedRuleFor(key: String, reminders: List<DhikrReminder>): DhikrReminder? = when (key) {
@@ -1164,6 +1167,7 @@ private fun savedRuleFor(key: String, reminders: List<DhikrReminder>): DhikrRemi
     "tahlil" -> reminders.firstOrNull { it.collection == null && it.dhikrId == "salah_tahlil" }
     "morning" -> reminders.firstOrNull { it.collection == DhikrCategory.MORNING }
     "evening" -> reminders.firstOrNull { it.collection == DhikrCategory.EVENING }
+    "night" -> reminders.firstOrNull { it.collection == DhikrCategory.NIGHT }
     else -> null
 }
 
@@ -1208,20 +1212,26 @@ internal fun morningCollectionPreset() = DhikrReminder(dhikrId = "morning_kingdo
 internal fun eveningCollectionPreset() = DhikrReminder(dhikrId = "evening_kingdom", collection = DhikrCategory.EVENING,
     targetCount = 1, daysOfWeek = (1..7).toSet(), start = DhikrTime(DhikrTimeKind.ASR),
     end = DhikrTime(DhikrTimeKind.MAGHRIB), cadence = DhikrCadence.GENTLE)
+internal fun nightCollectionPreset() = DhikrReminder(dhikrId = "sleep_last_two_baqarah", collection = DhikrCategory.NIGHT,
+    targetCount = 1, daysOfWeek = (1..7).toSet(), start = DhikrTime(DhikrTimeKind.MAGHRIB, offsetMinutes = 15),
+    end = DhikrTime(DhikrTimeKind.ISHA), cadence = DhikrCadence.ONCE)
 internal fun defaultDhikrReminder(id: String, category: DhikrCategory?, entries: List<DhikrEntry> = DhikrCatalog.entries): DhikrReminder {
     val times = when (category) {
         DhikrCategory.MORNING -> DhikrTime(DhikrTimeKind.FAJR) to DhikrTime(DhikrTimeKind.SHURUK)
         DhikrCategory.EVENING -> DhikrTime(DhikrTimeKind.ASR) to DhikrTime(DhikrTimeKind.MAGHRIB)
+        DhikrCategory.NIGHT -> DhikrTime(DhikrTimeKind.MAGHRIB, offsetMinutes = 15) to DhikrTime(DhikrTimeKind.ISHA)
         DhikrCategory.SALAH -> DhikrTime(DhikrTimeKind.DHUHR, offsetMinutes = 15) to DhikrTime(DhikrTimeKind.DHUHR, offsetMinutes = 60)
         DhikrCategory.SLEEP -> DhikrTime(minuteOfDay = 22 * 60) to DhikrTime(minuteOfDay = 23 * 60)
         else -> DhikrTime(minuteOfDay = 480) to DhikrTime(minuteOfDay = 1200)
     }
-    val collection = category?.takeIf { it == DhikrCategory.MORNING || it == DhikrCategory.EVENING }
+    val collection = category?.takeIf { it == DhikrCategory.MORNING || it == DhikrCategory.EVENING ||
+        it == DhikrCategory.NIGHT }
     return DhikrReminder(
         dhikrId = if (collection != null) entries.firstOrNull()?.id ?: id else id,
         collection = collection,
         targetCount = if (collection != null) 1 else entries.firstOrNull { it.id == id }?.defaultCount ?: 1,
         start = times.first, end = times.second,
+        cadence = if (category == DhikrCategory.NIGHT) DhikrCadence.ONCE else DhikrCadence.GENTLE,
     )
 }
 internal fun dhikrTimeLabel(time: DhikrTime): String {
@@ -1241,6 +1251,7 @@ internal fun dhikrRuleSummary(rule: DhikrReminder): String {
             if (value.endNextDay == true) " في اليوم التالي" else ""
     }
     return days + target + " · " + periods + " · " + when (rule.cadence) {
+        DhikrCadence.ONCE -> "تذكير واحد يوميًا"
         DhikrCadence.GENTLE -> if (rule.intervals().size > 3) "تذكير واحد لكل فترة" else "حتى 3 تذكيرات يوميًا"
         DhikrCadence.BALANCED -> if (rule.intervals().size > 5) "تذكير واحد لكل فترة" else "حتى 5 تذكيرات يوميًا"
         DhikrCadence.HOURLY -> "كل ساعة"; else -> "كل " + latinNumber(rule.intervalMinutes) + " دقيقة"

@@ -88,6 +88,9 @@
     <string name="qibla_subtitle">استخدم البوصلة لتوجيه أعلى الهاتف نحو القبلة.</string>
     <string name="qibla_location_selected">حسب المعتمدية: %1$s</string>
     <string name="qibla_location_selected_locating">حسب المعتمدية: %1$s · جاري تحديد موقعك…</string>
+    <string name="qibla_location_last_known">حسب آخر موقع معروف</string>
+    <string name="qibla_location_last_known_locating">حسب آخر موقع معروف · جاري تحديد موقعك…</string>
+    <string name="qibla_location_too_coarse">موقعك التقريبي لا يكفي قرب مكة. اضغط هنا لتفعيل الموقع الدقيق.</string>
     <string name="qibla_location_current">حسب موقعك الحالي</string>
     <string name="qibla_location_required">حدد موقع الهاتف لحساب اتجاه القبلة</string>
     <string name="qibla_location_default">تونس</string>
@@ -115,6 +118,10 @@
     <string name="qibla_compass_interference">قد توجد معادن أو مغناطيس قرب الهاتف. ابتعد عنها قليلًا، ثم ارسم علامة ∞ بالهاتف في الهواء.</string>
     <string name="qibla_hold_phone_flat">ضع الهاتف أفقيًا لتحديد القبلة</string>
     <string name="qibla_aligned_unverified">الاتجاه تقريبي. عاير البوصلة للتأكد.</string>
+    <string name="qibla_aligned_approximate">أنت في الاتجاه التقريبي للقبلة</string>
+    <string name="qibla_near_kaaba">أنت على بعد %1$d م من الكعبة. توجّه إليها مباشرة.</string>
+    <string name="qibla_weak_field_caution">المجال المغناطيسي ضعيف في منطقتك، فقد تنحرف البوصلة عدة درجات. تحقّق من الاتجاه بمعلم معروف.</string>
+    <string name="qibla_weak_field_blackout">البوصلة لا تعمل بدقة قرب القطب المغناطيسي. استعمل زاوية القبلة المعروضة مع معلم معروف.</string>
     <string name="qibla_kaaba_marker">الكعبة</string>
     <string name="prayer_fajr">الفجر</string>
     <string name="prayer_dhuhr">الظهر</string>

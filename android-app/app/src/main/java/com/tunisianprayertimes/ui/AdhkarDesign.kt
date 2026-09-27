@@ -119,13 +119,14 @@ internal val AdhkarHeart = Color(0xFFE23B3B)
 internal fun categoryIcon(category: DhikrCategory): Int = when (category) {
     DhikrCategory.MORNING -> R.drawable.ic_adhkar_sun
     DhikrCategory.EVENING -> R.drawable.ic_adhkar_moon
+    DhikrCategory.NIGHT -> R.drawable.ic_adhkar_moon
     DhikrCategory.SALAH -> R.drawable.ic_adhkar_mosque
     DhikrCategory.PRAYER -> R.drawable.ic_adhkar_ruku_silhouette
     DhikrCategory.SLEEP -> R.drawable.ic_adhkar_sleep
     DhikrCategory.HOME -> R.drawable.ic_adhkar_home
     DhikrCategory.DAILY -> R.drawable.ic_adhkar_leaf
 }
-internal val adhkarCategoryOrder = listOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SALAH,
+internal val adhkarCategoryOrder = listOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.NIGHT, DhikrCategory.SALAH,
     DhikrCategory.PRAYER, DhikrCategory.SLEEP, DhikrCategory.HOME, DhikrCategory.DAILY)
 internal fun latinNumber(value: Int): String = value.toString()
 internal fun bidiClock(value: String): String = "\u2066" + value + "\u2069"
