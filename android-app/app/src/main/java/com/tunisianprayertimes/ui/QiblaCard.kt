@@ -21,6 +21,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
@@ -30,18 +31,30 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -57,6 +70,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
@@ -66,12 +80,19 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
@@ -100,6 +121,7 @@ import com.tunisianprayertimes.normalizeDegrees
 import com.tunisianprayertimes.screenTiltDegrees
 import com.tunisianprayertimes.shortestSignedAngleDegrees
 import com.tunisianprayertimes.validCoordinates
+import com.tunisianprayertimes.ui.theme.BgCream
 import com.tunisianprayertimes.ui.theme.CardBorder
 import com.tunisianprayertimes.ui.theme.Gold
 import com.tunisianprayertimes.ui.theme.GoldLight
@@ -132,6 +154,26 @@ private const val QIBLA_LAST_KNOWN_LOCATION_MAX_AGE_MS = 60 * 60 * 1_000L
 private const val QIBLA_PRECISE_FIX_TARGET_DEGREES = 1.0
 // Within this distance the Kaaba is usually in sight, and GPS error dominates the bearing.
 private const val QIBLA_NEAR_KAABA_METERS = 500.0
+
+// Without a strong character, an RTL paragraph would show "--°" as "°--".
+private const val QIBLA_NO_DEGREES = "\u200E--°"
+
+private val QIBLA_DIAL_SIZE = 300.dp
+// From the dial's edge to the bezel, which carries the Kaaba badge on its line.
+private val QIBLA_BEZEL_INSET = 34.dp
+private val QIBLA_KAABA_BADGE_SIZE = 40.dp
+
+private val QiblaHeroBottom = Color(0xFF00352D)
+private val QiblaDialInk = Color(0xFFFFF8F0)
+private val QiblaHubAligned = Color(0xFFE0F2F1)
+private val QiblaToggleTrack = Color(0xFFE6F0EA)
+private val QiblaNoticeBackground = Color(0xFFFFF6E0)
+private val QiblaNoticeIcon = Color(0xFFB7862A)
+private val QiblaChoiceSelected = Color(0xFFF1F7F4)
+
+// Explains the methods with a real route when the phone's own position is not known yet.
+private const val QIBLA_EXAMPLE_LATITUDE = 36.8
+private const val QIBLA_EXAMPLE_LONGITUDE = 10.183
 
 private val QIBLA_CARDINAL_LABELS = listOf(
     "شمال" to 0.0,
@@ -197,6 +239,7 @@ fun QiblaCard(selectedDelegationId: Int) {
     var currentAccuracyMeters by rememberSaveable { mutableStateOf(cachedLocation?.accuracyMeters) }
     var currentLocationIsLastKnown by rememberSaveable { mutableStateOf(false) }
     var qiblaMethod by remember { mutableStateOf(PrefsManager.getQiblaMethod(context)) }
+    var methodSheetOpen by rememberSaveable { mutableStateOf(false) }
 
     val currentLocation = remember(
         currentLatitude,
@@ -410,6 +453,13 @@ fun QiblaCard(selectedDelegationId: Int) {
         activeLocation?.let { location -> calculateQibla(location.latitude, location.longitude, qiblaMethod) }
     }
     val qiblaBearing = qiblaSolution?.bearingDegrees
+    val methodBearings = remember(activeLocation) {
+        activeLocation?.let { location ->
+            QiblaMethod.entries.associateWith { method ->
+                calculateQibla(location.latitude, location.longitude, method).bearingDegrees
+            }
+        }
+    }
     val nearKaabaDistanceMeters = qiblaSolution?.distanceMeters
         ?.takeIf { distanceMeters -> distanceMeters < QIBLA_NEAR_KAABA_METERS }
     val locationBearingUncertainty = if (qiblaSolution != null && activeLocation != null) {
@@ -604,93 +654,222 @@ fun QiblaCard(selectedDelegationId: Int) {
         }
     }
 
-    Card(
+    val bannerMessage = displayedBannerMessage
+    Column(
         modifier = Modifier
             .fillMaxWidth()
             .testTag(TestTags.QIBLA_CARD)
-            .padding(top = 12.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+            .padding(top = 4.dp)
+            .animateContentSize(),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Column(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 18.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
+        QiblaHeroCard(
+            locationText = qiblaLocationText(location = activeLocation, locating = locating),
+            onMethodChipClick = if (qiblaMethod != QiblaMethod.GreatCircle) {
+                { methodSheetOpen = true }
+            } else {
+                null
+            },
+            directionText = displayedDirectionText ?: rawDirectionText,
+            isAligned = isQiblaAligned,
+            bearingValue = displayedQiblaBearingDegrees
+                ?.let { bearingDegrees -> stringResource(R.string.qibla_degrees_value, bearingDegrees.toDouble()) }
+                ?: QIBLA_NO_DEGREES,
+            headingValue = displayedHeadingCompassDegrees
+                ?.let { headingDegrees -> stringResource(R.string.qibla_degrees_value, headingDegrees.toDouble()) }
+                ?: QIBLA_NO_DEGREES,
+            distanceValue = qiblaSolution?.let { solution -> qiblaDistanceText(solution.distanceMeters) }
+                ?: AnnotatedString("--"),
         ) {
             QiblaCompassDial(
                 rotationDegrees = qiblaRotation.toFloat(),
-                displayDegrees = visibleTurnDegrees,
+                turnDegrees = visibleTurnDegrees,
                 phoneHeadingDegrees = headingDegrees?.toFloat(),
-                hasBearing = qiblaBearing != null,
                 hasGuidance = hasLiveGuidance,
                 isAligned = isQiblaAligned,
             )
-            Spacer(Modifier.height(14.dp))
+        }
 
-            Text(
-                text = displayedDirectionText ?: rawDirectionText,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                color = if (isQiblaAligned) {
-                    GreenPrimaryDark
-                } else {
-                    TextDark
-                },
-                textAlign = TextAlign.Center,
-                lineHeight = 23.sp,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(min = 38.dp),
-            )
-
-            Spacer(Modifier.height(8.dp))
-            val bannerMessage = displayedBannerMessage
+        if (bannerMessage != null) {
             QiblaGuidanceBar(
-                message = bannerMessage?.text,
-                onClick = if (bannerMessage?.requestsLocationPermission == true) {
+                message = bannerMessage.text,
+                onClick = if (bannerMessage.requestsLocationPermission) {
                     { requestQiblaLocationPermission(fromWarning = true) }
                 } else {
                     null
                 },
             )
+        }
 
-            Spacer(Modifier.height(12.dp))
+        QiblaMethodRow(selected = qiblaMethod, onClick = { methodSheetOpen = true })
+    }
 
-            QiblaDirectionDetailsStrip(
-                title = stringResource(R.string.qibla_direction_details),
-                bearingLabel = stringResource(R.string.qibla_bearing_label),
-                bearingValue = displayedQiblaBearingDegrees?.let { bearingDegrees ->
-                    stringResource(
-                        R.string.qibla_degrees_value,
-                        bearingDegrees.toDouble(),
-                    )
-                } ?: "--°",
-                headingLabel = stringResource(R.string.qibla_heading_label),
-                headingValue = displayedHeadingCompassDegrees?.let { headingDegrees ->
-                    stringResource(
-                        R.string.qibla_degrees_value,
-                        headingDegrees.toDouble(),
-                    )
-                } ?: "--°",
-                locationText = qiblaLocationText(location = activeLocation, locating = locating),
+    if (methodSheetOpen) {
+        QiblaMethodSheet(
+            selected = qiblaMethod,
+            onSelected = ::selectQiblaMethod,
+            latitude = activeLocation?.latitude,
+            longitude = activeLocation?.longitude,
+            bearings = methodBearings,
+            onDismiss = { methodSheetOpen = false },
+        )
+    }
+}
+
+@Composable
+private fun QiblaHeroCard(
+    locationText: String,
+    onMethodChipClick: (() -> Unit)?,
+    directionText: String,
+    isAligned: Boolean,
+    bearingValue: String,
+    headingValue: String,
+    distanceValue: AnnotatedString,
+    dial: @Composable () -> Unit,
+) {
+    val shape = RoundedCornerShape(24.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(shape)
+            .background(Brush.verticalGradient(listOf(GreenPrimary, GreenPrimaryDark, QiblaHeroBottom)))
+            .border(1.dp, Gold.copy(alpha = 0.24f), shape)
+            .padding(horizontal = 14.dp, vertical = 16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier.fillMaxWidth(),
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_location),
+                contentDescription = null,
+                tint = GoldLight,
+                modifier = Modifier.size(14.dp),
             )
+            Spacer(Modifier.width(4.dp))
+            Text(
+                text = locationText,
+                fontSize = 12.sp,
+                color = Color.White.copy(alpha = 0.8f),
+                textAlign = TextAlign.Center,
+                lineHeight = 16.sp,
+            )
+        }
 
-            Spacer(Modifier.height(12.dp))
+        if (onMethodChipClick != null) {
+            Spacer(Modifier.height(10.dp))
+            QiblaMethodChip(onClick = onMethodChipClick)
+        }
 
-            QiblaMethodSelector(
-                selected = qiblaMethod,
-                onSelected = ::selectQiblaMethod,
+        Spacer(Modifier.height(6.dp))
+        dial()
+        Spacer(Modifier.height(10.dp))
+
+        Text(
+            text = directionText,
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold,
+            color = if (isAligned) GoldLight else Color.White,
+            textAlign = TextAlign.Center,
+            lineHeight = 25.sp,
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 50.dp)
+                .padding(horizontal = 8.dp),
+        )
+
+        Spacer(Modifier.height(12.dp))
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(16.dp))
+                .background(Color.White.copy(alpha = 0.08f))
+                .border(1.dp, Color.White.copy(alpha = 0.1f), RoundedCornerShape(16.dp))
+                .height(IntrinsicSize.Min)
+                .padding(vertical = 12.dp),
+        ) {
+            QiblaHeroStat(
+                label = stringResource(R.string.qibla_bearing_label),
+                value = bearingValue,
+                modifier = Modifier.weight(1f),
+                valueTestTag = TestTags.QIBLA_BEARING_VALUE,
+            )
+            QiblaHeroStatDivider()
+            QiblaHeroStat(
+                label = stringResource(R.string.qibla_heading_label),
+                value = headingValue,
+                modifier = Modifier.weight(1f),
+            )
+            QiblaHeroStatDivider()
+            QiblaHeroStat(
+                label = stringResource(R.string.qibla_distance_label),
+                value = distanceValue,
+                modifier = Modifier.weight(1f),
             )
         }
     }
 }
 
 @Composable
+private fun QiblaHeroStat(
+    label: String,
+    value: String,
+    modifier: Modifier = Modifier,
+    valueTestTag: String? = null,
+) {
+    QiblaHeroStat(label = label, value = AnnotatedString(value), modifier = modifier, valueTestTag = valueTestTag)
+}
+
+@Composable
+private fun QiblaHeroStat(
+    label: String,
+    value: AnnotatedString,
+    modifier: Modifier = Modifier,
+    valueTestTag: String? = null,
+) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.padding(horizontal = 4.dp),
+    ) {
+        Text(
+            text = label,
+            fontSize = 11.sp,
+            color = Color.White.copy(alpha = 0.66f),
+            textAlign = TextAlign.Center,
+            lineHeight = 14.sp,
+        )
+        Spacer(Modifier.height(3.dp))
+        Text(
+            text = value,
+            fontSize = 19.sp,
+            color = Color.White,
+            fontWeight = FontWeight.SemiBold,
+            textAlign = TextAlign.Center,
+            lineHeight = 23.sp,
+            modifier = if (valueTestTag != null) Modifier.testTag(valueTestTag) else Modifier,
+        )
+    }
+}
+
+@Composable
+private fun QiblaHeroStatDivider() {
+    Box(
+        modifier = Modifier
+            .fillMaxHeight()
+            .padding(vertical = 4.dp)
+            .width(1.dp)
+            .background(Color.White.copy(alpha = 0.14f)),
+    )
+}
+
+@Composable
 private fun QiblaCompassDial(
     rotationDegrees: Float,
-    displayDegrees: Double?,
+    turnDegrees: Double?,
     phoneHeadingDegrees: Float?,
-    hasBearing: Boolean,
     hasGuidance: Boolean,
     isAligned: Boolean,
 ) {
@@ -700,335 +879,547 @@ private fun QiblaCompassDial(
         label = "qiblaAlignmentRing",
     )
 
-    Box(contentAlignment = Alignment.Center) {
-        Canvas(modifier = Modifier.size(260.dp)) {
-            val dialRadius = size.minDimension / 2f
-            val tickOuterRadius = dialRadius - 14.dp.toPx()
-            val majorTickLength = 18.dp.toPx()
-            val minorTickLength = 8.dp.toPx()
-            val tickStroke = 2.dp.toPx()
-            val cardinalRadius = dialRadius - 45.dp.toPx()
-            val cardinalPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-                color = TextMuted.copy(alpha = if (hasGuidance) 0.78f else 0.34f).toArgb()
-                textAlign = Paint.Align.CENTER
-                textSize = 11.dp.toPx()
-                typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
-            }
-            val cardinalBaselineOffset = -(cardinalPaint.ascent() + cardinalPaint.descent()) / 2f
+    BoxWithConstraints(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxWidth()) {
+        val dialSize = minOf(maxWidth, QIBLA_DIAL_SIZE)
+        val scale = dialSize / QIBLA_DIAL_SIZE
+        val badgeSize = QIBLA_KAABA_BADGE_SIZE * scale
+        val bezelInset = QIBLA_BEZEL_INSET * scale
+        val roseRotation = -(phoneHeadingDegrees ?: 0f)
 
-            drawCircle(
-                color = GoldLight.copy(alpha = 0.42f),
-                radius = dialRadius,
-                center = center,
-            )
-            drawCircle(
-                color = GreenPrimary.copy(alpha = 0.2f),
-                radius = dialRadius - 1.dp.toPx(),
-                center = center,
-                style = Stroke(width = 2.dp.toPx()),
-            )
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                // Only the top needs room outside the bezel, for the badge and the phone marker.
+                .layout { measurable, constraints ->
+                    val placeable = measurable.measure(constraints)
+                    val unusedBottom = ((QIBLA_BEZEL_INSET - 6.dp) * scale).roundToPx()
+                    layout(placeable.width, placeable.height - unusedBottom) { placeable.place(0, 0) }
+                }
+                .size(dialSize),
+        ) {
+            Canvas(modifier = Modifier.matchParentSize()) {
+                val px = { value: Dp -> value.toPx() * scale }
+                val bezelRadius = size.minDimension / 2f - px(QIBLA_BEZEL_INSET)
+                val hubRadius = px(46.dp)
 
-            if (alignmentProgress > 0f) {
                 drawCircle(
-                    color = GreenPrimaryDark.copy(alpha = 0.18f + alignmentProgress * 0.46f),
-                    radius = dialRadius - 5.dp.toPx(),
+                    brush = Brush.radialGradient(
+                        colors = listOf(Color.White.copy(alpha = 0.12f), Color.White.copy(alpha = 0.03f)),
+                        center = center,
+                        radius = bezelRadius,
+                    ),
+                    radius = bezelRadius,
                     center = center,
-                    style = Stroke(width = (2.dp + 5.dp * alignmentProgress).toPx()),
+                )
+                drawCircle(
+                    color = Gold.copy(alpha = 0.55f),
+                    radius = bezelRadius,
+                    center = center,
+                    style = Stroke(width = px(1.5.dp)),
+                )
+                drawCircle(
+                    color = Color.White.copy(alpha = 0.08f),
+                    radius = bezelRadius - px(22.dp),
+                    center = center,
+                    style = Stroke(width = px(1.dp)),
+                )
+                if (alignmentProgress > 0f) {
+                    drawCircle(
+                        color = GoldLight.copy(alpha = 0.25f + alignmentProgress * 0.55f),
+                        radius = bezelRadius,
+                        center = center,
+                        style = Stroke(width = px(2.dp) + px(4.dp) * alignmentProgress),
+                    )
+                }
+
+                // The rose turns with the phone, so north stays north.
+                rotate(degrees = roseRotation, pivot = center) {
+                    val tickAlpha = if (phoneHeadingDegrees != null) 1f else 0.45f
+                    for (tickIndex in 0 until 72) {
+                        val tickDegrees = tickIndex * 5
+                        val (tickLength, tickWidth, alpha) = when {
+                            tickDegrees % 90 == 0 -> Triple(px(13.dp), px(2.5.dp), 0.95f)
+                            tickDegrees % 30 == 0 -> Triple(px(11.dp), px(2.dp), 0.8f)
+                            tickDegrees % 10 == 0 -> Triple(px(7.dp), px(1.2.dp), 0.45f)
+                            else -> Triple(px(4.dp), px(1.dp), 0.25f)
+                        }
+                        val angle = Math.toRadians(tickDegrees - 90.0)
+                        val outer = bezelRadius - px(4.dp)
+                        val inner = outer - tickLength
+                        drawLine(
+                            color = QiblaDialInk.copy(alpha = alpha * tickAlpha),
+                            start = Offset(
+                                center.x + cos(angle).toFloat() * inner,
+                                center.y + sin(angle).toFloat() * inner,
+                            ),
+                            end = Offset(
+                                center.x + cos(angle).toFloat() * outer,
+                                center.y + sin(angle).toFloat() * outer,
+                            ),
+                            strokeWidth = tickWidth,
+                            cap = StrokeCap.Round,
+                        )
+                    }
+                }
+
+                if (phoneHeadingDegrees != null) {
+                    val labelRadius = bezelRadius - px(34.dp)
+                    val labelPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+                        textAlign = Paint.Align.CENTER
+                        textSize = 12.sp.toPx() * scale
+                        typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+                    }
+                    val baselineOffset = -(labelPaint.ascent() + labelPaint.descent()) / 2f
+                    QIBLA_CARDINAL_LABELS.forEach { (label, bearingDegrees) ->
+                        labelPaint.color = if (bearingDegrees == 0.0) {
+                            Gold.toArgb()
+                        } else {
+                            QiblaDialInk.copy(alpha = 0.72f).toArgb()
+                        }
+                        val labelAngle = Math.toRadians(bearingDegrees + roseRotation - 90.0)
+                        drawContext.canvas.nativeCanvas.drawText(
+                            label,
+                            center.x + cos(labelAngle).toFloat() * labelRadius,
+                            center.y + sin(labelAngle).toFloat() * labelRadius + baselineOffset,
+                            labelPaint,
+                        )
+                    }
+                }
+
+                // Where the top of the phone points.
+                val lubberTip = size.minDimension / 2f - bezelRadius - px(QIBLA_KAABA_BADGE_SIZE) / 2f - px(3.dp)
+                drawPath(
+                    path = Path().apply {
+                        moveTo(center.x, lubberTip)
+                        lineTo(center.x - px(7.dp), lubberTip - px(9.dp))
+                        lineTo(center.x + px(7.dp), lubberTip - px(9.dp))
+                        close()
+                    },
+                    color = if (isAligned) GoldLight else Color.White.copy(alpha = 0.9f),
+                )
+
+                val needleColor = if (hasGuidance) Gold else Color.White.copy(alpha = 0.22f)
+                rotate(degrees = rotationDegrees, pivot = center) {
+                    val needleTip = center.y - bezelRadius + px(QIBLA_KAABA_BADGE_SIZE) / 2f + px(2.dp)
+                    drawPath(
+                        path = Path().apply {
+                            moveTo(center.x, needleTip)
+                            lineTo(center.x - px(13.dp), center.y)
+                            lineTo(center.x + px(13.dp), center.y)
+                            close()
+                        },
+                        brush = Brush.verticalGradient(
+                            colors = listOf(needleColor, needleColor.copy(alpha = needleColor.alpha * 0.55f)),
+                            startY = needleTip,
+                            endY = center.y,
+                        ),
+                    )
+                }
+
+                drawCircle(
+                    color = if (isAligned) QiblaHubAligned else BgCream,
+                    radius = hubRadius,
+                    center = center,
+                )
+                drawCircle(
+                    color = if (isAligned) GreenPrimary else Gold.copy(alpha = 0.6f),
+                    radius = hubRadius,
+                    center = center,
+                    style = Stroke(width = px(1.5.dp)),
                 )
             }
 
-            for (tickIndex in 0 until 36) {
-                val tickAngle = Math.toRadians(tickIndex * 10.0 - 90.0)
-                val isMajorTick = tickIndex % 3 == 0
-                val tickInnerRadius = tickOuterRadius - if (isMajorTick) majorTickLength else minorTickLength
-                val start = Offset(
-                    x = center.x + cos(tickAngle).toFloat() * tickInnerRadius,
-                    y = center.y + sin(tickAngle).toFloat() * tickInnerRadius,
-                )
-                val end = Offset(
-                    x = center.x + cos(tickAngle).toFloat() * tickOuterRadius,
-                    y = center.y + sin(tickAngle).toFloat() * tickOuterRadius,
-                )
-                drawLine(
-                    color = if (isMajorTick) GreenPrimary else CardBorder,
-                    start = start,
-                    end = end,
-                    strokeWidth = if (isMajorTick) tickStroke else 1.dp.toPx(),
-                    cap = StrokeCap.Round,
-                )
-            }
-
-            phoneHeadingDegrees?.let { headingDegrees ->
-                QIBLA_CARDINAL_LABELS.forEach { (label, bearingDegrees) ->
-                    val relativeDegrees = normalizeDegrees(bearingDegrees - headingDegrees)
-                    val labelAngle = Math.toRadians(relativeDegrees - 90.0)
-                    drawContext.canvas.nativeCanvas.drawText(
-                        label,
-                        center.x + cos(labelAngle).toFloat() * cardinalRadius,
-                        center.y + sin(labelAngle).toFloat() * cardinalRadius + cardinalBaselineOffset,
-                        cardinalPaint,
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .graphicsLayer { rotationZ = rotationDegrees },
+            ) {
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .padding(top = bezelInset - badgeSize / 2)
+                        .size(badgeSize)
+                        .graphicsLayer {
+                            rotationZ = -rotationDegrees
+                            alpha = if (hasGuidance) 1f else 0.55f
+                        }
+                        .clip(CircleShape)
+                        .background(BgCream)
+                        .border(1.5.dp, if (isAligned) GoldLight else Gold, CircleShape),
+                ) {
+                    Image(
+                        painter = painterResource(R.drawable.kaaba_marker),
+                        contentDescription = stringResource(R.string.qibla_kaaba_marker),
+                        contentScale = ContentScale.Fit,
+                        modifier = Modifier.size(badgeSize * 0.66f),
                     )
                 }
             }
 
-            drawLine(
-                color = GreenPrimaryDark.copy(alpha = 0.45f),
-                start = Offset(center.x, center.y - dialRadius + 20.dp.toPx()),
-                end = Offset(center.x, center.y - dialRadius + 38.dp.toPx()),
-                strokeWidth = 4.dp.toPx(),
-                cap = StrokeCap.Round,
-            )
-
-            val markerColor = if (hasGuidance) Gold else TextMuted.copy(alpha = 0.35f)
-            rotate(degrees = rotationDegrees, pivot = center) {
-                val arrowPath = Path().apply {
-                    moveTo(center.x, center.y - dialRadius + 38.dp.toPx())
-                    lineTo(center.x - 17.dp.toPx(), center.y - 34.dp.toPx())
-                    lineTo(center.x + 17.dp.toPx(), center.y - 34.dp.toPx())
-                    close()
-                }
-                drawLine(
-                    color = markerColor,
-                    start = Offset(center.x, center.y - dialRadius + 56.dp.toPx()),
-                    end = Offset(center.x, center.y - 46.dp.toPx()),
-                    strokeWidth = 8.dp.toPx(),
-                    cap = StrokeCap.Round,
-                )
-                drawPath(
-                    path = arrowPath,
-                    color = markerColor,
-                )
-            }
-
-            drawCircle(
-                color = Color.White,
-                radius = 46.dp.toPx(),
-                center = center,
-            )
-            drawCircle(
-                color = GreenPrimary.copy(alpha = 0.16f),
-                radius = 46.dp.toPx(),
-                center = center,
-                style = Stroke(width = 1.dp.toPx()),
-            )
+            QiblaDialHub(turnDegrees = turnDegrees, hasGuidance = hasGuidance, isAligned = isAligned)
         }
+    }
+}
 
-        Box(
-            modifier = Modifier
-                .size(260.dp)
-                .graphicsLayer { rotationZ = rotationDegrees },
-        ) {
-            Image(
-                painter = painterResource(R.drawable.kaaba_marker),
-                contentDescription = stringResource(R.string.qibla_kaaba_marker),
-                contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .align(Alignment.TopCenter)
-                    .padding(top = 9.dp)
-                    .size(44.dp)
-                    .graphicsLayer {
-                        alpha = if (hasGuidance) 1f else 0.35f
-                        rotationZ = -rotationDegrees
-                    },
+@Composable
+private fun QiblaDialHub(turnDegrees: Double?, hasGuidance: Boolean, isAligned: Boolean) {
+    val turnAmount = turnDegrees?.takeIf { hasGuidance }?.let(::visibleTurnAmountDegrees)
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        if (turnAmount == 0) {
+            Icon(
+                painter = painterResource(R.drawable.ic_check),
+                contentDescription = null,
+                tint = if (isAligned) GreenPrimary else TextMuted,
+                modifier = Modifier.size(30.dp),
             )
-        }
-
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        } else {
             Text(
-                text = stringResource(R.string.qibla_title),
-                fontSize = 13.sp,
-                color = GreenPrimaryDark,
+                text = turnAmount?.let { amount -> "$amount°" } ?: QIBLA_NO_DEGREES,
+                fontSize = 26.sp,
+                color = if (turnAmount != null) GreenPrimaryDark else TextMuted,
                 fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-            )
-            Text(
-                text = if (hasBearing && hasGuidance) {
-                    "${visibleTurnAmountDegrees(displayDegrees ?: rotationDegrees.toDouble())}°"
-                } else {
-                    "--°"
-                },
-                fontSize = 16.sp,
-                color = if (hasGuidance) GreenPrimaryDark else TextMuted,
-                fontWeight = FontWeight.SemiBold,
-                textAlign = TextAlign.Center,
+                lineHeight = 30.sp,
             )
         }
-    }
-}
-
-@Composable
-private fun QiblaDirectionDetailsStrip(
-    title: String,
-    bearingLabel: String,
-    bearingValue: String,
-    headingLabel: String,
-    headingValue: String,
-    locationText: String,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp),
-    ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(1.dp)
-                .background(CardBorder.copy(alpha = 0.5f)),
-        )
-        Spacer(Modifier.height(10.dp))
-        Text(
-            text = title,
-            fontSize = 11.sp,
-            color = TextMuted,
-            fontWeight = FontWeight.SemiBold,
-            textAlign = TextAlign.Start,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        Spacer(Modifier.height(8.dp))
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(18.dp),
-        ) {
-            QiblaDirectionDetailValue(
-                label = bearingLabel,
-                value = bearingValue,
-                modifier = Modifier.weight(1f),
-            )
-            QiblaDirectionDetailValue(
-                label = headingLabel,
-                value = headingValue,
-                modifier = Modifier.weight(1f),
-            )
-        }
-        Spacer(Modifier.height(8.dp))
-        Text(
-            text = locationText,
-            fontSize = 10.sp,
-            color = TextMuted,
-            textAlign = TextAlign.Center,
-            lineHeight = 14.sp,
-            modifier = Modifier.fillMaxWidth(),
-        )
-    }
-}
-
-@Composable
-private fun QiblaDirectionDetailValue(
-    label: String,
-    value: String,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = modifier,
-    ) {
-        Text(
-            text = label,
-            fontSize = 10.sp,
-            color = TextMuted,
-            textAlign = TextAlign.Center,
-            lineHeight = 14.sp,
-        )
-        Spacer(Modifier.height(2.dp))
-        Text(
-            text = value,
-            fontSize = 18.sp,
-            color = GreenPrimaryDark,
-            fontWeight = FontWeight.SemiBold,
-            textAlign = TextAlign.Center,
-            lineHeight = 22.sp,
-        )
-    }
-}
-
-@Composable
-private fun QiblaMethodSelector(
-    selected: QiblaMethod,
-    onSelected: (QiblaMethod) -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val methods = listOf(QiblaMethod.GreatCircle, QiblaMethod.RhumbLine)
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = 8.dp),
-    ) {
-        Text(
-            text = stringResource(R.string.qibla_method_label),
-            fontSize = 11.sp,
-            color = TextMuted,
-            fontWeight = FontWeight.SemiBold,
-            textAlign = TextAlign.Start,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        Spacer(Modifier.height(8.dp))
-        EndpointModeChoices(
-            choices = listOf(
-                stringResource(R.string.qibla_method_great_circle),
-                stringResource(R.string.qibla_method_rhumb_line),
-            ),
-            selected = methods.indexOf(selected),
-            enabled = true,
-            onSelected = { index -> onSelected(methods[index]) },
-            optionTestTags = listOf(
-                TestTags.QIBLA_METHOD_GREAT_CIRCLE,
-                TestTags.QIBLA_METHOD_RHUMB_LINE,
-            ),
-        )
-        Spacer(Modifier.height(6.dp))
         Text(
             text = stringResource(
-                when (selected) {
-                    QiblaMethod.GreatCircle -> R.string.qibla_method_great_circle_description
-                    QiblaMethod.RhumbLine -> R.string.qibla_method_rhumb_line_description
+                when {
+                    turnAmount == null -> R.string.qibla_hub_idle
+                    turnAmount == 0 -> R.string.qibla_hub_ahead
+                    (turnDegrees ?: 0.0) > 0 -> R.string.qibla_hub_turn_right
+                    else -> R.string.qibla_hub_turn_left
                 },
             ),
-            fontSize = 10.sp,
-            color = TextMuted,
-            textAlign = TextAlign.Center,
+            fontSize = 11.sp,
+            color = if (isAligned) GreenPrimary else TextMuted,
+            fontWeight = FontWeight.SemiBold,
             lineHeight = 14.sp,
-            modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+/** The method stays out of the way: one quiet row that opens the explanation and the choice. */
+@Composable
+private fun QiblaMethodRow(selected: QiblaMethod, onClick: () -> Unit) {
+    val shape = RoundedCornerShape(18.dp)
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .testTag(TestTags.QIBLA_METHOD_ROW)
+            .clip(shape)
+            .background(Color.White)
+            .border(1.dp, CardBorder, shape)
+            .clickable(onClick = onClick)
+            .heightIn(min = 56.dp)
+            .padding(horizontal = 16.dp, vertical = 10.dp),
+    ) {
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = stringResource(R.string.qibla_method_label),
+                fontSize = 11.sp,
+                color = TextMuted,
+                lineHeight = 14.sp,
+            )
+            Spacer(Modifier.height(2.dp))
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    text = stringResource(qiblaMethodNameRes(selected)),
+                    fontSize = 15.sp,
+                    color = GreenPrimaryDark,
+                    fontWeight = FontWeight.Bold,
+                )
+                if (selected == QiblaMethod.GreatCircle) {
+                    Spacer(Modifier.width(8.dp))
+                    QiblaStandardBadge()
+                }
+            }
+        }
+        Icon(
+            painter = painterResource(R.drawable.ic_qibla_chevron),
+            contentDescription = null,
+            tint = TextMuted,
+            modifier = Modifier.size(20.dp),
         )
     }
 }
 
 @Composable
-private fun QiblaGuidanceBar(message: String?, onClick: (() -> Unit)? = null) {
-    val hasMessage = !message.isNullOrBlank()
-    val shape = RoundedCornerShape(10.dp)
-    val clickableModifier = if (hasMessage && onClick != null) {
-        Modifier.clickable(onClick = onClick)
-    } else {
-        Modifier
+private fun QiblaStandardBadge() {
+    Text(
+        text = stringResource(R.string.qibla_method_standard),
+        fontSize = 11.sp,
+        color = GreenPrimary,
+        fontWeight = FontWeight.SemiBold,
+        lineHeight = 14.sp,
+        modifier = Modifier
+            .clip(RoundedCornerShape(50))
+            .background(QiblaToggleTrack)
+            .padding(horizontal = 8.dp, vertical = 2.dp),
+    )
+}
+
+/** Shown on the compass only while the less common method is on, so it is never on unnoticed. */
+@Composable
+private fun QiblaMethodChip(onClick: () -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .testTag(TestTags.QIBLA_METHOD_CHIP)
+            .clip(RoundedCornerShape(50))
+            .background(Gold.copy(alpha = 0.18f))
+            .border(1.dp, Gold.copy(alpha = 0.55f), RoundedCornerShape(50))
+            .clickable(onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 5.dp),
+    ) {
+        Box(
+            modifier = Modifier
+                .size(width = 14.dp, height = 3.dp)
+                .clip(RoundedCornerShape(50))
+                .background(Gold),
+        )
+        Spacer(Modifier.width(6.dp))
+        Text(
+            text = stringResource(R.string.qibla_method_active_chip),
+            fontSize = 12.sp,
+            color = GoldLight,
+            fontWeight = FontWeight.SemiBold,
+            lineHeight = 16.sp,
+        )
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun QiblaMethodSheet(
+    selected: QiblaMethod,
+    onSelected: (QiblaMethod) -> Unit,
+    latitude: Double?,
+    longitude: Double?,
+    bearings: Map<QiblaMethod, Double>?,
+    onDismiss: () -> Unit,
+) {
+    val routes = remember(latitude, longitude) {
+        qiblaRoutes(latitude ?: QIBLA_EXAMPLE_LATITUDE, longitude ?: QIBLA_EXAMPLE_LONGITUDE)
+    }
+    val methodDifference = bearings?.let { methodBearings ->
+        abs(
+            shortestSignedAngleDegrees(
+                methodBearings.getValue(QiblaMethod.GreatCircle),
+                methodBearings.getValue(QiblaMethod.RhumbLine),
+            ),
+        ).roundToInt()
+    }
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true),
+        containerColor = Color.White,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .navigationBarsPadding()
+                .verticalScroll(rememberScrollState())
+                .padding(start = 20.dp, end = 20.dp, bottom = 20.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.qibla_method_sheet_title),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+            )
+            Spacer(Modifier.height(6.dp))
+            Text(
+                text = stringResource(R.string.qibla_method_sheet_intro),
+                fontSize = 13.sp,
+                color = TextMuted,
+                lineHeight = 19.sp,
+            )
+            Spacer(Modifier.height(16.dp))
+            QiblaRoutesIllustration(routes = routes, selected = selected)
+            Spacer(Modifier.height(16.dp))
+            Column(
+                modifier = Modifier.selectableGroup(),
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
+                QiblaMethodChoice(
+                    method = QiblaMethod.GreatCircle,
+                    selected = selected == QiblaMethod.GreatCircle,
+                    bearingDegrees = bearings?.get(QiblaMethod.GreatCircle),
+                    note = null,
+                    onClick = { onSelected(QiblaMethod.GreatCircle) },
+                )
+                QiblaMethodChoice(
+                    method = QiblaMethod.RhumbLine,
+                    selected = selected == QiblaMethod.RhumbLine,
+                    bearingDegrees = bearings?.get(QiblaMethod.RhumbLine),
+                    note = methodDifference?.let { difference ->
+                        if (difference < 1) {
+                            stringResource(R.string.qibla_method_difference_negligible)
+                        } else {
+                            stringResource(R.string.qibla_method_difference, difference)
+                        }
+                    },
+                    onClick = { onSelected(QiblaMethod.RhumbLine) },
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun QiblaMethodChoice(
+    method: QiblaMethod,
+    selected: Boolean,
+    bearingDegrees: Double?,
+    note: String?,
+    onClick: () -> Unit,
+) {
+    val shape = RoundedCornerShape(16.dp)
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .fillMaxWidth()
+            .testTag(
+                when (method) {
+                    QiblaMethod.GreatCircle -> TestTags.QIBLA_METHOD_GREAT_CIRCLE
+                    QiblaMethod.RhumbLine -> TestTags.QIBLA_METHOD_RHUMB_LINE
+                },
+            )
+            .clip(shape)
+            .background(if (selected) QiblaChoiceSelected else Color.White)
+            .border(if (selected) 1.5.dp else 1.dp, if (selected) GreenPrimary else CardBorder, shape)
+            .selectable(selected = selected, role = Role.RadioButton, onClick = onClick)
+            .padding(14.dp),
+    ) {
+        QiblaRadioMark(selected = selected)
+        Spacer(Modifier.width(12.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(
+                    modifier = Modifier
+                        .size(width = 16.dp, height = 4.dp)
+                        .clip(RoundedCornerShape(50))
+                        .background(
+                            if (method == QiblaMethod.GreatCircle) QiblaGreatCircleColor else QiblaRhumbLineColor,
+                        ),
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    text = stringResource(qiblaMethodNameRes(method)),
+                    fontSize = 15.sp,
+                    color = GreenPrimaryDark,
+                    fontWeight = FontWeight.Bold,
+                )
+                if (method == QiblaMethod.GreatCircle) {
+                    Spacer(Modifier.width(8.dp))
+                    QiblaStandardBadge()
+                }
+            }
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = stringResource(
+                    when (method) {
+                        QiblaMethod.GreatCircle -> R.string.qibla_method_great_circle_description
+                        QiblaMethod.RhumbLine -> R.string.qibla_method_rhumb_line_description
+                    },
+                ),
+                fontSize = 12.5.sp,
+                color = TextMuted,
+                lineHeight = 18.sp,
+            )
+            if (note != null) {
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = note,
+                    fontSize = 12.5.sp,
+                    color = QiblaNoticeIcon,
+                    fontWeight = FontWeight.SemiBold,
+                    lineHeight = 18.sp,
+                )
+            }
+        }
+        Spacer(Modifier.width(10.dp))
+        Text(
+            text = bearingDegrees
+                ?.let { degrees -> stringResource(R.string.qibla_degrees_value, roundedCompassDegree(degrees).toDouble()) }
+                ?: QIBLA_NO_DEGREES,
+            fontSize = 18.sp,
+            color = if (selected) GreenPrimaryDark else TextMuted,
+            fontWeight = FontWeight.Bold,
+        )
+    }
+}
+
+@Composable
+private fun QiblaRadioMark(selected: Boolean) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
+            .size(20.dp)
+            .border(2.dp, if (selected) GreenPrimaryDark else CardBorder, CircleShape),
+    ) {
+        if (selected) {
+            Box(
+                modifier = Modifier
+                    .size(10.dp)
+                    .clip(CircleShape)
+                    .background(GreenPrimaryDark),
+            )
+        }
+    }
+}
+
+private fun qiblaMethodNameRes(method: QiblaMethod): Int = when (method) {
+    QiblaMethod.GreatCircle -> R.string.qibla_method_great_circle
+    QiblaMethod.RhumbLine -> R.string.qibla_method_rhumb_line
+}
+
+@Composable
+private fun QiblaGuidanceBar(message: String, onClick: (() -> Unit)? = null) {
+    val shape = RoundedCornerShape(16.dp)
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
             .fillMaxWidth()
             .clip(shape)
-            .then(
-                if (hasMessage) {
-                    Modifier
-                        .background(GoldLight.copy(alpha = 0.18f))
-                        .border(1.dp, Gold.copy(alpha = 0.22f), shape)
-                } else {
-                    Modifier
-                },
-            )
-            .then(clickableModifier)
-            .heightIn(min = 44.dp)
-            .padding(horizontal = 12.dp, vertical = 8.dp),
+            .background(QiblaNoticeBackground)
+            .border(1.dp, Gold.copy(alpha = 0.35f), shape)
+            .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier)
+            .padding(horizontal = 14.dp, vertical = 12.dp),
     ) {
-        Text(
-            text = message.orEmpty(),
-            fontSize = 12.sp,
-            color = if (hasMessage) TextDark else Color.Transparent,
-            fontWeight = FontWeight.SemiBold,
-            textAlign = TextAlign.Center,
-            lineHeight = 17.sp,
+        Icon(
+            painter = painterResource(R.drawable.ic_warning),
+            contentDescription = null,
+            tint = QiblaNoticeIcon,
+            modifier = Modifier.size(20.dp),
         )
+        Spacer(Modifier.width(10.dp))
+        Text(
+            text = message,
+            fontSize = 12.5.sp,
+            color = TextDark,
+            fontWeight = FontWeight.Medium,
+            lineHeight = 18.sp,
+            modifier = Modifier.weight(1f),
+        )
+    }
+}
+
+@Composable
+private fun qiblaDistanceText(distanceMeters: Double): AnnotatedString {
+    val (amount, unit) = if (distanceMeters < 1_000.0) {
+        distanceMeters.roundToInt() to stringResource(R.string.qibla_distance_unit_meters)
+    } else {
+        (distanceMeters / 1_000.0).roundToInt() to stringResource(R.string.qibla_distance_unit_kilometers)
+    }
+    return buildAnnotatedString {
+        append(amount.toString())
+        append(' ')
+        withStyle(SpanStyle(fontSize = 12.sp, color = Color.White.copy(alpha = 0.7f))) {
+            append(unit)
+        }
     }
 }
 

@@ -3,6 +3,7 @@ package com.tunisianprayertimes
 import net.sf.geographiclib.Constants
 import net.sf.geographiclib.Geodesic
 import net.sf.geographiclib.GeodesicMask
+import kotlin.math.abs
 import kotlin.math.asin
 import kotlin.math.asinh
 import kotlin.math.atan2
@@ -75,6 +76,11 @@ fun calculateQiblaBearing(
  * Constant bearing from one point to another on the WGS84 ellipsoid, going the shorter way
  * around in longitude. On a Mercator map the rhumb line is straight, so its bearing follows
  * from the longitude difference and the difference in isometric latitude.
+ *
+ * On the meridian opposite the destination both ways around are equally long, so the
+ * bearing flips from east-going to west-going across it (Kaaba: longitude −140.17°, through
+ * the Marquesas and Yukon). Either answer is a valid rhumb line; the eastward one is taken
+ * exactly on the meridian.
  */
 internal fun rhumbLineBearingDegrees(
     fromLatitude: Double,
@@ -87,9 +93,14 @@ internal fun rhumbLineBearingDegrees(
     return normalizeDegrees(Math.toDegrees(atan2(longitudeDifference, isometricLatitudeDifference)))
 }
 
-/** Mercator's northing on the WGS84 ellipsoid, in radians; finite even at the poles. */
+/**
+ * Mercator's northing on the WGS84 ellipsoid, in radians. NaN for an impossible latitude, as
+ * GeographicLib gives for the great circle. At ±90° it stays finite only because π/2 rounds
+ * down in floating point.
+ */
 private fun isometricLatitude(latitudeDegrees: Double): Double {
-    val latitude = Math.toRadians(latitudeDegrees.coerceIn(-90.0, 90.0))
+    if (!(abs(latitudeDegrees) <= 90.0)) return Double.NaN
+    val latitude = Math.toRadians(latitudeDegrees)
     return asinh(tan(latitude)) - WGS84_ECCENTRICITY * atanh(WGS84_ECCENTRICITY * sin(latitude))
 }
 
