@@ -4,9 +4,14 @@ import android.app.Application
 import android.telephony.TelephonyManager
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.test.core.app.ApplicationProvider
+import com.tunisianprayertimes.PrefsManager
+import com.tunisianprayertimes.QiblaMethod
 import com.tunisianprayertimes.R
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
@@ -55,6 +60,38 @@ class QiblaCardTest {
         val locationRequired = compose.onAllNodesWithText(context.getString(R.string.qibla_location_required))
             .fetchSemanticsNodes()
         assertTrue(locationRequired.isNotEmpty())
+    }
+
+    @Test
+    fun switchingToTheRhumbLine_showsItsBearingAndRemembersTheChoice() {
+        setNetworkCountry("tn")
+        val greatCircleBearing = context.getString(R.string.qibla_degrees_value, 113.0)
+        val rhumbLineBearing = context.getString(R.string.qibla_degrees_value, 121.0)
+        compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
+        compose.waitUntil(timeoutMillis = 10_000) {
+            compose.onAllNodesWithText(greatCircleBearing).fetchSemanticsNodes().isNotEmpty()
+        }
+        compose.onNodeWithText(context.getString(R.string.qibla_method_great_circle_description)).assertExists()
+
+        compose.onNodeWithTag(TestTags.QIBLA_METHOD_RHUMB_LINE).performClick()
+
+        compose.onNodeWithText(rhumbLineBearing).assertExists()
+        compose.onNodeWithText(greatCircleBearing).assertDoesNotExist()
+        compose.onNodeWithText(context.getString(R.string.qibla_method_rhumb_line_description)).assertExists()
+        assertEquals(QiblaMethod.RhumbLine, PrefsManager.getQiblaMethod(context))
+    }
+
+    @Test
+    fun savedRhumbLineChoice_isUsedWhenTheCardOpens() {
+        setNetworkCountry("tn")
+        PrefsManager.setQiblaMethod(context, QiblaMethod.RhumbLine)
+        val rhumbLineBearing = context.getString(R.string.qibla_degrees_value, 121.0)
+        compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
+        compose.waitUntil(timeoutMillis = 10_000) {
+            compose.onAllNodesWithText(rhumbLineBearing).fetchSemanticsNodes().isNotEmpty()
+        }
+
+        compose.onNodeWithText(context.getString(R.string.qibla_degrees_value, 113.0)).assertDoesNotExist()
     }
 
     private fun setNetworkCountry(countryIso: String) {

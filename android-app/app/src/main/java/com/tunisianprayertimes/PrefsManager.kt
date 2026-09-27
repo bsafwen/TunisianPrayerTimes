@@ -43,6 +43,7 @@ object PrefsManager {
     private const val KEY_AUTO_LOCATION_UPDATE = "auto_location_update"
     private const val KEY_AUTO_SILENCE_DISMISSED_UNTIL_MILLIS = "auto_silence_dismissed_until_millis"
     private const val KEY_AUTO_SILENCE_DISMISSED_PRAYER = "auto_silence_dismissed_prayer"
+    private const val KEY_QIBLA_METHOD = "qibla_method"
     private const val DEFAULT_DELEGATION_ID = 615 // Tunis
     private const val DEFAULT_MANUAL_SILENCE_DURATION_MINUTES = 30
 
@@ -352,6 +353,16 @@ object PrefsManager {
 
     fun setAutoLocationUpdateEnabled(context: Context, enabled: Boolean) {
         prefs(context).edit().putBoolean(KEY_AUTO_LOCATION_UPDATE, enabled).apply()
+    }
+
+    fun getQiblaMethod(context: Context): QiblaMethod {
+        return prefs(context).getString(KEY_QIBLA_METHOD, null)
+            ?.let { raw -> runCatching { QiblaMethod.valueOf(raw) }.getOrNull() }
+            ?: QiblaMethod.GreatCircle
+    }
+
+    fun setQiblaMethod(context: Context, method: QiblaMethod) {
+        prefs(context).edit().putString(KEY_QIBLA_METHOD, method.name).apply()
     }
 
     private const val RAMADAN_ISHA_MINUTES = 90

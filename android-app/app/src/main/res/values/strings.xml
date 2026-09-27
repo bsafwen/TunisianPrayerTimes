@@ -123,6 +123,11 @@
     <string name="qibla_weak_field_caution">المجال المغناطيسي ضعيف في منطقتك، فقد تنحرف البوصلة عدة درجات. تحقّق من الاتجاه بمعلم معروف.</string>
     <string name="qibla_weak_field_blackout">البوصلة لا تعمل بدقة قرب القطب المغناطيسي. استعمل زاوية القبلة المعروضة مع معلم معروف.</string>
     <string name="qibla_kaaba_marker">الكعبة</string>
+    <string name="qibla_method_label">طريقة الحساب</string>
+    <string name="qibla_method_great_circle">أقصر مسافة</string>
+    <string name="qibla_method_rhumb_line">اتجاه ثابت</string>
+    <string name="qibla_method_great_circle_description">الدائرة العظمى: بداية أقصر طريق إلى الكعبة على سطح الأرض، وعليها أغلب الهيئات.</string>
+    <string name="qibla_method_rhumb_line_description">خط الرمب: طريق يحافظ على اتجاه واحد حتى الكعبة، ويظهر مستقيمًا على خريطة مركاتور.</string>
     <string name="prayer_fajr">الفجر</string>
     <string name="prayer_dhuhr">الظهر</string>
     <string name="prayer_asr">العصر</string>
