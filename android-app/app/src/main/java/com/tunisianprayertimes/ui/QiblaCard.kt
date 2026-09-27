@@ -47,8 +47,10 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -75,12 +77,21 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.tunisianprayertimes.CompassTrust
+import com.tunisianprayertimes.CompassTrustSample
+import com.tunisianprayertimes.CompassTrustState
+import com.tunisianprayertimes.Delegation
 import com.tunisianprayertimes.DelegationLocator
+import com.tunisianprayertimes.GouvernoratRepository
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.calculateQiblaBearing
+import com.tunisianprayertimes.headingAccuracyDegreesFromRotationVector
+import com.tunisianprayertimes.isPhoneTooTilted
 import com.tunisianprayertimes.normalizeDegrees
+import com.tunisianprayertimes.screenTiltDegrees
 import com.tunisianprayertimes.shortestSignedAngleDegrees
+import com.tunisianprayertimes.validCoordinates
 import com.tunisianprayertimes.ui.theme.CardBorder
 import com.tunisianprayertimes.ui.theme.Gold
 import com.tunisianprayertimes.ui.theme.GoldLight
@@ -88,12 +99,15 @@ import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import com.tunisianprayertimes.ui.theme.TextDark
 import com.tunisianprayertimes.ui.theme.TextMuted
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.roundToInt
 import kotlin.math.sin
+import kotlin.math.sqrt
 
 private const val QIBLA_HEADING_SMOOTHING_ALPHA = 0.18f
 private const val QIBLA_TEXT_UPDATE_INTERVAL_MS = 750L
@@ -102,7 +116,8 @@ private const val QIBLA_WARNING_DISMISS_DELAY_MS = 3_500L
 private const val QIBLA_STABILITY_WINDOW_MS = 2_000L
 private const val QIBLA_STABILITY_DELTA_DEGREES = 3.0
 private const val QIBLA_UNSTABLE_MESSAGE_MS = 800L
-private const val QIBLA_VISIBLE_ALIGNMENT_DEGREES = 1.0
+// Phone compasses are good to a few degrees at best; a tighter target only measures steadiness.
+private const val QIBLA_VISIBLE_ALIGNMENT_DEGREES = 3.0
 
 private val QIBLA_CARDINAL_LABELS = listOf(
     "شمال" to 0.0,
@@ -111,11 +126,18 @@ private val QIBLA_CARDINAL_LABELS = listOf(
     "غرب" to 270.0,
 )
 
+private enum class QiblaLocationSource {
+    CurrentLocation,
+    SelectedDelegation,
+}
+
 private data class QiblaLocationState(
     val latitude: Double,
     val longitude: Double,
     val altitudeMeters: Double,
     val accuracyMeters: Float?,
+    val source: QiblaLocationSource = QiblaLocationSource.CurrentLocation,
+    val delegationName: String? = null,
 )
 
 private var cachedRealtimeQiblaLocation: QiblaLocationState? = null
@@ -124,6 +146,19 @@ private var qiblaLocationPermissionRequestedThisSession = false
 private data class CompassState(
     val headingDegrees: Float?,
     val hasCompass: Boolean,
+    val isTooTilted: Boolean,
+    val trust: CompassTrust,
+)
+
+private data class CompassReading(
+    val headingDegrees: Float,
+    val isTooTilted: Boolean,
+    val headingAccuracyDegrees: Float?,
+)
+
+private data class QiblaBannerMessage(
+    val text: String,
+    val requestsLocationPermission: Boolean = false,
 )
 
 private enum class QiblaStabilityStatus {
@@ -134,7 +169,7 @@ private enum class QiblaStabilityStatus {
 }
 
 @Composable
-fun QiblaCard() {
+fun QiblaCard(selectedDelegationId: Int) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val cachedLocation = remember { cachedRealtimeQiblaLocation }
@@ -165,10 +200,39 @@ fun QiblaCard() {
             null
         }
     }
-    val activeLocation = if (locationPermissionGranted) currentLocation else null
+    var delegationLookupFinished by remember(selectedDelegationId) { mutableStateOf(false) }
+    val selectedDelegation by produceState<Delegation?>(initialValue = null, selectedDelegationId) {
+        value = withContext(Dispatchers.IO) {
+            runCatching { GouvernoratRepository.loadAll(context) }.getOrNull()
+                ?.asSequence()
+                ?.flatMap { gouvernorat -> gouvernorat.delegations.asSequence() }
+                ?.firstOrNull { delegation ->
+                    delegation.id == selectedDelegationId &&
+                        !(delegation.lat == 0.0 && delegation.lng == 0.0) &&
+                        validCoordinates(delegation.lat, delegation.lng)
+                }
+        }
+        delegationLookupFinished = true
+    }
+    val delegationLocation = remember(selectedDelegation) {
+        selectedDelegation?.let { delegation ->
+            QiblaLocationState(
+                latitude = delegation.lat,
+                longitude = delegation.lng,
+                altitudeMeters = 0.0,
+                accuracyMeters = null,
+                source = QiblaLocationSource.SelectedDelegation,
+                delegationName = delegation.nomAr,
+            )
+        }
+    }
+    val deviceLocation = if (locationPermissionGranted) currentLocation else null
+    // The bearing moves only about 0.2° per 10 km, so the selected delegation gives usable
+    // guidance straight away, and whenever the phone's own location is unavailable.
+    val activeLocation = deviceLocation ?: delegationLocation
 
-    LaunchedEffect(activeLocation) {
-        activeLocation?.let { location ->
+    LaunchedEffect(deviceLocation) {
+        deviceLocation?.let { location ->
             cachedRealtimeQiblaLocation = location
         }
     }
@@ -278,18 +342,27 @@ fun QiblaCard() {
         }
     }
 
-    val compassState = rememberCompassState(enabled = activeLocation != null)
+    val geomagneticField = remember(activeLocation) {
+        activeLocation?.let(::geomagneticFieldAt)
+    }
+    val magneticDeclinationDegrees = geomagneticField?.declination ?: 0f
+    // GeomagneticField reports nanotesla; the magnetometer reports microtesla.
+    val expectedFieldStrengthMicroTesla = geomagneticField?.fieldStrength?.div(1_000f)
+    val compassState = rememberCompassState(
+        enabled = activeLocation != null,
+        expectedFieldStrengthMicroTesla = expectedFieldStrengthMicroTesla,
+    )
     val qiblaBearing = remember(activeLocation) {
         activeLocation?.let { location ->
             calculateQiblaBearing(location.latitude, location.longitude)
         }
     }
-    val magneticDeclinationDegrees = remember(activeLocation) {
-        activeLocation?.let(::magneticDeclinationDegrees) ?: 0f
-    }
-    val headingDegrees = compassState.headingDegrees?.let { magneticHeadingDegrees ->
-        normalizeDegrees(magneticHeadingDegrees.toDouble() + magneticDeclinationDegrees)
-    }
+    // A heading taken with the phone held upright is unreliable, so guidance pauses until it is flat.
+    val headingDegrees = compassState.headingDegrees
+        ?.takeUnless { compassState.isTooTilted }
+        ?.let { magneticHeadingDegrees ->
+            normalizeDegrees(magneticHeadingDegrees.toDouble() + magneticDeclinationDegrees)
+        }
     val liveTurnDegrees = if (qiblaBearing != null && headingDegrees != null) {
         shortestSignedAngleDegrees(headingDegrees, qiblaBearing)
     } else {
@@ -326,21 +399,28 @@ fun QiblaCard() {
     val visualTurnDegrees = turnDegrees ?: visibleTurnDegrees
     val qiblaRotation = visualTurnDegrees ?: 0.0
     val isQiblaAligned = qiblaStabilityStatus == QiblaStabilityStatus.Stable &&
+        compassState.trust == CompassTrust.Good &&
         isExactVisibleQiblaDirection(visibleTurnDegrees)
     val rawDirectionText = qiblaDirectionText(
         compassState = compassState,
         turnDegrees = visibleTurnDegrees,
-        hasLocation = activeLocation != null,
+        // While the delegation is still loading, say the compass is starting rather than
+        // flashing the "location needed" message for the status text's minimum display time.
+        hasLocation = activeLocation != null || !delegationLookupFinished,
         stabilityStatus = qiblaStabilityStatus,
     )
     var displayedDirectionText by remember { mutableStateOf<String?>(null) }
     var directionTextShownAtMs by remember { mutableStateOf(0L) }
-    val rawCalibrationMessage = if (!locationPermissionGranted) {
-        stringResource(R.string.qibla_location_permission_required)
-    } else {
-        compassAccuracyMessage(compassState)
-    }
-    var displayedCalibrationMessage by remember { mutableStateOf<String?>(null) }
+    val rawBannerMessage = compassAccuracyMessage(compassState)
+        ?: if (!locationPermissionGranted) {
+            QiblaBannerMessage(
+                text = stringResource(R.string.qibla_location_permission_required),
+                requestsLocationPermission = true,
+            )
+        } else {
+            null
+        }
+    var displayedBannerMessage by remember { mutableStateOf<QiblaBannerMessage?>(null) }
 
     LaunchedEffect(activeLocation, headingDegrees, turnDegrees) {
         if (activeLocation == null || headingDegrees == null || turnDegrees == null) {
@@ -379,12 +459,12 @@ fun QiblaCard() {
         directionTextShownAtMs = SystemClock.elapsedRealtime()
     }
 
-    LaunchedEffect(rawCalibrationMessage) {
-        if (rawCalibrationMessage != null) {
-            displayedCalibrationMessage = rawCalibrationMessage
+    LaunchedEffect(rawBannerMessage) {
+        if (rawBannerMessage != null) {
+            displayedBannerMessage = rawBannerMessage
         } else {
             delay(QIBLA_WARNING_DISMISS_DELAY_MS)
-            displayedCalibrationMessage = null
+            displayedBannerMessage = null
         }
     }
 
@@ -469,9 +549,10 @@ fun QiblaCard() {
             )
 
             Spacer(Modifier.height(8.dp))
+            val bannerMessage = displayedBannerMessage
             QiblaGuidanceBar(
-                message = displayedCalibrationMessage,
-                onClick = if (!locationPermissionGranted) {
+                message = bannerMessage?.text,
+                onClick = if (bannerMessage?.requestsLocationPermission == true && !locationPermissionGranted) {
                     { requestQiblaLocationPermission(fromWarning = true) }
                 } else {
                     null
@@ -496,13 +577,7 @@ fun QiblaCard() {
                         headingDegrees.toDouble(),
                     )
                 } ?: "--°",
-                locationText = if (activeLocation != null) {
-                    activeLocation.accuracyMeters?.let { accuracyMeters ->
-                        stringResource(R.string.qibla_location_current_with_accuracy, accuracyMeters)
-                    } ?: stringResource(R.string.qibla_location_current)
-                } else {
-                    stringResource(R.string.qibla_location_required)
-                },
+                locationText = qiblaLocationText(location = activeLocation, locating = locating),
             )
         }
     }
@@ -817,6 +892,9 @@ private fun qiblaDirectionText(
     if (!compassState.hasCompass) {
         return stringResource(R.string.qibla_compass_unavailable)
     }
+    if (compassState.isTooTilted) {
+        return stringResource(R.string.qibla_hold_phone_flat)
+    }
     if (turnDegrees == null) {
         return stringResource(R.string.qibla_compass_waiting)
     }
@@ -825,6 +903,7 @@ private fun qiblaDirectionText(
         return when {
             stabilityStatus == QiblaStabilityStatus.Unstable -> stringResource(R.string.qibla_compass_unstable)
             stabilityStatus != QiblaStabilityStatus.Stable -> stringResource(R.string.qibla_compass_settling)
+            compassState.trust != CompassTrust.Good -> stringResource(R.string.qibla_aligned_unverified)
             else -> stringResource(R.string.qibla_aligned)
         }
     }
@@ -850,9 +929,31 @@ private fun roundedSignedTurnDegree(turnDegrees: Double): Int {
 }
 
 @Composable
-private fun compassAccuracyMessage(compassState: CompassState): String? {
+private fun compassAccuracyMessage(compassState: CompassState): QiblaBannerMessage? {
     if (!compassState.hasCompass) return null
-    return stringResource(R.string.qibla_compass_calibrate)
+    return when (compassState.trust) {
+        CompassTrust.Interference -> QiblaBannerMessage(stringResource(R.string.qibla_compass_interference))
+        CompassTrust.NeedsCalibration -> QiblaBannerMessage(stringResource(R.string.qibla_compass_calibrate))
+        CompassTrust.Good -> null
+    }
+}
+
+@Composable
+private fun qiblaLocationText(location: QiblaLocationState?, locating: Boolean): String {
+    return when {
+        location == null -> stringResource(R.string.qibla_location_required)
+        location.source == QiblaLocationSource.SelectedDelegation -> {
+            val delegationName = location.delegationName.orEmpty()
+            if (locating) {
+                stringResource(R.string.qibla_location_selected_locating, delegationName)
+            } else {
+                stringResource(R.string.qibla_location_selected, delegationName)
+            }
+        }
+        location.accuracyMeters != null ->
+            stringResource(R.string.qibla_location_current_with_accuracy, location.accuracyMeters)
+        else -> stringResource(R.string.qibla_location_current)
+    }
 }
 
 private fun hasQiblaSensorSupport(context: Context): Boolean {
@@ -865,7 +966,10 @@ private fun hasQiblaSensorSupport(context: Context): Boolean {
 }
 
 @Composable
-private fun rememberCompassState(enabled: Boolean): CompassState {
+private fun rememberCompassState(
+    enabled: Boolean,
+    expectedFieldStrengthMicroTesla: Float?,
+): CompassState {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
     val sensorManager = remember {
@@ -887,13 +991,15 @@ private fun rememberCompassState(enabled: Boolean): CompassState {
     val hasRotationSensor = rotationVectorSensor != null || geomagneticRotationVectorSensor != null
     val hasCompass = hasRotationSensor || hasMagneticCompass
 
-    var rotationVectorHeadingDegrees by remember { mutableStateOf<Float?>(null) }
-    var geomagneticRotationHeadingDegrees by remember { mutableStateOf<Float?>(null) }
-    var manualCompassHeadingDegrees by remember { mutableStateOf<Float?>(null) }
+    var rotationVectorReading by remember { mutableStateOf<CompassReading?>(null) }
+    var geomagneticRotationReading by remember { mutableStateOf<CompassReading?>(null) }
+    var manualCompassReading by remember { mutableStateOf<CompassReading?>(null) }
+    var compassTrust by remember { mutableStateOf(CompassTrust.Good) }
+    val currentExpectedFieldStrengthMicroTesla by rememberUpdatedState(expectedFieldStrengthMicroTesla)
 
-    val headingDegrees = rotationVectorHeadingDegrees
-        ?: geomagneticRotationHeadingDegrees
-        ?: manualCompassHeadingDegrees
+    val reading = rotationVectorReading
+        ?: geomagneticRotationReading
+        ?: manualCompassReading
 
     DisposableEffect(
         enabled,
@@ -908,28 +1014,42 @@ private fun rememberCompassState(enabled: Boolean): CompassState {
         val magneticValues = FloatArray(3)
         var hasGravityValues = false
         var hasMagneticValues = false
+        var magnetometerAccuracy: Int? = null
+        var trustState = CompassTrustState()
         var registered = false
+
+        fun refreshCompassTrust() {
+            val activeReading = rotationVectorReading ?: geomagneticRotationReading ?: manualCompassReading
+            trustState = trustState.next(
+                sample = CompassTrustSample(
+                    magnetometerAccuracy = magnetometerAccuracy,
+                    headingAccuracyDegrees = activeReading?.headingAccuracyDegrees,
+                    fieldStrengthMicroTesla = if (hasMagneticValues) vectorMagnitude(magneticValues) else null,
+                    expectedFieldStrengthMicroTesla = currentExpectedFieldStrengthMicroTesla,
+                ),
+                nowMs = SystemClock.elapsedRealtime(),
+            )
+            if (compassTrust != trustState.trust) {
+                compassTrust = trustState.trust
+            }
+        }
 
         val listener = object : SensorEventListener {
             override fun onSensorChanged(event: SensorEvent) {
                 when (event.sensor.type) {
                     Sensor.TYPE_ROTATION_VECTOR -> {
-                        val rotationMatrix = FloatArray(9)
-                        SensorManager.getRotationMatrixFromVector(rotationMatrix, event.values)
-                        val rawHeadingDegrees = azimuthDegreesFromRotationMatrix(context, rotationMatrix)
-                        rotationVectorHeadingDegrees = smoothedCompassHeading(
-                            currentHeadingDegrees = rotationVectorHeadingDegrees,
-                            candidateHeadingDegrees = rawHeadingDegrees,
+                        rotationVectorReading = compassReadingFromRotationVector(
+                            context = context,
+                            values = event.values,
+                            previousReading = rotationVectorReading,
                         )
                     }
 
                     Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR -> {
-                        val rotationMatrix = FloatArray(9)
-                        SensorManager.getRotationMatrixFromVector(rotationMatrix, event.values)
-                        val rawHeadingDegrees = azimuthDegreesFromRotationMatrix(context, rotationMatrix)
-                        geomagneticRotationHeadingDegrees = smoothedCompassHeading(
-                            currentHeadingDegrees = geomagneticRotationHeadingDegrees,
-                            candidateHeadingDegrees = rawHeadingDegrees,
+                        geomagneticRotationReading = compassReadingFromRotationVector(
+                            context = context,
+                            values = event.values,
+                            previousReading = geomagneticRotationReading,
                         )
                     }
 
@@ -947,6 +1067,7 @@ private fun rememberCompassState(enabled: Boolean): CompassState {
                             destination = magneticValues,
                             hasPreviousValues = hasMagneticValues,
                         )
+                        magnetometerAccuracy = event.accuracy
                     }
                 }
 
@@ -959,16 +1080,25 @@ private fun rememberCompassState(enabled: Boolean): CompassState {
                         magneticValues,
                     )
                     if (matrixReady) {
-                        val rawHeadingDegrees = azimuthDegreesFromRotationMatrix(context, rotationMatrix)
-                        manualCompassHeadingDegrees = smoothedCompassHeading(
-                            currentHeadingDegrees = manualCompassHeadingDegrees,
-                            candidateHeadingDegrees = rawHeadingDegrees,
+                        manualCompassReading = compassReadingFromRotationMatrix(
+                            context = context,
+                            rotationMatrix = rotationMatrix,
+                            previousReading = manualCompassReading,
+                            headingAccuracyDegrees = null,
                         )
                     }
                 }
+                refreshCompassTrust()
             }
 
-            override fun onAccuracyChanged(sensor: Sensor?, sensorAccuracy: Int) = Unit
+            override fun onAccuracyChanged(sensor: Sensor?, sensorAccuracy: Int) {
+                // The fused rotation vectors' own accuracy field differs between vendors;
+                // the magnetometer's calibration status is the dependable signal.
+                if (sensor?.type == Sensor.TYPE_MAGNETIC_FIELD) {
+                    magnetometerAccuracy = sensorAccuracy
+                    refreshCompassTrust()
+                }
+            }
         }
 
         fun registerSensors() {
@@ -1019,18 +1149,59 @@ private fun rememberCompassState(enabled: Boolean): CompassState {
     }
 
     return CompassState(
-        headingDegrees = headingDegrees,
+        headingDegrees = reading?.headingDegrees,
         hasCompass = hasCompass,
+        isTooTilted = reading?.isTooTilted == true,
+        trust = compassTrust,
     )
 }
 
-private fun magneticDeclinationDegrees(location: QiblaLocationState): Float {
+private fun compassReadingFromRotationVector(
+    context: Context,
+    values: FloatArray,
+    previousReading: CompassReading?,
+): CompassReading {
+    val rotationMatrix = FloatArray(9)
+    SensorManager.getRotationMatrixFromVector(rotationMatrix, values)
+    return compassReadingFromRotationMatrix(
+        context = context,
+        rotationMatrix = rotationMatrix,
+        previousReading = previousReading,
+        headingAccuracyDegrees = headingAccuracyDegreesFromRotationVector(values),
+    )
+}
+
+private fun compassReadingFromRotationMatrix(
+    context: Context,
+    rotationMatrix: FloatArray,
+    previousReading: CompassReading?,
+    headingAccuracyDegrees: Float?,
+): CompassReading {
+    val rawHeadingDegrees = azimuthDegreesFromRotationMatrix(context, rotationMatrix)
+    return CompassReading(
+        headingDegrees = smoothedCompassHeading(
+            currentHeadingDegrees = previousReading?.headingDegrees,
+            candidateHeadingDegrees = rawHeadingDegrees,
+        ),
+        isTooTilted = isPhoneTooTilted(
+            tiltDegrees = screenTiltDegrees(rotationMatrix),
+            wasTooTilted = previousReading?.isTooTilted == true,
+        ),
+        headingAccuracyDegrees = headingAccuracyDegrees,
+    )
+}
+
+private fun geomagneticFieldAt(location: QiblaLocationState): GeomagneticField {
     return GeomagneticField(
         location.latitude.toFloat(),
         location.longitude.toFloat(),
         location.altitudeMeters.toFloat(),
         System.currentTimeMillis(),
-    ).declination
+    )
+}
+
+private fun vectorMagnitude(values: FloatArray): Float {
+    return sqrt(values[0] * values[0] + values[1] * values[1] + values[2] * values[2])
 }
 
 private fun smoothedCompassHeading(currentHeadingDegrees: Float?, candidateHeadingDegrees: Float): Float {

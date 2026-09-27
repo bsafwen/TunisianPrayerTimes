@@ -1041,7 +1041,7 @@ fun MainScreen(
                     }
 
                     MainDestination.Qibla -> {
-                        QiblaCard()
+                        QiblaCard(selectedDelegationId = delegationId)
                     }
                     MainDestination.Adhkar -> Unit
                 }

@@ -87,6 +87,7 @@
     <string name="qibla_title">اتجاه القبلة</string>
     <string name="qibla_subtitle">استخدم البوصلة لتوجيه أعلى الهاتف نحو القبلة.</string>
     <string name="qibla_location_selected">حسب المعتمدية: %1$s</string>
+    <string name="qibla_location_selected_locating">حسب المعتمدية: %1$s · جاري تحديد موقعك…</string>
     <string name="qibla_location_current">حسب موقعك الحالي</string>
     <string name="qibla_location_required">حدد موقع الهاتف لحساب اتجاه القبلة</string>
     <string name="qibla_location_default">تونس</string>
@@ -110,7 +111,10 @@
     <string name="qibla_compass_unavailable">البوصلة غير متاحة على هذا الجهاز</string>
     <string name="qibla_compass_settling">ثبّت الهاتف قليلًا حتى تستقر البوصلة</string>
     <string name="qibla_compass_unstable">البوصلة غير مستقرة. أبق الهاتف ثابتًا لثانيتين.</string>
-    <string name="qibla_compass_calibrate">لدقة أعلى، ارسم علامة ∞ بالهاتف في الهواء مرتين بعيدًا عن المعادن، ثم اتبع السهم.</string>
+    <string name="qibla_compass_calibrate">البوصلة تحتاج إلى معايرة: ارسم علامة ∞ بالهاتف في الهواء مرتين بعيدًا عن المعادن.</string>
+    <string name="qibla_compass_interference">قد توجد معادن أو مغناطيس قرب الهاتف. ابتعد عنها قليلًا، ثم ارسم علامة ∞ بالهاتف في الهواء.</string>
+    <string name="qibla_hold_phone_flat">ضع الهاتف أفقيًا لتحديد القبلة</string>
+    <string name="qibla_aligned_unverified">الاتجاه تقريبي. عاير البوصلة للتأكد.</string>
     <string name="qibla_kaaba_marker">الكعبة</string>
     <string name="prayer_fajr">الفجر</string>
     <string name="prayer_dhuhr">الظهر</string>
