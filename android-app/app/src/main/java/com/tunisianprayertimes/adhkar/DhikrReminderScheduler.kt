@@ -36,6 +36,7 @@ object DhikrReminderScheduler {
     const val EXTRA_OCCURRENCE_ID = "com.tunisianprayertimes.extra.DHIKR_OCCURRENCE_ID"
     internal const val ACTION_REMIND = "com.tunisianprayertimes.action.DHIKR_REMIND"
     internal const val ACTION_SNOOZE = "com.tunisianprayertimes.action.DHIKR_SNOOZE"
+    internal const val ACTION_DONE = "com.tunisianprayertimes.action.DHIKR_DONE"
     internal const val WORK_NAME = "adhkar_schedule_repair"
     internal val schedulingLock = Any()
     private const val PREFS = "adhkar_schedule_v2"
@@ -76,6 +77,10 @@ object DhikrReminderScheduler {
         DhikrCatalog.find(id) != null || DhikrRepository(context).state.value.customEntries.any { it.id == id }
     private fun hasReminderContent(state: DhikrState, rule: DhikrReminder): Boolean =
         rule.collection?.let { state.collectionEntries(it).isNotEmpty() } ?: true
+    internal fun isCollectionReadingDone(context: Context, state: DhikrState, rule: DhikrReminder, at: Long): Boolean =
+        rule.collection?.let { category ->
+            state.isCollectionPeriodComplete(category, collectionReadingPeriodKey(context, category, null, at))
+        } == true
     internal fun structuralError(context: Context, rule: DhikrReminder): String? = when {
         rule.id.isBlank() || '|' in rule.id || !isKnownDhikr(context, rule.dhikrId) -> "اختر ذكرًا."
         rule.targetCount !in 1..100_000 -> "أدخل هدفًا بين 1 و100,000."
@@ -168,8 +173,9 @@ object DhikrReminderScheduler {
         val scheduled = prefs.getString("event:" + rule.id, null)?.let { runCatching { JSONObject(it) }.getOrNull() }
         for (window in windows(context, rule, now)) {
             val occurrence = state.occurrences[window.progressKey]
-            if (occurrence != null && (occurrence.status == DhikrOccurrenceStatus.SKIPPED ||
-                    occurrence.status == DhikrOccurrenceStatus.REPLACED || occurrence.count >= occurrence.target)) continue
+            if (occurrence != null && (occurrence.status != DhikrOccurrenceStatus.OPEN ||
+                    occurrence.count >= occurrence.target)) continue
+            if (isCollectionReadingDone(context, state, rule, maxOf(now, window.startMillis))) continue
             if (scheduled?.optString("occurrence") == window.progressKey &&
                 scheduled.optString("signature") == window.startMillis.toString() + ":" + window.endMillis + ":" + rule.toJson() &&
                 !prefs.contains("done:" + scheduled.optString("eventId")) && scheduled.optLong("at") < window.endMillis) {
@@ -263,6 +269,7 @@ object DhikrReminderScheduler {
             for (window in windows(app, rule, nowMillis)) {
                 val occurrence = repo.ensureOccurrence(rule, window)
                 if (occurrence.status != DhikrOccurrenceStatus.OPEN || occurrence.count >= occurrence.target) continue
+                if (isCollectionReadingDone(app, repo.state.value, rule, maxOf(nowMillis, window.startMillis))) continue
                 val slots = nudgeSlots(app, rule, window)
                 val snooze = occurrence.snoozedUntilMillis
                 val previous = prefs.getString("event:" + rule.id, null)?.let { runCatching { JSONObject(it) }.getOrNull() }
@@ -341,6 +348,7 @@ object DhikrReminderScheduler {
                 !activeInterval ||
                 rules.none { it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision } ||
                 !hasReminderContent(repo.state.value, rule) ||
+                rule?.let { isCollectionReadingDone(app, repo.state.value, it, nowMillis) } == true ||
                 occurrence.snoozedUntilMillis > nowMillis || DhikrReadingPresence.occurrenceId == occurrence.id ||
                 !notificationsEnabled(app, rule?.vibrate ?: true)) manager(app).cancel(notification.tag, notification.id)
         }
@@ -355,6 +363,11 @@ object DhikrReminderScheduler {
     internal fun receive(context: Context, intent: Intent, now: Long = System.currentTimeMillis()): Unit = synchronized(schedulingLock) {
         val prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
         val repo = DhikrRepository(context)
+        if (intent.action == ACTION_DONE) {
+            val id = intent.getStringExtra("occurrence") ?: return@synchronized
+            repo.markDone(id, now)
+            return@synchronized
+        }
         if (intent.action == ACTION_SNOOZE) {
             val id = intent.getStringExtra("occurrence") ?: return@synchronized
             val occurrence = repo.state.value.occurrences[id] ?: return@synchronized
@@ -385,6 +398,7 @@ object DhikrReminderScheduler {
         ensureChannel(context)
         val eligible = hasContent && occurrence != null && window != null && occurrence.id == event.optString("occurrence") &&
             occurrence.status == DhikrOccurrenceStatus.OPEN && occurrence.count < occurrence.target &&
+            !isCollectionReadingDone(context, repo.state.value, rule!!, now) &&
             now in window.startMillis until window.endMillis && now >= event.optLong("at") &&
             (occurrence.snoozedUntilMillis <= now) &&
             event.optString("signature") == window.startMillis.toString() + ":" + window.endMillis + ":" + rule!!.toJson()
@@ -475,6 +489,11 @@ object DhikrReminderScheduler {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setTimeoutAfter((window.endMillis - now).coerceAtLeast(1)).addAction(0, "متابعة الذكر", open)
+        val done = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_DONE)
+            .setData(Uri.parse("tunisianprayertimes://adhkar/done/" + Uri.encode(occurrence.id)))
+            .putExtra("occurrence", occurrence.id)
+        builder.addAction(0, "تم", PendingIntent.getBroadcast(context, 0, done,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
         builder.setVibrate(if (rule?.vibrate == false) longArrayOf(0L) else longArrayOf(0, 250, 120, 250))
         if (now + 35 * 60_000L <= window.endMillis) {
             val snooze = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_SNOOZE)
