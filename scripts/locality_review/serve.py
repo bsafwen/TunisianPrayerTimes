@@ -141,6 +141,18 @@ def load_catalog(path):
                 abort("locations[%d].prayerSource.nameAr must be a string" % index)
             if not is_finite_number(source.get("lat")) or not is_finite_number(source.get("lng")):
                 abort("locations[%d].prayerSource coordinates must be finite numbers" % index)
+    aliases = catalog.get("legacyIdAliases", {})
+    if not isinstance(aliases, dict):
+        abort("catalog.legacyIdAliases must be an object")
+    alias_targets = set()
+    for old_id, current_id in aliases.items():
+        if not isinstance(old_id, str) or not old_id or old_id in seen_ids:
+            abort("legacyIdAliases keys must be retired non-empty location IDs")
+        if not isinstance(current_id, str) or current_id not in seen_ids:
+            abort("legacyIdAliases targets must be current location IDs")
+        if current_id in alias_targets:
+            abort("legacyIdAliases targets must be unique")
+        alias_targets.add(current_id)
     canonical = json.dumps(locations, ensure_ascii=False, sort_keys=True,
                            separators=(",", ":"), allow_nan=False).encode("utf-8")
     if hashlib.sha256(canonical).hexdigest() != fingerprint.lower():
@@ -232,6 +244,7 @@ class Store:
         self.catalog_fingerprint = catalog["catalogFingerprint"]
         self.location_fingerprints = {
             loc["id"]: loc["fingerprint"].lower() for loc in catalog["locations"]}
+        self.legacy_id_aliases = catalog.get("legacyIdAliases", {})
         self.log_path = os.path.join(data_dir, "responses.jsonl")
         self.summary_path = os.path.join(data_dir, "summary.json")
         self.lock = threading.RLock()
@@ -267,10 +280,11 @@ class Store:
             self._fail_log(where, "body fields are not in canonical form")
 
     def _apply(self, record):
+        effective_id = self.legacy_id_aliases.get(record["id"], record["id"])
         if record["verdict"] == "withdrawn":
-            self.latest.pop(record["id"], None)
+            self.latest.pop(effective_id, None)
         else:
-            self.latest[record["id"]] = record
+            self.latest[effective_id] = record
 
     def _load_log(self):
         try:
@@ -302,7 +316,8 @@ class Store:
             self.seen[request_id] = {"body": canonical_body(record), "record": record}
 
     def _is_current(self, record):
-        return self.location_fingerprints.get(record["id"]) == record["fingerprint"].lower()
+        effective_id = self.legacy_id_aliases.get(record["id"], record["id"])
+        return self.location_fingerprints.get(effective_id) == record["fingerprint"].lower()
 
     def _recount(self):
         counts = {"reviewed": 0, "looks_correct": 0, "problem": 0,
@@ -367,11 +382,13 @@ class Store:
 
 
 class App:
-    def __init__(self, catalog, store, token, index_path, verification=None, maps_config=None):
+    def __init__(self, catalog, store, token, index_path, verification=None, maps_config=None,
+                 catalog_file_sha256=None):
         self.catalog = catalog
         self.store = store
         self.token = token
         self.index_path = index_path
+        self.catalog_file_sha256 = catalog_file_sha256
         self.boundaries = BoundaryStore(catalog)
         self.verification = verification or load_scores(None, catalog)
         self.maps_config = maps_config or {"enabled": False}
@@ -488,6 +505,7 @@ class Handler(BaseHTTPRequestHandler):
             with app.store.lock:
                 payload = {"ok": True, "app": "manual-locality-review",
                            "catalogFingerprint": app.store.catalog_fingerprint,
+                           "catalogFileSha256": app.catalog_file_sha256,
                            "scoreReportSha256": app.verification.get("reportSha256"),
                            "mapsEnabled": app.maps_config.get("enabled", False),
                            "total": app.store.total,
@@ -671,7 +689,8 @@ def main(argv=None):
     store = Store(args.data_dir, catalog)
     store.write_summary()
     app = App(catalog, store, secrets.token_urlsafe(32),
-              os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.html"), verification, maps_config)
+              os.path.join(os.path.dirname(os.path.abspath(__file__)), "index.html"), verification, maps_config,
+              sha256_file(args.catalog))
     try:
         server = ThreadingHTTPServer(("127.0.0.1", args.port), Handler)
     except OSError as exc:

@@ -103,13 +103,16 @@ import kotlin.math.abs
     val canNavigate = session.itemIds.size > 1
     val canRemove = session.category != null || session.itemIds.size > 1
     val canCount = open && !complete
-    val canAdvanceFromCounter = complete && canNavigate
+    val canAdvanceOnTap = complete && canNavigate
     val canUndo = count > 0 && open
     val sessionDone = session.itemIds.count { it in session.skippedIds || (session.counts[it] ?: 0) >= state.target(session, it) }
     fun countOnce() {
         if (!canCount) return
         onCount(1)
         if (state.countHaptics) view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP)
+    }
+    fun activateDhikr() {
+        if (canAdvanceOnTap) onMove(1) else countOnce()
     }
     Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false, decorFitsSystemWindows = false)) {
         AdhkarDialogSystemBars()
@@ -209,7 +212,9 @@ import kotlin.math.abs
                         lineHeight = (state.textSize * 1.9f).sp, color = p.forest, textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.bodyLarge.copy(textDirection = TextDirection.ContentOrRtl),
                         modifier = Modifier.fillMaxWidth()
-                            .clickable(enabled = canCount, onClickLabel = "زيادة العدد", onClick = ::countOnce)
+                            .clickable(enabled = canCount || canAdvanceOnTap,
+                                onClickLabel = if (canAdvanceOnTap) "الانتقال إلى الذكر التالي" else "زيادة العدد",
+                                onClick = ::activateDhikr)
                             .testTag("adhkar_reader_text"))
                     Spacer(Modifier.height(20.dp))
                     if (entry.reference.isNotBlank() || entry.custom) {
@@ -255,12 +260,10 @@ import kotlin.math.abs
                     CounterButton(icon = R.drawable.ic_adhkar_plus, description = "زيادة العدد", enabled = canCount,
                         size = 60, onClick = ::countOnce, tag = "adhkar_increment")
                     Box(Modifier.size(124.dp).clip(CircleShape)
-                        .clickable(enabled = canCount || canAdvanceFromCounter) {
-                            if (canAdvanceFromCounter) onMove(1) else countOnce()
-                        }
+                        .clickable(enabled = canCount || canAdvanceOnTap, onClick = ::activateDhikr)
                         .testTag("adhkar_count")
                         .semantics {
-                            contentDescription = if (canAdvanceFromCounter) "الانتقال إلى الذكر التالي"
+                            contentDescription = if (canAdvanceOnTap) "الانتقال إلى الذكر التالي"
                                 else "احتساب قراءة واحدة لهذا الذكر"
                             stateDescription = latinNumber(count) + " من " + latinNumber(target)
                             liveRegion = LiveRegionMode.Polite

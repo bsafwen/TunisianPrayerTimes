@@ -313,23 +313,42 @@ private fun retainedPickerRepresentative(members: List<Locality>): Locality? =
             }
         }.thenBy { it.id })
 
-/** Merge only compiler-confirmed matches; homonyms elsewhere remain separate choices. */
+private fun mergedPickerRow(
+    canonical: Locality,
+    members: List<Locality>,
+    representative: Locality? = null,
+): Locality = if (members.size == 1 && representative == null) canonical else canonical.copy(
+    lat = representative?.lat ?: canonical.lat,
+    lng = representative?.lng ?: canonical.lng,
+    searchText = members.joinToString(" ") { it.searchText },
+    pickerMemberIds = members.flatMapTo(mutableSetOf()) { it.pickerMemberIds + it.id },
+)
+
+/** Merge confirmed matches while keeping every official sector selectable by its own ID. */
 internal fun groupPickerLocalities(localities: List<Locality>): List<Locality> =
-    localities.groupBy { it.pickerGroupId ?: it.id }.map { (groupId, members) ->
+    localities.groupBy { it.pickerGroupId ?: it.id }.flatMap { (groupId, members) ->
         val canonical = members.firstOrNull { it.id == groupId } ?: members.first()
-        if (members.size == 1) canonical else {
-            // Keep the display identity, but select its timetable from a retained
-            // locality point. Never substitute the prayer source's coordinates.
-            val representative = if (canonical.id.startsWith("delegation:")) {
-                retainedPickerRepresentative(members)
-            } else null
-            canonical.copy(
-                lat = representative?.lat ?: canonical.lat,
-                lng = representative?.lng ?: canonical.lng,
-                searchText = members.joinToString(" ") { it.searchText },
-                pickerMemberIds = members.flatMapTo(mutableSetOf()) { it.pickerMemberIds + it.id },
-            )
+        val representative = if (canonical.id.startsWith("delegation:")) {
+            retainedPickerRepresentative(members)
+        } else null
+        if (canonical.kind == "sector" || canonical.id != groupId) {
+            return@flatMap listOf(mergedPickerRow(canonical, members, representative))
         }
+        val sectors = members.filter { it.kind == "sector" && it.hasBoundary }
+        if (sectors.isEmpty()) {
+            return@flatMap listOf(mergedPickerRow(canonical, members, representative))
+        }
+        // A same-name point/delegation and official sector were previously one
+        // visible choice. Keep one row with the old reference point, but select
+        // the exact sector ID. Other sectors retain their own names and IDs.
+        val namedSector = sectors.firstOrNull { it.normalizedName == canonical.normalizedName }
+        val included = members.filter { it !in sectors || it.id == namedSector?.id }
+        val visible = mergedPickerRow(
+            namedSector ?: canonical,
+            included,
+            if (namedSector != null) representative ?: canonical else representative,
+        )
+        listOf(visible) + sectors.filterNot { it.id == namedSector?.id }
     }
 
 /** Distinguishes the kinds the picker labels differently, so classification happens once. */
@@ -590,7 +609,8 @@ object LocalityRepository {
         // when its name is currently displayed within a larger picker group.
         if (!localityId.startsWith("delegation:")) return localities.find { it.id == localityId }
         val members = localities.filter { (it.pickerGroupId ?: it.id) == localityId }
-        return groupPickerLocalities(members).singleOrNull()?.takeIf { it.id == localityId }
+        val delegation = members.firstOrNull { it.id == localityId } ?: return null
+        return mergedPickerRow(delegation, members, retainedPickerRepresentative(members))
     }
 
     fun selected(context: Context): Locality? {

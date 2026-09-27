@@ -4445,7 +4445,6 @@ private fun WakeAlarmCard(
                 onSkipNext = { alarm ->
                     coroutineScope.launch {
                         WakeAlarmScheduler.toggleSkipNextWakeOccurrence(context, alarm.id)
-                        onConfigChanged()
                     }
                 },
             )

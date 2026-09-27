@@ -31,6 +31,9 @@ const val EXTRA_AUTO_SILENCE_CONFLICT_PLAYBACK = "extra_auto_silence_conflict_pl
 const val EXTRA_AUTO_SILENCE_CONFLICT_PRAYER = "extra_auto_silence_conflict_prayer"
 const val EXTRA_AWAKE_CHECK_ENABLED = "extra_awake_check_enabled"
 const val EXTRA_AWAKE_CHECK_DELAY_MINUTES = "extra_awake_check_delay_minutes"
+const val EXTRA_AWAKE_CHECK_GROUP_SIZE = "extra_awake_check_group_size"
+const val EXTRA_AWAKE_CHECK_RINGTONE = "extra_awake_check_ringtone"
+const val EXTRA_AWAKE_CHECK_CUSTOM_RINGTONE_URI = "extra_awake_check_custom_ringtone_uri"
 const val EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS = "extra_awake_check_trigger_at_millis"
 const val EXTRA_WAKE_TRIGGER_AT_MILLIS = "extra_wake_trigger_at_millis"
 const val EXTRA_WAKE_OCCURRENCE_AT_MILLIS = "extra_wake_occurrence_at_millis"
@@ -83,6 +86,9 @@ data class WakeTriggerPayload(
     val autoSilenceConflictPrayer: Prayer? = null,
     val awakeCheckEnabled: Boolean,
     val awakeCheckDelayMinutes: Int = DEFAULT_AWAKE_CHECK_DELAY_MINUTES,
+    val awakeCheckGroupSize: Int = 1,
+    val awakeCheckRingtone: RingtonePreset? = null,
+    val awakeCheckCustomRingtoneUri: String? = null,
     val wakeUpCheckSteps: List<WakeUpCheckStep> = emptyList(),
     val wakeUpCheckChallenge: WakeUpCheckChallenge? = null,
     val wakeUpCheckSeed: Long? = null,
@@ -131,6 +137,9 @@ fun Intent.populateWakeTriggerPayload(
     autoSilenceConflictPrayer: Prayer? = null,
     awakeCheckEnabled: Boolean = true,
     awakeCheckDelayMinutes: Int = DEFAULT_AWAKE_CHECK_DELAY_MINUTES,
+    awakeCheckGroupSize: Int = 1,
+    awakeCheckRingtone: RingtonePreset? = null,
+    awakeCheckCustomRingtoneUri: String? = null,
     wakeUpCheckChallenge: WakeUpCheckChallenge? = null,
     wakeUpCheckSeed: Long? = null,
     isSubAlarm: Boolean,
@@ -163,6 +172,9 @@ fun Intent.populateWakeTriggerPayload(
     autoSilenceConflictPrayer?.let { putExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER, it.name) }
     putExtra(EXTRA_AWAKE_CHECK_ENABLED, awakeCheckEnabled)
     putExtra(EXTRA_AWAKE_CHECK_DELAY_MINUTES, awakeCheckDelayMinutes.normalizedAwakeCheckDelayMinutes())
+    putExtra(EXTRA_AWAKE_CHECK_GROUP_SIZE, awakeCheckGroupSize.coerceAtLeast(1))
+    awakeCheckRingtone?.let { putExtra(EXTRA_AWAKE_CHECK_RINGTONE, it.name) }
+    awakeCheckCustomRingtoneUri?.let { putExtra(EXTRA_AWAKE_CHECK_CUSTOM_RINGTONE_URI, it) }
     putExtra(EXTRA_WAKE_TRIGGER_AT_MILLIS, triggerAtMillis)
     putExtra(EXTRA_WAKE_OCCURRENCE_AT_MILLIS, occurrenceAtMillis)
     putExtra(EXTRA_IS_SUBALARM, isSubAlarm)
@@ -269,6 +281,10 @@ fun Intent.toWakeTriggerPayload(): WakeTriggerPayload? {
             EXTRA_AWAKE_CHECK_DELAY_MINUTES,
             DEFAULT_AWAKE_CHECK_DELAY_MINUTES,
         ).normalizedAwakeCheckDelayMinutes(),
+        awakeCheckGroupSize = getIntExtra(EXTRA_AWAKE_CHECK_GROUP_SIZE, 1).coerceAtLeast(1),
+        awakeCheckRingtone = getStringExtra(EXTRA_AWAKE_CHECK_RINGTONE)
+            ?.let { raw -> runCatching { RingtonePreset.valueOf(raw) }.getOrNull() },
+        awakeCheckCustomRingtoneUri = getStringExtra(EXTRA_AWAKE_CHECK_CUSTOM_RINGTONE_URI),
         wakeUpCheckSteps = wakeUpCheckSteps,
         wakeUpCheckChallenge = wakeUpCheckChallenge,
         wakeUpCheckSeed = wakeUpCheckSeed,
@@ -314,6 +330,9 @@ fun WakeTriggerPayload.toBundle(): Bundle =
         autoSilenceConflictPrayer = autoSilenceConflictPrayer,
         awakeCheckEnabled = awakeCheckEnabled,
         awakeCheckDelayMinutes = awakeCheckDelayMinutes,
+        awakeCheckGroupSize = awakeCheckGroupSize,
+        awakeCheckRingtone = awakeCheckRingtone,
+        awakeCheckCustomRingtoneUri = awakeCheckCustomRingtoneUri,
         wakeUpCheckChallenge = wakeUpCheckChallenge,
         wakeUpCheckSeed = wakeUpCheckSeed,
         isSubAlarm = isSubAlarm,

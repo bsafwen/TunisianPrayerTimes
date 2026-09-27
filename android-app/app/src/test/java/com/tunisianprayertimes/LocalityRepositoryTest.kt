@@ -108,6 +108,56 @@ class LocalityRepositoryTest {
         assertFalse(rows.last().representsSelection("suburb"))
     }
 
+    @Test fun `Mahdia namesake imadas select their sectors without duplicate delegation rows`() {
+        val all = LocalityRepository.loadAll(context)
+        val sources = GouvernoratRepository.loadAllDelegations(context)
+        val picker = LocalityRepository.loadAvailable(context, sources)
+        listOf(
+            Triple("osm:relation:7152189", "delegation:429", "شربان"),
+            Triple("osm:relation:7152235", "delegation:430", "هبيرة"),
+            Triple("osm:relation:7152253", "delegation:428", "السواسي"),
+        ).forEach { (sectorId, delegationId, name) ->
+            val row = picker.single { it.id == sectorId }
+            assertEquals(name, row.name)
+            assertEquals("sector", row.kind)
+            assertTrue(row.hasBoundary)
+            assertEquals(1, picker.count { it.governorateId == 345 && it.name == name })
+            assertTrue(row.representsSelection(delegationId))
+            val savedDelegation = LocalityRepository.manualSelection(context, delegationId)!!
+            assertEquals(delegationId, savedDelegation.id)
+            assertEquals(
+                withAvailablePrayerSource(savedDelegation, sources)?.delegationId,
+                withAvailablePrayerSource(row, sources)?.delegationId,
+            )
+        }
+        val sectorIds = all.filter { it.kind == "sector" }.mapTo(mutableSetOf()) { it.id }
+        assertEquals(sectorIds, picker.filter { it.kind == "sector" }.mapTo(mutableSetOf()) { it.id })
+        assertEquals(sectorIds.size, picker.count { it.id in sectorIds })
+    }
+
+    @Test fun `different sector and delegation names remain separate choices`() {
+        val picker = LocalityRepository.loadAvailable(context, GouvernoratRepository.loadAllDelegations(context))
+        val sector = picker.single { it.id == "osm:relation:7095862" }
+        val delegation = picker.single { it.id == "delegation:553" }
+        assertEquals("وادي الليل", sector.name)
+        assertEquals("واد الليل", delegation.name)
+        assertFalse(delegation.representsSelection(sector.id))
+    }
+
+    @Test fun `namesake village and suburb groups keep official sector IDs`() {
+        val picker = LocalityRepository.loadAvailable(context, GouvernoratRepository.loadAllDelegations(context))
+        listOf(
+            Triple("osm:relation:7095859", "osm:way:456466522", "القباعة"),
+            Triple("osm:relation:7201552", "osm:node:1143501777", "الملاسين"),
+        ).forEach { (sectorId, oldPointId, name) ->
+            val row = picker.single { it.id == sectorId }
+            assertEquals(name, row.name)
+            assertEquals("sector", row.kind)
+            assertTrue(row.representsSelection(oldPointId))
+            assertFalse(picker.any { it.id == oldPointId })
+        }
+    }
+
     @Test fun `nearest timetable name does not make a place part of its delegation in search`() {
         val source = Delegation(id = 1, nomAr = "مصدر قريب", nomFr = "Nearby source", nomEn = "Nearby source", lat = 36.8, lng = 10.1)
         val governor = Gouvernorat(id = 1, nomAr = "ولاية", nomFr = "Governorate", nomEn = "Governorate", delegations = listOf(source))

@@ -27,6 +27,27 @@ class WakeAlarmQueue {
 
     fun pendingEventIds(): List<String> = pending.map { it.eventId }
 
+    fun activeOccurrenceForAlarm(alarmId: String): Long? {
+        current?.takeIf { payload -> wakeAlarmIdFromEventId(payload.eventId) == alarmId }
+            ?.let { payload -> return payload.resolvedOccurrenceAtMillis() }
+        return pending
+            .filter { payload -> wakeAlarmIdFromEventId(payload.eventId) == alarmId }
+            .maxOfOrNull { payload -> payload.resolvedOccurrenceAtMillis() }
+    }
+
+    /** Stop all playback already delivered for one occurrence, preserving other alarms. */
+    fun discardOccurrence(alarmId: String, occurrenceAtMillis: Long): Boolean {
+        val removedCurrent = current?.let { payload ->
+            wakeAlarmIdFromEventId(payload.eventId) == alarmId &&
+                payload.resolvedOccurrenceAtMillis() == occurrenceAtMillis
+        } == true
+        val removedPending = removePendingForSkippedOccurrence(alarmId, occurrenceAtMillis) > 0
+        if (removedCurrent) {
+            current = pending.removeFirstOrNull()
+        }
+        return removedCurrent || removedPending
+    }
+
     /** Drop queued triggers belonging to the recurring occurrence just marked to skip. */
     fun removePendingForSkippedOccurrence(alarmId: String, occurrenceAtMillis: Long): Int {
         val key = alarmId to occurrenceAtMillis

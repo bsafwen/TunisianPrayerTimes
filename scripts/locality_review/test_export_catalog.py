@@ -173,6 +173,108 @@ class ExportCatalogGroupedRowsTest(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "missing from the helper"):
                 export_catalog.export_catalog(pins, root / "catalog.json")
 
+    def test_exact_mahdia_imadas_replace_namesake_delegations(self):
+        cases = [
+            ("osm:relation:7152189", 429, "شربان", "Chorbane"),
+            ("osm:relation:7152235", 430, "هبيرة", "Hebira"),
+            ("osm:relation:7152253", 428, "السواسي", "Essouassi"),
+            ("osm:relation:7095862", 553, "وادي الليل", "Oued Ellil"),
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            features, helper_rows, delegations = [], [], []
+            for index, (sector_id, delegation_id, name, alias) in enumerate(cases):
+                delegation_name = "واد الليل" if delegation_id == 553 else name
+                feature = {
+                    "id": sector_id, "name": name, "aliases": [alias],
+                    "contextAliases": [f"Délégation {alias}"],
+                    "parentName": f"معتمدية {delegation_name}",
+                    "governorateId": 345, "delegationId": delegation_id,
+                    "kind": "sector", "hasBoundary": True,
+                    "lat": 35.2 + index / 100, "lng": 10.2 + index / 100,
+                    "pickerGroupId": f"delegation:{delegation_id}",
+                    "offset": index * 4, "length": 4,
+                }
+                features.append(feature)
+                helper_rows.append({
+                    "id": f"delegation:{delegation_id}", "name": delegation_name,
+                    "aliases": [alias], "contextAliases": [f"Délégation {alias}"],
+                    "parentName": "المهدية", "governorate": "المهدية",
+                    "governorateFr": "Mahdia", "delegationId": delegation_id,
+                    "kind": "delegation", "hasBoundary": False,
+                    "lat": 35.21 + index / 100, "lng": 10.21 + index / 100,
+                    "members": [f"delegation:{delegation_id}", sector_id],
+                    "fingerprint": f"delegation-{delegation_id}",
+                })
+                delegations.append({
+                    "id": delegation_id, "nomAr": delegation_name,
+                    "lat": 35.2 + index / 100, "lng": 10.2 + index / 100,
+                })
+            metadata_pin = pin_json(root / "metadata.json", {"features": features})
+            helper_pin = pin_bytes(root / "helper.py", (
+                "def catalog():\n"
+                f"    return ({metadata_pin['sha256']!r}, {helper_rows!r})\n"
+            ).encode("utf-8"))
+            pins = {
+                "helper": helper_pin,
+                "metadata": metadata_pin,
+                "binary": pin_bytes(root / "binary.bin", b"abcdefghijklmnop"),
+                "governors": pin_json(root / "governors.json", {
+                    "gouvernorats": [{"delegations": delegations}],
+                }),
+                "displayNames": pin_json(root / "names.json", {"names": []}),
+                "coverage": pin_json(root / "coverage.json", {
+                    "prayerSelection": {
+                        "currentManualSelections": [{
+                            "id": "delegation:429", "lat": 35.21, "lng": 10.21,
+                            "sourceId": 430,
+                        }],
+                        "currentSourceIds": [row[1] for row in cases],
+                    },
+                }),
+            }
+            pins_file = root / "pins.json"
+            pins_file.write_text(json.dumps(pins), encoding="utf-8")
+            output = root / "catalog.json"
+            export_catalog.export_catalog(pins_file, output)
+            by_id = {row["id"]: row for row in json.loads(output.read_text(encoding="utf-8"))["locations"]}
+            self.assertEqual(len(by_id), 5)
+            for sector_id, delegation_id, name, alias in cases[:3]:
+                self.assertNotIn(f"delegation:{delegation_id}", by_id)
+                sector = by_id[sector_id]
+                self.assertEqual((name, "sector", True),
+                                 (sector["nameAr"], sector["kind"], sector["hasBoundary"]))
+                self.assertIn(alias, sector["aliases"])
+                self.assertEqual(sector["prayerSource"]["id"],
+                                 430 if delegation_id == 429 else delegation_id)
+            self.assertEqual(by_id["osm:relation:7095862"]["nameAr"], "وادي الليل")
+            self.assertEqual(by_id["delegation:553"]["nameAr"], "واد الليل")
+
+    def test_namesake_point_group_promotes_official_sector(self):
+        point_id = "osm:way:456466522"
+        sector_id = "osm:relation:7095859"
+        feature = {
+            "id": sector_id, "name": "القباعة", "aliases": ["El Kobbâa"],
+            "contextAliases": ["وادي الليل"], "parentName": "معتمدية وادي الليل",
+            "governorateId": 360, "delegationId": 633,
+            "kind": "sector", "hasBoundary": True,
+            "lat": 36.82, "lng": 10.06, "pickerGroupId": point_id,
+            "offset": 0, "length": 4,
+        }
+        by_id = {point_id: {
+            "id": point_id, "name": "القباعة", "aliases": ["El Kobbaa"],
+            "contextAliases": [], "governorate": "منوبة", "governorateFr": "Manouba",
+            "delegationId": 633, "kind": "village",
+            "lat": 36.821, "lng": 10.061,
+            "members": [point_id, sector_id],
+        }}
+        preferred = export_catalog._expose_grouped_sectors(by_id, {sector_id: feature}, b"abcd", {})
+        self.assertEqual(preferred, {point_id: sector_id})
+        self.assertEqual(export_catalog._resolve_selectable_ids(
+            [point_id, sector_id], by_id, {sector_id: feature}, preferred), [sector_id])
+        self.assertEqual((by_id[sector_id]["lat"], by_id[sector_id]["lng"]), (36.821, 10.061))
+        self.assertEqual(by_id[sector_id]["geometrySha256"], hashlib.sha256(b"abcd").hexdigest())
+
 
 if __name__ == "__main__":
     unittest.main()
