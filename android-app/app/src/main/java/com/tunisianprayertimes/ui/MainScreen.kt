@@ -17,6 +17,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.expandVertically
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.BorderStroke
@@ -52,6 +53,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -375,6 +377,7 @@ fun MainScreen(
     }
     var delegationId by rememberSaveable { mutableIntStateOf(PrefsManager.getDelegationId(context)) }
     var locationPickerRequested by remember { mutableStateOf(false) }
+    var prayerTabSettingsOpen by rememberSaveable { mutableStateOf(false) }
     DisposableEffect(context) {
         // Background location updates must refresh the timetable alongside the label.
         val unsubscribe = PrefsManager.observeLocationSelection(context) {
@@ -732,20 +735,15 @@ fun MainScreen(
                     .padding(horizontal = 16.dp)
             ) {
                 if (selectedDestination == MainDestination.Today) {
-                    FlowRow(
+                    // The location is the page header: the bottom tab already names the page,
+                    // and the place is what decides every time shown below it.
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 12.dp, bottom = 10.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalArrangement = Arrangement.spacedBy(8.dp),
-                        itemVerticalAlignment = Alignment.CenterVertically,
+                            .padding(top = 8.dp, bottom = 10.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
-                        Text(
-                            text = stringResource(R.string.prayer_page_title),
-                            fontSize = 23.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = GreenPrimaryDark,
-                        )
                         LocationPickerCard(
                             delegationId = delegationId,
                             openRequested = locationPickerRequested,
@@ -759,8 +757,9 @@ fun MainScreen(
                                 autoSilenceEnabled = false
                                 PrefsManager.setEnabled(context, false)
                             },
-                            modifier = Modifier.widthIn(max = 160.dp),
+                            modifier = Modifier.weight(1f),
                         )
+                        PrayerTabSettingsButton(onClick = { prayerTabSettingsOpen = true })
                     }
                 } else {
                     Text(
@@ -787,6 +786,7 @@ fun MainScreen(
                             manualTargetPrayer = manualTargetPrayer,
                             manualSilenceEndsAtMillis = manualSilenceEndsAtMillis,
                             wakeSilenceUntilAlarmActive = wakeSilenceUntilAlarmActive,
+                            autoSilenceEnabled = autoSilenceEnabled,
                         )
 
                         AnimatedVisibility(
@@ -841,26 +841,7 @@ fun MainScreen(
                             }
                         )
 
-                        SunriseAndNightTimesCard(
-                            delegationId = delegationId,
-                            selectedDate = prayerTableSelectedDate,
-                            wakeAlarms = wakeAlarmsForPermission,
-                            onEditWakeAlarm = { alarmId ->
-                                wakeAlarmsForPermission
-                                    ?.firstOrNull { alarm -> alarm.id == alarmId }
-                                    ?.let { alarm ->
-                                        pendingReturnToPrayersAfterEdit = true
-                                        selectedDestinationIndex = mainDestinations.indexOf(MainDestination.Alarms)
-                                        editingWakeAlarm = alarm
-                                    }
-                            },
-                        )
-
-                        if (RamadanDetector.isRamadan()) {
-                            RamadanBadge()
-                        }
-
-                        ManualSilenceButton(
+                        ManualSilenceCard(
                             hasDnd = hasDnd,
                             manualSilenceMode = manualSilenceMode,
                             manualTargetPrayer = manualTargetPrayer,
@@ -896,10 +877,15 @@ fun MainScreen(
                                     PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
                                 }
                             },
+                            onDurationPresetSelected = { totalMinutes ->
+                                manualDurationHours = (totalMinutes / 60).toString()
+                                manualDurationMinutes = (totalMinutes % 60).toString()
+                                PrefsManager.setManualSilenceDurationMinutes(context, totalMinutes)
+                            },
                             onClick = {
                                 if (!notificationManager.isNotificationPolicyAccessGranted) {
                                     Toast.makeText(context, context.getString(R.string.toast_dnd_permission), Toast.LENGTH_SHORT).show()
-                                    return@ManualSilenceButton
+                                    return@ManualSilenceCard
                                 }
                                 if (manualSilenceActive || autoSilenceActive) {
                                     if (manualSilenceActive) {
@@ -923,7 +909,7 @@ fun MainScreen(
                                     )
                                     if (manualSilenceMode == ManualSilenceMode.DURATION && totalMinutes <= 0) {
                                         Toast.makeText(context, context.getString(R.string.error_manual_duration_required), Toast.LENGTH_SHORT).show()
-                                        return@ManualSilenceButton
+                                        return@ManualSilenceCard
                                     }
                                     val prayerEndsAtMillis = if (manualSilenceMode == ManualSilenceMode.UNTIL_PRAYER) {
                                         resolveManualSilencePrayerEndMillis(context, delegationId, manualTargetPrayer)
@@ -932,7 +918,7 @@ fun MainScreen(
                                     }
                                     if (manualSilenceMode == ManualSilenceMode.UNTIL_PRAYER && prayerEndsAtMillis == null) {
                                         Toast.makeText(context, context.getString(R.string.error_manual_prayer_time_unavailable), Toast.LENGTH_SHORT).show()
-                                        return@ManualSilenceButton
+                                        return@ManualSilenceCard
                                     }
 
                                     ensureCallTrackingPermission()
@@ -973,41 +959,59 @@ fun MainScreen(
                             }
                         )
 
-                        AutoSilenceCard(
-                            enabled = autoSilenceEnabled,
-                            onToggle = { enabled ->
-                                autoSilenceEnabled = enabled
-                                PrefsManager.setEnabled(context, enabled)
-                                AnalyticsTracker.autoSilenceStateChanged(context, enabled)
-                                if (enabled) {
-                                    if (hasDnd && hasAlarm) {
-                                        ensureCallTrackingPermission()
+                        SunriseAndNightTimesCard(
+                            delegationId = delegationId,
+                            selectedDate = prayerTableSelectedDate,
+                            wakeAlarms = wakeAlarmsForPermission,
+                            onEditWakeAlarm = { alarmId ->
+                                wakeAlarmsForPermission
+                                    ?.firstOrNull { alarm -> alarm.id == alarmId }
+                                    ?.let { alarm ->
+                                        pendingReturnToPrayersAfterEdit = true
+                                        selectedDestinationIndex = mainDestinations.indexOf(MainDestination.Alarms)
+                                        editingWakeAlarm = alarm
                                     }
-                                    ScheduleRefreshCoordinator.syncSilence(context)
-                                    Toast.makeText(context, context.getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
-                                } else {
-                                    ScheduleRefreshCoordinator.syncSilence(context)
-                                    Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
-                                }
-                                refreshSilenceState()
-                            }
+                            },
                         )
 
-                        CallEndVibrationCard(
-                            enabled = callEndVibrationEnabled,
-                            onToggle = { enabled ->
-                                callEndVibrationEnabled = enabled
-                                PrefsManager.setCallEndVibrationEnabled(context, enabled)
-                            }
-                        )
+                        if (RamadanDetector.isRamadan()) {
+                            RamadanBadge()
+                        }
 
-                        AutoLocationCard(
-                            enabled = autoLocationEnabled,
-                            onToggle = { enabled ->
-                                autoLocationEnabled = enabled
-                                PrefsManager.setAutoLocationUpdateEnabled(context, enabled)
-                            }
-                        )
+                        // Automatic silencing and the other tab settings live behind the settings
+                        // button beside the location header.
+                        if (prayerTabSettingsOpen) {
+                            PrayerTabSettingsSheet(
+                                autoSilenceEnabled = autoSilenceEnabled,
+                                onAutoSilenceChange = { enabled ->
+                                    autoSilenceEnabled = enabled
+                                    PrefsManager.setEnabled(context, enabled)
+                                    AnalyticsTracker.autoSilenceStateChanged(context, enabled)
+                                    if (enabled) {
+                                        if (hasDnd && hasAlarm) {
+                                            ensureCallTrackingPermission()
+                                        }
+                                        ScheduleRefreshCoordinator.syncSilence(context)
+                                        Toast.makeText(context, context.getString(R.string.toast_auto_enabled), Toast.LENGTH_SHORT).show()
+                                    } else {
+                                        ScheduleRefreshCoordinator.syncSilence(context)
+                                        Toast.makeText(context, context.getString(R.string.toast_auto_disabled), Toast.LENGTH_SHORT).show()
+                                    }
+                                    refreshSilenceState()
+                                },
+                                callEndVibrationEnabled = callEndVibrationEnabled,
+                                onCallEndVibrationChange = { enabled ->
+                                    callEndVibrationEnabled = enabled
+                                    PrefsManager.setCallEndVibrationEnabled(context, enabled)
+                                },
+                                autoLocationEnabled = autoLocationEnabled,
+                                onAutoLocationChange = { enabled ->
+                                    autoLocationEnabled = enabled
+                                    PrefsManager.setAutoLocationUpdateEnabled(context, enabled)
+                                },
+                                onDismiss = { prayerTabSettingsOpen = false },
+                            )
+                        }
 
                         Text(
                             text = stringResource(R.string.info_text),
@@ -1678,64 +1682,106 @@ private fun LocationPickerCard(
         }
     }
 
+    val locationTitle = selectedLocation.name
+        ?: if (selectedLocation.fromGps) stringResource(R.string.location_current_position)
+        else savedDelegation?.nomAr
+        ?: stringResource(R.string.hint_search_delegation)
+    val hasLocation = savedDelegation != null || selectedLocation.fromGps
+    val governorateName = remember(gouvernorats, delegationId) {
+        gouvernorats.firstOrNull { gov -> gov.delegations.any { it.id == delegationId } }?.nomAr
+    }
+    // Where the timetable comes from: the delegation (unless it is already the title)
+    // and its governorate, so repeated neighbourhood names stay unambiguous.
+    val placeContext = listOfNotNull(
+        savedDelegation?.nomAr?.takeIf { it != locationTitle },
+        governorateName?.takeIf { it != locationTitle && it != savedDelegation?.nomAr },
+    ).joinToString("، ")
+    val gpsSource = stringResource(R.string.location_header_from_gps)
+        .takeIf { selectedLocation.fromGps && selectedLocation.name != null }
+    val locationSubtitle = listOfNotNull(gpsSource, placeContext.takeIf { it.isNotEmpty() })
+        .joinToString(" · ")
+
     Column(modifier = modifier.testTag(TestTags.LOCATION_PICKER)) {
-        Card(
-            modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp),
-            shape = RoundedCornerShape(24.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
-            border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.2f)),
-            elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp),
-                verticalAlignment = Alignment.CenterVertically
+            // Full name, never truncated: a long name wraps instead of being cut off.
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .heightIn(min = 48.dp)
+                    .clip(RoundedCornerShape(12.dp))
+                    .clickable(
+                        role = Role.Button,
+                        onClickLabel = stringResource(R.string.location_change_action),
+                    ) {
+                        refreshSources()
+                        showSheet = true
+                    }
+                    .padding(vertical = 2.dp),
+                verticalArrangement = Arrangement.Center,
             ) {
-                Text(
-                    text = selectedLocation.name
-                        ?: if (selectedLocation.fromGps) stringResource(R.string.location_current_position)
-                        else savedDelegation?.nomAr
-                        ?: stringResource(R.string.hint_search_delegation),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = if (savedDelegation != null || selectedLocation.fromGps) GreenPrimaryDark else TextMuted,
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    modifier = Modifier
-                        .weight(1f)
-                        .heightIn(min = 48.dp)
-                        .clickable {
-                            refreshSources()
-                            showSheet = true
-                        }
-                        .padding(horizontal = 12.dp, vertical = 13.dp)
-                )
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .size(48.dp)
-                        .clip(CircleShape)
-                        .background(GreenPrimary.copy(alpha = 0.08f))
-                        .clickable(enabled = !locating) {
-                            if (DelegationLocator.hasLocationPermission(context)) {
-                                startLocationLookup()
-                            } else {
-                                AnalyticsTracker.permissionStepResult(
-                                    context = context,
-                                    permissionType = "location",
-                                    result = "request_opened",
-                                    entryPoint = "delegation_picker",
-                                )
-                                locationPermissionLauncher.launch(DelegationLocator.requestedPermissions)
-                            }
-                        }
-                ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
                     Icon(
                         painter = painterResource(R.drawable.ic_location),
-                        contentDescription = stringResource(R.string.gps_auto_detect),
+                        contentDescription = null,
                         tint = GreenPrimary,
-                        modifier = Modifier.size(20.dp)
+                        modifier = Modifier.size(20.dp),
+                    )
+                    Spacer(Modifier.width(4.dp))
+                    Text(
+                        text = locationTitle,
+                        fontSize = 22.sp,
+                        lineHeight = 28.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = if (hasLocation) GreenPrimaryDark else TextMuted,
+                        modifier = Modifier.weight(1f, fill = false),
+                    )
+                    Icon(
+                        painter = painterResource(R.drawable.ic_expand_more),
+                        contentDescription = null,
+                        tint = PrayerSilencePalette.SecondaryText,
+                        modifier = Modifier.size(22.dp),
                     )
                 }
+                if (locationSubtitle.isNotEmpty()) {
+                    Text(
+                        text = locationSubtitle,
+                        fontSize = 12.sp,
+                        lineHeight = 16.sp,
+                        color = PrayerSilencePalette.SecondaryText,
+                        modifier = Modifier.padding(start = 24.dp),
+                    )
+                }
+            }
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(GreenPrimary.copy(alpha = 0.08f))
+                    .clickable(enabled = !locating) {
+                        if (DelegationLocator.hasLocationPermission(context)) {
+                            startLocationLookup()
+                        } else {
+                            AnalyticsTracker.permissionStepResult(
+                                context = context,
+                                permissionType = "location",
+                                result = "request_opened",
+                                entryPoint = "delegation_picker",
+                            )
+                            locationPermissionLauncher.launch(DelegationLocator.requestedPermissions)
+                        }
+                    }
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_my_location),
+                    contentDescription = stringResource(R.string.gps_auto_detect),
+                    tint = GreenPrimary,
+                    modifier = Modifier.size(22.dp)
+                )
             }
         }
         if (savedSourceUnavailable) {
@@ -1822,6 +1868,7 @@ private fun TodayNextPrayerCard(
     manualTargetPrayer: Prayer,
     manualSilenceEndsAtMillis: Long,
     wakeSilenceUntilAlarmActive: Boolean,
+    autoSilenceEnabled: Boolean,
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -1907,6 +1954,7 @@ private fun TodayNextPrayerCard(
             isPhoneSilenced = isPhoneSilenced,
             hasDnd = hasDnd,
             silenceReason = silenceReason,
+            autoSilenceEnabled = autoSilenceEnabled,
         )
     }
 }
@@ -4888,17 +4936,52 @@ private fun NextPrayerHeroCard(
     isPhoneSilenced: Boolean,
     hasDnd: Boolean,
     silenceReason: PhoneSilenceReason?,
+    autoSilenceEnabled: Boolean,
 ) {
+    val context = LocalContext.current
     val prayerTimeText = String.format(Locale.US, "%02d:%02d", countdown.hour, countdown.minute)
-    val prayerTimeLineText = if (countdown.isTomorrow) {
-        stringResource(R.string.next_prayer_countdown_at_tomorrow, prayerTimeText)
-    } else {
-        stringResource(R.string.next_prayer_countdown_at, prayerTimeText)
-    }
     val remainingText = stringResource(
         R.string.next_prayer_countdown_remaining,
         formatCountdownRemaining(countdown.triggerAtMillis, currentTimeMillis),
     )
+    // Re-read the upcoming prayer's silence rule whenever it is edited in the list below.
+    var silenceRuleRevision by remember { mutableIntStateOf(0) }
+    DisposableEffect(context, countdown.prayer) {
+        val stopObservingConfig = PrefsManager.observeConfigChanges(context, countdown.prayer) {
+            silenceRuleRevision++
+        }
+        val stopObservingEnabled = PrefsManager.observePrayerEnabledChanges(context, countdown.prayer) {
+            silenceRuleRevision++
+        }
+        onDispose {
+            stopObservingConfig()
+            stopObservingEnabled()
+        }
+    }
+    val upcomingSilence = remember(countdown, autoSilenceEnabled, silenceRuleRevision) {
+        resolveUpcomingSilence(context, countdown)
+    }
+    // Always say what will happen at the next prayer; a missing Do Not Disturb
+    // permission is already explained by the phone-status notice above.
+    val silenceLine = if (!hasDnd) null else when (val plan = upcomingSilence) {
+        is UpcomingSilence.Window -> HeroSilenceLine(
+            text = stringResource(
+                R.string.next_prayer_silence_window,
+                silenceClockText(plan.window.startMinutes),
+                silenceClockText(plan.window.endMinutes),
+            ),
+            scheduled = true,
+        )
+        UpcomingSilence.AutoSilenceOff -> HeroSilenceLine(
+            text = stringResource(R.string.next_prayer_silence_off_auto),
+            scheduled = false,
+        )
+        UpcomingSilence.PrayerOff -> HeroSilenceLine(
+            text = stringResource(R.string.next_prayer_silence_off_prayer, prayerName),
+            scheduled = false,
+        )
+        null -> null
+    }
     val shape = MainHeroCardShape
     val silencedOverlayColor by animateColorAsState(
         targetValue = if (isPhoneSilenced) SilencedHeroStart.copy(alpha = 0.3f) else Color.Transparent,
@@ -4943,18 +5026,20 @@ private fun NextPrayerHeroCard(
                 NextPrayerHeroDetails(
                     prayer = countdown.prayer,
                     prayerName = prayerName,
-                    prayerTimeLineText = prayerTimeLineText,
+                    prayerTimeText = prayerTimeText,
+                    isTomorrow = countdown.isTomorrow,
+                    silenceLine = silenceLine,
                     remainingText = remainingText,
                     countdownPillBackgroundColor = countdownPillBackgroundColor,
                     countdownPillTextColor = countdownPillTextColor,
                     isPhoneSilenced = isPhoneSilenced,
                     hasDnd = hasDnd,
                     silenceReason = silenceReason,
-                    modifier = Modifier.width(maxWidth * 0.55f).align(Alignment.TopStart),
+                    modifier = Modifier.width(maxWidth * 0.6f).align(Alignment.TopStart),
                 )
                 NextPrayerHeroVerse(
                     modifier = Modifier
-                        .width(maxWidth * 0.45f)
+                        .width(maxWidth * 0.4f)
                         .padding(bottom = 4.dp)
                         .align(Alignment.BottomEnd),
                 )
@@ -4963,7 +5048,9 @@ private fun NextPrayerHeroCard(
                     NextPrayerHeroDetails(
                         prayer = countdown.prayer,
                         prayerName = prayerName,
-                        prayerTimeLineText = prayerTimeLineText,
+                        prayerTimeText = prayerTimeText,
+                        isTomorrow = countdown.isTomorrow,
+                        silenceLine = silenceLine,
                         remainingText = remainingText,
                         countdownPillBackgroundColor = countdownPillBackgroundColor,
                         countdownPillTextColor = countdownPillTextColor,
@@ -4983,8 +5070,10 @@ private fun NextPrayerHeroCard(
 private fun NextPrayerHeroDetails(
     prayer: Prayer,
     prayerName: String,
-    prayerTimeLineText: String,
+    prayerTimeText: String,
+    isTomorrow: Boolean,
     remainingText: String,
+    silenceLine: HeroSilenceLine?,
     countdownPillBackgroundColor: Color,
     countdownPillTextColor: Color,
     isPhoneSilenced: Boolean,
@@ -4995,10 +5084,12 @@ private fun NextPrayerHeroDetails(
     val largeText = LocalDensity.current.fontScale > 1.3f
     val prayerIconSize = 34.dp
     val prayerIconSpacing = 8.dp
-    val prayerTextInset = prayerIconSize + prayerIconSpacing
     val iconRes = when (prayer) {
-        Prayer.FAJR, Prayer.DHUHR, Prayer.ASR -> R.drawable.ic_adhkar_sun
-        Prayer.MAGHRIB, Prayer.ISHA -> R.drawable.ic_adhkar_moon
+        Prayer.FAJR -> R.drawable.ic_prayer_fajr_twilight
+        Prayer.DHUHR -> R.drawable.ic_prayer_dhuhr_sun
+        Prayer.ASR -> R.drawable.ic_prayer_asr_afternoon
+        Prayer.MAGHRIB -> R.drawable.ic_prayer_maghrib_sunset
+        Prayer.ISHA -> R.drawable.ic_prayer_isha_night
         Prayer.JOMOAA, Prayer.AID_FITR, Prayer.AID_ADHA -> R.drawable.ic_adhkar_mosque
     }
     Column(
@@ -5010,13 +5101,6 @@ private fun NextPrayerHeroDetails(
             fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
             color = Color.White.copy(alpha = 0.78f),
-            modifier = Modifier.padding(start = prayerTextInset),
-        )
-        PhoneStatusNotice(
-            isPhoneSilenced = isPhoneSilenced,
-            hasDnd = hasDnd,
-            silenceReason = silenceReason,
-            modifier = Modifier.padding(start = prayerTextInset),
         )
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -5036,23 +5120,43 @@ private fun NextPrayerHeroDetails(
                     modifier = Modifier.size(22.dp),
                 )
             }
-            Text(
-                text = prayerName,
-                fontSize = 29.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                maxLines = if (largeText) 2 else 1,
-                softWrap = largeText,
-                autoSize = if (largeText) null else TextAutoSize.StepBased(maxFontSize = 29.sp),
-            )
+            // Prayer and adhan time always share one line: the time keeps its size and a
+            // long name shrinks to fit instead of pushing the time onto a second line.
+            Row(
+                modifier = Modifier.weight(1f, fill = false),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Text(
+                    text = prayerName,
+                    fontSize = 29.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    maxLines = if (largeText) 2 else 1,
+                    softWrap = largeText,
+                    autoSize = if (largeText) null else TextAutoSize.StepBased(maxFontSize = 29.sp),
+                    modifier = Modifier.weight(1f, fill = false),
+                )
+                Text(
+                    text = prayerTimeText,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = GoldLight,
+                    maxLines = 1,
+                    softWrap = false,
+                )
+                if (isTomorrow) {
+                    Text(
+                        text = stringResource(R.string.next_prayer_countdown_tomorrow),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color.White.copy(alpha = 0.82f),
+                        maxLines = 1,
+                        softWrap = false,
+                    )
+                }
+            }
         }
-        Text(
-            text = prayerTimeLineText,
-            fontSize = 15.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = Color.White.copy(alpha = 0.9f),
-            modifier = Modifier.padding(start = prayerTextInset),
-        )
         Row(
             modifier = Modifier
                 .clip(RoundedCornerShape(50))
@@ -5077,6 +5181,45 @@ private fun NextPrayerHeroDetails(
                 tint = countdownPillTextColor,
                 modifier = Modifier.size(16.dp),
             )
+        }
+        // A single status line, most urgent first: what the phone is doing right now
+        // (silenced, or missing Do Not Disturb access), otherwise what this prayer brings.
+        val phoneStatusText = phoneStatusNoticeText(
+            context = LocalContext.current,
+            isPhoneSilenced = isPhoneSilenced,
+            hasDnd = hasDnd,
+            silenceReason = silenceReason,
+        )
+        if (phoneStatusText != null) {
+            PhoneStatusNotice(
+                isPhoneSilenced = isPhoneSilenced,
+                hasDnd = hasDnd,
+                silenceReason = silenceReason,
+            )
+        } else if (silenceLine != null) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(5.dp),
+            ) {
+                Icon(
+                    painter = painterResource(
+                        if (silenceLine.scheduled) R.drawable.ic_bell_off else R.drawable.ic_adhkar_bell,
+                    ),
+                    contentDescription = null,
+                    tint = Color.White.copy(alpha = if (silenceLine.scheduled) 0.86f else 0.7f),
+                    modifier = Modifier.size(13.dp),
+                )
+                Text(
+                    text = silenceLine.text,
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.White.copy(alpha = if (silenceLine.scheduled) 0.9f else 0.72f),
+                    maxLines = if (largeText) 2 else 1,
+                    softWrap = largeText,
+                    autoSize = if (largeText) null else TextAutoSize.StepBased(maxFontSize = 11.sp),
+                    modifier = Modifier.weight(1f, fill = false),
+                )
+            }
         }
     }
 }
@@ -5827,140 +5970,6 @@ private fun NumberInput(
 }
 
 @Composable
-private fun AutoSilenceCard(
-    enabled: Boolean,
-    onToggle: (Boolean) -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 12.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .toggleable(
-                    value = enabled,
-                    role = Role.Switch,
-                    onValueChange = onToggle,
-                )
-                .testTag(TestTags.AUTO_SILENCE_SWITCH)
-                .padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = stringResource(R.string.auto_silence),
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold,
-                color = TextDark,
-                modifier = Modifier.weight(1f)
-            )
-            Switch(
-                checked = enabled,
-                onCheckedChange = null,
-                colors = SwitchDefaults.colors(
-                    checkedThumbColor = Color.White,
-                    checkedTrackColor = GreenPrimary
-                )
-            )
-        }
-    }
-}
-
-@Composable
-private fun CallEndVibrationCard(
-    enabled: Boolean,
-    onToggle: (Boolean) -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 12.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .toggleable(
-                        value = enabled,
-                        role = Role.Switch,
-                        onValueChange = onToggle,
-                    )
-                    .testTag(TestTags.CALL_END_VIBRATION_SWITCH),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    text = stringResource(R.string.call_end_vibration_title),
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = TextDark,
-                    modifier = Modifier.weight(1f)
-                )
-                Switch(
-                    checked = enabled,
-                    onCheckedChange = null,
-                    colors = SwitchDefaults.colors(
-                        checkedThumbColor = Color.White,
-                        checkedTrackColor = GreenPrimary
-                    )
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun AutoLocationCard(
-    enabled: Boolean,
-    onToggle: (Boolean) -> Unit
-) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(top = 12.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .toggleable(
-                        value = enabled,
-                        role = Role.Switch,
-                        onValueChange = onToggle,
-                    )
-                    .testTag(TestTags.AUTO_LOCATION_SWITCH),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text(
-                    text = stringResource(R.string.auto_location_title),
-                    fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = TextDark,
-                    modifier = Modifier.weight(1f)
-                )
-                Switch(
-                    checked = enabled,
-                    onCheckedChange = null,
-                    colors = SwitchDefaults.colors(
-                        checkedThumbColor = Color.White,
-                        checkedTrackColor = GreenPrimary
-                    )
-                )
-            }
-        }
-    }
-}
-
-@Composable
 private fun RamadanBadge() {
     Text(
         text = stringResource(R.string.ramadan_active),
@@ -5976,8 +5985,15 @@ private fun RamadanBadge() {
     )
 }
 
+/** Durations offered as one-tap choices before the custom hours/minutes fields. */
+private val ManualSilenceDurationPresets = listOf(15, 30, 60, 120)
+
+/**
+ * Manual silencing: choose when ringing returns, then one clear action. While any
+ * silence is active the card collapses to what is happening and a stop action.
+ */
 @Composable
-private fun ManualSilenceButton(
+private fun ManualSilenceCard(
     hasDnd: Boolean,
     manualSilenceMode: ManualSilenceMode,
     manualTargetPrayer: Prayer,
@@ -5990,264 +6006,257 @@ private fun ManualSilenceButton(
     onTargetPrayerChange: (Prayer) -> Unit,
     onDurationHoursChange: (String) -> Unit,
     onDurationMinutesChange: (String) -> Unit,
-    onClick: () -> Unit
+    onDurationPresetSelected: (Int) -> Unit,
+    onClick: () -> Unit,
 ) {
     val context = LocalContext.current
-    val anySilenceActive = manualSilenceActive || autoSilenceActive
-    val manualUsesDuration = manualSilenceMode == ManualSilenceMode.DURATION
-    val manualUsesPrayer = manualSilenceMode == ManualSilenceMode.UNTIL_PRAYER
-    val bgColor by animateColorAsState(
-        targetValue = if (anySilenceActive && hasDnd) SilencedHeroEnd else GreenPrimary,
-        label = "buttonColor"
-    )
-
+    val silenceActive = (manualSilenceActive || autoSilenceActive) && hasDnd
     val resolvedTotalMinutes = resolveManualTotalMinutes(
         manualDurationHours, manualDurationMinutes,
-        PrefsManager.getManualSilenceDurationMinutes(context)
+        PrefsManager.getManualSilenceDurationMinutes(context),
     )
     val durationText = formatDurationText(resolvedTotalMinutes)
     val targetPrayerName = manualSilencePrayerName(manualTargetPrayer)
-    Card(
+    var customDurationOpen by rememberSaveable { mutableStateOf(false) }
+    val showCustomDuration = customDurationOpen || resolvedTotalMinutes !in ManualSilenceDurationPresets
+    val accent by animateColorAsState(
+        targetValue = if (silenceActive) SilencedHeroEnd else PrayerSilencePalette.InteractiveTeal,
+        label = "manualSilenceAccent",
+    )
+    val subtitle = when {
+        !silenceActive -> stringResource(R.string.manual_silence_subtitle_idle)
+        !manualSilenceActive -> stringResource(R.string.manual_silence_active_auto)
+        manualSilenceMode == ManualSilenceMode.UNTIL_PRAYER ->
+            stringResource(R.string.manual_silence_active_until_prayer, targetPrayerName)
+        manualSilenceMode == ManualSilenceMode.DURATION && manualSilenceEndsAtMillis > 0L ->
+            stringResource(R.string.manual_silence_active_until_time, formatTimeOfDay(manualSilenceEndsAtMillis))
+        else -> stringResource(R.string.manual_silence_active_until_stopped)
+    }
+    val shape = RoundedCornerShape(PrayerSilenceDimens.ContainerCorner)
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 16.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+            .padding(top = 12.dp)
+            .clip(shape)
+            .background(PrayerSilencePalette.Surface)
+            .border(1.dp, PrayerSilencePalette.SoftBorder, shape)
+            .animateContentSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(14.dp),
     ) {
-        Column(
-            modifier = Modifier.padding(16.dp)
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
-            Text(
-                text = stringResource(R.string.manual_silence_title),
-                fontSize = 15.sp,
-                fontWeight = FontWeight.Bold,
-                color = TextDark
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(RoundedCornerShape(12.dp))
+                    .background(accent.copy(alpha = 0.1f)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_bell_off),
+                    contentDescription = null,
+                    tint = accent,
+                    modifier = Modifier.size(22.dp),
+                )
+            }
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                Text(
+                    text = stringResource(
+                        if (silenceActive) R.string.manual_silence_active_title else R.string.manual_silence_title,
+                    ),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PrayerSilencePalette.PrimaryText,
+                )
+                Text(
+                    text = subtitle,
+                    fontSize = 12.5.sp,
+                    lineHeight = 17.sp,
+                    color = PrayerSilencePalette.SecondaryText,
+                )
+            }
+        }
+
+        if (!silenceActive) {
+            val modes = listOf(
+                ManualSilenceMode.UNTIL_STOPPED,
+                ManualSilenceMode.DURATION,
+                ManualSilenceMode.UNTIL_PRAYER,
             )
-
-            Spacer(Modifier.height(12.dp))
-
-            BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-                val fontScale = LocalDensity.current.fontScale
-                val minimumChoiceWidth = (92f * fontScale.coerceAtLeast(1f)).dp
-                val choiceCount = ((maxWidth + 8.dp) / (minimumChoiceWidth + 8.dp))
-                    .toInt().coerceIn(1, 3)
-                val choiceWidth = (maxWidth - 8.dp * (choiceCount - 1)) / choiceCount
-                FlowRow(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    maxItemsInEachRow = choiceCount,
-                ) {
-                    ManualSilenceModeChip(
-                        text = stringResource(R.string.manual_silence_mode_until),
-                        selected = manualSilenceMode == ManualSilenceMode.UNTIL_STOPPED,
-                        testTag = TestTags.MANUAL_SILENCE_MODE_UNTIL,
-                        onClick = { onModeChange(ManualSilenceMode.UNTIL_STOPPED) },
-                        modifier = Modifier.width(choiceWidth),
-                    )
-                    ManualSilenceModeChip(
-                        text = stringResource(R.string.manual_silence_mode_duration),
-                        selected = manualSilenceMode == ManualSilenceMode.DURATION,
-                        testTag = TestTags.MANUAL_SILENCE_MODE_DURATION,
-                        onClick = { onModeChange(ManualSilenceMode.DURATION) },
-                        modifier = Modifier.width(choiceWidth),
-                    )
-                    ManualSilenceModeChip(
-                        text = stringResource(R.string.manual_silence_mode_prayer),
-                        selected = manualUsesPrayer,
-                        testTag = TestTags.MANUAL_SILENCE_MODE_PRAYER,
-                        onClick = { onModeChange(ManualSilenceMode.UNTIL_PRAYER) },
-                        modifier = Modifier.width(choiceWidth),
-                    )
-                }
-            }
-
-            AnimatedVisibility(
-                visible = manualUsesDuration,
-                enter = expandVertically(),
-                exit = shrinkVertically()
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 12.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    Text(
-                        text = stringResource(R.string.manual_silence_duration_label),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = PrayerNameColor,
-                    )
-                    BoxWithConstraints(modifier = Modifier.fillMaxWidth()) {
-                        val fontScale = LocalDensity.current.fontScale
-                        val minimumFieldWidth = (96f * fontScale.coerceAtLeast(1f)).dp
-                        val fieldCount = if (maxWidth >= minimumFieldWidth * 2 + 8.dp) 2 else 1
-                        val fieldWidth = (maxWidth - 8.dp * (fieldCount - 1)) / fieldCount
-                        FlowRow(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            verticalArrangement = Arrangement.spacedBy(8.dp),
-                            maxItemsInEachRow = fieldCount,
-                        ) {
-                            Column(
-                                modifier = Modifier.width(fieldWidth),
-                                verticalArrangement = Arrangement.spacedBy(4.dp),
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.manual_silence_hours_label),
-                                    fontSize = 13.sp,
-                                    color = PrayerNameColor,
-                                )
-                                NumberInput(
-                                    value = manualDurationHours,
-                                    onValueChange = onDurationHoursChange,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .heightIn(min = 48.dp)
-                                        .testTag(TestTags.MANUAL_SILENCE_DURATION_INPUT),
-                                )
-                            }
-                            Column(
-                                modifier = Modifier.width(fieldWidth),
-                                verticalArrangement = Arrangement.spacedBy(4.dp),
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.manual_silence_minutes_label),
-                                    fontSize = 13.sp,
-                                    color = PrayerNameColor,
-                                )
-                                NumberInput(
-                                    value = manualDurationMinutes,
-                                    onValueChange = onDurationMinutesChange,
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .heightIn(min = 48.dp),
-                                )
-                            }
-                        }
-                    }
-                }
-            }
-
-            AnimatedVisibility(
-                visible = manualUsesPrayer,
-                enter = expandVertically(),
-                exit = shrinkVertically()
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 12.dp)
-                ) {
-                    Text(
-                        text = stringResource(R.string.manual_silence_prayer_label),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = PrayerNameColor
-                    )
+            EndpointModeChoices(
+                choices = listOf(
+                    stringResource(R.string.manual_silence_mode_until_short),
+                    stringResource(R.string.manual_silence_mode_duration),
+                    stringResource(R.string.manual_silence_mode_prayer_short),
+                ),
+                selected = modes.indexOf(manualSilenceMode),
+                enabled = true,
+                onSelected = { index -> onModeChange(modes[index]) },
+                optionTestTags = listOf(
+                    TestTags.MANUAL_SILENCE_MODE_UNTIL,
+                    TestTags.MANUAL_SILENCE_MODE_DURATION,
+                    TestTags.MANUAL_SILENCE_MODE_PRAYER,
+                ),
+            )
+            when (manualSilenceMode) {
+                ManualSilenceMode.DURATION -> {
                     FlowRow(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 8.dp),
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
-                        WAKE_SUPPORTED_PRAYERS.forEach { prayer ->
-                            ManualSilencePrayerChip(
-                                text = manualSilencePrayerName(prayer),
-                                selected = prayer == manualTargetPrayer,
-                                testTag = TestTags.manualSilenceTargetPrayer(prayer.name),
-                                onClick = { onTargetPrayerChange(prayer) }
+                        ManualSilenceDurationPresets.forEach { minutes ->
+                            ManualSilenceOptionChip(
+                                text = formatDurationText(minutes),
+                                selected = !showCustomDuration && resolvedTotalMinutes == minutes,
+                                onClick = {
+                                    customDurationOpen = false
+                                    onDurationPresetSelected(minutes)
+                                },
+                            )
+                        }
+                        ManualSilenceOptionChip(
+                            text = stringResource(R.string.manual_silence_duration_custom),
+                            selected = showCustomDuration,
+                            onClick = { customDurationOpen = true },
+                        )
+                    }
+                    if (showCustomDuration) {
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            ManualSilenceDurationField(
+                                label = stringResource(R.string.manual_silence_hours_label),
+                                value = manualDurationHours,
+                                onValueChange = onDurationHoursChange,
+                                inputTestTag = TestTags.MANUAL_SILENCE_DURATION_INPUT,
+                                modifier = Modifier.weight(1f),
+                            )
+                            ManualSilenceDurationField(
+                                label = stringResource(R.string.manual_silence_minutes_label),
+                                value = manualDurationMinutes,
+                                onValueChange = onDurationMinutesChange,
+                                modifier = Modifier.weight(1f),
                             )
                         }
                     }
                 }
+                ManualSilenceMode.UNTIL_PRAYER -> {
+                    FlowRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                    ) {
+                        WAKE_SUPPORTED_PRAYERS.forEach { prayer ->
+                            ManualSilenceOptionChip(
+                                text = manualSilencePrayerName(prayer),
+                                selected = prayer == manualTargetPrayer,
+                                onClick = { onTargetPrayerChange(prayer) },
+                                modifier = Modifier.testTag(TestTags.manualSilenceTargetPrayer(prayer.name)),
+                            )
+                        }
+                    }
+                }
+                ManualSilenceMode.UNTIL_STOPPED -> Unit
             }
+        }
 
-            val silenceButtonText = when {
-                anySilenceActive && hasDnd -> stringResource(R.string.btn_unsilence)
-                manualUsesDuration -> stringResource(R.string.btn_silence_for_duration, durationText)
-                manualUsesPrayer -> stringResource(R.string.btn_silence_until_prayer, targetPrayerName)
-                else -> stringResource(R.string.btn_silence)
-            }
-            Button(
-                onClick = onClick,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp)
-                    .heightIn(min = 56.dp)
-                    .testTag(TestTags.MANUAL_SILENCE_BUTTON),
-                shape = RoundedCornerShape(16.dp),
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = bgColor)
-            ) {
-                Text(
-                    text = silenceButtonText,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
-                )
-            }
+        Button(
+            onClick = onClick,
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 52.dp)
+                .testTag(TestTags.MANUAL_SILENCE_BUTTON),
+            shape = RoundedCornerShape(16.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 12.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = accent, contentColor = Color.White),
+        ) {
+            Icon(
+                painter = painterResource(if (silenceActive) R.drawable.ic_adhkar_bell else R.drawable.ic_bell_off),
+                contentDescription = null,
+                modifier = Modifier.size(20.dp),
+            )
+            Spacer(Modifier.width(8.dp))
+            Text(
+                text = when {
+                    silenceActive -> stringResource(R.string.manual_silence_action_stop)
+                    manualSilenceMode == ManualSilenceMode.DURATION ->
+                        stringResource(R.string.manual_silence_action_duration, durationText)
+                    manualSilenceMode == ManualSilenceMode.UNTIL_PRAYER ->
+                        stringResource(R.string.manual_silence_action_prayer, targetPrayerName)
+                    else -> stringResource(R.string.manual_silence_action_now)
+                },
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+            )
         }
     }
 }
 
+/** One choice in the duration or prayer row; same visual language as [EndpointModeChoices]. */
 @Composable
-private fun ManualSilenceModeChip(
+private fun ManualSilenceOptionChip(
     text: String,
     selected: Boolean,
-    testTag: String,
     onClick: () -> Unit,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-            .heightIn(min = 74.dp)
-            .clip(RoundedCornerShape(10.dp))
-            .background(if (selected) GreenPrimary.copy(alpha = 0.14f) else GoldLight.copy(alpha = 0.18f))
-            .clickable(onClick = onClick)
-            .testTag(testTag)
-            .padding(horizontal = 8.dp, vertical = 8.dp)
-    ) {
-        Text(
-            text = text,
-            fontSize = 14.sp,
-            color = if (selected) GreenPrimaryDark else TextDark,
-            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-            textAlign = TextAlign.Center,
-            lineHeight = 20.sp,
-        )
-    }
-}
-
-@Composable
-private fun ManualSilencePrayerChip(
-    text: String,
-    selected: Boolean,
-    testTag: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
+    val shape = RoundedCornerShape(12.dp)
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier
             .heightIn(min = 48.dp)
-            .widthIn(min = 48.dp)
-            .clip(RoundedCornerShape(10.dp))
-            .background(if (selected) GreenPrimary.copy(alpha = 0.14f) else Color.White)
-            .clickable(onClick = onClick)
-            .testTag(testTag)
-            .padding(horizontal = 12.dp, vertical = 9.dp)
+            .widthIn(min = 56.dp)
+            .clip(shape)
+            .background(if (selected) PrayerSilencePalette.Surface else PrayerSilencePalette.TintedStrip)
+            .border(1.dp, if (selected) PrayerSilencePalette.InteractiveTeal else Color.Transparent, shape)
+            .selectable(selected = selected, role = Role.RadioButton, onClick = onClick)
+            .padding(horizontal = 14.dp, vertical = 8.dp),
     ) {
         Text(
             text = text,
             fontSize = 14.sp,
-            color = if (selected) GreenPrimaryDark else TextDark,
-            fontWeight = if (selected) FontWeight.Bold else FontWeight.Normal,
-            textAlign = TextAlign.Center
+            fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
+            color = if (selected) PrayerSilencePalette.PrimaryText else PrayerSilencePalette.SecondaryText,
+        )
+    }
+}
+
+/** A custom-duration number field with its unit, e.g. "[ 1 ] ساعة". */
+@Composable
+private fun ManualSilenceDurationField(
+    label: String,
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    inputTestTag: String? = null,
+) {
+    Row(
+        modifier = modifier
+            .clip(RoundedCornerShape(12.dp))
+            .background(PrayerSilencePalette.TintedStrip)
+            .padding(start = 6.dp, end = 12.dp, top = 4.dp, bottom = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        NumberInput(
+            value = value,
+            onValueChange = onValueChange,
+            inputDescription = label,
+            modifier = Modifier
+                .weight(1f)
+                .then(if (inputTestTag != null) Modifier.testTag(inputTestTag) else Modifier),
+        )
+        Text(
+            text = label,
+            fontSize = 13.sp,
+            color = PrayerSilencePalette.SecondaryText,
         )
     }
 }
@@ -6385,6 +6394,33 @@ private fun prayerTimeMillis(day: Calendar, prayerTime: PrayerTime): Long {
         set(Calendar.SECOND, 0)
         set(Calendar.MILLISECOND, 0)
     }.timeInMillis
+}
+
+/** What the auto-silence scheduler will do at the upcoming prayer. */
+private sealed interface UpcomingSilence {
+    data class Window(val window: PrayerTimelineWindow) : UpcomingSilence
+    /** Auto-silence is off globally or was stopped outside Tunisia. */
+    data object AutoSilenceOff : UpcomingSilence
+    /** This prayer's own silence switch is off. */
+    data object PrayerOff : UpcomingSilence
+}
+
+/** One line under the hero countdown; [scheduled] is false when the phone will keep ringing. */
+private data class HeroSilenceLine(val text: String, val scheduled: Boolean)
+
+/** Null only when the saved window is invalid; the prayer list already warns about that. */
+private fun resolveUpcomingSilence(
+    context: Context,
+    countdown: NextPrayerCountdownInfo,
+): UpcomingSilence? {
+    if (!PrefsManager.isEnabled(context) || PrefsManager.isDisabledOutsideTunisia(context)) {
+        return UpcomingSilence.AutoSilenceOff
+    }
+    if (!PrefsManager.isPrayerSilenceEnabled(context, countdown.prayer)) return UpcomingSilence.PrayerOff
+    val prayerTime = PrayerTime(countdown.prayer, countdown.hour, countdown.minute)
+    return resolvePrayerTimelineWindow(prayerTime, PrefsManager.getConfig(context, countdown.prayer))
+        .takeIf { window -> window.endMinutes > window.startMinutes }
+        ?.let { window -> UpcomingSilence.Window(window) }
 }
 
 private fun formatCountdownRemaining(targetAtMillis: Long, currentTimeMillis: Long): String {
