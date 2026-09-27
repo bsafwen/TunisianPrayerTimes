@@ -85,6 +85,8 @@ import com.tunisianprayertimes.DelegationLocator
 import com.tunisianprayertimes.GeomagneticFieldValues
 import com.tunisianprayertimes.GouvernoratRepository
 import com.tunisianprayertimes.MagneticFieldZone
+import com.tunisianprayertimes.PrefsManager
+import com.tunisianprayertimes.QiblaMethod
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.AnalyticsTracker
 import com.tunisianprayertimes.WorldMagneticModel
@@ -194,6 +196,7 @@ fun QiblaCard(selectedDelegationId: Int) {
     var currentAltitudeMeters by rememberSaveable { mutableStateOf(cachedLocation?.altitudeMeters ?: 0.0) }
     var currentAccuracyMeters by rememberSaveable { mutableStateOf(cachedLocation?.accuracyMeters) }
     var currentLocationIsLastKnown by rememberSaveable { mutableStateOf(false) }
+    var qiblaMethod by remember { mutableStateOf(PrefsManager.getQiblaMethod(context)) }
 
     val currentLocation = remember(
         currentLatitude,
@@ -403,8 +406,8 @@ fun QiblaCard(selectedDelegationId: Int) {
     val magneticZone = magneticField
         ?.let { field -> magneticFieldZone(field.horizontalIntensityNanoTesla) }
         ?: MagneticFieldZone.Normal
-    val qiblaSolution = remember(activeLocation) {
-        activeLocation?.let { location -> calculateQibla(location.latitude, location.longitude) }
+    val qiblaSolution = remember(activeLocation, qiblaMethod) {
+        activeLocation?.let { location -> calculateQibla(location.latitude, location.longitude, qiblaMethod) }
     }
     val qiblaBearing = qiblaSolution?.bearingDegrees
     val nearKaabaDistanceMeters = qiblaSolution?.distanceMeters
@@ -440,6 +443,25 @@ fun QiblaCard(selectedDelegationId: Int) {
     var stabilityAnchorTurnDegrees by remember { mutableStateOf<Double?>(null) }
     var stabilityAnchorStartedAtMs by remember { mutableStateOf(0L) }
     var qiblaStabilityStatus by remember { mutableStateOf(QiblaStabilityStatus.Idle) }
+
+    fun selectQiblaMethod(method: QiblaMethod) {
+        if (method == qiblaMethod) return
+        activeLocation?.let { location ->
+            // The target moved, not the phone: shift the turn history with it so the switch
+            // is not taken for compass jitter, and the heading text stays put.
+            val bearingShift = shortestSignedAngleDegrees(
+                calculateQibla(location.latitude, location.longitude, qiblaMethod).bearingDegrees,
+                calculateQibla(location.latitude, location.longitude, method).bearingDegrees,
+            )
+            stabilityAnchorTurnDegrees = stabilityAnchorTurnDegrees
+                ?.let { turn -> shiftedTurnDegrees(turn, bearingShift) }
+            displayedTurnDegrees = displayedTurnDegrees
+                ?.let { turn -> shiftedTurnDegrees(turn, bearingShift) }
+        }
+        qiblaMethod = method
+        PrefsManager.setQiblaMethod(context, method)
+        AnalyticsTracker.qiblaMethodSelected(context, method)
+    }
     val displayedQiblaBearingDegrees = qiblaBearing?.let(::roundedCompassDegree)
     val displayedSignedTurnDegrees = if (turnDegrees != null) {
         roundedSignedTurnDegree(displayedTurnDegrees ?: turnDegrees)
@@ -651,6 +673,13 @@ fun QiblaCard(selectedDelegationId: Int) {
                     )
                 } ?: "--°",
                 locationText = qiblaLocationText(location = activeLocation, locating = locating),
+            )
+
+            Spacer(Modifier.height(12.dp))
+
+            QiblaMethodSelector(
+                selected = qiblaMethod,
+                onSelected = ::selectQiblaMethod,
             )
         }
     }
@@ -915,6 +944,57 @@ private fun QiblaDirectionDetailValue(
 }
 
 @Composable
+private fun QiblaMethodSelector(
+    selected: QiblaMethod,
+    onSelected: (QiblaMethod) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val methods = listOf(QiblaMethod.GreatCircle, QiblaMethod.RhumbLine)
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = 8.dp),
+    ) {
+        Text(
+            text = stringResource(R.string.qibla_method_label),
+            fontSize = 11.sp,
+            color = TextMuted,
+            fontWeight = FontWeight.SemiBold,
+            textAlign = TextAlign.Start,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        Spacer(Modifier.height(8.dp))
+        EndpointModeChoices(
+            choices = listOf(
+                stringResource(R.string.qibla_method_great_circle),
+                stringResource(R.string.qibla_method_rhumb_line),
+            ),
+            selected = methods.indexOf(selected),
+            enabled = true,
+            onSelected = { index -> onSelected(methods[index]) },
+            optionTestTags = listOf(
+                TestTags.QIBLA_METHOD_GREAT_CIRCLE,
+                TestTags.QIBLA_METHOD_RHUMB_LINE,
+            ),
+        )
+        Spacer(Modifier.height(6.dp))
+        Text(
+            text = stringResource(
+                when (selected) {
+                    QiblaMethod.GreatCircle -> R.string.qibla_method_great_circle_description
+                    QiblaMethod.RhumbLine -> R.string.qibla_method_rhumb_line_description
+                },
+            ),
+            fontSize = 10.sp,
+            color = TextMuted,
+            textAlign = TextAlign.Center,
+            lineHeight = 14.sp,
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+@Composable
 private fun QiblaGuidanceBar(message: String?, onClick: (() -> Unit)? = null) {
     val hasMessage = !message.isNullOrBlank()
     val shape = RoundedCornerShape(10.dp)
@@ -1003,6 +1083,10 @@ private fun isExactVisibleQiblaDirection(turnDegrees: Double?): Boolean {
 
 private fun visibleTurnAmountDegrees(turnDegrees: Double): Int {
     return abs(roundedSignedTurnDegree(turnDegrees))
+}
+
+private fun shiftedTurnDegrees(turnDegrees: Double, bearingShiftDegrees: Double): Double {
+    return shortestSignedAngleDegrees(0.0, turnDegrees + bearingShiftDegrees)
 }
 
 private fun roundedSignedTurnDegree(turnDegrees: Double): Int {

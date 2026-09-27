@@ -240,6 +240,14 @@ object AnalyticsTracker {
         )
     }
 
+    fun qiblaMethodSelected(context: Context, method: QiblaMethod) {
+        log(
+            context,
+            "qibla_method_selected",
+            Bundle().apply { putString("method", method.analyticsName()) },
+        )
+    }
+
     fun silencePrayerCount(context: Context): Int =
         if (PrefsManager.isEnabled(context)) Prayer.values().size else 0
 
@@ -296,6 +304,11 @@ object AnalyticsTracker {
     }
 
     private fun Prayer.analyticsName(): String = name.lowercase()
+
+    private fun QiblaMethod.analyticsName(): String = when (this) {
+        QiblaMethod.GreatCircle -> "great_circle"
+        QiblaMethod.RhumbLine -> "rhumb_line"
+    }
 
     private fun Bundle.putFlag(key: String, value: Boolean) {
         putLong(key, if (value) 1L else 0L)
