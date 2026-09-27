@@ -148,7 +148,7 @@ internal fun dhikrEntryFromJson(json: JSONObject): DhikrEntry? = runCatching {
     )
 }.getOrNull()
 
-enum class DhikrOccurrenceStatus { OPEN, COMPLETED, SKIPPED, REPLACED }
+enum class DhikrOccurrenceStatus { OPEN, COMPLETED, DONE, SKIPPED, REPLACED }
 
 /** Target and content are snapshots; prayer-derived timing can follow locality changes. */
 data class DhikrOccurrence(
@@ -239,6 +239,13 @@ fun DhikrState.target(session: DhikrSession, itemId: String = session.itemId): I
 
 fun DhikrState.isComplete(session: DhikrSession): Boolean =
     session.itemIds.all { it in session.skippedIds || (session.counts[it] ?: 0) >= target(session, it) }
+
+/** The latest independent reading decides whether this collection's current occasion is done. */
+fun DhikrState.isCollectionPeriodComplete(category: DhikrCategory, periodKey: String): Boolean =
+    sessions.values.asSequence()
+        .filter { it.occurrenceId == null && it.category == category && it.collectionPeriodKey == periodKey }
+        .maxByOrNull { it.updatedAtMillis }
+        ?.let(::isComplete) == true
 
 /** Android can defer closely spaced while-idle alarms; avoid offering a 5-minute cadence. */
 const val MIN_DHIKR_INTERVAL_MINUTES = 15

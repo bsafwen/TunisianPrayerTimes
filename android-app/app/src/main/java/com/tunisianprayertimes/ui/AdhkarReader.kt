@@ -56,6 +56,8 @@ import kotlin.math.abs
 @Composable internal fun DhikrReader(
     activity: AppCompatActivity, state: DhikrState, session: DhikrSession, now: Long,
     onDismiss: () -> Unit, onCount: (Int) -> Unit, onMove: (Int) -> Unit, onSkip: () -> Unit, onRemove: () -> Unit,
+    onFavourite: () -> Unit, onCollections: () -> Unit,
+    onEditCustom: () -> Unit, onDeleteCustom: () -> Unit,
     onAddToCollection: () -> Unit, onReorderCollection: () -> Unit,
     onTextSize: (Int) -> Unit, onHaptics: (Boolean) -> Unit,
     onNewSession: () -> Unit, reminder: DhikrReminder?, onReminder: () -> Unit,
@@ -64,6 +66,7 @@ import kotlin.math.abs
 ) {
     val p = LocalAdhkarPalette.current
     val entry = state.findDhikr(session.itemId) ?: return
+    val favourite = entry.id in state.favourites
     val count = session.counts[entry.id] ?: 0
     val target = state.target(session)
     val complete = count >= target
@@ -74,7 +77,8 @@ import kotlin.math.abs
     } } == true
     val open = if (session.occurrenceId == null) true else occurrence != null && liveRule &&
         now in occurrence.startMillis until occurrence.endMillis &&
-        occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED
+        occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED &&
+        occurrence.status != DhikrOccurrenceStatus.DONE
     var sources by remember { mutableStateOf(false) }
     var textSettings by remember { mutableStateOf(false) }
     var showExplanation by remember(session.itemId) { mutableStateOf(false) }
@@ -102,7 +106,7 @@ import kotlin.math.abs
     }
     val canNavigate = session.itemIds.size > 1
     val canRemove = session.category != null || session.itemIds.size > 1
-    val canCount = open && !complete
+    val canCount = open && count < Int.MAX_VALUE && (session.category == null || !complete)
     val canAdvanceOnTap = complete && canNavigate
     val canUndo = count > 0 && open
     val sessionDone = session.itemIds.count { it in session.skippedIds || (session.counts[it] ?: 0) >= state.target(session, it) }
@@ -118,18 +122,18 @@ import kotlin.math.abs
         AdhkarDialogSystemBars()
         Surface(color = p.background, modifier = Modifier.fillMaxSize().testTag("adhkar_reader")) {
             Column(Modifier.fillMaxSize().statusBarsPadding().navigationBarsPadding()) {
-                // Header: back at the RTL start (right), overflow at the end (left), title centered.
+                // Header: one action on each side keeps the title centered.
                 Row(Modifier.fillMaxWidth().heightIn(min = 56.dp).padding(horizontal = 6.dp),
                     verticalAlignment = Alignment.CenterVertically) {
                     IconButton(onClick = onDismiss, modifier = Modifier.testTag("adhkar_reader_back")) {
                         DhikrIcon(R.drawable.ic_adhkar_back, "العودة", modifier = Modifier.size(22.dp))
                     }
                     Column(Modifier.weight(1f), horizontalAlignment = Alignment.CenterHorizontally) {
-                        Text(entry.title, fontSize = 18.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center,
+                        Text(reminder?.let { reminderTitle(it, state) } ?: entry.title,
+                            fontSize = 18.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center,
                             color = AdhkarHeading, maxLines = 1)
-                        Text(when {
+                        if (reminder == null) Text(when {
                             session.category != null -> collectionTitle(session.category)
-                            occurrence != null -> "هدف شخصي"
                             else -> "قراءة مستقلة"
                         }, color = p.muted, fontSize = 12.sp)
                     }
@@ -157,13 +161,34 @@ import kotlin.math.abs
                                 text = { Text("إنشاء تذكير لهذا الذكر") },
                                 onClick = { menu = false; onReminder() })
                             HorizontalDivider(color = AdhkarBorder)
+                            DropdownMenuItem(
+                                leadingIcon = {
+                                    DhikrIcon(if (favourite) R.drawable.ic_adhkar_heart_filled else R.drawable.ic_adhkar_heart,
+                                        tint = if (favourite) AdhkarHeart else p.primary, modifier = Modifier.size(20.dp))
+                                },
+                                text = { Text(if (favourite) "إزالة من المفضلة" else "إضافة إلى المفضلة") },
+                                onClick = { menu = false; onFavourite() },
+                                modifier = Modifier.testTag("adhkar_reader_favourite"))
+                            DropdownMenuItem(
+                                leadingIcon = { DhikrIcon(R.drawable.ic_adhkar_plus, tint = p.primary, modifier = Modifier.size(20.dp)) },
+                                text = { Text("إضافة هذا الذكر إلى مجموعة") },
+                                onClick = { menu = false; onCollections() },
+                                modifier = Modifier.testTag("adhkar_reader_collections"))
+                            if (entry.custom) {
+                                DropdownMenuItem(text = { Text("تعديل الذكر") },
+                                    onClick = { menu = false; onEditCustom() },
+                                    modifier = Modifier.testTag("adhkar_reader_edit_custom"))
+                                DropdownMenuItem(text = { Text("حذف الذكر", color = MaterialTheme.colorScheme.error) },
+                                    onClick = { menu = false; onDeleteCustom() },
+                                    modifier = Modifier.testTag("adhkar_reader_delete_custom"))
+                            }
                             DropdownMenuItem(leadingIcon = { DhikrIcon(R.drawable.ic_adhkar_next, tint = p.primary, modifier = Modifier.size(20.dp)) },
                                 text = { Text("تخطّي الذكر") },
                                 enabled = open,
                                 onClick = { menu = false; onSkip() })
                             if (session.category != null) DropdownMenuItem(
                                 leadingIcon = { DhikrIcon(R.drawable.ic_adhkar_plus, tint = p.primary, modifier = Modifier.size(20.dp)) },
-                                text = { Text("إضافة ذكر إلى القائمة") },
+                                text = { Text("إضافة ذكر آخر إلى هذه القائمة") },
                                 onClick = { menu = false; onAddToCollection() },
                                 modifier = Modifier.testTag("adhkar_reader_add_to_list"))
                             if (session.category != null && session.itemIds.size > 1) DropdownMenuItem(
@@ -183,11 +208,13 @@ import kotlin.math.abs
                     }
                 }
 
-                // Session position, deliberately quiet.
-                Surface(shape = RoundedCornerShape(50), color = AdhkarSoftGreen,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)) {
-                    Text("الذكر " + latinNumber(session.index + 1) + " من " + latinNumber(session.itemIds.size),
-                        Modifier.padding(horizontal = 16.dp, vertical = 6.dp), color = p.muted, fontSize = 12.sp)
+                // The reminder title is the only heading for a reminder reading.
+                if (reminder == null) {
+                    Surface(shape = RoundedCornerShape(50), color = AdhkarSoftGreen,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                        Text("الذكر " + latinNumber(session.index + 1) + " من " + latinNumber(session.itemIds.size),
+                            Modifier.padding(horizontal = 16.dp, vertical = 6.dp), color = p.muted, fontSize = 12.sp)
+                    }
                 }
 
                 // Dhikr text scrolls; the counter and navigation below stay put.
@@ -316,7 +343,7 @@ import kotlin.math.abs
                     Text("شرح الألفاظ", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 15.sp)
                     Text(entry.explanation, color = p.forest, fontSize = 15.sp, lineHeight = 30.sp)
                 }
-                Text(if (entry.custom) "العدد الافتراضي: " + latinNumber(entry.defaultCount) + ". يمكنك تغييره عند إنشاء تذكير. ولتعديل الذكر أو حذفه أو إضافته إلى مجموعة، افتح مكتبة الأذكار."
+                Text(if (entry.custom) "العدد الافتراضي: " + latinNumber(entry.defaultCount) + ". يمكنك تغييره عند إنشاء تذكير، وتعديل الذكر أو حذفه من قائمة الخيارات هنا."
                     else if (occurrence != null) "هدف التذكير: " + latinNumber(occurrence.target) + ". يمكنك تغييره دون تعديل عدد التكرار الافتراضي للذكر."
                     else "عدد التكرار الافتراضي: " + latinNumber(entry.defaultCount) + ". إذا لم يحدد المصدر عددًا، فهذا العدد يساعدك على العدّ ولا يقيّد تكرار الذكر.",
                     color = p.muted, fontSize = 14.sp, lineHeight = 27.sp)

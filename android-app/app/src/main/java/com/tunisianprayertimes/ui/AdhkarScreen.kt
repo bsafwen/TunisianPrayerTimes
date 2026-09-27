@@ -1,6 +1,7 @@
 package com.tunisianprayertimes.ui
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -62,7 +63,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
     var page by rememberSaveable { mutableStateOf("today") }
     var query by rememberSaveable { mutableStateOf("") }
     var category by rememberSaveable { mutableStateOf<String?>(null) }
-    var libraryTab by rememberSaveable { mutableStateOf("recent") }
+    var libraryTab by rememberSaveable { mutableStateOf("all") }
     var readerId by rememberSaveable { mutableStateOf<String?>(null) }
     // A reminder can open an independent reading outside its scheduled window.
     // Keep that origin paired with the session so the reader can manage the saved rule.
@@ -83,6 +84,13 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
     var exactAlarmPromptAfterNotifications by remember { mutableStateOf(false) }
     var exactAlarmsAvailable by remember { mutableStateOf(DhikrReminderScheduler.exactAlarmsEnabled(activity)) }
     var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    val collectionPeriodKeys by produceState<Map<DhikrCategory, String>>(emptyMap(), activity, now) {
+        value = withContext(Dispatchers.IO) {
+            listOf(DhikrCategory.MORNING, DhikrCategory.EVENING).associateWith { category ->
+                collectionReadingPeriodKey(activity, category, null, now)
+            }
+        }
+    }
     var focusSearch by remember { mutableStateOf(false) }
     var consumedRequest by rememberSaveable { mutableIntStateOf(-1) }
     val scope = rememberCoroutineScope()
@@ -167,7 +175,8 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             }
         }) {
             val current = occurrence?.takeIf {
-                it.status == DhikrOccurrenceStatus.OPEN && it.count < it.target
+                (it.status == DhikrOccurrenceStatus.OPEN && it.count < it.target) ||
+                    (rule.collection == null && it.status == DhikrOccurrenceStatus.COMPLETED)
             }
             if (current != null) {
                 showReminders = false
@@ -186,6 +195,19 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                 }
             }
         }
+    }
+    fun markReminderDone(rule: DhikrReminder) {
+        mutate({
+            val current = repo.state.value.reminders.firstOrNull {
+                it.id == rule.id && it.revision == rule.revision && it.enabled
+            } ?: return@mutate
+            val doneAt = System.currentTimeMillis()
+            val window = DhikrReminderScheduler.currentOrNextWindow(activity, current, doneAt) ?: return@mutate
+            val today = Instant.ofEpochMilli(doneAt).atZone(ZoneId.systemDefault()).toLocalDate()
+            if (window.date == today || doneAt in window.progressStartMillis until window.progressEndMillis) {
+                repo.markDone(repo.ensureOccurrence(current, window).id, doneAt)
+            }
+        })
     }
     fun saveWithReport(rule: DhikrReminder) {
         mutate({ repo.save(rule) }, onFailure = {
@@ -208,11 +230,12 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
         return yesterday ?: DhikrReminderScheduler.resolveWindows(activity, rule, today)
             .firstOrNull { at < it.progressEndMillis && at < it.endMillis }
     }
-    fun removeCustom(entry: DhikrEntry) {
+    fun removeCustom(entry: DhikrEntry, afterDelete: () -> Unit = {}) {
         var removal: CustomDhikrRemoval? = null
         mutate({ removal = repo.deleteCustom(entry.id) }) {
             customEditor = false
             customDraft = null
+            afterDelete()
             val reminderCount = removal?.reminders?.size ?: 0
             val message = if (reminderCount > 0) "حُذف «" + entry.title + "» مع " +
                 (if (reminderCount == 1) "تذكيره" else "تذكيراته") + ". بقي تقدّم القراءة محفوظًا."
@@ -307,6 +330,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                 if (page == "today") {
                     AdhkarTodayPage(
                         state = state, now = now, listState = homeScroll,
+                        collectionPeriodKeys = collectionPeriodKeys,
                         onPage = { page = it },
                         onSearch = {
                             page = "library"; focusSearch = true
@@ -332,11 +356,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                         onSearchAction = { scope.launch { libraryScroll.scrollToItem(0); focus.requestFocus() } },
                         onOpenEntry = { id, memberCategory -> openItems(listOf(id), memberCategory) },
                         onOpenCollection = ::openCollection,
-                        onFavourite = { id -> mutate({ repo.toggleFavourite(id) }) },
-                        onAddCustom = { libraryTab = "custom"; customDraft = null; customEditor = true },
-                        onEditCustom = { customDraft = it; customEditor = true },
-                        onDeleteCustom = ::removeCustom,
-                        onCollections = { collectionEdit = it },
+                        onAddCustom = { libraryTab = "custom"; category = null; customDraft = null; customEditor = true },
                     )
                 }
                 SnackbarHost(snackbar, Modifier.align(Alignment.BottomCenter).padding(16.dp))
@@ -364,6 +384,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                                 }
                             }
                         }) },
+                        onDone = ::markReminderDone,
                         onDelete = { rule -> deleteReminder(rule) { showReminders = false } },
                     )
                 }
@@ -392,6 +413,19 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                         onMove = { direction -> mutate({ repo.move(id, direction) }) },
                         onSkip = { mutate({ repo.skipItem(id) }) },
                         onRemove = { mutate({ repo.removeItem(id) }) },
+                        onFavourite = { mutate({ repo.toggleFavourite(session.itemId) }) },
+                        onCollections = { state.findDhikr(session.itemId)?.let { collectionEdit = it } },
+                        onEditCustom = {
+                            state.findDhikr(session.itemId)?.takeIf { it.custom }?.let {
+                                readerId = null; readerReminderSource = null
+                                customDraft = it; customEditor = true
+                            }
+                        },
+                        onDeleteCustom = {
+                            state.findDhikr(session.itemId)?.takeIf { it.custom }?.let { entry ->
+                                removeCustom(entry) { readerId = null; readerReminderSource = null }
+                            }
+                        },
                         onAddToCollection = { addToCollectionSessionId = id },
                         onReorderCollection = { reorderCollectionSessionId = id },
                         onTextSize = { size -> mutate({ repo.setTextSize(size) }) },
@@ -490,7 +524,7 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                             reportError("تعذّر حفظ الذكر. حاول مرة أخرى.")
                         }) { customEditor = false; customDraft = null }
                     },
-                    onDelete = ::removeCustom)
+                    onDelete = { removeCustom(it) })
                 draft?.let { rule ->
                     DhikrReminderEditor(activity, rule, exactAlarmsAvailable,
                         onDismiss = { draft = null }, onSave = { saved, reportError ->
@@ -557,6 +591,7 @@ private fun AdhkarPageTabs(selected: String, onSelect: (String) -> Unit) {
 @Composable
 private fun AdhkarTodayPage(
     state: DhikrState, now: Long, listState: LazyListState,
+    collectionPeriodKeys: Map<DhikrCategory, String>,
     onPage: (String) -> Unit,
     onSearch: () -> Unit,
     onShowReminders: () -> Unit,
@@ -571,6 +606,10 @@ private fun AdhkarTodayPage(
     val savedRules = remember(state.reminders) { slots.associate { it.key to savedRuleFor(it.key, state.reminders) } }
     val savedSlotsById = slots.mapNotNull { slot -> savedRules[slot.key]?.let { it.id to slot } }.toMap()
     val unsavedSlots = slots.filter { savedRules[it.key] == null }
+    fun completedCollection(category: DhikrCategory): Boolean {
+        val periodKey = collectionPeriodKeys[category] ?: return false
+        return state.isCollectionPeriodComplete(category, periodKey)
+    }
     LazyColumn(state = listState, modifier = Modifier.fillMaxSize().statusBarsPadding().testTag("adhkar_today_content"),
         contentPadding = PaddingValues(top = 8.dp, bottom = 24.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
         item {
@@ -590,6 +629,7 @@ private fun AdhkarTodayPage(
                     icon = R.drawable.ic_adhkar_sun, iconTint = Color.White.copy(alpha = .95f),
                     top = AdhkarMorningTop, bottom = AdhkarMorningBottom,
                     titleColor = p.forest,
+                    completed = completedCollection(DhikrCategory.MORNING),
                     modifier = Modifier.weight(1f).fillMaxHeight(),
                 ) { onOpenCollection(DhikrCategory.MORNING) }
                 ReadingCollectionCard(
@@ -597,6 +637,7 @@ private fun AdhkarTodayPage(
                     icon = R.drawable.ic_adhkar_moon, iconTint = Color.White,
                     top = AdhkarEveningTop, bottom = AdhkarEveningBottom,
                     titleColor = Color.White,
+                    completed = completedCollection(DhikrCategory.EVENING),
                     modifier = Modifier.weight(1f).fillMaxHeight(),
                 ) { onOpenCollection(DhikrCategory.EVENING) }
             }
@@ -623,7 +664,8 @@ private fun AdhkarTodayPage(
                 reminderTitle(rule, state).ifBlank { "تذكير" }, icon, p.primary, AdhkarSoftGreen)
             HomeReminderRow(slot = slot, saved = rule,
                 onRead = { onOpenReminder(rule) },
-                onToggle = { checked -> onToggleRule(rule, checked) })
+                onToggle = { checked -> onToggleRule(rule, checked) },
+                done = reminderDoneToday(rule, state, now))
         }
         if (unsavedSlots.isNotEmpty()) item {
             Box(Modifier.padding(horizontal = 20.dp)) {
@@ -645,25 +687,39 @@ private fun ReadingCollectionCard(
     title: String, icon: Int, iconTint: Color,
     top: Color, bottom: Color,
     titleColor: Color,
+    completed: Boolean,
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
     val shape = RoundedCornerShape(22.dp)
-    Column(
-        modifier = modifier.clip(shape).background(Brush.verticalGradient(listOf(top, bottom)))
-            .clickable(onClickLabel = "قراءة $title", role = Role.Button, onClick = onClick)
+    Box(
+        modifier = modifier.heightIn(min = 132.dp).clip(shape).background(Brush.verticalGradient(listOf(top, bottom)))
+            .clickable(onClickLabel = if (completed) "قراءة $title مجددًا، مكتملة لهذه الفترة" else "قراءة $title",
+                role = Role.Button, onClick = onClick)
             .padding(12.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceBetween,
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
-            DhikrIcon(icon, tint = iconTint, modifier = Modifier.size(28.dp))
-            Text(title, color = titleColor, fontSize = 19.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = if (completed) Arrangement.Center else Arrangement.SpaceBetween) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                DhikrIcon(icon, tint = iconTint, modifier = Modifier.size(28.dp))
+                Text(title, color = titleColor, fontSize = 19.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+            }
+            if (!completed) {
+                Spacer(Modifier.height(8.dp))
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                    Text("ابدأ", color = titleColor, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
+                    DhikrIcon(R.drawable.ic_adhkar_next, tint = titleColor, modifier = Modifier.size(16.dp))
+                }
+            }
         }
-        Spacer(Modifier.height(8.dp))
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            Text("ابدأ", color = titleColor, fontSize = 14.sp, fontWeight = FontWeight.SemiBold)
-            DhikrIcon(R.drawable.ic_adhkar_next, tint = titleColor, modifier = Modifier.size(16.dp))
+        if (completed) Row(Modifier.align(Alignment.TopEnd)
+            .clip(RoundedCornerShape(12.dp))
+            .background(Color.White.copy(alpha = if (titleColor == Color.White) .2f else .7f))
+            .padding(horizontal = 7.dp, vertical = 4.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(3.dp)) {
+            DhikrIcon(R.drawable.ic_adhkar_check, tint = titleColor, modifier = Modifier.size(12.dp))
+            Text("تمّ", color = titleColor, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
         }
     }
 }
@@ -674,6 +730,7 @@ private fun HomeReminderRow(
     saved: DhikrReminder?,
     onRead: () -> Unit,
     onToggle: (Boolean) -> Unit,
+    done: Boolean = false,
     tagPrefix: String = "adhkar_home",
 ) {
     val p = LocalAdhkarPalette.current
@@ -690,6 +747,15 @@ private fun HomeReminderRow(
                 Text(compactReminderSummary(saved ?: slot.preset), color = p.muted, fontSize = 12.sp,
                     maxLines = 2, overflow = TextOverflow.Ellipsis)
                 if (saved == null) Text("اضغط لإعداد التذكير", color = p.primary, fontSize = 11.sp)
+                if (done) Surface(color = AdhkarSoftGreen, shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.testTag("${tagPrefix}_completed_" + slot.key)) {
+                    Row(Modifier.padding(horizontal = 7.dp, vertical = 4.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(3.dp)) {
+                        DhikrIcon(R.drawable.ic_adhkar_check, tint = p.primary, modifier = Modifier.size(12.dp))
+                        Text("تمّ", color = p.primary, fontSize = 10.sp, fontWeight = FontWeight.SemiBold)
+                    }
+                }
             }
             Switch(saved?.enabled == true, onCheckedChange = onToggle,
                 modifier = Modifier.testTag("${tagPrefix}_toggle_" + slot.key))
@@ -697,7 +763,6 @@ private fun HomeReminderRow(
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 private fun AdhkarLibraryPage(
     state: DhikrState, listState: LazyListState,
@@ -709,29 +774,19 @@ private fun AdhkarLibraryPage(
     onSearchAction: () -> Unit,
     onOpenEntry: (String, DhikrCategory?) -> Unit,
     onOpenCollection: (DhikrCategory) -> Unit,
-    onFavourite: (String) -> Unit,
     onAddCustom: () -> Unit,
-    onEditCustom: (DhikrEntry) -> Unit,
-    onDeleteCustom: (DhikrEntry) -> Unit,
-    onCollections: (DhikrEntry) -> Unit,
 ) {
     val p = LocalAdhkarPalette.current
     val normalized = remember(query) { normalizeDhikrSearch(query) }
-    val results = remember(normalized, category, state.customEntries, state.collectionAdditions, state.collectionRemovals) {
-        state.allEntries.filter { entry ->
-            (category == null || state.isInCollection(entry, category)) &&
+    val personalFilter = tab == "favourites" || tab == "custom"
+    val results = remember(normalized, category, tab, state.favourites, state.customEntries,
+        state.collectionAdditions, state.collectionRemovals, state.collectionOrders) {
+        (category?.let(state::collectionEntries) ?: state.allEntries).filter { entry ->
+                (tab != "favourites" || entry.id in state.favourites) &&
+                (tab != "custom" || entry.custom) &&
                 (normalized.isEmpty() || normalizeDhikrSearch(entry.title + " " + entry.text + " " + entry.explanation + " " +
                     entry.categories.joinToString { it.title } + " " + category?.title.orEmpty()).contains(normalized))
-        }.map { entry ->
-            category?.let { entry.copy(defaultCount = entry.countForCollection(it)) } ?: entry
         }
-    }
-    val recentEntries = remember(state.sessions, state.customEntries) {
-        state.sessions.values.sortedByDescending { it.updatedAtMillis }
-            .flatMap { it.itemIds }.distinct().mapNotNull { state.findDhikr(it) }.take(12)
-    }
-    val favouriteEntries = remember(state.favourites, state.customEntries) {
-        state.allEntries.filter { it.id in state.favourites }
     }
     LazyColumn(state = listState, modifier = Modifier.fillMaxSize().statusBarsPadding(),
         contentPadding = PaddingValues(top = 8.dp, bottom = 24.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -762,11 +817,28 @@ private fun AdhkarLibraryPage(
             LaunchedEffect(focusSearch) { if (focusSearch) { focus.requestFocus(); onFocusConsumed() } }
         }
         item {
-            FlowRow(Modifier.fillMaxWidth().padding(horizontal = 20.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                CategoryChip("الكل", category == null) { onCategory(null) }
-                adhkarCategoryOrder.forEach { value ->
-                    CategoryChip(value.title, category == value) { onCategory(if (category == value) null else value) }
+            LazyRow(contentPadding = PaddingValues(horizontal = 20.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                item {
+                CategoryChip("الكل", category == null && !personalFilter) {
+                    onCategory(null); onTab("all")
+                }
+                }
+                item {
+                    CategoryChip("المفضلة", tab == "favourites") {
+                        onCategory(null); onTab(if (tab == "favourites") "all" else "favourites")
+                    }
+                }
+                item {
+                    CategoryChip("أذكاري", tab == "custom") {
+                        onCategory(null); onTab(if (tab == "custom") "all" else "custom")
+                    }
+                }
+                items(adhkarCategoryOrder, key = { it.name }) { value ->
+                    CategoryChip(value.title, category == value && !personalFilter) {
+                        onCategory(if (category == value && !personalFilter) null else value)
+                        onTab("all")
+                    }
                 }
             }
         }
@@ -775,71 +847,59 @@ private fun AdhkarLibraryPage(
                 Text("نتائج البحث: " + latinNumber(results.size), color = p.muted, fontSize = 12.sp,
                     modifier = Modifier.padding(horizontal = 20.dp))
             }
-            if (results.isEmpty()) item {
-                Column(Modifier.fillMaxWidth().padding(vertical = 24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text("لا توجد نتائج", fontWeight = FontWeight.Bold, color = AdhkarHeading)
-                    Text("جرّب كلمة أخرى أو أزل عوامل التصفية.", color = p.muted)
-                    TextButton(onClick = { onQuery(""); onCategory(null) }) { Text("مسح التصفية") }
-                }
-            }
-            items(results, key = { it.id }) { entry ->
-                DhikrEntryCard(entry, entry.id in state.favourites, { onFavourite(entry.id) }, { onOpenEntry(entry.id, category) },
-                    custom = entry.custom, onEdit = { onEditCustom(entry) }, onDelete = { onDeleteCustom(entry) },
-                    onCollections = { onCollections(entry) }, displayCategory = category)
-            }
-        } else {
+        }
+        if (normalized.isEmpty() && category == null && !personalFilter) {
             item {
                 Box(Modifier.padding(horizontal = 20.dp)) {
                     AdhkarSectionHeader("المجموعات")
                 }
             }
             item {
-                Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    adhkarCategoryOrder.filter { category == null || it == category }.chunked(2).forEach { row ->
-                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                            row.forEach { value ->
-                                CollectionCard(value, state.collectionEntries(value).size,
-                                    Modifier.weight(1f)) { onOpenCollection(value) }
-                            }
-                            if (row.size == 1) Spacer(Modifier.weight(1f))
-                        }
+                LazyRow(contentPadding = PaddingValues(horizontal = 20.dp),
+                    horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    items(adhkarCategoryOrder, key = { it.name }) { value ->
+                        CollectionCard(value, state.collectionEntries(value).size,
+                            Modifier.width(180.dp)) { onOpenCollection(value) }
                     }
                 }
             }
-            item { LibrarySubTabs(selected = tab, onSelect = onTab) }
-            if (tab == "custom") item {
-                Button(onClick = onAddCustom, shape = RoundedCornerShape(16.dp),
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp).heightIn(min = 52.dp)
-                        .testTag("adhkar_add_custom_button")) {
-                    DhikrIcon(R.drawable.ic_adhkar_plus, tint = Color.White, modifier = Modifier.size(20.dp))
-                    Spacer(Modifier.width(8.dp))
-                    Text("إضافة ذكر", fontWeight = FontWeight.Bold)
-                }
+            item { Box(Modifier.padding(horizontal = 20.dp)) { AdhkarSectionHeader("جميع الأذكار") } }
+        } else if (normalized.isEmpty() && category != null) {
+            item {
+                CollectionCard(category, state.collectionEntries(category).size,
+                    Modifier.fillMaxWidth().padding(horizontal = 20.dp)) { onOpenCollection(category) }
             }
-            val list = when (tab) {
-                "favourites" -> favouriteEntries
-                "custom" -> state.customEntries
-                else -> recentEntries
+        }
+        if (tab == "custom" && normalized.isEmpty()) item {
+            Button(onClick = onAddCustom, shape = RoundedCornerShape(16.dp),
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp).heightIn(min = 52.dp)
+                    .testTag("adhkar_add_custom_button")) {
+                DhikrIcon(R.drawable.ic_adhkar_plus, tint = Color.White, modifier = Modifier.size(20.dp))
+                Spacer(Modifier.width(8.dp))
+                Text("إضافة ذكر", fontWeight = FontWeight.Bold)
             }
-            if (list.isEmpty()) item {
-                Column(Modifier.fillMaxWidth().padding(vertical = 24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(when (tab) {
-                        "favourites" -> "لا توجد أذكار في المفضلة بعد"
-                        "custom" -> "لم تضف أذكارًا بعد"
-                        else -> "لا توجد قراءات حديثة"
-                    }, fontWeight = FontWeight.Bold, color = AdhkarHeading)
-                    Text(when (tab) {
-                        "custom" -> "أضف ذكرًا ليظهر هنا."
-                        "favourites" -> "أضف الأذكار إلى المفضلة لتظهر هنا."
-                        else -> "ستظهر هنا الأذكار التي قرأتها."
-                    }, color = p.muted)
-                }
+        }
+        if (results.isEmpty()) item {
+            Column(Modifier.fillMaxWidth().padding(vertical = 24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(when {
+                    normalized.isNotEmpty() -> "لا توجد نتائج"
+                    tab == "favourites" -> "لا توجد أذكار في المفضلة بعد"
+                    tab == "custom" -> "لم تضف أذكارًا بعد"
+                    else -> "لا توجد أذكار في هذه المجموعة"
+                }, fontWeight = FontWeight.Bold, color = AdhkarHeading)
+                Text(when {
+                    normalized.isNotEmpty() -> "جرّب كلمة أخرى أو أزل عوامل التصفية."
+                    tab == "favourites" -> "أضف الأذكار إلى المفضلة لتظهر هنا."
+                    tab == "custom" -> "أضف ذكرًا ليظهر هنا."
+                    else -> "أضف إليها أذكارًا من المكتبة."
+                }, color = p.muted)
+                if (normalized.isNotEmpty()) TextButton(onClick = {
+                    onQuery(""); onCategory(null); onTab("all")
+                }) { Text("مسح التصفية") }
             }
-            items(list, key = { it.id }) { entry ->
-                DhikrEntryCard(entry, entry.id in state.favourites, { onFavourite(entry.id) }, { onOpenEntry(entry.id, null) },
-                    custom = entry.custom, onEdit = { onEditCustom(entry) }, onDelete = { onDeleteCustom(entry) },
-                    onCollections = { onCollections(entry) })
-            }
+        }
+        items(results, key = { it.id }) { entry ->
+            DhikrEntryCard(entry, { onOpenEntry(entry.id, category) }, displayCategory = category)
         }
     }
 }
@@ -852,24 +912,6 @@ private fun CategoryChip(label: String, selected: Boolean, onClick: () -> Unit) 
         border = if (selected) null else BorderStroke(1.dp, AdhkarBorder)) {
         Text(label, Modifier.padding(horizontal = 16.dp, vertical = 9.dp),
             color = if (selected) Color.White else AdhkarHeading, fontSize = 13.sp)
-    }
-}
-
-@Composable
-private fun LibrarySubTabs(selected: String, onSelect: (String) -> Unit) {
-    val p = LocalAdhkarPalette.current
-    Row(Modifier.fillMaxWidth().padding(horizontal = 12.dp)) {
-        listOf("recent" to "الأخيرة", "favourites" to "المفضلة", "custom" to "أذكاري").forEach { (id, label) ->
-            Column(Modifier.weight(1f).clickable { onSelect(id) }.testTag("adhkar_library_tab_" + id),
-                horizontalAlignment = Alignment.CenterHorizontally) {
-                Box(Modifier.heightIn(min = 44.dp), contentAlignment = Alignment.Center) {
-                    Text(label, color = if (selected == id) AdhkarHeading else p.muted, fontSize = 15.sp,
-                        fontWeight = if (selected == id) FontWeight.Bold else FontWeight.Normal)
-                }
-                Box(Modifier.fillMaxWidth().widthIn(max = 72.dp).height(3.dp)
-                    .background(if (selected == id) p.primary else Color.Transparent, RoundedCornerShape(3.dp)))
-            }
-        }
     }
 }
 
@@ -890,36 +932,20 @@ private fun CollectionCard(category: DhikrCategory, count: Int, modifier: Modifi
 }
 
 @Composable
-private fun DhikrEntryCard(entry: DhikrEntry, favourite: Boolean, onFavourite: () -> Unit, onClick: () -> Unit,
-    custom: Boolean = false, onEdit: () -> Unit = {}, onDelete: () -> Unit = {}, onCollections: () -> Unit = {},
-    displayCategory: DhikrCategory? = null) {
+private fun DhikrEntryCard(entry: DhikrEntry, onClick: () -> Unit, displayCategory: DhikrCategory? = null) {
     val p = LocalAdhkarPalette.current
     AdhkarCard(Modifier.fillMaxWidth(), onClick = onClick) {
-        Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 6.dp, top = 6.dp, bottom = 6.dp),
+        Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp),
             verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f).padding(vertical = 6.dp)) {
                 Text(entry.title, color = AdhkarHeading, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
+                    maxLines = 2, overflow = TextOverflow.Ellipsis)
+                Text(entry.text.replace(Regex("\\s+"), " ").trim(), color = p.muted, fontSize = 12.sp,
                     maxLines = 1, overflow = TextOverflow.Ellipsis)
                 Text(if (entry.custom) "ذكر أضفته · التكرار: " + latinNumber(entry.defaultCount)
                     else collectionTitle(displayCategory ?: entry.categories.firstOrNull() ?: DhikrCategory.DAILY) +
                         " · التكرار: " + latinNumber(entry.defaultCount),
                     color = p.muted, fontSize = 12.sp, maxLines = 1)
-            }
-            IconToggleButton(favourite, onCheckedChange = { onFavourite() }) {
-                DhikrIcon(if (favourite) R.drawable.ic_adhkar_heart_filled else R.drawable.ic_adhkar_heart,
-                    if (favourite) "إزالة من المفضلة" else "إضافة إلى المفضلة",
-                    tint = if (favourite) AdhkarHeart else p.muted, modifier = Modifier.size(20.dp))
-            }
-            var menu by remember { mutableStateOf(false) }
-            Box {
-                IconButton(onClick = { menu = true }, modifier = Modifier.testTag("adhkar_custom_menu")) {
-                    DhikrIcon(R.drawable.ic_adhkar_more, "خيارات الذكر", tint = p.muted, modifier = Modifier.size(20.dp))
-                }
-                DropdownMenu(menu, onDismissRequest = { menu = false }) {
-                    if (custom) DropdownMenuItem(text = { Text("تعديل") }, onClick = { menu = false; onEdit() })
-                    DropdownMenuItem(text = { Text("المجموعات") }, onClick = { menu = false; onCollections() })
-                    if (custom) DropdownMenuItem(text = { Text("حذف") }, onClick = { menu = false; onDelete() })
-                }
             }
             DhikrIcon(R.drawable.ic_adhkar_next, tint = p.muted, modifier = Modifier.size(18.dp))
         }
@@ -936,6 +962,7 @@ private fun DhikrRemindersSheet(
     onRead: (DhikrReminder) -> Unit,
     onSavePreset: (DhikrReminder) -> Unit,
     onSkip: (DhikrReminder) -> Unit,
+    onDone: (DhikrReminder) -> Unit,
     onDelete: (DhikrReminder) -> Unit,
 ) {
     val p = LocalAdhkarPalette.current
@@ -985,6 +1012,7 @@ private fun DhikrRemindersSheet(
                         onEdit = { onDraft(rule) },
                         onRead = { onRead(rule) },
                         onSkip = { onSkip(rule) },
+                        onDone = { onDone(rule) },
                         onDelete = { onDelete(rule) })
                 }
                 if (suggestedSlots.isNotEmpty()) item {
@@ -1016,9 +1044,33 @@ internal fun DhikrSheetHeader(title: String, onClose: () -> Unit) {
     }
 }
 
+private fun reminderDoneToday(rule: DhikrReminder, state: DhikrState, now: Long): Boolean {
+    val today = Instant.ofEpochMilli(now).atZone(ZoneId.systemDefault()).toLocalDate().toString()
+    val scheduledDone = state.occurrences.values.any { occurrence ->
+        occurrence.ruleId == rule.id && occurrence.revision == rule.revision &&
+            (occurrence.status == DhikrOccurrenceStatus.DONE ||
+                occurrence.status == DhikrOccurrenceStatus.COMPLETED) &&
+            (occurrence.date == today || now in occurrence.startMillis until occurrence.endMillis)
+    }
+    if (scheduledDone) return true
+    val category = rule.collection ?: return false
+    return state.isCollectionPeriodComplete(category, "${category.name}:$today")
+}
+
+private fun canMarkReminderDone(context: Context, rule: DhikrReminder, state: DhikrState, now: Long): Boolean {
+    if (!rule.enabled || rule.collection?.let { state.collectionEntries(it).isEmpty() } == true) return false
+    val window = DhikrReminderScheduler.currentOrNextWindow(context, rule, now) ?: return false
+    val today = Instant.ofEpochMilli(now).atZone(ZoneId.systemDefault()).toLocalDate()
+    if (now >= window.progressEndMillis ||
+        (window.date != today && now !in window.progressStartMillis until window.progressEndMillis)) return false
+    if (DhikrReminderScheduler.isCollectionReadingDone(context, state, rule, maxOf(now, window.startMillis))) return false
+    return state.occurrences[window.progressKey]?.status?.let { it == DhikrOccurrenceStatus.OPEN } ?: true
+}
+
 @Composable
 private fun DhikrReminderRow(activity: AppCompatActivity, state: DhikrState, rule: DhikrReminder, now: Long,
-    onToggle: (Boolean) -> Unit, onEdit: () -> Unit, onRead: () -> Unit, onSkip: () -> Unit, onDelete: () -> Unit) {
+    onToggle: (Boolean) -> Unit, onEdit: () -> Unit, onRead: () -> Unit, onSkip: () -> Unit,
+    onDone: () -> Unit, onDelete: () -> Unit) {
     val p = LocalAdhkarPalette.current
     var menu by remember { mutableStateOf(false) }
     val window = remember(rule, now) { DhikrReminderScheduler.currentOrNextWindow(activity, rule, now) }
@@ -1052,6 +1104,9 @@ private fun DhikrReminderRow(activity: AppCompatActivity, state: DhikrState, rul
                         DropdownMenuItem(text = { Text("تعديل") }, onClick = { menu = false; onEdit() })
                         DropdownMenuItem(text = { Text(if (rule.extraIntervals.isEmpty()) "تخطّي هذه الفترة" else multiIntervalSkipLabel) },
                             enabled = canSkip, onClick = { menu = false; onSkip() })
+                        DropdownMenuItem(text = { Text("تحديد كمُنجز") },
+                            enabled = canMarkReminderDone(activity, rule, state, now),
+                            onClick = { menu = false; onDone() })
                         DropdownMenuItem(text = { Text("حذف") }, onClick = { menu = false; onDelete() })
                     }
                 }
@@ -1062,8 +1117,10 @@ private fun DhikrReminderRow(activity: AppCompatActivity, state: DhikrState, rul
                 collectionEmpty -> "هذه المجموعة فارغة · اضغط لفتح المكتبة"
                 occurrence?.status == DhikrOccurrenceStatus.SKIPPED ->
                     if (rule.extraIntervals.isEmpty()) "تم تخطّي هذه الفترة" else multiIntervalSkippedStatus
+                occurrence?.status == DhikrOccurrenceStatus.DONE -> "تم إنجاز هذا التذكير"
                 occurrence?.status == DhikrOccurrenceStatus.COMPLETED ->
                     if (rule.extraIntervals.isEmpty()) "اكتمل هدف هذه الفترة" else "اكتمل هدف اليوم"
+                DhikrReminderScheduler.isCollectionReadingDone(activity, state, rule, now) -> "تمت قراءة المجموعة"
                 window == null -> "المواقيت غير متاحة"
                 !notificationsAvailable -> "الإشعارات غير متاحة"
                 vibrationOff -> "الاهتزاز معطّل في إعدادات إشعارات الأذكار"
@@ -1082,6 +1139,8 @@ private fun DhikrReminderRow(activity: AppCompatActivity, state: DhikrState, rul
                     latinNumber(occurrence?.count ?: 0) + " من " + latinNumber(rule.targetCount)
             }
             Text(status, color = p.primary, fontSize = 12.sp, lineHeight = 22.sp)
+            if (canMarkReminderDone(activity, rule, state, now)) TextButton(onClick = onDone,
+                modifier = Modifier.testTag("adhkar_done_" + rule.id)) { Text("تحديد كمُنجز") }
             val nextNudge = remember(rule, state, now, notificationsAvailable) {
                 if (rule.enabled) DhikrReminderScheduler.nextNudge(activity, rule, now) else null
             }
@@ -1138,8 +1197,11 @@ internal fun compactReminderSummary(rule: DhikrReminder): String {
     }.joinToString(" · ")
 }
 
+// Today preset titles are intentional reminder labels and can differ from the dhikr catalog title.
 internal fun reminderTitle(rule: DhikrReminder, state: DhikrState): String =
-    rule.collection?.let(::collectionTitle) ?: state.findDhikr(rule.dhikrId)?.title.orEmpty()
+    reminderSlots().firstOrNull { savedRuleFor(it.key, state.reminders)?.id == rule.id }?.title
+        ?: rule.collection?.let(::collectionTitle)
+        ?: state.findDhikr(rule.dhikrId)?.title.orEmpty()
 
 /** Use the current collection membership; the representative dhikr is not a fallback for an empty list. */
 internal fun reminderSessionItems(state: DhikrState, occurrence: DhikrOccurrence): List<String> {

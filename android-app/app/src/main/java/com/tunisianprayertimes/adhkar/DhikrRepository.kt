@@ -78,6 +78,7 @@ class DhikrRepository(context: Context) {
                     val occurrence = occurrences[occurrenceId] ?: return@forEach
                     val active = now in occurrence.startMillis until occurrence.endMillis &&
                         occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED &&
+                        occurrence.status != DhikrOccurrenceStatus.DONE &&
                         changed.reminders.any { rule -> rule.id == occurrence.ruleId && rule.enabled &&
                             rule.revision == occurrence.revision && rule.collection == session.category }
                     if (!active) return@forEach
@@ -139,6 +140,7 @@ class DhikrRepository(context: Context) {
                 val occurrence = occurrences[occurrenceId] ?: return@forEach
                 val active = now in occurrence.startMillis until occurrence.endMillis &&
                     occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED &&
+                    occurrence.status != DhikrOccurrenceStatus.DONE &&
                     changed.reminders.any { rule -> rule.id == occurrence.ruleId && rule.enabled &&
                         rule.revision == occurrence.revision && rule.collection == category }
                 if (!active || session.itemIds == items) return@forEach
@@ -177,6 +179,7 @@ class DhikrRepository(context: Context) {
             val occurrence = session.occurrenceId?.let { old.occurrences[it] }
             val active = occurrence != null && now in occurrence.startMillis until occurrence.endMillis &&
                 occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED &&
+                occurrence.status != DhikrOccurrenceStatus.DONE &&
                 old.reminders.any { it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision }
             val occurrences = if (!active || updatedSession == session) old.occurrences else {
                 val complete = old.isComplete(updatedSession)
@@ -279,6 +282,23 @@ class DhikrRepository(context: Context) {
         } ?: old }
         DhikrReminderScheduler.refresh(app)
     }
+    /** Acknowledges this occurrence without changing the user's reading count. */
+    fun markDone(occurrenceId: String, now: Long = System.currentTimeMillis()): Boolean {
+        var accepted = false
+        update { old ->
+            val occurrence = old.occurrences[occurrenceId]
+            if (occurrence == null || occurrence.status != DhikrOccurrenceStatus.OPEN ||
+                now >= occurrence.endMillis || old.reminders.none {
+                    it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision
+                }) old else {
+                accepted = true
+                old.copy(occurrences = old.occurrences + (occurrenceId to occurrence.copy(
+                    status = DhikrOccurrenceStatus.DONE)))
+            }
+        }
+        if (accepted) DhikrReminderScheduler.refresh(app, nowMillis = now)
+        return accepted
+    }
     fun snooze(occurrenceId: String, now: Long = System.currentTimeMillis()): Boolean {
         var accepted = false
         update { old ->
@@ -356,6 +376,7 @@ class DhikrRepository(context: Context) {
             val active = membershipChanged && occurrence != null && category != null &&
                 now in occurrence.startMillis until occurrence.endMillis &&
                 occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED &&
+                occurrence.status != DhikrOccurrenceStatus.DONE &&
                 old.reminders.any { it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision }
             val occurrences = if (!active) old.occurrences else {
                 val complete = old.isComplete(session)
@@ -366,7 +387,7 @@ class DhikrRepository(context: Context) {
             }
             old.copy(sessions = sessions + (session.id to session), occurrences = occurrences, lastSessionId = session.id)
         }
-        if (occurrenceId != null) DhikrReminderScheduler.refresh(app)
+        if (occurrenceId != null || collectionReading) DhikrReminderScheduler.refresh(app, nowMillis = now)
         return selected
     }
     fun resumeSession(id: String) = update { old ->
@@ -381,8 +402,11 @@ class DhikrRepository(context: Context) {
             val occurrence = session.occurrenceId?.let { old.occurrences[it] }
             if (session.occurrenceId != null && (occurrence == null || now !in occurrence.startMillis until occurrence.endMillis ||
                     occurrence.status == DhikrOccurrenceStatus.SKIPPED || occurrence.status == DhikrOccurrenceStatus.REPLACED ||
+                    occurrence.status == DhikrOccurrenceStatus.DONE ||
                     old.reminders.none { it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision })) return@update old
-            val count = ((session.counts[session.itemId] ?: 0) + delta).coerceIn(0, old.target(session))
+            val maximum = if (session.category == null) Int.MAX_VALUE else old.target(session)
+            val count = ((session.counts[session.itemId] ?: 0).toLong() + delta)
+                .coerceIn(0L, maximum.toLong()).toInt()
             val updated = session.copy(counts = session.counts + (session.itemId to count),
                 skippedIds = if (delta > 0) session.skippedIds - session.itemId else session.skippedIds,
                 updatedAtMillis = now)
@@ -393,7 +417,8 @@ class DhikrRepository(context: Context) {
                 } else if (count >= occurrence.target) DhikrOccurrenceStatus.COMPLETED else DhikrOccurrenceStatus.OPEN))
             old.copy(sessions = old.sessions + (session.id to updated), occurrences = occurrences, lastSessionId = session.id)
         }
-        if (state.value.sessions[sessionId]?.occurrenceId != null) DhikrReminderScheduler.refresh(app)
+        if (state.value.sessions[sessionId]?.let { it.occurrenceId != null || it.collectionPeriodKey != null } == true)
+            DhikrReminderScheduler.refresh(app, nowMillis = now)
     }
     /** Navigation is free and wraps around; completion is never a constraint. */
     fun move(sessionId: String, direction: Int) = update { old ->
@@ -417,6 +442,7 @@ class DhikrRepository(context: Context) {
             val occurrence = session.occurrenceId?.let { old.occurrences[it] }
             val linked = occurrence != null && now in occurrence.startMillis until occurrence.endMillis &&
                 occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED &&
+                occurrence.status != DhikrOccurrenceStatus.DONE &&
                 old.reminders.any { it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision }
             val occurrences = if (!linked) old.occurrences else {
                 val complete = old.isComplete(updated)
@@ -432,7 +458,8 @@ class DhikrRepository(context: Context) {
             }
             old.copy(sessions = old.sessions + (sessionId to updated), occurrences = occurrences, lastSessionId = sessionId)
         }
-        if (state.value.sessions[sessionId]?.occurrenceId != null) DhikrReminderScheduler.refresh(app)
+        if (state.value.sessions[sessionId]?.let { it.occurrenceId != null || it.collectionPeriodKey != null } == true)
+            DhikrReminderScheduler.refresh(app, nowMillis = now)
     }
     /**
      * Removes the current item from this reading list. A collection session also removes it
@@ -453,6 +480,7 @@ class DhikrRepository(context: Context) {
             val occurrence = session.occurrenceId?.let { old.occurrences[it] }
             val active = occurrence != null && now in occurrence.startMillis until occurrence.endMillis &&
                 occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED &&
+                occurrence.status != DhikrOccurrenceStatus.DONE &&
                 old.reminders.any { it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision }
             val occurrences = if (!active) old.occurrences else {
                 val complete = updatedSession?.let { old.isComplete(it) } == true
