@@ -2,6 +2,8 @@ package com.tunisianprayertimes.ui
 
 import android.app.Application
 import android.telephony.TelephonyManager
+import androidx.compose.ui.test.assertIsSelected
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithTag
@@ -40,7 +42,8 @@ class QiblaCardTest {
         }
 
         compose.onNodeWithText(delegationLabel).assertExists()
-        compose.onNodeWithText(context.getString(R.string.qibla_degrees_value, 113.0)).assertExists()
+        compose.onNodeWithTag(TestTags.QIBLA_BEARING_VALUE)
+            .assertTextEquals(context.getString(R.string.qibla_degrees_value, 113.0))
         compose.onNodeWithText(context.getString(R.string.qibla_location_permission_required)).assertExists()
         // While the delegation loads, the status line must not claim the location is missing.
         compose.onNodeWithText(context.getString(R.string.qibla_location_required)).assertDoesNotExist()
@@ -63,35 +66,52 @@ class QiblaCardTest {
     }
 
     @Test
-    fun switchingToTheRhumbLine_showsItsBearingAndRemembersTheChoice() {
+    fun methodChoice_staysOutOfTheWayUntilOpened() {
         setNetworkCountry("tn")
-        val greatCircleBearing = context.getString(R.string.qibla_degrees_value, 113.0)
-        val rhumbLineBearing = context.getString(R.string.qibla_degrees_value, 121.0)
         compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
-        compose.waitUntil(timeoutMillis = 10_000) {
-            compose.onAllNodesWithText(greatCircleBearing).fetchSemanticsNodes().isNotEmpty()
-        }
-        compose.onNodeWithText(context.getString(R.string.qibla_method_great_circle_description)).assertExists()
+        waitForBearing(113.0)
 
+        compose.onNodeWithTag(TestTags.QIBLA_METHOD_ROW).assertExists()
+        compose.onNodeWithText(context.getString(R.string.qibla_method_standard)).assertExists()
+        // The choice itself, and the chip for the less common method, only appear on demand.
+        compose.onNodeWithTag(TestTags.QIBLA_METHOD_RHUMB_LINE).assertDoesNotExist()
+        compose.onNodeWithTag(TestTags.QIBLA_METHOD_CHIP).assertDoesNotExist()
+    }
+
+    @Test
+    fun switchingToTheRhumbLine_explainsTheDifferenceAndRemembersTheChoice() {
+        setNetworkCountry("tn")
+        compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
+        waitForBearing(113.0)
+
+        compose.onNodeWithTag(TestTags.QIBLA_METHOD_ROW).performClick()
+        compose.waitForIdle()
+        compose.onNodeWithTag(TestTags.QIBLA_METHOD_GREAT_CIRCLE).assertIsSelected()
+        // In Tunis the two methods part by about 8°, and the sheet says so before the switch.
+        compose.onNodeWithText(context.getString(R.string.qibla_method_difference, 8)).assertExists()
         compose.onNodeWithTag(TestTags.QIBLA_METHOD_RHUMB_LINE).performClick()
 
-        compose.onNodeWithText(rhumbLineBearing).assertExists()
-        compose.onNodeWithText(greatCircleBearing).assertDoesNotExist()
-        compose.onNodeWithText(context.getString(R.string.qibla_method_rhumb_line_description)).assertExists()
+        waitForBearing(121.0)
+        compose.onNodeWithTag(TestTags.QIBLA_METHOD_RHUMB_LINE).assertIsSelected()
+        compose.onNodeWithTag(TestTags.QIBLA_METHOD_CHIP).assertExists()
         assertEquals(QiblaMethod.RhumbLine, PrefsManager.getQiblaMethod(context))
     }
 
     @Test
-    fun savedRhumbLineChoice_isUsedWhenTheCardOpens() {
+    fun savedRhumbLineChoice_isUsedAndFlaggedWhenTheCardOpens() {
         setNetworkCountry("tn")
         PrefsManager.setQiblaMethod(context, QiblaMethod.RhumbLine)
-        val rhumbLineBearing = context.getString(R.string.qibla_degrees_value, 121.0)
         compose.setContent { QiblaCard(selectedDelegationId = TUNIS_DELEGATION_ID) }
-        compose.waitUntil(timeoutMillis = 10_000) {
-            compose.onAllNodesWithText(rhumbLineBearing).fetchSemanticsNodes().isNotEmpty()
-        }
+        waitForBearing(121.0)
 
-        compose.onNodeWithText(context.getString(R.string.qibla_degrees_value, 113.0)).assertDoesNotExist()
+        compose.onNodeWithTag(TestTags.QIBLA_METHOD_CHIP).assertExists()
+    }
+
+    private fun waitForBearing(degrees: Double) {
+        val expected = context.getString(R.string.qibla_degrees_value, degrees)
+        compose.waitUntil(timeoutMillis = 10_000) {
+            runCatching { compose.onNodeWithTag(TestTags.QIBLA_BEARING_VALUE).assertTextEquals(expected) }.isSuccess
+        }
     }
 
     private fun setNetworkCountry(countryIso: String) {
