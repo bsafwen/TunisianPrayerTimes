@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Prayer tab: manual silencing card -->
+    <string name="manual_silence_subtitle_idle">أسكت الهاتف الآن، واختر متى يعود الرنين.</string>
+    <string name="manual_silence_active_title">الهاتف صامت</string>
+    <string name="manual_silence_active_until_time">يعود الرنين عند %1$s</string>
+    <string name="manual_silence_active_until_prayer">يعود الرنين عند صلاة %1$s</string>
+    <string name="manual_silence_active_until_stopped">يبقى صامتًا حتى توقفه</string>
+    <string name="manual_silence_active_auto">أُسكت تلقائيًا لوقت الصلاة</string>
+    <string name="manual_silence_mode_until_short">حتى أوقفه</string>
+    <string name="manual_silence_mode_prayer_short">حتى صلاة</string>
+    <string name="manual_silence_duration_custom">مدة أخرى</string>
+    <string name="manual_silence_action_now">إسكات الآن</string>
+    <string name="manual_silence_action_duration">إسكات لمدة %1$s</string>
+    <string name="manual_silence_action_prayer">إسكات حتى صلاة %1$s</string>
+    <string name="manual_silence_action_stop">إيقاف الإسكات</string>
+</resources>

@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.ui.platform.testTag
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -441,6 +442,7 @@ internal fun EndpointModeChoices(
     selected: Int,
     enabled: Boolean,
     onSelected: (Int) -> Unit,
+    optionTestTags: List<String> = emptyList(),
 ) {
     val textMeasurer = rememberTextMeasurer()
     val density = LocalDensity.current
@@ -470,6 +472,7 @@ internal fun EndpointModeChoices(
                         enabled = enabled,
                         onClick = { onSelected(index) },
                         modifier = Modifier.weight(1f).fillMaxHeight(),
+                        testTag = optionTestTags.getOrNull(index),
                     )
                 }
             }
@@ -482,6 +485,7 @@ internal fun EndpointModeChoices(
                         enabled = enabled,
                         onClick = { onSelected(index) },
                         modifier = Modifier.fillMaxWidth(),
+                        testTag = optionTestTags.getOrNull(index),
                     )
                 }
             }
@@ -496,10 +500,12 @@ private fun EndpointModeOption(
     enabled: Boolean,
     onClick: () -> Unit,
     modifier: Modifier,
+    testTag: String? = null,
 ) {
     val shape = RoundedCornerShape(9.dp)
     Box(
         modifier = modifier
+            .then(if (testTag != null) Modifier.testTag(testTag) else Modifier)
             .heightIn(min = 48.dp)
             .clip(shape)
             .background(if (selected) PrayerSilencePalette.Surface else Color.Transparent)

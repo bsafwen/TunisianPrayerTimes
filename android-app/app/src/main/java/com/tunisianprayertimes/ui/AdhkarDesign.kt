@@ -43,17 +43,13 @@ private fun TextStyle.adhkarUi() = copy(fontFamily = AdhkarUiFont,
     lineHeightStyle = LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.None),
     platformStyle = PlatformTextStyle(includeFontPadding = false))
 
-// Approved mockup tokens layered on the app palette.
-internal val AdhkarHeading = Color(0xFF1D2B4F)
+// Calm teal and warm accents layered on the app's cream, green, and gold palette.
+internal val AdhkarHeading = Color(0xFF123F3A)
 internal val AdhkarSurface = Color(0xFFFFFFFF)
-internal val AdhkarBorder = Color(0xFFEDE7DA)
+internal val AdhkarBorder = Color(0xFFE8E7DF)
 internal val AdhkarSoftGreen = Color(0xFFE6F0EA)
 internal val AdhkarSoftGold = Color(0xFFFBF1D8)
 internal val AdhkarGoldAccent = Color(0xFFE3A93C)
-internal val AdhkarMorningTop = Color(0xFFF8E3A8)
-internal val AdhkarMorningBottom = Color(0xFFEFC65C)
-internal val AdhkarEveningTop = Color(0xFF20645A)
-internal val AdhkarEveningBottom = Color(0xFF12463F)
 internal val AdhkarRingTrack = Color(0xFFDCE8E1)
 internal val AdhkarHeart = Color(0xFFE23B3B)
 
@@ -124,7 +120,7 @@ internal fun categoryIcon(category: DhikrCategory): Int = when (category) {
     DhikrCategory.MORNING -> R.drawable.ic_adhkar_sun
     DhikrCategory.EVENING -> R.drawable.ic_adhkar_moon
     DhikrCategory.SALAH -> R.drawable.ic_adhkar_mosque
-    DhikrCategory.PRAYER -> R.drawable.ic_adhkar_bookmark
+    DhikrCategory.PRAYER -> R.drawable.ic_adhkar_ruku_silhouette
     DhikrCategory.SLEEP -> R.drawable.ic_adhkar_sleep
     DhikrCategory.HOME -> R.drawable.ic_adhkar_home
     DhikrCategory.DAILY -> R.drawable.ic_adhkar_leaf

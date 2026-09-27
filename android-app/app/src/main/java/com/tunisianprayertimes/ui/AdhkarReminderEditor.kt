@@ -120,7 +120,7 @@ import java.time.*
                             horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                             Box(Modifier.size(54.dp).clip(RoundedCornerShape(16.dp)).background(AdhkarSoftGreen), contentAlignment = Alignment.Center) {
                                 DhikrIcon(when {
-                                    selectedEntry.id == DhikrCatalog.SALAWAT_ID -> R.drawable.ic_adhkar_mosque
+                                    selectedEntry.id == DhikrCatalog.SALAWAT_ID -> R.drawable.ic_adhkar_salawat
                                     selectedEntry.custom -> R.drawable.ic_adhkar_leaf
                                     else -> categoryIcon(selectedEntry.categories.first())
                                 }, modifier = Modifier.size(28.dp))

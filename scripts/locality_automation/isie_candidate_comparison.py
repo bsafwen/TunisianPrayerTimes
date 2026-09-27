@@ -35,7 +35,8 @@ BOUNDARY_MATCH_TOLERANCE_M = 20.0
 # quantization. It selects sectors for inspection; it neither
 # excuses a 20 m disagreement nor asserts 20 m absolute map accuracy.
 CONFLICT_POSITIONAL_ERROR_BUFFER_M = 20.0
-OVERLAP_DIAGNOSTIC_AREA_M2 = 1.0
+# Sub-50 m² overlaps remain in the raw metrics but are ignored as conflicts.
+OVERLAP_CONFLICT_THRESHOLD_M2 = 50.0
 MIN_AGREEMENT_M = 1000.0
 MIN_AGREEMENT_FRACTION = .10
 
@@ -232,7 +233,9 @@ def _installed_sector_conflicts(case_id: str, candidate: Polygon, installed: Mul
 
     The bbox prefilter is in catalog lon/lat coordinates. Packed neighbor
     geometries are decoded only after their bboxes reach the buffered footprint.
-    The 1 m² flag is diagnostic, never an acceptance or installation decision.
+    Overlaps below 50 m² remain in the raw metrics but do not raise a conflict
+    flag. This threshold is diagnostic, never an acceptance or installation
+    decision.
     """
     footprint = installed.union(candidate).buffer(CONFLICT_POSITIONAL_ERROR_BUFFER_M / factor)
     to_wgs84 = Transformer.from_crs(crs, 4326, always_xy=True)
@@ -252,9 +255,9 @@ def _installed_sector_conflicts(case_id: str, candidate: Polygon, installed: Mul
                         "newlyCoveredOverlapM2": newly_covered_overlap,
                         "overlapDeltaM2": proposed_overlap - old_overlap,
                         "distanceToProposedMeters": candidate.distance(other) * factor,
-                        "newOverlapDiagnostic": newly_covered_overlap > OVERLAP_DIAGNOSTIC_AREA_M2,
-                        "newlyIntersectingDiagnostic": old_overlap <= OVERLAP_DIAGNOSTIC_AREA_M2
-                        and proposed_overlap > OVERLAP_DIAGNOSTIC_AREA_M2})
+                        "newOverlapDiagnostic": newly_covered_overlap >= OVERLAP_CONFLICT_THRESHOLD_M2,
+                        "newlyIntersectingDiagnostic": old_overlap < OVERLAP_CONFLICT_THRESHOLD_M2
+                        and proposed_overlap >= OVERLAP_CONFLICT_THRESHOLD_M2})
     sectors.sort(key=lambda item: item["id"])
     return {"status": "new_installed_overlap_diagnostic" if any(row["newOverlapDiagnostic"] for row in sectors)
             else "no_new_installed_overlap_diagnostic",
@@ -350,7 +353,7 @@ def _comparison_cache_inputs(case: dict, inventory: dict, catalog: Catalog,
                          "minAgreementMeters": MIN_AGREEMENT_M,
                          "minAgreementFraction": MIN_AGREEMENT_FRACTION,
                          "conflictPositionalErrorSearchBufferMeters": CONFLICT_POSITIONAL_ERROR_BUFFER_M,
-                         "overlapDiagnosticAreaM2": OVERLAP_DIAGNOSTIC_AREA_M2}}
+                         "overlapConflictThresholdM2": OVERLAP_CONFLICT_THRESHOLD_M2}}
 
 
 def compare(case: dict, inventory: dict, catalog: Catalog, neighbors: list[tuple[str, dict]],
