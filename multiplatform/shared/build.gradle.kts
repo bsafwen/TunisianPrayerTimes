@@ -50,6 +50,8 @@ kotlin {
         val javaTest by getting {
             // The Python publisher and app parser verify the same correction payload.
             resources.srcDir(rootProject.file("../test-data"))
+            // The prayer-formula inputs the Android app bundles.
+            resources.srcDir(rootProject.file("../data/prayer-formula"))
             dependencies {
                 implementation(kotlin("test"))
             }
@@ -61,4 +63,9 @@ kotlin {
             }
         }
     }
+}
+
+// The prayer-formula golden test compares against the meteo.tn tables scraped into docs/csv.
+tasks.withType<Test>().configureEach {
+    systemProperty("tunisianprayertimes.docsCsv", rootProject.file("../docs/csv").absolutePath)
 }
