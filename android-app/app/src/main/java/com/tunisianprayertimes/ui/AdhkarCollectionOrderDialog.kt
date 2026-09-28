@@ -30,14 +30,24 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.DhikrCategory
 import com.tunisianprayertimes.adhkar.DhikrState
 import com.tunisianprayertimes.adhkar.collectionEntries
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.first
 
 /** Band along the list's top and bottom edges where a held card scrolls the list. */
 private val AutoScrollEdge = 56.dp
+/** In a short list (landscape, large text) the bands shrink so a still zone remains, but not below this. */
+private val AutoScrollMinEdge = 12.dp
 /** Scroll speed once the card is fully into the band or past it; about two list heights per second. */
 private val AutoScrollMaxSpeedPerSecond = 720.dp
 /** Entering the band starts gently rather than jumping straight to full speed. */
 private const val AutoScrollMinFraction = 0.15f
+
+/**
+ * Height of each edge band for a list [listHeight] tall while dragging a card [cardHeight] tall.
+ * In a short list (landscape, large text) the bands shrink to a third of the free space, so the card
+ * keeps a still zone between them and a one-slot move does not start scrolling.
+ */
+internal fun autoScrollEdgeBand(listHeight: Float, cardHeight: Float, maxBand: Float, minBand: Float): Float =
+    ((listHeight - cardHeight) / 3f).coerceIn(minBand, maxBand)
 
 @Composable
 internal fun DhikrCollectionOrderDialog(
@@ -53,7 +63,10 @@ internal fun DhikrCollectionOrderDialog(
     val draggedId = remember { mutableStateOf<String?>(null) }
     val dragStartOrder = remember { mutableStateOf(emptyList<String>()) }
     val dragPointerY = remember { mutableFloatStateOf(0f) }
-    val dragStartPointerY = remember { mutableFloatStateOf(0f) }
+    // Direction the finger is currently pushing (-1 up, 1 down, 0 not yet past touch slop), and the
+    // point it turned at: a push is measured from the last reversal, not from where the card was picked up.
+    val dragDirection = remember { mutableIntStateOf(0) }
+    val dragTurnY = remember { mutableFloatStateOf(0f) }
     val dragGrabOffsetY = remember { mutableFloatStateOf(0f) }
     val draggedSize = remember { mutableIntStateOf(0) }
     val scrollState = rememberLazyListState()
@@ -62,6 +75,7 @@ internal fun DhikrCollectionOrderDialog(
     val onReorderState = rememberUpdatedState(onReorder)
     val density = androidx.compose.ui.platform.LocalDensity.current
     val autoScrollEdgePx = with(density) { AutoScrollEdge.toPx() }
+    val autoScrollMinEdgePx = with(density) { AutoScrollMinEdge.toPx() }
     val autoScrollMaxSpeedPx = with(density) { AutoScrollMaxSpeedPerSecond.toPx() }
     val touchSlop = androidx.compose.ui.platform.LocalViewConfiguration.current.touchSlop
 
@@ -69,32 +83,45 @@ internal fun DhikrCollectionOrderDialog(
         if (draggedId.value == null) orderedIds.value = entryIds
     }
 
+    /** Bottom of the visible list. The viewport end is the height limit, which a short list does not fill. */
+    fun listEnd(): Float = scrollState.layoutInfo.let { minOf(it.viewportEndOffset, it.viewportSize.height) }.toFloat()
+
     /** The dragged card follows the finger but stays inside the list, so it is never clipped out of view. */
     fun draggedTop(): Float {
-        val info = scrollState.layoutInfo
+        val start = scrollState.layoutInfo.viewportStartOffset.toFloat()
         val top = dragPointerY.floatValue - dragGrabOffsetY.floatValue
-        val lowest = (info.viewportEndOffset - draggedSize.intValue).toFloat()
-        return top.coerceIn(info.viewportStartOffset.toFloat(), maxOf(info.viewportStartOffset.toFloat(), lowest))
+        return top.coerceIn(start, maxOf(start, listEnd() - draggedSize.intValue))
+    }
+
+    /** Records which way the finger is pushing; turning back only counts once it passes touch slop. */
+    fun trackDragDirection(y: Float) {
+        val direction = dragDirection.intValue
+        val turn = dragTurnY.floatValue
+        when {
+            // Keep extending the current push; its far end is where a reversal is measured from.
+            direction > 0 && y > turn || direction < 0 && y < turn -> dragTurnY.floatValue = y
+            y - turn > touchSlop -> { dragDirection.intValue = 1; dragTurnY.floatValue = y }
+            turn - y > touchSlop -> { dragDirection.intValue = -1; dragTurnY.floatValue = y }
+        }
     }
 
     /**
-     * Scroll speed in px/s (negative scrolls up) while the dragged card is held in the zone along the
-     * edge it is moving toward. Speed grows with how far the card reaches into the zone, or past it.
+     * Scroll speed in px/s (negative scrolls up) while the dragged card is held in the band along the
+     * edge it is being pushed toward. Speed grows with how far the card reaches into the band, or past it.
      */
     fun autoScrollSpeed(): Float {
         if (draggedId.value == null) return 0f
-        val info = scrollState.layoutInfo
+        val start = scrollState.layoutInfo.viewportStartOffset.toFloat()
+        val end = listEnd()
+        val band = autoScrollEdgeBand(end - start, draggedSize.intValue.toFloat(), autoScrollEdgePx, autoScrollMinEdgePx)
         val top = dragPointerY.floatValue - dragGrabOffsetY.floatValue
-        val bottom = top + draggedSize.intValue
+        val intoTop = start + band - top
+        val intoBottom = top + draggedSize.intValue - (end - band)
+        fun speed(depth: Float) = autoScrollMaxSpeedPx * (depth / band).coerceIn(AutoScrollMinFraction, 1f)
         // A card picked up at an edge must not scroll on finger jitter; it has to be pushed toward the edge.
-        val movedUp = dragStartPointerY.floatValue - dragPointerY.floatValue > touchSlop
-        val movedDown = dragPointerY.floatValue - dragStartPointerY.floatValue > touchSlop
-        val intoTop = info.viewportStartOffset + autoScrollEdgePx - top
-        val intoBottom = bottom - (info.viewportEndOffset - autoScrollEdgePx)
-        fun speed(depth: Float) = autoScrollMaxSpeedPx * (depth / autoScrollEdgePx).coerceIn(AutoScrollMinFraction, 1f)
         return when {
-            movedUp && intoTop > 0f && scrollState.canScrollBackward -> -speed(intoTop)
-            movedDown && intoBottom > 0f && scrollState.canScrollForward -> speed(intoBottom)
+            dragDirection.intValue < 0 && intoTop > 0f && scrollState.canScrollBackward -> -speed(intoTop)
+            dragDirection.intValue > 0 && intoBottom > 0f && scrollState.canScrollForward -> speed(intoBottom)
             else -> 0f
         }
     }
@@ -135,8 +162,10 @@ internal fun DhikrCollectionOrderDialog(
     // Frames are only requested while scrolling, not for the whole drag.
     LaunchedEffect(draggedId.value) {
         if (draggedId.value == null) return@LaunchedEffect
-        snapshotFlow { autoScrollSpeed() != 0f }.collectLatest { scrolling ->
-            if (!scrolling) return@collectLatest
+        while (true) {
+            // A fresh flow reads the current state first, so a scroll need that appeared while
+            // the last run was stopping is never missed.
+            snapshotFlow { autoScrollSpeed() != 0f }.first { it }
             var previousFrame = withFrameNanos { it }
             while (true) {
                 val frame = withFrameNanos { it }
@@ -168,7 +197,8 @@ internal fun DhikrCollectionOrderDialog(
                                     val id = item.key as? String ?: return@detectDragGesturesAfterLongPress
                                     dragStartOrder.value = orderedIds.value
                                     dragPointerY.floatValue = startPosition.y
-                                    dragStartPointerY.floatValue = startPosition.y
+                                    dragDirection.intValue = 0
+                                    dragTurnY.floatValue = startPosition.y
                                     dragGrabOffsetY.floatValue = startPosition.y - item.offset
                                     draggedSize.intValue = item.size
                                     draggedId.value = id
@@ -177,6 +207,7 @@ internal fun DhikrCollectionOrderDialog(
                                     if (draggedId.value == null) return@detectDragGesturesAfterLongPress
                                     change.consume()
                                     dragPointerY.floatValue = change.position.y
+                                    trackDragDirection(change.position.y)
                                     moveDraggedToPointer()
                                 },
                                 onDragEnd = {
