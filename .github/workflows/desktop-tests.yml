@@ -6,12 +6,18 @@ on:
     paths:
       - "multiplatform/**"
       - "test-data/islamic-calendar/**"
+      - "test-data/inm-prayer-times/**"
+      - "data/prayer-formula/**"
+      - "docs/csv/**"
       - ".github/workflows/desktop-tests.yml"
   pull_request:
     branches: [main]
     paths:
       - "multiplatform/**"
       - "test-data/islamic-calendar/**"
+      - "test-data/inm-prayer-times/**"
+      - "data/prayer-formula/**"
+      - "docs/csv/**"
       - ".github/workflows/desktop-tests.yml"
 
 env:
