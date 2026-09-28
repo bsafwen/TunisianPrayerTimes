@@ -775,19 +775,32 @@ class AdhkarFlowTest {
         assertEquals(2 * 60 * 60_000L, spring.endMillis - spring.startMillis)
         assertEquals(4 * 60 * 60_000L, autumn.endMillis - autumn.startMillis)
     }
-    @Test fun prayerRelativeReminderUsesBundledYearFallbackAfter2026() {
+    @Test fun prayerRelativeReminderUsesComputedTimesForFutureYears() {
         val delegation = PrefsManager.getDelegationId(context)
-        val source = PrayerTimesRepository.loadDayPrayerTimes(context, delegation, 2026, 1, 1)!!
-        val nextYear = LocalDate.of(2027, 1, 1)
-        val fajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), nextYear)!!
+        for (date in listOf(LocalDate.of(2027, 1, 1), LocalDate.of(2028, 2, 29))) {
+            val expected = PrayerTimesRepository.loadDayPrayerTimes(context, delegation, date.year, date.monthValue, date.dayOfMonth)!!
+            val fajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), date)!!
+            val localFajr = Instant.ofEpochMilli(fajr).atZone(ZoneId.systemDefault()).toLocalTime()
+            assertEquals(expected.fajr.hour, localFajr.hour)
+            assertEquals(expected.fajr.minute, localFajr.minute)
+        }
+        val rule = rule().copy(start = DhikrTime(DhikrTimeKind.FAJR), end = DhikrTime(DhikrTimeKind.MAGHRIB))
+        assertNotNull(DhikrReminderScheduler.resolveWindow(context, rule, LocalDate.of(2027, 1, 1)))
+    }
+    @Test fun prayerRelativeReminderReusesLastSupportedYearBeyondIt() {
+        val delegation = PrefsManager.getDelegationId(context)
+        val lastYear = PrayerTimesRepository.SUPPORTED_YEARS.last
+        val source = PrayerTimesRepository.loadDayPrayerTimes(context, delegation, lastYear, 1, 1)!!
+        val fajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), LocalDate.of(lastYear + 1, 1, 1))!!
         val localFajr = Instant.ofEpochMilli(fajr).atZone(ZoneId.systemDefault()).toLocalTime()
         assertEquals(source.fajr.hour, localFajr.hour)
         assertEquals(source.fajr.minute, localFajr.minute)
-        val rule = rule().copy(start = DhikrTime(DhikrTimeKind.FAJR), end = DhikrTime(DhikrTimeKind.MAGHRIB))
-        assertNotNull(DhikrReminderScheduler.resolveWindow(context, rule, nextYear))
 
-        val leapDay = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), LocalDate.of(2028, 2, 29))!!
-        val feb28 = PrayerTimesRepository.loadDayPrayerTimes(context, delegation, 2026, 2, 28)!!
+        // The first leap day past a non-leap last year falls back to its February 28.
+        val leapYear = (lastYear + 1..lastYear + 8).first { Year.isLeap(it.toLong()) }
+        assertFalse(Year.isLeap(lastYear.toLong()))
+        val leapDay = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), LocalDate.of(leapYear, 2, 29))!!
+        val feb28 = PrayerTimesRepository.loadDayPrayerTimes(context, delegation, lastYear, 2, 28)!!
         val localLeapFajr = Instant.ofEpochMilli(leapDay).atZone(ZoneId.systemDefault()).toLocalTime()
         assertEquals(feb28.fajr.hour, localLeapFajr.hour)
         assertEquals(feb28.fajr.minute, localLeapFajr.minute)

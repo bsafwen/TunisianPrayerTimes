@@ -30,8 +30,14 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.DhikrCategory
 import com.tunisianprayertimes.adhkar.DhikrState
 import com.tunisianprayertimes.adhkar.collectionEntries
-import kotlinx.coroutines.delay
-import kotlin.math.abs
+import kotlinx.coroutines.flow.collectLatest
+
+/** Band along the list's top and bottom edges where a held card scrolls the list. */
+private val AutoScrollEdge = 56.dp
+/** Scroll speed once the card is fully into the band or past it; about two list heights per second. */
+private val AutoScrollMaxSpeedPerSecond = 720.dp
+/** Entering the band starts gently rather than jumping straight to full speed. */
+private const val AutoScrollMinFraction = 0.15f
 
 @Composable
 internal fun DhikrCollectionOrderDialog(
@@ -47,19 +53,53 @@ internal fun DhikrCollectionOrderDialog(
     val draggedId = remember { mutableStateOf<String?>(null) }
     val dragStartOrder = remember { mutableStateOf(emptyList<String>()) }
     val dragPointerY = remember { mutableFloatStateOf(0f) }
+    val dragStartPointerY = remember { mutableFloatStateOf(0f) }
     val dragGrabOffsetY = remember { mutableFloatStateOf(0f) }
-    val autoScrollDirection = remember { mutableIntStateOf(0) }
+    val draggedSize = remember { mutableIntStateOf(0) }
     val scrollState = rememberLazyListState()
     val entryById = remember(entries) { entries.associateBy { it.id } }
     val displayedEntries = orderedIds.value.mapNotNull(entryById::get)
     val onReorderState = rememberUpdatedState(onReorder)
-    val autoScrollOutsidePx = with(androidx.compose.ui.platform.LocalDensity.current) { 24.dp.toPx() }
+    val density = androidx.compose.ui.platform.LocalDensity.current
+    val autoScrollEdgePx = with(density) { AutoScrollEdge.toPx() }
+    val autoScrollMaxSpeedPx = with(density) { AutoScrollMaxSpeedPerSecond.toPx() }
+    val touchSlop = androidx.compose.ui.platform.LocalViewConfiguration.current.touchSlop
 
     LaunchedEffect(entryIds.toSet()) {
         if (draggedId.value == null) orderedIds.value = entryIds
     }
 
-    fun moveDraggedToPointer(pointerY: Float) {
+    /** The dragged card follows the finger but stays inside the list, so it is never clipped out of view. */
+    fun draggedTop(): Float {
+        val info = scrollState.layoutInfo
+        val top = dragPointerY.floatValue - dragGrabOffsetY.floatValue
+        val lowest = (info.viewportEndOffset - draggedSize.intValue).toFloat()
+        return top.coerceIn(info.viewportStartOffset.toFloat(), maxOf(info.viewportStartOffset.toFloat(), lowest))
+    }
+
+    /**
+     * Scroll speed in px/s (negative scrolls up) while the dragged card is held in the zone along the
+     * edge it is moving toward. Speed grows with how far the card reaches into the zone, or past it.
+     */
+    fun autoScrollSpeed(): Float {
+        if (draggedId.value == null) return 0f
+        val info = scrollState.layoutInfo
+        val top = dragPointerY.floatValue - dragGrabOffsetY.floatValue
+        val bottom = top + draggedSize.intValue
+        // A card picked up at an edge must not scroll on finger jitter; it has to be pushed toward the edge.
+        val movedUp = dragStartPointerY.floatValue - dragPointerY.floatValue > touchSlop
+        val movedDown = dragPointerY.floatValue - dragStartPointerY.floatValue > touchSlop
+        val intoTop = info.viewportStartOffset + autoScrollEdgePx - top
+        val intoBottom = bottom - (info.viewportEndOffset - autoScrollEdgePx)
+        fun speed(depth: Float) = autoScrollMaxSpeedPx * (depth / autoScrollEdgePx).coerceIn(AutoScrollMinFraction, 1f)
+        return when {
+            movedUp && intoTop > 0f && scrollState.canScrollBackward -> -speed(intoTop)
+            movedDown && intoBottom > 0f && scrollState.canScrollForward -> speed(intoBottom)
+            else -> 0f
+        }
+    }
+
+    fun moveDraggedToPointer() {
         val id = draggedId.value ?: return
         val current = orderedIds.value
         val from = current.indexOf(id)
@@ -67,11 +107,13 @@ internal fun DhikrCollectionOrderDialog(
         val visible = scrollState.layoutInfo.visibleItemsInfo
         // Wait for the list to lay out a completed swap before using its item positions again.
         if (visible.any { current.getOrNull(it.index) != it.key }) return
-        val draggedItem = visible.firstOrNull { it.key == id } ?: return
-        // Compare the card's visible centre with the other cards' layout positions.
-        // The pointer is measured in the list's fixed coordinate space, so moving
-        // the dragged card to a new slot cannot change the pointer position.
-        val draggedCentre = pointerY - dragGrabOffsetY.floatValue + draggedItem.size / 2f
+        // Compare the centre of the card under the finger with the other cards' layout positions.
+        // The pointer is measured in the list's fixed coordinate space, so moving the dragged
+        // card to a new slot cannot change the pointer position. The finger, not the drawn card
+        // (which stays inside the list), decides the slot, so pushing past the first or last card
+        // still reaches the ends. The card's own slot may have scrolled out of view during
+        // auto-scroll, so its size is kept from the start of the drag.
+        val draggedCentre = dragPointerY.floatValue - dragGrabOffsetY.floatValue + draggedSize.intValue / 2f
         val targetBelow = visible.filter { item ->
             item.key != id && item.index > from && item.offset + item.size / 2f < draggedCentre
         }.maxOfOrNull { it.index }
@@ -89,22 +131,21 @@ internal fun DhikrCollectionOrderDialog(
         scrollState.requestScrollToItem(anchorIndex, anchorOffset)
     }
 
-    LaunchedEffect(draggedId.value, autoScrollDirection.intValue) {
-        val direction = autoScrollDirection.intValue
-        if (draggedId.value != null && direction != 0) {
-            while (draggedId.value != null && autoScrollDirection.intValue == direction) {
-                val activeId = draggedId.value ?: break
-                if (scrollState.layoutInfo.visibleItemsInfo.none { it.key == activeId }) {
-                    autoScrollDirection.intValue = 0
-                    break
-                }
-                if (abs(scrollState.scrollBy(direction * 8f)) < 1f) break
-                if (scrollState.layoutInfo.visibleItemsInfo.none { it.key == activeId }) {
-                    autoScrollDirection.intValue = 0
-                    break
-                }
-                moveDraggedToPointer(dragPointerY.floatValue)
-                delay(16L)
+    // While a held card sits in an edge band, scroll every frame, even if the finger stays still.
+    // Frames are only requested while scrolling, not for the whole drag.
+    LaunchedEffect(draggedId.value) {
+        if (draggedId.value == null) return@LaunchedEffect
+        snapshotFlow { autoScrollSpeed() != 0f }.collectLatest { scrolling ->
+            if (!scrolling) return@collectLatest
+            var previousFrame = withFrameNanos { it }
+            while (true) {
+                val frame = withFrameNanos { it }
+                // A long frame (e.g. the app was paused) must not turn into one large jump.
+                val seconds = ((frame - previousFrame) / 1_000_000_000f).coerceAtMost(0.05f)
+                previousFrame = frame
+                val speed = autoScrollSpeed()
+                if (speed == 0f) break
+                if (scrollState.scrollBy(speed * seconds) != 0f) moveDraggedToPointer()
             }
         }
     }
@@ -125,28 +166,23 @@ internal fun DhikrCollectionOrderDialog(
                                         startPosition.y >= it.offset && startPosition.y < it.offset + it.size
                                     } ?: return@detectDragGesturesAfterLongPress
                                     val id = item.key as? String ?: return@detectDragGesturesAfterLongPress
-                                    draggedId.value = id
                                     dragStartOrder.value = orderedIds.value
                                     dragPointerY.floatValue = startPosition.y
+                                    dragStartPointerY.floatValue = startPosition.y
                                     dragGrabOffsetY.floatValue = startPosition.y - item.offset
+                                    draggedSize.intValue = item.size
+                                    draggedId.value = id
                                 },
                                 onDrag = { change, _ ->
                                     if (draggedId.value == null) return@detectDragGesturesAfterLongPress
                                     change.consume()
                                     dragPointerY.floatValue = change.position.y
-                                    moveDraggedToPointer(change.position.y)
-                                    val viewport = scrollState.layoutInfo
-                                    autoScrollDirection.intValue = when {
-                                        change.position.y < viewport.viewportStartOffset - autoScrollOutsidePx -> -1
-                                        change.position.y > viewport.viewportEndOffset + autoScrollOutsidePx -> 1
-                                        else -> 0
-                                    }
+                                    moveDraggedToPointer()
                                 },
                                 onDragEnd = {
                                     if (draggedId.value != null) {
                                         val changedOrder = orderedIds.value.toList()
                                         draggedId.value = null
-                                        autoScrollDirection.intValue = 0
                                         if (changedOrder != dragStartOrder.value) onReorderState.value(changedOrder)
                                     }
                                 },
@@ -154,7 +190,6 @@ internal fun DhikrCollectionOrderDialog(
                                     if (draggedId.value != null) {
                                         orderedIds.value = dragStartOrder.value
                                         draggedId.value = null
-                                        autoScrollDirection.intValue = 0
                                     }
                                 },
                             )
@@ -185,7 +220,7 @@ internal fun DhikrCollectionOrderDialog(
                                         if (isDragging) {
                                             val itemOffset = scrollState.layoutInfo.visibleItemsInfo
                                                 .firstOrNull { it.key == entry.id }?.offset ?: 0
-                                            translationY = dragPointerY.floatValue - dragGrabOffsetY.floatValue - itemOffset
+                                            translationY = draggedTop() - itemOffset
                                         } else translationY = 0f
                                         scaleX = dragScale
                                         scaleY = dragScale

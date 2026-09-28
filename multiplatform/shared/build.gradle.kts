@@ -66,6 +66,17 @@ kotlin {
 }
 
 // The prayer-formula golden test compares against the meteo.tn tables scraped into docs/csv.
+// Declared as an input so the test reruns when the tables change.
+abstract class DocsCsvArgument : CommandLineArgumentProvider {
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val directory: DirectoryProperty
+
+    override fun asArguments() = listOf("-Dtunisianprayertimes.docsCsv=${directory.get().asFile.absolutePath}")
+}
+
 tasks.withType<Test>().configureEach {
-    systemProperty("tunisianprayertimes.docsCsv", rootProject.file("../docs/csv").absolutePath)
+    jvmArgumentProviders += objects.newInstance<DocsCsvArgument>().apply {
+        directory.set(rootProject.layout.projectDirectory.dir("../docs/csv"))
+    }
 }

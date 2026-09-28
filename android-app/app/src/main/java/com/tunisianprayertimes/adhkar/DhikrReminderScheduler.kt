@@ -206,13 +206,11 @@ object DhikrReminderScheduler {
     fun resolveTime(context: Context, time: DhikrTime, date: LocalDate): Long? {
         val minute = if (time.kind == DhikrTimeKind.FIXED) time.minuteOfDay else {
             val id = PrefsManager.getDelegationId(context)
-            // Bundled prayer tables currently stop at 2026. Following the app's
-            // existing next-day prayer fallback, reuse the latest available year
-            // for future dates. February 29 uses February 28 in a non-leap table.
-            val candidateYears = if (date.year > 2026) {
-                val recent = (date.year downTo maxOf(2026, date.year - 10)).toList()
-                if (2026 in recent) recent else recent + 2026
-            } else listOf(date.year)
+            // Prayer times are computed for PrayerTimesRepository.SUPPORTED_YEARS.
+            // Following the app's existing next-day prayer fallback, reuse the last
+            // supported year beyond it. February 29 uses February 28 in a non-leap year.
+            val lastYear = PrayerTimesRepository.SUPPORTED_YEARS.last
+            val candidateYears = listOf(minOf(date.year, lastYear))
             val day = candidateYears.firstNotNullOfOrNull { year ->
                 val key = "$id|$year|" + date.monthValue
                 val month = synchronized(months) {

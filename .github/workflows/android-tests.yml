@@ -7,12 +7,14 @@ on:
     paths:
       - "android-app/**"
       - "multiplatform/shared/**"
+      - "data/prayer-formula/**"
       - ".github/workflows/android-tests.yml"
   pull_request:
     branches: [main]
     paths:
       - "android-app/**"
       - "multiplatform/shared/**"
+      - "data/prayer-formula/**"
       - ".github/workflows/android-tests.yml"
 
 env:

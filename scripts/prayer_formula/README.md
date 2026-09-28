@@ -164,6 +164,14 @@ The two per-day endpoints (`/horaire_gouvernorat/{date}/{gouvernorat}/{delegatio
 | `coucher` | Sunset (Maghrib − 2 min) |
 | `lat`, `lng` | The delegation's coordinates |
 
+## Android App
+
+The app computes prayer times on the device with `InmPrayerFormula` (in `multiplatform/shared`), instead of bundling meteo.tn's tables:
+
+- `PrayerTimesRepository` computes any day for `SUPPORTED_YEARS` (2020–2100).
+- `data/prayer-formula/delegation_params.json` is packaged as the asset `prayer-formula/delegation_params.json` by the `bundlePrayerFormulaParams` Gradle task.
+- `InmPrayerFormulaTest` (`./gradlew :shared:javaTest`) checks the Kotlin port against every 2026 day in `docs/csv` and against the sampled 2020–2025 times in `test-data/inm-prayer-times/`.
+
 ## Porting to Kotlin/Java
 
 The single-precision step must be reproduced exactly:
