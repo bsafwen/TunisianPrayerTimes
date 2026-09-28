@@ -85,7 +85,8 @@ internal fun DhikrCollectionAddDialog(
                                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
                                         Text(entry.title, color = AdhkarHeading, fontSize = 14.sp, fontWeight = FontWeight.SemiBold,
                                             maxLines = 1, overflow = TextOverflow.Ellipsis)
-                                        Text(entry.text, color = p.muted, fontSize = 12.sp, maxLines = 2,
+                                        Text(entry.text, color = p.muted, fontFamily = AdhkarReadingFont,
+                                            fontSize = 12.sp, maxLines = 2,
                                             overflow = TextOverflow.Ellipsis)
                                     }
                                     DhikrIcon(R.drawable.ic_adhkar_plus, "إضافة إلى المجموعة", tint = p.primary,

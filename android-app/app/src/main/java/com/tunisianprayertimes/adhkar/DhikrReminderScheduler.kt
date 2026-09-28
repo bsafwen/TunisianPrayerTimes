@@ -84,6 +84,8 @@ object DhikrReminderScheduler {
     internal fun structuralError(context: Context, rule: DhikrReminder): String? = when {
         rule.id.isBlank() || '|' in rule.id || !isKnownDhikr(context, rule.dhikrId) -> "اختر ذكرًا."
         rule.targetCount !in 1..100_000 -> "أدخل هدفًا بين 1 و100,000."
+        rule.collection == null && rule.dhikrId == DhikrCatalog.SALAH_HUNDRED_ID && rule.targetCount != 100 ->
+            "هذا الذكر مائة جزء: 33 تسبيحًا و33 تحميدًا و33 تكبيرًا وتهليل مرة واحدة."
         rule.daysOfWeek.isEmpty() || rule.daysOfWeek.any { it !in 1..7 } -> "اختر يومًا واحدًا على الأقل."
         rule.intervalMinutes !in MIN_DHIKR_INTERVAL_MINUTES..1440 && rule.cadence == DhikrCadence.CUSTOM -> "اختر فاصلًا بين 15 دقيقة و24 ساعة."
         rule.intervals().any { interval -> listOf(interval.start, interval.end).any { it.minuteOfDay !in 0..1439 || it.offsetMinutes !in -720..720 } } -> "راجع أوقات البداية والنهاية، والتعديلات بالدقائق."

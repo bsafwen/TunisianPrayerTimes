@@ -762,15 +762,8 @@ fun MainScreen(
                         PrayerTabSettingsButton(onClick = { prayerTabSettingsOpen = true })
                     }
                 } else {
-                    Text(
-                        text = stringResource(selectedDestination.labelRes),
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = GreenPrimaryDark,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(top = 12.dp, bottom = 8.dp),
-                    )
+                    // No page title: the selected bottom tab already names the page.
+                    Spacer(Modifier.height(12.dp))
                 }
 
                 when (selectedDestination) {

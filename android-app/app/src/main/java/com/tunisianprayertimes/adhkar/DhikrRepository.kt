@@ -354,8 +354,9 @@ class DhikrRepository(context: Context) {
                         it.targetCountOverride == targetCountOverride
                 }.maxByOrNull { it.updatedAtMillis }
             val migratedCounts = if (occurrence != null && category == null) mapOf(occurrence.dhikrId to occurrence.count)
-                else if (occurrence != null || fresh || periodKey != null) emptyMap() else items.associateWith {
-                    store.legacyCount("reading|" + it).coerceAtMost(targetCountOverride ?: old.findDhikr(it)!!.countForCollection(category))
+                else if (occurrence != null || fresh || periodKey != null) emptyMap() else items.associateWith { id ->
+                    store.legacyCount("reading|" + id)
+                        .coerceAtMost(targetCountOverride ?: old.findDhikr(id)!!.countForCollection(category))
                 }
             val savedAt = if (fresh && periodKey != null && occurrence == null) {
                 val latest = old.sessions.values.filter { it.collectionPeriodKey == periodKey }
@@ -405,7 +406,8 @@ class DhikrRepository(context: Context) {
                     occurrence.status == DhikrOccurrenceStatus.SKIPPED || occurrence.status == DhikrOccurrenceStatus.REPLACED ||
                     occurrence.status == DhikrOccurrenceStatus.DONE ||
                     old.reminders.none { it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision })) return@update old
-            val maximum = if (session.category == null) Int.MAX_VALUE else old.target(session)
+            val maximum = if (session.category != null || old.findDhikr(session.itemId)?.steps?.isNotEmpty() == true)
+                old.target(session) else Int.MAX_VALUE
             val count = ((session.counts[session.itemId] ?: 0).toLong() + delta)
                 .coerceIn(0L, maximum.toLong()).toInt()
             val updated = session.copy(counts = session.counts + (session.itemId to count),
@@ -518,7 +520,9 @@ class DhikrRepository(context: Context) {
             val json = prefs.getString("state_v2", null)
             if (json != null) return dhikrStateFromJson(JSONObject(json))
             val legacyRules = runCatching { JSONArray(prefs.getString("reminders", "[]") ?: "[]") }.getOrDefault(JSONArray())
-            return DhikrState(reminders = legacyRules.objects().mapNotNull { runCatching { dhikrReminderFromJson(it) }.getOrNull() })
+            return DhikrState(reminders = legacyRules.objects().mapNotNull {
+                runCatching { dhikrReminderFromJson(it).withDailyTahlilEntry() }.getOrNull()
+            }.filter { DhikrCatalog.find(it.dhikrId) != null })
         }
     }
     companion object {
@@ -537,6 +541,10 @@ private fun Map<DhikrCategory, List<String>>.toOrderJson(): JSONObject = JSONObj
 }
 private fun JSONObject.stringList(key: String) = optJSONArray(key)?.let { array -> (0 until array.length()).map { array.getString(it) } }.orEmpty()
 private fun JSONObject.countMap(key: String): Map<String, Int> = optJSONObject(key)?.let { json -> json.keys().asSequence().associateWith { json.optInt(it).coerceAtLeast(0) } }.orEmpty()
+/** The old daily 100-count preset used the once-after-prayer tahlil id despite identical wording. */
+private fun DhikrReminder.withDailyTahlilEntry(): DhikrReminder =
+    if (collection == null && dhikrId == "salah_tahlil" && targetCount >= 100)
+        copy(dhikrId = DhikrCatalog.DAILY_TAHLIL_ID) else this
 private fun DhikrState.toJson(): JSONObject = JSONObject()
     .put("rules", JSONArray(reminders.map { it.toJson() }))
     .put("custom", JSONArray(customEntries.map { it.toJson() }))
@@ -558,15 +566,24 @@ private fun DhikrState.toJson(): JSONObject = JSONObject()
 private fun dhikrStateFromJson(json: JSONObject): DhikrState {
     val customEntries = json.optJSONArray("custom")?.objects().orEmpty().mapNotNull { dhikrEntryFromJson(it) }
     val knownIds = (DhikrCatalog.entries.map { it.id } + customEntries.map { it.id }).toSet()
+    val savedRules = json.optJSONArray("rules")?.objects().orEmpty().mapNotNull {
+        runCatching { dhikrReminderFromJson(it) }.getOrNull()
+    }
+    val migratedDailyRuleIds = savedRules.filter { it.withDailyTahlilEntry() != it }.map { it.id }.toSet()
+    val reminders = savedRules.map(DhikrReminder::withDailyTahlilEntry).filter { it.dhikrId in knownIds }
     val occurrences = json.optJSONArray("occurrences")?.objects().orEmpty().mapNotNull { o -> runCatching {
         DhikrOccurrence(o.getString("id"), o.getString("ruleId"), o.optInt("revision", 1), o.getString("date"),
             o.getString("dhikrId"), o.getInt("target"), o.getLong("start"), o.getLong("end"), o.optInt("count"),
             DhikrOccurrenceStatus.valueOf(o.getString("status")), o.optLong("snooze"))
-    }.getOrNull() }.associateBy { it.id }
+    }.getOrNull() }.map { occurrence ->
+        if (occurrence.ruleId in migratedDailyRuleIds && occurrence.dhikrId == "salah_tahlil")
+            occurrence.copy(dhikrId = DhikrCatalog.DAILY_TAHLIL_ID) else occurrence
+    }.filter { it.dhikrId in knownIds }.associateBy { it.id }
     val sessions = json.optJSONArray("sessions")?.objects().orEmpty().mapNotNull { s -> runCatching {
-        val items = s.stringList("items").filter { it in knownIds }
-        if (items.isEmpty()) return@runCatching null
-        DhikrSession(s.getString("id"), items, s.countMap("counts"), s.optInt("index").coerceIn(0, items.lastIndex),
+        val items = s.stringList("items")
+        if (items.isEmpty() || items.any { it !in knownIds }) return@runCatching null
+        DhikrSession(s.getString("id"), items, s.countMap("counts").filterKeys { it in knownIds },
+            s.optInt("index").coerceIn(0, items.lastIndex),
             if (s.isNull("category")) null else DhikrCategory.valueOf(s.getString("category")),
             if (s.isNull("occurrenceId")) null else s.getString("occurrenceId"), s.optLong("updated"),
             s.stringList("skipped").filter { it in items }.toSet(),
@@ -592,11 +609,14 @@ private fun dhikrStateFromJson(json: JSONObject): DhikrState {
             if (ids.isEmpty()) null else category to ids
         }.toMap()
     }.orEmpty()
-    return DhikrState(json.optJSONArray("rules")?.objects().orEmpty().mapNotNull { runCatching { dhikrReminderFromJson(it) }.getOrNull() },
-        occurrences, sessions, json.stringList("favourites").toSet(),
-        if (json.isNull("lastSessionId")) null else json.optString("lastSessionId"), json.optInt("textSize", 28).coerceIn(24, 40),
+    val favourites = json.stringList("favourites").filter { it in knownIds }.toSet()
+    val removals = readMembership("collectionRemovals")
+    return DhikrState(reminders,
+        occurrences, sessions, favourites,
+        if (json.isNull("lastSessionId")) null else json.optString("lastSessionId").takeIf { it in sessions },
+        json.optInt("textSize", 28).coerceIn(24, 40),
         json.optBoolean("countHaptics"), customEntries,
-        readMembership("collectionAdditions"), readMembership("collectionRemovals"), collectionOrders)
+        readMembership("collectionAdditions"), removals, collectionOrders)
 }
 /** Full-list readings resume within their occasion; other collections reset only on New Session. */
 internal fun collectionReadingPeriodKey(context: Context, category: DhikrCategory, occurrenceId: String?, now: Long): String {

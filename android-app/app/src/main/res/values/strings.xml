@@ -60,7 +60,7 @@
     <string name="next_prayer_countdown_at">عند %1$s</string>
     <string name="next_prayer_countdown_at_tomorrow">غدًا عند %1$s</string>
     <string name="next_prayer_countdown_tomorrow">غدًا</string>
-    <string name="next_prayer_verse">﴿ وَأَقِمِ الصَّلَاةَ لِذِكْرِي ﴾</string>
+    <string name="next_prayer_verse">﴿ وَأَقِمِ الصَّلَاةَ لِذِكْرِيَ ﴾</string>
     <string name="col_prayer">الصلاة</string>
     <string name="col_time">الوقت</string>
     <string name="col_delay">التأخير</string>

@@ -44,7 +44,7 @@ import com.tunisianprayertimes.adhkar.DhikrEntry
     val problem = when {
         title.isBlank() -> "أدخل عنوان الذكر."
         text.isBlank() -> "أدخل نص الذكر."
-        count !in 1..100_000 -> "أدخل عددًا صحيحًا من ١ إلى ١٠٠٬٠٠٠."
+        count !in 1..100_000 -> "أدخل عددًا صحيحًا من 1 إلى 100,000."
         else -> null
     }
     val fieldColors = OutlinedTextFieldDefaults.colors(

@@ -120,7 +120,7 @@ internal fun categoryIcon(category: DhikrCategory): Int = when (category) {
     DhikrCategory.MORNING -> R.drawable.ic_adhkar_sun
     DhikrCategory.EVENING -> R.drawable.ic_adhkar_moon
     DhikrCategory.NIGHT -> R.drawable.ic_adhkar_moon
-    DhikrCategory.SALAH -> R.drawable.ic_adhkar_mosque
+    DhikrCategory.SALAH -> R.drawable.ic_adhkar_tasbih
     DhikrCategory.PRAYER -> R.drawable.ic_adhkar_ruku_silhouette
     DhikrCategory.SLEEP -> R.drawable.ic_adhkar_sleep
     DhikrCategory.HOME -> R.drawable.ic_adhkar_home
