@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "baseBuilder": "scripts/neighborhoods/official/tunis-souk-jedid-five-boundaries-20260924/build_best_effort_overlay.py",
+  "stageOnly": true,
+  "scope": "Replace only 125252 Dar Fadhal sector geometry in staged assets. Preserve all stable feature IDs and neighbor records; do not publish.",
+  "sources": [
+    {
+      "id": "isie-best-effort-imada-ariana-dar-fadhal-125252-20260928",
+      "provider": "Instance Supérieure Indépendante pour les Élections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/ariana-dar-fadhal-best-effort-20260928/candidate-source.geojson",
+      "geojsonSha256": "4fdb4342066c2832e84571059aecab10c75afbb5c201e8e0140e6c461f178c69",
+      "reviewFile": "scripts/neighborhoods/official/ariana-dar-fadhal-best-effort-20260928/source-review.json",
+      "reviewSha256": "9677d3e7fdc711c1f81d896306ecb2007287a567dccc24f188d46b92ccb2ead3"
+    }
+  ],
+  "records": [
+    {
+      "action": "replace",
+      "id": "osm:relation:7114903",
+      "sourceId": "isie-best-effort-imada-ariana-dar-fadhal-125252-20260928",
+      "sourceFeatureId": "osm:relation:7114903",
+      "representativePolicy": "preserve_current_inside",
+      "officialCode": "125252",
+      "ministryName": "دار فضال",
+      "ministryParent": "سكرة",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "دار فضال",
+        "aliases": [
+          "Dar Fadhal"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية سكرة",
+        "contextAliases": [
+          "Délégation Soukra",
+          "La Soukra",
+          "معتمدية سكرة"
+        ],
+        "governorateId": 358,
+        "lat": 36.865331,
+        "lng": 10.242531,
+        "delegationId": 532,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7114903"
+      }
+    }
+  ],
+  "evidencePins": [
+    {
+      "role": "sourcePacketManifest",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\ariana-125252-isie-source-candidate-20260928-v2\\manifest.json",
+      "sha256": "cedc14059553320c38ce51470ad16607f9e987e00b8b2aa88e89b78b2e24009f"
+    },
+    {
+      "role": "sourcePacketSHA256SUMS",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\ariana-125252-isie-source-candidate-20260928-v2\\SHA256SUMS.json",
+      "sha256": "09da644459fe0c03ed5a832e8dfb7759645ef8a08659e216a704719099afbfbd"
+    },
+    {
+      "role": "sourcePacketGeoJSON",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\ariana-125252-isie-source-candidate-20260928-v2\\candidate-source-face.geojson",
+      "sha256": "a8ecb4526a6603664dca4199de38d936012484a6a3df2d67e6e9a893bcbf3183"
+    },
+    {
+      "role": "sourceRegisteredEPSG32632WKB",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\ariana-125252-isie-source-candidate-20260928-v2\\candidate-source-face-epsg32632.wkb",
+      "sha256": "f72635eb22d75af09711da4dd67f54623ce9802ac1d94f50d32219f5f772c94d"
+    },
+    {
+      "role": "independentMOnlyGate",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\independent-gates\\ariana-125252-independent-gate-20260928-v1\\ariana-125252-independent-gate-20260928-v1.json",
+      "sha256": "47e637d88f191e4dda43e1c12fc1cb5f64e340fb62fc9237b43ba8016b78ac60"
+    },
+    {
+      "role": "installPolicyGate",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\independent-gates\\ariana-125252-install-policy-review-20260928-v1\\report.json",
+      "sha256": "9a4d3e9d4f69c92d8464fe2db0d7d7b80122901898b70270eda457ee24131c5c"
+    },
+    {
+      "role": "catalogOverlapScreen",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\independent-gates\\ariana-125252-catalog-overlap-screen-20260928-v1\\report.json",
+      "sha256": "b7d9bfa0d24ded57be26a8f6f134e7c3c6fe3e260fbc0e54f9cfebee00b3c235"
+    },
+    {
+      "role": "easternBlackEdgeReport",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\independent-gates\\ariana-125252-tunis-adjacent-source-20260928-v1\\black-edge-report.json",
+      "sha256": "2584224162b3114706ae292a8f12a9b6bf4bc90703d28e39283d814a37e6ae98"
+    },
+    {
+      "role": "easternOfficialPDF",
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\independent-gates\\ariana-125252-tunis-adjacent-source-20260928-v1\\east-sharqia.pdf",
+      "sha256": "892aa466c3f62412a2ac2c4eac1870455ef6fd9767eafe25af9152cbe47a693e"
+    },
+    {
+      "role": "currentAppNeighborhoodsJSON",
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+      "sha256": "3c3324b6679164a753e76d34500f0ce3dc7665f35309b9d20f0a49be6f5f82fa"
+    },
+    {
+      "role": "currentAppNeighborhoodsBIN",
+      "file": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin",
+      "sha256": "61c59fc31c620bd46ef169880e8eb615e13c363b481fc818ab8a1660ffe8e176"
+    }
+  ],
+  "preservationRequirements": {
+    "featureCount": 3473,
+    "preserveFeatureIds": true,
+    "preserveSeparateDarFadhalPointId": "osm:node:1205571123",
+    "preserveNeighborMetadata": true,
+    "preserveTargetOfficialParentName": "معتمدية سكرة",
+    "parentFieldIsAdministrativeParent": "parentName",
+    "delegationIdMeaning": "app prayer-time source; not the official administrative parent",
+    "allowedNewCredits": {
+      "P": 0,
+      "M": 0,
+      "S": 0
+    },
+    "liveInstallAuthorized": false
+  }
+}

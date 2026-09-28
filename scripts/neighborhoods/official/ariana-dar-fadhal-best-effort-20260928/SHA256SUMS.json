@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "files": {
+    "candidate-source.geojson": "4fdb4342066c2832e84571059aecab10c75afbb5c201e8e0140e6c461f178c69",
+    "source-review.json": "9677d3e7fdc711c1f81d896306ecb2007287a567dccc24f188d46b92ccb2ead3",
+    "geometry-overlay-manifest.json": "fab13541bd1ea74f519da359fdd176e822bc6c30d19dcc881d2a71fe3a970a9c"
+  }
+}

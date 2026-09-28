@@ -114,6 +114,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.PathOperation
+import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
@@ -268,7 +269,6 @@ private val WakeAlarmAddButtonShadowElevation = 8.dp
 private const val WakeAlarmAddButtonIdleRevealDelayMillis = 3_000L
 private const val WakeAlarmAddButtonBottomPullRevealDelayMillis = 3_000L
 private val MainHeroCardHeight = 148.dp
-private val MainHeroCardShape = RoundedCornerShape(18.dp)
 private val SilencedHeroStart = Color(0xFF3A1F2E)
 private val SilencedHeroEnd = Color(0xFF6D3543)
 private val SilencedHeroPillBackground = Color(0xFFF7E8EC)
@@ -4725,22 +4725,7 @@ private fun WakeNextAlarmPanel(
 ) {
     val prayerName = wakeAlarmPrayerName(wakeConfig.prayer)
     val summaryText = wakeNextAlarmSummaryText(prayerName, wakeConfig, trigger)
-    val shape = MainHeroCardShape
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(min = MainHeroCardHeight)
-            .clip(shape)
-            .background(Brush.horizontalGradient(listOf(GreenPrimary, GreenPrimaryDark)))
-            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.24f)), shape),
-    ) {
-        Image(
-            painter = painterResource(R.drawable.prayer_hero_background),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            alignment = AbsoluteAlignment.CenterLeft,
-            modifier = Modifier.matchParentSize(),
-        )
+    HeroCardSurface(modifier = Modifier.heightIn(min = MainHeroCardHeight)) {
         BoxWithConstraints(
             modifier = Modifier
                 .fillMaxWidth()
@@ -4787,21 +4772,7 @@ private fun WakeNextAlarmDetails(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Box(
-                modifier = Modifier
-                    .size(alarmIconSize)
-                    .clip(CircleShape)
-                    .background(Gold.copy(alpha = 0.22f))
-                    .border(BorderStroke(1.dp, Gold.copy(alpha = 0.55f)), CircleShape),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_tab_alarms),
-                    contentDescription = null,
-                    tint = Color(0xFFFFD479),
-                    modifier = Modifier.size(22.dp),
-                )
-            }
+            HeroIconRing(iconRes = R.drawable.ic_tab_alarms)
             Text(
                 text = timeText,
                 fontSize = 29.sp,
@@ -4975,7 +4946,6 @@ private fun NextPrayerHeroCard(
         )
         null -> null
     }
-    val shape = MainHeroCardShape
     val silencedOverlayColor by animateColorAsState(
         targetValue = if (isPhoneSilenced) SilencedHeroStart.copy(alpha = 0.3f) else Color.Transparent,
         label = "nextPrayerHeroSilencedOverlay"
@@ -4989,25 +4959,12 @@ private fun NextPrayerHeroCard(
         label = "nextPrayerHeroPillText"
     )
 
-    Box(
+    HeroCardSurface(
         modifier = Modifier
-            .fillMaxWidth()
             .heightIn(min = 148.dp)
-            .testTag(TestTags.STATUS_CARD)
-            .clip(shape)
-            .background(Brush.horizontalGradient(listOf(GreenPrimary, GreenPrimaryDark)))
-            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.24f)), shape),
+            .testTag(TestTags.STATUS_CARD),
+        overlay = SolidColor(silencedOverlayColor),
     ) {
-        Image(
-            painter = painterResource(R.drawable.prayer_hero_background),
-            contentDescription = null,
-            // Fill the card without stretching the crescent; crop from the empty right side.
-            contentScale = ContentScale.Crop,
-            alignment = AbsoluteAlignment.CenterLeft,
-            modifier = Modifier.matchParentSize(),
-        )
-        Box(Modifier.matchParentSize().background(silencedOverlayColor))
-
         BoxWithConstraints(
             modifier = Modifier
                 .fillMaxWidth()
@@ -5077,14 +5034,7 @@ private fun NextPrayerHeroDetails(
     val largeText = LocalDensity.current.fontScale > 1.3f
     val prayerIconSize = 34.dp
     val prayerIconSpacing = 8.dp
-    val iconRes = when (prayer) {
-        Prayer.FAJR -> R.drawable.ic_prayer_fajr_twilight
-        Prayer.DHUHR -> R.drawable.ic_prayer_dhuhr_sun
-        Prayer.ASR -> R.drawable.ic_prayer_asr_afternoon
-        Prayer.MAGHRIB -> R.drawable.ic_prayer_maghrib_sunset
-        Prayer.ISHA -> R.drawable.ic_prayer_isha_night
-        Prayer.JOMOAA, Prayer.AID_FITR, Prayer.AID_ADHA -> R.drawable.ic_adhkar_mosque
-    }
+    val iconRes = prayerHeroIconRes(prayer)
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(4.dp),

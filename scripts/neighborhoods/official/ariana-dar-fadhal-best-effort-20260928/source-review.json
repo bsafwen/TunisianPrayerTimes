@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-28",
+  "status": "provisional_best_effort_boundary_candidate",
+  "targetId": "osm:relation:7114903",
+  "officialCode": "125252",
+  "ministryParent": "سكرة",
+  "ministryName": "دار فضال",
+  "governorate": "أريانة",
+  "officialRowId": "ministry-row:a1635adb73a320187146",
+  "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/أريانة/سكرة/دار فضال.pdf",
+  "sourcePdfSha256": "ee5e4b77847803509db0f7d5e7b87d4ec267ab6ebaf635b456c5678f99e9f0e8",
+  "sourceGeojsonSha256": "4fdb4342066c2832e84571059aecab10c75afbb5c201e8e0140e6c461f178c69",
+  "sourceGeometrySha256": "f72635eb22d75af09711da4dd67f54623ce9802ac1d94f50d32219f5f772c94d",
+  "sourceRegisteredFaceWkbSha256": "f72635eb22d75af09711da4dd67f54623ce9802ac1d94f50d32219f5f772c94d",
+  "sourceCandidatePacket": {
+    "directory": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\ariana-125252-isie-source-candidate-20260928-v2",
+    "manifestSha256": "cedc14059553320c38ce51470ad16607f9e987e00b8b2aa88e89b78b2e24009f",
+    "sha256SumsManifestSha256": "09da644459fe0c03ed5a832e8dfb7759645ef8a08659e216a704719099afbfbd",
+    "candidateGeojsonSha256": "a8ecb4526a6603664dca4199de38d936012484a6a3df2d67e6e9a893bcbf3183",
+    "registeredFaceWkbSha256": "f72635eb22d75af09711da4dd67f54623ce9802ac1d94f50d32219f5f772c94d"
+  },
+  "independentMOnlyGate": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\independent-gates\\ariana-125252-independent-gate-20260928-v1\\ariana-125252-independent-gate-20260928-v1.json",
+    "sha256": "47e637d88f191e4dda43e1c12fc1cb5f64e340fb62fc9237b43ba8016b78ac60",
+    "status": "GO_M_ONLY_CANDIDATE",
+    "MCounted": false,
+    "SCounted": false
+  },
+  "measurement": {
+    "registeredCrsEpsg": 32632,
+    "areaSquareMeters": 2361796.7882550824,
+    "perimeterMeters": 7066.632443925145,
+    "fitMaxResidualMeters": 0.230425595509027,
+    "leaveOneOutMaxResidualMeters": 0.9217023808595314
+  },
+  "uncertainty": "The source is the unique exact-title 2023 ISIE electoral-map face registered through embedded GeoPDF controls; it is not a surveyed or independently certified current legal imada boundary. The 0.2304 m fit and 0.9217 m four-corner leave-one-out residuals measure internal map registration, not external positional accuracy. The official Eastern black line supports the wilaya-edge location at map scale but not exact shared-edge ownership or an Eastern imada face. العوينة has no usable ISIE/Google boundary in the pinned review and remains an OSM fallback regression feature; its staged contact must be inspected separately. This package grants no P, M, S, or installation credit.",
+  "policyReview": {
+    "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\independent-gates\\ariana-125252-install-policy-review-20260928-v1\\report.json",
+    "sha256": "9a4d3e9d4f69c92d8464fe2db0d7d7b80122901898b70270eda457ee24131c5c",
+    "decision": "GO_FOR_STAGED_INSTALL",
+    "scope": "staging only; no live install"
+  }
+}

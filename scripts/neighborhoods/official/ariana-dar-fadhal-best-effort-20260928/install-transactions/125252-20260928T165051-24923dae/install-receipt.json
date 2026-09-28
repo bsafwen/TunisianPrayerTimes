@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "ariana-125252-install-receipt-v1",
+  "status": "INSTALLED",
+  "targetId": "osm:relation:7114903",
+  "officialCode": "125252",
+  "preparedAtLocal": "2026-09-28T16:50:51.950114+02:00",
+  "decisionFile": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\ariana-125252-best-effort-stage-20260928-v2\\final-install-decision.json",
+  "decisionSha256": "df6ed7bcade156248ac4f4e8179c048a5c864b576f92455f2375f87fe57389c7",
+  "inputPins": {
+    "baseJson": "3c3324b6679164a753e76d34500f0ce3dc7665f35309b9d20f0a49be6f5f82fa",
+    "baseBin": "61c59fc31c620bd46ef169880e8eb615e13c363b481fc818ab8a1660ffe8e176",
+    "stagedJson": "67d1517afe2862c580c4f436fbb1c3018d7e572eb1a8dfbe1b509feb31af50c6",
+    "stagedBin": "91d84ab45d11f5e9543721cbdd0ae6cde70fb851a90db8f7a439a6edf22026e0",
+    "sourceManifest": "29b5a7805e4eee2143fc6bd5545c19a80abedbb6eb2184bdf313944113e32481",
+    "seamReviewJson": "f75ffe77d2f90602a8a618b733047173e6465acf5535e95006d54f4211eab8eb",
+    "seamReviewMd": "5bec7954855139a1d3c5cb303a960e42a7316a8f4ef4410bf0d4ebfd1fed9a15",
+    "aouinaCoordinateReviewJson": "97ca54b9739cb72d1f2929f420f718ac70f19bc0a7c18c52d19508fb0726671c",
+    "pickerRuntimeReconciliationJson": "838db9c3e0bab70e0870d9546e81ff21c1febeefaebaf3ace9ee6295a6f840ed",
+    "governoratesJson": "e131bf573e8ce468da0790b7c26fa0637d2ea7fc1fe2f564ab84711ff334c926"
+  },
+  "evidenceSha256": {
+    "sourceManifest": "cedc14059553320c38ce51470ad16607f9e987e00b8b2aa88e89b78b2e24009f",
+    "geometryOverlayReport": "244765ea5965452a667fe9feb6bf91665ac4b2a0b1ca2dc34f23956f7913a868",
+    "catalogAudit": "188c7239b3b170e689ed736f426252781dfe99912772c60b756a81ef2b2ad6de",
+    "packedPickerReplay": "5586fc49fe69d5eec014dfad0d7a380ae7ea85c1762c7e9bfc72dcd70a00c447",
+    "independentSeamInstallReview": "f75ffe77d2f90602a8a618b733047173e6465acf5535e95006d54f4211eab8eb",
+    "aouinaPageLocalization": "97ca54b9739cb72d1f2929f420f718ac70f19bc0a7c18c52d19508fb0726671c",
+    "pickerRuntimeReconciliation": "838db9c3e0bab70e0870d9546e81ff21c1febeefaebaf3ace9ee6295a6f840ed"
+  },
+  "representative": {
+    "beforeLatLng": [
+      36.865331,
+      10.242531
+    ],
+    "afterLatLng": [
+      36.865331,
+      10.242531
+    ],
+    "prayerSourceBefore": {
+      "delegationId": 532,
+      "nameAr": "سكرة",
+      "distanceKm": 2.020751,
+      "availabilityCsv": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\532\\2026\\09.csv"
+    },
+    "prayerSourceAfter": {
+      "delegationId": 532,
+      "nameAr": "سكرة",
+      "distanceKm": 2.020751,
+      "availabilityCsv": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\csv\\532\\2026\\09.csv"
+    },
+    "availability": {
+      "year": 2026,
+      "month": 9,
+      "completeDelegationCount": 258
+    }
+  },
+  "administrativeParent": {
+    "governorateId": 358,
+    "governorateAr": "اريانة",
+    "delegationId": 532,
+    "delegationAr": "سكرة",
+    "parentName": "معتمدية سكرة"
+  },
+  "pickerExceptions": {
+    "rawFindNoWinnerProbes": 23,
+    "rawFindAouinaTransfers": 3,
+    "findWithAccuracy5mBeforeNull": 58,
+    "findWithAccuracy5mAfterNull": 52,
+    "findWithAccuracy20mBeforeNull": 64,
+    "findWithAccuracy20mAfterNull": 64,
+    "fiveMeterEasternFallbacks": 1,
+    "S": 0
+  },
+  "backupSha256": {
+    "neighborhoods.json": "3c3324b6679164a753e76d34500f0ce3dc7665f35309b9d20f0a49be6f5f82fa",
+    "neighborhoods.bin": "61c59fc31c620bd46ef169880e8eb615e13c363b481fc818ab8a1660ffe8e176"
+  },
+  "stagedSha256": {
+    "neighborhoods.json": "67d1517afe2862c580c4f436fbb1c3018d7e572eb1a8dfbe1b509feb31af50c6",
+    "neighborhoods.bin": "91d84ab45d11f5e9543721cbdd0ae6cde70fb851a90db8f7a439a6edf22026e0"
+  },
+  "assetPaths": {
+    "neighborhoods.json": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.json",
+    "neighborhoods.bin": "C:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\android-app\\app\\src\\main\\assets\\neighborhoods.bin"
+  },
+  "phase": "verified",
+  "installedAtLocal": "2026-09-28T16:50:52.000324+02:00",
+  "installedSha256": {
+    "neighborhoods.json": "67d1517afe2862c580c4f436fbb1c3018d7e572eb1a8dfbe1b509feb31af50c6",
+    "neighborhoods.bin": "91d84ab45d11f5e9543721cbdd0ae6cde70fb851a90db8f7a439a6edf22026e0"
+  }
+}

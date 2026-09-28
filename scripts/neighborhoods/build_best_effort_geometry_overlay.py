@@ -198,6 +198,9 @@ def main() -> None:
             raise ValueError(f"Replacement official codes must be unique six-digit strings: {code}")
         if source_id not in source_data or not isinstance(source_feature_id, str):
             raise ValueError(f"Replacement has no declared source feature: {identifier}")
+        if record.get("representativePolicy", "source_representative") not in (
+                "source_representative", "preserve_current_inside"):
+            raise ValueError(f"Unknown representative policy for replacement: {identifier}")
         source_key = (source_id, source_feature_id)
         if source_key in source_features:
             raise ValueError(f"Source feature reused by multiple replacement records: {source_key}")
@@ -673,7 +676,15 @@ def main() -> None:
             raise ValueError(f"Replacement geometry is identical to the current app boundary: {identifier}")
 
         representative = quantized.representative_point()
-        lat, lng = round(representative.y, 7), round(representative.x, 7)
+        representative_policy = record.get("representativePolicy", "source_representative")
+        if representative_policy == "preserve_current_inside":
+            if not {"lat", "lng"}.issubset(expected):
+                raise ValueError(f"Preserved representative needs pinned current coordinates: {identifier}")
+            lat, lng = feature["lat"], feature["lng"]
+            if not quantized.contains(Point(lng, lat)):
+                raise ValueError(f"Current representative is outside replacement geometry: {identifier}")
+        else:
+            lat, lng = round(representative.y, 7), round(representative.x, 7)
         nearest = min(timetables, key=lambda item: (distance(lat, lng, item), item["id"]))
         original_target = dict(feature)
         old_delegation = feature.get("delegationId")
@@ -727,6 +738,9 @@ def main() -> None:
             "quantizedAreaKm2": feature["areaKm2"],
             "bounds": list(quantized.bounds),
             "representativePoint": {"lat": lat, "lng": lng},
+            "representativePolicy": representative_policy,
+            "representativePointPreserved": (lat, lng) == (
+                original_target["lat"], original_target["lng"]),
             "prayerDelegation": {"before": old_delegation, "after": nearest["id"],
                                  "nameAr": nearest["nomAr"], "distanceKm": distance(lat, lng, nearest)},
             "expectedCurrent": expected,
