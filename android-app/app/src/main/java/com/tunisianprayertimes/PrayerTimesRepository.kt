@@ -2,143 +2,82 @@ package com.tunisianprayertimes
 
 import android.content.Context
 import android.util.Log
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.util.Locale
+import java.util.Calendar
+import java.util.GregorianCalendar
 
+/**
+ * Prayer times computed on the device with INM's formula ([InmPrayerFormula]), which
+ * reproduces the times meteo.tn publishes. Delegation inputs come from the bundled
+ * prayer-formula/delegation_params.json (built from data/prayer-formula).
+ */
 object PrayerTimesRepository {
 
     private const val TAG = "PrayerTimesRepository"
+    private const val PARAMS_ASSET = "prayer-formula/delegation_params.json"
 
-    /**
-     * Returns true when every day in the month has usable prayer times.
-     * Some source files contain only day numbers and empty time columns; their
-     * presence must not make a delegation eligible for automatic selection.
-     */
-    fun hasPrayerData(context: Context, delegationId: Int, year: Int, month: Int): Boolean {
-        if (year <= 0 || month !in 1..12) return false
-        val daysInMonth = java.util.GregorianCalendar(year, month - 1, 1)
-            .getActualMaximum(java.util.Calendar.DAY_OF_MONTH)
-        val days = loadPrayerTimes(context, delegationId, year, month)
-        if (days.size != daysInMonth) return false
-        return days.withIndex().all { (index, day) ->
-            val times = listOf(
-                day.fajr.hour to day.fajr.minute,
-                day.shurukHour to day.shurukMinute,
-                day.dhuhr.hour to day.dhuhr.minute,
-                day.asr.hour to day.asr.minute,
-                day.maghrib.hour to day.maghrib.minute,
-                day.isha.hour to day.isha.minute,
-            )
-            day.day == index + 1 &&
-                times.all { (hour, minute) -> hour in 0..23 && minute in 0..59 } &&
-                times.map { (hour, minute) -> hour * 60 + minute }
-                    .zipWithNext().all { (earlier, later) -> earlier < later }
+    /** Years offered in the app; meteo.tn publishes (and the formula is validated from) 2020. */
+    val SUPPORTED_YEARS = 2020..2100
+
+    @Volatile
+    private var locations: Map<Int, InmLocation>? = null
+
+    private fun locations(context: Context): Map<Int, InmLocation> {
+        locations?.let { return it }
+        return synchronized(this) {
+            locations ?: try {
+                context.assets.open(PARAMS_ASSET).bufferedReader().use { InmLocation.parseAll(it.readText()) }
+            } catch (e: Exception) {
+                Log.w(TAG, "Failed to load $PARAMS_ASSET: ${e.message}")
+                emptyMap()
+            }.also { locations = it }
         }
     }
 
+    private fun location(context: Context, delegationId: Int, year: Int): InmLocation? =
+        if (year in SUPPORTED_YEARS) locations(context)[delegationId] else null
+
     /**
-     * Load prayer times for a given delegation, year, and month from bundled CSV assets.
-     * CSV format: Day,Fajr,Shuruk,Duhr,Asr,Maghrib,Isha
-     * Returns an empty list if the CSV file is missing or unreadable.
+     * Returns true when prayer times exist for the month: the delegation is one INM
+     * publishes and the year is within [SUPPORTED_YEARS].
+     */
+    fun hasPrayerData(context: Context, delegationId: Int, year: Int, month: Int): Boolean =
+        month in 1..12 && location(context, delegationId, year) != null
+
+    /**
+     * Prayer times for every day of the month, or an empty list when the delegation or
+     * year has no data.
      */
     fun loadPrayerTimes(context: Context, delegationId: Int, year: Int, month: Int): List<DayPrayerTimes> {
-        val path = "csv/$delegationId/$year/${String.format(Locale.US, "%02d", month)}.csv"
-        val results = mutableListOf<DayPrayerTimes>()
-
-        return try {
-            context.assets.open(path).use { stream ->
-                BufferedReader(InputStreamReader(stream)).use { reader ->
-                    // Skip header line
-                    reader.readLine()
-
-                    var line = reader.readLine()
-                    while (line != null) {
-                        val parts = line.split(",")
-                        if (parts.size >= 7) {
-                            val day = parts[0].trim().toIntOrNull() ?: 0
-                            val fajr = parseTime(Prayer.FAJR, parts[1].trim())
-                            val shurukParts = parts[2].trim().split(":")
-                            val shurukH = shurukParts[0].toInt()
-                            val shurukM = shurukParts[1].toInt()
-                            val dhuhr = parseTime(Prayer.DHUHR, parts[3].trim())
-                            val asr = parseTime(Prayer.ASR, parts[4].trim())
-                            val maghrib = parseTime(Prayer.MAGHRIB, parts[5].trim())
-                            val isha = parseTime(Prayer.ISHA, parts[6].trim())
-
-                            results.add(DayPrayerTimes(day, fajr, shurukH, shurukM, dhuhr, asr, maghrib, isha))
-                        }
-                        line = reader.readLine()
-                    }
-                }
-            }
-            results
-        } catch (e: Exception) {
-            Log.w(TAG, "Failed to load prayer times from $path: ${e.message}")
-            emptyList()
-        }
+        if (month !in 1..12) return emptyList()
+        val location = location(context, delegationId, year) ?: return emptyList()
+        val daysInMonth = GregorianCalendar(year, month - 1, 1).getActualMaximum(Calendar.DAY_OF_MONTH)
+        return (1..daysInMonth).map { day -> InmPrayerFormula.dayPrayerTimes(location, year, month, day) }
     }
 
     /**
      * Load prayer times for a specific day.
      */
     fun loadDayPrayerTimes(context: Context, delegationId: Int, year: Int, month: Int, day: Int): DayPrayerTimes? {
-        return loadPrayerTimes(context, delegationId, year, month).find { it.day == day }
-    }
-
-    private fun parseTime(prayer: Prayer, time: String): PrayerTime {
-        val parts = time.split(":")
-        return PrayerTime(
-            prayer = prayer,
-            hour = parts[0].toInt(),
-            minute = parts[1].toInt()
-        )
+        if (month !in 1..12) return null
+        val location = location(context, delegationId, year) ?: return null
+        val daysInMonth = GregorianCalendar(year, month - 1, 1).getActualMaximum(Calendar.DAY_OF_MONTH)
+        if (day !in 1..daysInMonth) return null
+        return InmPrayerFormula.dayPrayerTimes(location, year, month, day)
     }
 
     /**
-     * Returns the (minMillis, maxMillis) date range for which CSV data exists
-     * for the given delegation, or null if no data is found.
+     * Returns the (minMillis, maxMillis) date range with prayer times for the given
+     * delegation, or null if it has none.
      */
     fun getDateRange(context: Context, delegationId: Int): Pair<Long, Long>? {
-        val basePath = "csv/$delegationId"
-        val years = try {
-            context.assets.list(basePath)?.mapNotNull { it.toIntOrNull() }?.sorted() ?: return null
-        } catch (_: Exception) { return null }
-        if (years.isEmpty()) return null
-
-        // Find earliest month in earliest year
-        val firstYear = years.first()
-        val firstMonths = try {
-            context.assets.list("$basePath/$firstYear")
-                ?.mapNotNull { it.removeSuffix(".csv").toIntOrNull() }?.sorted() ?: return null
-        } catch (_: Exception) { return null }
-        if (firstMonths.isEmpty()) return null
-
-        // Find latest month in latest year
-        val lastYear = years.last()
-        val lastMonths = try {
-            context.assets.list("$basePath/$lastYear")
-                ?.mapNotNull { it.removeSuffix(".csv").toIntOrNull() }?.sorted() ?: return null
-        } catch (_: Exception) { return null }
-        if (lastMonths.isEmpty()) return null
-
-        val minCal = java.util.Calendar.getInstance().apply {
-            set(java.util.Calendar.YEAR, firstYear)
-            set(java.util.Calendar.MONTH, firstMonths.first() - 1)
-            set(java.util.Calendar.DAY_OF_MONTH, 1)
-            set(java.util.Calendar.HOUR_OF_DAY, 0)
-            set(java.util.Calendar.MINUTE, 0)
-            set(java.util.Calendar.SECOND, 0)
-            set(java.util.Calendar.MILLISECOND, 0)
+        if (locations(context)[delegationId] == null) return null
+        val minCal = Calendar.getInstance().apply {
+            set(SUPPORTED_YEARS.first, Calendar.JANUARY, 1, 0, 0, 0)
+            set(Calendar.MILLISECOND, 0)
         }
-        val maxCal = java.util.Calendar.getInstance().apply {
-            set(java.util.Calendar.YEAR, lastYear)
-            set(java.util.Calendar.MONTH, lastMonths.last() - 1)
-            set(java.util.Calendar.DAY_OF_MONTH, getActualMaximum(java.util.Calendar.DAY_OF_MONTH))
-            set(java.util.Calendar.HOUR_OF_DAY, 23)
-            set(java.util.Calendar.MINUTE, 59)
-            set(java.util.Calendar.SECOND, 59)
-            set(java.util.Calendar.MILLISECOND, 999)
+        val maxCal = Calendar.getInstance().apply {
+            set(SUPPORTED_YEARS.last, Calendar.DECEMBER, 31, 23, 59, 59)
+            set(Calendar.MILLISECOND, 999)
         }
         return minCal.timeInMillis to maxCal.timeInMillis
     }

@@ -52,8 +52,8 @@ ITERATIONS = 5
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[1]
-PARAMS_PATH = HERE / "delegation_params.json"
-CSV_DIR = REPO / "android-app/app/src/main/assets/csv"
+PARAMS_PATH = REPO / "data/prayer-formula/delegation_params.json"
+CSV_DIR = REPO / "docs/csv"  # meteo.tn tables scraped for the website
 COLUMNS = ["Fajr", "Shuruk", "Duhr", "Asr", "Maghrib", "Isha"]
 _FLOAT32 = struct.Struct("f")
 
