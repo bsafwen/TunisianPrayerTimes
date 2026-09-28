@@ -1,0 +1,612 @@
+{
+  "schemaVersion": 1,
+  "baseBuilder": "scripts/neighborhoods/official/tunis-souk-jedid-five-boundaries-20260924/build_best_effort_overlay.py",
+  "sources": [
+    {
+      "id": "isie-best-effort-imada-525551-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525551-candidate-source.geojson",
+      "geojsonSha256": "0c54d7a0f9206060b2fe7c37e9ac308d0cac1039dfd538bed06b3175dec919d3",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525551-source-review.json",
+      "reviewSha256": "b48f2fee09aa1874f10873a7ad5cfcdb9b295a4a57a57b17ddcb8175ce3754aa"
+    },
+    {
+      "id": "isie-best-effort-imada-525552-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525552-candidate-source.geojson",
+      "geojsonSha256": "2a0f6049e2bf7fa999fd52bd649042a0b061a5393f7f354d08e3305694e4b434",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525552-source-review.json",
+      "reviewSha256": "8bcb71330f71888201125441413f0616b75a668ee70ffacefc8edceb1242f76c"
+    },
+    {
+      "id": "isie-best-effort-imada-525553-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525553-candidate-source.geojson",
+      "geojsonSha256": "2e9a891b4daaba26fc47f16aa9f8472f20b48903dae971b21f63b79bae3a3124",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525553-source-review.json",
+      "reviewSha256": "07ac93f008cd05b50b78b887805176e15d3363463f0bf2f2866007aa96f760eb"
+    },
+    {
+      "id": "isie-best-effort-imada-525554-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525554-candidate-source.geojson",
+      "geojsonSha256": "8ff04a1ec4e2efbc6ed679eb6a02119b10342cc07d6d888ed2615c2d31e1840c",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525554-source-review.json",
+      "reviewSha256": "c86b3c8fb000300c6a5e5b61e027622d4e221a50269bf29673a612d52e7b1229"
+    },
+    {
+      "id": "isie-best-effort-imada-525555-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525555-candidate-source.geojson",
+      "geojsonSha256": "1ac57004b9e011b4912f0b4d9108d064452c0f4083fe5070343b46c65975669a",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525555-source-review.json",
+      "reviewSha256": "697d8264f545eb76924f6078af8e1fd03136e4a8cc2588cfe4dee8c34f652122"
+    },
+    {
+      "id": "isie-best-effort-imada-525556-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525556-candidate-source.geojson",
+      "geojsonSha256": "ee0c95c5e294d2dbc14f2e439748f01f92beefafd9502f7318fc8338789b7687",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525556-source-review.json",
+      "reviewSha256": "beab023facb5b27c083562f981798951edc754c453add5227fb4f4e797fb76f7"
+    },
+    {
+      "id": "isie-best-effort-imada-525557-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525557-candidate-source.geojson",
+      "geojsonSha256": "6944977a6c99a41bce202cdcf06608498caa57a323a1c0f683359e0d39c5deec",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525557-source-review.json",
+      "reviewSha256": "910850d3140d38c25243aed127905fe48a120362e02bc56bfd6a2e8f90a3e755"
+    },
+    {
+      "id": "isie-best-effort-imada-525558-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525558-candidate-source.geojson",
+      "geojsonSha256": "3272188e29df8d14f1f7db4f8b965220f583c491a759adf21a44573cc1c9658d",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525558-source-review.json",
+      "reviewSha256": "7e65d0f6ce771cf401f4d4c392583e2899aa325aea65401ddb41b3e943a6d371"
+    },
+    {
+      "id": "isie-best-effort-imada-525559-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525559-candidate-source.geojson",
+      "geojsonSha256": "a0928b417c40c8d06fab9ca9a6e005712734f14c9303b1b1dee42644627737d4",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525559-source-review.json",
+      "reviewSha256": "d63f2fd8eb3e527e56599332baa5f1708a5f955ed1a6ebdd7b0e0a3d57e89705"
+    },
+    {
+      "id": "isie-best-effort-imada-525560-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525560-candidate-source.geojson",
+      "geojsonSha256": "357b9addcf59d99f04ac647c080c084676c6492dbf3ed28bbe3ac18c423a658a",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525560-source-review.json",
+      "reviewSha256": "f5a70a014773a439f033a762a173f704e9478bd6b1a4d71dcec1e1c8bbad8b15"
+    },
+    {
+      "id": "isie-best-effort-imada-525561-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525561-candidate-source.geojson",
+      "geojsonSha256": "f4f725426ce8d799c76c9061fc69c7f9193a9c40e891652aceb7633f5b2b265d",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525561-source-review.json",
+      "reviewSha256": "a68b305c7e0d59d86672283a89636411ef6862fb01487d560363cca364d38383"
+    },
+    {
+      "id": "isie-best-effort-imada-525562-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525562-candidate-source.geojson",
+      "geojsonSha256": "f1467a0d788f47059ab8a979542c4a2abafd5da5e4d293f061ee5e6265c3ec06",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525562-source-review.json",
+      "reviewSha256": "ba15236a00ab04684f5bc9835fab80506fc58d760971073abb166801307872a6"
+    },
+    {
+      "id": "isie-best-effort-imada-525563-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525563-candidate-source.geojson",
+      "geojsonSha256": "0ddf7cdc08fba468f2c3018f56b0207e5a1875df5bfda180e0a7efd68dae5658",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525563-source-review.json",
+      "reviewSha256": "9b5fb3993f7566b57294cecf57eecee0c8901382dd8d7b910894af44ef210b32"
+    },
+    {
+      "id": "isie-best-effort-imada-525564-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525564-candidate-source.geojson",
+      "geojsonSha256": "ec84c5f12f50af85f520aaad389b06353111d3803910907df32726e41f5ab820",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525564-source-review.json",
+      "reviewSha256": "ad9d8d4c5ef69f3bb3aa8d5cdb090b37e2abd9b70bf67e49ef4a1527dc71731f"
+    },
+    {
+      "id": "isie-best-effort-imada-525565-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525565-candidate-source.geojson",
+      "geojsonSha256": "8e24fb68de656323c870169d223cc723cc47705ba9d77e90af4092198777afba",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525565-source-review.json",
+      "reviewSha256": "7e750e9a87c782c6cd0a3af7faa0d583b1a6fb9cb4f87a804d515423803a8a8a"
+    },
+    {
+      "id": "isie-best-effort-imada-525566-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525566-candidate-source.geojson",
+      "geojsonSha256": "f25c93031e6965104bbf799366a8e050467ec2e4d04a651c606da9a30d43d303",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525566-source-review.json",
+      "reviewSha256": "c5ae3e730293b4b0281e5a7a67e76db2fb295563a67ca1c0f09e6b26e4a7d151"
+    },
+    {
+      "id": "isie-best-effort-imada-525258-20260928",
+      "provider": "Instance Superieure Independante pour les Elections (ISIE)",
+      "geojsonFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525258-candidate-source.geojson",
+      "geojsonSha256": "afbc46ea658636f408298078b522f310f57a9605b379054a125e04d166eea59d",
+      "reviewFile": "scripts/neighborhoods/official/zarzis-17-best-effort-20260928/525258-source-review.json",
+      "reviewSha256": "d59216feafb2c0f14db7bbd0135c386dd26fd57e54e8d60b4e51b2b992cc6dae"
+    }
+  ],
+  "records": [
+    {
+      "action": "replace",
+      "id": "osm:relation:7142910",
+      "sourceId": "isie-best-effort-imada-525551-20260928",
+      "sourceFeatureId": "osm:relation:7142910",
+      "officialCode": "525551",
+      "ministryName": "جرجيس",
+      "officialSourceNameAr": "جرجيس",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "جرجيس",
+        "aliases": [
+          "Zarzis",
+          "Zerzis",
+          "Джарджис",
+          "ז'רזיס",
+          "جرجیس"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "delegation:490"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142951",
+      "sourceId": "isie-best-effort-imada-525553-20260928",
+      "sourceFeatureId": "osm:relation:7142951",
+      "officialCode": "525553",
+      "ministryName": "الطاهر صفر",
+      "officialSourceNameAr": "الطاهر صفر",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "الطاهر صفر",
+        "aliases": [
+          "Tahar Sfar"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142951"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142969",
+      "sourceId": "isie-best-effort-imada-525554-20260928",
+      "sourceFeatureId": "osm:relation:7142969",
+      "officialCode": "525554",
+      "ministryName": "الجدارية",
+      "officialSourceNameAr": "الجدارية",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "الجدارية",
+        "aliases": [
+          "Ejdaria"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142969"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142964",
+      "sourceId": "isie-best-effort-imada-525555-20260928",
+      "sourceFeatureId": "osm:relation:7142964",
+      "officialCode": "525555",
+      "ministryName": "البساتين",
+      "officialSourceNameAr": "البساتين",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "البساتين",
+        "aliases": [
+          "El Bassatine"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142964"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142929",
+      "sourceId": "isie-best-effort-imada-525556-20260928",
+      "sourceFeatureId": "osm:relation:7142929",
+      "officialCode": "525556",
+      "ministryName": "السويحل",
+      "officialSourceNameAr": "السويحل",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "السويحل",
+        "aliases": [
+          "Essouihel"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142929"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142931",
+      "sourceId": "isie-best-effort-imada-525557-20260928",
+      "sourceFeatureId": "osm:relation:7142931",
+      "officialCode": "525557",
+      "ministryName": "واد التياب",
+      "officialSourceNameAr": "وادي التياب",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "واد التياب",
+        "aliases": [
+          "Oued Ettieb"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142931"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142932",
+      "sourceId": "isie-best-effort-imada-525558-20260928",
+      "sourceFeatureId": "osm:relation:7142932",
+      "officialCode": "525558",
+      "ministryName": "حسي الجربي",
+      "officialSourceNameAr": "حسي الجربي",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "حسي الجربي",
+        "aliases": [
+          "Hassi El Jerbi",
+          "Hessi Jerbi",
+          "حسّي الجربي"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142932"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142946",
+      "sourceId": "isie-best-effort-imada-525559-20260928",
+      "sourceFeatureId": "osm:relation:7142946",
+      "officialCode": "525559",
+      "ministryName": "خوي الغدير",
+      "officialSourceNameAr": "خوي الغدير",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "خوي الغدير",
+        "aliases": [
+          "Khaoui El Ghedir"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142946"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142947",
+      "sourceId": "isie-best-effort-imada-525560-20260928",
+      "sourceFeatureId": "osm:relation:7142947",
+      "officialCode": "525560",
+      "ministryName": "حمادي",
+      "officialSourceNameAr": "حمادي",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "حمادي",
+        "aliases": [
+          "Hamadi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142947"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142962",
+      "sourceId": "isie-best-effort-imada-525561-20260928",
+      "sourceFeatureId": "osm:relation:7142962",
+      "officialCode": "525561",
+      "ministryName": "هشام الحمادي",
+      "officialSourceNameAr": "هشام الحمادي",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "هشام الحمادي",
+        "aliases": [
+          "Hichem El Hamadi"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142962"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142963",
+      "sourceId": "isie-best-effort-imada-525562-20260928",
+      "sourceFeatureId": "osm:relation:7142963",
+      "officialCode": "525562",
+      "ministryName": "الغرابات",
+      "officialSourceNameAr": "الغرابات",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "الغرابات",
+        "aliases": [
+          "El Ghorabet",
+          "Ghrabat"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142963"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142940",
+      "sourceId": "isie-best-effort-imada-525563-20260928",
+      "sourceFeatureId": "osm:relation:7142940",
+      "officialCode": "525563",
+      "ministryName": "القريبيس",
+      "officialSourceNameAr": "القريبيس",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "القريبيس",
+        "aliases": [
+          "El Grebis",
+          "El Gribis"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142940"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142957",
+      "sourceId": "isie-best-effort-imada-525564-20260928",
+      "sourceFeatureId": "osm:relation:7142957",
+      "officialCode": "525564",
+      "ministryName": "حمادي بو تفاحة",
+      "officialSourceNameAr": "حمادي بوتفاحة",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "حمادي بو تفاحة",
+        "aliases": [
+          "Hamadi Boutoufaha"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142957"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142933",
+      "sourceId": "isie-best-effort-imada-525565-20260928",
+      "sourceFeatureId": "osm:relation:7142933",
+      "officialCode": "525565",
+      "ministryName": "العقلة",
+      "officialSourceNameAr": "العقلة",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "العقلة",
+        "aliases": [
+          "El Ogla"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142933"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142944",
+      "sourceId": "isie-best-effort-imada-525566-20260928",
+      "sourceFeatureId": "osm:relation:7142944",
+      "officialCode": "525566",
+      "ministryName": "شماخ",
+      "officialSourceNameAr": "شماخ",
+      "ministryParent": "جرجيس",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "شماخ",
+        "aliases": [
+          "Chamakh",
+          "Chammakh"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية جرجيس",
+        "contextAliases": [
+          "Délégation Zarzis",
+          "Zarzis",
+          "معتمدية جرجيس"
+        ],
+        "governorateId": 353,
+        "delegationId": 490,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142944"
+      }
+    },
+    {
+      "action": "replace",
+      "id": "osm:relation:7142912",
+      "sourceId": "isie-best-effort-imada-525258-20260928",
+      "sourceFeatureId": "osm:relation:7142912",
+      "officialCode": "525258",
+      "ministryName": "السويطير",
+      "officialSourceNameAr": "السويطير",
+      "ministryParent": "مدنين الجنوبية",
+      "expectedCurrent": {
+        "sourceId": "osm",
+        "name": "السويطير",
+        "aliases": [
+          "Souitir"
+        ],
+        "kind": "sector",
+        "parentName": "معتمدية مدنين الجنوبية",
+        "contextAliases": [
+          "Délégation Medenine Sud",
+          "Médenine Sud",
+          "معتمدية مدنين االجنوبية",
+          "معتمدية مدنين الجنوبية"
+        ],
+        "governorateId": 353,
+        "delegationId": 626,
+        "hasBoundary": true,
+        "pickerGroupId": "osm:relation:7142912"
+      }
+    }
+  ],
+  "retainedExactNoopRows": [
+    {
+      "officialCode": "525552",
+      "officialRowId": "ministry-row:f2965b435689eb81baab",
+      "id": "osm:relation:7142911",
+      "sourceFaceWkbSha256": "cf6856783a6a82e4fcfef0c72c4a59121774b53e99b16ff30ae82b3498e7167e",
+      "registeredFaceWkbSha256": "d6d2070ec057a96800f3140acc6d1280a4c0e80e1163e4b2c9d1b5347fc57a22",
+      "disposition": "retained because current app geometry equals quantized official ISIE source geometry"
+    }
+  ]
+}

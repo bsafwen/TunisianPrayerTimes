@@ -117,6 +117,10 @@ def main() -> None:
     parser.add_argument("--manifest", required=True, help="Repository-relative geometry overlay manifest")
     parser.add_argument("--output-dir", type=Path, required=True,
                         help="Required staging directory outside the repository")
+    parser.add_argument("--current-app-base", action="store_true",
+                        help="Use current app neighborhoods assets as the base; requires both SHA-256 pins")
+    parser.add_argument("--base-json-sha256", help="Required hash pin with --current-app-base")
+    parser.add_argument("--base-bin-sha256", help="Required hash pin with --current-app-base")
     args = parser.parse_args()
 
     manifest_path = repo_file(args.manifest, "Manifest")
@@ -423,15 +427,46 @@ def main() -> None:
     sys.path.insert(0, str(scripts_dir / "neighborhoods"))
     from audit_catalog import GpsLabelAudit
 
-    with tempfile.TemporaryDirectory(prefix="best-effort-base-", dir=output) as temp_name:
-        base_output = Path(temp_name)
-        base_run = subprocess.run([sys.executable, str(base_builder), "--output-dir", str(base_output)],
-                                  cwd=REPO, capture_output=True, text=True)
-        if base_run.returncode:
-            raise RuntimeError(f"Accepted base overlay builder failed:\n{base_run.stdout}\n{base_run.stderr}")
-        base_assets = base_output / "assets"
-        base_json_raw = (base_assets / "neighborhoods.json").read_bytes()
-        base_bin = (base_assets / "neighborhoods.bin").read_bytes()
+    if args.current_app_base:
+        if not args.base_json_sha256 or not args.base_bin_sha256:
+            raise ValueError("--current-app-base requires --base-json-sha256 and --base-bin-sha256")
+        if not HEX_SHA256.fullmatch(args.base_json_sha256.lower()) or not HEX_SHA256.fullmatch(args.base_bin_sha256.lower()):
+            raise ValueError("Current app base SHA-256 pins must be 64 lowercase hexadecimal characters")
+        base_assets = APP_ASSETS.resolve()
+        base_json_path = base_assets / "neighborhoods.json"
+        base_bin_path = base_assets / "neighborhoods.bin"
+        base_json_raw = base_json_path.read_bytes()
+        base_bin = base_bin_path.read_bytes()
+        if sha256(base_json_raw) != args.base_json_sha256.lower():
+            raise ValueError("Current app neighborhoods.json differs from its required SHA-256 pin")
+        if sha256(base_bin) != args.base_bin_sha256.lower():
+            raise ValueError("Current app neighborhoods.bin differs from its required SHA-256 pin")
+        base_input_report = {
+            "mode": "hash_pinned_current_app_assets",
+            "assetsDirectory": str(base_assets),
+            "neighborhoodsJson": {"file": str(base_json_path), "sha256": sha256(base_json_raw)},
+            "neighborhoodsBin": {"file": str(base_bin_path), "sha256": sha256(base_bin)},
+            "manifestBaseBuilderInvoked": False,
+        }
+    else:
+        if args.base_json_sha256 or args.base_bin_sha256:
+            raise ValueError("Base SHA-256 pins are valid only with --current-app-base")
+        with tempfile.TemporaryDirectory(prefix="best-effort-base-", dir=output) as temp_name:
+            base_output = Path(temp_name)
+            base_run = subprocess.run([sys.executable, str(base_builder), "--output-dir", str(base_output)],
+                                      cwd=REPO, capture_output=True, text=True)
+            if base_run.returncode:
+                raise RuntimeError(f"Accepted base overlay builder failed:\n{base_run.stdout}\n{base_run.stderr}")
+            base_assets = base_output / "assets"
+            base_json_raw = (base_assets / "neighborhoods.json").read_bytes()
+            base_bin = (base_assets / "neighborhoods.bin").read_bytes()
+        base_input_report = {
+            "mode": "manifest_base_builder",
+            "builder": str(base_builder),
+            "neighborhoodsJsonSha256": sha256(base_json_raw),
+            "neighborhoodsBinSha256": sha256(base_bin),
+            "manifestBaseBuilderInvoked": True,
+        }
 
     metadata = json.loads(base_json_raw)
     if metadata.get("coordinateScale") != SCALE or metadata.get("gridSize") != GRID:
@@ -1048,6 +1083,7 @@ def main() -> None:
         "status": "passed" if audit_ok else "failed",
         "manifest": {"file": str(manifest_path.relative_to(REPO)).replace("\\", "/"),
                      "sha256": sha256(manifest_raw)},
+        "baseInput": base_input_report,
         "baseOverlayPins": {"neighborhoodsJson": sha256(base_json_raw),
                             "neighborhoodsBin": sha256(base_bin)},
         "stagedAssetSha256": {"neighborhoodsJson": sha256(staged_json_raw),

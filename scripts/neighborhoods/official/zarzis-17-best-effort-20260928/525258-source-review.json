@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-28",
+  "status": "provisional_best_effort_boundary_candidate",
+  "targetId": "osm:relation:7142912",
+  "officialCode": "525258",
+  "officialRowId": "ministry-row:f6b6616f7e6a95f0a62e",
+  "ministryParent": "مدنين الجنوبية",
+  "ministryName": "السويطير",
+  "officialSourceNameAr": "السويطير",
+  "sourcePdfURL": "https://www.isie.tn/wp-content/uploads/2023/CartesCirconscriptionsElectoralesLocales2023/مدنين/مدنين الجنوبية/السويطير - (مدنين الجنوبية).pdf",
+  "sourcePdfSha256": "b673594091ac14a88573ea7480cdaa14a18f132e1e358fdbd50e157aa80183a0",
+  "sourceGeojsonSha256": "afbc46ea658636f408298078b522f310f57a9605b379054a125e04d166eea59d",
+  "sourceFeatureId": "osm:relation:7142912",
+  "nameBinding": {
+    "officialSourceNameAr": "السويطير",
+    "runtimeDisplayNameAr": "السويطير",
+    "exactMatch": true,
+    "officialNameAlreadySearchable": true,
+    "searchAliasFollowupRequired": false,
+    "reason": null
+  },
+  "stagingDisposition": "replace_geometry",
+  "currentAppGeometryEqualsQuantizedSource": false,
+  "sourceFaceEvidence": {
+    "sourceFaceWkbSha256": "8823bf67336b2cc988076ed0491d7f4ca720355ae2a1caee4d75c9413f6f2ddc",
+    "registeredFaceWkbSha256": "7a6fff3107fc7516866ea4914e06b2e95ecbfc3a3bd41b4c19e8eddea4d0190b",
+    "nativeInventorySha256": "f82ebffe27d5e752000baf23897834dd87ea45633383001c8d27f8a363af74fa",
+    "nativePdfSha256": "b673594091ac14a88573ea7480cdaa14a18f132e1e358fdbd50e157aa80183a0",
+    "pageIndexZeroBased": 0,
+    "georeferenceIndex": 0,
+    "faceIndex": 0,
+    "registration": {
+      "status": "validated",
+      "commonCrs": "EPSG:32632",
+      "embeddedCrsEpsg": 32632,
+      "controlCount": 4,
+      "affineControlFitMaxResidualM": 0.15089904230245246,
+      "leaveOneOutMaxResidualM": 0.6035961677463173,
+      "leaveOneOutResidualsM": [
+        0.603596167322506,
+        0.6035961677463173,
+        0.6035961591120508,
+        0.6035961446683872
+      ],
+      "inventoryMapControlConsistencyMaxM": 0.15089904230245246,
+      "controlDesignCondition": 1131.4043079770079,
+      "thresholds": {
+        "fitMaxResidualM": 1.0,
+        "leaveOneOutMaxResidualM": 1.5,
+        "inventoryMapConsistencyMaxM": 1.0,
+        "maxCondition": 1000000.0
+      },
+      "qualification": "Internal consistency of embedded controls only; not external survey accuracy."
+    },
+    "transformedWgs84GeometrySha256": "8f6fbe6e25f593637e8e96e6616376239bc9e7d893613b5f9d27c06ce31f4569"
+  },
+  "evidencePins": [
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\medenine\\525258-isie-mfull-successor-20260927-v1\\independent-gate.json",
+      "sha256": "4d6ee0ee39ecf522538f447a0c954e57c9929d46bcebf1b82fa2b4f1b6a9a650",
+      "role": "M76_independent_MFull_gate"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\medenine\\525258-isie-mfull-successor-20260927-v1\\source-face-review.json",
+      "sha256": "83299084caf933d3836c6a7422cd498778225cdc854fffc7910b907234d26a52",
+      "role": "M76_selected_red_face_review"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\medenine\\525258-isie-mfull-successor-20260927-v1\\publication-receipt.json",
+      "sha256": "c874d46552d721e05a9228c6ffe325a949b133e809a28125fadc63eb4bb9c1b1",
+      "role": "guarded_M76_publication_receipt"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\isie-execution-20260926\\pdf-inventories\\b673594091ac14a88573ea7480cdaa14a18f132e1e358fdbd50e157aa80183a0.json",
+      "sha256": "f82ebffe27d5e752000baf23897834dd87ea45633383001c8d27f8a363af74fa",
+      "role": "native_source_inventory"
+    },
+    {
+      "file": "C:\\Users\\barou\\Documents\\Codex\\2026-09-06\\the-android-app-app-currently-allows\\work\\locality-automation\\batches\\b2c08401d7d3af74ea7552ba\\osm_relation_7142912\\osm_relation_7142912.pdf",
+      "sha256": "b673594091ac14a88573ea7480cdaa14a18f132e1e358fdbd50e157aa80183a0",
+      "role": "native_ISIE_source_PDF"
+    }
+  ],
+  "uncertainty": "Best-effort boundary from the row-specific red face on the official ISIE 2023 electoral map, linked to the official imada row and pinned MFull registered-face WKB. The registration residuals measure internal map-control fit, not surveyed legal-boundary accuracy. Positive-area source overlaps are retained and registered for conflict-aware GPS selection; at true or uncertain seams the 10 m accuracy clearance may return no locality. Current OSM geometry is only the before-state."
+}
