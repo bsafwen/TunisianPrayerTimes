@@ -16,7 +16,7 @@ Fetches daily prayer times for **every delegation in Tunisia** from the [Institu
 | **CSV export** | Generates per-month CSV files in Mawaqit format, downloadable as a ZIP |
 | **Prayer calendar** | Interactive monthly calendar view in the browser |
 | **Mawaqit push** | Push prayer times directly to mawaqit.net from the browser via a Cloudflare Worker proxy |
-| **Android app** | Auto-silence phone during prayer times with per-delegation schedules, GPS auto-detect, boot reschedule |
+| **Android app** | Auto-silence phone during prayer times with per-delegation schedules, GPS auto-detect, boot reschedule; prayer times computed on-device with [INM's formula](scripts/prayer_formula/README.md) |
 | **Desktop app** | Cross-platform (Windows/macOS/Linux) Compose Multiplatform app with the same prayer time & silence features |
 | **Qaloon model** | Fine-tuned Whisper ASR model for Qaloon (Nafi' riwaya) Quran recitation |
 | **Qaloon app** | Android app for on-device Qaloon recitation recognition with word-level error detection |
@@ -107,6 +107,7 @@ cd android-app
 ```
 
 **Key capabilities:**
+- Prayer times computed on the device with INM's formula ([scripts/prayer_formula](scripts/prayer_formula/README.md)), matching meteo.tn to the minute for any year
 - Auto-silence / Do Not Disturb during prayer times
 - GPS-based delegation auto-detection
 - Reschedules alarms on device boot
@@ -280,7 +281,7 @@ All prayer times are sourced from the **Institut National de la Météorologie**
 
 ## Privacy
 
-The Android app collects **no analytics and no device identifiers**. The only network request is an hourly check to GitHub Pages for official Ramadan/Eid date overrides, made only during a narrow window around moon-sighting dates (a few days per year). All prayer data is bundled in the APK. See [`docs/privacy-policy.html`](docs/privacy-policy.html) for the full privacy policy.
+The Android app collects **no analytics and no device identifiers**. The only network request is an hourly check to GitHub Pages for official Ramadan/Eid date overrides, made only during a narrow window around moon-sighting dates (a few days per year). Prayer times are computed on the device from bundled delegation data (see [`scripts/prayer_formula`](scripts/prayer_formula/README.md)). See [`docs/privacy-policy.html`](docs/privacy-policy.html) for the full privacy policy.
 
 ---
 
