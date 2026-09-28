@@ -187,7 +187,7 @@ data class DhikrState(
     val collectionAdditions: Map<DhikrCategory, Set<String>> = emptyMap(),
     /** Ids the user explicitly removed from a collection that contains them by default. */
     val collectionRemovals: Map<DhikrCategory, Set<String>> = emptyMap(),
-    /** User-defined ordering for collection entries; entries not listed here follow catalog order. */
+    /** User-defined ordering for collection entries; entries not listed here follow the collection's default order. */
     val collectionOrders: Map<DhikrCategory, List<String>> = emptyMap(),
 )
 
@@ -207,8 +207,10 @@ fun DhikrState.isInCollection(entry: DhikrEntry, category: DhikrCategory): Boole
 fun DhikrState.collectionEntries(category: DhikrCategory): List<DhikrEntry> {
     val entries = allEntries.filter { isInCollection(it, category) }
     val order = collectionOrders[category].orEmpty().withIndex().associate { it.value to it.index }
-    val orderedEntries = if (order.isEmpty()) entries else entries.withIndex()
-        .sortedWith(compareBy<IndexedValue<DhikrEntry>> { order[it.value.id] ?: Int.MAX_VALUE }.thenBy { it.index })
+    val defaultOrder = DhikrCatalog.collectionOrder[category].orEmpty().withIndex().associate { it.value to it.index }
+    val orderedEntries = entries.withIndex()
+        .sortedWith(compareBy<IndexedValue<DhikrEntry>> { order[it.value.id] ?: Int.MAX_VALUE }
+            .thenBy { defaultOrder[it.value.id] ?: Int.MAX_VALUE }.thenBy { it.index })
         .map { it.value }
     return orderedEntries.map { entry ->
         val count = entry.countForCollection(category)
@@ -231,6 +233,7 @@ fun normalizeDhikrSearch(value: String): String = java.text.Normalizer.normalize
 
 fun DhikrState.target(session: DhikrSession, itemId: String = session.itemId): Int {
     val entry = findDhikr(itemId)
+    if (entry?.steps?.isNotEmpty() == true) return entry.steps.sumOf(DhikrStep::repetitions)
     return if (session.category == null)
         session.targetCountOverride ?: session.occurrenceId?.let { occurrences[it]?.target }
             ?: entry?.countForCollection(null) ?: 1

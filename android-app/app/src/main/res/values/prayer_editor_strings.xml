@@ -12,10 +12,10 @@
     <string name="prayer_editor_offset_label">عدد الدقائق من الأذان</string>
     <string name="prayer_editor_duration_label">مدة الإسكات بالدقائق</string>
     <string name="prayer_editor_minutes_unit">دقيقة</string>
-    <string name="prayer_editor_offset_help">٠ عند الأذان، قيمة موجبة بعده، وقيمة سالبة قبله.</string>
+    <string name="prayer_editor_offset_help">0 عند الأذان، قيمة موجبة بعده، وقيمة سالبة قبله.</string>
     <string name="prayer_editor_choose_start_clock">اختيار وقت البداية</string>
     <string name="prayer_editor_choose_end_clock">اختيار وقت النهاية</string>
-    <string name="prayer_editor_start_clock_help">الوقت بنظام ٢٤ ساعة، في يوم الصلاة نفسه.</string>
+    <string name="prayer_editor_start_clock_help">الوقت بنظام 24 ساعة، في يوم الصلاة نفسه.</string>
     <string name="prayer_editor_end_clock_help">إذا سبق وقت النهاية البداية، تعود الأصوات في هذا الوقت من اليوم التالي. تساوي الوقتين يعني مدة صفر.</string>
     <string name="prayer_editor_previous_day">اليوم السابق</string>
     <string name="prayer_editor_next_day">اليوم التالي</string>

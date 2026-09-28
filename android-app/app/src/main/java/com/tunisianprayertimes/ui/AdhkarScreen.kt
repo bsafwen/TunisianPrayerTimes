@@ -931,9 +931,12 @@ private fun DhikrEntryCard(entry: DhikrEntry, onClick: () -> Unit, displayCatego
             Column(Modifier.weight(1f).padding(vertical = 6.dp)) {
                 Text(entry.title, color = AdhkarHeading, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
                     maxLines = 2, overflow = TextOverflow.Ellipsis)
-                Text(entry.text.replace(Regex("\\s+"), " ").trim(), color = p.muted, fontSize = 12.sp,
+                Text(entry.text.replace(Regex("\\s+"), " ").trim(), color = p.muted,
+                    fontFamily = AdhkarReadingFont, fontSize = 12.sp,
                     maxLines = 1, overflow = TextOverflow.Ellipsis)
-                Text(if (entry.custom) "ذكر أضفته · التكرار: " + latinNumber(entry.defaultCount)
+                Text(if (entry.steps.isNotEmpty()) collectionTitle(displayCategory ?: DhikrCategory.SALAH) +
+                        " · " + entry.steps.joinToString(" + ") { latinNumber(it.repetitions) }
+                    else if (entry.custom) "ذكر أضفته · التكرار: " + latinNumber(entry.defaultCount)
                     else collectionTitle(displayCategory ?: entry.categories.firstOrNull() ?: DhikrCategory.DAILY) +
                         " · التكرار: " + latinNumber(entry.defaultCount),
                     color = p.muted, fontSize = 12.sp, maxLines = 1)
@@ -1164,7 +1167,7 @@ private fun reminderSlots(): List<AdhkarReminderSlot> = listOf(
 
 private fun savedRuleFor(key: String, reminders: List<DhikrReminder>): DhikrReminder? = when (key) {
     "friday" -> reminders.firstOrNull { it.collection == null && it.dhikrId == DhikrCatalog.SALAWAT_ID && it.daysOfWeek == setOf(5) }
-    "tahlil" -> reminders.firstOrNull { it.collection == null && it.dhikrId == "salah_tahlil" }
+    "tahlil" -> reminders.firstOrNull { it.collection == null && it.dhikrId == TAHLIL_DAILY_ID }
     "morning" -> reminders.firstOrNull { it.collection == DhikrCategory.MORNING }
     "evening" -> reminders.firstOrNull { it.collection == DhikrCategory.EVENING }
     "night" -> reminders.firstOrNull { it.collection == DhikrCategory.NIGHT }
@@ -1204,7 +1207,9 @@ internal fun reminderSessionItems(state: DhikrState, occurrence: DhikrOccurrence
 
 internal fun fridayDhikrPreset() = DhikrReminder(dhikrId = DhikrCatalog.SALAWAT_ID, targetCount = 100, daysOfWeek = setOf(5),
     start = DhikrTime(minuteOfDay = 480), end = DhikrTime(DhikrTimeKind.MAGHRIB), cadence = DhikrCadence.GENTLE)
-internal fun tahlilDhikrPreset() = DhikrReminder(dhikrId = "salah_tahlil", targetCount = 100, daysOfWeek = (1..7).toSet(),
+/** The 100-times-a-day tahlil (Bukhari 3293, Muslim 2691), not the single post-prayer one. */
+internal const val TAHLIL_DAILY_ID = DhikrCatalog.DAILY_TAHLIL_ID
+internal fun tahlilDhikrPreset() = DhikrReminder(dhikrId = TAHLIL_DAILY_ID, targetCount = 100, daysOfWeek = (1..7).toSet(),
     start = DhikrTime(minuteOfDay = 480), end = DhikrTime(DhikrTimeKind.MAGHRIB), cadence = DhikrCadence.GENTLE)
 internal fun morningCollectionPreset() = DhikrReminder(dhikrId = "morning_kingdom", collection = DhikrCategory.MORNING,
     targetCount = 1, daysOfWeek = (1..7).toSet(), start = DhikrTime(DhikrTimeKind.FAJR),

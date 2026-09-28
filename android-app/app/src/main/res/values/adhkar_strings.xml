@@ -10,7 +10,7 @@
     <string name="adhkar_category_home">المنزل</string>
     <string name="adhkar_category_daily">الحياة اليومية</string>
     <string name="adhkar_friday_title">الصلاة على النبي يوم الجمعة</string>
-    <string name="adhkar_friday_summary">هدف شخصي مقترح: ١٠٠ مرة، من ٠٨:٠٠ إلى المغرب.</string>
+    <string name="adhkar_friday_summary">هدف شخصي مقترح: 100 مرة، من 08:00 إلى المغرب.</string>
     <string name="adhkar_friday_note">يمكنك تعديل العدد والأيام والفترة بما يناسب يومك.</string>
     <string name="adhkar_friday_action">تخصيص تذكير الجمعة</string>
     <string name="adhkar_goals_title">تذكيراتي</string>
@@ -21,7 +21,7 @@
     <string name="adhkar_create_reminder">تذكير بهذا الذكر</string>
     <string name="adhkar_reference">المصدر: %1$s</string>
     <string name="adhkar_count_format">%1$s / %2$s</string>
-    <string name="adhkar_count_action">قلتُ الذكر +١</string>
+    <string name="adhkar_count_action">قلتُ الذكر +1</string>
     <string name="adhkar_count_accessibility">زيادة عدّاد %1$s مرة واحدة. الحالي %2$s من %3$s</string>
     <string name="adhkar_count_complete">اكتمل العدد</string>
     <string name="adhkar_count_reset">إعادة العدّ</string>
@@ -72,7 +72,7 @@
     <string name="adhkar_isha">العشاء</string>
     <string name="adhkar_choose_time">اختيار الوقت: %1$s</string>
     <string name="adhkar_offset_label">فرق الدقائق عن الموعد</string>
-    <string name="adhkar_offset_hint">٠ للموعد نفسه، ١٥ بعده بربع ساعة، ‎-١٥ قبله بربع ساعة.</string>
+    <string name="adhkar_offset_hint">0 للموعد نفسه، 15 بعده بربع ساعة، ‎-15 قبله بربع ساعة.</string>
     <string name="adhkar_offset_after">%1$s + %2$s د</string>
     <string name="adhkar_offset_before">%1$s − %2$s د</string>
     <string name="adhkar_window_summary">من %1$s إلى %2$s</string>
@@ -82,8 +82,8 @@
     <string name="adhkar_interval_hint">يبدأ التذكير عند بداية الفترة. قد يؤخره النظام قليلًا لتوفير البطارية.</string>
     <string name="adhkar_enable_label">تفعيل التذكير</string>
     <string name="adhkar_enable_accessibility">تفعيل تذكير %1$s</string>
-    <string name="adhkar_target_invalid">أدخل عددًا صحيحًا من ١ إلى ١٠٠٬٠٠٠.</string>
+    <string name="adhkar_target_invalid">أدخل عددًا صحيحًا من 1 إلى 100,000.</string>
     <string name="adhkar_days_invalid">اختر يومًا واحدًا على الأقل.</string>
-    <string name="adhkar_offset_invalid">أدخل فرقًا صحيحًا بين ‎-٧٢٠ و٧٢٠ دقيقة.</string>
+    <string name="adhkar_offset_invalid">أدخل فرقًا صحيحًا بين ‎-720 و720 دقيقة.</string>
     <string name="adhkar_daily_events_hint">تذكيرات المنزل والأنشطة اليومية تعمل في أوقات تحددها أنت، ولا تعتمد على اكتشاف دخول المنزل أو مغادرته.</string>
 </resources>

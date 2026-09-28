@@ -79,6 +79,12 @@ import kotlin.math.abs
     val favourite = entry.id in state.favourites
     val count = session.counts[entry.id] ?: 0
     val target = state.target(session)
+    val hundredTahlil = target >= 100 && entry.id == TAHLIL_DAILY_ID
+    val sourceEntry = if (hundredTahlil) entry.copy(
+        reference = "صحيح البخاري 3293؛ صحيح مسلم 2691؛ مائة مرة في يوم",
+        explanation = "هذا التهليل إفراد لله بالعبادة والملك والحمد، وإقرار بعموم قدرته. من قاله مائة مرة في يوم كانت له عدل عشر رقاب، وكُتبت له مائة حسنة، ومُحيت عنه مائة سيئة، وكان في حرز من الشيطان حتى يمسي؛ ولم يأت أحد بأفضل مما جاء به إلا من عمل أكثر من ذلك.",
+        narration = DhikrNarrations.tahlilHundred,
+    ) else entry
     val complete = count >= target
     val skipped = entry.id in session.skippedIds
     val occurrence = session.occurrenceId?.let { state.occurrences[it] }
@@ -92,12 +98,14 @@ import kotlin.math.abs
     var sources by remember { mutableStateOf(false) }
     var textSettings by remember { mutableStateOf(false) }
     var showExplanation by remember(session.itemId) { mutableStateOf(false) }
+    var showNarration by remember(session.itemId) { mutableStateOf(false) }
     var menu by remember { mutableStateOf(false) }
     var confirmRemove by remember { mutableStateOf(false) }
     val lifecycle = LocalLifecycleOwner.current
     val view = LocalView.current
     val swipeThresholdPx = with(LocalDensity.current) { 72.dp.toPx() }
     val explanationRequester = remember(entry.id) { BringIntoViewRequester() }
+    val narrationRequester = remember(entry.id) { BringIntoViewRequester() }
     DisposableEffect(session.occurrenceId, lifecycle) {
         fun presence(active: Boolean) { DhikrReadingPresence.occurrenceId = if (active) session.occurrenceId else null }
         presence(lifecycle.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED))
@@ -114,6 +122,9 @@ import kotlin.math.abs
     LaunchedEffect(showExplanation, entry.id) {
         if (showExplanation) explanationRequester.bringIntoView()
     }
+    LaunchedEffect(showNarration, entry.id) {
+        if (showNarration) narrationRequester.bringIntoView()
+    }
     val canNavigate = session.itemIds.size > 1
     val currentIndex = session.index.coerceIn(0, session.itemIds.lastIndex)
     val previousEntry = if (canNavigate) state.findDhikr(session.itemIds[(currentIndex - 1 + session.itemIds.size) % session.itemIds.size]) else null
@@ -126,7 +137,8 @@ import kotlin.math.abs
         onDispose { swipeAnimation.value?.cancel() }
     }
     val canRemove = session.category != null || session.itemIds.size > 1
-    val canCount = open && count < Int.MAX_VALUE && (session.category == null || !complete)
+    val canCount = open && count < Int.MAX_VALUE && (entry.steps.isEmpty() || count < entry.defaultCount) &&
+        (session.category == null || !complete)
     val canAdvanceOnTap = complete && canNavigate
     val canUndo = count > 0 && open
     val sessionDone = session.itemIds.count { it in session.skippedIds || (session.counts[it] ?: 0) >= state.target(session, it) }
@@ -308,30 +320,73 @@ import kotlin.math.abs
                         }
                         .padding(horizontal = 24.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                     Spacer(Modifier.height(28.dp))
-                    Text(entry.text, fontFamily = AdhkarReadingFont, fontSize = state.textSize.sp,
-                        lineHeight = (state.textSize * 1.9f).sp, color = p.forest, textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.bodyLarge.copy(textDirection = TextDirection.ContentOrRtl),
-                        modifier = Modifier.fillMaxWidth()
+                    if (entry.steps.isEmpty()) {
+                        Text(entry.text, fontFamily = AdhkarReadingFont, fontSize = state.textSize.sp,
+                            lineHeight = (state.textSize * 1.9f).sp, color = p.forest, textAlign = TextAlign.Center,
+                            style = MaterialTheme.typography.bodyLarge.copy(textDirection = TextDirection.ContentOrRtl),
+                            modifier = Modifier.fillMaxWidth()
+                                .clickable(enabled = canCount || canAdvanceOnTap,
+                                    onClickLabel = if (canAdvanceOnTap) "الانتقال إلى الذكر التالي" else "زيادة العدد",
+                                    onClick = ::activateDhikr)
+                                .testTag("adhkar_reader_text"))
+                    } else {
+                        var completedBefore = 0
+                        Column(Modifier.fillMaxWidth()
                             .clickable(enabled = canCount || canAdvanceOnTap,
-                                onClickLabel = if (canAdvanceOnTap) "الانتقال إلى الذكر التالي" else "زيادة العدد",
+                                onClickLabel = if (canAdvanceOnTap) "الانتقال إلى الذكر التالي" else "احتساب الصيغة الحالية",
                                 onClick = ::activateDhikr)
-                            .testTag("adhkar_reader_text"))
+                            .testTag("adhkar_reader_text"), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                            entry.steps.forEach { step ->
+                                val stepCount = (count - completedBefore).coerceIn(0, step.repetitions)
+                                val activeStep = count in completedBefore until (completedBefore + step.repetitions)
+                                Surface(shape = RoundedCornerShape(18.dp),
+                                    color = if (activeStep) AdhkarSoftGreen else AdhkarSurface,
+                                    border = BorderStroke(1.dp, if (activeStep) p.primary else AdhkarBorder),
+                                    modifier = Modifier.fillMaxWidth()) {
+                                    Column(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp)) {
+                                        Text(step.text, Modifier.fillMaxWidth(), fontFamily = AdhkarReadingFont,
+                                            fontSize = if (activeStep) state.textSize.sp else 18.sp,
+                                            lineHeight = if (activeStep) (state.textSize * 1.7f).sp else 30.sp,
+                                            color = p.forest, textAlign = TextAlign.Right)
+                                        Text((if (activeStep) "الآن · " else "") + step.label + " · " +
+                                            latinNumber(stepCount) + " من " + latinNumber(step.repetitions),
+                                            color = if (activeStep) p.primary else p.muted, fontSize = 13.sp)
+                                    }
+                                }
+                                completedBefore += step.repetitions
+                            }
+                        }
+                    }
                     Spacer(Modifier.height(20.dp))
-                    if (entry.reference.isNotBlank() || entry.custom) {
-                        Text(entry.reference.ifBlank { "ذكر أضفته" }, color = p.muted, fontSize = 13.sp,
+                    if (sourceEntry.reference.isNotBlank() || entry.custom) {
+                        Text(sourceEntry.reference.ifBlank { "ذكر أضفته" }, color = p.muted, fontSize = 13.sp,
                             textAlign = TextAlign.Center, modifier = Modifier.clickable { sources = true })
                     }
                     if (skipped && !complete) Text("تم تخطّي هذا الذكر", color = p.primary, fontSize = 12.sp,
                         textAlign = TextAlign.Center, modifier = Modifier.padding(top = 6.dp))
-                    if (entry.explanation.isNotBlank()) {
+                    if (sourceEntry.explanation.isNotBlank() || sourceEntry.narration.isNotBlank()) {
                         Spacer(Modifier.height(12.dp))
-                        Surface(shape = RoundedCornerShape(50), color = AdhkarSoftGreen,
-                            modifier = Modifier.clickable { showExplanation = !showExplanation }
-                                .testTag("adhkar_explanation_toggle")) {
-                            Row(Modifier.padding(horizontal = 18.dp, vertical = 9.dp), verticalAlignment = Alignment.CenterVertically) {
-                                DhikrIcon(R.drawable.ic_adhkar_info, "الشرح", tint = p.primary, modifier = Modifier.size(18.dp))
-                                Spacer(Modifier.width(8.dp))
-                                Text(if (showExplanation) "إخفاء الشرح" else "الشرح", color = p.primary, fontSize = 13.sp)
+                        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            if (sourceEntry.explanation.isNotBlank()) ReaderToggleChip(R.drawable.ic_adhkar_info, "الشرح",
+                                if (showExplanation) "إخفاء الشرح" else "الشرح", "adhkar_explanation_toggle") {
+                                showExplanation = !showExplanation
+                            }
+                            if (sourceEntry.narration.isNotBlank()) ReaderToggleChip(R.drawable.ic_adhkar_bookmark, "الحديث",
+                                if (showNarration) "إخفاء الحديث" else "الحديث", "adhkar_narration_toggle") {
+                                showNarration = !showNarration
+                            }
+                        }
+                        if (showNarration) {
+                            Spacer(Modifier.height(12.dp))
+                            Surface(shape = RoundedCornerShape(18.dp), color = AdhkarSurface,
+                                border = BorderStroke(1.dp, AdhkarBorder), modifier = Modifier.fillMaxWidth()
+                                    .bringIntoViewRequester(narrationRequester).testTag("adhkar_narration")) {
+                                Column(Modifier.fillMaxWidth().padding(18.dp)) {
+                                    Text("نص الحديث", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                                    Spacer(Modifier.height(8.dp))
+                                    Text(sourceEntry.narration, Modifier.fillMaxWidth(), color = p.forest,
+                                        fontSize = 15.sp, lineHeight = 30.sp, textAlign = TextAlign.Right)
+                                }
                             }
                         }
                         if (showExplanation) {
@@ -339,7 +394,7 @@ import kotlin.math.abs
                             Surface(shape = RoundedCornerShape(18.dp), color = AdhkarSurface,
                                 border = BorderStroke(1.dp, AdhkarBorder), modifier = Modifier.fillMaxWidth()
                                     .bringIntoViewRequester(explanationRequester)) {
-                                Text(entry.explanation, Modifier.fillMaxWidth().padding(18.dp), color = p.forest,
+                                Text(sourceEntry.explanation, Modifier.fillMaxWidth().padding(18.dp), color = p.forest,
                                     fontSize = 15.sp, lineHeight = 30.sp, textAlign = TextAlign.Right)
                             }
                         }
@@ -411,14 +466,19 @@ import kotlin.math.abs
             DhikrSheetHeader("المصدر وعدد التكرار") { sources = false }
             Column(Modifier.verticalScroll(rememberScrollState()).padding(24.dp).navigationBarsPadding(),
                 verticalArrangement = Arrangement.spacedBy(18.dp)) {
-                Text(if (entry.custom) "هذا ذكر أضفته بنفسك، ويُعرض نصّه كما كتبته." else entry.reference,
+                Text(if (entry.custom) "هذا ذكر أضفته بنفسك، ويُعرض نصّه كما كتبته." else sourceEntry.reference,
                     color = AdhkarHeading, fontSize = 16.sp, lineHeight = 30.sp)
-                if (entry.explanation.isNotBlank()) {
-                    Text("شرح الألفاظ", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 15.sp)
-                    Text(entry.explanation, color = p.forest, fontSize = 15.sp, lineHeight = 30.sp)
+                if (sourceEntry.narration.isNotBlank()) {
+                    Text("نص الحديث", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(sourceEntry.narration, color = p.forest, fontSize = 15.sp, lineHeight = 30.sp)
                 }
-                Text(if (entry.custom) "العدد الافتراضي: " + latinNumber(entry.defaultCount) + ". يمكنك تغييره عند إنشاء تذكير، وتعديل الذكر أو حذفه من قائمة الخيارات هنا."
-                    else if (occurrence != null) "هدف التذكير: " + latinNumber(occurrence.target) + ". يمكنك تغييره دون تعديل عدد التكرار الافتراضي للذكر."
+                if (sourceEntry.explanation.isNotBlank()) {
+                    Text("شرح الألفاظ", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 15.sp)
+                    Text(sourceEntry.explanation, color = p.forest, fontSize = 15.sp, lineHeight = 30.sp)
+                }
+                Text(if (entry.steps.isNotEmpty()) "تُحسب الصيغ الأربع ذكرًا واحدًا: التسبيح 33، والتحميد 33، والتكبير 33، ثم التهليل مرة واحدة."
+                    else if (entry.custom) "العدد الافتراضي: " + latinNumber(entry.defaultCount) + ". يمكنك تغييره عند إنشاء تذكير، وتعديل الذكر أو حذفه من قائمة الخيارات هنا."
+                    else if (occurrence != null || (reminder != null && reminder.collection == null)) "هدف التذكير: " + latinNumber(target) + ". يمكنك تغييره دون تعديل عدد التكرار الافتراضي للذكر."
                     else "عدد التكرار الافتراضي: " + latinNumber(entry.defaultCount) + ". إذا لم يحدد المصدر عددًا، فهذا العدد يساعدك على العدّ ولا يقيّد تكرار الذكر.",
                     color = p.muted, fontSize = 14.sp, lineHeight = 27.sp)
                 if (!entry.custom) Text("إصدار النص: " + bidiClock(entry.contentVersion) + " · " + entry.editorialNote,
@@ -456,6 +516,20 @@ private fun CounterButton(icon: Int, description: String, enabled: Boolean, size
         .clickable(enabled = enabled, onClick = onClick)
         .testTag(tag), contentAlignment = Alignment.Center) {
         DhikrIcon(icon, description, tint = if (enabled) p.primary else p.muted, modifier = Modifier.size((size * 0.4f).dp))
+    }
+}
+
+/** Pill under the dhikr that expands a detail card (explanation or source hadith) in place. */
+@Composable
+private fun ReaderToggleChip(icon: Int, description: String, label: String, tag: String, onClick: () -> Unit) {
+    val p = LocalAdhkarPalette.current
+    Surface(shape = RoundedCornerShape(50), color = AdhkarSoftGreen,
+        modifier = Modifier.clickable(onClick = onClick).testTag(tag)) {
+        Row(Modifier.padding(horizontal = 18.dp, vertical = 9.dp), verticalAlignment = Alignment.CenterVertically) {
+            DhikrIcon(icon, description, tint = p.primary, modifier = Modifier.size(18.dp))
+            Spacer(Modifier.width(8.dp))
+            Text(label, color = p.primary, fontSize = 13.sp)
+        }
     }
 }
 

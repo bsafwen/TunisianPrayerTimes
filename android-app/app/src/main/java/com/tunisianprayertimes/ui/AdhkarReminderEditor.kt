@@ -85,7 +85,8 @@ import java.time.*
     val end = firstInterval.end
     val nextDay = firstInterval.endNextDay
     val edited = initial.copy(dhikrId = selectedId, collection = collection,
-        targetCount = if (collection != null) 1 else integer(target) ?: 0,
+        targetCount = if (collection != null) 1 else if (selectedEntry.steps.isNotEmpty())
+            selectedEntry.defaultCount else integer(target) ?: 0,
         daysOfWeek = days, start = start, end = end, endNextDay = nextDay,
         extraIntervals = intervals.drop(1),
         cadence = DhikrCadence.valueOf(cadence), intervalMinutes = integer(interval) ?: 0,
@@ -150,7 +151,14 @@ import java.time.*
                 Text("الهدف وأوقات التذكير", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 17.sp)
                 AdhkarCard(Modifier.fillMaxWidth()) {
                     Column {
-                        if (showTarget) {
+                        if (showTarget && selectedEntry.steps.isNotEmpty()) {
+                            Column(Modifier.fillMaxWidth().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                                Text("الهدف اليومي: " + latinNumber(selectedEntry.defaultCount),
+                                    color = AdhkarHeading, fontWeight = FontWeight.Bold)
+                                Text("33 تسبيحًا + 33 تحميدًا + 33 تكبيرًا + تهليل مرة واحدة",
+                                    color = p.muted, fontSize = 12.sp, textAlign = TextAlign.Center)
+                            }
+                        } else if (showTarget) {
                             Column(Modifier.padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
                                 Text("الهدف اليومي", color = p.muted, fontSize = 13.sp)
                                 Spacer(Modifier.height(10.dp))
@@ -214,7 +222,7 @@ import java.time.*
                         selected = collection == null && selectedId == DhikrCatalog.SALAWAT_ID && days == setOf(5) && integer(target) == 100,
                         modifier = Modifier.weight(1f)) { applyTemplate(fridayDhikrPreset(), clearCollection = true) }
                     TemplateCard("100 مرة", "يوميًا", null,
-                        selected = collection == null && integer(target) == 100 && days.size == 7,
+                        selected = collection == null && edited.targetCount == 100 && days.size == 7,
                         modifier = Modifier.weight(1f)) {
                             applyTemplate(tahlilDhikrPreset().copy(dhikrId = selectedId, targetCount = 100), clearCollection = true)
                         }

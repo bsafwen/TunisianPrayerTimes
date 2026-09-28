@@ -271,7 +271,7 @@ class AdhkarFlowTest {
         assertNull(repo.state.value.sessions[single])
     }
     @Test fun readerNavigationIsUnconstrainedAndWrapsAround() {
-        val id = repo.openSession(listOf("salah_istighfar", "salah_salam", "salah_tasbih"))
+        val id = repo.openSession(listOf("salah_istighfar", "salah_salam", DhikrCatalog.SALAH_HUNDRED_ID))
         repo.move(id, 1)
         assertEquals(1, repo.state.value.sessions.getValue(id).index)
         repo.move(id, -1)
@@ -578,9 +578,34 @@ class AdhkarFlowTest {
         assertEquals(entries.size, entries.map { it.id }.toSet().size)
         assertTrue(entries.all { it.text.isNotBlank() && it.reference.isNotBlank() && it.defaultCount >= 1 })
         assertTrue(entries.all { it.categories.isNotEmpty() })
-        assertTrue(entries.count { it.explanation.isNotBlank() } >= 40)
+        assertTrue(entries.filter { it.explanation.isBlank() }.map { it.id }.toString(), entries.all { it.explanation.isNotBlank() })
         assertTrue(entries.any { DhikrCategory.PRAYER in it.categories })
         assertTrue(entries.any { it.id == "ayat_kursi" && DhikrCategory.MORNING in it.categories })
+    }
+    @Test fun everyDhikrShowsItsSourceHadithUnlessNoneIsQuotable() {
+        val ids = DhikrCatalog.entries.map { it.id }.toSet()
+        assertEquals(emptySet<String>(), DhikrNarrations.byId.keys - ids)
+        // Not on sunnah.com (Ahmad, al-Nasa'i's al-Kubra, al-Hakim) or not a hadith (al-Hasan's athar).
+        assertEquals(setOf("fitrah_islam", "fitrah_islam_evening", "ya_hayyu", "hamm_quran", "newborn"),
+            DhikrCatalog.entries.filter { it.narration.isBlank() }.map { it.id }.toSet())
+        DhikrCatalog.entries.filter { it.narration.isNotBlank() }.forEach { entry ->
+            assertTrue(entry.id, entry.narration.contains("\n— "))
+            assertEquals(entry.id, entry.narration.count { it == '«' }, entry.narration.count { it == '»' })
+        }
+        assertTrue(DhikrCatalog.find(DhikrCatalog.SALAWAT_ID)!!.narration.endsWith("— صحيح البخاري 6357"))
+    }
+    @Test fun eachCollectionHasAnExplicitReadingOrderMatchingItsMembers() {
+        DhikrCategory.entries.forEach { category ->
+            val order = DhikrCatalog.collectionOrder.getValue(category)
+            assertEquals(category.name, order.size, order.distinct().size)
+            assertEquals(category.name, DhikrCatalog.entries.filter { category in it.categories }.map { it.id }.toSet(), order.toSet())
+            assertEquals(category.name, order, DhikrState().collectionEntries(category).map { it.id })
+        }
+        // The evening list must not carry morning wording, and bedtime ends with the supplication said last.
+        val morningOnly = listOf("هَذَا الْيَوْمِ", "أَصْبَحَ بِي", "أَصْبَحْتُ", "أَصْبَحْنَا عَلَى", "أَصْبَحْنَا وَأَصْبَحَ")
+        assertTrue(DhikrState().collectionEntries(DhikrCategory.EVENING).none { entry -> morningOnly.any { it in entry.text } })
+        assertEquals("sleep_submission", DhikrState().collectionEntries(DhikrCategory.SLEEP).last().id)
+        assertEquals(1, DhikrState().collectionEntries(DhikrCategory.SALAH).first { it.id == "surah_ikhlas" }.defaultCount)
     }
     @Test fun fridayPresetHasRealMaghribAndThreeNudgesIndependentOfTarget() {
         val preset = fridayDhikrPreset()
