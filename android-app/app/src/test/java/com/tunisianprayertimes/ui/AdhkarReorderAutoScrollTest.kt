@@ -110,6 +110,22 @@ class AdhkarReorderAutoScrollTest {
         assertTrue("$picked ended at ${order.indexOf(picked)} in $order", order.indexOf(picked) >= ids.lastIndex - 1)
     }
 
+    @Test fun easingTheFingerBackWhileTheCardStaysAtTheEdgeKeepsScrolling() {
+        showDialog()
+        // Drive frames by hand, so the scroll is still running when the finger eases back.
+        compose.mainClock.autoAdvance = false
+        val height = list.fetchSemanticsNode().size.height.toFloat()
+        val picked = ids[2]
+        val startY = rowCentreY(picked)
+        press(startY)
+        slide(startY, height + 60f)
+        // Relax by well over touch slop, still past the bottom edge: the card stays pinned there.
+        slide(height + 60f, height + 30f, steps = 2)
+        compose.mainClock.advanceTimeBy(4_000)
+        release()
+        assertEquals(picked, requireNotNull(reordered).last())
+    }
+
     @Test fun shortListKeepsTheDraggedCardInsideTheList() {
         showDialog(DhikrCategory.NIGHT)
         val night = DhikrState().collectionEntries(DhikrCategory.NIGHT).map { it.id }

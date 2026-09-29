@@ -17,6 +17,12 @@ internal data class NeighborhoodBoundary(
     val length: Int,
 )
 
+private data class GpsConflictPriority(
+    val pair: Pair<Int, Int>,
+    val preferredIndex: Int,
+    val fallbackIndex: Int,
+)
+
 /** The picker can read names independently of the packed geometry needed only by GPS. */
 internal fun parseNeighborhoodLocalities(json: JSONObject): List<Locality> {
     require(json.getInt("schemaVersion") == 1)
@@ -53,6 +59,7 @@ internal class NeighborhoodIndex(
     private val boundaries: Map<Int, NeighborhoodBoundary>
     private val cells: Map<String, List<Int>>
     private val conflicts: List<Pair<Int, Int>>
+    private val gpsConflictPriority: GpsConflictPriority?
     private val gridSize = json.getDouble("gridSize")
     private val scale = json.getDouble("coordinateScale")
     private val countryOffset = json.getJSONObject("country").getInt("offset")
@@ -96,6 +103,31 @@ internal class NeighborhoodIndex(
             require(first != second)
             minOf(first, second) to maxOf(first, second)
         }.distinct()
+        val policyRows = if (json.has("gpsConflictPolicies"))
+            requireNotNull(json.optJSONArray("gpsConflictPolicies")) else null
+        require(policyRows == null || policyRows.length() <= 1)
+        gpsConflictPriority = if (policyRows != null && policyRows.length() == 1) {
+            val policy = policyRows.getJSONObject(0)
+            require(policy.getString("schemaVersion") == GPS_PRIORITY_POLICY_SCHEMA)
+            require(policy.getString("status") == GPS_PRIORITY_POLICY_STATUS)
+            require(policy.opt("osmFallbackWhenMNotAccuracyQualified") == true)
+            require(policy.getString("scope") == GPS_PRIORITY_POLICY_SCOPE)
+            val ids = policy.getJSONArray("ids")
+            require(ids.length() == 2)
+            require(setOf(ids.getString(0), ids.getString(1)) ==
+                setOf(GPS_PRIORITY_OSM_FALLBACK_ID, GPS_PRIORITY_ACCEPTED_M_ID))
+            require(policy.getString("gpsPreferredId") == GPS_PRIORITY_ACCEPTED_M_ID)
+            require(policy.getString("acceptedOfficialCode") == "125654")
+            require(policy.getString("preferredSourceWkbSha256") == GPS_PRIORITY_SOURCE_WKB_SHA256)
+            require(policy.getString("osmPeerSourceId") == "osm")
+            val preferredIndex = requireNotNull(boundaryIds[GPS_PRIORITY_ACCEPTED_M_ID])
+            val fallbackIndex = requireNotNull(boundaryIds[GPS_PRIORITY_OSM_FALLBACK_ID])
+            val pair = minOf(preferredIndex, fallbackIndex) to maxOf(preferredIndex, fallbackIndex)
+            require(pair in conflicts)
+            require(records.getJSONObject(preferredIndex).getString("sourceId") != "osm")
+            require(records.getJSONObject(fallbackIndex).getString("sourceId") == "osm")
+            GpsConflictPriority(pair, preferredIndex, fallbackIndex)
+        } else null
         val grid = json.getJSONObject("cells")
         cells = grid.keys().asSequence().associateWith { key ->
             val ids = grid.getJSONArray(key)
@@ -192,19 +224,30 @@ internal class NeighborhoodIndex(
         fun peerMayIntersectDisk(peerIndex: Int): Boolean =
             isStrictlyInside(peerIndex) || clearanceMeters(peerIndex) <= radiusMeters
 
-        return cells[key].orEmpty().asSequence()
+        val qualifiedCandidates = cells[key].orEmpty().asSequence()
             .filter { index ->
                 val boundary = boundaries[index] ?: return@filter false
                 lng >= boundary.bbox[0] && lat >= boundary.bbox[1] &&
                     lng <= boundary.bbox[2] && lat <= boundary.bbox[3]
             }
             .filter { index -> isStrictlyInside(index) && clearanceMeters(index) > radiusMeters }
+            .toList()
+        val preferredQualified = gpsConflictPriority?.preferredIndex?.let { it in qualifiedCandidates } == true
+
+        return qualifiedCandidates.asSequence()
             .filterNot { candidateIndex ->
                 conflicts.any { (firstIndex, secondIndex) ->
-                    when (candidateIndex) {
-                        firstIndex -> peerMayIntersectDisk(secondIndex)
-                        secondIndex -> peerMayIntersectDisk(firstIndex)
-                        else -> false
+                    val priority = gpsConflictPriority
+                    if (priority != null && (firstIndex to secondIndex) == priority.pair &&
+                        (candidateIndex == priority.preferredIndex ||
+                            (candidateIndex == priority.fallbackIndex && !preferredQualified))) {
+                        false
+                    } else {
+                        when (candidateIndex) {
+                            firstIndex -> peerMayIntersectDisk(secondIndex)
+                            secondIndex -> peerMayIntersectDisk(firstIndex)
+                            else -> false
+                        }
                     }
                 }
             }
@@ -218,6 +261,14 @@ internal fun validCoordinates(lat: Double, lng: Double): Boolean =
     lat.isFinite() && lng.isFinite() && lat in -90.0..90.0 && lng in -180.0..180.0
 
 private const val COORDINATE_EPSILON = 1e-10
+private const val GPS_PRIORITY_OSM_FALLBACK_ID = "osm:relation:7115582" // 125655
+private const val GPS_PRIORITY_ACCEPTED_M_ID = "osm:relation:7115585" // 125654
+private const val GPS_PRIORITY_SOURCE_WKB_SHA256 =
+    "6c60f2cd2d4d323a03d632232d0a4e453ba4f991d156b113cf7110819f4be27b"
+private const val GPS_PRIORITY_POLICY_SCHEMA = "ariana-pair-specific-m-else-qualified-osm-policy-v2"
+private const val GPS_PRIORITY_POLICY_STATUS = "SCRATCH_ONLY_INDEPENDENT_QA_PENDING"
+private const val GPS_PRIORITY_POLICY_SCOPE =
+    "GPS findWithAccuracy only; strict containment and clearance>accuracy still required for selected winner"
 private const val WGS84_SEMI_MAJOR_AXIS_METERS = 6378137.0
 private const val WGS84_FLATTENING = 1.0 / 298.257223563
 private const val MIN_MERIDIONAL_RADIUS_METERS =
