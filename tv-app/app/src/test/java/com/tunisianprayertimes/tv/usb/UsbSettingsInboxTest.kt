@@ -186,11 +186,24 @@ class UsbSettingsInboxTest {
         assertTrue(inbox.apply(offer.found))
         // Kept across a restart, and written into the file another TV would copy.
         val reloaded = PrefsManager(store).adhkarContent
-        assertEquals(100, reloaded.afterSalah?.items?.single()?.count)
+        assertEquals(100, (reloaded.afterSalah?.items?.single() as com.tunisianprayertimes.mosque.CustomDhikr).count)
         assertTrue(inbox.currentFile().contains("\"adhkar\""))
         // Undo returns to the bundled texts.
         assertTrue(inbox.apply(UsbSettingsFound(File(root, "previous-settings.json"), snapshot!!, "undo"), fromKey = false))
         assertTrue(prefs.adhkarContent.isBundled)
+    }
+
+    @Test
+    fun returningToTheBundledTextsFromTheRemoteCanBeUndone() {
+        val list = """{ "adhkar": { "afterSalah": { "mode": "replace", "items": [ { "id": "salah_istighfar", "count": 5 }, { "id": "sayyid_istighfar" } ] } } }"""
+        assertTrue(inbox.apply(UsbSettingsFound(File("dashboard"), list, "dashboard"), fromKey = false))
+        val mosqueList = prefs.adhkarContent
+        assertFalse(mosqueList.isBundled)
+        // What the TV's "استعادة النصوص المضمّنة" does, after its confirmation.
+        assertTrue(inbox.apply(UsbSettingsFound(File("tv"), """{ "adhkar": null }""", "bundled-texts"), fromKey = false))
+        assertTrue(prefs.adhkarContent.isBundled)
+        assertTrue(inbox.apply(UsbSettingsFound(File(root, "previous-settings.json"), snapshot!!, "undo"), fromKey = false))
+        assertEquals(mosqueList, prefs.adhkarContent)
     }
 
     @Test

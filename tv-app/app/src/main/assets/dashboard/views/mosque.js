@@ -89,7 +89,7 @@
     // ------------------------------------------------ place
     var gouvSelect = el("select", { disabled: true }, option(el, "", "جارٍ التحميل…"));
     var delegSelect = el("select", { disabled: true }, option(el, "", "جارٍ التحميل…"));
-    var placeNote = el("div", { class: "muted" });
+    var placeNote = el("div", { class: "muted", attrs: { role: "status" } });
 
     function fillDelegations(gouvernorat) {
       var list = gouvernorat ? gouvernorat.delegations || [] : [];

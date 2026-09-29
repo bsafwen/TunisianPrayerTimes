@@ -20,11 +20,23 @@ data class AdhkarSlide(
     val parts: Int = 1,
 )
 
-/** A mosque's own dhikr or dua from the USB file; a [reference] is required so every text is sourced. */
-data class CustomDhikr(val text: String, val reference: String, val count: Int = 1)
+/** One text of a mosque's list: a reviewed text of the catalog, or the mosque's own. */
+sealed interface MosqueDhikr
 
-/** A mosque's texts in place of the bundled ones, or after them. */
-data class CustomAdhkarList(val mode: Mode, val items: List<CustomDhikr>) {
+/**
+ * A reviewed catalog entry, by its [id]: its text and source come from the catalog, exactly as
+ * reviewed. [count] changes how many times it is said after the prayer; null is the catalog's count.
+ */
+data class ReviewedDhikr(val id: String, val count: Int? = null) : MosqueDhikr
+
+/** A mosque's own dhikr or dua; a [reference] is required so every text is sourced. */
+data class CustomDhikr(val text: String, val reference: String, val count: Int = 1) : MosqueDhikr
+
+/**
+ * A mosque's list: its [items] after the bundled texts, or in their place. Replacing is also how a
+ * bundled text is hidden or moved: the list then names the reviewed texts it keeps, in its order.
+ */
+data class CustomAdhkarList(val mode: Mode, val items: List<MosqueDhikr>) {
     enum class Mode { REPLACE, APPEND }
 }
 
@@ -45,9 +57,42 @@ object MosqueAdhkar {
     /** The short daily texts of the ticker under the prayer times. */
     val TICKER_IDS = listOf("salah_salam", "subhanallah_bihamdih", "kalimatan_khafifatan", "la_hawla_quwwata", DhikrCatalog.SALAWAT_ID)
 
-    /** The adhkar after the obligatory prayer: the catalog's after-prayer collection, then the mosque's own. */
+    /** The bundled adhkar after the obligatory prayer: the catalog's after-prayer collection. */
+    val AFTER_SALAH_IDS: List<String> = DhikrCatalog.collectionOrder[DhikrCategory.SALAH].orEmpty()
+
+    /** The adhkar after the obligatory prayer: the bundled ones, the mosque's list, or both. */
     fun afterSalah(content: AdhkarContent = AdhkarContent()): List<AdhkarSlide> =
-        combine(entries(DhikrCatalog.collectionOrder[DhikrCategory.SALAH].orEmpty(), DhikrCategory.SALAH), content.afterSalah)
+        items(AFTER_SALAH_IDS, content.afterSalah).flatMap(::afterSalahSlides)
+
+    /** The texts a list shows, in order: the [bundledIds] as reviewed texts, then or instead the mosque's [custom] ones. */
+    fun items(bundledIds: List<String>, custom: CustomAdhkarList?): List<MosqueDhikr> {
+        val bundled = bundledIds.map { ReviewedDhikr(it) }
+        return when (custom?.mode) {
+            null -> bundled
+            CustomAdhkarList.Mode.REPLACE -> custom.items
+            CustomAdhkarList.Mode.APPEND -> bundled + custom.items
+        }
+    }
+
+    /** One text as the after-prayer screen shows it; a reviewed id the catalog no longer has shows nothing. */
+    fun afterSalahSlides(item: MosqueDhikr): List<AdhkarSlide> = when (item) {
+        is ReviewedDhikr -> DhikrCatalog.find(item.id)?.let { slides(it, DhikrCategory.SALAH, item.count) }.orEmpty()
+        is CustomDhikr -> ownSlides(item)
+    }
+
+    /** One text as the ticker shows it: read once, however many times it is said elsewhere. */
+    fun tickerSlides(item: MosqueDhikr): List<AdhkarSlide> = when (item) {
+        is ReviewedDhikr -> DhikrCatalog.find(item.id)?.let { entry ->
+            slides(entry, null, 1).map { it.copy(count = 1, durationMillis = AdhkarPacer.durationMillis(it.text, 1)) }
+        }.orEmpty()
+        is CustomDhikr -> ownSlides(item.copy(count = 1))
+    }
+
+    /** The ticker holds every slide at least this long (longer while a long line scrolls). */
+    const val TICKER_MIN_SLIDE_MILLIS = 12_000L
+
+    /** About how long one round of the ticker takes for these texts (without scrolling and announcements). */
+    fun tickerMillis(slides: List<AdhkarSlide>): Long = slides.sumOf { maxOf(TICKER_MIN_SLIDE_MILLIS, it.durationMillis) }
 
     fun adhanCompanion(): List<AdhkarSlide> = entries(ADHAN_IDS, DhikrCategory.PRAYER)
 
@@ -71,9 +116,9 @@ object MosqueAdhkar {
     /** Half the adhan for the reply, a fifth for the shahada, the rest for the dua after it. */
     private val ADHAN_SHARES = listOf(0.5, 0.2, 0.3)
 
-    /** Read once each, however many times the dhikr is said elsewhere. */
+    /** The ticker's texts: the bundled ones, the mosque's list, or both. */
     fun ticker(content: AdhkarContent = AdhkarContent()): List<AdhkarSlide> =
-        combine(entries(TICKER_IDS, null).map { it.copy(count = 1, durationMillis = AdhkarPacer.durationMillis(it.text, 1)) }, content.ticker)
+        items(TICKER_IDS, content.ticker).flatMap(::tickerSlides)
 
     /**
      * The ticker with the mosque's written [announcements] between its adhkar, one after every two,
@@ -85,9 +130,11 @@ object MosqueAdhkar {
         if (ticker.isEmpty()) return news
         val result = mutableListOf<AdhkarSlide>()
         var next = 0
-        ticker.forEachIndexed { index, slide ->
+        var texts = 0
+        for (slide in ticker) {
             result += slide
-            if (index % 2 == 1) result += news[next++ % news.size]
+            // A text ends on its last page or step; one announcement after every two whole texts.
+            if (slide.part == slide.parts && ++texts % 2 == 0) result += news[next++ % news.size]
         }
         while (next < news.size) result += news[next++]
         return result
@@ -107,16 +154,7 @@ object MosqueAdhkar {
     fun totalMillis(slides: List<AdhkarSlide>): Long = slides.sumOf { it.durationMillis }
 
     private fun entries(ids: List<String>, category: DhikrCategory?): List<AdhkarSlide> =
-        ids.mapNotNull(DhikrCatalog::find).flatMap { slides(it, category) }
-
-    private fun combine(bundled: List<AdhkarSlide>, custom: CustomAdhkarList?): List<AdhkarSlide> {
-        val own = custom?.items.orEmpty().flatMap { item -> ownSlides(item) }
-        return when (custom?.mode) {
-            null -> bundled
-            CustomAdhkarList.Mode.REPLACE -> own
-            CustomAdhkarList.Mode.APPEND -> bundled + own
-        }
-    }
+        ids.mapNotNull(DhikrCatalog::find).flatMap { slides(it, category, null) }
 
     /**
      * A mosque's text as slides. A text too long for one screen is shown page by page, and the whole
@@ -133,21 +171,27 @@ object MosqueAdhkar {
 
     private const val MAX_PAGED_REPETITIONS = 3
 
-    /** An entry as slides: one per step (33 × three phrases, then the tahlil), or one per page of a long text. */
-    private fun slides(entry: DhikrEntry, category: DhikrCategory?): List<AdhkarSlide> {
+    /**
+     * An entry as slides: one per step (33 × three phrases, then the tahlil), or one per page of a
+     * long text. [countOverride] is the mosque's count; a text said in steps keeps its own.
+     */
+    private fun slides(entry: DhikrEntry, category: DhikrCategory?, countOverride: Int?): List<AdhkarSlide> {
         if (entry.steps.isNotEmpty()) {
             return entry.steps.mapIndexed { index, step ->
                 AdhkarSlide(entry.id, step.text, entry.reference, step.repetitions,
                     AdhkarPacer.durationMillis(step.text, step.repetitions), index + 1, entry.steps.size)
             }
         }
-        val count = entry.countForCollection(category)
+        val count = countOverride ?: entry.countForCollection(category)
         val pages = AdhkarPacer.pages(entry.text)
-        // Repetitions are for the whole text; a long text read once is paced page by page.
-        return pages.mapIndexed { index, page ->
-            AdhkarSlide(entry.id, page, entry.reference, count,
-                AdhkarPacer.durationMillis(page, if (pages.size == 1) count else 1), index + 1, pages.size)
+        if (pages.size == 1) {
+            return listOf(AdhkarSlide(entry.id, entry.text, entry.reference, count, AdhkarPacer.durationMillis(entry.text, count)))
         }
+        // A long text is read page by page, and whole again for each repetition (at most three).
+        val once = pages.mapIndexed { index, page ->
+            AdhkarSlide(entry.id, page, entry.reference, 1, AdhkarPacer.durationMillis(page, 1), index + 1, pages.size)
+        }
+        return List(count.coerceIn(1, MAX_PAGED_REPETITIONS)) { once }.flatten()
     }
 }
 

@@ -95,15 +95,14 @@ var Dashboard = (function () {
     var box = document.getElementById("toast");
     box.textContent = text;
     box.className = "toast" + (kind ? " " + kind : "");
-    box.hidden = false;
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { box.hidden = true; }, 5000);
+    toastTimer = setTimeout(function () { box.textContent = ""; }, 5000);
   }
 
   function showClosed(message) {
     var view = document.getElementById("view");
     view.textContent = "";
-    view.appendChild(el("div", { class: "card level-BAD" },
+    view.appendChild(el("div", { class: "card level-BAD", attrs: { role: "alert" } },
       el("p", { text: message }),
       el("p", { class: "muted", text: "ابدأ جلسة جديدة من إعدادات الشاشة (الإدارة من الهاتف) وامسح الرمز من جديد." })));
   }
@@ -283,7 +282,16 @@ var Dashboard = (function () {
     try {
       current.render(root, context);
     } catch (error) {
-      root.appendChild(el("div", { class: "card level-BAD", text: "تعذّر عرض هذا القسم: " + error.message }));
+      root.appendChild(el("div", { class: "card level-BAD", text: "تعذّر عرض هذا القسم: " + error.message, attrs: { role: "alert" } }));
+    }
+    // Redrawing removed the focused control: focus the current tab, so keyboards and screen readers
+    // keep their place (without scrolling the page back up).
+    var active = document.activeElement;
+    if (!active || active === document.body) {
+      var tab = tabs.querySelector('[aria-current="page"]');
+      if (tab) {
+        try { tab.focus({ preventScroll: true }); } catch (e) { tab.focus(); }
+      }
     }
   }
 

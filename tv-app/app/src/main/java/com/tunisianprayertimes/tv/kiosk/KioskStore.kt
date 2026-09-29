@@ -42,6 +42,20 @@ class KioskStore(
 
     fun update(transform: (KioskState) -> KioskState) = synchronized(this) { state = transform(state) }
 
+    /** The admin wants the quick-start service on: the app turns it back on if a force stop removed it. */
+    var quickStartWanted: Boolean
+        get() = prefs.getBoolean(KEY_QUICK_START, false)
+        set(value) {
+            prefs.edit().putBoolean(KEY_QUICK_START, value).apply()
+        }
+
+    /** When this boot's app update was installed (elapsedRealtime), for the quick-start service rebinding after it. */
+    var packageReplacedAt: Long?
+        get() = long(KEY_REPLACED)?.takeIf { prefs.getInt(KEY_REPLACED_BOOT, -1) == bootCount() }
+        set(value) {
+            prefs.edit().putOrRemove(KEY_REPLACED, value).putInt(KEY_REPLACED_BOOT, bootCount()).apply()
+        }
+
     /** Written synchronously: the crash handler calls this just before the process is killed. */
     var crashes: CrashLoopGuard.State
         get() = CrashLoopGuard.State.decode(prefs.getString(KEY_CRASHES, null))
@@ -69,5 +83,8 @@ class KioskStore(
         private const val KEY_ADMIN_AWAY = "admin_away_until"
         private const val KEY_CRASHES = "crash_guard"
         private const val KEY_BOOT = "boot_count"
+        private const val KEY_QUICK_START = "quick_start_wanted"
+        private const val KEY_REPLACED = "package_replaced_at"
+        private const val KEY_REPLACED_BOOT = "package_replaced_boot"
     }
 }

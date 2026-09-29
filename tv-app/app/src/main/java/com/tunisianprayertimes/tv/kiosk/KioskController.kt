@@ -26,6 +26,10 @@ object KioskController {
     const val AUTOSTART_CHECK_DELAY_MILLIS = 90_000L
     const val ACTION_WATCHDOG = "com.tunisianprayertimes.tv.kiosk.WATCHDOG"
     const val ACTION_AUTOSTART_CHECK = "com.tunisianprayertimes.tv.kiosk.AUTOSTART_CHECK"
+    const val ACTION_BOOT_REFRONT = "com.tunisianprayertimes.tv.kiosk.BOOT_REFRONT"
+
+    /** After boot, the box's own home screen (or a profile picker) may land on top of the display: looked at again then. */
+    val BOOT_REFRONT_DELAYS_MILLIS = listOf(10_000L, 30_000L, 60_000L)
 
     /** The disabled launcher alias the admin can turn on to make the app the home screen. */
     private const val HOME_ALIAS = "com.tunisianprayertimes.tv.KioskHomeAlias"
@@ -33,10 +37,16 @@ object KioskController {
     fun autoStart(context: Context): AutoStart = AutoStartTierResolver.resolve(
         isDefaultHome = isDefaultHome(context),
         isDeviceOwner = isDeviceOwner(context),
+        accessibilityEnabled = KioskAccessibility.isEnabled(context),
         canDrawOverlays = canDrawOverlays(context),
         sdkInt = Build.VERSION.SDK_INT,
-        isFireTv = runCatching { context.packageManager.hasSystemFeature("amazon.hardware.fire_tv") }.getOrDefault(false),
+        isFireTv = isFireTv(context),
     )
+
+    /** Amazon's documented checks: the Fire TV feature, or a model name starting with "AFT". */
+    fun isFireTv(context: Context): Boolean =
+        runCatching { context.packageManager.hasSystemFeature("amazon.hardware.fire_tv") }.getOrDefault(false) ||
+            Build.MODEL.orEmpty().startsWith("AFT")
 
     fun isDefaultHome(context: Context): Boolean = runCatching {
         val home = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
@@ -133,6 +143,21 @@ object KioskController {
                 broadcast(context, ACTION_WATCHDOG),
             )
         }.onFailure { Log.w(TAG, "watchdog alarm", it) }
+    }
+
+    /** A few looks after boot: the display goes back on top if the box's home screen covered it. */
+    fun scheduleBootRefronts(context: Context) {
+        runCatching {
+            val alarms = alarms(context) ?: return
+            BOOT_REFRONT_DELAYS_MILLIS.forEachIndexed { index, delay ->
+                val pending = PendingIntent.getBroadcast(
+                    context, ACTION_BOOT_REFRONT.hashCode() + index,
+                    Intent(context, KioskAlarmReceiver::class.java).setAction(ACTION_BOOT_REFRONT),
+                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+                )
+                alarms.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + delay, pending)
+            }
+        }.onFailure { Log.w(TAG, "boot refront alarms", it) }
     }
 
     /** After boot: did the display actually reach the screen? */

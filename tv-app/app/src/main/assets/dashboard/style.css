@@ -18,11 +18,13 @@ body { margin: 0; font-family: system-ui, "Segoe UI", Tahoma, sans-serif; backgr
 .mosque-name { font-size: 18px; font-weight: 700; color: var(--gold); }
 .clock { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; direction: ltr; }
 .muted { color: var(--muted); font-size: 14px; }
+.problem { color: #ff8a80; }
 .tabs { display: flex; gap: 4px; overflow-x: auto; padding: 8px 12px; background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 2; }
 .tabs button { flex: none; background: transparent; color: var(--muted); border: 0; border-radius: 8px; padding: 8px 12px; font-size: 15px; }
 .tabs button[aria-current="page"] { background: var(--surface-2); color: var(--gold); }
 .view { padding: 16px; max-width: 900px; margin: 0 auto; }
 h2 { font-size: 18px; color: var(--gold); margin: 20px 0 8px; }
+h2[tabindex="-1"]:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 h3 { font-size: 16px; margin: 16px 0 8px; }
 .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin: 12px 0; }
 .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 12px 0; }
@@ -34,6 +36,7 @@ input:focus, select:focus, textarea:focus, button:focus-visible { outline: 2px s
 textarea { width: 100%; min-height: 120px; }
 textarea.code { direction: ltr; font: 13px/1.5 ui-monospace, monospace; min-height: 55vh; }
 .ltr { direction: ltr; unicode-bidi: isolate; }
+code.ltr { white-space: pre-wrap; }
 button { font: inherit; color: var(--text); background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; cursor: pointer; }
 button.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
 button.danger { background: transparent; border-color: var(--bad); color: #ff8a80; }
@@ -52,10 +55,20 @@ td input[type="time"] { width: 7.5em; }
 .list-item { padding: 8px 10px; margin: 6px 0; background: var(--surface-2); border-radius: 8px; }
 .badge { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--muted); }
 .badge.current { background: var(--gold); color: #1b1b1b; }
+.badge.reviewed { background: rgba(76, 175, 80, .18); color: #a5d6a7; }
+.badge.own { background: rgba(212, 168, 67, .18); color: var(--gold); }
+.dhikr-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.muted.id { font: 12px/1.4 ui-monospace, monospace; overflow-wrap: anywhere; }
+.dhikr-text { margin: 6px 0; line-height: 1.9; white-space: pre-wrap; overflow-wrap: anywhere; }
+ol.dhikr-text { white-space: normal; padding-inline-start: 22px; }
+details.dhikr summary { cursor: pointer; margin: 6px 0; line-height: 1.9; }
+.panel { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 10px; margin: 8px 0; }
+.panel select, .panel input[type="search"] { width: 100%; }
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
 .gallery figure { margin: 0; background: var(--surface-2); border-radius: 8px; overflow: hidden; }
 .gallery img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
 .gallery figcaption { display: flex; justify-content: space-between; align-items: center; gap: 4px; padding: 6px; font-size: 12px; word-break: break-all; }
+.toast:empty { opacity: 0; pointer-events: none; }
 .toast { position: fixed; inset-inline: 16px; bottom: 16px; padding: 12px 14px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); z-index: 10; }
 .toast.error { border-color: var(--bad); }
 .toast.ok { border-color: var(--good); }

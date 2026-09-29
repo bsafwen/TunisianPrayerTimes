@@ -3,6 +3,9 @@ package com.tunisianprayertimes.mosque
 import com.tunisianprayertimes.ManualIslamicDates
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.TunisianHijriCalendar
+import com.tunisianprayertimes.adhkar.DhikrCatalog
+import com.tunisianprayertimes.adhkar.DhikrCategory
+import com.tunisianprayertimes.adhkar.countForCollection
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.temporal.ChronoUnit
@@ -66,8 +69,21 @@ object MosqueSettingsFile {
 
     enum class ContentList { AFTER_SALAH, TICKER, ANNOUNCEMENTS }
 
-    /** The texts shown after the prayer or in the ticker, before and after the file, described for the admin. */
-    data class ContentChange(val list: ContentList, val before: String, val after: String)
+    /**
+     * The texts shown after the prayer or in the ticker, before and after the file, described for the
+     * admin: a summary of each, the texts [added] and [removed] (by their titles), the texts kept but
+     * changed ([recounted]: another count "title: العدد 3 ← 5", another source, or other wording), or
+     * only a new order ([reordered]).
+     */
+    data class ContentChange(
+        val list: ContentList,
+        val before: String,
+        val after: String,
+        val added: List<String> = emptyList(),
+        val removed: List<String> = emptyList(),
+        val recounted: List<String> = emptyList(),
+        val reordered: Boolean = false,
+    )
 
     enum class ErrorCode {
         TOO_LARGE, INVALID_JSON, NOT_AN_OBJECT, UNKNOWN_FORMAT, UNSUPPORTED_VERSION, NO_PRAYERS,
@@ -109,6 +125,11 @@ object MosqueSettingsFile {
     /**
      * Reads [text] against the [current] settings, the admin's [currentDates] and [currentProfile];
      * [catalog] tells which places and themes exist. Never throws, even for hostile input (deep nesting).
+     *
+     * [stored] is for the TV's own saved state, which passed these checks when it was saved: a
+     * reviewed text an app update no longer has, or a count that no longer applies, is then kept
+     * or dropped quietly instead of losing all the mosque's lists (a file from a key or the
+     * dashboard is always checked in full).
      */
     fun parse(
         text: String,
@@ -118,8 +139,9 @@ object MosqueSettingsFile {
         catalog: ProfileCatalog = ProfileCatalog.NONE,
         currentContent: AdhkarContent = AdhkarContent(),
         currentAnnouncements: List<TextAnnouncement> = emptyList(),
+        stored: Boolean = false,
     ): ParseResult = try {
-        parseOrFail(text, current, currentDates, currentProfile, catalog, currentContent, currentAnnouncements)
+        parseOrFail(text, current, currentDates, currentProfile, catalog, currentContent, currentAnnouncements, stored)
     } catch (e: Throwable) {
         ParseResult.Failure(listOf(SettingsError(ErrorCode.INVALID_JSON, "", MESSAGE_INVALID_JSON)))
     }
@@ -132,6 +154,7 @@ object MosqueSettingsFile {
         catalog: ProfileCatalog,
         currentContent: AdhkarContent,
         currentAnnouncements: List<TextAnnouncement>,
+        stored: Boolean,
     ): ParseResult {
         if (text.length > MAX_CHARS) return fail(ErrorCode.TOO_LARGE, "", "الملف كبير جدًا: هذا ليس ملف إعدادات شاشة المسجد")
         val keys = scanKeys(text)
@@ -192,7 +215,7 @@ object MosqueSettingsFile {
         }
         val newDates = dates?.let { (sectionKey, section) -> readDates(section, sectionKey, currentDates, errors) }.orEmpty()
         val profile = readProfile(mosque, display, currentProfile, catalog, errors)
-        val content = adhkar?.let { (key, value) -> readAdhkar(key, value, currentContent, errors) } ?: currentContent
+        val content = adhkar?.let { (key, value) -> readAdhkar(key, value, currentContent, stored, errors) } ?: currentContent
         val announcements = announcementsEntry?.let { (key, value) -> readAnnouncements(key, value, errors) } ?: currentAnnouncements
 
         if (errors.isNotEmpty()) return ParseResult.Failure(errors)
@@ -248,7 +271,7 @@ object MosqueSettingsFile {
     }
 
     /** The "adhkar" section: null lists return to the bundled texts; a bare array of items is appended. */
-    private fun readAdhkar(sectionKey: String, element: JsonElement, current: AdhkarContent, errors: MutableList<SettingsError>): AdhkarContent {
+    private fun readAdhkar(sectionKey: String, element: JsonElement, current: AdhkarContent, stored: Boolean, errors: MutableList<SettingsError>): AdhkarContent {
         if (element is JsonNull) return AdhkarContent()
         if (element !is JsonObject) {
             errors += SettingsError(ErrorCode.INVALID_ADHKAR, sectionKey, "«adhkar» يجب أن يكون مثل { \"afterSalah\": { \"mode\": \"append\", \"items\": [...] } }")
@@ -269,22 +292,31 @@ object MosqueSettingsFile {
                 errors += SettingsError(ErrorCode.DUPLICATE_FIELD, path, "القائمة مذكورة مرتين («$first» و«$key»)")
                 continue
             }
-            val parsed = if (value is JsonNull) null else readAdhkarList(path, value, errors) ?: continue
+            val parsed = if (value is JsonNull) null else readAdhkarList(path, value, list, stored, errors) ?: continue
             content = when (list) {
                 ContentList.AFTER_SALAH -> content.copy(afterSalah = parsed)
                 ContentList.TICKER -> content.copy(ticker = parsed)
                 ContentList.ANNOUNCEMENTS -> content // not an adhkar list; ADHKAR_LISTS never maps to it
             }
+            // The screen gives the adhkar after the prayer at most FlowTiming.MAX_AFTER_SALAH_MINUTES.
+            if (list == ContentList.AFTER_SALAH && parsed != null && !stored) {
+                val minutes = (MosqueAdhkar.totalMillis(MosqueAdhkar.afterSalah(content)) + 59_999) / 60_000
+                if (minutes > FlowTiming.MAX_AFTER_SALAH_MINUTES) {
+                    errors += SettingsError(ErrorCode.INVALID_ADHKAR, path,
+                        "أذكار بعد الصلاة تدوم نحو $minutes د، والشاشة تعرضها ${FlowTiming.MAX_AFTER_SALAH_MINUTES} د على الأكثر: احذف بعض النصوص")
+                }
+            }
         }
         return content
     }
 
-    private fun readAdhkarList(path: String, value: JsonElement, errors: MutableList<SettingsError>): CustomAdhkarList? {
+    private fun readAdhkarList(path: String, value: JsonElement, list: ContentList, stored: Boolean, errors: MutableList<SettingsError>): CustomAdhkarList? {
         val (mode, items) = when (value) {
             is JsonArray -> CustomAdhkarList.Mode.APPEND to value
             is JsonObject -> {
                 if (!itemKeysOk(path, value, listOf(MODE_KEYS, ITEMS_KEYS), "\"mode\" و\"items\"", errors)) return null
-                val modeText = value.entries.firstOrNull { clean(it.key).trim().lowercase() in MODE_KEYS }?.value?.stringOrNull()
+                val modeElement = value.entries.firstOrNull { clean(it.key).trim().lowercase() in MODE_KEYS }?.value
+                val modeText = if (modeElement == null || modeElement is JsonNull) null else modeElement.stringOrNull() ?: "?"
                 val mode = when (modeText?.let { clean(it).trim().lowercase() }) {
                     null, "append", "add", "إضافة", "اضافة" -> CustomAdhkarList.Mode.APPEND
                     "replace", "استبدال" -> CustomAdhkarList.Mode.REPLACE
@@ -295,7 +327,8 @@ object MosqueSettingsFile {
                 }
                 val items = value.entries.firstOrNull { clean(it.key).trim().lowercase() in ITEMS_KEYS }?.value as? JsonArray
                 if (items == null) {
-                    errors += SettingsError(ErrorCode.INVALID_ADHKAR, "$path.items", "النصوص تُكتب في «items»: [ { \"text\": \"...\", \"reference\": \"...\" } ]")
+                    errors += SettingsError(ErrorCode.INVALID_ADHKAR, "$path.items",
+                        "النصوص تُكتب في «items»: [ { \"id\": \"ayat_kursi\" }, { \"text\": \"...\", \"reference\": \"...\" } ]")
                     return null
                 }
                 mode to items
@@ -310,12 +343,22 @@ object MosqueSettingsFile {
             return null
         }
         val before = errors.size
-        val parsed = items.mapIndexedNotNull { index, item -> readDhikr("$path.items[$index]", item, errors) }
+        val parsed = items.mapIndexedNotNull { index, item -> readDhikr("$path.items[$index]", item, list, stored, errors) }
         return if (errors.size == before) CustomAdhkarList(mode, parsed) else null
     }
 
-    private fun readDhikr(path: String, element: JsonElement, errors: MutableList<SettingsError>): CustomDhikr? {
+    /** One item of a list: a reviewed text of the app's library by its "id", or the mosque's own "text". */
+    private fun readDhikr(path: String, element: JsonElement, list: ContentList, stored: Boolean, errors: MutableList<SettingsError>): MosqueDhikr? {
         val fields = element as? JsonObject
+        val keys = fields?.keys.orEmpty().map { clean(it).trim().lowercase() }
+        if (keys.any { it in ID_KEYS }) {
+            if (keys.any { it in TEXT_KEYS || it in REFERENCE_KEYS }) {
+                errors += SettingsError(ErrorCode.INVALID_ADHKAR, path,
+                    "النص إما من مكتبة التطبيق («id») وإما نص المسجد («text» و«reference»)، لا الاثنان معًا")
+                return null
+            }
+            return readReviewed(path, fields!!, list, stored, errors)
+        }
         if (fields != null && !itemKeysOk(path, fields, listOf(TEXT_KEYS, REFERENCE_KEYS, COUNT_KEYS), "\"text\" و\"reference\" و\"count\"", errors)) {
             return null
         }
@@ -325,28 +368,137 @@ object MosqueSettingsFile {
         val countElement = field(COUNT_KEYS)
         val count = if (countElement == null || countElement is JsonNull) 1 else countElement.intOrNull()
         val problem = when {
-            fields == null -> "كل نص يُكتب مثل { \"text\": \"...\", \"reference\": \"...\", \"count\": 3 }"
+            fields == null -> "كل نص يُكتب مثل { \"id\": \"ayat_kursi\" } أو { \"text\": \"...\", \"reference\": \"...\", \"count\": 3 }"
             text.isNullOrEmpty() || text.length > MAX_ADHKAR_TEXT -> "النص فارغ أو أطول من $MAX_ADHKAR_TEXT حرف"
-            reference.isNullOrEmpty() || reference.length > MAX_ADHKAR_REFERENCE -> "لكل نص مصدر في «reference» (مثل «صحيح مسلم 591»)"
+            reference.isNullOrEmpty() -> "لكل نص مصدر في «reference» (مثل «صحيح مسلم 591»)"
+            reference.length > MAX_ADHKAR_REFERENCE -> "المصدر أطول من $MAX_ADHKAR_REFERENCE حرف"
             count == null || count !in 1..MAX_ADHKAR_COUNT -> "«count» عدد المرات بين 1 و$MAX_ADHKAR_COUNT"
+            list == ContentList.TICKER && count != 1 && !stored -> "الشريط يعرض كل نص مرة واحدة: احذف «count»"
             else -> null
         }
         if (problem != null) {
             errors += SettingsError(ErrorCode.INVALID_ADHKAR, path, problem)
             return null
         }
-        return CustomDhikr(text!!, reference!!, count!!)
+        // The ticker shows every text once (an old saved count is dropped).
+        return CustomDhikr(text!!, reference!!, if (list == ContentList.TICKER) 1 else count!!)
+    }
+
+    /**
+     * A reviewed text by its id. Its text and source stay the catalog's; after the prayer the mosque
+     * may change how many times it is said (the ticker reads every text once).
+     */
+    private fun readReviewed(path: String, fields: JsonObject, list: ContentList, stored: Boolean, errors: MutableList<SettingsError>): ReviewedDhikr? {
+        if (!itemKeysOk(path, fields, listOf(ID_KEYS, COUNT_KEYS), "\"id\" و\"count\"", errors)) return null
+        fun field(keys: Set<String>) = fields.entries.firstOrNull { clean(it.key).trim().lowercase() in keys }?.value
+        val id = field(ID_KEYS)?.stringOrNull()?.let { clean(it).trim() }
+        val entry = id?.let(DhikrCatalog::find)
+        val countElement = field(COUNT_KEYS)
+        val hasCount = countElement != null && countElement !is JsonNull
+        val count = if (hasCount) countElement!!.intOrNull() else null
+        if (stored && !id.isNullOrEmpty()) {
+            // Saved by this TV: an id an update removed shows nothing (the dashboard offers to delete it),
+            // and a count that no longer applies is dropped.
+            val applies = entry != null && list == ContentList.AFTER_SALAH && entry.steps.isEmpty() && count != null && count in 1..MAX_ADHKAR_COUNT
+            return ReviewedDhikr(entry?.id ?: id, count?.takeIf { applies && it != entry!!.countForCollection(DhikrCategory.SALAH) })
+        }
+        val problem = when {
+            id.isNullOrEmpty() -> "«id» اسم نص من مكتبة التطبيق بين علامتي تنصيص، مثل \"ayat_kursi\""
+            entry == null -> "لا يوجد في مكتبة التطبيق نص باسم «$id»"
+            hasCount && list == ContentList.TICKER -> "الشريط يعرض كل نص مرة واحدة: احذف «count»"
+            hasCount && entry.steps.isNotEmpty() -> "«${entry.title}» يُقال بالعدد المذكور في خطواته: احذف «count»"
+            hasCount && (count == null || count !in 1..MAX_ADHKAR_COUNT) -> "«count» عدد المرات بين 1 و$MAX_ADHKAR_COUNT"
+            else -> null
+        }
+        if (problem != null) {
+            errors += SettingsError(ErrorCode.INVALID_ADHKAR, path, problem)
+            return null
+        }
+        // The catalog's own count is kept as "no change", so the same list always reads the same.
+        return ReviewedDhikr(entry!!.id, count?.takeIf { it != entry.countForCollection(DhikrCategory.SALAH) })
     }
 
     private fun contentChanges(before: AdhkarContent, after: AdhkarContent): List<ContentChange> = listOfNotNull(
-        ContentChange(ContentList.AFTER_SALAH, describe(before.afterSalah), describe(after.afterSalah)).takeIf { before.afterSalah != after.afterSalah },
-        ContentChange(ContentList.TICKER, describe(before.ticker), describe(after.ticker)).takeIf { before.ticker != after.ticker },
+        listChange(ContentList.AFTER_SALAH, MosqueAdhkar.AFTER_SALAH_IDS, before.afterSalah, after.afterSalah),
+        listChange(ContentList.TICKER, MosqueAdhkar.TICKER_IDS, before.ticker, after.ticker),
     )
 
-    private fun describe(list: CustomAdhkarList?): String = when (list?.mode) {
-        null -> "النصوص المضمّنة"
-        CustomAdhkarList.Mode.APPEND -> "النصوص المضمّنة + ${list.items.size} من الملف"
-        CustomAdhkarList.Mode.REPLACE -> "${list.items.size} من الملف بدل النصوص المضمّنة"
+    private fun listChange(list: ContentList, bundledIds: List<String>, before: CustomAdhkarList?, after: CustomAdhkarList?): ContentChange? {
+        if (before == after) return null
+        val old = MosqueAdhkar.items(bundledIds, before).map(::shown)
+        val new = MosqueAdhkar.items(bundledIds, after).map(::shown)
+        // Texts matched by identity (a reviewed id, or the mosque's wording), each occurrence once.
+        val unmatchedOld = old.toMutableList()
+        val addedTexts = mutableListOf<Shown>()
+        val recounted = mutableListOf<String>()
+        for (text in new) {
+            val same = unmatchedOld.firstOrNull { it.identity == text.identity }
+            if (same == null) {
+                addedTexts += text
+            } else {
+                unmatchedOld.remove(same)
+                if (same.count != text.count) recounted += "${text.name}: العدد ${same.count} ← ${text.count}"
+                if (same.reference != text.reference) recounted += "${text.name}: ${OTHER_SOURCE}"
+            }
+        }
+        // An own text edited past its first words keeps its short name: an edit, not a text added and removed.
+        for (text in addedTexts.toList()) {
+            val before = unmatchedOld.firstOrNull { it.name == text.name } ?: continue
+            unmatchedOld.remove(before)
+            addedTexts.remove(text)
+            recounted += "${text.name}: ${OTHER_WORDING}"
+        }
+        val added = addedTexts.map { it.name }
+        val removed = unmatchedOld.map { it.name }
+        return ContentChange(
+            list, describe(list, bundledIds, before), describe(list, bundledIds, after),
+            added, removed, recounted,
+            reordered = added.isEmpty() && removed.isEmpty() && old.map { it.identity } != new.map { it.identity },
+        )
+    }
+
+    /** A text of a list as the admin knows it: a reviewed text by its title, the mosque's by its first words. */
+    private class Shown(val identity: String, val name: String, val count: Int, val reference: String?)
+
+    private fun shown(item: MosqueDhikr): Shown = when (item) {
+        is ReviewedDhikr -> DhikrCatalog.find(item.id).let { entry ->
+            Shown("id:${item.id}", entry?.title ?: item.id, item.count ?: entry?.countForCollection(DhikrCategory.SALAH) ?: 1, null)
+        }
+        is CustomDhikr -> Shown(
+            "own:${item.text}",
+            "«" + item.text.take(30).trim() + (if (item.text.length > 30) "…" else "") + "»",
+            item.count,
+            item.reference,
+        )
+    }
+
+    private const val OTHER_SOURCE = "مصدر آخر"
+    private const val OTHER_WORDING = "نص معدَّل"
+
+    /** "النصوص المضمّنة · 8 نصوص · نحو 4 د": where the list comes from, how many texts, and (after the prayer) how long. */
+    private fun describe(list: ContentList, bundledIds: List<String>, custom: CustomAdhkarList?): String {
+        val items = MosqueAdhkar.items(bundledIds, custom)
+        val source = when (custom?.mode) {
+            null -> "النصوص المضمّنة"
+            CustomAdhkarList.Mode.APPEND -> "النصوص المضمّنة و${texts(custom.items.size)} بعدها"
+            CustomAdhkarList.Mode.REPLACE -> "قائمة المسجد"
+        }
+        val minutes = if (list == ContentList.AFTER_SALAH) {
+            val millis = items.sumOf { item -> MosqueAdhkar.afterSalahSlides(item).sumOf { it.durationMillis } }
+            "نحو ${(millis + 59_999) / 60_000} د"
+        } else {
+            null
+        }
+        return listOfNotNull(source, texts(items.size), minutes).joinToString(" · ")
+    }
+
+    /** "نص واحد", "نصان", "3 نصوص", "11 نصًا", "100 نص", "103 نصوص": the noun agrees with the last two digits. */
+    private fun texts(count: Int): String = when {
+        count == 1 -> "نص واحد"
+        count == 2 -> "نصان"
+        count % 100 in 3..10 -> "$count نصوص"
+        count % 100 in 11..99 -> "$count نصًا"
+        else -> "$count نص"
     }
 
     /** The "mosque" (name, delegation) and "display" (theme) sections over [current]. */
@@ -711,7 +863,11 @@ object MosqueSettingsFile {
                 if (list == null) return "    \"$key\": null".takeIf { complete }
                 val mode = if (list.mode == CustomAdhkarList.Mode.REPLACE) "replace" else "append"
                 val items = list.items.joinToString(",\n") { item ->
-                    "        { \"text\": ${JsonPrimitive(item.text)}, \"reference\": ${JsonPrimitive(item.reference)}, \"count\": ${item.count} }"
+                    when (item) {
+                        is ReviewedDhikr -> "        { \"id\": ${JsonPrimitive(item.id)}" + (item.count?.let { ", \"count\": $it" } ?: "") + " }"
+                        is CustomDhikr ->
+                            "        { \"text\": ${JsonPrimitive(item.text)}, \"reference\": ${JsonPrimitive(item.reference)}, \"count\": ${item.count} }"
+                    }
                 }
                 return "    \"$key\": { \"mode\": \"$mode\", \"items\": [\n$items\n      ] }"
             }
@@ -801,6 +957,7 @@ object MosqueSettingsFile {
     private val MODE_KEYS = setOf("mode", "الطريقة")
     private val ITEMS_KEYS = setOf("items", "texts", "النصوص")
     private val TEXT_KEYS = setOf("text", "النص")
+    private val ID_KEYS = setOf("id")
     private val REFERENCE_KEYS = setOf("reference", "source", "المصدر", "المرجع")
     private val COUNT_KEYS = setOf("count", "repetitions", "العدد")
     private const val MAX_ADHKAR_ITEMS = 100

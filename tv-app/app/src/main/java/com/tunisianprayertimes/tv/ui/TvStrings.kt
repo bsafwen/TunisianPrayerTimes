@@ -56,6 +56,8 @@ object TvStrings {
     const val AFTER_SALAH_TEXTS = "أذكار بعد الصلاة"
     const val TICKER_TEXTS = "شريط الأذكار"
     const val BUNDLED_TEXTS = "استعادة النصوص المضمّنة"
+    const val BUNDLED_TEXTS_CONFIRM = "تعود أذكار ما بعد الصلاة والشريط إلى النصوص المضمّنة المراجَعة، وتُحذف قائمتا المسجد. يمكن إرجاعهما بعد ذلك من «التراجع عن آخر استيراد»."
+    const val BUNDLED_TEXTS_DO = "نعم، استعد النصوص المضمّنة"
 
     // Clock
     const val CLOCK_WRONG_TITLE = "ساعة الجهاز غير صحيحة"
@@ -100,6 +102,11 @@ object TvStrings {
     const val ANNOUNCEMENT_LABEL = "إعلان"
     const val USB_COPYING = "جارٍ نسخ الصور من مفتاح USB…"
     const val DASHBOARD_OPEN = "لوحة الإدارة مفتوحة"
+    const val TEXTS_ADDED = "يُضاف"
+    const val TEXTS_REMOVED = "يُحذف"
+    const val TEXTS_RECOUNTED = "يتغيّر عدد المرات"
+    const val TEXTS_REORDERED = "يتغيّر ترتيب النصوص"
+    fun andOthers(count: Int) = if (count == 1) "ونص آخر" else "و$count غيرها"
     const val WEATHER_ENABLED = "عرض الطقس (عند الاتصال بالإنترنت)"
     const val ANNOUNCEMENTS_EVERY = "عرض الإعلانات بين الصلوات كل"
     const val ANNOUNCEMENTS_EVERY_OFF = "بعد الصلاة فقط"

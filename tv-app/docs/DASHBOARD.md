@@ -5,7 +5,10 @@ hotspot the TV joins). No internet is needed. An admin starts a session from the
 (Settings → الإدارة من الهاتف), scans the QR code, and manages the screen from a phone or laptop.
 
 - Every session has a new random token (in the QR code). All `/api/*` calls need it as `?t=TOKEN`.
-  Ten wrong tokens close the session. The session ends after 15 minutes without requests.
+  Ten wrong tokens close the session (image requests from an old page don't count). The session
+  ends 15 minutes after the last request with the token, and 2 hours after it started.
+- The TV judges each request from its head before reading any body: token, route, and the body
+  size that route accepts (413 otherwise). At most 6 connections at a time.
 - Every change goes through the same checked settings file as the USB key: the page builds a
   (partial) `mosque-tv.json`, the TV previews what would change (or lists the mistakes, in
   Arabic), and nothing is written until the admin applies it. The previous settings can be
@@ -21,6 +24,7 @@ All JSON is UTF-8. Times are the TV's time in Tunisia.
 |---|---|---|---|
 | GET | `/api/state` | | the state below |
 | GET | `/api/places` | | `[{ "id": 11, "name": "تونس", "delegations": [{ "id": 615, "name": "مدينة تونس" }] }]` |
+| GET | `/api/adhkar` | | the reviewed adhkar library below (the same for every session: load it once) |
 | POST | `/api/preview` | settings file text | `{ "ok": true, "lines": ["العشاء · مدة الصلاة: 10 د ← 12 د"] }`, or `ok: false` with the mistakes |
 | POST | `/api/apply` | settings file text | same shape; `ok: true` when applied |
 | GET | `/api/undo` | | `{ "available": true, "text": "<settings file>" }`: preview then apply it to undo |
@@ -80,6 +84,42 @@ Errors: `403 { "error": "..." }` without a valid token, `404 { "error": "..." }`
   file); `source` is `MANUAL`, `OFFICIAL` or `ESTIMATE`; `min`/`max` are the dates the file accepts.
 - `kiosk[].level`: `GOOD`, `WARNING`, `BAD` or `INFO`.
 
+### `GET /api/adhkar`
+
+The reviewed texts that ship with the app, which the mosque's lists pick from, and the bundled
+lists the screen shows when the mosque changed nothing:
+
+```json
+{
+  "afterSalahMaxMinutes": 30,
+  "lists": {
+    "afterSalah": ["salah_istighfar", "salah_salam", "salah_la_mani", "salah_hundred", "ayat_kursi", "surah_ikhlas", "surah_falaq", "surah_nas"],
+    "ticker": ["salah_salam", "subhanallah_bihamdih", "kalimatan_khafifatan", "la_hawla_quwwata", "salawat_ibrahimiyya"]
+  },
+  "categories": [{ "id": "SALAH", "title": "بعد الصلاة" }, { "id": "MORNING", "title": "الصباح" }],
+  "entries": [{
+    "id": "salah_hundred", "title": "ذكر المائة بعد الصلاة", "text": "سُبْحَانَ اللَّهِ (33)، ثم ...", "reference": "صحيح مسلم 597؛ ...",
+    "count": 100,
+    "steps": [{ "text": "سُبْحَانَ اللَّهِ", "count": 33 }, { "text": "الْحَمْدُ لِلَّهِ", "count": 33 },
+              { "text": "اللَّهُ أَكْبَرُ", "count": 33 }, { "text": "لَا إِلَهَ إِلَّا اللَّهُ ...", "count": 1 }],
+    "categories": ["SALAH"],
+    "afterSalahMillis": 255150, "tickerMillis": 48000
+  }]
+}
+```
+
+- `afterSalahMaxMinutes`: the longest the adhkar after the prayer may last; a longer list is refused.
+- `entries` is the whole library (about 100 texts, 60 KB) in its reading order; every id in
+  `lists` is one of them. `categories[].id` are the values of `entries[].categories`.
+- `count` is how many times the text is said after the prayer (the ticker shows every text once).
+  `steps` is present only for a text said in steps (the 33/33/33/1 tasbih): its count can't change.
+  A long text (several pages on screen) with a count above 1 is shown whole again for each
+  reading, three times at most.
+- `afterSalahMillis`: how long the TV shows the text after the prayer, at its `count`.
+  `tickerMillis`: at least how long it stays in the ticker (every page or step at least 12 s; a long
+  line that scrolls, and the announcements between texts, add time). The page adds them up to show
+  about how long the adhkar last.
+
 ### The settings file the forms build
 
 The same format as the USB key (see `INSTALL_AR.md`). Every section is optional, and so is every
@@ -96,7 +136,8 @@ a change made meanwhile from the remote, a USB key or another phone is kept:
   "ramadan": { "isha": { "duration": 75 }, "fajr": { "iqamah": null } },
   "islamicDates": { "1448": { "ramadanStart": "2027-02-08", "eidFitr": null } },
   "announcements": [{ "text": "درس بعد صلاة العشاء", "from": "2026-10-01", "until": "2026-10-31" }],
-  "adhkar": { "afterSalah": { "mode": "append", "items": [{ "text": "...", "reference": "...", "count": 3 }] },
+  "adhkar": { "afterSalah": { "mode": "replace", "items": [{ "id": "salah_istighfar" }, { "id": "ayat_kursi" },
+                                                        { "text": "...", "reference": "...", "count": 3 }] },
               "ticker": null }
 }
 ```
@@ -106,5 +147,19 @@ a change made meanwhile from the remote, a USB key or another phone is kept:
 - `ramadan`: only what changes in Ramadan; `null` returns a field to the usual setting.
 - `islamicDates`: `null` returns a date to automatic.
 - `announcements` replaces the whole list; `[]` removes them all.
-- `adhkar`: `null` returns a list to the bundled, reviewed texts; `"append"` adds after them,
-  `"replace"` shows only the mosque's texts. Every text needs a `reference`.
+- `adhkar`: two lists, `afterSalah` and `ticker`. `null` returns a list to the bundled one.
+  `"append"`: the bundled list, then `items`. `"replace"`: only `items`, in their order; this is how
+  a bundled text is hidden or moved. 1 to 100 items. Each item is either
+  - a reviewed text of the library, `{ "id": "ayat_kursi" }`, optionally with `"count"` (1-1000) to
+    change how many times it is said after the prayer (not in the ticker, not for a text with
+    `steps`); or
+  - the mosque's own text, `{ "text": "...", "reference": "...", "count": 3 }`: the source is
+    required, `count` is 1-1000 (default 1; in the ticker only 1, as every text is shown once).
+    Text at most 1000 characters, source at most 200.
+- The adhkar after the prayer may last at most 30 minutes on screen; a longer list is refused
+  (the preview says how long it would last).
+- The adhkar page sends only the lists the admin changed: `null` when a list is the bundled one
+  again, `"append"` when it starts with the whole bundled list unchanged, and `"replace"` otherwise.
+- A reviewed text that a later version of the app no longer has stays in the TV's saved list but
+  shows nothing; the page shows it as missing so the admin can delete it (a new file naming it is
+  refused).

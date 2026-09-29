@@ -25,6 +25,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.tv.kiosk.AutoStartTier
+import com.tunisianprayertimes.tv.kiosk.BootTiming
+import com.tunisianprayertimes.tv.kiosk.KioskAccessibility
 import com.tunisianprayertimes.tv.kiosk.EventEntry
 import com.tunisianprayertimes.tv.kiosk.KioskEvent
 import com.tunisianprayertimes.tv.kiosk.KioskReport
@@ -43,22 +45,87 @@ enum class HealthLevel { GOOD, WARNING, BAD, INFO }
 data class HealthRow(val level: HealthLevel, val text: String, val fix: String? = null, val command: String? = null)
 
 /** The page's rows, in Arabic; everything works without a network. */
-fun healthRows(report: KioskReport, zone: ZoneId = ZoneId.systemDefault()): List<HealthRow> {
+/** [quickStartSettling]: quick start was switched on a moment ago and the system is still binding it. */
+fun healthRows(report: KioskReport, zone: ZoneId = ZoneId.systemDefault(), quickStartSettling: Boolean = false): List<HealthRow> {
     val pkg = report.packageName
     val rows = mutableListOf<HealthRow>()
+    val fireTv = report.autoStart.fireTv
+    // "pm grant" of a permission this build does not declare fails: the Play build gets the overlay grant only.
+    val adbSetup = if (report.quickStartAvailable) KioskAccessibility.adbSetup(pkg).joinToString("\n")
+    else "adb shell appops set $pkg SYSTEM_ALERT_WINDOW allow"
     rows += when (report.autoStart.tier) {
         AutoStartTier.HOME -> HealthRow(HealthLevel.GOOD, "التطبيق هو الشاشة الرئيسية للجهاز: يظهر عند التشغيل وعند زر الرئيسية")
         AutoStartTier.DEVICE_OWNER -> HealthRow(HealthLevel.GOOD, "التطبيق مالك الجهاز: الشاشة مثبّتة عليه")
-        AutoStartTier.OVERLAY -> HealthRow(HealthLevel.GOOD, "إذن الظهور فوق التطبيقات ممنوح: يعود التطبيق وحده بعد التشغيل")
-        AutoStartTier.LEGACY -> HealthRow(HealthLevel.GOOD, "أندرويد 8 أو 9: يبدأ التطبيق وحده بعد التشغيل")
-        AutoStartTier.NONE -> HealthRow(
+        AutoStartTier.ACCESSIBILITY -> if (report.quickStartRunning || quickStartSettling) {
+            HealthRow(HealthLevel.GOOD, "البدء السريع مفعّل: تظهر الشاشة فور تشغيل الجهاز، وتعود إذا ظهرت الشاشة الرئيسية للجهاز")
+        } else {
+            HealthRow(
+                HealthLevel.BAD, "البدء السريع مفعّل لكنه لا يعمل الآن",
+                fix = "أعد تشغيل الجهاز. إن بقي كذلك فنظام هذا الجهاز لا يشغّله: يكفي إذن «الظهور فوق التطبيقات»",
+                command = "adb shell appops set $pkg SYSTEM_ALERT_WINDOW allow",
+            )
+        }
+        AutoStartTier.OVERLAY -> HealthRow(
+            HealthLevel.GOOD,
+            if (fireTv) "إذن الظهور فوق التطبيقات ممنوح: يبدأ التطبيق وحده بعد التشغيل، وقد يتأخر قليلًا"
+            else "إذن الظهور فوق التطبيقات ممنوح: يعود التطبيق وحده بعد التشغيل",
+        )
+        AutoStartTier.LEGACY -> HealthRow(
+            HealthLevel.GOOD,
+            if (fireTv) "Fire OS 7: يبدأ التطبيق وحده بعد التشغيل، بعد ظهور شاشة Amazon الرئيسية بقليل"
+            else "أندرويد 8 أو 9: يبدأ التطبيق وحده بعد التشغيل",
+        )
+        AutoStartTier.NONE -> if (fireTv) HealthRow(
             HealthLevel.BAD,
-            if (report.autoStart.unsupportedDevice) "أجهزة Fire TV لا تسمح ببدء التطبيق مع التشغيل: يُنصح بجهاز أندرويد TV آخر"
-            else "لا يستطيع التطبيق البدء وحده بعد إعادة تشغيل الجهاز",
+            "على هذا الـ Fire TV لا يبدأ التطبيق وحده بعد التشغيل حتى يُمنح إذنًا مرة واحدة من حاسوب",
+            fix = "في Fire TV: الإعدادات ← My Fire TV‏ ← Developer options‏ ← ADB debugging (تظهر بالضغط 7 مرات على اسم الجهاز في About)، " +
+                if (report.quickStartAvailable) "ثم من حاسوب على الشبكة نفسها نفّذ الأمرين، ثم اضغط «تفعيل البدء السريع» على التلفاز"
+                else "ثم من حاسوب على الشبكة نفسها نفّذ الأمر. نسخة GitHub من التطبيق هي المعدّة لـ Fire TV (البدء السريع فيها)",
+            command = adbSetup,
+        ) else HealthRow(
+            HealthLevel.BAD,
+            "لا يستطيع التطبيق البدء وحده بعد إعادة تشغيل الجهاز",
             fix = "امنح إذن «الظهور فوق التطبيقات» أو اجعل التطبيق الشاشة الرئيسية",
             command = "adb shell appops set $pkg SYSTEM_ALERT_WINDOW allow",
         )
     }
+    // The quick-start service (GitHub build): the fastest start, and the only way back from Fire TV's own home.
+    if (report.quickStartAvailable && !report.quickStartEnabled && report.autoStart.tier != AutoStartTier.NONE &&
+        report.autoStart.tier != AutoStartTier.HOME
+    ) {
+        rows += if (report.canWriteSecureSettings) {
+            HealthRow(HealthLevel.INFO, "البدء السريع غير مفعّل: فعّله لتظهر الشاشة أسرع بعد التشغيل وتعود بعد زر الرئيسية", fix = "اضغط «تفعيل البدء السريع» على التلفاز")
+        } else {
+            HealthRow(
+                HealthLevel.INFO, "البدء السريع غير مفعّل: تظهر الشاشة أسرع بعد التشغيل وتعود بعد زر الرئيسية",
+                fix = "امنح الإذن مرة واحدة من حاسوب، ثم اضغط «تفعيل البدء السريع» على التلفاز",
+                command = "adb shell pm grant $pkg android.permission.WRITE_SECURE_SETTINGS",
+            )
+        }
+    }
+    report.fireTvSleepMillis?.takeIf { it > 0 }?.let { sleep ->
+        rows += HealthRow(
+            HealthLevel.WARNING, "ينام Fire TV بعد ${sleep / 60_000} دقيقة دون ضغط زر إن لم تكن الشاشة ظاهرة",
+            fix = if (report.canWriteSecureSettings) "اضغط «إيقاف نوم Fire TV» على التلفاز" else null,
+            command = "adb shell settings put secure ${KioskAccessibility.FIRE_TV_SLEEP} 0",
+        )
+    }
+    if (fireTv) {
+        rows += HealthRow(HealthLevel.INFO, "في Fire TV أوقف «Still Watching» (Settings‏ ← Preferences‏ ← Data Monitoring) لكيلا ينام بعد 4 ساعات")
+        rows += HealthRow(
+            HealthLevel.INFO,
+            "أوقف التشغيل التلقائي للفيديو والصوت في شاشة Amazon (Settings‏ ← Preferences‏ ← Featured Content) لكيلا يُسمع إعلان عند تشغيل الجهاز",
+        )
+        rows += HealthRow(
+            HealthLevel.INFO, "اضبط شاشة التوقف على Never (Settings‏ ← Display & Sounds‏ ← Screensaver‏ ← Start Time)",
+            command = "adb shell settings put system screen_off_timeout 2147460000",
+        )
+        rows += HealthRow(
+            HealthLevel.INFO,
+            "استعمل ملفًا شخصيًا واحدًا دون رمز PIN، واترك جهاز التحكم قرب التلفاز، ولا توقف التطبيق قسرًا (Force stop): يوقف البدء التلقائي حتى يُفتح التطبيق باليد",
+        )
+    }
+
     if (report.homeModeEnabled && !report.isDefaultHome) {
         rows += HealthRow(HealthLevel.WARNING, "وضع الشاشة الرئيسية مفعّل لكن التطبيق لم يُختر شاشةً رئيسية", fix = "اختر التطبيق في نافذة اختيار الشاشة الرئيسية")
     }
@@ -81,8 +148,19 @@ fun healthRows(report: KioskReport, zone: ZoneId = ZoneId.systemDefault()): List
         PowerLevel.UNKNOWN -> HealthRow(HealthLevel.INFO, "«البقاء متيقظًا»: تعذّرت القراءة")
     }
     report.lastAutoStart?.let {
-        rows += if (it.type == KioskEvent.AUTOSTART_OK) HealthRow(HealthLevel.GOOD, "آخر تشغيل للجهاز: ظهرت الشاشة وحدها (${time(it, zone)})")
-        else HealthRow(HealthLevel.BAD, "آخر تشغيل للجهاز: لم تظهر الشاشة وحدها (${time(it, zone)})", command = "adb shell appops set $pkg SYSTEM_ALERT_WINDOW allow")
+        // How many seconds it took, when the timing is of the same boot.
+        val seconds = report.lastBootTiming?.detail
+            ?.takeIf { timing -> BootTiming.bootOf(timing) != null && BootTiming.bootOf(timing) == BootTiming.bootOf(it.detail) }
+            ?.let(BootTiming::screenSeconds)
+            ?.let { s -> " بعد ${"%.0f".format(Locale.ROOT, s)} ثانية" }.orEmpty()
+        rows += if (it.type == KioskEvent.AUTOSTART_OK) HealthRow(HealthLevel.GOOD, "آخر تشغيل للجهاز: ظهرت الشاشة وحدها$seconds (${time(it, zone)})")
+        // With nothing granted the tier row above already says what to run; otherwise something else was in the way.
+        else HealthRow(
+            HealthLevel.BAD, "آخر تشغيل للجهاز: لم تظهر الشاشة وحدها (${time(it, zone)})",
+            fix = if (report.autoStart.tier == AutoStartTier.NONE) null
+            else "تحقّق أن التطبيق فُتح مرة بعد تثبيته ولم يُوقف قسرًا (Force stop)، وأن لا شاشة أخرى تغطيه عند التشغيل " +
+                "(اختيار ملف شخصي، البحث عن جهاز التحكم)",
+        )
     }
     report.sleepGaps.forEach { rows += HealthRow(HealthLevel.WARNING, "نام الجهاز: ${it.detail}", fix = "تحقّق من توفير الطاقة ومن مؤقّت إطفاء التلفاز") }
     report.lastCrash?.let { rows += HealthRow(HealthLevel.WARNING, "آخر توقف مفاجئ: ${time(it, zone)}", fix = it.detail.take(160)) }
@@ -107,19 +185,40 @@ fun KioskHealthScreen(
     extraRows: List<HealthRow> = emptyList(),
     /** The GitHub build, when the box does not yet let it install its updates. */
     onAllowUpdates: (() -> Unit)? = null,
+    /** The GitHub build, when an update is ready: installs it now (the system may ask to confirm). */
+    onInstallUpdate: (() -> Unit)? = null,
+    /** The GitHub build, when the app may switch its quick-start service on or off. */
+    onToggleQuickStart: (() -> Unit)? = null,
+    /** Fire TV, when its sleep timer is on and the app may turn it off. */
+    onDisableFireTvSleep: (() -> Unit)? = null,
+    quickStartSettling: Boolean = false,
 ) {
-    val rows = remember(report, extraRows) { healthRows(report) + extraRows }
+    val rows = remember(report, extraRows, quickStartSettling) { healthRows(report, quickStartSettling = quickStartSettling) + extraRows }
     Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text("التشغيل الدائم للشاشة", color = Gold, fontSize = 26.sp)
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             if (onGrantOverlay != null && !report.canDrawOverlays) {
                 Box(Modifier.weight(1f)) { FocusableListItem(text = "منح إذن الظهور فوق التطبيقات", onClick = onGrantOverlay) }
             }
-            Box(Modifier.weight(1f)) {
-                FocusableListItem(text = if (report.homeModeEnabled) "إيقاف وضع الشاشة الرئيسية" else "جعل التطبيق الشاشة الرئيسية", onClick = onToggleHomeMode)
+            if (onToggleQuickStart != null) {
+                Box(Modifier.weight(1f)) {
+                    FocusableListItem(text = if (report.quickStartEnabled) "إيقاف البدء السريع" else "تفعيل البدء السريع", onClick = onToggleQuickStart)
+                }
+            }
+            if (onDisableFireTvSleep != null) {
+                Box(Modifier.weight(1f)) { FocusableListItem(text = "إيقاف نوم Fire TV", onClick = onDisableFireTvSleep) }
+            }
+            // Fire OS puts its own home back: offering the app as home there would only mislead.
+            if (!report.autoStart.fireTv) {
+                Box(Modifier.weight(1f)) {
+                    FocusableListItem(text = if (report.homeModeEnabled) "إيقاف وضع الشاشة الرئيسية" else "جعل التطبيق الشاشة الرئيسية", onClick = onToggleHomeMode)
+                }
             }
             if (onAllowUpdates != null) {
                 Box(Modifier.weight(1f)) { FocusableListItem(text = "السماح بتثبيت التحديثات", onClick = onAllowUpdates) }
+            }
+            if (onInstallUpdate != null) {
+                Box(Modifier.weight(1f)) { FocusableListItem(text = "تثبيت التحديث الآن", onClick = onInstallUpdate) }
             }
             Box(Modifier.weight(1f)) { FocusableListItem(text = "رجوع", onClick = onBack, modifier = Modifier.initialFocus()) }
         }

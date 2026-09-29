@@ -83,6 +83,9 @@ import com.tunisianprayertimes.tv.usb.UsbSettingsFound
 import com.tunisianprayertimes.tv.usb.UsbSettingsInbox
 import com.tunisianprayertimes.tv.usb.UsbVolumes
 import com.tunisianprayertimes.tv.kiosk.AdminEntryDetector
+import com.tunisianprayertimes.tv.kiosk.BootTiming
+import com.tunisianprayertimes.tv.kiosk.KioskAccessibility
+import com.tunisianprayertimes.tv.kiosk.WakePolicy
 import com.tunisianprayertimes.tv.kiosk.ClockSample
 import com.tunisianprayertimes.tv.kiosk.CrashLoopGuard
 import com.tunisianprayertimes.tv.kiosk.KioskController
@@ -149,6 +152,19 @@ class MainActivity : ComponentActivity() {
         screenReceiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
                 kiosk.eventLog.append(if (intent.action == Intent.ACTION_SCREEN_OFF) KioskEvent.SCREEN_OFF else KioskEvent.SCREEN_ON)
+                // Fire TV wakes to its own home: without the quick-start service, the display goes back on top here.
+                if (intent.action == Intent.ACTION_SCREEN_ON) {
+                    window.decorView.postDelayed({
+                        val now = SystemClock.elapsedRealtime()
+                        val autoStart = KioskController.autoStart(context)
+                        if (WakePolicy.shouldRefront(now, inFront, KioskAccessibility.serviceConnected, autoStart.canBringToFront,
+                                prefs.isSetupDone, kiosk.state.adminAwayUntil)
+                        ) {
+                            val started = KioskController.bringToFront(context)
+                            kiosk.eventLog.append(KioskEvent.WATCHDOG_REFRONT, "wake ${autoStart.tier} started=$started")
+                        }
+                    }, WakePolicy.DELAY_MILLIS)
+                }
             }
         }.also { receiver ->
             runCatching {
@@ -202,6 +218,14 @@ class MainActivity : ComponentActivity() {
         kiosk.update { it.copy(resumedAt = now) }
         // Pinned again when the admin is back from the system (lock task, device-owner boxes only).
         if ((kiosk.state.adminAwayUntil ?: 0L) <= now) KioskController.lockTaskIfDeviceOwner(this)
+        // How fast the display came up after this boot, once, for the kiosk page.
+        if (BootTiming.mark(this, BootTiming.SCREEN, now)) BootTiming.takeSummary(this)?.let { kiosk.eventLog.append(KioskEvent.BOOT_TIMING, it) }
+        // A force stop removes the quick-start service; put it back if the admin wanted it and the box lets us.
+        if (kiosk.quickStartWanted && KioskAccessibility.isAvailable(this) && !KioskAccessibility.isEnabled(this) &&
+            KioskAccessibility.canWriteSecureSettings(this) && KioskAccessibility.enable(this)
+        ) {
+            kiosk.eventLog.append(KioskEvent.QUICK_START, "restored")
+        }
     }
 
     override fun onStop() {
@@ -354,7 +378,7 @@ private fun TvApp(
     // prayer is long enough for the whole sequence of texts (the mosque may have added its own).
     val timing = remember(afterSalahSlides) {
         val minutes = ((MosqueAdhkar.totalMillis(afterSalahSlides) + 59_999) / 60_000).toInt()
-        FlowTiming(afterSalahMinutes = minutes.coerceIn(FlowTiming().afterSalahMinutes, MAX_AFTER_SALAH_MINUTES))
+        FlowTiming(afterSalahMinutes = minutes.coerceIn(FlowTiming().afterSalahMinutes, FlowTiming.MAX_AFTER_SALAH_MINUTES))
     }
     val events = remember(todayTimes, yesterdayTimes, schedule, islamicDays, timing) {
         val yesterday = today.minusDays(1)
@@ -839,6 +863,15 @@ private fun TvApp(
                     },
                     kioskPage = { back ->
                         var refresh by remember { mutableIntStateOf(0) }
+                        var quickStartOnAt by remember { mutableStateOf<Long?>(null) }
+                        // The box changes under the page (the quick-start service binds a moment after it is turned on,
+                        // an adb grant arrives): read it again while the page is open.
+                        LaunchedEffect(Unit) {
+                            while (true) {
+                                delay(KIOSK_PAGE_REFRESH_MILLIS)
+                                refresh++
+                            }
+                        }
                         val report = remember(activity.resumes, refresh) {
                             KioskReport.collect(context, activity.kiosk, activity.safeMode, android.os.Process.getStartElapsedRealtime())
                         }
@@ -857,6 +890,14 @@ private fun TvApp(
                                     }
                                 }
                             } else null,
+                            onInstallUpdate = if (updateStatus.available != null && !updateStatus.needsPermission) {
+                                {
+                                    scope.launch {
+                                        runCatching { updater.installNow() }
+                                        updateStatus = updater.status
+                                    }
+                                }
+                            } else null,
                             onGrantOverlay = overlay?.let { intent ->
                                 {
                                     awayForAdmin(activity, ADMIN_SYSTEM_SETTINGS_AWAY)
@@ -868,7 +909,25 @@ private fun TvApp(
                                 KioskController.setHomeMode(context, !report.homeModeEnabled, activity.kiosk.eventLog)
                                 refresh++
                             },
+                            onToggleQuickStart = if (report.quickStartAvailable && report.canWriteSecureSettings) {
+                                {
+                                    val on = !report.quickStartEnabled
+                                    val done = if (on) KioskAccessibility.enable(context) else KioskAccessibility.disable(context)
+                                    if (on && done) quickStartOnAt = SystemClock.elapsedRealtime()
+                                    if (done) activity.kiosk.quickStartWanted = on
+                                    activity.kiosk.eventLog.append(KioskEvent.QUICK_START, if (on) "on=$done" else "off=$done")
+                                    refresh++
+                                }
+                            } else null,
+                            onDisableFireTvSleep = if ((report.fireTvSleepMillis ?: 0L) > 0 && report.canWriteSecureSettings) {
+                                {
+                                    KioskAccessibility.disableFireTvSleep(context)
+                                    refresh++
+                                }
+                            } else null,
                             onBack = back,
+                            // The system binds the service a moment after it is switched on: no alarm meanwhile.
+                            quickStartSettling = quickStartOnAt?.let { SystemClock.elapsedRealtime() - it < QUICK_START_SETTLE_MILLIS } == true,
                         )
                     },
                     onExitToAndroid = {
@@ -899,24 +958,25 @@ private fun TvApp(
                     },
                     aboutLines = remember { aboutLines(context) },
                     customTexts = !adhkarContent.isBundled,
+                    // Through the same checked import as a key or the phone, so it can be undone.
                     onBundledTexts = {
-                        prefs.adhkarContent = com.tunisianprayertimes.mosque.AdhkarContent()
-                        adhkarContent = prefs.adhkarContent
+                        if (inbox.apply(UsbSettingsFound(File("tv"), """{ "adhkar": null }""", "bundled-texts"), fromKey = false)) settingsVersion++
                         currentScreen = Screen.Display
                     },
                 )
             }
             afterSalahSlide != null -> AfterSalahAzkarScreen(afterSalahSlide.value, afterSalahSlide.index, afterSalahSlides.size)
             showAnnouncements -> {
+                // A new list (a change from the phone or a key) starts the slideshow again.
                 key(announcements) {
-                AnnouncementsSlideshow(
-                    announcements = announcements,
-                    displaySeconds = announcementSeconds,
-                    onDismiss = {
-                        announcementsShownFor = adhkarShownFor
-                        lastSlideshowAt = clock.read().now
-                    }
-                )
+                    AnnouncementsSlideshow(
+                        announcements = announcements,
+                        displaySeconds = announcementSeconds,
+                        onDismiss = {
+                            announcementsShownFor = adhkarShownFor
+                            lastSlideshowAt = clock.read().now
+                        }
+                    )
                 }
             }
             else -> {
@@ -938,7 +998,7 @@ private fun TvApp(
             }
         }
         (hint ?: notice ?: TvStrings.CLOCK_WRONG_ZONE.takeIf { reading.trust == ClockTrust.WRONG_ZONE })?.let { ScreenNotice(it) }
-        if (phoneSession != null && currentScreen == Screen.Display && flow.phase == FlowPhase.IDLE) TopMark(TvStrings.DASHBOARD_OPEN)
+        if (phoneSession != null && currentScreen == Screen.Display && flow.phase !in PRAYER_PHASES) TopMark(TvStrings.DASHBOARD_OPEN)
     }
 }
 
@@ -948,9 +1008,10 @@ private val SETTINGS_IDLE_DURING_PRAYER: Duration = Duration.ofSeconds(30)
 private val USB_DIALOG_IDLE: Duration = Duration.ofMinutes(2)
 private const val NOTICE_MILLIS = 20_000L
 private const val HINT_MILLIS = 4_000L
-private const val MAX_AFTER_SALAH_MINUTES = 30
 private const val PHONE_IDLE_MILLIS = 15 * 60_000L
 private const val PHONE_MAX_MILLIS = 2 * 60 * 60_000L
+private const val KIOSK_PAGE_REFRESH_MILLIS = 2_000L
+private const val QUICK_START_SETTLE_MILLIS = 5_000L
 private const val WEATHER_TICK_MILLIS = 5 * 60_000L
 private const val UPDATE_TICK_MILLIS = 30 * 60_000L
 private const val QUIET_BEFORE_ADHAN_MINUTES = 10L

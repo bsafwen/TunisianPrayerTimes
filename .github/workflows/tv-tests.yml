@@ -62,12 +62,14 @@ jobs:
       - name: Minified release builds
         run: ./gradlew :app:assemblePlayRelease :app:assembleGithubRelease -PunsignedRelease=true
 
-      # Google Play forbids self-updating apps: the Play build must not be able to install anything.
-      - name: The Play build has no install permission or update code
+      # Google Play forbids self-updating apps and an accessibility service that opens the app by itself:
+      # the Play build must not be able to install anything, nor have the quick-start service.
+      - name: The Play build has no install permission, update code or quick-start service
         run: |
           manifest=app/build/intermediates/merged_manifest/playRelease/processPlayReleaseMainManifest/AndroidManifest.xml
           test -f "$manifest"
           if grep -E "REQUEST_INSTALL_PACKAGES|UPDATE_PACKAGES_WITHOUT_USER_ACTION|InstallResultReceiver" "$manifest"; then exit 1; fi
+          if grep -E "BIND_ACCESSIBILITY_SERVICE|WRITE_SECURE_SETTINGS|KioskAccessibilityService" "$manifest"; then exit 1; fi
           apk=$(ls app/build/outputs/apk/play/release/*.apk | head -1)
           if unzip -p "$apk" 'classes*.dex' | grep -a -q "GithubUpdater"; then echo "update code in the Play build"; exit 1; fi
 

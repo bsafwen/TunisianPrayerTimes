@@ -2,6 +2,7 @@ package com.tunisianprayertimes.tv
 
 import android.app.Application
 import com.tunisianprayertimes.platform.SharedAndroid
+import com.tunisianprayertimes.tv.kiosk.BootTiming
 import com.tunisianprayertimes.tv.kiosk.KioskController
 import com.tunisianprayertimes.tv.kiosk.KioskCrashHandler
 import com.tunisianprayertimes.tv.kiosk.KioskStore
@@ -17,6 +18,7 @@ class TvApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         KioskCrashHandler.install(this, kiosk)
+        BootTiming.mark(this, BootTiming.APP)
         SharedAndroid.init(this)
         KioskController.armWatchdog(this)
     }

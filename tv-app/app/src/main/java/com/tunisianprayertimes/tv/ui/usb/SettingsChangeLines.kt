@@ -9,7 +9,7 @@ object SettingsChangeLines {
 
     fun of(result: ParseResult.Success): List<String> =
         result.profileChanges.map(::profileLine) + result.changes.map(::changeLine) +
-            result.dateChanges.map(::dateLine) + result.contentChanges.map(::contentLine)
+            result.dateChanges.map(::dateLine) + result.contentChanges.flatMap(::contentLines)
 
     fun of(result: ParseResult): List<String> = when (result) {
         is ParseResult.Success -> of(result)
@@ -40,14 +40,25 @@ object SettingsChangeLines {
         return "$field: ${change.before} ← ${change.after}"
     }
 
-    private fun contentLine(change: MosqueSettingsFile.ContentChange): String {
+    /** The list's summary before and after, then which texts come, go or change count (by title), or that only their order changes. */
+    private fun contentLines(change: MosqueSettingsFile.ContentChange): List<String> {
         val list = when (change.list) {
             MosqueSettingsFile.ContentList.AFTER_SALAH -> TvStrings.AFTER_SALAH_TEXTS
             MosqueSettingsFile.ContentList.TICKER -> TvStrings.TICKER_TEXTS
             MosqueSettingsFile.ContentList.ANNOUNCEMENTS -> TvStrings.TEXT_ANNOUNCEMENTS
         }
-        return "$list: ${change.before} ← ${change.after}"
+        fun names(texts: List<String>) =
+            texts.take(MAX_NAMES).joinToString("، ") + if (texts.size > MAX_NAMES) " ${TvStrings.andOthers(texts.size - MAX_NAMES)}" else ""
+        return listOfNotNull(
+            "$list: ${change.before} ← ${change.after}",
+            "$list · ${TvStrings.TEXTS_ADDED}: ${names(change.added)}".takeIf { change.added.isNotEmpty() },
+            "$list · ${TvStrings.TEXTS_REMOVED}: ${names(change.removed)}".takeIf { change.removed.isNotEmpty() },
+            "$list · ${TvStrings.TEXTS_RECOUNTED}: ${names(change.recounted)}".takeIf { change.recounted.isNotEmpty() },
+            "$list · ${TvStrings.TEXTS_REORDERED}".takeIf { change.reordered },
+        )
     }
+
+    private const val MAX_NAMES = 4
 
     private fun dateLine(change: MosqueSettingsFile.DateChange): String {
         fun show(date: java.time.LocalDate?) = date?.toString() ?: TvStrings.AUTOMATIC

@@ -119,7 +119,8 @@ class PrefsManager(private val prefs: SharedPreferences) {
     var adhkarContent: AdhkarContent
         get() {
             val text = prefs.getString(KEY_ADHKAR, null) ?: return AdhkarContent()
-            val parsed = MosqueSettingsFile.parse(text, MosqueSchedule())
+            // Saved by this TV: read leniently, so an app update that retires a text does not lose the mosque's lists.
+            val parsed = MosqueSettingsFile.parse(text, MosqueSchedule(), stored = true)
             return (parsed as? MosqueSettingsFile.ParseResult.Success)?.content ?: AdhkarContent()
         }
         set(value) = prefs.edit {
