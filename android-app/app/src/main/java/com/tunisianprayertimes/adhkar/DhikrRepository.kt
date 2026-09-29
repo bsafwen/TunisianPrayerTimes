@@ -258,6 +258,9 @@ class DhikrRepository(context: Context) {
         ) }
         DhikrReminderScheduler.refresh(app)
     }
+    /** Expires old reading history; writes only when something was dropped. */
+    internal fun pruneHistory(now: Long, protectedOccurrenceIds: Set<String>) =
+        update { it.withoutExpiredHistory(now, protectedOccurrenceIds) }
     fun setTextSize(size: Int) = update { it.copy(textSize = size.coerceIn(24, 40)) }
     fun setHaptics(enabled: Boolean) = update { it.copy(countHaptics = enabled) }
 
