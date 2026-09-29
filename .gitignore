@@ -1,9 +1,11 @@
 node_modules/
-data
-!/data/
+# Only generated data folders are ignored; a bare "data" rule also hid Kotlin "data" packages.
+/scraper/data/
+/qaloon-model/data/
+/multiplatform/desktopApp/data
 /data/*
 !/data/official-islamic-dates/
-!/data/official-islamic-dates/*.json
+!/data/prayer-formula/
 mawaqit-csv
 .DS_Store
 .env.local

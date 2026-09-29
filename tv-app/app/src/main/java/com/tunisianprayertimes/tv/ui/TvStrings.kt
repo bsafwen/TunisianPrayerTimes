@@ -98,5 +98,7 @@ object TvStrings {
         Prayer.MAGHRIB -> MAGHRIB
         Prayer.ISHA -> ISHA
         Prayer.JOMOAA -> JOMOAA
+        Prayer.AID_FITR -> com.tunisianprayertimes.ui.Strings.PRAYER_AID_FITR
+        Prayer.AID_ADHA -> com.tunisianprayertimes.ui.Strings.PRAYER_AID_ADHA
     }
 }
