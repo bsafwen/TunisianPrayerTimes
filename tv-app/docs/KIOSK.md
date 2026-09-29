@@ -136,8 +136,39 @@ page ("نام الجهاز"). Fix them in the box's settings (Energy saver → N
   the Isha iqamah (so after tarawih) and one hour before Fajr, never during a prayer screen.
 - **Burn-in**: the whole screen drifts by a few pixels every 6 minutes.
 
+## The clock
+
+Prayer times depend only on the instant, never on the box's zone or language: every screen shows
+Tunisia's time (Africa/Tunis) whatever the box says. What can be wrong is the instant, after a power
+cut on a box without a clock battery, or when someone set the clock by hand while the box's zone was
+not Tunisia's (the wall is then off by the zones' difference). The app checks the instant, not the zone:
+
+- **Online**, it asks the network for the time at start, when the network comes back, after a clock
+  change and every few hours: the system's own network time on Android 13+, otherwise the `Date` of
+  one HTTPS `HEAD` request to Open-Meteo (the weather's server; never over plain HTTP, where anyone
+  on the network could send a date). A time within 2 minutes confirms the screen's time; further
+  off, it corrects it. With a system clock years off, the HTTPS check fails below Android 13 and the
+  admin or the phone sets the time instead.
+- **Offline**, the admin confirms the time on the TV, or the phone sets it from the dashboard
+  («اضبط الشاشة على وقت هاتفي»). The answer is kept as a correction of the box's clock until that
+  clock is changed.
+- **A change of the system clock** (the box's settings, the network, adb) reaches the app even when
+  the display is not running (a receiver of the system's time-set broadcast): the correction and the
+  confirmation are dropped and the time is checked again. A change of zone moves no instant and is
+  only logged.
+- **Device-owner boxes** (Android 9+; provisioned with the adb line above) are also aligned after
+  each confirmation: the system zone becomes Africa/Tunis (the automatic zone is turned off first:
+  Android refuses otherwise), and the system clock is set to the confirmed time when it is more than
+  a minute off, so HTTPS, the box's own screens and the logs are right too. The system clock is left
+  alone while its automatic time is on: the network keeps it then. Other boxes keep their system
+  clock and zone; the app's correction covers the prayer times.
+- **Kiosk log**: `CLOCK_SET` when the system clock was set (`tunis=` the new clock in Tunisia's
+  time, `zone=`, `autoTime=on|off|?`, and `own` when the app set it), `ZONE_SET` when the zone
+  changed (`zone=`, `tunisTime=` whether it reads Tunisia's time), `CLOCK_CONFIRMED` when the time
+  was confirmed or corrected (`source=NETWORK|ADMIN|PHONE`, and `moved=+3600s` when it moved).
+
 ## Kiosk log
 
 `files/kiosk-events.log` in the app's storage keeps the last 500 events (boot, auto-start result,
-crashes, safe mode, watchdog, sleeps, screen off/on, maintenance restarts, home mode). The kiosk
-page shows the latest 50. Nothing is sent anywhere.
+crashes, safe mode, watchdog, sleeps, screen off/on, maintenance restarts, home mode, clock and zone
+changes). The kiosk page shows the latest 50. Nothing is sent anywhere.

@@ -3,14 +3,20 @@ package com.tunisianprayertimes.tv.remote
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
+import com.tunisianprayertimes.mosque.FlowState
+import com.tunisianprayertimes.time.ClockSource
 import com.tunisianprayertimes.tv.data.MediaKind
+import com.tunisianprayertimes.tv.ui.TvStrings
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
+import java.time.LocalDateTime
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.boolean
 import kotlinx.serialization.json.jsonArray
 import kotlinx.serialization.json.jsonPrimitive
+import kotlinx.serialization.json.long
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -39,6 +45,11 @@ class DashboardTest {
         override fun addImage(kind: MediaKind, name: String, bytes: ByteArray): String? { images["${kind.folder}/$name"] = bytes; return null }
         override fun deleteImage(kind: MediaKind, name: String) = images.remove("${kind.folder}/$name") != null
         override fun update() = "لا يوجد تحديث"
+        var clockSetTo: Long? = null
+        var clockConfirmed = 0
+        var clockAccepts = true
+        override fun setClock(epochMillis: Long): Boolean { clockSetTo = epochMillis; return clockAccepts }
+        override fun confirmClock(): Boolean { clockConfirmed++; return clockAccepts }
         override fun asset(name: String) = if (name == "index.html" || name == "views/prayers.js") name.toByteArray() else null
         val fontsAsked = mutableListOf<String>()
         // Answers any name, so the tests see which names the routes let through.
@@ -273,6 +284,78 @@ class DashboardTest {
         val result = MosqueSettingsFile.parse(file, MosqueSchedule.DEFAULT, currentProfile = tv) as ParseResult.Success
         val line = com.tunisianprayertimes.tv.ui.usb.SettingsChangeLines.of(result).single()
         assertTrue(line, line.contains("الليل") && line.endsWith("تشغيل ← إيقاف"))
+    }
+
+    @Test
+    fun thePhoneSetsTheClockOrConfirmsIt() {
+        val set = json(call("POST", "/api/clock", """{"epochMillis":1790000000000}"""))
+        assertTrue(set["ok"]!!.jsonPrimitive.boolean)
+        assertEquals(TvStrings.PHONE_CLOCK_SET, set["message"]!!.jsonPrimitive.content)
+        assertEquals(1_790_000_000_000L, backend.clockSetTo)
+        val confirmed = json(call("POST", "/api/clock", """{ "confirm": true }"""))
+        assertTrue(confirmed["ok"]!!.jsonPrimitive.boolean)
+        assertEquals(TvStrings.PHONE_CLOCK_CONFIRMED, confirmed["message"]!!.jsonPrimitive.content)
+        assertEquals(1, backend.clockConfirmed)
+        // A time the TV cannot take (a phone set to 1970, a clock reset): said in the answer, not an HTTP error.
+        backend.clockAccepts = false
+        val refused = json(call("POST", "/api/clock", """{"epochMillis":0}"""))
+        assertFalse(refused["ok"]!!.jsonPrimitive.boolean)
+        assertEquals(TvStrings.PHONE_CLOCK_SET_REFUSED, refused["message"]!!.jsonPrimitive.content)
+        assertEquals(TvStrings.PHONE_CLOCK_CONFIRM_REFUSED, json(call("POST", "/api/clock", """{"confirm":true}"""))["message"]!!.jsonPrimitive.content)
+    }
+
+    @Test
+    fun aClockRequestIsOneOfTheTwoAndNothingElse() {
+        val bad = listOf(
+            "", "x", "[]", "{}", "null", """{"epochMillis":"1790000000000"}""", """{"epochMillis":1.79E12}""",
+            """{"confirm":false}""", """{"confirm":"true"}""", """{"epochMillis":1790000000000,"confirm":true}""",
+            """{"epochMillis":1790000000000,"zone":"Asia/Shanghai"}""",
+        )
+        for (body in bad) assertEquals(body, 400, call("POST", "/api/clock", body).status)
+        assertNull(backend.clockSetTo)
+        assertEquals(0, backend.clockConfirmed)
+        // Only with the session's token, only a small body, and only as a POST.
+        assertEquals(Admission.Accept(DashboardRoutes.MAX_CLOCK_BODY), routes.admit(RequestHead("POST", "/api/clock", mapOf("t" to token), emptyMap())))
+        assertEquals(413, call("POST", "/api/clock", """{"confirm":true}""" + " ".repeat(DashboardRoutes.MAX_CLOCK_BODY)).status)
+        assertEquals(403, call("POST", "/api/clock", """{"confirm":true}""", query = emptyMap()).status)
+        assertEquals(404, call("GET", "/api/clock").status)
+        assertEquals(0, backend.clockConfirmed)
+    }
+
+    @Test
+    fun theStateSaysHowFarTheClockCanBeTrusted() {
+        val live = DashboardLive(LocalDateTime.of(2026, 9, 29, 14, 0, 5, 700_000_000), true, null, emptyMap(), "", null, FlowState.IDLE, null)
+        // Without the guard's view (as before): the time shown and whether it is plausible, nothing to compare.
+        val before = clockJson(live, null)
+        assertEquals(setOf("now", "trusted"), before.keys)
+        assertEquals("2026-09-29T14:00:05", before["now"]!!.jsonPrimitive.content)
+        val state = DashboardClockState(1_790_686_805_700L, verified = false, source = null, deviceZone = "Asia/Shanghai", zoneDiffers = true)
+        val clock = clockJson(live, state)
+        assertTrue(clock["trusted"]!!.jsonPrimitive.boolean)
+        assertEquals(1_790_686_805_700L, clock["epochMillis"]!!.jsonPrimitive.long)
+        assertFalse(clock["verified"]!!.jsonPrimitive.boolean)
+        assertEquals(JsonNull, clock["source"])
+        assertEquals("Asia/Shanghai", clock["deviceZone"]!!.jsonPrimitive.content)
+        assertTrue(clock["zoneDiffers"]!!.jsonPrimitive.boolean)
+        val phone = clockJson(live, state.copy(verified = true, source = ClockSource.PHONE))
+        assertEquals("PHONE", phone["source"]!!.jsonPrimitive.content)
+        // Before the display's first reading.
+        assertEquals("", clockJson(null, null)["now"]!!.jsonPrimitive.content)
+    }
+
+    @Test
+    fun theSessionEndsOnItsOwnClock() {
+        // The TV passes the time since boot, which correcting the wall clock from this very page does not move.
+        val idle = 15 * 60_000L
+        val max = 2 * 3_600_000L
+        assertFalse(routes.isOver(idle, max))
+        clock = 1_000L + idle + 1
+        assertTrue(routes.isOver(idle, max))
+        call("GET", "/api/state")
+        assertFalse(routes.isOver(idle, max))
+        clock = 1_000L + max + 1
+        call("GET", "/api/state")
+        assertTrue("two hours at most, however much it is used", routes.isOver(idle, max))
     }
 
     @Test

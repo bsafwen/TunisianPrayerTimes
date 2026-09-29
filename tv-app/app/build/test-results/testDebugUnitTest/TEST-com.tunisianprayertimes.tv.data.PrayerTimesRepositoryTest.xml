@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tunisianprayertimes.tv.data.PrayerTimesRepositoryTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-29T09:11:01.857Z" hostname="HOME" time="0.219">
+  <properties/>
+  <testcase name="outsideTheSupportedRangeOrUnknownDelegationHasNoTimes" classname="com.tunisianprayertimes.tv.data.PrayerTimesRepositoryTest" time="0.001"/>
+  <testcase name="shurukComesFromTheSameDay" classname="com.tunisianprayertimes.tv.data.PrayerTimesRepositoryTest" time="0.0"/>
+  <testcase name="matchesTheSharedFormulaTheAppUses" classname="com.tunisianprayertimes.tv.data.PrayerTimesRepositoryTest" time="0.0"/>
+  <testcase name="timesContinuePastTheOldCsvCliff" classname="com.tunisianprayertimes.tv.data.PrayerTimesRepositoryTest" time="0.0"/>
+  <testcase name="everyDayOfEverySupportedYearHasOrderedTimes" classname="com.tunisianprayertimes.tv.data.PrayerTimesRepositoryTest" time="0.217"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

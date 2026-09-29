@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.tunisianprayertimes.tv.app-release-56:/drawable_tv_banner.xml.flat",
+        "source": "com.tunisianprayertimes.tv.app-main-57:/drawable/tv_banner.xml"
+    },
+    {
+        "merged": "com.tunisianprayertimes.tv.app-release-56:/xml_device_admin.xml.flat",
+        "source": "com.tunisianprayertimes.tv.app-main-57:/xml/device_admin.xml"
+    },
+    {
+        "merged": "com.tunisianprayertimes.tv.app-release-56:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.tunisianprayertimes.tv.app-main-57:/mipmap-anydpi-v26/ic_launcher.xml"
+    }
+]

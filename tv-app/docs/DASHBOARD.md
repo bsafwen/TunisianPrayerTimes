@@ -30,8 +30,15 @@ what the screen shows now, with the countdown in the screen's stone gold.
   adhan, or the iqamah the screen is waiting for (for an Eid, the prayer itself), with what the
   screen shows (`flow`: the prayer's phase, or the night, Eid morning or announcements screen);
   today's times with the next (or current) prayer highlighted; the weather (credited to
-  Open-Meteo); the kiosk checks with coloured dots; the version and the update button. A wrong TV
-  clock is announced to screen readers once, not again at every refresh.
+  Open-Meteo); the kiosk checks with coloured dots; the version and the update button.
+- Its clock card compares the TV's clock with the phone's own (below). It says «ساعة الشاشة مؤكَّدة»
+  (and how: the internet, the admin on the TV, a phone, or the box's zone) or «غير مؤكَّدة», shows
+  both times in Tunisia's time, and offers the one fix that fits: «اضبط الشاشة على وقت هاتفي» when
+  they are more than a minute apart, «الوقت صحيح» when an unconfirmed time agrees. A TV confirmed by
+  the internet that disagrees with the phone gets a line asking to check the phone first. The
+  device's zone is shown when it is not Tunisia's, as information. A problem (implausible clock,
+  more than a minute apart, unconfirmed) puts the card first and is announced to screen readers
+  once, not again at every refresh; a confirmed clock that agrees sits under today's times.
 - «الإقامة», «الأذكار», «المسجد» and «رمضان والعيد» keep their main button at the bottom of the
   screen while they scroll; a field reached with Tab scrolls clear of it and of the tabs.
   «الإقامة» and «المسجد» send only the fields the admin changed, «الأذكار» only the lists changed,
@@ -55,6 +62,7 @@ All JSON is UTF-8. Times are the TV's time in Tunisia.
 | POST | `/api/image?kind=K&name=N` | the image bytes | `{ "ok": true }` or `{ "ok": false, "error": "..." }` |
 | POST | `/api/image/delete?kind=K&name=N` | | `{ "ok": true }`; also removes an announcement `.txt` file (`kind=announcements`) |
 | POST | `/api/update` | | `{ "ok": true, "message": "..." }` (GitHub build only) |
+| POST | `/api/clock` | `{ "epochMillis": 1790686805000 }` or `{ "confirm": true }` | `{ "ok": true, "message": "ضُبطت ساعة الشاشة على وقت هاتفك" }`; `ok: false` with the reason when the TV refuses |
 
 `K` is `backgrounds` or `announcements`. Images are JPEG, PNG or WebP, at most 15 MB each and
 20 per kind. Uploaded names use letters, digits, `-`, `_`, `.`; an upload with the name of an
@@ -63,7 +71,8 @@ their names, which may contain other characters: show and delete them by the exa
 `textFiles` are the written announcements that came as `.txt` files on a USB key.
 
 The session ends 15 minutes after the last request with the token, and at most 2 hours after it
-started. An open page keeps it alive with a light request every few minutes.
+started, both measured on the TV's time since boot: setting the TV's clock from the page neither
+ends the session nor stretches it. An open page keeps it alive with a light request every few minutes.
 
 Errors: `403 { "error": "..." }` without a valid token, `404 { "error": "..." }` for anything else.
 
@@ -72,7 +81,8 @@ Errors: `403 { "error": "..." }` without a valid token, `404 { "error": "..." }`
 ```json
 {
   "app": { "versionName": "1.0", "versionCode": 1, "flavor": "github", "packageName": "com.tunisianprayertimes.tv" },
-  "clock": { "now": "2026-09-29T14:00:05", "trusted": true },
+  "clock": { "now": "2026-09-29T14:00:05", "trusted": true, "epochMillis": 1790686805000, "verified": false,
+             "source": null, "deviceZone": "Asia/Shanghai", "zoneDiffers": true },
   "mosque": { "name": "مسجد النور", "delegationId": 615, "delegationName": "مدينة تونس", "gouvernoratId": 11, "themeId": "horizon" },
   "themes": [{ "id": "horizon", "name": "أفق", "description": "سماء تتبع أوقات الصلاة، تُحسب على الجهاز دون إنترنت" },
              { "id": "midad", "name": "مداد", "description": "أرضية داكنة ثابتة دون سماء" }],
@@ -99,6 +109,15 @@ Errors: `403 { "error": "..." }` without a valid token, `404 { "error": "..." }`
 - `flow.phase`: `IDLE`, `ADHAN`, `IQAMAH_COUNTDOWN`, `KHUTBA`, `SALAH` or `AFTER_SALAH`;
   `flow.prayer` is the prayer's Arabic name and `flow.until` the end of the phase as `HH:MM`
   (both null when idle). `clock.now` is the TV's time in Tunisia, `YYYY-MM-DDTHH:MM:SS`, no zone.
+- `clock`: `trusted` is false when the TV's clock cannot be right (a box reset to a past year): the
+  screen shows no prayer times then. `epochMillis` is the instant the TV's time comes from (its
+  device clock with the in-app correction); the page compares it with the phone's `Date.now()`,
+  allowing for half the request's round trip. `verified` is true when the time was confirmed, and
+  `source` says how: `NETWORK` (an internet time agreed or corrected it), `ADMIN` (on the TV),
+  `PHONE` (this page), or `ZONE` (the box's zone keeps Tunisia's time, so its clock means Tunisia's);
+  `source` is null while unconfirmed. `deviceZone` is the box's own zone id and `zoneDiffers` whether
+  it reads another time than Tunisia's now: information only, the times are Tunisia's whatever it
+  is. A TV without these fields (an older version) sends only `now` and `trusted`.
 - `flow.screen`: what the wall shows while the flow is `IDLE`, when it is not the timetable: `NIGHT`
   (the dim night screen), `EID` (the Eid morning screen) or `ANNOUNCEMENTS` (the slideshow);
   absent or null for the timetable. The page reads it only while the flow is `IDLE`.
@@ -116,6 +135,21 @@ Errors: `403 { "error": "..." }` without a valid token, `404 { "error": "..." }`
 - `islamicDates.events[].id`: `ramadanStart`, `eidFitr`, `eidAdha` (the keys of the settings
   file); `source` is `MANUAL`, `OFFICIAL` or `ESTIMATE`; `min`/`max` are the dates the file accepts.
 - `kiosk[].level`: `GOOD`, `WARNING`, `BAD` or `INFO`.
+
+### `POST /api/clock`
+
+Sets or confirms the TV's clock from the phone, the reliable clock in an offline mosque. The body is
+one of:
+
+- `{ "epochMillis": n }`: the phone's `Date.now()` when the button was pressed. The TV takes it as
+  the time now (`source` becomes `PHONE`) and keeps it as a correction of its own clock until that
+  clock is changed. Refused (`ok: false`, «لم تُضبط الساعة: تاريخ الهاتف غير صحيح») when it cannot be
+  right: before 1 September 2026 or after 2100.
+- `{ "confirm": true }`: the time the TV shows is right (the page offers it only when it agrees with
+  the phone). Refused when the TV's clock cannot be right.
+
+Anything else (another field, a number as a string, both at once) is `400 { "error": "طلب غير صالح" }`.
+The body is at most 256 bytes. `message` is Arabic, for the page's toast.
 
 ### `GET /api/adhkar`
 

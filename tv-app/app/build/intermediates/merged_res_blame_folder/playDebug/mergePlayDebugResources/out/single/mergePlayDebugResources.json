@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\barou\\.gradle\\daemon\\9.3.1\\com.tunisianprayertimes.tv.app-playDebug-57:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\barou\\.gradle\\daemon\\9.3.1\\com.tunisianprayertimes.tv.app-main-59:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\barou\\.gradle\\daemon\\9.3.1\\com.tunisianprayertimes.tv.app-playDebug-57:\\drawable_tv_banner.xml.flat",
+        "source": "C:\\Users\\barou\\.gradle\\daemon\\9.3.1\\com.tunisianprayertimes.tv.app-main-59:\\drawable\\tv_banner.xml"
+    },
+    {
+        "merged": "C:\\Users\\barou\\.gradle\\daemon\\9.3.1\\com.tunisianprayertimes.tv.app-playDebug-57:\\xml_device_admin.xml.flat",
+        "source": "C:\\Users\\barou\\.gradle\\daemon\\9.3.1\\com.tunisianprayertimes.tv.app-main-59:\\xml\\device_admin.xml"
+    },
+    {
+        "merged": "com.tunisianprayertimes.tv.app-playDebug-57:/font_amiri.ttf.flat",
+        "source": "com.tunisianprayertimes.tv.app-main-59:/font/amiri.ttf"
+    },
+    {
+        "merged": "com.tunisianprayertimes.tv.app-playDebug-57:/font_readex_pro.ttf.flat",
+        "source": "com.tunisianprayertimes.tv.app-main-59:/font/readex_pro.ttf"
+    },
+    {
+        "merged": "com.tunisianprayertimes.tv.app-playDebug-57:/font_reem_kufi.ttf.flat",
+        "source": "com.tunisianprayertimes.tv.app-main-59:/font/reem_kufi.ttf"
+    }
+]

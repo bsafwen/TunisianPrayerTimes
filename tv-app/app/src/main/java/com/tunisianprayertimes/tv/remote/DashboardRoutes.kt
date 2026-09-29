@@ -3,10 +3,15 @@ package com.tunisianprayertimes.tv.remote
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
 import com.tunisianprayertimes.tv.data.MediaKind
+import com.tunisianprayertimes.tv.ui.TvStrings
 import java.security.MessageDigest
 import java.security.SecureRandom
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.booleanOrNull
 import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.longOrNull
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonArray
 
@@ -38,6 +43,12 @@ interface DashboardBackend {
     /** Starts installing an available update (GitHub build); the message tells what happens. */
     fun update(): String
 
+    /** The phone's clock says it is [epochMillis] now: the TV's time is set to it. False when it cannot be right. */
+    fun setClock(epochMillis: Long): Boolean
+
+    /** The admin says the TV's time is right (it agrees with the phone). False when it cannot be. */
+    fun confirmClock(): Boolean
+
     /** A file of the page itself, from the app's assets (dashboard/…). */
     fun asset(name: String): ByteArray?
 
@@ -53,15 +64,25 @@ interface DashboardBackend {
  * needs the session [token] shown in the QR code on the TV, so only someone in front of the screen can
  * manage it. The token and the size of a request are checked from its head, before its body is read
  * ([admit]). After [MAX_BAD_TOKENS] wrong tokens the session refuses everything.
+ *
+ * [now] measures the session's age and idle time, in millis. On the TV it should be the time since boot
+ * (SystemClock.elapsedRealtime): the wall clock can be corrected during a session, from this very page,
+ * and would end the session at once or stretch it past its limit.
  */
 class DashboardRoutes(private val token: String, private val backend: DashboardBackend, private val now: () -> Long = System::currentTimeMillis) {
 
     private var badTokens = 0
 
-    /** When the session started, and when it was last used with the token (a phone keeping the page open). */
+    /** When the session started, and when it was last used with the token (a phone keeping the page open), on [now]'s clock. */
     val startedAt: Long = now()
     @Volatile var lastUsedAt: Long = startedAt
         private set
+
+    /** Whether the session should end: unused for longer than [idleMillis], or older than [maxMillis]. */
+    fun isOver(idleMillis: Long, maxMillis: Long): Boolean {
+        val at = now()
+        return at - lastUsedAt > idleMillis || at - startedAt > maxMillis
+    }
 
     /** Judges a request from its head: the token for /api calls, and how large a body each route takes. */
     fun admit(head: RequestHead): Admission {
@@ -80,6 +101,7 @@ class DashboardRoutes(private val token: String, private val backend: DashboardB
         val maxBody = when (head.method to head.path) {
             "POST" to "/api/image" -> MAX_IMAGE_BYTES
             "POST" to "/api/preview", "POST" to "/api/apply" -> MosqueSettingsFile.MAX_CHARS * 4
+            "POST" to "/api/clock" -> MAX_CLOCK_BODY
             else -> 0
         }
         return Admission.Accept(maxBody)
@@ -149,7 +171,29 @@ class DashboardRoutes(private val token: String, private val backend: DashboardB
             put("ok", true)
             put("message", backend.update())
         }.toString())
+        "POST" to "/api/clock" -> clock(request)
         else -> error(404, "غير موجود")
+    }
+
+    /**
+     * The TV's clock from the phone: `{"epochMillis": n}` sets it to the phone's time, `{"confirm": true}`
+     * says the time it shows is right. One of the two, nothing else.
+     */
+    private fun clock(request: HttpRequest): HttpResponse {
+        val body = runCatching { Json.parseToJsonElement(request.text) as? JsonObject }.getOrNull()
+            ?: return error(400, TvStrings.PHONE_CLOCK_BAD_REQUEST)
+        val epochMillis = (body["epochMillis"] as? JsonPrimitive)?.takeUnless { it.isString }?.longOrNull
+        val confirm = (body["confirm"] as? JsonPrimitive)?.takeUnless { it.isString }?.booleanOrNull == true
+        val (ok, message) = when {
+            body.keys.size != 1 -> return error(400, TvStrings.PHONE_CLOCK_BAD_REQUEST)
+            epochMillis != null -> backend.setClock(epochMillis).let { it to if (it) TvStrings.PHONE_CLOCK_SET else TvStrings.PHONE_CLOCK_SET_REFUSED }
+            confirm -> backend.confirmClock().let { it to if (it) TvStrings.PHONE_CLOCK_CONFIRMED else TvStrings.PHONE_CLOCK_CONFIRM_REFUSED }
+            else -> return error(400, TvStrings.PHONE_CLOCK_BAD_REQUEST)
+        }
+        return HttpResponse.json(200, buildJsonObject {
+            put("ok", ok)
+            put("message", message)
+        }.toString())
     }
 
     private fun checked(request: HttpRequest, respond: (ParseResult) -> HttpResponse): HttpResponse =
@@ -205,6 +249,9 @@ class DashboardRoutes(private val token: String, private val backend: DashboardB
         /** A month: the URL has no version, so an update that changed a font would be seen within that time. */
         const val FONT_CACHE = "public, max-age=2592000"
         const val MAX_IMAGE_BYTES = 15 * 1024 * 1024
+
+        /** `{"epochMillis":1790000000000}` with room to spare. */
+        const val MAX_CLOCK_BODY = 256
 
         /** The page's own files: nothing else can be read through this path. */
         private val PAGE_FILE = Regex("""index\.html|app\.js|style\.css|views/[a-z0-9-]{1,40}\.js""")

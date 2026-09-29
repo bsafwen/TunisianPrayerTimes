@@ -1,7 +1,8 @@
 /*
- * Overview: what the TV shows now and what comes next, today's times, the checks of the screen and
- * the app version. Read-only; it follows the TV (autoRefresh, and its countdown ticks every second
- * on the TV's clock) and changes nothing except starting an update.
+ * Overview: what the TV shows now and what comes next, today's times, the TV's clock against the
+ * phone's, the checks of the screen and the app version. It follows the TV (autoRefresh, and its
+ * countdown ticks every second on the TV's clock) and changes nothing except the TV's clock (set to
+ * the phone's time, or confirmed) and starting an update.
  */
 (function () {
   "use strict";
@@ -23,8 +24,17 @@
   // While the screen waits for the iqamah, the countdown is to the iqamah; otherwise to the next adhan.
   var BEFORE_IQAMAH = { ADHAN: true, IQAMAH_COUNTDOWN: true, KHUTBA: true };
   var LEVELS = { GOOD: "جيد", WARNING: "تنبيه", BAD: "مشكلة", INFO: "معلومة" };
-  // The clock warning is announced when it appears, not again with each redraw every 30 s.
-  var clockAnnounced = false;
+  // A clock problem is announced when it appears, not again with each redraw every 30 s.
+  var clockAnnounced = null;
+  // Further apart than this, the TV's clock and the phone's disagree.
+  var CLOCK_TOLERANCE = 60 * 1000;
+  // How the TV's time was confirmed (clock.source).
+  var SOURCES = {
+    NETWORK: "مصدر الوقت: الإنترنت",
+    ADMIN: "مصدر الوقت: تأكيد المشرف على الشاشة",
+    PHONE: "مصدر الوقت: هاتف المشرف",
+    ZONE: "مصدر الوقت: ساعة الجهاز، ومنطقته الزمنية على توقيت تونس"
+  };
 
   /** "HH:MM" from "HH:MM", "HH:MM:SS" or "YYYY-MM-DDTHH:MM:SS"; anything else as given. */
   function shortTime(value) {
@@ -215,11 +225,120 @@
     return card;
   }
 
-  /** The clock warning; an alert (read out at once) only when `announce`, a plain card on later redraws. */
-  function clockCard(el, announce) {
+  /** The clock warning of a TV that says only whether its clock is plausible; an alert only when `announce`. */
+  function plainClockCard(el, announce) {
     return el("section", { class: "card level-BAD", attrs: { role: announce ? "alert" : false } },
       el("h2", { text: "ساعة الشاشة غير صحيحة" }),
       el("p", { class: "muted", text: "قد تكون أوقات الصلاة المعروضة خاطئة. اضبط تاريخ الشاشة وساعتها من إعدادات التلفاز." }));
+  }
+
+  /**
+   * The TV's clock against the phone's (ctx.clockCheck): "same" within a minute, "ahead" or "behind" by
+   * more, or null when the request's round trip leaves it unsure (or nothing is known).
+   */
+  function comparison(check) {
+    if (!check) return null;
+    var off = Math.abs(check.difference);
+    if (off + check.margin <= CLOCK_TOLERANCE) return "same";
+    if (off - check.margin > CLOCK_TOLERANCE) return check.difference > 0 ? "ahead" : "behind";
+    return null;
+  }
+
+  /** What is wrong with the TV's clock, to announce once: "BAD", "DIFFERS", "UNVERIFIED", or null. */
+  function clockProblem(clock, check) {
+    if (clock.trusted === false) return "BAD";
+    var compared = comparison(check);
+    if (compared === "ahead" || compared === "behind") return "DIFFERS";
+    return clock.verified === true ? null : "UNVERIFIED";
+  }
+
+  /** "دقيقة", "دقيقتين", "5 دقائق", "11 دقيقة": the noun agrees with the count. */
+  function counted(n, one, two, few, many) {
+    if (n === 1) return one;
+    if (n === 2) return two;
+    var rest = n % 100;
+    return n + " " + (rest >= 3 && rest <= 10 ? few : many);
+  }
+
+  /** "بدقيقتين", "بـ 5 دقائق", "بساعة و10 دقائق", "بأكثر من يوم". */
+  function by(ms) {
+    var minutes = Math.max(1, Math.round(Math.abs(ms) / 60000));
+    if (minutes >= 24 * 60) return "بأكثر من يوم";
+    var hours = Math.floor(minutes / 60);
+    var parts = [];
+    if (hours) parts.push(counted(hours, "ساعة", "ساعتين", "ساعات", "ساعة"));
+    if (minutes % 60) parts.push(counted(minutes % 60, "دقيقة", "دقيقتين", "دقائق", "دقيقة"));
+    var text = parts.join(" و");
+    return /^\d/.test(text) ? "بـ " + text : "ب" + text;
+  }
+
+  function hm(date) { return pad(date.getUTCHours()) + ":" + pad(date.getUTCMinutes()); }
+
+  /** A button that sends `body()` (made when pressed) to /api/clock, says the TV's answer, then reads the TV again. */
+  function clockButton(ctx, text, body) {
+    var button = ctx.el("button", { class: "primary", text: text, attrs: { type: "button" } });
+    button.addEventListener("click", function () {
+      button.disabled = true;
+      ctx.api.post("/api/clock", JSON.stringify(body())).then(function (result) {
+        var ok = !!(result && result.ok);
+        ctx.toast((result && (result.message || result.error)) || (ok ? "تمّ" : "تعذّر ذلك"), ok ? "ok" : "error");
+        return ctx.reload();
+      }, function (error) {
+        button.disabled = false;
+        if (error.message !== "forbidden" && error.message !== "closed") ctx.toast(error.message, "error");
+      });
+    });
+    return button;
+  }
+
+  /**
+   * The TV's clock: whether its time is confirmed and how, the TV's time beside the phone's, and the fix
+   * that fits: the phone's time when they disagree, a confirmation when an unconfirmed time agrees. An
+   * alert (read out at once) only when `announce`, a plain card on later redraws.
+   */
+  function clockCard(ctx, clock, check, announce) {
+    var el = ctx.el;
+    var compared = comparison(check);
+    var implausible = clock.trusted === false;
+    var verified = !implausible && clock.verified === true;
+    var differs = compared === "ahead" || compared === "behind";
+    var level = implausible ? " level-BAD" : differs || !verified ? " level-WARNING" : "";
+    var card = el("section", { class: "card" + level, attrs: { role: announce ? "alert" : false } },
+      el("h2", { text: implausible ? "ساعة الشاشة غير صحيحة" : verified ? "ساعة الشاشة مؤكَّدة" : "ساعة الشاشة غير مؤكَّدة" }),
+      el("p", { class: "muted", text: implausible ? "لا تعرض الشاشة أوقات الصلاة حتى يُضبط وقتها."
+        : verified ? (SOURCES[clock.source] || "")
+        : "لم يُؤكَّد وقتها بعد: قارِنه بساعة هاتفك." }));
+    if (check) {
+      var tv = ctx.digits("");
+      var phone = ctx.digits("");
+      card.appendChild(el("p", null, "على الشاشة ", tv, " · في هاتفك ", phone));
+      // Both in Tunisia's time: the phone's is the TV's less their difference, whatever the phone's own zone.
+      var update = function (now) {
+        ctx.setDigits(tv, hm(now));
+        ctx.setDigits(phone, hm(new Date(now.getTime() - check.difference)));
+      };
+      update(ctx.now());
+      ctx.onTick(update);
+      card.appendChild(el("p", { text: compared === "same" ? "تطابق ساعة هاتفك."
+        : compared === "ahead" ? "متقدّمة على ساعة هاتفك " + by(check.difference) + "."
+        : compared === "behind" ? "متأخّرة عن ساعة هاتفك " + by(check.difference) + "."
+        : "تعذّرت المقارنة بساعة هاتفك: الاتصال بطيء، وتُعاد بعد قليل." }));
+    }
+    if (clock.zoneDiffers === true && typeof clock.deviceZone === "string" && clock.deviceZone) {
+      card.appendChild(el("p", { class: "muted small" }, "منطقة الجهاز الزمنية ", el("span", { class: "ltr", text: clock.deviceZone }),
+        verified ? "، ولا أثر لها: الأوقات بتوقيت تونس." : " ليست توقيت تونس، فقد تكون ساعته ضُبطت على توقيت آخر."));
+    }
+    if (differs) {
+      // The network is a good clock too: the phone's may be the wrong one.
+      if (verified && clock.source === "NETWORK") {
+        card.appendChild(el("p", { class: "muted small", text: "أكّد الإنترنت وقت الشاشة: تحقّق من ساعة هاتفك قبل أن تضبطها عليها." }));
+      }
+      card.appendChild(el("div", { class: "row" },
+        clockButton(ctx, "اضبط الشاشة على وقت هاتفي", function () { return { epochMillis: Date.now() }; })));
+    } else if (compared === "same" && !verified) {
+      card.appendChild(el("div", { class: "row" }, clockButton(ctx, "الوقت صحيح", function () { return { confirm: true }; })));
+    }
+    return card;
   }
 
   function weatherCard(el, weather) {
@@ -287,11 +406,17 @@
     render: function (root, ctx) {
       var el = ctx.el;
       var state = ctx.state || {};
-      var untrusted = !!(state.clock && state.clock.trusted === false);
-      if (untrusted) root.appendChild(clockCard(el, !clockAnnounced));
-      clockAnnounced = untrusted;
+      var clock = state.clock || {};
+      // A TV that sends its instant is compared with the phone; an older one only says whether its clock is plausible.
+      var known = typeof clock.epochMillis === "number";
+      var problem = known ? clockProblem(clock, ctx.clockCheck) : clock.trusted === false ? "BAD" : null;
+      var announce = !!problem && problem !== clockAnnounced;
+      clockAnnounced = problem;
+      // A problem comes first; a confirmed clock that agrees with the phone waits under today's times.
+      if (problem) root.appendChild(known ? clockCard(ctx, clock, ctx.clockCheck, announce) : plainClockCard(el, announce));
       root.appendChild(nowCard(ctx, state));
       root.appendChild(timesCard(ctx, state));
+      if (known && !problem) root.appendChild(clockCard(ctx, clock, ctx.clockCheck, false));
       var weather = state.weather;
       if (weather && weather.enabled && weather.text) root.appendChild(weatherCard(el, weather));
       if (Array.isArray(state.kiosk) && state.kiosk.length) root.appendChild(kioskCard(el, state.kiosk));

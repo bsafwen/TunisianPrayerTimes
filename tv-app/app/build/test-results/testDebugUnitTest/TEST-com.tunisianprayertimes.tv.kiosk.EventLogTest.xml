@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tunisianprayertimes.tv.kiosk.EventLogTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-29T09:11:02.131Z" hostname="HOME" time="0.054">
+  <properties/>
+  <testcase name="brokenLinesAreSkippedAndDetailsStayOnOneLine" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.015"/>
+  <testcase name="aLeftoverTemporaryFileDoesNotHideTheLog" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.008"/>
+  <testcase name="onlyTheNewestEntriesAreKept" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.031"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

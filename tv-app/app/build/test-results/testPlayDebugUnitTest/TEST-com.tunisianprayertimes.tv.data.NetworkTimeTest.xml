@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tunisianprayertimes.tv.data.NetworkTimeTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:30.240Z" hostname="HOME" time="0.008">
+  <properties/>
+  <testcase name="aVagueOrImpossibleRoundTripIsNotTrusted" classname="com.tunisianprayertimes.tv.data.NetworkTimeTest" time="0.004"/>
+  <testcase name="readsTheHttpDateAndNothingElse" classname="com.tunisianprayertimes.tv.data.NetworkTimeTest" time="0.002"/>
+  <testcase name="aDateThatCannotBeRightIsNeverTrusted" classname="com.tunisianprayertimes.tv.data.NetworkTimeTest" time="0.001"/>
+  <testcase name="theServersDateIsCarriedToNow" classname="com.tunisianprayertimes.tv.data.NetworkTimeTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -63,7 +63,6 @@ object TvStrings {
     const val CLOCK_SET_HERE = "اعتماد هذا الوقت"
     const val CLOCK_OPEN_SETTINGS = "فتح إعدادات التاريخ والوقت"
     const val CLOCK_CONFIRM = "وقت الجهاز صحيح"
-    const val CLOCK_WRONG_ZONE = "المنطقة الزمنية للجهاز ليست توقيت تونس: تُعرض الأوقات بتوقيت تونس، واضبط المنطقة الزمنية من إعدادات الجهاز"
 
     fun usbTemplateWritten(packageName: String) =
         "كُتب ملف الإعدادات على مفتاح USB في Android/data/$packageName/files/mosque-tv.json: عدّله على الحاسوب ثم أعد إدخال المفتاح"
@@ -382,6 +381,13 @@ object TvStrings {
         "في المرات القادمة يكفي تشغيل نقطة الاتصال: تتصل بها الشاشة وحدها.",
     )
     const val HOTSPOT_NOTE = "إن قال الهاتف إن الشبكة بلا إنترنت، فاختر البقاء متصلًا."
+
+    // ── The screen's clock from the phone (the dashboard's POST /api/clock): its answers ──
+    const val PHONE_CLOCK_SET = "ضُبطت ساعة الشاشة على وقت هاتفك"
+    const val PHONE_CLOCK_SET_REFUSED = "لم تُضبط الساعة: تاريخ الهاتف غير صحيح"
+    const val PHONE_CLOCK_CONFIRMED = "أُكِّد وقت الشاشة"
+    const val PHONE_CLOCK_CONFIRM_REFUSED = "لم يُؤكَّد الوقت: ساعة الشاشة غير صحيحة، اضبطها على وقت هاتفك"
+    const val PHONE_CLOCK_BAD_REQUEST = "طلب غير صالح"
 
     /** Onboarding. */
     fun step(index: Int, count: Int): String = "الخطوة $index من $count"

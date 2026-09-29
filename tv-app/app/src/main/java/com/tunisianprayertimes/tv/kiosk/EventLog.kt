@@ -3,11 +3,16 @@ package com.tunisianprayertimes.tv.kiosk
 import java.io.File
 import java.io.FileOutputStream
 
-/** What the kiosk remembers happened, for the health page. Local only: nothing is uploaded. */
+/**
+ * What the kiosk remembers happened, for the health page. Local only: nothing is uploaded.
+ * The clock's events carry the details [ClockLog] writes: CLOCK_SET, the system clock was set (by
+ * someone, the network or the app itself); ZONE_SET, the system zone changed; CLOCK_CONFIRMED, the
+ * time shown was confirmed or corrected (by the network, the admin or the phone).
+ */
 enum class KioskEvent {
     BOOT, AUTOSTART_OK, AUTOSTART_BLOCKED, CRASH, SAFE_MODE_ENTER, SAFE_MODE_EXIT, WATCHDOG_REFRONT,
     SLEEP_GAP, SCREEN_OFF, SCREEN_ON, MAINT_RESTART, HOME_MODE_ON, HOME_MODE_OFF, ADMIN_EXIT, UPDATE,
-    BOOT_TIMING, QUICK_START,
+    BOOT_TIMING, QUICK_START, CLOCK_SET, ZONE_SET, CLOCK_CONFIRMED,
 }
 
 /** One logged event; [atMillis] is the device's wall clock, which may have been wrong at the time. */

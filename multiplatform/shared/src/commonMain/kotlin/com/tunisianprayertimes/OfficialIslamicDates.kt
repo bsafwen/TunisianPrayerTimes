@@ -2,6 +2,7 @@ package com.tunisianprayertimes
 
 import com.tunisianprayertimes.RamadanOverrideChecker.RamadanOverride
 import com.tunisianprayertimes.platform.Preferences
+import com.tunisianprayertimes.time.TunisTime
 import java.time.Instant
 import java.time.LocalDate
 import java.time.chrono.HijrahChronology
@@ -20,7 +21,8 @@ object OfficialIslamicDates {
         readLegacy = Preferences::getRamadanOverrideJson,
         fetchYear = RamadanOverrideChecker::fetchOverrideForYear,
         nanoTime = System::nanoTime,
-        currentHijriYear = { HijrahDate.now().get(ChronoField.YEAR) },
+        // The year in Tunisia, whatever the device's zone.
+        currentHijriYear = { HijrahDate.now(TunisTime.ZONE).get(ChronoField.YEAR) },
         onRecord = RamadanOverrideChecker::useOfficialOverride,
         legacyOverride = { RamadanOverrideChecker.cachedOverride },
         manual = { ManualIslamicDateOverrides.all() },

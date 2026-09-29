@@ -5,105 +5,206 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
 
 class ClockGuardTest {
 
     private class MemoryStore : ClockStore {
         override var lastKnownGoodMillis = 0L
         override var correctionMillis = 0L
-        override var correctionElapsedMillis = 0L
+        override var confirmedBy: String? = null
+        override var confirmedAtDeviceMillis = 0L
     }
 
     private val store = MemoryStore()
     private var system: Instant = Instant.parse("2026-10-01T11:00:00Z") // 12:00 in Tunis
     private var elapsed = 3_600_000L
     private var zone: ZoneId = TunisTime.ZONE
-    private val guard = ClockGuard(store, { system }, { elapsed }, { zone })
+    private var guard = ClockGuard(store, { system }, { elapsed }, { zone })
+
+    private fun time(text: String) = LocalDateTime.parse(text)
+
+    /** The app restarts (a reboot, or the process started again): a new guard on the same memory. */
+    private fun restart(elapsedAfterBoot: Long = 20_000) {
+        elapsed = elapsedAfterBoot
+        guard = ClockGuard(store, { system }, { elapsed }, { zone })
+    }
+
+    /** Time passes normally: the device clock and the time since boot move together. */
+    private fun pass(seconds: Long) {
+        system = system.plusSeconds(seconds)
+        elapsed += seconds * 1000
+    }
 
     @Test
-    fun aNormalClockIsTrustedAndReadInTunisTime() {
-        assertEquals(ClockReading(LocalDateTime.parse("2026-10-01T12:00:00"), ClockTrust.TRUSTED), guard.read())
+    fun aClockInTunisiasZoneIsTrusted() {
+        assertEquals(ClockReading(time("2026-10-01T12:00:00"), ClockTrust.TRUSTED, ClockSource.ZONE), guard.read())
         assertEquals(system.toEpochMilli(), store.lastKnownGoodMillis)
+        // Another zone that reads Tunisia's time now (Algiers) is as good.
+        zone = ZoneId.of("Africa/Algiers")
+        assertEquals(ClockTrust.TRUSTED, guard.read().trust)
     }
 
     @Test
     fun aClockResetByAPowerCutIsNotTrusted() {
         for (reset in listOf("1970-01-01T00:00:00Z", "2015-01-01T00:00:00Z", "2026-08-31T23:00:00Z")) {
             system = Instant.parse(reset)
+            restart()
             assertEquals(ClockTrust.IMPLAUSIBLE, guard.read().trust, reset)
         }
         assertEquals(0L, store.lastKnownGoodMillis, "a wrong clock never becomes the reference")
     }
 
     @Test
-    fun aJumpBackBehindTheLastGoodTimeIsNotTrusted() {
+    fun aRebootBackBehindTheLastGoodTimeIsNotTrusted() {
         guard.read()
         // Rebooted without a clock battery: the box restarted at its firmware date, days earlier.
         system = Instant.parse("2026-09-25T08:00:00Z")
-        elapsed = 5_000
+        restart(5_000)
         assertEquals(ClockTrust.IMPLAUSIBLE, guard.read().trust)
-        // The admin checks the wall clock and confirms: it is the new reference.
-        guard.confirm()
-        assertEquals(ClockTrust.TRUSTED, guard.read().trust)
+        // The admin checks their watch and confirms the time shown: it is the new reference.
+        assertTrue(guard.accept(time("2026-10-01T12:30:00")))
+        assertEquals(ClockReading(time("2026-10-01T12:30:00"), ClockTrust.TRUSTED, ClockSource.ADMIN), guard.read())
     }
 
     @Test
-    fun smallCorrectionsAreNormal() {
+    fun theClockSetWhileTheAppRunsIsTheNewReference() {
         guard.read()
-        system = system.minusSeconds(30 * 60) // network time pulled the clock back half an hour
-        assertEquals(ClockTrust.TRUSTED, guard.read().trust)
+        pass(10)
+        system = system.minusSeconds(3 * 3600) // someone sets the device clock back three hours in the system settings
+        assertEquals(ClockTrust.TRUSTED, guard.read().trust, "a fix, not a power cut")
+        assertEquals(time("2026-10-01T09:00:10"), guard.read().now)
     }
 
     @Test
-    fun aDeviceInAnotherZoneStillShowsTunisTime() {
-        zone = ZoneId.of("Europe/Paris") // summer: UTC+2 while Tunisia is UTC+1
+    fun aClockFromTheNetworkInAForeignZoneShowsTunisiasTimeUntilChecked() {
+        zone = ZoneId.of("Asia/Shanghai") // UTC+8, the instant is right (network time)
         val reading = guard.read()
-        assertEquals(ClockTrust.WRONG_ZONE, reading.trust)
-        assertEquals(LocalDateTime.parse("2026-10-01T12:00:00"), reading.now)
-        system = Instant.parse("2026-12-01T11:00:00Z") // winter: both UTC+1, nothing to warn about
-        assertEquals(ClockTrust.TRUSTED, guard.read().trust)
-    }
-
-    @Test
-    fun theAdminCanSetTheTimeInTheAppUntilTheNextReboot() {
-        system = Instant.parse("2015-01-01T00:00:00Z")
-        assertEquals(ClockTrust.IMPLAUSIBLE, guard.read().trust)
-
-        guard.setTime(LocalDateTime.parse("2026-10-01T12:00:00"))
-        assertEquals(ClockReading(LocalDateTime.parse("2026-10-01T12:00:00"), ClockTrust.TRUSTED), guard.read())
-        system = system.plusSeconds(90)
-        elapsed += 90_000
-        assertEquals(LocalDateTime.parse("2026-10-01T12:01:30"), guard.read().now)
-
-        elapsed = 10_000 // rebooted: the device clock is back at 2015 and the correction no longer holds
-        system = Instant.parse("2015-01-01T00:00:10Z")
-        assertEquals(ClockTrust.IMPLAUSIBLE, guard.read().trust)
+        assertEquals(ClockReading(time("2026-10-01T12:00:00"), ClockTrust.UNVERIFIED), reading)
+        // The admin is offered the converted time first, and the device's own clock second.
+        assertEquals(listOf(time("2026-10-01T12:00:00"), time("2026-10-01T19:00:00")), guard.candidates())
+        // Once online, the network confirms it: nothing moves.
+        guard.networkTime(system)
+        assertEquals(ClockReading(time("2026-10-01T12:00:00"), ClockTrust.TRUSTED, ClockSource.NETWORK), guard.read())
         assertEquals(0L, store.correctionMillis)
     }
 
     @Test
-    fun aCorrectionStopsOnceTheDeviceClockIsFixed() {
-        system = Instant.parse("2015-01-01T00:00:00Z")
-        guard.setTime(LocalDateTime.parse("2026-10-01T12:00:00"))
-        assertEquals(ClockTrust.TRUSTED, guard.read().trust)
-        // Network time comes back: the device clock is right again and the correction must not be added to it.
-        system = Instant.parse("2026-10-01T11:05:00Z")
-        assertEquals(ClockReading(LocalDateTime.parse("2026-10-01T12:05:00"), ClockTrust.TRUSTED), guard.read())
+    fun aClockSetByHandOnGmtIsCorrectedByTheAdminAndStaysCorrected() {
+        // The box is on GMT; its owner set it to 12:00 on their watch, so the instant says 13:00 in Tunis.
+        zone = ZoneId.of("GMT")
+        system = Instant.parse("2026-10-01T12:00:00Z")
+        assertEquals(ClockReading(time("2026-10-01T13:00:00"), ClockTrust.UNVERIFIED), guard.read())
+        val (fromInstant, fromDeviceClock) = guard.candidates()
+        assertEquals(time("2026-10-01T13:00:00"), fromInstant)
+        assertEquals(time("2026-10-01T12:00:00"), fromDeviceClock)
+        // The admin picks the device's clock: every prayer moves back to the right hour.
+        assertTrue(guard.accept(fromDeviceClock))
+        assertEquals(ClockReading(time("2026-10-01T12:00:00"), ClockTrust.TRUSTED, ClockSource.ADMIN), guard.read())
+        // A reboot on a box with a clock battery: the error is still there, and so is the answer.
+        pass(600)
+        restart()
+        assertEquals(ClockReading(time("2026-10-01T12:10:00"), ClockTrust.TRUSTED, ClockSource.ADMIN), guard.read())
+    }
+
+    @Test
+    fun aClockSetByHandOnShanghaiTimeIsSevenHoursOffUntilAnswered() {
+        zone = ZoneId.of("Asia/Shanghai")
+        system = Instant.parse("2026-10-01T04:00:00Z") // 12:00 on the owner's watch, read as Shanghai time
+        assertEquals(time("2026-10-01T05:00:00"), guard.read().now)
+        assertEquals(listOf(time("2026-10-01T05:00:00"), time("2026-10-01T12:00:00")), guard.candidates())
+        guard.accept(time("2026-10-01T12:00:00"))
+        assertEquals(time("2026-10-01T12:00:00"), guard.read().now)
+    }
+
+    @Test
+    fun changingTheDeviceClockDropsTheAnswer() {
+        zone = ZoneId.of("GMT")
+        system = Instant.parse("2026-10-01T12:00:00Z")
+        guard.read()
+        guard.accept(time("2026-10-01T12:00:00"))
+        pass(60)
+        guard.read()
+        // The admin now fixes the device clock itself, one hour back: the old correction must not apply on top.
+        system = system.minusSeconds(3600)
+        val reading = guard.read()
+        assertEquals(ClockTrust.UNVERIFIED, reading.trust)
+        assertEquals(time("2026-10-01T12:01:00"), reading.now)
         assertEquals(0L, store.correctionMillis)
     }
 
     @Test
-    fun settingTheTimeByHandStartsNearTheRealTime() {
-        guard.read() // last good: 2026-10-01 12:00 in Tunis
-        system = Instant.parse("1970-01-01T00:00:00Z")
-        assertEquals(LocalDateTime.parse("2026-10-01T12:00:00"), guard.suggestedTime())
-        store.lastKnownGoodMillis = 0
-        assertEquals(LocalDateTime.parse("2026-09-01T01:00:00"), guard.suggestedTime()) // the floor, in Tunis time
+    fun theSystemBroadcastDropsTheAnswerWhenTheAppWasNotRunning() {
+        zone = ZoneId.of("GMT")
+        guard.accept(time("2026-10-01T12:00:00"))
+        ClockGuard.systemClockChanged(store, Instant.parse("2026-10-01T11:00:00Z"))
+        restart()
+        assertEquals(ClockTrust.UNVERIFIED, guard.read().trust)
+        assertEquals(0L, store.correctionMillis)
     }
 
     @Test
-    fun beyondTheFormulaRangeIsNotTrusted() {
-        system = Instant.parse("2101-06-01T00:00:00Z")
+    fun aPowerCutAfterAnAnswerAsksAgain() {
+        zone = ZoneId.of("GMT")
+        system = Instant.parse("2026-10-01T12:00:00Z")
+        guard.accept(time("2026-10-01T12:00:00"))
+        // No clock battery: the box comes back at a firmware date after the floor, before the answer.
+        system = Instant.parse("2026-09-20T00:00:00Z")
+        restart()
         assertEquals(ClockTrust.IMPLAUSIBLE, guard.read().trust)
+        assertEquals(null, store.confirmedBy)
+    }
+
+    @Test
+    fun theNetworkCorrectsAWrongClockEvenInTunisiasZone() {
+        // In Tunisia's zone but set an hour behind by hand: the zone alone cannot see it, the network can.
+        system = Instant.parse("2026-10-01T10:00:00Z")
+        assertEquals(time("2026-10-01T11:00:00"), guard.read().now)
+        guard.networkTime(Instant.parse("2026-10-01T11:00:00Z"))
+        assertEquals(ClockReading(time("2026-10-01T12:00:00"), ClockTrust.TRUSTED, ClockSource.NETWORK), guard.read())
+        // Seconds of difference later confirm it again without moving it.
+        val correction = store.correctionMillis
+        guard.networkTime(system.plusMillis(correction).plusSeconds(20))
+        assertEquals(correction, store.correctionMillis)
+    }
+
+    @Test
+    fun theNetworkOverridesAnAdminsWrongAnswer() {
+        zone = ZoneId.of("GMT")
+        guard.accept(time("2026-10-01T15:00:00")) // a mistake: three hours ahead
+        guard.networkTime(system)
+        assertEquals(ClockReading(time("2026-10-01T12:00:00"), ClockTrust.TRUSTED, ClockSource.NETWORK), guard.read())
+    }
+
+    @Test
+    fun theAdminCannotConfirmAnImpossibleClock() {
+        system = Instant.parse("2015-01-01T00:00:00Z")
+        assertEquals(ClockTrust.IMPLAUSIBLE, guard.read().trust)
+        assertFalse(guard.confirm(), "a 2015 clock cannot be right")
+        assertFalse(guard.accept(time("2015-06-01T12:00:00")))
+        assertTrue(guard.accept(time("2026-10-01T12:00:00")))
+        assertEquals(ClockReading(time("2026-10-01T12:00:00"), ClockTrust.TRUSTED, ClockSource.ADMIN), guard.read())
+        // The suggestion for the stepper never starts before the floor.
+        assertTrue(!guard.suggestedTime().isBefore(time("2026-09-01T01:00:00")))
+    }
+
+    @Test
+    fun thePhoneCanSetTheTime() {
+        zone = ZoneId.of("GMT")
+        system = Instant.parse("2026-10-01T12:00:00Z")
+        assertTrue(guard.acceptInstant(Instant.parse("2026-10-01T11:00:30Z"), ClockSource.PHONE))
+        assertEquals(ClockReading(time("2026-10-01T12:00:30"), ClockTrust.TRUSTED, ClockSource.PHONE), guard.read())
+    }
+
+    @Test
+    fun aZoneWithSummerTimeOnlyDiffersInSummer() {
+        zone = ZoneId.of("Europe/Paris")
+        assertTrue(guard.zoneDiffers()) // October 1st: UTC+2 against Tunisia's UTC+1
+        assertEquals(ClockTrust.UNVERIFIED, guard.read().trust)
+        system = Instant.parse("2026-12-01T11:00:00Z")
+        restart()
+        assertFalse(guard.zoneDiffers())
+        assertEquals(ClockTrust.TRUSTED, guard.read().trust)
     }
 }

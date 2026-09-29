@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Device owner is only used for lock task; no policies are needed. -->
+<device-admin>
+    <uses-policies />
+</device-admin>

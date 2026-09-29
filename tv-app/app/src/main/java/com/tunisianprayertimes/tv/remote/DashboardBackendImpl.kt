@@ -11,6 +11,7 @@ import com.tunisianprayertimes.mosque.FlowState
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.DateEvent
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
+import com.tunisianprayertimes.time.ClockSource
 import com.tunisianprayertimes.tv.data.LocalMediaManager
 import com.tunisianprayertimes.tv.data.MediaKind
 import com.tunisianprayertimes.tv.data.PrefsManager
@@ -55,6 +56,48 @@ data class DashboardLive(
 )
 
 /**
+ * The TV's clock for the dashboard, from the clock guard: what the page compares with the phone's own
+ * clock, and the two fixes it offers. Called on the server's threads: the guard belongs to the display's
+ * main thread, so an implementation reads a snapshot there and runs [set] and [confirm] there.
+ */
+interface DashboardClock {
+    /** The clock now. */
+    fun state(): DashboardClockState
+
+    /** The phone's clock says it is [epochMillis] now: the TV takes it ([ClockSource.PHONE]). False when it cannot be right. */
+    fun set(epochMillis: Long): Boolean
+
+    /** The admin, having compared it with the phone, says the time shown is right. False when it cannot be. */
+    fun confirm(): Boolean
+}
+
+/** What GET /api/state says of the clock, besides "now" and "trusted" (see docs/DASHBOARD.md). */
+data class DashboardClockState(
+    /** The instant the screen's time comes from (the device clock with the guard's correction), in epoch millis. */
+    val epochMillis: Long,
+    /** Confirmed ([com.tunisianprayertimes.time.ClockTrust.TRUSTED]); [source] says how. */
+    val verified: Boolean,
+    val source: ClockSource?,
+    /** The device's own zone id: information for the admin, since the times are Tunisia's whatever it is. */
+    val deviceZone: String,
+    /** Whether the device's zone reads another time than Tunisia's now. */
+    val zoneDiffers: Boolean,
+)
+
+/** The "clock" object of GET /api/state: "now" and "trusted" from what the screen shows, the rest from [clock] when known. */
+internal fun clockJson(live: DashboardLive?, clock: DashboardClockState?): JsonObject = buildJsonObject {
+    put("now", live?.now?.withNano(0)?.toString().orEmpty())
+    put("trusted", live?.clockTrusted ?: true)
+    if (clock != null) {
+        put("epochMillis", clock.epochMillis)
+        put("verified", clock.verified)
+        put("source", clock.source?.name)
+        put("deviceZone", clock.deviceZone)
+        put("zoneDiffers", clock.zoneDiffers)
+    }
+}
+
+/**
  * The dashboard's view of the TV and the actions it may take. Settings changes go through
  * [inbox] exactly like a USB file (checked, previewed, applied whole, with an undo snapshot);
  * images through the same checks as images from a key.
@@ -72,6 +115,8 @@ class DashboardBackendImpl(
     private val kioskRows: () -> List<HealthRow>,
     private val onSettingsChanged: () -> Unit,
     private val onMediaChanged: () -> Unit,
+    /** The clock the page checks against the phone; without it the page only knows "now" and "trusted", and cannot set it. */
+    private val clock: DashboardClock? = null,
 ) : DashboardBackend {
 
     override fun stateJson(): String {
@@ -84,10 +129,7 @@ class DashboardBackendImpl(
                 put("flavor", flavor)
                 put("packageName", context.packageName)
             }
-            putJsonObject("clock") {
-                put("now", live?.now?.withNano(0)?.toString().orEmpty())
-                put("trusted", live?.clockTrusted ?: true)
-            }
+            put("clock", clockJson(live, clock?.let { runCatching(it::state).getOrNull() }))
             putJsonObject("mosque") {
                 put("name", prefs.mosqueName)
                 put("delegationId", prefs.delegationId)
@@ -257,6 +299,10 @@ class DashboardBackendImpl(
     }
 
     override fun update(): String = runBlocking { updater.installNow() }
+
+    override fun setClock(epochMillis: Long): Boolean = clock?.let { runCatching { it.set(epochMillis) }.getOrDefault(false) } ?: false
+
+    override fun confirmClock(): Boolean = clock?.let { runCatching { it.confirm() }.getOrDefault(false) } ?: false
 
     override fun asset(name: String): ByteArray? =
         runCatching { context.assets.open("dashboard/$name").use { it.readBytes() } }.getOrNull()

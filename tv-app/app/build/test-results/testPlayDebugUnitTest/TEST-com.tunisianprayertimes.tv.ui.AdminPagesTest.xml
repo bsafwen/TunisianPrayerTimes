@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tunisianprayertimes.tv.ui.AdminPagesTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:30.931Z" hostname="HOME" time="0.019">
+  <properties/>
+  <testcase name="theDeletionSaysWhatGoes" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
+  <testcase name="everyPageOpensFromTheMenuAndBackLeadsToIt" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.005"/>
+  <testcase name="announcementStepsStayInRange" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
+  <testcase name="theIntervalAgreesWithItsNumber" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.001"/>
+  <testcase name="theMenuFollowsTheBoard" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
+  <testcase name="theKioskFocusLeavesAnActionThatIsGone" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.01"/>
+  <testcase name="placesAndTheTimesBeforeAMove" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.001"/>
+  <testcase name="theKioskSummaryPutsProblemsFirst" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.001"/>
+  <testcase name="onlyAWarningIsGold" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
+  <testcase name="advancedOffersUndoAndBundledTextsOnlyWhenTheyApply" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
+  <testcase name="theIqamahAsTheTablesSayIt" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

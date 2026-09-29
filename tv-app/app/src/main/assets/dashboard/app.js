@@ -13,6 +13,8 @@ var Dashboard = (function () {
   var settings = {};
   var placesCache = null;
   var clockOffset = 0;
+  // The TV's clock against the phone's, from the last state: { difference: TV minus phone, margin }, in ms, or null.
+  var clockCheck = null;
   var current = null;
   var sessionClosed = false;
   // Whether the TV answered the last request: true, false, or "closed" once it ended the session.
@@ -259,12 +261,19 @@ var Dashboard = (function () {
 
   /** Reads the TV's state without drawing the section; resolves undefined (after a toast) when it fails. */
   function loadState() {
+    var sentAt = Date.now();
     return api.get("/api/state").then(function (next) {
+      var receivedAt = Date.now();
       state = next;
       try { settings = JSON.parse(state.settingsFile || "{}"); } catch (e) { settings = {}; }
       // The TV's wall time in Tunisia, read as if it were UTC so the phone's own zone does not shift it.
       var tvNow = state.clock && state.clock.now ? Date.parse(state.clock.now + "Z") : NaN;
       clockOffset = isNaN(tvNow) ? 0 : tvNow - Date.now();
+      // The TV read its clock while the request was on its way: half-way on average, give or take half the round trip.
+      var epoch = state.clock ? state.clock.epochMillis : null;
+      clockCheck = typeof epoch === "number" && isFinite(epoch) && receivedAt >= sentAt
+        ? { difference: epoch - (sentAt + receivedAt) / 2, margin: (receivedAt - sentAt) / 2 }
+        : null;
       document.getElementById("mosque-name").textContent = (state.mosque && state.mosque.name) || "شاشة المسجد";
       document.getElementById("mosque-place").textContent = (state.mosque && state.mosque.delegationName) || "";
       return state;
@@ -293,6 +302,8 @@ var Dashboard = (function () {
     /** True once the TV refused the token (the session ended): views stop showing their own errors. */
     get sessionClosed() { return sessionClosed; },
     get settings() { return settings; },
+    /** How far the TV's clock is from the phone's: { difference (TV minus phone), margin } in ms, or null when unknown. */
+    get clockCheck() { return clockCheck; },
     settingsCopy: settingsCopy,
     PRAYERS: PRAYERS,
     api: api,

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tunisianprayertimes.tv.usb.UsbMediaTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:40.879Z" hostname="HOME" time="0.032">
+  <properties/>
+  <testcase name="emptyFoldersOfferNothing" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.006"/>
+  <testcase name="imagesAreCopiedOnceAndReplaceOnlyTheirKind" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.012"/>
+  <testcase name="aDismissedSetIsOfferedAgainOnlyWhenItChanges" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.007"/>
+  <testcase name="onlyRealImagesAreTaken" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.007"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

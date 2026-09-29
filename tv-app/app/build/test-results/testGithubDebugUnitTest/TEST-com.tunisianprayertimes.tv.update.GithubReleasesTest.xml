@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tunisianprayertimes.tv.update.GithubReleasesTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:40.870Z" hostname="HOME" time="0.008">
+  <properties/>
+  <testcase name="theNewestTvReleaseAboveTheInstalledOneIsChosen" classname="com.tunisianprayertimes.tv.update.GithubReleasesTest" time="0.004"/>
+  <testcase name="aPageTellsHowManyReleasesItHeldSoTheCheckKnowsWhetherToReadOnFrom" classname="com.tunisianprayertimes.tv.update.GithubReleasesTest" time="0.003"/>
+  <testcase name="assetsFromElsewhereOrWithOtherNamesAreIgnored" classname="com.tunisianprayertimes.tv.update.GithubReleasesTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

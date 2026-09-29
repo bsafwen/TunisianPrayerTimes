@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.tunisianprayertimes.tv.data.AnnouncementTextTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:30.149Z" hostname="HOME" time="0.03">
+  <properties/>
+  <testcase name="filesAreReadHoweverNotepadOrAPhoneSavedThem" classname="com.tunisianprayertimes.tv.data.AnnouncementTextTest" time="0.021"/>
+  <testcase name="theTextIsPutOnOneLineAndKeptShort" classname="com.tunisianprayertimes.tv.data.AnnouncementTextTest" time="0.004"/>
+  <testcase name="emptyOrBinaryFilesAreNotAnnouncements" classname="com.tunisianprayertimes.tv.data.AnnouncementTextTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

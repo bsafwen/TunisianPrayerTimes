@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="shared-java">
+    <output-path>$PROJECT_DIR$/../multiplatform/shared/build/libs</output-path>
+    <root id="archive" name="shared-java.jar" />
+  </artifact>
+</component>

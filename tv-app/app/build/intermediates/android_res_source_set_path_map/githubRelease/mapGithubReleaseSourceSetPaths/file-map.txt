@@ -1,0 +1,11 @@
+com.tunisianprayertimes.tv.app-github-0 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\generated\res\pngs\github\release
+com.tunisianprayertimes.tv.app-github-1 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\generated\res\resValues\github\release
+com.tunisianprayertimes.tv.app-updated_navigation_xml-2 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\generated\updated_navigation_xml\githubRelease
+com.tunisianprayertimes.tv.app-packageGithubReleaseResources-3 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\intermediates\incremental\githubRelease\packageGithubReleaseResources\merged.dir
+com.tunisianprayertimes.tv.app-packageGithubReleaseResources-4 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\intermediates\incremental\githubRelease\packageGithubReleaseResources\stripped.dir
+com.tunisianprayertimes.tv.app-github-5 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\intermediates\merged-not-compiled-resources\github\release
+com.tunisianprayertimes.tv.app-githubRelease-6 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\intermediates\merged_res\githubRelease\mergeGithubReleaseResources
+com.tunisianprayertimes.tv.app-github-7 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\github\res
+com.tunisianprayertimes.tv.app-githubRelease-8 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\githubRelease\res
+com.tunisianprayertimes.tv.app-main-9 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\res
+com.tunisianprayertimes.tv.app-release-10 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\release\res
