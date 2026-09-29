@@ -94,7 +94,13 @@ class DashboardBackendImpl(
                 put("themeId", prefs.themeId)
             }
             putJsonArray("themes") {
-                ThemeRegistry.builtInThemes.forEach { theme -> addJsonObject { put("id", theme.id); put("name", theme.nameAr) } }
+                ThemeRegistry.builtInThemes.forEach { theme ->
+                    addJsonObject {
+                        put("id", theme.id)
+                        put("name", theme.nameAr)
+                        put("description", theme.description)
+                    }
+                }
             }
             put("today", today(live))
             put("flow", flow(live))

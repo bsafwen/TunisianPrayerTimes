@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.tv.ui.setup
 
+import com.tunisianprayertimes.tv.ui.common.FocusableButton
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

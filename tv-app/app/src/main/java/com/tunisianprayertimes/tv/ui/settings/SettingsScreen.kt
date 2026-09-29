@@ -27,10 +27,10 @@ import com.tunisianprayertimes.tv.data.IqamahConfig
 import com.tunisianprayertimes.tv.ui.setup.iqamahRows
 import com.tunisianprayertimes.tv.ui.common.initialFocus
 import com.tunisianprayertimes.tv.ui.TvStrings
-import com.tunisianprayertimes.tv.ui.setup.FocusableButton
-import com.tunisianprayertimes.tv.ui.setup.FocusableListItem
+import com.tunisianprayertimes.tv.ui.common.FocusableButton
+import com.tunisianprayertimes.tv.ui.common.FocusableListItem
 import com.tunisianprayertimes.tv.ui.theme.Gold
-import com.tunisianprayertimes.tv.ui.theme.TvThemeConfig
+import com.tunisianprayertimes.tv.ui.theme.DisplayTheme
 import com.tunisianprayertimes.tv.ui.theme.ThemeRegistry
 import java.time.LocalDate
 
@@ -673,7 +673,7 @@ private fun ThemePickerSection(
     onBack: () -> Unit
 ) {
     val context = LocalContext.current
-    val allThemes = remember { ThemeRegistry.allThemes(context) }
+    val allThemes = ThemeRegistry.builtInThemes
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -710,7 +710,7 @@ private fun ThemePickerSection(
 
 @Composable
 private fun ThemeListItem(
-    theme: TvThemeConfig,
+    theme: DisplayTheme,
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
@@ -729,22 +729,11 @@ private fun ThemeListItem(
                         else MaterialTheme.colorScheme.onSurface
                 )
                 Text(
-                    text = theme.nameEn,
+                    text = theme.description,
                     fontSize = 14.sp,
                     color = if (isSelected) MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f)
                         else MaterialTheme.colorScheme.onSurfaceVariant
                 )
-            }
-            // Color preview dots
-            Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-                listOf(theme.background, theme.surfaceCard, theme.accent, theme.primary).forEach { c ->
-                    Box(
-                        modifier = Modifier
-                            .size(20.dp)
-                            .background(c, RoundedCornerShape(4.dp))
-                            .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(4.dp))
-                    )
-                }
             }
         }
     }
@@ -762,7 +751,7 @@ private fun ThemeListItem(
         }
     } else {
         FocusableListItem(
-            text = "${theme.nameAr}  —  ${theme.nameEn}",
+            text = "${theme.nameAr}: ${theme.description}",
             onClick = onClick
         )
     }

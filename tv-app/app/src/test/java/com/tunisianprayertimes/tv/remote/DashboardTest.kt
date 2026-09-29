@@ -239,6 +239,15 @@ class DashboardTest {
     }
 
     @Test
+    fun aPreviewNamesTheNightScreen() {
+        val tv = com.tunisianprayertimes.mosque.MosqueProfile(display = com.tunisianprayertimes.mosque.DisplayOptions(nightScreen = true))
+        val file = """{ "display": { "nightScreen": false } }"""
+        val result = MosqueSettingsFile.parse(file, MosqueSchedule.DEFAULT, currentProfile = tv) as ParseResult.Success
+        val line = com.tunisianprayertimes.tv.ui.usb.SettingsChangeLines.of(result).single()
+        assertTrue(line, line.contains("الليل") && line.endsWith("تشغيل ← إيقاف"))
+    }
+
+    @Test
     fun sessionTokensAreFreshAndReadable() {
         val tokens = (1..50).map { DashboardRoutes.newToken() }.toSet()
         assertEquals(50, tokens.size)

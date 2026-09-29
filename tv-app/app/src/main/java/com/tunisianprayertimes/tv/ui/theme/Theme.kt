@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.tv.ui.theme
 
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
@@ -8,123 +9,94 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.sp
 
-// ══════════════════════════════════════════════════════════════════════════
-//  Theme system — all colors flow from [LocalTvTheme]
-// ══════════════════════════════════════════════════════════════════════════
+/** The theme the admin picked; screens read [DisplayTheme.sky] from it. */
+val LocalDisplayTheme = staticCompositionLocalOf { ThemeRegistry.builtInThemes.first() }
 
-/**
- * CompositionLocal that provides the current [TvThemeConfig] to all screens.
- * Access via `LocalTvTheme.current`.
- */
-val LocalTvTheme = staticCompositionLocalOf { ThemeRegistry.builtInThemes.first() }
+// The names the screens used before «أفق», on the «مداد» palette, until each screen is redrawn.
+@Deprecated("Use Midad") val TealPrimary: Color get() = Midad.SurfaceRaised
+@Deprecated("Use Midad") val TealDark: Color get() = Midad.Surface
+@Deprecated("Use Midad") val TealDeep: Color get() = Midad.Ground
+@Deprecated("Use Midad") val Gold: Color get() = Midad.Gold
+@Deprecated("Use Midad") val GoldLight: Color get() = Midad.Text
+@Deprecated("Use Midad") val GoldMuted: Color get() = Midad.Muted
+@Deprecated("Use Midad") val BackgroundDark: Color get() = Midad.Ground
+@Deprecated("Use Midad") val SurfaceDark: Color get() = Midad.Ground
+@Deprecated("Use Midad") val SurfaceCard: Color get() = Midad.Surface
+@Deprecated("Use Midad") val SurfaceElevated: Color get() = Midad.SurfaceRaised
+@Deprecated("Use Midad") val NextPrayerHighlight: Color get() = Midad.Surface
+@Deprecated("Use Midad") val NextPrayerGlow: Color get() = Midad.Gold
+@Deprecated("Use Midad") val GlassWhite: Color get() = Midad.Keyline
+@Deprecated("Use Midad") val GlassBorder: Color get() = Midad.Keyline
+@Deprecated("Use Midad") val GoldBorder: Color get() = Midad.Keyline
+@Deprecated("Use Midad") val CardBorder: Color get() = Midad.Keyline
+@Deprecated("Use Midad") val TextWhite: Color get() = Midad.Text
+@Deprecated("Use Midad") val TextMuted: Color get() = Midad.Muted
+@Deprecated("Use Midad") val TextDim: Color get() = Midad.Dim
+@Deprecated("Use Midad") val AdhanGreen: Color get() = Midad.Text
+@Deprecated("Use Midad") val CountdownAmber: Color get() = Midad.Gold
+@Deprecated("Use Midad") val CountdownOrange: Color get() = Midad.Gold
+@Deprecated("Use Midad") val RamadanPurple: Color get() = Midad.Surface
+@Deprecated("Use Midad") val RamadanGold: Color get() = Midad.Gold
+@Deprecated("Use Midad") val RamadanMoon: Color get() = Midad.Text
+@Deprecated("Use Midad") val RamadanDeep: Color get() = Midad.Ground
+@Deprecated("Use Midad") val IftarGreen: Color get() = Midad.Text
 
-// ── Convenience accessors (keep top-level val names for existing code) ──
-// These read from LocalTvTheme at call-site — they must be accessed
-// inside a @Composable scope. For non-composable contexts the default
-// theme's values are used via the backing field.
-
-// Primary
-val TealPrimary @Composable get() = LocalTvTheme.current.primary
-val TealDark @Composable get() = LocalTvTheme.current.primaryDark
-val TealDeep @Composable get() = LocalTvTheme.current.primaryDeep
-
-// Accent / Gold
-val Gold @Composable get() = LocalTvTheme.current.accent
-val GoldLight @Composable get() = LocalTvTheme.current.accentLight
-val GoldMuted @Composable get() = LocalTvTheme.current.accentMuted
-
-// Surfaces
-val BackgroundDark @Composable get() = LocalTvTheme.current.background
-val SurfaceDark @Composable get() = LocalTvTheme.current.surfaceDark
-val SurfaceCard @Composable get() = LocalTvTheme.current.surfaceCard
-val SurfaceElevated @Composable get() = LocalTvTheme.current.surfaceElevated
-
-// Next prayer
-val NextPrayerHighlight @Composable get() = LocalTvTheme.current.nextPrayerBg
-val NextPrayerGlow @Composable get() = LocalTvTheme.current.nextPrayerGlow
-
-// Borders
-val GlassWhite get() = Color(0x1AFFFFFF) // fixed — not themed
-val GlassBorder @Composable get() = LocalTvTheme.current.cardBorder
-val GoldBorder @Composable get() = LocalTvTheme.current.accentBorder
-val CardBorder @Composable get() = LocalTvTheme.current.cardBorder
-
-// Text
-val TextWhite @Composable get() = LocalTvTheme.current.textPrimary
-val TextMuted @Composable get() = LocalTvTheme.current.textMuted
-val TextDim @Composable get() = LocalTvTheme.current.textDim
-
-// Semantic
-val AdhanGreen get() = Color(0xFF2ECC71) // fixed
-val CountdownAmber @Composable get() = LocalTvTheme.current.countdownColor
-val CountdownOrange @Composable get() = LocalTvTheme.current.countdownColor
-
-// Ramadan
-val RamadanPurple @Composable get() = LocalTvTheme.current.ramadanPrimary
-val RamadanGold @Composable get() = LocalTvTheme.current.ramadanAccent
-val RamadanMoon @Composable get() = LocalTvTheme.current.ramadanText
-val RamadanDeep @Composable get() = LocalTvTheme.current.ramadanDeep
-val IftarGreen get() = Color(0xFF2ECC71) // fixed
-
-// Islamic decorative characters
-object IslamicSymbols {
-    const val BISMILLAH = "﷽"
-    const val STAR = "✦"
-    const val CRESCENT = "☪"
-}
-
+/** Arabic is never letter-spaced: tracking breaks the joins between letters. */
 private val TvTypography = Typography(
-    displayLarge = TextStyle(fontWeight = FontWeight.Bold, fontSize = 72.sp, letterSpacing = (-1).sp),
-    displayMedium = TextStyle(fontWeight = FontWeight.Bold, fontSize = 56.sp, letterSpacing = (-0.5).sp),
-    displaySmall = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 44.sp),
-    headlineLarge = TextStyle(fontWeight = FontWeight.Bold, fontSize = 36.sp, letterSpacing = (-0.25).sp),
-    headlineMedium = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 28.sp),
-    headlineSmall = TextStyle(fontWeight = FontWeight.SemiBold, fontSize = 24.sp),
-    titleLarge = TextStyle(fontWeight = FontWeight.Medium, fontSize = 22.sp),
-    titleMedium = TextStyle(fontWeight = FontWeight.Medium, fontSize = 18.sp, letterSpacing = 0.15.sp),
-    bodyLarge = TextStyle(fontWeight = FontWeight.Normal, fontSize = 18.sp, letterSpacing = 0.25.sp),
-    bodyMedium = TextStyle(fontWeight = FontWeight.Normal, fontSize = 16.sp, letterSpacing = 0.25.sp),
-    labelLarge = TextStyle(fontWeight = FontWeight.Medium, fontSize = 14.sp, letterSpacing = 0.5.sp),
+    displayLarge = midadStyle(72.sp, FontWeight.Bold),
+    displayMedium = midadStyle(56.sp, FontWeight.Bold),
+    displaySmall = midadStyle(44.sp, FontWeight.SemiBold),
+    headlineLarge = midadStyle(36.sp, FontWeight.SemiBold),
+    headlineMedium = midadStyle(28.sp, FontWeight.SemiBold),
+    headlineSmall = midadStyle(24.sp, FontWeight.SemiBold),
+    titleLarge = midadStyle(22.sp, FontWeight.Medium),
+    titleMedium = midadStyle(18.sp, FontWeight.Medium),
+    titleSmall = midadStyle(16.sp, FontWeight.Medium),
+    bodyLarge = midadStyle(18.sp),
+    bodyMedium = midadStyle(16.sp),
+    bodySmall = midadStyle(14.sp),
+    labelLarge = midadStyle(14.sp, FontWeight.Medium),
+    labelMedium = midadStyle(12.sp, FontWeight.Medium),
+    labelSmall = midadStyle(11.sp, FontWeight.Medium),
 )
 
-/**
- * Build a Material3 [darkColorScheme] from the given [TvThemeConfig].
- */
-private fun colorSchemeFrom(theme: TvThemeConfig) = darkColorScheme(
-    primary = theme.primary,
-    onPrimary = Color.White,
-    primaryContainer = theme.primaryDark,
-    onPrimaryContainer = theme.accentLight,
-    secondary = theme.accent,
-    onSecondary = Color(0xFF1C1300),
-    secondaryContainer = theme.accentMuted,
-    background = theme.background,
-    onBackground = theme.textPrimary,
-    surface = theme.surfaceCard,
-    onSurface = theme.textPrimary,
-    surfaceVariant = theme.surfaceDark,
-    onSurfaceVariant = theme.textMuted,
-    outline = theme.cardBorder,
+private val MidadColors = darkColorScheme(
+    primary = Midad.Text,
+    onPrimary = Midad.OnGold,
+    primaryContainer = Midad.SurfaceRaised,
+    onPrimaryContainer = Midad.Text,
+    secondary = Midad.Gold,
+    onSecondary = Midad.OnGold,
+    secondaryContainer = Midad.SurfaceRaised,
+    onSecondaryContainer = Midad.Text,
+    tertiary = Midad.Silver,
+    background = Midad.Ground,
+    onBackground = Midad.Text,
+    surface = Midad.Surface,
+    onSurface = Midad.Text,
+    surfaceVariant = Midad.SurfaceRaised,
+    onSurfaceVariant = Midad.Muted,
+    outline = Midad.Keyline,
+    outlineVariant = Midad.Rule,
+    error = Midad.Alert,
+    onError = Midad.OnGold,
 )
 
 @Composable
 fun TvPrayerTheme(
-    themeConfig: TvThemeConfig = ThemeRegistry.builtInThemes.first(),
+    theme: DisplayTheme = ThemeRegistry.builtInThemes.first(),
     content: @Composable () -> Unit,
 ) {
     CompositionLocalProvider(
         LocalLayoutDirection provides LayoutDirection.Rtl,
-        LocalTvTheme provides themeConfig,
+        LocalDisplayTheme provides theme,
     ) {
-        MaterialTheme(
-            colorScheme = colorSchemeFrom(themeConfig),
-            typography = TvTypography,
-            content = content
-        )
+        MaterialTheme(colorScheme = MidadColors, typography = TvTypography) {
+            CompositionLocalProvider(LocalTextStyle provides midadStyle(18.sp), content = content)
+        }
     }
 }

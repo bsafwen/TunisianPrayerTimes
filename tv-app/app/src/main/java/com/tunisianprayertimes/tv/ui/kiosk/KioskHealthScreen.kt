@@ -31,7 +31,7 @@ import com.tunisianprayertimes.tv.kiosk.EventEntry
 import com.tunisianprayertimes.tv.kiosk.KioskEvent
 import com.tunisianprayertimes.tv.kiosk.KioskReport
 import com.tunisianprayertimes.tv.kiosk.PowerLevel
-import com.tunisianprayertimes.tv.ui.setup.FocusableListItem
+import com.tunisianprayertimes.tv.ui.common.FocusableListItem
 import com.tunisianprayertimes.tv.ui.common.initialFocus
 import com.tunisianprayertimes.tv.ui.theme.Gold
 import java.time.Instant

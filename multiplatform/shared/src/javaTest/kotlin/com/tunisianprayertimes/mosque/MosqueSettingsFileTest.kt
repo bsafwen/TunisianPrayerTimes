@@ -293,22 +293,22 @@ class MosqueSettingsFileTest {
 
     private val catalog = ProfileCatalog(
         delegationName = { id -> mapOf(615 to "مدينة تونس", 101 to "صفاقس المدينة")[id] },
-        themes = mapOf("midnight_navy" to "أزرق ليلي", "desert_gold" to "ذهبي"),
+        themes = mapOf("horizon" to "أفق", "midad" to "مداد"),
     )
 
-    private fun profileParse(text: String, profile: MosqueProfile = MosqueProfile("مسجد الفتح", 615, "midnight_navy")) =
+    private fun profileParse(text: String, profile: MosqueProfile = MosqueProfile("مسجد الفتح", 615, "horizon")) =
         MosqueSettingsFile.parse(text, current, emptyMap(), profile, catalog)
 
     @Test
     fun aFileCanSetTheMosqueNamePlaceAndTheme() {
         val result = assertIs<ParseResult.Success>(profileParse(
-            """{ "mosque": { "name": "  مسجد   النور ", "delegation": "١٠١", "delegationName": "ignored" }, "display": { "theme": "ذهبي" } }"""))
-        assertEquals(MosqueProfile("مسجد النور", 101, "desert_gold"), result.profile)
+            """{ "mosque": { "name": "  مسجد   النور ", "delegation": "١٠١", "delegationName": "ignored" }, "display": { "theme": "مداد" } }"""))
+        assertEquals(MosqueProfile("مسجد النور", 101, "midad"), result.profile)
         assertEquals(
             listOf(
                 MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.NAME, "مسجد الفتح", "مسجد النور"),
                 MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.DELEGATION, "مدينة تونس", "صفاقس المدينة"),
-                MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.THEME, "أزرق ليلي", "ذهبي"),
+                MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.THEME, "أفق", "مداد"),
             ),
             result.profileChanges,
         )
@@ -329,7 +329,7 @@ class MosqueSettingsFileTest {
 
     @Test
     fun aWholeTvSurvivesAWriteAndRead() {
-        val profile = MosqueProfile("مسجد \"الرحمة\"", 101, "desert_gold")
+        val profile = MosqueProfile("مسجد \"الرحمة\"", 101, "midad")
         val schedule = MosqueSchedule.DEFAULT.with(Prayer.ISHA, PrayerSettings(IqamahRule.FixedTime(LocalTime.of(20, 0)), 12))
         val text = MosqueSettingsFile.write(schedule, emptyMap(), profile, catalog)
         assertTrue(text.contains("\"delegationName\": \"صفاقس المدينة\""))
@@ -344,7 +344,7 @@ class MosqueSettingsFileTest {
     @Test
     fun aCompleteSnapshotUndoesAnImportExactly() {
         val before = MosqueSchedule.DEFAULT
-        val beforeProfile = MosqueProfile("", 615, "midnight_navy")
+        val beforeProfile = MosqueProfile("", 615, "horizon")
         // What the import will touch: Ramadan's Isha, the year 1448, the name.
         val snapshot = MosqueSettingsFile.write(before, mapOf(1448 to com.tunisianprayertimes.ManualIslamicDates()), beforeProfile, catalog, complete = true)
         val imported = assertIs<ParseResult.Success>(profileParse(
@@ -370,5 +370,36 @@ class MosqueSettingsFileTest {
         val bad = assertIs<ParseResult.Failure>(profileParse("""{ "display": { "weather": "maybe", "slideSeconds": 2 } }"""))
         assertEquals(listOf(ErrorCode.INVALID_OPTION to "display.weather", ErrorCode.INVALID_OPTION to "display.slideSeconds"),
             bad.errors.map { it.code to it.path })
+    }
+
+    @Test
+    fun theNightScreenIsASwitchLikeTheOthers() {
+        // Unset on a TV that never had the option: a file turning it off shows as a change.
+        val off = assertIs<ParseResult.Success>(profileParse("""{ "display": { "nightScreen": false } }"""))
+        assertEquals(false, off.profile.display.nightScreen)
+        assertEquals(listOf(MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.NIGHT_SCREEN, "—", "إيقاف")), off.profileChanges)
+        // Its Arabic name and a hand-written "yes", on a TV that has it off.
+        val tvWithoutNight = MosqueProfile(display = DisplayOptions(nightScreen = false))
+        val on = assertIs<ParseResult.Success>(profileParse("""{ "العرض": { "شاشة الليل": "نعم" } }""", tvWithoutNight))
+        assertEquals(true, on.profile.display.nightScreen)
+        assertEquals(listOf(MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.NIGHT_SCREEN, "إيقاف", "تشغيل")), on.profileChanges)
+        // Written back by the TV, read back to the same state.
+        val written = MosqueSettingsFile.write(MosqueSchedule.DEFAULT, profile = on.profile, catalog = catalog)
+        assertTrue(written.contains("\"nightScreen\": true"), written)
+        val copied = assertIs<ParseResult.Success>(MosqueSettingsFile.parse(written, MosqueSchedule.DEFAULT, emptyMap(), MosqueProfile(), catalog))
+        assertEquals(true, copied.profile.display.nightScreen)
+        val same = assertIs<ParseResult.Success>(MosqueSettingsFile.parse(written, MosqueSchedule.DEFAULT, emptyMap(), on.profile, catalog))
+        assertTrue(!same.hasChanges)
+        // Mistakes are refused as for the other switches.
+        val bad = assertIs<ParseResult.Failure>(profileParse("""{ "display": { "nightScreen": 2 } }"""))
+        assertEquals(listOf(ErrorCode.INVALID_OPTION to "display.nightScreen"), bad.errors.map { it.code to it.path })
+        assertEquals("«nightScreen» يكون true (تشغيل) أو false (إيقاف)", bad.errors.single().message)
+        assertEquals(
+            listOf(ErrorCode.DUPLICATE_FIELD to "display.شاشة الليل"),
+            assertIs<ParseResult.Failure>(profileParse("""{ "display": { "nightScreen": true, "شاشة الليل": false } }""")).errors.map { it.code to it.path },
+        )
+        val typo = assertIs<ParseResult.Failure>(profileParse("""{ "display": { "nightScren": false } }"""))
+        assertEquals(listOf(ErrorCode.UNKNOWN_FIELD to "display.nightScren"), typo.errors.map { it.code to it.path })
+        assertTrue(typo.errors.single().message.contains("\"nightScreen\""), "the fields a display section takes are named")
     }
 }

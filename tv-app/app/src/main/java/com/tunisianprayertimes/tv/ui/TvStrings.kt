@@ -196,4 +196,56 @@ object TvStrings {
         Prayer.AID_FITR -> com.tunisianprayertimes.ui.Strings.PRAYER_AID_FITR
         Prayer.AID_ADHA -> com.tunisianprayertimes.ui.Strings.PRAYER_AID_ADHA
     }
+
+    // Dates and times, written the Tunisian way: "الثلاثاء 29 سبتمبر 2026", "05:01", "01:24:48".
+
+    /** The months as Tunisia names them (جانفي، فيفري، …), not the Levant's or Egypt's. */
+    val MONTHS = listOf("جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان", "جويلية", "أوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر")
+    /** Monday first, as [java.time.DayOfWeek]. */
+    val WEEKDAYS = listOf("الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد")
+
+    /** "الثلاثاء 29 سبتمبر 2026", or without the weekday. */
+    fun gregorianDate(date: java.time.LocalDate, withWeekday: Boolean = true): String {
+        val day = "${date.dayOfMonth} ${MONTHS[date.monthValue - 1]} ${date.year}"
+        return if (withWeekday) "${WEEKDAYS[date.dayOfWeek.value - 1]} $day" else day
+    }
+
+    /** "05:01". */
+    fun hm(time: java.time.LocalTime): String = String.format(java.util.Locale.ROOT, "%02d:%02d", time.hour, time.minute)
+
+    /** A countdown: "01:24:48" from an hour up, "29:12" below; never negative. */
+    fun countdown(seconds: Long): String {
+        val s = seconds.coerceAtLeast(0)
+        return if (s >= 3600) String.format(java.util.Locale.ROOT, "%02d:%02d:%02d", s / 3600, s % 3600 / 60, s % 60)
+        else String.format(java.util.Locale.ROOT, "%02d:%02d", s / 60, s % 60)
+    }
+
+    // ── «أفق»: main screen ──
+
+    // ── «أفق»: prayer flow screens (adhan, iqamah, khutba, adhkar, night, Eid) ──
+
+    const val ADHAN_NOW = "حان الآن وقت صلاة"
+    const val IQAMAH_OF = "إقامة صلاة"
+    /** Before an Eid prayer's name: it has no adhan or iqamah. */
+    const val PRAYER_OF = "صلاة"
+    const val AFTER = "بعد"
+    /** Beside the Eid prayer's time on the countdown, where other prayers show their iqamah. */
+    const val PRAYER_LABEL = "الصلاة"
+    const val PHONES_OFF = "الرجاء إغلاق الهاتف"
+    const val KHUTBA_SILENCE = "الرجاء الإنصات أثناء الخطبة"
+
+    /**
+     * When the text beside the muezzin is said, by its catalog id ([com.tunisianprayertimes.mosque.MosqueAdhkar.ADHAN_IDS]).
+     * The reply is only for the two calls to prayer: the rest of the adhan is repeated after him.
+     */
+    fun adhanCaption(entryId: String?): String? = when (entryId) {
+        "adhan_response" -> "يُقال عند «حيّ على الصلاة» و«حيّ على الفلاح»"
+        "adhan_shahada" -> "يُقال عند سماع المؤذّن"
+        "after_adhan_wasila" -> "يُقال بعد الأذان"
+        else -> null
+    }
+
+    // ── «أفق»: announcements and notices ──
+
+    // ── «أفق»: settings and admin pages ──
 }

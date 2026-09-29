@@ -4,6 +4,7 @@ import com.tunisianprayertimes.ManualIslamicDates
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.mosque.IqamahRule
 import com.tunisianprayertimes.mosque.MosqueSchedule
+import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
 import com.tunisianprayertimes.mosque.DisplayOptions
 import com.tunisianprayertimes.mosque.MosqueProfile
@@ -30,7 +31,7 @@ class UsbSettingsInboxTest {
     private var dates: Map<Int, ManualIslamicDates> = emptyMap()
     private var snapshot: String? = null
     private val places = mapOf(615 to (11 to "مدينة تونس"), 101 to (34 to "صفاقس المدينة"))
-    private val catalog = ProfileCatalog({ places[it]?.second }, mapOf("midnight_navy" to "أزرق داكن", "desert_sand" to "رمال الصحراء"))
+    private val catalog = ProfileCatalog({ places[it]?.second }, mapOf("horizon" to "أفق", "midad" to "مداد"))
     private val inbox = UsbSettingsInbox(
         readSchedule = { prefs.schedule },
         writeSchedule = { prefs.schedule = it },
@@ -145,7 +146,7 @@ class UsbSettingsInboxTest {
         // A configured TV writes its whole settings to a new key...
         val configured = PrefsManager(InMemoryPreferences()).apply {
             mosqueName = "مسجد النور"
-            applyProfile(MosqueProfile(delegationId = 101, themeId = "desert_sand")) { places[it] }
+            applyProfile(MosqueProfile(delegationId = 101, themeId = "midad")) { places[it] }
             schedule = MosqueSchedule.DEFAULT.with(Prayer.ISHA, PrayerSettings(IqamahRule.FixedTime(LocalTime.of(20, 0)), 12))
         }
         val text = UsbSettingsInbox({ configured.schedule }, {}, { "" }, {}, readProfile = { configured.profile }, catalog = catalog).currentFile()
@@ -153,7 +154,7 @@ class UsbSettingsInboxTest {
         putOnKey(text)
         val offer = inbox.scan(listOf(key)) as UsbScan.Offer
         assertTrue(inbox.apply(offer.found))
-        assertEquals(MosqueProfile("مسجد النور", 101, "desert_sand"), prefs.profile.copy(display = DisplayOptions()))
+        assertEquals(MosqueProfile("مسجد النور", 101, "midad"), prefs.profile.copy(display = DisplayOptions()))
         assertEquals("صفاقس المدينة", prefs.delegationName)
         assertEquals(34, prefs.gouvernoratId)
         assertEquals(configured.schedule.settings(Prayer.ISHA), prefs.schedule.settings(Prayer.ISHA))
@@ -204,6 +205,31 @@ class UsbSettingsInboxTest {
         assertTrue(prefs.adhkarContent.isBundled)
         assertTrue(inbox.apply(UsbSettingsFound(File(root, "previous-settings.json"), snapshot!!, "undo"), fromKey = false))
         assertEquals(mosqueList, prefs.adhkarContent)
+    }
+
+    @Test
+    fun theNightScreenTravelsInTheFileAndItsImportCanBeUndone() {
+        assertTrue(inbox.scan(listOf(key)) is UsbScan.TemplateWritten)
+        val template = UsbSettings.settingsFile(key).readText()
+        assertTrue(template, template.contains("\"nightScreen\": true"))
+        putOnKey(template.replace("\"nightScreen\": true", "\"nightScreen\": false"))
+        val offer = inbox.scan(listOf(key)) as UsbScan.Offer
+        val preview = inbox.preview(offer.found) as ParseResult.Success
+        assertEquals(listOf(MosqueSettingsFile.ProfileField.NIGHT_SCREEN), preview.profileChanges.map { it.field })
+        assertTrue(inbox.apply(offer.found))
+        assertFalse(prefs.nightScreenEnabled)
+        assertTrue(inbox.apply(UsbSettingsFound(File(root, "previous-settings.json"), snapshot!!, "undo"), fromKey = false))
+        assertTrue(prefs.nightScreenEnabled)
+    }
+
+    @Test
+    fun aTvUpdatedFromAnOldThemeStillAcceptsItsOwnFile() {
+        // Saved before the «أفق» redesign: the template must not carry an id the TV now refuses.
+        store.edit().putString("theme_id", "desert_sand").apply()
+        inbox.scan(listOf(key))
+        putOnKey(UsbSettings.settingsFile(key).readText().replace("\"+5\"", "\"+7\""))
+        assertTrue(inbox.apply((inbox.scan(listOf(key)) as UsbScan.Offer).found))
+        assertTrue(inbox.apply(UsbSettingsFound(File(root, "previous-settings.json"), snapshot!!, "undo"), fromKey = false))
     }
 
     @Test

@@ -1,12 +1,16 @@
 package com.tunisianprayertimes.tv.data
 
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.mosque.DisplayOptions
 import com.tunisianprayertimes.mosque.IqamahRule
+import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.PrayerOverride
 import com.tunisianprayertimes.mosque.PrayerSettings
 import java.time.LocalTime
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class PrefsManagerTest {
@@ -60,6 +64,28 @@ class PrefsManagerTest {
         val edited = prefs.getIqamahConfig(Prayer.ASR).copy(delayMinutes = 20)
         prefs.setIqamahConfig(Prayer.ASR, edited)
         assertEquals(PrayerSettings(IqamahRule.AfterAdhan(20), 10), prefs.schedule.settings(Prayer.ASR))
+    }
+
+    @Test
+    fun theNightScreenIsOnUntilTheAdminTurnsItOff() {
+        assertTrue(prefs.nightScreenEnabled)
+        assertEquals(true, prefs.profile.display.nightScreen)
+        // A file that does not name it leaves it alone; one that does is kept across a restart.
+        prefs.applyProfile(MosqueProfile(display = DisplayOptions(weather = false))) { null }
+        assertTrue(prefs.nightScreenEnabled)
+        prefs.applyProfile(MosqueProfile(display = DisplayOptions(nightScreen = false))) { null }
+        assertFalse(PrefsManager(store).nightScreenEnabled)
+        assertEquals(false, PrefsManager(store).profile.display.nightScreen)
+    }
+
+    @Test
+    fun aThemeFromBeforeTheRedesignReadsAsTheDefault() {
+        assertEquals(PrefsManager.DEFAULT_THEME_ID, prefs.themeId)
+        store.edit().putString("theme_id", "midnight_navy").apply()
+        assertEquals(PrefsManager.DEFAULT_THEME_ID, prefs.themeId)
+        assertEquals(PrefsManager.DEFAULT_THEME_ID, prefs.profile.themeId)
+        prefs.themeId = "midad"
+        assertEquals("midad", PrefsManager(store).themeId)
     }
 
     @Test
