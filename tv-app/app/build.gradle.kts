@@ -1,6 +1,50 @@
+import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.file.FileSystemOperations
+import org.gradle.api.provider.Property
+import javax.inject.Inject
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
+}
+
+// Package canonical JSON from the repository's data/ folder as assets, without
+// maintaining hand-copied duplicates in app/src/main/assets (same task as android-app).
+abstract class BundleDataAssets : DefaultTask() {
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val source: DirectoryProperty
+
+    @get:Input
+    abstract val assetFolder: Property<String>
+
+    @get:OutputDirectory
+    abstract val outputDirectory: DirectoryProperty
+
+    @get:Inject
+    abstract val fileSystem: FileSystemOperations
+
+    @TaskAction
+    fun bundle() {
+        fileSystem.sync {
+            from(source) {
+                include("*.json")
+                into(assetFolder.get())
+            }
+            into(outputDirectory)
+        }
+    }
+}
+
+// INM's coordinates and elevations, from which the shared formula computes prayer times offline.
+val bundlePrayerFormulaParams by tasks.registering(BundleDataAssets::class) {
+    source.set(rootProject.layout.projectDirectory.dir("../data/prayer-formula"))
+    assetFolder.set("prayer-formula")
+    outputDirectory.set(layout.buildDirectory.dir("generated/prayerFormulaAssets"))
+}
+
+androidComponents.onVariants { variant ->
+    variant.sources.assets?.addGeneratedSourceDirectory(bundlePrayerFormulaParams, BundleDataAssets::outputDirectory)
 }
 
 android {
@@ -49,6 +93,12 @@ android {
     }
 }
 
+// JVM unit tests read the same canonical inputs the APK bundles.
+tasks.withType<Test>().configureEach {
+    systemProperty("tunisianprayertimes.dataDir", rootProject.file("../data").absolutePath)
+    systemProperty("tunisianprayertimes.tvAssets", file("src/main/assets").absolutePath)
+}
+
 dependencies {
     implementation("com.tunisianprayertimes:shared")
 
@@ -80,4 +130,6 @@ dependencies {
 
     // Coil — image loading for custom backgrounds & announcements
     implementation("io.coil-kt:coil-compose:2.6.0")
+
+    testImplementation("junit:junit:4.13.2")
 }

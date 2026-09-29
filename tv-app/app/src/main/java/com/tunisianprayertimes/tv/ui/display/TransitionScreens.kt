@@ -209,6 +209,8 @@ fun PrayerInProgressScreen(
         Prayer.DHUHR, Prayer.ASR, Prayer.ISHA -> 20 * 60 * 1000L
         Prayer.MAGHRIB -> 12 * 60 * 1000L
         Prayer.JOMOAA -> 45 * 60 * 1000L
+        // The Eid khutba follows the salah; keep the quiet screen through both.
+        Prayer.AID_FITR, Prayer.AID_ADHA -> 30 * 60 * 1000L
     }
 
     LaunchedEffect(prayer) {

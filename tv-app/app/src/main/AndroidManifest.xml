@@ -28,6 +28,7 @@
         android:required="false" />
 
     <application
+        android:name=".TvApplication"
         android:allowBackup="true"
         android:banner="@drawable/tv_banner"
         android:icon="@mipmap/ic_launcher"

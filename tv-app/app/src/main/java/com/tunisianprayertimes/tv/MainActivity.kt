@@ -11,13 +11,16 @@ import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.RamadanDetector
 import com.tunisianprayertimes.RamadanOverrideChecker
+import com.tunisianprayertimes.platform.PrayerDataLoader
 import com.tunisianprayertimes.tv.data.*
 import com.tunisianprayertimes.tv.ui.display.*
 import com.tunisianprayertimes.tv.ui.settings.SettingsScreen
 import com.tunisianprayertimes.tv.ui.setup.SetupWizard
 import com.tunisianprayertimes.tv.ui.theme.TvPrayerTheme
 import com.tunisianprayertimes.tv.ui.theme.ThemeRegistry
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 import java.util.Calendar
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +29,6 @@ class MainActivity : ComponentActivity() {
     private lateinit var prayerRepo: PrayerTimesRepository
     private lateinit var gouvernoratRepo: GouvernoratRepository
     private lateinit var mediaManager: LocalMediaManager
-    private lateinit var otaUpdater: OtaDataUpdater
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,12 +36,16 @@ class MainActivity : ComponentActivity() {
         // Keep screen always on
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
+        val app = applicationContext
         prefs = PrefsManager(this)
-        prayerRepo = PrayerTimesRepository(this)
-        gouvernoratRepo = GouvernoratRepository(this)
+        // Prayer times are computed offline from the bundled INM formula parameters.
+        prayerRepo = PrayerTimesRepository(source = { PrayerDataLoader.prayerTimes(app) })
+        gouvernoratRepo = GouvernoratRepository(
+            gouvernoratsJson = { app.assets.open("gouvernorats.json").bufferedReader().use { it.readText() } },
+            prayerTimes = { PrayerDataLoader.prayerTimes(app) },
+        )
         mediaManager = LocalMediaManager(this)
         mediaManager.ensureDirectories()
-        otaUpdater = OtaDataUpdater(this)
 
         setContent {
             // Theme state lives here so it wraps TvPrayerTheme
@@ -52,7 +58,6 @@ class MainActivity : ComponentActivity() {
                     prayerRepo = prayerRepo,
                     gouvernoratRepo = gouvernoratRepo,
                     mediaManager = mediaManager,
-                    otaUpdater = otaUpdater,
                     currentThemeId = themeId,
                     onThemeChanged = { newId ->
                         prefs.themeId = newId
@@ -70,7 +75,6 @@ private fun TvApp(
     prayerRepo: PrayerTimesRepository,
     gouvernoratRepo: GouvernoratRepository,
     mediaManager: LocalMediaManager,
-    otaUpdater: OtaDataUpdater,
     currentThemeId: String,
     onThemeChanged: (String) -> Unit,
 ) {
@@ -97,12 +101,10 @@ private fun TvApp(
     LaunchedEffect(delegationId) {
         while (true) {
             if (delegationId > 0) {
-                // Background OTA check (daily, non-blocking)
-                if (otaUpdater.shouldCheck(delegationId)) {
-                    otaUpdater.checkAndUpdate(delegationId)
-                }
-                dayPrayerTimes = prayerRepo.loadToday(delegationId)
-                shuruk = prayerRepo.loadTodayShuruk(delegationId)
+                // Computed on the device from the bundled formula: no network, no expiry.
+                val today = withContext(Dispatchers.Default) { prayerRepo.loadToday(delegationId) }
+                dayPrayerTimes = today
+                shuruk = today?.let { it.shurukHour to it.shurukMinute }
             }
             // Wait until next midnight to refresh
             val now = Calendar.getInstance()
