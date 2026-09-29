@@ -250,6 +250,35 @@ fun DhikrState.isCollectionPeriodComplete(category: DhikrCategory, periodKey: St
         .maxByOrNull { it.updatedAtMillis }
         ?.let(::isComplete) == true
 
+/** Reading history kept after an occurrence's window ends or a session was last touched. */
+internal const val DHIKR_HISTORY_RETENTION_MILLIS = 7L * 24 * 60 * 60_000
+
+/**
+ * Drops occurrences whose window ended, and sessions last updated, before the retention cutoff.
+ * Kept regardless of age: [protectedOccurrenceIds] (current/next windows, posted notifications),
+ * open snoozes, the last session, each collection's latest full reading (it decides whether the
+ * current period is complete), sessions of kept occurrences, and occurrences of kept sessions
+ * (a kept session's target and read-only state come from its occurrence).
+ * Returns this same instance when nothing expired.
+ */
+internal fun DhikrState.withoutExpiredHistory(now: Long, protectedOccurrenceIds: Set<String> = emptySet()): DhikrState {
+    val cutoff = now - DHIKR_HISTORY_RETENTION_MILLIS
+    val liveOccurrenceIds = occurrences.values.filter {
+        it.endMillis >= cutoff || it.snoozedUntilMillis > now || it.id in protectedOccurrenceIds
+    }.map { it.id }.toSet()
+    val latestCollectionReadings = sessions.values
+        .filter { it.occurrenceId == null && it.category != null && it.collectionPeriodKey != null }
+        .groupBy { it.category }.values.map { readings -> readings.maxBy { it.updatedAtMillis }.id }.toSet()
+    val keptSessions = sessions.filterValues { session ->
+        session.updatedAtMillis >= cutoff || session.id == lastSessionId || session.id in latestCollectionReadings ||
+            session.occurrenceId?.let { it in liveOccurrenceIds } == true
+    }
+    val linkedOccurrenceIds = keptSessions.values.mapNotNull { it.occurrenceId }.toSet()
+    val keptOccurrences = occurrences.filterKeys { it in liveOccurrenceIds || it in linkedOccurrenceIds }
+    if (keptSessions.size == sessions.size && keptOccurrences.size == occurrences.size) return this
+    return copy(occurrences = keptOccurrences, sessions = keptSessions)
+}
+
 /** Android can defer closely spaced while-idle alarms; avoid offering a 5-minute cadence. */
 const val MIN_DHIKR_INTERVAL_MINUTES = 15
 /** Validation caps a window at one day; this comfortably exceeds the maximum custom count. */
