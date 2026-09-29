@@ -50,6 +50,8 @@ data class DashboardLive(
     val banner: String?,
     val flow: FlowState,
     val weather: CachedWeather?,
+    /** What the wall shows when it is not the timetable nor the prayer: "NIGHT", "EID", "ANNOUNCEMENTS"; null otherwise. */
+    val screen: String? = null,
 )
 
 /**
@@ -182,6 +184,9 @@ class DashboardBackendImpl(
         put("phase", flow?.phase?.name ?: "IDLE")
         put("prayer", flow?.event?.prayer?.let(TvStrings::prayerName))
         put("until", flow?.phaseEndsAt?.toLocalTime()?.let(::hm))
+        live?.screen?.let { put("screen", it) }
+        // The Eid prayer's wait has no adhan and no iqamah: the page says so.
+        if (flow?.event?.prayer in com.tunisianprayertimes.mosque.MosqueSchedule.EID) put("eid", true)
     }
 
     private fun islamicDates(live: DashboardLive?): JsonObject = runCatching {

@@ -32,17 +32,18 @@ import com.tunisianprayertimes.tv.ui.theme.Kufi
 import com.tunisianprayertimes.tv.ui.theme.LocalDisplayTheme
 import com.tunisianprayertimes.tv.ui.theme.Midad
 import com.tunisianprayertimes.tv.ui.theme.SkyPhase
+import com.tunisianprayertimes.tv.ui.theme.lineBox
 import com.tunisianprayertimes.tv.ui.theme.midadStyle
 import java.time.LocalDateTime
 
 /**
  * The morning of Eid ([EidMorning.isShown]), the one festive screen of the year: a sunrise sky, a band
  * of Qallaline tiles above and below, the greeting, both dates, and the Eid prayer's time until it
- * begins ([banner]'s prayerAt is null from then on). [hijriLabel] is today's, "1 شوال 1448 هـ".
+ * begins ([banner]'s prayerAt is null from then on), then [nextPrayerLine]. [hijriLabel] is today's, "1 شوال 1448 هـ".
  * On the «مداد» theme the sky gives way to the plain ground; the tiles stay.
  */
 @Composable
-fun EidScreen(banner: DayBanner.Eid, now: LocalDateTime, mosqueName: String, hijriLabel: String) {
+fun EidScreen(banner: DayBanner.Eid, now: LocalDateTime, mosqueName: String, hijriLabel: String, nextPrayerLine: String?) {
     val background = if (LocalDisplayTheme.current.sky) Modifier.background(SunriseSky) else Modifier.background(Midad.Ground)
     Column(Modifier.fillMaxSize().then(background)) {
         QallalineBand(shifted = false)
@@ -51,11 +52,8 @@ fun EidScreen(banner: DayBanner.Eid, now: LocalDateTime, mosqueName: String, hij
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             MosqueClockRow(mosqueName, now, nameSize = 22.sp)
-            Text(
-                TvStrings.EID_MUBARAK,
-                style = midadStyle(115.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.1f),
-                modifier = Modifier.padding(top = 30.dp),
-            )
+            val title = midadStyle(115.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.1f)
+            Text(TvStrings.EID_MUBARAK, style = title, maxLines = 1, modifier = Modifier.padding(top = 30.dp).lineBox(title))
             Text(
                 "${TvStrings.gregorianDate(now.toLocalDate())} · $hijriLabel",
                 style = midadStyle(20.sp, color = DateOnSunrise),
@@ -67,15 +65,20 @@ fun EidScreen(banner: DayBanner.Eid, now: LocalDateTime, mosqueName: String, hij
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(top = 11.dp),
             )
-            banner.prayerAt?.let { at ->
+            val at = banner.prayerAt
+            if (at != null) {
                 Row(
                     Modifier.padding(top = 32.dp),
                     horizontalArrangement = Arrangement.spacedBy(20.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text("${TvStrings.PRAYER_OF} ${TvStrings.prayerName(banner.prayer)}", style = midadStyle(30.sp))
-                    Text(TvStrings.hm(at.toLocalTime()), style = midadStyle(75.sp, FontWeight.Bold, Midad.Gold, lineHeight = 1f))
+                    val time = midadStyle(75.sp, FontWeight.Bold, Midad.Gold, lineHeight = 1f)
+                    Text(TvStrings.hm(at.toLocalTime()), style = time, maxLines = 1, modifier = Modifier.lineBox(time))
                 }
+            } else if (nextPrayerLine != null) {
+                // Once the Eid prayer has begun, the next daily prayer, so the wall still tells the time of Dhuhr.
+                Text(nextPrayerLine, style = midadStyle(26.sp, color = DateOnSunrise), modifier = Modifier.padding(top = 40.dp))
             }
         }
         QallalineBand(shifted = true)

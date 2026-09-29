@@ -55,13 +55,27 @@ The supplication of Dhu al-Nun in the additional catalog is part of [Qaloon 21:8
 
 ## Mosque screen texts
 
-The TV app shows a verse in the header of its main screen and a greeting on Eid morning. They live in `DisplayTexts` (shared module), outside the adhkar library, and a mosque can't change them. Verse numbers were checked on 2026-09-29 against the Qaloon searchable text, later Madani count.
+The TV app shows a verse in the header of its main screen, a greeting on Eid morning, and the basmala over its first setup. They live in `DisplayTexts` (shared module), outside the adhkar library, and a mosque can't change them. Wording and verse numbers were checked on 2026-09-29 against the Qaloon searchable text (later Madani count), letter by letter against each sura page.
+
+On ordinary days the header shows twelve verses about the prayer in turn, moving on at each adhan; Fridays show the Jumu'a verse and Ramadan its own verse. Two keep Qaloon's reading where Hafs differs: `لِذِكْرِيَ` (Hafs `لِذِكْرِي`) and `يَا بُنَيِّ` (Hafs `يَا بُنَيَّ`).
 
 | Text | When | Source |
 | --- | --- | --- |
-| `إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا` | ordinary days | [Qaloon 4:102](https://quranpedia.net/surah/7/4) (Hafs 4:103) |
+| `إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا` | ordinary days, in turn | [Qaloon 4:102](https://quranpedia.net/surah/7/4) (Hafs 4:103) |
+| `حَافِظُوا عَلَى الصَّلَوَاتِ وَالصَّلَاةِ الْوُسْطَىٰ` | ordinary days, in turn | [Qaloon 2:236](https://quranpedia.net/surah/7/2) (Hafs 2:238) |
+| `قَدْ أَفْلَحَ الْمُؤْمِنُونَ ۝1 الَّذِينَ هُمْ فِي صَلَاتِهِمْ خَاشِعُونَ` | ordinary days, in turn | [Qaloon 23:1–2](https://quranpedia.net/surah/7/23) |
+| `إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ` | ordinary days, in turn | [Qaloon 29:45](https://quranpedia.net/surah/7/29) |
+| `وَأْمُرْ أَهْلَكَ بِالصَّلَاةِ وَاصْطَبِرْ عَلَيْهَا` | ordinary days, in turn | [Qaloon 20:131](https://quranpedia.net/surah/7/20) (Hafs 20:132) |
+| `أَقِمِ الصَّلَاةَ لِدُلُوكِ الشَّمْسِ إِلَىٰ غَسَقِ اللَّيْلِ وَقُرْآنَ الْفَجْرِ` | ordinary days, in turn | [Qaloon 17:78](https://quranpedia.net/surah/7/17) |
+| `وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ وَارْكَعُوا مَعَ الرَّاكِعِينَ` | ordinary days, in turn | [Qaloon 2:42](https://quranpedia.net/surah/7/2) (Hafs 2:43) |
+| `وَأَقِمِ الصَّلَاةَ لِذِكْرِيَ` | ordinary days, in turn | [Qaloon 20:13](https://quranpedia.net/surah/7/20) (Hafs 20:14) |
+| `وَاسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ` | ordinary days, in turn | [Qaloon 2:44](https://quranpedia.net/surah/7/2) (Hafs 2:45) |
+| `يَا بُنَيِّ أَقِمِ الصَّلَاةَ` | ordinary days, in turn | [Qaloon 31:16](https://quranpedia.net/surah/7/31) (Hafs 31:17) |
+| `وَأَقِمِ الصَّلَاةَ طَرَفَيِ النَّهَارِ وَزُلَفًا مِنَ اللَّيْلِ` | ordinary days, in turn | [Qaloon 11:114](https://quranpedia.net/surah/7/11) |
+| `رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِنْ ذُرِّيَّتِي` | ordinary days, in turn | [Qaloon 14:42](https://quranpedia.net/surah/7/14) (Hafs 14:40) |
 | `فَاسْعَوْا إِلَىٰ ذِكْرِ اللَّهِ وَذَرُوا الْبَيْعَ` | Fridays | [Qaloon 62:9](https://quranpedia.net/surah/7/62) |
 | `شَهْرُ رَمَضَانَ الَّذِي أُنْزِلَ فِيهِ الْقُرْآنُ` | Ramadan | [Qaloon 2:184](https://quranpedia.net/surah/7/2) (Hafs 2:185) |
 | `تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ` | Eid morning | Jubayr ibn Nufayr's report that the companions greeted each other with `تقبل الله منا ومنك` on Eid, in al-Mahamiliyyat; Ibn Hajar graded its chain hasan in Fath al-Bari (Kitab al-Idayn). The screen uses the plural to greet everyone. **Needs editorial approval**, as the plural is not the narrated wording. |
+| `بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ` | setup wizard's welcome (first start only) | The basmala that opens every sura but at-Tawba; same wording as the catalog's basmala before al-Ikhlas, al-Falaq and an-Nas. Cited as «البسملة», with no verse number: in the Qaloon reading with the Madani count it is not a verse of al-Fatiha (Hafs numbers it 1:1). |
 
 The verses are excerpts: each is the complete clause shown, not the whole verse.

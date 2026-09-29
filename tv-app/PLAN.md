@@ -48,47 +48,25 @@ Install → First Launch Setup → Main Display (runs 24/7)
 
 ### 3b. Main Display Screen (24/7 Kiosk Mode)
 
-Inspired by Mawaqit TV layout, adapted for Tunisia:
+The «أفق» (Horizon) design, chosen from mockups on 2026-09-29. On a 960 × 540 dp canvas, right to left:
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  [Mosque Name]                    [Hijri Date] [Gregorian]  │
-│  [Delegation Name]                         [Current Time]   │
-├──────────┬──────────┬──────────┬──────────┬─────────────────┤
-│  الفجر   │  الظهر   │  العصر   │  المغرب  │     العشاء      │
-│  Fajr    │  Dhuhr   │  Asr     │ Maghrib  │     Isha        │
-│──────────┼──────────┼──────────┼──────────┼─────────────────│
-│  05:12   │  12:30   │  15:45   │  18:22   │     19:50       │
-│  (Adhan) │  (Adhan) │  (Adhan) │  (Adhan) │     (Adhan)     │
-│──────────┼──────────┼──────────┼──────────┼─────────────────│
-│  05:22   │  12:45   │  16:00   │  18:27   │     20:05       │
-│  (Iqamah)│  (Iqamah)│  (Iqamah)│  (Iqamah)│    (Iqamah)     │
-├──────────┴──────────┴──────────┴──────────┴─────────────────┤
-│  ☀ الشروق 06:47                                            │
-│                                                             │
-│      ► Next prayer: الظهر in 2h 15m  [countdown bar]       │
-│                                                             │
-│  [Scrolling Azkar / Ayat]                                   │
-└─────────────────────────────────────────────────────────────┘
-```
-
-**Key display elements:**
-- **Current prayer highlighted** (active column glows or changes color)
-- **Next prayer countdown** — large, prominent timer
-- **Hijri date** — from `RamadanDetector` logic (already in shared module)
-- **Sunrise time** (Shuruk) — already in CSV data
-- **Scrolling Azkar/Ayat** — bottom ticker with post-prayer adhkar and Quran verses
-- **Friday mode** — Shows Jomoaa instead of Dhuhr column on Fridays
+- **Header:** the mosque's name in Kufic with its place; in the middle a verse closed by the silver medallion of the Blue Qur'an of Kairouan: twelve verses on the prayer in turn, moving on at each adhan (the Jumu'a verse on Fridays, البقرة 184 in Ramadan; Qaloon, later Madani count); on the left the Hijri and Gregorian dates and the weather when online.
+- **Hero:** the clock, and the countdown to the next adhan in stone gold with its iqamah; in Ramadan the countdown to iftar or imsak. «قريبًا» in the last five minutes.
+- **Arcade:** the six times (Fajr, sunrise, Dhuhr or Jumu'a, Asr, Maghrib, Isha) in pointed arches like the courtyard of the Great Mosque of Kairouan; passed ones dimmed, the next one gold. After Isha, tomorrow's Fajr.
+- **Ticker:** one short dhikr at a time, paged (never scrolling), with the mosque's written announcements between them, and a faint khatam frieze at both ends.
+- **Sky:** behind it all, the sky of the day's prayer times (night, Fajr, sunrise, day, Asr, Maghrib, Isha), computed on the device; or the plain ground («مداد»), or the mosque's own images.
 
 ### 3c. Transition Screens (timed overlays)
 
 | Event | Screen | Duration |
 |---|---|---|
-| Adhan time reached | Full-screen "الله أكبر" + prayer name + after-adhan duaa | ~4 min |
-| Iqamah countdown | Countdown to iqamah (big numbers) | Until iqamah |
-| Iqamah reached | "أقيمت الصلاة" + estimated prayer duration | During salah |
-| After salah | After-salah adhkar (rotating) | Configurable (5-15 min) |
-| Ramadan | Special Ramadan theme + Iftar countdown | All Ramadan |
+| Adhan time reached | The prayer's name in a mihrab, its time, the texts said with the muezzin | ~3 min |
+| Iqamah countdown | mm:ss for the back of the hall, 24 studs going out, «الرجاء إغلاق الهاتف» | Until iqamah |
+| Khutba | Black, one dim line | Until the Jumu'a iqamah |
+| Iqamah reached | Pure black | The prayer's duration |
+| After salah | The adhkar, one text at a time | As long as the texts need |
+| Night | A dim clock and the next Fajr on black, moving every 5 minutes | Isha + 1 h (2 h in Ramadan) to Fajr − 30 min |
+| Eid morning | «عيد مبارك», the greeting and the Eid prayer's time | Until Dhuhr |
 
 ## 4. Settings Screen
 
@@ -128,11 +106,11 @@ Accessible from main display via remote button:
 - Add Gradle task or shell script (similar to `multiplatform/setup-data.sh`)
 
 ### 5d. Theme & Design
-- Reuse the Islamic teal/gold Material theme from shared module (`Theme.kt`)
-- Dark mode default (better for mosque TVs — less eye strain, lower power)
-- Large fonts optimized for 10-foot viewing distance (TV UX standard)
-- RTL Arabic layout throughout
-- High contrast for readability across the room
+- The «مداد» palette (ink, ivory, stone gold for the next prayer only, silver for the star), dark always; pure black during the prayer
+- Three bundled fonts (no network): Readex Pro for the interface and numbers, Reem Kufi for single words, Amiri for sacred text
+- Ornament from Kairouan only, and never behind a number: the arcade arch, the mihrab, the verse medallion, the khatam
+- Large sizes for the back of the hall, RTL throughout, numbers left to right in fixed-width cells
+- Themes: «أفق» (the sky) and «مداد» (plain ground); the admin's own background images replace the sky
 
 ## 6. Differences from Mawaqit
 

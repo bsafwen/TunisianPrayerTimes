@@ -88,10 +88,10 @@ object MosqueAdhkar {
         is CustomDhikr -> ownSlides(item.copy(count = 1))
     }
 
-    /** The ticker holds every slide at least this long (longer while a long line scrolls). */
+    /** The ticker holds every slide at least this long; a long text is set smaller or on two lines, never scrolled. */
     const val TICKER_MIN_SLIDE_MILLIS = 12_000L
 
-    /** About how long one round of the ticker takes for these texts (without scrolling and announcements). */
+    /** About how long one round of the ticker takes for these texts (without the announcements between them). */
     fun tickerMillis(slides: List<AdhkarSlide>): Long = slides.sumOf { maxOf(TICKER_MIN_SLIDE_MILLIS, it.durationMillis) }
 
     fun adhanCompanion(): List<AdhkarSlide> = entries(ADHAN_IDS, DhikrCategory.PRAYER)

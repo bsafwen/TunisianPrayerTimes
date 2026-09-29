@@ -23,7 +23,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
-import androidx.compose.ui.input.key.onPreviewKeyEvent
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
 import com.tunisianprayertimes.DayPrayerTimes
@@ -128,6 +127,9 @@ class MainActivity : ComponentActivity() {
     /** Set by the composition: whether the admin-entry keys are listened to, and what they open. */
     internal var adminEntryActive = false
     internal var onAdminEntry: () -> Unit = {}
+
+    /** Set by the composition: someone is at the remote (every key, even those that open settings or never reach a screen). */
+    internal var onRemoteKey: () -> Unit = {}
 
     /** Set by the composition: what Back does where nothing else handles it (it never leaves the app). */
     internal var onBackOnDisplay: () -> Unit = {}
@@ -252,6 +254,7 @@ class MainActivity : ComponentActivity() {
 
     /** Opens settings from any remote: OK held 3 s, OK five times, or Menu/Settings/Info. */
     override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        onRemoteKey()
         val isOk = event.keyCode == KeyEvent.KEYCODE_DPAD_CENTER || event.keyCode == KeyEvent.KEYCODE_ENTER ||
             event.keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER
         if (swallowOkUntilUp && isOk) {
@@ -494,7 +497,11 @@ private fun TvApp(
     // Tarawih follow Isha on the nights before a fast (the Hijri day begins at sunset).
     val ramadanNight = lastIshaIqamah?.let { islamicDays[it.toLocalDate().plusDays(1)]?.isRamadan } == true
     val isNight = NightWindow.isNight(now, lastIshaIqamah, nextFajrEvent?.adhanAt, ramadanNight, nightScreenEnabled)
-    val eidMorning = EidMorning.isShown(now, banner, todayTimes?.let { today.atTime(it.dhuhr.hour, it.dhuhr.minute) })
+    val eidMorning = EidMorning.isShown(
+        now, banner,
+        fajrDoneAt = events.firstOrNull { it.prayer == Prayer.FAJR && it.adhanAt.toLocalDate() == today }?.afterSalahEndAt,
+        dhuhrAdhan = todayTimes?.let { today.atTime(it.dhuhr.hour, it.dhuhr.minute) },
+    )
 
     val afterPrayerDue = adhkarShownFor != null && adhkarShownFor != announcementsShownFor
     val periodicDue = announcementsEvery > 0 && !now.isBefore(lastSlideshowAt.plusMinutes(announcementsEvery.toLong())) &&
@@ -587,6 +594,13 @@ private fun TvApp(
             banner = banner?.let { dayBannerLines(it, now) }?.let { (title, detail) -> listOfNotNull(title, detail).joinToString(" · ") },
             flow = flow,
             weather = weather.takeIf { weatherEnabled },
+            screen = when {
+                currentScreen != Screen.Display || flow.phase != FlowPhase.IDLE -> null
+                showAnnouncements -> "ANNOUNCEMENTS"
+                isNight -> "NIGHT"
+                eidMorning -> "EID"
+                else -> null
+            },
         ))
     }
 
@@ -634,8 +648,10 @@ private fun TvApp(
     }
     // The file is always read against the settings on screen now, never an older snapshot.
     val usbPreview = remember(usbFound, schedule, manualDates, mosqueName, delegationId, currentThemeId) { usbFound?.let(inbox::preview) }
-    LaunchedEffect(notice) {
-        if (notice != null) {
+    // Nothing over the prayer and the khutba: a notice waits until they end, and only then starts its time.
+    val quietWall = currentScreen != Screen.Settings && flow.phase in QUIET_PHASES
+    LaunchedEffect(notice, quietWall) {
+        if (notice != null && !quietWall) {
             delay(NOTICE_MILLIS)
             notice = null
         }
@@ -672,6 +688,13 @@ private fun TvApp(
 
     // An admin screen left open with nobody at the remote gives the wall back to the prayer times.
     var lastKeyAt by remember { mutableStateOf(now) }
+    SideEffect { activity.onRemoteKey = { lastKeyAt = clock.read().now } }
+    // Back from a system page (Wi-Fi, overlay permission, date) counts as being at the remote.
+    LaunchedEffect(activity.resumes) { lastKeyAt = clock.read().now }
+    // A USB offer's time starts when it is on the wall, and again after a prayer that covered it.
+    LaunchedEffect(usbFound, usbMedia, flow.phase in PRAYER_PHASES) {
+        if (usbFound != null || usbMedia != null) lastKeyAt = clock.read().now
+    }
     LaunchedEffect(now) {
         val idle = Duration.between(lastKeyAt, now)
         val praying = flow.phase in PRAYER_PHASES
@@ -690,10 +713,6 @@ private fun TvApp(
             .graphicsLayer {
                 translationX = shiftX.dp.toPx()
                 translationY = shiftY.dp.toPx()
-            }
-            .onPreviewKeyEvent {
-                lastKeyAt = clock.read().now
-                false
             }
     ) {
         val inSettings = currentScreen == Screen.Settings
@@ -1003,6 +1022,10 @@ private fun TvApp(
                         nightScreenEnabled = enabled
                     },
                     phoneSessionOpen = phoneSession != null,
+                    // What «حذف الصور وملفات الإعلانات» would remove: both folders' images and .txt files, not the file's announcements.
+                    mediaFiles = imageCounts.getValue(MediaKind.BACKGROUNDS) + imageCounts.getValue(MediaKind.ANNOUNCEMENTS),
+                    // Typing goes to the keyboard, not through the activity's keys: it still counts as being at the remote.
+                    onTyping = { lastKeyAt = clock.read().now },
                     kioskPreview = {
                         healthRows(KioskReport.collect(context, activity.kiosk, activity.safeMode, android.os.Process.getStartElapsedRealtime())) +
                             updateRows(updateStatus, context.packageName)
@@ -1026,7 +1049,10 @@ private fun TvApp(
                 }
             }
             isNight && nextFajrEvent != null -> NightScreen(now, nextFajrEvent.adhanAt, nextFajrEvent.iqamahAt)
-            eidMorning && banner is DayBanner.Eid -> EidScreen(banner, now, mosqueName, HijriLabels.dateLabel(islamicDay.hijri))
+            eidMorning && banner is DayBanner.Eid -> EidScreen(
+                banner, now, mosqueName, HijriLabels.dateLabel(islamicDay.hijri),
+                nextPrayerLine = MainScreenModel.nextPrayerLine(now, todayTimes, tomorrowTimes, iqamahTimes, tomorrowFajrIqamah),
+            )
             else -> {
                 PrayerDisplayScreen(
                     todayTimes = todayTimes,
@@ -1048,11 +1074,10 @@ private fun TvApp(
                 )
             }
         }
-        // Nothing over the prayer and the khutba: the message waits until they end.
-        val quietWall = !inSettings && flow.phase in QUIET_PHASES
+        // Nothing over the prayer and the khutba; on the admin pages at the top, clear of their keys and hints.
         (hint ?: notice ?: TvStrings.CLOCK_WRONG_ZONE.takeIf { reading.trust == ClockTrust.WRONG_ZONE })
             ?.takeUnless { quietWall }
-            ?.let { ScreenNotice(it) }
+            ?.let { ScreenNotice(it, atTop = currentScreen != Screen.Display) }
         if (phoneSession != null && currentScreen == Screen.Display && flow.phase !in PRAYER_PHASES) TopMark(TvStrings.DASHBOARD_OPEN)
     }
 }

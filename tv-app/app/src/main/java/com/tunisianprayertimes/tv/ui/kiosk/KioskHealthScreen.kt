@@ -19,11 +19,16 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
@@ -224,6 +229,27 @@ fun HealthDot(level: HealthLevel, modifier: Modifier = Modifier, size: Dp = 10.d
     Canvas(modifier.size(size)) { drawCircle(level.color) }
 }
 
+/** The kiosk page's actions. Each keeps its identity while its label changes (quick start on or off). */
+internal enum class KioskAction { GRANT_OVERLAY, QUICK_START, FIRE_TV_SLEEP, HOME_MODE, ALLOW_UPDATES, INSTALL_UPDATE, BACK }
+
+/**
+ * The action that had the focus has left the list (the overlay permission granted, Fire TV's sleep
+ * turned off): the focus then goes to «رجوع», never onto the action that took its place, where the
+ * next OK would open the Home chooser or install an update.
+ */
+internal fun focusedActionGone(focused: KioskAction?, actions: List<KioskAction>): Boolean =
+    focused != null && focused !in actions
+
+private class ActionItem(val id: KioskAction, val text: String, val onClick: () -> Unit)
+
+/** What the page keeps of the focus, outside the snapshot so that moving it recomposes nothing. */
+private class ActionFocus(var first: KioskAction?) {
+    /** The action with the focus; null once the admin has moved into the rows. */
+    var current: KioskAction? = null
+}
+
+private const val BACK_FOCUS_ATTEMPTS = 3
+
 /**
  * The kiosk page: can the box start the app by itself, will it fall asleep, has the app crashed. The
  * actions on the right as in the settings menu, the rows in a panel on the left, each with its fix
@@ -248,29 +274,57 @@ fun KioskHealthScreen(
 ) {
     val rows = remember(report, extraRows, quickStartSettling) { healthRows(report, quickStartSettling = quickStartSettling) + extraRows }
     val actions = listOfNotNull(
-        onGrantOverlay?.takeIf { !report.canDrawOverlays }?.let { TvStrings.GRANT_OVERLAY to it },
-        onToggleQuickStart?.let { (if (report.quickStartEnabled) TvStrings.QUICK_START_OFF else TvStrings.QUICK_START_ON) to it },
-        onDisableFireTvSleep?.let { TvStrings.FIRE_TV_SLEEP_OFF to it },
+        onGrantOverlay?.takeIf { !report.canDrawOverlays }?.let { ActionItem(KioskAction.GRANT_OVERLAY, TvStrings.GRANT_OVERLAY, it) },
+        onToggleQuickStart?.let {
+            ActionItem(KioskAction.QUICK_START, if (report.quickStartEnabled) TvStrings.QUICK_START_OFF else TvStrings.QUICK_START_ON, it)
+        },
+        onDisableFireTvSleep?.let { ActionItem(KioskAction.FIRE_TV_SLEEP, TvStrings.FIRE_TV_SLEEP_OFF, it) },
         // Fire OS puts its own home back: offering the app as home there would only mislead.
         if (report.autoStart.fireTv) null
-        else (if (report.homeModeEnabled) TvStrings.HOME_MODE_OFF else TvStrings.HOME_MODE_ON) to onToggleHomeMode,
-        onAllowUpdates?.let { TvStrings.ALLOW_UPDATES to it },
-        onInstallUpdate?.let { TvStrings.INSTALL_UPDATE to it },
-        TvStrings.BACK to onBack,
+        else ActionItem(KioskAction.HOME_MODE, if (report.homeModeEnabled) TvStrings.HOME_MODE_OFF else TvStrings.HOME_MODE_ON, onToggleHomeMode),
+        onAllowUpdates?.let { ActionItem(KioskAction.ALLOW_UPDATES, TvStrings.ALLOW_UPDATES, it) },
+        onInstallUpdate?.let { ActionItem(KioskAction.INSTALL_UPDATE, TvStrings.INSTALL_UPDATE, it) },
+        ActionItem(KioskAction.BACK, TvStrings.BACK, onBack),
     )
+    val ids = actions.map { it.id }
+    // The first action has the focus: after onboarding, it is what the installer came for. Once it
+    // has left the list, it does not take the focus again if it comes back.
+    val focus = remember { ActionFocus(first = ids.first()) }
+    if (focus.first !in ids) focus.first = null
+    // Read while the focused action still holds the focus: the list composed now may have dropped it.
+    val focusedBefore = focus.current
+    val back = remember { FocusRequester() }
+    LaunchedEffect(ids) {
+        if (!focusedActionGone(focusedBefore, ids)) return@LaunchedEffect
+        repeat(BACK_FOCUS_ATTEMPTS) {
+            if (runCatching { back.requestFocus() }.isSuccess) return@LaunchedEffect
+            withFrameNanos { }
+        }
+    }
     Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
         Column(Modifier.width(300.dp).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Text(TvStrings.SETTINGS_KIOSK, style = midadStyle(26.sp, FontWeight.SemiBold))
             Text(healthSummary(rows), style = midadStyle(14.sp, color = Midad.Muted), modifier = Modifier.padding(bottom = 9.dp))
-            // The first action has the focus: after onboarding, it is what the installer came for.
-            actions.forEachIndexed { index, (text, action) ->
-                FocusableListItem(text = text, onClick = action, modifier = Modifier.initialFocus(index == 0))
+            actions.forEach { action ->
+                // By identity: an action that leaves takes its focus node with it, rather than
+                // handing it, and the next OK, to the action that moves into its place.
+                key(action.id) {
+                    FocusableListItem(
+                        text = action.text,
+                        onClick = action.onClick,
+                        modifier = Modifier
+                            .onFocusChanged { if (it.isFocused) focus.current = action.id }
+                            .then(if (action.id == KioskAction.BACK) Modifier.focusRequester(back) else Modifier)
+                            .initialFocus(action.id == focus.first),
+                    )
+                }
             }
         }
         LazyColumn(
             Modifier
                 .weight(1f)
                 .fillMaxHeight()
+                .onFocusChanged { if (it.hasFocus) focus.current = null }
                 .background(Midad.Surface, RoundedCornerShape(14.dp)),
             contentPadding = PaddingValues(horizontal = 20.dp, vertical = 18.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp),

@@ -15,6 +15,7 @@ import com.tunisianprayertimes.tv.ui.display.weatherIcon
 import com.tunisianprayertimes.weather.WeatherNow
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -73,7 +74,9 @@ class MainScreenModelTest {
         assertEquals("الإقامة 15:42", hero.detail)
         assertEquals("01:24:48", hero.countdownText(now))
         assertFalse(hero.isSoon(now))
-        assertEquals(DisplayTexts.TIMES_VERSE, state.verse)
+        // Fajr and Dhuhr have been called: the header shows that turn's verse about the prayer.
+        assertEquals(DisplayTexts.headerVerse(false, false, DisplayTexts.turnAt(tuesday, 2)), state.verse)
+        assertTrue(state.verse in DisplayTexts.PRAYER_VERSES)
         assertNull(state.dayNote)
     }
 
@@ -289,5 +292,14 @@ class MainScreenModelTest {
         assertEquals(WeatherIcon.RAIN, weatherIcon(81, isDay = true))
         assertEquals(WeatherIcon.THUNDER, weatherIcon(95, isDay = true))
         assertNull(weatherIcon(7, isDay = true))
+    }
+
+    @Test
+    fun theHeaderVerseMovesOnAtEachAdhan() {
+        fun verse(hm: String) = at(tuesday.atTime(LocalTime.parse(hm))).verse
+        assertEquals(verse("15:00"), verse("15:31"))
+        assertNotEquals(verse("15:31"), verse("15:32"))
+        // After Isha until midnight one verse, then the next day's sequence goes on.
+        assertEquals(verse("19:40"), verse("23:59"))
     }
 }

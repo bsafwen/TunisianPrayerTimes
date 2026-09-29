@@ -90,23 +90,32 @@ private fun AdhkarPager(index: Int, total: Int) {
     }
 }
 
-/** How many times and which part (in ivory, to be seen), then the source, between two stars. */
+/**
+ * How many times and which part, in ivory on a line of their own (a count is read from the back of the
+ * hall), then the source between two stars, kept to the text's width: some sources are a sentence.
+ */
 @Composable
 private fun SourceRow(slide: AdhkarSlide) {
-    Row(horizontalArrangement = Arrangement.spacedBy(14.dp), verticalAlignment = Alignment.CenterVertically) {
-        KhatamStar(15.dp)
+    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         val count = listOfNotNull(
             TvStrings.times(slide.count),
             slide.parts.takeIf { it > 1 }?.let { TvStrings.part(slide.part, it) },
         )
-        if (count.isNotEmpty()) Text(count.joinToString(" · "), style = midadStyle(18.sp, FontWeight.Medium))
-        Text(
-            slide.reference,
-            style = midadStyle(18.sp, color = Midad.Muted),
-            textAlign = TextAlign.Center,
-            modifier = Modifier.weight(1f, fill = false),
-        )
-        KhatamStar(15.dp)
+        if (count.isNotEmpty()) Text(count.joinToString(" · "), style = midadStyle(22.sp, FontWeight.Medium))
+        Row(
+            Modifier.widthIn(max = 720.dp),
+            horizontalArrangement = Arrangement.spacedBy(14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            KhatamStar(15.dp)
+            Text(
+                TvStrings.source(slide.reference),
+                style = midadStyle(18.sp, color = Midad.Muted),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.weight(1f, fill = false),
+            )
+            KhatamStar(15.dp)
+        }
     }
 }
 

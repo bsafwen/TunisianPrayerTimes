@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Delegation
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.mosque.DisplayTexts
 import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.tv.data.IqamahConfig
@@ -162,7 +163,7 @@ private fun WelcomeStep(
     onSelect: (Gouvernorat) -> Unit
 ) {
     Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(TvStrings.SETUP_WELCOME, style = midadStyle(20.sp, color = Midad.Verse, family = Amiri, lineHeight = 1.4f))
+        Text(DisplayTexts.BASMALA.text, style = midadStyle(20.sp, color = Midad.Verse, family = Amiri, lineHeight = 1.4f))
         Text(TvStrings.APP_NAME, style = midadStyle(30.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.25f))
         MedallionRule(width = 260.dp, modifier = Modifier.padding(vertical = 6.dp))
         Text(TvStrings.SETUP_WELCOME_SUB, style = midadStyle(15.sp, color = Midad.Muted))

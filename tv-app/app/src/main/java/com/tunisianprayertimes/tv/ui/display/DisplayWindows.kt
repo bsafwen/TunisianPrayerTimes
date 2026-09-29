@@ -68,17 +68,26 @@ object NightWindow {
     }
 }
 
-/** The Eid screen: on an Eid day, from midnight until the Dhuhr adhan. */
+/**
+ * The Eid screen: on an Eid day, from the end of the Fajr prayer (its adhkar included) until the Dhuhr
+ * adhan. Before that the timetable stays, with Fajr's countdown for the large dawn congregation.
+ */
 object EidMorning {
 
     /** Without today's prayer times the morning ends at noon. */
     private val NOON: LocalTime = LocalTime.NOON
 
-    /** [dhuhrAdhan] is today's; the Eid prayer itself comes from [banner] and may already be over. */
-    fun isShown(now: LocalDateTime, banner: DayBanner?, dhuhrAdhan: LocalDateTime?): Boolean {
+    /**
+     * [fajrDoneAt] is when today's Fajr prayer and its adhkar end (the Eid screen shows from then on;
+     * from midnight while it is unknown); [dhuhrAdhan] is today's. The Eid prayer itself comes from
+     * [banner] and may already be over.
+     */
+    fun isShown(now: LocalDateTime, banner: DayBanner?, fajrDoneAt: LocalDateTime?, dhuhrAdhan: LocalDateTime?): Boolean {
         if (banner !is DayBanner.Eid) return false
-        val end = dhuhrAdhan?.takeIf { it.toLocalDate() == now.toLocalDate() } ?: now.toLocalDate().atTime(NOON)
-        return now.isBefore(end)
+        val today = now.toLocalDate()
+        val start = fajrDoneAt?.takeIf { it.toLocalDate() == today } ?: today.atStartOfDay()
+        val end = dhuhrAdhan?.takeIf { it.toLocalDate() == today } ?: today.atTime(NOON)
+        return !now.isBefore(start) && now.isBefore(end)
     }
 }
 
@@ -91,9 +100,12 @@ object IqamahWait {
     /** The countdown turns warm for the last minute. */
     const val ALERT_SECONDS = 60L
 
-    /** Whole seconds to the iqamah, never negative. */
+    /**
+     * Seconds to the iqamah, rounded up as the main screen's countdown is: the clock ticks a few
+     * milliseconds after each second, and "00:00" must not stand a whole second before the iqamah.
+     */
     fun remainingSeconds(now: LocalDateTime, iqamahAt: LocalDateTime): Long =
-        Duration.between(now, iqamahAt).seconds.coerceAtLeast(0)
+        Math.floorDiv(Duration.between(now, iqamahAt).toMillis() + 999, 1000L).coerceAtLeast(0)
 
     /**
      * How many of [count] studs are still lit: all at the adhan, one going out after each

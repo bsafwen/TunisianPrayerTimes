@@ -154,6 +154,11 @@ class DashboardTest {
         assertTrue(text.startsWith("HTTP/1.0 200 OK\r\n"))
         assertTrue(text.contains("Content-Length: ${"""{"a":"ب"}""".toByteArray().size}\r\n"))
         assertTrue(text.contains("Cache-Control: no-store"))
+
+        // A font goes out with the header its route asked for, so the phone keeps it.
+        val font = ByteArrayOutputStream()
+        DashboardServer.writeResponse(font, HttpResponse(200, "font/ttf", ByteArray(4), cacheControl = DashboardRoutes.FONT_CACHE))
+        assertTrue(font.toString("UTF-8").contains("Cache-Control: ${DashboardRoutes.FONT_CACHE}\r\n"))
     }
 
     @Test

@@ -14,9 +14,17 @@
     SALAH: "الصلاة قائمة",
     AFTER_SALAH: "أذكار بعد الصلاة"
   };
+  // What the wall shows instead of the timetable while no prayer holds it (flow.screen).
+  var SCREENS = {
+    NIGHT: "شاشة الليل الخافتة",
+    EID: "صباح العيد",
+    ANNOUNCEMENTS: "الإعلانات"
+  };
   // While the screen waits for the iqamah, the countdown is to the iqamah; otherwise to the next adhan.
   var BEFORE_IQAMAH = { ADHAN: true, IQAMAH_COUNTDOWN: true, KHUTBA: true };
   var LEVELS = { GOOD: "جيد", WARNING: "تنبيه", BAD: "مشكلة", INFO: "معلومة" };
+  // The clock warning is announced when it appears, not again with each redraw every 30 s.
+  var clockAnnounced = false;
 
   /** "HH:MM" from "HH:MM", "HH:MM:SS" or "YYYY-MM-DDTHH:MM:SS"; anything else as given. */
   function shortTime(value) {
@@ -58,6 +66,12 @@
     return typeof flow.phase === "string" && Object.prototype.hasOwnProperty.call(PHASES, flow.phase) ? flow.phase : "IDLE";
   }
 
+  /** The night, Eid morning or announcements screen the idle wall shows, or null for the timetable. */
+  function screenOf(state, phase) {
+    var screen = (state.flow || {}).screen;
+    return phase === "IDLE" && typeof screen === "string" && Object.prototype.hasOwnProperty.call(SCREENS, screen) ? screen : null;
+  }
+
   /** The prayer the screen is busy with (its adhan, iqamah, prayer or adhkar), or null when idle. */
   function currentPrayer(state, prayers) {
     var flow = state.flow || {};
@@ -87,15 +101,20 @@
     var prayers = prayersOf(state);
     var current = currentPrayer(state, prayers);
     var name = flow.prayer || (current && current.name) || "";
+    // The Eid prayer has no adhan and no iqamah: the TV counts down to the prayer itself, and so does the card.
+    var eid = flow.eid === true;
+    var screen = screenOf(state, phase);
+    var shows = screen ? SCREENS[screen] : eid && phase === "IQAMAH_COUNTDOWN" ? "انتظار صلاة العيد" : PHASES[phase];
     var sub = [];
     var until = phase !== "IDLE" ? shortTime(flow.until) : "";
-    sub.push(until ? ["الشاشة: " + PHASES[phase] + " حتى ", { time: until }] : ["الشاشة: " + PHASES[phase]]);
+    sub.push(until ? ["الشاشة: " + shows + " حتى ", { time: until }] : ["الشاشة: " + shows]);
 
     if (BEFORE_IQAMAH[phase]) {
       // The adhan screen ends before the iqamah: its own countdown is to the iqamah of today's list.
       var target = phase === "ADHAN" ? secondsOf(current && current.iqamah) : secondsOf(flow.until);
       if (target !== null && target >= seconds) {
-        return { label: (name ? "إقامة " + name : "الإقامة") + " بعد", count: countdown(target - seconds), sub: sub };
+        var awaited = eid ? "صلاة " + (name || "العيد") : name ? "إقامة " + name : "الإقامة";
+        return { label: awaited + " بعد", count: countdown(target - seconds), sub: sub };
       }
     }
     var next = nextAdhan(prayers, seconds);
@@ -196,8 +215,9 @@
     return card;
   }
 
-  function clockCard(el) {
-    return el("section", { class: "card level-BAD", attrs: { role: "alert" } },
+  /** The clock warning; an alert (read out at once) only when `announce`, a plain card on later redraws. */
+  function clockCard(el, announce) {
+    return el("section", { class: "card level-BAD", attrs: { role: announce ? "alert" : false } },
       el("h2", { text: "ساعة الشاشة غير صحيحة" }),
       el("p", { class: "muted", text: "قد تكون أوقات الصلاة المعروضة خاطئة. اضبط تاريخ الشاشة وساعتها من إعدادات التلفاز." }));
   }
@@ -267,7 +287,9 @@
     render: function (root, ctx) {
       var el = ctx.el;
       var state = ctx.state || {};
-      if (state.clock && state.clock.trusted === false) root.appendChild(clockCard(el));
+      var untrusted = !!(state.clock && state.clock.trusted === false);
+      if (untrusted) root.appendChild(clockCard(el, !clockAnnounced));
+      clockAnnounced = untrusted;
       root.appendChild(nowCard(ctx, state));
       root.appendChild(timesCard(ctx, state));
       var weather = state.weather;

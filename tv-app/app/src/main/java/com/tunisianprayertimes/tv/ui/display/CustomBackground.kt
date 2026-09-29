@@ -74,6 +74,10 @@ fun CustomBackground(
     }
 }
 
-/** How much of the ground lies over an image: enough for the ivory text, little enough to see the image. */
-private const val VEIL = 0.55f
+/**
+ * How much of the ground lies over an image. A mosque's photo can be bright (a white minaret, a pale
+ * sky): at 0.8 even pure white stays dark enough for the gold countdown and the grey labels (over
+ * 5.5:1) and the ivory clock (about 9:1), while the picture still shows through.
+ */
+private const val VEIL = 0.8f
 private const val FADE_MILLIS = 800

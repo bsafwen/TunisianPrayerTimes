@@ -27,11 +27,16 @@ what the screen shows now, with the countdown in the screen's stone gold.
 - The header shows the mosque's name, a dot that is green («متصل بالشاشة») while the TV answers
   and red («غير متصل») once a request fails, and the TV's clock. The sections are pill tabs.
 - «نظرة عامة» follows the TV (every 30 s, and its countdown every second on the TV's clock): the next
-  adhan, or the iqamah the screen is waiting for, with what the screen shows (`flow`); today's times
-  with the next (or current) prayer highlighted; the weather (credited to Open-Meteo); the kiosk
-  checks with coloured dots; the version and the update button.
-- The forms («الإقامة», «الأذكار», «الإعلانات», «المسجد», «رمضان والعيد», «متقدّم») keep their main
-  button at the bottom of the screen while they scroll, and send only what the admin changed.
+  adhan, or the iqamah the screen is waiting for (for an Eid, the prayer itself), with what the
+  screen shows (`flow`: the prayer's phase, or the night, Eid morning or announcements screen);
+  today's times with the next (or current) prayer highlighted; the weather (credited to
+  Open-Meteo); the kiosk checks with coloured dots; the version and the update button. A wrong TV
+  clock is announced to screen readers once, not again at every refresh.
+- «الإقامة», «الأذكار», «المسجد» and «رمضان والعيد» keep their main button at the bottom of the
+  screen while they scroll; a field reached with Tab scrolls clear of it and of the tabs.
+  «الإقامة» and «المسجد» send only the fields the admin changed, «الأذكار» only the lists changed,
+  «رمضان والعيد» the three dates of the year. «الإعلانات» sends the whole list of written
+  announcements and «متقدّم» the whole settings file, each from a button under its own card.
 - Numbers that tick use cells of one width: Readex Pro has proportional figures and no tabular feature.
 
 ## API
@@ -75,7 +80,7 @@ Errors: `403 { "error": "..." }` without a valid token, `404 { "error": "..." }`
     "date": "2026-09-29", "hijri": "18 ربيع الثاني 1448 هـ", "sunrise": "06:12", "banner": null,
     "prayers": [{ "id": "FAJR", "name": "الفجر", "adhan": "04:46", "iqamah": "05:01" }]
   },
-  "flow": { "phase": "IDLE", "prayer": null, "until": null },
+  "flow": { "phase": "IDLE", "prayer": null, "until": null, "screen": null },
   "settingsFile": "{ ... the TV's whole settings file ... }",
   "islamicDates": {
     "hijriYear": 1448,
@@ -94,6 +99,12 @@ Errors: `403 { "error": "..." }` without a valid token, `404 { "error": "..." }`
 - `flow.phase`: `IDLE`, `ADHAN`, `IQAMAH_COUNTDOWN`, `KHUTBA`, `SALAH` or `AFTER_SALAH`;
   `flow.prayer` is the prayer's Arabic name and `flow.until` the end of the phase as `HH:MM`
   (both null when idle). `clock.now` is the TV's time in Tunisia, `YYYY-MM-DDTHH:MM:SS`, no zone.
+- `flow.screen`: what the wall shows while the flow is `IDLE`, when it is not the timetable: `NIGHT`
+  (the dim night screen), `EID` (the Eid morning screen) or `ANNOUNCEMENTS` (the slideshow);
+  absent or null for the timetable. The page reads it only while the flow is `IDLE`.
+- `flow.eid`: `true` when `flow.prayer` is an Eid prayer (absent or false otherwise). It has no
+  adhan and no iqamah: from sunrise its `IQAMAH_COUNTDOWN` is the wait for the prayer itself, which
+  the page words as the TV does («صلاة عيد الفطر بعد», «انتظار صلاة العيد»).
 - `weather`: `enabled` is the admin's choice; `text` is null when the TV has no recent weather
   (offline); `updated` is `HH:MM`. The data comes from Open-Meteo, which must be credited.
 - `update`: `supported` is false in the Play build. `/api/undo` answers `{ "available": false }`
@@ -138,15 +149,18 @@ lists the screen shows when the mosque changed nothing:
   A long text (several pages on screen) with a count above 1 is shown whole again for each
   reading, three times at most.
 - `afterSalahMillis`: how long the TV shows the text after the prayer, at its `count`.
-  `tickerMillis`: at least how long it stays in the ticker (every page or step at least 12 s; a long
-  line that scrolls, and the announcements between texts, add time). The page adds them up to show
-  about how long the adhkar last.
+  `tickerMillis`: at least how long it stays in the ticker (every page or step at least 12 s, longer
+  only for its reading time; the announcements between texts add time). The ticker pages and never
+  scrolls: a long text is set smaller or on two lines, with no extra time. The page adds them up to
+  show about how long the adhkar last.
 
 ### The settings file the forms build
 
 The same format as the USB key (see `INSTALL_AR.md`). Every section is optional, and so is every
-field of `mosque`, `display` and each prayer. The forms send only the fields the admin changed, so
-a change made meanwhile from the remote, a USB key or another phone is kept:
+field of `mosque`, `display` and each prayer. «الإقامة» and «المسجد» send only the fields the admin
+changed, and «الأذكار» only the lists, so a change made meanwhile from the remote, a USB key or
+another phone is kept. «رمضان والعيد» sends the three dates of the year, «الإعلانات» the whole
+list, and «متقدّم» the whole file:
 
 ```json
 {
@@ -165,9 +179,9 @@ a change made meanwhile from the remote, a USB key or another phone is kept:
 ```
 
 - `display`: `theme` is an id of `themes` (`horizon` or `midad`). `weather`, `backgrounds`,
-  `announcements` and `nightScreen` (the dim night screen between Isha and Fajr) are `true` or
-  `false`, all on by default. `slideSeconds`: 5-60. `announcementsEveryMinutes`: 0-120, 0 for
-  after the prayer's adhkar only.
+  `announcements` and `nightScreen` (the dim night screen, from an hour after the Isha iqamah, two
+  in Ramadan, to 30 minutes before Fajr) are `true` or `false`, all on by default. `slideSeconds`:
+  5-60. `announcementsEveryMinutes`: 0-120, 0 for after the prayer's adhkar only.
 - `iqamah`: `"+N"` minutes after the adhan (after sunrise for the Eids, 1-90), or a fixed `"HH:MM"`.
   `duration`: minutes of prayer (the black screen), 1-90.
 - `ramadan`: only what changes in Ramadan; `null` returns a field to the usual setting.

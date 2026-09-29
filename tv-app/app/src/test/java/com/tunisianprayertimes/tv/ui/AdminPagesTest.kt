@@ -9,7 +9,9 @@ import com.tunisianprayertimes.tv.data.IqamahConfig
 import com.tunisianprayertimes.tv.data.IqamahMode
 import com.tunisianprayertimes.tv.ui.kiosk.HealthLevel
 import com.tunisianprayertimes.tv.ui.kiosk.HealthRow
+import com.tunisianprayertimes.tv.ui.kiosk.KioskAction
 import com.tunisianprayertimes.tv.ui.kiosk.color
+import com.tunisianprayertimes.tv.ui.kiosk.focusedActionGone
 import com.tunisianprayertimes.tv.ui.kiosk.healthSummary
 import com.tunisianprayertimes.tv.ui.kiosk.worstFirst
 import com.tunisianprayertimes.tv.ui.settings.AdvancedAction
@@ -27,6 +29,7 @@ import com.tunisianprayertimes.tv.ui.setup.iqamahText
 import com.tunisianprayertimes.tv.ui.setup.shiftFixed
 import com.tunisianprayertimes.tv.ui.theme.Midad
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
@@ -58,6 +61,18 @@ class AdminPagesTest {
         assertEquals(SettingsPage.Mosque, SettingsPage.Location.up)
         assertEquals(SettingsPage.Advanced, SettingsPage.Reset.up)
         assertEquals(SettingsPage.Advanced, SettingsPage.BundledTexts.section)
+        // The deletion of the media files asks first, on its own page under «الإعلانات والصور».
+        assertEquals(SettingsPage.Media, SettingsPage.DeleteMedia.up)
+        assertEquals(TvStrings.DELETE_IMAGES, SettingsPage.DeleteMedia.title)
+    }
+
+    @Test
+    fun theDeletionSaysWhatGoes() {
+        // Images from a USB key or the phone, and the written .txt announcements, which live in the same folder.
+        listOf(TvStrings.DELETE_IMAGES_HINT, TvStrings.DELETE_IMAGES_CONFIRM).forEach { text ->
+            assertTrue(text, "USB" in text && "الهاتف" in text && ".txt" in text)
+        }
+        assertTrue("الهاتف" in TvStrings.BACKGROUNDS_HOWTO)
     }
 
     @Test
@@ -76,7 +91,30 @@ class AdminPagesTest {
         assertEquals(15, stepSlideSeconds(10, 1))
         assertEquals(60, stepSlideSeconds(60, 1))
         assertEquals(TvStrings.ANNOUNCEMENTS_EVERY_OFF, everyText(0))
+    }
+
+    @Test
+    fun theIntervalAgreesWithItsNumber() {
+        assertEquals("كل دقيقة", everyText(1))
+        assertEquals("كل دقيقتين", everyText(2))
+        // The plural from 3 to 10, the singular from 11: what one press of − from 15 shows, then two.
+        assertEquals("كل 5 دقائق", everyText(5))
+        assertEquals("كل 10 دقائق", everyText(10))
         assertEquals("كل 15 دقيقة", everyText(15))
+        assertEquals("كل 120 دقيقة", everyText(120))
+    }
+
+    @Test
+    fun theKioskFocusLeavesAnActionThatIsGone() {
+        val before = listOf(KioskAction.GRANT_OVERLAY, KioskAction.HOME_MODE, KioskAction.BACK)
+        val after = listOf(KioskAction.HOME_MODE, KioskAction.BACK)
+        // The overlay granted: the focus goes to «رجوع», not to «جعل التطبيق الشاشة الرئيسية» in its place.
+        assertTrue(focusedActionGone(KioskAction.GRANT_OVERLAY, after))
+        assertEquals(KioskAction.BACK, after.last())
+        // An action that stays keeps the focus; so does a row of the panel, and a page not yet focused.
+        assertFalse(focusedActionGone(KioskAction.HOME_MODE, after))
+        assertFalse(focusedActionGone(KioskAction.HOME_MODE, before))
+        assertFalse(focusedActionGone(null, after))
     }
 
     @Test

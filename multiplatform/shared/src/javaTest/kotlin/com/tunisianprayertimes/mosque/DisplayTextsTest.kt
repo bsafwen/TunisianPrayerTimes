@@ -8,7 +8,7 @@ class DisplayTextsTest {
 
     @Test
     fun theHeaderVerseFollowsTheDay() {
-        assertEquals(DisplayTexts.TIMES_VERSE, DisplayTexts.headerVerse(isRamadan = false, isFriday = false))
+        assertEquals(DisplayTexts.PRAYER_VERSES.first(), DisplayTexts.headerVerse(isRamadan = false, isFriday = false))
         assertEquals(DisplayTexts.FRIDAY_VERSE, DisplayTexts.headerVerse(isRamadan = false, isFriday = true))
         // A Friday in Ramadan keeps Ramadan's verse.
         assertEquals(DisplayTexts.RAMADAN_VERSE, DisplayTexts.headerVerse(isRamadan = true, isFriday = true))
@@ -28,8 +28,45 @@ class DisplayTextsTest {
     @Test
     fun versesUseTheQaloonMadaniCount() {
         // The Hafs (Kufan) count would say النساء 103 and البقرة 185.
-        assertEquals("النساء 102", DisplayTexts.TIMES_VERSE.reference)
+        assertEquals(
+            listOf(
+                "النساء 102", "البقرة 236", "المؤمنون 1–2", "العنكبوت 45", "طه 131", "الإسراء 78",
+                "البقرة 42", "طه 13", "البقرة 44", "لقمان 16", "هود 114", "إبراهيم 42",
+            ),
+            DisplayTexts.PRAYER_VERSES.map { it.reference },
+        )
         assertEquals("البقرة 184", DisplayTexts.RAMADAN_VERSE.reference)
         assertEquals("الجمعة 9", DisplayTexts.FRIDAY_VERSE.reference)
+    }
+
+    @Test
+    fun theBasmalaIsNotCitedAsAVerseOfAlFatiha() {
+        // In the Madani count it opens the suras without being al-Fatiha's first verse, as it is in Hafs.
+        assertEquals("البسملة", DisplayTexts.BASMALA.reference)
+        assertEquals("بسم الله الرحمن الرحيم", DisplayTexts.BASMALA.text.filter { it in 'ء'..'ي' || it == ' ' })
+        assertTrue(DisplayTexts.BASMALA in DisplayTexts.ALL)
+    }
+
+    @Test
+    fun everyPrayerTimeMeetsEveryVerse() {
+        val verses = DisplayTexts.PRAYER_VERSES
+        // Six turns a day: before Fajr, then after each of the five adhans.
+        for (turnOfDay in 0..5) {
+            val seen = (0L until 2L * verses.size).map { day ->
+                DisplayTexts.headerVerse(false, false, DisplayTexts.turnAt(java.time.LocalDate.ofEpochDay(20_000 + day), turnOfDay))
+            }.toSet()
+            assertEquals(verses.toSet(), seen, "turn $turnOfDay of the day")
+        }
+        // Consecutive turns never repeat a verse.
+        (0L..200L).forEach { turn ->
+            assertTrue(DisplayTexts.headerVerse(false, false, turn) != DisplayTexts.headerVerse(false, false, turn + 1))
+        }
+    }
+
+    @Test
+    fun theVersesFitOneHeaderLine() {
+        DisplayTexts.PRAYER_VERSES.forEach { verse ->
+            assertTrue(verse.text.count { it in 'ء'..'ي' } <= 45, "${verse.id} is short")
+        }
     }
 }

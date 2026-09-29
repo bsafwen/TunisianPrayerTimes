@@ -1,5 +1,8 @@
+# ── Node ────────────────────────────────────────────────────────────────
 node_modules/
-# Only generated data folders are ignored; a bare "data" rule also hid Kotlin "data" packages.
+
+# ── Generated data folders ──────────────────────────────────────────────
+# Anchored on purpose: a bare "data" rule also hid Kotlin "data" packages.
 /scraper/data/
 /qaloon-model/data/
 /multiplatform/desktopApp/data
@@ -7,55 +10,61 @@ node_modules/
 !/data/official-islamic-dates/
 !/data/prayer-formula/
 mawaqit-csv
-.DS_Store
+
+# ── Secrets and machine-local config ────────────────────────────────────
 .env.local
 .env.*.local
-__pycache__/
-*.pyc
-
-# Android
 *.jks
 *.keystore
-android-app/.gradle/
-android-app/.idea/
-android-app/.kotlin/
-android-app/build/
-android-app/app/build/
-android-app/local.properties
-android-app/keystore.properties
+local.properties
+keystore.properties
+
+# ── Gradle / Kotlin build output ────────────────────────────────────────
+# Covers android-app, tv-app, multiplatform, qaloon-app and build-logic
+# (build-logic's build.gradle.kts, settings.gradle.kts and src/ stay tracked).
+# build/ is anchored to project roots and modules so a Kotlin package
+# named "build" can never be hidden.
+.gradle/
+.kotlin/
+/*/build/
+/*/*/build/
 *.apk
-java_pid53290.hprof
 *.aab
-*.apk
-android-app/BUG_REVIEW.md
 
-# Multiplatform Desktop
-multiplatform/.gradle/
-multiplatform/.idea/
-multiplatform/.kotlin/
-multiplatform/build/
-multiplatform/shared/build/
-multiplatform/desktopApp/build/
-multiplatform/local.properties
-multiplatform/keystore.properties
-
-# TV App
-tv-app/.gradle/
-tv-app/.idea/
-tv-app/.kotlin/
-tv-app/build/
-tv-app/app/build/
-tv-app/local.properties
-tv-app/keystore.properties
-
-# Qaloon
-qaloon-app/.gradle/
-qaloon-app/.idea/
-qaloon-app/.kotlin/
-qaloon-app/build/
-qaloon-app/app/build/
-qaloon-app/local.properties
-qaloon-app/keystore.properties
-
+# ── JVM crash and heap dumps ────────────────────────────────────────────
+*.hprof
 hs_err_pid*.log
 replay_pid*.log
+
+# ── IDE, editor and OS files ────────────────────────────────────────────
+.idea/
+*.iml
+.metals/
+.bsp/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Python ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+
+# ── Claude Code session state (settings.json, launch.json, skills/ stay shareable)
+/.claude/*.lock
+/.claude/scheduled_tasks.json
+/.claude/settings.local.json
+/.claude/worktrees/
+/.claude/checkpoints/
+/.claude/mailbox/
+/.claude/routines/.state/
+/.claude/agent-registry.json
+/.claude/agent-memory-local
+/.claude/first-run
+/.claude/assistant-daemon-state.json
+
+# ── Local working folder (locality-automation venv, transactions, device captures)
+/work/
+
+# ── Personal notes ──────────────────────────────────────────────────────
+android-app/BUG_REVIEW.md

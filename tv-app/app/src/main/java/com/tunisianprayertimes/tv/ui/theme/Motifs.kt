@@ -15,9 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathOperation
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -70,8 +72,6 @@ private val ARCH_LINE = VectorShape("M10 312V160A151.9 151.9 0 0 1 137 10.2A151.
 /** The mihrab of the prayer hall, open at the bottom; with its inner line. */
 private val MIHRAB = VectorShape("M1.5 780V560A563.6 563.6 0 0 1 500 1.5A563.6 563.6 0 0 1 998.5 560V780", 1000f, 780f)
 private val MIHRAB_LINE = VectorShape("M16 780V560A549.1 549.1 0 0 1 500 15.6A549.1 549.1 0 0 1 984 560V780", 1000f, 780f)
-/** The moon beside the Hijri date. */
-private val CRESCENT = VectorShape("M15 2.5a9.5 9.5 0 1 0 0 19a7.6 7.6 0 1 1 0-19z", 24f, 24f)
 /** A phone, struck through: the congregation silences theirs. */
 private val PHONE_OFF = VectorShape(
     "M8.5 2.5H15.5A2 2 0 0 1 17.5 4.5V19.5A2 2 0 0 1 15.5 21.5H8.5A2 2 0 0 1 6.5 19.5V4.5A2 2 0 0 1 8.5 2.5ZM11 18.5H13M3 3L21 21",
@@ -172,7 +172,13 @@ fun DoubleKhatam(size: Dp, modifier: Modifier = Modifier, color: Color = Midad.S
 /** The moon by the Hijri date. Gold in Ramadan. */
 @Composable
 fun Crescent(size: Dp, modifier: Modifier = Modifier, color: Color = Midad.Silver) {
-    Canvas(modifier.size(size)) { draw(CRESCENT, uniform = true) { drawPath(CRESCENT.path, color) } }
+    Canvas(modifier.size(size)) {
+        // One disc less another, shifted up and to the right: the young moon, «☾».
+        val unit = this.size.minDimension / 24f
+        val moon = Path().apply { addOval(Rect(Offset(11f * unit, 12f * unit), 9.5f * unit)) }
+        val shadow = Path().apply { addOval(Rect(Offset(15f * unit, 10f * unit), 8f * unit)) }
+        drawPath(Path.combine(PathOperation.Difference, moon, shadow), color)
+    }
 }
 
 /** A phone struck through, for «الرجاء إغلاق الهاتف». */

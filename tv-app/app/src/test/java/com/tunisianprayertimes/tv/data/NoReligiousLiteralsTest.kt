@@ -11,7 +11,8 @@ import org.junit.Test
 class NoReligiousLiteralsTest {
 
     private val literal = Regex(""""([^"\\]|\\.)*"""")
-    private val tokens = listOf("اللهم", "رواه", "صحيح البخاري", "صحيح مسلم", "سنن ")
+    // The basmala is short and was typed bare: it is caught by its words, not by its marks.
+    private val tokens = listOf("اللهم", "رواه", "صحيح البخاري", "صحيح مسلم", "سنن ", "بسم الله")
 
     /** Mostly-vocalized Arabic is quoted text, not an interface label (labels carry a mark or two at most). */
     private fun isVocalized(text: String): Boolean {
