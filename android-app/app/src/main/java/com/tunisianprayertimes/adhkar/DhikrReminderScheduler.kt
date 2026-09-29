@@ -262,12 +262,15 @@ object DhikrReminderScheduler {
         }
         val previousIds = prefs.getStringSet("scheduled_ids", emptySet()).orEmpty()
         val scheduled = mutableSetOf<String>()
+        // Current/next windows and posted notifications; history pruning must keep these.
+        val liveOccurrenceIds = mutableSetOf<String>()
         // Resolved once per refresh; null while no app-managed silence is active.
         val silenceActive = SilenceStatus.isAppControlledSilenceActive(app)
         val activeSilenceEnd = SilenceStatus.appSilenceEndsAt(app, nowMillis)
         rules.filter { it.enabled && hasReminderContent(repo.state.value, it) }.forEach { rule ->
             for (window in windows(app, rule, nowMillis)) {
                 val occurrence = repo.ensureOccurrence(rule, window)
+                liveOccurrenceIds.add(occurrence.id)
                 if (occurrence.status != DhikrOccurrenceStatus.OPEN || occurrence.count >= occurrence.target) continue
                 if (isCollectionReadingDone(app, repo.state.value, rule, maxOf(nowMillis, window.startMillis))) continue
                 val slots = nudgeSlots(app, rule, window)
@@ -351,7 +354,10 @@ object DhikrReminderScheduler {
                 rule?.let { isCollectionReadingDone(app, repo.state.value, it, nowMillis) } == true ||
                 occurrence.snoozedUntilMillis > nowMillis || DhikrReadingPresence.occurrenceId == occurrence.id ||
                 !notificationsEnabled(app, rule?.vibrate ?: true)) manager(app).cancel(notification.tag, notification.id)
+            else liveOccurrenceIds.add(occurrence.id)
         }
+        // Count taps refresh without rearm, so they never pay for this scan and rewrite.
+        if (rearm) repo.pruneHistory(nowMillis, liveOccurrenceIds + listOfNotNull(DhikrReadingPresence.occurrenceId))
         runCatching {
             if (rules.none { it.enabled && hasReminderContent(repo.state.value, it) })
                 WorkManager.getInstance(app).cancelUniqueWork(WORK_NAME)
