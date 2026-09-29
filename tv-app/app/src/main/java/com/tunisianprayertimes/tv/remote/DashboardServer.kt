@@ -193,7 +193,7 @@ class DashboardServer(
             val head = "HTTP/1.0 ${response.status} $reason\r\n" +
                 "Content-Type: ${response.contentType}\r\n" +
                 "Content-Length: ${response.body.size}\r\n" +
-                "Cache-Control: no-store\r\n" +
+                "Cache-Control: ${response.cacheControl}\r\n" +
                 "X-Content-Type-Options: nosniff\r\n" +
                 "Referrer-Policy: no-referrer\r\n" +
                 "Connection: close\r\n\r\n"

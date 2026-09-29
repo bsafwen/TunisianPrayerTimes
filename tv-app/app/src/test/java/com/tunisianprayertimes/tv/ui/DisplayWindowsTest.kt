@@ -94,17 +94,32 @@ class DisplayWindowsTest {
     }
 
     @Test
-    fun eidMorningRunsFromMidnightToTheDhuhrAdhan() {
+    fun eidMorningRunsFromTheEndOfFajrToTheDhuhrAdhan() {
         val eid = DayBanner.Eid(Prayer.AID_FITR, at("06:40"))
+        val fajrDone = at("05:35")
         val dhuhr = at("12:17")
-        assertTrue(EidMorning.isShown(at("00:00"), eid, dhuhr))
-        assertTrue(EidMorning.isShown(at("12:16"), DayBanner.Eid(Prayer.AID_FITR, null), dhuhr))
-        assertFalse(EidMorning.isShown(at("12:17"), eid, dhuhr))
-        assertFalse(EidMorning.isShown(at("08:00"), DayBanner.Arafah, dhuhr))
-        assertFalse(EidMorning.isShown(at("08:00"), null, dhuhr))
-        // Without today's times, until noon.
-        assertTrue(EidMorning.isShown(at("11:59"), eid, null))
-        assertFalse(EidMorning.isShown(at("12:00"), eid, null))
+        // Before and during Fajr the timetable stays: the dawn congregation needs Fajr's times.
+        assertFalse(EidMorning.isShown(at("00:00"), eid, fajrDone, dhuhr))
+        assertFalse(EidMorning.isShown(at("05:34"), eid, fajrDone, dhuhr))
+        assertTrue(EidMorning.isShown(at("05:35"), eid, fajrDone, dhuhr))
+        assertTrue(EidMorning.isShown(at("12:16"), DayBanner.Eid(Prayer.AID_FITR, null), fajrDone, dhuhr))
+        assertFalse(EidMorning.isShown(at("12:17"), eid, fajrDone, dhuhr))
+        assertFalse(EidMorning.isShown(at("08:00"), DayBanner.Arafah, fajrDone, dhuhr))
+        assertFalse(EidMorning.isShown(at("08:00"), null, fajrDone, dhuhr))
+        // Without today's times, from midnight until noon.
+        assertTrue(EidMorning.isShown(at("00:00"), eid, null, null))
+        assertTrue(EidMorning.isShown(at("11:59"), eid, null, null))
+        assertFalse(EidMorning.isShown(at("12:00"), eid, null, null))
+    }
+
+    @Test
+    fun theCountdownRoundsUpLikeTheMainScreen() {
+        val iqamah = at("15:42")
+        // The clock is read a few milliseconds after each second.
+        assertEquals(1, IqamahWait.remainingSeconds(at("15:41:59").plusNanos(4_000_000), iqamah))
+        assertEquals(600, IqamahWait.remainingSeconds(at("15:32").plusNanos(4_000_000), iqamah))
+        assertEquals(0, IqamahWait.remainingSeconds(iqamah.plusNanos(4_000_000), iqamah))
+        assertEquals(1, IqamahWait.litStuds(at("15:41:59").plusNanos(4_000_000), at("15:32"), iqamah))
     }
 
     @Test

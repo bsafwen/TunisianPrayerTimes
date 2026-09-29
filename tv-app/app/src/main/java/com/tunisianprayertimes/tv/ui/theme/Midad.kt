@@ -1,15 +1,19 @@
 package com.tunisianprayertimes.tv.ui.theme
 
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.LineHeightStyle
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.em
 import com.tunisianprayertimes.tv.R
+import kotlin.math.roundToInt
 
 /**
  * The «مداد» palette of the «أفق» design, after the Blue Qur'an of Kairouan: ivory on ink, silver for
@@ -92,8 +96,10 @@ val Kufi = FontFamily(
 val Amiri = FontFamily(Font(R.font.amiri, FontWeight.Normal))
 
 /**
- * A text style in one of the three families. [lineHeight] is a multiple of the size (the mockups'
- * `line-height`); big numbers use less than 1, trimmed so the digits sit where the mockup puts them.
+ * A text style in one of the three families. [lineHeight] is a multiple of the size, the mockups' CSS
+ * `line-height`, with the leading shared above and below each line. Compose never makes a line
+ * shorter than its font's own box, though: for a big Kufi word or number set tighter than that, give
+ * its Text [lineBox] (Digits does it itself).
  */
 fun midadStyle(
     size: TextUnit,
@@ -107,6 +113,28 @@ fun midadStyle(
     fontWeight = weight,
     color = color,
     lineHeight = lineHeight?.em ?: TextUnit.Unspecified,
-    lineHeightStyle = lineHeight?.let { LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.Both) },
+    lineHeightStyle = lineHeight?.let { LineHeightStyle(LineHeightStyle.Alignment.Center, LineHeightStyle.Trim.None) },
     platformStyle = PlatformTextStyle(includeFontPadding = false),
 )
+
+/**
+ * The box [style]'s line height asks for, for one line of text, as CSS gives it: Compose pads a line
+ * set tighter than its font back to the font's full height (Reem Kufi's is 1.5 times its size), which
+ * pushes what sits under a big word or number away. The text is centred on the box and still drawn
+ * whole; its baselines follow it.
+ */
+fun Modifier.lineBox(style: TextStyle): Modifier = layout { measurable, constraints ->
+    val placeable = measurable.measure(constraints)
+    val target = style.lineBoxPx(this)
+    if (target == null || target >= placeable.height) {
+        layout(placeable.width, placeable.height) { placeable.place(0, 0) }
+    } else {
+        layout(placeable.width, target) { placeable.place(0, (target - placeable.height) / 2) }
+    }
+}
+
+/** The height of one line of [this] style in pixels, when its line height is given in em. */
+internal fun TextStyle.lineBoxPx(density: Density): Int? {
+    if (!lineHeight.isEm || !fontSize.isSp) return null
+    return with(density) { (fontSize.toPx() * lineHeight.value).roundToInt() }
+}

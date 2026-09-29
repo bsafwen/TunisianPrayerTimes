@@ -108,7 +108,10 @@ fun SettingsScreen(
     onAnnouncementsEnabledChanged: (Boolean) -> Unit,
     onCustomBgEnabledChanged: (Boolean) -> Unit,
     onAnnouncementIntervalChanged: (Int) -> Unit,
-    /** Removes the background and announcement images copied from USB keys. */
+    /**
+     * Empties both media folders: every image, from a USB key or the phone, and the announcement .txt
+     * files. Called only once the admin confirms on its own page.
+     */
     onDeleteImages: () -> Unit,
     weatherEnabled: Boolean = true,
     onWeatherChanged: (Boolean) -> Unit = {},
@@ -142,6 +145,16 @@ fun SettingsScreen(
     phoneSessionOpen: Boolean = false,
     /** The kiosk page's rows, read when the admin reaches the kiosk section; null shows a description only. */
     kioskPreview: (() -> List<HealthRow>)? = null,
+    /**
+     * The files [onDeleteImages] would delete: the images in both media folders plus the announcement
+     * .txt files (not the settings file's written announcements). Its row shows only when there are some.
+     */
+    mediaFiles: Int = backgroundCount,
+    /**
+     * Called on every change of a text field. The box's keyboard takes the remote's keys while it is
+     * open, so this is the only sign that the admin is still there, typing.
+     */
+    onTyping: () -> Unit = {},
 ) {
     var page by remember { mutableStateOf(if (openKioskPage) SettingsPage.Kiosk else SettingsPage.Menu) }
     // The page the admin just left: back on the menu or a section, its row takes the focus again.
@@ -197,6 +210,7 @@ fun SettingsScreen(
                     up()
                 },
                 onCancel = ::up,
+                onTyping = onTyping,
             )
             SettingsPage.Location -> LocationPage(
                 gouvernorats = gouvernorats,
@@ -218,13 +232,27 @@ fun SettingsScreen(
             SettingsPage.Media -> MediaPage(
                 announcementsEnabled = announcementsEnabled,
                 announcementCount = announcementCount,
-                backgroundCount = backgroundCount,
                 announcementIntervalSec = announcementIntervalSec,
                 announcementsEveryMinutes = announcementsEveryMinutes,
                 onAnnouncementsEnabledChanged = onAnnouncementsEnabledChanged,
                 onAnnouncementIntervalChanged = onAnnouncementIntervalChanged,
                 onAnnouncementsEveryChanged = onAnnouncementsEveryChanged,
-                onDeleteImages = onDeleteImages,
+                mediaFiles = mediaFiles,
+                // Back from the question (or Cancel) returns to its row.
+                focusDelete = from == SettingsPage.DeleteMedia,
+                onDeleteImages = { go(SettingsPage.DeleteMedia) },
+            )
+            SettingsPage.DeleteMedia -> ConfirmPage(
+                title = TvStrings.DELETE_IMAGES,
+                text = TvStrings.DELETE_IMAGES_CONFIRM,
+                confirm = TvStrings.DELETE_IMAGES_DO,
+                onConfirm = {
+                    onDeleteImages()
+                    // The row leaves with the files: the page opens again on its first row.
+                    from = null
+                    page = SettingsPage.Media
+                },
+                onCancel = ::up,
             )
             SettingsPage.Appearance -> AppearancePage(
                 currentThemeId = currentThemeId,
@@ -268,12 +296,13 @@ fun SettingsScreen(
 
 /** Every page of the settings. The menu's sections are [SETTINGS_MENU]; the others open from a section. */
 internal enum class SettingsPage {
-    Menu, Mosque, MosqueName, Location, Iqamah, Dates, Media, Appearance, Phone, Kiosk, Advanced, Reset, BundledTexts, About;
+    Menu, Mosque, MosqueName, Location, Iqamah, Dates, Media, DeleteMedia, Appearance, Phone, Kiosk, Advanced, Reset, BundledTexts, About;
 
     /** Where Back goes from here. */
     val up: SettingsPage
         get() = when (this) {
             MosqueName, Location -> Mosque
+            DeleteMedia -> Media
             Reset, BundledTexts -> Advanced
             else -> Menu
         }
@@ -300,6 +329,7 @@ internal val SettingsPage.title: String
         SettingsPage.Iqamah -> TvStrings.SECTION_IQAMAH
         SettingsPage.Dates -> TvStrings.SECTION_DATES
         SettingsPage.Media -> TvStrings.SECTION_MEDIA
+        SettingsPage.DeleteMedia -> TvStrings.DELETE_IMAGES
         SettingsPage.Appearance -> TvStrings.SETTINGS_THEME
         SettingsPage.Phone -> TvStrings.SETTINGS_PHONE
         SettingsPage.Kiosk -> TvStrings.SETTINGS_KIOSK
@@ -672,15 +702,19 @@ private fun ValueRow(label: String, value: String, onClick: () -> Unit, modifier
 
 /**
  * The name, typed with the box's keyboard. Save has the focus, as before: a text field that took it
- * would open the keyboard over the page at once.
+ * would open the keyboard over the page at once. Each change calls [onTyping], so a slow name typed
+ * with the arrows is not taken for an idle screen.
  */
 @Composable
-private fun MosqueNamePage(mosqueName: String, onSave: (String) -> Unit, onCancel: () -> Unit) {
+private fun MosqueNamePage(mosqueName: String, onSave: (String) -> Unit, onCancel: () -> Unit, onTyping: () -> Unit) {
     var name by remember { mutableStateOf(mosqueName) }
     AdminPage(title = TvStrings.MOSQUE_NAME_LABEL, hints = listOf(TvStrings.HINT_BACK_TO_SETTINGS)) {
         OutlinedTextField(
             value = name,
-            onValueChange = { name = it },
+            onValueChange = {
+                name = it
+                onTyping()
+            },
             placeholder = { Text(TvStrings.SETUP_MOSQUE_HINT, style = midadStyle(20.sp, color = Midad.Dim)) },
             colors = mosqueNameFieldColors(),
             textStyle = midadStyle(20.sp),
@@ -796,18 +830,25 @@ internal fun compareTimes(before: DayPrayerTimes?, after: DayPrayerTimes?): List
 
 // ── «الإعلانات والصور» ──
 
+/**
+ * The announcements' options, then the deletion of the media files, offered only when there are
+ * some ([mediaFiles]); [onDeleteImages] opens its question. [focusDelete]: back from that question,
+ * its row takes the focus again.
+ */
 @Composable
 private fun MediaPage(
     announcementsEnabled: Boolean,
     announcementCount: Int,
-    backgroundCount: Int,
     announcementIntervalSec: Int,
     announcementsEveryMinutes: Int,
     onAnnouncementsEnabledChanged: (Boolean) -> Unit,
     onAnnouncementIntervalChanged: (Int) -> Unit,
     onAnnouncementsEveryChanged: (Int) -> Unit,
+    mediaFiles: Int,
+    focusDelete: Boolean,
     onDeleteImages: () -> Unit,
 ) {
+    val canDelete = mediaFiles > 0
     AdminPage(
         title = TvStrings.SECTION_MEDIA,
         hints = listOf(TvStrings.HINT_OK_CHANGE, TvStrings.HINT_SAVED_AT_ONCE, TvStrings.HINT_BACK_TO_SETTINGS),
@@ -818,7 +859,7 @@ private fun MediaPage(
             checked = announcementsEnabled,
             onToggle = { onAnnouncementsEnabledChanged(!announcementsEnabled) },
             detail = TvStrings.filesCount(announcementCount),
-            modifier = Modifier.widthIn(max = ROW_WIDTH).initialFocus(),
+            modifier = Modifier.widthIn(max = ROW_WIDTH).initialFocus(!(focusDelete && canDelete)),
         )
         StepperRow(
             label = TvStrings.ANNOUNCEMENTS_BETWEEN,
@@ -834,8 +875,13 @@ private fun MediaPage(
             onPlus = { onAnnouncementIntervalChanged(stepSlideSeconds(announcementIntervalSec, 1)) },
             valueWidth = 70.dp,
         )
-        if (backgroundCount + announcementCount > 0) {
-            ActionRow(TvStrings.DELETE_IMAGES, TvStrings.DELETE_IMAGES_HINT, onDeleteImages, Modifier.widthIn(max = ROW_WIDTH))
+        if (canDelete) {
+            ActionRow(
+                TvStrings.DELETE_IMAGES,
+                TvStrings.DELETE_IMAGES_HINT,
+                onDeleteImages,
+                Modifier.widthIn(max = ROW_WIDTH).initialFocus(focusDelete),
+            )
         }
         Column(Modifier.widthIn(max = ROW_WIDTH).padding(top = 6.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(TvStrings.MEDIA_HINT, style = midadStyle(14.sp, color = Midad.Muted, lineHeight = 1.5f).rtl())

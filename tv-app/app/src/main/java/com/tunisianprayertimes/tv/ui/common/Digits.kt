@@ -14,6 +14,7 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.tunisianprayertimes.tv.ui.theme.lineBoxPx
 import kotlin.math.ceil
 import kotlin.math.roundToInt
 
@@ -32,7 +33,7 @@ fun Digits(text: String, style: TextStyle, modifier: Modifier = Modifier, tracki
     val cell = remember(measurer, style, density) {
         ('0'..'9').maxOf { measurer.measure(it.toString(), style, softWrap = false, maxLines = 1).size.width }
     }
-    val placed = remember(text, style, cell, trackPx) {
+    val placed = remember(text, style, cell, trackPx, density) {
         var x = 0f
         val glyphs = text.map { char ->
             val result = measurer.measure(char.toString(), style, softWrap = false, maxLines = 1)
@@ -41,19 +42,28 @@ fun Digits(text: String, style: TextStyle, modifier: Modifier = Modifier, tracki
             x += width + trackPx
             left to result
         }
-        PlacedDigits(glyphs, width = ceil((x - trackPx).coerceAtLeast(0f)).toInt())
+        // The line box of the style's line height, as CSS gives it (see lineBox); the digits centred on it.
+        val natural = glyphs.maxOfOrNull { it.second.size.height } ?: 0
+        val box = style.lineBoxPx(density)?.takeIf { it < natural } ?: natural
+        PlacedDigits(glyphs, width = ceil((x - trackPx).coerceAtLeast(0f)).toInt(), height = box, shift = (box - natural) / 2f)
     }
     Layout(
         modifier = modifier.drawBehind {
-            placed.glyphs.forEach { (left, result) -> drawText(result, topLeft = Offset(left, 0f)) }
+            placed.glyphs.forEach { (left, result) -> drawText(result, topLeft = Offset(left, placed.shift)) }
         },
     ) { _, constraints ->
         val first = placed.glyphs.firstOrNull()?.second
         val width = placed.width.coerceIn(constraints.minWidth, constraints.maxWidth)
-        val height = (placed.glyphs.maxOfOrNull { it.second.size.height } ?: 0).coerceIn(constraints.minHeight, constraints.maxHeight)
-        val baseline = first?.firstBaseline?.roundToInt() ?: height
+        val height = placed.height.coerceIn(constraints.minHeight, constraints.maxHeight)
+        val baseline = first?.let { (it.firstBaseline + placed.shift).roundToInt() } ?: height
         layout(width, height, mapOf(FirstBaseline to baseline, LastBaseline to baseline)) {}
     }
 }
 
-private class PlacedDigits(val glyphs: List<Pair<Float, androidx.compose.ui.text.TextLayoutResult>>, val width: Int)
+private class PlacedDigits(
+    val glyphs: List<Pair<Float, androidx.compose.ui.text.TextLayoutResult>>,
+    val width: Int,
+    val height: Int,
+    /** How far the glyphs are drawn from the box's top: negative when the box is tighter than the font. */
+    val shift: Float,
+)

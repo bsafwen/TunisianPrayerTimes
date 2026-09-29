@@ -5,6 +5,8 @@
         <activity
             android:name=".ScreenGalleryActivity"
             android:exported="true"
+            android:taskAffinity=".gallery"
+            android:excludeFromRecents="true"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.TunisianPrayerTimesTV" />
     </application>

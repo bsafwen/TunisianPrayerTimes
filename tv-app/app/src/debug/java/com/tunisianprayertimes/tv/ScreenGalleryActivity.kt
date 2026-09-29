@@ -54,6 +54,9 @@ class ScreenGalleryActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        // As when the admin opens the system's settings: the kiosk watchdog leaves the gallery on screen.
+        val awayUntil = android.os.SystemClock.elapsedRealtime() + 30 * 60_000L
+        (application as TvApplication).kiosk.update { it.copy(adminAwayUntil = awayUntil) }
         val screen = intent.getStringExtra("screen") ?: "main"
         val day = intent.getStringExtra("day")
         val date = intent.getStringExtra("date")?.let(LocalDate::parse) ?: when (day) {
@@ -116,7 +119,7 @@ class ScreenGalleryActivity : ComponentActivity() {
                 footer = MainScreenModel.nextPrayerLine(now, today, tomorrow, iqamah, LocalTime.of(5, 2)),
             )
             "night" -> NightScreen(now, tomorrow.let { date.plusDays(if (now.hour >= 12) 1 else 0).atTime(it.fajr.hour, it.fajr.minute) }, date.plusDays(if (now.hour >= 12) 1 else 0).atTime(5, 2))
-            "eid" -> EidScreen(banner as DayBanner.Eid, now, mosque, hijri)
+            "eid" -> EidScreen(banner as DayBanner.Eid, now, mosque, hijri, MainScreenModel.nextPrayerLine(now, today, tomorrow, iqamah, LocalTime.of(5, 2)))
             else -> PrayerDisplayScreen(
                 todayTimes = today,
                 tomorrowTimes = tomorrow,

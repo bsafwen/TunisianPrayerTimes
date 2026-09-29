@@ -45,7 +45,9 @@
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+/* A field reached with Tab scrolls clear of the sticky tabs (56 px) and action bar (77 px), outline included:
+   the browser would count a field under them as already in view and leave it hidden. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-padding-top: 64px; scroll-padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
 body { margin: 0; font-family: var(--font); font-size: 16px; line-height: 1.5; background: var(--page); color: var(--ink); }
 
 /* ------------------------------------------------------------ header and tabs */
@@ -111,6 +113,8 @@ table.times tr.focus + tr td { border-top-color: transparent; }
 .health { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .health li { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; }
 .health .dot { margin-top: 6px; }
+/* A crash note can hold a long class name: it wraps instead of widening the page. */
+.health li > div { min-width: 0; overflow-wrap: anywhere; }
 .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; flex: none; background: var(--idle); }
 .dot.GOOD { background: var(--good); }
 .dot.WARNING { background: var(--warning); }
@@ -221,6 +225,8 @@ details.dhikr[open] summary { font-family: var(--font); font-size: 14px; color: 
 .lines.errors li { color: var(--bad); }
 
 @media (max-width: 400px) {
+  /* The adhkar's two buttons can take two rows of the action bar here (129 px). */
+  html { scroll-padding-bottom: calc(136px + env(safe-area-inset-bottom, 0px)); }
   .top { padding-inline: 16px; }
   .tabs { padding-inline: 16px; }
   .view { padding-inline: 16px; }

@@ -101,7 +101,14 @@ object MainScreenModel {
             is DayBanner.Eid -> TvStrings.EID_MUBARAK
             else -> null
         }
-        return MainScreenState(tiles, hero, isFriday, isRamadan, DisplayTexts.headerVerse(isRamadan, isFriday), dayNote)
+        return MainScreenState(tiles, hero, isFriday, isRamadan, DisplayTexts.headerVerse(isRamadan, isFriday, verseTurn(now, today)), dayNote)
+    }
+
+    /** The header verse moves on at each of today's adhans (none passed before Fajr, or without times). */
+    internal fun verseTurn(now: LocalDateTime, today: DayPrayerTimes?): Long {
+        val date = now.toLocalDate()
+        val passed = today?.allPrayers()?.count { !date.atTime(it.hour, it.minute).isAfter(now) } ?: 0
+        return DisplayTexts.turnAt(date, passed)
     }
 
     private fun tiles(

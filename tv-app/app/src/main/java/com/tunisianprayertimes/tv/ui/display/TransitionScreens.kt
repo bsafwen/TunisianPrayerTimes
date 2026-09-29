@@ -37,6 +37,7 @@ import com.tunisianprayertimes.tv.ui.theme.Kufi
 import com.tunisianprayertimes.tv.ui.theme.Midad
 import com.tunisianprayertimes.tv.ui.theme.PhoneOffGlyph
 import com.tunisianprayertimes.tv.ui.theme.SkyColors
+import com.tunisianprayertimes.tv.ui.theme.lineBox
 import com.tunisianprayertimes.tv.ui.theme.midadStyle
 import com.tunisianprayertimes.tv.ui.theme.mihrab
 import com.tunisianprayertimes.tv.ui.theme.skyBackground
@@ -74,16 +75,10 @@ fun AdhanScreen(event: PrayerEvent, now: LocalDateTime, mosqueName: String, comp
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Text(TvStrings.ADHAN_NOW, style = midadStyle(26.sp, color = Midad.Muted))
-            Text(
-                TvStrings.prayerName(event.prayer),
-                style = midadStyle(120.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.05f),
-                modifier = Modifier.padding(top = 3.dp),
-            )
-            Text(
-                TvStrings.hm(event.adhanAt.toLocalTime()),
-                style = midadStyle(46.sp, FontWeight.SemiBold, Midad.Gold, lineHeight = 1f),
-                modifier = Modifier.padding(top = 2.dp),
-            )
+            val name = midadStyle(120.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.05f)
+            Text(TvStrings.prayerName(event.prayer), style = name, maxLines = 1, modifier = Modifier.padding(top = 3.dp).lineBox(name))
+            val time = midadStyle(46.sp, FontWeight.SemiBold, Midad.Gold, lineHeight = 1f)
+            Text(TvStrings.hm(event.adhanAt.toLocalTime()), style = time, maxLines = 1, modifier = Modifier.padding(top = 2.dp).lineBox(time))
             if (companion != null) AdhanCompanion(companion, Modifier.padding(top = 25.dp).weight(1f, fill = false))
         }
     }

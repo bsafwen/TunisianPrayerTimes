@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.mosque.AdhkarSlide
+import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.theme.Amiri
 import com.tunisianprayertimes.tv.ui.theme.FriezeEdge
 import com.tunisianprayertimes.tv.ui.theme.KhatamStar
@@ -108,7 +109,7 @@ private fun TickerLine(slide: AdhkarSlide, widthPx: Int) {
             )
             if (slide.reference.isNotBlank()) {
                 Text(
-                    slide.reference,
+                    TvStrings.source(slide.reference),
                     style = fit.reference,
                     textAlign = TextAlign.Center,
                     overflow = TextOverflow.Visible,

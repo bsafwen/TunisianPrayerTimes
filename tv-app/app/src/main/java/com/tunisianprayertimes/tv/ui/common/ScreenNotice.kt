@@ -19,10 +19,27 @@ import com.tunisianprayertimes.tv.ui.theme.midadStyle
 
 /**
  * A short message over the bottom of the screen (a USB key, the clock): a dark card with a hairline
- * edge, big enough to be read from the back of the hall, as wide as its words and no wider.
+ * edge, big enough to be read from the back of the hall, as wide as its words and no wider. [atTop]
+ * on the admin pages: a thin bar in the top margin, clear of their keys and hints at the bottom.
  */
 @Composable
-fun ScreenNotice(message: String) {
+fun ScreenNotice(message: String, atTop: Boolean = false) {
+    if (atTop) {
+        Box(Modifier.fillMaxSize().padding(horizontal = 48.dp, vertical = 2.dp), contentAlignment = Alignment.TopCenter) {
+            Text(
+                message,
+                style = midadStyle(13.sp).rtl(),
+                textAlign = TextAlign.Center,
+                maxLines = 2,
+                modifier = Modifier
+                    .widthIn(max = 864.dp)
+                    .background(Midad.Surface, BAR_SHAPE)
+                    .border(1.dp, Midad.Keyline, BAR_SHAPE)
+                    .padding(horizontal = 16.dp, vertical = 3.dp),
+            )
+        }
+        return
+    }
     Box(Modifier.fillMaxSize().padding(horizontal = 48.dp, vertical = 24.dp), contentAlignment = Alignment.BottomCenter) {
         Text(
             message,
@@ -46,3 +63,4 @@ fun TopMark(message: String) {
 }
 
 private val NOTICE_SHAPE = RoundedCornerShape(14.dp)
+private val BAR_SHAPE = RoundedCornerShape(8.dp)

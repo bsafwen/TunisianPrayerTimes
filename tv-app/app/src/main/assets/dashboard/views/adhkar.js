@@ -16,7 +16,8 @@
   var MAX_AFTER_SALAH_MINUTES = 30;
   // A long text said several times after the prayer is shown whole again each time, 3 times at most.
   var MAX_PAGED_REPETITIONS = 3;
-  // The ticker holds each page or step at least this long (longer while a long line scrolls).
+  // The ticker holds each page or step at least this long, longer only for its reading time. It pages
+  // and never scrolls: a long text is set smaller or on two lines, with no extra time.
   var TICKER_MIN_SLIDE_MILLIS = 12000;
   var SECTIONS = [
     { key: "afterSalah", title: "أذكار بعد الصلاة", category: "SALAH",
@@ -26,6 +27,14 @@
   ];
 
   // The library never changes while the TV runs: loaded once per page.
+  // A verse range such as «البقرة 253–254» reads «254–253» in right-to-left text: keep it left to right.
+  function sourceText(reference) {
+    // Unicode's left-to-right isolate and its end (LRI, PDI) around the range.
+    return String(reference || "").replace(/\d+\s*[–-]\s*\d+/g, function (range) {
+      return String.fromCharCode(0x2066) + range + String.fromCharCode(0x2069);
+    });
+  }
+
   var library = null;
   var loading = null;
 
@@ -339,7 +348,7 @@
       parts.push(about(millis) + " بعد الصلاة" + (tooLong(key, list)
         ? " — أطول من " + MAX_AFTER_SALAH_MINUTES + " د، احذف بعض النصوص أو قلّل العدد" : ""));
     } else if (millis > 0) {
-      // Scrolling a long line and the announcements between the texts add to it.
+      // The announcements shown between the texts add to it.
       parts.push(atLeast(millis) + " على الأقل لدورة واحدة من الشريط");
     }
     return parts.join(" · ");
@@ -556,7 +565,7 @@
         el("span", { class: "badge reviewed", text: "نص مراجَع" })),
       textBlock(el, entry),
       el("div", { class: "foot" },
-        el("span", { class: "reference", text: entry.reference }),
+        el("span", { class: "reference", text: sourceText(entry.reference) }),
         count),
       note,
       idLine(el, entry.id),
@@ -616,7 +625,7 @@
       el("div", { class: "head" },
         el("span", { class: "title", text: entry.title }),
         idLine(el, entry.id)),
-      el("div", { class: "reference", text: entry.reference }),
+      el("div", { class: "reference", text: sourceText(entry.reference) }),
       el("p", { class: "dhikr-text", text: shorten(entry.text, 80) }),
       el("div", { class: "row" }, el("button", {
         type: "button", text: present ? "في القائمة" : "إضافة", disabled: present,

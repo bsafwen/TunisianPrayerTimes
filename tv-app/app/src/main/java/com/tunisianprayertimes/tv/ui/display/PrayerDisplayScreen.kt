@@ -51,6 +51,7 @@ import com.tunisianprayertimes.tv.ui.theme.Midad
 import com.tunisianprayertimes.tv.ui.theme.Sky
 import com.tunisianprayertimes.tv.ui.theme.SkyColors
 import com.tunisianprayertimes.tv.ui.theme.archTile
+import com.tunisianprayertimes.tv.ui.theme.lineBox
 import com.tunisianprayertimes.tv.ui.theme.midadStyle
 import com.tunisianprayertimes.tv.ui.theme.skyBackground
 import com.tunisianprayertimes.weather.OpenMeteo
@@ -168,7 +169,7 @@ private fun Header(
     Row(Modifier.fillMaxWidth().height(50.dp), verticalAlignment = Alignment.Top) {
         // The blocks may stand a little taller than the header, as on the board, into the hero's empty top.
         Column(Modifier.wrapContentHeight(Alignment.Top, unbounded = true), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            Text(mosqueName, style = MOSQUE_NAME, maxLines = 1)
+            Text(mosqueName, style = MOSQUE_NAME, maxLines = 1, modifier = Modifier.lineBox(MOSQUE_NAME))
             if (place.isNotEmpty()) Text(place, style = PLACE, maxLines = 1)
         }
         HeaderVerse(verse, Modifier.weight(1f).padding(horizontal = 16.dp).padding(top = 9.dp))
@@ -219,7 +220,7 @@ private fun HeaderVerse(verse: DisplayTexts.DisplayText, modifier: Modifier) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(7.dp)) {
                 Text(verse.text, style = style, maxLines = 1, softWrap = false)
                 Medallion(15.dp)
-                Text(verse.reference, style = VERSE_REFERENCE, maxLines = 1, softWrap = false)
+                Text(TvStrings.source(verse.reference), style = VERSE_REFERENCE, maxLines = 1, softWrap = false)
             }
         }
     }
@@ -291,17 +292,17 @@ private fun Niche(tile: ArcadeTile, modifier: Modifier) {
         when {
             sunrise -> {
                 Text(tile.name, style = SUNRISE_NAME, maxLines = 1)
-                Text(TvStrings.hm(tile.time), style = SUNRISE_TIME, maxLines = 1)
+                Text(TvStrings.hm(tile.time), style = SUNRISE_TIME, maxLines = 1, modifier = Modifier.lineBox(SUNRISE_TIME))
             }
             gold -> {
                 Text(tile.name, style = NEXT_NAME, maxLines = 1)
-                Text(TvStrings.hm(tile.time), style = NEXT_TIME, maxLines = 1)
+                Text(TvStrings.hm(tile.time), style = NEXT_TIME, maxLines = 1, modifier = Modifier.lineBox(NEXT_TIME))
                 tile.iqamah?.let { Text("${TvStrings.IQAMAH_IN_TILE} ${TvStrings.hm(it)}", style = NEXT_IQAMAH, maxLines = 1) }
                 tile.note?.let { Text(it, style = NEXT_NOTE, maxLines = 1) }
             }
             else -> {
                 Text(tile.name, style = NAME, maxLines = 1)
-                Text(TvStrings.hm(tile.time), style = TIME, maxLines = 1)
+                Text(TvStrings.hm(tile.time), style = TIME, maxLines = 1, modifier = Modifier.lineBox(TIME))
                 tile.iqamah?.let { Text("${TvStrings.IQAMAH_IN_TILE} ${TvStrings.hm(it)}", style = TILE_IQAMAH, maxLines = 1) }
                 tile.note?.let { Text(it, style = NOTE, maxLines = 1) }
             }

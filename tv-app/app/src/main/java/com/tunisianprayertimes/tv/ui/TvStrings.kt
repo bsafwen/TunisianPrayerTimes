@@ -9,8 +9,7 @@ object TvStrings {
     const val APP_NAME = "أوقات الصلاة تونس"
     const val MOSQUE_DEFAULT = "مسجد"
 
-    // Setup wizard
-    const val SETUP_WELCOME = "بسم الله الرحمن الرحيم"
+    // Setup wizard (the basmala over the welcome is a reviewed text: DisplayTexts.BASMALA)
     const val SETUP_WELCOME_SUB = "مرحبًا بكم في تطبيق أوقات الصلاة"
     const val SETUP_SELECT_GOUVERNORAT = "اختر الولاية"
     const val SETUP_SELECT_DELEGATION = "اختر المعتمدية"
@@ -119,7 +118,8 @@ object TvStrings {
     const val MEDIA_HINT = "ضع الصور على مفتاح USB بجانب ملف الإعدادات mosque-tv.json ثم أدخله في الجهاز"
     const val BACKGROUNDS_FOLDER_HINT = "backgrounds/ — صور الخلفيات (JPG أو PNG أو WebP)"
     const val ANNOUNCEMENTS_FOLDER_HINT = "announcements/ — صور الإعلانات، وملفات نصية ‎.txt لكل إعلان مكتوب"
-    const val DELETE_IMAGES = "حذف كل الصور"
+    /** It empties both media folders, so it names the written .txt announcements as well as the images. */
+    const val DELETE_IMAGES = "حذف الصور وملفات الإعلانات"
     const val USB_MEDIA_TITLE = "وُجدت صور على مفتاح USB"
     const val USB_MEDIA_HINT = "تحلّ محل الصور الحالية على الشاشة من النوع نفسه"
     const val BACKGROUNDS_LABEL = "صور الخلفية"
@@ -181,6 +181,16 @@ object TvStrings {
         val day = "${date.dayOfMonth} ${MONTHS[date.monthValue - 1]} ${date.year}"
         return if (withWeekday) "${WEEKDAYS[date.dayOfWeek.value - 1]} $day" else day
     }
+
+    /**
+     * A source as the screen shows it. A verse range such as «البقرة 253–254» or «المؤمنون 1–2» would
+     * otherwise read «254–253» in right-to-left text: its digits and dash are kept left to right.
+     */
+    fun source(reference: String): String = VERSE_RANGE.replace(reference) { "$LEFT_TO_RIGHT${it.value}$END_ISOLATE" }
+    private val VERSE_RANGE = Regex("""\d+\s*[–-]\s*\d+""")
+    /** Unicode's left-to-right isolate and its end (LRI, PDI). */
+    private val LEFT_TO_RIGHT = Char(0x2066)
+    private val END_ISOLATE = Char(0x2069)
 
     /** "05:01". */
     fun hm(time: java.time.LocalTime): String = String.format(java.util.Locale.ROOT, "%02d:%02d", time.hour, time.minute)
@@ -300,12 +310,21 @@ object TvStrings {
 
     /** «الإعلانات والصور» and «المظهر»: the rows and what they say. */
     const val ANNOUNCEMENTS_BETWEEN = "الإعلانات بين الصلوات"
-    fun everyMinutes(minutes: Int): String = "كل $minutes $MINUTES_WORD"
+    /** «كل دقيقة», «كل دقيقتين», «كل 5 دقائق», «كل 15 دقيقة»: the noun agrees with the count ([counted]). */
+    fun everyMinutes(minutes: Int): String = "كل " + counted(minutes, MINUTES_WORD, "دقيقتين", "دقائق", MINUTES_WORD, MINUTES_WORD)
     fun secondsShort(seconds: Int): String = "$seconds $SECONDS_SUFFIX"
     const val WEATHER_LABEL = "الطقس"
     const val WEATHER_HINT = "عند الاتصال بالإنترنت"
-    const val DELETE_IMAGES_HINT = "صور الخلفية وصور الإعلانات المنسوخة من مفاتيح USB"
-    const val BACKGROUNDS_HOWTO = "من مجلد backgrounds على مفتاح USB"
+
+    /**
+     * Everything in the two media folders goes: the images copied from a USB key or uploaded from the
+     * phone, and the .txt announcements. The settings file's written announcements stay.
+     */
+    const val DELETE_IMAGES_HINT = "صور الخلفية وصور الإعلانات، من مفتاح USB أو من الهاتف، والإعلانات المكتوبة في ملفات ‎.txt"
+    const val DELETE_IMAGES_CONFIRM = "تُحذف من الشاشة كل صور الخلفية وصور الإعلانات، ما نُسخ منها من مفتاح USB وما أُرسل من الهاتف، " +
+        "وكل الإعلانات المكتوبة التي جاءت في ملفات ‎.txt. تبقى الإعلانات المكتوبة من الهاتف أو في ملف الإعدادات. لا يمكن التراجع عن الحذف."
+    const val DELETE_IMAGES_DO = "نعم، احذف الملفات"
+    const val BACKGROUNDS_HOWTO = "من مجلد backgrounds على مفتاح USB أو من الهاتف"
 
     /** What a section holds, in the menu's preview, when it has no values to show. */
     const val PHONE_PREVIEW = "عدّل الإقامة والتواريخ والإعلانات والصور والأذكار من هاتف أو حاسوب: امسح رمزًا يظهر على الشاشة، على شبكة المسجد أو نقطة اتصال الهاتف، دون إنترنت."
