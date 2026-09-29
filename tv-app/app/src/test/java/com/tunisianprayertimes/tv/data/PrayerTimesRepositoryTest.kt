@@ -12,8 +12,7 @@ import org.junit.Test
 
 class PrayerTimesRepositoryTest {
 
-    private fun repo(today: LocalDate = LocalDate.of(2026, 9, 29)) =
-        PrayerTimesRepository(source = { TestData.prayerTimes }, today = { today })
+    private fun repo() = PrayerTimesRepository(source = { TestData.prayerTimes })
 
     private fun DayPrayerTimes.minutes(): List<Int> = listOf(
         fajr.hour * 60 + fajr.minute,
@@ -27,7 +26,7 @@ class PrayerTimesRepositoryTest {
     @Test
     fun timesContinuePastTheOldCsvCliff() {
         // The bundled CSV tables stopped at 2026-12-31; offline TVs went blank the next day.
-        val newYear = repo(today = LocalDate.of(2027, 1, 1)).loadToday(TUNIS)
+        val newYear = repo().loadDay(TUNIS, LocalDate.of(2027, 1, 1))
         assertNotNull(newYear)
         assertEquals(1, newYear!!.day)
     }
@@ -45,13 +44,6 @@ class PrayerTimesRepositoryTest {
                 }
             }
         }
-    }
-
-    @Test
-    fun shurukComesFromTheSameDay() {
-        val date = LocalDate.of(2027, 3, 9)
-        val day = repo(today = date).loadToday(TUNIS)!!
-        assertEquals(day.shurukHour to day.shurukMinute, repo(today = date).loadTodayShuruk(TUNIS))
     }
 
     @Test

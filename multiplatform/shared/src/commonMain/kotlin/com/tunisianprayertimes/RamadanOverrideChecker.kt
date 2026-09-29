@@ -15,6 +15,7 @@ import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.TimeUnit
 import com.tunisianprayertimes.platform.Preferences
+import com.tunisianprayertimes.time.TunisTime
 
 /**
  * Fetches the official Islamic date JSON from GitHub Pages to get the official
@@ -51,8 +52,9 @@ object RamadanOverrideChecker {
     /** Replace only transport in offline tests; exercise the real fetch and parsing path. */
     internal var openConnection: (URL) -> HttpURLConnection = { it.openConnection() as HttpURLConnection }
 
-    private fun today(): LocalDate = testDateOverride ?: LocalDate.now()
-    private fun hijrahToday(): HijrahDate = testDateOverride?.let { HijrahDate.from(it) } ?: HijrahDate.now()
+    // Today in Tunisia, whatever the device's zone: the announcements are Tunisia's dates.
+    private fun today(): LocalDate = testDateOverride ?: LocalDate.now(TunisTime.ZONE)
+    private fun hijrahToday(): HijrahDate = testDateOverride?.let { HijrahDate.from(it) } ?: HijrahDate.now(TunisTime.ZONE)
 
     // Cached override data
     @Volatile

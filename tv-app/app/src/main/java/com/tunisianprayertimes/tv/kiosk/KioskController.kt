@@ -15,7 +15,14 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.provider.Settings
 import android.util.Log
+import com.tunisianprayertimes.time.ClockGuard
+import com.tunisianprayertimes.time.ClockSource
+import com.tunisianprayertimes.time.ClockTrust
+import com.tunisianprayertimes.time.TunisTime
 import com.tunisianprayertimes.tv.MainActivity
+import java.time.Duration
+import java.time.Instant
+import java.util.TimeZone
 import kotlin.system.exitProcess
 
 /** What the box allows and the actions that keep the app on screen. Every call is safe on any box. */
@@ -108,6 +115,93 @@ object KioskController {
 
     fun unlockTask(activity: Activity) {
         runCatching { activity.stopLockTask() }
+    }
+
+    // The system zone and clock, on device-owner boxes (Android 9+). Prayer times never need them: the
+    // clock guard keeps Tunisia's time whatever the box says. But a wrong system clock fails the HTTPS
+    // checks (weather, updates, official dates) and leaves the box's own screens and logs off.
+
+    /**
+     * Sets the box's zone to Tunisia's. Only once the time is confirmed ([alignSystemClock]): a clock set
+     * by hand in a foreign zone is off by the zones' difference, and in Tunisia's zone the guard would take
+     * it as right ([ClockSource.ZONE]). Android refuses while the automatic zone is on, so it is turned off
+     * first (a mosque box does not travel), and back on if the zone is refused anyway. True when the zone
+     * is Tunisia's (already, or now); false when not device owner, below Android 9, or refused.
+     */
+    fun setSystemZoneToTunis(context: Context): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P || !isDeviceOwner(context)) return false
+        if (TimeZone.getDefault().id == TunisTime.ZONE.id) return true
+        return runCatching {
+            val dpm = context.getSystemService(DevicePolicyManager::class.java)
+            val admin = adminComponent(context)
+            val autoWasOn = globalSetting(context, Settings.Global.AUTO_TIME_ZONE) == 1
+            if (autoWasOn) setAutoZone(dpm, admin, false)
+            val done = dpm.setTimeZone(admin, TunisTime.ZONE.id)
+            if (!done && autoWasOn) setAutoZone(dpm, admin, true)
+            done
+        }.getOrElse {
+            Log.w(TAG, "time zone", it)
+            false
+        }
+    }
+
+    /**
+     * Sets the system clock to [instant], a confirmed time ([alignSystemClock]); the time-set broadcast
+     * that follows is recognised as the app's own ([OwnClockSet]). False when not device owner, below
+     * Android 9, while the automatic time is on (the network keeps the system clock then, and stays in
+     * charge), or refused.
+     */
+    fun setSystemTime(context: Context, instant: Instant): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P || !isDeviceOwner(context)) return false
+        if (globalSetting(context, Settings.Global.AUTO_TIME) == 1) return false
+        return runCatching {
+            OwnClockSet.expect(instant.toEpochMilli(), SystemClock.elapsedRealtime())
+            context.getSystemService(DevicePolicyManager::class.java).setTime(adminComponent(context), instant.toEpochMilli())
+        }.getOrElse {
+            Log.w(TAG, "system time", it)
+            false
+        }.also { if (!it) OwnClockSet.cancel() }
+    }
+
+    /**
+     * After the time was confirmed (by the network, the admin or the phone), on a device-owner box: the
+     * system zone becomes Tunisia's and, when it is more than a minute off, the system clock becomes the
+     * time shown. The guard is then confirmed again by the same source, since the clock it reads just
+     * jumped. Call it on the main thread, where the guard is read. False when nothing changed (not device
+     * owner, below Android 9, the time not confirmed, already aligned, or refused).
+     */
+    fun alignSystemClock(context: Context, guard: ClockGuard): Boolean {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P || !isDeviceOwner(context)) return false
+        val reading = guard.read()
+        // The guard's correction: the time shown less the device clock.
+        val offset = Duration.between(Instant.now(), reading.now.atZone(TunisTime.ZONE).toInstant())
+        val source = reading.source
+        if (reading.trust != ClockTrust.TRUSTED || source == null) return false
+        val zoneWasTunis = TimeZone.getDefault().id == TunisTime.ZONE.id
+        val zoneChanged = setSystemZoneToTunis(context) && !zoneWasTunis
+        // Trusted for its zone: the device clock itself is the time shown, there is nothing to move.
+        if (source == ClockSource.ZONE || offset.abs() <= SYSTEM_CLOCK_TOLERANCE) return zoneChanged
+        if (!setSystemTime(context, Instant.now().plus(offset))) return zoneChanged
+        guard.systemClockChanged()
+        guard.acceptInstant(Instant.now(), source)
+        return true
+    }
+
+    /** The system clock this close to the time shown is left alone: it only serves HTTPS and the logs. */
+    private val SYSTEM_CLOCK_TOLERANCE: Duration = Duration.ofMinutes(1)
+
+    private fun adminComponent(context: Context) = ComponentName(context, TvDeviceAdminReceiver::class.java)
+
+    private fun globalSetting(context: Context, name: String): Int? =
+        runCatching { Settings.Global.getInt(context.contentResolver, name) }.getOrNull()
+
+    private fun setAutoZone(dpm: DevicePolicyManager, admin: ComponentName, enabled: Boolean) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            dpm.setAutoTimeZoneEnabled(admin, enabled)
+        } else {
+            @Suppress("DEPRECATION")
+            dpm.setGlobalSetting(admin, Settings.Global.AUTO_TIME_ZONE, if (enabled) "1" else "0")
+        }
     }
 
     /** Brings the display to the front from the background; the box may refuse (tier NONE). */

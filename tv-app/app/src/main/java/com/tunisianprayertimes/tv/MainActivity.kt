@@ -746,7 +746,7 @@ private fun TvApp(
                     runCatching { context.startActivity(dateSettingsIntent()) }
                 },
                 onSetTime = { time ->
-                    clock.setTime(time)
+                    clock.accept(time)
                     reading = clock.read()
                 },
                 onConfirm = {
@@ -1075,7 +1075,7 @@ private fun TvApp(
             }
         }
         // Nothing over the prayer and the khutba; on the admin pages at the top, clear of their keys and hints.
-        (hint ?: notice ?: TvStrings.CLOCK_WRONG_ZONE.takeIf { reading.trust == ClockTrust.WRONG_ZONE })
+        (hint ?: notice)
             ?.takeUnless { quietWall }
             ?.let { ScreenNotice(it, atTop = currentScreen != Screen.Display) }
         if (phoneSession != null && currentScreen == Screen.Display && flow.phase !in PRAYER_PHASES) TopMark(TvStrings.DASHBOARD_OPEN)

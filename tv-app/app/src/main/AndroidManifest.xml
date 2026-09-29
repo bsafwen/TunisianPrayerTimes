@@ -97,6 +97,17 @@
             android:name=".kiosk.KioskAlarmReceiver"
             android:exported="false" />
 
+        <!-- The system clock or zone was changed (by the admin, the network or the app): the clock guard's
+             confirmation no longer holds. Both are system broadcasts that still reach manifest receivers. -->
+        <receiver
+            android:name=".kiosk.ClockChangeReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
         <!-- Only used when an installer provisions the box as device owner (lock task) -->
         <receiver
             android:name=".kiosk.TvDeviceAdminReceiver"
