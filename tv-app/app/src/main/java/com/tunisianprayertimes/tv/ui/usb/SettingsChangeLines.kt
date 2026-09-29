@@ -36,6 +36,7 @@ object SettingsChangeLines {
             MosqueSettingsFile.ProfileField.ANNOUNCEMENTS -> TvStrings.ANNOUNCEMENTS_ENABLED
             MosqueSettingsFile.ProfileField.SLIDE_SECONDS -> TvStrings.ANNOUNCEMENT_INTERVAL
             MosqueSettingsFile.ProfileField.ANNOUNCEMENTS_EVERY -> TvStrings.ANNOUNCEMENTS_EVERY
+            MosqueSettingsFile.ProfileField.NIGHT_SCREEN -> TvStrings.NIGHT_SCREEN
         }
         return "$field: ${change.before} ← ${change.after}"
     }
@@ -61,7 +62,8 @@ object SettingsChangeLines {
     private const val MAX_NAMES = 4
 
     private fun dateLine(change: MosqueSettingsFile.DateChange): String {
-        fun show(date: java.time.LocalDate?) = date?.toString() ?: TvStrings.AUTOMATIC
+        // «10 مارس 2027»: an ISO date would turn around between Arabic words.
+        fun show(date: java.time.LocalDate?) = date?.let { TvStrings.gregorianDate(it, withWeekday = false) } ?: TvStrings.AUTOMATIC
         return "${MosqueSettingsFile.dateEventName(change.event)} ${change.hijriYear}: ${show(change.before)} ← ${show(change.after)}"
     }
 }

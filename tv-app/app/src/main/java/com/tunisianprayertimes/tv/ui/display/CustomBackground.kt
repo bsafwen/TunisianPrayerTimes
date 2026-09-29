@@ -1,80 +1,79 @@
 package com.tunisianprayertimes.tv.ui.display
 
 import android.net.Uri
+import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
+import com.tunisianprayertimes.tv.ui.theme.Midad
 import kotlinx.coroutines.delay
 
 /**
- * Rotating background image layer.
- * Cycles through provided URIs with a slow crossfade.
- * Falls back to a solid color if no images available.
+ * The mosque's own images in place of the sky: across the top of the screen down to [groundAt],
+ * under a veil of the ground so the ivory text above them stays readable, and fading into the ground
+ * from [horizon] on, where the timetable begins. One image after another, slowly, with a crossfade.
  */
 @Composable
 fun CustomBackground(
     images: List<Uri>,
-    cycleIntervalMs: Long = 60_000L, // change every 60 seconds
-    overlayAlpha: Float = 0.7f, // dark overlay so prayer text remains readable
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    horizon: Dp = 300.dp,
+    groundAt: Dp = 365.dp,
+    cycleMillis: Long = 60_000L,
 ) {
     if (images.isEmpty()) return
-
-    var currentIndex by remember { mutableIntStateOf(0) }
-    var visible by remember { mutableStateOf(true) }
-
-    // Cycle through images
+    var index by remember(images) { mutableIntStateOf(0) }
     LaunchedEffect(images) {
         if (images.size <= 1) return@LaunchedEffect
         while (true) {
-            visible = true
-            delay(cycleIntervalMs)
-            visible = false
-            delay(800L)
-            currentIndex = (currentIndex + 1) % images.size
+            delay(cycleMillis)
+            index = (index + 1) % images.size
         }
     }
-
-    val context = LocalContext.current
-
-    Box(modifier = modifier.fillMaxSize()) {
-        // Background image
-        androidx.compose.animation.AnimatedVisibility(
-            visible = visible,
-            enter = fadeIn(tween(800)),
-            exit = fadeOut(tween(800))
-        ) {
-            val painter = rememberAsyncImagePainter(
-                model = ImageRequest.Builder(context)
-                    // The list can shrink while it cycles (images removed from the key).
-                    .data(images[currentIndex % images.size])
-                    .crossfade(true)
-                    .build()
-            )
+    Box(
+        modifier
+            .fillMaxWidth()
+            .height(groundAt)
+            .drawWithCache {
+                val start = (horizon.toPx() / size.height).coerceIn(0f, 1f)
+                val fade = Brush.verticalGradient(
+                    0f to Midad.Ground.copy(alpha = VEIL),
+                    start to Midad.Ground.copy(alpha = VEIL),
+                    1f to Midad.Ground,
+                )
+                onDrawWithContent {
+                    drawContent()
+                    drawRect(fade)
+                }
+            },
+    ) {
+        Crossfade(targetState = images[index % images.size], animationSpec = tween(FADE_MILLIS), label = "background") { uri ->
             Image(
-                painter = painter,
+                painter = rememberAsyncImagePainter(uri),
                 contentDescription = null,
                 modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
+                contentScale = ContentScale.Crop,
             )
         }
-
-        // Dark overlay for text readability
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Black.copy(alpha = overlayAlpha))
-        )
     }
 }
+
+/** How much of the ground lies over an image: enough for the ivory text, little enough to see the image. */
+private const val VEIL = 0.55f
+private const val FADE_MILLIS = 800

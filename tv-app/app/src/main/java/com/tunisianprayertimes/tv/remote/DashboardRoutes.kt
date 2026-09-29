@@ -40,12 +40,18 @@ interface DashboardBackend {
 
     /** A file of the page itself, from the app's assets (dashboard/…). */
     fun asset(name: String): ByteArray?
+
+    /**
+     * A font of the page ([DashboardRoutes.FONTS]: "readex-pro.ttf", "amiri.ttf"), from the app's own
+     * font resources, so the page looks like the screen without internet; null for any other name.
+     */
+    fun font(name: String): ByteArray?
 }
 
 /**
- * The dashboard's routes. The page files are public (they hold no data); every /api call needs the
- * session [token] shown in the QR code on the TV, so only someone in front of the screen can manage
- * it. The token and the size of a request are checked from its head, before its body is read
+ * The dashboard's routes. The page files and its fonts are public (they hold no data); every /api call
+ * needs the session [token] shown in the QR code on the TV, so only someone in front of the screen can
+ * manage it. The token and the size of a request are checked from its head, before its body is read
  * ([admit]). After [MAX_BAD_TOKENS] wrong tokens the session refuses everything.
  */
 class DashboardRoutes(private val token: String, private val backend: DashboardBackend, private val now: () -> Long = System::currentTimeMillis) {
@@ -96,6 +102,10 @@ class DashboardRoutes(private val token: String, private val backend: DashboardB
     private fun page(request: HttpRequest): HttpResponse {
         if (request.method != "GET") return error(404, "غير موجود")
         val name = if (request.path == "/") "index.html" else request.path.removePrefix("/")
+        if (name.startsWith("fonts/")) {
+            val font = name.removePrefix("fonts/").takeIf { it in FONTS }?.let(backend::font) ?: return error(404, "غير موجود")
+            return HttpResponse(200, "font/ttf", font, cacheControl = FONT_CACHE)
+        }
         if (!PAGE_FILE.matches(name)) return error(404, "غير موجود")
         val bytes = backend.asset(name) ?: return error(404, "غير موجود")
         val type = when (name.substringAfterLast('.')) {
@@ -191,10 +201,16 @@ class DashboardRoutes(private val token: String, private val backend: DashboardB
 
     companion object {
         const val MAX_BAD_TOKENS = 10
+
+        /** A month: the URL has no version, so an update that changed a font would be seen within that time. */
+        const val FONT_CACHE = "public, max-age=2592000"
         const val MAX_IMAGE_BYTES = 15 * 1024 * 1024
 
         /** The page's own files: nothing else can be read through this path. */
         private val PAGE_FILE = Regex("""index\.html|app\.js|style\.css|views/[a-z0-9-]{1,40}\.js""")
+
+        /** The fonts the page may ask for at /fonts/NAME: Readex Pro for everything, Amiri for the adhkar texts. */
+        val FONTS = setOf("readex-pro.ttf", "amiri.ttf")
 
         /** A plain file name: no folders, no hidden files. */
         val IMAGE_NAME = Regex("""[A-Za-z0-9_-][A-Za-z0-9._-]{0,79}\.(?i:jpg|jpeg|png|webp)""")

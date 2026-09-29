@@ -1,0 +1,138 @@
+package com.tunisianprayertimes.tv.ui
+
+import com.tunisianprayertimes.DayPrayerTimes
+import com.tunisianprayertimes.Delegation
+import com.tunisianprayertimes.Gouvernorat
+import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerTime
+import com.tunisianprayertimes.tv.data.IqamahConfig
+import com.tunisianprayertimes.tv.data.IqamahMode
+import com.tunisianprayertimes.tv.ui.kiosk.HealthLevel
+import com.tunisianprayertimes.tv.ui.kiosk.HealthRow
+import com.tunisianprayertimes.tv.ui.kiosk.color
+import com.tunisianprayertimes.tv.ui.kiosk.healthSummary
+import com.tunisianprayertimes.tv.ui.kiosk.worstFirst
+import com.tunisianprayertimes.tv.ui.settings.AdvancedAction
+import com.tunisianprayertimes.tv.ui.settings.SETTINGS_MENU
+import com.tunisianprayertimes.tv.ui.settings.SettingsPage
+import com.tunisianprayertimes.tv.ui.settings.advancedActions
+import com.tunisianprayertimes.tv.ui.settings.compareTimes
+import com.tunisianprayertimes.tv.ui.settings.everyText
+import com.tunisianprayertimes.tv.ui.settings.gouvernoratOf
+import com.tunisianprayertimes.tv.ui.settings.placeName
+import com.tunisianprayertimes.tv.ui.settings.stepEveryMinutes
+import com.tunisianprayertimes.tv.ui.settings.stepSlideSeconds
+import com.tunisianprayertimes.tv.ui.settings.title
+import com.tunisianprayertimes.tv.ui.setup.iqamahText
+import com.tunisianprayertimes.tv.ui.setup.shiftFixed
+import com.tunisianprayertimes.tv.ui.theme.Midad
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+/** The admin pages' logic: the settings menu and its pages, the tables' wording, the kiosk summary. */
+class AdminPagesTest {
+
+    @Test
+    fun theMenuFollowsTheBoard() {
+        assertEquals(
+            listOf(
+                "المسجد والموقع", "الإقامة ومدة الصلاة", "رمضان والعيد", "الإعلانات والصور", "المظهر",
+                "لوحة الإدارة من الهاتف", "التشغيل الدائم للشاشة", "متقدم", "حول التطبيق",
+            ),
+            SETTINGS_MENU.map { it.title },
+        )
+    }
+
+    @Test
+    fun everyPageOpensFromTheMenuAndBackLeadsToIt() {
+        SettingsPage.entries.filter { it != SettingsPage.Menu }.forEach { page ->
+            assertTrue("${page.name} belongs to a menu row", page.section in SETTINGS_MENU)
+            var at = page
+            repeat(3) { if (at != SettingsPage.Menu) at = at.up }
+            assertEquals("${page.name} leads back to the menu", SettingsPage.Menu, at)
+        }
+        assertEquals(SettingsPage.Mosque, SettingsPage.MosqueName.up)
+        assertEquals(SettingsPage.Mosque, SettingsPage.Location.up)
+        assertEquals(SettingsPage.Advanced, SettingsPage.Reset.up)
+        assertEquals(SettingsPage.Advanced, SettingsPage.BundledTexts.section)
+    }
+
+    @Test
+    fun advancedOffersUndoAndBundledTextsOnlyWhenTheyApply() {
+        assertEquals(listOf(AdvancedAction.RESET, AdvancedAction.EXIT_TO_ANDROID), advancedActions(canUndoImport = false, customTexts = false))
+        assertEquals(AdvancedAction.entries.toList(), advancedActions(canUndoImport = true, customTexts = true))
+        assertEquals(AdvancedAction.UNDO_IMPORT, advancedActions(canUndoImport = true, customTexts = false).first())
+    }
+
+    @Test
+    fun announcementStepsStayInRange() {
+        assertEquals(0, stepEveryMinutes(0, -1))
+        assertEquals(20, stepEveryMinutes(15, 1))
+        assertEquals(120, stepEveryMinutes(120, 1))
+        assertEquals(5, stepSlideSeconds(5, -1))
+        assertEquals(15, stepSlideSeconds(10, 1))
+        assertEquals(60, stepSlideSeconds(60, 1))
+        assertEquals(TvStrings.ANNOUNCEMENTS_EVERY_OFF, everyText(0))
+        assertEquals("كل 15 دقيقة", everyText(15))
+    }
+
+    @Test
+    fun placesAndTheTimesBeforeAMove() {
+        val marsa = Delegation(11, "La Marsa", "المرسى", "La Marsa")
+        val tunis = Gouvernorat(1, "Tunis", "تونس", "Tunis", listOf(marsa))
+        assertEquals(tunis, gouvernoratOf(listOf(tunis), 11))
+        assertNull(gouvernoratOf(listOf(tunis), 99))
+        assertEquals("المرسى — تونس", placeName("المرسى", tunis))
+        assertEquals("المرسى", placeName("المرسى", null))
+        assertEquals(TvStrings.NOT_SET, placeName("", null))
+
+        val day = DayPrayerTimes(
+            day = 29,
+            fajr = PrayerTime(Prayer.FAJR, 5, 1),
+            shurukHour = 6, shurukMinute = 28,
+            dhuhr = PrayerTime(Prayer.DHUHR, 12, 10),
+            asr = PrayerTime(Prayer.ASR, 15, 35),
+            maghrib = PrayerTime(Prayer.MAGHRIB, 18, 2),
+            isha = PrayerTime(Prayer.ISHA, 19, 20),
+        )
+        val rows = compareTimes(before = day, after = null)
+        assertEquals(5, rows.size)
+        assertEquals(listOf(TvStrings.FAJR, "05:01", "—"), rows.first())
+        assertEquals(listOf(TvStrings.ISHA, "19:20", "—"), rows.last())
+    }
+
+    @Test
+    fun theIqamahAsTheTablesSayIt() {
+        assertEquals("بعد الأذان 15 د", iqamahText(IqamahConfig(delayMinutes = 15)))
+        assertEquals("بعد الشروق 20 د", iqamahText(IqamahConfig(delayMinutes = 20), afterSunrise = true))
+        assertEquals("الساعة 19:40", iqamahText(IqamahConfig(mode = IqamahMode.FIXED_TIME, fixedHour = 19, fixedMinute = 40)))
+        // A fixed mode whose time was never set counts from the adhan, as the schedule does.
+        assertEquals("بعد الأذان 10 د", iqamahText(IqamahConfig(mode = IqamahMode.FIXED_TIME)))
+
+        val pastMidnight = IqamahConfig(mode = IqamahMode.FIXED_TIME, fixedHour = 23, fixedMinute = 59).shiftFixed(1)
+        assertEquals(0 to 0, pastMidnight.fixedHour to pastMidnight.fixedMinute)
+        assertEquals(IqamahMode.FIXED_TIME, pastMidnight.mode)
+    }
+
+    @Test
+    fun theKioskSummaryPutsProblemsFirst() {
+        val rows = listOf(
+            HealthRow(HealthLevel.GOOD, "a"), HealthRow(HealthLevel.WARNING, "b"), HealthRow(HealthLevel.BAD, "c"),
+            HealthRow(HealthLevel.INFO, "d"), HealthRow(HealthLevel.WARNING, "e"),
+        )
+        assertEquals(listOf("c", "b", "e", "d", "a"), rows.worstFirst().map { it.text })
+        assertEquals("مشكلة واحدة · تنبيهان", healthSummary(rows))
+        assertEquals(TvStrings.KIOSK_ALL_GOOD, healthSummary(listOf(HealthRow(HealthLevel.GOOD, "a"), HealthRow(HealthLevel.INFO, "b"))))
+    }
+
+    @Test
+    fun onlyAWarningIsGold() {
+        assertEquals(Midad.Gold, HealthLevel.WARNING.color)
+        assertEquals(Midad.Alert, HealthLevel.BAD.color)
+        assertEquals(Midad.Muted, HealthLevel.INFO.color)
+        assertNotEquals(Midad.Gold, HealthLevel.GOOD.color)
+    }
+}

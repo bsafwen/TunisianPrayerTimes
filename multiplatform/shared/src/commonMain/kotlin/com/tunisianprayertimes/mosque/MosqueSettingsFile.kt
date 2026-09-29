@@ -64,7 +64,10 @@ object MosqueSettingsFile {
 
     enum class ProfileField { NAME, DELEGATION, THEME, WEATHER, BACKGROUNDS, ANNOUNCEMENTS, SLIDE_SECONDS, ANNOUNCEMENTS_EVERY, NIGHT_SCREEN }
 
-    /** The mosque's name, place or theme changed by the file, as the admin reads them ("—" when unset). */
+    /**
+     * The mosque's name, place, theme or a display option changed by the file, as the admin reads them
+     * ("—" when unset; a switch reads تشغيل or إيقاف).
+     */
     data class ProfileChange(val field: ProfileField, val before: String, val after: String)
 
     enum class ContentList { AFTER_SALAH, TICKER, ANNOUNCEMENTS }

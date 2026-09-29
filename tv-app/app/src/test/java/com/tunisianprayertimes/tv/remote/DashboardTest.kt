@@ -40,6 +40,9 @@ class DashboardTest {
         override fun deleteImage(kind: MediaKind, name: String) = images.remove("${kind.folder}/$name") != null
         override fun update() = "لا يوجد تحديث"
         override fun asset(name: String) = if (name == "index.html" || name == "views/prayers.js") name.toByteArray() else null
+        val fontsAsked = mutableListOf<String>()
+        // Answers any name, so the tests see which names the routes let through.
+        override fun font(name: String): ByteArray { fontsAsked += name; return "font:$name".toByteArray() }
     }
 
     private val backend = FakeBackend()
@@ -59,6 +62,26 @@ class DashboardTest {
         for (path in listOf("/../AndroidManifest.xml", "/views/../../prefs.xml", "/secret.json", "/views/Evil.js", "/api")) {
             assertEquals(path, 404, call("GET", path, query = emptyMap()).status)
         }
+    }
+
+    @Test
+    fun theFontsArePublicButOnlyTheListedOnes() {
+        clock = 7_000L
+        val readex = call("GET", "/fonts/readex-pro.ttf", query = emptyMap())
+        assertEquals(200, readex.status)
+        assertEquals("font/ttf", readex.contentType)
+        assertEquals("font:readex-pro.ttf", readex.text)
+        // The phone keeps the fonts; everything else, which holds the mosque's settings, is never stored.
+        assertEquals(DashboardRoutes.FONT_CACHE, readex.cacheControl)
+        assertEquals(200, call("GET", "/fonts/amiri.ttf", query = emptyMap()).status)
+        for (path in listOf("/fonts/reem-kufi.ttf", "/fonts/../index.html", "/fonts/readex-pro.TTF", "/fonts/", "/fonts/x/readex-pro.ttf")) {
+            assertEquals(path, 404, call("GET", path, query = emptyMap()).status)
+        }
+        assertEquals(404, call("POST", "/fonts/readex-pro.ttf", query = emptyMap()).status)
+        assertEquals(listOf("readex-pro.ttf", "amiri.ttf"), backend.fontsAsked)
+        // Loading the page's fonts is not using the session.
+        assertEquals(1_000L, routes.lastUsedAt)
+        assertEquals("no-store", call("GET", "/", query = emptyMap()).cacheControl)
     }
 
     @Test
