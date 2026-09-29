@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.net.ConnectivityManager
+import android.net.Network
 import android.net.Uri
 import android.os.Bundle
 import android.os.SystemClock
@@ -41,9 +43,13 @@ import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.PrayerFlow
 import com.tunisianprayertimes.platform.PrayerDataLoader
 import com.tunisianprayertimes.time.ClockGuard
+import com.tunisianprayertimes.time.ClockReading
+import com.tunisianprayertimes.time.ClockSource
 import com.tunisianprayertimes.time.ClockTrust
+import com.tunisianprayertimes.time.TunisTime
 import com.tunisianprayertimes.tv.data.*
 import com.tunisianprayertimes.tv.ui.display.*
+import com.tunisianprayertimes.tv.ui.settings.SettingsPage
 import com.tunisianprayertimes.tv.ui.settings.SettingsScreen
 import com.tunisianprayertimes.tv.ui.setup.SetupWizard
 import com.tunisianprayertimes.tv.ui.theme.LocalDisplayTheme
@@ -52,7 +58,10 @@ import com.tunisianprayertimes.tv.ui.theme.TvPrayerTheme
 import com.tunisianprayertimes.tv.ui.theme.ThemeRegistry
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.usb.UsbImportScreen
-import com.tunisianprayertimes.tv.ui.clock.ClockWarningScreen
+import com.tunisianprayertimes.tv.ui.clock.ClockPage
+import com.tunisianprayertimes.tv.ui.clock.ClockPageMode
+import com.tunisianprayertimes.tv.ui.clock.ClockView
+import com.tunisianprayertimes.tv.ui.clock.clockRows
 import com.tunisianprayertimes.tv.ui.common.ScreenNotice
 import com.tunisianprayertimes.tv.ui.common.TopMark
 import com.tunisianprayertimes.tv.ui.common.VirtualCanvas
@@ -61,6 +70,8 @@ import com.tunisianprayertimes.tv.usb.UsbSettings
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.platform.PrayerDataLoader as SharedPrayerData
 import com.tunisianprayertimes.tv.remote.DashboardBackendImpl
+import com.tunisianprayertimes.tv.remote.DashboardClock
+import com.tunisianprayertimes.tv.remote.DashboardClockState
 import com.tunisianprayertimes.tv.remote.DashboardLive
 import com.tunisianprayertimes.tv.remote.DashboardRoutes
 import com.tunisianprayertimes.tv.remote.DashboardServer
@@ -85,6 +96,9 @@ import com.tunisianprayertimes.tv.usb.UsbSettingsInbox
 import com.tunisianprayertimes.tv.usb.UsbVolumes
 import com.tunisianprayertimes.tv.kiosk.AdminEntryDetector
 import com.tunisianprayertimes.tv.kiosk.BootTiming
+import com.tunisianprayertimes.tv.kiosk.ClockChange
+import com.tunisianprayertimes.tv.kiosk.ClockChangeReceiver
+import com.tunisianprayertimes.tv.kiosk.ClockLog
 import com.tunisianprayertimes.tv.kiosk.KioskAccessibility
 import com.tunisianprayertimes.tv.kiosk.WakePolicy
 import com.tunisianprayertimes.tv.kiosk.ClockSample
@@ -107,9 +121,12 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 import java.time.temporal.ChronoUnit
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 
 class MainActivity : ComponentActivity() {
 
@@ -322,8 +339,9 @@ private fun TvApp(
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     var currentScreen by remember { mutableStateOf(if (prefs.isSetupDone) Screen.Display else Screen.Setup) }
-    var openKioskPage by remember { mutableStateOf(false) }
-    LaunchedEffect(currentScreen) { if (currentScreen != Screen.Settings) openKioskPage = false }
+    // The settings' first page: the kiosk page after onboarding, the phone's from the clock page.
+    var settingsStart by remember { mutableStateOf(SettingsPage.Menu) }
+    LaunchedEffect(currentScreen) { if (currentScreen != Screen.Settings) settingsStart = SettingsPage.Menu }
 
     // Data state
     var delegationId by remember { mutableIntStateOf(prefs.delegationId) }
@@ -617,9 +635,7 @@ private fun TvApp(
     // The session ends 15 minutes after its last use with the token (an open page keeps it alive),
     // and after 2 hours whatever happens.
     LaunchedEffect(now.minute) {
-        val routes = phoneRoutes ?: return@LaunchedEffect
-        val clock = System.currentTimeMillis()
-        if (clock - routes.lastUsedAt > PHONE_IDLE_MILLIS || clock - routes.startedAt > PHONE_MAX_MILLIS) stopPhone()
+        if (phoneRoutes?.isOver(PHONE_IDLE_MILLIS, PHONE_MAX_MILLIS) == true) stopPhone()
     }
     var usbScans by remember { mutableIntStateOf(0) }
     DisposableEffect(Unit) {
@@ -665,11 +681,6 @@ private fun TvApp(
             hint = null
         }
     }
-    SideEffect {
-        activity.adminEntryActive = currentScreen == Screen.Display && usbFound == null && usbMedia == null && reading.trust != ClockTrust.IMPLAUSIBLE
-        activity.onAdminEntry = { currentScreen = Screen.Settings }
-        activity.onBackOnDisplay = { hint = TvStrings.HOLD_OK_HINT }
-    }
 
     // Once a night, after a long run, a fresh process (only on the display, in the quiet hours).
     LaunchedEffect(now.minute) {
@@ -687,20 +698,123 @@ private fun TvApp(
     }
 
     // An admin screen left open with nobody at the remote gives the wall back to the prayer times.
-    var lastKeyAt by remember { mutableStateOf(now) }
-    SideEffect { activity.onRemoteKey = { lastKeyAt = clock.read().now } }
+    // On the time since boot: the wall clock can be corrected by hours while the admin is there.
+    var lastKeyAt by remember { mutableLongStateOf(SystemClock.elapsedRealtime()) }
+    SideEffect { activity.onRemoteKey = { lastKeyAt = SystemClock.elapsedRealtime() } }
     // Back from a system page (Wi-Fi, overlay permission, date) counts as being at the remote.
-    LaunchedEffect(activity.resumes) { lastKeyAt = clock.read().now }
+    LaunchedEffect(activity.resumes) { lastKeyAt = SystemClock.elapsedRealtime() }
     // A USB offer's time starts when it is on the wall, and again after a prayer that covered it.
     LaunchedEffect(usbFound, usbMedia, flow.phase in PRAYER_PHASES) {
-        if (usbFound != null || usbMedia != null) lastKeyAt = clock.read().now
+        if (usbFound != null || usbMedia != null) lastKeyAt = SystemClock.elapsedRealtime()
     }
+
+    // The clock. Online, the network's time settles it: at start, when the network comes back, after
+    // the system clock was changed, and every few hours (more often while it is not confirmed). Offline
+    // on a box in another zone, the admin is asked once, when at the remote: after a clock or zone
+    // change, or on opening the settings.
+    var askClock by remember { mutableStateOf(false) }
+    var askedThisRun by remember { mutableStateOf(false) }
+    var askAfterCheck by remember { mutableStateOf(false) }
+    val timeChecks = remember { Channel<Unit>(Channel.CONFLATED) }
+    fun adminPresent(): Boolean {
+        val elapsed = SystemClock.elapsedRealtime()
+        return currentScreen == Screen.Settings || elapsed - lastKeyAt < SETTINGS_IDLE.toMillis() ||
+            (activity.kiosk.state.adminAwayUntil ?: 0L) > elapsed
+    }
+    fun openSettings(start: SettingsPage = SettingsPage.Menu) {
+        settingsStart = start
+        currentScreen = Screen.Settings
+        if (!askedThisRun && reading.trust == ClockTrust.UNVERIFIED) {
+            askedThisRun = true
+            askClock = true
+        }
+    }
+    // An answer from the admin or the phone: logged, then the box's own clock and zone follow where the app may set them.
+    fun answerClock(source: ClockSource, answer: () -> Boolean): Boolean {
+        val before = clock.read()
+        if (!answer()) return false
+        val moved = Duration.between(before.now, clock.read().now).toMillis()
+        activity.kiosk.eventLog.append(KioskEvent.CLOCK_CONFIRMED, ClockLog.confirmed(source, moved))
+        KioskController.alignSystemClock(context, clock)
+        reading = clock.read()
+        askClock = false
+        return true
+    }
+    LaunchedEffect(Unit) {
+        while (true) {
+            val checked = WeatherRepository.isOnline(context) && NetworkTime.check(clock, activity.kiosk.eventLog)
+            if (checked) KioskController.alignSystemClock(context, clock)
+            reading = clock.read()
+            if (askAfterCheck) {
+                askAfterCheck = false
+                if (reading.trust == ClockTrust.UNVERIFIED) askClock = true
+            }
+            val wait = if (checked && reading.trust == ClockTrust.TRUSTED) NETWORK_TIME_REFRESH_MILLIS else NETWORK_TIME_RETRY_MILLIS
+            if (withTimeoutOrNull(wait) { timeChecks.receive() } != null) delay(NETWORK_SETTLE_MILLIS)
+        }
+    }
+    DisposableEffect(Unit) {
+        val manager = context.getSystemService(ConnectivityManager::class.java)
+        val callback = object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                timeChecks.trySend(Unit)
+            }
+        }
+        val registered = runCatching { manager.registerDefaultNetworkCallback(callback) }.isSuccess
+        ClockChangeReceiver.listener = { change ->
+            if (change == ClockChange.TIME) clock.systemClockChanged()
+            reading = clock.read()
+            if (adminPresent()) askAfterCheck = true
+            timeChecks.trySend(Unit)
+        }
+        onDispose {
+            ClockChangeReceiver.listener = null
+            if (registered) runCatching { manager.unregisterNetworkCallback(callback) }
+        }
+    }
+    LaunchedEffect(reading.trust) { if (reading.trust != ClockTrust.UNVERIFIED) askClock = false }
+    val askingClock = askClock && reading.trust == ClockTrust.UNVERIFIED && currentScreen != Screen.Setup && flow.phase !in PRAYER_PHASES
+    val clockView = if (reading.trust != ClockTrust.TRUSTED || askingClock || currentScreen == Screen.Settings) {
+        ClockView.of(clock, reading, deviceTimeText())
+    } else null
+    val openDateSettings: (() -> Unit)? = remember {
+        dateSettingsIntent().takeIf { it.resolveActivity(context.packageManager) != null }?.let { intent ->
+            {
+                awayForAdmin(activity, ADMIN_SYSTEM_SETTINGS_AWAY)
+                runCatching { context.startActivity(intent) }
+            }
+        }
+    }
+
+    // The clock for the phone's page, read on its threads: a snapshot taken here, carried forward with the time since boot.
+    val clockSnapshot = remember { AtomicReference<ClockSnapshot?>(null) }
+    SideEffect {
+        clockSnapshot.set(ClockSnapshot(reading, clock.deviceZone(), clock.zoneDiffers(), SystemClock.elapsedRealtime()))
+    }
+    val dashboardClock = remember {
+        object : DashboardClock {
+            override fun state(): DashboardClockState = checkNotNull(clockSnapshot.get()).state(SystemClock.elapsedRealtime())
+            override fun set(epochMillis: Long): Boolean = onMain {
+                answerClock(ClockSource.PHONE) { clock.acceptInstant(Instant.ofEpochMilli(epochMillis), ClockSource.PHONE) }
+            }
+            override fun confirm(): Boolean = onMain { answerClock(ClockSource.ADMIN) { clock.confirm() } }
+        }
+    }
+
+    SideEffect {
+        activity.adminEntryActive = currentScreen == Screen.Display && usbFound == null && usbMedia == null &&
+            reading.trust != ClockTrust.IMPLAUSIBLE && !askingClock
+        activity.onAdminEntry = { openSettings() }
+        activity.onBackOnDisplay = { hint = TvStrings.HOLD_OK_HINT }
+    }
+
     LaunchedEffect(now) {
-        val idle = Duration.between(lastKeyAt, now)
+        val idle = Duration.ofMillis(SystemClock.elapsedRealtime() - lastKeyAt)
         val praying = flow.phase in PRAYER_PHASES
         if (currentScreen == Screen.Settings && (idle > SETTINGS_IDLE || praying && idle > SETTINGS_IDLE_DURING_PRAYER)) {
             currentScreen = Screen.Display
         }
+        if (askClock && idle > SETTINGS_IDLE) askClock = false // the mark on the wall and the settings still say it
         if (usbFound != null && idle > USB_DIALOG_IDLE) usbFound = null // offered again at the next scan
         if (usbMedia != null && idle > USB_DIALOG_IDLE) usbMedia = null
     }
@@ -732,27 +846,17 @@ private fun TvApp(
                         delegationName = delegation.nomAr
                         mosqueName = mName
                         iqamahConfigs = prefs.iqamahConfigs()
-                        openKioskPage = true
-                        currentScreen = Screen.Settings
+                        openSettings(SettingsPage.Kiosk)
                     }
                 )
             }
-            reading.trust == ClockTrust.IMPLAUSIBLE && !inSettings -> ClockWarningScreen(
-                deviceTime = deviceTimeText(),
-                initial = clock.suggestedTime(),
-                canOpenSystemSettings = dateSettingsIntent().resolveActivity(context.packageManager) != null,
-                onOpenSystemSettings = {
-                    awayForAdmin(activity, ADMIN_SYSTEM_SETTINGS_AWAY)
-                    runCatching { context.startActivity(dateSettingsIntent()) }
-                },
-                onSetTime = { time ->
-                    clock.accept(time)
-                    reading = clock.read()
-                },
-                onConfirm = {
-                    clock.confirm()
-                    reading = clock.read()
-                },
+            reading.trust == ClockTrust.IMPLAUSIBLE && !inSettings && clockView != null -> ClockPage(
+                mode = ClockPageMode.BLOCKING,
+                clock = clockView,
+                onPick = { time -> answerClock(ClockSource.ADMIN) { clock.accept(time) } },
+                onConfirm = { answerClock(ClockSource.ADMIN) { clock.confirm() } },
+                onOpenSystemSettings = openDateSettings,
+                onOpenPhone = { openSettings(SettingsPage.Phone) },
             )
             // The prayer itself outranks everything except an admin working in settings.
             !inSettings && flow.phase == FlowPhase.ADHAN -> AdhanScreen(
@@ -774,6 +878,18 @@ private fun TvApp(
             )
             !inSettings && flow.phase == FlowPhase.KHUTBA -> KhutbaScreen()
             !inSettings && flow.phase == FlowPhase.SALAH -> PrayerBlackScreen()
+            askingClock && clockView != null -> ClockPage(
+                mode = ClockPageMode.QUESTION,
+                clock = clockView,
+                onPick = { time -> answerClock(ClockSource.ADMIN) { clock.accept(time) } },
+                onConfirm = { answerClock(ClockSource.ADMIN) { clock.confirm() } },
+                onOpenSystemSettings = null,
+                onOpenPhone = {
+                    askClock = false
+                    openSettings(SettingsPage.Phone)
+                },
+                onLater = { askClock = false },
+            )
             usbFound != null && usbPreview != null -> {
                 val found = usbFound!!
                 UsbImportScreen(
@@ -884,15 +1000,16 @@ private fun TvApp(
                                     live = dashboardLive::get,
                                     kioskRows = {
                                         healthRows(KioskReport.collect(context, activity.kiosk, activity.safeMode, android.os.Process.getStartElapsedRealtime())) +
-                                            updateRows(updater.status, context.packageName)
+                                            clockSnapshot.get()?.rows().orEmpty() + updateRows(updater.status, context.packageName)
                                     },
                                     onSettingsChanged = {
                                         settingsVersion++
                                         canUndoImport = snapshotFile.isFile
                                     },
                                     onMediaChanged = { mediaVersion++ },
+                                    clock = dashboardClock,
                                 )
-                                val routes = DashboardRoutes(token, backend)
+                                val routes = DashboardRoutes(token, backend, SystemClock::elapsedRealtime)
                                 val server = DashboardServer(routes::admit, routes::handle)
                                 val port = runCatching { server.start() }.getOrNull()
                                 if (port != null) {
@@ -931,7 +1048,7 @@ private fun TvApp(
                         val overlay = remember(report) { KioskController.overlaySettingsIntent(context) }
                         KioskHealthScreen(
                             report = report,
-                            extraRows = updateRows(updateStatus, context.packageName),
+                            extraRows = clockSnapshot.get()?.rows().orEmpty() + updateRows(updateStatus, context.packageName),
                             onAllowUpdates = if (updateStatus.supported && updateStatus.needsPermission) {
                                 {
                                     awayForAdmin(activity, ADMIN_SYSTEM_SETTINGS_AWAY)
@@ -991,7 +1108,7 @@ private fun TvApp(
                         runCatching { context.startActivity(Intent(Settings.ACTION_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
                     },
                     onBack = { currentScreen = Screen.Display },
-                    openKioskPage = openKioskPage,
+                    startPage = settingsStart,
                     previewTimes = { id -> runCatching { prayerRepo.loadDay(id, today) }.getOrNull() },
                     currentDelegationId = delegationId,
                     canUndoImport = canUndoImport,
@@ -1025,11 +1142,24 @@ private fun TvApp(
                     // What «حذف الصور وملفات الإعلانات» would remove: both folders' images and .txt files, not the file's announcements.
                     mediaFiles = imageCounts.getValue(MediaKind.BACKGROUNDS) + imageCounts.getValue(MediaKind.ANNOUNCEMENTS),
                     // Typing goes to the keyboard, not through the activity's keys: it still counts as being at the remote.
-                    onTyping = { lastKeyAt = clock.read().now },
+                    onTyping = { lastKeyAt = SystemClock.elapsedRealtime() },
                     kioskPreview = {
                         healthRows(KioskReport.collect(context, activity.kiosk, activity.safeMode, android.os.Process.getStartElapsedRealtime())) +
-                            updateRows(updateStatus, context.packageName)
+                            clockSnapshot.get()?.rows().orEmpty() + updateRows(updateStatus, context.packageName)
                     },
+                    clockPage = { openPhone ->
+                        clockView?.let { view ->
+                            ClockPage(
+                                mode = ClockPageMode.SETTINGS,
+                                clock = view,
+                                onPick = { time -> answerClock(ClockSource.ADMIN) { clock.accept(time) } },
+                                onConfirm = { answerClock(ClockSource.ADMIN) { clock.confirm() } },
+                                onOpenSystemSettings = openDateSettings,
+                                onOpenPhone = openPhone,
+                            )
+                        }
+                    },
+                    clock = clockView,
                 )
             }
             afterSalahSlide != null -> AfterSalahAzkarScreen(afterSalahSlide.value, afterSalahSlide.index, afterSalahSlides.size, sky)
@@ -1070,7 +1200,7 @@ private fun TvApp(
                     ticker = tickerSlides,
                     sky = sky,
                     backgroundImages = backgroundImages,
-                    onSettingsRequested = { currentScreen = Screen.Settings },
+                    onSettingsRequested = { openSettings() },
                 )
             }
         }
@@ -1078,7 +1208,13 @@ private fun TvApp(
         (hint ?: notice)
             ?.takeUnless { quietWall }
             ?.let { ScreenNotice(it, atTop = currentScreen != Screen.Display) }
-        if (phoneSession != null && currentScreen == Screen.Display && flow.phase !in PRAYER_PHASES) TopMark(TvStrings.DASHBOARD_OPEN)
+        if (currentScreen == Screen.Display && flow.phase !in PRAYER_PHASES && !askingClock) {
+            when {
+                phoneSession != null -> TopMark(TvStrings.DASHBOARD_OPEN)
+                // Not confirmed, offline, on a box in another zone: a quiet line, where the admin answers.
+                reading.trust == ClockTrust.UNVERIFIED -> TopMark(TvStrings.CLOCK_UNVERIFIED_MARK)
+            }
+        }
     }
 }
 
@@ -1096,6 +1232,29 @@ private const val QUICK_START_SETTLE_MILLIS = 5_000L
 private const val WEATHER_TICK_MILLIS = 5 * 60_000L
 private const val UPDATE_TICK_MILLIS = 30 * 60_000L
 private const val QUIET_BEFORE_ADHAN_MINUTES = 10L
+private const val NETWORK_TIME_REFRESH_MILLIS = 6 * 60 * 60_000L
+private const val NETWORK_TIME_RETRY_MILLIS = 5 * 60_000L
+/** A network that just came up is validated a moment later. */
+private const val NETWORK_SETTLE_MILLIS = 10_000L
+private const val MAIN_THREAD_TIMEOUT_MILLIS = 5_000L
+
+/** The clock as the display last read it, for the phone's threads; [atElapsed] is the time since boot then. */
+private class ClockSnapshot(val reading: ClockReading, val deviceZone: ZoneId, val zoneDiffers: Boolean, val atElapsed: Long) {
+    fun state(nowElapsed: Long) = DashboardClockState(
+        epochMillis = reading.now.atZone(TunisTime.ZONE).toInstant().toEpochMilli() + (nowElapsed - atElapsed),
+        verified = reading.trust == ClockTrust.TRUSTED,
+        source = reading.source,
+        deviceZone = deviceZone.id,
+        zoneDiffers = zoneDiffers,
+    )
+
+    fun rows(): List<HealthRow> = clockRows(reading.trust, reading.source, deviceZone, zoneDiffers)
+}
+
+/** Runs [action] on the main thread, where the clock guard is read, from a server thread; false when the main thread is too busy. */
+private fun onMain(action: () -> Boolean): Boolean = runBlocking {
+    withTimeoutOrNull(MAIN_THREAD_TIMEOUT_MILLIS) { withContext(Dispatchers.Main) { action() } } ?: false
+}
 
 /** The GitHub build's update rows for the kiosk page and the dashboard. */
 private fun updateRows(status: UpdateStatus, packageName: String): List<HealthRow> {

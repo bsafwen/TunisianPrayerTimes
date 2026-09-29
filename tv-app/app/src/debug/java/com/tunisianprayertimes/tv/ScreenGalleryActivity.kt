@@ -10,7 +10,13 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.HijriLabels
 import com.tunisianprayertimes.IslamicDays
@@ -20,7 +26,13 @@ import com.tunisianprayertimes.mosque.DayBanner
 import com.tunisianprayertimes.mosque.FastCountdown
 import com.tunisianprayertimes.mosque.MosqueAdhkar
 import com.tunisianprayertimes.mosque.PrayerEvent
+import com.tunisianprayertimes.time.ClockSource
+import com.tunisianprayertimes.time.ClockTrust
 import com.tunisianprayertimes.tv.data.Announcement
+import com.tunisianprayertimes.tv.ui.clock.ClockPage
+import com.tunisianprayertimes.tv.ui.clock.ClockPageMode
+import com.tunisianprayertimes.tv.ui.clock.ClockView
+import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.common.VirtualCanvas
 import com.tunisianprayertimes.tv.ui.display.AdhanScreen
 import com.tunisianprayertimes.tv.ui.display.AfterSalahAzkarScreen
@@ -32,6 +44,7 @@ import com.tunisianprayertimes.tv.ui.display.MainScreenModel
 import com.tunisianprayertimes.tv.ui.display.NightScreen
 import com.tunisianprayertimes.tv.ui.display.PrayerBlackScreen
 import com.tunisianprayertimes.tv.ui.display.PrayerDisplayScreen
+import com.tunisianprayertimes.tv.ui.theme.Midad
 import com.tunisianprayertimes.tv.ui.theme.Sky
 import com.tunisianprayertimes.tv.ui.theme.ThemeRegistry
 import com.tunisianprayertimes.tv.ui.theme.TvPrayerTheme
@@ -40,6 +53,7 @@ import java.io.File
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.ZoneId
 
 /**
  * Debug builds only: one screen of the display at a chosen moment, with the mockups' day, so the
@@ -119,6 +133,32 @@ class ScreenGalleryActivity : ComponentActivity() {
                 footer = MainScreenModel.nextPrayerLine(now, today, tomorrow, iqamah, LocalTime.of(5, 2)),
             )
             "night" -> NightScreen(now, tomorrow.let { date.plusDays(if (now.hour >= 12) 1 else 0).atTime(it.fajr.hour, it.fajr.minute) }, date.plusDays(if (now.hour >= 12) 1 else 0).atTime(5, 2))
+            "clock-blocking", "clock-question", "clock-settings" -> {
+                // A box on Shanghai time (a clock set by hand, or from the network), or reset to 2015 by a power cut.
+                val shanghai = ZoneId.of("Asia/Shanghai")
+                val view = when {
+                    screen == "clock-blocking" -> ClockView(
+                        LocalDateTime.of(2015, 1, 1, 0, 3), ClockTrust.IMPLAUSIBLE, null, emptyList(), now.withSecond(0),
+                        "2015-01-01 00:03 (Africa/Tunis)", ZoneId.of("Africa/Tunis"), false,
+                    )
+                    intent.getStringExtra("trust") == "trusted" -> ClockView(
+                        now, ClockTrust.TRUSTED, ClockSource.NETWORK, listOf(now, now.plusHours(7)), now,
+                        "${now.plusHours(7).toLocalDate()} ${TvStrings.hm(now.plusHours(7).toLocalTime())} (Asia/Shanghai)", shanghai, true,
+                    )
+                    else -> ClockView(
+                        now, ClockTrust.UNVERIFIED, null, listOf(now, now.plusHours(7)), now,
+                        "${now.plusHours(7).toLocalDate()} ${TvStrings.hm(now.plusHours(7).toLocalTime())} (Asia/Shanghai)", shanghai, true,
+                    )
+                }
+                val mode = when (screen) {
+                    "clock-blocking" -> ClockPageMode.BLOCKING
+                    "clock-question" -> ClockPageMode.QUESTION
+                    else -> ClockPageMode.SETTINGS
+                }
+                val page = @Composable { ClockPage(mode, view, onPick = {}, onConfirm = {}, onOpenSystemSettings = {}, onOpenPhone = {}) }
+                if (mode != ClockPageMode.SETTINGS) page()
+                else Box(Modifier.fillMaxSize().background(Midad.Ground).padding(horizontal = 48.dp, vertical = 27.dp)) { page() }
+            }
             "eid" -> EidScreen(banner as DayBanner.Eid, now, mosque, hijri, MainScreenModel.nextPrayerLine(now, today, tomorrow, iqamah, LocalTime.of(5, 2)))
             else -> PrayerDisplayScreen(
                 todayTimes = today,

@@ -61,12 +61,16 @@ import com.tunisianprayertimes.tv.ui.common.adminPanel
 import com.tunisianprayertimes.tv.ui.common.initialFocus
 import com.tunisianprayertimes.tv.ui.common.onSurfaceMuted
 import com.tunisianprayertimes.tv.ui.common.onSurfaceText
+import com.tunisianprayertimes.tv.ui.common.Digits
 import com.tunisianprayertimes.tv.ui.common.rtl
 import com.tunisianprayertimes.tv.ui.kiosk.HealthDot
 import com.tunisianprayertimes.tv.ui.kiosk.HealthLevel
 import com.tunisianprayertimes.tv.ui.kiosk.HealthRow
 import com.tunisianprayertimes.tv.ui.kiosk.healthSummary
 import com.tunisianprayertimes.tv.ui.kiosk.worstFirst
+import com.tunisianprayertimes.tv.ui.clock.ClockView
+import com.tunisianprayertimes.tv.ui.clock.clockLevel
+import com.tunisianprayertimes.tv.ui.clock.clockStatus
 import com.tunisianprayertimes.tv.ui.setup.IqamahTable
 import com.tunisianprayertimes.tv.ui.setup.iqamahText
 import com.tunisianprayertimes.tv.ui.setup.mosqueNameFieldColors
@@ -88,7 +92,7 @@ import java.time.LocalDate
  * then to the display (MainActivity also returns there after a few idle minutes).
  */
 @Composable
-fun SettingsScreen(
+internal fun SettingsScreen(
     mosqueName: String,
     delegationName: String,
     /** Every row of the iqamah table: the daily prayers, Jumu'a and the two Eids. */
@@ -122,11 +126,18 @@ fun SettingsScreen(
     kioskPage: @Composable (onBack: () -> Unit) -> Unit,
     /** Managing the screen from a phone on the local network. */
     phonePage: @Composable (onBack: () -> Unit) -> Unit,
+    /** The clock's section ([com.tunisianprayertimes.tv.ui.clock.ClockPage]); [openPhone] goes to the phone's page. */
+    clockPage: @Composable (openPhone: () -> Unit) -> Unit,
+    /** The clock as it is, for the menu's preview. */
+    clock: ClockView? = null,
     /** Leaves the app for the box's own settings; the watchdog then stays away for a while. */
     onExitToAndroid: () -> Unit,
     onBack: () -> Unit,
-    /** Right after onboarding: show the installer whether this box can keep the app on screen. */
-    openKioskPage: Boolean = false,
+    /**
+     * The page it opens on: the kiosk page right after onboarding (can this box keep the app on screen),
+     * the phone's page from the clock's question.
+     */
+    startPage: SettingsPage = SettingsPage.Menu,
     /** Today's prayer times for a delegation, to compare before a location change. */
     previewTimes: (Int) -> DayPrayerTimes? = { null },
     currentDelegationId: Int = -1,
@@ -156,7 +167,7 @@ fun SettingsScreen(
      */
     onTyping: () -> Unit = {},
 ) {
-    var page by remember { mutableStateOf(if (openKioskPage) SettingsPage.Kiosk else SettingsPage.Menu) }
+    var page by remember { mutableStateOf(startPage) }
     // The page the admin just left: back on the menu or a section, its row takes the focus again.
     var from by remember { mutableStateOf<SettingsPage?>(null) }
     fun go(to: SettingsPage) {
@@ -196,6 +207,7 @@ fun SettingsScreen(
                     nightScreenEnabled = nightScreenEnabled,
                     phoneSessionOpen = phoneSessionOpen,
                     kioskPreview = kioskPreview,
+                    clock = clock,
                     advanced = advanced,
                     aboutLines = aboutLines,
                 ),
@@ -229,6 +241,7 @@ fun SettingsScreen(
                 IqamahTable(configs = iqamahConfigs, onChanged = onIqamahChanged, modifier = Modifier.weight(1f))
             }
             SettingsPage.Dates -> IslamicDatesSection(today = today)
+            SettingsPage.Clock -> clockPage { go(SettingsPage.Phone) }
             SettingsPage.Media -> MediaPage(
                 announcementsEnabled = announcementsEnabled,
                 announcementCount = announcementCount,
@@ -296,7 +309,7 @@ fun SettingsScreen(
 
 /** Every page of the settings. The menu's sections are [SETTINGS_MENU]; the others open from a section. */
 internal enum class SettingsPage {
-    Menu, Mosque, MosqueName, Location, Iqamah, Dates, Media, DeleteMedia, Appearance, Phone, Kiosk, Advanced, Reset, BundledTexts, About;
+    Menu, Mosque, MosqueName, Location, Iqamah, Dates, Clock, Media, DeleteMedia, Appearance, Phone, Kiosk, Advanced, Reset, BundledTexts, About;
 
     /** Where Back goes from here. */
     val up: SettingsPage
@@ -313,7 +326,7 @@ internal enum class SettingsPage {
 
 /** The menu, in the board's order; «متقدم» holds the rare and irreversible actions before «حول التطبيق». */
 internal val SETTINGS_MENU = listOf(
-    SettingsPage.Mosque, SettingsPage.Iqamah, SettingsPage.Dates, SettingsPage.Media, SettingsPage.Appearance,
+    SettingsPage.Mosque, SettingsPage.Iqamah, SettingsPage.Dates, SettingsPage.Clock, SettingsPage.Media, SettingsPage.Appearance,
     SettingsPage.Phone, SettingsPage.Kiosk, SettingsPage.Advanced, SettingsPage.About,
 )
 
@@ -328,6 +341,7 @@ internal val SettingsPage.title: String
         SettingsPage.Location -> TvStrings.SETTINGS_LOCATION
         SettingsPage.Iqamah -> TvStrings.SECTION_IQAMAH
         SettingsPage.Dates -> TvStrings.SECTION_DATES
+        SettingsPage.Clock -> TvStrings.SECTION_CLOCK
         SettingsPage.Media -> TvStrings.SECTION_MEDIA
         SettingsPage.DeleteMedia -> TvStrings.DELETE_IMAGES
         SettingsPage.Appearance -> TvStrings.SETTINGS_THEME
@@ -404,6 +418,7 @@ private class SettingsSummary(
     val nightScreenEnabled: Boolean,
     val phoneSessionOpen: Boolean,
     val kioskPreview: (() -> List<HealthRow>)?,
+    val clock: ClockView?,
     val advanced: List<AdvancedAction>,
     val aboutLines: List<String>,
 )
@@ -505,6 +520,20 @@ private fun ColumnScope.SectionPreview(section: SettingsPage, summary: SettingsS
                 widths = listOf(210.dp, 56.dp),
             )
             Note(TvStrings.ISLAMIC_DATES_HINT)
+        }
+        SettingsPage.Clock -> {
+            PreviewHeader(section.title)
+            val clock = summary.clock
+            if (clock != null) {
+                Text(TvStrings.CLOCK_TIME_IN_TUNIS, style = midadStyle(14.sp, color = Midad.Muted))
+                Digits(TvStrings.hm(clock.now.toLocalTime()), midadStyle(34.sp, FontWeight.SemiBold), modifier = Modifier.padding(bottom = 2.dp))
+                Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
+                    HealthDot(clockLevel(clock.trust))
+                    Text(clockStatus(clock.trust, clock.source), style = midadStyle(17.sp, FontWeight.Medium).rtl())
+                }
+                if (clock.zoneDiffers) Note(TvStrings.clockZoneInfo(clock.deviceZone.id))
+            }
+            Note(TvStrings.CLOCK_SETTINGS_HINT)
         }
         SettingsPage.Media -> {
             PreviewHeader(section.title)

@@ -75,7 +75,7 @@ On ordinary days the header shows twelve verses about the prayer in turn, moving
 | `رَبِّ اجْعَلْنِي مُقِيمَ الصَّلَاةِ وَمِنْ ذُرِّيَّتِي` | ordinary days, in turn | [Qaloon 14:42](https://quranpedia.net/surah/7/14) (Hafs 14:40) |
 | `فَاسْعَوْا إِلَىٰ ذِكْرِ اللَّهِ وَذَرُوا الْبَيْعَ` | Fridays | [Qaloon 62:9](https://quranpedia.net/surah/7/62) |
 | `شَهْرُ رَمَضَانَ الَّذِي أُنْزِلَ فِيهِ الْقُرْآنُ` | Ramadan | [Qaloon 2:184](https://quranpedia.net/surah/7/2) (Hafs 2:185) |
-| `تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ` | Eid morning | Jubayr ibn Nufayr's report that the companions greeted each other with `تقبل الله منا ومنك` on Eid, in al-Mahamiliyyat; Ibn Hajar graded its chain hasan in Fath al-Bari (Kitab al-Idayn). The screen uses the plural to greet everyone. **Needs editorial approval**, as the plural is not the narrated wording. |
+| `تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ` | Eid morning | Jubayr ibn Nufayr's report that the companions greeted each other with `تقبل الله منا ومنك` on Eid, in al-Mahamiliyyat; Ibn Hajar graded its chain hasan in Fath al-Bari (Kitab al-Idayn). The screen uses the plural to greet everyone; the plural is not the narrated wording, and was approved editorially on 2026-09-29. |
 | `بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ` | setup wizard's welcome (first start only) | The basmala that opens every sura but at-Tawba; same wording as the catalog's basmala before al-Ikhlas, al-Falaq and an-Nas. Cited as «البسملة», with no verse number: in the Qaloon reading with the Madani count it is not a verse of al-Fatiha (Hafs numbers it 1:1). |
 
 The verses are excerpts: each is the complete clause shown, not the whole verse.

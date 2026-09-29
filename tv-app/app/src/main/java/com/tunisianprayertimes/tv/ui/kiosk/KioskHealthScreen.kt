@@ -38,6 +38,7 @@ import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tunisianprayertimes.time.TunisTime
 import com.tunisianprayertimes.tv.kiosk.AutoStartTier
 import com.tunisianprayertimes.tv.kiosk.BootTiming
 import com.tunisianprayertimes.tv.kiosk.KioskAccessibility
@@ -64,7 +65,7 @@ data class HealthRow(val level: HealthLevel, val text: String, val fix: String? 
 
 /** The page's rows, in Arabic; everything works without a network. */
 /** [quickStartSettling]: quick start was switched on a moment ago and the system is still binding it. */
-fun healthRows(report: KioskReport, zone: ZoneId = ZoneId.systemDefault(), quickStartSettling: Boolean = false): List<HealthRow> {
+fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSettling: Boolean = false): List<HealthRow> {
     val pkg = report.packageName
     val rows = mutableListOf<HealthRow>()
     val fireTv = report.autoStart.fireTv
@@ -393,7 +394,7 @@ private fun Command(command: String) {
 private fun EventLine(event: EventEntry) {
     var focused by remember { mutableStateOf(false) }
     Text(
-        "${time(event, ZoneId.systemDefault())}  ${event.type}  ${event.detail.take(120)}",
+        "${time(event, TunisTime.ZONE)}  ${event.type}  ${event.detail.take(120)}",
         style = midadStyle(13.sp, color = Midad.Dim).copy(textDirection = TextDirection.Ltr, textAlign = TextAlign.Left),
         modifier = Modifier
             .fillMaxWidth()

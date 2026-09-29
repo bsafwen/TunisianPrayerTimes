@@ -149,9 +149,15 @@ not Tunisia's (the wall is then off by the zones' difference). The app checks th
   on the network could send a date). A time within 2 minutes confirms the screen's time; further
   off, it corrects it. With a system clock years off, the HTTPS check fails below Android 13 and the
   admin or the phone sets the time instead.
-- **Offline**, the admin confirms the time on the TV, or the phone sets it from the dashboard
-  («اضبط الشاشة على وقت هاتفي»). The answer is kept as a correction of the box's clock until that
-  clock is changed.
+- **Offline**, on a box whose zone reads another time than Tunisia's, the time is shown from the
+  instant but not confirmed: a quiet line at the top of the wall says so («الوقت غير مؤكَّد»). The
+  admin is asked once, when at the remote (on opening the settings, after onboarding, or after a
+  clock or zone change): «كم الساعة الآن في تونس؟» offers the screen's time and the device clock read
+  as Tunisia's time (right when someone set it by hand to their watch), another time on steppers,
+  the phone, or «لاحقًا». The settings' «الساعة» section shows the same, and the phone sets it from
+  the dashboard («اضبط الشاشة على وقت هاتفي»). The answer is kept as a correction of the box's
+  clock until that clock is changed. A clock that cannot be right (before September 2026, or hours
+  behind the last good time) replaces the prayer times with «ساعة الجهاز غير صحيحة» until it is set.
 - **A change of the system clock** (the box's settings, the network, adb) reaches the app even when
   the display is not running (a receiver of the system's time-set broadcast): the correction and the
   confirmation are dropped and the time is checked again. A change of zone moves no instant and is
