@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:30.652Z" hostname="HOME" time="0.004">
+<testsuite name="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:58.904Z" hostname="HOME" time="0.005">
   <properties/>
-  <testcase name="aLongSleepIsFoundWithItsWallTimes" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.001"/>
+  <testcase name="aLongSleepIsFoundWithItsWallTimes" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.0"/>
   <testcase name="shortPausesAndRebootsAreNotSleeps" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.0"/>
   <testcase name="powerSettingsAreJudgedAndUnreadableOnesAreUnknown" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.001"/>
   <testcase name="theScreenDriftsSlowlyAndStaysClose" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.002"/>

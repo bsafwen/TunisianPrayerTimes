@@ -78,9 +78,12 @@
     });
   }
 
-  /** A kind select with a minutes field or a time field, whichever the kind needs. */
-  function iqamahField(el, eid, initial, label) {
-    var kind = el("select", { attrs: { "aria-label": label + ": نوع الإقامة" } },
+  /**
+   * A kind select with a minutes field or a time field, whichever the kind needs. `id` is the select's,
+   * for its visible label; the fields keep their own names for screen readers.
+   */
+  function iqamahField(el, eid, initial, label, id) {
+    var kind = el("select", { id: id, attrs: { "aria-label": label + ": نوع الإقامة" } },
       el("option", { value: "after", text: eid ? "بعد الشروق" : "بعد الأذان" }),
       el("option", { value: "fixed", text: "وقت ثابت" }));
     kind.value = initial.kind;
@@ -93,7 +96,7 @@
     kind.addEventListener("change", sync);
     sync();
     return {
-      nodes: [kind, " ", minutes, time],
+      nodes: [kind, minutes, time],
       /** What the admin sees in the field: it changes only when the admin edits it. */
       snapshot: function () {
         return kind.value + "|" + inputSnapshot(kind.value === "fixed" ? time : minutes);
@@ -122,6 +125,17 @@
     };
   }
 
+  /** The iqamah and the duration side by side, each under a visible label (wrapping on a narrow phone). */
+  function fieldsRow(el, iqamah, iqamahId, iqamahLabel, duration, durationLabel) {
+    return el("div", { class: "fields" },
+      el("div", null,
+        el("label", { text: iqamahLabel, attrs: { for: iqamahId } }),
+        el("div", { class: "inline" }, iqamah.nodes)),
+      el("div", null,
+        el("label", { text: durationLabel, attrs: { for: duration.id } }),
+        duration));
+  }
+
   Dashboard.registerView({
     id: "prayers",
     title: "الإقامة",
@@ -136,19 +150,23 @@
 
       // ---- the usual iqamah and duration
       var rows = [];
-      var body = el("tbody");
+      var usual = el("section", { class: "card" },
+        el("h2", { text: "الإقامة ومدة الصلاة" }),
+        el("p", { class: "hint", text: "الإقامة: دقائق بعد الأذان (بعد الشروق للعيدين) أو وقت ثابت. مدة الصلاة: مدة الشاشة السوداء. الدقائق من 1 إلى 90." }));
       ctx.PRAYERS.forEach(function (prayer) {
         var current = prayers[prayer.key] || {};
-        var iqamah = iqamahField(el, prayer.eid, parseIqamah(current.iqamah), prayer.name);
+        var id = "prayer-" + prayer.key;
+        var iqamah = iqamahField(el, prayer.eid, parseIqamah(current.iqamah), prayer.name, id + "-kind");
         var duration = numberInput(el, current.duration, prayer.name + ": مدة الصلاة بالدقائق");
+        duration.id = id + "-duration";
         var now = today[prayer.id];
-        body.appendChild(el("tr", null,
-          el("td", null,
+        usual.appendChild(el("div", { class: "list-item" },
+          el("div", { class: "head" },
             el("strong", { text: prayer.name }),
-            prayer.eid ? el("div", { class: "muted", text: "بعد الشروق" }) : null,
-            now ? el("div", { class: "muted tabular", text: "اليوم: الأذان " + (now.adhan || "—") + " · الإقامة " + (now.iqamah || "—") }) : null),
-          el("td", null, iqamah.nodes),
-          el("td", null, duration)));
+            now ? el("span", { class: "muted small" }, "اليوم: الأذان ", el("span", { class: "ltr tabular", text: now.adhan || "—" }),
+              " · الإقامة ", el("span", { class: "ltr tabular", text: now.iqamah || "—" })) : null),
+          prayer.eid ? el("div", { class: "muted small", text: "بعد الشروق" }) : null,
+          fieldsRow(el, iqamah, id + "-kind", "الإقامة", duration, "المدة بالدقائق")));
         rows.push({
           prayer: prayer,
           iqamah: tracked(iqamah.snapshot, function (errors) { return iqamah.read(errors, prayer.name, false); }),
@@ -156,39 +174,31 @@
             function (errors) { return readDuration(duration, errors, prayer.name, false); })
         });
       });
-
-      root.appendChild(el("h2", { text: "الإقامة ومدة الصلاة" }));
-      root.appendChild(el("div", { class: "card" },
-        el("p", { class: "muted", text: "الإقامة: دقائق بعد الأذان (بعد الشروق للعيدين) أو وقت ثابت. مدة الصلاة: مدة الشاشة السوداء. الدقائق من 1 إلى 90." }),
-        el("table", null,
-          el("thead", null, el("tr", null,
-            el("th", { text: "الصلاة" }),
-            el("th", { text: "الإقامة" }),
-            el("th", { text: "مدة الصلاة بالدقائق" }))),
-          body)));
+      root.appendChild(usual);
 
       // ---- what changes in Ramadan
       var ramadanRows = [];
-      var ramadanList = el("div");
+      var ramadanCard = el("section", { class: "card" },
+        el("h2", { text: "تغييرات رمضان" }),
+        el("p", { class: "hint", text: "ما يتغيّر في رمضان فقط. الحقل الفارغ يُبقي الإعداد المعتاد، وإلغاء الاختيار يعيد الصلاة إلى إعدادها المعتاد." }));
       ctx.PRAYERS.filter(function (p) { return !p.eid; }).forEach(function (prayer) {
         var current = ramadan[prayer.key] || {};
         var changed = (current.iqamah !== undefined && current.iqamah !== null) ||
           (current.duration !== undefined && current.duration !== null);
-        var check = el("input", { type: "checkbox", checked: changed });
+        var id = "ramadan-" + prayer.key;
+        var check = el("input", { type: "checkbox", id: id + "-on", checked: changed });
         var name = prayer.name + " في رمضان";
-        var iqamah = iqamahField(el, false, parseIqamah(current.iqamah), name);
+        var iqamah = iqamahField(el, false, parseIqamah(current.iqamah), name, id + "-kind");
         var duration = numberInput(el, current.duration, name + ": مدة الصلاة بالدقائق");
-        var details = el("div", null,
-          el("label", { text: "الإقامة (فارغ: دون تغيير)" }),
-          el("div", null, iqamah.nodes),
-          el("label", { text: "مدة الصلاة بالدقائق (فارغ: دون تغيير)" }),
-          duration);
+        duration.id = id + "-duration";
+        var details = fieldsRow(el, iqamah, id + "-kind", "الإقامة (فارغ: دون تغيير)",
+          duration, "مدة الصلاة بالدقائق (فارغ: دون تغيير)");
         function sync() { details.hidden = !check.checked; }
         check.addEventListener("change", sync);
         sync();
-        ramadanList.appendChild(el("div", { class: "list-item" },
+        ramadanCard.appendChild(el("div", { class: "list-item" },
           el("strong", { text: prayer.name }),
-          el("label", null, check, " تغيير في رمضان"),
+          el("label", { class: "check", attrs: { for: check.id } }, check, "تغيير " + prayer.name + " في رمضان"),
           details));
         ramadanRows.push({
           prayer: prayer,
@@ -199,15 +209,11 @@
             function (errors) { return readDuration(duration, errors, name, true); })
         });
       });
-
-      root.appendChild(el("h2", { text: "تغييرات رمضان" }));
-      root.appendChild(el("div", { class: "card" },
-        el("p", { class: "muted", text: "ما يتغيّر في رمضان فقط. الحقل الفارغ يُبقي الإعداد المعتاد، وإلغاء الاختيار يعيد الصلاة إلى إعدادها المعتاد." }),
-        ramadanList));
+      root.appendChild(ramadanCard);
 
       // ---- preview and apply
       var apply = el("button", { class: "primary", type: "button", text: "معاينة وتطبيق", on: { click: submit } });
-      root.appendChild(el("div", { class: "row" }, apply));
+      root.appendChild(el("div", { class: "actions" }, apply));
 
       /** Sends only what the admin changed, so a change made meanwhile on the TV is kept. */
       function submit() {

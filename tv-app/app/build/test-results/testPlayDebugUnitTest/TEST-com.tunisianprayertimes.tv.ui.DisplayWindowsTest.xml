@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:30.981Z" hostname="HOME" time="0.005">
+<testsuite name="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:59.238Z" hostname="HOME" time="0.004">
   <properties/>
-  <testcase name="theStudsGoOutOneByOneOverTheWait" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.001"/>
+  <testcase name="theStudsGoOutOneByOneOverTheWait" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.0"/>
   <testcase name="noNightWhenDisabledOrWithoutTimes" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.0"/>
   <testcase name="theNightRunsFromAnHourAfterIshaToHalfAnHourBeforeFajr" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.0"/>
   <testcase name="anIshaAndAFajrOfDifferentNightsMakeNoNight" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.0"/>
-  <testcase name="everyTextBesideTheMuezzinSaysWhenItIsSaid" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.0"/>
+  <testcase name="everyTextBesideTheMuezzinSaysWhenItIsSaid" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.001"/>
   <testcase name="eidMorningRunsFromTheEndOfFajrToTheDhuhrAdhan" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.001"/>
-  <testcase name="theCountdownIsMinutesAndSeconds" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.001"/>
+  <testcase name="theCountdownIsMinutesAndSeconds" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.0"/>
   <testcase name="theCountdownRoundsUpLikeTheMainScreen" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.0"/>
   <testcase name="inRamadanTheTarawihKeepsTheScreenOnLonger" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.0"/>
   <testcase name="theBlockMovesEveryFiveMinutesToAnotherRow" classname="com.tunisianprayertimes.tv.ui.DisplayWindowsTest" time="0.001"/>

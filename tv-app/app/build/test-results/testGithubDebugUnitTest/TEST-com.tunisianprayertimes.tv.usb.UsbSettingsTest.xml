@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.usb.UsbSettingsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:41.015Z" hostname="HOME" time="0.033">
+<testsuite name="com.tunisianprayertimes.tv.usb.UsbSettingsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.953Z" hostname="HOME" time="0.033">
   <properties/>
   <testcase name="anEmptyFileCountsAsAbsent" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.008"/>
   <testcase name="templatesGoOnlyToKeysWithoutAFileAndLeaveNoTempFile" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.012"/>

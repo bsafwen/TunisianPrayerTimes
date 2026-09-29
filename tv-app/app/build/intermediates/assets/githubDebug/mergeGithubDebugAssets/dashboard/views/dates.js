@@ -10,25 +10,15 @@
   var ISO = /^\d{4}-\d{2}-\d{2}$/;
   var KEYS = ["ramadanStart", "eidFitr", "eidAdha"];
 
-  /** "الاثنين 8 فيفري 2027", or the ISO date when the phone's browser cannot write it in Arabic. */
-  function longDate(iso) {
-    if (!iso || !ISO.test(iso)) return iso || "—";
-    try {
-      var p = iso.split("-");
-      return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])).toLocaleDateString("ar-TN-u-nu-latn", {
-        weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC"
-      });
-    } catch (e) {
-      return iso;
-    }
-  }
-
   function isoSpan(el, iso) {
     return el("span", { class: "ltr tabular", text: iso || "—" });
   }
 
   /** One event: its card, and a reader giving null (automatic), the manual date, or an error. */
-  function eventCard(el, event) {
+  function eventCard(ctx, event) {
+    var el = ctx.el;
+    // "الاثنين 8 فيفري 2027", with the months as Tunisia names them.
+    var longDate = ctx.longDate;
     var manual = event.source === "MANUAL";
     var id = "dates-" + event.id;
     var auto = el("input", { type: "checkbox", id: id + "-auto", checked: !manual });
@@ -44,16 +34,16 @@
       if (!auto.checked) date.focus();
     });
 
-    var node = el("div", { class: "card " + (manual ? "level-WARNING" : "level-INFO") },
-      el("div", { class: "row" },
-        el("strong", { class: "grow", text: event.name || event.id }),
+    var node = el("section", { class: "card " + (manual ? "level-WARNING" : "level-INFO") },
+      el("div", { class: "head" },
+        el("h2", { text: event.name || event.id }),
         badge),
-      el("div", { class: "muted", text: "على الشاشة: " + longDate(event.date) }),
-      el("label", { attrs: { for: auto.id } }, auto, " تلقائي: " + longDate(event.automatic)),
+      el("p", { class: "muted", text: "على الشاشة: " + longDate(event.date) }),
+      el("label", { class: "check", attrs: { for: auto.id } }, auto, "تلقائي: " + longDate(event.automatic)),
       el("label", { text: "التاريخ يدويًا", attrs: { for: id } }),
       date,
       event.min && event.max
-        ? el("div", { class: "muted" }, "يُقبل من ", isoSpan(el, event.min), " إلى ", isoSpan(el, event.max))
+        ? el("div", { class: "hint" }, "يُقبل من ", isoSpan(el, event.min), " إلى ", isoSpan(el, event.max))
         : null);
 
     function read() {
@@ -81,14 +71,14 @@
       return;
     }
 
-    root.appendChild(el("h2", { text: "السنة " + data.hijriYear + " هـ" }));
+    root.appendChild(el("h2", { class: "page", text: "السنة " + data.hijriYear + " هـ" }));
     root.appendChild(el("p", {
       class: "muted",
       text: "التواريخ تلقائية: الإعلان الرسمي إن كانت الشاشة متصلة بالإنترنت عند صدوره، وإلا فالتقدير الفلكي. " +
         "المسجد الذي يتبع رؤيته الخاصة يُلغي «تلقائي» ويختار التاريخ بنفسه."
     }));
 
-    var cards = events.map(function (event) { return eventCard(el, event); });
+    var cards = events.map(function (event) { return eventCard(ctx, event); });
     cards.forEach(function (card) { root.appendChild(card.node); });
 
     var saveButton = el("button", { type: "button", class: "primary", text: "معاينة وحفظ" });
@@ -114,7 +104,7 @@
         ctx.toast(error.message, "error");
       });
     });
-    root.appendChild(el("div", { class: "row" }, saveButton));
+    root.appendChild(el("div", { class: "actions" }, saveButton));
   }
 
   Dashboard.registerView({ id: "dates", title: "رمضان والعيد", render: render });

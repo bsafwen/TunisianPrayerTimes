@@ -1,6 +1,7 @@
 package com.tunisianprayertimes.tv.ui
 
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.time.ClockSource
 
 /**
  * Arabic strings for the TV app.
@@ -54,7 +55,7 @@ object TvStrings {
 
     // Clock
     const val CLOCK_WRONG_TITLE = "ساعة الجهاز غير صحيحة"
-    const val CLOCK_WRONG_HINT = "لا تُعرض أوقات الصلاة حتى يُضبط الوقت: اضبطه هنا أو من إعدادات الجهاز، أو أكّد أنه صحيح"
+    const val CLOCK_WRONG_HINT = "لا تُعرض أوقات الصلاة حتى يُضبط الوقت: اضبطه هنا، أو من إعدادات الجهاز، أو من الهاتف"
     const val CLOCK_DEVICE_TIME = "وقت الجهاز"
     const val CLOCK_MONTH = "الشهر"
     const val CLOCK_DATE = "التاريخ"
@@ -62,7 +63,49 @@ object TvStrings {
     const val CLOCK_MINUTE = "الدقيقة"
     const val CLOCK_SET_HERE = "اعتماد هذا الوقت"
     const val CLOCK_OPEN_SETTINGS = "فتح إعدادات التاريخ والوقت"
-    const val CLOCK_CONFIRM = "وقت الجهاز صحيح"
+
+    /** The right-to-left mark: after a Latin word (a zone id) it keeps the Arabic sentence in order. */
+    private val RLM = Char(0x200F)
+
+    /** Confirms the Tunisia time shown just above it, not the device's clock in its own zone. */
+    const val CLOCK_CONFIRM = "هذا الوقت صحيح"
+
+    // The clock page: the question after a box in another zone, and the «الساعة» section.
+    const val SECTION_CLOCK = "الساعة"
+    const val CLOCK_QUESTION_TITLE = "كم الساعة الآن في تونس؟"
+    const val CLOCK_QUESTION_HINT = "المنطقة الزمنية لهذا الجهاز ليست توقيت تونس، فقد تكون ساعته مضبوطة على وقت بلد آخر. " +
+        "اختر الوقت الصحيح الآن في تونس: عليه تُحسب كل أوقات الصلاة، ويبقى بعد إعادة التشغيل."
+    const val CLOCK_SETTINGS_HINT = "كل أوقات الصلاة تُحسب على هذا الوقت. تؤكده الشاشة وحدها عند اتصالها بالإنترنت، أو تؤكده أنت هنا أو من الهاتف."
+    const val CLOCK_TIME_IN_TUNIS = "الوقت الآن في تونس"
+    const val CLOCK_CANDIDATE_SCREEN = "الوقت الذي تعرضه الشاشة"
+    const val CLOCK_CANDIDATE_DEVICE = "ساعة الجهاز كما هي"
+    const val CLOCK_OTHER_TIME = "وقت آخر"
+    const val CLOCK_LATER = "لاحقًا"
+    const val CLOCK_FROM_PHONE = "ضبط الوقت من الهاتف"
+    const val CLOCK_CONFIRMED = "مؤكَّدة"
+    const val CLOCK_UNCONFIRMED = "غير مؤكَّدة"
+    /** On the wall, dim, while the time is not confirmed: where the admin answers. */
+    const val CLOCK_UNVERIFIED_MARK = "الوقت غير مؤكَّد: الإعدادات ← الساعة"
+    /** Before the system's own date page: on a box in another zone, the zone first, or setting the time brings the problem back. */
+    val CLOCK_ZONE_FIRST = "في إعدادات الجهاز: اختر المنطقة الزمنية تونس (Africa/Tunis)$RLM أولًا ثم الوقت، وإلا عاد الفرق."
+
+    /** How the time was confirmed, after «مؤكَّدة». */
+    fun clockSource(source: ClockSource): String = when (source) {
+        ClockSource.ZONE -> "الجهاز على توقيت تونس"
+        ClockSource.NETWORK -> "من الإنترنت"
+        ClockSource.ADMIN -> "أكّدها المسؤول"
+        ClockSource.PHONE -> "من الهاتف"
+    }
+
+    /** The device's own clock and zone, for diagnosis: «ساعة الجهاز: 2026-09-29 14:00 (Asia/Shanghai)». */
+    fun clockDevice(deviceTime: String): String = "$CLOCK_DEVICE_TIME: $deviceTime"
+
+    // The kiosk page's rows about the clock.
+    fun clockGood(source: ClockSource): String = "ساعة الشاشة مؤكَّدة (${clockSource(source)})"
+    const val CLOCK_ROW_UNVERIFIED = "ساعة الشاشة غير مؤكَّدة: قد تكون مضبوطة على وقت بلد آخر"
+    const val CLOCK_ROW_UNVERIFIED_FIX = "الإعدادات ← الساعة، أو من الهاتف"
+    const val CLOCK_ROW_WRONG = "ساعة الجهاز غير صحيحة: لا تُعرض أوقات الصلاة"
+    fun clockZoneInfo(zoneId: String): String = "المنطقة الزمنية للجهاز $zoneId$RLM: لا أثر لها، الأوقات بتوقيت تونس"
 
     fun usbTemplateWritten(packageName: String) =
         "كُتب ملف الإعدادات على مفتاح USB في Android/data/$packageName/files/mosque-tv.json: عدّله على الحاسوب ثم أعد إدخال المفتاح"
@@ -193,6 +236,7 @@ object TvStrings {
 
     /** "05:01". */
     fun hm(time: java.time.LocalTime): String = String.format(java.util.Locale.ROOT, "%02d:%02d", time.hour, time.minute)
+    fun hms(time: java.time.LocalTime): String = String.format(java.util.Locale.ROOT, "%02d:%02d:%02d", time.hour, time.minute, time.second)
 
     /** A countdown: "01:24:48" from an hour up, "29:12" below; never negative. */
     fun countdown(seconds: Long): String {

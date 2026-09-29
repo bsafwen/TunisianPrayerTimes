@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.remote.DashboardTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:40.512Z" hostname="HOME" time="0.272">
+<testsuite name="com.tunisianprayertimes.tv.remote.DashboardTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.440Z" hostname="HOME" time="0.267">
   <properties/>
-  <testcase name="aPreviewSaysWhichAdhkarComeAndGo" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.01"/>
-  <testcase name="imagesAreUploadedReadAndDeletedByPlainNamesOnly" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.005"/>
+  <testcase name="aPreviewSaysWhichAdhkarComeAndGo" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.009"/>
+  <testcase name="imagesAreUploadedReadAndDeletedByPlainNamesOnly" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.004"/>
   <testcase name="anOldPageAskingForImagesDoesNotCloseTheSession" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.0"/>
-  <testcase name="theServerRefusesTooLargeBodiesUnreadAndCutsConnectionsWhenStopped" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.225"/>
-  <testcase name="requestsWithBinaryBodiesAreReadWhole" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.003"/>
-  <testcase name="thePageIsPublicButOnlyItsOwnFiles" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.001"/>
+  <testcase name="theServerRefusesTooLargeBodiesUnreadAndCutsConnectionsWhenStopped" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.216"/>
+  <testcase name="requestsWithBinaryBodiesAreReadWhole" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.004"/>
+  <testcase name="thePageIsPublicButOnlyItsOwnFiles" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.0"/>
   <testcase name="theApiNeedsTheSessionTokenAndClosesAfterTooManyWrongOnes" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.0"/>
   <testcase name="theSessionEndsOnItsOwnClock" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.0"/>
-  <testcase name="changesArePreviewedThenApplied" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.001"/>
-  <testcase name="theStateSaysHowFarTheClockCanBeTrusted" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.001"/>
-  <testcase name="sessionTokensAreFreshAndReadable" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.005"/>
-  <testcase name="malformedHeadsAreRefused" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.0"/>
-  <testcase name="theSessionCountsAsUsedOnlyWithItsToken" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.001"/>
-  <testcase name="undoIsOfferedOnlyWhenThereIsSomethingToUndo" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.0"/>
-  <testcase name="theAdhkarLibraryListsEveryReviewedTextTheListsCanUse" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.015"/>
+  <testcase name="changesArePreviewedThenApplied" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.002"/>
+  <testcase name="theStateSaysHowFarTheClockCanBeTrusted" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.002"/>
+  <testcase name="sessionTokensAreFreshAndReadable" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.006"/>
+  <testcase name="malformedHeadsAreRefused" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.001"/>
+  <testcase name="theSessionCountsAsUsedOnlyWithItsToken" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.0"/>
+  <testcase name="undoIsOfferedOnlyWhenThereIsSomethingToUndo" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.001"/>
+  <testcase name="theAdhkarLibraryListsEveryReviewedTextTheListsCanUse" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.018"/>
   <testcase name="requestsAreJudgedFromTheirHeadBeforeAnyBodyIsRead" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.0"/>
-  <testcase name="thePhoneSetsTheClockOrConfirmsIt" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.0"/>
+  <testcase name="thePhoneSetsTheClockOrConfirmsIt" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.001"/>
   <testcase name="aClockRequestIsOneOfTheTwoAndNothingElse" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.001"/>
-  <testcase name="aPreviewNamesTheNightScreen" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.002"/>
+  <testcase name="aPreviewNamesTheNightScreen" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.001"/>
   <testcase name="theFontsArePublicButOnlyTheListedOnes" classname="com.tunisianprayertimes.tv.remote.DashboardTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

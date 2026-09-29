@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.kiosk.EventLogTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:40.446Z" hostname="HOME" time="0.05">
+<testsuite name="com.tunisianprayertimes.tv.kiosk.EventLogTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.373Z" hostname="HOME" time="0.051">
   <properties/>
   <testcase name="brokenLinesAreSkippedAndDetailsStayOnOneLine" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.013"/>
-  <testcase name="aLeftoverTemporaryFileDoesNotHideTheLog" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.007"/>
+  <testcase name="aLeftoverTemporaryFileDoesNotHideTheLog" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.009"/>
   <testcase name="onlyTheNewestEntriesAreKept" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.029"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

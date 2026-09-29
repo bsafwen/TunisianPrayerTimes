@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.data.GouvernoratRepositoryTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:40.036Z" hostname="HOME" time="0.053">
+<testsuite name="com.tunisianprayertimes.tv.data.GouvernoratRepositoryTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:55.948Z" hostname="HOME" time="0.051">
   <properties/>
-  <testcase name="allGouvernoratsAreOffered" classname="com.tunisianprayertimes.tv.data.GouvernoratRepositoryTest" time="0.038"/>
-  <testcase name="everyPublishedDelegationCanBeChosenAndHasTimes" classname="com.tunisianprayertimes.tv.data.GouvernoratRepositoryTest" time="0.015"/>
+  <testcase name="allGouvernoratsAreOffered" classname="com.tunisianprayertimes.tv.data.GouvernoratRepositoryTest" time="0.039"/>
+  <testcase name="everyPublishedDelegationCanBeChosenAndHasTimes" classname="com.tunisianprayertimes.tv.data.GouvernoratRepositoryTest" time="0.012"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

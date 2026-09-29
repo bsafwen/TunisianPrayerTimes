@@ -1,6 +1,6 @@
 /*
  * Mosque TV dashboard: the mosque's name, its place (the prayer times and the weather follow it),
- * the theme and how the screen shows the weather, background images and announcements.
+ * the theme and how the screen shows the weather, the night screen, background images and announcements.
  */
 (function () {
   "use strict";
@@ -21,18 +21,30 @@
     return el("option", { value: String(value), text: text });
   }
 
-  /** A label above its input, with an optional muted hint below. */
+  /** A label above its input, with an optional muted hint below (a node, to change it later, or a text). */
   function field(el, id, text, input, hint) {
     input.id = id;
+    if (typeof hint === "string") hint = el("div", { class: "hint", text: hint });
+    if (hint) {
+      hint.id = id + "-hint";
+      input.setAttribute("aria-describedby", hint.id);
+    }
     return el("div", { class: "grow" },
       el("label", { text: text, attrs: { for: id } }),
       input,
-      hint ? el("div", { class: "muted", text: hint }) : null);
+      hint || null);
   }
 
-  function checkbox(el, id, text, checked) {
+  /** A checkbox and its label on one line tall enough to tap, with an optional hint below. */
+  function checkbox(el, id, text, checked, hint) {
     var input = el("input", { type: "checkbox", id: id, checked: !!checked });
-    return { input: input, node: el("label", { attrs: { for: id } }, input, " ", text) };
+    if (hint) input.setAttribute("aria-describedby", id + "-hint");
+    return {
+      input: input,
+      node: el("div", null,
+        el("label", { class: "check", attrs: { for: id } }, input, text),
+        hint ? el("div", { class: "hint", id: id + "-hint", text: hint }) : null)
+    };
   }
 
   function numberInput(el, range, value) {
@@ -83,13 +95,13 @@
       type: "text", value: pick(mosque.name, saved.mosque && saved.mosque.name, ""),
       attrs: { maxlength: NAME_MAX, autocomplete: "off" }
     });
-    nameInput.style.width = "100%";
+    nameInput.className = "wide";
     var nameStart = cleanName(nameInput.value);
 
     // ------------------------------------------------ place
-    var gouvSelect = el("select", { disabled: true }, option(el, "", "جارٍ التحميل…"));
-    var delegSelect = el("select", { disabled: true }, option(el, "", "جارٍ التحميل…"));
-    var placeNote = el("div", { class: "muted", attrs: { role: "status" } });
+    var gouvSelect = el("select", { class: "wide", disabled: true }, option(el, "", "جارٍ التحميل…"));
+    var delegSelect = el("select", { class: "wide", disabled: true }, option(el, "", "جارٍ التحميل…"));
+    var placeNote = el("div", { class: "hint problem", attrs: { role: "status" } });
 
     function fillDelegations(gouvernorat) {
       var list = gouvernorat ? gouvernorat.delegations || [] : [];
@@ -129,23 +141,34 @@
     // ------------------------------------------------ display
     var themes = state.themes || [];
     var themeId = pick(mosque.themeId, display.theme);
-    var themeSelect = el("select");
+    var themeSelect = el("select", { class: "wide" });
     if (!findById(themes, themeId)) themeSelect.appendChild(option(el, "", "اختر المظهر"));
     themes.forEach(function (t) { themeSelect.appendChild(option(el, t.id, t.name)); });
     themeSelect.value = findById(themes, themeId) ? themeId : "";
     var themeStart = themeSelect.value;
+    // What the chosen look is, when the TV says it («أفق»: the sky of the prayer times; «مداد»: plain ground).
+    var themeHint = el("div", { class: "hint" });
+    function describeTheme() {
+      var theme = findById(themes, themeSelect.value);
+      themeHint.textContent = theme && typeof theme.description === "string" ? theme.description : "";
+    }
+    themeSelect.addEventListener("change", describeTheme);
+    describeTheme();
 
     var weatherNow = state.weather || {};
     // What the form shows first; each option is sent only if the admin changes it, so saving
     // the name neither pins these guessed defaults nor reverts a change made meanwhile on the TV.
     var initial = {
       weather: !!pick(display.weather, weatherNow.enabled, true),
+      nightScreen: !!pick(display.nightScreen, true),
       backgrounds: !!pick(display.backgrounds, true),
       announcements: !!pick(display.announcements, true),
       slideSeconds: pick(display.slideSeconds, 15),
       announcementsEveryMinutes: pick(display.announcementsEveryMinutes, 15)
     };
     var weather = checkbox(el, "mosque-weather", "عرض الطقس عند الاتصال بالإنترنت", initial.weather);
+    var nightScreen = checkbox(el, "mosque-night", "شاشة الليل الخافتة", initial.nightScreen,
+      "ليلًا بين العشاء والفجر: الساعة وموعد الفجر فقط على أرضية سوداء، تتنقّل كل بضع دقائق حفاظًا على الشاشة.");
     var backgrounds = checkbox(el, "mosque-backgrounds", "صور الخلفية", initial.backgrounds);
     var announcements = checkbox(el, "mosque-announcements", "الإعلانات", initial.announcements);
     var slideInput = numberInput(el, SLIDE, initial.slideSeconds);
@@ -177,7 +200,7 @@
 
       if (themeSelect.value && themeSelect.value !== themeStart) partialDisplay.theme = themeSelect.value;
 
-      var boxes = { weather: weather, backgrounds: backgrounds, announcements: announcements };
+      var boxes = { weather: weather, nightScreen: nightScreen, backgrounds: backgrounds, announcements: announcements };
       Object.keys(boxes).forEach(function (key) {
         if (boxes[key].input.checked !== initial[key]) partialDisplay[key] = boxes[key].input.checked;
       });
@@ -217,22 +240,24 @@
     saveButton.addEventListener("click", save);
 
     // ------------------------------------------------ layout
-    root.appendChild(el("div", { class: "card" },
+    root.appendChild(el("section", { class: "card" },
+      el("h2", { text: "المسجد" }),
       field(el, "mosque-name-input", "اسم المسجد", nameInput, "يظهر أعلى الشاشة، " + NAME_MAX + " حرفًا على الأكثر.")));
 
-    root.appendChild(el("div", { class: "card" },
-      el("h3", { text: "المكان" }),
+    root.appendChild(el("section", { class: "card" },
+      el("h2", { text: "المكان" }),
       el("div", { class: "row" },
         field(el, "mosque-gouvernorat", "الولاية", gouvSelect),
         field(el, "mosque-delegation", "المعتمدية", delegSelect)),
-      el("div", { class: "muted", text: "تنبيه: تغيير المكان يغيّر مواقيت الصلاة على الشاشة، والطقس يتبع المكان نفسه." }),
+      el("div", { class: "hint", text: "تنبيه: تغيير المكان يغيّر مواقيت الصلاة على الشاشة، والطقس يتبع المكان نفسه." }),
       placeNote));
 
-    root.appendChild(el("div", { class: "card" },
-      el("h3", { text: "العرض" }),
-      themes.length ? field(el, "mosque-theme", "المظهر", themeSelect) : null,
+    root.appendChild(el("section", { class: "card" },
+      el("h2", { text: "العرض" }),
+      themes.length ? field(el, "mosque-theme", "المظهر", themeSelect, themeHint) : null,
       weather.node,
-      weatherNow.text ? el("div", { class: "muted", text: "الطقس الآن: " + weatherNow.text + (weatherNow.updated ? " (" + weatherNow.updated + ")" : "") }) : null,
+      weatherNow.text ? el("div", { class: "hint", text: "الطقس الآن: " + weatherNow.text + (weatherNow.updated ? " (" + weatherNow.updated + ")" : "") + " · Open-Meteo.com" }) : null,
+      nightScreen.node,
       backgrounds.node,
       announcements.node,
       el("div", { class: "row" },
@@ -240,7 +265,7 @@
         field(el, "mosque-every", "عرض الإعلانات كل … دقيقة بين الصلوات، 0 = بعد الصلاة فقط", everyInput,
           "من " + EVERY.min + " إلى " + EVERY.max))));
 
-    root.appendChild(el("div", { class: "row" }, saveButton));
+    root.appendChild(el("div", { class: "actions" }, saveButton));
   }
 
   Dashboard.registerView({ id: "mosque", title: "المسجد", render: render });

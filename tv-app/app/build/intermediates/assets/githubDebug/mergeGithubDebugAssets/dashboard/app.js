@@ -13,8 +13,14 @@ var Dashboard = (function () {
   var settings = {};
   var placesCache = null;
   var clockOffset = 0;
+  // The TV's clock against the phone's, from the last state: { difference: TV minus phone, margin }, in ms, or null.
+  var clockCheck = null;
   var current = null;
   var sessionClosed = false;
+  // Whether the TV answered the last request: true, false, or "closed" once it ended the session.
+  var link = null;
+  // What the section shown wants done every second with the TV's time (a countdown); reset on each render.
+  var tickers = [];
 
   /** The prayers of the settings file, in screen order: key in the file, id in the state, Arabic name. */
   var PRAYERS = [
@@ -42,6 +48,8 @@ var Dashboard = (function () {
       options.headers = { "Content-Type": contentType || "text/plain; charset=utf-8" };
     }
     return fetch(url(path), options).then(function (response) {
+      // The TV answered, whatever it said: it is reachable.
+      if (!sessionClosed) setLink(true);
       return response.text().then(function (text) {
         var data = null;
         try { data = text ? JSON.parse(text) : null; } catch (e) { data = { error: text }; }
@@ -54,6 +62,7 @@ var Dashboard = (function () {
         return data;
       });
     }, function () {
+      if (!sessionClosed) setLink(false);
       throw new Error("تعذّر الاتصال بالشاشة: تأكّد أن الهاتف على الشبكة نفسها");
     });
   }
@@ -90,6 +99,59 @@ var Dashboard = (function () {
     return node;
   }
 
+  /**
+   * A number that ticks (a clock, a countdown) in cells of one width, so the line never shifts as its
+   * digits change: Readex Pro's figures are proportional and the font has no tabular feature. Always
+   * left to right; screen readers read the plain text, not the cells.
+   */
+  function digits(text, className) {
+    var node = el("span", { class: "digits" + (className ? " " + className : ""), attrs: { dir: "ltr" } });
+    setDigits(node, text);
+    return node;
+  }
+
+  function setDigits(node, text) {
+    text = String(text === undefined || text === null ? "" : text);
+    if (node.getAttribute("data-text") === text) return;
+    node.setAttribute("data-text", text);
+    node.textContent = "";
+    if (!text) return;
+    var cells = el("span", { attrs: { "aria-hidden": "true" } });
+    for (var i = 0; i < text.length; i++) {
+      var c = text.charAt(i);
+      cells.appendChild(el("span", { class: c >= "0" && c <= "9" ? "d" : null, text: c }));
+    }
+    node.appendChild(el("span", { class: "sr", text: text }));
+    node.appendChild(cells);
+  }
+
+  var MONTHS = ["جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان", "جويلية", "أوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+  var WEEKDAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+
+  /**
+   * "الثلاثاء 29 سبتمبر 2026" from "2026-09-29", with the months as Tunisia names them, as the TV
+   * writes it (a phone's browser may not know them); anything else as given.
+   */
+  function longDate(iso) {
+    var match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ""));
+    if (!match) return iso || "—";
+    var day = new Date(Date.UTC(+match[1], +match[2] - 1, +match[3]));
+    if (isNaN(day.getTime()) || +match[2] < 1 || +match[2] > 12) return iso;
+    return WEEKDAYS[day.getUTCDay()] + " " + (+match[3]) + " " + MONTHS[+match[2] - 1] + " " + match[1];
+  }
+
+  /** The TV's wall time in Tunisia, as a Date to read with its getUTC… methods. */
+  function tvNow() { return new Date(Date.now() + clockOffset); }
+
+  /** The header's dot: green while the TV answers, red when it does not or ended the session. */
+  function setLink(next) {
+    if (link === next) return;
+    link = next;
+    document.getElementById("link").className = "link " + (next === true ? "on" : "off");
+    document.getElementById("link-text").textContent =
+      next === true ? "متصل بالشاشة" : next === "closed" ? "الجلسة مغلقة" : "غير متصل";
+  }
+
   var toastTimer = null;
   function toast(text, kind) {
     var box = document.getElementById("toast");
@@ -100,10 +162,12 @@ var Dashboard = (function () {
   }
 
   function showClosed(message) {
+    setLink("closed");
+    tickers = [];
     var view = document.getElementById("view");
     view.textContent = "";
     view.appendChild(el("div", { class: "card level-BAD", attrs: { role: "alert" } },
-      el("p", { text: message }),
+      el("h2", { text: message }),
       el("p", { class: "muted", text: "ابدأ جلسة جديدة من إعدادات الشاشة (الإدارة من الهاتف) وامسح الرمز من جديد." })));
   }
 
@@ -197,12 +261,19 @@ var Dashboard = (function () {
 
   /** Reads the TV's state without drawing the section; resolves undefined (after a toast) when it fails. */
   function loadState() {
+    var sentAt = Date.now();
     return api.get("/api/state").then(function (next) {
+      var receivedAt = Date.now();
       state = next;
       try { settings = JSON.parse(state.settingsFile || "{}"); } catch (e) { settings = {}; }
       // The TV's wall time in Tunisia, read as if it were UTC so the phone's own zone does not shift it.
       var tvNow = state.clock && state.clock.now ? Date.parse(state.clock.now + "Z") : NaN;
       clockOffset = isNaN(tvNow) ? 0 : tvNow - Date.now();
+      // The TV read its clock while the request was on its way: half-way on average, give or take half the round trip.
+      var epoch = state.clock ? state.clock.epochMillis : null;
+      clockCheck = typeof epoch === "number" && isFinite(epoch) && receivedAt >= sentAt
+        ? { difference: epoch - (sentAt + receivedAt) / 2, margin: (receivedAt - sentAt) / 2 }
+        : null;
       document.getElementById("mosque-name").textContent = (state.mosque && state.mosque.name) || "شاشة المسجد";
       document.getElementById("mosque-place").textContent = (state.mosque && state.mosque.delegationName) || "";
       return state;
@@ -231,10 +302,19 @@ var Dashboard = (function () {
     /** True once the TV refused the token (the session ended): views stop showing their own errors. */
     get sessionClosed() { return sessionClosed; },
     get settings() { return settings; },
+    /** How far the TV's clock is from the phone's: { difference (TV minus phone), margin } in ms, or null when unknown. */
+    get clockCheck() { return clockCheck; },
     settingsCopy: settingsCopy,
     PRAYERS: PRAYERS,
     api: api,
     el: el,
+    digits: digits,
+    setDigits: setDigits,
+    longDate: longDate,
+    /** The TV's time now (read it with getUTCHours() and the like). */
+    now: tvNow,
+    /** Calls fn(now) every second while this section is shown (until it is drawn again). */
+    onTick: function (fn) { tickers.push(fn); },
     toast: toast,
     places: places,
     reload: reload,
@@ -269,6 +349,10 @@ var Dashboard = (function () {
   function render() {
     if (!current || !state || sessionClosed) return;
     var tabs = document.getElementById("tabs");
+    var root = document.getElementById("view");
+    // Whether the redraw takes away the control that has focus (a tab or a field of the section).
+    var before = document.activeElement;
+    var hadFocus = !!before && before !== document.body && (tabs.contains(before) || root.contains(before));
     tabs.textContent = "";
     views.forEach(function (view) {
       tabs.appendChild(el("button", {
@@ -277,17 +361,18 @@ var Dashboard = (function () {
         on: { click: function () { show(view.id); } }
       }));
     });
-    var root = document.getElementById("view");
+    revealTab(tabs);
     root.textContent = "";
+    tickers = [];
     try {
       current.render(root, context);
     } catch (error) {
       root.appendChild(el("div", { class: "card level-BAD", text: "تعذّر عرض هذا القسم: " + error.message, attrs: { role: "alert" } }));
     }
     // Redrawing removed the focused control: focus the current tab, so keyboards and screen readers
-    // keep their place (without scrolling the page back up).
+    // keep their place (without scrolling the page back up). Nothing had focus (the first load): none.
     var active = document.activeElement;
-    if (!active || active === document.body) {
+    if (hadFocus && (!active || active === document.body)) {
       var tab = tabs.querySelector('[aria-current="page"]');
       if (tab) {
         try { tab.focus({ preventScroll: true }); } catch (e) { tab.focus(); }
@@ -295,13 +380,30 @@ var Dashboard = (function () {
     }
   }
 
+  /**
+   * The tabs scroll sideways on a phone and are drawn again with every section: brings the current one
+   * back into sight. Relative scrolling works whichever way a browser counts scrollLeft in RTL.
+   */
+  function revealTab(tabs) {
+    var tab = tabs.querySelector('[aria-current="page"]');
+    if (!tab || typeof tab.getBoundingClientRect !== "function") return;
+    var box = tabs.getBoundingClientRect();
+    var r = tab.getBoundingClientRect();
+    if (r.left < box.left) tabs.scrollLeft -= box.left - r.left + 20;
+    else if (r.right > box.right) tabs.scrollLeft += r.right - box.right + 20;
+  }
+
   function tickClock() {
-    var now = new Date(Date.now() + clockOffset);
+    var now = tvNow();
     var pad = function (n) { return (n < 10 ? "0" : "") + n; };
     // The TV's time is Tunisia's; shown as the TV says it, whatever the phone's own zone.
-    document.getElementById("clock").textContent = state
+    setDigits(document.getElementById("clock"), state
       ? pad(now.getUTCHours()) + ":" + pad(now.getUTCMinutes()) + ":" + pad(now.getUTCSeconds())
-      : "";
+      : "");
+    if (sessionClosed) return;
+    tickers.forEach(function (fn) {
+      try { fn(now); } catch (e) { /* a countdown that fails stays as it was */ }
+    });
   }
 
   function start() {
@@ -320,11 +422,13 @@ var Dashboard = (function () {
       if (!wanted || wanted.id !== id) show(id);
     });
     // The overview follows the TV; forms are left alone while the admin edits them.
-    // Nothing shown yet means the first load failed: try again.
+    // Nothing shown yet means the first load failed: try again. After a failed request the TV is
+    // asked again, so the header says as soon as it answers once more.
     setInterval(function () {
       if (dialog.open || sessionClosed) return;
       if (!current) { if (wanted) show(wanted.id); }
       else if (current.autoRefresh) reload();
+      else if (link === false) keepAlive();
     }, 30000);
     // Keeps the session alive while the page is open (the TV ends it after 15 minutes without requests).
     // The answer is ignored: nothing is redrawn, so the forms keep what the admin typed.

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.ui.TvStringsTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:40.867Z" hostname="HOME" time="0.001">
+<testsuite name="com.tunisianprayertimes.tv.ui.TvStringsTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.795Z" hostname="HOME" time="0.001">
   <properties/>
-  <testcase name="datesUseTheTunisianMonthNames" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.0"/>
+  <testcase name="datesUseTheTunisianMonthNames" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.001"/>
   <testcase name="timesAndCountdowns" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.0"/>
-  <testcase name="verseRangesStayLeftToRight" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.001"/>
+  <testcase name="verseRangesStayLeftToRight" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

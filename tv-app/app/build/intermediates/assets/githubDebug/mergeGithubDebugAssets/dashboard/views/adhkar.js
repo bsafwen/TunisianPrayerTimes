@@ -16,7 +16,8 @@
   var MAX_AFTER_SALAH_MINUTES = 30;
   // A long text said several times after the prayer is shown whole again each time, 3 times at most.
   var MAX_PAGED_REPETITIONS = 3;
-  // The ticker holds each page or step at least this long (longer while a long line scrolls).
+  // The ticker holds each page or step at least this long, longer only for its reading time. It pages
+  // and never scrolls: a long text is set smaller or on two lines, with no extra time.
   var TICKER_MIN_SLIDE_MILLIS = 12000;
   var SECTIONS = [
     { key: "afterSalah", title: "أذكار بعد الصلاة", category: "SALAH",
@@ -26,6 +27,14 @@
   ];
 
   // The library never changes while the TV runs: loaded once per page.
+  // A verse range such as «البقرة 253–254» reads «254–253» in right-to-left text: keep it left to right.
+  function sourceText(reference) {
+    // Unicode's left-to-right isolate and its end (LRI, PDI) around the range.
+    return String(reference || "").replace(/\d+\s*[–-]\s*\d+/g, function (range) {
+      return String.fromCharCode(0x2066) + range + String.fromCharCode(0x2069);
+    });
+  }
+
   var library = null;
   var loading = null;
 
@@ -339,7 +348,7 @@
       parts.push(about(millis) + " بعد الصلاة" + (tooLong(key, list)
         ? " — أطول من " + MAX_AFTER_SALAH_MINUTES + " د، احذف بعض النصوص أو قلّل العدد" : ""));
     } else if (millis > 0) {
-      // Scrolling a long line and the announcements between the texts add to it.
+      // The announcements shown between the texts add to it.
       parts.push(atLeast(millis) + " على الأقل لدورة واحدة من الشريط");
     }
     return parts.join(" · ");
@@ -458,7 +467,31 @@
 
   /** A library id, small and left to right, for an admin who edits the USB file by hand. */
   function idLine(el, id) {
-    return el("span", { class: "muted id", text: id, attrs: { dir: "ltr" } });
+    return el("span", { class: "id", text: id, attrs: { dir: "ltr" } });
+  }
+
+  /**
+   * A count field between − and + buttons. The buttons change the count in place (no redraw), so
+   * focus stays on the one pressed; `name` says which text for a screen reader.
+   */
+  function countStepper(el, id, item, name, fallback, refresh, describedBy) {
+    var input = el("input", {
+      id: id, type: "number", value: item.count, class: "tabular",
+      attrs: { min: 1, max: MAX_COUNT, step: 1, inputmode: "numeric", required: true, "aria-describedby": describedBy || false },
+      on: { input: function (event) { item.count = event.target.value; refresh(); } }
+    });
+    function step(delta) {
+      var n = readCount(item.count);
+      if (isNaN(n)) n = fallback;
+      n = Math.min(MAX_COUNT, Math.max(1, n + delta));
+      item.count = String(n);
+      input.value = item.count;
+      refresh();
+    }
+    return el("div", { class: "stepper" },
+      el("button", { type: "button", text: "−", attrs: { "aria-label": "إنقاص عدد " + name }, on: { click: function () { step(-1); } } }),
+      input,
+      el("button", { type: "button", text: "+", attrs: { "aria-label": "زيادة عدد " + name }, on: { click: function () { step(1); } } }));
   }
 
   /** Deletes the text at `i`; focus goes to the next text, else the one before, else the list's heading. */
@@ -481,11 +514,11 @@
     }
     return el("div", { class: "row" },
       v.track(el("button", {
-        type: "button", text: "أعلى", disabled: i === 0, attrs: { "aria-label": "نقل " + name + " إلى الأعلى" },
+        type: "button", class: "quiet", text: "أعلى", disabled: i === 0, attrs: { "aria-label": "نقل " + name + " إلى الأعلى" },
         on: { click: function () { move(-1); } }
       }), item.uid, "up"),
       v.track(el("button", {
-        type: "button", text: "أسفل", disabled: i === list.length - 1, attrs: { "aria-label": "نقل " + name + " إلى الأسفل" },
+        type: "button", class: "quiet", text: "أسفل", disabled: i === list.length - 1, attrs: { "aria-label": "نقل " + name + " إلى الأسفل" },
         on: { click: function () { move(1); } }
       }), item.uid, "down"),
       el("button", {
@@ -501,42 +534,41 @@
     var el = v.el;
     var entry = library.byId[item.id];
     if (!entry) {
-      return el("div", { class: "list-item level-BAD" },
+      return el("div", { class: "item level-BAD" },
         el("strong", { text: (i + 1) + ". نص غير موجود في مكتبة التطبيق" }),
-        el("div", { class: "muted ltr", text: item.id }),
+        el("div", { class: "id", text: item.id, attrs: { dir: "ltr" } }),
         el("div", { class: "row" }, el("button", {
           type: "button", class: "danger", text: "حذف", attrs: { "aria-label": "حذف النص " + (i + 1) },
           on: { click: function () { removeAt(v, section.key, list, i); } }
         })));
     }
     var id = "adhkar-" + section.key + "-" + item.uid;
-    var steps = entry.steps && entry.steps.length;
+    var steps = entry.steps && entry.steps.length ? entry.steps : null;
     var count = null;
+    var note = null;
     if (section.key === "afterSalah" && !steps) {
       // A long text is not said in parts: it is shown whole again for each repetition, 3 times at most.
-      var hint = pages(String(entry.text || "")).length > 1
-        ? el("span", { id: id + "-hint", class: "muted", text: "النص الطويل يُعرض كاملًا، حتى " + MAX_PAGED_REPETITIONS + " مرات" })
-        : null;
-      count = el("div", { class: "row" },
+      if (pages(String(entry.text || "")).length > 1) {
+        note = el("span", { id: id + "-hint", class: "hint", text: "النص الطويل يُعرض كاملًا، حتى " + MAX_PAGED_REPETITIONS + " مرات" });
+      }
+      count = el("div", { class: "inline" },
         el("label", { text: "العدد (في المكتبة: " + libraryCount(entry) + ")", attrs: { for: id + "-count" } }),
-        el("input", {
-          id: id + "-count", type: "number", value: item.count, class: "tabular",
-          attrs: { min: 1, max: MAX_COUNT, step: 1, inputmode: "numeric", required: true,
-            "aria-describedby": id + "-title" + (hint ? " " + hint.id : "") },
-          on: { input: function (event) { item.count = event.target.value; refresh(); } }
-        }),
-        hint);
+        countStepper(el, id + "-count", item, "«" + entry.title + "»", libraryCount(entry), refresh,
+          id + "-title" + (note ? " " + note.id : "")));
     } else if (section.key === "afterSalah") {
-      count = el("p", { class: "muted", text: "يُقال بالعدد المذكور في خطواته." });
+      // The counts in the order they are said, read right to left like the text around them.
+      note = el("span", { class: "hint", text: "يُقال بعدد خطواته: " + steps.map(function (s) { return s.count; }).join(" · ") });
     }
-    return el("div", { class: "list-item" },
-      el("div", { class: "dhikr-head" },
-        el("strong", { id: id + "-title", text: (i + 1) + ". " + entry.title }),
-        el("span", { class: "badge reviewed", text: "نص مراجَع" }),
-        idLine(el, entry.id)),
-      el("div", { class: "muted", text: entry.reference }),
+    return el("div", { class: "item" },
+      el("div", { class: "head" },
+        el("span", { class: "title", id: id + "-title", text: (i + 1) + ". " + entry.title }),
+        el("span", { class: "badge reviewed", text: "نص مراجَع" })),
       textBlock(el, entry),
-      count,
+      el("div", { class: "foot" },
+        el("span", { class: "reference", text: sourceText(entry.reference) }),
+        count),
+      note,
+      idLine(el, entry.id),
       rowButtons(v, section.key, list, item, i, "«" + entry.title + "»"));
   }
 
@@ -545,28 +577,23 @@
     var id = "adhkar-" + section.key + "-" + item.uid;
     function bind(key) { return { input: function (event) { item[key] = event.target.value; refresh(); } }; }
     // The ticker reads every text once: no count there.
-    var count = section.key === "ticker" ? null : el("div", {},
+    var count = section.key === "ticker" ? null : el("div", { class: "inline" },
       el("label", { text: "العدد", attrs: { for: id + "-count" } }),
-      el("input", {
-        id: id + "-count", type: "number", value: item.count, class: "tabular",
-        attrs: { min: 1, max: MAX_COUNT, step: 1, inputmode: "numeric", required: true }, on: bind("count")
-      }));
-    return el("div", { class: "list-item" },
-      el("div", { class: "dhikr-head" },
-        el("strong", { text: (i + 1) + "." }),
-        el("span", { class: "badge own", text: "نص المسجد" })),
+      countStepper(el, id + "-count", item, "النص " + (i + 1), 1, refresh));
+    return el("div", { class: "item own" },
+      el("div", { class: "head" },
+        el("span", { class: "title", text: (i + 1) + ". نص المسجد" }),
+        el("span", { class: "badge own", text: "نص خاص" })),
       el("label", { text: "النص (حتى " + MAX_TEXT + " حرف)", attrs: { for: id + "-text" } }),
       v.track(el("textarea", {
-        id: id + "-text", value: item.text, attrs: { maxlength: MAX_TEXT, rows: 4, dir: "auto" }, on: bind("text")
+        id: id + "-text", class: "sacred", value: item.text, attrs: { maxlength: MAX_TEXT, rows: 3, dir: "auto" }, on: bind("text")
       }), item.uid, "text"),
-      el("div", { class: "row" },
-        el("div", { class: "grow" },
-          el("label", { text: "المصدر", attrs: { for: id + "-reference" } }),
-          el("input", {
-            id: id + "-reference", type: "text", value: item.reference,
-            attrs: { maxlength: MAX_REFERENCE, required: true, placeholder: "مثال: رواه مسلم", style: "width: 100%" }, on: bind("reference")
-          })),
-        count),
+      el("label", { text: "المصدر (مطلوب)", attrs: { for: id + "-reference" } }),
+      el("input", {
+        id: id + "-reference", type: "text", class: "wide", value: item.reference,
+        attrs: { maxlength: MAX_REFERENCE, required: true, placeholder: "مثال: رواه مسلم" }, on: bind("reference")
+      }),
+      count,
       rowButtons(v, section.key, list, item, i, "النص " + (i + 1)));
   }
 
@@ -574,14 +601,14 @@
     var el = v.el;
     var hidden = hiddenIds(section.key, list);
     if (!hidden.length) return null;
-    return el("div", {},
+    return el("div", { class: "hidden-list" },
       el("h3", { text: "نصوص مضمّنة غير معروضة" }),
       hidden.map(function (id) {
         var title = library.byId[id] ? library.byId[id].title : id;
         return el("div", { class: "row" },
           el("span", { class: "grow", text: title }),
           el("button", {
-            type: "button", text: "إعادة", attrs: { "aria-label": "إعادة «" + title + "» إلى القائمة" },
+            type: "button", class: "quiet", text: "إعادة", attrs: { "aria-label": "إعادة «" + title + "» إلى القائمة" },
             on: { click: function () {
               var restored = reviewedItem(id);
               list.splice(restorePosition(section.key, list, id), 0, restored);
@@ -595,10 +622,10 @@
     var el = v.el;
     var present = has(list, entry.id);
     return el("div", { class: "list-item" },
-      el("div", { class: "dhikr-head" },
-        el("strong", { text: entry.title }),
+      el("div", { class: "head" },
+        el("span", { class: "title", text: entry.title }),
         idLine(el, entry.id)),
-      el("div", { class: "muted", text: entry.reference }),
+      el("div", { class: "reference", text: sourceText(entry.reference) }),
       el("p", { class: "dhikr-text", text: shorten(entry.text, 80) }),
       el("div", { class: "row" }, el("button", {
         type: "button", text: present ? "في القائمة" : "إضافة", disabled: present,
@@ -673,7 +700,7 @@
       status,
       results,
       el("div", { class: "row" }, el("button", {
-        type: "button", text: "إغلاق", attrs: { "aria-label": "إغلاق مكتبة التطبيق" },
+        type: "button", class: "quiet", text: "إغلاق", attrs: { "aria-label": "إغلاق مكتبة التطبيق" },
         on: { click: function () { picker = null; v.paint({ uid: section.key, what: "library" }); } }
       })));
   }
@@ -687,18 +714,18 @@
       summary.textContent = summaryText(section, list);
       summary.className = summaryClass(section, list);
     }
-    return el("section", { class: "card" },
-      // Focusable from the page only: where focus goes once the last text of the list is deleted.
-      v.track(el("h2", { text: section.title, attrs: { tabindex: "-1" } }), key, "heading"),
-      el("p", { class: "muted", text: section.hint }),
+    return el("section", { class: "group" },
+      el("div", { class: "group-head" },
+        // Focusable from the page only: where focus goes once the last text of the list is deleted.
+        v.track(el("h2", { text: section.title, attrs: { tabindex: "-1" } }), key, "heading"),
+        summary),
+      el("p", { class: "hint", text: section.hint }),
       list.length ? null : el("p", { class: "muted", text: "لا نص في هذه القائمة: أضف نصاً أو عُد إلى القائمة المضمّنة." }),
       list.map(function (item, i) {
         return v.track(item.own ? ownRow(v, section, list, item, i, refresh) : reviewedRow(v, section, list, item, i, refresh),
           item.uid, "row");
       }),
-      summary,
-      hiddenBlock(v, section, list),
-      el("div", { class: "row" },
+      el("div", { class: "split" },
         v.track(el("button", {
           type: "button", text: "إضافة من المكتبة", attrs: { "aria-expanded": picker && picker.key === key ? "true" : "false" },
           on: { click: function () {
@@ -716,13 +743,15 @@
           var item = ownItem("", "", "1");
           list.push(item);
           v.paint({ uid: item.uid, what: "text" });
-        } } }),
-        v.track(el("button", { type: "button", text: "العودة إلى القائمة المضمّنة", on: { click: function () {
+        } } })),
+      picker && picker.key === key ? pickerPanel(v, section, list) : null,
+      hiddenBlock(v, section, list),
+      el("div", null,
+        v.track(el("button", { type: "button", class: "quiet", text: "العودة إلى القائمة المضمّنة", on: { click: function () {
           if (!isBundled(key, list) && !confirm("إعادة «" + section.title + "» إلى النصوص المضمّنة؟ تُحذف تغييرات هذه القائمة.")) return;
           draft[key] = bundledItems(key);
           v.paint({ uid: key, what: "bundled" });
-        } } }), key, "bundled")),
-      picker && picker.key === key ? pickerPanel(v, section, list) : null);
+        } } }), key, "bundled")));
   }
 
   /** The list's own category when the library has it (SALAH after the prayer), else all. */
@@ -745,7 +774,7 @@
   function editor(box, ctx) {
     var el = ctx.el;
     startDraft(ctx.settings, false);
-    var sections = el("div");
+    var sections = el("div", { class: "adhkar" });
     var focusWanted = null;
     var focusNode = null;
     var v = {
@@ -769,7 +798,7 @@
         return node;
       }
     };
-    var apply = el("button", { type: "button", class: "primary", text: "معاينة وتطبيق", on: { click: function () {
+    var apply = el("button", { type: "button", class: "primary", text: "معاينة وتطبيق على الشاشة", on: { click: function () {
       var adhkar = collect(ctx);
       if (!adhkar) return;
       apply.disabled = true;
@@ -783,9 +812,10 @@
       }, function () { apply.disabled = false; });
     } } });
     box.appendChild(sections);
-    box.appendChild(el("div", { class: "row" },
+    // Kept in reach at the bottom of the page while the lists scroll by.
+    box.appendChild(el("div", { class: "actions" },
       apply,
-      el("button", { type: "button", text: "إعادة القيم الحالية", on: { click: function () {
+      el("button", { type: "button", class: "quiet", text: "إعادة القيم الحالية", on: { click: function () {
         startDraft(ctx.settings, true);
         v.paint();
       } } })));
@@ -819,7 +849,7 @@
       root.appendChild(ctx.el("p", { class: "muted", text:
         "النصوص المراجَعة مضمّنة في التطبيق ولا تُعدَّل كلماتها: رتّبها أو أخفها أو أضف غيرها من المكتبة. " +
         "كل نص يضيفه المسجد يحتاج إلى مصدره (السورة والآية، أو من روى الحديث)." }));
-      var box = ctx.el("div");
+      var box = ctx.el("div", { class: "adhkar-box" });
       root.appendChild(box);
       if (library) editor(box, ctx);
       else loadInto(root, box, ctx);

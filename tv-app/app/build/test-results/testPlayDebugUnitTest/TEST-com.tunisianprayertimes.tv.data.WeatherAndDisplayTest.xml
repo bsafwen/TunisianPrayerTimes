@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.data.WeatherAndDisplayTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:14:30.540Z" hostname="HOME" time="0.029">
+<testsuite name="com.tunisianprayertimes.tv.data.WeatherAndDisplayTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:58.800Z" hostname="HOME" time="0.026">
   <properties/>
-  <testcase name="theWeatherIsKeptForItsPlaceOnly" classname="com.tunisianprayertimes.tv.data.WeatherAndDisplayTest" time="0.008"/>
-  <testcase name="anOfflineTvKeepsItsLastWeather" classname="com.tunisianprayertimes.tv.data.WeatherAndDisplayTest" time="0.002"/>
-  <testcase name="textFilesOnAKeyBecomeWrittenAnnouncements" classname="com.tunisianprayertimes.tv.data.WeatherAndDisplayTest" time="0.018"/>
+  <testcase name="theWeatherIsKeptForItsPlaceOnly" classname="com.tunisianprayertimes.tv.data.WeatherAndDisplayTest" time="0.007"/>
+  <testcase name="anOfflineTvKeepsItsLastWeather" classname="com.tunisianprayertimes.tv.data.WeatherAndDisplayTest" time="0.001"/>
+  <testcase name="textFilesOnAKeyBecomeWrittenAnnouncements" classname="com.tunisianprayertimes.tv.data.WeatherAndDisplayTest" time="0.016"/>
   <testcase name="displayOptionsTravelWithTheProfile" classname="com.tunisianprayertimes.tv.data.WeatherAndDisplayTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
