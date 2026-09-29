@@ -190,7 +190,7 @@ class MainActivity : ComponentActivity() {
             var themeId by remember { mutableStateOf(prefs.themeId) }
             val themeConfig = remember(themeId) { ThemeRegistry.findById(if (safeMode) PrefsManager.DEFAULT_THEME_ID else themeId) }
 
-            TvPrayerTheme(themeConfig = themeConfig) {
+            TvPrayerTheme(theme = themeConfig) {
                 VirtualCanvas {
                     TvApp(
                         activity = this,

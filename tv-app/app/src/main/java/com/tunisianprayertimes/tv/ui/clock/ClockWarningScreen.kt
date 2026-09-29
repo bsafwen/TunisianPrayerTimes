@@ -25,8 +25,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.common.initialFocus
-import com.tunisianprayertimes.tv.ui.setup.FocusableButton
-import com.tunisianprayertimes.tv.ui.setup.FocusableListItem
+import com.tunisianprayertimes.tv.ui.common.FocusableButton
+import com.tunisianprayertimes.tv.ui.common.FocusableListItem
 import com.tunisianprayertimes.tv.ui.theme.Gold
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter

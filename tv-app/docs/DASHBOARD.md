@@ -50,8 +50,9 @@ Errors: `403 { "error": "..." }` without a valid token, `404 { "error": "..." }`
 {
   "app": { "versionName": "1.0", "versionCode": 1, "flavor": "github", "packageName": "com.tunisianprayertimes.tv" },
   "clock": { "now": "2026-09-29T14:00:05", "trusted": true },
-  "mosque": { "name": "مسجد النور", "delegationId": 615, "delegationName": "مدينة تونس", "gouvernoratId": 11, "themeId": "midnight_navy" },
-  "themes": [{ "id": "midnight_navy", "name": "أزرق داكن" }],
+  "mosque": { "name": "مسجد النور", "delegationId": 615, "delegationName": "مدينة تونس", "gouvernoratId": 11, "themeId": "horizon" },
+  "themes": [{ "id": "horizon", "name": "أفق", "description": "سماء تتبع أوقات الصلاة، تُحسب على الجهاز دون إنترنت" },
+             { "id": "midad", "name": "مداد", "description": "أرضية داكنة ثابتة دون سماء" }],
   "today": {
     "date": "2026-09-29", "hijri": "18 ربيع الثاني 1448 هـ", "sunrise": "06:12", "banner": null,
     "prayers": [{ "id": "FAJR", "name": "الفجر", "adhan": "04:46", "iqamah": "05:01" }]
@@ -79,7 +80,10 @@ Errors: `403 { "error": "..." }` without a valid token, `404 { "error": "..." }`
   (offline); `updated` is `HH:MM`. The data comes from Open-Meteo, which must be credited.
 - `update`: `supported` is false in the Play build. `/api/undo` answers `{ "available": false }`
   when there is nothing to undo.
-- The settings file the TV writes always has every prayer and the `mosque` and `display` sections.
+- The settings file the TV writes always has every prayer and the `mosque` and `display` sections,
+  with every `display` option (`nightScreen` included), so the page reads the current choices there.
+- `themes[].description`: one line for the theme picker. A theme id saved by a version before «أفق»
+  reads as `horizon`.
 - `islamicDates.events[].id`: `ramadanStart`, `eidFitr`, `eidAdha` (the keys of the settings
   file); `source` is `MANUAL`, `OFFICIAL` or `ESTIMATE`; `min`/`max` are the dates the file accepts.
 - `kiosk[].level`: `GOOD`, `WARNING`, `BAD` or `INFO`.
@@ -129,8 +133,8 @@ a change made meanwhile from the remote, a USB key or another phone is kept:
 ```json
 {
   "mosque": { "name": "مسجد النور", "delegation": 615 },
-  "display": { "theme": "midnight_navy", "weather": true, "backgrounds": true, "announcements": true,
-               "slideSeconds": 15, "announcementsEveryMinutes": 15 },
+  "display": { "theme": "horizon", "weather": true, "backgrounds": true, "announcements": true,
+               "slideSeconds": 15, "announcementsEveryMinutes": 15, "nightScreen": true },
   "prayers": { "fajr": { "iqamah": "+15", "duration": 10 }, "isha": { "iqamah": "20:00", "duration": 10 },
                "jumua": { "iqamah": "+15", "duration": 15 }, "eidFitr": { "iqamah": "+30", "duration": 30 } },
   "ramadan": { "isha": { "duration": 75 }, "fajr": { "iqamah": null } },
@@ -142,6 +146,10 @@ a change made meanwhile from the remote, a USB key or another phone is kept:
 }
 ```
 
+- `display`: `theme` is an id of `themes` (`horizon` or `midad`). `weather`, `backgrounds`,
+  `announcements` and `nightScreen` (the dim night screen between Isha and Fajr) are `true` or
+  `false`, all on by default. `slideSeconds`: 5-60. `announcementsEveryMinutes`: 0-120, 0 for
+  after the prayer's adhkar only.
 - `iqamah`: `"+N"` minutes after the adhan (after sunrise for the Eids, 1-90), or a fixed `"HH:MM"`.
   `duration`: minutes of prayer (the black screen), 1-90.
 - `ramadan`: only what changes in Ramadan; `null` returns a field to the usual setting.

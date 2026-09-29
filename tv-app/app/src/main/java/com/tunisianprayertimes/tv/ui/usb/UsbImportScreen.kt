@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
 import com.tunisianprayertimes.tv.ui.TvStrings
-import com.tunisianprayertimes.tv.ui.setup.FocusableListItem
+import com.tunisianprayertimes.tv.ui.common.FocusableListItem
 import com.tunisianprayertimes.tv.ui.theme.Gold
 import com.tunisianprayertimes.tv.usb.UsbSettingsFound
 

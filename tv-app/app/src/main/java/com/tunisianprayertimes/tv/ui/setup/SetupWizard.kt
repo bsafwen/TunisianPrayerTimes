@@ -2,6 +2,8 @@ package com.tunisianprayertimes.tv.ui.setup
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
+import com.tunisianprayertimes.tv.ui.common.FocusableButton
+import com.tunisianprayertimes.tv.ui.common.FocusableListItem
 import androidx.compose.foundation.border
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.*
@@ -290,88 +292,6 @@ private fun MosqueNameStep(
             onBack = onBack,
             nextText = TvStrings.CONFIRM,
             onNext = onConfirm
-        )
-    }
-}
-
-// --- Reusable TV-focused components ---
-
-@Composable
-fun FocusableListItem(
-    text: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    var isFocused by remember { mutableStateOf(false) }
-
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .background(
-                if (isFocused) TealPrimary.copy(alpha = 0.8f) else MaterialTheme.colorScheme.surface.copy(alpha = 0.6f),
-                RoundedCornerShape(14.dp)
-            )
-            .border(
-                width = 1.dp,
-                color = if (isFocused) Gold.copy(alpha = 0.7f) else CardBorder,
-                shape = RoundedCornerShape(14.dp)
-            )
-            .onFocusChanged { isFocused = it.isFocused }
-            .focusable()
-            .onKeyEvent { event ->
-                if (event.key == Key.Enter && event.type == KeyEventType.KeyUp ||
-                    event.key == Key.DirectionCenter && event.type == KeyEventType.KeyUp
-                ) {
-                    onClick(); true
-                } else false
-            }
-            .padding(horizontal = 24.dp, vertical = 16.dp),
-        contentAlignment = Alignment.CenterStart
-    ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.titleLarge,
-            color = if (isFocused) Color.White else MaterialTheme.colorScheme.onSurface,
-            fontSize = 22.sp
-        )
-    }
-}
-
-@Composable
-fun FocusableButton(
-    text: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    var isFocused by remember { mutableStateOf(false) }
-
-    Box(
-        modifier = modifier
-            .size(48.dp)
-            .background(
-                if (isFocused) Gold else SurfaceElevated,
-                RoundedCornerShape(10.dp)
-            )
-            .border(
-                width = 1.dp,
-                color = if (isFocused) Gold else CardBorder,
-                shape = RoundedCornerShape(10.dp)
-            )
-            .onFocusChanged { isFocused = it.isFocused }
-            .focusable()
-            .onKeyEvent { event ->
-                if (event.key == Key.Enter && event.type == KeyEventType.KeyUp ||
-                    event.key == Key.DirectionCenter && event.type == KeyEventType.KeyUp
-                ) {
-                    onClick(); true
-                } else false
-            },
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = text,
-            fontSize = 24.sp,
-            color = Color.White
         )
     }
 }

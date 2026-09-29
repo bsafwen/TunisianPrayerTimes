@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.tv.data.MediaKind
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.common.initialFocus
-import com.tunisianprayertimes.tv.ui.setup.FocusableListItem
+import com.tunisianprayertimes.tv.ui.common.FocusableListItem
 import com.tunisianprayertimes.tv.ui.theme.Gold
 import com.tunisianprayertimes.tv.usb.UsbMediaFound
 

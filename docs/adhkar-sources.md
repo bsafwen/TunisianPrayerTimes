@@ -52,3 +52,16 @@ The supplication of Dhu al-Nun in the additional catalog is part of [Qaloon 21:8
 | After wudu | [Sahih Muslim 234b](https://sunnah.com/muslim:234b) |
 | Worry and grief | [Sahih al-Bukhari 6369](https://sunnah.com/bukhari:6369) |
 | Evening refuge | [Riyad as-Salihin 1452](https://sunnah.com/riyadussalihin:1452), explicitly sourced there to Muslim; [Sahih Muslim 2709b](https://sunnah.com/muslim:2709b) identifies the corresponding narration |
+
+## Mosque screen texts
+
+The TV app shows a verse in the header of its main screen and a greeting on Eid morning. They live in `DisplayTexts` (shared module), outside the adhkar library, and a mosque can't change them. Verse numbers were checked on 2026-09-29 against the Qaloon searchable text, later Madani count.
+
+| Text | When | Source |
+| --- | --- | --- |
+| `إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا` | ordinary days | [Qaloon 4:102](https://quranpedia.net/surah/7/4) (Hafs 4:103) |
+| `فَاسْعَوْا إِلَىٰ ذِكْرِ اللَّهِ وَذَرُوا الْبَيْعَ` | Fridays | [Qaloon 62:9](https://quranpedia.net/surah/7/62) |
+| `شَهْرُ رَمَضَانَ الَّذِي أُنْزِلَ فِيهِ الْقُرْآنُ` | Ramadan | [Qaloon 2:184](https://quranpedia.net/surah/7/2) (Hafs 2:185) |
+| `تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ` | Eid morning | Jubayr ibn Nufayr's report that the companions greeted each other with `تقبل الله منا ومنك` on Eid, in al-Mahamiliyyat; Ibn Hajar graded its chain hasan in Fath al-Bari (Kitab al-Idayn). The screen uses the plural to greet everyone. **Needs editorial approval**, as the plural is not the narrated wording. |
+
+The verses are excerpts: each is the complete clause shown, not the whole verse.

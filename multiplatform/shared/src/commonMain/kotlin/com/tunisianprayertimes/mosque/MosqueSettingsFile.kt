@@ -23,7 +23,7 @@ import kotlinx.serialization.json.JsonPrimitive
  *
  *     { "format": "tunisian-prayer-times-tv", "version": 1,
  *       "mosque": { "name": "مسجد الفتح", "delegation": 615 },
- *       "display": { "theme": "midnight_navy" },
+ *       "display": { "theme": "horizon" },
  *       "prayers": { "fajr": { "iqamah": "+20", "duration": 10 }, "isha": { "iqamah": "20:00" },
  *                    "eid": { "iqamah": "+30", "duration": 30 } },
  *       "ramadan": { "isha": { "duration": 75 } },
@@ -62,7 +62,7 @@ object MosqueSettingsFile {
     /** A Ramadan or Eid date the file sets or returns to automatic (null). */
     data class DateChange(val hijriYear: Int, val event: DateEvent, val before: LocalDate?, val after: LocalDate?)
 
-    enum class ProfileField { NAME, DELEGATION, THEME, WEATHER, BACKGROUNDS, ANNOUNCEMENTS, SLIDE_SECONDS, ANNOUNCEMENTS_EVERY }
+    enum class ProfileField { NAME, DELEGATION, THEME, WEATHER, BACKGROUNDS, ANNOUNCEMENTS, SLIDE_SECONDS, ANNOUNCEMENTS_EVERY, NIGHT_SCREEN }
 
     /** The mosque's name, place or theme changed by the file, as the admin reads them ("—" when unset). */
     data class ProfileChange(val field: ProfileField, val before: String, val after: String)
@@ -501,7 +501,7 @@ object MosqueSettingsFile {
         else -> "$count نص"
     }
 
-    /** The "mosque" (name, delegation) and "display" (theme) sections over [current]. */
+    /** The "mosque" (name, delegation) and "display" (theme and [DisplayOptions]) sections over [current]. */
     private fun readProfile(
         mosque: Pair<String, JsonObject>?,
         display: Pair<String, JsonObject>?,
@@ -553,7 +553,8 @@ object MosqueSettingsFile {
                 }
             }
         }
-        fields(display, DISPLAY_FIELDS, "\"theme\" أو \"weather\" أو \"backgrounds\" أو \"announcements\" أو \"slideSeconds\" أو \"announcementsEveryMinutes\"") { field, element, path ->
+        fields(display, DISPLAY_FIELDS,
+            "\"theme\" أو \"weather\" أو \"backgrounds\" أو \"announcements\" أو \"slideSeconds\" أو \"announcementsEveryMinutes\" أو \"nightScreen\"") { field, element, path ->
             fun flag(set: (Boolean) -> DisplayOptions) {
                 val value = element.booleanOrNull()
                 if (value == null) {
@@ -578,6 +579,7 @@ object MosqueSettingsFile {
                 ProfileField.ANNOUNCEMENTS -> flag { options.copy(announcements = it) }
                 ProfileField.SLIDE_SECONDS -> number(DisplayOptions.SLIDE_SECONDS) { options.copy(slideSeconds = it) }
                 ProfileField.ANNOUNCEMENTS_EVERY -> number(DisplayOptions.EVERY_MINUTES) { options.copy(announcementsEveryMinutes = it) }
+                ProfileField.NIGHT_SCREEN -> flag { options.copy(nightScreen = it) }
                 else -> {
                     val wanted = element.stringOrNull()?.let { clean(it).trim() }
                     val theme = catalog.themes.entries.firstOrNull { (id, name) -> wanted != null && (id.equals(wanted, ignoreCase = true) || name == wanted) }
@@ -625,6 +627,7 @@ object MosqueSettingsFile {
             ProfileChange(ProfileField.SLIDE_SECONDS, number(before.slideSeconds), number(after.slideSeconds)).takeIf { before.slideSeconds != after.slideSeconds },
             ProfileChange(ProfileField.ANNOUNCEMENTS_EVERY, number(before.announcementsEveryMinutes), number(after.announcementsEveryMinutes))
                 .takeIf { before.announcementsEveryMinutes != after.announcementsEveryMinutes },
+            ProfileChange(ProfileField.NIGHT_SCREEN, flag(before.nightScreen), flag(after.nightScreen)).takeIf { before.nightScreen != after.nightScreen },
         )
     }
 
@@ -817,6 +820,7 @@ object MosqueSettingsFile {
             profile.display.announcements?.let { "\"announcements\": $it" },
             profile.display.slideSeconds?.let { "\"slideSeconds\": $it" },
             profile.display.announcementsEveryMinutes?.let { "\"announcementsEveryMinutes\": $it" },
+            profile.display.nightScreen?.let { "\"nightScreen\": $it" },
         )
         if (display.isNotEmpty()) append("  \"display\": { ").append(display.joinToString(", ")).append(" },\n")
         val daily = MosqueSchedule.CONFIGURABLE + MosqueSchedule.EID
@@ -982,6 +986,7 @@ object MosqueSettingsFile {
         listOf("announcements", "الإعلانات", "الاعلانات").forEach { put(it, ProfileField.ANNOUNCEMENTS) }
         listOf("slideseconds", "slide_seconds", "مدة الإعلان").forEach { put(it, ProfileField.SLIDE_SECONDS) }
         listOf("announcementseveryminutes", "announcements_every_minutes", "تكرار الإعلانات").forEach { put(it, ProfileField.ANNOUNCEMENTS_EVERY) }
+        listOf("nightscreen", "night_screen", "شاشة الليل").forEach { put(it, ProfileField.NIGHT_SCREEN) }
     }
 
     /** The sections of the file under their accepted names; the first five must be objects. */

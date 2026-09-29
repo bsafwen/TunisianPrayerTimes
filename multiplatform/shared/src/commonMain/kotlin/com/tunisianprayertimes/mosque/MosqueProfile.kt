@@ -18,8 +18,9 @@ data class MosqueProfile(
 
 /**
  * How the screen shows the mosque's extras: the weather (when online), its background images and
- * announcements, how long each announcement stays, and how often they come back between prayers
- * (0: only after the adhkar of each prayer). Null fields are not set.
+ * announcements, how long each announcement stays, how often they come back between prayers
+ * (0: only after the adhkar of each prayer), and whether the screen dims to the night screen
+ * between Isha and Fajr (the rest that spares the TV's panel). Null fields are not set.
  */
 data class DisplayOptions(
     val weather: Boolean? = null,
@@ -27,6 +28,7 @@ data class DisplayOptions(
     val announcements: Boolean? = null,
     val slideSeconds: Int? = null,
     val announcementsEveryMinutes: Int? = null,
+    val nightScreen: Boolean? = null,
 ) {
     companion object {
         val SLIDE_SECONDS = 5..60

@@ -15,6 +15,10 @@ var Dashboard = (function () {
   var clockOffset = 0;
   var current = null;
   var sessionClosed = false;
+  // Whether the TV answered the last request: true, false, or "closed" once it ended the session.
+  var link = null;
+  // What the section shown wants done every second with the TV's time (a countdown); reset on each render.
+  var tickers = [];
 
   /** The prayers of the settings file, in screen order: key in the file, id in the state, Arabic name. */
   var PRAYERS = [
@@ -42,6 +46,8 @@ var Dashboard = (function () {
       options.headers = { "Content-Type": contentType || "text/plain; charset=utf-8" };
     }
     return fetch(url(path), options).then(function (response) {
+      // The TV answered, whatever it said: it is reachable.
+      if (!sessionClosed) setLink(true);
       return response.text().then(function (text) {
         var data = null;
         try { data = text ? JSON.parse(text) : null; } catch (e) { data = { error: text }; }
@@ -54,6 +60,7 @@ var Dashboard = (function () {
         return data;
       });
     }, function () {
+      if (!sessionClosed) setLink(false);
       throw new Error("تعذّر الاتصال بالشاشة: تأكّد أن الهاتف على الشبكة نفسها");
     });
   }
@@ -90,6 +97,59 @@ var Dashboard = (function () {
     return node;
   }
 
+  /**
+   * A number that ticks (a clock, a countdown) in cells of one width, so the line never shifts as its
+   * digits change: Readex Pro's figures are proportional and the font has no tabular feature. Always
+   * left to right; screen readers read the plain text, not the cells.
+   */
+  function digits(text, className) {
+    var node = el("span", { class: "digits" + (className ? " " + className : ""), attrs: { dir: "ltr" } });
+    setDigits(node, text);
+    return node;
+  }
+
+  function setDigits(node, text) {
+    text = String(text === undefined || text === null ? "" : text);
+    if (node.getAttribute("data-text") === text) return;
+    node.setAttribute("data-text", text);
+    node.textContent = "";
+    if (!text) return;
+    var cells = el("span", { attrs: { "aria-hidden": "true" } });
+    for (var i = 0; i < text.length; i++) {
+      var c = text.charAt(i);
+      cells.appendChild(el("span", { class: c >= "0" && c <= "9" ? "d" : null, text: c }));
+    }
+    node.appendChild(el("span", { class: "sr", text: text }));
+    node.appendChild(cells);
+  }
+
+  var MONTHS = ["جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان", "جويلية", "أوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+  var WEEKDAYS = ["الأحد", "الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+
+  /**
+   * "الثلاثاء 29 سبتمبر 2026" from "2026-09-29", with the months as Tunisia names them, as the TV
+   * writes it (a phone's browser may not know them); anything else as given.
+   */
+  function longDate(iso) {
+    var match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso || ""));
+    if (!match) return iso || "—";
+    var day = new Date(Date.UTC(+match[1], +match[2] - 1, +match[3]));
+    if (isNaN(day.getTime()) || +match[2] < 1 || +match[2] > 12) return iso;
+    return WEEKDAYS[day.getUTCDay()] + " " + (+match[3]) + " " + MONTHS[+match[2] - 1] + " " + match[1];
+  }
+
+  /** The TV's wall time in Tunisia, as a Date to read with its getUTC… methods. */
+  function tvNow() { return new Date(Date.now() + clockOffset); }
+
+  /** The header's dot: green while the TV answers, red when it does not or ended the session. */
+  function setLink(next) {
+    if (link === next) return;
+    link = next;
+    document.getElementById("link").className = "link " + (next === true ? "on" : "off");
+    document.getElementById("link-text").textContent =
+      next === true ? "متصل بالشاشة" : next === "closed" ? "الجلسة مغلقة" : "غير متصل";
+  }
+
   var toastTimer = null;
   function toast(text, kind) {
     var box = document.getElementById("toast");
@@ -100,10 +160,12 @@ var Dashboard = (function () {
   }
 
   function showClosed(message) {
+    setLink("closed");
+    tickers = [];
     var view = document.getElementById("view");
     view.textContent = "";
     view.appendChild(el("div", { class: "card level-BAD", attrs: { role: "alert" } },
-      el("p", { text: message }),
+      el("h2", { text: message }),
       el("p", { class: "muted", text: "ابدأ جلسة جديدة من إعدادات الشاشة (الإدارة من الهاتف) وامسح الرمز من جديد." })));
   }
 

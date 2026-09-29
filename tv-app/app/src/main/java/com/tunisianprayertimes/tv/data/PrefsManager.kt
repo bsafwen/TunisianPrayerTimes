@@ -12,6 +12,7 @@ import com.tunisianprayertimes.mosque.TextAnnouncement
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.PrayerOverride
 import com.tunisianprayertimes.time.ClockStore
+import com.tunisianprayertimes.tv.ui.theme.ThemeRegistry
 
 /** Mosque settings entered by the admin on the TV. */
 class PrefsManager(private val prefs: SharedPreferences) {
@@ -40,8 +41,13 @@ class PrefsManager(private val prefs: SharedPreferences) {
         get() = prefs.getString(KEY_MOSQUE_NAME, "").orEmpty()
         set(value) = prefs.edit { putString(KEY_MOSQUE_NAME, value) }
 
+    /**
+     * One of [ThemeRegistry]'s themes. An id saved by an older version (the themes before «أفق») reads
+     * as the default: written into the TV's settings file, it would make the file refuse itself
+     * (a template edited on a key, the undo snapshot, a copy to another TV).
+     */
     var themeId: String
-        get() = prefs.getString(KEY_THEME_ID, DEFAULT_THEME_ID) ?: DEFAULT_THEME_ID
+        get() = ThemeRegistry.findById(prefs.getString(KEY_THEME_ID, null) ?: DEFAULT_THEME_ID).id
         set(value) = prefs.edit { putString(KEY_THEME_ID, value) }
 
     var announcementsEnabled: Boolean
@@ -66,6 +72,11 @@ class PrefsManager(private val prefs: SharedPreferences) {
         get() = prefs.getBoolean(KEY_WEATHER, true)
         set(value) = prefs.edit { putBoolean(KEY_WEATHER, value) }
 
+    /** The dim night screen between Isha and Fajr, on unless the admin turns it off. */
+    var nightScreenEnabled: Boolean
+        get() = prefs.getBoolean(KEY_NIGHT_SCREEN, true)
+        set(value) = prefs.edit { putBoolean(KEY_NIGHT_SCREEN, value) }
+
     /** What the clock guard remembers (last good time, in-app time correction). */
     val clockStore: ClockStore by lazy { PrefsClockStore(prefs) }
 
@@ -74,7 +85,7 @@ class PrefsManager(private val prefs: SharedPreferences) {
         get() = prefs.getString(KEY_USB_LAST_HANDLED, "").orEmpty()
         set(value) = prefs.edit { putString(KEY_USB_LAST_HANDLED, value) }
 
-    /** The mosque's name, place and theme, as the settings file carries them. */
+    /** The mosque's name, place, theme and display options, as the settings file carries them. */
     val profile: MosqueProfile
         get() = MosqueProfile(
             mosqueName.trim().take(MosqueProfile.MAX_NAME_LENGTH), delegationId.takeIf { it > 0 }, themeId,
@@ -82,6 +93,7 @@ class PrefsManager(private val prefs: SharedPreferences) {
                 weatherEnabled, customBackgroundEnabled, announcementsEnabled,
                 announcementIntervalSec.coerceIn(DisplayOptions.SLIDE_SECONDS),
                 announcementsEveryMinutes.coerceIn(DisplayOptions.EVERY_MINUTES),
+                nightScreenEnabled,
             ),
         )
 
@@ -101,6 +113,7 @@ class PrefsManager(private val prefs: SharedPreferences) {
         profile.display.announcements?.let { announcementsEnabled = it }
         profile.display.slideSeconds?.let { announcementIntervalSec = it }
         profile.display.announcementsEveryMinutes?.let { announcementsEveryMinutes = it }
+        profile.display.nightScreen?.let { nightScreenEnabled = it }
     }
 
     /** Back to a new TV (one moved to another mosque): setup runs again. The clock's memory is kept. */
@@ -205,7 +218,7 @@ class PrefsManager(private val prefs: SharedPreferences) {
         const val PREFS_NAME = "tv_prefs"
         private const val CLOCK_KEY_PREFIX = "clock_"
         val EDITABLE: List<Prayer> = MosqueSchedule.CONFIGURABLE + MosqueSchedule.EID
-        const val DEFAULT_THEME_ID = "midnight_navy"
+        const val DEFAULT_THEME_ID = "horizon"
         private const val KEY_SETUP_DONE = "setup_done"
         private const val KEY_GOUVERNORAT_ID = "gouvernorat_id"
         private const val KEY_DELEGATION_ID = "delegation_id"
@@ -222,5 +235,6 @@ class PrefsManager(private val prefs: SharedPreferences) {
         private const val KEY_USB_MEDIA = "usb_media_last_handled"
         private const val KEY_ANNOUNCEMENTS_EVERY = "announcements_every_minutes"
         private const val KEY_WEATHER = "weather_enabled"
+        private const val KEY_NIGHT_SCREEN = "night_screen_enabled"
     }
 }
