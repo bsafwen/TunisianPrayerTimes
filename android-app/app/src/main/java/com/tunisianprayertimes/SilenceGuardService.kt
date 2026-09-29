@@ -3,7 +3,6 @@ package com.tunisianprayertimes
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.app.Service
 import android.content.Context
 import android.content.Intent
@@ -88,16 +87,11 @@ class SilenceGuardService : Service() {
     }
 
     private fun buildNotification(): Notification {
-        val openIntent = PendingIntent.getActivity(
-            this, 0,
-            Intent(this, MainActivity::class.java),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
-        )
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.mosque_silhouette)
             .setContentTitle(getString(R.string.guard_notification_title))
             .setContentText(getString(R.string.guard_notification_text))
-            .setContentIntent(openIntent)
+            .setContentIntent(MainActivityPendingIntents.silenceGuard(this))
             .setOngoing(true)
             .setSilent(true)
             .setPriority(NotificationCompat.PRIORITY_MIN)
