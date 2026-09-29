@@ -9,8 +9,7 @@ import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.tunisianprayertimes.MainActivity
-import com.tunisianprayertimes.MainTabNavigation
+import com.tunisianprayertimes.MainActivityPendingIntents
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.RingtonePreset
@@ -330,14 +329,7 @@ class AwakeCheckService : Service() {
         )
     }
 
-    private fun appPendingIntent(): PendingIntent = PendingIntent.getActivity(
-        this,
-        0,
-        Intent(this, MainActivity::class.java)
-            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            .putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_ALARMS),
-        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
-    )
+    private fun appPendingIntent(): PendingIntent = MainActivityPendingIntents.awakeCheck(this)
 
     companion object {
         private const val CHANNEL_ID = "tunisianprayertimes.awake.check.silent"

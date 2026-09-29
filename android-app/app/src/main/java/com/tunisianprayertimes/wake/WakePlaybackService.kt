@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
-import com.tunisianprayertimes.MainActivity
 import com.tunisianprayertimes.ManualSilenceScheduler
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.SilenceStatus
@@ -405,12 +404,5 @@ class WakePlaybackService : Service() {
                     occurrenceAtMillis = payload.occurrenceAtMillis,
                 ),
             )
-
-        fun alarmClockInfoIntent(context: Context): PendingIntent = PendingIntent.getActivity(
-            context,
-            0,
-            Intent(context, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
-        )
     }
 }
