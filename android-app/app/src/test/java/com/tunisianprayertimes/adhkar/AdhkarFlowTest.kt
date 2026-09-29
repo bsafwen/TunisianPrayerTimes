@@ -573,6 +573,68 @@ class AdhkarFlowTest {
         DhikrReminderScheduler.refresh(context, nowMillis = window.startMillis + 1)
         assertFalse(prefs.contains(doneKey))
     }
+    @Test fun maintenanceRefreshExpiresOldHistoryButKeepsWhatTheScreenShows() {
+        val rule = rule(3); repo.save(rule)
+        val old = window(rule)
+        val oldOccurrence = repo.ensureOccurrence(rule, old)
+        val oldLinked = repo.openSession(listOf(rule.dhikrId), occurrenceId = oldOccurrence.id, now = old.startMillis)
+        repo.count(oldLinked, 1, old.startMillis + 1)
+        val oldSingle = repo.openSession(listOf("salah_istighfar"), now = old.startMillis)
+        val items = listOf("sayyid_istighfar", "ayat_kursi")
+        fun fajr(date: LocalDate) = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), date)!!
+        val olderMorning = repo.openSession(items, DhikrCategory.MORNING, now = fajr(friday), collectionReading = true)
+        val latestMorning = repo.openSession(items, DhikrCategory.MORNING, now = fajr(friday.plusDays(1)),
+            collectionReading = true)
+        val last = repo.openSession(listOf("salah_salam"), now = fajr(friday.plusDays(1)) + 1)
+        val next = window(rule, friday.plusWeeks(2))
+        val stored = { context.getSharedPreferences("adhkar_reminders", 0).getString("state_v2", null)!! }
+        val sizeBefore = stored().length
+
+        // Count taps refresh without rearm and must not pay for pruning.
+        DhikrReminderScheduler.refresh(context, nowMillis = next.startMillis - 1)
+        assertTrue(oldOccurrence.id in repo.state.value.occurrences)
+        assertTrue(oldSingle in repo.state.value.sessions)
+
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = next.startMillis - 1)
+        DhikrRepository.clearMemoryCache()
+        val pruned = DhikrRepository(context).state.value
+        assertFalse(oldOccurrence.id in pruned.occurrences)
+        assertFalse(oldLinked in pruned.sessions)
+        assertFalse(oldSingle in pruned.sessions)
+        assertFalse(olderMorning in pruned.sessions)
+        // The latest morning reading decides the hero card; the last session reopens the reader.
+        assertTrue(latestMorning in pruned.sessions)
+        assertEquals(last, pruned.lastSessionId)
+        assertTrue(last in pruned.sessions)
+        assertTrue(next.progressKey in pruned.occurrences)
+        assertTrue(stored().length < sizeBefore)
+    }
+    @Test fun expiredHistoryStillReferencedIsKept() {
+        val day = 24 * 60 * 60_000L
+        val now = 100 * day
+        fun occurrence(id: String, end: Long, snooze: Long = 0) = DhikrOccurrence(id, "rule", 1, "2026-01-01",
+            DhikrCatalog.SALAWAT_ID, 3, end - day / 2, end, snoozedUntilMillis = snooze)
+        fun session(id: String, updated: Long, occurrenceId: String? = null, periodKey: String? = null) =
+            DhikrSession(id, listOf("salah_istighfar"), category = periodKey?.let { DhikrCategory.SALAH },
+                occurrenceId = occurrenceId, updatedAtMillis = updated, collectionPeriodKey = periodKey)
+        val state = DhikrState(
+            occurrences = listOf(occurrence("expired", now - 8 * day), occurrence("recent", now - 6 * day),
+                occurrence("notified", now - 30 * day), occurrence("snoozed", now - 30 * day, snooze = now + 1),
+                occurrence("resumed", now - 30 * day)).associateBy { it.id },
+            sessions = listOf(session("stale", now - 8 * day), session("fresh", now - 6 * day),
+                session("last", now - 30 * day, occurrenceId = "resumed"),
+                session("notifiedReading", now - 30 * day, occurrenceId = "notified"),
+                session("expiredReading", now - 30 * day, occurrenceId = "expired"),
+                session("salah", now - 60 * day, periodKey = "manual:SALAH"),
+                session("olderSalah", now - 90 * day, periodKey = "manual:SALAH")).associateBy { it.id },
+            lastSessionId = "last",
+        )
+        val pruned = state.withoutExpiredHistory(now, protectedOccurrenceIds = setOf("notified"))
+        assertEquals(setOf("recent", "notified", "snoozed", "resumed"), pruned.occurrences.keys)
+        assertEquals(setOf("fresh", "last", "notifiedReading", "salah"), pruned.sessions.keys)
+        // Nothing left to expire: the same instance comes back, so the repository skips the write.
+        assertSame(pruned, pruned.withoutExpiredHistory(now, protectedOccurrenceIds = setOf("notified")))
+    }
     @Test fun catalogEntriesAreUniqueAndExplained() {
         val entries = DhikrCatalog.entries
         assertEquals(entries.size, entries.map { it.id }.toSet().size)
