@@ -63,10 +63,14 @@ internal fun DhikrCollectionOrderDialog(
     val draggedId = remember { mutableStateOf<String?>(null) }
     val dragStartOrder = remember { mutableStateOf(emptyList<String>()) }
     val dragPointerY = remember { mutableFloatStateOf(0f) }
-    // Direction the finger is currently pushing (-1 up, 1 down, 0 not yet past touch slop), and the
-    // point it turned at: a push is measured from the last reversal, not from where the card was picked up.
-    val dragDirection = remember { mutableIntStateOf(0) }
-    val dragTurnY = remember { mutableFloatStateOf(0f) }
+    val dragStartPointerY = remember { mutableFloatStateOf(0f) }
+    // An edge scrolls only while "armed": the card entered that edge's band during the drag, or was
+    // pushed toward it past touch slop. It stays armed while the card remains in the band, so easing
+    // the finger back a little does not stop the scroll, and disarms once the card leaves the band.
+    val topArmed = remember { mutableStateOf(false) }
+    val bottomArmed = remember { mutableStateOf(false) }
+    val inTopBand = remember { mutableStateOf(false) }
+    val inBottomBand = remember { mutableStateOf(false) }
     val dragGrabOffsetY = remember { mutableFloatStateOf(0f) }
     val draggedSize = remember { mutableIntStateOf(0) }
     val scrollState = rememberLazyListState()
@@ -93,35 +97,40 @@ internal fun DhikrCollectionOrderDialog(
         return top.coerceIn(start, maxOf(start, listEnd() - draggedSize.intValue))
     }
 
-    /** Records which way the finger is pushing; turning back only counts once it passes touch slop. */
-    fun trackDragDirection(y: Float) {
-        val direction = dragDirection.intValue
-        val turn = dragTurnY.floatValue
-        when {
-            // Keep extending the current push; its far end is where a reversal is measured from.
-            direction > 0 && y > turn || direction < 0 && y < turn -> dragTurnY.floatValue = y
-            y - turn > touchSlop -> { dragDirection.intValue = 1; dragTurnY.floatValue = y }
-            turn - y > touchSlop -> { dragDirection.intValue = -1; dragTurnY.floatValue = y }
-        }
-    }
-
-    /**
-     * Scroll speed in px/s (negative scrolls up) while the dragged card is held in the band along the
-     * edge it is being pushed toward. Speed grows with how far the card reaches into the band, or past it.
-     */
-    fun autoScrollSpeed(): Float {
-        if (draggedId.value == null) return 0f
+    /** How far the card under the finger reaches into the top and bottom bands (positive = inside), and the band height. */
+    fun bandDepths(): Triple<Float, Float, Float> {
         val start = scrollState.layoutInfo.viewportStartOffset.toFloat()
         val end = listEnd()
         val band = autoScrollEdgeBand(end - start, draggedSize.intValue.toFloat(), autoScrollEdgePx, autoScrollMinEdgePx)
         val top = dragPointerY.floatValue - dragGrabOffsetY.floatValue
-        val intoTop = start + band - top
-        val intoBottom = top + draggedSize.intValue - (end - band)
+        return Triple(start + band - top, top + draggedSize.intValue - (end - band), band)
+    }
+
+    /**
+     * Arms an edge when the card enters its band during the drag, or is pushed toward it past touch slop.
+     * A card picked up inside a band therefore does not scroll on finger jitter.
+     */
+    fun updateEdgeArming(y: Float) {
+        val (intoTop, intoBottom) = bandDepths()
+        val nowInTop = intoTop > 0f
+        val nowInBottom = intoBottom > 0f
+        topArmed.value = nowInTop && (topArmed.value || !inTopBand.value || dragStartPointerY.floatValue - y > touchSlop)
+        bottomArmed.value = nowInBottom && (bottomArmed.value || !inBottomBand.value || y - dragStartPointerY.floatValue > touchSlop)
+        inTopBand.value = nowInTop
+        inBottomBand.value = nowInBottom
+    }
+
+    /**
+     * Scroll speed in px/s (negative scrolls up) while the dragged card is held in an armed edge band.
+     * Speed grows with how far the card reaches into the band, or past it.
+     */
+    fun autoScrollSpeed(): Float {
+        if (draggedId.value == null) return 0f
+        val (intoTop, intoBottom, band) = bandDepths()
         fun speed(depth: Float) = autoScrollMaxSpeedPx * (depth / band).coerceIn(AutoScrollMinFraction, 1f)
-        // A card picked up at an edge must not scroll on finger jitter; it has to be pushed toward the edge.
         return when {
-            dragDirection.intValue < 0 && intoTop > 0f && scrollState.canScrollBackward -> -speed(intoTop)
-            dragDirection.intValue > 0 && intoBottom > 0f && scrollState.canScrollForward -> speed(intoBottom)
+            topArmed.value && intoTop > 0f && scrollState.canScrollBackward -> -speed(intoTop)
+            bottomArmed.value && intoBottom > 0f && scrollState.canScrollForward -> speed(intoBottom)
             else -> 0f
         }
     }
@@ -197,17 +206,22 @@ internal fun DhikrCollectionOrderDialog(
                                     val id = item.key as? String ?: return@detectDragGesturesAfterLongPress
                                     dragStartOrder.value = orderedIds.value
                                     dragPointerY.floatValue = startPosition.y
-                                    dragDirection.intValue = 0
-                                    dragTurnY.floatValue = startPosition.y
+                                    dragStartPointerY.floatValue = startPosition.y
                                     dragGrabOffsetY.floatValue = startPosition.y - item.offset
                                     draggedSize.intValue = item.size
+                                    // Bands the card starts in are not armed until it is pushed toward that edge.
+                                    val (intoTop, intoBottom) = bandDepths()
+                                    inTopBand.value = intoTop > 0f
+                                    inBottomBand.value = intoBottom > 0f
+                                    topArmed.value = false
+                                    bottomArmed.value = false
                                     draggedId.value = id
                                 },
                                 onDrag = { change, _ ->
                                     if (draggedId.value == null) return@detectDragGesturesAfterLongPress
                                     change.consume()
                                     dragPointerY.floatValue = change.position.y
-                                    trackDragDirection(change.position.y)
+                                    updateEdgeArming(change.position.y)
                                     moveDraggedToPointer()
                                 },
                                 onDragEnd = {
