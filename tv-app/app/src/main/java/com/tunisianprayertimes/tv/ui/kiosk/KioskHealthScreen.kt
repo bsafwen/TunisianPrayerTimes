@@ -104,8 +104,11 @@ fun KioskHealthScreen(
     onGrantOverlay: (() -> Unit)?,
     onToggleHomeMode: () -> Unit,
     onBack: () -> Unit,
+    extraRows: List<HealthRow> = emptyList(),
+    /** The GitHub build, when the box does not yet let it install its updates. */
+    onAllowUpdates: (() -> Unit)? = null,
 ) {
-    val rows = remember(report) { healthRows(report) }
+    val rows = remember(report, extraRows) { healthRows(report) + extraRows }
     Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text("التشغيل الدائم للشاشة", color = Gold, fontSize = 26.sp)
         Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
@@ -114,6 +117,9 @@ fun KioskHealthScreen(
             }
             Box(Modifier.weight(1f)) {
                 FocusableListItem(text = if (report.homeModeEnabled) "إيقاف وضع الشاشة الرئيسية" else "جعل التطبيق الشاشة الرئيسية", onClick = onToggleHomeMode)
+            }
+            if (onAllowUpdates != null) {
+                Box(Modifier.weight(1f)) { FocusableListItem(text = "السماح بتثبيت التحديثات", onClick = onAllowUpdates) }
             }
             Box(Modifier.weight(1f)) { FocusableListItem(text = "رجوع", onClick = onBack, modifier = Modifier.initialFocus()) }
         }

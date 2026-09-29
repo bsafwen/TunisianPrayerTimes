@@ -75,6 +75,24 @@ object MosqueAdhkar {
     fun ticker(content: AdhkarContent = AdhkarContent()): List<AdhkarSlide> =
         combine(entries(TICKER_IDS, null).map { it.copy(count = 1, durationMillis = AdhkarPacer.durationMillis(it.text, 1)) }, content.ticker)
 
+    /**
+     * The ticker with the mosque's written [announcements] between its adhkar, one after every two,
+     * each labelled [label] where a dhikr shows its source. Every announcement comes once per round.
+     */
+    fun tickerWithAnnouncements(ticker: List<AdhkarSlide>, announcements: List<String>, label: String): List<AdhkarSlide> {
+        val news = announcements.map { AdhkarSlide(null, it, label, 1, AdhkarPacer.durationMillis(it, 1)) }
+        if (news.isEmpty()) return ticker
+        if (ticker.isEmpty()) return news
+        val result = mutableListOf<AdhkarSlide>()
+        var next = 0
+        ticker.forEachIndexed { index, slide ->
+            result += slide
+            if (index % 2 == 1) result += news[next++ % news.size]
+        }
+        while (next < news.size) result += news[next++]
+        return result
+    }
+
     /** The slide showing [elapsedMillis] into a sequence, or null once it has played through. */
     fun slideAt(slides: List<AdhkarSlide>, elapsedMillis: Long): IndexedValue<AdhkarSlide>? {
         if (elapsedMillis < 0) return slides.withIndex().firstOrNull()

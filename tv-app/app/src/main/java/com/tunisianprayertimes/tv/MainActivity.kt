@@ -53,13 +53,23 @@ import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.usb.UsbImportScreen
 import com.tunisianprayertimes.tv.ui.clock.ClockWarningScreen
 import com.tunisianprayertimes.tv.ui.common.ScreenNotice
+import com.tunisianprayertimes.tv.ui.common.TopMark
 import com.tunisianprayertimes.tv.ui.common.VirtualCanvas
 import com.tunisianprayertimes.tv.usb.UsbScan
 import com.tunisianprayertimes.tv.usb.UsbSettings
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
-import com.tunisianprayertimes.tv.remote.PhoneAdminBackend
-import com.tunisianprayertimes.tv.remote.PhoneAdminRoutes
-import com.tunisianprayertimes.tv.remote.PhoneAdminServer
+import com.tunisianprayertimes.platform.PrayerDataLoader as SharedPrayerData
+import com.tunisianprayertimes.tv.remote.DashboardBackendImpl
+import com.tunisianprayertimes.tv.remote.DashboardLive
+import com.tunisianprayertimes.tv.remote.DashboardRoutes
+import com.tunisianprayertimes.tv.remote.DashboardServer
+import com.tunisianprayertimes.tv.ui.kiosk.HealthLevel
+import com.tunisianprayertimes.tv.ui.kiosk.HealthRow
+import com.tunisianprayertimes.tv.ui.kiosk.healthRows
+import com.tunisianprayertimes.tv.update.UpdateStatus
+import com.tunisianprayertimes.tv.update.Updates
+import com.tunisianprayertimes.weather.CachedWeather
+import java.util.concurrent.atomic.AtomicReference
 import com.tunisianprayertimes.tv.ui.remote.PhoneAdminScreen
 import com.tunisianprayertimes.tv.ui.remote.PhoneAdminSession
 import com.tunisianprayertimes.tv.ui.usb.SettingsChangeLines
@@ -93,6 +103,7 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainActivity : ComponentActivity() {
@@ -279,6 +290,7 @@ private fun TvApp(
     onThemeChanged: (String) -> Unit,
 ) {
     val context = LocalContext.current
+    val scope = rememberCoroutineScope()
     var currentScreen by remember { mutableStateOf(if (prefs.isSetupDone) Screen.Display else Screen.Setup) }
     var openKioskPage by remember { mutableStateOf(false) }
     LaunchedEffect(currentScreen) { if (currentScreen != Screen.Settings) openKioskPage = false }
@@ -293,7 +305,6 @@ private fun TvApp(
     // The texts: bundled and reviewed, unless the mosque's USB file replaced or extended them.
     var adhkarContent by remember { mutableStateOf(prefs.adhkarContent) }
     val afterSalahSlides = remember(adhkarContent) { MosqueAdhkar.afterSalah(adhkarContent) }
-    val tickerSlides = remember(adhkarContent) { MosqueAdhkar.ticker(adhkarContent) }
     val adhanSlides = remember { MosqueAdhkar.adhanCompanion() }
     val schedule = remember(iqamahConfigs, ramadanOverrides) {
         MosqueSchedule(iqamahConfigs.mapValues { it.value.toPrayerSettings() }, ramadanOverrides)
@@ -375,29 +386,68 @@ private fun TvApp(
     var mediaVersion by remember { mutableIntStateOf(0) }
     var customBgEnabled by remember { mutableStateOf(prefs.customBackgroundEnabled) }
     var announcementsEnabled by remember { mutableStateOf(prefs.announcementsEnabled) }
+    var announcementSeconds by remember { mutableIntStateOf(prefs.announcementIntervalSec) }
+    var announcementsEvery by remember { mutableIntStateOf(prefs.announcementsEveryMinutes) }
+    var weatherEnabled by remember { mutableStateOf(prefs.weatherEnabled) }
     var textAnnouncements by remember { mutableStateOf(prefs.textAnnouncements) }
     val backgroundImages: List<Uri> = remember(mediaVersion, customBgEnabled) {
         if (activity.safeMode || !customBgEnabled) emptyList() else mediaManager.getBackgroundImages()
     }
-    val announcements: List<Announcement> = remember(mediaVersion, announcementsEnabled, textAnnouncements, today) {
+    // Written announcements: from the settings file (with dates) and from .txt files on a USB key.
+    val writtenAnnouncements: List<String> = remember(mediaVersion, announcementsEnabled, textAnnouncements, today) {
         if (activity.safeMode || !announcementsEnabled) emptyList()
-        else mediaManager.getImageAnnouncements() +
-            textAnnouncements.filter { it.isShownOn(today) }.map { Announcement.Text(title = "", content = it.text) }
+        else textAnnouncements.filter { it.isShownOn(today) }.map { it.text } + mediaManager.textFileAnnouncements()
     }
-    val imageCounts = remember(mediaVersion) { MediaKind.entries.associateWith { mediaManager.images(it).size } }
+    val announcements: List<Announcement> = remember(mediaVersion, announcementsEnabled, writtenAnnouncements) {
+        if (activity.safeMode || !announcementsEnabled) emptyList()
+        else mediaManager.getImageAnnouncements() + writtenAnnouncements.map { Announcement.Text(title = "", content = it) }
+    }
+    val imageCounts = remember(mediaVersion) {
+        MediaKind.entries.associateWith { mediaManager.images(it).size + if (it == MediaKind.ANNOUNCEMENTS) mediaManager.textFiles().size else 0 }
+    }
+    // The ticker: the short daily adhkar, with the written announcements between them.
+    val tickerSlides = remember(adhkarContent, writtenAnnouncements) {
+        MosqueAdhkar.tickerWithAnnouncements(MosqueAdhkar.ticker(adhkarContent), writtenAnnouncements, TvStrings.ANNOUNCEMENT_LABEL)
+    }
+
+    // The weather at the mosque (Open-Meteo), only for TVs that are online, never older than a few hours.
+    val weatherRepo = remember { WeatherRepository(context) }
+    var weather by remember { mutableStateOf<CachedWeather?>(null) }
+    LaunchedEffect(weatherEnabled, delegationId) {
+        weather = if (weatherEnabled && delegationId > 0) weatherRepo.cached(delegationId) else null
+        if (!weatherEnabled || delegationId <= 0) return@LaunchedEffect
+        while (true) {
+            val due = weather?.let { System.currentTimeMillis() - it.fetchedAtMillis !in 0 until CachedWeather.REFRESH_MILLIS } ?: true
+            if (due && WeatherRepository.isOnline(context)) {
+                val fresh = withContext(Dispatchers.IO) {
+                    SharedPrayerData.prayerTimes(context.applicationContext).coordinates(delegationId)?.let { (latitude, longitude) ->
+                        weatherRepo.refresh(delegationId, latitude, longitude, System.currentTimeMillis())
+                    }
+                }
+                if (fresh != null) weather = fresh
+            }
+            delay(WEATHER_TICK_MILLIS)
+        }
+    }
+    val weatherLine = weather?.takeIf { weatherEnabled && it.isFresh(System.currentTimeMillis()) }?.weather?.line()
 
     val afterSalahSlide = flow.event?.takeIf { flow.phase == FlowPhase.AFTER_SALAH }?.let { event ->
         MosqueAdhkar.slideAt(afterSalahSlides, Duration.between(event.salahEndAt, now).toMillis())
     }
 
-    // Announcements play once after each prayer's adhkar.
+    // Announcements play once after each prayer's adhkar, and every few minutes between prayers,
+    // never close to an adhan.
     var adhkarShownFor by remember { mutableStateOf<LocalDateTime?>(null) }
     var announcementsShownFor by remember { mutableStateOf<LocalDateTime?>(null) }
+    var lastSlideshowAt by remember { mutableStateOf(now) }
     LaunchedEffect(flow.phase, flow.event?.adhanAt) {
         if (flow.phase == FlowPhase.AFTER_SALAH) adhkarShownFor = flow.event?.adhanAt
     }
-    val showAnnouncements = flow.phase == FlowPhase.IDLE && adhkarShownFor != null &&
-        adhkarShownFor != announcementsShownFor && announcements.isNotEmpty()
+    val nextAdhan = remember(events, now.minute) { events.map { it.adhanAt }.filter { it.isAfter(now) }.minOrNull() }
+    val afterPrayerDue = adhkarShownFor != null && adhkarShownFor != announcementsShownFor
+    val periodicDue = announcementsEvery > 0 && !now.isBefore(lastSlideshowAt.plusMinutes(announcementsEvery.toLong())) &&
+        (nextAdhan == null || now.plusMinutes(QUIET_BEFORE_ADHAN_MINUTES).isBefore(nextAdhan))
+    val showAnnouncements = flow.phase == FlowPhase.IDLE && announcements.isNotEmpty() && (afterPrayerDue || periodicDue)
 
     // Mosque settings from a USB key: checked once onboarding is done, then whenever a key is plugged in.
     // The file carries the whole TV (name, place, theme, prayers, dates), so one TV can set up another.
@@ -443,22 +493,66 @@ private fun TvApp(
         ramadanOverrides = prefs.ramadanOverrides
         adhkarContent = prefs.adhkarContent
         textAnnouncements = prefs.textAnnouncements
+        customBgEnabled = prefs.customBackgroundEnabled
+        announcementsEnabled = prefs.announcementsEnabled
+        announcementSeconds = prefs.announcementIntervalSec
+        announcementsEvery = prefs.announcementsEveryMinutes
+        weatherEnabled = prefs.weatherEnabled
         mosqueName = prefs.mosqueName
         delegationId = prefs.delegationId
         delegationName = prefs.delegationName
         if (prefs.themeId != currentThemeId) onThemeChanged(prefs.themeId)
     }
-    var phoneServer by remember { mutableStateOf<PhoneAdminServer?>(null) }
+    // The TV's own updates: the Play build has none; the GitHub build fetches them and installs at night.
+    val updater = remember { Updates.create(context, activity.kiosk.eventLog) }
+    var updateStatus by remember { mutableStateOf(updater.status) }
+    val lastIsha = events.filter { it.prayer == Prayer.ISHA && !it.iqamahAt.isAfter(now) }.maxOfOrNull { it.iqamahAt }
+    val nextFajr = listOfNotNull(
+        todayTimes?.let { today.atTime(it.fajr.hour, it.fajr.minute) },
+        tomorrowTimes?.let { today.plusDays(1).atTime(it.fajr.hour, it.fajr.minute) },
+    ).firstOrNull { it.isAfter(now) }
+    val quietHours by rememberUpdatedState(MaintenanceRestart.isDue(now, Duration.ofDays(1), flow.phase, lastIsha, nextFajr))
+    LaunchedEffect(Unit) {
+        while (true) {
+            delay(UPDATE_TICK_MILLIS)
+            // Installing ends the app: at night only, and only on a box where it comes back by itself.
+            val comesBack = KioskController.autoStart(context).canBringToFront
+            runCatching { updater.tick(WeatherRepository.isOnline(context), quietHours && activity.isResumed && comesBack) }
+            updateStatus = updater.status
+        }
+    }
+
+    // What the screen shows, for the dashboard (read from its threads).
+    val dashboardLive = remember { AtomicReference<DashboardLive?>(null) }
+    SideEffect {
+        dashboardLive.set(DashboardLive(
+            now = now,
+            clockTrusted = reading.trust != ClockTrust.IMPLAUSIBLE,
+            times = todayTimes,
+            iqamahTimes = iqamahTimes,
+            hijriLabel = HijriLabels.dateLabel(islamicDay.hijri),
+            banner = banner?.let { dayBannerLines(it, now) }?.let { (title, detail) -> listOfNotNull(title, detail).joinToString(" · ") },
+            flow = flow,
+            weather = weather.takeIf { weatherEnabled },
+        ))
+    }
+
+    var phoneServer by remember { mutableStateOf<DashboardServer?>(null) }
+    var phoneRoutes by remember { mutableStateOf<DashboardRoutes?>(null) }
     var phoneSession by remember { mutableStateOf<PhoneAdminSession?>(null) }
     fun stopPhone() {
         phoneServer?.stop()
         phoneServer = null
+        phoneRoutes = null
         phoneSession = null
     }
     DisposableEffect(Unit) { onDispose { phoneServer?.stop() } }
+    // The session ends 15 minutes after its last use with the token (an open page keeps it alive),
+    // and after 2 hours whatever happens.
     LaunchedEffect(now.minute) {
-        val server = phoneServer ?: return@LaunchedEffect
-        if (System.currentTimeMillis() - server.lastRequestAt > PHONE_IDLE_MILLIS) stopPhone()
+        val routes = phoneRoutes ?: return@LaunchedEffect
+        val clock = System.currentTimeMillis()
+        if (clock - routes.lastUsedAt > PHONE_IDLE_MILLIS || clock - routes.startedAt > PHONE_MAX_MILLIS) stopPhone()
     }
     var usbScans by remember { mutableIntStateOf(0) }
     DisposableEffect(Unit) {
@@ -610,16 +704,7 @@ private fun TvApp(
                     preview = usbPreview,
                     title = if (usbFoundIsUndo) TvStrings.UNDO_IMPORT else TvStrings.USB_FOUND_TITLE,
                     onApply = {
-                        if (inbox.apply(found, fromKey = !usbFoundIsUndo)) {
-                            iqamahConfigs = prefs.iqamahConfigs()
-                            ramadanOverrides = prefs.ramadanOverrides
-                            adhkarContent = prefs.adhkarContent
-                            mosqueName = prefs.mosqueName
-                            delegationId = prefs.delegationId
-                            delegationName = prefs.delegationName
-                            textAnnouncements = prefs.textAnnouncements
-                            if (prefs.themeId != currentThemeId) onThemeChanged(prefs.themeId)
-                        }
+                        if (inbox.apply(found, fromKey = !usbFoundIsUndo)) settingsVersion++
                         usbFound = null
                         usbScans++ // then the key's images, if any
                     },
@@ -635,10 +720,13 @@ private fun TvApp(
                 UsbMediaScreen(
                     found = media,
                     onApply = {
-                        val copied = mediaInbox.apply(media)
-                        if (!copied) notice = TvStrings.USB_ERROR_TITLE
-                        mediaVersion++
                         usbMedia = null
+                        notice = TvStrings.USB_COPYING
+                        scope.launch {
+                            val copied = withContext(Dispatchers.IO) { mediaInbox.apply(media) }
+                            notice = if (copied) null else TvStrings.USB_ERROR_TITLE
+                            mediaVersion++
+                        }
                     },
                     onDismiss = {
                         mediaInbox.dismiss(media)
@@ -654,7 +742,7 @@ private fun TvApp(
                     gouvernorats = gouvernorats,
                     announcementsEnabled = announcementsEnabled,
                     customBgEnabled = customBgEnabled,
-                    announcementIntervalSec = prefs.announcementIntervalSec,
+                    announcementIntervalSec = announcementSeconds,
                     backgroundCount = imageCounts.getValue(MediaKind.BACKGROUNDS),
                     announcementCount = imageCounts.getValue(MediaKind.ANNOUNCEMENTS) + textAnnouncements.size,
                     currentThemeId = currentThemeId,
@@ -684,6 +772,17 @@ private fun TvApp(
                     },
                     onAnnouncementIntervalChanged = { interval ->
                         prefs.announcementIntervalSec = interval
+                        announcementSeconds = interval
+                    },
+                    weatherEnabled = weatherEnabled,
+                    onWeatherChanged = { enabled ->
+                        prefs.weatherEnabled = enabled
+                        weatherEnabled = enabled
+                    },
+                    announcementsEveryMinutes = announcementsEvery,
+                    onAnnouncementsEveryChanged = { minutes ->
+                        prefs.announcementsEveryMinutes = minutes
+                        announcementsEvery = minutes
                     },
                     onDeleteImages = {
                         MediaKind.entries.forEach(mediaManager::clear)
@@ -695,25 +794,47 @@ private fun TvApp(
                             session = phoneSession,
                             onStart = {
                                 stopPhone()
-                                val token = PhoneAdminRoutes.newToken()
-                                val backend = object : PhoneAdminBackend {
-                                    private fun found(text: String) = UsbSettingsFound(File("phone"), text, "phone")
-                                    override fun currentFile() = inbox.currentFile()
-                                    override fun preview(text: String) = inbox.preview(found(text))
-                                    override fun apply(text: String): Boolean =
-                                        inbox.apply(found(text), fromKey = false).also { if (it) settingsVersion++ }
-                                    override fun describe(result: MosqueSettingsFile.ParseResult) = SettingsChangeLines.of(result)
-                                }
-                                val server = PhoneAdminServer(PhoneAdminRoutes(token, backend)::handle)
+                                val token = DashboardRoutes.newToken()
+                                val backend = DashboardBackendImpl(
+                                    context = context,
+                                    prefs = prefs,
+                                    inbox = inbox,
+                                    media = mediaManager,
+                                    gouvernorats = gouvernorats,
+                                    undoFile = snapshotFile,
+                                    updater = updater,
+                                    flavor = BuildConfig.FLAVOR,
+                                    live = dashboardLive::get,
+                                    kioskRows = {
+                                        healthRows(KioskReport.collect(context, activity.kiosk, activity.safeMode, android.os.Process.getStartElapsedRealtime())) +
+                                            updateRows(updater.status, context.packageName)
+                                    },
+                                    onSettingsChanged = {
+                                        settingsVersion++
+                                        canUndoImport = snapshotFile.isFile
+                                    },
+                                    onMediaChanged = { mediaVersion++ },
+                                )
+                                val routes = DashboardRoutes(token, backend)
+                                val server = DashboardServer(routes::admit, routes::handle)
                                 val port = runCatching { server.start() }.getOrNull()
                                 if (port != null) {
                                     phoneServer = server
-                                    val address = PhoneAdminServer.localAddresses().firstOrNull()
+                                    phoneRoutes = routes
+                                    val address = DashboardServer.localAddresses().firstOrNull()
                                     phoneSession = PhoneAdminSession(address?.let { "http://$it:$port/?t=$token" }, port)
                                 }
                             },
                             onStop = ::stopPhone,
                             onBack = back,
+                            onOpenWifiSettings = Intent(Settings.ACTION_WIFI_SETTINGS)
+                                .takeIf { it.resolveActivity(context.packageManager) != null }
+                                ?.let { intent ->
+                                    {
+                                        awayForAdmin(activity, ADMIN_SYSTEM_SETTINGS_AWAY)
+                                        runCatching { context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
+                                    }
+                                },
                         )
                     },
                     kioskPage = { back ->
@@ -724,6 +845,18 @@ private fun TvApp(
                         val overlay = remember(report) { KioskController.overlaySettingsIntent(context) }
                         KioskHealthScreen(
                             report = report,
+                            extraRows = updateRows(updateStatus, context.packageName),
+                            onAllowUpdates = if (updateStatus.supported && updateStatus.needsPermission) {
+                                {
+                                    awayForAdmin(activity, ADMIN_SYSTEM_SETTINGS_AWAY)
+                                    runCatching {
+                                        context.startActivity(
+                                            Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:${context.packageName}"))
+                                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                                        )
+                                    }
+                                }
+                            } else null,
                             onGrantOverlay = overlay?.let { intent ->
                                 {
                                     awayForAdmin(activity, ADMIN_SYSTEM_SETTINGS_AWAY)
@@ -775,11 +908,16 @@ private fun TvApp(
             }
             afterSalahSlide != null -> AfterSalahAzkarScreen(afterSalahSlide.value, afterSalahSlide.index, afterSalahSlides.size)
             showAnnouncements -> {
+                key(announcements) {
                 AnnouncementsSlideshow(
                     announcements = announcements,
-                    displaySeconds = prefs.announcementIntervalSec,
-                    onDismiss = { announcementsShownFor = adhkarShownFor }
+                    displaySeconds = announcementSeconds,
+                    onDismiss = {
+                        announcementsShownFor = adhkarShownFor
+                        lastSlideshowAt = clock.read().now
+                    }
                 )
+                }
             }
             else -> {
                 PrayerDisplayScreen(
@@ -793,12 +931,14 @@ private fun TvApp(
                     isRamadan = isRamadan,
                     banner = banner,
                     ticker = tickerSlides,
+                    weather = weatherLine,
                     backgroundImages = backgroundImages,
                     onSettingsRequested = { currentScreen = Screen.Settings },
                 )
             }
         }
         (hint ?: notice ?: TvStrings.CLOCK_WRONG_ZONE.takeIf { reading.trust == ClockTrust.WRONG_ZONE })?.let { ScreenNotice(it) }
+        if (phoneSession != null && currentScreen == Screen.Display && flow.phase == FlowPhase.IDLE) TopMark(TvStrings.DASHBOARD_OPEN)
     }
 }
 
@@ -810,6 +950,23 @@ private const val NOTICE_MILLIS = 20_000L
 private const val HINT_MILLIS = 4_000L
 private const val MAX_AFTER_SALAH_MINUTES = 30
 private const val PHONE_IDLE_MILLIS = 15 * 60_000L
+private const val PHONE_MAX_MILLIS = 2 * 60 * 60_000L
+private const val WEATHER_TICK_MILLIS = 5 * 60_000L
+private const val UPDATE_TICK_MILLIS = 30 * 60_000L
+private const val QUIET_BEFORE_ADHAN_MINUTES = 10L
+
+/** The GitHub build's update rows for the kiosk page and the dashboard. */
+private fun updateRows(status: UpdateStatus, packageName: String): List<HealthRow> {
+    if (!status.supported) return emptyList()
+    return listOfNotNull(
+        HealthRow(
+            HealthLevel.WARNING, "لا يسمح الجهاز للتطبيق بتثبيت تحديثاته",
+            fix = "اسمح بتثبيت التطبيقات غير المعروفة لهذا التطبيق",
+            command = "adb shell appops set $packageName REQUEST_INSTALL_PACKAGES allow",
+        ).takeIf { status.needsPermission },
+        HealthRow(if (status.available != null) HealthLevel.INFO else HealthLevel.GOOD, "التحديثات: ${status.message}"),
+    )
+}
 private const val ADMIN_EXIT_AWAY = 30 * 60_000L
 private const val ADMIN_SYSTEM_SETTINGS_AWAY = 10 * 60_000L
 
@@ -825,7 +982,8 @@ private fun aboutLines(context: Context): List<String> {
     val info = runCatching { context.packageManager.getPackageInfo(context.packageName, 0) }.getOrNull()
     val officialYears = OfficialIslamicDates.updates.value.keys.sorted()
     return listOfNotNull(
-        "الإصدار ${info?.versionName.orEmpty()} (${info?.let { androidx.core.content.pm.PackageInfoCompat.getLongVersionCode(it) } ?: 0})",
+        "الإصدار ${info?.versionName.orEmpty()} (${info?.let { androidx.core.content.pm.PackageInfoCompat.getLongVersionCode(it) } ?: 0})" +
+            if (BuildConfig.FLAVOR == "github") " · نسخة GitHub، تحدّث نفسها" else " · نسخة Google Play",
         "أوقات الصلاة تُحسب على الجهاز دون إنترنت للسنوات ${com.tunisianprayertimes.InmPrayerTimes.SUPPORTED_YEARS.first}–${com.tunisianprayertimes.InmPrayerTimes.SUPPORTED_YEARS.last}",
         officialYears.takeIf { it.isNotEmpty() }?.let { "تواريخ رمضان والعيد الرسمية: ${it.joinToString("، ")} هـ" },
         "ملف الإعدادات على مفتاح USB: Android/data/${context.packageName}/files/mosque-tv.json",

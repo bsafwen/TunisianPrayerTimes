@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.tv.usb
 
+import com.tunisianprayertimes.tv.data.AnnouncementText
 import com.tunisianprayertimes.tv.data.LocalMediaManager
 import com.tunisianprayertimes.tv.data.MediaKind
 import java.io.File
@@ -13,12 +14,14 @@ data class UsbMediaFound(val images: Map<MediaKind, List<File>>, val signature: 
 
 /**
  * Background and announcement images on a USB key: the "backgrounds" and "announcements" folders
- * next to the settings file. Only real JPEG, PNG or WebP files of a sensible size are taken.
+ * next to the settings file. Only real JPEG, PNG or WebP files of a sensible size are taken, and in
+ * "announcements" also .txt files, each one a written announcement.
  */
 object UsbMedia {
 
     const val MAX_FILES = 20
     const val MAX_BYTES = 15L * 1024 * 1024
+    const val MAX_TEXT_BYTES = 4L * 1024
 
     /** Creates the empty folders on a key, so the admin sees where the images go. */
     fun ensureFolders(volume: RemovableVolume) {
@@ -27,25 +30,32 @@ object UsbMedia {
 
     /** The images on the first key that has any, or null. Never throws. */
     fun find(volumes: List<RemovableVolume>): UsbMediaFound? = volumes.firstNotNullOfOrNull { volume ->
-        val images = MediaKind.entries.associateWith { kind -> imagesIn(File(volume.appFolder, kind.folder)) }
+        val images = MediaKind.entries.associateWith { kind -> filesIn(File(volume.appFolder, kind.folder), texts = kind == MediaKind.ANNOUNCEMENTS) }
         UsbMediaFound(images, signature(images)).takeUnless { it.isEmpty }
     }
 
-    private fun imagesIn(folder: File): List<File> = runCatching {
-        folder.listFiles().orEmpty()
-            .filter { it.isFile && it.extension.lowercase() in LocalMediaManager.IMAGE_EXTENSIONS && it.length() in 1..MAX_BYTES && isImage(it) }
-            .sortedBy { it.name.lowercase() }
-            .take(MAX_FILES)
+    private fun filesIn(folder: File, texts: Boolean): List<File> = runCatching {
+        val files = folder.listFiles().orEmpty().filter { it.isFile }.sortedBy { it.name.lowercase() }
+        val images = files.filter { it.extension.lowercase() in LocalMediaManager.IMAGE_EXTENSIONS && it.length() in 1..MAX_BYTES && isImage(it) }
+        val notes = if (texts) files.filter { it.extension.lowercase() == LocalMediaManager.TEXT_EXTENSION && it.length() in 1..MAX_TEXT_BYTES && isText(it) } else emptyList()
+        images.take(MAX_FILES) + notes.take(MAX_FILES)
     }.getOrDefault(emptyList())
 
     /** By content, not name: JPEG, PNG or WebP signatures. */
     fun isImage(file: File): Boolean = runCatching {
-        val head = file.inputStream().use { input -> ByteArray(12).also { input.read(it) } }
+        isImage(file.inputStream().use { input -> ByteArray(12).also { input.read(it) } })
+    }.getOrDefault(false)
+
+    fun isImage(head: ByteArray): Boolean {
+        if (head.size < 12) return false
         val jpeg = head[0] == 0xFF.toByte() && head[1] == 0xD8.toByte() && head[2] == 0xFF.toByte()
         val png = head.copyOfRange(0, 4).contentEquals(byteArrayOf(0x89.toByte(), 0x50, 0x4E, 0x47))
         val webp = String(head, 0, 4, Charsets.US_ASCII) == "RIFF" && String(head, 8, 4, Charsets.US_ASCII) == "WEBP"
-        jpeg || png || webp
-    }.getOrDefault(false)
+        return jpeg || png || webp
+    }
+
+    /** Readable text with something in it (not a renamed binary file); see [AnnouncementText]. */
+    fun isText(file: File): Boolean = runCatching { AnnouncementText.fromBytes(file.readBytes()) != null }.getOrDefault(false)
 
     private fun signature(images: Map<MediaKind, List<File>>): String {
         val digest = MessageDigest.getInstance("SHA-256")

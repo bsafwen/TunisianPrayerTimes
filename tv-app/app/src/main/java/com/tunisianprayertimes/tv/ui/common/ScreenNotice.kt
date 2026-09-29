@@ -31,3 +31,11 @@ fun ScreenNotice(message: String) {
         )
     }
 }
+
+/** A discreet mark at the top of the display, e.g. while someone manages the screen from a phone. */
+@Composable
+fun TopMark(message: String) {
+    Box(Modifier.fillMaxSize().padding(top = 2.dp), contentAlignment = Alignment.TopCenter) {
+        Text(message, color = Color.White.copy(alpha = 0.55f), fontSize = 12.sp)
+    }
+}

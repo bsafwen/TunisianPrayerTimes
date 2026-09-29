@@ -1,8 +1,9 @@
 name: TV Release
 
-# Builds the signed TV app for Google Play (AAB) and for sideloading on boxes without Play (APK).
-# Run by hand from the Actions tab; nothing is uploaded to Play: the AAB is attached to the run for
-# a person to upload in the Play Console.
+# Builds the signed TV app in its two forms, run by hand from the Actions tab:
+# - "play": the AAB for Google Play, attached to the run for a person to upload in the Play Console;
+# - "github": the APK for boxes without Play Store, published as a GitHub release (tag tv-v<version>),
+#   from which the installed GitHub builds update themselves.
 on:
   workflow_dispatch:
     inputs:
@@ -14,7 +15,7 @@ on:
         required: true
 
 permissions:
-  contents: read
+  contents: write # the GitHub build's release
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -76,12 +77,13 @@ jobs:
       - name: Remove local SDK path
         run: rm -f local.properties
 
-      - name: Test, then build the release
+      - name: Test, then build the releases
         env:
           VERSION_CODE: ${{ inputs.versionCode }}
           VERSION_NAME: ${{ inputs.versionName }}
         run: >
-          ./gradlew :app:testDebugUnitTest :app:bundleRelease :app:assembleRelease
+          ./gradlew :app:testPlayDebugUnitTest :app:testGithubDebugUnitTest
+          :app:bundlePlayRelease :app:assembleGithubRelease
           "-PtvVersionCode=$VERSION_CODE" "-PtvVersionName=$VERSION_NAME"
 
       - name: Remove signing files
@@ -92,10 +94,18 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: tv-aab-${{ inputs.versionName }}
-          path: tv-app/app/build/outputs/bundle/release/app-release.aab
+          path: tv-app/app/build/outputs/bundle/playRelease/app-play-release.aab
 
-      - name: Upload APK (boxes without Play)
-        uses: actions/upload-artifact@v6
-        with:
-          name: tv-apk-${{ inputs.versionName }}
-          path: tv-app/app/build/outputs/apk/release/app-release.apk
+      # The updater finds this release by its tag prefix and the asset's name (version name, then code).
+      - name: Publish the GitHub build as a release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION_CODE: ${{ inputs.versionCode }}
+          VERSION_NAME: ${{ inputs.versionName }}
+        run: |
+          asset="TunisianPrayerTimesTV-github-${VERSION_NAME}-${VERSION_CODE}.apk"
+          cp app/build/outputs/apk/github/release/app-github-release.apk "$asset"
+          notes="شاشة المسجد ${VERSION_NAME} (${VERSION_CODE}): نسخة الأجهزة دون متجر Google Play، تحدّث نفسها من هنا."
+          # --latest=false: the repository's "latest" release stays the phone app's.
+          gh release create "tv-v${VERSION_NAME}" "$asset" --target "${GITHUB_SHA}" \
+            --title "Mosque TV ${VERSION_NAME}" --notes "$notes" --latest=false

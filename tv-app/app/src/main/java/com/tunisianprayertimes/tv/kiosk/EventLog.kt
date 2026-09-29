@@ -6,7 +6,7 @@ import java.io.FileOutputStream
 /** What the kiosk remembers happened, for the health page. Local only: nothing is uploaded. */
 enum class KioskEvent {
     BOOT, AUTOSTART_OK, AUTOSTART_BLOCKED, CRASH, SAFE_MODE_ENTER, SAFE_MODE_EXIT, WATCHDOG_REFRONT,
-    SLEEP_GAP, SCREEN_OFF, SCREEN_ON, MAINT_RESTART, HOME_MODE_ON, HOME_MODE_OFF, ADMIN_EXIT,
+    SLEEP_GAP, SCREEN_OFF, SCREEN_ON, MAINT_RESTART, HOME_MODE_ON, HOME_MODE_OFF, ADMIN_EXIT, UPDATE,
 }
 
 /** One logged event; [atMillis] is the device's wall clock, which may have been wrong at the time. */

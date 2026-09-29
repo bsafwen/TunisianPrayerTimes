@@ -59,7 +59,7 @@ object MosqueSettingsFile {
     /** A Ramadan or Eid date the file sets or returns to automatic (null). */
     data class DateChange(val hijriYear: Int, val event: DateEvent, val before: LocalDate?, val after: LocalDate?)
 
-    enum class ProfileField { NAME, DELEGATION, THEME }
+    enum class ProfileField { NAME, DELEGATION, THEME, WEATHER, BACKGROUNDS, ANNOUNCEMENTS, SLIDE_SECONDS, ANNOUNCEMENTS_EVERY }
 
     /** The mosque's name, place or theme changed by the file, as the admin reads them ("—" when unset). */
     data class ProfileChange(val field: ProfileField, val before: String, val after: String)
@@ -74,7 +74,7 @@ object MosqueSettingsFile {
         UNKNOWN_PRAYER, DUPLICATE_PRAYER, NOT_A_PRAYER_OBJECT, UNKNOWN_FIELD, DUPLICATE_FIELD,
         INVALID_IQAMAH, IQAMAH_OUT_OF_RANGE, INVALID_DURATION, DURATION_OUT_OF_RANGE,
         INVALID_YEAR, INVALID_DATE, DATE_OUT_OF_RANGE, INVALID_NAME, UNKNOWN_DELEGATION, UNKNOWN_THEME,
-        INVALID_ADHKAR, INVALID_ANNOUNCEMENT,
+        INVALID_ADHKAR, INVALID_ANNOUNCEMENT, INVALID_OPTION,
     }
 
     /** A problem in the file: [path] locates it (for example prayers.isha.iqamah); [message] is for the TV screen. */
@@ -134,12 +134,14 @@ object MosqueSettingsFile {
         currentAnnouncements: List<TextAnnouncement>,
     ): ParseResult {
         if (text.length > MAX_CHARS) return fail(ErrorCode.TOO_LARGE, "", "الملف كبير جدًا: هذا ليس ملف إعدادات شاشة المسجد")
+        val keys = scanKeys(text)
+        if (keys == KeyScan.TooDeep) return fail(ErrorCode.INVALID_JSON, "", MESSAGE_INVALID_JSON)
         val root = runCatching { json.parseToJsonElement(text.removePrefix("﻿")) }.getOrNull()
             ?: return fail(ErrorCode.INVALID_JSON, "", MESSAGE_INVALID_JSON)
         if (root !is JsonObject) return fail(ErrorCode.NOT_AN_OBJECT, "", MESSAGE_INVALID_JSON)
         // The JSON reader keeps the last of two identical keys: the admin's added line would vanish.
-        duplicateKey(text)?.let { path ->
-            return fail(ErrorCode.DUPLICATE_FIELD, path, "«${path.substringAfterLast('.')}» مذكور مرتين في الملف: احذف أحدهما")
+        if (keys is KeyScan.Duplicate) {
+            return fail(ErrorCode.DUPLICATE_FIELD, keys.path, "«${keys.path.substringAfterLast('.')}» مذكور مرتين في الملف: احذف أحدهما")
         }
         rootErrors(root).takeIf { it.isNotEmpty() }?.let { return ParseResult.Failure(it) }
 
@@ -216,6 +218,9 @@ object MosqueSettingsFile {
         return items.mapIndexedNotNull { index, item ->
             val path = "$sectionKey[$index]"
             val fields = item as? JsonObject
+            if (fields != null && !itemKeysOk(path, fields, listOf(TEXT_KEYS, FROM_KEYS, UNTIL_KEYS), "\"text\" و\"from\" و\"until\"", errors)) {
+                return@mapIndexedNotNull null
+            }
             fun field(keys: Set<String>) = fields?.entries?.firstOrNull { clean(it.key).trim().lowercase() in keys }?.value
             val text = field(TEXT_KEYS)?.stringOrNull()?.let { cleanText(it).trim() }
             fun date(keys: Set<String>): Pair<Boolean, LocalDate?> {
@@ -278,6 +283,7 @@ object MosqueSettingsFile {
         val (mode, items) = when (value) {
             is JsonArray -> CustomAdhkarList.Mode.APPEND to value
             is JsonObject -> {
+                if (!itemKeysOk(path, value, listOf(MODE_KEYS, ITEMS_KEYS), "\"mode\" و\"items\"", errors)) return null
                 val modeText = value.entries.firstOrNull { clean(it.key).trim().lowercase() in MODE_KEYS }?.value?.stringOrNull()
                 val mode = when (modeText?.let { clean(it).trim().lowercase() }) {
                     null, "append", "add", "إضافة", "اضافة" -> CustomAdhkarList.Mode.APPEND
@@ -310,6 +316,9 @@ object MosqueSettingsFile {
 
     private fun readDhikr(path: String, element: JsonElement, errors: MutableList<SettingsError>): CustomDhikr? {
         val fields = element as? JsonObject
+        if (fields != null && !itemKeysOk(path, fields, listOf(TEXT_KEYS, REFERENCE_KEYS, COUNT_KEYS), "\"text\" و\"reference\" و\"count\"", errors)) {
+            return null
+        }
         fun field(keys: Set<String>) = fields?.entries?.firstOrNull { clean(it.key).trim().lowercase() in keys }?.value
         val text = field(TEXT_KEYS)?.stringOrNull()?.let { cleanText(it).trim() }
         val reference = field(REFERENCE_KEYS)?.stringOrNull()?.let { cleanText(it).trim() }
@@ -392,17 +401,54 @@ object MosqueSettingsFile {
                 }
             }
         }
-        fields(display, DISPLAY_FIELDS, "\"theme\"") { _, element, path ->
-            val wanted = element.stringOrNull()?.let { clean(it).trim() }
-            val theme = catalog.themes.entries.firstOrNull { (id, name) -> wanted != null && (id.equals(wanted, ignoreCase = true) || name == wanted) }
-            if (theme == null) {
-                errors += SettingsError(ErrorCode.UNKNOWN_THEME, path,
-                    "المظهر «${element.display()}» غير معروف: استعمل ${catalog.themes.keys.joinToString(" أو ")}")
-            } else {
-                profile = profile.copy(themeId = theme.key)
+        fields(display, DISPLAY_FIELDS, "\"theme\" أو \"weather\" أو \"backgrounds\" أو \"announcements\" أو \"slideSeconds\" أو \"announcementsEveryMinutes\"") { field, element, path ->
+            fun flag(set: (Boolean) -> DisplayOptions) {
+                val value = element.booleanOrNull()
+                if (value == null) {
+                    errors += SettingsError(ErrorCode.INVALID_OPTION, path, "«${path.substringAfterLast('.')}» يكون true (تشغيل) أو false (إيقاف)")
+                } else {
+                    profile = profile.copy(display = set(value))
+                }
+            }
+            fun number(range: IntRange, set: (Int) -> DisplayOptions) {
+                val value = element.intOrNull()
+                if (value == null || value !in range) {
+                    errors += SettingsError(ErrorCode.INVALID_OPTION, path,
+                        "«${path.substringAfterLast('.')}» عدد بين ${range.first} و${range.last} (في الملف: ${element.display()})")
+                } else {
+                    profile = profile.copy(display = set(value))
+                }
+            }
+            val options = profile.display
+            when (field) {
+                ProfileField.WEATHER -> flag { options.copy(weather = it) }
+                ProfileField.BACKGROUNDS -> flag { options.copy(backgrounds = it) }
+                ProfileField.ANNOUNCEMENTS -> flag { options.copy(announcements = it) }
+                ProfileField.SLIDE_SECONDS -> number(DisplayOptions.SLIDE_SECONDS) { options.copy(slideSeconds = it) }
+                ProfileField.ANNOUNCEMENTS_EVERY -> number(DisplayOptions.EVERY_MINUTES) { options.copy(announcementsEveryMinutes = it) }
+                else -> {
+                    val wanted = element.stringOrNull()?.let { clean(it).trim() }
+                    val theme = catalog.themes.entries.firstOrNull { (id, name) -> wanted != null && (id.equals(wanted, ignoreCase = true) || name == wanted) }
+                    if (theme == null) {
+                        errors += SettingsError(ErrorCode.UNKNOWN_THEME, path,
+                            "المظهر «${element.display()}» غير معروف: استعمل ${catalog.themes.keys.joinToString(" أو ")}")
+                    } else {
+                        profile = profile.copy(themeId = theme.key)
+                    }
+                }
             }
         }
         return profile
+    }
+
+    /** true or false, also written "true"/"false" or نعم/لا by hand. */
+    private fun JsonElement.booleanOrNull(): Boolean? {
+        val primitive = this as? JsonPrimitive ?: return null
+        return when (clean(primitive.content).trim().lowercase()) {
+            "true", "نعم", "yes", "on" -> true
+            "false", "لا", "no", "off" -> false
+            else -> null
+        }
     }
 
     private fun profileChanges(before: MosqueProfile, after: MosqueProfile, catalog: ProfileCatalog): List<ProfileChange> {
@@ -414,6 +460,19 @@ object MosqueSettingsFile {
             ProfileChange(ProfileField.DELEGATION, place(before.delegationId), place(after.delegationId))
                 .takeIf { before.delegationId != after.delegationId },
             ProfileChange(ProfileField.THEME, theme(before.themeId), theme(after.themeId)).takeIf { before.themeId != after.themeId },
+        ) + displayChanges(before.display, after.display)
+    }
+
+    private fun displayChanges(before: DisplayOptions, after: DisplayOptions): List<ProfileChange> {
+        fun flag(value: Boolean?) = when (value) { null -> "—"; true -> "تشغيل"; false -> "إيقاف" }
+        fun number(value: Int?) = value?.toString() ?: "—"
+        return listOfNotNull(
+            ProfileChange(ProfileField.WEATHER, flag(before.weather), flag(after.weather)).takeIf { before.weather != after.weather },
+            ProfileChange(ProfileField.BACKGROUNDS, flag(before.backgrounds), flag(after.backgrounds)).takeIf { before.backgrounds != after.backgrounds },
+            ProfileChange(ProfileField.ANNOUNCEMENTS, flag(before.announcements), flag(after.announcements)).takeIf { before.announcements != after.announcements },
+            ProfileChange(ProfileField.SLIDE_SECONDS, number(before.slideSeconds), number(after.slideSeconds)).takeIf { before.slideSeconds != after.slideSeconds },
+            ProfileChange(ProfileField.ANNOUNCEMENTS_EVERY, number(before.announcementsEveryMinutes), number(after.announcementsEveryMinutes))
+                .takeIf { before.announcementsEveryMinutes != after.announcementsEveryMinutes },
         )
     }
 
@@ -599,7 +658,15 @@ object MosqueSettingsFile {
             profile.delegationId?.let(catalog.delegationName)?.let { "\"delegationName\": ${JsonPrimitive(it)}" },
         )
         if (mosque.isNotEmpty()) append("  \"mosque\": { ").append(mosque.joinToString(", ")).append(" },\n")
-        profile.themeId?.let { append("  \"display\": { \"theme\": ").append(JsonPrimitive(it)).append(" },\n") }
+        val display = listOfNotNull(
+            profile.themeId?.let { "\"theme\": ${JsonPrimitive(it)}" },
+            profile.display.weather?.let { "\"weather\": $it" },
+            profile.display.backgrounds?.let { "\"backgrounds\": $it" },
+            profile.display.announcements?.let { "\"announcements\": $it" },
+            profile.display.slideSeconds?.let { "\"slideSeconds\": $it" },
+            profile.display.announcementsEveryMinutes?.let { "\"announcementsEveryMinutes\": $it" },
+        )
+        if (display.isNotEmpty()) append("  \"display\": { ").append(display.joinToString(", ")).append(" },\n")
         val daily = MosqueSchedule.CONFIGURABLE + MosqueSchedule.EID
         append("  \"prayers\": {\n")
         daily.forEachIndexed { index, prayer ->
@@ -737,6 +804,8 @@ object MosqueSettingsFile {
     private val REFERENCE_KEYS = setOf("reference", "source", "المصدر", "المرجع")
     private val COUNT_KEYS = setOf("count", "repetitions", "العدد")
     private const val MAX_ADHKAR_ITEMS = 100
+    /** A settings file is at most 5 levels deep; far deeper is refused before it is read. */
+    private const val MAX_DEPTH = 32
     private const val MAX_ADHKAR_TEXT = 1000
     private const val MAX_ADHKAR_REFERENCE = 200
     private const val MAX_ADHKAR_COUNT = 1000
@@ -751,6 +820,11 @@ object MosqueSettingsFile {
 
     private val DISPLAY_FIELDS: Map<String, ProfileField> = buildMap {
         listOf("theme", "المظهر").forEach { put(it, ProfileField.THEME) }
+        listOf("weather", "الطقس").forEach { put(it, ProfileField.WEATHER) }
+        listOf("backgrounds", "الخلفيات").forEach { put(it, ProfileField.BACKGROUNDS) }
+        listOf("announcements", "الإعلانات", "الاعلانات").forEach { put(it, ProfileField.ANNOUNCEMENTS) }
+        listOf("slideseconds", "slide_seconds", "مدة الإعلان").forEach { put(it, ProfileField.SLIDE_SECONDS) }
+        listOf("announcementseveryminutes", "announcements_every_minutes", "تكرار الإعلانات").forEach { put(it, ProfileField.ANNOUNCEMENTS_EVERY) }
     }
 
     /** The sections of the file under their accepted names; the first five must be objects. */
@@ -793,11 +867,19 @@ object MosqueSettingsFile {
         return errors
     }
 
+    private sealed interface KeyScan {
+        data object Clean : KeyScan
+        /** Nested deeper than any settings file: a hostile file, refused before it is read further. */
+        data object TooDeep : KeyScan
+        /** The path of the first key written twice in the same object ("prayers.isha"). */
+        data class Duplicate(val path: String) : KeyScan
+    }
+
     /**
-     * The path of the first key written twice in the same object ("prayers.isha"), or null. Reads the
-     * raw text (comments included) because the parsed tree has already kept only the last value.
+     * Keys written twice, and nesting. Reads the raw text (comments included) because the parsed
+     * tree has already kept only the last value of a key written twice.
      */
-    private fun duplicateKey(text: String): String? {
+    private fun scanKeys(text: String): KeyScan {
         class Frame(val isObject: Boolean, val path: String) {
             val keys = mutableSetOf<String>()
             var key: String? = null
@@ -825,26 +907,53 @@ object MosqueSettingsFile {
                     i = text.indexOf("*/", i + 2).let { if (it < 0) text.length else it + 1 }
                 }
                 c == '{' || c == '[' -> {
+                    if (stack.size >= MAX_DEPTH) return KeyScan.TooDeep
                     val path = stack.lastOrNull()?.child().orEmpty()
                     stack.addLast(Frame(c == '{', path))
                 }
                 c == '}' || c == ']' -> stack.removeLastOrNull()
                 c == ':' -> stack.lastOrNull()?.takeIf { it.isObject }?.let { frame ->
                     val key = lastString.orEmpty()
-                    if (!frame.keys.add(key)) return listOfNotNull(frame.path.ifEmpty { null }, key).joinToString(".")
+                    if (!frame.keys.add(key)) return KeyScan.Duplicate(listOfNotNull(frame.path.ifEmpty { null }, key).joinToString("."))
                     frame.key = key
                 }
                 c == ',' -> stack.lastOrNull()?.let { frame -> if (frame.isObject) frame.key = null else frame.index++ }
             }
             i++
         }
-        return null
+        return KeyScan.Clean
+    }
+
+    /**
+     * An item's keys ({ "text": …, "from": … }): each must be one of [fields] (a field and its other
+     * names) or a note, and no field twice under two of its names. False when one is not.
+     */
+    private fun itemKeysOk(path: String, item: JsonObject, fields: List<Set<String>>, hint: String, errors: MutableList<SettingsError>): Boolean {
+        val before = errors.size
+        val seen = mutableMapOf<Set<String>, String>()
+        for (key in item.keys) {
+            val cleanKey = clean(key).trim().lowercase()
+            if (cleanKey in IGNORED_FIELDS) continue
+            val field = fields.firstOrNull { cleanKey in it }
+            if (field == null) {
+                errors += SettingsError(ErrorCode.UNKNOWN_FIELD, "$path.$key", "حقل غير معروف «$key»: استعمل $hint")
+                continue
+            }
+            seen.put(field, key)?.let { first -> errors += SettingsError(ErrorCode.DUPLICATE_FIELD, "$path.$key", "الحقل مذكور مرتين («$first» و«$key»)") }
+        }
+        return errors.size == before
     }
 
     /** A top-level section under any of its accepted names, with the name used in the file (for error paths). */
     private fun JsonObject.section(vararg names: String): Pair<String, JsonObject>? =
         entries.firstOrNull { (key, _) -> clean(key).trim().lowercase() in names }
             ?.let { (key, value) -> (value as? JsonObject)?.let { key to it } }
+
+    /** The dates a file may set for [event] of Hijri [year]: within a few days of the calendar estimate. */
+    fun acceptedDates(year: Int, event: DateEvent): ClosedRange<LocalDate> {
+        val expected = estimatedDate(TunisianHijriCalendar(), year, event)
+        return expected.minusDays(MAX_DAYS_FROM_ESTIMATE)..expected.plusDays(MAX_DAYS_FROM_ESTIMATE)
+    }
 
     private fun estimatedDate(estimate: TunisianHijriCalendar, year: Int, event: DateEvent): LocalDate = when (event) {
         DateEvent.RAMADAN_START -> estimate.month(year, 9).start

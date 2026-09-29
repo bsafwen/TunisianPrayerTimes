@@ -14,6 +14,8 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <!-- Optional: official Ramadan/Eid date announcements. Prayer times need no network. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Whether the TV is online, before asking for the weather or an update -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- Explicitly opt out: this app does not use full-screen intent alarms -->
     <uses-permission
         android:name="android.permission.USE_FULL_SCREEN_INTENT"

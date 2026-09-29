@@ -1,0 +1,70 @@
+/* Mosque TV dashboard: plain, readable on a phone, no external fonts or scripts. */
+:root {
+  --bg: #0b1627;
+  --surface: #13223a;
+  --surface-2: #1a2c49;
+  --border: #2b3f5e;
+  --text: #f1f1f1;
+  --muted: #9fb0c7;
+  --gold: #d4a843;
+  --good: #4caf50;
+  --warning: #ffb300;
+  --bad: #e53935;
+  --primary: #1f7a5c;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, "Segoe UI", Tahoma, sans-serif; background: var(--bg); color: var(--text); line-height: 1.5; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.mosque-name { font-size: 18px; font-weight: 700; color: var(--gold); }
+.clock { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; direction: ltr; }
+.muted { color: var(--muted); font-size: 14px; }
+.tabs { display: flex; gap: 4px; overflow-x: auto; padding: 8px 12px; background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 2; }
+.tabs button { flex: none; background: transparent; color: var(--muted); border: 0; border-radius: 8px; padding: 8px 12px; font-size: 15px; }
+.tabs button[aria-current="page"] { background: var(--surface-2); color: var(--gold); }
+.view { padding: 16px; max-width: 900px; margin: 0 auto; }
+h2 { font-size: 18px; color: var(--gold); margin: 20px 0 8px; }
+h3 { font-size: 16px; margin: 16px 0 8px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 12px; margin: 12px 0; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 12px 0; }
+.grow { flex: 1 1 160px; }
+label { display: block; font-size: 14px; color: var(--muted); margin: 8px 0 4px; }
+input, select, textarea { font: inherit; color: var(--text); background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; }
+input[type="checkbox"] { width: 20px; height: 20px; vertical-align: middle; }
+input:focus, select:focus, textarea:focus, button:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+textarea { width: 100%; min-height: 120px; }
+textarea.code { direction: ltr; font: 13px/1.5 ui-monospace, monospace; min-height: 55vh; }
+.ltr { direction: ltr; unicode-bidi: isolate; }
+button { font: inherit; color: var(--text); background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; cursor: pointer; }
+button.primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+button.danger { background: transparent; border-color: var(--bad); color: #ff8a80; }
+button:disabled { opacity: .5; cursor: default; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: right; padding: 8px 6px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+th { color: var(--muted); font-weight: 600; font-size: 14px; }
+td input[type="number"], .card input[type="number"] { width: 5.5em; }
+.card table { display: block; overflow-x: auto; }
+td input[type="time"] { width: 7.5em; }
+.tabular { font-variant-numeric: tabular-nums; }
+.level-GOOD { border-inline-start: 4px solid var(--good); }
+.level-WARNING { border-inline-start: 4px solid var(--warning); }
+.level-BAD { border-inline-start: 4px solid var(--bad); }
+.level-INFO { border-inline-start: 4px solid var(--muted); }
+.list-item { padding: 8px 10px; margin: 6px 0; background: var(--surface-2); border-radius: 8px; }
+.badge { display: inline-block; font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--muted); }
+.badge.current { background: var(--gold); color: #1b1b1b; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.gallery figure { margin: 0; background: var(--surface-2); border-radius: 8px; overflow: hidden; }
+.gallery img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #000; }
+.gallery figcaption { display: flex; justify-content: space-between; align-items: center; gap: 4px; padding: 6px; font-size: 12px; word-break: break-all; }
+.toast { position: fixed; inset-inline: 16px; bottom: 16px; padding: 12px 14px; border-radius: 10px; background: var(--surface-2); border: 1px solid var(--border); z-index: 10; }
+.toast.error { border-color: var(--bad); }
+.toast.ok { border-color: var(--good); }
+.dialog { width: min(560px, calc(100% - 32px)); background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+.dialog::backdrop { background: rgba(0, 0, 0, .6); }
+.lines { padding-inline-start: 20px; max-height: 50vh; overflow-y: auto; }
+.lines li { margin: 4px 0; }
+.lines.errors li { color: #ff8a80; }
+@media (max-width: 520px) {
+  th.hide-narrow, td.hide-narrow { display: none; }
+  .clock { font-size: 18px; }
+}

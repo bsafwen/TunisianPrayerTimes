@@ -5,6 +5,7 @@ import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.mosque.AdhkarContent
+import com.tunisianprayertimes.mosque.DisplayOptions
 import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.TextAnnouncement
@@ -55,6 +56,16 @@ class PrefsManager(private val prefs: SharedPreferences) {
         get() = prefs.getInt(KEY_ANNOUNCEMENT_INTERVAL_SEC, 15)
         set(value) = prefs.edit { putInt(KEY_ANNOUNCEMENT_INTERVAL_SEC, value) }
 
+    /** Announcements come back every this many minutes between prayers; 0: only after the adhkar. */
+    var announcementsEveryMinutes: Int
+        get() = prefs.getInt(KEY_ANNOUNCEMENTS_EVERY, 15)
+        set(value) = prefs.edit { putInt(KEY_ANNOUNCEMENTS_EVERY, value) }
+
+    /** The weather at the mosque, shown only when the TV is online and the data is recent. */
+    var weatherEnabled: Boolean
+        get() = prefs.getBoolean(KEY_WEATHER, true)
+        set(value) = prefs.edit { putBoolean(KEY_WEATHER, value) }
+
     /** What the clock guard remembers (last good time, in-app time correction). */
     val clockStore: ClockStore by lazy { PrefsClockStore(prefs) }
 
@@ -65,7 +76,14 @@ class PrefsManager(private val prefs: SharedPreferences) {
 
     /** The mosque's name, place and theme, as the settings file carries them. */
     val profile: MosqueProfile
-        get() = MosqueProfile(mosqueName.trim().take(MosqueProfile.MAX_NAME_LENGTH), delegationId.takeIf { it > 0 }, themeId)
+        get() = MosqueProfile(
+            mosqueName.trim().take(MosqueProfile.MAX_NAME_LENGTH), delegationId.takeIf { it > 0 }, themeId,
+            DisplayOptions(
+                weatherEnabled, customBackgroundEnabled, announcementsEnabled,
+                announcementIntervalSec.coerceIn(DisplayOptions.SLIDE_SECONDS),
+                announcementsEveryMinutes.coerceIn(DisplayOptions.EVERY_MINUTES),
+            ),
+        )
 
     /** Applies what [profile] sets; [place] gives a delegation's gouvernorat and name, and unknown places are skipped. */
     fun applyProfile(profile: MosqueProfile, place: (Int) -> Pair<Int, String>?) {
@@ -78,6 +96,11 @@ class PrefsManager(private val prefs: SharedPreferences) {
             }
         }
         profile.themeId?.let { themeId = it }
+        profile.display.weather?.let { weatherEnabled = it }
+        profile.display.backgrounds?.let { customBackgroundEnabled = it }
+        profile.display.announcements?.let { announcementsEnabled = it }
+        profile.display.slideSeconds?.let { announcementIntervalSec = it }
+        profile.display.announcementsEveryMinutes?.let { announcementsEveryMinutes = it }
     }
 
     /** Back to a new TV (one moved to another mosque): setup runs again. The clock's memory is kept. */
@@ -196,5 +219,7 @@ class PrefsManager(private val prefs: SharedPreferences) {
         private const val KEY_ADHKAR = "adhkar_content"
         private const val KEY_ANNOUNCEMENTS = "text_announcements"
         private const val KEY_USB_MEDIA = "usb_media_last_handled"
+        private const val KEY_ANNOUNCEMENTS_EVERY = "announcements_every_minutes"
+        private const val KEY_WEATHER = "weather_enabled"
     }
 }
