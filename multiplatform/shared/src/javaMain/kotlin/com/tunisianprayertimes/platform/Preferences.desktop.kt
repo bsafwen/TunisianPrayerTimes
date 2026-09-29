@@ -150,6 +150,12 @@ actual object Preferences {
         else prefs.remove("ramadan_override_json")
         prefs.flush()
     }
+    actual fun getManualIslamicDatesJson(): String? = prefs.get("manual_islamic_dates_json", null)
+    actual fun setManualIslamicDatesJson(json: String?) {
+        if (json != null) prefs.put("manual_islamic_dates_json", json)
+        else prefs.remove("manual_islamic_dates_json")
+        prefs.flush()
+    }
 
     private fun getEndOffsetMinutes(prayer: Prayer): Int? =
         prefs.getInt("end_offset_${prayer.name}", NO_END_OFFSET).takeIf { it != NO_END_OFFSET }

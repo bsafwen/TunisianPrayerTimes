@@ -23,6 +23,7 @@ object OfficialIslamicDates {
         currentHijriYear = { HijrahDate.now().get(ChronoField.YEAR) },
         onRecord = RamadanOverrideChecker::useOfficialOverride,
         legacyOverride = { RamadanOverrideChecker.cachedOverride },
+        manual = { ManualIslamicDateOverrides.all() },
     )
 
     val updates: StateFlow<Map<Int, RamadanOverride>> get() = store.updates
@@ -32,7 +33,11 @@ object OfficialIslamicDates {
     fun loadCachedYear(hijriYear: Int) = store.loadCachedYear(hijriYear)
     fun loadYear(hijriYear: Int, refresh: Boolean = false) = store.loadYear(hijriYear, refresh)
     internal fun record(incoming: RamadanOverride): RamadanOverride = store.record(incoming)
+    /** The calendar every Ramadan/Eid behavior follows: the admin's dates, then announcements, then estimates. */
     internal fun calendar(): TunisianHijriCalendar = store.calendar()
+
+    /** Announcements and estimates without the admin's dates: what to poll for, and what a manual date overrides. */
+    internal fun officialCalendar(): TunisianHijriCalendar = store.officialCalendar()
 }
 
 /** A separately owned cache lets the same production behavior run with isolated storage and IO. */
@@ -45,7 +50,20 @@ internal class OfficialIslamicDateStore(
     private val currentHijriYear: () -> Int,
     private val onRecord: (RamadanOverride) -> Unit,
     private val legacyOverride: () -> RamadanOverride?,
+    private val manual: () -> Map<Int, ManualIslamicDates>,
 ) {
+    /** Without admin dates, as before they existed (tests inject the store through this signature). */
+    constructor(
+        readSavedYear: (Int) -> String?,
+        writeSavedYear: (Int, String) -> Unit,
+        readLegacy: () -> String?,
+        fetchYear: (Int) -> RamadanOverride?,
+        nanoTime: () -> Long,
+        currentHijriYear: () -> Int,
+        onRecord: (RamadanOverride) -> Unit,
+        legacyOverride: () -> RamadanOverride?,
+    ) : this(readSavedYear, writeSavedYear, readLegacy, fetchYear, nanoTime, currentHijriYear, onRecord, legacyOverride, { emptyMap() })
+
     private val lock = Any()
     private val records = MutableStateFlow<Map<Int, RamadanOverride>>(emptyMap())
     val updates: StateFlow<Map<Int, RamadanOverride>> = records.asStateFlow()
@@ -54,7 +72,10 @@ internal class OfficialIslamicDateStore(
     private val lastAttempt = mutableMapOf<Int, Long>()
     private val successfulAttempts = mutableSetOf<Int>()
     private var calendarRecords: Map<Int, RamadanOverride>? = null
+    private var calendarManual: Map<Int, ManualIslamicDates>? = null
     private var resolvedCalendar: TunisianHijriCalendar? = null
+    private var officialRecords: Map<Int, RamadanOverride>? = null
+    private var resolvedOfficialCalendar: TunisianHijriCalendar? = null
     private val refreshInterval = TimeUnit.HOURS.toNanos(1)
     private val failedRetryInterval = TimeUnit.MINUTES.toNanos(1)
     private val minimumRequestInterval = TimeUnit.SECONDS.toNanos(5)
@@ -181,14 +202,29 @@ internal class OfficialIslamicDateStore(
 
     /** Same resolver used by event behavior and Android presentation; cache immutable snapshots. */
     internal fun calendar(): TunisianHijriCalendar = synchronized(lock) {
-        val legacyOverride = legacyOverride()
-        val snapshot = if (legacyOverride == null || records.value[legacyOverride.hijriYear] == legacyOverride) records.value
-            else records.value + (legacyOverride.hijriYear to legacyOverride)
-        if (calendarRecords != snapshot || resolvedCalendar == null) {
-            resolvedCalendar = TunisianHijriCalendar(snapshot)
+        val snapshot = officialSnapshot()
+        val manualSnapshot = runCatching { manual() }.getOrDefault(emptyMap())
+        if (calendarRecords != snapshot || calendarManual != manualSnapshot || resolvedCalendar == null) {
+            resolvedCalendar = TunisianHijriCalendar(withManualDates(snapshot, manualSnapshot))
             calendarRecords = snapshot
+            calendarManual = manualSnapshot
         }
         resolvedCalendar!!
+    }
+
+    internal fun officialCalendar(): TunisianHijriCalendar = synchronized(lock) {
+        val snapshot = officialSnapshot()
+        if (officialRecords != snapshot || resolvedOfficialCalendar == null) {
+            resolvedOfficialCalendar = TunisianHijriCalendar(snapshot)
+            officialRecords = snapshot
+        }
+        resolvedOfficialCalendar!!
+    }
+
+    private fun officialSnapshot(): Map<Int, RamadanOverride> {
+        val legacyOverride = legacyOverride()
+        return if (legacyOverride == null || records.value[legacyOverride.hijriYear] == legacyOverride) records.value
+            else records.value + (legacyOverride.hijriYear to legacyOverride)
     }
 
     private fun isSupportedYear(year: Int): Boolean =

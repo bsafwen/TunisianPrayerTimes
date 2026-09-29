@@ -1,8 +1,4 @@
 import org.gradle.api.GradleException
-import org.gradle.api.file.DirectoryProperty
-import org.gradle.api.file.FileSystemOperations
-import org.gradle.api.provider.Property
-import javax.inject.Inject
 import java.util.Properties
 
 val unsignedRelease = providers.gradleProperty("unsignedRelease")
@@ -31,53 +27,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.plugin.compose")
     id("com.google.gms.google-services")
-}
-
-// Package canonical JSON from the repository's data/ folder as assets, without
-// maintaining hand-copied duplicates in app/src/main/assets.
-abstract class BundleDataAssets : DefaultTask() {
-    @get:InputDirectory
-    @get:PathSensitive(PathSensitivity.RELATIVE)
-    abstract val source: DirectoryProperty
-
-    @get:Input
-    abstract val assetFolder: Property<String>
-
-    @get:OutputDirectory
-    abstract val outputDirectory: DirectoryProperty
-
-    @get:Inject
-    abstract val fileSystem: FileSystemOperations
-
-    @TaskAction
-    fun bundle() {
-        fileSystem.sync {
-            from(source) {
-                include("*.json")
-                into(assetFolder.get())
-            }
-            into(outputDirectory)
-        }
-    }
-}
-
-// Official announcements for offline calendar browsing.
-val bundleOfficialIslamicDates by tasks.registering(BundleDataAssets::class) {
-    source.set(rootProject.layout.projectDirectory.dir("../data/official-islamic-dates"))
-    assetFolder.set("official-islamic-dates")
-    outputDirectory.set(layout.buildDirectory.dir("generated/officialIslamicDatesAssets"))
-}
-
-// INM's coordinates and elevations, from which PrayerTimesRepository computes prayer times.
-val bundlePrayerFormulaParams by tasks.registering(BundleDataAssets::class) {
-    source.set(rootProject.layout.projectDirectory.dir("../data/prayer-formula"))
-    assetFolder.set("prayer-formula")
-    outputDirectory.set(layout.buildDirectory.dir("generated/prayerFormulaAssets"))
-}
-
-androidComponents.onVariants { variant ->
-    variant.sources.assets?.addGeneratedSourceDirectory(bundleOfficialIslamicDates, BundleDataAssets::outputDirectory)
-    variant.sources.assets?.addGeneratedSourceDirectory(bundlePrayerFormulaParams, BundleDataAssets::outputDirectory)
+    // Bundles data/prayer-formula and data/official-islamic-dates as assets.
+    id("tunisianprayertimes.bundled-data")
 }
 
 android {

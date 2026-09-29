@@ -5,12 +5,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.tunisianprayertimes.HijriCalendarDate
+import com.tunisianprayertimes.HijriLabels
 import com.tunisianprayertimes.OfficialIslamicDates
 import com.tunisianprayertimes.TunisianHijriCalendar
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
-import java.time.chrono.HijrahChronology
 import java.time.chrono.HijrahDate
 import java.time.format.DateTimeFormatter
 import java.time.format.DecimalStyle
@@ -19,9 +19,6 @@ import java.util.Locale
 
 internal val calendarLocale: Locale = Locale.forLanguageTag("ar-TN-u-nu-latn")
 
-private val hijriMonthFormatter = DateTimeFormatter.ofPattern("MMMM", calendarLocale)
-    .withChronology(HijrahChronology.INSTANCE)
-    .withDecimalStyle(DecimalStyle.STANDARD)
 private val gregorianDateFormatter = DateTimeFormatter.ofPattern("EEEE، d MMMM yyyy 'م'", calendarLocale)
     .withDecimalStyle(DecimalStyle.STANDARD)
 
@@ -32,23 +29,10 @@ internal fun calendarLocalDate(timeMillis: Long): LocalDate =
 internal fun calendarDateMillis(date: LocalDate): Long =
     date.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
 
-// CLDR localizes Hijri month 4 as "ربيع الآخر" (Rabiʿ al-Akhir). Tunisian usage prefers
-// "ربيع الثاني" (Rabiʿ al-Thani), and the platform exposes no way to request the
-// alternate name, so we override the months where the two differ.
-private val hijriMonthNameOverrides = mapOf(
-    4 to "ربيع الثاني",
-)
+// Tunisian month names ("ربيع الثاني", not CLDR's "ربيع الآخر"), shared with the TV app.
+internal fun hijriMonthLabel(year: Int, month: Int): String = HijriLabels.monthLabel(year, month)
 
-// Only use the built-in chronology to localize a month name. An official Tunisian
-// month can contain day 30 even when that same Umm al-Qura month has only 29 days.
-internal fun hijriMonthLabel(year: Int, month: Int): String {
-    val name = hijriMonthNameOverrides[month]
-        ?: hijriMonthFormatter.format(HijrahDate.of(year, month, 1))
-    return "$name $year هـ"
-}
-
-internal fun hijriDateLabel(date: HijriCalendarDate): String =
-    "${date.day} ${hijriMonthLabel(date.year, date.month)}"
+internal fun hijriDateLabel(date: HijriCalendarDate): String = HijriLabels.dateLabel(date)
 
 internal fun gregorianDateLabel(date: LocalDate): String = gregorianDateFormatter.format(date)
 

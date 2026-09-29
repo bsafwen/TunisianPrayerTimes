@@ -3,9 +3,7 @@ package com.tunisianprayertimes
 import android.app.Application
 import android.util.Log
 import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
-import com.tunisianprayertimes.platform.GouvernoratLoader
-import com.tunisianprayertimes.platform.PrayerDataLoader
-import com.tunisianprayertimes.platform.Preferences
+import com.tunisianprayertimes.platform.SharedAndroid
 import com.tunisianprayertimes.platform.SilenceController
 import com.tunisianprayertimes.platform.TimerScheduler
 import java.time.chrono.HijrahDate
@@ -28,20 +26,9 @@ class TunisianPrayerTimesApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Preferences.init(this)
-        // Migrate before any packaged publication can replace the released app's legacy record.
-        RamadanOverrideChecker.loadCachedOverrideIfNeeded()
-        // The same announcements are available to the calendar, boot receivers,
-        // and prayer scheduling even on a first launch without a connection.
-        assets.list("official-islamic-dates").orEmpty().filter { it.endsWith(".json") }.forEach { name ->
-            runCatching {
-                assets.open("official-islamic-dates/$name").bufferedReader().use { reader ->
-                    OfficialIslamicDates.importJson(reader.readText())
-                }
-            }
-        }
-        PrayerDataLoader.init(this)
-        GouvernoratLoader.init(this)
+        // Preferences, official Ramadan/Eid dates and the prayer-time and location loaders,
+        // started the same way as in the TV app.
+        SharedAndroid.init(this)
         SilenceController.init(this)
         TimerScheduler.init(this)
         refreshDhikrReminders()

@@ -25,17 +25,18 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerTime
+import com.tunisianprayertimes.mosque.DayBanner
+import com.tunisianprayertimes.mosque.FastCountdown
 import com.tunisianprayertimes.tv.data.IqamahConfig
 import com.tunisianprayertimes.tv.data.IqamahMode
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.theme.*
 import kotlinx.coroutines.delay
 import java.time.LocalDate
+import java.time.DayOfWeek
+import java.time.LocalDateTime
 import java.time.LocalTime
-import java.time.chrono.HijrahDate
 import java.time.format.DateTimeFormatter
-import java.time.temporal.ChronoField
-import java.util.Calendar
 import java.util.Locale
 import androidx.compose.foundation.shape.CircleShape
 
@@ -49,41 +50,23 @@ fun PrayerDisplayScreen(
     shuruk: Pair<Int, Int>?,
     mosqueName: String,
     delegationName: String,
-    iqamahConfigs: Map<Prayer, IqamahConfig>,
-    jomoaaConfig: IqamahConfig,
+    /** The trusted time in Tunisia, ticking every second; the display never reads the device clock itself. */
+    now: LocalDateTime,
+    /** Today's date in the official Tunisian Hijri calendar. */
+    hijriLabel: String,
+    /** Today's iqamah per prayer, as resolved by the shared prayer flow the overlays follow. */
+    iqamahTimes: Map<Prayer, LocalTime>,
     isRamadan: Boolean,
+    /** Ramadan's fast countdown, Eid or Arafah; null on ordinary days. */
+    banner: DayBanner?,
+    /** The ticker's texts, from the reviewed catalog or the mosque's USB file. */
+    ticker: List<com.tunisianprayertimes.mosque.AdhkarSlide>,
     backgroundImages: List<Uri> = emptyList(),
     onSettingsRequested: () -> Unit,
-    onAdhanTriggered: (Prayer) -> Unit,
-    onIqamahTriggered: (Prayer) -> Unit
 ) {
-    var currentTime by remember { mutableStateOf(LocalTime.now()) }
-    LaunchedEffect(Unit) {
-        while (true) {
-            currentTime = LocalTime.now()
-            delay(1000L)
-        }
-    }
-
-    val isFriday = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
+    val currentTime = now.toLocalTime()
+    val isFriday = now.dayOfWeek == DayOfWeek.FRIDAY
     val nextPrayer = dayPrayerTimes?.nextPrayer(currentTime.hour, currentTime.minute, isFriday)
-
-    // Adhan/iqamah triggers
-    LaunchedEffect(currentTime.hour, currentTime.minute) {
-        if (dayPrayerTimes == null) return@LaunchedEffect
-        val prayers = dayPrayerTimes.scheduledPrayers(isFriday)
-        for (pt in prayers) {
-            if (pt.hour == currentTime.hour && pt.minute == currentTime.minute && currentTime.second < 2) {
-                onAdhanTriggered(pt.prayer)
-            }
-            val config = if (pt.prayer == Prayer.JOMOAA) jomoaaConfig
-                else iqamahConfigs[pt.prayer] ?: continue
-            val iqTime = computeIqamahTime(pt, config)
-            if (iqTime != null && iqTime.first == currentTime.hour && iqTime.second == currentTime.minute && currentTime.second < 2) {
-                onIqamahTriggered(pt.prayer)
-            }
-        }
-    }
 
     Box(
         modifier = Modifier
@@ -119,19 +102,17 @@ fun PrayerDisplayScreen(
             TopHeaderSection(
                 mosqueName = mosqueName,
                 delegationName = delegationName,
+                today = now.toLocalDate(),
+                hijriLabel = hijriLabel,
                 currentTime = currentTime,
                 isFriday = isFriday,
                 isRamadan = isRamadan
             )
 
-            // ── RAMADAN BANNER (only during Ramadan) ─────────────────────
-            if (isRamadan) {
+            // ── RAMADAN / EID / ARAFAH BANNER ────────────────────────────
+            if (banner != null) {
                 Spacer(Modifier.height(8.dp))
-                RamadanBanner(
-                    maghribTime = dayPrayerTimes?.maghrib,
-                    fajrTime = dayPrayerTimes?.fajr,
-                    currentTime = currentTime
-                )
+                DayBannerRow(banner = banner, now = now)
             }
 
             // Push prayer cards toward bottom
@@ -152,8 +133,7 @@ fun PrayerDisplayScreen(
             if (dayPrayerTimes != null) {
                 PrayerCardsRow(
                     dayPrayerTimes = dayPrayerTimes,
-                    iqamahConfigs = iqamahConfigs,
-                    jomoaaConfig = jomoaaConfig,
+                    iqamahTimes = iqamahTimes,
                     isFriday = isFriday,
                     nextPrayer = nextPrayer
                 )
@@ -169,7 +149,7 @@ fun PrayerDisplayScreen(
             Spacer(Modifier.height(12.dp))
 
             // ── BOTTOM TICKER ────────────────────────────────────────────
-            AzkarTicker(isRamadan = isRamadan)
+            AzkarTicker(items = ticker, isRamadan = isRamadan)
         }
     }
 }
@@ -181,16 +161,13 @@ fun PrayerDisplayScreen(
 private fun TopHeaderSection(
     mosqueName: String,
     delegationName: String,
+    today: LocalDate,
+    hijriLabel: String,
     currentTime: LocalTime,
     isFriday: Boolean,
     isRamadan: Boolean
 ) {
-    val today = LocalDate.now()
-    val hijriDate = HijrahDate.now()
-    val hijriDay = hijriDate.get(ChronoField.DAY_OF_MONTH)
-    val hijriMonth = hijriDate.get(ChronoField.MONTH_OF_YEAR)
-    val hijriYear = hijriDate.get(ChronoField.YEAR_OF_ERA)
-    val hijriStr = "$hijriDay ${TvStrings.HIJRI_MONTHS.getOrElse(hijriMonth - 1) { "" }} $hijriYear هـ"
+    val hijriStr = hijriLabel
     val gregorianStr = today.format(DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.forLanguageTag("ar")))
     val timeStr = String.format(Locale.US, "%02d:%02d:%02d", currentTime.hour, currentTime.minute, currentTime.second)
 
@@ -366,45 +343,29 @@ private fun NextPrayerCountdownBar(
 @Composable
 private fun PrayerCardsRow(
     dayPrayerTimes: DayPrayerTimes,
-    iqamahConfigs: Map<Prayer, IqamahConfig>,
-    jomoaaConfig: IqamahConfig,
+    iqamahTimes: Map<Prayer, LocalTime>,
     isFriday: Boolean,
     nextPrayer: Prayer?
 ) {
-    val prayers = if (isFriday) {
-        listOf(
-            Triple(TvStrings.FAJR, dayPrayerTimes.fajr, iqamahConfigs[Prayer.FAJR]),
-            Triple(TvStrings.JOMOAA, dayPrayerTimes.dhuhr, jomoaaConfig),
-            Triple(TvStrings.ASR, dayPrayerTimes.asr, iqamahConfigs[Prayer.ASR]),
-            Triple(TvStrings.MAGHRIB, dayPrayerTimes.maghrib, iqamahConfigs[Prayer.MAGHRIB]),
-            Triple(TvStrings.ISHA, dayPrayerTimes.isha, iqamahConfigs[Prayer.ISHA])
-        )
-    } else {
-        listOf(
-            Triple(TvStrings.FAJR, dayPrayerTimes.fajr, iqamahConfigs[Prayer.FAJR]),
-            Triple(TvStrings.DHUHR, dayPrayerTimes.dhuhr, iqamahConfigs[Prayer.DHUHR]),
-            Triple(TvStrings.ASR, dayPrayerTimes.asr, iqamahConfigs[Prayer.ASR]),
-            Triple(TvStrings.MAGHRIB, dayPrayerTimes.maghrib, iqamahConfigs[Prayer.MAGHRIB]),
-            Triple(TvStrings.ISHA, dayPrayerTimes.isha, iqamahConfigs[Prayer.ISHA])
-        )
-    }
-
-    val prayerEnums = if (isFriday) {
-        listOf(Prayer.FAJR, Prayer.JOMOAA, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
-    } else {
-        listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
-    }
+    val noon = if (isFriday) Prayer.JOMOAA else Prayer.DHUHR
+    val prayers = listOf(
+        Prayer.FAJR to dayPrayerTimes.fajr,
+        noon to dayPrayerTimes.dhuhr,
+        Prayer.ASR to dayPrayerTimes.asr,
+        Prayer.MAGHRIB to dayPrayerTimes.maghrib,
+        Prayer.ISHA to dayPrayerTimes.isha,
+    )
 
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        prayers.forEachIndexed { index, (name, prayerTime, iqamahConfig) ->
+        prayers.forEach { (prayer, prayerTime) ->
             PrayerCard(
-                name = name,
+                name = TvStrings.prayerName(prayer),
                 prayerTime = prayerTime,
-                iqamahConfig = iqamahConfig ?: IqamahConfig(),
-                isNext = prayerEnums[index] == nextPrayer,
+                iqamahTime = iqamahTimes[prayer],
+                isNext = prayer == nextPrayer,
                 modifier = Modifier.weight(1f)
             )
         }
@@ -415,7 +376,7 @@ private fun PrayerCardsRow(
 private fun PrayerCard(
     name: String,
     prayerTime: PrayerTime,
-    iqamahConfig: IqamahConfig,
+    iqamahTime: LocalTime?,
     isNext: Boolean,
     modifier: Modifier = Modifier
 ) {
@@ -430,9 +391,8 @@ private fun PrayerCard(
         label = "cardBorder"
     )
 
-    val iqamahTime = computeIqamahTime(prayerTime, iqamahConfig)
     val adhanStr = String.format(Locale.US, "%02d:%02d", prayerTime.hour, prayerTime.minute)
-    val iqamahStr = iqamahTime?.let { String.format(Locale.US, "%02d:%02d", it.first, it.second) } ?: "--:--"
+    val iqamahStr = iqamahTime?.let { String.format(Locale.US, "%02d:%02d", it.hour, it.minute) } ?: "--:--"
 
     Column(
         modifier = modifier
@@ -493,31 +453,22 @@ private fun PrayerCard(
 //  UTILITY
 // ══════════════════════════════════════════════════════════════════════════
 
-fun computeIqamahTime(prayerTime: PrayerTime, config: IqamahConfig): Pair<Int, Int>? {
-    return when (config.mode) {
-        IqamahMode.DELAY -> {
-            val totalMinutes = prayerTime.hour * 60 + prayerTime.minute + config.delayMinutes
-            Pair(totalMinutes / 60, totalMinutes % 60)
-        }
-        IqamahMode.FIXED_TIME -> {
-            if (config.fixedHour >= 0 && config.fixedMinute >= 0) {
-                Pair(config.fixedHour, config.fixedMinute)
-            } else null
-        }
-    }
-}
-
-/**
- * Ramadan banner with iftar/suhoor countdown.
- */
+/** Ramadan's fast countdown, the Eid greeting and prayer time, or Arafah. Minimal; to be redesigned. */
 @Composable
-private fun RamadanBanner(
-    maghribTime: PrayerTime?,
-    fajrTime: PrayerTime?,
-    currentTime: LocalTime
-) {
-    val nowMinutes = currentTime.hour * 60 + currentTime.minute
-
+private fun DayBannerRow(banner: DayBanner, now: LocalDateTime) {
+    val (title, detail) = when (banner) {
+        is DayBanner.Ramadan -> TvStrings.RAMADAN_BANNER to banner.countdown?.let { countdown ->
+            val label = when (countdown.kind) {
+                FastCountdown.Kind.SUHOOR_ENDS -> TvStrings.IMSAK_COUNTDOWN
+                FastCountdown.Kind.IFTAR -> TvStrings.IFTAR_COUNTDOWN
+            }
+            "$label ${durationText((java.time.Duration.between(now, countdown.until).seconds + 59) / 60)}"
+        }
+        is DayBanner.Eid -> "${TvStrings.EID_MUBARAK} · ${TvStrings.prayerName(banner.prayer)}" to banner.prayerAt?.let {
+            "${TvStrings.EID_PRAYER_AT} ${String.format(Locale.ROOT, "%02d:%02d", it.hour, it.minute)}"
+        }
+        DayBanner.Arafah -> TvStrings.ARAFAH to null
+    }
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -527,41 +478,14 @@ private fun RamadanBanner(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            text = TvStrings.RAMADAN_BANNER,
-            color = RamadanGold,
-            fontSize = 22.sp,
-            fontWeight = FontWeight.Bold
-        )
-
-        if (maghribTime != null && fajrTime != null) {
-            val maghribMinutes = maghribTime.hour * 60 + maghribTime.minute
-            val fajrMinutes = fajrTime.hour * 60 + fajrTime.minute
-
-            if (nowMinutes < maghribMinutes) {
-                val diff = maghribMinutes - nowMinutes
-                val h = diff / 60
-                val m = diff % 60
-                val countdownStr = if (h > 0) "${h}س ${m}د" else "${m}د"
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = TvStrings.IFTAR_COUNTDOWN, color = RamadanMoon, fontSize = 18.sp)
-                    Spacer(Modifier.width(12.dp))
-                    Text(text = countdownStr, color = IftarGreen, fontSize = 24.sp, fontWeight = FontWeight.Bold)
-                }
-            } else {
-                val diff = if (nowMinutes < fajrMinutes) fajrMinutes - nowMinutes
-                    else (24 * 60 - nowMinutes) + fajrMinutes
-                val h = diff / 60
-                val m = diff % 60
-                val countdownStr = if (h > 0) "${h}س ${m}د" else "${m}د"
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = TvStrings.SUHOOR_REMINDER, color = RamadanMoon, fontSize = 18.sp)
-                    Spacer(Modifier.width(12.dp))
-                    Text(text = countdownStr, color = CountdownOrange, fontSize = 24.sp, fontWeight = FontWeight.Bold)
-                }
-            }
-        }
-
-        Text(text = "🌙", fontSize = 24.sp)
+        Text(text = title, color = RamadanGold, fontSize = 22.sp, fontWeight = FontWeight.Bold)
+        if (detail != null) Text(text = detail, color = IftarGreen, fontSize = 24.sp, fontWeight = FontWeight.Bold)
     }
+}
+
+/** Whole minutes left, rounded up, as "2س 5د". */
+private fun durationText(minutes: Long): String {
+    val h = minutes / 60
+    val m = minutes % 60
+    return if (h > 0) "${h}س ${m}د" else "${m}د"
 }

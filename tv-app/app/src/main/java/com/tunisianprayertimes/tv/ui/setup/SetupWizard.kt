@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.tv.ui.setup
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.focusable
@@ -21,9 +22,13 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Delegation
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.mosque.MosqueSchedule
+import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.tv.data.IqamahConfig
+import com.tunisianprayertimes.tv.data.PrefsManager
 import com.tunisianprayertimes.tv.data.IqamahMode
 import com.tunisianprayertimes.tv.ui.TvStrings
+import com.tunisianprayertimes.tv.ui.common.initialFocus
 import com.tunisianprayertimes.tv.ui.theme.Gold
 import com.tunisianprayertimes.tv.ui.theme.CardBorder
 import com.tunisianprayertimes.tv.ui.theme.SurfaceElevated
@@ -44,26 +49,20 @@ fun SetupWizard(
         gouvernoratId: Int,
         delegation: Delegation,
         iqamahConfigs: Map<Prayer, IqamahConfig>,
-        jomoaaConfig: IqamahConfig,
         mosqueName: String
     ) -> Unit
 ) {
     var step by remember { mutableIntStateOf(0) }
     var selectedGouvernorat by remember { mutableStateOf<Gouvernorat?>(null) }
     var selectedDelegation by remember { mutableStateOf<Delegation?>(null) }
+    // Iqamah and prayer duration per prayer start from the shared defaults.
     var iqamahConfigs by remember {
-        mutableStateOf(
-            mapOf(
-                Prayer.FAJR to IqamahConfig(delayMinutes = 15),
-                Prayer.DHUHR to IqamahConfig(delayMinutes = 10),
-                Prayer.ASR to IqamahConfig(delayMinutes = 10),
-                Prayer.MAGHRIB to IqamahConfig(delayMinutes = 5),
-                Prayer.ISHA to IqamahConfig(delayMinutes = 10)
-            )
-        )
+        mutableStateOf(PrefsManager.EDITABLE.associateWith { IqamahConfig.from(MosqueSchedule.DEFAULT.settings(it)) })
     }
-    var jomoaaConfig by remember { mutableStateOf(IqamahConfig(delayMinutes = 15)) }
     var mosqueName by remember { mutableStateOf("") }
+
+    // Back returns to the previous step, keeping what was entered; on the first step it stays.
+    BackHandler(enabled = step > 0) { step -= 1 }
 
     Box(
         modifier = Modifier
@@ -89,9 +88,7 @@ fun SetupWizard(
             )
             2 -> IqamahStep(
                 configs = iqamahConfigs,
-                jomoaaConfig = jomoaaConfig,
                 onConfigsChanged = { iqamahConfigs = it },
-                onJomoaaChanged = { jomoaaConfig = it },
                 onNext = { step = 3 },
                 onBack = { step = 1 }
             )
@@ -104,8 +101,7 @@ fun SetupWizard(
                         selectedGouvernorat!!.id,
                         selectedDelegation!!,
                         iqamahConfigs,
-                        jomoaaConfig,
-                        mosqueName
+                        mosqueName.trim().take(MosqueProfile.MAX_NAME_LENGTH)
                     )
                 },
                 onBack = { step = 2 }
@@ -150,7 +146,8 @@ private fun GouvernoratStep(
             items(gouvernorats) { gouvernorat ->
                 FocusableListItem(
                     text = gouvernorat.nomAr,
-                    onClick = { onSelect(gouvernorat) }
+                    onClick = { onSelect(gouvernorat) },
+                    modifier = Modifier.initialFocus(gouvernorat == gouvernorats.first()),
                 )
             }
         }
@@ -164,13 +161,7 @@ private fun DelegationStep(
     onBack: () -> Unit
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .onPreviewKeyEvent { event ->
-                if (event.key == Key.Back && event.type == KeyEventType.KeyUp) {
-                    onBack(); true
-                } else false
-            },
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
@@ -192,7 +183,8 @@ private fun DelegationStep(
             items(gouvernorat.delegations) { delegation ->
                 FocusableListItem(
                     text = delegation.nomAr,
-                    onClick = { onSelect(delegation) }
+                    onClick = { onSelect(delegation) },
+                    modifier = Modifier.initialFocus(delegation == gouvernorat.delegations.first()),
                 )
             }
         }
@@ -205,9 +197,7 @@ private fun DelegationStep(
 @Composable
 private fun IqamahStep(
     configs: Map<Prayer, IqamahConfig>,
-    jomoaaConfig: IqamahConfig,
     onConfigsChanged: (Map<Prayer, IqamahConfig>) -> Unit,
-    onJomoaaChanged: (IqamahConfig) -> Unit,
     onNext: () -> Unit,
     onBack: () -> Unit
 ) {
@@ -229,92 +219,17 @@ private fun IqamahStep(
             modifier = Modifier.padding(bottom = 24.dp)
         )
 
-        val prayers = listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
-
         LazyColumn(
             modifier = Modifier
-                .fillMaxWidth(0.6f)
+                .fillMaxWidth(0.9f)
                 .weight(1f),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(prayers) { prayer ->
-                IqamahRow(
-                    prayerName = TvStrings.prayerName(prayer),
-                    config = configs[prayer] ?: IqamahConfig(),
-                    onConfigChanged = { newConfig ->
-                        onConfigsChanged(configs + (prayer to newConfig))
-                    }
-                )
-            }
-            item {
-                IqamahRow(
-                    prayerName = TvStrings.FRIDAY_IQAMAH,
-                    config = jomoaaConfig,
-                    onConfigChanged = onJomoaaChanged
-                )
-            }
+            iqamahRows(configs) { prayer, config -> onConfigsChanged(configs + (prayer to config)) }
         }
 
         Spacer(Modifier.height(16.dp))
         NavigationButtons(onBack = onBack, onNext = onNext)
-    }
-}
-
-@Composable
-private fun IqamahRow(
-    prayerName: String,
-    config: IqamahConfig,
-    onConfigChanged: (IqamahConfig) -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
-            .padding(horizontal = 24.dp, vertical = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(
-            text = prayerName,
-            style = MaterialTheme.typography.titleLarge,
-            color = Gold,
-            fontSize = 22.sp,
-            modifier = Modifier.width(120.dp)
-        )
-
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            // Decrease button
-            FocusableButton(
-                text = "−",
-                onClick = {
-                    if (config.delayMinutes > 1) {
-                        onConfigChanged(config.copy(delayMinutes = config.delayMinutes - 1))
-                    }
-                }
-            )
-
-            Text(
-                text = "${config.delayMinutes} ${TvStrings.MINUTES_SUFFIX}",
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.onSurface,
-                fontSize = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.width(80.dp)
-            )
-
-            // Increase button
-            FocusableButton(
-                text = "+",
-                onClick = {
-                    if (config.delayMinutes < 60) {
-                        onConfigChanged(config.copy(delayMinutes = config.delayMinutes + 1))
-                    }
-                }
-            )
-        }
     }
 }
 
@@ -384,12 +299,13 @@ private fun MosqueNameStep(
 @Composable
 fun FocusableListItem(
     text: String,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     var isFocused by remember { mutableStateOf(false) }
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .background(
                 if (isFocused) TealPrimary.copy(alpha = 0.8f) else MaterialTheme.colorScheme.surface.copy(alpha = 0.6f),

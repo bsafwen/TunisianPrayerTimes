@@ -8,6 +8,8 @@ on:
       - "android-app/**"
       - "multiplatform/shared/**"
       - "data/prayer-formula/**"
+      - "data/official-islamic-dates/**"
+      - "build-logic/**"
       - ".github/workflows/android-tests.yml"
   pull_request:
     branches: [main]
@@ -15,6 +17,8 @@ on:
       - "android-app/**"
       - "multiplatform/shared/**"
       - "data/prayer-formula/**"
+      - "data/official-islamic-dates/**"
+      - "build-logic/**"
       - ".github/workflows/android-tests.yml"
 
 env:

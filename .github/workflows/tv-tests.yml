@@ -1,0 +1,75 @@
+name: TV Tests
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "tv-app/**"
+      - "multiplatform/shared/**"
+      - "build-logic/**"
+      - "data/prayer-formula/**"
+      - "data/official-islamic-dates/**"
+      - ".github/workflows/tv-tests.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "tv-app/**"
+      - "multiplatform/shared/**"
+      - "build-logic/**"
+      - "data/prayer-formula/**"
+      - "data/official-islamic-dates/**"
+      - ".github/workflows/tv-tests.yml"
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: tv-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  unit-tests:
+    name: Build and unit tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tv-app
+
+    steps:
+      - uses: actions/checkout@v6
+
+      # tv-app/gradle/gradle-daemon-jvm.properties asks for a JDK 21 daemon.
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # local.properties points at a developer's SDK; CI uses ANDROID_HOME instead.
+      - name: Remove local SDK path
+        run: rm -f local.properties
+
+      - name: Build and run unit tests
+        run: ./gradlew :app:assembleDebug :app:testDebugUnitTest
+
+      # The release is minified: an unsigned build shows that R8 keeps what the app needs.
+      - name: Minified release build
+        run: ./gradlew :app:assembleRelease -PunsignedRelease=true
+
+      - name: Shared module tests
+        working-directory: multiplatform
+        run: chmod +x gradlew && ./gradlew :shared:javaTest
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: tv-unit-test-results
+          path: |
+            tv-app/app/build/reports/tests/
+            multiplatform/shared/build/reports/tests/
