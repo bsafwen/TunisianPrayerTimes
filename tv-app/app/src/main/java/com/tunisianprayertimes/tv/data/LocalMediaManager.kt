@@ -10,12 +10,16 @@ sealed class Announcement {
     data class Text(val title: String, val content: String) : Announcement()
 }
 
+/** A written announcement that came as a .txt file. */
+data class TextFile(val name: String, val text: String)
+
 /** The two kinds of images a mosque puts on the screen, each in its own folder (on the USB key and on the TV). */
 enum class MediaKind(val folder: String) { BACKGROUNDS("backgrounds"), ANNOUNCEMENTS("announcements") }
 
 /**
- * The mosque's background and announcement images, kept in the app's own storage: copied there
- * from a USB key, so they stay after the key is removed and no storage permission is needed.
+ * The mosque's background and announcement images (and announcement .txt files), kept in the app's
+ * own storage: copied there from a USB key or uploaded from the dashboard, so they stay after the key
+ * is removed and no storage permission is needed.
  */
 class LocalMediaManager(private val root: File) {
 
@@ -29,6 +33,29 @@ class LocalMediaManager(private val root: File) {
     fun getBackgroundImages(): List<Uri> = images(MediaKind.BACKGROUNDS).map(Uri::fromFile)
 
     fun getImageAnnouncements(): List<Announcement> = images(MediaKind.ANNOUNCEMENTS).map { Announcement.Image(Uri.fromFile(it)) }
+
+    /** The announcement .txt files, in file-name order, each with its text on one line; unreadable files are left out. */
+    fun textFiles(): List<TextFile> =
+        File(root, MediaKind.ANNOUNCEMENTS.folder).listFiles().orEmpty()
+            .filter { it.isFile && it.extension.lowercase() == TEXT_EXTENSION }
+            .sortedBy { it.name.lowercase() }
+            .mapNotNull { file ->
+                runCatching { AnnouncementText.fromBytes(file.readBytes()) }.getOrNull()?.let { TextFile(file.name, it) }
+            }
+
+    fun textFileAnnouncements(): List<String> = textFiles().map { it.text }
+
+    /** Stores one image (from the dashboard) through a temporary file, so a failed upload leaves nothing half written. */
+    fun add(kind: MediaKind, name: String, bytes: ByteArray) {
+        val folder = File(root, kind.folder)
+        check(folder.mkdirs() || folder.isDirectory) { "cannot create $folder" }
+        val temp = File(folder, ".$name.part")
+        temp.writeBytes(bytes)
+        val target = File(folder, name)
+        check(temp.renameTo(target) || (target.delete() && temp.renameTo(target))) { "cannot store $name" }
+    }
+
+    fun delete(kind: MediaKind, name: String): Boolean = File(File(root, kind.folder), name).let { it.isFile && it.delete() }
 
     /**
      * Replaces the [kind] images with copies of [sources]. The copies are made in a separate folder
@@ -54,5 +81,6 @@ class LocalMediaManager(private val root: File) {
 
     companion object {
         val IMAGE_EXTENSIONS = setOf("jpg", "jpeg", "png", "webp")
+        const val TEXT_EXTENSION = "txt"
     }
 }

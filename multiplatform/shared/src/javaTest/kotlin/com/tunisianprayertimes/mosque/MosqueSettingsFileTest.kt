@@ -333,4 +333,18 @@ class MosqueSettingsFileTest {
         assertEquals(beforeProfile, undo.profile)
         assertEquals(mapOf(1448 to com.tunisianprayertimes.ManualIslamicDates()), undo.islamicDates)
     }
+
+    @Test
+    fun displayOptionsAreReadCheckedAndWrittenBack() {
+        val result = assertIs<ParseResult.Success>(profileParse(
+            """{ "display": { "weather": false, "backgrounds": "نعم", "announcements": true, "slideSeconds": "٢٠", "announcementsEveryMinutes": 15 } }"""))
+        assertEquals(DisplayOptions(false, true, true, 20, 15), result.profile.display)
+        assertEquals(5, result.profileChanges.size)
+        val written = MosqueSettingsFile.write(MosqueSchedule.DEFAULT, profile = result.profile, catalog = catalog)
+        val read = assertIs<ParseResult.Success>(MosqueSettingsFile.parse(written, MosqueSchedule.DEFAULT, emptyMap(), result.profile, catalog))
+        assertTrue(!read.hasChanges)
+        val bad = assertIs<ParseResult.Failure>(profileParse("""{ "display": { "weather": "maybe", "slideSeconds": 2 } }"""))
+        assertEquals(listOf(ErrorCode.INVALID_OPTION to "display.weather", ErrorCode.INVALID_OPTION to "display.slideSeconds"),
+            bad.errors.map { it.code to it.path })
+    }
 }

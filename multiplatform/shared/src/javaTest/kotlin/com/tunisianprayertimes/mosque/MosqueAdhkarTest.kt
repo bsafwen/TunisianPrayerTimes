@@ -74,6 +74,20 @@ class MosqueAdhkarTest {
     }
 
     @Test
+    fun writtenAnnouncementsComeBetweenTheTickersAdhkar() {
+        val ticker = MosqueAdhkar.ticker()
+        val mixed = MosqueAdhkar.tickerWithAnnouncements(ticker, listOf("درس بعد العشاء", "تبرعات"), "إعلان")
+        assertEquals(ticker.size + 2, mixed.size)
+        assertEquals("درس بعد العشاء", mixed[2].text)
+        assertEquals("إعلان", mixed[2].reference)
+        assertEquals(listOf("درس بعد العشاء", "تبرعات"), mixed.filter { it.entryId == null }.map { it.text })
+        // Many announcements and a short ticker: every one still comes once per round.
+        val many = MosqueAdhkar.tickerWithAnnouncements(ticker.take(1), List(4) { "إعلان $it" }, "إعلان")
+        assertEquals(5, many.size)
+        assertEquals(ticker, MosqueAdhkar.tickerWithAnnouncements(ticker, emptyList(), "إعلان"))
+    }
+
+    @Test
     fun theTickerReadsEachTextOnce() {
         // subhanallah_bihamdih is said 100 times elsewhere; in the ticker it is read once.
         val ticker = MosqueAdhkar.ticker()

@@ -32,7 +32,8 @@ strongest tier the box allows:
 ## adb one-liners
 
 Connect a computer to the box once (USB debugging or network debugging from Developer options).
-Replace the package with `com.tunisianprayertimes.tv` for the Play Store build.
+The Play build's package is `com.tunisianprayertimes.tv`; the GitHub build (for boxes without Play
+Store, self-updating) is `com.tunisianprayertimes.tv.github`. Install only one of them on a box.
 
 ```bash
 # Display over other apps (when the box has no page for it)
@@ -46,6 +47,9 @@ adb shell settings put global stay_on_while_plugged_in 7
 
 # Device owner, only on a box reset to factory settings with no Google account yet
 adb shell dpm set-device-owner com.tunisianprayertimes.tv/com.tunisianprayertimes.tv.kiosk.TvDeviceAdminReceiver
+
+# GitHub build: let it install its own updates (Android 12+ then installs them without a dialog)
+adb shell appops set com.tunisianprayertimes.tv.github REQUEST_INSTALL_PACKAGES allow
 
 # Google TV: stop the stock launcher so the app stays the home screen (undo with pm enable)
 adb shell pm disable-user --user 0 com.google.android.apps.tv.launcherx

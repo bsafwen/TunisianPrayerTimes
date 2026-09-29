@@ -54,12 +54,22 @@ jobs:
       - name: Remove local SDK path
         run: rm -f local.properties
 
+      # Two builds: "play" (Google Play) and "github" (boxes without Play Store, self-updating).
       - name: Build and run unit tests
-        run: ./gradlew :app:assembleDebug :app:testDebugUnitTest
+        run: ./gradlew :app:assembleDebug :app:testPlayDebugUnitTest :app:testGithubDebugUnitTest
 
       # The release is minified: an unsigned build shows that R8 keeps what the app needs.
-      - name: Minified release build
-        run: ./gradlew :app:assembleRelease -PunsignedRelease=true
+      - name: Minified release builds
+        run: ./gradlew :app:assemblePlayRelease :app:assembleGithubRelease -PunsignedRelease=true
+
+      # Google Play forbids self-updating apps: the Play build must not be able to install anything.
+      - name: The Play build has no install permission or update code
+        run: |
+          manifest=app/build/intermediates/merged_manifest/playRelease/processPlayReleaseMainManifest/AndroidManifest.xml
+          test -f "$manifest"
+          if grep -E "REQUEST_INSTALL_PACKAGES|UPDATE_PACKAGES_WITHOUT_USER_ACTION|InstallResultReceiver" "$manifest"; then exit 1; fi
+          apk=$(ls app/build/outputs/apk/play/release/*.apk | head -1)
+          if unzip -p "$apk" 'classes*.dex' | grep -a -q "GithubUpdater"; then echo "update code in the Play build"; exit 1; fi
 
       - name: Shared module tests
         working-directory: multiplatform

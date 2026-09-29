@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>إدارة شاشة المسجد</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <div id="mosque-name" class="mosque-name">شاشة المسجد</div>
+    <div id="mosque-place" class="muted"></div>
+  </div>
+  <div id="clock" class="clock"></div>
+</header>
+<nav id="tabs" class="tabs" aria-label="الأقسام"></nav>
+<main id="view" class="view" aria-live="polite">
+  <p class="muted">جارٍ التحميل…</p>
+</main>
+<div id="toast" class="toast" role="status" hidden></div>
+<dialog id="preview" class="dialog">
+  <h2 id="preview-title">ما سيتغيّر على الشاشة</h2>
+  <ul id="preview-lines" class="lines"></ul>
+  <div class="row">
+    <button id="preview-apply" class="primary">تطبيق</button>
+    <button id="preview-cancel">إلغاء</button>
+  </div>
+</dialog>
+<script src="app.js"></script>
+<script src="views/overview.js"></script>
+<script src="views/prayers.js"></script>
+<script src="views/mosque.js"></script>
+<script src="views/dates.js"></script>
+<script src="views/announcements.js"></script>
+<script src="views/adhkar.js"></script>
+<script src="views/advanced.js"></script>
+<script>Dashboard.start();</script>
+</body>
+</html>

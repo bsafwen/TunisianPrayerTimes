@@ -56,6 +56,24 @@ android {
         }
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
+    // Two builds: "play" for Google Play (updated by Play; no update code, as Play requires) and
+    // "github" for the many mosque TVs without Play Store, which updates itself from GitHub releases.
+    // They have different package names: Play re-signs its builds, so one could not update the other.
+    flavorDimensions += "distribution"
+    productFlavors {
+        create("play") {
+            dimension = "distribution"
+        }
+        create("github") {
+            dimension = "distribution"
+            applicationIdSuffix = ".github"
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix = ".dev"
@@ -119,6 +137,8 @@ tasks.withType<Test>().configureEach {
 
 dependencies {
     implementation("com.tunisianprayertimes:shared")
+    // JSON for the dashboard's API and the GitHub release list (the shared module keeps its copy private)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
 
     // AndroidX Core
     implementation("androidx.core:core-ktx:1.16.0")

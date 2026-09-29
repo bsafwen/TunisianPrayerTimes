@@ -9,9 +9,28 @@ data class MosqueProfile(
     val name: String? = null,
     val delegationId: Int? = null,
     val themeId: String? = null,
+    val display: DisplayOptions = DisplayOptions(),
 ) {
     companion object {
         const val MAX_NAME_LENGTH = 60
+    }
+}
+
+/**
+ * How the screen shows the mosque's extras: the weather (when online), its background images and
+ * announcements, how long each announcement stays, and how often they come back between prayers
+ * (0: only after the adhkar of each prayer). Null fields are not set.
+ */
+data class DisplayOptions(
+    val weather: Boolean? = null,
+    val backgrounds: Boolean? = null,
+    val announcements: Boolean? = null,
+    val slideSeconds: Int? = null,
+    val announcementsEveryMinutes: Int? = null,
+) {
+    companion object {
+        val SLIDE_SECONDS = 5..60
+        val EVERY_MINUTES = 0..120
     }
 }
 

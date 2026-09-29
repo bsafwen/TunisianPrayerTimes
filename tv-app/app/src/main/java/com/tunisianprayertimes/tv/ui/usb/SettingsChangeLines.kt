@@ -31,6 +31,11 @@ object SettingsChangeLines {
             MosqueSettingsFile.ProfileField.NAME -> TvStrings.MOSQUE_NAME_LABEL
             MosqueSettingsFile.ProfileField.DELEGATION -> TvStrings.SETTINGS_LOCATION
             MosqueSettingsFile.ProfileField.THEME -> TvStrings.THEME_LABEL
+            MosqueSettingsFile.ProfileField.WEATHER -> TvStrings.WEATHER_ENABLED
+            MosqueSettingsFile.ProfileField.BACKGROUNDS -> TvStrings.CUSTOM_BG_ENABLED
+            MosqueSettingsFile.ProfileField.ANNOUNCEMENTS -> TvStrings.ANNOUNCEMENTS_ENABLED
+            MosqueSettingsFile.ProfileField.SLIDE_SECONDS -> TvStrings.ANNOUNCEMENT_INTERVAL
+            MosqueSettingsFile.ProfileField.ANNOUNCEMENTS_EVERY -> TvStrings.ANNOUNCEMENTS_EVERY
         }
         return "$field: ${change.before} ← ${change.after}"
     }

@@ -59,6 +59,8 @@ fun PrayerDisplayScreen(
     isRamadan: Boolean,
     /** Ramadan's fast countdown, Eid or Arafah; null on ordinary days. */
     banner: DayBanner?,
+    /** The weather at the mosque when the TV is online and it is recent; null hides it. */
+    weather: String? = null,
     /** The ticker's texts, from the reviewed catalog or the mosque's USB file. */
     ticker: List<com.tunisianprayertimes.mosque.AdhkarSlide>,
     backgroundImages: List<Uri> = emptyList(),
@@ -106,7 +108,8 @@ fun PrayerDisplayScreen(
                 hijriLabel = hijriLabel,
                 currentTime = currentTime,
                 isFriday = isFriday,
-                isRamadan = isRamadan
+                isRamadan = isRamadan,
+                weather = weather,
             )
 
             // ── RAMADAN / EID / ARAFAH BANNER ────────────────────────────
@@ -165,7 +168,8 @@ private fun TopHeaderSection(
     hijriLabel: String,
     currentTime: LocalTime,
     isFriday: Boolean,
-    isRamadan: Boolean
+    isRamadan: Boolean,
+    weather: String?,
 ) {
     val hijriStr = hijriLabel
     val gregorianStr = today.format(DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.forLanguageTag("ar")))
@@ -248,6 +252,12 @@ private fun TopHeaderSection(
                 color = TextMuted,
                 fontSize = 15.sp
             )
+            if (weather != null) {
+                Spacer(Modifier.height(2.dp))
+                Text(text = weather, color = GoldLight, fontSize = 15.sp)
+                // Open-Meteo's data is CC BY 4.0: it is credited wherever it is shown.
+                Text(text = com.tunisianprayertimes.weather.OpenMeteo.ATTRIBUTION, color = TextMuted, fontSize = 9.sp)
+            }
         }
     }
 }
@@ -456,19 +466,7 @@ private fun PrayerCard(
 /** Ramadan's fast countdown, the Eid greeting and prayer time, or Arafah. Minimal; to be redesigned. */
 @Composable
 private fun DayBannerRow(banner: DayBanner, now: LocalDateTime) {
-    val (title, detail) = when (banner) {
-        is DayBanner.Ramadan -> TvStrings.RAMADAN_BANNER to banner.countdown?.let { countdown ->
-            val label = when (countdown.kind) {
-                FastCountdown.Kind.SUHOOR_ENDS -> TvStrings.IMSAK_COUNTDOWN
-                FastCountdown.Kind.IFTAR -> TvStrings.IFTAR_COUNTDOWN
-            }
-            "$label ${durationText((java.time.Duration.between(now, countdown.until).seconds + 59) / 60)}"
-        }
-        is DayBanner.Eid -> "${TvStrings.EID_MUBARAK} · ${TvStrings.prayerName(banner.prayer)}" to banner.prayerAt?.let {
-            "${TvStrings.EID_PRAYER_AT} ${String.format(Locale.ROOT, "%02d:%02d", it.hour, it.minute)}"
-        }
-        DayBanner.Arafah -> TvStrings.ARAFAH to null
-    }
+    val (title, detail) = dayBannerLines(banner, now)
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -481,6 +479,21 @@ private fun DayBannerRow(banner: DayBanner, now: LocalDateTime) {
         Text(text = title, color = RamadanGold, fontSize = 22.sp, fontWeight = FontWeight.Bold)
         if (detail != null) Text(text = detail, color = IftarGreen, fontSize = 24.sp, fontWeight = FontWeight.Bold)
     }
+}
+
+/** The banner's title and detail, for the screen and the dashboard. */
+internal fun dayBannerLines(banner: DayBanner, now: LocalDateTime): Pair<String, String?> = when (banner) {
+    is DayBanner.Ramadan -> TvStrings.RAMADAN_BANNER to banner.countdown?.let { countdown ->
+        val label = when (countdown.kind) {
+            FastCountdown.Kind.SUHOOR_ENDS -> TvStrings.IMSAK_COUNTDOWN
+            FastCountdown.Kind.IFTAR -> TvStrings.IFTAR_COUNTDOWN
+        }
+        "$label ${durationText((java.time.Duration.between(now, countdown.until).seconds + 59) / 60)}"
+    }
+    is DayBanner.Eid -> "${TvStrings.EID_MUBARAK} · ${TvStrings.prayerName(banner.prayer)}" to banner.prayerAt?.let {
+        "${TvStrings.EID_PRAYER_AT} ${String.format(Locale.ROOT, "%02d:%02d", it.hour, it.minute)}"
+    }
+    DayBanner.Arafah -> TvStrings.ARAFAH to null
 }
 
 /** Whole minutes left, rounded up, as "2س 5د". */

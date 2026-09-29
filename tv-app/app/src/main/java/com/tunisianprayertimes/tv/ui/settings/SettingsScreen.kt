@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Gouvernorat
+import com.tunisianprayertimes.mosque.DisplayOptions
 import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.Delegation
 import com.tunisianprayertimes.DayPrayerTimes
@@ -59,6 +60,10 @@ fun SettingsScreen(
     onAnnouncementIntervalChanged: (Int) -> Unit,
     /** Removes the background and announcement images copied from USB keys. */
     onDeleteImages: () -> Unit,
+    weatherEnabled: Boolean = true,
+    onWeatherChanged: (Boolean) -> Unit = {},
+    announcementsEveryMinutes: Int = 15,
+    onAnnouncementsEveryChanged: (Int) -> Unit = {},
     onThemeChanged: (String) -> Unit,
     /** The kiosk health page (auto-start, power settings, crashes), shown as a section. */
     kioskPage: @Composable (onBack: () -> Unit) -> Unit,
@@ -144,6 +149,10 @@ fun SettingsScreen(
                 onCustomBgEnabledChanged = onCustomBgEnabledChanged,
                 onAnnouncementIntervalChanged = onAnnouncementIntervalChanged,
                 onDeleteImages = onDeleteImages,
+                weatherEnabled = weatherEnabled,
+                onWeatherChanged = onWeatherChanged,
+                announcementsEveryMinutes = announcementsEveryMinutes,
+                onAnnouncementsEveryChanged = onAnnouncementsEveryChanged,
                 onBack = { currentSection = SettingsSection.Main }
             )
             SettingsSection.Theme -> ThemePickerSection(
@@ -462,6 +471,10 @@ private fun MediaSection(
     onCustomBgEnabledChanged: (Boolean) -> Unit,
     onAnnouncementIntervalChanged: (Int) -> Unit,
     onDeleteImages: () -> Unit,
+    weatherEnabled: Boolean,
+    onWeatherChanged: (Boolean) -> Unit,
+    announcementsEveryMinutes: Int,
+    onAnnouncementsEveryChanged: (Int) -> Unit,
     onBack: () -> Unit
 ) {
     Column(
@@ -490,6 +503,38 @@ private fun MediaSection(
                     info = "$announcementCount ${TvStrings.MEDIA_FILES_COUNT}",
                     onToggle = { onAnnouncementsEnabledChanged(!announcementsEnabled) }
                 )
+            }
+
+            item {
+                ToggleRow(
+                    label = TvStrings.WEATHER_ENABLED,
+                    enabled = weatherEnabled,
+                    info = com.tunisianprayertimes.weather.OpenMeteo.ATTRIBUTION,
+                    onToggle = { onWeatherChanged(!weatherEnabled) }
+                )
+            }
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
+                        .padding(horizontal = 24.dp, vertical = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(text = TvStrings.ANNOUNCEMENTS_EVERY, color = Gold, fontSize = 20.sp)
+                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                        FocusableButton(text = "−", onClick = { onAnnouncementsEveryChanged((announcementsEveryMinutes - 5).coerceAtLeast(0)) })
+                        Text(
+                            text = if (announcementsEveryMinutes == 0) TvStrings.ANNOUNCEMENTS_EVERY_OFF else "$announcementsEveryMinutes ${TvStrings.MINUTES_WORD}",
+                            color = MaterialTheme.colorScheme.onSurface,
+                            fontSize = 20.sp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.width(120.dp)
+                        )
+                        FocusableButton(text = "+", onClick = { onAnnouncementsEveryChanged((announcementsEveryMinutes + 5).coerceAtMost(120)) })
+                    }
+                }
             }
 
             // Custom backgrounds toggle
@@ -523,9 +568,7 @@ private fun MediaSection(
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         FocusableButton(text = "−", onClick = {
-                            if (announcementIntervalSec > 5) {
-                                onAnnouncementIntervalChanged(announcementIntervalSec - 5)
-                            }
+                            onAnnouncementIntervalChanged((announcementIntervalSec - 5).coerceIn(DisplayOptions.SLIDE_SECONDS))
                         })
                         Text(
                             text = "$announcementIntervalSec ${TvStrings.SECONDS_SUFFIX}",
@@ -536,9 +579,7 @@ private fun MediaSection(
                             modifier = Modifier.width(80.dp)
                         )
                         FocusableButton(text = "+", onClick = {
-                            if (announcementIntervalSec < 60) {
-                                onAnnouncementIntervalChanged(announcementIntervalSec + 5)
-                            }
+                            onAnnouncementIntervalChanged((announcementIntervalSec + 5).coerceIn(DisplayOptions.SLIDE_SECONDS))
                         })
                     }
                 }

@@ -12,6 +12,9 @@ class InmPrayerTimes(private val locations: Map<Int, InmLocation>) {
 
     fun hasDelegation(delegationId: Int): Boolean = delegationId in locations
 
+    /** The delegation's latitude and longitude (for the weather at the mosque), or null when unknown. */
+    fun coordinates(delegationId: Int): Pair<Double, Double>? = locations[delegationId]?.let { it.latitude to it.longitude }
+
     /** True when the delegation is one INM publishes and the month is within [SUPPORTED_YEARS]. */
     fun hasPrayerData(delegationId: Int, year: Int, month: Int): Boolean =
         month in 1..12 && location(delegationId, year) != null

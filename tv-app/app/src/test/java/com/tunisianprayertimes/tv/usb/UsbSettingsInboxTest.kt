@@ -5,6 +5,7 @@ import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.mosque.IqamahRule
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
+import com.tunisianprayertimes.mosque.DisplayOptions
 import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.mosque.PrayerOverride
 import com.tunisianprayertimes.mosque.ProfileCatalog
@@ -152,7 +153,7 @@ class UsbSettingsInboxTest {
         putOnKey(text)
         val offer = inbox.scan(listOf(key)) as UsbScan.Offer
         assertTrue(inbox.apply(offer.found))
-        assertEquals(MosqueProfile("مسجد النور", 101, "desert_sand"), prefs.profile)
+        assertEquals(MosqueProfile("مسجد النور", 101, "desert_sand"), prefs.profile.copy(display = DisplayOptions()))
         assertEquals("صفاقس المدينة", prefs.delegationName)
         assertEquals(34, prefs.gouvernoratId)
         assertEquals(configured.schedule.settings(Prayer.ISHA), prefs.schedule.settings(Prayer.ISHA))
@@ -170,7 +171,7 @@ class UsbSettingsInboxTest {
 
         val undo = UsbSettingsFound(File(root, "previous-settings.json"), snapshot!!, "undo")
         assertTrue(inbox.apply(undo, fromKey = false))
-        assertEquals(MosqueProfile("مسجد الفتح", 615, PrefsManager.DEFAULT_THEME_ID), prefs.profile)
+        assertEquals(MosqueProfile("مسجد الفتح", 615, PrefsManager.DEFAULT_THEME_ID), prefs.profile.copy(display = DisplayOptions()))
         assertEquals(before, prefs.schedule)
         assertEquals(emptyMap<Int, ManualIslamicDates>(), dates)
         assertFalse("undo leaves the key's file handled", prefs.usbLastHandledSignature == "undo")
