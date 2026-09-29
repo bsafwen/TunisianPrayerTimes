@@ -410,12 +410,7 @@ object SilenceScheduler {
             return
         }
 
-        val showIntent = PendingIntent.getActivity(
-            context,
-            0,
-            Intent(context, MainActivity::class.java),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
+        val showIntent = MainActivityPendingIntents.silenceAlarmClock(context)
         alarmManager.setAlarmClock(
             AlarmManager.AlarmClockInfo(triggerAtMillis, showIntent),
             pendingIntent
@@ -487,12 +482,7 @@ object SilenceScheduler {
             return
         }
 
-        val showIntent = PendingIntent.getActivity(
-            context,
-            0,
-            Intent(context, MainActivity::class.java),
-            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-        )
+        val showIntent = MainActivityPendingIntents.silenceAlarmClock(context)
         alarmManager.setAlarmClock(
             AlarmManager.AlarmClockInfo(triggerAtMillis, showIntent),
             createReschedulePendingIntent(context, requestCode),

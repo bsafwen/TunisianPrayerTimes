@@ -16,6 +16,7 @@ import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.WakeAlarmComputer
 import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.MainActivityPendingIntents
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.WAKE_RECURRING_LOOKAHEAD_DAYS
 import com.tunisianprayertimes.WakeMainAlarmMode
@@ -551,7 +552,7 @@ object WakeAlarmScheduler {
 				alarmManager.setAlarmClock(
 					AlarmManager.AlarmClockInfo(
 						trigger.triggerAtMillis,
-						WakePlaybackService.alarmClockInfoIntent(context),
+						MainActivityPendingIntents.wakeAlarmClock(context),
 					),
 					pendingIntent,
 				)
