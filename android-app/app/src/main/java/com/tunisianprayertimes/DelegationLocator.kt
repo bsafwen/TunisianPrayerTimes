@@ -30,6 +30,9 @@ private const val MAX_LAST_LOCATION_AGE_MS = 5 * 60 * 1_000L
 private const val MAX_SILENT_UPDATE_ACCURACY_METERS = 10_000f
 private const val LAST_FUSED_LOCATION_TIMEOUT_MS = 2_000L
 
+/** How long [awaitFirstMatching] waits for a usable answer: the budget each live source gets. */
+internal const val FIRST_LOCATION_TIMEOUT_MS = FUSED_TIMEOUT_MS
+
 /**
  * Simplified polygon of Tunisia's border from OpenStreetMap / Nominatim,
  * expanded outward by ~0.3° to account for GPS inaccuracy near borders.
@@ -571,23 +574,29 @@ internal fun <T> chooseBestCandidate(
     }
 }
 
-/** Returns the first result that [accept] takes, cancelling the requests still running. */
+/**
+ * Returns the first result that [accept] takes, cancelling the requests still running.
+ * Gives up with null after [timeoutMs], so a source that never answers cannot hold the caller.
+ */
 internal suspend fun <T : Any> awaitFirstMatching(
     requests: List<Deferred<T?>>,
+    timeoutMs: Long = FIRST_LOCATION_TIMEOUT_MS,
     accept: (T) -> Boolean
 ): T? {
     val pending = requests.toMutableList()
     try {
-        while (pending.isNotEmpty()) {
-            val (finished, result) = select<Pair<Deferred<T?>, T?>> {
-                pending.forEach { request ->
-                    request.onAwait { value -> request to value }
+        return withTimeoutOrNull(timeoutMs) {
+            while (pending.isNotEmpty()) {
+                val (finished, result) = select<Pair<Deferred<T?>, T?>> {
+                    pending.forEach { request ->
+                        request.onAwait { value -> request to value }
+                    }
                 }
+                pending.remove(finished)
+                if (result != null && accept(result)) return@withTimeoutOrNull result
             }
-            pending.remove(finished)
-            if (result != null && accept(result)) return result
+            null
         }
-        return null
     } finally {
         pending.forEach { it.cancel() }
     }
