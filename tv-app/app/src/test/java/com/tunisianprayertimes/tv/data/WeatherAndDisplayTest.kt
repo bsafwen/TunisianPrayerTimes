@@ -39,9 +39,9 @@ class WeatherAndDisplayTest {
     @Test
     fun displayOptionsTravelWithTheProfile() {
         val prefs = PrefsManager(InMemoryPreferences())
-        assertEquals(DisplayOptions(true, true, true, 15, 15), prefs.profile.display)
+        assertEquals(DisplayOptions(true, true, true, 15, 15, nightScreen = true), prefs.profile.display)
         prefs.applyProfile(MosqueProfile(display = DisplayOptions(weather = false, slideSeconds = 30, announcementsEveryMinutes = 0))) { null }
-        assertEquals(DisplayOptions(false, true, true, 30, 0), prefs.profile.display)
+        assertEquals(DisplayOptions(false, true, true, 30, 0, nightScreen = true), prefs.profile.display)
         assertEquals(false, prefs.weatherEnabled)
         assertEquals(0, prefs.announcementsEveryMinutes)
     }

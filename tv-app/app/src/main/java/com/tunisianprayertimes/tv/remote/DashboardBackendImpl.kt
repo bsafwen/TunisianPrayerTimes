@@ -256,5 +256,14 @@ class DashboardBackendImpl(
     override fun asset(name: String): ByteArray? =
         runCatching { context.assets.open("dashboard/$name").use { it.readBytes() } }.getOrNull()
 
+    override fun font(name: String): ByteArray? {
+        val resource = when (name) {
+            "readex-pro.ttf" -> com.tunisianprayertimes.tv.R.font.readex_pro
+            "amiri.ttf" -> com.tunisianprayertimes.tv.R.font.amiri
+            else -> return null
+        }
+        return runCatching { context.resources.openRawResource(resource).use { it.readBytes() } }.getOrNull()
+    }
+
     private fun hm(time: LocalTime) = time.format(DateTimeFormatter.ofPattern("HH:mm", Locale.ROOT))
 }

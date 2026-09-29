@@ -47,6 +47,8 @@ import com.tunisianprayertimes.tv.data.*
 import com.tunisianprayertimes.tv.ui.display.*
 import com.tunisianprayertimes.tv.ui.settings.SettingsScreen
 import com.tunisianprayertimes.tv.ui.setup.SetupWizard
+import com.tunisianprayertimes.tv.ui.theme.LocalDisplayTheme
+import com.tunisianprayertimes.tv.ui.theme.Sky
 import com.tunisianprayertimes.tv.ui.theme.TvPrayerTheme
 import com.tunisianprayertimes.tv.ui.theme.ThemeRegistry
 import com.tunisianprayertimes.tv.ui.TvStrings
@@ -104,6 +106,7 @@ import java.util.Locale
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
+import java.time.temporal.ChronoUnit
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -391,14 +394,28 @@ private fun TvApp(
     val iqamahTimes: Map<Prayer, LocalTime> = remember(events, today) {
         events.filter { it.adhanAt.toLocalDate() == today }.associate { it.prayer to it.iqamahAt.toLocalTime() }
     }
+    // Tomorrow's prayers are only shown, never run: the Fajr the main screen counts to after Isha, and
+    // the one the night screen waits for.
+    val tomorrowEvents = remember(tomorrowTimes, schedule, islamicDays, timing) {
+        val tomorrow = today.plusDays(1)
+        tomorrowTimes?.let {
+            PrayerFlow.eventsFor(tomorrow, it, schedule, islamicDays[tomorrow], timing, nextDay = IslamicDays.of(tomorrow.plusDays(1)))
+        }.orEmpty()
+    }
+    val tomorrowFajrIqamah = tomorrowEvents.firstOrNull { it.prayer == Prayer.FAJR }?.iqamahAt?.toLocalTime()
     val banner = DayBanners.at(
         now, islamicDay, islamicDays.getValue(today.plusDays(1)), todayTimes, tomorrowTimes,
         eidPrayerAt = events.firstOrNull { it.prayer in MosqueSchedule.EID && it.adhanAt.toLocalDate() == today }?.iqamahAt,
     )
-    val isRamadan = banner is DayBanner.Ramadan
+
+    // The sky of the theme «أفق», recomputed once a minute: it changes too slowly for more.
+    val withSky = LocalDisplayTheme.current.sky
+    val minute = now.truncatedTo(ChronoUnit.MINUTES)
+    val sky = remember(minute, todayTimes, withSky) { if (withSky) Sky.at(minute, todayTimes) else null }
 
     // Gouvernorats for setup/settings
     val gouvernorats = remember { gouvernoratRepo.loadAll() }
+    val gouvernoratName = remember(gouvernorats, delegationId) { gouvernorats.findDelegation(delegationId)?.first?.nomAr }
 
     // Start Ramadan override polling on first composition
     LaunchedEffect(Unit) {
@@ -413,18 +430,20 @@ private fun TvApp(
     var announcementSeconds by remember { mutableIntStateOf(prefs.announcementIntervalSec) }
     var announcementsEvery by remember { mutableIntStateOf(prefs.announcementsEveryMinutes) }
     var weatherEnabled by remember { mutableStateOf(prefs.weatherEnabled) }
+    var nightScreenEnabled by remember { mutableStateOf(prefs.nightScreenEnabled) }
     var textAnnouncements by remember { mutableStateOf(prefs.textAnnouncements) }
     val backgroundImages: List<Uri> = remember(mediaVersion, customBgEnabled) {
         if (activity.safeMode || !customBgEnabled) emptyList() else mediaManager.getBackgroundImages()
     }
-    // Written announcements: from the settings file (with dates) and from .txt files on a USB key.
-    val writtenAnnouncements: List<String> = remember(mediaVersion, announcementsEnabled, textAnnouncements, today) {
+    // Written announcements: from the settings file (with their end date) and from .txt files on a USB key.
+    val writtenSlides: List<Announcement.Text> = remember(mediaVersion, announcementsEnabled, textAnnouncements, today) {
         if (activity.safeMode || !announcementsEnabled) emptyList()
-        else textAnnouncements.filter { it.isShownOn(today) }.map { it.text } + mediaManager.textFileAnnouncements()
+        else textAnnouncements.filter { it.isShownOn(today) }.map(Announcement.Text::of) +
+            mediaManager.textFileAnnouncements().map { Announcement.Text(title = "", content = it) }
     }
-    val announcements: List<Announcement> = remember(mediaVersion, announcementsEnabled, writtenAnnouncements) {
-        if (activity.safeMode || !announcementsEnabled) emptyList()
-        else mediaManager.getImageAnnouncements() + writtenAnnouncements.map { Announcement.Text(title = "", content = it) }
+    val writtenAnnouncements: List<String> = remember(writtenSlides) { writtenSlides.map { it.content } }
+    val announcements: List<Announcement> = remember(mediaVersion, announcementsEnabled, writtenSlides) {
+        if (activity.safeMode || !announcementsEnabled) emptyList() else mediaManager.getImageAnnouncements() + writtenSlides
     }
     val imageCounts = remember(mediaVersion) {
         MediaKind.entries.associateWith { mediaManager.images(it).size + if (it == MediaKind.ANNOUNCEMENTS) mediaManager.textFiles().size else 0 }
@@ -453,7 +472,7 @@ private fun TvApp(
             delay(WEATHER_TICK_MILLIS)
         }
     }
-    val weatherLine = weather?.takeIf { weatherEnabled && it.isFresh(System.currentTimeMillis()) }?.weather?.line()
+    val weatherNow = weather?.takeIf { weatherEnabled && it.isFresh(System.currentTimeMillis()) }?.weather
 
     val afterSalahSlide = flow.event?.takeIf { flow.phase == FlowPhase.AFTER_SALAH }?.let { event ->
         MosqueAdhkar.slideAt(afterSalahSlides, Duration.between(event.salahEndAt, now).toMillis())
@@ -468,10 +487,19 @@ private fun TvApp(
         if (flow.phase == FlowPhase.AFTER_SALAH) adhkarShownFor = flow.event?.adhanAt
     }
     val nextAdhan = remember(events, now.minute) { events.map { it.adhanAt }.filter { it.isAfter(now) }.minOrNull() }
+
+    // After Isha the hall empties: a dim clock and the Fajr time on black until shortly before Fajr.
+    val nextFajrEvent = NightWindow.nextFajr(now, events + tomorrowEvents)
+    val lastIshaIqamah = NightWindow.lastIshaIqamah(now, events)
+    // Tarawih follow Isha on the nights before a fast (the Hijri day begins at sunset).
+    val ramadanNight = lastIshaIqamah?.let { islamicDays[it.toLocalDate().plusDays(1)]?.isRamadan } == true
+    val isNight = NightWindow.isNight(now, lastIshaIqamah, nextFajrEvent?.adhanAt, ramadanNight, nightScreenEnabled)
+    val eidMorning = EidMorning.isShown(now, banner, todayTimes?.let { today.atTime(it.dhuhr.hour, it.dhuhr.minute) })
+
     val afterPrayerDue = adhkarShownFor != null && adhkarShownFor != announcementsShownFor
     val periodicDue = announcementsEvery > 0 && !now.isBefore(lastSlideshowAt.plusMinutes(announcementsEvery.toLong())) &&
         (nextAdhan == null || now.plusMinutes(QUIET_BEFORE_ADHAN_MINUTES).isBefore(nextAdhan))
-    val showAnnouncements = flow.phase == FlowPhase.IDLE && announcements.isNotEmpty() && (afterPrayerDue || periodicDue)
+    val showAnnouncements = flow.phase == FlowPhase.IDLE && !isNight && announcements.isNotEmpty() && (afterPrayerDue || periodicDue)
 
     // Mosque settings from a USB key: checked once onboarding is done, then whenever a key is plugged in.
     // The file carries the whole TV (name, place, theme, prayers, dates), so one TV can set up another.
@@ -522,6 +550,7 @@ private fun TvApp(
         announcementSeconds = prefs.announcementIntervalSec
         announcementsEvery = prefs.announcementsEveryMinutes
         weatherEnabled = prefs.weatherEnabled
+        nightScreenEnabled = prefs.nightScreenEnabled
         mosqueName = prefs.mosqueName
         delegationId = prefs.delegationId
         delegationName = prefs.delegationName
@@ -708,16 +737,21 @@ private fun TvApp(
             )
             // The prayer itself outranks everything except an admin working in settings.
             !inSettings && flow.phase == FlowPhase.ADHAN -> AdhanScreen(
-                prayer = flow.event!!.prayer,
+                event = flow.event!!,
+                now = now,
+                mosqueName = mosqueName,
                 companion = MosqueAdhkar.adhanCompanionAt(
                     Duration.between(flow.event!!.adhanAt, now).toMillis(),
                     Duration.between(flow.event!!.adhanAt, flow.event!!.adhanScreenEndAt).toMillis(),
                     adhanSlides,
                 ),
+                sky = sky,
             )
             !inSettings && flow.phase == FlowPhase.IQAMAH_COUNTDOWN -> IqamahCountdownScreen(
-                prayer = flow.event!!.prayer,
-                remainingSeconds = Duration.between(now, flow.event!!.iqamahAt).seconds.coerceAtLeast(0).toInt(),
+                event = flow.event!!,
+                now = now,
+                mosqueName = mosqueName,
+                sky = sky,
             )
             !inSettings && flow.phase == FlowPhase.KHUTBA -> KhutbaScreen()
             !inSettings && flow.phase == FlowPhase.SALAH -> PrayerBlackScreen()
@@ -963,15 +997,27 @@ private fun TvApp(
                         if (inbox.apply(UsbSettingsFound(File("tv"), """{ "adhkar": null }""", "bundled-texts"), fromKey = false)) settingsVersion++
                         currentScreen = Screen.Display
                     },
+                    nightScreenEnabled = nightScreenEnabled,
+                    onNightScreenChanged = { enabled ->
+                        prefs.nightScreenEnabled = enabled
+                        nightScreenEnabled = enabled
+                    },
+                    phoneSessionOpen = phoneSession != null,
+                    kioskPreview = {
+                        healthRows(KioskReport.collect(context, activity.kiosk, activity.safeMode, android.os.Process.getStartElapsedRealtime())) +
+                            updateRows(updateStatus, context.packageName)
+                    },
                 )
             }
-            afterSalahSlide != null -> AfterSalahAzkarScreen(afterSalahSlide.value, afterSalahSlide.index, afterSalahSlides.size)
+            afterSalahSlide != null -> AfterSalahAzkarScreen(afterSalahSlide.value, afterSalahSlide.index, afterSalahSlides.size, sky)
             showAnnouncements -> {
                 // A new list (a change from the phone or a key) starts the slideshow again.
                 key(announcements) {
                     AnnouncementsSlideshow(
                         announcements = announcements,
+                        now = now,
                         displaySeconds = announcementSeconds,
+                        footer = MainScreenModel.nextPrayerLine(now, todayTimes, tomorrowTimes, iqamahTimes, tomorrowFajrIqamah),
                         onDismiss = {
                             announcementsShownFor = adhkarShownFor
                             lastSlideshowAt = clock.read().now
@@ -979,30 +1025,40 @@ private fun TvApp(
                     )
                 }
             }
+            isNight && nextFajrEvent != null -> NightScreen(now, nextFajrEvent.adhanAt, nextFajrEvent.iqamahAt)
+            eidMorning && banner is DayBanner.Eid -> EidScreen(banner, now, mosqueName, HijriLabels.dateLabel(islamicDay.hijri))
             else -> {
                 PrayerDisplayScreen(
-                    dayPrayerTimes = todayTimes,
-                    shuruk = todayTimes?.let { it.shurukHour to it.shurukMinute },
+                    todayTimes = todayTimes,
+                    tomorrowTimes = tomorrowTimes,
                     mosqueName = mosqueName,
                     delegationName = delegationName,
+                    gouvernoratName = gouvernoratName,
                     now = now,
                     hijriLabel = HijriLabels.dateLabel(islamicDay.hijri),
                     iqamahTimes = iqamahTimes,
-                    isRamadan = isRamadan,
+                    tomorrowFajrIqamah = tomorrowFajrIqamah,
                     banner = banner,
+                    ramadanTomorrow = islamicDays.getValue(today.plusDays(1)).isRamadan,
+                    weather = weatherNow,
                     ticker = tickerSlides,
-                    weather = weatherLine,
+                    sky = sky,
                     backgroundImages = backgroundImages,
                     onSettingsRequested = { currentScreen = Screen.Settings },
                 )
             }
         }
-        (hint ?: notice ?: TvStrings.CLOCK_WRONG_ZONE.takeIf { reading.trust == ClockTrust.WRONG_ZONE })?.let { ScreenNotice(it) }
+        // Nothing over the prayer and the khutba: the message waits until they end.
+        val quietWall = !inSettings && flow.phase in QUIET_PHASES
+        (hint ?: notice ?: TvStrings.CLOCK_WRONG_ZONE.takeIf { reading.trust == ClockTrust.WRONG_ZONE })
+            ?.takeUnless { quietWall }
+            ?.let { ScreenNotice(it) }
         if (phoneSession != null && currentScreen == Screen.Display && flow.phase !in PRAYER_PHASES) TopMark(TvStrings.DASHBOARD_OPEN)
     }
 }
 
 private val PRAYER_PHASES = setOf(FlowPhase.ADHAN, FlowPhase.IQAMAH_COUNTDOWN, FlowPhase.KHUTBA, FlowPhase.SALAH)
+private val QUIET_PHASES = setOf(FlowPhase.KHUTBA, FlowPhase.SALAH)
 private val SETTINGS_IDLE: Duration = Duration.ofMinutes(3)
 private val SETTINGS_IDLE_DURING_PRAYER: Duration = Duration.ofSeconds(30)
 private val USB_DIALOG_IDLE: Duration = Duration.ofMinutes(2)

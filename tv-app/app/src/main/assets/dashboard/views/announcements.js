@@ -81,16 +81,16 @@
 
   function dateField(ctx, id, label, item, key) {
     function update(event) { item[key] = event.target.value; }
-    return ctx.el("div", { class: "grow" },
+    return ctx.el("div", { class: "grow date" },
       ctx.el("label", { text: label, attrs: { for: id } }),
-      ctx.el("input", { id: id, type: "date", value: item[key], class: "ltr", on: { input: update, change: update } }));
+      ctx.el("input", { id: id, type: "date", value: item[key], class: "ltr wide", on: { input: update, change: update } }));
   }
 
   function fillTexts(card, ctx, paint) {
     var el = ctx.el;
     var display = (ctx.settings && ctx.settings.display) || {};
     card.appendChild(el("h2", { text: "الإعلانات المكتوبة" }));
-    card.appendChild(el("p", { class: "muted", text: "تظهر على الشاشة بين حين وآخر. اترك التاريخين فارغين ليبقى الإعلان دائماً." }));
+    card.appendChild(el("p", { class: "hint", text: "تظهر على الشاشة بين حين وآخر. اترك التاريخين فارغين ليبقى الإعلان دائماً." }));
     if (display.announcements === false) {
       card.appendChild(el("p", { class: "muted", text: "عرض الإعلانات متوقف حالياً في إعدادات العرض." }));
     }
@@ -107,25 +107,25 @@
         el("div", { class: "row" },
           dateField(ctx, id + "-from", "من", item, "from"),
           dateField(ctx, id + "-until", "حتى", item, "until"),
-          el("button", { class: "danger", text: "حذف", on: { click: function () {
+          el("button", { class: "danger", type: "button", text: "حذف", attrs: { "aria-label": "حذف الإعلان " + (i + 1) }, on: { click: function () {
             if (item.text.trim() && !confirm("حذف هذا الإعلان؟")) return;
             draft.splice(i, 1);
             paint();
           } } }))));
     });
     card.appendChild(el("div", { class: "row" },
-      el("button", { text: "إضافة إعلان", on: { click: function () {
+      el("button", { type: "button", text: "إضافة إعلان", on: { click: function () {
         draft.push({ text: "", from: "", until: "" });
         paint();
         var box = document.getElementById("announcement-" + (draft.length - 1) + "-text");
         if (box) box.focus();
       } } }),
-      el("button", { text: "إعادة القيم الحالية", on: { click: function () {
+      el("button", { type: "button", class: "quiet", text: "إعادة القيم الحالية", on: { click: function () {
         startDraft(ctx.settings, true);
         paint();
       } } })));
     card.appendChild(el("div", { class: "row" },
-      el("button", { class: "primary", text: "معاينة وتطبيق", on: { click: function () {
+      el("button", { class: "primary", type: "button", text: "معاينة وتطبيق", on: { click: function () {
         var list = collect(ctx);
         if (!list) return;
         // Rebuilt from the TV's list on the next render; the form stays usable if that reload fails.
@@ -141,13 +141,13 @@
     var files = (Array.isArray(listed) ? listed : []).filter(function (file) { return file && typeof file.name === "string"; });
     if (!files.length) return;
     card.appendChild(el("h3", { text: "من مفتاح USB" }));
-    card.appendChild(el("p", { class: "muted", text: "إعلانات نُسخت من ملفات نصية على مفتاح USB. لا تُعدَّل من هنا، ويمكن حذفها." }));
+    card.appendChild(el("p", { class: "hint", text: "إعلانات نُسخت من ملفات نصية على مفتاح USB. لا تُعدَّل من هنا، ويمكن حذفها." }));
     files.forEach(function (file) {
       card.appendChild(el("div", { class: "list-item" },
         el("p", { text: String(file.text || ""), attrs: { dir: "auto", style: "white-space: pre-wrap; overflow-wrap: anywhere" } }),
         el("div", { class: "row" },
-          el("span", { class: "muted ltr grow", text: file.name }),
-          el("button", { class: "danger", text: "حذف", on: { click: function () {
+          el("span", { class: "muted small ltr grow", text: file.name }),
+          el("button", { class: "danger", type: "button", text: "حذف", attrs: { "aria-label": "حذف الإعلان «" + file.name + "»" }, on: { click: function () {
             if (!confirm("حذف الإعلان «" + file.name + "» من الشاشة؟")) return;
             ctx.api.post("/api/image/delete?kind=announcements&name=" + encodeName(file.name)).then(function (result) {
               if (result && result.ok === false) ctx.toast(result.error || "تعذّر حذف الإعلان", "error");
@@ -247,7 +247,7 @@
         el("div", {},
           el("div", { class: "ltr", text: image.name }),
           el("div", { class: "tabular ltr", text: formatSize(image.size) })),
-        el("button", { class: "danger", text: "حذف", on: { click: function () {
+        el("button", { class: "danger", type: "button", text: "حذف", attrs: { "aria-label": "حذف الصورة «" + image.name + "»" }, on: { click: function () {
           if (!confirm("حذف الصورة «" + image.name + "» من الشاشة؟")) return;
           ctx.api.post("/api/image/delete" + query).then(function (result) {
             if (result && result.ok === false) ctx.toast(result.error || "تعذّر حذف الصورة", "error");
@@ -269,7 +269,7 @@
     });
     return el("section", { class: "card" },
       el("h2", { text: spec.title }),
-      el("p", { class: "muted", text: "الصور: " + images.length + " من " + MAX_IMAGES + " على الأكثر · JPEG أو PNG أو WebP، حتى 15 ميغابايت للصورة." }),
+      el("p", { class: "hint", text: "الصور: " + images.length + " من " + MAX_IMAGES + " على الأكثر · JPEG أو PNG أو WebP، حتى 15 ميغابايت للصورة." }),
       display[spec.display] === false ? el("p", { class: "muted", text: "عرض هذه الصور متوقف حالياً في إعدادات العرض." }) : null,
       images.length
         ? el("div", { class: "gallery" }, images.map(function (image) { return figure(ctx, spec.kind, image); }))

@@ -24,7 +24,8 @@ class HttpRequest(val method: String, val path: String, val query: Map<String, S
     val text: String get() = String(body, Charsets.UTF_8)
 }
 
-class HttpResponse(val status: Int, val contentType: String, val body: ByteArray) {
+/** [cacheControl]: never stored, except the fonts, which don't change with the settings. */
+class HttpResponse(val status: Int, val contentType: String, val body: ByteArray, val cacheControl: String = "no-store") {
     val text: String get() = String(body, Charsets.UTF_8)
 
     companion object {

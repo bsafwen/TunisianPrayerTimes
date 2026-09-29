@@ -2,12 +2,24 @@ package com.tunisianprayertimes.tv.data
 
 import android.content.Context
 import android.net.Uri
+import com.tunisianprayertimes.mosque.TextAnnouncement
 import java.io.File
+import java.time.LocalDate
 
 /** An announcement shown in the slideshow after the after-salah adhkar. */
 sealed class Announcement {
     data class Image(val uri: Uri) : Announcement()
-    data class Text(val title: String, val content: String) : Announcement()
+
+    /**
+     * A written announcement. [until] is its last day, said under it («إلى 31 أكتوبر 2026»): only the
+     * settings file's announcements have one, a .txt file has none.
+     */
+    data class Text(val title: String, val content: String, val until: LocalDate? = null) : Announcement() {
+        companion object {
+            /** One of the settings file's announcements, with its end date. */
+            fun of(announcement: TextAnnouncement): Text = Text(title = "", content = announcement.text, until = announcement.until)
+        }
+    }
 }
 
 /** A written announcement that came as a .txt file. */

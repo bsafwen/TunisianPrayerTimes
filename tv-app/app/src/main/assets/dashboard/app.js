@@ -338,6 +338,10 @@ var Dashboard = (function () {
   function render() {
     if (!current || !state || sessionClosed) return;
     var tabs = document.getElementById("tabs");
+    var root = document.getElementById("view");
+    // Whether the redraw takes away the control that has focus (a tab or a field of the section).
+    var before = document.activeElement;
+    var hadFocus = !!before && before !== document.body && (tabs.contains(before) || root.contains(before));
     tabs.textContent = "";
     views.forEach(function (view) {
       tabs.appendChild(el("button", {
@@ -346,7 +350,7 @@ var Dashboard = (function () {
         on: { click: function () { show(view.id); } }
       }));
     });
-    var root = document.getElementById("view");
+    revealTab(tabs);
     root.textContent = "";
     tickers = [];
     try {
@@ -355,14 +359,27 @@ var Dashboard = (function () {
       root.appendChild(el("div", { class: "card level-BAD", text: "تعذّر عرض هذا القسم: " + error.message, attrs: { role: "alert" } }));
     }
     // Redrawing removed the focused control: focus the current tab, so keyboards and screen readers
-    // keep their place (without scrolling the page back up).
+    // keep their place (without scrolling the page back up). Nothing had focus (the first load): none.
     var active = document.activeElement;
-    if (!active || active === document.body) {
+    if (hadFocus && (!active || active === document.body)) {
       var tab = tabs.querySelector('[aria-current="page"]');
       if (tab) {
         try { tab.focus({ preventScroll: true }); } catch (e) { tab.focus(); }
       }
     }
+  }
+
+  /**
+   * The tabs scroll sideways on a phone and are drawn again with every section: brings the current one
+   * back into sight. Relative scrolling works whichever way a browser counts scrollLeft in RTL.
+   */
+  function revealTab(tabs) {
+    var tab = tabs.querySelector('[aria-current="page"]');
+    if (!tab || typeof tab.getBoundingClientRect !== "function") return;
+    var box = tabs.getBoundingClientRect();
+    var r = tab.getBoundingClientRect();
+    if (r.left < box.left) tabs.scrollLeft -= box.left - r.left + 20;
+    else if (r.right > box.right) tabs.scrollLeft += r.right - box.right + 20;
   }
 
   function tickClock() {

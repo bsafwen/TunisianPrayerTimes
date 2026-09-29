@@ -7,7 +7,6 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.LayoutDirection
@@ -15,35 +14,6 @@ import androidx.compose.ui.unit.sp
 
 /** The theme the admin picked; screens read [DisplayTheme.sky] from it. */
 val LocalDisplayTheme = staticCompositionLocalOf { ThemeRegistry.builtInThemes.first() }
-
-// The names the screens used before «أفق», on the «مداد» palette, until each screen is redrawn.
-@Deprecated("Use Midad") val TealPrimary: Color get() = Midad.SurfaceRaised
-@Deprecated("Use Midad") val TealDark: Color get() = Midad.Surface
-@Deprecated("Use Midad") val TealDeep: Color get() = Midad.Ground
-@Deprecated("Use Midad") val Gold: Color get() = Midad.Gold
-@Deprecated("Use Midad") val GoldLight: Color get() = Midad.Text
-@Deprecated("Use Midad") val GoldMuted: Color get() = Midad.Muted
-@Deprecated("Use Midad") val BackgroundDark: Color get() = Midad.Ground
-@Deprecated("Use Midad") val SurfaceDark: Color get() = Midad.Ground
-@Deprecated("Use Midad") val SurfaceCard: Color get() = Midad.Surface
-@Deprecated("Use Midad") val SurfaceElevated: Color get() = Midad.SurfaceRaised
-@Deprecated("Use Midad") val NextPrayerHighlight: Color get() = Midad.Surface
-@Deprecated("Use Midad") val NextPrayerGlow: Color get() = Midad.Gold
-@Deprecated("Use Midad") val GlassWhite: Color get() = Midad.Keyline
-@Deprecated("Use Midad") val GlassBorder: Color get() = Midad.Keyline
-@Deprecated("Use Midad") val GoldBorder: Color get() = Midad.Keyline
-@Deprecated("Use Midad") val CardBorder: Color get() = Midad.Keyline
-@Deprecated("Use Midad") val TextWhite: Color get() = Midad.Text
-@Deprecated("Use Midad") val TextMuted: Color get() = Midad.Muted
-@Deprecated("Use Midad") val TextDim: Color get() = Midad.Dim
-@Deprecated("Use Midad") val AdhanGreen: Color get() = Midad.Text
-@Deprecated("Use Midad") val CountdownAmber: Color get() = Midad.Gold
-@Deprecated("Use Midad") val CountdownOrange: Color get() = Midad.Gold
-@Deprecated("Use Midad") val RamadanPurple: Color get() = Midad.Surface
-@Deprecated("Use Midad") val RamadanGold: Color get() = Midad.Gold
-@Deprecated("Use Midad") val RamadanMoon: Color get() = Midad.Text
-@Deprecated("Use Midad") val RamadanDeep: Color get() = Midad.Ground
-@Deprecated("Use Midad") val IftarGreen: Color get() = Midad.Text
 
 /** Arabic is never letter-spaced: tracking breaks the joins between letters. */
 private val TvTypography = Typography(

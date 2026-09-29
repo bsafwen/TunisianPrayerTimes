@@ -56,8 +56,9 @@ fun khatamPath(center: Offset, radius: Float): Path {
 }
 
 /** An SVG path in its viewBox, parsed once. */
-private class VectorShape(pathData: String, val width: Float, val height: Float) {
-    val path: Path = PathParser().parsePathString(pathData).toPath()
+private class VectorShape(private val pathData: String, val width: Float, val height: Float) {
+    /** Parsed on first draw: Android's Path does not exist where the file is only loaded (unit tests). */
+    val path: Path by lazy { PathParser().parsePathString(pathData).toPath() }
 }
 
 /** A pointed arch of the courtyard arcade, on a low rounded base (the mockups' 274 × 320 tile). */

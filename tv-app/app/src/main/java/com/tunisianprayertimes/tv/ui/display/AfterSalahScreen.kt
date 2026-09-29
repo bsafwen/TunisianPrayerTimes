@@ -1,94 +1,147 @@
 package com.tunisianprayertimes.tv.ui.display
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.TextMeasurer
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.Constraints
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.isSpecified
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.mosque.AdhkarSlide
 import com.tunisianprayertimes.tv.ui.TvStrings
-import com.tunisianprayertimes.tv.ui.theme.BackgroundDark
-import com.tunisianprayertimes.tv.ui.theme.CardBorder
-import com.tunisianprayertimes.tv.ui.theme.Gold
-import com.tunisianprayertimes.tv.ui.theme.GoldLight
-import com.tunisianprayertimes.tv.ui.theme.SurfaceCard
-import com.tunisianprayertimes.tv.ui.theme.SurfaceDark
-import com.tunisianprayertimes.tv.ui.theme.TextMuted
-import com.tunisianprayertimes.tv.ui.theme.TextWhite
+import com.tunisianprayertimes.tv.ui.theme.Amiri
+import com.tunisianprayertimes.tv.ui.theme.Dots
+import com.tunisianprayertimes.tv.ui.theme.KhatamStar
+import com.tunisianprayertimes.tv.ui.theme.MedallionRule
+import com.tunisianprayertimes.tv.ui.theme.Midad
+import com.tunisianprayertimes.tv.ui.theme.SkyColors
+import com.tunisianprayertimes.tv.ui.theme.midadStyle
+import com.tunisianprayertimes.tv.ui.theme.skyBackground
 
 /**
- * The adhkar after the prayer: [slide] is the one [MosqueAdhkar.slideAt][com.tunisianprayertimes.mosque.MosqueAdhkar.slideAt]
- * picked from the time since the prayer ended, so a restart resumes on the same text. Stateless and
- * without animation; minimal on purpose, the screen will be redesigned.
+ * The adhkar after the prayer. [slide] is the one [MosqueAdhkar.slideAt][com.tunisianprayertimes.mosque.MosqueAdhkar.slideAt]
+ * picked from the time since the prayer ended, so a restart resumes on the same text; [index] is its
+ * place among [total]. The sky shrinks to a band at the top ([sky] null on the «مداد» theme): the
+ * text is what matters now.
  */
 @Composable
-fun AfterSalahAzkarScreen(slide: AdhkarSlide, index: Int, total: Int) {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Brush.verticalGradient(listOf(BackgroundDark, SurfaceDark, Color(0xFF081428), BackgroundDark)))
-            .padding(horizontal = 48.dp, vertical = 32.dp),
-    ) {
-        Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(TvStrings.AFTER_SALAH_TITLE, color = Gold, fontSize = 30.sp, fontWeight = FontWeight.Bold)
-            Text(TvStrings.progress(index + 1, total), color = TextMuted, fontSize = 16.sp)
-            Spacer(Modifier.height(16.dp))
-            DhikrCard(slide, Modifier.fillMaxWidth().weight(1f))
+fun AfterSalahAzkarScreen(slide: AdhkarSlide, index: Int, total: Int, sky: SkyColors?) {
+    Column(Modifier.fillMaxSize().skyBackground(sky, 50.dp, 95.dp)) {
+        Row(
+            Modifier.fillMaxWidth().height(75.dp).padding(horizontal = 48.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(TvStrings.AFTER_SALAH_TITLE, style = midadStyle(19.sp, FontWeight.Medium))
+            AdhkarPager(index, total)
+        }
+        Crossfade(IndexedValue(index, slide), Modifier.weight(1f).fillMaxWidth(), tween(TEXT_FADE_MILLIS), label = "dhikr") { shown ->
+            Column(
+                Modifier.fillMaxSize().padding(start = 48.dp, end = 48.dp, bottom = 30.dp),
+                verticalArrangement = Arrangement.spacedBy(23.dp, Alignment.CenterVertically),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                MedallionRule(450.dp, starSize = 23.dp, gap = 11.dp, double = true)
+                FittedText(
+                    shown.value.text,
+                    midadStyle(44.sp, family = Amiri, lineHeight = 1.9f),
+                    Modifier.weight(1f, fill = false),
+                    maxWidth = 720.dp,
+                )
+                SourceRow(shown.value)
+            }
         }
     }
 }
 
-/** One text with how many times to say it and its source; the font shrinks with the length so nothing is cut. */
+/** A text fades into the next over half a second: no slide, no motion. */
+internal const val TEXT_FADE_MILLIS = 500
+
+/** More texts than this (a mosque's long list) and the pager is written out: a row of dots would not fit. */
+private const val MAX_PAGER_DOTS = 16
+
+/** Where the sequence is: the dots up to the current text, or "5 من 24" for a long list. */
 @Composable
-fun DhikrCard(slide: AdhkarSlide, modifier: Modifier = Modifier, maxFont: TextUnit = 52.sp) {
-    Column(
-        modifier = modifier
-            .background(SurfaceCard.copy(alpha = 0.7f), RoundedCornerShape(24.dp))
-            .border(1.dp, CardBorder, RoundedCornerShape(24.dp))
-            .padding(horizontal = 40.dp, vertical = 24.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
-    ) {
-        val size = fontFor(slide.text, maxFont)
-        Text(
-            slide.text,
-            color = TextWhite,
-            fontSize = size,
-            lineHeight = size * 1.6f,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        val count = TvStrings.times(slide.count)
-        val part = if (slide.parts > 1) TvStrings.part(slide.part, slide.parts) else null
-        listOfNotNull(count, part).takeIf { it.isNotEmpty() }?.let {
-            Text(it.joinToString(" · "), color = GoldLight, fontSize = 26.sp, fontWeight = FontWeight.Bold)
-        }
-        Text(slide.reference, color = TextMuted, fontSize = 16.sp, textAlign = TextAlign.Center)
+private fun AdhkarPager(index: Int, total: Int) {
+    if (total <= MAX_PAGER_DOTS) {
+        Dots(total, lit = { it <= index })
+    } else {
+        Text(TvStrings.progress(index + 1, total), style = midadStyle(17.sp, color = Midad.Muted))
     }
 }
 
-/** Shorter texts large, longer ones smaller, never below what a congregation can read from the back. */
-private fun fontFor(text: String, max: TextUnit): TextUnit = when {
-    text.length <= 40 -> max
-    text.length <= 90 -> max * 0.8f
-    text.length <= 160 -> max * 0.66f
-    text.length <= 240 -> max * 0.56f
-    else -> max * 0.5f
+/** How many times and which part (in ivory, to be seen), then the source, between two stars. */
+@Composable
+private fun SourceRow(slide: AdhkarSlide) {
+    Row(horizontalArrangement = Arrangement.spacedBy(14.dp), verticalAlignment = Alignment.CenterVertically) {
+        KhatamStar(15.dp)
+        val count = listOfNotNull(
+            TvStrings.times(slide.count),
+            slide.parts.takeIf { it > 1 }?.let { TvStrings.part(slide.part, it) },
+        )
+        if (count.isNotEmpty()) Text(count.joinToString(" · "), style = midadStyle(18.sp, FontWeight.Medium))
+        Text(
+            slide.reference,
+            style = midadStyle(18.sp, color = Midad.Muted),
+            textAlign = TextAlign.Center,
+            modifier = Modifier.weight(1f, fill = false),
+        )
+        KhatamStar(15.dp)
+    }
+}
+
+/**
+ * [text] centred, at [style]'s size or smaller until it fits the height it is given: a Quran, hadith
+ * or dua text is never cut or ellipsized, however long a mosque's own text is. Measured rather than
+ * guessed from the length, since vowel marks and Amiri's wide letters make lengths misleading.
+ * [maxWidth] caps the length of a line.
+ */
+@Composable
+internal fun FittedText(text: String, style: TextStyle, modifier: Modifier = Modifier, maxWidth: Dp = Dp.Unspecified) {
+    BoxWithConstraints(modifier, contentAlignment = Alignment.Center) {
+        val measurer = rememberTextMeasurer()
+        val density = LocalDensity.current
+        val widthPx = if (maxWidth.isSpecified) minOf(constraints.maxWidth, with(density) { maxWidth.roundToPx() }) else constraints.maxWidth
+        val heightPx = constraints.maxHeight
+        val centred = style.copy(textAlign = TextAlign.Center)
+        val fitted = remember(text, centred, widthPx, heightPx, density) { fit(measurer, text, centred, widthPx, heightPx) }
+        val width = if (widthPx == Constraints.Infinity) Modifier else Modifier.widthIn(max = with(density) { widthPx.toDp() })
+        Text(text, style = fitted, modifier = width)
+    }
+}
+
+/** Below this share of the asked size a text would no longer be read from the back of the hall. */
+private const val MIN_TEXT_SCALE = 0.4f
+
+private fun fit(measurer: TextMeasurer, text: String, style: TextStyle, widthPx: Int, heightPx: Int): TextStyle {
+    if (widthPx == Constraints.Infinity || heightPx == Constraints.Infinity) return style
+    var scale = 1f
+    while (scale > MIN_TEXT_SCALE) {
+        val candidate = if (scale == 1f) style else style.copy(fontSize = style.fontSize * scale)
+        val height = measurer.measure(text, candidate, constraints = Constraints(maxWidth = widthPx), skipCache = true).size.height
+        if (height <= heightPx) return candidate
+        scale *= 0.94f
+    }
+    // Still too tall: smaller would be unreadable, so it runs past its space rather than lose words.
+    return style.copy(fontSize = style.fontSize * MIN_TEXT_SCALE)
 }

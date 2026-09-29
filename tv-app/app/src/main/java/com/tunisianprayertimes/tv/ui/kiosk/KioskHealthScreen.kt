@@ -1,18 +1,22 @@
 package com.tunisianprayertimes.tv.ui.kiosk
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,6 +26,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.tv.kiosk.AutoStartTier
@@ -31,9 +40,13 @@ import com.tunisianprayertimes.tv.kiosk.EventEntry
 import com.tunisianprayertimes.tv.kiosk.KioskEvent
 import com.tunisianprayertimes.tv.kiosk.KioskReport
 import com.tunisianprayertimes.tv.kiosk.PowerLevel
+import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.common.FocusableListItem
+import com.tunisianprayertimes.tv.ui.common.focusRing
 import com.tunisianprayertimes.tv.ui.common.initialFocus
-import com.tunisianprayertimes.tv.ui.theme.Gold
+import com.tunisianprayertimes.tv.ui.common.rtl
+import com.tunisianprayertimes.tv.ui.theme.Midad
+import com.tunisianprayertimes.tv.ui.theme.midadStyle
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -172,9 +185,49 @@ fun healthRows(report: KioskReport, zone: ZoneId = ZoneId.systemDefault(), quick
 private fun time(entry: EventEntry, zone: ZoneId): String =
     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.ROOT).format(Instant.ofEpochMilli(entry.atMillis).atZone(zone))
 
+/** The green of a row that is fine: calm, and apart from the gold of a warning. */
+private val HealthGood = Color(0xFF6FBF8E)
+
+/** Each level's colour: its dot on the kiosk page and in the settings preview. */
+val HealthLevel.color: Color
+    get() = when (this) {
+        HealthLevel.GOOD -> HealthGood
+        HealthLevel.WARNING -> Midad.Gold
+        HealthLevel.BAD -> Midad.Alert
+        HealthLevel.INFO -> Midad.Muted
+    }
+
+/** The worst first, so a short list (the settings preview) shows what needs the admin. */
+fun List<HealthRow>.worstFirst(): List<HealthRow> = sortedBy {
+    when (it.level) {
+        HealthLevel.BAD -> 0
+        HealthLevel.WARNING -> 1
+        HealthLevel.INFO -> 2
+        HealthLevel.GOOD -> 3
+    }
+}
+
+/** One line over the rows: «كل شيء جاهز», or how many problems and warnings. */
+fun healthSummary(rows: List<HealthRow>): String {
+    val bad = rows.count { it.level == HealthLevel.BAD }
+    val warnings = rows.count { it.level == HealthLevel.WARNING }
+    if (bad == 0 && warnings == 0) return TvStrings.KIOSK_ALL_GOOD
+    return listOfNotNull(
+        TvStrings.problems(bad).takeIf { bad > 0 },
+        TvStrings.warnings(warnings).takeIf { warnings > 0 },
+    ).joinToString(" · ")
+}
+
+/** A level's dot, drawn so it looks the same on every box whatever its fonts. */
+@Composable
+fun HealthDot(level: HealthLevel, modifier: Modifier = Modifier, size: Dp = 10.dp) {
+    Canvas(modifier.size(size)) { drawCircle(level.color) }
+}
+
 /**
- * The kiosk page: can the box start the app by itself, will it fall asleep, has the app crashed.
- * Minimal on purpose; the page will be redesigned.
+ * The kiosk page: can the box start the app by itself, will it fall asleep, has the app crashed. The
+ * actions on the right as in the settings menu, the rows in a panel on the left, each with its fix
+ * and, for a computer, its adb command.
  */
 @Composable
 fun KioskHealthScreen(
@@ -194,69 +247,106 @@ fun KioskHealthScreen(
     quickStartSettling: Boolean = false,
 ) {
     val rows = remember(report, extraRows, quickStartSettling) { healthRows(report, quickStartSettling = quickStartSettling) + extraRows }
-    Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text("التشغيل الدائم للشاشة", color = Gold, fontSize = 26.sp)
-        Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-            if (onGrantOverlay != null && !report.canDrawOverlays) {
-                Box(Modifier.weight(1f)) { FocusableListItem(text = "منح إذن الظهور فوق التطبيقات", onClick = onGrantOverlay) }
+    val actions = listOfNotNull(
+        onGrantOverlay?.takeIf { !report.canDrawOverlays }?.let { TvStrings.GRANT_OVERLAY to it },
+        onToggleQuickStart?.let { (if (report.quickStartEnabled) TvStrings.QUICK_START_OFF else TvStrings.QUICK_START_ON) to it },
+        onDisableFireTvSleep?.let { TvStrings.FIRE_TV_SLEEP_OFF to it },
+        // Fire OS puts its own home back: offering the app as home there would only mislead.
+        if (report.autoStart.fireTv) null
+        else (if (report.homeModeEnabled) TvStrings.HOME_MODE_OFF else TvStrings.HOME_MODE_ON) to onToggleHomeMode,
+        onAllowUpdates?.let { TvStrings.ALLOW_UPDATES to it },
+        onInstallUpdate?.let { TvStrings.INSTALL_UPDATE to it },
+        TvStrings.BACK to onBack,
+    )
+    Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+        Column(Modifier.width(300.dp).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+            Text(TvStrings.SETTINGS_KIOSK, style = midadStyle(26.sp, FontWeight.SemiBold))
+            Text(healthSummary(rows), style = midadStyle(14.sp, color = Midad.Muted), modifier = Modifier.padding(bottom = 9.dp))
+            // The first action has the focus: after onboarding, it is what the installer came for.
+            actions.forEachIndexed { index, (text, action) ->
+                FocusableListItem(text = text, onClick = action, modifier = Modifier.initialFocus(index == 0))
             }
-            if (onToggleQuickStart != null) {
-                Box(Modifier.weight(1f)) {
-                    FocusableListItem(text = if (report.quickStartEnabled) "إيقاف البدء السريع" else "تفعيل البدء السريع", onClick = onToggleQuickStart)
-                }
-            }
-            if (onDisableFireTvSleep != null) {
-                Box(Modifier.weight(1f)) { FocusableListItem(text = "إيقاف نوم Fire TV", onClick = onDisableFireTvSleep) }
-            }
-            // Fire OS puts its own home back: offering the app as home there would only mislead.
-            if (!report.autoStart.fireTv) {
-                Box(Modifier.weight(1f)) {
-                    FocusableListItem(text = if (report.homeModeEnabled) "إيقاف وضع الشاشة الرئيسية" else "جعل التطبيق الشاشة الرئيسية", onClick = onToggleHomeMode)
-                }
-            }
-            if (onAllowUpdates != null) {
-                Box(Modifier.weight(1f)) { FocusableListItem(text = "السماح بتثبيت التحديثات", onClick = onAllowUpdates) }
-            }
-            if (onInstallUpdate != null) {
-                Box(Modifier.weight(1f)) { FocusableListItem(text = "تثبيت التحديث الآن", onClick = onInstallUpdate) }
-            }
-            Box(Modifier.weight(1f)) { FocusableListItem(text = "رجوع", onClick = onBack, modifier = Modifier.initialFocus()) }
         }
-        LazyColumn(Modifier.fillMaxWidth().weight(1f), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        LazyColumn(
+            Modifier
+                .weight(1f)
+                .fillMaxHeight()
+                .background(Midad.Surface, RoundedCornerShape(14.dp)),
+            contentPadding = PaddingValues(horizontal = 20.dp, vertical = 18.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
+        ) {
             items(rows) { row -> HealthRowItem(row) }
-            item { Text("آخر الأحداث", color = Gold, fontSize = 18.sp, modifier = Modifier.padding(top = 8.dp)) }
-            items(report.events) { event ->
-                FocusableLine("${time(event, ZoneId.systemDefault())}  ${event.type}  ${event.detail.take(120)}", Color.Unspecified)
+            item {
+                Text(
+                    TvStrings.KIOSK_EVENTS,
+                    style = midadStyle(17.sp, FontWeight.SemiBold),
+                    modifier = Modifier.padding(top = 10.dp, bottom = 2.dp),
+                )
             }
+            items(report.events) { event -> EventLine(event) }
         }
     }
 }
 
+/**
+ * A row of the page: the level's dot, the state, the fix under it, the command in a box of its own.
+ * Focusable only so the remote can scroll the panel; the ring shows where it is.
+ */
 @Composable
 private fun HealthRowItem(row: HealthRow) {
-    val color = when (row.level) {
-        HealthLevel.GOOD -> Color(0xFF4CAF50)
-        HealthLevel.WARNING -> Color(0xFFFFB300)
-        HealthLevel.BAD -> Color(0xFFE53935)
-        HealthLevel.INFO -> Color(0xFF90A4AE)
-    }
-    val text = listOfNotNull("● ${row.text}", row.fix, row.command).joinToString("\n")
-    FocusableLine(text, color)
-}
-
-/** A focusable line, so the D-pad can scroll the page. */
-@Composable
-private fun FocusableLine(text: String, color: Color) {
     var focused by remember { mutableStateOf(false) }
-    Text(
-        text,
-        color = if (color == Color.Unspecified) MaterialTheme.colorScheme.onSurfaceVariant else color,
-        fontSize = 16.sp,
-        modifier = Modifier
+    Row(
+        Modifier
             .fillMaxWidth()
-            .background(if (focused) MaterialTheme.colorScheme.surface else Color.Transparent, RoundedCornerShape(8.dp))
+            .focusRing(focused, radius = 8.dp)
+            .background(Midad.SurfaceRaised, RoundedCornerShape(8.dp))
             .onFocusChanged { focused = it.isFocused }
             .focusable()
-            .padding(horizontal = 12.dp, vertical = 6.dp),
+            .padding(horizontal = 12.dp, vertical = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        HealthDot(row.level, Modifier.padding(top = 6.dp))
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            // The texts carry a right-to-left mark after each Latin label ("My Fire TV" then an arrow),
+            // which only works in a right-to-left paragraph, even when the line opens in Latin.
+            Text(row.text, style = midadStyle(16.sp, lineHeight = 1.45f).rtl())
+            row.fix?.let { Text(it, style = midadStyle(14.sp, color = Midad.Muted, lineHeight = 1.45f).rtl()) }
+            row.command?.let { Command(it) }
+        }
+    }
+}
+
+/** An adb command, left to right as it is typed, in a box that sets it apart from the Arabic. */
+@Composable
+private fun Command(command: String) {
+    Box(
+        Modifier
+            .fillMaxWidth()
+            .background(Midad.Ground, RoundedCornerShape(6.dp))
+            .padding(horizontal = 10.dp, vertical = 6.dp),
+    ) {
+        Text(
+            command,
+            style = midadStyle(13.sp, color = Midad.Muted, family = FontFamily.Monospace)
+                .copy(textDirection = TextDirection.Ltr, textAlign = TextAlign.Left),
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+/** An entry of the event log, as the log writes it; focusable so the remote can scroll to the oldest. */
+@Composable
+private fun EventLine(event: EventEntry) {
+    var focused by remember { mutableStateOf(false) }
+    Text(
+        "${time(event, ZoneId.systemDefault())}  ${event.type}  ${event.detail.take(120)}",
+        style = midadStyle(13.sp, color = Midad.Dim).copy(textDirection = TextDirection.Ltr, textAlign = TextAlign.Left),
+        modifier = Modifier
+            .fillMaxWidth()
+            .focusRing(focused, radius = 6.dp)
+            .background(if (focused) Midad.SurfaceRaised else Color.Transparent, RoundedCornerShape(6.dp))
+            .onFocusChanged { focused = it.isFocused }
+            .focusable()
+            .padding(horizontal = 10.dp, vertical = 4.dp),
     )
 }

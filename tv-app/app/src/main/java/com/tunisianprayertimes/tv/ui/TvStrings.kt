@@ -18,19 +18,14 @@ object TvStrings {
     const val SETUP_IQAMAH_SUBTITLE = "حدد التأخير بالدقائق بعد الأذان لكل صلاة"
     const val SETUP_MOSQUE_NAME = "اسم المسجد (اختياري)"
     const val SETUP_MOSQUE_HINT = "مثال: مسجد الفتح"
-    const val SETUP_DONE = "تم الإعداد بنجاح"
-    const val SETUP_START = "ابدأ"
     const val NEXT = "التالي"
     const val PREVIOUS = "السابق"
     const val CONFIRM = "تأكيد"
     const val SAVE = "حفظ"
     const val CANCEL = "إلغاء"
     const val MINUTES_SUFFIX = "د"
-    const val DELAY_MODE = "تأخير"
-    const val FIXED_TIME_MODE = "وقت ثابت"
     const val IQAMAH_LABEL = "الإقامة"
     const val DURATION_LABEL = "مدة الصلاة"
-    const val FIXED_SUFFIX = "ثابت"
 
     // USB settings import
     const val USB_FOUND_TITLE = "وُجد ملف إعدادات على مفتاح USB"
@@ -42,7 +37,6 @@ object TvStrings {
     const val USB_INACCESSIBLE = "لا يسمح هذا الجهاز للتطبيقات بقراءة مفتاح USB: عدّل الإقامة ومدة الصلاة من شاشة الإعدادات"
 
     // Ramadan and Eid dates
-    const val SETTINGS_ISLAMIC_DATES = "تواريخ رمضان والعيد"
     const val ISLAMIC_DATES_TITLE = "تواريخ رمضان والعيد لسنة"
     const val ISLAMIC_DATES_HINT = "تُحدَّد تلقائيًا من الإعلان الرسمي أو التقدير، ويمكن تعديل كل تاريخ يومًا أو أكثر"
     const val RAMADAN_START = "بداية رمضان"
@@ -78,7 +72,6 @@ object TvStrings {
 
     // Main display
     const val SUNRISE = "الشروق"
-    const val NEXT_PRAYER = "الصلاة القادمة"
     const val NO_DATA = "لا تتوفر بيانات لهذا اليوم"
 
     // Prayer names
@@ -88,12 +81,6 @@ object TvStrings {
     const val MAGHRIB = "المغرب"
     const val ISHA = "العشاء"
     const val JOMOAA = "الجمعة"
-
-    // Transition screens
-    const val ALLAHU_AKBAR = "الله أكبر"
-    const val IQAMAH_SOON = "الإقامة بعد"
-    const val PRAYER_STARTED = "أُقيمت الصلاة"
-    const val SILENCE_PHONES = "أغلقوا هواتفكم"
 
     // Settings
     const val SETTINGS_TITLE = "الإعدادات"
@@ -120,15 +107,10 @@ object TvStrings {
     const val RESET_DO = "نعم، أعد الضبط"
     const val ABOUT = "حول التطبيق"
     const val LOCATION_CONFIRM = "تغيير موقع المسجد إلى"
-    const val TODAY_BEFORE_AFTER = "أوقات اليوم: الحالية ← الجديدة"
     const val MOSQUE_NAME_LABEL = "اسم المسجد"
     const val THEME_LABEL = "المظهر"
     const val SETTINGS_LOCATION = "الموقع"
-    const val SETTINGS_IQAMAH = "أوقات الإقامة"
-    const val SETTINGS_MOSQUE_NAME = "اسم المسجد"
-    const val SETTINGS_DISPLAY = "العرض"
     const val SETTINGS_ANNOUNCEMENTS = "الإعلانات"
-    const val SETTINGS_CUSTOM_BG = "خلفيات مخصصة"
     const val SETTINGS_THEME = "المظهر"
     const val ANNOUNCEMENTS_ENABLED = "تفعيل الإعلانات"
     const val CUSTOM_BG_ENABLED = "تفعيل الخلفيات المخصصة"
@@ -143,11 +125,8 @@ object TvStrings {
     const val BACKGROUNDS_LABEL = "صور الخلفية"
     const val ANNOUNCEMENT_IMAGES_LABEL = "ملفات الإعلانات (صور ونصوص)"
     const val TEXT_ANNOUNCEMENTS = "الإعلانات المكتوبة"
-    const val NO_MEDIA_FOUND = "لا توجد ملفات"
-    const val MEDIA_FILES_COUNT = "ملفات"
 
-    // Adhan/Iqamah labels
-    const val ADHAN = "الأذان"
+    // Iqamah label
     const val IQAMAH = "الإقامة"
 
     // After-salah
@@ -160,15 +139,8 @@ object TvStrings {
     const val IMSAK_COUNTDOWN = "الإمساك بعد"
     const val EID_MUBARAK = "عيد مبارك"
     const val EID_PRAYER_AT = "صلاة العيد"
-    const val EID_PRAYER_IN = "صلاة العيد بعد..."
     const val ARAFAH = "يوم عرفة"
     const val EID_AFTER_SUNRISE = "صلاة العيد: الدقائق بعد الشروق"
-
-    // Friday
-    const val KHUTBA_TIME = "وقت الخطبة"
-    const val KHUTBA_LISTEN = "الإنصات للخطبة"
-    const val JOMOAA_REMINDER = "صلاة الجمعة"
-
 
     /** "3 مرات", "33 مرة"; nothing for a single reading. */
     fun times(count: Int): String? = when {
@@ -222,6 +194,23 @@ object TvStrings {
 
     // ── «أفق»: main screen ──
 
+    /** Over the countdown to the next adhan: «أذان العصر بعد». */
+    fun adhanIn(prayer: Prayer): String = "أذان ${prayerName(prayer)} بعد"
+
+    /** A niche's iqamah line, «إقامة 05:01»; the hero says «الإقامة 15:42» ([IQAMAH]). */
+    const val IQAMAH_IN_TILE = "إقامة"
+
+    /** The last five minutes before an adhan. */
+    const val SOON = "قريبًا"
+
+    /** Ramadan's hero: «الإمساك غدًا 05:32» under the iftar countdown, «الإفطار 18:17» under the suhoor's. */
+    const val IMSAK = "الإمساك"
+    const val IFTAR = "الإفطار"
+    const val TOMORROW = "غدًا"
+
+    /** Under Isha on the nights of Ramadan. */
+    const val THEN_TARAWIH = "ثم التراويح"
+
     // ── «أفق»: prayer flow screens (adhan, iqamah, khutba, adhkar, night, Eid) ──
 
     const val ADHAN_NOW = "حان الآن وقت صلاة"
@@ -247,5 +236,134 @@ object TvStrings {
 
     // ── «أفق»: announcements and notices ──
 
+    /** Under a written announcement that ends: «إلى 31 أكتوبر 2026». */
+    fun announcementUntil(date: java.time.LocalDate): String = "إلى ${gregorianDate(date, withWeekday = false)}"
+
+    /** A month in the clock page's stepper: «سبتمبر 2026». */
+    fun monthYear(date: java.time.LocalDate): String = "${MONTHS[date.monthValue - 1]} ${date.year}"
+
+    /** Under a list longer than its panel (a USB file's changes or mistakes): the arrows show the rest. */
+    const val HINT_SCROLL_LIST = "▲ ▼: بقية القائمة"
+
     // ── «أفق»: settings and admin pages ──
+
+    /** The settings menu, as on the board; «متقدم» holds the rare and irreversible actions. */
+    const val SECTION_MOSQUE = "المسجد والموقع"
+    const val SECTION_IQAMAH = "الإقامة ومدة الصلاة"
+    const val SECTION_DATES = "رمضان والعيد"
+    const val SECTION_MEDIA = "الإعلانات والصور"
+    const val SECTION_ADVANCED = "متقدم"
+
+    /** What the remote's keys do, at the foot of the admin pages. */
+    const val HINT_OK_OPEN = "OK: فتح"
+    const val HINT_OK_CHANGE = "OK: تغيير"
+    const val HINT_BACK_TO_SCREEN = "الرجوع: العودة إلى الشاشة"
+    const val HINT_BACK_TO_SETTINGS = "الرجوع: الإعدادات"
+    const val HINT_BACK_TO_STEP = "الرجوع: الخطوة السابقة"
+    const val HINT_FROM_PHONE = "أسهل من الهاتف: «لوحة الإدارة من الهاتف»"
+    const val HINT_SAVED_AT_ONCE = "تُحفظ التغييرات فورًا"
+
+    const val BACK = "رجوع"
+    const val ON = "مفعّل"
+    const val OFF = "متوقف"
+    const val NOT_SET = "غير محدد"
+    const val GOUVERNORAT_LABEL = "الولاية"
+    const val DELEGATION_LABEL = "المعتمدية"
+
+    /** The iqamah table: «بعد الأذان 15 د», «الساعة 19:40», «10 د». */
+    const val PRAYER_COLUMN = "الصلاة"
+    const val DURATION_COLUMN = "المدة"
+    const val DURATION_NOTE = "المدة: الشاشة سوداء أثناء الصلاة"
+    fun minutesShort(minutes: Int): String = "$minutes $MINUTES_SUFFIX"
+    fun iqamahAfterAdhan(minutes: Int): String = "بعد الأذان $minutes $MINUTES_SUFFIX"
+    fun iqamahAfterSunrise(minutes: Int): String = "بعد الشروق $minutes $MINUTES_SUFFIX"
+    fun atTime(hour: Int, minute: Int): String = "الساعة ${hm(java.time.LocalTime.of(hour, minute))}"
+    fun hijriYear(year: Int): String = "$year هـ"
+
+    /** Before a change of place: today's times here and there. */
+    const val TODAY_TIMES = "أوقات اليوم"
+    const val CURRENT_PLACE = "الموقع الحالي"
+    const val NEW_PLACE = "الموقع الجديد"
+
+    /** «المظهر»: the two looks, and what the screen shows. */
+    const val THEME_CURRENT = "المظهر الحالي"
+    const val DISPLAY_OPTIONS = "خيارات العرض"
+    const val NIGHT_SCREEN = "شاشة الليل الخافتة"
+    const val NIGHT_SCREEN_HINT = "بعد العشاء تخفت الشاشة إلى ساعة صغيرة حتى قُبيل الفجر"
+    const val WEATHER_SOURCE = "المصدر:"
+
+    /** «متقدم»: one line under each action. */
+    const val UNDO_IMPORT_HINT = "تعود الإعدادات كما كانت قبل آخر ملف من مفتاح USB أو من الهاتف"
+    const val BUNDLED_TEXTS_HINT = "تعود أذكار ما بعد الصلاة والشريط إلى النصوص المضمّنة المراجَعة"
+    const val RESET_HINT = "تُمحى كل الإعدادات ويبدأ الإعداد من جديد"
+    const val EXIT_TO_ANDROID_HINT = "إعدادات الشبكة والصوت والتاريخ في الجهاز نفسه"
+
+    /** «الإعلانات والصور» and «المظهر»: the rows and what they say. */
+    const val ANNOUNCEMENTS_BETWEEN = "الإعلانات بين الصلوات"
+    fun everyMinutes(minutes: Int): String = "كل $minutes $MINUTES_WORD"
+    fun secondsShort(seconds: Int): String = "$seconds $SECONDS_SUFFIX"
+    const val WEATHER_LABEL = "الطقس"
+    const val WEATHER_HINT = "عند الاتصال بالإنترنت"
+    const val DELETE_IMAGES_HINT = "صور الخلفية وصور الإعلانات المنسوخة من مفاتيح USB"
+    const val BACKGROUNDS_HOWTO = "من مجلد backgrounds على مفتاح USB"
+
+    /** What a section holds, in the menu's preview, when it has no values to show. */
+    const val PHONE_PREVIEW = "عدّل الإقامة والتواريخ والإعلانات والصور والأذكار من هاتف أو حاسوب: امسح رمزًا يظهر على الشاشة، على شبكة المسجد أو نقطة اتصال الهاتف، دون إنترنت."
+    const val PHONE_SESSION_OPEN = "جلسة مفتوحة الآن: أوقفها عند الانتهاء"
+    const val KIOSK_PREVIEW = "هل تعود الشاشة وحدها بعد انقطاع الكهرباء، وهل ينام الجهاز، وهل توقّف التطبيق."
+
+    /** The kiosk page. */
+    const val KIOSK_ALL_GOOD = "كل شيء جاهز"
+    const val KIOSK_EVENTS = "آخر الأحداث"
+    const val GRANT_OVERLAY = "منح إذن الظهور فوق التطبيقات"
+    const val QUICK_START_ON = "تفعيل البدء السريع"
+    const val QUICK_START_OFF = "إيقاف البدء السريع"
+    const val FIRE_TV_SLEEP_OFF = "إيقاف نوم Fire TV"
+    const val HOME_MODE_ON = "جعل التطبيق الشاشة الرئيسية"
+    const val HOME_MODE_OFF = "إيقاف وضع الشاشة الرئيسية"
+    const val INSTALL_UPDATE = "تثبيت التحديث الآن"
+    fun problems(count: Int): String = counted(count, "مشكلة واحدة", "مشكلتان", "مشاكل", "مشكلة", "مشكلة")
+    fun warnings(count: Int): String = counted(count, "تنبيه واحد", "تنبيهان", "تنبيهات", "تنبيهًا", "تنبيه")
+
+    /** «ملف واحد», «ملفان», «3 ملفات», «12 ملفًا»; «لا ملفات» for none. */
+    fun filesCount(count: Int): String = if (count <= 0) "لا ملفات" else counted(count, "ملف واحد", "ملفان", "ملفات", "ملفًا", "ملف")
+
+    /**
+     * A count with its noun as Arabic wants it: [one] and [two] alone, the plural from 3 to 10, the
+     * accusative singular from 11 to 99, the singular for 100 and the round hundreds after it.
+     */
+    fun counted(count: Int, one: String, two: String, plural: String, accusative: String, singular: String): String = when {
+        count == 1 -> one
+        count == 2 -> two
+        count % 100 in 3..10 -> "$count $plural"
+        count % 100 in 11..99 -> "$count $accusative"
+        else -> "$count $singular"
+    }
+
+    /** The phone page. */
+    const val PHONE_SUBTITLE = "من هاتف أو حاسوب على شبكة الشاشة، دون إنترنت"
+    const val PHONE_INTRO = "الهاتف والشاشة على الشبكة نفسها، ولا حاجة إلى الإنترنت. ابدأ الجلسة وامسح الرمز بالهاتف: تُفتح لوحة فيها " +
+        "أوقات اليوم والإقامة والتواريخ والإعلانات والصور والأذكار. تنتهي الجلسة وحدها بعد ربع ساعة دون استعمال."
+    const val PHONE_START = "بدء الجلسة"
+    const val PHONE_STOP = "إيقاف الجلسة"
+    const val STOP = "إيقاف"
+    const val WIFI_SETTINGS = "إعدادات Wi-Fi"
+    const val PHONE_NO_NETWORK = "الشاشة غير متصلة بأي شبكة: صِلها بشبكة المسجد أو بنقطة اتصال الهاتف"
+    val PHONE_SCAN_STEPS = listOf(
+        "امسح الرمز بكاميرا الهاتف",
+        "افتح الرابط الذي يقترحه الهاتف: تُفتح لوحة الإدارة",
+        "أوقف الجلسة هنا عند الانتهاء",
+    )
+    const val PHONE_WRONG_NETWORK = "إن لم تُفتح اللوحة، فالهاتف على شبكة غير شبكة الشاشة."
+    const val PHONE_WARNING = "من يرى هذا الرمز يستطيع تغيير إعدادات الشاشة: أوقف الجلسة عند الانتهاء."
+    const val HOTSPOT_TITLE = "دون Wi-Fi في المسجد: نقطة اتصال الهاتف، مرة واحدة"
+    val HOTSPOT_STEPS = listOf(
+        "في الهاتف: الإعدادات ← نقطة الاتصال ← تشغيل، باسم وكلمة سر سهلين.",
+        "هنا: «إعدادات Wi-Fi» ← اختر نقطة اتصال الهاتف واكتب كلمة السر، ثم ارجع إلى التطبيق.",
+        "في المرات القادمة يكفي تشغيل نقطة الاتصال: تتصل بها الشاشة وحدها.",
+    )
+    const val HOTSPOT_NOTE = "إن قال الهاتف إن الشبكة بلا إنترنت، فاختر البقاء متصلًا."
+
+    /** Onboarding. */
+    fun step(index: Int, count: Int): String = "الخطوة $index من $count"
 }

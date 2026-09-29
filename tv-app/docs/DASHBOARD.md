@@ -14,7 +14,25 @@ hotspot the TV joins). No internet is needed. An admin starts a session from the
   Arabic), and nothing is written until the admin applies it. The previous settings can be
   restored ("undo the last import").
 - The page itself (`/`, `/app.js`, `/style.css`, `/views/*.js`) is static and holds no data;
-  it lives in `app/src/main/assets/dashboard/`.
+  it lives in `app/src/main/assets/dashboard/`. Its fonts come from the app too, so it looks like
+  the screen without internet: `/fonts/readex-pro.ttf` (everything) and `/fonts/amiri.ttf` (the
+  adhkar texts, loaded on that section only), `font/ttf`, public like the page. Any other name is 404.
+
+## The page
+
+Plain browser JavaScript, no build step, no external file. It uses the day palette «سيدي بوسعيد»
+(limewash `#EFECE4`, surfaces `#FAF8F3`, ink `#0E1B2A`, door blue `#0B5E9E`), one dark card for
+what the screen shows now, with the countdown in the screen's stone gold.
+
+- The header shows the mosque's name, a dot that is green («متصل بالشاشة») while the TV answers
+  and red («غير متصل») once a request fails, and the TV's clock. The sections are pill tabs.
+- «نظرة عامة» follows the TV (every 30 s, and its countdown every second on the TV's clock): the next
+  adhan, or the iqamah the screen is waiting for, with what the screen shows (`flow`); today's times
+  with the next (or current) prayer highlighted; the weather (credited to Open-Meteo); the kiosk
+  checks with coloured dots; the version and the update button.
+- The forms («الإقامة», «الأذكار», «الإعلانات», «المسجد», «رمضان والعيد», «متقدّم») keep their main
+  button at the bottom of the screen while they scroll, and send only what the admin changed.
+- Numbers that tick use cells of one width: Readex Pro has proportional figures and no tabular feature.
 
 ## API
 
