@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-    <!-- OTA data update -->
+    <!-- Optional: official Ramadan/Eid date announcements. Prayer times need no network. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Explicitly opt out: this app does not use full-screen intent alarms -->
     <uses-permission

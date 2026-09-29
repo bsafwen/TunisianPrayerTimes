@@ -3,15 +3,17 @@ package com.tunisianprayertimes.tv.data
 import com.tunisianprayertimes.InmPrayerTimes
 import java.io.File
 
-/** Canonical inputs the APK bundles, located by paths the Gradle test task passes in. */
+/** Inputs the Gradle test task declares and passes in: the files the APK bundles, and the phone catalog. */
 internal object TestData {
-    private fun dir(property: String): File =
+    private fun path(property: String): File =
         File(checkNotNull(System.getProperty(property)) { "missing -D$property; run through Gradle" })
 
-    val tvAssets: File get() = dir("tunisianprayertimes.tvAssets")
+    val tvAssets: File get() = path("tunisianprayertimes.tvAssets")
+
+    val phoneDhikrCatalog: String by lazy { path("tunisianprayertimes.phoneDhikrCatalog").readText() }
 
     val prayerTimes: InmPrayerTimes by lazy {
-        InmPrayerTimes.fromParamsJson(File(dir("tunisianprayertimes.dataDir"), "prayer-formula/delegation_params.json").readText())
+        InmPrayerTimes.fromParamsJson(File(path("tunisianprayertimes.prayerFormulaDir"), "delegation_params.json").readText())
     }
 
     val gouvernoratsJson: String by lazy { File(tvAssets, "gouvernorats.json").readText() }

@@ -2,6 +2,7 @@ package com.tunisianprayertimes.tv.data
 
 import android.content.Context
 import android.net.Uri
+import android.os.Environment
 import java.io.File
 
 /** An announcement shown in the slideshow after the after-salah adhkar. */
@@ -11,49 +12,49 @@ sealed class Announcement {
 }
 
 /**
- * Backgrounds and announcements placed in the app's own external folders
- * (Android/data/<package>/files/backgrounds and .../announcements), which need no
- * storage permission on any Android version.
+ * Backgrounds and announcements the admin copies into the TunisianPrayerTimesTV folder at
+ * the root of the device storage, as the settings screen explains. Each image is a slide;
+ * each .txt file is a text slide titled by its name.
  */
-class LocalMediaManager(private val context: Context) {
+class LocalMediaManager(@Suppress("unused") private val context: Context) {
 
-    private fun folder(name: String): File? = context.getExternalFilesDir(name)
+    private val baseDir: File get() = File(Environment.getExternalStorageDirectory(), APP_FOLDER)
+    private val backgroundsDir: File get() = File(baseDir, BACKGROUNDS_FOLDER)
+    private val announcementsDir: File get() = File(baseDir, ANNOUNCEMENTS_FOLDER)
 
     fun ensureDirectories() {
-        folder(BACKGROUNDS)?.mkdirs()
-        folder(ANNOUNCEMENTS)?.mkdirs()
+        runCatching {
+            backgroundsDir.mkdirs()
+            announcementsDir.mkdirs()
+        }
     }
 
-    fun getBackgroundImages(): List<Uri> = images(folder(BACKGROUNDS)).map(Uri::fromFile)
+    fun getBackgroundImages(): List<Uri> = listImageFiles(backgroundsDir).map(Uri::fromFile)
 
-    /** Images become image slides; each .txt file becomes a text slide (first line is the title). */
     fun getAnnouncements(): List<Announcement> {
-        val dir = folder(ANNOUNCEMENTS) ?: return emptyList()
-        val files = dir.listFiles().orEmpty().sortedBy { it.name.lowercase() }
+        val files = announcementsDir.listFiles().orEmpty().filter { it.isFile }.sortedBy { it.name.lowercase() }
         return files.mapNotNull { file ->
+            val extension = file.extension.lowercase()
             when {
-                file.isImage() -> Announcement.Image(Uri.fromFile(file))
-                file.extension.equals("txt", ignoreCase = true) -> textAnnouncement(file)
+                extension in IMAGE_EXTENSIONS -> Announcement.Image(Uri.fromFile(file))
+                extension == TEXT_EXTENSION -> runCatching { file.readText().trim() }.getOrNull()
+                    ?.takeIf { it.isNotEmpty() }
+                    ?.let { Announcement.Text(title = file.nameWithoutExtension, content = it) }
                 else -> null
             }
         }
     }
 
-    private fun textAnnouncement(file: File): Announcement.Text? {
-        val lines = runCatching { file.readLines() }.getOrNull()?.map(String::trim) ?: return null
-        val title = lines.firstOrNull { it.isNotEmpty() } ?: return null
-        val content = lines.dropWhile { it != title }.drop(1).joinToString("\n").trim()
-        return Announcement.Text(title = title, content = content)
-    }
-
-    private fun images(dir: File?): List<File> =
-        dir?.listFiles().orEmpty().filter { it.isImage() }.sortedBy { it.name.lowercase() }
-
-    private fun File.isImage(): Boolean = isFile && extension.lowercase() in IMAGE_EXTENSIONS
+    private fun listImageFiles(dir: File): List<File> =
+        dir.listFiles().orEmpty()
+            .filter { it.isFile && it.extension.lowercase() in IMAGE_EXTENSIONS }
+            .sortedBy { it.name.lowercase() }
 
     private companion object {
-        const val BACKGROUNDS = "backgrounds"
-        const val ANNOUNCEMENTS = "announcements"
+        const val APP_FOLDER = "TunisianPrayerTimesTV"
+        const val BACKGROUNDS_FOLDER = "backgrounds"
+        const val ANNOUNCEMENTS_FOLDER = "announcements"
+        const val TEXT_EXTENSION = "txt"
         val IMAGE_EXTENSIONS = setOf("jpg", "jpeg", "png", "webp")
     }
 }

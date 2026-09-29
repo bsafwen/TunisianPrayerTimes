@@ -4,9 +4,11 @@ package com.tunisianprayertimes.tv.data
 data class Dhikr(val text: String, val repetition: String, val source: String)
 
 /**
- * Temporary verbatim copy of the phone app's reviewed after-salah entries
- * (android-app/.../adhkar/DhikrCatalog.kt, category SALAH), with their references.
- * The TV will read the shared catalog directly once it moves to the shared module.
+ * Temporary verbatim copy of the four non-Quranic after-salah entries of the phone app's
+ * reviewed catalog (android-app/.../adhkar/DhikrCatalog.kt: salah_istighfar, salah_salam,
+ * salah_la_mani, salah_hundred), with their references; AzkarDataTest keeps it identical.
+ * Ayat al-Kursi and the three Quls are left out until the card can show long passages in
+ * full. The TV will read the shared catalog directly once it moves to the shared module.
  */
 object AzkarData {
 
@@ -26,7 +28,7 @@ object AzkarData {
         Dhikr(TAHLIL, "مرة واحدة", HUNDRED_SOURCE),
     )
 
-    /** Short texts for the bottom ticker, from the same reviewed entries. */
+    /** Ticker texts, from the same reviewed entries. */
     val TICKER_ITEMS: List<String> = listOf(SALAM, LA_MANIA, TAHLIL)
 
     val RAMADAN_TICKER_ITEMS: List<String> = TICKER_ITEMS
