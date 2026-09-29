@@ -297,6 +297,13 @@ var Dashboard = (function () {
     PRAYERS: PRAYERS,
     api: api,
     el: el,
+    digits: digits,
+    setDigits: setDigits,
+    longDate: longDate,
+    /** The TV's time now (read it with getUTCHours() and the like). */
+    now: tvNow,
+    /** Calls fn(now) every second while this section is shown (until it is drawn again). */
+    onTick: function (fn) { tickers.push(fn); },
     toast: toast,
     places: places,
     reload: reload,
@@ -341,6 +348,7 @@ var Dashboard = (function () {
     });
     var root = document.getElementById("view");
     root.textContent = "";
+    tickers = [];
     try {
       current.render(root, context);
     } catch (error) {
@@ -358,12 +366,16 @@ var Dashboard = (function () {
   }
 
   function tickClock() {
-    var now = new Date(Date.now() + clockOffset);
+    var now = tvNow();
     var pad = function (n) { return (n < 10 ? "0" : "") + n; };
     // The TV's time is Tunisia's; shown as the TV says it, whatever the phone's own zone.
-    document.getElementById("clock").textContent = state
+    setDigits(document.getElementById("clock"), state
       ? pad(now.getUTCHours()) + ":" + pad(now.getUTCMinutes()) + ":" + pad(now.getUTCSeconds())
-      : "";
+      : "");
+    if (sessionClosed) return;
+    tickers.forEach(function (fn) {
+      try { fn(now); } catch (e) { /* a countdown that fails stays as it was */ }
+    });
   }
 
   function start() {
@@ -382,11 +394,13 @@ var Dashboard = (function () {
       if (!wanted || wanted.id !== id) show(id);
     });
     // The overview follows the TV; forms are left alone while the admin edits them.
-    // Nothing shown yet means the first load failed: try again.
+    // Nothing shown yet means the first load failed: try again. After a failed request the TV is
+    // asked again, so the header says as soon as it answers once more.
     setInterval(function () {
       if (dialog.open || sessionClosed) return;
       if (!current) { if (wanted) show(wanted.id); }
       else if (current.autoRefresh) reload();
+      else if (link === false) keepAlive();
     }, 30000);
     // Keeps the session alive while the page is open (the TV ends it after 15 minutes without requests).
     // The answer is ignored: nothing is redrawn, so the forms keep what the admin typed.
