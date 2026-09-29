@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.tv.data
 
+import com.tunisianprayertimes.Delegation
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.GouvernoratJsonParser
 import com.tunisianprayertimes.InmPrayerTimes
@@ -20,3 +21,7 @@ class GouvernoratRepository(
             .filter { it.delegations.isNotEmpty() }
     }
 }
+
+/** The gouvernorat and delegation with this id, or null when it is not offered. */
+fun List<Gouvernorat>.findDelegation(id: Int): Pair<Gouvernorat, Delegation>? =
+    firstNotNullOfOrNull { gouvernorat -> gouvernorat.delegations.find { it.id == id }?.let { gouvernorat to it } }

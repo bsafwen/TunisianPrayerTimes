@@ -1,196 +1,94 @@
 package com.tunisianprayertimes.tv.ui.display
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.tunisianprayertimes.Prayer
-import com.tunisianprayertimes.tv.data.AzkarData
-import com.tunisianprayertimes.tv.data.Dhikr
+import com.tunisianprayertimes.mosque.AdhkarSlide
 import com.tunisianprayertimes.tv.ui.TvStrings
-import com.tunisianprayertimes.tv.ui.theme.*
-import kotlinx.coroutines.delay
+import com.tunisianprayertimes.tv.ui.theme.BackgroundDark
+import com.tunisianprayertimes.tv.ui.theme.CardBorder
+import com.tunisianprayertimes.tv.ui.theme.Gold
+import com.tunisianprayertimes.tv.ui.theme.GoldLight
+import com.tunisianprayertimes.tv.ui.theme.SurfaceCard
+import com.tunisianprayertimes.tv.ui.theme.SurfaceDark
+import com.tunisianprayertimes.tv.ui.theme.TextMuted
+import com.tunisianprayertimes.tv.ui.theme.TextWhite
 
 /**
- * After-salah adhkar screen — shows rotating adhkar one by one with fade transitions.
- * Auto-advances every ~8 seconds. Dismisses after all adhkar shown or configurable duration.
+ * The adhkar after the prayer: [slide] is the one [MosqueAdhkar.slideAt][com.tunisianprayertimes.mosque.MosqueAdhkar.slideAt]
+ * picked from the time since the prayer ended, so a restart resumes on the same text. Stateless and
+ * without animation; minimal on purpose, the screen will be redesigned.
  */
 @Composable
-fun AfterSalahAzkarScreen(
-    prayer: Prayer,
-    durationMinutes: Int = 10,
-    onDismiss: () -> Unit
-) {
-    val azkar = AzkarData.AFTER_SALAH_AZKAR
-    var currentIndex by remember { mutableIntStateOf(0) }
-    var visible by remember { mutableStateOf(true) }
-
-    // Auto-dismiss after duration
-    LaunchedEffect(Unit) {
-        delay(durationMinutes * 60 * 1000L)
-        onDismiss()
-    }
-
-    // Rotate adhkar
-    LaunchedEffect(currentIndex) {
-        visible = true
-        delay(8000L) // Show each dhikr for 8 seconds
-        visible = false
-        delay(600L) // Fade out duration
-        currentIndex = (currentIndex + 1) % azkar.size
-    }
-
-    val dhikr = azkar[currentIndex]
-
+fun AfterSalahAzkarScreen(slide: AdhkarSlide, index: Int, total: Int) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(
-                Brush.verticalGradient(
-                    listOf(BackgroundDark, SurfaceDark, Color(0xFF081428), BackgroundDark)
-                )
-            ),
-        contentAlignment = Alignment.Center
+            .background(Brush.verticalGradient(listOf(BackgroundDark, SurfaceDark, Color(0xFF081428), BackgroundDark)))
+            .padding(horizontal = 48.dp, vertical = 32.dp),
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            // Header
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(32.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = TvStrings.AFTER_SALAH_TITLE,
-                    style = MaterialTheme.typography.headlineMedium,
-                    color = Gold,
-                    fontSize = 28.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-
-            // Progress dots
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                modifier = Modifier.padding(bottom = 24.dp)
-            ) {
-                azkar.forEachIndexed { index, _ ->
-                    Box(
-                        modifier = Modifier
-                            .padding(horizontal = 3.dp)
-                            .size(if (index == currentIndex) 10.dp else 6.dp)
-                            .background(
-                                if (index == currentIndex) Gold
-                                else if (index < currentIndex) GoldMuted.copy(alpha = 0.5f)
-                                else TextDim.copy(alpha = 0.25f),
-                                CircleShape
-                            )
-                    )
-                }
-            }
-
-            // Dhikr card with fade animation
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
-                    .padding(horizontal = 64.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                androidx.compose.animation.AnimatedVisibility(
-                    visible = visible,
-                    enter = fadeIn(tween(500)),
-                    exit = fadeOut(tween(500))
-                ) {
-                    DhikrCard(dhikr = dhikr)
-                }
-            }
-
-            // Counter: X / total
-            Text(
-                text = "${currentIndex + 1} / ${azkar.size}",
-                style = MaterialTheme.typography.bodyLarge,
-                color = TextMuted,
-                fontSize = 18.sp,
-                modifier = Modifier.padding(bottom = 32.dp)
-            )
+        Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(TvStrings.AFTER_SALAH_TITLE, color = Gold, fontSize = 30.sp, fontWeight = FontWeight.Bold)
+            Text(TvStrings.progress(index + 1, total), color = TextMuted, fontSize = 16.sp)
+            Spacer(Modifier.height(16.dp))
+            DhikrCard(slide, Modifier.fillMaxWidth().weight(1f))
         }
     }
 }
 
+/** One text with how many times to say it and its source; the font shrinks with the length so nothing is cut. */
 @Composable
-private fun DhikrCard(dhikr: Dhikr) {
+fun DhikrCard(slide: AdhkarSlide, modifier: Modifier = Modifier, maxFont: TextUnit = 52.sp) {
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(SurfaceCard.copy(alpha = 0.8f), RoundedCornerShape(24.dp))
+        modifier = modifier
+            .background(SurfaceCard.copy(alpha = 0.7f), RoundedCornerShape(24.dp))
             .border(1.dp, CardBorder, RoundedCornerShape(24.dp))
-            .padding(48.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .padding(horizontal = 40.dp, vertical = 24.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(12.dp, Alignment.CenterVertically),
     ) {
-        // Main dhikr text
+        val size = fontFor(slide.text, maxFont)
         Text(
-            text = dhikr.text,
-            style = MaterialTheme.typography.headlineLarge,
+            slide.text,
             color = TextWhite,
-            fontSize = 32.sp,
+            fontSize = size,
+            lineHeight = size * 1.6f,
             textAlign = TextAlign.Center,
-            lineHeight = 52.sp
+            modifier = Modifier.fillMaxWidth(),
         )
-
-        Spacer(Modifier.height(28.dp))
-
-        // Thin decorative line
-        Box(
-            modifier = Modifier.width(80.dp).height(1.dp)
-                .background(Gold.copy(alpha = 0.4f))
-        )
-
-        Spacer(Modifier.height(20.dp))
-
-        // Repetition badge
-        Box(
-            modifier = Modifier
-                .background(Gold.copy(alpha = 0.15f), RoundedCornerShape(20.dp))
-                .border(1.dp, Gold.copy(alpha = 0.3f), RoundedCornerShape(20.dp))
-                .padding(horizontal = 24.dp, vertical = 8.dp)
-        ) {
-            Text(
-                text = dhikr.repetition,
-                style = MaterialTheme.typography.titleMedium,
-                color = Gold,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold
-            )
+        val count = TvStrings.times(slide.count)
+        val part = if (slide.parts > 1) TvStrings.part(slide.part, slide.parts) else null
+        listOfNotNull(count, part).takeIf { it.isNotEmpty() }?.let {
+            Text(it.joinToString(" · "), color = GoldLight, fontSize = 26.sp, fontWeight = FontWeight.Bold)
         }
-
-        Spacer(Modifier.height(12.dp))
-
-        // Source
-        Text(
-            text = dhikr.source,
-            style = MaterialTheme.typography.bodyMedium,
-            color = TextMuted,
-            fontSize = 16.sp
-        )
+        Text(slide.reference, color = TextMuted, fontSize = 16.sp, textAlign = TextAlign.Center)
     }
+}
+
+/** Shorter texts large, longer ones smaller, never below what a congregation can read from the back. */
+private fun fontFor(text: String, max: TextUnit): TextUnit = when {
+    text.length <= 40 -> max
+    text.length <= 90 -> max * 0.8f
+    text.length <= 160 -> max * 0.66f
+    text.length <= 240 -> max * 0.56f
+    else -> max * 0.5f
 }

@@ -18,25 +18,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.mosque.AdhkarSlide
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.theme.*
-import kotlinx.coroutines.delay
 
 /**
- * Full-screen overlay when adhan time is reached.
- * Shows "الله أكبر", prayer name, and after-adhan duaa.
+ * Full-screen overlay when adhan time is reached: the prayer's name and what is said with the
+ * muezzin and after the call ([companion], from the reviewed catalog, paced over the adhan screen).
  */
 @Composable
 fun AdhanScreen(
     prayer: Prayer,
-    onDismiss: () -> Unit
+    companion: AdhkarSlide?,
 ) {
-    // Auto-dismiss after 4 minutes
-    LaunchedEffect(prayer) {
-        delay(4 * 60 * 1000L)
-        onDismiss()
-    }
-
     // Pulsing animation for the Allahu Akbar text
     val infiniteTransition = rememberInfiniteTransition(label = "adhanPulse")
     val alpha by infiniteTransition.animateFloat(
@@ -101,24 +95,7 @@ fun AdhanScreen(
 
             Spacer(Modifier.height(56.dp))
 
-            // After-adhan duaa card
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth(0.7f)
-                    .background(SurfaceCard.copy(alpha = 0.7f), RoundedCornerShape(20.dp))
-                    .border(1.dp, CardBorder, RoundedCornerShape(20.dp))
-                    .padding(32.dp)
-            ) {
-                Text(
-                    text = TvStrings.AFTER_ADHAN_DUA,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = TextWhite.copy(alpha = 0.9f),
-                    fontSize = 24.sp,
-                    textAlign = TextAlign.Center,
-                    lineHeight = 40.sp,
-                    modifier = Modifier.fillMaxWidth()
-                )
-            }
+            companion?.let { DhikrCard(it, Modifier.fillMaxWidth(0.8f), maxFont = 30.sp) }
         }
     }
 }
@@ -131,13 +108,7 @@ fun AdhanScreen(
 fun IqamahCountdownScreen(
     prayer: Prayer,
     remainingSeconds: Int,
-    onDismiss: () -> Unit
 ) {
-    // Auto-dismiss when countdown reaches 0
-    LaunchedEffect(remainingSeconds) {
-        if (remainingSeconds <= 0) onDismiss()
-    }
-
     val minutes = remainingSeconds / 60
     val seconds = remainingSeconds % 60
     val countdownStr = String.format(java.util.Locale.US, "%02d:%02d", minutes, seconds)
@@ -157,7 +128,8 @@ fun IqamahCountdownScreen(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "${TvStrings.IQAMAH_SOON}...",
+                // The Eid prayer has no adhan or iqamah: the countdown is to the prayer itself.
+                text = if (prayer in com.tunisianprayertimes.mosque.MosqueSchedule.EID) TvStrings.EID_PRAYER_IN else "${TvStrings.IQAMAH_SOON}...",
                 style = MaterialTheme.typography.headlineLarge,
                 color = GoldLight,
                 fontSize = 36.sp,
@@ -191,89 +163,48 @@ fun IqamahCountdownScreen(
                     textAlign = TextAlign.Center
                 )
             }
+
+            // In the last moments before the iqamah, under the countdown (which stays visible).
+            if (remainingSeconds <= SILENCE_PHONES_SECONDS) {
+                Spacer(Modifier.height(28.dp))
+                Text(
+                    text = TvStrings.SILENCE_PHONES,
+                    color = TextWhite,
+                    fontSize = 40.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .background(Color(0xFF8B1E1E), RoundedCornerShape(16.dp))
+                        .padding(horizontal = 32.dp, vertical = 12.dp),
+                )
+            }
         }
     }
 }
 
+/** How long before the iqamah the congregation is asked to silence their phones. */
+const val SILENCE_PHONES_SECONDS = 90
+
 /**
- * Screen shown when iqamah is called — prayer in progress.
+ * After the iqamah the screen goes fully black for the prayer's duration, so nothing on
+ * the wall distracts the congregation. The prayer flow decides when it ends.
  */
 @Composable
-fun PrayerInProgressScreen(
-    prayer: Prayer,
-    onDismiss: () -> Unit
-) {
-    // Auto-dismiss after estimated prayer duration
-    val durationMs = when (prayer) {
-        Prayer.FAJR -> 15 * 60 * 1000L
-        Prayer.DHUHR, Prayer.ASR, Prayer.ISHA -> 20 * 60 * 1000L
-        Prayer.MAGHRIB -> 12 * 60 * 1000L
-        Prayer.JOMOAA -> 45 * 60 * 1000L
-        // The Eid khutba follows the salah; keep the quiet screen through both.
-        Prayer.AID_FITR, Prayer.AID_ADHA -> 30 * 60 * 1000L
-    }
+fun PrayerBlackScreen() {
+    Box(modifier = Modifier.fillMaxSize().background(Color.Black))
+}
 
-    LaunchedEffect(prayer) {
-        delay(durationMs)
-        onDismiss()
-    }
-
-    val infiniteTransition = rememberInfiniteTransition(label = "prayerPulse")
-    val alpha by infiniteTransition.animateFloat(
-        initialValue = 0.6f,
-        targetValue = 1f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(3000, easing = EaseInOutSine),
-            repeatMode = RepeatMode.Reverse
-        ),
-        label = "prayerAlpha"
-    )
-
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(
-                Brush.verticalGradient(
-                    listOf(
-                        BackgroundDark,
-                        Color(0xFF081428),
-                        SurfaceDark,
-                        BackgroundDark
-                    )
-                )
-            ),
-        contentAlignment = Alignment.Center
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-        ) {
-            Text(
-                text = TvStrings.PRAYER_STARTED,
-                style = MaterialTheme.typography.displayMedium,
-                color = Gold,
-                fontSize = 72.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.alpha(alpha)
-            )
-
-            Spacer(Modifier.height(16.dp))
-
-            // Thin line
-            Box(
-                modifier = Modifier.width(120.dp).height(1.dp)
-                    .background(Gold.copy(alpha = 0.4f))
-            )
-
-            Spacer(Modifier.height(16.dp))
-
-            Text(
-                text = TvStrings.prayerName(prayer),
-                style = MaterialTheme.typography.headlineLarge,
-                color = GoldLight,
-                fontSize = 48.sp
-            )
+/**
+ * The Friday sermon, between the Jumu'a adhan and its iqamah: a dim, still screen asking for
+ * silence, so nothing on the wall competes with the khatib. Minimal; to be redesigned.
+ */
+@Composable
+fun KhutbaScreen() {
+    Box(modifier = Modifier.fillMaxSize().background(Color.Black), contentAlignment = Alignment.Center) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(TvStrings.KHUTBA_TIME, color = Color(0xFF6B6B6B), fontSize = 40.sp, fontWeight = FontWeight.Bold)
+            Spacer(Modifier.height(12.dp))
+            Text(TvStrings.KHUTBA_LISTEN, color = Color(0xFF4A4A4A), fontSize = 26.sp)
         }
     }
 }

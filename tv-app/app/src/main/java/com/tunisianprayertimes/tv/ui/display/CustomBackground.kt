@@ -35,7 +35,7 @@ fun CustomBackground(
     var visible by remember { mutableStateOf(true) }
 
     // Cycle through images
-    LaunchedEffect(images.size) {
+    LaunchedEffect(images) {
         if (images.size <= 1) return@LaunchedEffect
         while (true) {
             visible = true
@@ -57,7 +57,8 @@ fun CustomBackground(
         ) {
             val painter = rememberAsyncImagePainter(
                 model = ImageRequest.Builder(context)
-                    .data(images[currentIndex])
+                    // The list can shrink while it cycles (images removed from the key).
+                    .data(images[currentIndex % images.size])
                     .crossfade(true)
                     .build()
             )

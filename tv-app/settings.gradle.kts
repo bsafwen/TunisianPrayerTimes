@@ -1,4 +1,6 @@
 pluginManagement {
+    // Shared build conventions (bundled offline data), also used by the other Android app.
+    includeBuild("../build-logic")
     repositories {
         google()
         mavenCentral()

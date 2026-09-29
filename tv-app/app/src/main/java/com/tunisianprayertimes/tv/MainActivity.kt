@@ -1,27 +1,99 @@
 package com.tunisianprayertimes.tv
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
+import android.os.SystemClock
+import android.view.KeyEvent
+import android.provider.Settings
+import android.util.Log
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
+import androidx.activity.addCallback
 import androidx.activity.compose.setContent
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.lifecycle.Lifecycle
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
 import com.tunisianprayertimes.DayPrayerTimes
-import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.Prayer
-import com.tunisianprayertimes.RamadanDetector
+import com.tunisianprayertimes.HijriLabels
+import com.tunisianprayertimes.IslamicDays
+import com.tunisianprayertimes.ManualIslamicDateOverrides
+import com.tunisianprayertimes.OfficialIslamicDates
 import com.tunisianprayertimes.RamadanOverrideChecker
+import com.tunisianprayertimes.mosque.DayBanner
+import com.tunisianprayertimes.mosque.DayBanners
+import com.tunisianprayertimes.mosque.FlowPhase
+import com.tunisianprayertimes.mosque.FlowTiming
+import com.tunisianprayertimes.mosque.MosqueAdhkar
+import com.tunisianprayertimes.mosque.MosqueSchedule
+import com.tunisianprayertimes.mosque.PrayerFlow
 import com.tunisianprayertimes.platform.PrayerDataLoader
+import com.tunisianprayertimes.time.ClockGuard
+import com.tunisianprayertimes.time.ClockTrust
 import com.tunisianprayertimes.tv.data.*
 import com.tunisianprayertimes.tv.ui.display.*
 import com.tunisianprayertimes.tv.ui.settings.SettingsScreen
 import com.tunisianprayertimes.tv.ui.setup.SetupWizard
 import com.tunisianprayertimes.tv.ui.theme.TvPrayerTheme
 import com.tunisianprayertimes.tv.ui.theme.ThemeRegistry
+import com.tunisianprayertimes.tv.ui.TvStrings
+import com.tunisianprayertimes.tv.ui.usb.UsbImportScreen
+import com.tunisianprayertimes.tv.ui.clock.ClockWarningScreen
+import com.tunisianprayertimes.tv.ui.common.ScreenNotice
+import com.tunisianprayertimes.tv.ui.common.VirtualCanvas
+import com.tunisianprayertimes.tv.usb.UsbScan
+import com.tunisianprayertimes.tv.usb.UsbSettings
+import com.tunisianprayertimes.mosque.MosqueSettingsFile
+import com.tunisianprayertimes.tv.remote.PhoneAdminBackend
+import com.tunisianprayertimes.tv.remote.PhoneAdminRoutes
+import com.tunisianprayertimes.tv.remote.PhoneAdminServer
+import com.tunisianprayertimes.tv.ui.remote.PhoneAdminScreen
+import com.tunisianprayertimes.tv.ui.remote.PhoneAdminSession
+import com.tunisianprayertimes.tv.ui.usb.SettingsChangeLines
+import com.tunisianprayertimes.tv.usb.UsbMedia
+import com.tunisianprayertimes.tv.usb.UsbMediaFound
+import com.tunisianprayertimes.tv.usb.UsbMediaInbox
+import com.tunisianprayertimes.tv.ui.usb.UsbMediaScreen
+import com.tunisianprayertimes.mosque.ProfileCatalog
+import java.io.File
+import com.tunisianprayertimes.tv.usb.UsbSettingsFound
+import com.tunisianprayertimes.tv.usb.UsbSettingsInbox
+import com.tunisianprayertimes.tv.usb.UsbVolumes
+import com.tunisianprayertimes.tv.kiosk.AdminEntryDetector
+import com.tunisianprayertimes.tv.kiosk.ClockSample
+import com.tunisianprayertimes.tv.kiosk.CrashLoopGuard
+import com.tunisianprayertimes.tv.kiosk.KioskController
+import com.tunisianprayertimes.tv.kiosk.KioskEvent
+import com.tunisianprayertimes.tv.kiosk.KioskReport
+import com.tunisianprayertimes.tv.kiosk.KioskStore
+import com.tunisianprayertimes.tv.kiosk.MaintenanceRestart
+import com.tunisianprayertimes.tv.kiosk.PixelShift
+import com.tunisianprayertimes.tv.kiosk.SleepGapDetector
+import com.tunisianprayertimes.tv.ui.kiosk.KioskHealthScreen
+import java.time.Duration
+import java.time.Instant
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.Locale
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.LocalTime
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import java.util.Calendar
 
 class MainActivity : ComponentActivity() {
 
@@ -30,11 +102,51 @@ class MainActivity : ComponentActivity() {
     private lateinit var gouvernoratRepo: GouvernoratRepository
     private lateinit var mediaManager: LocalMediaManager
 
+    internal val kiosk: KioskStore get() = (application as TvApplication).kiosk
+
+    /** Three crashes in a few minutes: plain theme, no custom backgrounds or announcements. */
+    internal var safeMode = false
+        private set
+
+    /** Set by the composition: whether the admin-entry keys are listened to, and what they open. */
+    internal var adminEntryActive = false
+    internal var onAdminEntry: () -> Unit = {}
+
+    /** Set by the composition: what Back does where nothing else handles it (it never leaves the app). */
+    internal var onBackOnDisplay: () -> Unit = {}
+
+    /** Counts returns to the foreground, so pages showing system state read it again. */
+    internal var resumes by mutableIntStateOf(0)
+        private set
+
+    private val adminEntry = AdminEntryDetector()
+
+    /** After a hold of OK opened settings, the rest of that press must not click the first item there. */
+    private var swallowOkUntilUp = false
+    private var screenReceiver: BroadcastReceiver? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Keep screen always on
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        hideSystemBars()
+        safeMode = CrashLoopGuard().isSafeMode(kiosk.crashes, SystemClock.elapsedRealtime())
+        // Registered before the content, so every screen's own Back handling comes first.
+        onBackPressedDispatcher.addCallback(this) { onBackOnDisplay() }
+        KioskController.lockTaskIfDeviceOwner(this)
+        screenReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                kiosk.eventLog.append(if (intent.action == Intent.ACTION_SCREEN_OFF) KioskEvent.SCREEN_OFF else KioskEvent.SCREEN_ON)
+            }
+        }.also { receiver ->
+            runCatching {
+                registerReceiver(receiver, IntentFilter().apply {
+                    addAction(Intent.ACTION_SCREEN_OFF)
+                    addAction(Intent.ACTION_SCREEN_ON)
+                })
+            }
+        }
 
         val app = applicationContext
         prefs = PrefsManager(this)
@@ -45,32 +157,120 @@ class MainActivity : ComponentActivity() {
             prayerTimes = { PrayerDataLoader.prayerTimes(app) },
         )
         mediaManager = LocalMediaManager(this)
-        mediaManager.ensureDirectories()
 
         setContent {
             // Theme state lives here so it wraps TvPrayerTheme
             var themeId by remember { mutableStateOf(prefs.themeId) }
-            val themeConfig = remember(themeId) { ThemeRegistry.findById(themeId) }
+            val themeConfig = remember(themeId) { ThemeRegistry.findById(if (safeMode) PrefsManager.DEFAULT_THEME_ID else themeId) }
 
             TvPrayerTheme(themeConfig = themeConfig) {
-                TvApp(
-                    prefs = prefs,
-                    prayerRepo = prayerRepo,
-                    gouvernoratRepo = gouvernoratRepo,
-                    mediaManager = mediaManager,
-                    currentThemeId = themeId,
-                    onThemeChanged = { newId ->
-                        prefs.themeId = newId
-                        themeId = newId
-                    }
-                )
+                VirtualCanvas {
+                    TvApp(
+                        activity = this,
+                        prefs = prefs,
+                        prayerRepo = prayerRepo,
+                        gouvernoratRepo = gouvernoratRepo,
+                        mediaManager = mediaManager,
+                        currentThemeId = themeId,
+                        onThemeChanged = { newId ->
+                            prefs.themeId = newId
+                            themeId = newId
+                        }
+                    )
+                }
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        hideSystemBars()
+        resumes++
+        inFront = true
+        val now = SystemClock.elapsedRealtime()
+        kiosk.update { it.copy(resumedAt = now) }
+        // Pinned again when the admin is back from the system (lock task, device-owner boxes only).
+        if ((kiosk.state.adminAwayUntil ?: 0L) <= now) KioskController.lockTaskIfDeviceOwner(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        inFront = false
+        val now = SystemClock.elapsedRealtime()
+        kiosk.update { it.copy(stoppedAt = now) }
+        KioskController.armWatchdog(this)
+    }
+
+    override fun onDestroy() {
+        screenReceiver?.let { runCatching { unregisterReceiver(it) } }
+        super.onDestroy()
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        // Also after the keyboard of the mosque-name field closes.
+        if (hasFocus) hideSystemBars()
+    }
+
+    /** Opens settings from any remote: OK held 3 s, OK five times, or Menu/Settings/Info. */
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        val isOk = event.keyCode == KeyEvent.KEYCODE_DPAD_CENTER || event.keyCode == KeyEvent.KEYCODE_ENTER ||
+            event.keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER
+        if (swallowOkUntilUp && isOk) {
+            if (event.action == KeyEvent.ACTION_UP) {
+                swallowOkUntilUp = false
+                adminEntry.onKey(AdminEntryDetector.Key.OK, AdminEntryDetector.Action.UP, event.eventTime) // ends the press
+            }
+            return true
+        }
+        if (!adminEntryActive) return super.dispatchKeyEvent(event)
+        val key = when (event.keyCode) {
+            KeyEvent.KEYCODE_DPAD_CENTER, KeyEvent.KEYCODE_ENTER, KeyEvent.KEYCODE_NUMPAD_ENTER -> AdminEntryDetector.Key.OK
+            KeyEvent.KEYCODE_MENU, KeyEvent.KEYCODE_SETTINGS, KeyEvent.KEYCODE_INFO -> AdminEntryDetector.Key.MENU
+            else -> AdminEntryDetector.Key.OTHER
+        }
+        val action = when (event.action) {
+            KeyEvent.ACTION_DOWN -> AdminEntryDetector.Action.DOWN
+            KeyEvent.ACTION_UP -> AdminEntryDetector.Action.UP
+            else -> return super.dispatchKeyEvent(event)
+        }
+        return when (adminEntry.onKey(key, action, event.eventTime)) {
+            AdminEntryDetector.Result.OPEN_ADMIN -> {
+                if (event.action == KeyEvent.ACTION_DOWN && key == AdminEntryDetector.Key.OK) swallowOkUntilUp = true
+                onAdminEntry()
+                true
+            }
+            AdminEntryDetector.Result.CONSUME -> true
+            AdminEntryDetector.Result.PASS -> super.dispatchKeyEvent(event)
+        }
+    }
+
+    /** Immersive fullscreen: AOSP boxes with a tablet system UI otherwise show status and navigation bars. */
+    private fun hideSystemBars() {
+        runCatching {
+            WindowCompat.setDecorFitsSystemWindows(window, false)
+            WindowInsetsControllerCompat(window, window.decorView).apply {
+                systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+                hide(WindowInsetsCompat.Type.systemBars())
+            }
+        }
+    }
+
+    internal val isResumed: Boolean get() = lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)
+
+    companion object {
+        /** Whether the display is on screen in this process; false in a process started for an alarm. */
+        @Volatile
+        var inFront: Boolean = false
+            private set
+    }
 }
+
+private const val TAG = "TvApp"
 
 @Composable
 private fun TvApp(
+    activity: MainActivity,
     prefs: PrefsManager,
     prayerRepo: PrayerTimesRepository,
     gouvernoratRepo: GouvernoratRepository,
@@ -78,240 +278,592 @@ private fun TvApp(
     currentThemeId: String,
     onThemeChanged: (String) -> Unit,
 ) {
-    var isSetupDone by remember { mutableStateOf(prefs.isSetupDone) }
-    var currentScreen by remember { mutableStateOf<Screen>(if (prefs.isSetupDone) Screen.Display else Screen.Setup) }
+    val context = LocalContext.current
+    var currentScreen by remember { mutableStateOf(if (prefs.isSetupDone) Screen.Display else Screen.Setup) }
+    var openKioskPage by remember { mutableStateOf(false) }
+    LaunchedEffect(currentScreen) { if (currentScreen != Screen.Settings) openKioskPage = false }
 
     // Data state
     var delegationId by remember { mutableIntStateOf(prefs.delegationId) }
     var delegationName by remember { mutableStateOf(prefs.delegationName) }
     var mosqueName by remember { mutableStateOf(prefs.mosqueName) }
-    var iqamahConfigs by remember {
-        mutableStateOf(
-            listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
-                .associateWith { prefs.getIqamahConfig(it) }
-        )
+    // Every prayer's iqamah and duration (daily, Jumu'a, the Eids), and Ramadan's changes from the USB file.
+    var iqamahConfigs by remember { mutableStateOf(prefs.iqamahConfigs()) }
+    var ramadanOverrides by remember { mutableStateOf(prefs.ramadanOverrides) }
+    // The texts: bundled and reviewed, unless the mosque's USB file replaced or extended them.
+    var adhkarContent by remember { mutableStateOf(prefs.adhkarContent) }
+    val afterSalahSlides = remember(adhkarContent) { MosqueAdhkar.afterSalah(adhkarContent) }
+    val tickerSlides = remember(adhkarContent) { MosqueAdhkar.ticker(adhkarContent) }
+    val adhanSlides = remember { MosqueAdhkar.adhanCompanion() }
+    val schedule = remember(iqamahConfigs, ramadanOverrides) {
+        MosqueSchedule(iqamahConfigs.mapValues { it.value.toPrayerSettings() }, ramadanOverrides)
     }
-    var jomoaaConfig by remember { mutableStateOf(prefs.getJomoaaIqamahConfig()) }
 
-    // Prayer times — refresh daily
-    var dayPrayerTimes by remember { mutableStateOf<DayPrayerTimes?>(null) }
-    var shuruk by remember { mutableStateOf<Pair<Int, Int>?>(null) }
-
-    // Refresh prayer data when delegation changes or at midnight
-    LaunchedEffect(delegationId) {
+    // Tunisia's time from the guarded device clock, on the second. Every screen of the prayer flow
+    // is derived from it, so a restart or a clock change lands on the right screen.
+    val clock = remember { ClockGuard(prefs.clockStore, Instant::now, SystemClock::elapsedRealtime, ZoneId::systemDefault) }
+    var reading by remember { mutableStateOf(clock.read()) }
+    LaunchedEffect(Unit) {
+        var sample = clockSample()
         while (true) {
-            if (delegationId > 0) {
-                // Computed on the device from the bundled formula: no network, no expiry.
-                val today = withContext(Dispatchers.Default) { prayerRepo.loadToday(delegationId) }
-                dayPrayerTimes = today
-                shuruk = today?.let { it.shurukHour to it.shurukMinute }
+            reading = clock.read()
+            // Energy saver or standby can put the box to sleep despite the screen flag; record it.
+            val next = clockSample()
+            SleepGapDetector.compare(sample, next)?.let { gap ->
+                activity.kiosk.eventLog.append(KioskEvent.SLEEP_GAP, sleepText(gap.fromWall, gap.toWall, gap.sleptMillis))
             }
-            // Wait until next midnight to refresh
-            val now = Calendar.getInstance()
-            val tomorrow = Calendar.getInstance().apply {
-                add(Calendar.DAY_OF_YEAR, 1)
-                set(Calendar.HOUR_OF_DAY, 0)
-                set(Calendar.MINUTE, 0)
-                set(Calendar.SECOND, 5)
-            }
-            delay(tomorrow.timeInMillis - now.timeInMillis)
+            sample = next
+            delay(1000L - System.currentTimeMillis() % 1000L)
         }
     }
+    val now = reading.now
+    val today = now.toLocalDate()
+
+    // Computed on the device from the bundled formula: no network, no expiry. Yesterday is kept
+    // because an Isha flow can run past midnight; tomorrow for the suhoor after iftar.
+    val todayTimes by produceState<DayPrayerTimes?>(null, delegationId, today) {
+        value = loadDay(prayerRepo, delegationId, today)
+    }
+    val yesterdayTimes by produceState<DayPrayerTimes?>(null, delegationId, today) {
+        value = loadDay(prayerRepo, delegationId, today.minusDays(1))
+    }
+    val tomorrowTimes by produceState<DayPrayerTimes?>(null, delegationId, today) {
+        value = loadDay(prayerRepo, delegationId, today.plusDays(1))
+    }
+
+    // The shared Tunisian calendar: the admin's dates, then announcements, then estimates.
+    val manualDates by ManualIslamicDateOverrides.updates.collectAsState()
+    val officialDates by OfficialIslamicDates.updates.collectAsState()
+    val islamicDays = remember(today, manualDates, officialDates) {
+        (-1L..1L).map(today::plusDays).associateWith { IslamicDays.of(it) }
+    }
+    val islamicDay = islamicDays.getValue(today)
+
+    // Ramadan's settings in Ramadan, the Eid prayer on Eid, Jumu'a on Fridays. The time after the
+    // prayer is long enough for the whole sequence of texts (the mosque may have added its own).
+    val timing = remember(afterSalahSlides) {
+        val minutes = ((MosqueAdhkar.totalMillis(afterSalahSlides) + 59_999) / 60_000).toInt()
+        FlowTiming(afterSalahMinutes = minutes.coerceIn(FlowTiming().afterSalahMinutes, MAX_AFTER_SALAH_MINUTES))
+    }
+    val events = remember(todayTimes, yesterdayTimes, schedule, islamicDays, timing) {
+        val yesterday = today.minusDays(1)
+        listOfNotNull(
+            yesterdayTimes?.let { PrayerFlow.eventsFor(yesterday, it, schedule, islamicDays[yesterday], timing, nextDay = islamicDay) },
+            todayTimes?.let { PrayerFlow.eventsFor(today, it, schedule, islamicDay, timing, nextDay = islamicDays[today.plusDays(1)]) },
+        ).flatten()
+    }
+    val flow = PrayerFlow.stateAt(now, events)
+    val iqamahTimes: Map<Prayer, LocalTime> = remember(events, today) {
+        events.filter { it.adhanAt.toLocalDate() == today }.associate { it.prayer to it.iqamahAt.toLocalTime() }
+    }
+    val banner = DayBanners.at(
+        now, islamicDay, islamicDays.getValue(today.plusDays(1)), todayTimes, tomorrowTimes,
+        eidPrayerAt = events.firstOrNull { it.prayer in MosqueSchedule.EID && it.adhanAt.toLocalDate() == today }?.iqamahAt,
+    )
+    val isRamadan = banner is DayBanner.Ramadan
 
     // Gouvernorats for setup/settings
     val gouvernorats = remember { gouvernoratRepo.loadAll() }
-
-    // Ramadan detection — refreshes with prayer data
-    var isRamadan by remember { mutableStateOf(RamadanDetector.isRamadan()) }
-    LaunchedEffect(dayPrayerTimes) {
-        isRamadan = RamadanDetector.isRamadan()
-    }
 
     // Start Ramadan override polling on first composition
     LaunchedEffect(Unit) {
         RamadanOverrideChecker.startPollingIfNeeded()
     }
 
-    // Local media — backgrounds and announcements
-    var backgroundImages by remember { mutableStateOf<List<Uri>>(emptyList()) }
-    var announcements by remember { mutableStateOf<List<Announcement>>(emptyList()) }
-    LaunchedEffect(Unit) {
-        backgroundImages = if (prefs.customBackgroundEnabled) mediaManager.getBackgroundImages() else emptyList()
-        announcements = if (prefs.announcementsEnabled) mediaManager.getAnnouncements() else emptyList()
+    // The mosque's images (copied from USB keys) and written announcements. In safe mode none are
+    // shown: a bad image may be what crashed the app.
+    var mediaVersion by remember { mutableIntStateOf(0) }
+    var customBgEnabled by remember { mutableStateOf(prefs.customBackgroundEnabled) }
+    var announcementsEnabled by remember { mutableStateOf(prefs.announcementsEnabled) }
+    var textAnnouncements by remember { mutableStateOf(prefs.textAnnouncements) }
+    val backgroundImages: List<Uri> = remember(mediaVersion, customBgEnabled) {
+        if (activity.safeMode || !customBgEnabled) emptyList() else mediaManager.getBackgroundImages()
+    }
+    val announcements: List<Announcement> = remember(mediaVersion, announcementsEnabled, textAnnouncements, today) {
+        if (activity.safeMode || !announcementsEnabled) emptyList()
+        else mediaManager.getImageAnnouncements() +
+            textAnnouncements.filter { it.isShownOn(today) }.map { Announcement.Text(title = "", content = it.text) }
+    }
+    val imageCounts = remember(mediaVersion) { MediaKind.entries.associateWith { mediaManager.images(it).size } }
+
+    val afterSalahSlide = flow.event?.takeIf { flow.phase == FlowPhase.AFTER_SALAH }?.let { event ->
+        MosqueAdhkar.slideAt(afterSalahSlides, Duration.between(event.salahEndAt, now).toMillis())
     }
 
-    // Transition overlay state
-    var overlayState by remember { mutableStateOf<OverlayState>(OverlayState.None) }
+    // Announcements play once after each prayer's adhkar.
+    var adhkarShownFor by remember { mutableStateOf<LocalDateTime?>(null) }
+    var announcementsShownFor by remember { mutableStateOf<LocalDateTime?>(null) }
+    LaunchedEffect(flow.phase, flow.event?.adhanAt) {
+        if (flow.phase == FlowPhase.AFTER_SALAH) adhkarShownFor = flow.event?.adhanAt
+    }
+    val showAnnouncements = flow.phase == FlowPhase.IDLE && adhkarShownFor != null &&
+        adhkarShownFor != announcementsShownFor && announcements.isNotEmpty()
 
-    // Iqamah countdown ticker
-    var countdownSeconds by remember { mutableIntStateOf(0) }
-    LaunchedEffect(overlayState) {
-        if (overlayState is OverlayState.IqamahCountdown) {
-            val config = (overlayState as OverlayState.IqamahCountdown).let { state ->
-                if (state.prayer == Prayer.JOMOAA) jomoaaConfig
-                else iqamahConfigs[state.prayer] ?: IqamahConfig()
+    // Mosque settings from a USB key: checked once onboarding is done, then whenever a key is plugged in.
+    // The file carries the whole TV (name, place, theme, prayers, dates), so one TV can set up another.
+    val snapshotFile = remember { File(context.filesDir, "previous-settings.json") }
+    var canUndoImport by remember { mutableStateOf(snapshotFile.isFile) }
+    val catalog = remember(gouvernorats) {
+        ProfileCatalog(
+            delegationName = { id -> gouvernorats.findDelegation(id)?.second?.nomAr },
+            themes = ThemeRegistry.builtInThemes.associate { it.id to it.nameAr },
+        )
+    }
+    val inbox = remember(catalog) {
+        UsbSettingsInbox(
+            readSchedule = { prefs.schedule },
+            writeSchedule = { prefs.schedule = it },
+            lastHandled = { prefs.usbLastHandledSignature },
+            setLastHandled = { prefs.usbLastHandledSignature = it },
+            readDates = { ManualIslamicDateOverrides.all() },
+            writeDates = { dates -> dates.forEach { (year, value) -> ManualIslamicDateOverrides.set(year, value) } },
+            readProfile = { prefs.profile },
+            writeProfile = { profile ->
+                prefs.applyProfile(profile) { id -> gouvernorats.findDelegation(id)?.let { (g, d) -> g.id to d.nomAr } }
+            },
+            catalog = catalog,
+            readContent = { prefs.adhkarContent },
+            writeContent = { prefs.adhkarContent = it },
+            readAnnouncements = { prefs.textAnnouncements },
+            writeAnnouncements = { prefs.textAnnouncements = it },
+            saveSnapshot = { text ->
+                runCatching { UsbSettings.writeAtomically(snapshotFile, text.toByteArray(Charsets.UTF_8)) }
+                canUndoImport = snapshotFile.isFile
+            },
+        )
+    }
+    // The offer on screen came from a key, or is the undo of the last import.
+    var usbFoundIsUndo by remember { mutableStateOf(false) }
+
+    // A phone on the local network can edit the same settings file; its changes reload the screen.
+    var settingsVersion by remember { mutableIntStateOf(0) }
+    LaunchedEffect(settingsVersion) {
+        if (settingsVersion == 0) return@LaunchedEffect
+        iqamahConfigs = prefs.iqamahConfigs()
+        ramadanOverrides = prefs.ramadanOverrides
+        adhkarContent = prefs.adhkarContent
+        textAnnouncements = prefs.textAnnouncements
+        mosqueName = prefs.mosqueName
+        delegationId = prefs.delegationId
+        delegationName = prefs.delegationName
+        if (prefs.themeId != currentThemeId) onThemeChanged(prefs.themeId)
+    }
+    var phoneServer by remember { mutableStateOf<PhoneAdminServer?>(null) }
+    var phoneSession by remember { mutableStateOf<PhoneAdminSession?>(null) }
+    fun stopPhone() {
+        phoneServer?.stop()
+        phoneServer = null
+        phoneSession = null
+    }
+    DisposableEffect(Unit) { onDispose { phoneServer?.stop() } }
+    LaunchedEffect(now.minute) {
+        val server = phoneServer ?: return@LaunchedEffect
+        if (System.currentTimeMillis() - server.lastRequestAt > PHONE_IDLE_MILLIS) stopPhone()
+    }
+    var usbScans by remember { mutableIntStateOf(0) }
+    DisposableEffect(Unit) {
+        val stop = UsbVolumes.onMounted(context) { usbScans++ }
+        onDispose { stop() }
+    }
+    var usbFound by remember { mutableStateOf<UsbSettingsFound?>(null) }
+    // Images on the key are offered after its settings file, never at the same time.
+    val mediaInbox = remember { UsbMediaInbox(mediaManager, { prefs.usbMediaLastHandled }, { prefs.usbMediaLastHandled = it }) }
+    var usbMedia by remember { mutableStateOf<UsbMediaFound?>(null) }
+    var notice by remember { mutableStateOf<String?>(null) }
+    val setupDone = currentScreen != Screen.Setup
+    LaunchedEffect(usbScans, setupDone) {
+        if (!setupDone) return@LaunchedEffect
+        val (scan, media) = withContext(Dispatchers.IO) { scanUsb(context, inbox, mediaInbox) }
+        if (scan !is UsbScan.Offer) usbMedia = media
+        when (scan) {
+            is UsbScan.Offer -> {
+                usbFoundIsUndo = false
+                usbFound = scan.found
             }
-            countdownSeconds = config.delayMinutes * 60
-            while (countdownSeconds > 0) {
-                delay(1000L)
-                countdownSeconds--
-            }
-            // Countdown done — show prayer in progress
-            val prayer = (overlayState as? OverlayState.IqamahCountdown)?.prayer
-            if (prayer != null) {
-                overlayState = OverlayState.PrayerInProgress(prayer)
-            }
+            is UsbScan.TemplateWritten -> notice = TvStrings.usbTemplateWritten(context.packageName)
+            UsbScan.Inaccessible -> notice = TvStrings.USB_INACCESSIBLE
+            UsbScan.Quiet -> Unit
+        }
+    }
+    // The file is always read against the settings on screen now, never an older snapshot.
+    val usbPreview = remember(usbFound, schedule, manualDates, mosqueName, delegationId, currentThemeId) { usbFound?.let(inbox::preview) }
+    LaunchedEffect(notice) {
+        if (notice != null) {
+            delay(NOTICE_MILLIS)
+            notice = null
         }
     }
 
-    when {
-        // Overlay takes precedence
-        overlayState is OverlayState.Adhan -> {
-            AdhanScreen(
-                prayer = (overlayState as OverlayState.Adhan).prayer,
-                onDismiss = {
-                    val prayer = (overlayState as OverlayState.Adhan).prayer
-                    overlayState = OverlayState.IqamahCountdown(prayer)
-                }
-            )
+    // Back never leaves the app: on the display it tells how to reach settings.
+    var hint by remember { mutableStateOf<String?>(null) }
+    LaunchedEffect(hint) {
+        if (hint != null) {
+            delay(HINT_MILLIS)
+            hint = null
         }
-        overlayState is OverlayState.IqamahCountdown -> {
-            IqamahCountdownScreen(
-                prayer = (overlayState as OverlayState.IqamahCountdown).prayer,
-                remainingSeconds = countdownSeconds,
-                onDismiss = {
-                    val prayer = (overlayState as OverlayState.IqamahCountdown).prayer
-                    overlayState = OverlayState.PrayerInProgress(prayer)
-                }
-            )
+    }
+    SideEffect {
+        activity.adminEntryActive = currentScreen == Screen.Display && usbFound == null && usbMedia == null && reading.trust != ClockTrust.IMPLAUSIBLE
+        activity.onAdminEntry = { currentScreen = Screen.Settings }
+        activity.onBackOnDisplay = { hint = TvStrings.HOLD_OK_HINT }
+    }
+
+    // Once a night, after a long run, a fresh process (only on the display, in the quiet hours).
+    LaunchedEffect(now.minute) {
+        if (currentScreen != Screen.Display || !activity.isResumed) return@LaunchedEffect
+        val uptime = Duration.ofMillis(SystemClock.elapsedRealtime() - android.os.Process.getStartElapsedRealtime())
+        val lastIsha = events.filter { it.prayer == Prayer.ISHA && !it.iqamahAt.isAfter(now) }.maxOfOrNull { it.iqamahAt }
+        val nextFajr = listOfNotNull(
+            todayTimes?.let { today.atTime(it.fajr.hour, it.fajr.minute) },
+            tomorrowTimes?.let { today.plusDays(1).atTime(it.fajr.hour, it.fajr.minute) },
+        ).firstOrNull { it.isAfter(now) }
+        if (MaintenanceRestart.isDue(now, uptime, flow.phase, lastIsha, nextFajr)) {
+            activity.kiosk.eventLog.append(KioskEvent.MAINT_RESTART, "uptime ${uptime.toHours()} h")
+            KioskController.relaunch(activity)
         }
-        overlayState is OverlayState.PrayerInProgress -> {
-            PrayerInProgressScreen(
-                prayer = (overlayState as OverlayState.PrayerInProgress).prayer,
-                onDismiss = {
-                    val prayer = (overlayState as OverlayState.PrayerInProgress).prayer
-                    overlayState = OverlayState.AfterSalah(prayer)
-                }
-            )
+    }
+
+    // An admin screen left open with nobody at the remote gives the wall back to the prayer times.
+    var lastKeyAt by remember { mutableStateOf(now) }
+    LaunchedEffect(now) {
+        val idle = Duration.between(lastKeyAt, now)
+        val praying = flow.phase in PRAYER_PHASES
+        if (currentScreen == Screen.Settings && (idle > SETTINGS_IDLE || praying && idle > SETTINGS_IDLE_DURING_PRAYER)) {
+            currentScreen = Screen.Display
         }
-        overlayState is OverlayState.AfterSalah -> {
-            AfterSalahAzkarScreen(
-                prayer = (overlayState as OverlayState.AfterSalah).prayer,
-                durationMinutes = 10,
-                onDismiss = {
-                    // Show announcements after azkar if available
-                    if (announcements.isNotEmpty() && prefs.announcementsEnabled) {
-                        overlayState = OverlayState.Announcements
-                    } else {
-                        overlayState = OverlayState.None
+        if (usbFound != null && idle > USB_DIALOG_IDLE) usbFound = null // offered again at the next scan
+        if (usbMedia != null && idle > USB_DIALOG_IDLE) usbMedia = null
+    }
+
+    // A slow drift against burn-in on panels that show the same layout all day.
+    val (shiftX, shiftY) = PixelShift.offsetAt(now.toLocalDate().toEpochDay() * 24 * 60 + now.hour * 60 + now.minute)
+    Box(
+        Modifier
+            .fillMaxSize()
+            .graphicsLayer {
+                translationX = shiftX.dp.toPx()
+                translationY = shiftY.dp.toPx()
+            }
+            .onPreviewKeyEvent {
+                lastKeyAt = clock.read().now
+                false
+            }
+    ) {
+        val inSettings = currentScreen == Screen.Settings
+        when {
+            currentScreen == Screen.Setup -> {
+                SetupWizard(
+                    gouvernorats = gouvernorats,
+                    onComplete = { gouvId, delegation, configs, mName ->
+                        prefs.gouvernoratId = gouvId
+                        prefs.delegationId = delegation.id
+                        prefs.delegationName = delegation.nomAr
+                        prefs.mosqueName = mName
+                        configs.forEach { (prayer, config) -> prefs.setIqamahConfig(prayer, config) }
+                        prefs.isSetupDone = true
+
+                        delegationId = delegation.id
+                        delegationName = delegation.nomAr
+                        mosqueName = mName
+                        iqamahConfigs = prefs.iqamahConfigs()
+                        openKioskPage = true
+                        currentScreen = Screen.Settings
                     }
-                }
+                )
+            }
+            reading.trust == ClockTrust.IMPLAUSIBLE && !inSettings -> ClockWarningScreen(
+                deviceTime = deviceTimeText(),
+                initial = clock.suggestedTime(),
+                canOpenSystemSettings = dateSettingsIntent().resolveActivity(context.packageManager) != null,
+                onOpenSystemSettings = {
+                    awayForAdmin(activity, ADMIN_SYSTEM_SETTINGS_AWAY)
+                    runCatching { context.startActivity(dateSettingsIntent()) }
+                },
+                onSetTime = { time ->
+                    clock.setTime(time)
+                    reading = clock.read()
+                },
+                onConfirm = {
+                    clock.confirm()
+                    reading = clock.read()
+                },
             )
-        }
-        overlayState is OverlayState.Announcements -> {
-            AnnouncementsSlideshow(
-                announcements = announcements,
-                displaySeconds = prefs.announcementIntervalSec,
-                onDismiss = { overlayState = OverlayState.None }
+            // The prayer itself outranks everything except an admin working in settings.
+            !inSettings && flow.phase == FlowPhase.ADHAN -> AdhanScreen(
+                prayer = flow.event!!.prayer,
+                companion = MosqueAdhkar.adhanCompanionAt(
+                    Duration.between(flow.event!!.adhanAt, now).toMillis(),
+                    Duration.between(flow.event!!.adhanAt, flow.event!!.adhanScreenEndAt).toMillis(),
+                    adhanSlides,
+                ),
             )
-        }
-        // Normal screens
-        currentScreen == Screen.Setup -> {
-            SetupWizard(
-                gouvernorats = gouvernorats,
-                onComplete = { gouvId, delegation, configs, jConfig, mName ->
-                    prefs.gouvernoratId = gouvId
-                    prefs.delegationId = delegation.id
-                    prefs.delegationName = delegation.nomAr
-                    prefs.mosqueName = mName
-                    configs.forEach { (prayer, config) -> prefs.setIqamahConfig(prayer, config) }
-                    prefs.setJomoaaIqamahConfig(jConfig)
-                    prefs.isSetupDone = true
-
-                    delegationId = delegation.id
-                    delegationName = delegation.nomAr
-                    mosqueName = mName
-                    iqamahConfigs = configs
-                    jomoaaConfig = jConfig
-                    isSetupDone = true
-                    currentScreen = Screen.Display
-                }
+            !inSettings && flow.phase == FlowPhase.IQAMAH_COUNTDOWN -> IqamahCountdownScreen(
+                prayer = flow.event!!.prayer,
+                remainingSeconds = Duration.between(now, flow.event!!.iqamahAt).seconds.coerceAtLeast(0).toInt(),
             )
+            !inSettings && flow.phase == FlowPhase.KHUTBA -> KhutbaScreen()
+            !inSettings && flow.phase == FlowPhase.SALAH -> PrayerBlackScreen()
+            usbFound != null && usbPreview != null -> {
+                val found = usbFound!!
+                UsbImportScreen(
+                    found = found,
+                    preview = usbPreview,
+                    title = if (usbFoundIsUndo) TvStrings.UNDO_IMPORT else TvStrings.USB_FOUND_TITLE,
+                    onApply = {
+                        if (inbox.apply(found, fromKey = !usbFoundIsUndo)) {
+                            iqamahConfigs = prefs.iqamahConfigs()
+                            ramadanOverrides = prefs.ramadanOverrides
+                            adhkarContent = prefs.adhkarContent
+                            mosqueName = prefs.mosqueName
+                            delegationId = prefs.delegationId
+                            delegationName = prefs.delegationName
+                            textAnnouncements = prefs.textAnnouncements
+                            if (prefs.themeId != currentThemeId) onThemeChanged(prefs.themeId)
+                        }
+                        usbFound = null
+                        usbScans++ // then the key's images, if any
+                    },
+                    onDismiss = {
+                        if (!usbFoundIsUndo) inbox.dismiss(found)
+                        usbFound = null
+                        usbScans++
+                    },
+                )
+            }
+            usbMedia != null -> {
+                val media = usbMedia!!
+                UsbMediaScreen(
+                    found = media,
+                    onApply = {
+                        val copied = mediaInbox.apply(media)
+                        if (!copied) notice = TvStrings.USB_ERROR_TITLE
+                        mediaVersion++
+                        usbMedia = null
+                    },
+                    onDismiss = {
+                        mediaInbox.dismiss(media)
+                        usbMedia = null
+                    },
+                )
+            }
+            inSettings -> {
+                SettingsScreen(
+                    mosqueName = mosqueName,
+                    delegationName = delegationName,
+                    iqamahConfigs = iqamahConfigs,
+                    gouvernorats = gouvernorats,
+                    announcementsEnabled = announcementsEnabled,
+                    customBgEnabled = customBgEnabled,
+                    announcementIntervalSec = prefs.announcementIntervalSec,
+                    backgroundCount = imageCounts.getValue(MediaKind.BACKGROUNDS),
+                    announcementCount = imageCounts.getValue(MediaKind.ANNOUNCEMENTS) + textAnnouncements.size,
+                    currentThemeId = currentThemeId,
+                    today = today,
+                    onMosqueNameChanged = { name ->
+                        prefs.mosqueName = name
+                        mosqueName = name
+                    },
+                    onIqamahChanged = { prayer, config ->
+                        prefs.setIqamahConfig(prayer, config)
+                        iqamahConfigs = iqamahConfigs + (prayer to config)
+                    },
+                    onDelegationChanged = { gouvId, delId, delName ->
+                        prefs.gouvernoratId = gouvId
+                        prefs.delegationId = delId
+                        prefs.delegationName = delName
+                        delegationId = delId
+                        delegationName = delName
+                    },
+                    onAnnouncementsEnabledChanged = { enabled ->
+                        prefs.announcementsEnabled = enabled
+                        announcementsEnabled = enabled
+                    },
+                    onCustomBgEnabledChanged = { enabled ->
+                        prefs.customBackgroundEnabled = enabled
+                        customBgEnabled = enabled
+                    },
+                    onAnnouncementIntervalChanged = { interval ->
+                        prefs.announcementIntervalSec = interval
+                    },
+                    onDeleteImages = {
+                        MediaKind.entries.forEach(mediaManager::clear)
+                        mediaVersion++
+                    },
+                    onThemeChanged = onThemeChanged,
+                    phonePage = { back ->
+                        PhoneAdminScreen(
+                            session = phoneSession,
+                            onStart = {
+                                stopPhone()
+                                val token = PhoneAdminRoutes.newToken()
+                                val backend = object : PhoneAdminBackend {
+                                    private fun found(text: String) = UsbSettingsFound(File("phone"), text, "phone")
+                                    override fun currentFile() = inbox.currentFile()
+                                    override fun preview(text: String) = inbox.preview(found(text))
+                                    override fun apply(text: String): Boolean =
+                                        inbox.apply(found(text), fromKey = false).also { if (it) settingsVersion++ }
+                                    override fun describe(result: MosqueSettingsFile.ParseResult) = SettingsChangeLines.of(result)
+                                }
+                                val server = PhoneAdminServer(PhoneAdminRoutes(token, backend)::handle)
+                                val port = runCatching { server.start() }.getOrNull()
+                                if (port != null) {
+                                    phoneServer = server
+                                    val address = PhoneAdminServer.localAddresses().firstOrNull()
+                                    phoneSession = PhoneAdminSession(address?.let { "http://$it:$port/?t=$token" }, port)
+                                }
+                            },
+                            onStop = ::stopPhone,
+                            onBack = back,
+                        )
+                    },
+                    kioskPage = { back ->
+                        var refresh by remember { mutableIntStateOf(0) }
+                        val report = remember(activity.resumes, refresh) {
+                            KioskReport.collect(context, activity.kiosk, activity.safeMode, android.os.Process.getStartElapsedRealtime())
+                        }
+                        val overlay = remember(report) { KioskController.overlaySettingsIntent(context) }
+                        KioskHealthScreen(
+                            report = report,
+                            onGrantOverlay = overlay?.let { intent ->
+                                {
+                                    awayForAdmin(activity, ADMIN_SYSTEM_SETTINGS_AWAY)
+                                    runCatching { context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
+                                }
+                            },
+                            onToggleHomeMode = {
+                                awayForAdmin(activity, ADMIN_SYSTEM_SETTINGS_AWAY)
+                                KioskController.setHomeMode(context, !report.homeModeEnabled, activity.kiosk.eventLog)
+                                refresh++
+                            },
+                            onBack = back,
+                        )
+                    },
+                    onExitToAndroid = {
+                        awayForAdmin(activity, ADMIN_EXIT_AWAY)
+                        activity.kiosk.eventLog.append(KioskEvent.ADMIN_EXIT)
+                        KioskController.unlockTask(activity)
+                        currentScreen = Screen.Display
+                        runCatching { context.startActivity(Intent(Settings.ACTION_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) }
+                    },
+                    onBack = { currentScreen = Screen.Display },
+                    openKioskPage = openKioskPage,
+                    previewTimes = { id -> runCatching { prayerRepo.loadDay(id, today) }.getOrNull() },
+                    currentDelegationId = delegationId,
+                    canUndoImport = canUndoImport,
+                    onUndoImport = {
+                        UsbSettings.read(snapshotFile)?.let { snapshot ->
+                            usbFoundIsUndo = true
+                            usbFound = snapshot
+                            currentScreen = Screen.Display
+                        }
+                    },
+                    onResetAll = {
+                        prefs.resetAll()
+                        ManualIslamicDateOverrides.all().keys.forEach(ManualIslamicDateOverrides::clear)
+                        snapshotFile.delete()
+                        activity.kiosk.eventLog.append(KioskEvent.ADMIN_EXIT, "reset")
+                        activity.recreate()
+                    },
+                    aboutLines = remember { aboutLines(context) },
+                    customTexts = !adhkarContent.isBundled,
+                    onBundledTexts = {
+                        prefs.adhkarContent = com.tunisianprayertimes.mosque.AdhkarContent()
+                        adhkarContent = prefs.adhkarContent
+                        currentScreen = Screen.Display
+                    },
+                )
+            }
+            afterSalahSlide != null -> AfterSalahAzkarScreen(afterSalahSlide.value, afterSalahSlide.index, afterSalahSlides.size)
+            showAnnouncements -> {
+                AnnouncementsSlideshow(
+                    announcements = announcements,
+                    displaySeconds = prefs.announcementIntervalSec,
+                    onDismiss = { announcementsShownFor = adhkarShownFor }
+                )
+            }
+            else -> {
+                PrayerDisplayScreen(
+                    dayPrayerTimes = todayTimes,
+                    shuruk = todayTimes?.let { it.shurukHour to it.shurukMinute },
+                    mosqueName = mosqueName,
+                    delegationName = delegationName,
+                    now = now,
+                    hijriLabel = HijriLabels.dateLabel(islamicDay.hijri),
+                    iqamahTimes = iqamahTimes,
+                    isRamadan = isRamadan,
+                    banner = banner,
+                    ticker = tickerSlides,
+                    backgroundImages = backgroundImages,
+                    onSettingsRequested = { currentScreen = Screen.Settings },
+                )
+            }
         }
-        currentScreen == Screen.Settings -> {
-            SettingsScreen(
-                mosqueName = mosqueName,
-                delegationName = delegationName,
-                iqamahConfigs = iqamahConfigs,
-                jomoaaConfig = jomoaaConfig,
-                gouvernorats = gouvernorats,
-                announcementsEnabled = prefs.announcementsEnabled,
-                customBgEnabled = prefs.customBackgroundEnabled,
-                announcementIntervalSec = prefs.announcementIntervalSec,
-                backgroundCount = backgroundImages.size,
-                announcementCount = announcements.size,
-                currentThemeId = currentThemeId,
-                onMosqueNameChanged = { name ->
-                    prefs.mosqueName = name
-                    mosqueName = name
-                },
-                onIqamahChanged = { prayer, config ->
-                    prefs.setIqamahConfig(prayer, config)
-                    iqamahConfigs = iqamahConfigs + (prayer to config)
-                },
-                onJomoaaChanged = { config ->
-                    prefs.setJomoaaIqamahConfig(config)
-                    jomoaaConfig = config
-                },
-                onDelegationChanged = { gouvId, delId, delName ->
-                    prefs.gouvernoratId = gouvId
-                    prefs.delegationId = delId
-                    prefs.delegationName = delName
-                    delegationId = delId
-                    delegationName = delName
-                },
-                onAnnouncementsEnabledChanged = { enabled ->
-                    prefs.announcementsEnabled = enabled
-                    announcements = if (enabled) mediaManager.getAnnouncements() else emptyList()
-                },
-                onCustomBgEnabledChanged = { enabled ->
-                    prefs.customBackgroundEnabled = enabled
-                    backgroundImages = if (enabled) mediaManager.getBackgroundImages() else emptyList()
-                },
-                onAnnouncementIntervalChanged = { interval ->
-                    prefs.announcementIntervalSec = interval
-                },
-                onThemeChanged = onThemeChanged,
-                onBack = { currentScreen = Screen.Display }
-            )
-        }
-        else -> {
-            PrayerDisplayScreen(
-                dayPrayerTimes = dayPrayerTimes,
-                shuruk = shuruk,
-                mosqueName = mosqueName,
-                delegationName = delegationName,
-                iqamahConfigs = iqamahConfigs,
-                jomoaaConfig = jomoaaConfig,
-                isRamadan = isRamadan,
-                backgroundImages = backgroundImages,
-                onSettingsRequested = { currentScreen = Screen.Settings },
-                onAdhanTriggered = { prayer ->
-                    overlayState = OverlayState.Adhan(prayer)
-                },
-                onIqamahTriggered = { /* handled by countdown flow */ }
-            )
-        }
+        (hint ?: notice ?: TvStrings.CLOCK_WRONG_ZONE.takeIf { reading.trust == ClockTrust.WRONG_ZONE })?.let { ScreenNotice(it) }
     }
+}
+
+private val PRAYER_PHASES = setOf(FlowPhase.ADHAN, FlowPhase.IQAMAH_COUNTDOWN, FlowPhase.KHUTBA, FlowPhase.SALAH)
+private val SETTINGS_IDLE: Duration = Duration.ofMinutes(3)
+private val SETTINGS_IDLE_DURING_PRAYER: Duration = Duration.ofSeconds(30)
+private val USB_DIALOG_IDLE: Duration = Duration.ofMinutes(2)
+private const val NOTICE_MILLIS = 20_000L
+private const val HINT_MILLIS = 4_000L
+private const val MAX_AFTER_SALAH_MINUTES = 30
+private const val PHONE_IDLE_MILLIS = 15 * 60_000L
+private const val ADMIN_EXIT_AWAY = 30 * 60_000L
+private const val ADMIN_SYSTEM_SETTINGS_AWAY = 10 * 60_000L
+
+/** The admin left for the system on purpose: the watchdog leaves them alone for [millis]. */
+private fun awayForAdmin(activity: MainActivity, millis: Long) {
+    val until = SystemClock.elapsedRealtime() + millis
+    activity.kiosk.update { it.copy(adminAwayUntil = until) }
+    KioskController.unlockTask(activity) // a pinned app cannot open another app's page
+}
+
+/** What the About page says: enough for someone helping by phone. */
+private fun aboutLines(context: Context): List<String> {
+    val info = runCatching { context.packageManager.getPackageInfo(context.packageName, 0) }.getOrNull()
+    val officialYears = OfficialIslamicDates.updates.value.keys.sorted()
+    return listOfNotNull(
+        "الإصدار ${info?.versionName.orEmpty()} (${info?.let { androidx.core.content.pm.PackageInfoCompat.getLongVersionCode(it) } ?: 0})",
+        "أوقات الصلاة تُحسب على الجهاز دون إنترنت للسنوات ${com.tunisianprayertimes.InmPrayerTimes.SUPPORTED_YEARS.first}–${com.tunisianprayertimes.InmPrayerTimes.SUPPORTED_YEARS.last}",
+        officialYears.takeIf { it.isNotEmpty() }?.let { "تواريخ رمضان والعيد الرسمية: ${it.joinToString("، ")} هـ" },
+        "ملف الإعدادات على مفتاح USB: Android/data/${context.packageName}/files/mosque-tv.json",
+        "لفتح الإعدادات: اضغط مطولًا على OK، أو اضغط OK خمس مرات",
+        "الجهاز: ${android.os.Build.MANUFACTURER} ${android.os.Build.MODEL} · أندرويد ${android.os.Build.VERSION.RELEASE}",
+        context.packageName,
+    )
+}
+
+private fun clockSample() = ClockSample(System.currentTimeMillis(), SystemClock.elapsedRealtime(), SystemClock.uptimeMillis())
+
+private fun sleepText(from: Long, to: Long, slept: Long): String {
+    val format = DateTimeFormatter.ofPattern("MM-dd HH:mm", Locale.ROOT)
+    fun at(millis: Long) = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).format(format)
+    return "${at(from)} → ${at(to)} (${slept / 60_000} min)"
+}
+
+private fun dateSettingsIntent() = Intent(Settings.ACTION_DATE_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+
+/** The device clock as the device shows it, so the admin sees what is wrong. */
+private fun deviceTimeText(): String =
+    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.ROOT)) + " (" + ZoneId.systemDefault().id + ")"
+
+private suspend fun loadDay(repo: PrayerTimesRepository, delegationId: Int, date: LocalDate): DayPrayerTimes? =
+    if (delegationId > 0) withContext(Dispatchers.Default) { repo.loadDay(delegationId, date) } else null
+
+/**
+ * What the plugged-in keys hold: the settings file, and images the TV has not seen yet. Every key
+ * gets the image folders, so the admin sees where to put them. Never throws; a failed scan is quiet.
+ */
+private fun scanUsb(context: android.content.Context, inbox: UsbSettingsInbox, media: UsbMediaInbox): Pair<UsbScan, UsbMediaFound?> = try {
+    val volumes = UsbVolumes.mounted(context)
+    val scan = inbox.scan(volumes, UsbVolumes.hiddenCount(context, volumes.size)).also { Log.i(TAG, "USB scan: $it") }
+    volumes.forEach(UsbMedia::ensureFolders)
+    scan to media.scan(volumes)
+} catch (e: Exception) {
+    Log.w(TAG, "USB settings scan failed", e)
+    UsbScan.Quiet to null
 }
 
 private enum class Screen { Setup, Display, Settings }
-
-private sealed class OverlayState {
-    data object None : OverlayState()
-    data class Adhan(val prayer: Prayer) : OverlayState()
-    data class IqamahCountdown(val prayer: Prayer) : OverlayState()
-    data class PrayerInProgress(val prayer: Prayer) : OverlayState()
-    data class AfterSalah(val prayer: Prayer) : OverlayState()
-    data object Announcements : OverlayState()
-}

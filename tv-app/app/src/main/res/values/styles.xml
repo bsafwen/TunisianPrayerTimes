@@ -3,6 +3,7 @@
     <style name="Theme.TunisianPrayerTimesTV" parent="@style/Theme.Leanback">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
-        <item name="android:windowOverscan">true</item>
+        <!-- Black behind the content: the anti burn-in drift uncovers a few pixels at the edges -->
+        <item name="android:windowBackground">@android:color/black</item>
     </style>
 </resources>

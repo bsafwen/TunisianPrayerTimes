@@ -159,7 +159,8 @@ object RamadanOverrideChecker {
      * Determines whether polling should start based on the current (possibly overridden) date
      * and the state of the cached override. Visible for testing.
      */
-    internal fun shouldStartPolling(): Boolean = hasPendingAnnouncement(calendar())
+    // Official dates only: a date the admin set by hand must not stop the announcement from being fetched.
+    internal fun shouldStartPolling(): Boolean = hasPendingAnnouncement(OfficialIslamicDates.officialCalendar())
 
     private fun hasPendingAnnouncement(calendar: TunisianHijriCalendar): Boolean {
         val today = today()

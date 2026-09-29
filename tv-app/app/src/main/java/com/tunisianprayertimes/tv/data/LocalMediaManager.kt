@@ -2,7 +2,6 @@ package com.tunisianprayertimes.tv.data
 
 import android.content.Context
 import android.net.Uri
-import android.os.Environment
 import java.io.File
 
 /** An announcement shown in the slideshow after the after-salah adhkar. */
@@ -11,50 +10,49 @@ sealed class Announcement {
     data class Text(val title: String, val content: String) : Announcement()
 }
 
+/** The two kinds of images a mosque puts on the screen, each in its own folder (on the USB key and on the TV). */
+enum class MediaKind(val folder: String) { BACKGROUNDS("backgrounds"), ANNOUNCEMENTS("announcements") }
+
 /**
- * Backgrounds and announcements the admin copies into the TunisianPrayerTimesTV folder at
- * the root of the device storage, as the settings screen explains. Each image is a slide;
- * each .txt file is a text slide titled by its name.
+ * The mosque's background and announcement images, kept in the app's own storage: copied there
+ * from a USB key, so they stay after the key is removed and no storage permission is needed.
  */
-class LocalMediaManager(@Suppress("unused") private val context: Context) {
+class LocalMediaManager(private val root: File) {
 
-    private val baseDir: File get() = File(Environment.getExternalStorageDirectory(), APP_FOLDER)
-    private val backgroundsDir: File get() = File(baseDir, BACKGROUNDS_FOLDER)
-    private val announcementsDir: File get() = File(baseDir, ANNOUNCEMENTS_FOLDER)
+    constructor(context: Context) : this(File(context.applicationContext.filesDir, "media"))
 
-    fun ensureDirectories() {
-        runCatching {
-            backgroundsDir.mkdirs()
-            announcementsDir.mkdirs()
-        }
-    }
-
-    fun getBackgroundImages(): List<Uri> = listImageFiles(backgroundsDir).map(Uri::fromFile)
-
-    fun getAnnouncements(): List<Announcement> {
-        val files = announcementsDir.listFiles().orEmpty().filter { it.isFile }.sortedBy { it.name.lowercase() }
-        return files.mapNotNull { file ->
-            val extension = file.extension.lowercase()
-            when {
-                extension in IMAGE_EXTENSIONS -> Announcement.Image(Uri.fromFile(file))
-                extension == TEXT_EXTENSION -> runCatching { file.readText().trim() }.getOrNull()
-                    ?.takeIf { it.isNotEmpty() }
-                    ?.let { Announcement.Text(title = file.nameWithoutExtension, content = it) }
-                else -> null
-            }
-        }
-    }
-
-    private fun listImageFiles(dir: File): List<File> =
-        dir.listFiles().orEmpty()
+    fun images(kind: MediaKind): List<File> =
+        File(root, kind.folder).listFiles().orEmpty()
             .filter { it.isFile && it.extension.lowercase() in IMAGE_EXTENSIONS }
             .sortedBy { it.name.lowercase() }
 
-    private companion object {
-        const val APP_FOLDER = "TunisianPrayerTimesTV"
-        const val BACKGROUNDS_FOLDER = "backgrounds"
-        const val ANNOUNCEMENTS_FOLDER = "announcements"
-        const val TEXT_EXTENSION = "txt"
+    fun getBackgroundImages(): List<Uri> = images(MediaKind.BACKGROUNDS).map(Uri::fromFile)
+
+    fun getImageAnnouncements(): List<Announcement> = images(MediaKind.ANNOUNCEMENTS).map { Announcement.Image(Uri.fromFile(it)) }
+
+    /**
+     * Replaces the [kind] images with copies of [sources]. The copies are made in a separate folder
+     * first, so a key pulled out halfway leaves the previous images in place. Returns how many were copied.
+     */
+    fun replace(kind: MediaKind, sources: List<File>): Int {
+        val target = File(root, kind.folder)
+        val staging = File(root, "${kind.folder}.new")
+        staging.deleteRecursively()
+        check(staging.mkdirs() || staging.isDirectory) { "cannot create $staging" }
+        sources.forEach { source -> source.copyTo(File(staging, source.name), overwrite = true) }
+        val old = File(root, "${kind.folder}.old")
+        old.deleteRecursively()
+        if (target.exists()) check(target.renameTo(old)) { "cannot move $target" }
+        check(staging.renameTo(target)) { "cannot move $staging" }
+        old.deleteRecursively()
+        return sources.size
+    }
+
+    fun clear(kind: MediaKind) {
+        File(root, kind.folder).deleteRecursively()
+    }
+
+    companion object {
         val IMAGE_EXTENSIONS = setOf("jpg", "jpeg", "png", "webp")
     }
 }

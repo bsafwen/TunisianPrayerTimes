@@ -1,0 +1,175 @@
+package com.tunisianprayertimes.tv.kiosk
+
+import android.app.Activity
+import android.app.ActivityOptions
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.app.admin.DevicePolicyManager
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
+import android.os.Bundle
+import android.os.SystemClock
+import android.provider.Settings
+import android.util.Log
+import com.tunisianprayertimes.tv.MainActivity
+import kotlin.system.exitProcess
+
+/** What the box allows and the actions that keep the app on screen. Every call is safe on any box. */
+object KioskController {
+
+    private const val TAG = "Kiosk"
+    const val WATCHDOG_PERIOD_MILLIS = 5 * 60_000L
+    const val AUTOSTART_CHECK_DELAY_MILLIS = 90_000L
+    const val ACTION_WATCHDOG = "com.tunisianprayertimes.tv.kiosk.WATCHDOG"
+    const val ACTION_AUTOSTART_CHECK = "com.tunisianprayertimes.tv.kiosk.AUTOSTART_CHECK"
+
+    /** The disabled launcher alias the admin can turn on to make the app the home screen. */
+    private const val HOME_ALIAS = "com.tunisianprayertimes.tv.KioskHomeAlias"
+
+    fun autoStart(context: Context): AutoStart = AutoStartTierResolver.resolve(
+        isDefaultHome = isDefaultHome(context),
+        isDeviceOwner = isDeviceOwner(context),
+        canDrawOverlays = canDrawOverlays(context),
+        sdkInt = Build.VERSION.SDK_INT,
+        isFireTv = runCatching { context.packageManager.hasSystemFeature("amazon.hardware.fire_tv") }.getOrDefault(false),
+    )
+
+    fun isDefaultHome(context: Context): Boolean = runCatching {
+        val home = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME)
+        context.packageManager.resolveActivity(home, PackageManager.MATCH_DEFAULT_ONLY)?.activityInfo?.packageName == context.packageName
+    }.getOrDefault(false)
+
+    fun isDeviceOwner(context: Context): Boolean = runCatching {
+        context.getSystemService(DevicePolicyManager::class.java)?.isDeviceOwnerApp(context.packageName) == true
+    }.getOrDefault(false)
+
+    fun canDrawOverlays(context: Context): Boolean = runCatching { Settings.canDrawOverlays(context) }.getOrDefault(false)
+
+    fun isHomeModeEnabled(context: Context): Boolean = runCatching {
+        context.packageManager.getComponentEnabledSetting(homeAlias(context)) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED
+    }.getOrDefault(false)
+
+    /**
+     * Offers the app as a home screen (or withdraws it), then opens the system's home chooser so
+     * the admin picks it. Off by default: on some Google TV devices a third-party home is refused.
+     */
+    fun setHomeMode(context: Context, enabled: Boolean, log: EventLog) {
+        runCatching {
+            context.packageManager.setComponentEnabledSetting(
+                homeAlias(context),
+                if (enabled) PackageManager.COMPONENT_ENABLED_STATE_ENABLED else PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP,
+            )
+            log.append(if (enabled) KioskEvent.HOME_MODE_ON else KioskEvent.HOME_MODE_OFF)
+        }.onFailure { Log.w(TAG, "home mode", it) }
+        val chooser = listOf(
+            Intent(Settings.ACTION_HOME_SETTINGS),
+            Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME),
+        ).firstOrNull { it.resolveActivity(context.packageManager) != null }
+        chooser?.let { start(context, it) }
+    }
+
+    /** The system page to allow "display over other apps", or null where the box has none (use adb). */
+    fun overlaySettingsIntent(context: Context): Intent? =
+        Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:${context.packageName}"))
+            .takeIf { it.resolveActivity(context.packageManager) != null }
+
+    fun power(context: Context): PowerStatus = PowerSettingsProbe.probe(object : PowerSettingsReader {
+        override fun attentiveTimeoutMillis(): Long? =
+            runCatching { Settings.Secure.getLong(context.contentResolver, "attentive_timeout") }.getOrNull()
+
+        override fun stayOnWhilePluggedIn(): Int? =
+            runCatching { Settings.Global.getInt(context.contentResolver, Settings.Global.STAY_ON_WHILE_PLUGGED_IN) }.getOrNull()
+    })
+
+    /** Pins the app with lock task when an admin provisioned the box as device owner (adb dpm). */
+    fun lockTaskIfDeviceOwner(activity: Activity) {
+        if (!isDeviceOwner(activity)) return
+        runCatching {
+            val dpm = activity.getSystemService(DevicePolicyManager::class.java)
+            dpm.setLockTaskPackages(ComponentName(activity, TvDeviceAdminReceiver::class.java), arrayOf(activity.packageName))
+            activity.startLockTask()
+        }.onFailure { Log.w(TAG, "lock task", it) }
+    }
+
+    fun unlockTask(activity: Activity) {
+        runCatching { activity.stopLockTask() }
+    }
+
+    /** Brings the display to the front from the background; the box may refuse (tier NONE). */
+    fun bringToFront(context: Context): Boolean = start(
+        context,
+        Intent(context, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_REORDER_TO_FRONT),
+    )
+
+    /** Starts the display again in [delayMillis], after this process dies (crash, restart). */
+    fun scheduleRestart(context: Context, delayMillis: Long) {
+        runCatching {
+            val intent = Intent(context, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            val pending = PendingIntent.getActivity(
+                context, 1, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_CANCEL_CURRENT, backgroundStartOptions(),
+            )
+            alarms(context)?.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + delayMillis, pending)
+        }.onFailure { Log.w(TAG, "restart alarm", it) }
+    }
+
+    /** A new process in the foreground, right now (the nightly maintenance restart). */
+    fun relaunch(activity: Activity): Nothing {
+        activity.startActivity(Intent.makeRestartActivityTask(ComponentName(activity, MainActivity::class.java)))
+        exitProcess(0)
+    }
+
+    /** The repeating check that brings the app back after Home or another app took the screen. */
+    fun armWatchdog(context: Context) {
+        runCatching {
+            alarms(context)?.setInexactRepeating(
+                AlarmManager.ELAPSED_REALTIME,
+                SystemClock.elapsedRealtime() + WATCHDOG_PERIOD_MILLIS,
+                WATCHDOG_PERIOD_MILLIS,
+                broadcast(context, ACTION_WATCHDOG),
+            )
+        }.onFailure { Log.w(TAG, "watchdog alarm", it) }
+    }
+
+    /** After boot: did the display actually reach the screen? */
+    fun scheduleAutoStartCheck(context: Context) {
+        runCatching {
+            alarms(context)?.set(
+                AlarmManager.ELAPSED_REALTIME,
+                SystemClock.elapsedRealtime() + AUTOSTART_CHECK_DELAY_MILLIS,
+                broadcast(context, ACTION_AUTOSTART_CHECK),
+            )
+        }.onFailure { Log.w(TAG, "auto-start check alarm", it) }
+    }
+
+    private fun broadcast(context: Context, action: String): PendingIntent = PendingIntent.getBroadcast(
+        context, action.hashCode(), Intent(context, KioskAlarmReceiver::class.java).setAction(action),
+        PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT,
+    )
+
+    /** Android 14+ lets a pending activity start from the background only if its creator opts in. */
+    private fun backgroundStartOptions(): Bundle? =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            ActivityOptions.makeBasic()
+                .setPendingIntentCreatorBackgroundActivityStartMode(ActivityOptions.MODE_BACKGROUND_ACTIVITY_START_ALLOWED)
+                .toBundle()
+        } else {
+            null
+        }
+
+    private fun alarms(context: Context): AlarmManager? = context.getSystemService(AlarmManager::class.java)
+
+    private fun homeAlias(context: Context) = ComponentName(context.packageName, HOME_ALIAS)
+
+    private fun start(context: Context, intent: Intent): Boolean = runCatching {
+        context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        true
+    }.getOrElse {
+        Log.w(TAG, "start ${intent.action ?: intent.component}", it)
+        false
+    }
+}

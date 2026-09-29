@@ -70,6 +70,10 @@ expect object Preferences {
     fun getOfficialIslamicDatesJson(hijriYear: Int): String?
     fun setOfficialIslamicDatesJson(hijriYear: Int, json: String)
 
+    // Ramadan and Eid dates an admin set by hand (all Hijri years in one JSON object).
+    fun getManualIslamicDatesJson(): String?
+    fun setManualIslamicDatesJson(json: String?)
+
     // Config bundle
     fun getConfig(prayer: Prayer): PrayerSilenceConfig
 }

@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- Boot completed to auto-start -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- "Display over other apps": what lets Android 10+ bring the display back at boot and after Home -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <!-- Read custom backgrounds & announcements from external storage -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -19,9 +21,10 @@
 
 
     <!-- Declare this is a TV app -->
+    <!-- Not required: many AOSP mosque boxes do not declare leanback, and the app must install there too -->
     <uses-feature
         android:name="android.software.leanback"
-        android:required="true" />
+        android:required="false" />
     <!-- TV apps don't require touchscreen -->
     <uses-feature
         android:name="android.hardware.touchscreen"
@@ -41,14 +44,28 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
+            android:launchMode="singleTask"
             android:screenOrientation="landscape"
-            android:keepScreenOn="true"
-            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize">
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Home mode, off until the admin turns it on from the kiosk page: the box then boots into the display -->
+        <activity-alias
+            android:name=".KioskHomeAlias"
+            android:enabled="false"
+            android:exported="true"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
 
         <!-- Auto-start on boot -->
         <receiver
@@ -57,6 +74,26 @@
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Watchdog and after-boot check alarms -->
+        <receiver
+            android:name=".kiosk.KioskAlarmReceiver"
+            android:exported="false" />
+
+        <!-- Only used when an installer provisions the box as device owner (lock task) -->
+        <receiver
+            android:name=".kiosk.TvDeviceAdminReceiver"
+            android:exported="true"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
 
