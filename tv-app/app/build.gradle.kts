@@ -1,5 +1,6 @@
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.file.FileSystemOperations
+import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.provider.Property
 import javax.inject.Inject
 
@@ -93,10 +94,36 @@ android {
     }
 }
 
-// JVM unit tests read the same canonical inputs the APK bundles.
+// JVM unit tests read the canonical inputs the APK bundles and the phone's reviewed adhkar
+// catalog. Declared as inputs so the tests rerun when any of them change.
+abstract class TestDataArguments : CommandLineArgumentProvider {
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val prayerFormula: DirectoryProperty
+
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val tvAssets: DirectoryProperty
+
+    @get:InputFile
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val phoneDhikrCatalog: RegularFileProperty
+
+    override fun asArguments() = listOf(
+        "-Dtunisianprayertimes.prayerFormulaDir=${prayerFormula.get().asFile.absolutePath}",
+        "-Dtunisianprayertimes.tvAssets=${tvAssets.get().asFile.absolutePath}",
+        "-Dtunisianprayertimes.phoneDhikrCatalog=${phoneDhikrCatalog.get().asFile.absolutePath}",
+    )
+}
+
 tasks.withType<Test>().configureEach {
-    systemProperty("tunisianprayertimes.dataDir", rootProject.file("../data").absolutePath)
-    systemProperty("tunisianprayertimes.tvAssets", file("src/main/assets").absolutePath)
+    jvmArgumentProviders += objects.newInstance<TestDataArguments>().apply {
+        prayerFormula.set(rootProject.layout.projectDirectory.dir("../data/prayer-formula"))
+        tvAssets.set(layout.projectDirectory.dir("src/main/assets"))
+        phoneDhikrCatalog.set(
+            rootProject.layout.projectDirectory.file("../android-app/app/src/main/java/com/tunisianprayertimes/adhkar/DhikrCatalog.kt")
+        )
+    }
 }
 
 dependencies {

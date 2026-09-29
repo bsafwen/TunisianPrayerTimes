@@ -1,82 +1,91 @@
 package com.tunisianprayertimes.tv.data
 
 import android.content.Context
+import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.tunisianprayertimes.Prayer
 
 /** Mosque settings entered by the admin on the TV. */
-class PrefsManager(context: Context) {
+class PrefsManager(private val prefs: SharedPreferences) {
 
-    private val prefs = context.applicationContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    constructor(context: Context) : this(context.applicationContext.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE))
 
     var isSetupDone: Boolean
-        get() = prefs.getBoolean("setup_done", false)
-        set(value) = prefs.edit { putBoolean("setup_done", value) }
+        get() = prefs.getBoolean(KEY_SETUP_DONE, false)
+        set(value) = prefs.edit { putBoolean(KEY_SETUP_DONE, value) }
 
+    /** -1 until setup chooses a gouvernorat. */
     var gouvernoratId: Int
-        get() = prefs.getInt("gouvernorat_id", 0)
-        set(value) = prefs.edit { putInt("gouvernorat_id", value) }
+        get() = prefs.getInt(KEY_GOUVERNORAT_ID, -1)
+        set(value) = prefs.edit { putInt(KEY_GOUVERNORAT_ID, value) }
 
-    /** 0 until setup chooses a delegation. */
+    /** -1 until setup chooses a delegation. */
     var delegationId: Int
-        get() = prefs.getInt("delegation_id", 0)
-        set(value) = prefs.edit { putInt("delegation_id", value) }
+        get() = prefs.getInt(KEY_DELEGATION_ID, -1)
+        set(value) = prefs.edit { putInt(KEY_DELEGATION_ID, value) }
 
     var delegationName: String
-        get() = prefs.getString("delegation_name", "").orEmpty()
-        set(value) = prefs.edit { putString("delegation_name", value) }
+        get() = prefs.getString(KEY_DELEGATION_NAME, "").orEmpty()
+        set(value) = prefs.edit { putString(KEY_DELEGATION_NAME, value) }
 
     var mosqueName: String
-        get() = prefs.getString("mosque_name", "").orEmpty()
-        set(value) = prefs.edit { putString("mosque_name", value) }
+        get() = prefs.getString(KEY_MOSQUE_NAME, "").orEmpty()
+        set(value) = prefs.edit { putString(KEY_MOSQUE_NAME, value) }
 
-    /** Unknown ids fall back to the first built-in theme in ThemeRegistry. */
     var themeId: String
-        get() = prefs.getString("theme_id", "").orEmpty()
-        set(value) = prefs.edit { putString("theme_id", value) }
+        get() = prefs.getString(KEY_THEME_ID, DEFAULT_THEME_ID) ?: DEFAULT_THEME_ID
+        set(value) = prefs.edit { putString(KEY_THEME_ID, value) }
 
     var announcementsEnabled: Boolean
-        get() = prefs.getBoolean("announcements_enabled", false)
-        set(value) = prefs.edit { putBoolean("announcements_enabled", value) }
+        get() = prefs.getBoolean(KEY_ANNOUNCEMENTS_ENABLED, true)
+        set(value) = prefs.edit { putBoolean(KEY_ANNOUNCEMENTS_ENABLED, value) }
 
     var customBackgroundEnabled: Boolean
-        get() = prefs.getBoolean("custom_background_enabled", false)
-        set(value) = prefs.edit { putBoolean("custom_background_enabled", value) }
+        get() = prefs.getBoolean(KEY_CUSTOM_BG_ENABLED, true)
+        set(value) = prefs.edit { putBoolean(KEY_CUSTOM_BG_ENABLED, value) }
 
     var announcementIntervalSec: Int
-        get() = prefs.getInt("announcement_interval_sec", DEFAULT_ANNOUNCEMENT_INTERVAL_SEC)
-        set(value) = prefs.edit { putInt("announcement_interval_sec", value) }
+        get() = prefs.getInt(KEY_ANNOUNCEMENT_INTERVAL_SEC, 15)
+        set(value) = prefs.edit { putInt(KEY_ANNOUNCEMENT_INTERVAL_SEC, value) }
 
-    fun getIqamahConfig(prayer: Prayer): IqamahConfig = readIqamah(prayer.name)
+    fun getIqamahConfig(prayer: Prayer): IqamahConfig = readIqamah(prayer.name, defaultDelay = 10)
 
     fun setIqamahConfig(prayer: Prayer, config: IqamahConfig) = writeIqamah(prayer.name, config)
 
-    fun getJomoaaIqamahConfig(): IqamahConfig = readIqamah(Prayer.JOMOAA.name)
+    fun getJomoaaIqamahConfig(): IqamahConfig = readIqamah(Prayer.JOMOAA.name, defaultDelay = 15)
 
     fun setJomoaaIqamahConfig(config: IqamahConfig) = writeIqamah(Prayer.JOMOAA.name, config)
 
-    private fun readIqamah(key: String): IqamahConfig {
-        val default = IqamahConfig()
-        val mode = prefs.getString("iqamah_${key}_mode", null)
-            ?.let { name -> IqamahMode.entries.find { it.name == name } }
-            ?: default.mode
+    private fun readIqamah(name: String, defaultDelay: Int): IqamahConfig {
+        val mode = prefs.getString("iqamah_mode_$name", null)
+            ?.let { saved -> IqamahMode.entries.find { it.name == saved } }
+            ?: IqamahMode.DELAY
         return IqamahConfig(
             mode = mode,
-            delayMinutes = prefs.getInt("iqamah_${key}_delay", default.delayMinutes),
-            fixedHour = prefs.getInt("iqamah_${key}_fixed_hour", default.fixedHour),
-            fixedMinute = prefs.getInt("iqamah_${key}_fixed_minute", default.fixedMinute),
+            delayMinutes = prefs.getInt("iqamah_delay_$name", defaultDelay),
+            fixedHour = prefs.getInt("iqamah_fixed_h_$name", -1),
+            fixedMinute = prefs.getInt("iqamah_fixed_m_$name", -1),
         )
     }
 
-    private fun writeIqamah(key: String, config: IqamahConfig) = prefs.edit {
-        putString("iqamah_${key}_mode", config.mode.name)
-        putInt("iqamah_${key}_delay", config.delayMinutes)
-        putInt("iqamah_${key}_fixed_hour", config.fixedHour)
-        putInt("iqamah_${key}_fixed_minute", config.fixedMinute)
+    private fun writeIqamah(name: String, config: IqamahConfig) = prefs.edit {
+        putString("iqamah_mode_$name", config.mode.name)
+        putInt("iqamah_delay_$name", config.delayMinutes)
+        putInt("iqamah_fixed_h_$name", config.fixedHour)
+        putInt("iqamah_fixed_m_$name", config.fixedMinute)
     }
 
-    private companion object {
-        const val PREFS_NAME = "tv_mosque_prefs"
-        const val DEFAULT_ANNOUNCEMENT_INTERVAL_SEC = 15
+    companion object {
+        const val PREFS_NAME = "tv_prefs"
+        const val DEFAULT_THEME_ID = "midnight_navy"
+        private const val KEY_SETUP_DONE = "setup_done"
+        private const val KEY_GOUVERNORAT_ID = "gouvernorat_id"
+        private const val KEY_DELEGATION_ID = "delegation_id"
+        private const val KEY_DELEGATION_NAME = "delegation_name"
+        private const val KEY_MOSQUE_NAME = "mosque_name"
+        private const val KEY_THEME_ID = "theme_id"
+        private const val KEY_ANNOUNCEMENTS_ENABLED = "announcements_enabled"
+        private const val KEY_CUSTOM_BG_ENABLED = "custom_bg_enabled"
+        private const val KEY_ANNOUNCEMENT_INTERVAL_SEC = "announcement_interval_sec"
     }
 }
