@@ -262,7 +262,7 @@
     var listed = ctx.state && ctx.state.images && ctx.state.images[spec.kind];
     var images = (Array.isArray(listed) ? listed : []).filter(function (image) { return image && typeof image.name === "string"; });
     var display = (ctx.settings && ctx.settings.display) || {};
-    var status = el("span", { class: "muted" });
+    var status = el("span", { class: "muted", attrs: { role: "status" } });
     var input = el("input", {
       id: "upload-" + spec.kind, type: "file", multiple: true, accept: "image/jpeg,image/png,image/webp",
       on: { change: function () { upload(ctx, spec.kind, input, status); } }

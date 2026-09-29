@@ -39,4 +39,15 @@ class GithubReleasesTest {
         assertNull(GithubReleases.newest("not json", 1))
         assertNull(GithubReleases.newest("""{"message":"API rate limit exceeded"}""", 1))
     }
+
+    @Test
+    fun aPageTellsHowManyReleasesItHeldSoTheCheckKnowsWhetherToReadOnFrom() {
+        val phoneOnly = GithubReleases.page("[" + (1..100).joinToString(",") { release("v2.$it", "TunisianPrayerTimes-v2.$it.apk") } + "]")!!
+        assertEquals(100, phoneOnly.size)
+        assertEquals(emptyList<ReleaseAsset>(), phoneOnly.tvReleases)
+        val mixed = GithubReleases.page("[" + release("tv-v1.4", "TunisianPrayerTimesTV-github-1.4-14.apk") + "]")!!
+        assertEquals(14, GithubReleases.newest(phoneOnly.tvReleases + mixed.tvReleases, 10)!!.versionCode)
+        assertNull(GithubReleases.page("""{"message":"API rate limit exceeded"}"""))
+        assertEquals("https://api.github.com/repos/bsafwen/TunisianPrayerTimes/releases?per_page=100&page=2", GithubReleases.pageUrl(2))
+    }
 }

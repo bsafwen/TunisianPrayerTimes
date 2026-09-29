@@ -77,7 +77,8 @@ fun AnnouncementsSlideshow(
             enter = fadeIn(tween(500)),
             exit = fadeOut(tween(500))
         ) {
-            when (val item = announcements[currentIndex]) {
+            // The caller restarts the slideshow for a new list (key); a shorter list never reads past its end.
+            when (val item = announcements[currentIndex % announcements.size]) {
                 is Announcement.Image -> AnnouncementImageSlide(uri = item.uri)
                 is Announcement.Text -> AnnouncementTextSlide(
                     text = item.content,

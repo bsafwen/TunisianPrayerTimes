@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.mosque.AdhkarSlide
+import com.tunisianprayertimes.mosque.MosqueAdhkar
 import com.tunisianprayertimes.tv.ui.theme.CardBorder
 import com.tunisianprayertimes.tv.ui.theme.GoldLight
 import com.tunisianprayertimes.tv.ui.theme.RamadanGold
@@ -61,7 +62,7 @@ fun AzkarTicker(
         val pxPerSecond = with(LocalDensity.current) { MARQUEE_DP_PER_SECOND.dp.toPx() }
         val scrollMillis = if (textWidth <= lineWidth) 0L else (MARQUEE_DELAY_MILLIS + (textWidth - lineWidth) / pxPerSecond * 1000 + END_PAUSE_MILLIS).toLong()
         LaunchedEffect(items, index) {
-            delay(maxOf(MIN_MILLIS, slide.durationMillis, scrollMillis))
+            delay(maxOf(MosqueAdhkar.TICKER_MIN_SLIDE_MILLIS, slide.durationMillis, scrollMillis))
             index = (index + 1) % items.size
         }
         TickerBox(slide, isRamadan, textStyle)
@@ -95,7 +96,6 @@ private fun TickerBox(slide: AdhkarSlide, isRamadan: Boolean, textStyle: android
     }
 }
 
-private const val MIN_MILLIS = 12_000L
 private const val MARQUEE_DP_PER_SECOND = 30
 private const val MARQUEE_DELAY_MILLIS = 1_200
 private const val END_PAUSE_MILLIS = 3_000

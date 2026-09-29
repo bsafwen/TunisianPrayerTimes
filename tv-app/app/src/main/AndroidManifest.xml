@@ -32,6 +32,14 @@
         android:name="android.hardware.touchscreen"
         android:required="false" />
 
+    <!-- Android 11+: to recognise the box's home screen (Fire TV's, a TV's) -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.HOME" />
+        </intent>
+    </queries>
+
     <application
         android:name=".TvApplication"
         android:allowBackup="true"
@@ -69,15 +77,18 @@
             </intent-filter>
         </activity-alias>
 
-        <!-- Auto-start on boot -->
+        <!-- Auto-start on boot. The boot broadcast reaches apps one after another (Android 15 and before):
+             the highest priority an app may have puts the display ahead of the box's own apps. -->
         <receiver
             android:name=".BootReceiver"
             android:exported="true">
-            <intent-filter>
+            <intent-filter android:priority="999">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
                 <action android:name="android.intent.action.QUICKBOOT_POWERON" />
                 <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
 

@@ -95,7 +95,7 @@ class MosqueSettingsFileTest {
     fun ownTextsKeepTheirVerseMarks() {
         val text = "ذَٰلِكَ الْكِتَابُ لَا رَيْبَ فِيهِ ۝٢"
         val result = success("""{ "adhkar": { "afterSalah": [ { "text": "‏$text", "reference": "البقرة 2" } ] } }""")
-        assertEquals(text, result.content.afterSalah!!.items.single().text)
+        assertEquals(text, (result.content.afterSalah!!.items.single() as CustomDhikr).text)
     }
 
     @Test
@@ -158,6 +158,30 @@ class MosqueSettingsFileTest {
             val result = MosqueSettingsFile.parse("""{ "prayers": { "asr": { "$field": $deep } } }""", current)
             assertIs<ParseResult.Failure>(result, field)
         }
+    }
+
+    @Test
+    fun nestingFarDeeperThanAnySettingsFileIsRefusedBeforeReading() {
+        val deep = "[".repeat(100_000) + "]".repeat(100_000)
+        assertEquals(listOf(ErrorCode.INVALID_JSON to ""), errors("""{ "announcements": $deep }"""))
+    }
+
+    @Test
+    fun announcementAndAdhkarItemsTakeOnlyTheirOwnFields() {
+        assertEquals(
+            listOf(ErrorCode.UNKNOWN_FIELD to "announcements[0].txt"),
+            errors("""{ "announcements": [ { "txt": "درس", "until": "2026-10-31" } ] }"""),
+        )
+        assertEquals(
+            listOf(ErrorCode.DUPLICATE_FIELD to "adhkar.ticker.items[0].النص"),
+            errors("""{ "adhkar": { "ticker": { "items": [ { "text": "أ", "النص": "ب", "reference": "م" } ] } } }"""),
+        )
+        assertEquals(
+            listOf(ErrorCode.UNKNOWN_FIELD to "adhkar.afterSalah.mod"),
+            errors("""{ "adhkar": { "afterSalah": { "mod": "replace", "items": [ { "text": "أ", "reference": "م" } ] } } }"""),
+        )
+        // A note for the admin is fine anywhere.
+        success("""{ "announcements": [ { "text": "درس", "note": "من الإمام" } ] }""")
     }
 
     @Test

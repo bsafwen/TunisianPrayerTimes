@@ -303,7 +303,6 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
     }
     LaunchedEffect(requestedReminderSequence, requestedReminderId, requestedOccurrenceId) {
         if (consumedRequest == requestedReminderSequence || (requestedReminderId == null && requestedOccurrenceId == null)) return@LaunchedEffect
-        consumedRequest = requestedReminderSequence
         val occurrence = withContext(Dispatchers.IO) {
             requestedOccurrenceId?.let { repo.state.value.occurrences[it] } ?: if (requestedOccurrenceId == null) {
                 repo.state.value.reminders.find { it.id == requestedReminderId }?.let { rule ->
@@ -311,8 +310,11 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                 }
             } else null
         }
+        val opened = occurrence?.let { withContext(Dispatchers.IO) { runCatching { openDeepLink(it) }.getOrNull() } }
+        // Marked only once the lookup finished: a request cancelled midway (the tab left, or the
+        // activity was re-created) is retried when this tab composes again; openSession reuses its session.
+        consumedRequest = requestedReminderSequence
         if (occurrence != null) {
-            val opened = withContext(Dispatchers.IO) { runCatching { openDeepLink(occurrence) }.getOrNull() }
             if (opened != null) {
                 readerReminderSource = "$opened|${occurrence.ruleId}"
                 readerId = opened

@@ -9,7 +9,12 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 /** How long the screens around a prayer last, independent of the mosque's per-prayer settings. */
-data class FlowTiming(val adhanScreenMinutes: Int = 3, val afterSalahMinutes: Int = 10)
+data class FlowTiming(val adhanScreenMinutes: Int = 3, val afterSalahMinutes: Int = 10) {
+    companion object {
+        /** The longest the adhkar after the prayer may last; a settings file asking for more is refused. */
+        const val MAX_AFTER_SALAH_MINUTES = 30
+    }
+}
 
 /**
  * What the mosque screen shows. [SALAH] is the full black screen while the congregation prays;

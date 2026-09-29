@@ -109,6 +109,7 @@ class DashboardRoutes(private val token: String, private val backend: DashboardB
     private fun api(request: HttpRequest): HttpResponse = when (request.method to request.path) {
         "GET" to "/api/state" -> HttpResponse.json(200, backend.stateJson())
         "GET" to "/api/places" -> HttpResponse.json(200, backend.placesJson())
+        "GET" to "/api/adhkar" -> HttpResponse.json(200, AdhkarLibrary.json)
         "POST" to "/api/preview" -> checked(request) { result -> lines(result is ParseResult.Success, backend.describe(result)) }
         "POST" to "/api/apply" -> checked(request) { result ->
             if (result is ParseResult.Success && backend.apply(request.text)) lines(true, backend.describe(result))

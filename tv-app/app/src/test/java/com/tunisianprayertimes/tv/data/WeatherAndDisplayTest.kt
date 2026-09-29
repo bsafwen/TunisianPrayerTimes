@@ -53,7 +53,7 @@ class WeatherAndDisplayTest {
             val key = RemovableVolume(File(root, "key"))
             File(key.appFolder, "announcements").mkdirs()
             File(key.appFolder, "announcements/1-lesson.txt").writeText("  درس في التفسير بعد صلاة العشاء\n")
-            File(key.appFolder, "announcements/2-binary.txt").writeBytes(byteArrayOf(0xC3.toByte(), 0x28))
+            File(key.appFolder, "announcements/2-binary.txt").writeBytes(byteArrayOf(0x89.toByte(), 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, 0, 0, 0, 0x0D))
             File(key.appFolder, "backgrounds").mkdirs()
             File(key.appFolder, "backgrounds/note.txt").writeText("not an announcement")
             val found = UsbMedia.find(listOf(key))!!

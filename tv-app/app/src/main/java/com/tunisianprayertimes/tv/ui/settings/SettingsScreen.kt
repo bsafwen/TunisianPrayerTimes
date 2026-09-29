@@ -114,6 +114,12 @@ fun SettingsScreen(
                 onConfirm = onResetAll,
                 onBack = { currentSection = SettingsSection.Main },
             )
+            SettingsSection.BundledTexts -> ConfirmSection(
+                text = TvStrings.BUNDLED_TEXTS_CONFIRM,
+                confirm = TvStrings.BUNDLED_TEXTS_DO,
+                onConfirm = onBundledTexts,
+                onBack = { currentSection = SettingsSection.Main },
+            )
             SettingsSection.About -> AboutSection(aboutLines) { currentSection = SettingsSection.Main }
             SettingsSection.Kiosk -> kioskPage { currentSection = SettingsSection.Main }
             SettingsSection.Phone -> phonePage { currentSection = SettingsSection.Main }
@@ -164,7 +170,7 @@ fun SettingsScreen(
     }
 }
 
-private enum class SettingsSection { Main, MosqueName, Iqamah, IslamicDates, Location, Media, Theme, Kiosk, Phone, Reset, About }
+private enum class SettingsSection { Main, MosqueName, Iqamah, IslamicDates, Location, Media, Theme, Kiosk, Phone, Reset, BundledTexts, About }
 
 @Composable
 private fun MainSettingsMenu(
@@ -240,7 +246,7 @@ private fun MainSettingsMenu(
                 item { FocusableListItem(text = TvStrings.UNDO_IMPORT, onClick = onUndoImport) }
             }
             if (customTexts) {
-                item { FocusableListItem(text = TvStrings.BUNDLED_TEXTS, onClick = onBundledTexts) }
+                item { FocusableListItem(text = TvStrings.BUNDLED_TEXTS, onClick = { onSectionSelected(SettingsSection.BundledTexts) }) }
             }
             item { FocusableListItem(text = TvStrings.ABOUT, onClick = { onSectionSelected(SettingsSection.About) }) }
             item { FocusableListItem(text = TvStrings.RESET_ALL, onClick = { onSectionSelected(SettingsSection.Reset) }) }
