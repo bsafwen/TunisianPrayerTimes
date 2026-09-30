@@ -70,6 +70,10 @@ body { margin: 0; font-family: var(--font); font-size: 16px; line-height: 1.5; b
 /* ------------------------------------------------------------ page and cards */
 .view { display: flex; flex-direction: column; gap: 12px; padding: 4px 20px 24px; max-width: 760px; margin: 0 auto; }
 .view > * { margin: 0; }
+/* Above the section: the session ending soon, or edits kept from before to restore. */
+.notice { box-sizing: border-box; width: calc(100% - 40px); max-width: 720px; margin: 0 auto 8px; padding: 12px 18px; border-radius: 20px; background: var(--warning-soft); color: var(--warning); }
+.notice[hidden] { display: none; }
+.notice .row { margin-top: 8px; }
 .card { background: var(--surface); border-radius: 20px; padding: 14px 18px; }
 .card > :first-child { margin-top: 0; }
 .card > :last-child { margin-bottom: 0; }

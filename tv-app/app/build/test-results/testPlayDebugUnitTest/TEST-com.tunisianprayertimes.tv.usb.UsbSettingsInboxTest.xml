@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:59.300Z" hostname="HOME" time="0.107">
+<testsuite name="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:28.303Z" hostname="HOME" time="0.209">
   <properties/>
-  <testcase name="aFileWithMistakesIsOfferedChangesNothingAndCanBeDismissed" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.009"/>
-  <testcase name="aKeyTheBoxHidesFromAppsIsReported" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.001"/>
-  <testcase name="theLastImportCanBeUndone" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.009"/>
-  <testcase name="anEditedTemplateIsOffered" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.009"/>
-  <testcase name="oneTvsFileSetsUpAnotherTv" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.007"/>
+  <testcase name="onboardingOffersOnlyAFileThatNamesThePlace" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.012"/>
+  <testcase name="theAdhanScreensMinutesTravelInTheFile" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.013"/>
+  <testcase name="aFileWithMistakesIsOfferedChangesNothingAndCanBeDismissed" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.007"/>
+  <testcase name="aKeyTheBoxHidesFromAppsIsReported" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.0"/>
+  <testcase name="onlyTheKeyJustPluggedInGetsATemplate" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.009"/>
+  <testcase name="anAnsweredFileStaysAnsweredWhileOtherKeysComeAndGo" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.011"/>
+  <testcase name="theLastImportCanBeUndone" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.007"/>
+  <testcase name="anEditedTemplateIsOffered" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.008"/>
+  <testcase name="oneTvsFileSetsUpAnotherTv" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.009"/>
   <testcase name="ramadanAndEidDatesAloneAreOfferedAndApplied" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.005"/>
-  <testcase name="theTemplateCarriesRamadanSettingsAndTheAdminsDates" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.007"/>
-  <testcase name="applyingUsesTheSettingsOfThatMomentNotOfTheScan" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.006"/>
-  <testcase name="aKeyWithoutSettingsGetsATemplateThatIsNeverOffered" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.006"/>
-  <testcase name="aFileWithNothingNewIsSettledSilently" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.005"/>
-  <testcase name="returningToTheBundledTextsFromTheRemoteCanBeUndone" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.006"/>
-  <testcase name="aDismissedFileIsOfferedAgainOnlyWhenItChanges" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.009"/>
-  <testcase name="theNightScreenTravelsInTheFileAndItsImportCanBeUndone" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.008"/>
-  <testcase name="aMosquesOwnTextsAreAppliedKeptAndUndone" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.011"/>
-  <testcase name="aTvUpdatedFromAnOldThemeStillAcceptsItsOwnFile" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.008"/>
+  <testcase name="undoReturnsTheTvsDatesEvenAgainstALaterAnnouncement" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.003"/>
+  <testcase name="aCopyMakesTheOtherTvTheSame" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.011"/>
+  <testcase name="theTemplateCarriesRamadanSettingsAndTheAdminsDates" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.008"/>
+  <testcase name="applyingUsesTheSettingsOfThatMomentNotOfTheScan" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.005"/>
+  <testcase name="aKeyWithoutSettingsGetsATemplateThatIsNeverOffered" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.007"/>
+  <testcase name="anExportPutsThisTvsSettingsOnTheKeyAndIsNotOfferedBack" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.007"/>
+  <testcase name="aReadOnlyKeyIsReadButNeverWritten" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.005"/>
+  <testcase name="aFileWithNothingNewIsSettledSilently" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.004"/>
+  <testcase name="returningToTheBundledTextsFromTheRemoteCanBeUndone" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.008"/>
+  <testcase name="aCardLeftInTheBoxNeverHidesAKeysFile" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.015"/>
+  <testcase name="aDismissedFileIsOfferedAgainOnlyWhenItChanges" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.005"/>
+  <testcase name="theNightScreenTravelsInTheFileAndItsImportCanBeUndone" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.009"/>
+  <testcase name="aMosquesOwnTextsAreAppliedKeptAndUndone" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.016"/>
+  <testcase name="theTvsOwnListsNeverBlockItsTemplateOrItsUndo" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.016"/>
+  <testcase name="aTvUpdatedFromAnOldThemeStillAcceptsItsOwnFile" classname="com.tunisianprayertimes.tv.usb.UsbSettingsInboxTest" time="0.009"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

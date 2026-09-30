@@ -100,21 +100,3 @@ internal class ManualIslamicDateStore(
         }.getOrDefault(emptyMap())
     }
 }
-
-/** [official] records with the admin's dates laid over them, field by field. */
-internal fun withManualDates(
-    official: Map<Int, RamadanOverrideChecker.RamadanOverride>,
-    manual: Map<Int, ManualIslamicDates>,
-): Map<Int, RamadanOverrideChecker.RamadanOverride> {
-    if (manual.isEmpty()) return official
-    val merged = official.toMutableMap()
-    manual.forEach { (year, dates) ->
-        val base = merged[year] ?: RamadanOverrideChecker.RamadanOverride(year, null, null, null)
-        merged[year] = base.copy(
-            ramadanStart = dates.ramadanStart ?: base.ramadanStart,
-            eidFitrDate = dates.eidFitr ?: base.eidFitrDate,
-            eidAdhaDate = dates.eidAdha ?: base.eidAdhaDate,
-        )
-    }
-    return merged
-}

@@ -295,6 +295,66 @@ class MainScreenModelTest {
     }
 
     @Test
+    fun theWeatherGlyphFollowsTheSunByTodaysTimes() {
+        // Sunrise 06:12, Maghrib 18:08: the weather's own day flag may be hours old offline.
+        assertEquals(false, at(tuesday.atTime(6, 11)).isDay)
+        assertEquals(true, at(tuesday.atTime(6, 12)).isDay)
+        assertEquals(true, at(tuesday.atTime(18, 7)).isDay)
+        assertEquals(false, at(tuesday.atTime(18, 8)).isDay)
+        assertNull(at(tuesday.atTime(12, 0), today = null).isDay)
+    }
+
+    @Test
+    fun aHeaderTooNarrowForTheVerseHasOthersToTry() {
+        val state = at(tuesday.atTime(15, 0))
+        // The turn's verse first, then every prayer verse once, from the next on.
+        assertEquals(state.verse, state.verses.first())
+        assertEquals(DisplayTexts.PRAYER_VERSES.toSet(), state.verses.toSet())
+        assertEquals(DisplayTexts.PRAYER_VERSES.size, state.verses.size)
+        val index = DisplayTexts.PRAYER_VERSES.indexOf(state.verse)
+        assertEquals(DisplayTexts.PRAYER_VERSES[(index + 1) % DisplayTexts.PRAYER_VERSES.size], state.verses[1])
+        // Ramadan's and Friday's own verse first, a prayer verse only if it does not fit.
+        val ramadan = MainScreenModel.headerVerses(isRamadan = true, isFriday = false, turn = 7)
+        assertEquals(DisplayTexts.RAMADAN_VERSE, ramadan.first())
+        assertEquals(DisplayTexts.PRAYER_VERSES.size + 1, ramadan.size)
+        assertEquals(DisplayTexts.FRIDAY_VERSE, MainScreenModel.headerVerses(isRamadan = false, isFriday = true, turn = 7).first())
+    }
+
+    private fun page(part: Int, parts: Int, reference: String = "صحيح مسلم 2692") = AdhkarSlide(null, "نص $part", reference, 1, 6_000, part, parts)
+
+    @Test
+    fun theTickerStartsAtTheBeginningOfAText() {
+        // A three-page hadith between two short texts: never its second or third page first.
+        val items = listOf(page(1, 1), page(1, 3), page(2, 3), page(3, 3), page(1, 1))
+        val starts = (0 until 200).map { MainScreenModel.tickerStart(items, kotlin.random.Random(it)) }.toSet()
+        assertEquals(setOf(0, 1, 4), starts)
+        assertEquals(0, MainScreenModel.tickerStart(emptyList(), kotlin.random.Random(1)))
+    }
+
+    @Test
+    fun theTickerCitesALongSourceByItsFirstClause() {
+        val kursi = MosqueAdhkar.tickerSlides(com.tunisianprayertimes.mosque.ReviewedDhikr("ayat_kursi"))
+        // The whole source, else the verses alone: never a narration without the grading after it. Each says its page.
+        assertEquals(
+            listOf(kursi.first().reference, "البقرة 253–254 (قالون، العد المدني الأخير)").map { TvStrings.source(it) + " · " + TvStrings.part(1, kursi.size) },
+            MainScreenModel.tickerSources(kursi.first()),
+        )
+        // A single text has no page; an announcement has its label; nothing at all, no line.
+        assertEquals(listOf("صحيح مسلم 2692"), MainScreenModel.tickerSources(page(1, 1)))
+        assertEquals(listOf(TvStrings.part(2, 3)), MainScreenModel.tickerSources(page(2, 3, reference = "")))
+        assertEquals(emptyList<String>(), MainScreenModel.tickerSources(page(1, 1, reference = " ")))
+    }
+
+    @Test
+    fun aTextTooLongForTheTickerIsShownPageByPage() {
+        val text = "سطر أول سطر ثان سطر ثالث سطر رابع سطر خامس"
+        val lineEnds = listOf(8, 16, 25, 34, text.length)
+        assertEquals(listOf("سطر أول سطر ثان سطر ثالث", "سطر رابع سطر خامس"), MainScreenModel.tickerPages(text, lineEnds, 3))
+        assertEquals(listOf(text), MainScreenModel.tickerPages(text, lineEnds, 5))
+        assertEquals(5, MainScreenModel.tickerPages(text, lineEnds, 0).size)
+    }
+
+    @Test
     fun theHeaderVerseMovesOnAtEachAdhan() {
         fun verse(hm: String) = at(tuesday.atTime(LocalTime.parse(hm))).verse
         assertEquals(verse("15:00"), verse("15:31"))

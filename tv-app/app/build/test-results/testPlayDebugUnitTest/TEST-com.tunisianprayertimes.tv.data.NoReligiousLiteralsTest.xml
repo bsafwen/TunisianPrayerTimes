@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.data.NoReligiousLiteralsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:58.491Z" hostname="HOME" time="0.051">
+<testsuite name="com.tunisianprayertimes.tv.data.NoReligiousLiteralsTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:21.518Z" hostname="HOME" time="0.044">
   <properties/>
-  <testcase name="theAppSourcesHoldNoReligiousText" classname="com.tunisianprayertimes.tv.data.NoReligiousLiteralsTest" time="0.051"/>
+  <testcase name="theAppSourcesHoldNoReligiousText" classname="com.tunisianprayertimes.tv.data.NoReligiousLiteralsTest" time="0.042"/>
+  <testcase name="theAppResourcesHoldNoReligiousText" classname="com.tunisianprayertimes.tv.data.NoReligiousLiteralsTest" time="0.001"/>
+  <testcase name="aMultiLineRawStringIsReadWhole" classname="com.tunisianprayertimes.tv.data.NoReligiousLiteralsTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

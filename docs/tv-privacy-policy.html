@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - Tunisian Prayer Times for Mosque TVs</title>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+        color: #333;
+      }
+      h1 {
+        color: #1a73e8;
+      }
+      h2 {
+        color: #202124;
+        margin-top: 2em;
+      }
+      p,
+      li {
+        font-size: 16px;
+      }
+      .updated {
+        color: #666;
+        font-style: italic;
+      }
+      [dir="rtl"] {
+        font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", sans-serif;
+        line-height: 1.8;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Privacy Policy — Mosque TV</h1>
+    <p class="updated">Last updated: September 30, 2026</p>
+
+    <p>
+      <strong>Tunisian Prayer Times for mosque TVs</strong> («أوقات الصلاة تونس»,
+      "the TV app") shows the prayer times, the iqamah and the adhkar on a
+      mosque's screen. It is developed by Safwen Baroudi and comes in two
+      builds: the Google Play build (<code>com.tunisianprayertimes.tv</code>)
+      and the GitHub build for boxes without Google Play
+      (<code>com.tunisianprayertimes.tv.github</code>). This policy covers both.
+      The phone app has
+      <a href="privacy-policy.html">its own privacy policy</a>.
+    </p>
+
+    <h2>1. No accounts, no analytics</h2>
+    <p>
+      The TV app has no accounts and no sign-in. It uses no analytics, no
+      crash-reporting service and no advertising, and it sends no device
+      identifier anywhere. The developer receives no data from it.
+    </p>
+
+    <h2>2. What stays on the TV</h2>
+    <p>
+      Prayer times are computed on the device. Everything the mosque sets is
+      stored on the TV only: the mosque's name and delegation, the iqamah times
+      and prayer durations, Ramadan and Eid dates, display options, the adhkar
+      lists, written announcements, and the images copied from a USB key or sent
+      from a phone. The TV also keeps a local log of its own events (start-ups,
+      crashes, sleep) and the confirmation of its clock, shown on its maintenance
+      page.
+    </p>
+    <p>
+      None of this leaves the TV. The app's data is excluded from Android's
+      backup and from transfers to a new device. The settings are erased by
+      Settings → «متقدم» → «إعادة ضبط الشاشة», the images by «حذف الصور وملفات
+      الإعلانات», and all of the app's data by clearing it in the device's
+      settings or uninstalling the app.
+    </p>
+
+    <h2>3. Network requests</h2>
+    <p>
+      The TV app works without internet. When the TV is online, it makes these
+      requests, over HTTPS:
+    </p>
+    <ul>
+      <li>
+        <strong>Weather</strong> (on by default; can be turned off in the
+        settings or from the phone): about every half hour, a request to
+        <code>api.open-meteo.com</code> with the latitude and longitude of the
+        delegation chosen for the prayer times. These are the delegation's
+        reference point, rounded to three decimals, not the position of the
+        device: the app has no location permission. Open-Meteo's own terms and
+        privacy policy apply to that request.
+      </li>
+      <li>
+        <strong>Time check</strong>: when the system has no network time to
+        give the app (always on Android 12 and older), a <code>HEAD</code>
+        request to <code>api.open-meteo.com</code>, of which only the date of the
+        answer is read.
+      </li>
+      <li>
+        <strong>Official Ramadan and Eid dates</strong>: around the start of
+        Ramadan and the two Eids, small JSON files read from this project's
+        GitHub Pages site (<code>bsafwen.github.io</code>).
+      </li>
+      <li>
+        <strong>Updates (GitHub build only)</strong>: about once a day, the
+        list of this project's releases from <code>api.github.com</code>, with
+        the app's name and version; a new version is then downloaded from
+        <code>github.com</code>. The Google Play build is updated by Google Play.
+      </li>
+    </ul>
+    <p>
+      As with any internet request, these servers see the TV's IP address. No
+      personal data, settings or identifier is sent with the requests.
+    </p>
+
+    <h2>4. The phone dashboard (local network)</h2>
+    <p>
+      An administrator can manage the TV from a phone or computer on the same
+      local network. The dashboard is served by the TV itself, only while an
+      administrator has started a session on the TV, and only to whoever scans
+      the code the TV shows for that session. A session ends after a quarter of
+      an hour without use, and after two hours in any case. The dashboard never
+      goes through the internet; images and settings sent from the phone are
+      stored on the TV only.
+    </p>
+
+    <h2>5. USB keys</h2>
+    <p>
+      The TV reads a USB key only in the app's own folder on it
+      (<code>Android/data/&lt;package&gt;/files</code>): the settings file
+      <code>mosque-tv.json</code>, images, and written announcements. It writes
+      the current settings file there. It needs no storage permission and reads
+      nothing else on the key.
+    </p>
+
+    <h2>6. Permissions</h2>
+    <ul>
+      <li>
+        <strong>Internet and network state</strong> — for the optional requests
+        of Section 3, and the local phone dashboard.
+      </li>
+      <li>
+        <strong>Run at start-up, keep awake, display over other apps</strong> —
+        so the mosque's screen comes back by itself after a power cut and stays
+        on.
+      </li>
+      <li>
+        <strong>Device administrator</strong> — used only when an installer sets
+        the box up as a dedicated device (device owner). The app then keeps
+        itself on screen (lock task), sets the box's time zone to Tunisia's
+        (turning off the automatic time zone) and, when the box's automatic time
+        is off, sets its clock to the confirmed time. No other device policy is
+        used.
+      </li>
+      <li>
+        <strong>GitHub build only</strong>: installing its own updates; and
+        "quick start", an accessibility service that brings the prayer screen
+        back to the front after start-up or after the box's home screen appears.
+        It only learns which app comes to the front: it does not read the
+        screen's content, keys or gestures, and collects no data. Its
+        permission to change secure settings is granted by a technician with
+        adb, to turn the service on and to turn off Fire TV's sleep timer.
+      </li>
+    </ul>
+
+    <h2>7. Children's privacy</h2>
+    <p>
+      The TV app collects no personal information from anyone, including
+      children under 13.
+    </p>
+
+    <h2>8. Changes to this policy</h2>
+    <p>
+      This policy may be updated when the app changes. Changes will be posted on
+      this page with an updated date.
+    </p>
+
+    <h2>9. Contact</h2>
+    <p>If you have questions about this privacy policy, contact us at:</p>
+    <p><strong>Email:</strong> safwen.baroudi@gmail.com</p>
+
+    <section dir="rtl" lang="ar">
+      <h2>ملخّص بالعربية</h2>
+      <p>
+        تطبيق شاشة المسجد لا حساب فيه ولا إحصاءات ولا إعلانات، ولا يرسل أي
+        معرّف للجهاز. كل الإعدادات والصور وسجلّ أحداث الشاشة تبقى على الجهاز،
+        ولا تدخل في النسخ الاحتياطي لأندرويد. تُحسب أوقات الصلاة على الجهاز دون
+        إنترنت.
+      </p>
+      <p>
+        إن اتصلت الشاشة بالإنترنت: تطلب الطقس من Open-Meteo بإحداثيات المعتمدية
+        المختارة (لا موقع الجهاز، ويمكن إيقاف الطقس)، وتتحقق من الوقت بطلب إلى
+        الخادم نفسه حين لا يعطيها النظام وقت الشبكة (ودائمًا على أندرويد 12 وما
+        قبله)، وتقرأ تواريخ رمضان والعيد الرسمية من
+        صفحة المشروع على GitHub، ونسخة GitHub وحدها تبحث فيه عن التحديثات. لوحة
+        الإدارة من الهاتف تعمل على شبكة المسجد وحدها، بالرمز الذي تعرضه الشاشة
+        لكل جلسة. ومفتاح USB يُقرأ في مجلد التطبيق وحده.
+      </p>
+    </section>
+  </body>
+</html>

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.ui.TvStringsTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.795Z" hostname="HOME" time="0.001">
+<testsuite name="com.tunisianprayertimes.tv.ui.TvStringsTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:39.939Z" hostname="HOME" time="0.002">
   <properties/>
-  <testcase name="datesUseTheTunisianMonthNames" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.001"/>
+  <testcase name="writtenAnnouncementsAreNotCountedAsFiles" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.0"/>
+  <testcase name="latinFoldersAndYearRangesStayLeftToRight" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.0"/>
+  <testcase name="phoneNumbersAndDatesInAnnouncementsStayLeftToRight" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.001"/>
+  <testcase name="theSettingsHintGivesEveryWayWithTheDetectorsNumbers" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.001"/>
+  <testcase name="countsAgreeWithTheirNumbers" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.0"/>
+  <testcase name="datesUseTheTunisianMonthNames" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.0"/>
   <testcase name="timesAndCountdowns" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.0"/>
   <testcase name="verseRangesStayLeftToRight" classname="com.tunisianprayertimes.tv.ui.TvStringsTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

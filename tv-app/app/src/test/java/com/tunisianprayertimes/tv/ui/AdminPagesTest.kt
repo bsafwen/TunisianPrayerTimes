@@ -1,12 +1,17 @@
 package com.tunisianprayertimes.tv.ui
 
+import androidx.compose.runtime.saveable.SaverScope
 import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.Delegation
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerTime
+import com.tunisianprayertimes.mosque.IqamahRule
+import com.tunisianprayertimes.mosque.PrayerEvent
+import com.tunisianprayertimes.mosque.PrayerOverride
 import com.tunisianprayertimes.tv.data.IqamahConfig
 import com.tunisianprayertimes.tv.data.IqamahMode
+import com.tunisianprayertimes.tv.data.PrefsManager
 import com.tunisianprayertimes.tv.ui.kiosk.HealthLevel
 import com.tunisianprayertimes.tv.ui.kiosk.HealthRow
 import com.tunisianprayertimes.tv.ui.kiosk.KioskAction
@@ -25,9 +30,16 @@ import com.tunisianprayertimes.tv.ui.settings.placeName
 import com.tunisianprayertimes.tv.ui.settings.stepEveryMinutes
 import com.tunisianprayertimes.tv.ui.settings.stepSlideSeconds
 import com.tunisianprayertimes.tv.ui.settings.title
+import com.tunisianprayertimes.tv.ui.setup.IqamahConfigsSaver
 import com.tunisianprayertimes.tv.ui.setup.iqamahText
+import com.tunisianprayertimes.tv.ui.setup.ramadanText
 import com.tunisianprayertimes.tv.ui.setup.shiftFixed
+import com.tunisianprayertimes.tv.ui.setup.switched
+import com.tunisianprayertimes.tv.ui.setup.todayIqamahText
+import com.tunisianprayertimes.tv.ui.setup.todayMark
 import com.tunisianprayertimes.tv.ui.theme.Midad
+import java.time.LocalDateTime
+import java.time.LocalTime
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotEquals
@@ -77,7 +89,10 @@ class AdminPagesTest {
 
     @Test
     fun advancedOffersUndoAndBundledTextsOnlyWhenTheyApply() {
-        assertEquals(listOf(AdvancedAction.RESET, AdvancedAction.EXIT_TO_ANDROID), advancedActions(canUndoImport = false, customTexts = false))
+        assertEquals(
+            listOf(AdvancedAction.USB_EXPORT, AdvancedAction.USB_READ_AGAIN, AdvancedAction.RESET, AdvancedAction.EXIT_TO_ANDROID),
+            advancedActions(canUndoImport = false, customTexts = false),
+        )
         assertEquals(AdvancedAction.entries.toList(), advancedActions(canUndoImport = true, customTexts = true))
         assertEquals(AdvancedAction.UNDO_IMPORT, advancedActions(canUndoImport = true, customTexts = false).first())
     }
@@ -153,6 +168,49 @@ class AdminPagesTest {
         val pastMidnight = IqamahConfig(mode = IqamahMode.FIXED_TIME, fixedHour = 23, fixedMinute = 59).shiftFixed(1)
         assertEquals(0 to 0, pastMidnight.fixedHour to pastMidnight.fixedMinute)
         assertEquals(IqamahMode.FIXED_TIME, pastMidnight.mode)
+    }
+
+    @Test
+    fun theRemoteSwitchesARuleBetweenMinutesAndAFixedTime() {
+        // A winter fixed time goes back to the minutes it had, and returns as it was.
+        val winter = IqamahConfig(mode = IqamahMode.FIXED_TIME, delayMinutes = 15, fixedHour = 19, fixedMinute = 30)
+        val minutes = winter.switched(LocalTime.of(21, 45))!!
+        assertEquals("بعد الأذان 15 د", iqamahText(minutes))
+        assertEquals(winter, minutes.switched(LocalTime.of(21, 45)))
+        // Never fixed before: it starts where the minutes put it after today's adhan.
+        assertEquals("الساعة 20:00", iqamahText(IqamahConfig(delayMinutes = 15).switched(LocalTime.of(19, 45))!!))
+        // Nothing to start from (an Eid off its day): not offered.
+        assertNull(IqamahConfig(delayMinutes = 30).switched(null))
+    }
+
+    @Test
+    fun theIqamahPageSaysWhatTheWallUsesToday() {
+        val adhan = LocalDateTime.of(2027, 3, 1, 19, 45)
+        fun event(adjusted: Boolean = false, ramadan: Boolean = false) = PrayerEvent(
+            Prayer.ISHA, adhan, adhan.plusMinutes(3), adhan.plusMinutes(20), adhan.plusMinutes(95), adhan.plusMinutes(105), iqamahAdjusted = adjusted, ramadanSettings = ramadan,
+        )
+        assertEquals("20:05", todayIqamahText(event()))
+        assertEquals("—", todayIqamahText(null))
+        assertNull(todayMark(event()))
+        assertEquals(TvStrings.RAMADAN, todayMark(event(ramadan = true)))
+        assertEquals(TvStrings.IQAMAH_ADJUSTED, todayMark(event(adjusted = true, ramadan = true)))
+
+        assertEquals(
+            "في رمضان: الإقامة بعد الأذان 20 د · مدة الصلاة 75 د",
+            ramadanText(PrayerOverride(IqamahRule.AfterAdhan(20), 75)),
+        )
+        assertEquals("في رمضان: مدة الصلاة 75 د", ramadanText(PrayerOverride(salahMinutes = 75)))
+        assertEquals("في رمضان: الإقامة الساعة 20:30", ramadanText(PrayerOverride(IqamahRule.FixedTime(LocalTime.of(20, 30)))))
+    }
+
+    @Test
+    fun onboardingsIqamahTableSurvivesARecreation() {
+        val configs = PrefsManager.EDITABLE.associateWith { IqamahConfig(delayMinutes = 12) } +
+            // A neighbourhood masjid: no Jumu'a, and a 30-minute khutba kept for when it is held again.
+            (Prayer.JOMOAA to IqamahConfig(IqamahMode.FIXED_TIME, 15, 13, 5, 20, held = false, khutbaMinutes = 30)) +
+            (Prayer.AID_FITR to IqamahConfig(delayMinutes = 30, held = false))
+        val saved = with(IqamahConfigsSaver) { SaverScope { true }.save(configs) }!!
+        assertEquals(configs, IqamahConfigsSaver.restore(saved))
     }
 
     @Test

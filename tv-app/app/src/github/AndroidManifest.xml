@@ -16,6 +16,12 @@
             android:name=".update.InstallResultReceiver"
             android:exported="false" />
 
+        <!-- Looks for a fixed release while the app keeps crashing: see update/Updates.kt -->
+        <service
+            android:name=".update.UpdateRescueJob"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
         <!-- Quick start: bound by the system right after boot; see kiosk/KioskAccessibility.kt -->
         <service
             android:name=".kiosk.KioskAccessibilityService"

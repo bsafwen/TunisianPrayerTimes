@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.usb.UsbMediaTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.807Z" hostname="HOME" time="0.034">
+<testsuite name="com.tunisianprayertimes.tv.usb.UsbMediaTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:39.957Z" hostname="HOME" time="0.217">
   <properties/>
-  <testcase name="emptyFoldersOfferNothing" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.006"/>
-  <testcase name="imagesAreCopiedOnceAndReplaceOnlyTheirKind" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.012"/>
-  <testcase name="aDismissedSetIsOfferedAgainOnlyWhenItChanges" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.008"/>
-  <testcase name="onlyRealImagesAreTaken" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.007"/>
+  <testcase name="aCopyThatFailsIsOfferedAgainAndTheOtherKindIsStillCopied" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.023"/>
+  <testcase name="emptyFoldersOfferNothing" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.005"/>
+  <testcase name="tooLargeTooManyAndMisplacedFilesAreReported" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.021"/>
+  <testcase name="aResetLeavesNoImageNorTextFile" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.016"/>
+  <testcase name="aKeyWithNothingUsableIsStillReportedOnce" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.006"/>
+  <testcase name="eachKeyIsRememberedOnItsOwn" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.012"/>
+  <testcase name="theHandledSetsAreTheLastSixteen" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.001"/>
+  <testcase name="eachFileNeedsRoomForItselfNotTheWholeSetAtItsSizeOnTheKey" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.018"/>
+  <testcase name="aKeyPulledOutBeforeThePhotosAreReadIsAFailedCopyNotBrokenImages" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.016"/>
+  <testcase name="aReadOnlyKeyGetsNoFolders" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.001"/>
+  <testcase name="onlyRealImagesAreTakenAndTheOthersAreReported" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.008"/>
+  <testcase name="imagesAreCopiedOnceAndReplaceOnlyTheirKind" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.018"/>
+  <testcase name="aDismissedSetIsOfferedAgainOnlyWhenItChanges" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.007"/>
+  <testcase name="imagesTheTvCannotDecodeAreLeftOutAndCounted" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.017"/>
+  <testcase name="aKeyWithOnlyATextFileKeepsTheTvsImages" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.043"/>
+  <testcase name="anOfferKnowsWhenItsKeyIsTakenOut" classname="com.tunisianprayertimes.tv.usb.UsbMediaTest" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

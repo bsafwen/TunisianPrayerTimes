@@ -1,17 +1,12 @@
 package com.tunisianprayertimes
 
 import java.time.LocalDate
-import java.time.chrono.HijrahChronology
-import java.time.chrono.HijrahDate
-import java.time.format.DateTimeFormatter
-import java.time.format.DecimalStyle
-import java.util.Locale
 
 /** A civil day in the Tunisian Islamic calendar, as mosque screens need it (no visibility buffers). */
 data class IslamicDay(
     val date: LocalDate,
     val hijri: HijriCalendarDate,
-    /** 1 to 30 during Ramadan, null otherwise. */
+    /** 1 to 30 during Ramadan (31 only between an admin's date and an announcement that leave no other way), null otherwise. */
     val ramadanDay: Int?,
     val isArafah: Boolean,
     val isEidFitr: Boolean,
@@ -60,13 +55,21 @@ object IslamicDays {
     /** The Hijri year that [date] falls in. */
     fun hijriYearOf(date: LocalDate): Int = OfficialIslamicDates.calendar().date(date).year
 
-    /** The year whose Ramadan and Eids an admin prepares on [today]: this year until its Eid al-Adha, then the next. */
-    fun upcomingYear(today: LocalDate): Int = upcomingYear(today, OfficialIslamicDates.calendar())
+    /** How far the admin may move a Ramadan or Eid date from its announcement or estimate on the TV. */
+    const val MAX_MANUAL_SHIFT_DAYS = 3L
+
+    /**
+     * The year whose Ramadan and Eids an admin prepares on [today]: this year until the last day its
+     * Eid al-Adha could still be moved to, then the next. From announcements and estimates only, so
+     * the admin's own changes never turn the page to another year under the remote (a wrong press of
+     * − on Eid morning stays undoable), and a late Eid is still settable on its day.
+     */
+    fun upcomingYear(today: LocalDate): Int = upcomingYear(today, OfficialIslamicDates.officialCalendar())
 
     internal fun upcomingYear(today: LocalDate, calendar: TunisianHijriCalendar): Int {
         val year = calendar.date(today).year
         val eidAdha = calendar.month(year, 12).start.plusDays(9)
-        return if (today.isAfter(eidAdha)) year + 1 else year
+        return if (today.isAfter(eidAdha.plusDays(MAX_MANUAL_SHIFT_DAYS + 1))) year + 1 else year
     }
 
     fun yearDates(hijriYear: Int): YearDates = yearDates(
@@ -74,6 +77,17 @@ object IslamicDays {
         merged = OfficialIslamicDates.calendar(),
         official = OfficialIslamicDates.officialCalendar(),
         manual = ManualIslamicDateOverrides.forYear(hijriYear),
+    )
+
+    /**
+     * The year's dates as they would be with [manual] as the admin's dates for it, before saving them:
+     * where a date returned to automatic goes, the admin's other dates kept.
+     */
+    fun yearDates(hijriYear: Int, manual: ManualIslamicDates): YearDates = yearDates(
+        hijriYear,
+        merged = OfficialIslamicDates.calendarWith(hijriYear, manual),
+        official = OfficialIslamicDates.officialCalendar(),
+        manual = manual,
     )
 
     internal fun yearDates(
@@ -84,13 +98,16 @@ object IslamicDays {
     ): YearDates {
         fun event(month: Int, offsetDays: Long, manualDate: LocalDate?): EventDate {
             val officialMonth = official.month(hijriYear, month)
+            val mergedMonth = merged.month(hijriYear, month)
+            val date = mergedMonth.start.plusDays(offsetDays)
+            // What the calendar used: an admin's date it could not keep is not the one shown.
             val source = when {
-                manualDate != null -> DateSource.MANUAL
-                !officialMonth.isEstimated -> DateSource.OFFICIAL
+                manualDate != null && manualDate == date -> DateSource.MANUAL
+                !mergedMonth.isEstimated -> DateSource.OFFICIAL
                 else -> DateSource.ESTIMATE
             }
             return EventDate(
-                date = merged.month(hijriYear, month).start.plusDays(offsetDays),
+                date = date,
                 source = source,
                 withoutManual = officialMonth.start.plusDays(offsetDays),
                 announced = !officialMonth.isEstimated,
@@ -107,23 +124,25 @@ object IslamicDays {
 
 /** Arabic Hijri labels in Tunisian usage, shared by the phone and TV apps. */
 object HijriLabels {
-    private val locale: Locale = Locale.forLanguageTag("ar-TN-u-nu-latn")
+    /**
+     * The months as Tunisia names them («ربيع الثاني» and «جمادى الثانية», where the platform's
+     * CLDR data says «الآخر» and «الآخرة»), written here so every box reads the same whatever its ICU.
+     */
+    private val MONTHS = listOf(
+        "محرم", "صفر", "ربيع الأول", "ربيع الثاني", "جمادى الأولى", "جمادى الثانية",
+        "رجب", "شعبان", "رمضان", "شوال", "ذو القعدة", "ذو الحجة",
+    )
 
-    private val monthFormatter = DateTimeFormatter.ofPattern("MMMM", locale)
-        .withChronology(HijrahChronology.INSTANCE)
-        .withDecimalStyle(DecimalStyle.STANDARD)
+    /** After a day's number the month is genitive: «9 ذي الحجة». */
+    private val GENITIVE = mapOf(11 to "ذي القعدة", 12 to "ذي الحجة")
 
-    // CLDR localizes Hijri month 4 as "ربيع الآخر" (Rabiʿ al-Akhir). Tunisian usage prefers
-    // "ربيع الثاني" (Rabiʿ al-Thani), and the platform exposes no way to request the
-    // alternate name, so we override the months where the two differ.
-    private val monthNameOverrides = mapOf(4 to "ربيع الثاني")
-
-    // Only use the built-in chronology to localize a month name. An official Tunisian
-    // month can contain day 30 even when that same Umm al-Qura month has only 29 days.
-    fun monthName(year: Int, month: Int): String =
-        monthNameOverrides[month] ?: monthFormatter.format(HijrahDate.of(year, month, 1))
+    fun monthName(year: Int, month: Int): String {
+        require(month in 1..12) { "Unsupported Hijri month: $year/$month" }
+        return MONTHS[month - 1]
+    }
 
     fun monthLabel(year: Int, month: Int): String = "${monthName(year, month)} $year هـ"
 
-    fun dateLabel(date: HijriCalendarDate): String = "${date.day} ${monthLabel(date.year, date.month)}"
+    fun dateLabel(date: HijriCalendarDate): String =
+        "${date.day} ${GENITIVE[date.month] ?: monthName(date.year, date.month)} ${date.year} هـ"
 }

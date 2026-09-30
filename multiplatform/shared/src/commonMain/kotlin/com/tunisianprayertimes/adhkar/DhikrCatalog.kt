@@ -32,10 +32,18 @@ data class DhikrEntry(
     val collectionCountOverrides: Map<DhikrCategory, Int> = emptyMap(),
     /** Ordered phrases counted within one reading item. */
     val steps: List<DhikrStep> = emptyList(),
+    /**
+     * The part of [reference] that concerns one collection, where the full source covers several
+     * occasions (morning, bedtime, after the prayer): the mosque's after-prayer screen cites only its own.
+     */
+    val collectionReferences: Map<DhikrCategory, String> = emptyMap(),
 )
 
 fun DhikrEntry.countForCollection(category: DhikrCategory?): Int =
     category?.let(collectionCountOverrides::get) ?: defaultCount
+
+fun DhikrEntry.referenceForCollection(category: DhikrCategory?): String =
+    category?.let(collectionReferences::get) ?: reference
 
 /**
  * Offline Arabic reading catalog. Source links and editorial notes are in docs/adhkar-sources.md.
@@ -143,6 +151,7 @@ object DhikrCatalog {
             defaultCount = 3,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP, DhikrCategory.SALAH),
             collectionCountOverrides = mapOf(DhikrCategory.SALAH to 1),
+            collectionReferences = mapOf(DhikrCategory.SALAH to SURAH_AFTER_SALAH.format("سورة الإخلاص")),
         ),
         DhikrEntry(
             id = "surah_falaq",
@@ -152,6 +161,7 @@ object DhikrCatalog {
             defaultCount = 3,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP, DhikrCategory.SALAH),
             collectionCountOverrides = mapOf(DhikrCategory.SALAH to 1),
+            collectionReferences = mapOf(DhikrCategory.SALAH to SURAH_AFTER_SALAH.format("سورة الفلق")),
         ),
         DhikrEntry(
             id = "surah_nas",
@@ -161,6 +171,7 @@ object DhikrCatalog {
             defaultCount = 3,
             categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP, DhikrCategory.SALAH),
             collectionCountOverrides = mapOf(DhikrCategory.SALAH to 1),
+            collectionReferences = mapOf(DhikrCategory.SALAH to SURAH_AFTER_SALAH.format("سورة الناس")),
         ),
         DhikrEntry(
             id = "sleep_bismika",
@@ -176,7 +187,10 @@ object DhikrCatalog {
             text = "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ۝253 لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ ۚ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ ۗ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ ۚ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ ۖ وَلَا يَئُودُهُ حِفْظُهُمَا ۚ وَهْوَ الْعَلِيُّ الْعَظِيمُ ۝254",
             reference = "البقرة 253–254 (قالون، العد المدني الأخير)؛ عند النوم: صحيح البخاري 2311؛ صباحًا ومساءً: مستدرك الحاكم (حديث أبي بن كعب)؛ دبر كل صلاة: السنن الكبرى للنسائي (حديث أبي أمامة)؛ وصححهما الألباني",
             defaultCount = 1,
-            categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP, DhikrCategory.SALAH)
+            categories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.SLEEP, DhikrCategory.SALAH),
+            collectionReferences = mapOf(
+                DhikrCategory.SALAH to "البقرة 253–254 (قالون، العد المدني الأخير)؛ دبر كل صلاة: السنن الكبرى للنسائي (حديث أبي أمامة)؛ وصححه الألباني",
+            ),
         ),
         DhikrEntry(
             id = "sleep_tasbih",
@@ -458,6 +472,12 @@ object DhikrCatalog {
     fun find(id: String): DhikrEntry? = byId[id]
 }
 
+/** The after-prayer clause of the three protective surahs' source. */
+private const val AFTER_EVERY_PRAYER = "دبر كل صلاة مرة: سنن أبي داود 1523 (صحيح)"
+
 /** Shared by the three protective surahs; `%s` is the surah reference. */
 private const val SURAH_OCCASIONS =
-    "%s؛ ثلاثًا صباحًا ومساءً: سنن أبي داود 5082 (حسن)؛ دبر كل صلاة مرة: سنن أبي داود 1523 (صحيح)؛ وعند النوم مع النفث في الكفين ومسح الجسد ثلاثًا: صحيح البخاري 5017"
+    "%s؛ ثلاثًا صباحًا ومساءً: سنن أبي داود 5082 (حسن)؛ " + AFTER_EVERY_PRAYER + "؛ وعند النوم مع النفث في الكفين ومسح الجسد ثلاثًا: صحيح البخاري 5017"
+
+/** The same surahs after the prayer, cited by name; `%s` is the surah's name. */
+private const val SURAH_AFTER_SALAH = "%s؛ " + AFTER_EVERY_PRAYER

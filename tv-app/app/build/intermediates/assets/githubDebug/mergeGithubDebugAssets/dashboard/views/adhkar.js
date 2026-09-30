@@ -43,6 +43,9 @@
   var draftBase = null;
   // Per list, what the page would send for the TV's own list (JSON): a list still equal to it is not sent.
   var draftFile = null;
+  // What the page keeps of the lists (ctx.keepDraft): a kept draft that is not this one was restored
+  // from an earlier page.
+  var kept = null;
   var nextUid = 1;
   // The library picker: open under one list at a time, with its category and search.
   var picker = null;
@@ -113,6 +116,7 @@
   // ---------------------------------------------------------------- how long the texts last (the TV's pacer)
 
   var PAGE_CHARS = 260;
+  var PAGE_LINES = 6;
   var PAGE_BREAK = /(\u06DD[0-9\u0660-\u0669]+|[\u06D6\u06D7\u06DA\u060C,.\u061B;\u061F?!:\n]+)\s*/g;
   var SPACES = /\s+/g;
 
@@ -122,9 +126,18 @@
     return Math.min(150000, Math.max(6000, perRepetition * Math.max(1, count)));
   }
 
-  /** A long text split as the TV splits it: pages of at most 260 characters, never inside a word. */
+  /** How much of a page text.slice(from, to) takes: its share of the characters or of the lines, whichever is more. */
+  function fill(text, from, to) {
+    var lines = text.slice(from, to).replace(/\s+$/, "").split("\n").length;
+    return Math.max((to - from) / PAGE_CHARS, lines / PAGE_LINES);
+  }
+
+  /**
+   * A long text split as the TV splits it: pages of at most 260 characters and 6 lines, never inside
+   * a word, as even as the cuts allow.
+   */
   function pages(text) {
-    if (text.length <= PAGE_CHARS) return [text];
+    if (fill(text, 0, text.length) <= 1) return [text];
     function ends(pattern) {
       var found = [];
       var match;
@@ -140,13 +153,28 @@
     var spaces = ends(SPACES);
     var result = [];
     var start = 0;
-    function inReach(cuts) {
-      for (var i = cuts.length - 1; i >= 0; i--) if (cuts[i] > start && cuts[i] - start <= PAGE_CHARS) return cuts[i];
-      return -1;
+    // The rest needs `count` pages: this one takes its share, and leaves no more than the others can hold.
+    function fits(cut) { return cut > start && fill(text, start, cut) <= 1; }
+    function nearest(cuts, ok, share) {
+      var best = -1;
+      var gap = Infinity;
+      cuts.forEach(function (cut) {
+        if (!ok(cut)) return;
+        var off = Math.abs(fill(text, start, cut) - share);
+        if (off < gap) { best = cut; gap = off; }
+      });
+      return best;
     }
-    while (text.length - start > PAGE_CHARS) {
-      var cut = inReach(breaks);
-      if (cut < 0) cut = inReach(spaces);
+    for (;;) {
+      var rest = fill(text, start, text.length);
+      if (rest <= 1) break;
+      var count = Math.ceil(rest);
+      var share = rest / count;
+      var both = function (cut) { return fits(cut) && fill(text, cut, text.length) <= count - 1; };
+      var cut = nearest(breaks, both, share);
+      if (cut < 0) cut = nearest(spaces, both, share);
+      if (cut < 0) cut = nearest(breaks, fits, share);
+      if (cut < 0) cut = nearest(spaces, fits, share);
       if (cut < 0) break;
       result.push(text.slice(start, cut));
       start = cut;
@@ -181,9 +209,9 @@
     return pages(text).length === 1 ? paceMillis(text, count) : sumPages(text) * Math.min(count, MAX_PAGED_REPETITIONS);
   }
 
-  /** The ticker reads a text once, each page at least 12 s. */
+  /** The ticker reads a text once, on one line, each page at least 12 s. */
   function tickerPagesMillis(text) {
-    return pages(text).reduce(function (sum, page) { return sum + Math.max(TICKER_MIN_SLIDE_MILLIS, paceMillis(page, 1)); }, 0);
+    return pages(text.replace(/\s+/g, " ")).reduce(function (sum, page) { return sum + Math.max(TICKER_MIN_SLIDE_MILLIS, paceMillis(page, 1)); }, 0);
   }
 
   /** About how long the TV shows one item of a list, in milliseconds (in the ticker, the least). */
@@ -267,17 +295,54 @@
     return mode === "replace" || mode === "استبدال" ? items : bundledItems(key).concat(items);
   }
 
-  function startDraft(settings, force) {
+  /** A text of a list kept by an earlier page, with a new uid. */
+  function restoredItem(item) {
+    item = item && typeof item === "object" ? item : {};
+    var count = item.count === undefined || item.count === null ? null : String(item.count);
+    if (item.own) return ownItem(String(item.text || ""), String(item.reference || ""), count || "1");
+    return reviewedItem(String(item.id), count);
+  }
+
+  function startDraft(ctx, force) {
+    var settings = ctx.settings;
     var adhkar = settings && settings.adhkar && typeof settings.adhkar === "object" && !Array.isArray(settings.adhkar) ? settings.adhkar : {};
     var base = JSON.stringify(adhkar);
-    if (draft && draftBase === base && !force) return;
+    var restored = ctx.keptDraft();
+    var restoring = !force && !!restored && restored !== kept && !!restored.lists && !!restored.files;
+    if (draft && draftBase === base && !force && !restoring) return;
     draftBase = base;
     draft = {};
     draftFile = {};
     SECTIONS.forEach(function (section) {
-      draft[section.key] = workingList(section.key, adhkar[section.key]);
-      draftFile[section.key] = JSON.stringify(fileList(section.key, draft[section.key]));
+      var key = section.key;
+      // Lists kept by an earlier page, which the admin chose to restore: compared with the TV's
+      // lists of that time, so only the lists the admin changed are sent.
+      if (restoring && Array.isArray(restored.lists[key]) && typeof restored.files[key] === "string") {
+        draft[key] = restored.lists[key].map(restoredItem);
+        draftFile[key] = restored.files[key];
+      } else {
+        draft[key] = workingList(key, adhkar[key]);
+        draftFile[key] = JSON.stringify(fileList(key, draft[key]));
+      }
     });
+    if (restoring) kept = restored;
+    keep(ctx);
+  }
+
+  /** Keeps the lists in the browser while one differs from the TV's, for another tab, a reload or a new session. */
+  function keep(ctx) {
+    var changed = SECTIONS.some(function (section) {
+      return JSON.stringify(fileList(section.key, draft[section.key])) !== draftFile[section.key];
+    });
+    if (!changed) {
+      kept = null;
+      ctx.keepDraft(null);
+      return;
+    }
+    kept = kept || {};
+    kept.lists = draft;
+    kept.files = draftFile;
+    ctx.keepDraft(kept);
   }
 
   /** True when a reviewed text after the prayer is said another number of times than in the library. */
@@ -450,14 +515,19 @@
 
   // ---------------------------------------------------------------- drawing
 
-  /** The whole text in a <details> (its first words as the summary); a short text as it is. */
-  function textBlock(el, entry) {
+  /**
+   * The whole text in a <details> (its first words as the summary); a short text as it is. Steps show
+   * how many times each is said, except in the ticker, which reads each step once.
+   */
+  function textBlock(el, entry, key) {
     var text = String(entry.text || "");
     var steps = Array.isArray(entry.steps) ? entry.steps : [];
     var preview = shorten(text, 90);
     if (!steps.length && preview === text.replace(/\s+/g, " ").trim()) return el("p", { class: "dhikr-text", text: text });
     var body = steps.length
-      ? el("ol", { class: "dhikr-text" }, steps.map(function (step) { return el("li", { text: String(step.text) + " × " + step.count }); }))
+      ? el("ol", { class: "dhikr-text" }, steps.map(function (step) {
+        return el("li", { text: String(step.text) + (key === "ticker" ? "" : " × " + step.count) });
+      }))
       : el("p", { class: "dhikr-text", text: text });
     var summary = el("summary", { text: preview });
     var details = el("details", { class: "dhikr" }, summary, body);
@@ -563,7 +633,7 @@
       el("div", { class: "head" },
         el("span", { class: "title", id: id + "-title", text: (i + 1) + ". " + entry.title }),
         el("span", { class: "badge reviewed", text: "نص مراجَع" })),
-      textBlock(el, entry),
+      textBlock(el, entry, section.key),
       el("div", { class: "foot" },
         el("span", { class: "reference", text: sourceText(entry.reference) }),
         count),
@@ -713,6 +783,7 @@
     function refresh() {
       summary.textContent = summaryText(section, list);
       summary.className = summaryClass(section, list);
+      keep(v.ctx);
     }
     return el("section", { class: "group" },
       el("div", { class: "group-head" },
@@ -759,10 +830,13 @@
     return library.categories.some(function (c) { return c.id === section.category; }) ? section.category : "";
   }
 
-  /** The first control of a row that can take focus (a field, a button, a text's summary), or null. */
+  /**
+   * The first control of a row that can take focus without a text field (a button, a text's summary),
+   * or null: focusing a mosque text's field would open a phone's keyboard after a mere deletion.
+   */
   function firstControl(node) {
     var tag = String(node.tagName || "").toLowerCase();
-    if (/^(input|textarea|select|button|summary)$/.test(tag) && !node.disabled) return node;
+    if (/^(button|summary)$/.test(tag) && !node.disabled) return node;
     var children = node.children || [];
     for (var i = 0; i < children.length; i++) {
       var found = firstControl(children[i]);
@@ -773,7 +847,7 @@
 
   function editor(box, ctx) {
     var el = ctx.el;
-    startDraft(ctx.settings, false);
+    startDraft(ctx, false);
     var sections = el("div", { class: "adhkar" });
     var focusWanted = null;
     var focusNode = null;
@@ -782,9 +856,10 @@
       el: el,
       /**
        * Redraws both lists; `focus` ({ uid, what }) names the control to focus afterwards, "row" being
-       * the first control of that text's row.
+       * the first button (or summary) of that text's row.
        */
       paint: function (focus) {
+        keep(ctx);
         focusWanted = focus || null;
         focusNode = null;
         sections.textContent = "";
@@ -816,7 +891,7 @@
     box.appendChild(el("div", { class: "actions" },
       apply,
       el("button", { type: "button", class: "quiet", text: "إعادة القيم الحالية", on: { click: function () {
-        startDraft(ctx.settings, true);
+        startDraft(ctx, true);
         v.paint();
       } } })));
     v.paint();

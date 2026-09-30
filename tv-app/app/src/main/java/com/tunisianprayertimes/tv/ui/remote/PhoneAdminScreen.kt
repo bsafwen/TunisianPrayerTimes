@@ -19,9 +19,15 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
@@ -42,8 +48,24 @@ import com.tunisianprayertimes.tv.ui.theme.Midad
 import com.tunisianprayertimes.tv.ui.theme.midadStyle
 import kotlin.math.floor
 
-/** A running phone-management session: the address the QR code holds. */
-data class PhoneAdminSession(val url: String?, val port: Int)
+/**
+ * A running phone-management session: the address the QR code holds, and the TV's other addresses
+ * ([otherUrls]) for a box on two networks (Ethernet and Wi-Fi, or Wi-Fi Direct for screen casting).
+ */
+data class PhoneAdminSession(val url: String?, val port: Int, val otherUrls: List<String> = emptyList()) {
+    companion object {
+        /**
+         * The session at [port] with [token] on the TV's addresses now: the one of the network the box
+         * uses ([active], when it is among the local [addresses]) in the code, the others under it. Read
+         * again while the session runs, so joining the phone's hotspot afterwards shows the code.
+         */
+        fun of(port: Int, token: String, active: String?, addresses: List<String>): PhoneAdminSession {
+            val ordered = (listOfNotNull(active?.takeIf { it in addresses }) + addresses).distinct()
+            val urls = ordered.map { "http://$it:$port/?t=$token" }
+            return PhoneAdminSession(urls.firstOrNull(), port, urls.drop(1))
+        }
+    }
+}
 
 /**
  * Manage the screen from a phone or laptop on the same network, with no internet: the mosque's Wi-Fi,
@@ -66,12 +88,37 @@ fun PhoneAdminScreen(
         session.url == null -> listOfNotNull(wifi, TvStrings.STOP to onStop, TvStrings.BACK to onBack)
         else -> listOf(TvStrings.PHONE_STOP to onStop, TvStrings.BACK to onBack)
     }
+    val labels = actions.map { it.first }
+    // The first action has the focus when the page opens; once it has left the list, never again.
+    val focus = remember { ActionFocus(first = labels.first()) }
+    if (focus.first !in labels) focus.first = null
+    // Read while the focused action still holds the focus: the list composed now may have dropped it.
+    val focusedBefore = focus.current
+    val back = remember { FocusRequester() }
+    LaunchedEffect(labels) {
+        if (focusedBefore == null || focusedBefore in labels) return@LaunchedEffect
+        repeat(BACK_FOCUS_ATTEMPTS) {
+            if (runCatching { back.requestFocus() }.isSuccess) return@LaunchedEffect
+            withFrameNanos { }
+        }
+    }
     Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
         Column(Modifier.width(300.dp).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Text(TvStrings.SETTINGS_PHONE, style = midadStyle(26.sp, FontWeight.SemiBold))
             Text(TvStrings.PHONE_SUBTITLE, style = midadStyle(14.sp, color = Midad.Muted), modifier = Modifier.padding(bottom = 9.dp))
-            actions.forEachIndexed { index, (text, action) ->
-                FocusableListItem(text = text, onClick = action, modifier = Modifier.initialFocus(index == 0))
+            actions.forEach { (text, action) ->
+                // By label, as on the kiosk page: «بدء الجلسة» leaves with its focus, which goes to «رجوع»,
+                // rather than handing it to «إيقاف الجلسة» where a second OK (or a bouncing remote) would stop the session.
+                key(text) {
+                    FocusableListItem(
+                        text = text,
+                        onClick = action,
+                        modifier = Modifier
+                            .onFocusChanged { if (it.isFocused) focus.current = text }
+                            .then(if (text == TvStrings.BACK) Modifier.focusRequester(back) else Modifier)
+                            .initialFocus(text == focus.first),
+                    )
+                }
             }
         }
         Column(
@@ -91,7 +138,7 @@ fun PhoneAdminScreen(
                     Text(TvStrings.PHONE_NO_NETWORK, style = midadStyle(18.sp, FontWeight.Medium, Midad.Alert, lineHeight = 1.45f))
                     HotspotSteps()
                 }
-                else -> SessionCode(session.url)
+                else -> SessionCode(session.url, session.otherUrls)
             }
         }
     }
@@ -99,7 +146,7 @@ fun PhoneAdminScreen(
 
 /** The open session: the code to scan on its card, the steps beside it, the address under both. */
 @Composable
-private fun ColumnScope.SessionCode(url: String) {
+private fun ColumnScope.SessionCode(url: String, otherUrls: List<String>) {
     Row(horizontalArrangement = Arrangement.spacedBy(20.dp), verticalAlignment = Alignment.CenterVertically) {
         // Dark modules on ivory: the contrast a phone camera needs, without a white square glaring on the wall.
         Box(Modifier.background(Midad.Text, RoundedCornerShape(12.dp)).padding(10.dp)) {
@@ -112,6 +159,10 @@ private fun ColumnScope.SessionCode(url: String) {
     // Typed by hand on a laptop: left to right, each digit in its own cell so the address reads clearly.
     Digits(url, style = midadStyle(16.sp, FontWeight.Medium), modifier = Modifier.align(Alignment.CenterHorizontally))
     Paragraph(TvStrings.PHONE_WRONG_NETWORK, color = Midad.Muted, size = 14)
+    if (otherUrls.isNotEmpty()) {
+        Paragraph(TvStrings.PHONE_OTHER_ADDRESSES, color = Midad.Muted, size = 14)
+        otherUrls.forEach { Digits(it, style = midadStyle(14.sp), modifier = Modifier.align(Alignment.CenterHorizontally)) }
+    }
     Paragraph(TvStrings.PHONE_WARNING, color = Midad.Muted, size = 14)
 }
 
@@ -140,6 +191,14 @@ private fun NumberedSteps(steps: List<String>) {
         }
     }
 }
+
+/** What the page keeps of the focus, outside the snapshot so that moving it recomposes nothing. */
+private class ActionFocus(var first: String?) {
+    /** The label of the action with the focus. */
+    var current: String? = null
+}
+
+private const val BACK_FOCUS_ATTEMPTS = 3
 
 @Composable
 private fun Paragraph(text: String, color: Color = Midad.Text, size: Int = 16) {

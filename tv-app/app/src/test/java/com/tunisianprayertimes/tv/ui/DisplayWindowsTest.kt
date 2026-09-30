@@ -2,11 +2,14 @@ package com.tunisianprayertimes.tv.ui
 
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.mosque.DayBanner
-import com.tunisianprayertimes.mosque.MosqueAdhkar
 import com.tunisianprayertimes.mosque.PrayerEvent
+import com.tunisianprayertimes.tv.ui.display.AnnouncementsWindow
 import com.tunisianprayertimes.tv.ui.display.EidMorning
+import com.tunisianprayertimes.tv.ui.display.EidPrayerNotice
 import com.tunisianprayertimes.tv.ui.display.IqamahWait
 import com.tunisianprayertimes.tv.ui.display.NightWindow
+import com.tunisianprayertimes.tv.ui.display.backgroundIndex
+import com.tunisianprayertimes.tv.ui.display.passMillis
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotEquals
@@ -113,6 +116,71 @@ class DisplayWindowsTest {
     }
 
     @Test
+    fun theEidPrayerIsToldFromTheMaghribBeforeItUntilItBegins() {
+        // Eid al-Fitr tomorrow at 06:45 (sunrise + 30), after today's 18:08 Maghrib.
+        val eid = event(Prayer.AID_FITR, at("06:15", day.plusDays(1)), iqamahMinutes = 30)
+        val events = listOf(event(Prayer.MAGHRIB, at("18:08")), event(Prayer.ISHA, at("19:32")), eid)
+        val maghrib = at("18:08")
+        assertNull(EidPrayerNotice.at(at("18:07"), events, maghrib))
+        assertEquals(eid, EidPrayerNotice.at(at("18:08"), events, maghrib))
+        assertEquals("صلاة عيد الفطر غدًا 06:45", TvStrings.eidPrayerNote(eid.prayer, eid.iqamahAt, at("21:00")))
+        // After midnight it is today's, told without «غدًا» until it begins.
+        val morning = day.plusDays(1)
+        assertEquals(eid, EidPrayerNotice.at(at("03:00", morning), events, at("18:07", morning)))
+        assertEquals("صلاة عيد الفطر 06:45", TvStrings.eidPrayerNote(eid.prayer, eid.iqamahAt, at("03:00", morning)))
+        assertNull(EidPrayerNotice.at(at("06:45", morning), events, at("18:07", morning)))
+        // No Eid prayer in the flow (a mosque that holds none), nothing to tell.
+        assertNull(EidPrayerNotice.at(at("20:00"), events - eid, maghrib))
+    }
+
+    @Test
+    fun aPassOfAnnouncementsStartsOnlyIfItEndsWellBeforeTheAdhan() {
+        val asr = at("15:32")
+        val lastPass = at("15:06:58")
+        // Ten announcements of 30 s: a five-minute pass.
+        val pass = java.time.Duration.ofMillis(passMillis(10, 30))
+        assertEquals(306_000L, pass.toMillis())
+        fun mayStart(now: String, afterPrayer: Boolean = false, every: Int = 15) =
+            AnnouncementsWindow.mayStart(at(now), afterPrayer, lastPass, every, pass, asr)
+        // Due at 15:21:58, but it would run into the ten quiet minutes before Asr: the timetable stays.
+        assertFalse(mayStart("15:21:58"))
+        // Every 5 minutes instead: due from 15:11:58, it may start while it still ends by 15:22.
+        assertFalse(mayStart("15:11:57", every = 5))
+        assertTrue(mayStart("15:16:53", every = 5))
+        assertFalse(mayStart("15:16:54", every = 5))
+        // The pass owed after Dhuhr's adhkar does not start five minutes before Asr either.
+        assertFalse(mayStart("15:27", afterPrayer = true, every = 0))
+        assertTrue(mayStart("12:45", afterPrayer = true, every = 0))
+        // 0: after the prayers only; without a next adhan (times unknown) nothing holds it back.
+        assertFalse(mayStart("14:00", every = 0))
+        assertTrue(AnnouncementsWindow.mayStart(at("23:00"), false, lastPass, 15, pass, null))
+    }
+
+    @Test
+    fun theLastPassFollowsAClockPutBack() {
+        // A pass 20 minutes ago by the time since boot; the wall was then put back 9 hours (a box on
+        // another zone's clock): the last pass is still 20 minutes behind the wall, and the next one is due.
+        val now = at("10:00")
+        val lastPass = AnnouncementsWindow.lastPassAt(now, 20 * 60_000L)
+        assertEquals(at("09:40"), lastPass)
+        assertTrue(AnnouncementsWindow.mayStart(now, false, lastPass, 15, java.time.Duration.ofMinutes(2), at("12:30")))
+        // A negative gap (never, but the clock since boot is the only judge) counts as now.
+        assertEquals(now, AnnouncementsWindow.lastPassAt(now, -5))
+    }
+
+    @Test
+    fun theBackgroundPhotosGoRoundOnTheClock() {
+        val start = at("10:00")
+        val shown = (0 until 20).map { backgroundIndex(start.plusMinutes(it.toLong()), 20) }
+        // Twenty photos in twenty minutes, one a minute, whenever the main screen comes back.
+        assertEquals((0 until 20).toSet(), shown.toSet())
+        assertEquals(backgroundIndex(start, 20), backgroundIndex(start.plusSeconds(59), 20))
+        assertEquals((backgroundIndex(start, 20) + 1) % 20, backgroundIndex(start.plusMinutes(1), 20))
+        assertEquals(0, backgroundIndex(start, 1))
+        assertTrue(backgroundIndex(at("00:00", LocalDate.of(1960, 1, 1)), 7) in 0..6)
+    }
+
+    @Test
     fun theCountdownRoundsUpLikeTheMainScreen() {
         val iqamah = at("15:42")
         // The clock is read a few milliseconds after each second.
@@ -146,12 +214,5 @@ class DisplayWindowsTest {
         assertEquals("00:00", IqamahWait.text(-5))
         // An Eid prayer 85 minutes after sunrise keeps the same four digits.
         assertEquals("85:00", IqamahWait.text(85 * 60))
-    }
-
-    @Test
-    fun everyTextBesideTheMuezzinSaysWhenItIsSaid() {
-        MosqueAdhkar.ADHAN_IDS.forEach { assertNotNull(it, TvStrings.adhanCaption(it)) }
-        assertNull(TvStrings.adhanCaption(null))
-        assertEquals(MosqueAdhkar.ADHAN_IDS, MosqueAdhkar.adhanCompanion().map { it.entryId })
     }
 }

@@ -21,6 +21,13 @@ var Dashboard = (function () {
   var link = null;
   // What the section shown wants done every second with the TV's time (a countdown); reset on each render.
   var tickers = [];
+  // When the TV last answered, and when it ends the session at the latest (the phone's clock, ms): once
+  // the TV no longer answers, this tells an ended session from a Wi-Fi problem.
+  var lastAnswer = 0;
+  var sessionEndsAt = 0;
+  // The TV ends a session 15 minutes after its last request, and warns 10 minutes before its 2-hour cap.
+  var SESSION_IDLE = 15 * 60 * 1000;
+  var SESSION_WARNING = 10 * 60 * 1000;
 
   /** The prayers of the settings file, in screen order: key in the file, id in the state, Arabic name. */
   var PRAYERS = [
@@ -40,8 +47,12 @@ var Dashboard = (function () {
     return path + (path.indexOf("?") < 0 ? "?" : "&") + "t=" + encodeURIComponent(token);
   }
 
-  function request(method, path, body, contentType) {
+  // A 503 means all the TV's connections stayed busy (another phone loading images): nothing was done.
+  var BUSY_RETRIES = 3;
+
+  function request(method, path, body, contentType, attempt) {
     if (sessionClosed) return Promise.reject(new Error("closed"));
+    attempt = attempt || 0;
     var options = { method: method, cache: "no-store" };
     if (body !== undefined) {
       options.body = body;
@@ -49,7 +60,12 @@ var Dashboard = (function () {
     }
     return fetch(url(path), options).then(function (response) {
       // The TV answered, whatever it said: it is reachable.
+      lastAnswer = Date.now();
       if (!sessionClosed) setLink(true);
+      if (response.status === 503 && attempt < BUSY_RETRIES) {
+        return new Promise(function (resolve) { setTimeout(resolve, 1000 * (attempt + 1)); })
+          .then(function () { return request(method, path, body, contentType, attempt + 1); });
+      }
       return response.text().then(function (text) {
         var data = null;
         try { data = text ? JSON.parse(text) : null; } catch (e) { data = { error: text }; }
@@ -62,9 +78,22 @@ var Dashboard = (function () {
         return data;
       });
     }, function () {
-      if (!sessionClosed) setLink(false);
+      if (sessionClosed) throw new Error("closed");
+      // Past the session's limits the TV has stopped its server: scanning again helps, not the Wi-Fi.
+      if (sessionEnded()) {
+        sessionClosed = true;
+        showClosed("انتهت الجلسة");
+        throw new Error("closed");
+      }
+      setLink(false);
       throw new Error("تعذّر الاتصال بالشاشة: تأكّد أن الهاتف على الشبكة نفسها");
     });
+  }
+
+  /** Whether the TV has ended the session by now: idle for too long, or past its cap. */
+  function sessionEnded() {
+    var at = Date.now();
+    return lastAnswer > 0 && (at - lastAnswer > SESSION_IDLE || (sessionEndsAt > 0 && at >= sessionEndsAt));
   }
 
   var api = {
@@ -166,19 +195,26 @@ var Dashboard = (function () {
     tickers = [];
     var view = document.getElementById("view");
     view.textContent = "";
+    endingSoon = false;
+    paintNotice();
     view.appendChild(el("div", { class: "card level-BAD", attrs: { role: "alert" } },
       el("h2", { text: message }),
-      el("p", { class: "muted", text: "ابدأ جلسة جديدة من إعدادات الشاشة (الإدارة من الهاتف) وامسح الرمز من جديد." })));
+      el("p", { class: "muted", text: "ابدأ جلسة جديدة من إعدادات الشاشة (الإدارة من الهاتف) وامسح الرمز من جديد." }),
+      hasEdits() && draftsStored
+        ? el("p", { class: "muted", text: "التعديلات التي لم تُطبَّق محفوظة في هذا الهاتف: تعرض الصفحة الجديدة استعادتها." })
+        : null));
   }
 
   // ---------------------------------------------------------------- preview and apply
 
-  /** Applies a previewed settings file; resolves true when the TV applied it. */
-  function applyText(text) {
+  /** Applies a previewed settings file from a section; resolves true when the TV applied it. */
+  function applyText(text, view) {
     return api.post("/api/apply", text).then(function (done) {
       if (done && done.ok) {
         toast("طُبّقت الإعدادات على الشاشة", "ok");
-        reload();
+        // What the section kept unapplied is on the TV now.
+        keepDraft(view, null);
+        reloadFor(view);
         return true;
       }
       toast(((done && done.lines) || []).join(" · ") || "لم تُطبَّق الإعدادات", "error");
@@ -190,7 +226,7 @@ var Dashboard = (function () {
   }
 
   /** Shows what the TV would change; resolves true when the admin applied it (exactly once, whatever closes it). */
-  function previewAndApply(text) {
+  function previewAndApply(text, view) {
     return api.post("/api/preview", text).then(function (result) {
       result = result || {};
       var dialog = document.getElementById("preview");
@@ -203,7 +239,7 @@ var Dashboard = (function () {
           window.alert(title + "\n\n" + lines.join("\n"));
           return false;
         }
-        return window.confirm(lines.join("\n") + "\n\nتطبيق؟") ? applyText(text) : false;
+        return window.confirm(lines.join("\n") + "\n\nتطبيق؟") ? applyText(text, view) : false;
       }
       var list = document.getElementById("preview-lines");
       var apply = document.getElementById("preview-apply");
@@ -235,7 +271,7 @@ var Dashboard = (function () {
           if (applying) return;
           applying = true;
           apply.disabled = true;
-          applyText(text).then(function (applied) {
+          applyText(text, view).then(function (applied) {
             applying = false;
             apply.disabled = false;
             finish(applied);
@@ -274,17 +310,29 @@ var Dashboard = (function () {
       clockCheck = typeof epoch === "number" && isFinite(epoch) && receivedAt >= sentAt
         ? { difference: epoch - (sentAt + receivedAt) / 2, margin: (receivedAt - sentAt) / 2 }
         : null;
+      var left = state.session ? state.session.remainingMillis : null;
+      if (typeof left === "number" && isFinite(left)) sessionEndsAt = receivedAt + left;
       document.getElementById("mosque-name").textContent = (state.mosque && state.mosque.name) || "شاشة المسجد";
       document.getElementById("mosque-place").textContent = (state.mosque && state.mosque.delegationName) || "";
+      // Which screen this is is known now: offer the edits an earlier page kept for it.
+      if (!draftsChecked) {
+        draftsChecked = true;
+        storedDrafts = readStoredDrafts();
+        paintNotice();
+      }
       return state;
     }, function (error) {
       if (!sessionClosed) toast(error.message, "error");
     });
   }
 
-  function reload() {
+  /**
+   * Reads the TV's state again after something a section did; the section is drawn again only if it is
+   * still the one shown (an upload may end after the admin moved on to another form).
+   */
+  function reloadFor(view) {
     return loadState().then(function (fresh) {
-      if (fresh) render();
+      if (fresh && view && current === view) render();
       return fresh;
     });
   }
@@ -316,13 +364,194 @@ var Dashboard = (function () {
     /** Calls fn(now) every second while this section is shown (until it is drawn again). */
     onTick: function (fn) { tickers.push(fn); },
     toast: toast,
-    places: places,
-    reload: reload,
-    /** Previews then applies a partial settings file given as an object. */
-    submit: function (partial) { return previewAndApply(JSON.stringify(partial, null, 2)); },
-    /** The same, for a settings file written by hand. */
-    submitText: previewAndApply
+    places: places
   };
+
+  /** The context of one section: what it reloads, applies and keeps unapplied is its own. */
+  function contextFor(view) {
+    var ctx = Object.create(context);
+    /** Reads the TV's state again, drawing the section again if it is still shown. */
+    ctx.reload = function () { return reloadFor(view); };
+    /** Previews then applies a partial settings file given as an object. */
+    ctx.submit = function (partial) { return previewAndApply(JSON.stringify(partial, null, 2), view); };
+    /** The same, for a settings file written by hand. */
+    ctx.submitText = function (text) { return previewAndApply(text, view); };
+    /** A form section: the value the admin gave the field `key` (its id) and has not applied, or undefined. */
+    ctx.edited = function (key) {
+      var kept = drafts[view.id];
+      return kept && Object.prototype.hasOwnProperty.call(kept, key) ? kept[key] : undefined;
+    };
+    /**
+     * A form section: the field `key` now shows the TV's `value` (a list loaded after the form was
+     * drawn). A kept value equal to it is no longer an edit; call before applying ctx.edited(key).
+     */
+    ctx.drawn = function (key, value) {
+      if (current !== view || !drawnFields) return;
+      drawnFields[key] = value;
+      var kept = drafts[view.id];
+      if (!kept || kept[key] !== value) return;
+      delete kept[key];
+      keepDraft(view, Object.keys(kept).length ? kept : null);
+    };
+    /**
+     * A section with its own draft (the adhkar, the announcements): keeps it (plain data, stored in this
+     * browser), or null once nothing differs from the TV. keptDraft() gives it back, also after a reload.
+     */
+    ctx.keepDraft = function (data) { keepDraft(view, data); };
+    ctx.keptDraft = function () { return drafts[view.id] || null; };
+    return ctx;
+  }
+
+  // ---------------------------------------------------------------- unsaved edits
+
+  // What the admin changed and has not applied, per section id, so it survives another tab, the back
+  // button, a redraw after an upload and, stored in this browser, a reloaded page or a new session.
+  // A form section (view.form: true) has its edited fields kept here by the core, by id (else by place
+  // among the section's fields); the adhkar and the announcements keep their own lists (ctx.keepDraft).
+  var drafts = {};
+  // The fields of the form shown, as drawn: a field put back as it was is no longer an edit.
+  var drawnFields = null;
+  // Edits stored by an earlier page, offered to the admin until restored or dropped.
+  var storedDrafts = null;
+  // Whether the last write to the browser's storage worked (a private window may refuse it).
+  var draftsStored = false;
+  var DRAFTS_KEY = "mosque-tv-drafts";
+  var DRAFTS_MAX_AGE = 24 * 60 * 60 * 1000;
+  var draftsChecked = false;
+
+  function hasEdits() { return Object.keys(drafts).length > 0; }
+
+  /**
+   * Where this screen's edits are stored, or null before its state arrived. Per installation: two
+   * mosques' TVs often have the same address, and one's edits must never be offered on the other.
+   */
+  function draftsKey() {
+    var app = state && state.app;
+    return app && app.packageName && app.installedAt ? DRAFTS_KEY + ":" + app.packageName + ":" + app.installedAt : null;
+  }
+
+  function keepDraft(view, data) {
+    if (!view) return;
+    if (data) drafts[view.id] = data;
+    else delete drafts[view.id];
+    saveDrafts();
+  }
+
+  /** Writes the edits (with those still offered from an earlier page) to the browser's storage. */
+  function saveDrafts() {
+    var all = {};
+    Object.keys(storedDrafts || {}).forEach(function (id) { all[id] = storedDrafts[id]; });
+    Object.keys(drafts).forEach(function (id) { all[id] = drafts[id]; });
+    var key = draftsKey();
+    draftsStored = false;
+    if (!key) return;
+    try {
+      if (Object.keys(all).length) localStorage.setItem(key, JSON.stringify({ savedAt: Date.now(), drafts: all }));
+      else localStorage.removeItem(key);
+      draftsStored = true;
+    } catch (e) {
+      draftsStored = false;
+    }
+  }
+
+  /** The edits an earlier page for this screen stored in the last day, by section, or null. */
+  function readStoredDrafts() {
+    var key = draftsKey();
+    if (!key) return null;
+    try {
+      var stored = JSON.parse(localStorage.getItem(key) || "null");
+      if (!stored || typeof stored.drafts !== "object" || !stored.drafts || !(Date.now() - stored.savedAt < DRAFTS_MAX_AGE)) return null;
+      var found = {};
+      views.forEach(function (view) { if (stored.drafts[view.id]) found[view.id] = stored.drafts[view.id]; });
+      return Object.keys(found).length ? found : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function formFields(root) {
+    return Array.prototype.filter.call(root.querySelectorAll("input, select, textarea"), function (node) { return node.type !== "file"; });
+  }
+
+  function fieldKey(node, index) { return node.id || "#" + index; }
+
+  function fieldValue(node) { return node.type === "checkbox" || node.type === "radio" ? node.checked : node.value; }
+
+  function setField(node, value) {
+    if (typeof value === "boolean") node.checked = value;
+    else node.value = value;
+  }
+
+  /** Notes the form as drawn from the TV's state, then puts back the fields the admin had edited. */
+  function restoreForm(root, view) {
+    var fields = formFields(root);
+    drawnFields = {};
+    fields.forEach(function (node, i) { drawnFields[fieldKey(node, i)] = fieldValue(node); });
+    var kept = drafts[view.id];
+    if (!kept) return;
+    // In the section's order: a box ticked back first enables the field it governs.
+    fields.forEach(function (node, i) {
+      var key = fieldKey(node, i);
+      // A field not ready yet (a list still loading) is filled by the section itself (ctx.edited).
+      if (!Object.prototype.hasOwnProperty.call(kept, key) || node.disabled) return;
+      setField(node, kept[key]);
+      // A value the field no longer offers (an option gone) is dropped.
+      if (fieldValue(node) !== kept[key]) {
+        setField(node, drawnFields[key]);
+        return;
+      }
+      // The section updates what follows the field (fields shown or hidden, hints).
+      node.dispatchEvent(new Event("input", { bubbles: true }));
+      node.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+  }
+
+  /** An edit in a form section: kept while it differs from the field as drawn. */
+  function formEdited(event) {
+    if (!current || !current.form || !drawnFields || sessionClosed) return;
+    var fields = formFields(document.getElementById("view"));
+    var index = fields.indexOf(event.target);
+    if (index < 0) return;
+    var key = fieldKey(event.target, index);
+    var value = fieldValue(event.target);
+    var kept = drafts[current.id] || {};
+    if (value === drawnFields[key]) delete kept[key];
+    else kept[key] = value;
+    keepDraft(current, Object.keys(kept).length ? kept : null);
+  }
+
+  /**
+   * Above the section: edits from an earlier page to restore or drop, and the session's end drawing
+   * near (the TV ends every session after 2 hours).
+   */
+  var endingSoon = false;
+  function paintNotice() {
+    var notice = document.getElementById("notice");
+    notice.textContent = "";
+    if (storedDrafts && !sessionClosed) {
+      var titles = views.filter(function (view) { return storedDrafts[view.id]; }).map(function (view) { return "«" + view.title + "»"; });
+      notice.appendChild(el("p", { text: "في هذا الهاتف تعديلات لم تُطبَّق من صفحة سابقة (" + titles.join("، ") + "). استعادتها؟" }));
+      notice.appendChild(el("div", { class: "row" },
+        el("button", { type: "button", class: "primary", text: "استعادة التعديلات", on: { click: function () { restoreStored(true); } } }),
+        el("button", { type: "button", class: "quiet", text: "تجاهلها", on: { click: function () { restoreStored(false); } } })));
+    }
+    if (endingSoon && !sessionClosed) {
+      var minutes = Math.max(1, Math.ceil((sessionEndsAt - Date.now()) / 60000));
+      notice.appendChild(el("p", { text: "تنتهي هذه الجلسة بعد نحو " + minutes + " د (ساعتان على الأكثر لكل جلسة): طبّق تعديلاتك قبل ذلك، ثم ابدأ جلسة جديدة من إعدادات الشاشة إن احتجت." }));
+    }
+    notice.hidden = !notice.firstChild;
+  }
+
+  /** The admin's answer to the offer: the stored edits become the sections' drafts, or are dropped. */
+  function restoreStored(restore) {
+    var stored = storedDrafts;
+    storedDrafts = null;
+    // What was edited on this page since it opened stays over what is restored.
+    if (restore) Object.keys(stored || {}).forEach(function (id) { if (!drafts[id]) drafts[id] = stored[id]; });
+    saveDrafts();
+    paintNotice();
+    if (restore) render();
+  }
 
   // ---------------------------------------------------------------- views and navigation
 
@@ -332,10 +561,18 @@ var Dashboard = (function () {
   var wanted = null;
   var navigation = 0;
 
-  function show(id) {
+  /**
+   * Shows a section. A tab tapped adds a history entry (`push`), so the phone's back button returns
+   * to the section before rather than leaving the page.
+   */
+  function show(id, push) {
     var next = views.filter(function (v) { return v.id === id; })[0] || views[0];
     wanted = next;
-    if (location.hash !== "#" + next.id) history.replaceState(null, "", location.pathname + location.search + "#" + next.id);
+    if (location.hash !== "#" + next.id) {
+      var address = location.pathname + location.search + "#" + next.id;
+      if (push) history.pushState(null, "", address);
+      else history.replaceState(null, "", address);
+    }
     // Each section opens on the TV's current state (another phone, the remote or a USB key may have changed it),
     // and only once it arrived: until then the previous section stays as it is.
     var ticket = ++navigation;
@@ -358,14 +595,16 @@ var Dashboard = (function () {
       tabs.appendChild(el("button", {
         text: view.title,
         attrs: { "aria-current": view === current ? "page" : false, type: "button" },
-        on: { click: function () { show(view.id); } }
+        on: { click: function () { show(view.id, true); } }
       }));
     });
     revealTab(tabs);
     root.textContent = "";
     tickers = [];
+    drawnFields = null;
     try {
-      current.render(root, context);
+      current.render(root, contextFor(current));
+      if (current.form) restoreForm(root, current);
     } catch (error) {
       root.appendChild(el("div", { class: "card level-BAD", text: "تعذّر عرض هذا القسم: " + error.message, attrs: { role: "alert" } }));
     }
@@ -401,6 +640,12 @@ var Dashboard = (function () {
       ? pad(now.getUTCHours()) + ":" + pad(now.getUTCMinutes()) + ":" + pad(now.getUTCSeconds())
       : "");
     if (sessionClosed) return;
+    // Drawn again once a minute while the session's end is near.
+    var soon = sessionEndsAt > 0 && sessionEndsAt - Date.now() <= SESSION_WARNING;
+    if (soon !== endingSoon || (soon && now.getUTCSeconds() === 0)) {
+      endingSoon = soon;
+      paintNotice();
+    }
     tickers.forEach(function (fn) {
       try { fn(now); } catch (e) { /* a countdown that fails stays as it was */ }
     });
@@ -414,9 +659,18 @@ var Dashboard = (function () {
     // A browser without <dialog> would show its content in the page: previews use its own boxes instead.
     var dialog = document.getElementById("preview");
     if (typeof dialog.showModal !== "function") dialog.hidden = true;
+    var view = document.getElementById("view");
+    view.addEventListener("input", formEdited);
+    view.addEventListener("change", formEdited);
+    // Leaving the page (a reload, closing the tab) with edits not applied: the browser asks first.
+    window.addEventListener("beforeunload", function (event) {
+      if (!hasEdits()) return;
+      event.preventDefault();
+      event.returnValue = "";
+    });
     show((location.hash || "").replace("#", ""));
     setInterval(tickClock, 1000);
-    // The phone's back button and links move between sections.
+    // The phone's back button moves between the sections tapped (each tap adds a history entry), and links too.
     window.addEventListener("hashchange", function () {
       var id = (location.hash || "").replace("#", "");
       if (!wanted || wanted.id !== id) show(id);
@@ -427,7 +681,7 @@ var Dashboard = (function () {
     setInterval(function () {
       if (dialog.open || sessionClosed) return;
       if (!current) { if (wanted) show(wanted.id); }
-      else if (current.autoRefresh) reload();
+      else if (current.autoRefresh) reloadFor(current);
       else if (link === false) keepAlive();
     }, 30000);
     // Keeps the session alive while the page is open (the TV ends it after 15 minutes without requests).

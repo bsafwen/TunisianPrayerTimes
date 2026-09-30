@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.usb.UsbSettingsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.953Z" hostname="HOME" time="0.033">
+<testsuite name="com.tunisianprayertimes.tv.usb.UsbSettingsTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:40.426Z" hostname="HOME" time="0.056">
   <properties/>
-  <testcase name="anEmptyFileCountsAsAbsent" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.008"/>
-  <testcase name="templatesGoOnlyToKeysWithoutAFileAndLeaveNoTempFile" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.012"/>
-  <testcase name="theSignatureFollowsTheContent" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.005"/>
-  <testcase name="theNewestFileInAnAppFolderWins" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.008"/>
+  <testcase name="anEmptyFileCountsAsAbsent" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.01"/>
+  <testcase name="templatesGoOnlyToKeysWithoutAFileAndLeaveNoTempFile" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.013"/>
+  <testcase name="theKeyJustMountedIsKnownByItsVolumeId" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.003"/>
+  <testcase name="theSignatureFollowsTheContent" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.006"/>
+  <testcase name="aFileSavedByNotepadInAnyEncodingIsRead" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.007"/>
+  <testcase name="anExportReplacesTheKeysFileAndKeepsTheOldOne" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.01"/>
+  <testcase name="theFilesInAppFoldersComeNewestFirst" classname="com.tunisianprayertimes.tv.usb.UsbSettingsTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

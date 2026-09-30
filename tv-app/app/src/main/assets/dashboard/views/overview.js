@@ -19,8 +19,13 @@
   var SCREENS = {
     NIGHT: "شاشة الليل الخافتة",
     EID: "صباح العيد",
-    ANNOUNCEMENTS: "الإعلانات"
+    ANNOUNCEMENTS: "الإعلانات",
+    // These come before the prayer's own screens: the TV reports them in any phase.
+    SETTINGS: "صفحة الإعدادات، لا أوقات الصلاة. للعودة: زر الرجوع في جهاز التحكم، أو تُغلق وحدها بعد 3 دقائق دون ضغط زر",
+    CLOCK: "سؤال عن ساعة الشاشة",
+    USB_OFFER: "عرض ملف مفتاح USB"
   };
+  var OVER_THE_PRAYER = { SETTINGS: true, CLOCK: true, USB_OFFER: true };
   // While the screen waits for the iqamah, the countdown is to the iqamah; otherwise to the next adhan.
   var BEFORE_IQAMAH = { ADHAN: true, IQAMAH_COUNTDOWN: true, KHUTBA: true };
   var LEVELS = { GOOD: "جيد", WARNING: "تنبيه", BAD: "مشكلة", INFO: "معلومة" };
@@ -76,10 +81,16 @@
     return typeof flow.phase === "string" && Object.prototype.hasOwnProperty.call(PHASES, flow.phase) ? flow.phase : "IDLE";
   }
 
-  /** The night, Eid morning or announcements screen the idle wall shows, or null for the timetable. */
+  /**
+   * The night, Eid morning or announcements screen the idle wall shows, or null for the timetable. The
+   * announcements also start once the adhkar after the prayer are over, before its time ends. The
+   * settings, the clock's question and a key's offer can hold the wall in any phase.
+   */
   function screenOf(state, phase) {
     var screen = (state.flow || {}).screen;
-    return phase === "IDLE" && typeof screen === "string" && Object.prototype.hasOwnProperty.call(SCREENS, screen) ? screen : null;
+    var free = phase === "IDLE" || phase === "AFTER_SALAH" && screen === "ANNOUNCEMENTS" ||
+      Object.prototype.hasOwnProperty.call(OVER_THE_PRAYER, screen);
+    return free && typeof screen === "string" && Object.prototype.hasOwnProperty.call(SCREENS, screen) ? screen : null;
   }
 
   /** The prayer the screen is busy with (its adhan, iqamah, prayer or adhkar), or null when idle. */
@@ -89,12 +100,22 @@
     return prayers.filter(function (p) { return p.id === flow.prayer || p.name === flow.prayer; })[0] || null;
   }
 
-  /** The first adhan still to come today, or null (after the isha adhan: tomorrow's times are not known yet). */
+  /** The Eid prayer's row: no adhan, only the prayer itself (timed from sunrise). */
+  function isEid(p) {
+    return !p.adhan && (p.id === "AID_FITR" || p.id === "AID_ADHA");
+  }
+
+  /** When a row is awaited: its adhan, or the Eid prayer itself. */
+  function eventSeconds(p) {
+    return secondsOf(isEid(p) ? p.iqamah : p.adhan);
+  }
+
+  /** The first adhan (or Eid prayer) still to come today, or null after the isha adhan. */
   function nextAdhan(prayers, nowSeconds) {
-    return prayers.filter(function (p) {
-      var at = secondsOf(p.adhan);
-      return at !== null && at > nowSeconds;
-    })[0] || null;
+    return prayers.reduce(function (next, p) {
+      var at = eventSeconds(p);
+      return at !== null && at > nowSeconds && (!next || at < eventSeconds(next)) ? p : next;
+    }, null);
   }
 
   function nowSeconds(now) {
@@ -116,7 +137,7 @@
     var screen = screenOf(state, phase);
     var shows = screen ? SCREENS[screen] : eid && phase === "IQAMAH_COUNTDOWN" ? "انتظار صلاة العيد" : PHASES[phase];
     var sub = [];
-    var until = phase !== "IDLE" ? shortTime(flow.until) : "";
+    var until = phase !== "IDLE" && !screen ? shortTime(flow.until) : "";
     sub.push(until ? ["الشاشة: " + shows + " حتى ", { time: until }] : ["الشاشة: " + shows]);
 
     if (BEFORE_IQAMAH[phase]) {
@@ -128,7 +149,15 @@
       }
     }
     var next = nextAdhan(prayers, seconds);
-    if (!next) return { label: "الأذان القادم: الفجر غدًا", count: null, sub: sub };
+    if (!next) {
+      // After isha: tomorrow's Fajr, as the wall counts down to it (null until the TV has its times).
+      var tomorrow = (state.today || {}).tomorrowFajr;
+      var fajr = tomorrow ? secondsOf(tomorrow.adhan) : null;
+      if (fajr === null) return { label: "الأذان القادم: الفجر غدًا", count: null, sub: sub };
+      if (tomorrow.iqamah) sub.unshift(["الإقامة ", { time: shortTime(tomorrow.iqamah) }]);
+      return { label: "أذان الفجر بعد", count: countdown(fajr + 24 * 3600 - seconds), sub: sub };
+    }
+    if (isEid(next)) return { label: "صلاة " + (next.name || "العيد") + " بعد", count: countdown(eventSeconds(next) - seconds), sub: sub };
     if (next.iqamah) sub.unshift(["الإقامة ", { time: shortTime(next.iqamah) }]);
     return { label: "أذان " + (next.name || "") + " بعد", count: countdown(secondsOf(next.adhan) - seconds), sub: sub };
   }

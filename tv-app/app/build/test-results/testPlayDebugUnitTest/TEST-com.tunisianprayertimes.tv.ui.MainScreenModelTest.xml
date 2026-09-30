@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.ui.MainScreenModelTest" tests="20" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:59.244Z" hostname="HOME" time="0.009">
+<testsuite name="com.tunisianprayertimes.tv.ui.MainScreenModelTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:27.971Z" hostname="HOME" time="0.02">
   <properties/>
   <testcase name="ramadanWithoutACountdownKeepsTheNormalHero" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.002"/>
-  <testcase name="aRamadanNightCountsDownToImsak" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
-  <testcase name="theWeather" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.001"/>
+  <testcase name="aRamadanNightCountsDownToImsak" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.001"/>
+  <testcase name="theWeather" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.002"/>
   <testcase name="theHeaderVerseMovesOnAtEachAdhan" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.001"/>
   <testcase name="beforeDawnInRamadanTheIftarIsToday" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
   <testcase name="arafahAndEidAreNotedByTheDate" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
   <testcase name="beforeFajrEverythingIsAhead" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
-  <testcase name="threeMinutesBeforeMaghribTheHeroSaysSoon" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.001"/>
+  <testcase name="threeMinutesBeforeMaghribTheHeroSaysSoon" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
   <testcase name="announcementsAreToldApartFromTheAdhkar" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
   <testcase name="withoutTimesNothingCrashes" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
   <testcase name="theNextPrayerInOneLine" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.001"/>
   <testcase name="onFridayDhuhrsNicheIsJumua" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
   <testcase name="afterIshaFajrsNicheHoldsTomorrowsFajr" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
-  <testcase name="theCountdownRoundsUpAndReachesZeroAtTheAdhan" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.001"/>
+  <testcase name="theCountdownRoundsUpAndReachesZeroAtTheAdhan" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
   <testcase name="aRamadanAfternoonCountsDownToIftar" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
+  <testcase name="aHeaderTooNarrowForTheVerseHasOthersToTry" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.001"/>
   <testcase name="missingIqamahsLeaveTheirLinesOut" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
-  <testcase name="theLastFastShowsNoImsakTomorrowAndNoTarawih" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
+  <testcase name="theTickerCitesALongSourceByItsFirstClause" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.002"/>
+  <testcase name="theTickerStartsAtTheBeginningOfAText" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.007"/>
+  <testcase name="theLastFastShowsNoImsakTomorrowAndNoTarawih" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.001"/>
   <testcase name="afterIshaWithoutTomorrowsTimesNothingIsNext" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
   <testcase name="thePlace" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
-  <testcase name="anAsrAfternoon" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.001"/>
+  <testcase name="aTextTooLongForTheTickerIsShownPageByPage" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
+  <testcase name="theWeatherGlyphFollowsTheSunByTodaysTimes" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.001"/>
+  <testcase name="anAsrAfternoon" classname="com.tunisianprayertimes.tv.ui.MainScreenModelTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

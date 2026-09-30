@@ -1,8 +1,15 @@
 package com.tunisianprayertimes.tv.usb
 
+import com.tunisianprayertimes.DateSource
+import com.tunisianprayertimes.EventDate
 import com.tunisianprayertimes.ManualIslamicDates
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.YearDates
+import com.tunisianprayertimes.mosque.AdhkarContent
+import com.tunisianprayertimes.mosque.CustomAdhkarList
 import com.tunisianprayertimes.mosque.IqamahRule
+import com.tunisianprayertimes.mosque.ReviewedDhikr
+import com.tunisianprayertimes.mosque.TextAnnouncement
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
@@ -35,8 +42,8 @@ class UsbSettingsInboxTest {
     private val inbox = UsbSettingsInbox(
         readSchedule = { prefs.schedule },
         writeSchedule = { prefs.schedule = it },
-        lastHandled = { prefs.usbLastHandledSignature },
-        setLastHandled = { prefs.usbLastHandledSignature = it },
+        readHandled = { prefs.usbHandledSettings },
+        writeHandled = { prefs.usbHandledSettings = it },
         readDates = { dates },
         writeDates = { dates = (dates + it).filterValues { value -> !value.isEmpty } },
         readProfile = { prefs.profile },
@@ -45,6 +52,10 @@ class UsbSettingsInboxTest {
         saveSnapshot = { snapshot = it },
         readContent = { prefs.adhkarContent },
         writeContent = { prefs.adhkarContent = it },
+        readAnnouncements = { prefs.textAnnouncements },
+        writeAnnouncements = { prefs.textAnnouncements = it },
+        readSnapshot = { snapshot },
+        today = { TODAY },
     )
     private val key = RemovableVolume(File(root, "key/Android/data/com.tunisianprayertimes.tv/files"))
 
@@ -161,6 +172,26 @@ class UsbSettingsInboxTest {
     }
 
     @Test
+    fun onboardingOffersOnlyAFileThatNamesThePlace() {
+        // Nothing on the key, or a file without a place: the wizard it is, and the key is left alone.
+        assertEquals(null, inbox.setupFile(listOf(key)))
+        assertFalse(UsbSettings.settingsFile(key).exists())
+        putOnKey("""{ "prayers": { "isha": { "iqamah": "20:00" } } }""")
+        assertEquals(null, inbox.setupFile(listOf(key)))
+        putOnKey("""{ "mosque": { "delegation": 999 } }""")
+        assertEquals(null, inbox.setupFile(listOf(key)))
+        // Another TV's file sets up this one; it stays on offer until it is applied.
+        putOnKey("""{ "mosque": { "name": "مسجد النور", "delegation": 101 }, "prayers": { "isha": { "iqamah": "20:00" } } }""")
+        val found = inbox.setupFile(listOf(key))!!
+        assertEquals("", prefs.usbHandledSettings)
+        assertTrue(inbox.apply(found))
+        assertEquals(101, prefs.delegationId)
+        assertEquals(34, prefs.gouvernoratId)
+        assertEquals(IqamahRule.FixedTime(LocalTime.of(20, 0)), prefs.schedule.settings(Prayer.ISHA).iqamah)
+        assertEquals("not offered again once onboarding is done", UsbScan.Quiet, inbox.scan(listOf(key)))
+    }
+
+    @Test
     fun theLastImportCanBeUndone() {
         prefs.mosqueName = "مسجد الفتح"
         prefs.applyProfile(MosqueProfile(delegationId = 615)) { places[it] }
@@ -175,7 +206,41 @@ class UsbSettingsInboxTest {
         assertEquals(MosqueProfile("مسجد الفتح", 615, PrefsManager.DEFAULT_THEME_ID), prefs.profile.copy(display = DisplayOptions()))
         assertEquals(before, prefs.schedule)
         assertEquals(emptyMap<Int, ManualIslamicDates>(), dates)
-        assertFalse("undo leaves the key's file handled", prefs.usbLastHandledSignature == "undo")
+        assertFalse("undo leaves the key's file handled", "undo" in prefs.usbHandledSettings.split(' '))
+    }
+
+    @Test
+    fun undoReturnsTheTvsDatesEvenAgainstALaterAnnouncement() {
+        // Eid al-Fitr 1448 was set for 2027-03-11; Ramadan was announced since for 2027-02-08, which makes it 31 days.
+        val ramadan = LocalDate.of(2027, 2, 8)
+        val adha = LocalDate.of(2027, 5, 16)
+        val announced = YearDates(
+            1448,
+            EventDate(ramadan, DateSource.OFFICIAL, ramadan, announced = true),
+            EventDate(LocalDate.of(2027, 3, 11), DateSource.MANUAL, LocalDate.of(2027, 3, 10), announced = false),
+            EventDate(adha, DateSource.ESTIMATE, adha, announced = false),
+        )
+        dates = mapOf(1448 to ManualIslamicDates(eidFitr = LocalDate.of(2027, 3, 11)))
+        val tv = UsbSettingsInbox(
+            readSchedule = { prefs.schedule },
+            writeSchedule = { prefs.schedule = it },
+            readHandled = { prefs.usbHandledSettings },
+            writeHandled = { prefs.usbHandledSettings = it },
+            readDates = { dates },
+            writeDates = { dates = (dates + it).filterValues { value -> !value.isEmpty } },
+            saveSnapshot = { snapshot = it },
+            yearDates = { year -> announced.takeIf { year == 1448 } },
+            readSnapshot = { snapshot },
+        )
+        fun phone(fitr: String) = UsbSettingsFound(File("dashboard"), """{ "islamicDates": { "1448": { "eidFitr": "$fitr" } } }""", "dashboard")
+        assertTrue(tv.apply(phone("2027-03-10"), fromKey = false))
+        assertEquals(LocalDate.of(2027, 3, 10), dates.getValue(1448).eidFitr)
+        // The phone cannot set the old date again: Ramadan would be 31 days.
+        val refused = tv.preview(phone("2027-03-11")) as ParseResult.Failure
+        assertEquals(MosqueSettingsFile.ErrorCode.DATES_CONFLICT, refused.errors.single().code)
+        // Undoing the import can: the TV returns to exactly what it had.
+        assertTrue(tv.apply(UsbSettingsFound(File(root, "previous-settings.json"), snapshot!!, "undo"), fromKey = false))
+        assertEquals(LocalDate.of(2027, 3, 11), dates.getValue(1448).eidFitr)
     }
 
     @Test
@@ -223,6 +288,19 @@ class UsbSettingsInboxTest {
     }
 
     @Test
+    fun theAdhanScreensMinutesTravelInTheFile() {
+        assertTrue(inbox.scan(listOf(key)) is UsbScan.TemplateWritten)
+        val template = UsbSettings.settingsFile(key).readText()
+        assertTrue(template, template.contains("\"adhanScreenMinutes\": 2"))
+        putOnKey(template.replace("\"adhanScreenMinutes\": 2", "\"adhanScreenMinutes\": 3"))
+        val offer = inbox.scan(listOf(key)) as UsbScan.Offer
+        val preview = inbox.preview(offer.found) as ParseResult.Success
+        assertEquals(listOf(MosqueSettingsFile.ProfileField.ADHAN_SCREEN), preview.profileChanges.map { it.field })
+        assertTrue(inbox.apply(offer.found))
+        assertEquals(3, prefs.adhanScreenMinutes)
+    }
+
+    @Test
     fun aTvUpdatedFromAnOldThemeStillAcceptsItsOwnFile() {
         // Saved before the «أفق» redesign: the template must not carry an id the TV now refuses.
         store.edit().putString("theme_id", "desert_sand").apply()
@@ -234,7 +312,113 @@ class UsbSettingsInboxTest {
 
     @Test
     fun aKeyTheBoxHidesFromAppsIsReported() {
-        assertEquals(UsbScan.Inaccessible, inbox.scan(emptyList(), hiddenVolumes = 1))
-        assertEquals(UsbScan.Quiet, inbox.scan(emptyList(), hiddenVolumes = 0))
+        assertEquals(UsbScan.Inaccessible, inbox.scan(emptyList(), HiddenVolumes(keptFromApps = 1)))
+        assertEquals(UsbScan.Quiet, inbox.scan(emptyList(), HiddenVolumes()))
+        // A new NTFS key: Android could not make the app's folder on it, so it is missing too.
+        assertEquals(UsbScan.ReadOnly, inbox.scan(emptyList(), HiddenVolumes(readOnly = 1)))
+    }
+
+    private fun volume(name: String, readOnly: Boolean = false) =
+        RemovableVolume(File(root, "$name/Android/data/com.tunisianprayertimes.tv/files"), readOnly)
+
+    @Test
+    fun aCardLeftInTheBoxNeverHidesAKeysFile() {
+        // The card got the TV's template when it was first seen...
+        val card = volume("card")
+        assertTrue(inbox.scan(listOf(card)) is UsbScan.TemplateWritten)
+        // ...then a key comes with another TV's file, written before that template.
+        val file = putOnKey("""{ "prayers": { "isha": { "iqamah": "20:00" } } }""")
+        file.setLastModified(UsbSettings.settingsFile(card).lastModified() - 86_400_000)
+        val offer = inbox.scan(listOf(card, key), justMounted = { it == key }) as UsbScan.Offer
+        assertEquals(file, offer.found.file)
+    }
+
+    @Test
+    fun onlyTheKeyJustPluggedInGetsATemplate() {
+        val card = volume("card")
+        val written = inbox.scan(listOf(card, key), justMounted = { it == key }) as UsbScan.TemplateWritten
+        assertEquals(listOf(UsbSettings.settingsFile(key)), written.files)
+        assertFalse(UsbSettings.settingsFile(card).exists())
+        // At start (a restart with the card in), nothing is written.
+        assertEquals(UsbScan.Quiet, inbox.scan(listOf(card), justMounted = { false }))
+    }
+
+    @Test
+    fun anAnsweredFileStaysAnsweredWhileOtherKeysComeAndGo() {
+        putOnKey("""{ "prayers": { "isha": { "iqamah": "20:00" } } }""")
+        assertTrue(inbox.apply((inbox.scan(listOf(key)) as UsbScan.Offer).found))
+        // A new key gets a template, and the admin sets Isha back with the remote.
+        assertTrue(inbox.scan(listOf(volume("other"))) is UsbScan.TemplateWritten)
+        prefs.schedule = MosqueSchedule.DEFAULT
+        // Months later the first key comes back to copy images: its old file is not offered again.
+        assertEquals(UsbScan.Quiet, inbox.scan(listOf(key)))
+    }
+
+    @Test
+    fun aReadOnlyKeyIsReadButNeverWritten() {
+        val readOnly = volume("ntfs", readOnly = true)
+        assertEquals(UsbScan.ReadOnly, inbox.scan(listOf(readOnly)))
+        assertFalse(UsbSettings.settingsFile(readOnly).exists())
+        UsbSettings.settingsFile(readOnly).apply {
+            parentFile!!.mkdirs()
+            writeText("""{ "prayers": { "isha": { "duration": 12 } } }""")
+        }
+        assertTrue(inbox.scan(listOf(readOnly)) is UsbScan.Offer)
+    }
+
+    @Test
+    fun anExportPutsThisTvsSettingsOnTheKeyAndIsNotOfferedBack() {
+        putOnKey("""{ "prayers": { "isha": { "iqamah": "20:00" } } }""")
+        prefs.schedule = MosqueSchedule.DEFAULT.with(Prayer.ISHA, PrayerSettings(IqamahRule.FixedTime(LocalTime.of(19, 30)), 10))
+        assertEquals(listOf(UsbSettings.settingsFile(key)), inbox.export(listOf(key)))
+        assertEquals(inbox.currentFile(), UsbSettings.settingsFile(key).readText())
+        assertEquals(UsbScan.Quiet, inbox.scan(listOf(key)))
+    }
+
+    @Test
+    fun aCopyMakesTheOtherTvTheSame() {
+        // This TV was set up from an earlier key: a Ramadan Isha, its own texts, an announcement, a manual Eid.
+        prefs.schedule = MosqueSchedule.DEFAULT.withRamadan(Prayer.ISHA, PrayerOverride(iqamah = IqamahRule.AfterAdhan(20), salahMinutes = 75))
+        prefs.adhkarContent = AdhkarContent(afterSalah = CustomAdhkarList(CustomAdhkarList.Mode.REPLACE, listOf(ReviewedDhikr("ayat_kursi", null))))
+        prefs.textAnnouncements = listOf(TextAnnouncement("درس بعد صلاة العشاء"))
+        dates = mapOf(1448 to ManualIslamicDates(eidFitr = LocalDate.of(2027, 3, 11)))
+        // The TV it copies has none of them any more.
+        val source = UsbSettingsInbox({ MosqueSchedule.DEFAULT }, {}, { "" }, {}, catalog = catalog, today = { TODAY })
+        putOnKey(source.currentFile())
+        assertTrue(inbox.apply((inbox.scan(listOf(key)) as UsbScan.Offer).found))
+        // The prayers and Ramadan's changes are the other TV's (the minutes kept behind a fixed time follow them).
+        assertEquals(MosqueSchedule.DEFAULT.prayers, prefs.schedule.prayers)
+        assertEquals(emptyMap<Prayer, PrayerOverride>(), prefs.schedule.ramadan)
+        assertTrue(prefs.adhkarContent.isBundled)
+        assertEquals(emptyList<TextAnnouncement>(), prefs.textAnnouncements)
+        assertEquals(emptyMap<Int, ManualIslamicDates>(), dates)
+    }
+
+    @Test
+    fun theTvsOwnListsNeverBlockItsTemplateOrItsUndo() {
+        // Saved before an update retired one of its texts.
+        val retired = AdhkarContent(afterSalah = CustomAdhkarList(CustomAdhkarList.Mode.APPEND, listOf(ReviewedDhikr("retired_text", null))))
+        prefs.adhkarContent = retired
+        assertTrue(inbox.scan(listOf(key)) is UsbScan.TemplateWritten)
+        // The admin edits only an iqamah in the template: the texts they never touched do not refuse it.
+        putOnKey(UsbSettings.settingsFile(key).readText().replace("\"+5\"", "\"+7\""))
+        val edited = inbox.preview((inbox.scan(listOf(key)) as UsbScan.Offer).found) as ParseResult.Success
+        assertEquals(1, edited.changes.size)
+        assertTrue(edited.contentChanges.isEmpty())
+        // A file returns to the bundled texts; its undo brings the saved list back, read as it was saved.
+        putOnKey("""{ "adhkar": null }""")
+        assertTrue(inbox.apply((inbox.scan(listOf(key)) as UsbScan.Offer).found))
+        assertTrue(prefs.adhkarContent.isBundled)
+        val saved = File(root, "previous-settings.json").apply { writeText(snapshot!!) }
+        // A key's file with the retired text is refused; the TV's own saved state is not.
+        assertTrue(inbox.preview(UsbSettingsFound(File("key"), "$snapshot ", "key")) is ParseResult.Failure)
+        assertTrue(inbox.preview(UsbSettings.read(saved)!!) is ParseResult.Success)
+        assertTrue(inbox.apply(UsbSettings.readSaved(saved)!!, fromKey = false))
+        assertEquals(retired, prefs.adhkarContent)
+    }
+
+    private companion object {
+        /** In Hijri 1448. */
+        val TODAY: LocalDate = LocalDate.of(2026, 10, 1)
     }
 }

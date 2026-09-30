@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.kiosk.AutoStartTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.352Z" hostname="HOME" time="0.002">
+<testsuite name="com.tunisianprayertimes.tv.kiosk.AutoStartTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:33.673Z" hostname="HOME" time="0.003">
   <properties/>
+  <testcase name="theAdminsTimeAwayEndsAMinuteBeforeThePrayer" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.001"/>
+  <testcase name="quickStartThatIsOnButNotBoundAllowsNoStartByItself" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.0"/>
   <testcase name="aDisplayWhoseProcessDiedOnScreenIsBroughtBack" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.001"/>
+  <testcase name="anAwayWindowAlreadyOverIsLookedAtAgainOnceTheDisplayLeft" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.0"/>
+  <testcase name="anAwayCappedAtThePrayerLetsTheWatchdogBringTheDisplayBack" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.0"/>
   <testcase name="aRefusedStartIsRetriedOnlyAfterFifteenMinutes" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.0"/>
-  <testcase name="theWatchdogLeavesTheAppAloneWhenItShould" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.0"/>
-  <testcase name="theStrongestAvailableTierWins" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.001"/>
+  <testcase name="theWatchdogLeavesTheAppAloneWhenItShould" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.001"/>
+  <testcase name="theStrongestAvailableTierWins" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.0"/>
   <testcase name="theAppIsBroughtBackThreeMinutesAfterItLeftTheScreen" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.0"/>
   <testcase name="fireTvStartsByItselfOnFireOs7AndWithAGrantOnFireOs8" classname="com.tunisianprayertimes.tv.kiosk.AutoStartTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

@@ -46,9 +46,11 @@ import kotlinx.coroutines.launch
 
 /**
  * Settings found on a USB key: the changes to confirm, or why the file was not applied, in a panel
- * as on the settings pages. [preview] is the file read against the current settings. Back
- * dismisses, it never leaves the app. The focus stays on the buttons; a list longer than its panel
- * scrolls with ▲ and ▼.
+ * as on the settings pages. [preview] is the file read against the current settings, and [today]
+ * what its lines are checked against. Back dismisses, it never leaves the app. The focus stays on
+ * the buttons; a list longer than its panel scrolls with ▲ and ▼. The [undo] of the last import
+ * uses the same screen in its own words, without a key's path. A [title] of its own replaces the
+ * key's (onboarding from a key).
  */
 @Composable
 fun UsbImportScreen(
@@ -56,7 +58,9 @@ fun UsbImportScreen(
     preview: ParseResult,
     onApply: () -> Unit,
     onDismiss: () -> Unit,
-    title: String = TvStrings.USB_FOUND_TITLE,
+    undo: Boolean = false,
+    today: SettingsChangeLines.Today? = null,
+    title: String? = null,
 ) {
     BackHandler(onBack = onDismiss)
     // The first button has focus, so OK on the remote answers without hunting for it.
@@ -66,7 +70,11 @@ fun UsbImportScreen(
     val scope = rememberCoroutineScope()
     val step = with(LocalDensity.current) { SCROLL_STEP.toPx() }
     AdminPage(
-        title = if (preview is ParseResult.Failure) TvStrings.USB_ERROR_TITLE else title,
+        title = when {
+            preview is ParseResult.Failure -> TvStrings.USB_ERROR_TITLE
+            undo -> TvStrings.UNDO_IMPORT
+            else -> title ?: TvStrings.USB_FOUND_TITLE
+        },
         hints = if (scroll.maxValue > 0) listOf(TvStrings.HINT_SCROLL_LIST) else emptyList(),
         modifier = Modifier
             .background(Midad.Ground)
@@ -74,21 +82,21 @@ fun UsbImportScreen(
             .padding(horizontal = 48.dp, vertical = 27.dp),
     ) {
         // Its own paragraph, left to right, so the slashes stay where they belong.
-        Text(found.file.path, style = midadStyle(13.sp, color = Midad.Dim).copy(textDirection = TextDirection.Ltr))
+        if (!undo) Text(found.file.path, style = midadStyle(13.sp, color = Midad.Dim).copy(textDirection = TextDirection.Ltr))
         when (val result = preview) {
             is ParseResult.Success -> if (!result.hasChanges) {
-                LinesPanel(listOf(TvStrings.USB_NO_CHANGES), scroll, Midad.Text)
+                LinesPanel(listOf(if (undo) TvStrings.UNDO_NO_CHANGES else TvStrings.USB_NO_CHANGES), scroll, Midad.Text)
                 DialogButtons { FocusableListItem(TvStrings.USB_OK, onDismiss, Modifier.focusRequester(firstButton).width(BUTTON_WIDTH)) }
             } else {
                 // Every change stays readable above the buttons, however many the file makes.
-                LinesPanel(SettingsChangeLines.of(result), scroll, Midad.Text)
+                LinesPanel(SettingsChangeLines.of(result, today), scroll, Midad.Text)
                 DialogButtons {
                     FocusableListItem(TvStrings.USB_APPLY, onApply, Modifier.focusRequester(firstButton).width(BUTTON_WIDTH))
                     FocusableListItem(TvStrings.CANCEL, onDismiss, Modifier.width(BUTTON_WIDTH))
                 }
             }
             is ParseResult.Failure -> {
-                LinesPanel(result.errors.map { it.message }, scroll, Midad.Alert, footnote = TvStrings.USB_ERROR_HINT)
+                LinesPanel(SettingsChangeLines.of(result), scroll, Midad.Alert, footnote = if (undo) TvStrings.UNDO_ERROR_HINT else TvStrings.USB_ERROR_HINT)
                 DialogButtons { FocusableListItem(TvStrings.USB_OK, onDismiss, Modifier.focusRequester(firstButton).width(BUTTON_WIDTH)) }
             }
         }

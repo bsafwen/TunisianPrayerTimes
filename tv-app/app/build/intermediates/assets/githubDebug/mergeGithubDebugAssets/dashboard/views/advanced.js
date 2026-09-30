@@ -23,6 +23,7 @@
   Dashboard.registerView({
     id: "advanced",
     title: "متقدّم",
+    form: true,
     render: function (root, ctx) {
       var el = ctx.el;
       var state = ctx.state || {};
@@ -69,8 +70,21 @@
       var reset = el("button", {
         text: "استعادة الملف الحالي",
         attrs: { type: "button" },
-        on: { click: function () { area.value = (ctx.state && ctx.state.settingsFile) || ""; } }
+        on: { click: function () {
+          area.value = (ctx.state && ctx.state.settingsFile) || "";
+          // No longer an edit the page keeps.
+          area.dispatchEvent(new Event("input", { bubbles: true }));
+        } }
       });
+
+      // The TV reads the key's file only in its own folder, under this exact name (a browser saving
+      // it again may call it «mosque-tv (1).json»).
+      var packageName = state.app && typeof state.app.packageName === "string" ? state.app.packageName : "";
+      var where = el("div", { class: "hint" },
+        "على مفتاح USB يوضع الملف في المجلد ",
+        el("span", { class: "ltr", attrs: { dir: "ltr" }, text: "Android/data/" + (packageName || "…") + "/files/" }),
+        " باسم ", el("span", { class: "ltr", attrs: { dir: "ltr" }, text: "mosque-tv.json" }),
+        " تمامًا، لا في جذر المفتاح. أسهل طريقة: ضع المفتاح في الشاشة، فتكتب عليه ملف إعداداتها في هذا المكان إن لم يكن عليه ملف.");
 
       var undo = null;
       if (state.canUndo) {
@@ -101,7 +115,8 @@
         el("p", { class: "muted", text: "هذا هو ملف mosque-tv.json نفسه الذي يُنسخ على مفتاح USB. عدّله بحذر: تعرض الشاشة ما سيتغيّر أو الأخطاء قبل أي تطبيق." }),
         el("label", { text: "نص الملف", attrs: { "for": "settings-text" } }),
         area,
-        el("div", { class: "row" }, apply, save, reset)));
+        el("div", { class: "row" }, apply, save, reset),
+        where));
 
       if (undo) {
         root.appendChild(el("section", { class: "card level-WARNING" },

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">أوقات الصلاة تونس</string>
+    <string name="app_name">أوقات الصلاة تونس (GitHub)</string>
     <string name="quick_start_description">تُظهر شاشة مواقيت الصلاة فور تشغيل الجهاز، وتعيدها إذا ظهرت الشاشة الرئيسية للجهاز. لا تقرأ محتوى الشاشة ولا تجمع أي بيانات.</string>
     <string name="quick_start_label">بدء شاشة المسجد تلقائيًا</string>
-    <style name="Theme.TunisianPrayerTimesTV" parent="@style/Theme.Leanback">
+    <style name="Theme.TunisianPrayerTimesTV" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         

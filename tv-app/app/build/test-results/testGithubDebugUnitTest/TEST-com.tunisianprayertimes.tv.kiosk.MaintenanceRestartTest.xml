@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.kiosk.MaintenanceRestartTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.430Z" hostname="HOME" time="0.001">
+<testsuite name="com.tunisianprayertimes.tv.kiosk.MaintenanceRestartTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:34.022Z" hostname="HOME" time="0.002">
   <properties/>
   <testcase name="neverAfterAShortRunOrDuringAPrayerScreen" classname="com.tunisianprayertimes.tv.kiosk.MaintenanceRestartTest" time="0.001"/>
   <testcase name="aLongTarawihOnlyShortensTheWindow" classname="com.tunisianprayertimes.tv.kiosk.MaintenanceRestartTest" time="0.0"/>
   <testcase name="neverInTheDaytimeBetweenYesterdaysIshaAndTomorrowsFajr" classname="com.tunisianprayertimes.tv.kiosk.MaintenanceRestartTest" time="0.0"/>
+  <testcase name="onARamadanNightItWaitsForTheTarawihAndTheNightScreen" classname="com.tunisianprayertimes.tv.kiosk.MaintenanceRestartTest" time="0.0"/>
   <testcase name="aLongRunRestartsBetweenIshaAndFajr" classname="com.tunisianprayertimes.tv.kiosk.MaintenanceRestartTest" time="0.0"/>
+  <testcase name="neverUnderTheAdminsHands" classname="com.tunisianprayertimes.tv.kiosk.MaintenanceRestartTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

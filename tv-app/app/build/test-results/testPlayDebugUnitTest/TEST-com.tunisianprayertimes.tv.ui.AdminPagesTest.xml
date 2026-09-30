@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.ui.AdminPagesTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:59.184Z" hostname="HOME" time="0.019">
+<testsuite name="com.tunisianprayertimes.tv.ui.AdminPagesTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:27.883Z" hostname="HOME" time="0.028">
   <properties/>
   <testcase name="theDeletionSaysWhatGoes" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
   <testcase name="everyPageOpensFromTheMenuAndBackLeadsToIt" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.007"/>
+  <testcase name="theRemoteSwitchesARuleBetweenMinutesAndAFixedTime" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.002"/>
+  <testcase name="onboardingsIqamahTableSurvivesARecreation" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.003"/>
   <testcase name="announcementStepsStayInRange" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
   <testcase name="theIntervalAgreesWithItsNumber" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
   <testcase name="theMenuFollowsTheBoard" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
-  <testcase name="theKioskFocusLeavesAnActionThatIsGone" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.008"/>
+  <testcase name="theKioskFocusLeavesAnActionThatIsGone" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.012"/>
   <testcase name="placesAndTheTimesBeforeAMove" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.001"/>
   <testcase name="theKioskSummaryPutsProblemsFirst" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.001"/>
   <testcase name="onlyAWarningIsGold" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
   <testcase name="advancedOffersUndoAndBundledTextsOnlyWhenTheyApply" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
-  <testcase name="theIqamahAsTheTablesSayIt" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.001"/>
+  <testcase name="theIqamahAsTheTablesSayIt" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.0"/>
+  <testcase name="theIqamahPageSaysWhatTheWallUsesToday" classname="com.tunisianprayertimes.tv.ui.AdminPagesTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

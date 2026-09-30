@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.432Z" hostname="HOME" time="0.005">
+<testsuite name="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:34.025Z" hostname="HOME" time="0.005">
   <properties/>
   <testcase name="aLongSleepIsFoundWithItsWallTimes" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.001"/>
   <testcase name="shortPausesAndRebootsAreNotSleeps" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.0"/>
-  <testcase name="powerSettingsAreJudgedAndUnreadableOnesAreUnknown" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.002"/>
-  <testcase name="theScreenDriftsSlowlyAndStaysClose" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.002"/>
+  <testcase name="aSleepGapIsLoggedAsItsRawTimes" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.001"/>
+  <testcase name="anUnreadableEnergySaverWarnsWhereTheBoxMayHaveOne" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.001"/>
+  <testcase name="powerSettingsAreJudgedAndUnreadableOnesAreUnknown" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.001"/>
+  <testcase name="theScreenDriftsSlowlyAndStaysClose" classname="com.tunisianprayertimes.tv.kiosk.SleepAndPowerTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

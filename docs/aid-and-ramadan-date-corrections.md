@@ -59,6 +59,8 @@ The Android date header and picker use the same `TunisianHijriCalendar` snapshot
 
 Different announcements can have different offsets from Umm al-Qura. The resolver reconciles month starts while keeping every month contiguous and 29 or 30 days long. Unannounced starts follow the latest accepted offset within that year; estimates return toward the baseline at the next year boundary while preserving valid month lengths. Contradictory or implausibly misplaced anchors are not used as confirmed month starts.
 
+The mosque TV's admin can also set the three dates by hand (`ManualIslamicDates`). They anchor their events too and are accepted first, so they always win; of two admin dates that cannot be joined by 29/30-day months, the earlier stays. An announcement of another event still keeps its own day even when that leaves a month of 28 or 31 days between it and an admin's date (a mosque with its own Eid al-Fitr that follows the nation's Eid al-Adha); only those months leave the usual lengths, as few as possible. The TV refuses, with the reason, a hand-set date that would make Ramadan itself 28 or 31 days.
+
 The UI labels confirmed Tunisian month starts. The resolver still tracks whether a date is estimated internally; a provisional day 30 remains estimated until the next month's start is confirmed. The Ramadan-active buffer does not change the actual date labels: the day before Ramadan remains in Shaaban, and Aid el-Fitr remains 1 Shawwal.
 
 Calendar navigation loads records for the viewed Hijri year and adjacent years on a background dispatcher. Announcements update the header, picker, and Aid rows while preserving the selected Gregorian day and viewed Hijri month. Aid prayer defaults use sunrise on the resolved Aid date in that selected year.
@@ -119,6 +121,8 @@ The background event poller runs only near dates where an official announcement 
 - Aid el-Adha: late Dhul Qidah through early Dhul Hijja, adjusted by any known Ramadan/Aid el-Fitr drift.
 
 Each event's window is evaluated independently. A known Ramadan start does not stop Aid el-Fitr polling, and a missing Aid el-Fitr date cannot block Aid el-Adha polling. Only anchors accepted by the calendar count as confirmed or supply drift; rejected dates continue to qualify for polling during their event window.
+
+The windows and the year fetched follow "today" in Tunisia. The mosque TV sets `RamadanOverrideChecker.todayProvider` to the date of its corrected clock (the clock guard's in-app correction of a wrong device clock), so a box whose system clock was set days off by hand still polls on the right days; without a provider, or when the corrected time cannot be right, the device clock is used.
 
 Fetched data is cached by year under `official_islamic_dates_{hijriYear}`. The legacy `ramadan_override_json` record is migrated and retained for existing callers. Calendar browsing can also fetch the viewed year outside the event polling windows. Concurrent calendar requests are deduplicated by year: successful loads are refreshed hourly, failed loads can retry after one minute, and resume/reconnect requests can refresh after a five-second minimum gap. Foreground calendar checks run each minute; offline launches retain the last successful corrections.
 

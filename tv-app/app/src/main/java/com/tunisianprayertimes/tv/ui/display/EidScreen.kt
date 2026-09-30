@@ -65,6 +65,13 @@ fun EidScreen(banner: DayBanner.Eid, now: LocalDateTime, mosqueName: String, hij
                 textAlign = TextAlign.Center,
                 modifier = Modifier.padding(top = 11.dp),
             )
+            // Sourced like every reviewed text on the wall, small under it.
+            Text(
+                TvStrings.source(DisplayTexts.EID_GREETING.reference),
+                style = midadStyle(13.sp, color = DateOnSunrise),
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(top = 2.dp),
+            )
             val at = banner.prayerAt
             if (at != null) {
                 Row(

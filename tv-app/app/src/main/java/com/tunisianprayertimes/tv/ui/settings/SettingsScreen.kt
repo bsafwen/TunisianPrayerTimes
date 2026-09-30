@@ -20,6 +20,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +30,7 @@ import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,6 +39,7 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -46,8 +50,11 @@ import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.mosque.DisplayOptions
+import com.tunisianprayertimes.mosque.FlowTiming
 import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.mosque.MosqueSchedule
+import com.tunisianprayertimes.mosque.PrayerEvent
+import com.tunisianprayertimes.mosque.PrayerOverride
 import com.tunisianprayertimes.tv.data.IqamahConfig
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.common.AdminPage
@@ -71,9 +78,11 @@ import com.tunisianprayertimes.tv.ui.kiosk.worstFirst
 import com.tunisianprayertimes.tv.ui.clock.ClockView
 import com.tunisianprayertimes.tv.ui.clock.clockLevel
 import com.tunisianprayertimes.tv.ui.clock.clockStatus
+import com.tunisianprayertimes.tv.ui.clock.clockZoneNote
 import com.tunisianprayertimes.tv.ui.setup.IqamahTable
 import com.tunisianprayertimes.tv.ui.setup.iqamahText
 import com.tunisianprayertimes.tv.ui.setup.mosqueNameFieldColors
+import com.tunisianprayertimes.tv.ui.setup.todayIqamahText
 import com.tunisianprayertimes.tv.ui.theme.DisplayTheme
 import com.tunisianprayertimes.tv.ui.theme.Kufi
 import com.tunisianprayertimes.tv.ui.theme.Midad
@@ -102,7 +111,9 @@ internal fun SettingsScreen(
     customBgEnabled: Boolean,
     announcementIntervalSec: Int,
     backgroundCount: Int,
+    /** The image and .txt announcements (files), and the written announcements shown today. */
     announcementCount: Int,
+    writtenAnnouncementCount: Int,
     currentThemeId: String,
     /** Today in Tunisia, for the Ramadan and Eid dates section. */
     today: LocalDate,
@@ -144,6 +155,10 @@ internal fun SettingsScreen(
     /** The settings before the last USB import can be put back. */
     canUndoImport: Boolean = false,
     onUndoImport: () -> Unit = {},
+    /** Writes the TV's current settings over the file on the plugged-in keys, to copy them to another screen. */
+    onUsbExport: () -> Unit = {},
+    /** Offers the plugged-in keys' settings and images again, even those already applied or dismissed. */
+    onUsbReadAgain: () -> Unit = {},
     onResetAll: () -> Unit = {},
     aboutLines: List<String> = emptyList(),
     /** The mosque replaced or extended the texts from a USB file: one action returns to the bundled ones. */
@@ -166,10 +181,19 @@ internal fun SettingsScreen(
      * open, so this is the only sign that the admin is still there, typing.
      */
     onTyping: () -> Unit = {},
+    /** Today's prayers as the wall runs them (Ramadan's changes, a fixed time moved), beside the iqamah rules. */
+    todayEvents: Map<Prayer, PrayerEvent> = emptyMap(),
+    /** Ramadan's changes from the USB file or the phone, shown under their prayer; [onRamadanCleared] removes one. */
+    ramadanOverrides: Map<Prayer, PrayerOverride> = emptyMap(),
+    onRamadanCleared: (Prayer) -> Unit = {},
+    /** How many minutes the adhan screen lasts; an iqamah set sooner waits for its end. */
+    adhanScreenMinutes: Int = FlowTiming.DEFAULT_ADHAN_SCREEN_MINUTES,
+    onAdhanScreenMinutesChanged: (Int) -> Unit = {},
 ) {
-    var page by remember { mutableStateOf(startPage) }
+    // Both kept when the system recreates the activity, so the admin stays on the page they were on.
+    var page by rememberSaveable { mutableStateOf(startPage) }
     // The page the admin just left: back on the menu or a section, its row takes the focus again.
-    var from by remember { mutableStateOf<SettingsPage?>(null) }
+    var from by rememberSaveable { mutableStateOf<SettingsPage?>(null) }
     fun go(to: SettingsPage) {
         from = page
         page = to
@@ -195,9 +219,11 @@ internal fun SettingsScreen(
                     delegationName = delegationName,
                     gouvernoratName = gouvernorat?.nomAr,
                     iqamahConfigs = iqamahConfigs,
+                    todayEvents = todayEvents,
                     today = today,
                     announcementsEnabled = announcementsEnabled,
                     announcementCount = announcementCount,
+                    writtenAnnouncementCount = writtenAnnouncementCount,
                     announcementsEveryMinutes = announcementsEveryMinutes,
                     announcementIntervalSec = announcementIntervalSec,
                     backgroundCount = backgroundCount,
@@ -238,13 +264,23 @@ internal fun SettingsScreen(
                 aside = TvStrings.DURATION_NOTE,
                 hints = listOf(TvStrings.HINT_SAVED_AT_ONCE, TvStrings.HINT_BACK_TO_SETTINGS),
             ) {
-                IqamahTable(configs = iqamahConfigs, onChanged = onIqamahChanged, modifier = Modifier.weight(1f))
+                IqamahTable(
+                    configs = iqamahConfigs,
+                    onChanged = onIqamahChanged,
+                    modifier = Modifier.weight(1f),
+                    today = todayEvents,
+                    ramadan = ramadanOverrides,
+                    onRamadanCleared = onRamadanCleared,
+                    adhanScreenMinutes = adhanScreenMinutes,
+                    onAdhanScreenMinutesChanged = onAdhanScreenMinutesChanged,
+                )
             }
             SettingsPage.Dates -> IslamicDatesSection(today = today)
             SettingsPage.Clock -> clockPage { go(SettingsPage.Phone) }
             SettingsPage.Media -> MediaPage(
                 announcementsEnabled = announcementsEnabled,
                 announcementCount = announcementCount,
+                writtenAnnouncementCount = writtenAnnouncementCount,
                 announcementIntervalSec = announcementIntervalSec,
                 announcementsEveryMinutes = announcementsEveryMinutes,
                 onAnnouncementsEnabledChanged = onAnnouncementsEnabledChanged,
@@ -284,6 +320,8 @@ internal fun SettingsScreen(
                 when (action) {
                     AdvancedAction.UNDO_IMPORT -> onUndoImport()
                     AdvancedAction.BUNDLED_TEXTS -> go(SettingsPage.BundledTexts)
+                    AdvancedAction.USB_EXPORT -> onUsbExport()
+                    AdvancedAction.USB_READ_AGAIN -> onUsbReadAgain()
                     AdvancedAction.RESET -> go(SettingsPage.Reset)
                     AdvancedAction.EXIT_TO_ANDROID -> onExitToAndroid()
                 }
@@ -357,6 +395,8 @@ internal val SettingsPage.title: String
 internal enum class AdvancedAction(val title: String, val hint: String, val page: SettingsPage?) {
     UNDO_IMPORT(TvStrings.UNDO_IMPORT, TvStrings.UNDO_IMPORT_HINT, null),
     BUNDLED_TEXTS(TvStrings.BUNDLED_TEXTS, TvStrings.BUNDLED_TEXTS_HINT, SettingsPage.BundledTexts),
+    USB_EXPORT(TvStrings.USB_EXPORT, TvStrings.USB_EXPORT_HINT, null),
+    USB_READ_AGAIN(TvStrings.USB_READ_AGAIN, TvStrings.USB_READ_AGAIN_HINT, null),
     RESET(TvStrings.RESET_ALL, TvStrings.RESET_HINT, SettingsPage.Reset),
     EXIT_TO_ANDROID(TvStrings.EXIT_TO_ANDROID, TvStrings.EXIT_TO_ANDROID_HINT, null),
 }
@@ -406,9 +446,11 @@ private class SettingsSummary(
     val delegationName: String,
     val gouvernoratName: String?,
     val iqamahConfigs: Map<Prayer, IqamahConfig>,
+    val todayEvents: Map<Prayer, PrayerEvent>,
     val today: LocalDate,
     val announcementsEnabled: Boolean,
     val announcementCount: Int,
+    val writtenAnnouncementCount: Int,
     val announcementsEveryMinutes: Int,
     val announcementIntervalSec: Int,
     val backgroundCount: Int,
@@ -499,12 +541,15 @@ private fun ColumnScope.SectionPreview(section: SettingsPage, summary: SettingsS
         SettingsPage.Iqamah -> {
             PreviewHeader(section.title, aside = TvStrings.DURATION_NOTE)
             SettingsTable(
-                header = listOf(TvStrings.PRAYER_COLUMN, TvStrings.IQAMAH_LABEL, TvStrings.DURATION_COLUMN),
+                header = listOf(TvStrings.PRAYER_COLUMN, TvStrings.IQAMAH_LABEL, TvStrings.DURATION_COLUMN, TvStrings.TODAY_COLUMN),
                 rows = MosqueSchedule.CONFIGURABLE.map { prayer ->
                     val config = summary.iqamahConfigs[prayer] ?: IqamahConfig.from(MosqueSchedule.DEFAULT.settings(prayer))
-                    listOf(TvStrings.prayerName(prayer), iqamahText(config), TvStrings.minutesShort(config.salahMinutes))
+                    listOf(
+                        TvStrings.prayerName(prayer), if (config.held) iqamahText(config) else TvStrings.NOT_HELD,
+                        TvStrings.minutesShort(config.salahMinutes), todayIqamahText(summary.todayEvents[prayer]),
+                    )
                 },
-                widths = listOf(130.dp, 110.dp),
+                widths = listOf(130.dp, 60.dp, 60.dp),
             )
         }
         SettingsPage.Dates -> {
@@ -531,13 +576,13 @@ private fun ColumnScope.SectionPreview(section: SettingsPage, summary: SettingsS
                     HealthDot(clockLevel(clock.trust))
                     Text(clockStatus(clock.trust, clock.source), style = midadStyle(17.sp, FontWeight.Medium).rtl())
                 }
-                if (clock.zoneDiffers) Note(TvStrings.clockZoneInfo(clock.deviceZone.id))
+                clockZoneNote(clock.trust, clock.deviceZone, clock.zoneDiffers)?.let { Note(it) }
             }
             Note(TvStrings.CLOCK_SETTINGS_HINT)
         }
         SettingsPage.Media -> {
             PreviewHeader(section.title)
-            InfoRow(TvStrings.SETTINGS_ANNOUNCEMENTS, "${onOff(summary.announcementsEnabled)} · ${TvStrings.filesCount(summary.announcementCount)}")
+            InfoRow(TvStrings.SETTINGS_ANNOUNCEMENTS, "${onOff(summary.announcementsEnabled)} · ${TvStrings.announcementsCount(summary.announcementCount, summary.writtenAnnouncementCount)}")
             InfoRow(TvStrings.ANNOUNCEMENTS_BETWEEN, everyText(summary.announcementsEveryMinutes))
             InfoRow(TvStrings.ANNOUNCEMENT_INTERVAL, TvStrings.secondsShort(summary.announcementIntervalSec))
             InfoRow(TvStrings.BACKGROUNDS_LABEL, TvStrings.filesCount(summary.backgroundCount))
@@ -732,12 +777,15 @@ private fun ValueRow(label: String, value: String, onClick: () -> Unit, modifier
 /**
  * The name, typed with the box's keyboard. Save has the focus, as before: a text field that took it
  * would open the keyboard over the page at once. Each change calls [onTyping], so a slow name typed
- * with the arrows is not taken for an idle screen.
+ * with the arrows is not taken for an idle screen. The keyboard's Done and Back save it too, as
+ * every other page keeps its changes; «إلغاء» is the only way out without it.
  */
 @Composable
 private fun MosqueNamePage(mosqueName: String, onSave: (String) -> Unit, onCancel: () -> Unit, onTyping: () -> Unit) {
-    var name by remember { mutableStateOf(mosqueName) }
-    AdminPage(title = TvStrings.MOSQUE_NAME_LABEL, hints = listOf(TvStrings.HINT_BACK_TO_SETTINGS)) {
+    var name by rememberSaveable { mutableStateOf(mosqueName) }
+    fun save() = onSave(name.trim().take(MosqueProfile.MAX_NAME_LENGTH))
+    BackHandler { save() }
+    AdminPage(title = TvStrings.MOSQUE_NAME_LABEL, hints = listOf(TvStrings.HINT_BACK_SAVES_NAME)) {
         OutlinedTextField(
             value = name,
             onValueChange = {
@@ -749,12 +797,14 @@ private fun MosqueNamePage(mosqueName: String, onSave: (String) -> Unit, onCance
             textStyle = midadStyle(20.sp),
             shape = RoundedCornerShape(9.dp),
             singleLine = true,
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+            keyboardActions = KeyboardActions(onDone = { save() }),
             modifier = Modifier.width(480.dp),
         )
         Row(Modifier.padding(top = 8.dp), horizontalArrangement = Arrangement.spacedBy(12.dp)) {
             FocusableListItem(
                 text = TvStrings.SAVE,
-                onClick = { onSave(name.trim().take(MosqueProfile.MAX_NAME_LENGTH)) },
+                onClick = ::save,
                 modifier = Modifier.width(160.dp).initialFocus(),
             )
             FocusableListItem(text = TvStrings.CANCEL, onClick = onCancel, modifier = Modifier.width(160.dp))
@@ -868,6 +918,7 @@ internal fun compareTimes(before: DayPrayerTimes?, after: DayPrayerTimes?): List
 private fun MediaPage(
     announcementsEnabled: Boolean,
     announcementCount: Int,
+    writtenAnnouncementCount: Int,
     announcementIntervalSec: Int,
     announcementsEveryMinutes: Int,
     onAnnouncementsEnabledChanged: (Boolean) -> Unit,
@@ -887,7 +938,7 @@ private fun MediaPage(
             label = TvStrings.SETTINGS_ANNOUNCEMENTS,
             checked = announcementsEnabled,
             onToggle = { onAnnouncementsEnabledChanged(!announcementsEnabled) },
-            detail = TvStrings.filesCount(announcementCount),
+            detail = TvStrings.announcementsCount(announcementCount, writtenAnnouncementCount),
             modifier = Modifier.widthIn(max = ROW_WIDTH).initialFocus(!(focusDelete && canDelete)),
         )
         StepperRow(
@@ -1069,7 +1120,7 @@ private fun SelectedMark(selected: Boolean, focused: Boolean) {
 @Composable
 private fun AdvancedPage(actions: List<AdvancedAction>, focusOn: SettingsPage?, onAction: (AdvancedAction) -> Unit) {
     val first = actions.find { it.page != null && it.page == focusOn } ?: actions.first()
-    AdminPage(title = TvStrings.SECTION_ADVANCED, hints = listOf(TvStrings.HINT_OK_OPEN, TvStrings.HINT_BACK_TO_SETTINGS)) {
+    AdminPage(title = TvStrings.SECTION_ADVANCED, hints = listOf(TvStrings.HINT_OK_OPEN, TvStrings.HINT_BACK_TO_SETTINGS), scroll = true) {
         actions.forEach { action ->
             ActionRow(
                 title = action.title,

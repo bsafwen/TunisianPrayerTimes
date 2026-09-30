@@ -32,12 +32,22 @@ import java.time.LocalDateTime
 
 /**
  * The night, while the hall is empty ([NightWindow.isNight]): black, and one small block with a dim
- * clock and the next Fajr ([fajrAdhan], and its iqamah when known). The block moves to another of
+ * clock and the next Fajr ([fajrAdhan], and its iqamah when known). On the nights of Ramadan it counts
+ * down to the [imsak] too, for suhoor and the qiyam of the last ten nights, and before an Eid it says
+ * the Eid prayer's time ([eidNote]). The block moves to another of
  * nine places every few minutes ([NightWindow.anchorAt]), fading out and in, so a panel left on all
- * night keeps no clock burnt into it; nothing else on the screen moves.
+ * night keeps no clock burnt into it; nothing else is on the screen. The wall's [mark] (the clock not
+ * confirmed, the dashboard open) moves with the block rather than stand still at the top all night.
  */
 @Composable
-fun NightScreen(now: LocalDateTime, fajrAdhan: LocalDateTime, fajrIqamah: LocalDateTime?) {
+fun NightScreen(
+    now: LocalDateTime,
+    fajrAdhan: LocalDateTime,
+    fajrIqamah: LocalDateTime?,
+    imsak: LocalDateTime? = null,
+    eidNote: String? = null,
+    mark: String? = null,
+) {
     val target = NightWindow.anchorAt(now)
     var shown by remember { mutableIntStateOf(target) }
     val alpha = remember { Animatable(1f) }
@@ -54,6 +64,9 @@ fun NightScreen(now: LocalDateTime, fajrAdhan: LocalDateTime, fajrIqamah: LocalD
             now,
             fajrAdhan,
             fajrIqamah,
+            imsak,
+            eidNote,
+            mark,
             // The fade is read in the draw phase: the clock's tick does not restart it, nor it the layout.
             Modifier.align(anchorAlignment(shown)).graphicsLayer { this.alpha = alpha.value },
         )
@@ -68,7 +81,15 @@ private fun anchorAlignment(anchor: Int): Alignment =
     BiasAlignment(horizontalBias = (anchor % 3 - 1).toFloat(), verticalBias = (anchor / 3 - 1).toFloat())
 
 @Composable
-private fun NightBlock(now: LocalDateTime, fajrAdhan: LocalDateTime, fajrIqamah: LocalDateTime?, modifier: Modifier) {
+private fun NightBlock(
+    now: LocalDateTime,
+    fajrAdhan: LocalDateTime,
+    fajrIqamah: LocalDateTime?,
+    imsak: LocalDateTime?,
+    eidNote: String?,
+    mark: String?,
+    modifier: Modifier,
+) {
     Column(modifier, verticalArrangement = Arrangement.spacedBy(9.dp)) {
         Digits(
             TvStrings.hm(now.toLocalTime()),
@@ -90,5 +111,17 @@ private fun NightBlock(now: LocalDateTime, fajrAdhan: LocalDateTime, fajrIqamah:
                 )
             }
         }
+        imsak?.let {
+            Row(horizontalArrangement = Arrangement.spacedBy(11.dp)) {
+                Text(TvStrings.IMSAK_COUNTDOWN, style = midadStyle(22.sp, color = Midad.NightText), modifier = Modifier.alignByBaseline())
+                Digits(
+                    TvStrings.countdown(IqamahWait.remainingSeconds(now, it)),
+                    midadStyle(32.sp, FontWeight.Medium, Midad.NightText),
+                    Modifier.alignByBaseline(),
+                )
+            }
+        }
+        eidNote?.let { Text(it, style = midadStyle(18.sp, color = Midad.NightText)) }
+        mark?.let { Text(it, style = midadStyle(12.sp, color = Midad.NightText)) }
     }
 }

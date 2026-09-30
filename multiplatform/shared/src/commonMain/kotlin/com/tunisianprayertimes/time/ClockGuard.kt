@@ -16,10 +16,10 @@ enum class ClockTrust {
     TRUSTED,
 
     /**
-     * Plausible, but nothing has confirmed it and the device's zone is not Tunisia's. A clock set
-     * by hand to the local time on such a box is off by the zones' difference (an hour on GMT, seven
-     * on Shanghai time), and the instant alone cannot tell. The screen shows the time from the
-     * instant and the admin is asked.
+     * Plausible, but nothing has confirmed it and the device's zone is not Tunisia's (all year, or
+     * since the clock was set). A clock set by hand to the local time on such a box is off by the
+     * zones' difference (an hour on GMT or on Paris' summer time, seven on Shanghai time), and the
+     * instant alone cannot tell. The screen shows the time from the instant and the admin is asked.
      */
     UNVERIFIED,
 
@@ -29,7 +29,10 @@ enum class ClockTrust {
 
 /** How the time was confirmed. */
 enum class ClockSource {
-    /** The device's own zone keeps Tunisia's time, so its clock, however it was set, means Tunisia's. */
+    /**
+     * The device's own zone keeps Tunisia's time all year, and did when the clock was set, so its
+     * clock, however it was set, means Tunisia's.
+     */
     ZONE,
 
     /** A network time (an HTTP date, the system's network clock) agreed, or corrected it. */
@@ -43,7 +46,18 @@ enum class ClockSource {
 }
 
 /** The time to use now, in Tunisia, whether it can be trusted and, when it is, why. */
-data class ClockReading(val now: LocalDateTime, val trust: ClockTrust, val source: ClockSource? = null)
+data class ClockReading(val now: LocalDateTime, val trust: ClockTrust, val source: ClockSource? = null) {
+    /**
+     * The wait until just after the next second of the screen's time. The display ticks then, not on
+     * the device's own seconds: a correction carries any milliseconds, and each second must show once
+     * (and a countdown reach 00:00 on time).
+     */
+    fun millisToNextTick(): Long = 1000L - now.nano / 1_000_000 + TICK_LATE_MILLIS
+
+    private companion object {
+        const val TICK_LATE_MILLIS = 5L
+    }
+}
 
 /** What the guard remembers across reboots. */
 interface ClockStore {
@@ -57,11 +71,23 @@ interface ClockStore {
     var confirmedBy: String?
 
     /**
-     * The device clock when the time was confirmed or corrected. Found earlier than this later, the
-     * device clock was reset (a power cut without a clock battery) and the confirmation no longer holds.
+     * The latest device clock seen (raw, without the correction), and when in which boot; null when
+     * unknown. The device clock goes back only when someone sets it, which moves this mark: found
+     * earlier than it otherwise, the clock was reset (a power cut without a clock battery), and a
+     * correction or confirmation made on the old clock no longer holds.
      */
-    var confirmedAtDeviceMillis: Long
+    var deviceMark: DeviceMark?
+
+    /**
+     * The device clock was seen on a zone that does not keep Tunisia's time, and was not set since on
+     * one that does: it may have been set by hand to that zone's time, so a change of zone alone does
+     * not make it Tunisia's ([ClockSource.ZONE]).
+     */
+    var foreignZoneSeen: Boolean
 }
+
+/** The device clock at [millis] (epoch millis), [elapsed] millis into boot [boot] (null, and [elapsed] 0, when not known). */
+data class DeviceMark(val millis: Long, val elapsed: Long, val boot: String?)
 
 /**
  * Judges the device clock. Many mosque TV boxes have no clock battery and half of them are offline,
@@ -69,13 +95,18 @@ interface ClockStore {
  * leave the factory on a foreign zone, and a clock set by hand there is off by hours. Showing prayer
  * times from such a clock is worse than showing none, so the guard checks the instant, not the zone:
  * against the network when the TV is online, else by asking the admin once, and keeps the answer as
- * a correction until the device clock is changed.
+ * a correction until the device clock is changed or reset.
  */
 class ClockGuard(
     private val store: ClockStore,
     private val systemNow: () -> Instant,
     private val elapsedMillis: () -> Long,
     private val deviceZone: () -> ZoneId,
+    /**
+     * Which boot of the device this is, to recognise a new one: an id only a real boot changes (a
+     * restart of the system alone keeps the kernel, its clock and the time since boot); null when unknown.
+     */
+    private val bootId: () -> String? = { null },
 ) {
     /** The device clock and the time since boot at the last reading, to notice the clock being changed. */
     private var lastDevice: Instant? = null
@@ -84,14 +115,18 @@ class ClockGuard(
     fun read(): ClockReading {
         val device = systemNow()
         noticeChange(device)
-        // Earlier than when it was confirmed: the device clock was reset since, the answer no longer holds.
-        if (store.confirmedBy != null && device.toEpochMilli() < store.confirmedAtDeviceMillis - RESET_TOLERANCE.toMillis()) forget()
+        noticeReset(device)
+        // A confirmed time that cannot be right was confirmed on a clock reset since (a cut the marks
+        // missed): it no longer holds, and must not be offered for confirmation again.
+        if (store.confirmedBy != null && implausible(device.plusMillis(store.correctionMillis))) forget()
         val instant = device.plusMillis(store.correctionMillis)
         val confirmed = store.confirmedBy?.let { name -> ClockSource.entries.firstOrNull { it.name == name } }
+        val zoneKeepsTunisTime = keepsTunisTime(deviceZone(), instant)
+        if (!zoneKeepsTunisTime && !store.foreignZoneSeen) store.foreignZoneSeen = true
         val (trust, source) = when {
             implausible(instant) -> ClockTrust.IMPLAUSIBLE to null
             confirmed != null -> ClockTrust.TRUSTED to confirmed
-            !zoneDiffers(instant) -> ClockTrust.TRUSTED to ClockSource.ZONE
+            zoneKeepsTunisTime && !store.foreignZoneSeen -> ClockTrust.TRUSTED to ClockSource.ZONE
             else -> ClockTrust.UNVERIFIED to null
         }
         if (trust != ClockTrust.IMPLAUSIBLE && instant.toEpochMilli() > store.lastKnownGoodMillis) {
@@ -105,6 +140,12 @@ class ClockGuard(
 
     /** Whether the device's zone reads a different time from Tunisia's now. */
     fun zoneDiffers(): Boolean = zoneDiffers(correctedNow())
+
+    /**
+     * Whether the device's zone keeps Tunisia's time all year, the rule [read] trusts a zone by: a zone
+     * with summer time (Europe/Paris) agrees with Tunisia in winter but still leaves the clock unconfirmed.
+     */
+    fun zoneKeepsTunisTime(): Boolean = keepsTunisTime(deviceZone(), correctedNow())
 
     /**
      * What the admin is offered when the time is not confirmed, in Tunisia's time: first the time
@@ -151,26 +192,41 @@ class ClockGuard(
     }
 
     /**
-     * A network time: [instant] is now. Close to the screen's time, it confirms it; further off, it
-     * corrects it, whatever the admin said before: the network is the better clock.
+     * A network time: [instant] is now, give or take [uncertainty]. Further off the screen's time than
+     * that (and than [NETWORK_TOLERANCE]), it corrects it, whatever the admin said before: the network
+     * is the better clock; closer, it confirms it. A time nothing vouches for ([authenticated] false:
+     * plain NTP, which anyone on the mosque's network can answer) is only taken for a clock that cannot
+     * be right, where the wall shows no prayer times anyway. False when it is not taken.
      */
-    fun networkTime(instant: Instant) {
-        if (implausibleAlone(instant)) return
+    fun networkTime(instant: Instant, uncertainty: Duration, authenticated: Boolean): Boolean {
+        if (implausibleAlone(instant)) return false
         val device = systemNow()
         val shown = device.plusMillis(store.correctionMillis)
-        if (Duration.between(shown, instant).abs() > NETWORK_TOLERANCE) store.correctionMillis = Duration.between(device, instant).toMillis()
+        if (!authenticated && !implausible(shown)) return false
+        if (Duration.between(shown, instant).abs() > maxOf(NETWORK_TOLERANCE, uncertainty)) {
+            store.correctionMillis = Duration.between(device, instant).toMillis()
+        }
         confirm(ClockSource.NETWORK, device, instant)
+        return true
     }
 
     /** The device clock was changed on purpose (the system's time-set broadcast): see [systemClockChanged]. */
     fun systemClockChanged() {
-        systemClockChanged(store, systemNow())
+        clockSet(systemNow())
         lastDevice = null
     }
 
+    /** The device clock was set on purpose, to [device]: the companion's [systemClockChanged], marked in this boot. */
+    private fun clockSet(device: Instant) {
+        clockSet(store, device, deviceZone(), markOf(device))
+    }
+
+    private fun markOf(device: Instant) = DeviceMark(device.toEpochMilli(), elapsedMillis(), bootId())
+
     private fun confirm(source: ClockSource, device: Instant, instant: Instant) {
         store.confirmedBy = source.name
-        store.confirmedAtDeviceMillis = device.toEpochMilli()
+        // The correction holds for the device clock as it is now: a reset is found against it from here.
+        store.deviceMark = markOf(device)
         // Even earlier than before: this is the reference now.
         store.lastKnownGoodMillis = instant.toEpochMilli()
     }
@@ -178,8 +234,31 @@ class ClockGuard(
     private fun forget() {
         store.correctionMillis = 0
         store.confirmedBy = null
-        store.confirmedAtDeviceMillis = 0
     }
+
+    /**
+     * The device clock found earlier than it has already been (beyond a clock battery's drift), or on a
+     * new boot started earlier than that: it was reset since (a power cut on a box without a clock
+     * battery), as a clock set on purpose moves the mark ([systemClockChanged]). The start of the boot
+     * catches a reset however late the app starts after it. A correction or confirmation was made on
+     * the old clock and is dropped; the clock now is the new mark.
+     */
+    private fun noticeReset(device: Instant) {
+        val now = device.toEpochMilli()
+        val elapsed = elapsedMillis()
+        val boot = bootId()
+        val mark = store.deviceMark
+        val reset = mark != null && run {
+            val floor = mark.millis - resetTolerance(mark.elapsed)
+            val newBoot = boot != null && mark.boot != null && boot != mark.boot
+            now < floor || (newBoot && now - elapsed < floor)
+        }
+        if (reset) forget()
+        if (mark == null || reset || now > mark.millis) store.deviceMark = DeviceMark(now, elapsed, boot)
+    }
+
+    /** [RESET_TOLERANCE], and [RTC_DRIFT] of the [uptime] (millis) a mark was seen at. */
+    private fun resetTolerance(uptime: Long): Long = RESET_TOLERANCE.toMillis() + (uptime * RTC_DRIFT).toLong()
 
     /**
      * A jump of the device clock while the app runs is someone (or the network) setting it: never a
@@ -190,7 +269,7 @@ class ClockGuard(
         val previous = lastDevice
         if (previous != null && elapsed >= lastElapsed) {
             val drift = Duration.between(previous, device).toMillis() - (elapsed - lastElapsed)
-            if (Math.abs(drift) > JUMP_TOLERANCE.toMillis()) systemClockChanged(store, device)
+            if (Math.abs(drift) > JUMP_TOLERANCE.toMillis()) clockSet(device)
         }
         lastDevice = device
         lastElapsed = elapsed
@@ -220,23 +299,63 @@ class ClockGuard(
         /** More than this between the device clock and the time since boot is the clock being set. */
         val JUMP_TOLERANCE: Duration = Duration.ofMinutes(2)
 
-        /** A network time this close confirms the screen's time without moving it (HTTP dates are to the second). */
-        val NETWORK_TOLERANCE: Duration = Duration.ofMinutes(2)
-
-        /** The device clock running a little behind its own confirmation is drift, not a reset. */
-        val RESET_TOLERANCE: Duration = Duration.ofMinutes(5)
+        /**
+         * A network time this close confirms the screen's time without moving it, unless its own
+         * margin is wider: a few seconds are not worth a correction (and a log line) at every check.
+         */
+        val NETWORK_TOLERANCE: Duration = Duration.ofSeconds(10)
 
         /**
-         * The device clock was set on purpose, to [device] (by the admin in the system settings, or
-         * by the network): any correction and confirmation are dropped, and the new clock is the
-         * reference, even earlier than the last good time (it is a fix, not a reset). Called from the
-         * system's broadcast when the app is not reading the clock itself.
+         * The device clock found this much earlier than it has been, and [RTC_DRIFT] of the uptime it was
+         * seen at, is a reset. At a reboot the system clock restarts from the clock battery's, which
+         * Android writes only when the time is set and which drifts from it (seconds a day, minutes
+         * after weeks); a reset goes back the whole uptime, to where that boot started or further. The
+         * marks are written once a minute, which only makes it later.
          */
-        fun systemClockChanged(store: ClockStore, device: Instant) {
+        val RESET_TOLERANCE: Duration = Duration.ofMinutes(1)
+
+        /** The drift allowed between the system clock and the clock battery's: 0.1 % (86 s a day), well above a crystal's. */
+        const val RTC_DRIFT = 0.001
+
+        /** How far either side of now a zone must keep Tunisia's time: summer time comes back every year. */
+        private val ZONE_YEAR: Duration = Duration.ofDays(366)
+
+        /**
+         * The device clock was set on purpose, to [device], on [zone] (by the admin in the system
+         * settings, or by the network): any correction and confirmation are dropped, and the new clock
+         * is the reference, even earlier than the last good time and the mark (it is a fix, not a
+         * reset). Called from the system's broadcast when the app is not reading the clock itself.
+         */
+        fun systemClockChanged(store: ClockStore, device: Instant, zone: ZoneId) {
+            // The boot, and the time into it, are recorded at the next reading.
+            clockSet(store, device, zone, DeviceMark(device.toEpochMilli(), elapsed = 0, boot = null))
+        }
+
+        private fun clockSet(store: ClockStore, device: Instant, zone: ZoneId, mark: DeviceMark) {
             store.correctionMillis = 0
             store.confirmedBy = null
-            store.confirmedAtDeviceMillis = 0
+            store.deviceMark = mark
+            // Set on a zone that keeps Tunisia's time, the clock means Tunisia's again; on another, it may not.
+            store.foreignZoneSeen = !keepsTunisTime(zone, device)
             if (!device.isBefore(EARLIEST) && !device.isAfter(LATEST)) store.lastKnownGoodMillis = device.toEpochMilli()
         }
+
+        /**
+         * Whether [zone] keeps Tunisia's time all year around [at]: Africa/Algiers or a fixed +01:00 do;
+         * a zone with summer time (Europe/Paris, Africa/Casablanca in Ramadan) agrees only part of the
+         * year, and a clock set by hand in the other part is off by an hour.
+         */
+        private fun keepsTunisTime(zone: ZoneId, at: Instant): Boolean {
+            val from = at.minus(ZONE_YEAR)
+            val to = at.plus(ZONE_YEAR)
+            // Offsets change only at transitions: comparing them at the start and at each one covers every instant.
+            val changes = sequenceOf(zone, TunisTime.ZONE).flatMap { transitions(it, from, to) }
+            return (sequenceOf(from) + changes).all { zone.rules.getOffset(it) == TunisTime.ZONE.rules.getOffset(it) }
+        }
+
+        private fun transitions(zone: ZoneId, from: Instant, to: Instant): Sequence<Instant> =
+            generateSequence(zone.rules.nextTransition(from)) { zone.rules.nextTransition(it.instant) }
+                .map { it.instant }
+                .takeWhile { !it.isAfter(to) }
     }
 }

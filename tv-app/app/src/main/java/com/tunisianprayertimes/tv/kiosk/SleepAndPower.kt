@@ -4,7 +4,17 @@ package com.tunisianprayertimes.tv.kiosk
 data class ClockSample(val wallMillis: Long, val elapsedMillis: Long, val uptimeMillis: Long)
 
 /** The box slept (Energy saver, standby) between two readings, for [sleptMillis]. */
-data class SleepGap(val fromWall: Long, val toWall: Long, val sleptMillis: Long)
+data class SleepGap(val fromWall: Long, val toWall: Long, val sleptMillis: Long) {
+    /** The SLEEP_GAP event's detail: the raw times, so the pages can write them in Tunisia's time and in Arabic. */
+    val detail: String get() = "$fromWall $toWall $sleptMillis"
+
+    companion object {
+        fun parse(detail: String): SleepGap? {
+            val parts = detail.split(' ').map { it.toLongOrNull() ?: return null }
+            return if (parts.size == 3) SleepGap(parts[0], parts[1], parts[2]) else null
+        }
+    }
+}
 
 /**
  * Finds the times the box slept although the app keeps the screen on: Google TV's Energy saver and
@@ -41,12 +51,13 @@ interface PowerSettingsReader {
 
 object PowerSettingsProbe {
 
-    fun probe(reader: PowerSettingsReader): PowerStatus {
+    /** [energySaver]: the box may have Energy saver (Android 11+), so a timer that cannot be read is a warning. */
+    fun probe(reader: PowerSettingsReader, energySaver: Boolean = false): PowerStatus {
         val attentive = runCatching { reader.attentiveTimeoutMillis() }.getOrNull()
         val stayOn = runCatching { reader.stayOnWhilePluggedIn() }.getOrNull()
         return PowerStatus(
             attentiveTimeout = when {
-                attentive == null -> PowerLevel.UNKNOWN
+                attentive == null -> if (energySaver) PowerLevel.WARNING else PowerLevel.UNKNOWN
                 attentive <= 0 -> PowerLevel.OK // never
                 else -> PowerLevel.WARNING
             },

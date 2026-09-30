@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:59.204Z" hostname="HOME" time="0.027">
+<testsuite name="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:27.912Z" hostname="HOME" time="0.029">
   <properties/>
-  <testcase name="aSettingsFileAnnouncementKeepsItsEndDate" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.002"/>
-  <testcase name="aLongTextStepsDownToTheLargestSizeThatFits" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.014"/>
-  <testcase name="aDateChangeReadsAsADateNotAnIsoString" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.01"/>
+  <testcase name="aSettingsFileAnnouncementKeepsItsEndDate" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.003"/>
+  <testcase name="aLongTextStepsDownToTheLargestSizeThatFits" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.021"/>
+  <testcase name="noticesWaitForTheWallAfterThePrayersTexts" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.0"/>
+  <testcase name="theCopysNoticeStaysInTheTopBarExceptOverThePrayer" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.0"/>
+  <testcase name="aDateChangeReadsAsADateNotAnIsoString" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.003"/>
   <testcase name="theClockPageWritesTheMonthTheTunisianWay" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.0"/>
   <testcase name="aPassShowsEachAnnouncementOnceThenEnds" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.0"/>
   <testcase name="thePagerSaysWhereTheSlideshowIsWithoutCrowdingTheFooter" classname="com.tunisianprayertimes.tv.ui.AnnouncementsAndNoticesTest" time="0.001"/>

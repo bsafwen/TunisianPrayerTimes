@@ -9,5 +9,6 @@ string app_name
 string quick_start_description
 string quick_start_label
 style Theme.TunisianPrayerTimesTV
+xml data_extraction_rules
 xml device_admin
 xml kiosk_accessibility

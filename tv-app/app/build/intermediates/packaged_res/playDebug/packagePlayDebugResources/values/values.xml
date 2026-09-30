@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">أوقات الصلاة تونس</string>
-    <style name="Theme.TunisianPrayerTimesTV" parent="@style/Theme.Leanback">
+    <style name="Theme.TunisianPrayerTimesTV" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         

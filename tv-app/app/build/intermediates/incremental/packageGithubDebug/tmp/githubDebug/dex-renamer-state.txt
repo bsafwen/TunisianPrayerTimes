@@ -1,4 +1,4 @@
-#Tue Sep 29 22:42:19 CEST 2026
+#Wed Sep 30 14:44:40 CEST 2026
 base.0=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\\build\\intermediates\\dex\\githubDebug\\mergeExtDexGithubDebug\\classes.dex
 base.1=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\\build\\intermediates\\dex\\githubDebug\\mergeLibDexGithubDebug\\12\\classes.dex
 base.10=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\\build\\intermediates\\dex\\githubDebug\\mergeProjectDexGithubDebug\\12\\classes.dex
@@ -13,7 +13,6 @@ base.18=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\
 base.19=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\\build\\intermediates\\global_synthetics_dex\\githubDebug\\mergeGithubDebugGlobalSynthetics\\classes.dex
 base.2=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\\build\\intermediates\\dex\\githubDebug\\mergeLibDexGithubDebug\\14\\classes.dex
 base.20=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\\build\\intermediates\\dex\\githubDebug\\mergeExtDexGithubDebug\\classes2.dex
-base.21=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\\build\\intermediates\\dex\\githubDebug\\mergeExtDexGithubDebug\\classes3.dex
 base.3=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\\build\\intermediates\\dex\\githubDebug\\mergeLibDexGithubDebug\\15\\classes.dex
 base.4=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\\build\\intermediates\\dex\\githubDebug\\mergeLibDexGithubDebug\\2\\classes.dex
 base.5=C\:\\Users\\barou\\Desktop\\Workspace\\TunisianPrayerTimes\\tv-app\\app\\build\\intermediates\\dex\\githubDebug\\mergeLibDexGithubDebug\\4\\classes.dex
@@ -35,7 +34,6 @@ path.18=9/classes.dex
 path.19=classes.dex
 path.2=14/classes.dex
 path.20=classes2.dex
-path.21=classes3.dex
 path.3=15/classes.dex
 path.4=2/classes.dex
 path.5=4/classes.dex
@@ -57,7 +55,6 @@ renamed.18=classes19.dex
 renamed.19=classes20.dex
 renamed.2=classes3.dex
 renamed.20=classes21.dex
-renamed.21=classes22.dex
 renamed.3=classes4.dex
 renamed.4=classes5.dex
 renamed.5=classes6.dex

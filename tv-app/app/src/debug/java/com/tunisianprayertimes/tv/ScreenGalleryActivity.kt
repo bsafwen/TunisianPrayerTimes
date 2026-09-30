@@ -61,7 +61,7 @@ import java.time.ZoneId
  * `adb shell am start -n com.tunisianprayertimes.tv.dev/com.tunisianprayertimes.tv.ScreenGalleryActivity --es screen adhan`
  * Extras: screen (main, adhan, iqamah, salah, khutba, adhkar, announcement, image, night, eid),
  * at (HH:mm:ss), date (yyyy-MM-dd), day (friday, ramadan), theme (horizon, midad), index (a text's
- * number), images (true: the mosque's own background images).
+ * number; for adhan, 1 is Fajr), images (true: the mosque's own background images).
  */
 class ScreenGalleryActivity : ComponentActivity() {
 
@@ -111,10 +111,10 @@ class ScreenGalleryActivity : ComponentActivity() {
         val mosque = "جامع النور"
         when (screen) {
             "adhan" -> {
-                val prayer = if (friday) Prayer.JOMOAA else Prayer.ASR
+                // index 1: Fajr's adhan, whose replies have one line more.
+                val prayer = if (friday) Prayer.JOMOAA else if (index == 1) Prayer.FAJR else Prayer.ASR
                 val event = event(prayer, date.atTime(15, 32), date.atTime(15, 42))
-                val companions = MosqueAdhkar.adhanCompanion()
-                AdhanScreen(event, now, mosque, companions.getOrNull(index), sky)
+                AdhanScreen(event, now, mosque, sky)
             }
             "iqamah" -> IqamahCountdownScreen(event(Prayer.ASR, date.atTime(15, 32), date.atTime(15, 42)), now, mosque, sky)
             "eidprayer" -> IqamahCountdownScreen(event(Prayer.AID_FITR, date.atTime(6, 25), date.atTime(7, 25)), now, mosque, sky)
@@ -190,7 +190,7 @@ class ScreenGalleryActivity : ComponentActivity() {
     )
 
     private fun event(prayer: Prayer, adhan: LocalDateTime, iqamah: LocalDateTime) =
-        PrayerEvent(prayer, adhan, adhan.plusMinutes(3), iqamah, iqamah.plusMinutes(10), iqamah.plusMinutes(20), false)
+        PrayerEvent(prayer, adhan, adhan.plusMinutes(2), iqamah, iqamah.plusMinutes(10), iqamah.plusMinutes(20), false)
 
     /** A picture the size of a mosque's poster or background, drawn here so the gallery needs no file. */
     private fun sampleImage(name: String, width: Int, height: Int): Uri {

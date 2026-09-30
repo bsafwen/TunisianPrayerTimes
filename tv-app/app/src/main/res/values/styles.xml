@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.TunisianPrayerTimesTV" parent="@style/Theme.Leanback">
+    <!-- The platform's own theme: every screen is drawn by Compose, none needs Leanback's or AppCompat's -->
+    <style name="Theme.TunisianPrayerTimesTV" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         <!-- Black behind the content: the anti burn-in drift uncovers a few pixels at the edges -->

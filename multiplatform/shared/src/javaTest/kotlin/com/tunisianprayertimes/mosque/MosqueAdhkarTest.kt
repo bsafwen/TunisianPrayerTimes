@@ -2,6 +2,8 @@ package com.tunisianprayertimes.mosque
 
 import com.tunisianprayertimes.adhkar.DhikrCatalog
 import com.tunisianprayertimes.adhkar.DhikrCategory
+import com.tunisianprayertimes.adhkar.DhikrNarrations
+import com.tunisianprayertimes.adhkar.referenceForCollection
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ContentList
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ErrorCode
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
@@ -16,7 +18,7 @@ class MosqueAdhkarTest {
 
     @Test
     fun everyIdTheScreenUsesIsInTheReviewedCatalog() {
-        val ids = DhikrCatalog.collectionOrder.getValue(DhikrCategory.SALAH) + MosqueAdhkar.ADHAN_IDS + MosqueAdhkar.TICKER_IDS
+        val ids = DhikrCatalog.collectionOrder.getValue(DhikrCategory.SALAH) + MosqueAdhkar.TICKER_IDS
         assertEquals(emptyList(), ids.filter { DhikrCatalog.find(it) == null })
     }
 
@@ -40,6 +42,22 @@ class MosqueAdhkarTest {
     }
 
     @Test
+    fun afterThePrayerASourceCitesTheAfterPrayerOccasionOnly() {
+        val slides = MosqueAdhkar.afterSalah()
+        // Not the morning and bedtime practices, nor «القرآن 112», which reads like a verse number.
+        assertEquals("سورة الإخلاص؛ دبر كل صلاة مرة: سنن أبي داود 1523 (صحيح)", slides.single { it.entryId == "surah_ikhlas" }.reference)
+        assertEquals("سورة الناس؛ دبر كل صلاة مرة: سنن أبي داود 1523 (صحيح)", slides.single { it.entryId == "surah_nas" }.reference)
+        val kursi = slides.filter { it.entryId == "ayat_kursi" }.map { it.reference }.distinct().single()
+        assertTrue(kursi.startsWith("البقرة 253–254") && "للنسائي" in kursi && "النوم" !in kursi, kursi)
+        // The after-prayer clause is the catalog's own, reviewed with the whole source.
+        val ikhlas = DhikrCatalog.find("surah_ikhlas")!!
+        assertTrue("دبر كل صلاة مرة: سنن أبي داود 1523 (صحيح)" in ikhlas.reference)
+        // Elsewhere the whole source stays: the phone's collections, the ticker.
+        assertEquals(ikhlas.reference, ikhlas.referenceForCollection(DhikrCategory.MORNING))
+        assertEquals(ikhlas.reference, MosqueAdhkar.tickerSlides(ReviewedDhikr("surah_ikhlas")).first().reference)
+    }
+
+    @Test
     fun textsStayLongEnoughToBeRead() {
         val slides = MosqueAdhkar.afterSalah()
         assertTrue(slides.all { it.durationMillis >= AdhkarPacer.MIN_SLIDE_MILLIS })
@@ -60,17 +78,31 @@ class MosqueAdhkarTest {
     }
 
     @Test
-    fun theAdhanCompanionFollowsTheCall() {
-        val slides = MosqueAdhkar.adhanCompanion()
-        assertEquals(MosqueAdhkar.ADHAN_IDS, slides.map { it.entryId })
-        assertEquals(DhikrCatalog.find("after_adhan_wasila")!!.text, slides.last().text)
-        assertTrue(slides.all { it.reference.isNotBlank() })
-        // Over a 3-minute adhan screen: the reply first, the dua only at the end.
-        val screen = 180_000L
-        assertEquals("adhan_response", MosqueAdhkar.adhanCompanionAt(60_000, screen)?.entryId)
-        assertEquals("adhan_shahada", MosqueAdhkar.adhanCompanionAt(100_000, screen)?.entryId)
-        assertEquals("after_adhan_wasila", MosqueAdhkar.adhanCompanionAt(130_000, screen)?.entryId)
-        assertEquals("after_adhan_wasila", MosqueAdhkar.adhanCompanionAt(400_000, screen)?.entryId)
+    fun theAdhanScreenShowsTheListenersRepliesInTheCallsOrder() {
+        // Pinned letter by letter: the owner's brief of 2026-09-30, from Muslim 385 in the catalog's
+        // modern orthography («لَا … إِلَّا»), with the Fajr-only line as its editorial choice.
+        val laHawla = "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ"
+        val fajr = listOf(
+            AdhanReply("اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ"),
+            AdhanReply("أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ"),
+            AdhanReply("أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ"),
+            AdhanReply(laHawla, cue = "عند «حَيَّ عَلَى الصَّلَاةِ»"),
+            AdhanReply(laHawla, cue = "عند «حَيَّ عَلَى الْفَلَاحِ»"),
+            AdhanReply(laHawla, cue = "عند «الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ»", fajrOnly = true),
+            AdhanReply("اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ"),
+            AdhanReply("لَا إِلَهَ إِلَّا اللَّهُ"),
+        )
+        assertEquals(fajr, MosqueAdhkar.ADHAN_REPLIES)
+        assertEquals(fajr, MosqueAdhkar.adhanReplies(fajr = true))
+        // The other four adhans have no «الصلاة خير من النوم»: seven lines, the same order.
+        assertEquals(fajr.filterIndexed { index, _ -> index != 5 }, MosqueAdhkar.adhanReplies(fajr = false))
+        assertEquals("صحيح مسلم 385", MosqueAdhkar.ADHAN_REPLIES_SOURCE)
+        // The narration quoted in the catalog is the one cited, and the replies are its words.
+        val narration = DhikrNarrations.byId["adhan_response"].orEmpty()
+        assertTrue(narration.endsWith("— صحيح مسلم 385"), narration)
+        // No cue on a plain repetition; the Fajr-only line is the only one without a narration behind it.
+        assertEquals(listOf(3, 4, 5), MosqueAdhkar.ADHAN_REPLIES.withIndex().filter { it.value.cue != null }.map { it.index })
+        assertEquals(listOf(5), MosqueAdhkar.ADHAN_REPLIES.withIndex().filter { it.value.fajrOnly }.map { it.index })
     }
 
     @Test
@@ -93,6 +125,53 @@ class MosqueAdhkarTest {
         val ticker = MosqueAdhkar.ticker()
         assertTrue(ticker.all { it.count == 1 && it.durationMillis == AdhkarPacer.durationMillis(it.text, 1) })
         assertTrue(ticker.all { it.durationMillis < 30_000 })
+    }
+
+    @Test
+    fun theTickerHoldsOnlyTextsOfTheDay() {
+        // It runs all day: nothing said only right after the prayer, such as «اللهم أنت السلام».
+        val ofTheDay = setOf(DhikrCategory.DAILY, DhikrCategory.MORNING, DhikrCategory.EVENING)
+        assertEquals(emptyList(), MosqueAdhkar.TICKER_IDS.filter { id -> DhikrCatalog.find(id)!!.categories.none { it in ofTheDay } })
+    }
+
+    @Test
+    fun theTickerShowsEveryTextOnOneLine() {
+        // Al-Ikhlas has its basmala on a line of its own; a mosque's text and announcement may have several.
+        val surah = MosqueAdhkar.tickerSlides(ReviewedDhikr("surah_ikhlas")).single()
+        assertEquals(DhikrCatalog.find("surah_ikhlas")!!.text.replace('\n', ' '), surah.text)
+        val own = MosqueAdhkar.tickerSlides(CustomDhikr("اللهم\nاغفر لنا\n\n  وارحمنا ", "مأثور")).single()
+        assertEquals("اللهم اغفر لنا وارحمنا", own.text)
+        val news = MosqueAdhkar.tickerWithAnnouncements(emptyList(), listOf("درس في التفسير\nكل سبت\nبعد صلاة العصر"), "إعلان").single()
+        assertEquals("درس في التفسير كل سبت بعد صلاة العصر", news.text)
+        // The after-prayer screen keeps the lines.
+        assertEquals(DhikrCatalog.find("surah_ikhlas")!!.text, MosqueAdhkar.afterSalahSlides(ReviewedDhikr("surah_ikhlas")).single().text)
+    }
+
+    @Test
+    fun aTextALittleTooLongForOnePageIsSplitInHalves() {
+        // Not almost all of it, then its last clause alone.
+        for (id in listOf("sayyid_istighfar", "tahajjud", "ruku_hamd", "janazah_dua", "travel")) {
+            val text = DhikrCatalog.find(id)!!.text
+            val pages = AdhkarPacer.pages(text)
+            assertEquals(text, pages.joinToString(""), id)
+            assertEquals((text.length + AdhkarPacer.PAGE_CHARS - 1) / AdhkarPacer.PAGE_CHARS, pages.size, id)
+            assertTrue(pages.all { it.length <= AdhkarPacer.PAGE_CHARS }, id)
+            assertTrue(pages.minOf { it.length } >= text.length / pages.size / 2, "$id: ${pages.map { it.length }}")
+        }
+    }
+
+    @Test
+    fun aTextWrittenLineByLineIsPagedByItsLines() {
+        // Twelve short phrases, one per line: short enough for one page, too many lines for one screen.
+        val lines = List(12) { "اللهم اغفر لنا $it" }
+        val text = lines.joinToString("\n")
+        assertTrue(text.length < AdhkarPacer.PAGE_CHARS)
+        val pages = AdhkarPacer.pages(text)
+        assertEquals(listOf(lines.take(6).joinToString("\n") + "\n", lines.drop(6).joinToString("\n")), pages)
+        val slides = MosqueAdhkar.afterSalahSlides(CustomDhikr(text, "مأثور"))
+        assertEquals(listOf(1 to 2, 2 to 2), slides.map { it.part to it.parts })
+        // Six lines still make one page.
+        assertEquals(1, AdhkarPacer.pages(lines.take(6).joinToString("\n")).size)
     }
 
     @Test
@@ -290,12 +369,14 @@ class MosqueAdhkarTest {
         val before = AdhkarContent(afterSalah = CustomAdhkarList(CustomAdhkarList.Mode.APPEND, listOf(CustomDhikr(longText, "مأثور"))))
         fun change(item: String) = assertIs<ParseResult.Success>(parse("""{ "adhkar": { "afterSalah": [ $item ] } }""", before))
             .contentChanges.single()
+        val name = MosqueSettingsFile.textName(longText)
         val source = change("""{ "text": "$longText", "reference": "دعاء مأثور" }""")
-        assertTrue(source.added.isEmpty() && source.removed.isEmpty())
-        assertTrue(source.recounted.single().endsWith("مصدر آخر"), source.recounted.toString())
+        assertTrue(source.added.isEmpty() && source.removed.isEmpty() && source.recounted.isEmpty())
+        assertEquals(listOf(name), source.resourced)
         val wording = change("""{ "text": "$longText وصلى الله على نبينا", "reference": "مأثور" }""")
-        assertTrue(wording.added.isEmpty() && wording.removed.isEmpty())
-        assertTrue(wording.recounted.single().endsWith("نص معدَّل"), wording.recounted.toString())
+        assertTrue(wording.added.isEmpty() && wording.removed.isEmpty() && wording.recounted.isEmpty())
+        assertEquals(listOf(name), wording.reworded)
+        assertTrue(!wording.reordered, "an edited text is not a new order")
         // A hundred own texts after the bundled ones: "100 نص", then "108 نصوص" in all.
         val hundred = List(100) { """{ "text": "دعاء $it", "reference": "مأثور" }""" }.joinToString(", ")
         val many = assertIs<ParseResult.Success>(parse("""{ "adhkar": { "afterSalah": [ $hundred ] } }""")).contentChanges.single()
@@ -320,5 +401,53 @@ class MosqueAdhkarTest {
         assertEquals(emptyList(), cleared.announcements)
         val bad = assertIs<ParseResult.Failure>(parse("""{ "announcements": [ { "text": "x", "from": "2026-10-10", "until": "2026-10-01" } ] }"""))
         assertEquals(listOf(ErrorCode.INVALID_ANNOUNCEMENT to "announcements[0]"), bad.errors.map { it.code to it.path })
+    }
+
+    @Test
+    fun anAnnouncementPreviewNamesWhatComesGoesAndChanges() {
+        val lesson = TextAnnouncement("درس بعد صلاة العشاء", until = java.time.LocalDate.of(2026, 10, 31))
+        val funeral = TextAnnouncement("صلاة الجنازة بعد الظهر")
+        val change = assertIs<ParseResult.Success>(MosqueSettingsFile.parse(
+            """{ "announcements": [ { "text": "درس بعد صلاة العشاء", "until": "2026-11-30" }, { "text": "تبرعات لترميم المسجد" } ] }""",
+            MosqueSchedule.DEFAULT, currentAnnouncements = listOf(lesson, funeral),
+        )).contentChanges.single()
+        assertEquals("2" to "2", change.before to change.after)
+        assertEquals(listOf(MosqueSettingsFile.textName("تبرعات لترميم المسجد")), change.added)
+        assertEquals(listOf(MosqueSettingsFile.textName(funeral.text)), change.removed)
+        assertEquals(listOf(MosqueSettingsFile.textName(lesson.text)), change.redated)
+        val swapped = assertIs<ParseResult.Success>(MosqueSettingsFile.parse(
+            MosqueSettingsFile.write(MosqueSchedule.DEFAULT, announcements = listOf(funeral, lesson)),
+            MosqueSchedule.DEFAULT, currentAnnouncements = listOf(lesson, funeral),
+        )).contentChanges.single()
+        assertTrue(swapped.reordered && swapped.added.isEmpty() && swapped.redated.isEmpty())
+    }
+
+    @Test
+    fun aLongTextsNewCountSaysHowOftenTheWallReadsIt() {
+        val bundled = MosqueAdhkar.AFTER_SALAH_IDS
+        val change = assertIs<ParseResult.Success>(parse("""{ "adhkar": { "afterSalah": { "mode": "replace", "items": [ """ +
+            bundled.joinToString(", ") { if (it == "ayat_kursi") """{ "id": "$it", "count": 7 }""" else """{ "id": "$it" }""" } + """ ] } } }"""))
+            .contentChanges.single()
+        val line = change.recounted.single()
+        assertTrue(line.contains("← 7") && line.contains("حتى ${MosqueAdhkar.MAX_PAGED_REPETITIONS} مرات"), line)
+        // A short text is said as many times as the file asks: no note.
+        val short = assertIs<ParseResult.Success>(parse("""{ "adhkar": { "afterSalah": { "mode": "replace", "items": [ """ +
+            bundled.joinToString(", ") { if (it == "salah_istighfar") """{ "id": "$it", "count": 5 }""" else """{ "id": "$it" }""" } + """ ] } } }"""))
+        assertEquals(listOf("الاستغفار بعد الصلاة: العدد 3 ← 5"), short.contentChanges.single().recounted)
+    }
+
+    @Test
+    fun theTvsOwnListsReadBackStrictlyAfterAnUpdateRetiredATextOrSlowedThePace() {
+        // Saved leniently by the TV: a text an update retired, and an appended list longer than the screen allows.
+        val saved = """{ "adhkar": { "afterSalah": { "mode": "append", "items": [ { "id": "retired_text" }""" +
+            List(30) { """, { "id": "ayat_kursi", "count": 3 }""" }.joinToString("") + """ ] } } }"""
+        val content = assertIs<ParseResult.Success>(MosqueSettingsFile.parse(saved, MosqueSchedule.DEFAULT, stored = true)).content
+        // Its own file (the template, the dashboard's whole file) is accepted as it is, with nothing to change...
+        val own = MosqueSettingsFile.write(MosqueSchedule.DEFAULT, content = content)
+        val back = assertIs<ParseResult.Success>(parse(own, content))
+        assertEquals(content, back.content)
+        assertTrue(!back.hasChanges)
+        // ...and the same list is still refused from anywhere else, where it would be new.
+        assertIs<ParseResult.Failure>(parse(own))
     }
 }

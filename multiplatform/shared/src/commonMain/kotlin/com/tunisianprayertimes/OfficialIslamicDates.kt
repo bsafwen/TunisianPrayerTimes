@@ -2,7 +2,6 @@ package com.tunisianprayertimes
 
 import com.tunisianprayertimes.RamadanOverrideChecker.RamadanOverride
 import com.tunisianprayertimes.platform.Preferences
-import com.tunisianprayertimes.time.TunisTime
 import java.time.Instant
 import java.time.LocalDate
 import java.time.chrono.HijrahChronology
@@ -21,8 +20,8 @@ object OfficialIslamicDates {
         readLegacy = Preferences::getRamadanOverrideJson,
         fetchYear = RamadanOverrideChecker::fetchOverrideForYear,
         nanoTime = System::nanoTime,
-        // The year in Tunisia, whatever the device's zone.
-        currentHijriYear = { HijrahDate.now(TunisTime.ZONE).get(ChronoField.YEAR) },
+        // The year in Tunisia, whatever the device's zone, on the app's own clock.
+        currentHijriYear = { HijrahDate.from(RamadanOverrideChecker.today()).get(ChronoField.YEAR) },
         onRecord = RamadanOverrideChecker::useOfficialOverride,
         legacyOverride = { RamadanOverrideChecker.cachedOverride },
         manual = { ManualIslamicDateOverrides.all() },
@@ -37,6 +36,9 @@ object OfficialIslamicDates {
     internal fun record(incoming: RamadanOverride): RamadanOverride = store.record(incoming)
     /** The calendar every Ramadan/Eid behavior follows: the admin's dates, then announcements, then estimates. */
     internal fun calendar(): TunisianHijriCalendar = store.calendar()
+
+    /** [calendar] with [dates] as the admin's dates for [hijriYear]: what a change on the dates page would give. */
+    internal fun calendarWith(hijriYear: Int, dates: ManualIslamicDates): TunisianHijriCalendar = store.calendarWith(hijriYear, dates)
 
     /** Announcements and estimates without the admin's dates: what to poll for, and what a manual date overrides. */
     internal fun officialCalendar(): TunisianHijriCalendar = store.officialCalendar()
@@ -207,11 +209,17 @@ internal class OfficialIslamicDateStore(
         val snapshot = officialSnapshot()
         val manualSnapshot = runCatching { manual() }.getOrDefault(emptyMap())
         if (calendarRecords != snapshot || calendarManual != manualSnapshot || resolvedCalendar == null) {
-            resolvedCalendar = TunisianHijriCalendar(withManualDates(snapshot, manualSnapshot))
+            resolvedCalendar = TunisianHijriCalendar(snapshot, manualSnapshot)
             calendarRecords = snapshot
             calendarManual = manualSnapshot
         }
         resolvedCalendar!!
+    }
+
+    /** Not cached: built once per question, when the admin presses a key on the dates page. */
+    internal fun calendarWith(hijriYear: Int, dates: ManualIslamicDates): TunisianHijriCalendar {
+        val manualSnapshot = runCatching { manual() }.getOrDefault(emptyMap())
+        return TunisianHijriCalendar(officialSnapshot(), manualSnapshot + (hijriYear to dates))
     }
 
     internal fun officialCalendar(): TunisianHijriCalendar = synchronized(lock) {

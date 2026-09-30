@@ -42,4 +42,23 @@ class EventLogTest {
         log.append(KioskEvent.AUTOSTART_OK, atMillis = 2)
         assertEquals(listOf(KioskEvent.AUTOSTART_OK, KioskEvent.BOOT), EventLog(file).recent().map { it.type })
     }
+
+    @Test
+    fun writersOnTheSameFileInSeveralInstancesLoseNothing() {
+        val threads = (0 until 4).map { t ->
+            Thread { repeat(25) { EventLog(file).append(KioskEvent.SCREEN_ON, "t$t", atMillis = t * 100L + it) } }
+        }
+        threads.forEach(Thread::start)
+        threads.forEach(Thread::join)
+        assertEquals(100, EventLog(file).recent(200).size)
+        assertEquals(listOf("events.log"), dir.list()!!.toList())
+    }
+
+    @Test
+    fun aWriteByAnotherInstanceIsSeenByTheFirst() {
+        val reader = EventLog(file)
+        reader.append(KioskEvent.BOOT, atMillis = 1)
+        EventLog(file).append(KioskEvent.CRASH, atMillis = 2)
+        assertEquals(2L, reader.last(KioskEvent.CRASH)?.atMillis)
+    }
 }

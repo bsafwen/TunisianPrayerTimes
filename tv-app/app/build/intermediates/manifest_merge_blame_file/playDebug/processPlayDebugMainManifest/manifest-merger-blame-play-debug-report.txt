@@ -18,327 +18,328 @@
 13    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- "Display over other apps": what lets Android 10+ bring the display back at boot and after Home -->
 13-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:8:5-81
 13-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:8:22-78
-14    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- Read custom backgrounds & announcements from external storage -->
+14    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 14-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:10:5-78
 14-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:10:22-75
-15    <uses-permission
-15-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:12:5-13:38
-16        android:name="android.permission.READ_EXTERNAL_STORAGE"
-16-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:12:22-77
-17        android:maxSdkVersion="32" />
-17-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:13:9-35
-18    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- Optional: official Ramadan/Eid date announcements. Prayer times need no network. -->
-18-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:14:5-76
-18-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:14:22-73
-19    <uses-permission android:name="android.permission.INTERNET" /> <!-- Whether the TV is online, before asking for the weather or an update -->
-19-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:16:5-67
-19-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:16:22-64
-20    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Declare this is a TV app -->
-20-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:18:5-79
-20-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:18:22-76
-21    <!-- Not required: many AOSP mosque boxes do not declare leanback, and the app must install there too -->
-22    <uses-feature
-22-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:27:5-29:36
-23        android:name="android.software.leanback"
-23-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:28:9-49
-24        android:required="false" /> <!-- TV apps don't require touchscreen -->
-24-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:29:9-33
-25    <uses-feature
-25-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:31:5-33:36
-26        android:name="android.hardware.touchscreen"
-26-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:32:9-52
-27        android:required="false" /> <!-- Android 11+: to recognise the box's home screen (Fire TV's, a TV's) -->
-27-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:33:9-33
-28    <queries>
-28-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:36:5-41:15
-29        <intent>
-29-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:37:9-40:18
-30            <action android:name="android.intent.action.MAIN" />
-30-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:38:13-65
-30-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:38:21-62
-31
-32            <category android:name="android.intent.category.HOME" />
-32-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:39:13-69
-32-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:39:23-66
-33        </intent>
-34    </queries>
-35
-36    <permission
-36-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:22:5-24:47
-37        android:name="com.tunisianprayertimes.tv.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-37-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:23:9-81
-38        android:protectionLevel="signature" />
-38-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:24:9-44
-39
-40    <uses-permission android:name="com.tunisianprayertimes.tv.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-40-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:26:5-97
-40-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:26:22-94
-41
-42    <application
-42-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:43:5-124:19
-43        android:name="com.tunisianprayertimes.tv.TvApplication"
-43-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:44:9-38
-44        android:allowBackup="true"
-44-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:45:9-35
-45        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-45-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
-46        android:banner="@drawable/tv_banner"
-46-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:46:9-45
-47        android:debuggable="true"
-48        android:extractNativeLibs="false"
-48-->INJECTED
-49        android:icon="@mipmap/ic_launcher"
-49-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:47:9-43
-50        android:label="@string/app_name"
-50-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:48:9-41
-51        android:layoutDirection="rtl"
-51-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:49:9-38
-52        android:requestLegacyExternalStorage="true"
-52-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:50:9-52
-53        android:supportsRtl="true"
-53-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:51:9-35
-54        android:theme="@style/Theme.TunisianPrayerTimesTV" >
-54-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:52:9-59
-55        <activity
-55-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:5:9-11:66
-56            android:name="com.tunisianprayertimes.tv.ScreenGalleryActivity"
-56-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:6:13-50
-57            android:excludeFromRecents="true"
-57-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:9:13-46
-58            android:exported="true"
-58-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:7:13-36
-59            android:screenOrientation="landscape"
-59-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:10:13-50
-60            android:taskAffinity=".gallery"
-60-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:8:13-44
-61            android:theme="@style/Theme.TunisianPrayerTimesTV" />
-61-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:11:13-63
-62        <activity
-62-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:54:9-65:20
-63            android:name="com.tunisianprayertimes.tv.MainActivity"
-63-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:55:13-41
-64            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation"
-64-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:59:13-126
-65            android:exported="true"
-65-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:56:13-36
-66            android:launchMode="singleTask"
-66-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:57:13-44
-67            android:screenOrientation="landscape" >
-67-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:58:13-50
-68            <intent-filter>
-68-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:60:13-64:29
-69                <action android:name="android.intent.action.MAIN" />
-69-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:38:13-65
-69-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:38:21-62
-70
-71                <category android:name="android.intent.category.LAUNCHER" />
-71-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:62:17-77
-71-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:62:27-74
-72                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-72-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:63:17-86
-72-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:63:27-83
-73            </intent-filter>
-74        </activity> <!-- Home mode, off until the admin turns it on from the kiosk page: the box then boots into the display -->
-75        <activity-alias
-75-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:68:9-78:26
-76            android:name="com.tunisianprayertimes.tv.KioskHomeAlias"
-76-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:69:13-43
-77            android:enabled="false"
-77-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:70:13-36
-78            android:exported="true"
-78-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:71:13-36
-79            android:targetActivity="com.tunisianprayertimes.tv.MainActivity" >
-79-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:72:13-51
-80            <intent-filter>
-80-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:73:13-77:29
-81                <action android:name="android.intent.action.MAIN" />
-81-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:38:13-65
-81-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:38:21-62
-82
-83                <category android:name="android.intent.category.HOME" />
-83-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:39:13-69
-83-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:39:23-66
-84                <category android:name="android.intent.category.DEFAULT" />
-84-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:76:17-76
-84-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:76:27-73
-85            </intent-filter>
-86        </activity-alias>
-87        <!--
-88 Auto-start on boot. The boot broadcast reaches apps one after another (Android 15 and before):
-89             the highest priority an app may have puts the display ahead of the box's own apps.
-90        -->
-91        <receiver
-91-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:82:9-93:20
-92            android:name="com.tunisianprayertimes.tv.BootReceiver"
-92-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:83:13-41
-93            android:exported="true" >
-93-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:84:13-36
-94            <intent-filter android:priority="999" >
-94-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:85:13-89:29
-94-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:85:28-50
-95                <action android:name="android.intent.action.BOOT_COMPLETED" />
-95-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:86:17-79
-95-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:86:25-76
-96                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-96-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:87:17-82
-96-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:87:25-79
-97                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-97-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:88:17-82
-97-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:88:25-79
-98            </intent-filter>
-99            <intent-filter>
-99-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:90:13-92:29
-100                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
-100-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:91:17-84
-100-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:91:25-81
-101            </intent-filter>
-102        </receiver> <!-- Watchdog and after-boot check alarms -->
-103        <receiver
-103-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:96:9-98:40
-104            android:name="com.tunisianprayertimes.tv.kiosk.KioskAlarmReceiver"
-104-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:97:13-53
-105            android:exported="false" />
-105-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:98:13-37
-106        <!--
-107 The system clock or zone was changed (by the admin, the network or the app): the clock guard's
-108             confirmation no longer holds. Both are system broadcasts that still reach manifest receivers.
-109        -->
-110        <receiver
-110-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:102:9-109:20
-111            android:name="com.tunisianprayertimes.tv.kiosk.ClockChangeReceiver"
-111-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:103:13-54
-112            android:exported="false" >
-112-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:104:13-37
-113            <intent-filter>
-113-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:105:13-108:29
-114                <action android:name="android.intent.action.TIME_SET" />
-114-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:106:17-73
-114-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:106:25-70
-115                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-115-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:107:17-81
-115-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:107:25-78
-116            </intent-filter>
-117        </receiver> <!-- Only used when an installer provisions the box as device owner (lock task) -->
-118        <receiver
-118-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:112:9-122:20
-119            android:name="com.tunisianprayertimes.tv.kiosk.TvDeviceAdminReceiver"
-119-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:113:13-56
-120            android:exported="true"
-120-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:114:13-36
-121            android:permission="android.permission.BIND_DEVICE_ADMIN" >
-121-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:115:13-70
-122            <meta-data
-122-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:116:13-118:56
-123                android:name="android.app.device_admin"
-123-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:117:17-56
-124                android:resource="@xml/device_admin" />
-124-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:118:17-53
-125
-126            <intent-filter>
-126-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:119:13-121:29
-127                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
-127-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:120:17-82
-127-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:120:25-79
-128            </intent-filter>
-129        </receiver>
-130
-131        <provider
-131-->[org.jetbrains.compose.components:components-resources-android:1.10.3] C:\Users\barou\.gradle\caches\9.3.1\transforms\77bedc09506c7947f379b3ba9b9b6884\workspace\transformed\library-release\AndroidManifest.xml:8:9-13:20
-132            android:name="org.jetbrains.compose.resources.AndroidContextProvider"
-132-->[org.jetbrains.compose.components:components-resources-android:1.10.3] C:\Users\barou\.gradle\caches\9.3.1\transforms\77bedc09506c7947f379b3ba9b9b6884\workspace\transformed\library-release\AndroidManifest.xml:9:13-82
-133            android:authorities="com.tunisianprayertimes.tv.dev.resources.AndroidContextProvider"
-133-->[org.jetbrains.compose.components:components-resources-android:1.10.3] C:\Users\barou\.gradle\caches\9.3.1\transforms\77bedc09506c7947f379b3ba9b9b6884\workspace\transformed\library-release\AndroidManifest.xml:10:13-84
-134            android:enabled="true"
-134-->[org.jetbrains.compose.components:components-resources-android:1.10.3] C:\Users\barou\.gradle\caches\9.3.1\transforms\77bedc09506c7947f379b3ba9b9b6884\workspace\transformed\library-release\AndroidManifest.xml:11:13-35
-135            android:exported="false" >
-135-->[org.jetbrains.compose.components:components-resources-android:1.10.3] C:\Users\barou\.gradle\caches\9.3.1\transforms\77bedc09506c7947f379b3ba9b9b6884\workspace\transformed\library-release\AndroidManifest.xml:12:13-37
-136        </provider>
-137
-138        <activity
-138-->[androidx.compose.ui:ui-tooling-android:1.10.5] C:\Users\barou\.gradle\caches\9.3.1\transforms\f7bee8195f0770b655d23af79c9e492a\workspace\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
-139            android:name="androidx.compose.ui.tooling.PreviewActivity"
-139-->[androidx.compose.ui:ui-tooling-android:1.10.5] C:\Users\barou\.gradle\caches\9.3.1\transforms\f7bee8195f0770b655d23af79c9e492a\workspace\transformed\ui-tooling\AndroidManifest.xml:24:13-71
-140            android:exported="true" />
-140-->[androidx.compose.ui:ui-tooling-android:1.10.5] C:\Users\barou\.gradle\caches\9.3.1\transforms\f7bee8195f0770b655d23af79c9e492a\workspace\transformed\ui-tooling\AndroidManifest.xml:25:13-36
+15    <!--
+16 No storage permission: a USB key is read in the app's own Android/data/<package>/files folder,
+17         which needs none (usb/UsbVolumes.kt)
+18    -->
+19    <!-- Optional: official Ramadan/Eid date announcements. Prayer times need no network. -->
+20    <uses-permission android:name="android.permission.INTERNET" /> <!-- Whether the TV is online, before asking for the weather or an update -->
+20-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:14:5-67
+20-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:14:22-64
+21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Declare this is a TV app -->
+21-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:16:5-79
+21-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:16:22-76
+22    <!-- Not required: many AOSP mosque boxes do not declare leanback, and the app must install there too -->
+23    <uses-feature
+23-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:25:5-27:36
+24        android:name="android.software.leanback"
+24-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:26:9-49
+25        android:required="false" /> <!-- TV apps don't require touchscreen -->
+25-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:27:9-33
+26    <uses-feature
+26-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:29:5-31:36
+27        android:name="android.hardware.touchscreen"
+27-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:30:9-52
+28        android:required="false" /> <!-- Android 11+: to recognise the box's home screen (Fire TV's, a TV's) -->
+28-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:31:9-33
+29    <queries>
+29-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:34:5-41:15
+30        <intent>
+30-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:35:9-38:18
+31            <action android:name="android.intent.action.MAIN" />
+31-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:36:13-65
+31-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:36:21-62
+32
+33            <category android:name="android.intent.category.HOME" />
+33-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:37:13-69
+33-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:37:23-66
+34        </intent>
+35        <!-- The other build (Play or GitHub): installed beside this one, the two fight over the screen -->
+36        <package android:name="com.tunisianprayertimes.tv.github" />
+36-->INJECTED
+36-->INJECTED
+37    </queries>
+38
+39    <permission
+39-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:22:5-24:47
+40        android:name="com.tunisianprayertimes.tv.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+40-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:23:9-81
+41        android:protectionLevel="signature" />
+41-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:24:9-44
+42
+43    <uses-permission android:name="com.tunisianprayertimes.tv.dev.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+43-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:26:5-97
+43-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:26:22-94
+44
+45    <application
+45-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:45:5-127:19
+46        android:name="com.tunisianprayertimes.tv.TvApplication"
+46-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:46:9-38
+47        android:allowBackup="false"
+47-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:47:9-36
+48        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+48-->[androidx.core:core:1.16.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\634c3f3a03af21871162fa6f35171b41\workspace\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
+49        android:banner="@drawable/tv_banner"
+49-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:49:9-45
+50        android:dataExtractionRules="@xml/data_extraction_rules"
+50-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:48:9-65
+51        android:debuggable="true"
+52        android:extractNativeLibs="false"
+52-->INJECTED
+53        android:icon="@mipmap/ic_launcher"
+53-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:50:9-43
+54        android:label="@string/app_name"
+54-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:51:9-41
+55        android:layoutDirection="rtl"
+55-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:52:9-38
+56        android:supportsRtl="true"
+56-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:53:9-35
+57        android:theme="@style/Theme.TunisianPrayerTimesTV" >
+57-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:54:9-59
+58        <activity
+58-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:5:9-11:66
+59            android:name="com.tunisianprayertimes.tv.ScreenGalleryActivity"
+59-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:6:13-50
+60            android:excludeFromRecents="true"
+60-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:9:13-46
+61            android:exported="true"
+61-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:7:13-36
+62            android:screenOrientation="landscape"
+62-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:10:13-50
+63            android:taskAffinity=".gallery"
+63-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:8:13-44
+64            android:theme="@style/Theme.TunisianPrayerTimesTV" />
+64-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\debug\AndroidManifest.xml:11:13-63
+65        <!-- The virtual canvas fits any size or density: a new output mode (TV switched off and on) does not recreate it -->
+66        <activity
+66-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:57:9-68:20
+67            android:name="com.tunisianprayertimes.tv.MainActivity"
+67-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:58:13-41
+68            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|density|uiMode|fontScale|locale|layoutDirection|keyboard|keyboardHidden|navigation"
+68-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:62:13-174
+69            android:exported="true"
+69-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:59:13-36
+70            android:launchMode="singleTask"
+70-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:60:13-44
+71            android:screenOrientation="landscape" >
+71-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:61:13-50
+72            <intent-filter>
+72-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:63:13-67:29
+73                <action android:name="android.intent.action.MAIN" />
+73-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:36:13-65
+73-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:36:21-62
+74
+75                <category android:name="android.intent.category.LAUNCHER" />
+75-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:65:17-77
+75-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:65:27-74
+76                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+76-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:66:17-86
+76-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:66:27-83
+77            </intent-filter>
+78        </activity> <!-- Home mode, off until the admin turns it on from the kiosk page: the box then boots into the display -->
+79        <activity-alias
+79-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:71:9-81:26
+80            android:name="com.tunisianprayertimes.tv.KioskHomeAlias"
+80-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:72:13-43
+81            android:enabled="false"
+81-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:73:13-36
+82            android:exported="true"
+82-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:74:13-36
+83            android:targetActivity="com.tunisianprayertimes.tv.MainActivity" >
+83-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:75:13-51
+84            <intent-filter>
+84-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:76:13-80:29
+85                <action android:name="android.intent.action.MAIN" />
+85-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:36:13-65
+85-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:36:21-62
+86
+87                <category android:name="android.intent.category.HOME" />
+87-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:37:13-69
+87-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:37:23-66
+88                <category android:name="android.intent.category.DEFAULT" />
+88-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:79:17-76
+88-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:79:27-73
+89            </intent-filter>
+90        </activity-alias>
+91        <!--
+92 Auto-start on boot. The boot broadcast reaches apps one after another (Android 15 and before):
+93             the highest priority an app may have puts the display ahead of the box's own apps.
+94        -->
+95        <receiver
+95-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:85:9-96:20
+96            android:name="com.tunisianprayertimes.tv.BootReceiver"
+96-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:86:13-41
+97            android:exported="true" >
+97-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:87:13-36
+98            <intent-filter android:priority="999" >
+98-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:88:13-92:29
+98-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:88:28-50
+99                <action android:name="android.intent.action.BOOT_COMPLETED" />
+99-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:89:17-79
+99-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:89:25-76
+100                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+100-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:90:17-82
+100-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:90:25-79
+101                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+101-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:91:17-82
+101-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:91:25-79
+102            </intent-filter>
+103            <intent-filter>
+103-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:93:13-95:29
+104                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+104-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:94:17-84
+104-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:94:25-81
+105            </intent-filter>
+106        </receiver> <!-- Watchdog and after-boot check alarms -->
+107        <receiver
+107-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:99:9-101:40
+108            android:name="com.tunisianprayertimes.tv.kiosk.KioskAlarmReceiver"
+108-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:100:13-53
+109            android:exported="false" />
+109-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:101:13-37
+110        <!--
+111 The system clock or zone was changed (by the admin, the network or the app): the clock guard's
+112             confirmation no longer holds. Both are system broadcasts that still reach manifest receivers.
+113        -->
+114        <receiver
+114-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:105:9-112:20
+115            android:name="com.tunisianprayertimes.tv.kiosk.ClockChangeReceiver"
+115-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:106:13-54
+116            android:exported="false" >
+116-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:107:13-37
+117            <intent-filter>
+117-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:108:13-111:29
+118                <action android:name="android.intent.action.TIME_SET" />
+118-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:109:17-73
+118-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:109:25-70
+119                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+119-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:110:17-81
+119-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:110:25-78
+120            </intent-filter>
+121        </receiver> <!-- Only used when an installer provisions the box as device owner (lock task) -->
+122        <receiver
+122-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:115:9-125:20
+123            android:name="com.tunisianprayertimes.tv.kiosk.TvDeviceAdminReceiver"
+123-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:116:13-56
+124            android:exported="true"
+124-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:117:13-36
+125            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+125-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:118:13-70
+126            <meta-data
+126-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:119:13-121:56
+127                android:name="android.app.device_admin"
+127-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:120:17-56
+128                android:resource="@xml/device_admin" />
+128-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:121:17-53
+129
+130            <intent-filter>
+130-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:122:13-124:29
+131                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+131-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:123:17-82
+131-->C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\AndroidManifest.xml:123:25-79
+132            </intent-filter>
+133        </receiver>
+134
+135        <provider
+135-->[org.jetbrains.compose.components:components-resources-android:1.10.3] C:\Users\barou\.gradle\caches\9.3.1\transforms\77bedc09506c7947f379b3ba9b9b6884\workspace\transformed\library-release\AndroidManifest.xml:8:9-13:20
+136            android:name="org.jetbrains.compose.resources.AndroidContextProvider"
+136-->[org.jetbrains.compose.components:components-resources-android:1.10.3] C:\Users\barou\.gradle\caches\9.3.1\transforms\77bedc09506c7947f379b3ba9b9b6884\workspace\transformed\library-release\AndroidManifest.xml:9:13-82
+137            android:authorities="com.tunisianprayertimes.tv.dev.resources.AndroidContextProvider"
+137-->[org.jetbrains.compose.components:components-resources-android:1.10.3] C:\Users\barou\.gradle\caches\9.3.1\transforms\77bedc09506c7947f379b3ba9b9b6884\workspace\transformed\library-release\AndroidManifest.xml:10:13-84
+138            android:enabled="true"
+138-->[org.jetbrains.compose.components:components-resources-android:1.10.3] C:\Users\barou\.gradle\caches\9.3.1\transforms\77bedc09506c7947f379b3ba9b9b6884\workspace\transformed\library-release\AndroidManifest.xml:11:13-35
+139            android:exported="false" >
+139-->[org.jetbrains.compose.components:components-resources-android:1.10.3] C:\Users\barou\.gradle\caches\9.3.1\transforms\77bedc09506c7947f379b3ba9b9b6884\workspace\transformed\library-release\AndroidManifest.xml:12:13-37
+140        </provider>
 141
-142        <uses-library
-142-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:23:9-25:40
-143            android:name="androidx.window.extensions"
-143-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:24:13-54
-144            android:required="false" />
-144-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:25:13-37
-145        <uses-library
-145-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:26:9-28:40
-146            android:name="androidx.window.sidecar"
-146-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:27:13-51
-147            android:required="false" />
-147-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:28:13-37
-148
-149        <provider
-149-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
-150            android:name="androidx.startup.InitializationProvider"
-150-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
-151            android:authorities="com.tunisianprayertimes.tv.dev.androidx-startup"
-151-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
-152            android:exported="false" >
-152-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
-153            <meta-data
-153-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
-154                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-154-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
-155                android:value="androidx.startup" />
-155-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
-156            <meta-data
-156-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\barou\.gradle\caches\9.3.1\transforms\d222e924f66f3af659b06c929e89b7e9\workspace\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
-157                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-157-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\barou\.gradle\caches\9.3.1\transforms\d222e924f66f3af659b06c929e89b7e9\workspace\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
-158                android:value="androidx.startup" />
-158-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\barou\.gradle\caches\9.3.1\transforms\d222e924f66f3af659b06c929e89b7e9\workspace\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
-159            <meta-data
-159-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
-160                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-160-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
-161                android:value="androidx.startup" />
-161-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
-162        </provider>
-163
-164        <receiver
-164-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
-165            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-165-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
-166            android:directBootAware="false"
-166-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
-167            android:enabled="true"
-167-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
-168            android:exported="true"
-168-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
-169            android:permission="android.permission.DUMP" >
-169-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
-170            <intent-filter>
-170-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
-171                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-171-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
-171-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
-172            </intent-filter>
-173            <intent-filter>
-173-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
-174                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-174-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
-174-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
-175            </intent-filter>
-176            <intent-filter>
-176-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
-177                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-177-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
-177-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
-178            </intent-filter>
-179            <intent-filter>
-179-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
-180                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-180-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
-180-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
-181            </intent-filter>
-182        </receiver>
-183    </application>
-184
-185</manifest>
+142        <activity
+142-->[androidx.compose.ui:ui-tooling-android:1.10.5] C:\Users\barou\.gradle\caches\9.3.1\transforms\f7bee8195f0770b655d23af79c9e492a\workspace\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
+143            android:name="androidx.compose.ui.tooling.PreviewActivity"
+143-->[androidx.compose.ui:ui-tooling-android:1.10.5] C:\Users\barou\.gradle\caches\9.3.1\transforms\f7bee8195f0770b655d23af79c9e492a\workspace\transformed\ui-tooling\AndroidManifest.xml:24:13-71
+144            android:exported="true" />
+144-->[androidx.compose.ui:ui-tooling-android:1.10.5] C:\Users\barou\.gradle\caches\9.3.1\transforms\f7bee8195f0770b655d23af79c9e492a\workspace\transformed\ui-tooling\AndroidManifest.xml:25:13-36
+145
+146        <uses-library
+146-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:23:9-25:40
+147            android:name="androidx.window.extensions"
+147-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:24:13-54
+148            android:required="false" />
+148-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:25:13-37
+149        <uses-library
+149-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:26:9-28:40
+150            android:name="androidx.window.sidecar"
+150-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:27:13-51
+151            android:required="false" />
+151-->[androidx.window:window:1.5.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\c8db850448e636163d1d2c02a579f5fa\workspace\transformed\window-1.5.0\AndroidManifest.xml:28:13-37
+152
+153        <provider
+153-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
+154            android:name="androidx.startup.InitializationProvider"
+154-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
+155            android:authorities="com.tunisianprayertimes.tv.dev.androidx-startup"
+155-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
+156            android:exported="false" >
+156-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
+157            <meta-data
+157-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
+158                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+158-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
+159                android:value="androidx.startup" />
+159-->[androidx.emoji2:emoji2:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\cd12c59e3a59e16c0b4abb1073a1e9d8\workspace\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
+160            <meta-data
+160-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\barou\.gradle\caches\9.3.1\transforms\d222e924f66f3af659b06c929e89b7e9\workspace\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
+161                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+161-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\barou\.gradle\caches\9.3.1\transforms\d222e924f66f3af659b06c929e89b7e9\workspace\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
+162                android:value="androidx.startup" />
+162-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\barou\.gradle\caches\9.3.1\transforms\d222e924f66f3af659b06c929e89b7e9\workspace\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
+163            <meta-data
+163-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+164                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+164-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+165                android:value="androidx.startup" />
+165-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+166        </provider>
+167
+168        <receiver
+168-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+169            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+169-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+170            android:directBootAware="false"
+170-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+171            android:enabled="true"
+171-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+172            android:exported="true"
+172-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+173            android:permission="android.permission.DUMP" >
+173-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+174            <intent-filter>
+174-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+175                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+175-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+175-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+176            </intent-filter>
+177            <intent-filter>
+177-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+178                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+178-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+178-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+179            </intent-filter>
+180            <intent-filter>
+180-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+181                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+181-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+181-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+182            </intent-filter>
+183            <intent-filter>
+183-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+184                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+184-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+184-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\barou\.gradle\caches\9.3.1\transforms\64340ea7d066cf41081bf3ccdb646673\workspace\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+185            </intent-filter>
+186        </receiver>
+187    </application>
+188
+189</manifest>

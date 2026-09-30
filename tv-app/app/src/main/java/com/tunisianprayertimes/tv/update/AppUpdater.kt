@@ -26,7 +26,16 @@ interface AppUpdater {
      */
     suspend fun tick(online: Boolean, quiet: Boolean)
 
-    /** The admin asked for the update now: checks, downloads and installs. Returns what happens (Arabic). */
+    /**
+     * The app keeps crashing, so the display cannot run [tick]: checks more often and installs a
+     * newer release at once, since the wall is already broken.
+     */
+    suspend fun rescue(online: Boolean)
+
+    /**
+     * The admin asked for the update now: checks, downloads and installs, unless a prayer is on
+     * screen or close. Returns what happens (Arabic).
+     */
     suspend fun installNow(): String
 }
 
@@ -34,5 +43,6 @@ interface AppUpdater {
 object PlayUpdates : AppUpdater {
     override val status = UpdateStatus(supported = false, message = "يُحدَّث هذا الإصدار من متجر Google Play")
     override suspend fun tick(online: Boolean, quiet: Boolean) = Unit
+    override suspend fun rescue(online: Boolean) = Unit
     override suspend fun installNow(): String = status.message
 }

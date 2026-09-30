@@ -1,6 +1,10 @@
 package com.tunisianprayertimes.mosque
 
+import com.tunisianprayertimes.IslamicDays
+import com.tunisianprayertimes.ManualIslamicDates
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.RamadanOverrideChecker
+import com.tunisianprayertimes.TunisianHijriCalendar
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ErrorCode
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
 import java.time.LocalDate
@@ -252,6 +256,94 @@ class MosqueSettingsFileTest {
     }
 
     @Test
+    fun datesThatWouldMakeA31DayRamadanAreRefusedWithTheReason() {
+        // Both set by hand in the same file.
+        val both = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse(
+            """{ "islamicDates": { "1448": { "ramadanStart": "2027-02-08", "eidFitr": "2027-03-11" } } }""", current))
+        assertEquals(listOf(ErrorCode.DATES_CONFLICT to "islamicDates.1448"), both.errors.map { it.code to it.path })
+        assertEquals("رمضان سيكون 31 يومًا، والشهر 29 أو 30 يومًا: عدّل أحدهما", both.errors.single().message)
+        // Against the Ramadan the TV has from an announcement.
+        val announced = TunisianHijriCalendar(mapOf(1448 to RamadanOverrideChecker.RamadanOverride(1448, LocalDate.of(2027, 2, 8), null, null)))
+        val yearDates = { year: Int -> IslamicDays.yearDates(year, announced, announced, ManualIslamicDates()) }
+        val late = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse(
+            """{ "islamicDates": { "1448": { "eidFitr": "2027-03-11" } } }""", current, yearDates = yearDates))
+        assertEquals("رمضان سيكون 31 يومًا، والشهر 29 أو 30 يومًا: عدّل بداية رمضان أيضًا", late.errors.single().message)
+        // Moving Ramadan with it is accepted, and so is an Eid against a mere estimate.
+        assertIs<ParseResult.Success>(MosqueSettingsFile.parse(
+            """{ "islamicDates": { "1448": { "ramadanStart": "2027-02-09", "eidFitr": "2027-03-11" } } }""", current, yearDates = yearDates))
+        assertIs<ParseResult.Success>(MosqueSettingsFile.parse("""{ "islamicDates": { "1448": { "eidFitr": "2027-03-11" } } }""", current))
+        // A date the file leaves as it was is not questioned.
+        val existing = mapOf(1448 to ManualIslamicDates(eidFitr = LocalDate.of(2027, 3, 11)))
+        assertIs<ParseResult.Success>(MosqueSettingsFile.parse("""{ "islamicDates": { "1448": { "eidFitr": "2027-03-11" } } }""",
+            current, existing, yearDates = yearDates))
+    }
+
+    @Test
+    fun aMosquesOwnEidAlFitrMayStandBesideTheAnnouncedEidAlAdha() {
+        // Announced: Eid al-Fitr 2027-03-09 and Eid al-Adha 2027-05-15, 58 days from 1 Shawwal to 1 Dhul Hijja.
+        val records = mapOf(1448 to RamadanOverrideChecker.RamadanOverride(1448, null, LocalDate.of(2027, 3, 9), LocalDate.of(2027, 5, 15)))
+        val announced = TunisianHijriCalendar(records)
+        val yearDates = { year: Int -> IslamicDays.yearDates(year, announced, announced, ManualIslamicDates()) }
+        // The mosque's Eid al-Fitr a day later: the calendar keeps both, and so does the file.
+        assertIs<ParseResult.Success>(MosqueSettingsFile.parse(
+            """{ "islamicDates": { "1448": { "eidFitr": "2027-03-10" } } }""", current, yearDates = yearDates))
+        val merged = TunisianHijriCalendar(records, mapOf(1448 to ManualIslamicDates(eidFitr = LocalDate.of(2027, 3, 10))))
+        assertEquals(LocalDate.of(2027, 3, 10), merged.month(1448, 10).start)
+        assertEquals(LocalDate.of(2027, 5, 6), merged.month(1448, 12).start)
+        // Farther than months of 28 to 31 days can join: the calendar would drop the announcement.
+        val far = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse(
+            """{ "islamicDates": { "1448": { "eidFitr": "2027-03-13" } } }""", current, yearDates = yearDates))
+        assertEquals("بين عيد الفطر وعيد الأضحى 63 يومًا، والممكن من 65 إلى 71: عدّل عيد الأضحى أيضًا", far.errors.single().message)
+    }
+
+    @Test
+    fun aMosqueCanSayItHoldsNoJumuaOrEidPrayer() {
+        val result = success("""{ "prayers": { "jumua": { "held": false }, "eid": { "تقام": "لا" } } }""")
+        assertEquals(PrayerSettings(IqamahRule.AfterAdhan(15), 15, held = false), result.schedule.settings(Prayer.JOMOAA))
+        assertEquals(false, result.schedule.settings(Prayer.AID_FITR).held)
+        assertEquals(false, result.schedule.settings(Prayer.AID_ADHA).held)
+        assertEquals(
+            listOf(
+                MosqueSettingsFile.Change(Prayer.JOMOAA, MosqueSettingsFile.Field.HELD, "true", "false"),
+                MosqueSettingsFile.Change(Prayer.AID_FITR, MosqueSettingsFile.Field.HELD, "true", "false"),
+                MosqueSettingsFile.Change(Prayer.AID_ADHA, MosqueSettingsFile.Field.HELD, "true", "false"),
+            ),
+            result.changes,
+        )
+        // Written only when off (and in a complete snapshot), and read back to the same state.
+        val written = MosqueSettingsFile.write(result.schedule)
+        assertTrue(written.contains("\"jumua\": { \"iqamah\": \"+15\", \"duration\": 15, \"held\": false }"), written)
+        assertTrue("held" !in MosqueSettingsFile.write(MosqueSchedule.DEFAULT))
+        assertTrue("\"held\": true" in MosqueSettingsFile.write(MosqueSchedule.DEFAULT, complete = true))
+        assertTrue(!assertIs<ParseResult.Success>(MosqueSettingsFile.parse(written, result.schedule)).hasChanges)
+        // Only for Jumu'a and the Eids, only in "prayers", and only true or false.
+        assertEquals(listOf(ErrorCode.UNKNOWN_FIELD to "prayers.isha.held"), errors("""{ "prayers": { "isha": { "held": false } } }"""))
+        assertEquals(listOf(ErrorCode.UNKNOWN_FIELD to "ramadan.jumua.held"), errors("""{ "ramadan": { "jumua": { "held": false } } }"""))
+        assertEquals(listOf(ErrorCode.INVALID_OPTION to "prayers.jumua.held"), errors("""{ "prayers": { "jumua": { "held": "sometimes" } } }"""))
+    }
+
+    @Test
+    fun aMosqueCanSayHowLongItsKhutbaLasts() {
+        val result = success("""{ "prayers": { "jumua": { "iqamah": "13:15", "الخطبة": 30 } } }""")
+        assertEquals(30, result.schedule.settings(Prayer.JOMOAA).khutbaMinutes)
+        assertEquals(MosqueSettingsFile.Change(Prayer.JOMOAA, MosqueSettingsFile.Field.KHUTBA, "0", "30"), result.changes.last())
+        // Written only when set (and in a complete snapshot), and read back to the same state.
+        val written = MosqueSettingsFile.write(result.schedule)
+        assertTrue(written.contains("\"jumua\": { \"iqamah\": \"13:15\", \"duration\": 15, \"khutba\": 30 }"), written)
+        assertTrue("khutba" !in MosqueSettingsFile.write(MosqueSchedule.DEFAULT))
+        assertTrue("\"khutba\": 0" in MosqueSettingsFile.write(MosqueSchedule.DEFAULT, complete = true))
+        assertTrue(!assertIs<ParseResult.Success>(MosqueSettingsFile.parse(written, result.schedule)).hasChanges)
+        // 0 returns to the khutba screen from the adhan.
+        val whole = assertIs<ParseResult.Success>(MosqueSettingsFile.parse("""{ "prayers": { "jumua": { "khutba": 0 } } }""", result.schedule))
+        assertEquals(0, whole.schedule.settings(Prayer.JOMOAA).khutbaMinutes)
+        // Only for Jumu'a, only in "prayers", and a number of minutes up to an hour.
+        assertEquals(listOf(ErrorCode.UNKNOWN_FIELD to "prayers.dhuhr.khutba"), errors("""{ "prayers": { "dhuhr": { "khutba": 30 } } }"""))
+        assertEquals(listOf(ErrorCode.UNKNOWN_FIELD to "ramadan.jumua.khutba"), errors("""{ "ramadan": { "jumua": { "khutba": 30 } } }"""))
+        assertEquals(listOf(ErrorCode.DURATION_OUT_OF_RANGE to "prayers.jumua.khutba"), errors("""{ "prayers": { "jumua": { "khutba": 90 } } }"""))
+        assertEquals(listOf(ErrorCode.INVALID_DURATION to "prayers.jumua.khutba"), errors("""{ "prayers": { "jumua": { "khutba": "long" } } }"""))
+    }
+
+    @Test
     fun everySectionSurvivesAWriteAndRead() {
         val schedule = MosqueSchedule.DEFAULT
             .with(Prayer.AID_ADHA, PrayerSettings(IqamahRule.FixedTime(LocalTime.of(7, 10)), 25))
@@ -291,9 +383,12 @@ class MosqueSettingsFileTest {
         assertTrue(MosqueSettingsFile.write(custom).contains("\"isha\": { \"iqamah\": \"20:05\", \"duration\": 11 }"))
     }
 
+    // 460 as gouvernorats.json has it, with a space after it.
+    private val places = mapOf(615 to "مدينة تونس", 101 to "صفاقس المدينة", 700 to "المرسى", 801 to "الوسط", 802 to "الوسط", 460 to "بني خيار ")
     private val catalog = ProfileCatalog(
-        delegationName = { id -> mapOf(615 to "مدينة تونس", 101 to "صفاقس المدينة")[id] },
+        delegationName = { id -> places[id] },
         themes = mapOf("horizon" to "أفق", "midad" to "مداد"),
+        delegationIds = { places.keys.toList() },
     )
 
     private fun profileParse(text: String, profile: MosqueProfile = MosqueProfile("مسجد الفتح", 615, "horizon")) =
@@ -302,7 +397,7 @@ class MosqueSettingsFileTest {
     @Test
     fun aFileCanSetTheMosqueNamePlaceAndTheme() {
         val result = assertIs<ParseResult.Success>(profileParse(
-            """{ "mosque": { "name": "  مسجد   النور ", "delegation": "١٠١", "delegationName": "ignored" }, "display": { "theme": "مداد" } }"""))
+            """{ "mosque": { "name": "  مسجد   النور ", "delegation": "١٠١", "delegationName": "صفاقس المدينة" }, "display": { "theme": "مداد" } }"""))
         assertEquals(MosqueProfile("مسجد النور", 101, "midad"), result.profile)
         assertEquals(
             listOf(
@@ -377,12 +472,12 @@ class MosqueSettingsFileTest {
         // Unset on a TV that never had the option: a file turning it off shows as a change.
         val off = assertIs<ParseResult.Success>(profileParse("""{ "display": { "nightScreen": false } }"""))
         assertEquals(false, off.profile.display.nightScreen)
-        assertEquals(listOf(MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.NIGHT_SCREEN, "—", "إيقاف")), off.profileChanges)
+        assertEquals(listOf(MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.NIGHT_SCREEN, "—", "false")), off.profileChanges)
         // Its Arabic name and a hand-written "yes", on a TV that has it off.
         val tvWithoutNight = MosqueProfile(display = DisplayOptions(nightScreen = false))
         val on = assertIs<ParseResult.Success>(profileParse("""{ "العرض": { "شاشة الليل": "نعم" } }""", tvWithoutNight))
         assertEquals(true, on.profile.display.nightScreen)
-        assertEquals(listOf(MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.NIGHT_SCREEN, "إيقاف", "تشغيل")), on.profileChanges)
+        assertEquals(listOf(MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.NIGHT_SCREEN, "false", "true")), on.profileChanges)
         // Written back by the TV, read back to the same state.
         val written = MosqueSettingsFile.write(MosqueSchedule.DEFAULT, profile = on.profile, catalog = catalog)
         assertTrue(written.contains("\"nightScreen\": true"), written)
@@ -401,5 +496,132 @@ class MosqueSettingsFileTest {
         val typo = assertIs<ParseResult.Failure>(profileParse("""{ "display": { "nightScren": false } }"""))
         assertEquals(listOf(ErrorCode.UNKNOWN_FIELD to "display.nightScren"), typo.errors.map { it.code to it.path })
         assertTrue(typo.errors.single().message.contains("\"nightScreen\""), "the fields a display section takes are named")
+    }
+
+    @Test
+    fun theAdhanScreensMinutesAreANumberFromOneToFive() {
+        val three = assertIs<ParseResult.Success>(profileParse("""{ "display": { "adhanScreenMinutes": 3 } }"""))
+        assertEquals(3, three.profile.display.adhanScreenMinutes)
+        assertEquals(listOf(MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.ADHAN_SCREEN, "—", "3")), three.profileChanges)
+        // Its Arabic name and Arabic digits, on a TV at 2 minutes.
+        val tv = MosqueProfile(display = DisplayOptions(adhanScreenMinutes = 2))
+        val five = assertIs<ParseResult.Success>(profileParse("""{ "العرض": { "مدة شاشة الأذان": "٥" } }""", tv))
+        assertEquals(listOf(MosqueSettingsFile.ProfileChange(MosqueSettingsFile.ProfileField.ADHAN_SCREEN, "2", "5")), five.profileChanges)
+        // Written back by the TV, read back to the same state.
+        val written = MosqueSettingsFile.write(MosqueSchedule.DEFAULT, profile = five.profile, catalog = catalog)
+        assertTrue(written.contains("\"adhanScreenMinutes\": 5"), written)
+        val same = assertIs<ParseResult.Success>(MosqueSettingsFile.parse(written, MosqueSchedule.DEFAULT, emptyMap(), five.profile, catalog))
+        assertTrue(!same.hasChanges)
+        // Out of 1..5 is refused, with the range.
+        listOf("0", "6", "\"two\"").forEach { value ->
+            val bad = assertIs<ParseResult.Failure>(profileParse("""{ "display": { "adhanScreenMinutes": $value } }"""))
+            assertEquals(listOf(ErrorCode.INVALID_OPTION to "display.adhanScreenMinutes"), bad.errors.map { it.code to it.path })
+            assertTrue(bad.errors.single().message.contains("بين 1 و5"), bad.errors.single().message)
+        }
+    }
+
+    @Test
+    fun anEditedPlaceNameIsFollowedWhenItNamesOnePlace() {
+        fun place(mosque: String) = assertIs<ParseResult.Success>(profileParse("""{ "mosque": $mosque }""")).profile.delegationId
+        // The TV's own file with only the name edited: the place follows the name.
+        assertEquals(101, place("""{ "delegation": 615, "delegationName": " صفاقس  المدينة " }"""))
+        assertEquals(700, place("""{ "delegationName": "المرسى" }"""))
+        // The number changed and the name left as it was: the number wins; a name that agrees says nothing.
+        assertEquals(101, place("""{ "delegation": 101, "delegationName": "مدينة تونس" }"""))
+        assertEquals(615, place("""{ "delegation": 615, "delegationName": "مدينة تونس" }"""))
+        // A name that names no place, or two, or another place than a new number: refused on the name.
+        for (mosque in listOf(
+            """{ "delegation": 615, "delegationName": "صفاقس" }""",
+            """{ "delegationName": "الوسط" }""",
+            """{ "delegation": 101, "delegationName": "المرسى" }""",
+        )) {
+            val failure = assertIs<ParseResult.Failure>(profileParse("""{ "mosque": $mosque }"""), mosque)
+            assertEquals(listOf(ErrorCode.UNKNOWN_DELEGATION to "mosque.delegationName"), failure.errors.map { it.code to it.path }, mosque)
+        }
+    }
+
+    @Test
+    fun aCatalogNameWithStraySpacesMatchesAsWritten() {
+        val atBeniKhiar = MosqueProfile("مسجد الفتح", 460, "horizon")
+        fun place(mosque: String, profile: MosqueProfile = atBeniKhiar) =
+            assertIs<ParseResult.Success>(profileParse("""{ "mosque": $mosque }""", profile), mosque).profile.delegationId
+        // The TV's own file («بني خيار » as it writes it) with only the number changed: the number wins.
+        assertEquals(101, place("""{ "delegation": 101, "delegationName": "بني خيار " }"""))
+        assertEquals(460, place("""{ "delegation": 460, "delegationName": "بني خيار" }"""))
+        // Found by a name typed without the catalog's space, or with one too many.
+        assertEquals(460, place("""{ "delegation": 615, "delegationName": "بني  خيار" }""", MosqueProfile("مسجد الفتح", 615, "horizon")))
+    }
+
+    @Test
+    fun samplesInMessagesStayLeftToRight() {
+        fun message(text: String) = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse(text, current)).errors.first().message
+        val iqamah = message("""{ "prayers": { "isha": { "iqamah": "8h" } } }""")
+        assertTrue(iqamah.contains("$LRI+10$PDI") && iqamah.contains("${LRI}20:00$PDI"), iqamah)
+        assertTrue(message("""{ "version": 2, "prayers": {} }""").contains("$LRI\"version\": 1$PDI"))
+        assertTrue(message("""{ "adhkar": { "afterSalah": 3 } }""").contains("$LRI{ \"mode\": \"append\", \"items\": [...] }$PDI"))
+        assertTrue(message("""{ "prayers": { "isha": { "iqama": "+10", "wait": 5 } } }""").contains("$LRI\"iqamah\"$PDI أو $LRI\"duration\"$PDI"))
+        assertTrue(message("""{ "islamicDates": { "1448": { "eidFitr": "10/03" } } }""").contains("${LRI}2027-02-08$PDI"))
+        // Every isolate the messages open, they close.
+        val all = listOf(iqamah, message("""{ "announcements": [ 5 ] }"""), message("""{ "ramadan": "x" }"""))
+        for (text in all) assertEquals(text.count { it == LRI }, text.count { it == PDI }, text)
+    }
+
+    @Test
+    fun anEidIqamahCountsFromSunriseInItsMessages() {
+        fun messages(text: String) = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse(text, current)).errors.map { it.message }
+        val far = messages("""{ "prayers": { "eidAdha": { "iqamah": "+120" } } }""").single()
+        assertTrue(far.contains("بعد الشروق") && !far.contains("الأذان"), far)
+        val both = messages("""{ "prayers": { "eid": { "iqamah": "8h" } } }""")
+        assertEquals(2, both.size)
+        assertTrue(both.all { it.contains("بعد الشروق") && !it.contains("الأذان") }, both.toString())
+        assertTrue(messages("""{ "prayers": { "isha": { "iqamah": "+120" } } }""").single().contains("بعد الأذان"))
+    }
+
+    @Test
+    fun aHostileFileGetsAScreenOfMistakesNotThousands() {
+        val keys = (0 until 5_000).joinToString(",") { "\"a$it\": 0" }
+        val failure = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse("{ $keys }", current))
+        assertEquals(MosqueSettingsFile.MAX_ERRORS, failure.errors.size)
+        assertEquals(5_000 - MosqueSettingsFile.MAX_ERRORS, failure.more)
+        // A key hundreds of thousands of letters long is quoted short.
+        val long = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse("{ \"${"x".repeat(300_000)}\": 0 }", current))
+        assertTrue(long.errors.single().message.length < 200)
+    }
+
+    @Test
+    fun jsonMistakesSayWhereTheyAre() {
+        fun message(text: String) = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse(text, current)).errors.single().message
+        val comma = message("{\n  \"prayers\": {\n    \"isha\": { \"iqamah\": \"+10\" }،\n    \"fajr\": { \"iqamah\": \"+20\" }\n  }\n}")
+        assertTrue(comma.contains("السطر 3") && comma.contains("«،»"), comma)
+        val quotes = message("{\n  // “ in a comment is fine\n  \"prayers\": { \"isha\": { \"iqamah\": “20:00” } }\n}")
+        assertTrue(quotes.contains("السطر 3") && quotes.contains("“"), quotes)
+        val missing = message("{\n  \"prayers\": {\n    \"isha\": { \"iqamah\": \"+10\" }\n    \"fajr\": { \"iqamah\": \"+20\" }\n  }\n}")
+        assertTrue(missing.contains("قرب السطر 4"), missing)
+        // Inside a text, an Arabic comma is just a comma.
+        assertEquals("درس، بعد العشاء", success("""{ "announcements": [ { "text": "درس، بعد العشاء" } ] }""").announcements.single().text)
+    }
+
+    @Test
+    fun itemMistakesSayWhichItem() {
+        val announcement = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse(
+            """{ "announcements": [ { "text": "أ" }, { "text": "ب" }, { "text": "ج", "until": "31/10" } ] }""", current)).errors.single()
+        assertEquals("announcements[2]", announcement.path)
+        assertTrue(announcement.message.startsWith("الإعلان 3: "), announcement.message)
+        val dhikr = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse(
+            """{ "adhkar": { "ticker": [ { "id": "salah_salam" }, { "text": "دعاء" } ] } }""", current)).errors.single()
+        assertTrue(dhikr.message.startsWith("شريط الأذكار، النص 2: "), dhikr.message)
+    }
+
+    @Test
+    fun aFileSavedInAnEncodingTheTvCannotReadIsRefusedAsSuch() {
+        // UTF-16 without its mark reads as letters between NULs; a broken byte as the replacement character.
+        for (text in listOf("{\u0000 \u0000\"\u0000p\u0000", "{ \"mosque\": { \"name\": \"مسجد \uFFFD\uFFFD\" } }")) {
+            assertEquals(listOf(ErrorCode.INVALID_ENCODING to ""), errors(text), text)
+        }
+    }
+
+    private companion object {
+        const val LRI = '⁦'
+        const val PDI = '⁩'
     }
 }

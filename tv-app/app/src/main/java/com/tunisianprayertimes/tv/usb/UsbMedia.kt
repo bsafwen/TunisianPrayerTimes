@@ -7,15 +7,54 @@ import java.io.File
 import java.security.MessageDigest
 import java.util.Locale
 
-/** Images found on a key, per kind; [signature] identifies them so the same images are offered once. */
-data class UsbMediaFound(val images: Map<MediaKind, List<File>>, val signature: String) {
+/** A file of a key that is not copied, and why, so the admin is told instead of left guessing. */
+data class RejectedFile(val file: File, val reason: Reason) {
+    enum class Reason {
+        /** Not a JPEG, PNG or WebP image by its content: HEIC or GIF from a phone, BMP, a renamed file. */
+        FORMAT,
+        /** Larger than [UsbMedia.MAX_BYTES]. */
+        TOO_LARGE,
+        /** Past the first [UsbMedia.MAX_FILES] of its kind. */
+        TOO_MANY,
+        /** A .txt file larger than [UsbMedia.MAX_TEXT_BYTES], or not readable text. */
+        TEXT,
+        /** Next to the settings file, or a .txt among the backgrounds, instead of in its folder. */
+        MISPLACED,
+    }
+}
+
+/**
+ * Images (and announcement .txt files) found on a key, per kind, and the files left out ([rejected]);
+ * [signature] identifies them so the same set is offered once. [replaced] is how many of the TV's own
+ * files each kind's copy removes, for the admin to see before copying.
+ */
+data class UsbMediaFound(
+    val images: Map<MediaKind, List<File>>,
+    val signature: String,
+    val rejected: List<RejectedFile> = emptyList(),
+    val replaced: Map<MediaKind, Int> = emptyMap(),
+) {
+    /** Nothing to copy: only files left out. */
     val isEmpty: Boolean get() = images.values.all { it.isEmpty() }
+}
+
+/** How a copy from a key ended. */
+sealed interface UsbMediaCopy {
+    /** [files] stored; [unreadable] images that Android could not decode were left out. */
+    data class Done(val files: Int, val unreadable: Int = 0) : UsbMediaCopy
+
+    /** A file could not be read (a key pulled out, a bad sector): what was not copied stays as it was. */
+    data object Failed : UsbMediaCopy
+
+    /** The TV has not the room: nothing of that kind was copied. */
+    data object NoRoom : UsbMediaCopy
 }
 
 /**
  * Background and announcement images on a USB key: the "backgrounds" and "announcements" folders
  * next to the settings file. Only real JPEG, PNG or WebP files of a sensible size are taken, and in
- * "announcements" also .txt files, each one a written announcement.
+ * "announcements" also .txt files, each one a written announcement. Other images and misplaced
+ * files are reported; files that are not media at all (Thumbs.db, a hidden ._photo.jpg) are ignored.
  */
 object UsbMedia {
 
@@ -25,21 +64,63 @@ object UsbMedia {
 
     /** Creates the empty folders on a key, so the admin sees where the images go. */
     fun ensureFolders(volume: RemovableVolume) {
+        if (volume.readOnly) return
         MediaKind.entries.forEach { runCatching { File(volume.appFolder, it.folder).mkdirs() } }
     }
 
-    /** The images on the first key that has any, or null. Never throws. */
-    fun find(volumes: List<RemovableVolume>): UsbMediaFound? = volumes.firstNotNullOfOrNull { volume ->
-        val images = MediaKind.entries.associateWith { kind -> filesIn(File(volume.appFolder, kind.folder), texts = kind == MediaKind.ANNOUNCEMENTS) }
-        UsbMediaFound(images, signature(images)).takeUnless { it.isEmpty }
+    /** The media files on [volume], or null when it has none, usable or not. Never throws. */
+    fun find(volume: RemovableVolume): UsbMediaFound? = runCatching {
+        val rejected = mutableListOf<RejectedFile>()
+        val images = MediaKind.entries.associateWith { kind ->
+            filesIn(File(volume.appFolder, kind.folder), texts = kind == MediaKind.ANNOUNCEMENTS, rejected)
+        }
+        // Where admins often drop them: next to mosque-tv.json.
+        rejected += listed(volume.appFolder).filter(::isMedia).map { RejectedFile(it, RejectedFile.Reason.MISPLACED) }
+        UsbMediaFound(images, signature(images, rejected), rejected).takeUnless { it.isEmpty && rejected.isEmpty() }
+    }.getOrNull()
+
+    /** False once [found]'s key is taken out: none of its files is there any more. A disk access. */
+    fun stillThere(found: UsbMediaFound): Boolean =
+        (found.images.values.flatten() + found.rejected.map { it.file }).any { it.isFile }
+
+    private fun filesIn(folder: File, texts: Boolean, rejected: MutableList<RejectedFile>): List<File> {
+        val images = mutableListOf<File>()
+        val notes = mutableListOf<File>()
+        for (file in listed(folder)) {
+            val extension = file.extension.lowercase()
+            val reason = when {
+                extension in LocalMediaManager.IMAGE_EXTENSIONS -> when {
+                    file.length() > MAX_BYTES -> RejectedFile.Reason.TOO_LARGE
+                    !isImage(file) -> RejectedFile.Reason.FORMAT
+                    images.size >= MAX_FILES -> RejectedFile.Reason.TOO_MANY
+                    else -> null
+                }
+                extension in OTHER_IMAGE_EXTENSIONS -> RejectedFile.Reason.FORMAT
+                extension != LocalMediaManager.TEXT_EXTENSION -> continue
+                !texts -> RejectedFile.Reason.MISPLACED
+                file.length() !in 1..MAX_TEXT_BYTES || !isText(file) -> RejectedFile.Reason.TEXT
+                notes.size >= MAX_FILES -> RejectedFile.Reason.TOO_MANY
+                else -> null
+            }
+            when {
+                reason != null -> rejected += RejectedFile(file, reason)
+                extension == LocalMediaManager.TEXT_EXTENSION -> notes += file
+                else -> images += file
+            }
+        }
+        return images + notes
     }
 
-    private fun filesIn(folder: File, texts: Boolean): List<File> = runCatching {
-        val files = folder.listFiles().orEmpty().filter { it.isFile }.sortedBy { it.name.lowercase() }
-        val images = files.filter { it.extension.lowercase() in LocalMediaManager.IMAGE_EXTENSIONS && it.length() in 1..MAX_BYTES && isImage(it) }
-        val notes = if (texts) files.filter { it.extension.lowercase() == LocalMediaManager.TEXT_EXTENSION && it.length() in 1..MAX_TEXT_BYTES && isText(it) } else emptyList()
-        images.take(MAX_FILES) + notes.take(MAX_FILES)
-    }.getOrDefault(emptyList())
+    /** A folder's files in name order, without the hidden ones a Mac leaves beside each image (._photo.jpg). */
+    private fun listed(folder: File): List<File> =
+        folder.listFiles().orEmpty().filter { it.isFile && !it.name.startsWith(".") }.sortedBy { it.name.lowercase() }
+
+    private fun isMedia(file: File): Boolean = file.extension.lowercase().let {
+        it in LocalMediaManager.IMAGE_EXTENSIONS || it in OTHER_IMAGE_EXTENSIONS || it == LocalMediaManager.TEXT_EXTENSION
+    }
+
+    /** Images the screen cannot show, told apart by their names alone. */
+    private val OTHER_IMAGE_EXTENSIONS = setOf("heic", "heif", "gif", "bmp", "tif", "tiff", "avif", "jfif")
 
     /** By content, not name: JPEG, PNG or WebP signatures. */
     fun isImage(file: File): Boolean = runCatching {
@@ -57,29 +138,51 @@ object UsbMedia {
     /** Readable text with something in it (not a renamed binary file); see [AnnouncementText]. */
     fun isText(file: File): Boolean = runCatching { AnnouncementText.fromBytes(file.readBytes()) != null }.getOrDefault(false)
 
-    private fun signature(images: Map<MediaKind, List<File>>): String {
+    private fun signature(images: Map<MediaKind, List<File>>, rejected: List<RejectedFile>): String {
         val digest = MessageDigest.getInstance("SHA-256")
         images.forEach { (kind, files) ->
             files.forEach { digest.update("${kind.name}/${it.name}/${it.length()}/${it.lastModified()}\n".toByteArray()) }
         }
+        rejected.forEach { digest.update("${it.reason}/${it.file.path}/${it.file.length()}/${it.file.lastModified()}\n".toByteArray()) }
         return digest.digest().joinToString("") { "%02x".format(Locale.ROOT, it) }
     }
 }
 
-/** Offers the images of a key once, and copies them to the TV when the admin confirms. */
+/**
+ * Offers the images of a key once, and copies them to the TV when the admin confirms.
+ * [readHandled] and [writeHandled] keep the sets already answered ([HandledSignatures]).
+ */
 class UsbMediaInbox(
     private val store: LocalMediaManager,
-    private val lastHandled: () -> String,
-    private val setLastHandled: (String) -> Unit,
+    readHandled: () -> String,
+    writeHandled: (String) -> Unit,
 ) {
-    fun scan(volumes: List<RemovableVolume>): UsbMediaFound? =
-        UsbMedia.find(volumes)?.takeIf { it.signature != lastHandled() }
+    private val handled = HandledSignatures(readHandled, writeHandled)
 
-    /** Replaces each kind the key has images for; the other kind stays as it is. False when a copy failed. */
-    fun apply(found: UsbMediaFound): Boolean {
-        setLastHandled(found.signature)
-        return found.images.filterValues { it.isNotEmpty() }.all { (kind, files) -> runCatching { store.replace(kind, files) }.isSuccess }
+    /** The first key's files not answered yet, with how many of the TV's files each kind's copy removes. */
+    fun scan(volumes: List<RemovableVolume>): UsbMediaFound? =
+        volumes.firstNotNullOfOrNull { volume -> UsbMedia.find(volume)?.takeIf { it.signature !in handled } }?.let { found ->
+            found.copy(replaced = found.images.filterValues { it.isNotEmpty() }.mapValues { (kind, files) -> store.replacedBy(kind, files).size })
+        }
+
+    /**
+     * Copies each kind the key has files for, every kind even when one fails. The set counts as
+     * answered only once all were copied: a key pulled out mid-copy is offered again when it comes back.
+     */
+    fun apply(found: UsbMediaFound): UsbMediaCopy {
+        var copied = 0
+        var unreadable = 0
+        var failure: UsbMediaCopy? = null
+        found.images.filterValues { it.isNotEmpty() }.forEach { (kind, files) ->
+            runCatching { store.replace(kind, files) }
+                .onSuccess { stored ->
+                    copied += stored
+                    unreadable += files.size - stored
+                }
+                .onFailure { failure = if (it is LocalMediaManager.NoRoom || failure == UsbMediaCopy.NoRoom) UsbMediaCopy.NoRoom else UsbMediaCopy.Failed }
+        }
+        return failure ?: UsbMediaCopy.Done(copied, unreadable).also { handled.add(found.signature) }
     }
 
-    fun dismiss(found: UsbMediaFound) = setLastHandled(found.signature)
+    fun dismiss(found: UsbMediaFound) = handled.add(found.signature)
 }

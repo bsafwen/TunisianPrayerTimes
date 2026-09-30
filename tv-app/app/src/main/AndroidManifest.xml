@@ -8,10 +8,8 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <!-- "Display over other apps": what lets Android 10+ bring the display back at boot and after Home -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <!-- Read custom backgrounds & announcements from external storage -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- No storage permission: a USB key is read in the app's own Android/data/<package>/files folder,
+         which needs none (usb/UsbVolumes.kt) -->
     <!-- Optional: official Ramadan/Eid date announcements. Prayer times need no network. -->
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- Whether the TV is online, before asking for the weather or an update -->
@@ -38,25 +36,30 @@
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.HOME" />
         </intent>
+        <!-- The other build (Play or GitHub): installed beside this one, the two fight over the screen -->
+        <package android:name="${otherBuild}" />
     </queries>
 
+    <!-- No backup, and no transfer to a new device: the clock guard's correction and confirmation belong
+         to this box's clock alone. A mosque's settings move between TVs with the USB file or the phone. -->
     <application
         android:name=".TvApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
         android:banner="@drawable/tv_banner"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:layoutDirection="rtl"
-        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.TunisianPrayerTimesTV">
 
+        <!-- The virtual canvas fits any size or density: a new output mode (TV switched off and on) does not recreate it -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="landscape"
-            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation">
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|density|uiMode|fontScale|locale|layoutDirection|keyboard|keyboardHidden|navigation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

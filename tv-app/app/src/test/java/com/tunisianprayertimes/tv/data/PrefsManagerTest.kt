@@ -79,6 +79,23 @@ class PrefsManagerTest {
     }
 
     @Test
+    fun theAdhanScreenLastsTwoMinutesUntilTheAdminChangesIt() {
+        assertEquals(2, prefs.adhanScreenMinutes)
+        assertEquals(2, prefs.profile.display.adhanScreenMinutes)
+        // A file that does not name it leaves it alone; one that does is kept across a restart.
+        prefs.applyProfile(MosqueProfile(display = DisplayOptions(weather = false))) { null }
+        assertEquals(2, prefs.adhanScreenMinutes)
+        prefs.applyProfile(MosqueProfile(display = DisplayOptions(adhanScreenMinutes = 4))) { null }
+        assertEquals(4, PrefsManager(store).adhanScreenMinutes)
+        assertEquals(4, PrefsManager(store).profile.display.adhanScreenMinutes)
+        // Kept within 1 to 5 whatever is asked.
+        prefs.adhanScreenMinutes = 9
+        assertEquals(5, prefs.adhanScreenMinutes)
+        prefs.adhanScreenMinutes = 0
+        assertEquals(1, prefs.adhanScreenMinutes)
+    }
+
+    @Test
     fun aThemeFromBeforeTheRedesignReadsAsTheDefault() {
         assertEquals(PrefsManager.DEFAULT_THEME_ID, prefs.themeId)
         store.edit().putString("theme_id", "midnight_navy").apply()

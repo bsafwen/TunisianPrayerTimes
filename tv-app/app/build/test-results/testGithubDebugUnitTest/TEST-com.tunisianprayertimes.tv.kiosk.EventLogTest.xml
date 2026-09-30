@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.kiosk.EventLogTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.373Z" hostname="HOME" time="0.051">
+<testsuite name="com.tunisianprayertimes.tv.kiosk.EventLogTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:33.686Z" hostname="HOME" time="0.325">
   <properties/>
-  <testcase name="brokenLinesAreSkippedAndDetailsStayOnOneLine" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.013"/>
+  <testcase name="writersOnTheSameFileInSeveralInstancesLoseNothing" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.271"/>
+  <testcase name="brokenLinesAreSkippedAndDetailsStayOnOneLine" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.006"/>
+  <testcase name="aWriteByAnotherInstanceIsSeenByTheFirst" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.009"/>
   <testcase name="aLeftoverTemporaryFileDoesNotHideTheLog" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.009"/>
-  <testcase name="onlyTheNewestEntriesAreKept" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.029"/>
+  <testcase name="onlyTheNewestEntriesAreKept" classname="com.tunisianprayertimes.tv.kiosk.EventLogTest" time="0.03"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

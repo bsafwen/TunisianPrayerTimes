@@ -9,7 +9,18 @@ class AutoStartTest {
 
     private fun resolve(
         home: Boolean = false, owner: Boolean = false, a11y: Boolean = false, overlay: Boolean = false, sdk: Int = 34, fireTv: Boolean = false,
-    ) = AutoStartTierResolver.resolve(home, owner, a11y, overlay, sdk, fireTv)
+        running: Boolean = a11y,
+    ) = AutoStartTierResolver.resolve(home, owner, a11y, overlay, sdk, fireTv, running)
+
+    @Test
+    fun quickStartThatIsOnButNotBoundAllowsNoStartByItself() {
+        val notBound = resolve(a11y = true, sdk = 30, running = false)
+        assertEquals("the kiosk page still says it is on", AutoStartTier.ACCESSIBILITY, notBound.tier)
+        assertFalse(notBound.canBringToFront)
+        assertTrue(resolve(a11y = true, sdk = 30).canBringToFront)
+        assertTrue("display over other apps", resolve(a11y = true, overlay = true, sdk = 30, running = false).canBringToFront)
+        assertTrue("Android 9", resolve(a11y = true, sdk = 28, running = false).canBringToFront)
+    }
 
     @Test
     fun theStrongestAvailableTierWins() {
@@ -54,6 +65,7 @@ class AutoStartTest {
         assertFalse("admin left on purpose", ForegroundWatchdogPolicy.shouldRefront(now, stopped.copy(adminAwayUntil = 40 * min), overlay, true))
         assertFalse("box cannot", ForegroundWatchdogPolicy.shouldRefront(now, stopped, AutoStart(AutoStartTier.NONE), true))
         assertFalse("setup not done", ForegroundWatchdogPolicy.shouldRefront(now, stopped, overlay, false))
+        assertFalse("screen off", ForegroundWatchdogPolicy.shouldRefront(now, stopped, overlay, true, interactive = false))
         assertTrue("admin time is over", ForegroundWatchdogPolicy.shouldRefront(41 * min, stopped.copy(adminAwayUntil = 40 * min), overlay, true))
     }
 
@@ -73,5 +85,43 @@ class AutoStartTest {
         assertFalse(ForegroundWatchdogPolicy.shouldRefront(18 * min, tried, overlay, true))
         assertFalse(ForegroundWatchdogPolicy.shouldRefront(23 * min, tried, overlay, true))
         assertTrue(ForegroundWatchdogPolicy.shouldRefront(28 * min, tried, overlay, true))
+    }
+
+    @Test
+    fun theAdminsTimeAwayEndsAMinuteBeforeThePrayer() {
+        val min = 60_000L
+        val elapsed = 1_000 * min
+        val now = java.time.LocalDateTime.of(2026, 9, 29, 12, 12)
+        val dhuhr = now.withMinute(20)
+        // Wi-Fi at 12:12 with Dhuhr at 12:20: back at 12:19, not after 10 minutes.
+        assertEquals(elapsed + 7 * min, AdminAway.until(elapsed, 10 * min, now, dhuhr))
+        // Exit to Android an hour before the adhan keeps its 30 minutes.
+        assertEquals(elapsed + 30 * min, AdminAway.until(elapsed, 30 * min, now, now.plusHours(1)))
+        // No prayer known (an impossible clock): the time asked for.
+        assertEquals(elapsed + 30 * min, AdminAway.until(elapsed, 30 * min, now, null))
+        // In the last minute before the prayer: no time away at all.
+        assertEquals(elapsed, AdminAway.until(elapsed, 10 * min, now, now.plusSeconds(30)))
+    }
+
+    @Test
+    fun anAwayWindowAlreadyOverIsLookedAtAgainOnceTheDisplayLeft() {
+        val min = 60_000L
+        val elapsed = 1_000 * min
+        // No time left before the prayer: the check at the window's end found the display still in front,
+        // so it comes again just after the display left, not at the watchdog minutes later.
+        assertEquals(elapsed + AdminAway.RECHECK_MILLIS, AdminAway.checkAt(elapsed, elapsed))
+        // A window still running is looked at when it ends.
+        assertEquals(elapsed + 7 * min, AdminAway.checkAt(elapsed + 7 * min, elapsed))
+    }
+
+    @Test
+    fun anAwayCappedAtThePrayerLetsTheWatchdogBringTheDisplayBack() {
+        val min = 60_000L
+        val now = java.time.LocalDateTime.of(2026, 9, 29, 12, 12)
+        val until = AdminAway.until(0L, 30 * min, now, now.withMinute(20))
+        val away = KioskState(resumedAt = 0L, stoppedAt = 0L, adminAwayUntil = until)
+        val overlay = resolve(overlay = true, sdk = 30)
+        assertFalse(ForegroundWatchdogPolicy.shouldRefront(6 * min, away, overlay, true))
+        assertTrue(ForegroundWatchdogPolicy.shouldRefront(7 * min, away, overlay, true))
     }
 }

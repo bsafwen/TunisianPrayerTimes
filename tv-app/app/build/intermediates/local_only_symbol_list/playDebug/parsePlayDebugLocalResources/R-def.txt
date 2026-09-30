@@ -7,4 +7,5 @@ font reem_kufi
 mipmap ic_launcher
 string app_name
 style Theme.TunisianPrayerTimesTV
+xml data_extraction_rules
 xml device_admin

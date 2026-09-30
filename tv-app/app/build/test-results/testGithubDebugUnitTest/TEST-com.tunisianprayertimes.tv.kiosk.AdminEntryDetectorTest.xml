@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tunisianprayertimes.tv.kiosk.AdminEntryDetectorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-29T20:46:56.349Z" hostname="HOME" time="0.002">
+<testsuite name="com.tunisianprayertimes.tv.kiosk.AdminEntryDetectorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-30T12:44:33.671Z" hostname="HOME" time="0.001">
   <properties/>
   <testcase name="menuKeysOpenAndOtherKeysPass" classname="com.tunisianprayertimes.tv.kiosk.AdminEntryDetectorTest" time="0.001"/>
   <testcase name="fiveQuickOksOpenButSlowOnesDoNot" classname="com.tunisianprayertimes.tv.kiosk.AdminEntryDetectorTest" time="0.0"/>
-  <testcase name="remotesWithoutRepeatsOpenOnALateRelease" classname="com.tunisianprayertimes.tv.kiosk.AdminEntryDetectorTest" time="0.001"/>
+  <testcase name="remotesWithoutRepeatsOpenOnALateRelease" classname="com.tunisianprayertimes.tv.kiosk.AdminEntryDetectorTest" time="0.0"/>
   <testcase name="holdingOkWithRepeatsOpensAtThreeSeconds" classname="com.tunisianprayertimes.tv.kiosk.AdminEntryDetectorTest" time="0.0"/>
+  <testcase name="aPressWhoseEndWentElsewhereIsForgotten" classname="com.tunisianprayertimes.tv.kiosk.AdminEntryDetectorTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

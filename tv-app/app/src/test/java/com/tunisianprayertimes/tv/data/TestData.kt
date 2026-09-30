@@ -10,7 +10,12 @@ internal object TestData {
 
     val tvAssets: File get() = path("tunisianprayertimes.tvAssets")
 
-    val tvSources: File get() = path("tunisianprayertimes.tvSources")
+    /** The app's src folder: every source set (main, play, github, debug…) with its manifest and resources. */
+    val tvSourceSets: File get() = path("tunisianprayertimes.tvSourceSets")
+
+    /** The source sets built into the app, without the tests'. */
+    val appSourceSets: List<File>
+        get() = tvSourceSets.listFiles().orEmpty().filter { it.isDirectory && !it.name.startsWith("test") && !it.name.startsWith("androidTest") }.sorted()
 
     val prayerTimes: InmPrayerTimes by lazy {
         InmPrayerTimes.fromParamsJson(File(path("tunisianprayertimes.prayerFormulaDir"), "delegation_params.json").readText())

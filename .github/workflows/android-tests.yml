@@ -7,6 +7,8 @@ on:
     paths:
       - "android-app/**"
       - "multiplatform/shared/**"
+      - "multiplatform/*.gradle.kts"
+      - "multiplatform/gradle/**"
       - "data/prayer-formula/**"
       - "data/official-islamic-dates/**"
       - "build-logic/**"
@@ -16,6 +18,8 @@ on:
     paths:
       - "android-app/**"
       - "multiplatform/shared/**"
+      - "multiplatform/*.gradle.kts"
+      - "multiplatform/gradle/**"
       - "data/prayer-formula/**"
       - "data/official-islamic-dates/**"
       - "build-logic/**"

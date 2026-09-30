@@ -1,10 +1,13 @@
 package com.tunisianprayertimes.tv.ui
 
+import com.tunisianprayertimes.mosque.FlowPhase
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
 import com.tunisianprayertimes.mosque.TextAnnouncement
 import com.tunisianprayertimes.tv.data.Announcement
+import com.tunisianprayertimes.tv.ui.common.NoticePlace
+import com.tunisianprayertimes.tv.ui.common.NoticePlacement
 import com.tunisianprayertimes.tv.ui.display.MAX_DOTS
 import com.tunisianprayertimes.tv.ui.display.PagerKind
 import com.tunisianprayertimes.tv.ui.display.largestFitting
@@ -18,6 +21,32 @@ import org.junit.Test
 import java.time.LocalDate
 
 class AnnouncementsAndNoticesTest {
+
+    private fun place(phase: FlowPhase, adhkar: Boolean = false, settings: Boolean = false, copying: Boolean = false) =
+        NoticePlacement.of(phase, adhkarOnWall = adhkar, onDisplay = !settings, inSettings = settings, copying = copying)
+
+    @Test
+    fun noticesWaitForTheWallAfterThePrayersTexts() {
+        // A key plugged in during the salah: its notice waits through the adhkar, not over their count and source.
+        assertEquals(NoticePlace.HELD, place(FlowPhase.SALAH))
+        assertEquals(NoticePlace.HELD, place(FlowPhase.AFTER_SALAH, adhkar = true))
+        assertEquals(NoticePlace.HELD, place(FlowPhase.ADHAN))
+        assertEquals(NoticePlace.HELD, place(FlowPhase.IQAMAH_COUNTDOWN))
+        // The adhkar played through: the wall is the timetable's or the announcements' again.
+        assertEquals(NoticePlace.BOTTOM, place(FlowPhase.AFTER_SALAH, adhkar = false))
+        assertEquals(NoticePlace.BOTTOM, place(FlowPhase.IDLE))
+    }
+
+    @Test
+    fun theCopysNoticeStaysInTheTopBarExceptOverThePrayer() {
+        // The copy and its outcome, on the wall: in its own top bar, low enough for an overscanning TV.
+        assertEquals(NoticePlace.WALL_TOP, place(FlowPhase.ADHAN, copying = true))
+        assertEquals(NoticePlace.WALL_TOP, place(FlowPhase.AFTER_SALAH, adhkar = true, copying = true))
+        assertEquals(NoticePlace.HELD, place(FlowPhase.SALAH, copying = true))
+        assertEquals(NoticePlace.HELD, place(FlowPhase.KHUTBA, copying = true))
+        // In settings the admin reads them at once, in the top bar.
+        assertEquals(NoticePlace.TOP, place(FlowPhase.SALAH, settings = true))
+    }
 
     @Test
     fun aPassShowsEachAnnouncementOnceThenEnds() {

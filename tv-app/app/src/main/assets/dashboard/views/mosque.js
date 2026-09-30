@@ -129,6 +129,19 @@
       gouvSelect.disabled = false;
       fillDelegations(current);
       placeStart = { gouvernorat: gouvSelect.value, delegation: delegSelect.value };
+      // The form was drawn with these lists still loading: the TV's place is what an edit differs from.
+      ctx.drawn("mosque-gouvernorat", placeStart.gouvernorat);
+      ctx.drawn("mosque-delegation", placeStart.delegation);
+      // A place picked before another tab or a reload and not applied yet: the list is here now.
+      var keptGouvernorat = ctx.edited("mosque-gouvernorat");
+      if (keptGouvernorat !== undefined && findById(places, Number(keptGouvernorat))) {
+        gouvSelect.value = keptGouvernorat;
+        fillDelegations(findById(places, Number(keptGouvernorat)));
+      }
+      var keptDelegation = ctx.edited("mosque-delegation");
+      if (keptDelegation !== undefined && Array.prototype.some.call(delegSelect.options, function (o) { return o.value === keptDelegation; })) {
+        delegSelect.value = keptDelegation;
+      }
     }, function (error) {
       places = null;
       gouvSelect.textContent = "";
@@ -268,5 +281,5 @@
     root.appendChild(el("div", { class: "actions" }, saveButton));
   }
 
-  Dashboard.registerView({ id: "mosque", title: "المسجد", render: render });
+  Dashboard.registerView({ id: "mosque", title: "المسجد", form: true, render: render });
 })();

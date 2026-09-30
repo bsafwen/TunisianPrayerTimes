@@ -1,8 +1,13 @@
 package com.tunisianprayertimes.tv.ui.common
 
+import android.os.SystemClock
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.focusable
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.detectTapGestures
+import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
@@ -26,9 +31,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.geometry.CornerRadius
@@ -42,6 +49,7 @@ import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.type
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -73,13 +81,87 @@ fun Modifier.focusRing(focused: Boolean, radius: Dp = 10.dp, width: Dp = 2.5.dp,
         )
     }
 
-/** OK (or Enter) released on the focused element. */
-fun Modifier.onOk(action: () -> Unit): Modifier = onKeyEvent { event ->
-    if ((event.key == Key.Enter || event.key == Key.DirectionCenter || event.key == Key.NumPadEnter) &&
-        event.type == KeyEventType.KeyUp
-    ) {
-        action(); true
-    } else false
+/**
+ * One element's presses of OK. A press counts only when its key-down reached the element, so the end
+ * of a press begun on the page before (or on another row) does nothing here, and only when it began
+ * [SETTLE_MILLIS] after the element appeared, so a double press cannot also choose on the page the
+ * first one opened. With [repeats], a held OK acts again at each repeat of the key, and its release
+ * adds nothing.
+ */
+internal class OkPress(private val shownAt: Long, private val repeats: Boolean = false) {
+    private var pressed = false
+    private var repeated = false
+
+    /** OK went down on the element; true when it acts now (a held key that repeats). */
+    fun down(eventTime: Long, repeatCount: Int): Boolean {
+        if (repeatCount == 0) {
+            pressed = settled(shownAt, eventTime)
+            repeated = false
+            return false
+        }
+        repeated = repeats && pressed
+        return repeated
+    }
+
+    /** OK came up on the element; true when it acts now. */
+    fun up(): Boolean {
+        val acts = pressed && !repeated
+        pressed = false
+        repeated = false
+        return acts
+    }
+
+    companion object {
+        /** Longer than a double press, shorter than it takes to read the page that just opened. */
+        const val SETTLE_MILLIS = 500L
+
+        /** Whether an element shown at [shownAt] may act on a press or a click at [at]. */
+        fun settled(shownAt: Long, at: Long): Boolean = at - shownAt >= SETTLE_MILLIS
+    }
+}
+
+/** OK (or Enter) pressed and released on the focused element ([OkPress]). */
+fun Modifier.onOk(action: () -> Unit): Modifier = okKeys(repeats = false, action)
+
+/** As [onOk], and again at each repeat of the key while OK is held: the keys of a [Stepper]. */
+fun Modifier.onOkRepeating(action: () -> Unit): Modifier = okKeys(repeats = true, action)
+
+private fun Modifier.okKeys(repeats: Boolean, action: () -> Unit): Modifier = composed {
+    val press = remember { OkPress(SystemClock.uptimeMillis(), repeats) }
+    onKeyEvent { event ->
+        if (event.key != Key.Enter && event.key != Key.DirectionCenter && event.key != Key.NumPadEnter) return@onKeyEvent false
+        val acts = when (event.type) {
+            KeyEventType.KeyDown -> press.down(event.nativeKeyEvent.eventTime, event.nativeKeyEvent.repeatCount)
+            KeyEventType.KeyUp -> press.up()
+            else -> false
+        }
+        if (acts) action()
+        true
+    }
+}
+
+/**
+ * A click on the element: an air mouse in mouse mode sends its OK as a click, not as a key. Settled
+ * as a key press is ([OkPress.settled]).
+ */
+fun Modifier.onPointerClick(action: () -> Unit): Modifier = composed {
+    val shownAt = remember { SystemClock.uptimeMillis() }
+    val current by rememberUpdatedState(action)
+    pointerInput(Unit) {
+        detectTapGestures { if (OkPress.settled(shownAt, SystemClock.uptimeMillis())) current() }
+    }
+}
+
+/** A pointer held down [millis] on the element: an air mouse's way to the settings, as holding OK is the remote's. */
+fun Modifier.onPointerHold(millis: Long, action: () -> Unit): Modifier = composed {
+    val current by rememberUpdatedState(action)
+    pointerInput(millis) {
+        awaitEachGesture {
+            awaitFirstDown(requireUnconsumed = false)
+            val released = withTimeoutOrNull(millis) { waitForUpOrCancellation(); true }
+            if (released == null) current()
+        }
+    }
 }
 
 /** Text on a focusable surface: ink on the ivory of the focus, [rest] otherwise. */
@@ -121,6 +203,7 @@ fun FocusableSurface(
             .onFocusChanged { focused = it.isFocused }
             .focusable()
             .onOk(onClick)
+            .onPointerClick(onClick)
             .padding(contentPadding),
         contentAlignment = contentAlignment,
     ) { content(focused) }
@@ -145,12 +228,16 @@ fun FocusableListItem(
     }
 }
 
-/** A small square key: − and + beside a value. A size in [modifier] replaces the default 44 dp. */
+/**
+ * A small square key: − and + beside a value. A size in [modifier] replaces the default 44 dp.
+ * [repeats]: held OK presses it again and again.
+ */
 @Composable
 fun FocusableButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    repeats: Boolean = false,
 ) {
     var focused by remember { mutableStateOf(false) }
     val shape = RoundedCornerShape(9.dp)
@@ -161,7 +248,8 @@ fun FocusableButton(
             .background(if (focused) Midad.Text else Midad.SurfaceRaised, shape)
             .onFocusChanged { focused = it.isFocused }
             .focusable()
-            .onOk(onClick),
+            .then(if (repeats) Modifier.onOkRepeating(onClick) else Modifier.onOk(onClick))
+            .onPointerClick(onClick),
         contentAlignment = Alignment.Center,
     ) {
         Text(text = text, style = midadStyle(22.sp, FontWeight.Medium, onSurfaceText(focused)))
@@ -169,9 +257,9 @@ fun FocusableButton(
 }
 
 /**
- * − value +: a number the remote changes one step at a time. The value keeps [valueWidth] whatever
- * it says, so the keys never move under the admin's thumb. [minusModifier] reaches the − key (to
- * give it the page's first focus).
+ * − value +: a number the remote changes one step at a time, and steadily while OK is held on a key.
+ * The value keeps [valueWidth] whatever it says, so the keys never move under the admin's thumb.
+ * [minusModifier] reaches the − key (to give it the page's first focus).
  */
 @Composable
 fun Stepper(
@@ -184,7 +272,7 @@ fun Stepper(
     minusModifier: Modifier = Modifier,
 ) {
     Row(modifier, verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-        FocusableButton(text = "−", onClick = onMinus, modifier = minusModifier.size(keySize))
+        FocusableButton(text = "−", onClick = onMinus, modifier = minusModifier.size(keySize), repeats = true)
         Text(
             value,
             style = midadStyle(17.sp, FontWeight.Medium),
@@ -193,7 +281,7 @@ fun Stepper(
             softWrap = false,
             modifier = Modifier.width(valueWidth),
         )
-        FocusableButton(text = "+", onClick = onPlus, modifier = Modifier.size(keySize))
+        FocusableButton(text = "+", onClick = onPlus, modifier = Modifier.size(keySize), repeats = true)
     }
 }
 

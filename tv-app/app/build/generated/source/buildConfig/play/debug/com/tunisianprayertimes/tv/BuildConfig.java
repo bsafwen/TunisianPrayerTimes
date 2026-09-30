@@ -10,4 +10,6 @@ public final class BuildConfig {
   public static final String FLAVOR = "play";
   public static final int VERSION_CODE = 1;
   public static final String VERSION_NAME = "1.0";
+  // Field from product flavor: play
+  public static final String OTHER_BUILD = "com.tunisianprayertimes.tv.github";
 }

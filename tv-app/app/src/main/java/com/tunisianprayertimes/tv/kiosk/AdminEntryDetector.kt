@@ -7,10 +7,17 @@ package com.tunisianprayertimes.tv.kiosk
  * both are handled. Every other key, and a short OK, passes through untouched.
  */
 class AdminEntryDetector(
-    private val longPressMillis: Long = 3_000,
-    private val taps: Int = 5,
-    private val tapWindowMillis: Long = 3_000,
+    private val longPressMillis: Long = LONG_PRESS_MILLIS,
+    private val taps: Int = TAPS,
+    private val tapWindowMillis: Long = TAP_WINDOW_MILLIS,
 ) {
+    /** The defaults, which the hint on the wall states ([com.tunisianprayertimes.tv.ui.TvStrings.HOLD_OK_HINT]). */
+    companion object {
+        const val LONG_PRESS_MILLIS = 3_000L
+        const val TAPS = 5
+        const val TAP_WINDOW_MILLIS = 3_000L
+    }
+
     enum class Key { OK, MENU, OTHER }
     enum class Action { DOWN, UP }
     enum class Result { PASS, OPEN_ADMIN, CONSUME }
@@ -23,6 +30,13 @@ class AdminEntryDetector(
         Key.MENU -> if (action == Action.UP) Result.OPEN_ADMIN else Result.CONSUME
         Key.OTHER -> Result.PASS
         Key.OK -> onOk(action, eventTime)
+    }
+
+    /** Forgets the press and taps under way: the keys went elsewhere, and the end of that press never comes here. */
+    fun reset() {
+        okDownAt = null
+        openedThisPress = false
+        okTaps.clear()
     }
 
     private fun onOk(action: Action, eventTime: Long): Result {

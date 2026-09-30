@@ -1,7 +1,5 @@
 package com.tunisianprayertimes.tv.ui.display
 
-import androidx.compose.animation.Crossfade
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -19,13 +17,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.TransformOrigin
+import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Prayer
-import com.tunisianprayertimes.mosque.AdhkarSlide
+import com.tunisianprayertimes.mosque.AdhanReply
 import com.tunisianprayertimes.mosque.MosqueAdhkar
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.PrayerEvent
@@ -42,6 +43,7 @@ import com.tunisianprayertimes.tv.ui.theme.midadStyle
 import com.tunisianprayertimes.tv.ui.theme.mihrab
 import com.tunisianprayertimes.tv.ui.theme.skyBackground
 import java.time.LocalDateTime
+import kotlin.math.roundToInt
 
 /*
  * The screens of the prayer itself: the adhan in its mihrab, the countdown to the iqamah, the black
@@ -56,11 +58,12 @@ private val NameOnDimSky = Color(0xFFC8CEDF)
 
 /**
  * The adhan: the sky of the moment pressed to the top, and in the mihrab the prayer's name, its time,
- * and what is said with the muezzin ([companion], from the reviewed catalog, paced over the screen by
- * [MosqueAdhkar.adhanCompanionAt]). [sky] is null on the «مداد» theme.
+ * and, for the whole screen at once, what the listener says while the muezzin calls, in order
+ * ([MosqueAdhkar.adhanReplies], from the reviewed catalog; Fajr's has one line more). The wall cannot
+ * follow the muezzin, so nothing moves with the call. [sky] is null on the «مداد» theme.
  */
 @Composable
-fun AdhanScreen(event: PrayerEvent, now: LocalDateTime, mosqueName: String, companion: AdhkarSlide?, sky: SkyColors?) {
+fun AdhanScreen(event: PrayerEvent, now: LocalDateTime, mosqueName: String, sky: SkyColors?) {
     Box(Modifier.fillMaxSize().skyBackground(sky, 115.dp, 165.dp)) {
         MosqueClockRow(mosqueName, now, Modifier.padding(top = 27.dp, start = 48.dp, end = 48.dp), nameColor = NameOnSky)
         Column(
@@ -70,36 +73,65 @@ fun AdhanScreen(event: PrayerEvent, now: LocalDateTime, mosqueName: String, comp
                 .width(500.dp)
                 .fillMaxHeight()
                 .mihrab()
-                // Inside the niche's walls, clear of its double line.
-                .padding(top = 85.dp, start = 28.dp, end = 28.dp),
+                // Inside the niche's walls, under its keystone, clear of its double line.
+                .padding(top = 78.dp, start = 28.dp, end = 28.dp, bottom = 12.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Text(TvStrings.ADHAN_NOW, style = midadStyle(26.sp, color = Midad.Muted))
-            val name = midadStyle(120.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.05f)
-            Text(TvStrings.prayerName(event.prayer), style = name, maxLines = 1, modifier = Modifier.padding(top = 3.dp).lineBox(name))
-            val time = midadStyle(46.sp, FontWeight.SemiBold, Midad.Gold, lineHeight = 1f)
+            Text(TvStrings.ADHAN_NOW, style = midadStyle(18.sp, color = Midad.Muted))
+            // Smaller than on the countdown: the replies below need the height, Fajr's eight lines included.
+            val name = midadStyle(72.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.05f)
+            Text(TvStrings.prayerName(event.prayer), style = name, maxLines = 1, modifier = Modifier.padding(top = 2.dp).lineBox(name))
+            val time = midadStyle(30.sp, FontWeight.SemiBold, Midad.Gold, lineHeight = 1f)
             Text(TvStrings.hm(event.adhanAt.toLocalTime()), style = time, maxLines = 1, modifier = Modifier.padding(top = 2.dp).lineBox(time))
-            if (companion != null) AdhanCompanion(companion, Modifier.padding(top = 25.dp).weight(1f, fill = false))
+            AdhanReplies(MosqueAdhkar.adhanReplies(fajr = event.prayer == Prayer.FAJR), Modifier.padding(top = 10.dp).weight(1f, fill = false))
         }
     }
 }
 
-/** The text said with the muezzin, what it is, and which of the three it is. */
+/**
+ * The listener's lines in Amiri, one per row, each cue small and muted beside its line, and the source
+ * under them. Set at its size and made smaller as a whole if the niche is too small for it, so no line
+ * or cue is ever cut or wrapped.
+ */
 @Composable
-private fun AdhanCompanion(slide: AdhkarSlide, modifier: Modifier) {
-    Crossfade(slide, modifier, tween(TEXT_FADE_MILLIS), label = "companion") { shown ->
+private fun AdhanReplies(replies: List<AdhanReply>, modifier: Modifier) {
+    ShrinkToFit(modifier) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            FittedText(shown.text, midadStyle(29.sp, family = Amiri, lineHeight = 1.6f), Modifier.weight(1f, fill = false))
-            Row(
-                Modifier.padding(top = 4.dp),
-                horizontalArrangement = Arrangement.spacedBy(9.dp),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                TvStrings.adhanCaption(shown.entryId)?.let { Text(it, style = midadStyle(14.sp, color = Midad.Muted)) }
-                val index = MosqueAdhkar.ADHAN_IDS.indexOf(shown.entryId)
-                if (index >= 0) {
-                    Dots(MosqueAdhkar.ADHAN_IDS.size, lit = { it == index }, size = 6.5.dp, gap = 5.dp, on = Midad.Silver)
+            // As far apart as the ticker's Amiri lines: closer, one line's vowel marks reach the next one's.
+            val line = midadStyle(21.sp, family = Amiri, lineHeight = 1.75f)
+            val cue = midadStyle(12.sp, color = Midad.Muted)
+            replies.forEach { reply ->
+                Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Text(reply.text, style = line, maxLines = 1, softWrap = false, modifier = Modifier.lineBox(line))
+                    reply.cue?.let { Text(it, style = cue, maxLines = 1, softWrap = false) }
                 }
+            }
+            Text(MosqueAdhkar.ADHAN_REPLIES_SOURCE, style = midadStyle(13.sp, color = Midad.Muted), modifier = Modifier.padding(top = 5.dp))
+        }
+    }
+}
+
+/**
+ * [content] measured at its own size, then drawn scaled down (never up) to fit the space it is given,
+ * centred at the top: a religious text is shown whole, smaller if need be, never cut.
+ */
+@Composable
+private fun ShrinkToFit(modifier: Modifier, content: @Composable () -> Unit) {
+    Layout(content, modifier) { measurables, constraints ->
+        val placeable = measurables.single().measure(Constraints())
+        val scale = listOf(
+            1f,
+            if (constraints.hasBoundedWidth) constraints.maxWidth / placeable.width.coerceAtLeast(1).toFloat() else 1f,
+            if (constraints.hasBoundedHeight) constraints.maxHeight / placeable.height.coerceAtLeast(1).toFloat() else 1f,
+        ).min()
+        val width = (placeable.width * scale).roundToInt().coerceIn(constraints.minWidth, constraints.maxWidth)
+        val height = (placeable.height * scale).roundToInt().coerceIn(constraints.minHeight, constraints.maxHeight)
+        layout(width, height) {
+            // Scaled from its top centre, over the centre of the box it is given.
+            placeable.placeWithLayer((width - placeable.width) / 2, 0) {
+                scaleX = scale
+                scaleY = scale
+                transformOrigin = TransformOrigin(0.5f, 0f)
             }
         }
     }

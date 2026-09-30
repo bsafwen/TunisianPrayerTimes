@@ -161,6 +161,31 @@ class TunisianHijriCalendarTest {
     }
 
     @Test
+    fun anAdminDateKeepsItsDayBesideAnAnnouncementWithOneOddMonth() {
+        // Announced: a 30-day Ramadan. The mosque's own Eid al-Fitr a day later makes it 31 days.
+        val ramadan = LocalDate.of(2026, 2, 19)
+        val manualFitr = ramadan.plusDays(31)
+        val calendar = TunisianHijriCalendar(
+            mapOf(1447 to record(ramadan = ramadan, fitr = ramadan.plusDays(30), adha = LocalDate.of(2026, 5, 28))),
+            mapOf(1447 to ManualIslamicDates(eidFitr = manualFitr)),
+        )
+        assertEquals(HijriCalendarDate(1447, 9, 1, false), calendar.date(ramadan))
+        assertEquals(HijriCalendarDate(1447, 9, 31, false), calendar.date(manualFitr.minusDays(1)))
+        assertEquals(HijriCalendarDate(1447, 10, 1, false), calendar.date(manualFitr))
+        assertEquals(HijriCalendarDate(1447, 12, 10, false), calendar.date(LocalDate.of(2026, 5, 28)))
+        // Every day still has one Hijri date, and only Ramadan leaves the usual lengths.
+        for (month in 1..12) {
+            val current = calendar.month(1447, month)
+            assertTrue(if (month == 9) current.lengthOfMonth == 31 else current.lengthOfMonth in 29..30, "1447/$month has ${current.lengthOfMonth} days")
+            assertEquals(current.endExclusive, calendar.adjacentMonth(1447, month, 1)!!.start)
+            for (day in 1..current.lengthOfMonth) {
+                val converted = calendar.date(current.start.plusDays(day - 1L))
+                assertEquals(Triple(1447, month, day), Triple(converted.year, converted.month, converted.day))
+            }
+        }
+    }
+
+    @Test
     fun impossibleAdhaSpacingRetainsEarlierAnnouncements() {
         val ramadan = LocalDate.of(2026, 2, 19)
         val fitr = LocalDate.of(2026, 3, 20)

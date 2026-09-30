@@ -9,9 +9,12 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.SystemClock
 import android.provider.Settings
 import android.util.Log
@@ -34,12 +37,20 @@ object KioskController {
     const val ACTION_WATCHDOG = "com.tunisianprayertimes.tv.kiosk.WATCHDOG"
     const val ACTION_AUTOSTART_CHECK = "com.tunisianprayertimes.tv.kiosk.AUTOSTART_CHECK"
     const val ACTION_BOOT_REFRONT = "com.tunisianprayertimes.tv.kiosk.BOOT_REFRONT"
+    const val ACTION_AWAY_END = "com.tunisianprayertimes.tv.kiosk.AWAY_END"
+
+    /** How late the away window's alarm may come; Android 12+ stretches it to 10 minutes (inexact alarms). */
+    private const val AWAY_END_WINDOW_MILLIS = 30_000L
+
+    /** The app's own timer for the end of the away window, on time while the process lives. */
+    private val awayTimer by lazy { Handler(Looper.getMainLooper()) }
+    private val AWAY_TIMER_TOKEN = Any()
 
     /** After boot, the box's own home screen (or a profile picker) may land on top of the display: looked at again then. */
     val BOOT_REFRONT_DELAYS_MILLIS = listOf(10_000L, 30_000L, 60_000L)
 
     /** The disabled launcher alias the admin can turn on to make the app the home screen. */
-    private const val HOME_ALIAS = "com.tunisianprayertimes.tv.KioskHomeAlias"
+    const val HOME_ALIAS = "com.tunisianprayertimes.tv.KioskHomeAlias"
 
     fun autoStart(context: Context): AutoStart = AutoStartTierResolver.resolve(
         isDefaultHome = isDefaultHome(context),
@@ -48,6 +59,7 @@ object KioskController {
         canDrawOverlays = canDrawOverlays(context),
         sdkInt = Build.VERSION.SDK_INT,
         isFireTv = isFireTv(context),
+        accessibilityRunning = KioskAccessibility.serviceConnected,
     )
 
     /** Amazon's documented checks: the Fire TV feature, or a model name starting with "AFT". */
@@ -97,11 +109,20 @@ object KioskController {
 
     fun power(context: Context): PowerStatus = PowerSettingsProbe.probe(object : PowerSettingsReader {
         override fun attentiveTimeoutMillis(): Long? =
-            runCatching { Settings.Secure.getLong(context.contentResolver, "attentive_timeout") }.getOrNull()
+            runCatching { Settings.Secure.getLong(context.contentResolver, "attentive_timeout") }.getOrElse {
+                // Never set: the box then sleeps after the system's own default, a few hours on many TV builds.
+                if (it is Settings.SettingNotFoundException) defaultAttentiveTimeoutMillis() else null
+            }
 
         override fun stayOnWhilePluggedIn(): Int? =
             runCatching { Settings.Global.getInt(context.contentResolver, Settings.Global.STAY_ON_WHILE_PLUGGED_IN) }.getOrNull()
-    })
+    }, energySaver = Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
+
+    private fun defaultAttentiveTimeoutMillis(): Long? = runCatching {
+        val resources = Resources.getSystem()
+        val id = resources.getIdentifier("config_attentiveTimeout", "integer", "android")
+        if (id == 0) null else resources.getInteger(id).toLong()
+    }.getOrNull()
 
     /** Pins the app with lock task when an admin provisioned the box as device owner (adb dpm). */
     fun lockTaskIfDeviceOwner(activity: Activity) {
@@ -115,6 +136,27 @@ object KioskController {
 
     fun unlockTask(activity: Activity) {
         runCatching { activity.stopLockTask() }
+    }
+
+    /**
+     * Gives device-owner mode up, so the app can be uninstalled (to install the other build, or hand the
+     * box on): otherwise only a factory reset removes it. Unpins the app and turns the automatic zone back
+     * on (the app turns it off to set Tunisia's) first, while it still may. False when not device owner or refused.
+     */
+    fun leaveDeviceOwner(activity: Activity, log: EventLog): Boolean {
+        if (!isDeviceOwner(activity)) return false
+        unlockTask(activity)
+        return runCatching {
+            val dpm = activity.getSystemService(DevicePolicyManager::class.java)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) runCatching { setAutoZone(dpm, adminComponent(activity), true) }
+            @Suppress("DEPRECATION") // still the only way for the device owner itself
+            dpm.clearDeviceOwnerApp(activity.packageName)
+            log.append(KioskEvent.ADMIN_EXIT, "device-owner off")
+            true
+        }.getOrElse {
+            Log.w(TAG, "leave device owner", it)
+            false
+        }
     }
 
     // The system zone and clock, on device-owner boxes (Android 9+). Prayer times never need them: the
@@ -204,10 +246,15 @@ object KioskController {
         }
     }
 
-    /** Brings the display to the front from the background; the box may refuse (tier NONE). */
+    /**
+     * Brings the display to the front from the background; the box may refuse (tier NONE). As the home
+     * screen, through the HOME intent: the system keeps home activities in their own task, and an
+     * explicit start would add a second display beside it.
+     */
     fun bringToFront(context: Context): Boolean = start(
         context,
-        Intent(context, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_REORDER_TO_FRONT),
+        if (isDefaultHome(context) && !isFireTv(context)) Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_HOME).setPackage(context.packageName)
+        else Intent(context, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_REORDER_TO_FRONT),
     )
 
     /** Starts the display again in [delayMillis], after this process dies (crash, restart). */
@@ -252,6 +299,24 @@ object KioskController {
                 alarms.set(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + delay, pending)
             }
         }.onFailure { Log.w(TAG, "boot refront alarms", it) }
+    }
+
+    /**
+     * The end of the admin's away window ([AdminAway]): the display comes back then, if the admin is
+     * still in the system's pages, instead of at the next watchdog tick. The app's own timer is on
+     * time; the alarm, which Android 12+ may deliver up to 10 minutes late, is there for a process the
+     * system stopped meanwhile.
+     */
+    fun scheduleAwayEnd(context: Context, atElapsed: Long) {
+        val app = context.applicationContext
+        runCatching {
+            awayTimer.removeCallbacksAndMessages(AWAY_TIMER_TOKEN)
+            val delay = (atElapsed - SystemClock.elapsedRealtime()).coerceAtLeast(0)
+            awayTimer.postAtTime({ refrontAfterAway(app) }, AWAY_TIMER_TOKEN, SystemClock.uptimeMillis() + delay)
+        }.onFailure { Log.w(TAG, "away end timer", it) }
+        runCatching {
+            alarms(context)?.setWindow(AlarmManager.ELAPSED_REALTIME, atElapsed, AWAY_END_WINDOW_MILLIS, broadcast(context, ACTION_AWAY_END))
+        }.onFailure { Log.w(TAG, "away end alarm", it) }
     }
 
     /** After boot: did the display actually reach the screen? */

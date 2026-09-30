@@ -4,6 +4,9 @@ import com.tunisianprayertimes.adhkar.DhikrCatalog
 import com.tunisianprayertimes.adhkar.DhikrCategory
 import com.tunisianprayertimes.adhkar.DhikrEntry
 import com.tunisianprayertimes.adhkar.countForCollection
+import com.tunisianprayertimes.adhkar.referenceForCollection
+import kotlin.math.abs
+import kotlin.math.ceil
 
 /**
  * One screen of the mosque's adhkar: [text] to be said [count] times, with its [reference].
@@ -19,6 +22,13 @@ data class AdhkarSlide(
     val part: Int = 1,
     val parts: Int = 1,
 )
+
+/**
+ * One line of the adhan screen: what the listener says ([text]) and, when it is not simply the
+ * muezzin's phrase repeated, which phrase it answers ([cue]). A [fajrOnly] line answers the phrase
+ * only Fajr's adhan has.
+ */
+data class AdhanReply(val text: String, val cue: String? = null, val fajrOnly: Boolean = false)
 
 /** One text of a mosque's list: a reviewed text of the catalog, or the mosque's own. */
 sealed interface MosqueDhikr
@@ -51,11 +61,39 @@ data class AdhkarContent(val afterSalah: CustomAdhkarList? = null, val ticker: C
  */
 object MosqueAdhkar {
 
-    /** Said while and after the muezzin calls, in this order. */
-    val ADHAN_IDS = listOf("adhan_response", "adhan_shahada", "after_adhan_wasila")
+    /**
+     * What the listener says while the muezzin calls, in the adhan's order, all shown at once for the
+     * whole adhan screen (the wall cannot follow the muezzin, so nothing is paced against the call).
+     * The hadith of ʿUmar ibn al-Khaṭṭāb, [ADHAN_REPLIES_SOURCE] (quoted whole in the narrations of
+     * "adhan_response"): the listener repeats each phrase, except at the two «حيّ على» where he says
+     * «لا حول ولا قوة إلا بالله». The Fajr-only line answering «الصلاة خير من النوم» is the owner's
+     * editorial choice of 2026-09-30, by analogy with the two «حيّ على»: no narration gives a reply to
+     * it, so it carries its own cue and is not attributed to Muslim 385 (docs/adhkar-sources.md).
+     * The reply to the shahada (Muslim 386) and the dua after the adhan (Bukhari 614) stay in the
+     * catalog for the phone app; they are not on the adhan screen.
+     */
+    val ADHAN_REPLIES: List<AdhanReply> = listOf(
+        AdhanReply("اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ"),
+        AdhanReply("أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ"),
+        AdhanReply("أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ"),
+        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", cue = "عند «حَيَّ عَلَى الصَّلَاةِ»"),
+        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", cue = "عند «حَيَّ عَلَى الْفَلَاحِ»"),
+        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", cue = "عند «الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ»", fajrOnly = true),
+        AdhanReply("اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ"),
+        AdhanReply("لَا إِلَهَ إِلَّا اللَّهُ"),
+    )
 
-    /** The short daily texts of the ticker under the prayer times. */
-    val TICKER_IDS = listOf("salah_salam", "subhanallah_bihamdih", "kalimatan_khafifatan", "la_hawla_quwwata", DhikrCatalog.SALAWAT_ID)
+    /** The source shown under the replies. */
+    const val ADHAN_REPLIES_SOURCE = "صحيح مسلم 385"
+
+    /** The replies of one adhan: Fajr's has the line for «الصلاة خير من النوم», the others do not. */
+    fun adhanReplies(fajr: Boolean): List<AdhanReply> = ADHAN_REPLIES.filter { fajr || !it.fajrOnly }
+
+    /**
+     * The short daily texts of the ticker under the prayer times. It runs all day, so only texts of the
+     * day, the morning and the evening: none said only right after the prayer.
+     */
+    val TICKER_IDS = listOf("subhanallah_bihamdih", "kalimatan_khafifatan", "la_hawla_quwwata", DhikrCatalog.SALAWAT_ID)
 
     /** The bundled adhkar after the obligatory prayer: the catalog's after-prayer collection. */
     val AFTER_SALAH_IDS: List<String> = DhikrCatalog.collectionOrder[DhikrCategory.SALAH].orEmpty()
@@ -80,13 +118,21 @@ object MosqueAdhkar {
         is CustomDhikr -> ownSlides(item)
     }
 
-    /** One text as the ticker shows it: read once, however many times it is said elsewhere. */
+    /**
+     * One text as the ticker shows it: read once, however many times it is said elsewhere, and on one
+     * line (the ticker is a single line: a text written line by line would stand over the arcade).
+     */
     fun tickerSlides(item: MosqueDhikr): List<AdhkarSlide> = when (item) {
         is ReviewedDhikr -> DhikrCatalog.find(item.id)?.let { entry ->
-            slides(entry, null, 1).map { it.copy(count = 1, durationMillis = AdhkarPacer.durationMillis(it.text, 1)) }
+            slides(entry.copy(text = oneLine(entry.text)), null, 1).map { it.copy(count = 1, durationMillis = AdhkarPacer.durationMillis(it.text, 1)) }
         }.orEmpty()
-        is CustomDhikr -> ownSlides(item.copy(count = 1))
+        is CustomDhikr -> ownSlides(item.copy(text = oneLine(item.text), count = 1))
     }
+
+    /** [text] with its line breaks and runs of spaces as single spaces. */
+    private fun oneLine(text: String): String = text.trim().replace(WHITESPACE, " ")
+
+    private val WHITESPACE = Regex("""\s+""")
 
     /** The ticker holds every slide at least this long; a long text is set smaller or on two lines, never scrolled. */
     const val TICKER_MIN_SLIDE_MILLIS = 12_000L
@@ -94,38 +140,17 @@ object MosqueAdhkar {
     /** About how long one round of the ticker takes for these texts (without the announcements between them). */
     fun tickerMillis(slides: List<AdhkarSlide>): Long = slides.sumOf { maxOf(TICKER_MIN_SLIDE_MILLIS, it.durationMillis) }
 
-    fun adhanCompanion(): List<AdhkarSlide> = entries(ADHAN_IDS, DhikrCategory.PRAYER)
-
-    /**
-     * What to show [elapsedMillis] into an adhan screen of [screenMillis]: the reply to the muezzin
-     * while he calls, the shahada after his, and the dua once the call is over. Spread over the
-     * screen rather than paced by length, because the adhan itself sets the rhythm.
-     */
-    fun adhanCompanionAt(elapsedMillis: Long, screenMillis: Long, slides: List<AdhkarSlide> = adhanCompanion()): AdhkarSlide? {
-        if (slides.isEmpty()) return null
-        val shares = ADHAN_SHARES.take(slides.size).let { if (it.size < slides.size) List(slides.size) { 1.0 } else it }
-        val position = elapsedMillis.coerceAtLeast(0).toDouble() / screenMillis.coerceAtLeast(1) * shares.sum()
-        var end = 0.0
-        shares.forEachIndexed { index, share ->
-            end += share
-            if (position < end) return slides[index]
-        }
-        return slides.last()
-    }
-
-    /** Half the adhan for the reply, a fifth for the shahada, the rest for the dua after it. */
-    private val ADHAN_SHARES = listOf(0.5, 0.2, 0.3)
-
     /** The ticker's texts: the bundled ones, the mosque's list, or both. */
     fun ticker(content: AdhkarContent = AdhkarContent()): List<AdhkarSlide> =
         items(TICKER_IDS, content.ticker).flatMap(::tickerSlides)
 
     /**
      * The ticker with the mosque's written [announcements] between its adhkar, one after every two,
-     * each labelled [label] where a dhikr shows its source. Every announcement comes once per round.
+     * each labelled [label] where a dhikr shows its source, and on one line as the texts are. Every
+     * announcement comes once per round.
      */
     fun tickerWithAnnouncements(ticker: List<AdhkarSlide>, announcements: List<String>, label: String): List<AdhkarSlide> {
-        val news = announcements.map { AdhkarSlide(null, it, label, 1, AdhkarPacer.durationMillis(it, 1)) }
+        val news = announcements.map(::oneLine).map { AdhkarSlide(null, it, label, 1, AdhkarPacer.durationMillis(it, 1)) }
         if (news.isEmpty()) return ticker
         if (ticker.isEmpty()) return news
         val result = mutableListOf<AdhkarSlide>()
@@ -169,27 +194,29 @@ object MosqueAdhkar {
         return List(item.count.coerceIn(1, MAX_PAGED_REPETITIONS)) { once }.flatten()
     }
 
-    private const val MAX_PAGED_REPETITIONS = 3
+    const val MAX_PAGED_REPETITIONS = 3
 
     /**
      * An entry as slides: one per step (33 × three phrases, then the tahlil), or one per page of a
-     * long text. [countOverride] is the mosque's count; a text said in steps keeps its own.
+     * long text. [countOverride] is the mosque's count; a text said in steps keeps its own. The source
+     * is the part of the entry's that concerns [category], when the catalog gives one.
      */
     private fun slides(entry: DhikrEntry, category: DhikrCategory?, countOverride: Int?): List<AdhkarSlide> {
+        val reference = entry.referenceForCollection(category)
         if (entry.steps.isNotEmpty()) {
             return entry.steps.mapIndexed { index, step ->
-                AdhkarSlide(entry.id, step.text, entry.reference, step.repetitions,
+                AdhkarSlide(entry.id, step.text, reference, step.repetitions,
                     AdhkarPacer.durationMillis(step.text, step.repetitions), index + 1, entry.steps.size)
             }
         }
         val count = countOverride ?: entry.countForCollection(category)
         val pages = AdhkarPacer.pages(entry.text)
         if (pages.size == 1) {
-            return listOf(AdhkarSlide(entry.id, entry.text, entry.reference, count, AdhkarPacer.durationMillis(entry.text, count)))
+            return listOf(AdhkarSlide(entry.id, entry.text, reference, count, AdhkarPacer.durationMillis(entry.text, count)))
         }
         // A long text is read page by page, and whole again for each repetition (at most three).
         val once = pages.mapIndexed { index, page ->
-            AdhkarSlide(entry.id, page, entry.reference, 1, AdhkarPacer.durationMillis(page, 1), index + 1, pages.size)
+            AdhkarSlide(entry.id, page, reference, 1, AdhkarPacer.durationMillis(page, 1), index + 1, pages.size)
         }
         return List(count.coerceIn(1, MAX_PAGED_REPETITIONS)) { once }.flatten()
     }
@@ -206,6 +233,12 @@ object AdhkarPacer {
     /** Longer texts are split into pages of about this many characters. */
     const val PAGE_CHARS = 260
 
+    /**
+     * A page holds at most this many lines of a text written line by line (a mosque's own dua, one
+     * phrase per line): the after-prayer screen fits them at over half its size, never cut.
+     */
+    const val PAGE_LINES = 6
+
     fun durationMillis(text: String, count: Int): Long {
         val words = text.split(Regex("""\s+""")).count { it.isNotBlank() }
         val perRepetition = maxOf(MIN_REPETITION_MILLIS, MILLIS_PER_WORD * words)
@@ -213,24 +246,41 @@ object AdhkarPacer {
     }
 
     /**
-     * [text] split into pages of at most [PAGE_CHARS] characters, never inside a word: after a verse
-     * number, a pause mark or punctuation when there is one in reach, otherwise after a space. The
-     * pages put together give back [text].
+     * [text] split into pages of at most [PAGE_CHARS] characters and [PAGE_LINES] lines, never inside
+     * a word: after a verse number, a pause mark, punctuation or a line break when there is one in
+     * reach, otherwise after a space. The pages are as even as those cuts allow (a text a little too
+     * long for one page makes two halves, not a full page and its last clause alone). The pages put
+     * together give back [text].
      */
     fun pages(text: String): List<String> {
-        if (text.length <= PAGE_CHARS) return listOf(text)
+        if (fill(text, 0, text.length) <= 1.0) return listOf(text)
         val breaks = BREAK.findAll(text).map { it.range.last + 1 }.filter { it in 1 until text.length }.toList()
         val spaces = SPACE.findAll(text).map { it.range.last + 1 }.filter { it in 1 until text.length }.toList()
         val pages = mutableListOf<String>()
         var start = 0
-        while (text.length - start > PAGE_CHARS) {
-            fun inReach(cuts: List<Int>) = cuts.lastOrNull { it > start && it - start <= PAGE_CHARS }
-            val cut = inReach(breaks) ?: inReach(spaces) ?: break // a single 260-letter word: left whole
+        while (true) {
+            val rest = fill(text, start, text.length)
+            if (rest <= 1.0) break
+            // The rest needs this many pages: this one takes its share, and leaves no more than the others can hold.
+            val count = ceil(rest)
+            val share = rest / count
+            fun fits(cut: Int) = cut > start && fill(text, start, cut) <= 1.0
+            fun leaves(cut: Int) = fill(text, cut, text.length) <= count - 1
+            fun nearest(cuts: List<Int>, ok: (Int) -> Boolean) = cuts.filter(ok).minByOrNull { abs(fill(text, start, it) - share) }
+            val cut = nearest(breaks) { fits(it) && leaves(it) } ?: nearest(spaces) { fits(it) && leaves(it) }
+                ?: nearest(breaks, ::fits) ?: nearest(spaces, ::fits)
+                ?: break // a single 260-letter word: left whole
             pages += text.substring(start, cut)
             start = cut
         }
         pages += text.substring(start)
         return pages.filter { it.isNotBlank() }.ifEmpty { listOf(text) }
+    }
+
+    /** How much of a page [text] from [from] to [to] takes: its share of the characters or of the lines, whichever is more. */
+    private fun fill(text: String, from: Int, to: Int): Double {
+        val lines = text.substring(from, to).trimEnd().count { it == '\n' } + 1
+        return maxOf((to - from).toDouble() / PAGE_CHARS, lines.toDouble() / PAGE_LINES)
     }
 
     /** After a verse number (۝253), a pause mark (ۚ ۖ ۗ), punctuation or a line break, with the space after it. */

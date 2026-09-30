@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.tv.update
 
+import java.time.Instant
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -15,6 +16,8 @@ data class ReleaseAsset(
     val size: Long,
     /** Lowercase hex SHA-256 that GitHub computed at upload, when it gives one. */
     val sha256: String?,
+    /** When the release was published (epoch milliseconds), when GitHub says. */
+    val publishedAt: Long? = null,
 )
 
 /**
@@ -30,10 +33,14 @@ object GithubReleases {
 
     /**
      * Published releases, newest first, a page at a time; unauthenticated (60 requests an hour per
-     * address), so checked about once a day, reading at most [MAX_PAGES] pages.
+     * address), so checked about once a day. A check first reads the [FIRST_PAGE_SIZE] newest, which
+     * nearly always hold the newest TV release, and only without one reads on, at most [MAX_PAGES]
+     * pages of [PAGE_SIZE].
      */
+    const val FIRST_PAGE_SIZE = 20
     const val PAGE_SIZE = 100
     const val MAX_PAGES = 3
+    const val FIRST_PAGE_URL = "https://api.github.com/repos/$REPOSITORY/releases?per_page=$FIRST_PAGE_SIZE"
     fun pageUrl(page: Int) = "https://api.github.com/repos/$REPOSITORY/releases?per_page=$PAGE_SIZE&page=$page"
 
     /** One page of releases: the TV releases on it, and how many releases it held. */
@@ -67,6 +74,7 @@ object GithubReleases {
                     url = url,
                     size = (asset["size"] as? JsonPrimitive)?.longOrNull ?: return@firstNotNullOfOrNull null,
                     sha256 = asset.text("digest")?.takeIf { it.startsWith("sha256:") }?.removePrefix("sha256:")?.lowercase(),
+                    publishedAt = release.text("published_at")?.let { runCatching { Instant.parse(it).toEpochMilli() }.getOrNull() },
                 )
             }
         }

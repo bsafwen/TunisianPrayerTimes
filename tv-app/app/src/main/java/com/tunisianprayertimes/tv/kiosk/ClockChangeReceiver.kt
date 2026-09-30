@@ -8,7 +8,7 @@ import android.provider.Settings
 import com.tunisianprayertimes.time.ClockGuard
 import com.tunisianprayertimes.time.ClockSource
 import com.tunisianprayertimes.time.TunisTime
-import com.tunisianprayertimes.tv.data.PrefsManager
+import com.tunisianprayertimes.tv.data.PrefsClockStore
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -27,7 +27,8 @@ enum class ClockChange { TIME, ZONE }
  * correction and confirmation meaningless: they are dropped ([ClockGuard.systemClockChanged]) and the
  * display, told through [listener], asks the network again. The app's own setting of the clock on a
  * device-owner box ([KioskController.setSystemTime]) is recognised and keeps the confirmation it
- * followed. A new zone moves no instant: it is only logged, as the guard reads the zone at every tick.
+ * followed. A new zone moves no instant: it is only logged, as the guard reads the zone at every tick
+ * (and does not take a clock it saw on another zone for Tunisia's until the clock is set again).
  */
 class ClockChangeReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
@@ -40,7 +41,7 @@ class ClockChangeReceiver : BroadcastReceiver() {
         val log = KioskStore(context).eventLog
         if (change == ClockChange.TIME) {
             val own = OwnClockSet.consume(device.toEpochMilli(), SystemClock.elapsedRealtime())
-            if (!own) ClockGuard.systemClockChanged(PrefsManager(context).clockStore, device)
+            if (!own) ClockGuard.systemClockChanged(PrefsClockStore(context), device, ZoneId.systemDefault())
             log.append(KioskEvent.CLOCK_SET, ClockLog.clockSet(device, ZoneId.systemDefault(), autoTime(context), own))
             if (own) return
         } else {
