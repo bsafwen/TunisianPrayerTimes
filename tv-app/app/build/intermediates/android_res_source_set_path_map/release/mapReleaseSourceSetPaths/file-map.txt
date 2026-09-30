@@ -1,9 +1,0 @@
-com.tunisianprayertimes.tv.app-pngs-0 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\generated\res\pngs\release
-com.tunisianprayertimes.tv.app-resValues-1 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\generated\res\resValues\release
-com.tunisianprayertimes.tv.app-updated_navigation_xml-2 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\generated\updated_navigation_xml\release
-com.tunisianprayertimes.tv.app-packageReleaseResources-3 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\intermediates\incremental\release\packageReleaseResources\merged.dir
-com.tunisianprayertimes.tv.app-packageReleaseResources-4 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\intermediates\incremental\release\packageReleaseResources\stripped.dir
-com.tunisianprayertimes.tv.app-merged-not-compiled-resources-5 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\intermediates\merged-not-compiled-resources\release
-com.tunisianprayertimes.tv.app-release-6 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\build\intermediates\merged_res\release\mergeReleaseResources
-com.tunisianprayertimes.tv.app-main-7 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\main\res
-com.tunisianprayertimes.tv.app-release-8 C:\Users\barou\Desktop\Workspace\TunisianPrayerTimes\tv-app\app\src\release\res

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Only which app comes to the front: no window content, no keys, no gestures. -->
-<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
-    android:description="@string/quick_start_description"
-    android:accessibilityEventTypes="typeWindowStateChanged"
-    android:accessibilityFeedbackType="feedbackGeneric"
-    android:accessibilityFlags="flagDefault"
-    android:canRetrieveWindowContent="false"
-    android:notificationTimeout="0" />
