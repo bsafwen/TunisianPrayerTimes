@@ -79,30 +79,38 @@ class MosqueAdhkarTest {
 
     @Test
     fun theAdhanScreenShowsTheListenersRepliesInTheCallsOrder() {
-        // Pinned letter by letter: the owner's brief of 2026-09-30, from Muslim 385 in the catalog's
-        // modern orthography («لَا … إِلَّا»), with the Fajr-only line as its editorial choice.
+        // Pinned letter by letter: the owner's decisions of 2026-09-30, from Muslim 385 in the catalog's
+        // modern orthography («لَا … إِلَّا»): only the replies, each as many times as the muezzin says
+        // its phrase (twice for each shahada and each «حيّ على»), and the two Fajr-only lines as the
+        // owner's editorial choice.
         val laHawla = "لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ"
         val fajr = listOf(
             AdhanReply("اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ"),
             AdhanReply("أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ"),
+            AdhanReply("أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ"),
             AdhanReply("أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ"),
-            AdhanReply(laHawla, cue = "عند «حَيَّ عَلَى الصَّلَاةِ»"),
-            AdhanReply(laHawla, cue = "عند «حَيَّ عَلَى الْفَلَاحِ»"),
-            AdhanReply(laHawla, cue = "عند «الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ»", fajrOnly = true),
+            AdhanReply("أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ"),
+            AdhanReply(laHawla),
+            AdhanReply(laHawla),
+            AdhanReply(laHawla),
+            AdhanReply(laHawla),
+            AdhanReply(laHawla, fajrOnly = true),
+            AdhanReply(laHawla, fajrOnly = true),
             AdhanReply("اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ"),
             AdhanReply("لَا إِلَهَ إِلَّا اللَّهُ"),
         )
         assertEquals(fajr, MosqueAdhkar.ADHAN_REPLIES)
         assertEquals(fajr, MosqueAdhkar.adhanReplies(fajr = true))
-        // The other four adhans have no «الصلاة خير من النوم»: seven lines, the same order.
-        assertEquals(fajr.filterIndexed { index, _ -> index != 5 }, MosqueAdhkar.adhanReplies(fajr = false))
-        assertEquals("صحيح مسلم 385", MosqueAdhkar.ADHAN_REPLIES_SOURCE)
-        // The narration quoted in the catalog is the one cited, and the replies are its words.
+        // The other four adhans have no «الصلاة خير من النوم»: eleven lines, the same order.
+        assertEquals(fajr.filterIndexed { index, _ -> index != 9 && index != 10 }, MosqueAdhkar.adhanReplies(fajr = false))
+        // Four «لا حول» at every adhan, two for each «حيّ على»; six at Fajr.
+        assertEquals(4, MosqueAdhkar.adhanReplies(fajr = false).count { it.text == laHawla })
+        assertEquals(6, MosqueAdhkar.adhanReplies(fajr = true).count { it.text == laHawla })
+        // The narration quoted in the catalog is the hadith the replies follow (docs/adhkar-sources.md).
         val narration = DhikrNarrations.byId["adhan_response"].orEmpty()
         assertTrue(narration.endsWith("— صحيح مسلم 385"), narration)
-        // No cue on a plain repetition; the Fajr-only line is the only one without a narration behind it.
-        assertEquals(listOf(3, 4, 5), MosqueAdhkar.ADHAN_REPLIES.withIndex().filter { it.value.cue != null }.map { it.index })
-        assertEquals(listOf(5), MosqueAdhkar.ADHAN_REPLIES.withIndex().filter { it.value.fajrOnly }.map { it.index })
+        // The Fajr-only lines are the only ones without a narration behind them.
+        assertEquals(listOf(9, 10), MosqueAdhkar.ADHAN_REPLIES.withIndex().filter { it.value.fajrOnly }.map { it.index })
     }
 
     @Test

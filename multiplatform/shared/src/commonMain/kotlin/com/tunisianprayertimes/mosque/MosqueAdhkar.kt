@@ -23,12 +23,8 @@ data class AdhkarSlide(
     val parts: Int = 1,
 )
 
-/**
- * One line of the adhan screen: what the listener says ([text]) and, when it is not simply the
- * muezzin's phrase repeated, which phrase it answers ([cue]). A [fajrOnly] line answers the phrase
- * only Fajr's adhan has.
- */
-data class AdhanReply(val text: String, val cue: String? = null, val fajrOnly: Boolean = false)
+/** One line of the adhan screen: what the listener says. A [fajrOnly] line answers the phrase only Fajr's adhan has. */
+data class AdhanReply(val text: String, val fajrOnly: Boolean = false)
 
 /** One text of a mosque's list: a reviewed text of the catalog, or the mosque's own. */
 sealed interface MosqueDhikr
@@ -64,29 +60,33 @@ object MosqueAdhkar {
     /**
      * What the listener says while the muezzin calls, in the adhan's order, all shown at once for the
      * whole adhan screen (the wall cannot follow the muezzin, so nothing is paced against the call).
-     * The hadith of ʿUmar ibn al-Khaṭṭāb, [ADHAN_REPLIES_SOURCE] (quoted whole in the narrations of
+     * The hadith of ʿUmar ibn al-Khaṭṭāb, Muslim 385 (quoted whole in the narrations of
      * "adhan_response"): the listener repeats each phrase, except at the two «حيّ على» where he says
-     * «لا حول ولا قوة إلا بالله». The Fajr-only line answering «الصلاة خير من النوم» is the owner's
-     * editorial choice of 2026-09-30, by analogy with the two «حيّ على»: no narration gives a reply to
-     * it, so it carries its own cue and is not attributed to Muslim 385 (docs/adhkar-sources.md).
+     * «لا حول ولا قوة إلا بالله». Only the replies: the muezzin does not follow the screen, so no line
+     * names the phrase it answers. Each reply comes as many times as the muezzin says its phrase: twice
+     * for each shahada and each «حيّ على». The two Fajr-only lines answering «الصلاة خير من النوم» are
+     * the owner's editorial choice of 2026-09-30, by analogy with the two «حيّ على»: no narration gives
+     * a reply to it, so they are not attributed to Muslim 385 (docs/adhkar-sources.md).
      * The reply to the shahada (Muslim 386) and the dua after the adhan (Bukhari 614) stay in the
      * catalog for the phone app; they are not on the adhan screen.
      */
     val ADHAN_REPLIES: List<AdhanReply> = listOf(
         AdhanReply("اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ"),
         AdhanReply("أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ"),
+        AdhanReply("أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ"),
         AdhanReply("أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ"),
-        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", cue = "عند «حَيَّ عَلَى الصَّلَاةِ»"),
-        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", cue = "عند «حَيَّ عَلَى الْفَلَاحِ»"),
-        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", cue = "عند «الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ»", fajrOnly = true),
+        AdhanReply("أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ"),
+        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ"),
+        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ"),
+        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ"),
+        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ"),
+        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", fajrOnly = true),
+        AdhanReply("لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", fajrOnly = true),
         AdhanReply("اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ"),
         AdhanReply("لَا إِلَهَ إِلَّا اللَّهُ"),
     )
 
-    /** The source shown under the replies. */
-    const val ADHAN_REPLIES_SOURCE = "صحيح مسلم 385"
-
-    /** The replies of one adhan: Fajr's has the line for «الصلاة خير من النوم», the others do not. */
+    /** The replies of one adhan: Fajr's has the lines for «الصلاة خير من النوم», the others do not. */
     fun adhanReplies(fajr: Boolean): List<AdhanReply> = ADHAN_REPLIES.filter { fajr || !it.fajrOnly }
 
     /**

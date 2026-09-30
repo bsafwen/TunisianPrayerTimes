@@ -59,7 +59,7 @@ private val NameOnDimSky = Color(0xFFC8CEDF)
 /**
  * The adhan: the sky of the moment pressed to the top, and in the mihrab the prayer's name, its time,
  * and, for the whole screen at once, what the listener says while the muezzin calls, in order
- * ([MosqueAdhkar.adhanReplies], from the reviewed catalog; Fajr's has one line more). The wall cannot
+ * ([MosqueAdhkar.adhanReplies], from the reviewed catalog; Fajr's has two lines more). The wall cannot
  * follow the muezzin, so nothing moves with the call. [sky] is null on the «مداد» theme.
  */
 @Composable
@@ -89,9 +89,10 @@ fun AdhanScreen(event: PrayerEvent, now: LocalDateTime, mosqueName: String, sky:
 }
 
 /**
- * The listener's lines in Amiri, one per row, each cue small and muted beside its line, and the source
- * under them. Set at its size and made smaller as a whole if the niche is too small for it, so no line
- * or cue is ever cut or wrapped.
+ * The listener's lines in Amiri, on the niche's axis, two by two where a phrase is said twice in a row
+ * ([adhanRows]), with no source line: the owner's choice, since no one hadith covers every line (the
+ * sources are in docs/adhkar-sources.md). Set at its size and made smaller as a whole if the niche is
+ * too small for it, so no line is ever cut or wrapped.
  */
 @Composable
 private fun AdhanReplies(replies: List<AdhanReply>, modifier: Modifier) {
@@ -99,16 +100,26 @@ private fun AdhanReplies(replies: List<AdhanReply>, modifier: Modifier) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             // As far apart as the ticker's Amiri lines: closer, one line's vowel marks reach the next one's.
             val line = midadStyle(21.sp, family = Amiri, lineHeight = 1.75f)
-            val cue = midadStyle(12.sp, color = Midad.Muted)
-            replies.forEach { reply ->
-                Row(horizontalArrangement = Arrangement.spacedBy(10.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Text(reply.text, style = line, maxLines = 1, softWrap = false, modifier = Modifier.lineBox(line))
-                    reply.cue?.let { Text(it, style = cue, maxLines = 1, softWrap = false) }
+            adhanRows(replies).forEach { row ->
+                Row(horizontalArrangement = Arrangement.spacedBy(22.dp)) {
+                    row.forEach { Text(it, style = line, maxLines = 1, softWrap = false, modifier = Modifier.lineBox(line)) }
                 }
             }
-            Text(MosqueAdhkar.ADHAN_REPLIES_SOURCE, style = midadStyle(13.sp, color = Midad.Muted), modifier = Modifier.padding(top = 5.dp))
         }
     }
+}
+
+/**
+ * The replies as rows: a phrase said twice in a row shares one, as the muezzin calls it and as «الله أكبر
+ * الله أكبر» already reads; more of the same go on two by two, and an odd one stays on its own.
+ */
+internal fun adhanRows(replies: List<AdhanReply>): List<List<String>> {
+    val rows = mutableListOf<MutableList<String>>()
+    for (reply in replies) {
+        val last = rows.lastOrNull()
+        if (last != null && last.size == 1 && last.single() == reply.text) last += reply.text else rows += mutableListOf(reply.text)
+    }
+    return rows
 }
 
 /**

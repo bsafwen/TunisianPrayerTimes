@@ -111,7 +111,7 @@ class ScreenGalleryActivity : ComponentActivity() {
         val mosque = "جامع النور"
         when (screen) {
             "adhan" -> {
-                // index 1: Fajr's adhan, whose replies have one line more.
+                // index 1: Fajr's adhan, whose replies have two lines more.
                 val prayer = if (friday) Prayer.JOMOAA else if (index == 1) Prayer.FAJR else Prayer.ASR
                 val event = event(prayer, date.atTime(15, 32), date.atTime(15, 42))
                 AdhanScreen(event, now, mosque, sky)
