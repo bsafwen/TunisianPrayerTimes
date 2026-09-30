@@ -91,22 +91,27 @@ The verses are excerpts: each is the complete clause shown, not the whole verse.
 
 ## Mosque screen adhan replies
 
-Decided by the owner on 2026-09-30: the wall cannot follow the muezzin, so for the whole adhan screen the TV shows, all at once and in order, what the listener says while the muezzin calls. They live in `MosqueAdhkar.ADHAN_REPLIES` (shared module) as structured lines, each with an optional cue naming the muezzin's phrase it answers; a mosque can't change them. `MosqueAdhkarTest` pins the wording, the order and the Fajr-only line. The orthography is the catalog's modern form (`لَا … إِلَّا`), not the narration's `لاَ … إِلاَّ`.
+Decided by the owner on 2026-09-30: the wall cannot follow the muezzin, so for the whole adhan screen the TV shows, all at once and in order, what the listener says while the muezzin calls: only the replies (the muezzin does not follow the screen, so no line names the phrase it answers), each as many times as the muezzin says its phrase (twice for each shahada and each `حيّ على`). They live in `MosqueAdhkar.ADHAN_REPLIES` (shared module); a mosque can't change them. `MosqueAdhkarTest` pins the wording, the order and the Fajr-only lines. On the screen, a phrase said twice in a row shares one row. The orthography is the catalog's modern form (`لَا … إِلَّا`), not the narration's `لاَ … إِلاَّ`.
 
-| # | Line | Cue | Adhans | Source |
+| # | Line | Answers the muezzin's | Adhans | Source |
 | --- | --- | --- | --- | --- |
-| 1 | `اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ` | | all | [Sahih Muslim 385](https://sunnah.com/muslim:385) |
-| 2 | `أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ` | | all | Sahih Muslim 385 |
-| 3 | `أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ` | | all | Sahih Muslim 385 |
-| 4 | `لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ` | `عند «حَيَّ عَلَى الصَّلَاةِ»` | all | Sahih Muslim 385 |
-| 5 | `لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ` | `عند «حَيَّ عَلَى الْفَلَاحِ»` | all | Sahih Muslim 385 |
-| 6 | `لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ` | `عند «الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ»` | Fajr only | The owner's editorial choice, 2026-09-30 (not Muslim 385) |
-| 7 | `اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ` | | all | Sahih Muslim 385 |
-| 8 | `لَا إِلَهَ إِلَّا اللَّهُ` | | all | Sahih Muslim 385 |
+| 1 | `اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ` | takbir | all | [Sahih Muslim 385](https://sunnah.com/muslim:385) |
+| 2 | `أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ` | first shahada | all | Sahih Muslim 385 |
+| 3 | `أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ` | first shahada, said again | all | Sahih Muslim 385; twice as the muezzin says it (the owner's choice, 2026-09-30) |
+| 4 | `أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ` | second shahada | all | Sahih Muslim 385 |
+| 5 | `أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ` | second shahada, said again | all | Sahih Muslim 385; twice as the muezzin says it (the owner's choice, 2026-09-30) |
+| 6 | `لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ` | `حَيَّ عَلَى الصَّلَاةِ` | all | Sahih Muslim 385 |
+| 7 | `لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ` | `حَيَّ عَلَى الصَّلَاةِ`, said again | all | Sahih Muslim 385; twice as the muezzin says it (the owner's choice, 2026-09-30) |
+| 8 | `لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ` | `حَيَّ عَلَى الْفَلَاحِ` | all | Sahih Muslim 385 |
+| 9 | `لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ` | `حَيَّ عَلَى الْفَلَاحِ`, said again | all | Sahih Muslim 385; twice as the muezzin says it (the owner's choice, 2026-09-30) |
+| 10 | `لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ` | `الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ` | Fajr only | The owner's editorial choice, 2026-09-30 (not Muslim 385) |
+| 11 | `لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ` | `الصَّلَاةُ خَيْرٌ مِنَ النَّوْمِ`, said again | Fajr only | The owner's editorial choice, 2026-09-30 (not Muslim 385) |
+| 12 | `اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ` | takbir | all | Sahih Muslim 385 |
+| 13 | `لَا إِلَهَ إِلَّا اللَّهُ` | tahlil | all | Sahih Muslim 385 |
 
-Lines 1-5, 7 and 8 are the hadith of ʿUmar ibn al-Khaṭṭāb (quoted whole in the catalog's narrations under `adhan_response`): the listener repeats each phrase of the muezzin, except at the two `حيّ على`, where he says `لا حول ولا قوة إلا بالله`. The screen shows the source `صحيح مسلم 385` under the lines.
+The "Answers" column documents the order; the screen shows only the lines. Lines 1-9, 12 and 13 are the hadith of ʿUmar ibn al-Khaṭṭāb (quoted whole in the catalog's narrations under `adhan_response`): the listener repeats each phrase of the muezzin, except at the two `حيّ على`, where he says `لا حول ولا قوة إلا بالله`. The hadith names each phrase once; the muezzin says each shahada and each `حيّ على` twice, and the screen shows each reply twice, as the listener repeats it (the owner's choice, 2026-09-30, after the general command of Bukhari 611 to say what the muezzin says). The screen shows no source line (the owner's choice, 2026-09-30): no single hadith covers every line, so this table is the record of their sources.
 
-Line 6 is not from Muslim 385 or any other narration: no narration gives a reply to `الصلاة خير من النوم`. Answering it with `لا حول ولا قوة إلا بالله`, by analogy with the two `حيّ على`, is the owner's editorial choice of 2026-09-30. On the screen it carries its own cue and no separate source.
+Lines 10 and 11 are not from Muslim 385 or any other narration: no narration gives a reply to `الصلاة خير من النوم`. Answering it with `لا حول ولا قوة إلا بالله`, twice as the muezzin says it, by analogy with the two `حيّ على`, is the owner's editorial choice of 2026-09-30.
 
 ## Mosque screen ticker
 
