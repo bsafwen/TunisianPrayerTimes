@@ -1,6 +1,7 @@
 /*
- * Iqamah and prayer duration of every prayer, and what changes in Ramadan.
- * Builds { prayers, ramadan } of the settings file; the TV previews it before applying.
+ * How long the adhan screen lasts, the iqamah and prayer duration of every prayer, whether the mosque holds
+ * Jumu'a and the Eid prayer, how long its khutba lasts, and what changes in Ramadan. Builds { prayers,
+ * ramadan, display: { adhanScreenMinutes } } of the settings file; the TV previews it before applying.
  */
 (function () {
   "use strict";
@@ -139,11 +140,14 @@
   Dashboard.registerView({
     id: "prayers",
     title: "الإقامة",
+    // Its edited fields are kept by the page until applied (another tab, the back button).
+    form: true,
     render: function (root, ctx) {
       var el = ctx.el;
       var settings = ctx.settingsCopy() || {};
       var prayers = settings.prayers || {};
       var ramadan = settings.ramadan || {};
+      var display = settings.display || {};
       var today = {};
       var todayPrayers = ctx.state && ctx.state.today && ctx.state.today.prayers;
       (Array.isArray(todayPrayers) ? todayPrayers : []).forEach(function (p) { if (p) today[p.id] = p; });
@@ -153,6 +157,25 @@
       var usual = el("section", { class: "card" },
         el("h2", { text: "الإقامة ومدة الصلاة" }),
         el("p", { class: "hint", text: "الإقامة: دقائق بعد الأذان (بعد الشروق للعيدين) أو وقت ثابت. مدة الصلاة: مدة الشاشة السوداء. الدقائق من 1 إلى 90." }));
+
+      // ---- how long the adhan screen lasts: an iqamah set sooner waits for its end
+      var adhanInput = el("input", {
+        type: "number", min: 1, max: 5, step: 1, inputMode: "numeric", class: "tabular", id: "adhan-screen-minutes",
+        value: String(display.adhanScreenMinutes || 2)
+      });
+      var adhanScreen = tracked(function () { return inputSnapshot(adhanInput); }, function (errors) {
+        var text = String(adhanInput.value || "").trim();
+        var n = /^\d+$/.test(text) ? Number(text) : NaN;
+        if (isNaN(n) || n < 1 || n > 5) {
+          errors.push("مدة شاشة الأذان: عدد دقائق من 1 إلى 5");
+          return undefined;
+        }
+        return n;
+      });
+      usual.appendChild(el("div", { class: "list-item" },
+        el("label", { text: "مدة شاشة الأذان بالدقائق", attrs: { for: adhanInput.id } }),
+        adhanInput,
+        el("p", { class: "hint", text: "تعرض الشاشة ما يقوله السامع مع المؤذّن طوال هذه المدة. الإقامة الأقرب إلى الأذان من هذه المدة تنتظر نهايتها، فلا تسودّ الشاشة والمؤذّن يؤذّن." })));
       ctx.PRAYERS.forEach(function (prayer) {
         var current = prayers[prayer.key] || {};
         var id = "prayer-" + prayer.key;
@@ -175,6 +198,46 @@
         });
       });
       root.appendChild(usual);
+
+      // ---- whether the mosque holds Jumu'a and the Eid prayer at all (a neighbourhood masjid holds neither)
+      function held(key) { return !(prayers[key] && prayers[key].held === false); }
+      var heldRows = [
+        { keys: ["jumua"], id: "held-jumua", text: "تقام صلاة الجمعة في هذا المسجد",
+          hint: "إن لم تُقم يبقى الظهر يوم الجمعة، دون شاشة الخطبة." },
+        { keys: ["eidFitr", "eidAdha"], id: "held-eid", text: "تقام صلاة العيد في هذا المسجد",
+          hint: "إن لم تُقم لا يُعرض وقتها ولا عدّها التنازلي، وتبقى تهنئة العيد." }
+      ].map(function (row) {
+        var check = el("input", { type: "checkbox", id: row.id, checked: row.keys.every(held) });
+        return {
+          keys: row.keys,
+          check: check,
+          wasChecked: check.checked,
+          node: el("div", { class: "list-item" },
+            el("label", { class: "check", attrs: { for: row.id } }, check, row.text),
+            el("p", { class: "hint", text: row.hint }))
+        };
+      });
+      // ---- how long Jumu'a's khutba lasts: 0 keeps its quiet screen from the adhan to the iqamah
+      var khutbaInput = el("input", {
+        type: "number", min: 0, max: 60, step: 1, inputMode: "numeric", class: "tabular", id: "khutba-minutes",
+        value: String((prayers.jumua && prayers.jumua.khutba) || 0)
+      });
+      var khutba = tracked(function () { return inputSnapshot(khutbaInput); }, function (errors) {
+        var text = String(khutbaInput.value || "").trim();
+        var n = /^\d+$/.test(text) ? Number(text) : NaN;
+        if (isNaN(n) || n > 60) {
+          errors.push("مدة خطبة الجمعة: عدد دقائق من 0 إلى 60");
+          return undefined;
+        }
+        return n;
+      });
+      root.appendChild(el("section", { class: "card" },
+        el("h2", { text: "الجمعة والعيد" }),
+        heldRows.map(function (row) { return row.node; }),
+        el("div", { class: "list-item" },
+          el("label", { text: "مدة خطبة الجمعة بالدقائق", attrs: { for: khutbaInput.id } }),
+          khutbaInput,
+          el("p", { class: "hint", text: "شاشة الخطبة الهادئة بهذه المدة قبل الإقامة، وقبلها العدّ التنازلي. 0: من الأذان إلى الإقامة." }))));
 
       // ---- what changes in Ramadan
       var ramadanRows = [];
@@ -233,6 +296,20 @@
           var change = changes(row);
           if (change) partialPrayers[row.prayer.key] = change;
         });
+        // A switch left as drawn sends nothing; the Eid switch sets both Eids.
+        heldRows.forEach(function (row) {
+          if (row.check.checked === row.wasChecked) return;
+          row.keys.forEach(function (key) {
+            partialPrayers[key] = partialPrayers[key] || {};
+            partialPrayers[key].held = row.check.checked;
+          });
+        });
+        var adhanChange = adhanScreen.change(errors);
+        var khutbaChange = khutba.change(errors);
+        if (khutbaChange.changed) {
+          partialPrayers.jumua = partialPrayers.jumua || {};
+          partialPrayers.jumua.khutba = khutbaChange.value;
+        }
         ramadanRows.forEach(function (row) {
           // Unchecking returns the prayer to its usual setting; a box left unchecked sends nothing.
           var change = row.check.checked ? changes(row)
@@ -246,7 +323,8 @@
         var partial = {};
         if (Object.keys(partialPrayers).length) partial.prayers = partialPrayers;
         if (Object.keys(partialRamadan).length) partial.ramadan = partialRamadan;
-        if (!partial.prayers && !partial.ramadan) {
+        if (adhanChange.changed) partial.display = { adhanScreenMinutes: adhanChange.value };
+        if (!partial.prayers && !partial.ramadan && !partial.display) {
           ctx.toast("لا تغيير");
           return;
         }

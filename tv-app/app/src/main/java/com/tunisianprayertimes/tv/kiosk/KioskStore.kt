@@ -56,11 +56,15 @@ class KioskStore(
             prefs.edit().putOrRemove(KEY_REPLACED, value).putInt(KEY_REPLACED_BOOT, bootCount()).apply()
         }
 
-    /** Written synchronously: the crash handler calls this just before the process is killed. */
+    /**
+     * Written synchronously: the crash handler calls this just before the process is killed.
+     * Empty after a reboot: the previous boot's crash times are small enough to pass for recent ones.
+     */
     var crashes: CrashLoopGuard.State
-        get() = CrashLoopGuard.State.decode(prefs.getString(KEY_CRASHES, null))
+        get() = if (prefs.getInt(KEY_CRASHES_BOOT, -1) != bootCount()) CrashLoopGuard.State()
+        else CrashLoopGuard.State.decode(prefs.getString(KEY_CRASHES, null))
         set(value) {
-            prefs.edit().putString(KEY_CRASHES, value.encode()).commit()
+            prefs.edit().putString(KEY_CRASHES, value.encode()).putInt(KEY_CRASHES_BOOT, bootCount()).commit()
         }
 
 
@@ -82,6 +86,7 @@ class KioskStore(
         private const val KEY_REFRONTED = "refronted_at"
         private const val KEY_ADMIN_AWAY = "admin_away_until"
         private const val KEY_CRASHES = "crash_guard"
+        private const val KEY_CRASHES_BOOT = "crash_guard_boot"
         private const val KEY_BOOT = "boot_count"
         private const val KEY_QUICK_START = "quick_start_wanted"
         private const val KEY_REPLACED = "package_replaced_at"

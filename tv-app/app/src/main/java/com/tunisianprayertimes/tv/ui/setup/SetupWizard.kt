@@ -20,7 +20,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,12 +36,14 @@ import com.tunisianprayertimes.mosque.DisplayTexts
 import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.tv.data.IqamahConfig
+import com.tunisianprayertimes.tv.data.IqamahMode
 import com.tunisianprayertimes.tv.data.PrefsManager
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.common.ChoiceGrid
 import com.tunisianprayertimes.tv.ui.common.FocusableListItem
 import com.tunisianprayertimes.tv.ui.common.KeyHints
 import com.tunisianprayertimes.tv.ui.common.initialFocus
+import com.tunisianprayertimes.tv.ui.common.rtl
 import com.tunisianprayertimes.tv.ui.theme.Amiri
 import com.tunisianprayertimes.tv.ui.theme.Dots
 import com.tunisianprayertimes.tv.ui.theme.Kufi
@@ -52,15 +56,41 @@ import com.tunisianprayertimes.tv.ui.theme.midadStyle
 private const val STEPS = 4
 
 /**
+ * The iqamah table through a recreation of the activity: seven numbers a prayer (every field of
+ * [IqamahConfig], held as 1 or 0), in [PrefsManager.EDITABLE]'s order.
+ */
+internal val IqamahConfigsSaver: Saver<Map<Prayer, IqamahConfig>, Any> = listSaver(
+    save = { configs ->
+        PrefsManager.EDITABLE.flatMap { prayer ->
+            configs.getValue(prayer).run {
+                listOf(mode.ordinal, delayMinutes, fixedHour, fixedMinute, salahMinutes, if (held) 1 else 0, khutbaMinutes)
+            }
+        }
+    },
+    restore = { values ->
+        PrefsManager.EDITABLE.zip(values.chunked(CONFIG_VALUES)) { prayer, value ->
+            prayer to IqamahConfig(IqamahMode.entries[value[0]], value[1], value[2], value[3], value[4], held = value[5] == 1, khutbaMinutes = value[6])
+        }.toMap()
+    },
+)
+
+private const val CONFIG_VALUES = 7
+
+/**
  * Onboarding, four steps on the settings' palette:
  * 1. Select gouvernorat (under the welcome)
  * 2. Select delegation
  * 3. Configure iqamah and prayer duration per prayer
  * 4. Mosque name (optional) + confirm
+ *
+ * [onUsbSetup], when a plugged-in key holds a settings file that names the mosque's place, offers
+ * to set the whole TV from it instead. What was entered survives a recreation of the activity (a
+ * change of output mode, a low-memory box back from a system page).
  */
 @Composable
 fun SetupWizard(
     gouvernorats: List<Gouvernorat>,
+    onUsbSetup: (() -> Unit)? = null,
     onComplete: (
         gouvernoratId: Int,
         delegation: Delegation,
@@ -68,14 +98,18 @@ fun SetupWizard(
         mosqueName: String
     ) -> Unit
 ) {
-    var step by remember { mutableIntStateOf(0) }
-    var selectedGouvernorat by remember { mutableStateOf<Gouvernorat?>(null) }
-    var selectedDelegation by remember { mutableStateOf<Delegation?>(null) }
+    var step by rememberSaveable { mutableIntStateOf(0) }
+    var gouvernoratId by rememberSaveable { mutableStateOf<Int?>(null) }
+    var delegationId by rememberSaveable { mutableStateOf<Int?>(null) }
+    val selectedGouvernorat = gouvernorats.find { it.id == gouvernoratId }
+    val selectedDelegation = selectedGouvernorat?.delegations?.find { it.id == delegationId }
     // Iqamah and prayer duration per prayer start from the shared defaults.
-    var iqamahConfigs by remember {
+    var iqamahConfigs by rememberSaveable(stateSaver = IqamahConfigsSaver) {
         mutableStateOf(PrefsManager.EDITABLE.associateWith { IqamahConfig.from(MosqueSchedule.DEFAULT.settings(it)) })
     }
-    var mosqueName by remember { mutableStateOf("") }
+    var mosqueName by rememberSaveable { mutableStateOf("") }
+    // Where the times will be computed, on the steps after the choice: a delegation chosen by a slip shows at once.
+    val place = selectedGouvernorat?.let { g -> selectedDelegation?.let { "${it.nomAr} — ${g.nomAr}" } }
 
     // Back returns to the previous step, keeping what was entered; on the first step it stays.
     BackHandler(enabled = step > 0) { step -= 1 }
@@ -91,9 +125,10 @@ fun SetupWizard(
                 gouvernorats = gouvernorats,
                 selected = selectedGouvernorat,
                 onSelect = { g ->
-                    selectedGouvernorat = g
+                    gouvernoratId = g.id
                     step = 1
-                }
+                },
+                onUsbSetup = onUsbSetup,
             )
             1 -> WizardStep(
                 step = 1,
@@ -105,11 +140,11 @@ fun SetupWizard(
                     choices = delegations,
                     label = { it.nomAr },
                     onChoose = { d ->
-                        selectedDelegation = d
+                        delegationId = d.id
                         step = 2
                     },
                     // Back from the iqamah returns to the delegation chosen, not the top of the list.
-                    focusFirst = selectedDelegation?.takeIf { it in delegations },
+                    focusFirst = selectedDelegation,
                     modifier = Modifier.fillMaxWidth().weight(1f),
                 )
             }
@@ -117,6 +152,7 @@ fun SetupWizard(
                 step = 2,
                 title = TvStrings.SETUP_IQAMAH_TITLE,
                 subtitle = TvStrings.SETUP_IQAMAH_SUBTITLE,
+                aside = place,
                 onBack = { step = 1 },
                 onNext = { step = 3 },
             ) {
@@ -154,13 +190,15 @@ fun SetupWizard(
 
 /**
  * The first step: a restrained welcome over the choice of gouvernorat. The ornament is the Blue
- * Qur'an's silver medallion between fading rules, and the app's name in Kufic.
+ * Qur'an's silver medallion between fading rules, and the app's name in Kufic. [onUsbSetup] puts
+ * «الإعداد من مفتاح USB» beside the title, one press up from the grid, which keeps the focus.
  */
 @Composable
 private fun WelcomeStep(
     gouvernorats: List<Gouvernorat>,
     selected: Gouvernorat?,
-    onSelect: (Gouvernorat) -> Unit
+    onSelect: (Gouvernorat) -> Unit,
+    onUsbSetup: (() -> Unit)?,
 ) {
     Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Text(DisplayTexts.BASMALA.text, style = midadStyle(20.sp, color = Midad.Verse, family = Amiri, lineHeight = 1.4f))
@@ -173,7 +211,12 @@ private fun WelcomeStep(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(TvStrings.SETUP_SELECT_GOUVERNORAT, style = midadStyle(21.sp, FontWeight.SemiBold))
-            StepIndicator(0)
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(20.dp)) {
+                if (onUsbSetup != null) {
+                    FocusableListItem(text = TvStrings.USB_SETUP, onClick = onUsbSetup, modifier = Modifier.width(220.dp))
+                }
+                StepIndicator(0)
+            }
         }
         ChoiceGrid(
             choices = gouvernorats,
@@ -195,6 +238,8 @@ private fun WizardStep(
     title: String,
     onBack: () -> Unit,
     subtitle: String? = null,
+    /** At the other end of the title: the place chosen, once it is. */
+    aside: String? = null,
     onNext: (() -> Unit)? = null,
     nextText: String = TvStrings.NEXT,
     /** The step's own content does not take the focus: the Next key does. */
@@ -210,7 +255,10 @@ private fun WizardStep(
             StepIndicator(step)
         }
         Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-            Text(title, style = midadStyle(26.sp, FontWeight.SemiBold))
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Text(title, style = midadStyle(26.sp, FontWeight.SemiBold), modifier = Modifier.alignByBaseline())
+                if (aside != null) Text(aside, style = midadStyle(17.sp, FontWeight.Medium).rtl(), modifier = Modifier.alignByBaseline())
+            }
             if (subtitle != null) Text(subtitle, style = midadStyle(14.sp, color = Midad.Muted))
         }
         Column(Modifier.fillMaxWidth().weight(1f), verticalArrangement = Arrangement.spacedBy(10.dp), content = content)

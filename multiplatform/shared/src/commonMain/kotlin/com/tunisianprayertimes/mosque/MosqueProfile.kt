@@ -20,7 +20,8 @@ data class MosqueProfile(
  * How the screen shows the mosque's extras: the weather (when online), its background images and
  * announcements, how long each announcement stays, how often they come back between prayers
  * (0: only after the adhkar of each prayer), and whether the screen dims to the night screen
- * between Isha and Fajr (the rest that spares the TV's panel). Null fields are not set.
+ * between Isha and Fajr (the rest that spares the TV's panel), and how many minutes the adhan screen
+ * lasts (FlowTiming.adhanScreenMinutes). Null fields are not set.
  */
 data class DisplayOptions(
     val weather: Boolean? = null,
@@ -29,6 +30,7 @@ data class DisplayOptions(
     val slideSeconds: Int? = null,
     val announcementsEveryMinutes: Int? = null,
     val nightScreen: Boolean? = null,
+    val adhanScreenMinutes: Int? = null,
 ) {
     companion object {
         val SLIDE_SECONDS = 5..60
@@ -39,10 +41,12 @@ data class DisplayOptions(
 /**
  * What a settings file may name, from the app: the delegations it has prayer times for and its
  * themes (id to Arabic name). Without it, a file naming a place or theme is refused.
+ * [delegationIds] lists every delegation, to find one by the Arabic name a file's admin edited.
  */
 data class ProfileCatalog(
     val delegationName: (Int) -> String?,
     val themes: Map<String, String>,
+    val delegationIds: () -> List<Int> = { emptyList() },
 ) {
     fun themeName(id: String): String = themes[id] ?: id
 

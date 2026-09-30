@@ -36,6 +36,10 @@ data class HijriCalendarMonth(
  * would otherwise create missing dates, repeated dates or 31-day months when two
  * announcements have different offsets.
  *
+ * The admin's [manual] dates anchor their events too, and always win: a mosque that
+ * follows its own sighting keeps its day. An announcement of another event still
+ * keeps its own day, even when that makes a month between the two 28 or 31 days.
+ *
  * The baseline is built once. Corrections are reconciled once per snapshot, and
  * looking up a day only performs a binary search; calendar cells do no network
  * access or calendar reconstruction. RamadanDetector's visibility buffer is not
@@ -43,6 +47,7 @@ data class HijriCalendarMonth(
  */
 class TunisianHijriCalendar(
     overrides: Map<Int, RamadanOverrideChecker.RamadanOverride> = emptyMap(),
+    manual: Map<Int, ManualIslamicDates> = emptyMap(),
 ) {
     private val confirmedStarts = BooleanArray(Baseline.monthCount + 1)
     private val starts: LongArray
@@ -51,9 +56,9 @@ class TunisianHijriCalendar(
     val supportedLast: LocalDate
 
     init {
-        val anchors = acceptedAnchors(overrides)
-        starts = if (anchors.isEmpty()) Baseline.starts else reconcile(anchors)
-        anchors.keys.forEach { confirmedStarts[it] = true }
+        val anchors = acceptedAnchors(overrides, manual)
+        starts = if (anchors.days.isEmpty()) Baseline.starts else reconcile(anchors)
+        anchors.days.keys.forEach { confirmedStarts[it] = true }
         supportedFirst = LocalDate.ofEpochDay(starts.first())
         supportedLast = LocalDate.ofEpochDay(starts.last() - 1)
     }
@@ -109,50 +114,77 @@ class TunisianHijriCalendar(
     private fun monthAt(index: Int): Int = index % 12 + 1
 
     /**
+     * The month starts every month must keep ([days], by month index), and the months that may be 28
+     * or 31 days long ([relaxed]: the month before that index), between an admin's date and an
+     * announcement that cannot be joined otherwise.
+     */
+    private class Anchors(val days: Map<Int, Long>, val relaxed: BooleanArray)
+
+    /**
      * Reject mislabelled years, implausibly misplaced dates, and contradictions.
-     * If two announcements cannot be joined by 29/30-day months, retain the
-     * earlier accepted anchor and leave the later one estimated. This stable
-     * policy preserves usable partial data without inventing an invalid month.
+     * The admin's dates come first and are always kept, unless two of them cannot
+     * be joined by 29/30-day months (the earlier one stays). Then announcements: if
+     * two cannot be joined by 29/30-day months, retain the earlier accepted anchor
+     * and leave the later one estimated. This stable policy preserves usable partial
+     * data without inventing an invalid month. Only between an admin's date and an
+     * announcement may a month be 28 or 31 days, so each keeps its own event's day.
      */
     private fun acceptedAnchors(
         overrides: Map<Int, RamadanOverrideChecker.RamadanOverride>,
-    ): Map<Int, Long> {
-        val candidates = sortedMapOf<Int, Long>()
+        manual: Map<Int, ManualIslamicDates>,
+    ): Anchors {
+        val announced = sortedMapOf<Int, Long>()
         overrides.forEach { (year, record) ->
-            if (year != record.hijriYear || year !in Baseline.firstYear..Baseline.lastYear) return@forEach
-            fun add(month: Int, date: LocalDate?) {
-                if (date == null) return
-                val index = monthIndex(year, month)
-                val epoch = date.toEpochDay()
-                if (abs(epoch - Baseline.starts[index]) <= MAX_OFFSET) candidates[index] = epoch
-            }
-            add(9, record.ramadanStart)
-            add(10, record.eidFitrDate)
-            // Epoch arithmetic also safely handles malformed extreme LocalDates.
-            record.eidAdhaDate?.let { eid ->
-                val index = monthIndex(year, 12)
-                val epoch = eid.toEpochDay() - 9
-                if (abs(epoch - Baseline.starts[index]) <= MAX_OFFSET) candidates[index] = epoch
+            if (year == record.hijriYear) addCandidates(announced, year, record.ramadanStart, record.eidFitrDate, record.eidAdhaDate)
+        }
+        val admin = sortedMapOf<Int, Long>()
+        manual.forEach { (year, dates) -> addCandidates(admin, year, dates.ramadanStart, dates.eidFitr, dates.eidAdha) }
+
+        val accepted = sortedMapOf<Int, Long>()
+        fun joins(index: Int, day: Long, relaxedWith: (Int) -> Boolean): Boolean {
+            val previous = accepted.headMap(index).let { if (it.isEmpty()) null else it.lastKey() }
+            val next = accepted.tailMap(index + 1).let { if (it.isEmpty()) null else it.firstKey() }
+            return (previous == null || joined(previous, accepted.getValue(previous), index, day, relaxedWith(previous))) &&
+                (next == null || joined(index, day, next, accepted.getValue(next), relaxedWith(next)))
+        }
+        admin.forEach { (index, day) -> if (joins(index, day) { false }) accepted[index] = day }
+        val manualIndices = accepted.keys.toSet()
+        announced.forEach { (index, day) ->
+            if (index !in accepted && joins(index, day) { it in manualIndices }) accepted[index] = day
+        }
+
+        val relaxed = BooleanArray(Baseline.monthCount + 1)
+        accepted.keys.zipWithNext().forEach { (from, to) ->
+            val mixed = (from in manualIndices) != (to in manualIndices)
+            if (mixed && !joined(from, accepted.getValue(from), to, accepted.getValue(to), relaxed = false)) {
+                for (index in from + 1..to) relaxed[index] = true
             }
         }
-        val accepted = linkedMapOf<Int, Long>()
-        var previousIndex: Int? = null
-        var previousDay = 0L
-        candidates.forEach { (index, day) ->
-            val preceding = previousIndex
-            if (preceding != null) {
-                val monthsBetween = (index - preceding).toLong()
-                if (day - previousDay !in (29 * monthsBetween)..(30 * monthsBetween)) return@forEach
-            }
-            accepted[index] = day
-            previousIndex = index
-            previousDay = day
-        }
-        return accepted
+        return Anchors(accepted, relaxed)
     }
 
-    /** Shortest path through nearby starts, with only 29/30-day transitions. */
-    private fun reconcile(anchors: Map<Int, Long>): LongArray {
+    /** 1 Ramadan, 1 Shawwal and 1 Dhul Hijja of [year] from its event dates, when near enough to the baseline. */
+    private fun addCandidates(into: MutableMap<Int, Long>, year: Int, ramadan: LocalDate?, fitr: LocalDate?, adha: LocalDate?) {
+        if (year !in Baseline.firstYear..Baseline.lastYear) return
+        fun add(month: Int, epoch: Long) {
+            val index = monthIndex(year, month)
+            if (abs(epoch - Baseline.starts[index]) <= MAX_OFFSET) into[index] = epoch
+        }
+        ramadan?.let { add(9, it.toEpochDay()) }
+        fitr?.let { add(10, it.toEpochDay()) }
+        // Epoch arithmetic also safely handles malformed extreme LocalDates.
+        adha?.let { add(12, it.toEpochDay() - 9) }
+    }
+
+    /** Whether months of 29 or 30 days ([relaxed]: 28 to 31) lead from month [from] starting on [fromDay] to [to] on [toDay]. */
+    private fun joined(from: Int, fromDay: Long, to: Int, toDay: Long, relaxed: Boolean): Boolean {
+        val months = (to - from).toLong()
+        val lengths = if (relaxed) ODD_LENGTHS else LENGTHS
+        return toDay - fromDay in (lengths.first * months)..(lengths.last * months)
+    }
+
+    /** Shortest path through nearby starts, with only 29/30-day transitions except where [Anchors.relaxed]. */
+    private fun reconcile(anchors: Anchors): LongArray {
         val stateCount = MAX_OFFSET * 2 + 1
         val unreachable = Long.MAX_VALUE / 4
         val preferredOffsets = IntArray(Baseline.monthCount + 1)
@@ -163,7 +195,7 @@ class TunisianHijriCalendar(
             // using legal month lengths, rather than pulling an estimated Adha
             // back early just to force Muharram to have zero offset.
             if (index % 12 == 0) latestOffset = 0
-            val anchor = anchors[index]
+            val anchor = anchors.days[index]
             anchor?.let { latestOffset = (it - Baseline.starts[index]).toInt() }
             preferredOffsets[index] = if (index == 0 || anchor != null) {
                 latestOffset
@@ -178,16 +210,18 @@ class TunisianHijriCalendar(
 
         for (index in 1..Baseline.monthCount) {
             val next = LongArray(stateCount) { unreachable }
-            val anchor = anchors[index]
+            val anchor = anchors.days[index]
             val baselineLength = (Baseline.starts[index] - Baseline.starts[index - 1]).toInt()
+            val lengths = if (anchors.relaxed[index]) ODD_LENGTHS else LENGTHS
             for (state in 0 until stateCount) {
                 val offset = state - MAX_OFFSET
                 if (anchor != null && Baseline.starts[index] + offset != anchor) continue
-                for (length in 29..30) {
+                for (length in lengths) {
                     val previousState = state + baselineLength - length
                     if (previousState !in 0 until stateCount || costs[previousState] == unreachable) continue
+                    // As few 28- or 31-day months as the admin's dates need, whatever the offsets cost.
                     val cost = costs[previousState] + abs(offset - preferredOffsets[index]) * OFFSET_COST +
-                        if (length == baselineLength) 0 else 1
+                        (if (length == baselineLength) 0 else 1) + if (length in LENGTHS) 0 else ODD_LENGTH_COST
                     if (cost < next[state]) {
                         next[state] = cost
                         predecessors[index][state] = previousState
@@ -228,5 +262,8 @@ class TunisianHijriCalendar(
         // accidentally attached to another month/year in downloaded data.
         const val MAX_OFFSET = 7
         const val OFFSET_COST = 8L
+        val LENGTHS = 29..30
+        val ODD_LENGTHS = 28..31
+        const val ODD_LENGTH_COST = 1_000_000L
     }
 }

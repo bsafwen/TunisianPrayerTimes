@@ -52,9 +52,18 @@ object RamadanOverrideChecker {
     /** Replace only transport in offline tests; exercise the real fetch and parsing path. */
     internal var openConnection: (URL) -> HttpURLConnection = { it.openConnection() as HttpURLConnection }
 
+    /**
+     * Today in Tunisia as the app's own clock reads it, or null for the device clock. A TV corrects a
+     * wrong device clock inside the app only (ClockGuard): the announcement windows and the year to
+     * fetch follow its date, not Android's. Called from the poller's thread.
+     */
+    @Volatile
+    var todayProvider: () -> LocalDate? = { null }
+
     // Today in Tunisia, whatever the device's zone: the announcements are Tunisia's dates.
-    private fun today(): LocalDate = testDateOverride ?: LocalDate.now(TunisTime.ZONE)
-    private fun hijrahToday(): HijrahDate = testDateOverride?.let { HijrahDate.from(it) } ?: HijrahDate.now(TunisTime.ZONE)
+    internal fun today(): LocalDate =
+        testDateOverride ?: runCatching(todayProvider).getOrNull() ?: LocalDate.now(TunisTime.ZONE)
+    private fun hijrahToday(): HijrahDate = HijrahDate.from(today())
 
     // Cached override data
     @Volatile

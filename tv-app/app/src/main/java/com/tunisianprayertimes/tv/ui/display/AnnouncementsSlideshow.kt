@@ -115,6 +115,9 @@ fun AnnouncementsSlideshow(
 /** The announcement after [index] in a pass over [count], or null once the pass is over. */
 internal fun nextSlide(index: Int, count: Int): Int? = (index + 1).takeIf { it < count }
 
+/** How long a pass over [count] announcements of [displaySeconds] each lasts, with the fade and pause after each. */
+internal fun passMillis(count: Int, displaySeconds: Int): Long = count * (displaySeconds * 1000L + FADE_MILLIS + PAUSE_MILLIS)
+
 /** How the slideshow shows where it is: nothing for one announcement, dots, or words past [MAX_DOTS]. */
 internal enum class PagerKind { NONE, DOTS, WORDS }
 
@@ -175,6 +178,9 @@ private fun SlideHeader(clock: String?) {
 private fun WrittenCard(item: Announcement.Text, width: Dp, textWidth: Dp, textHeight: Dp) {
     val hasTitle = item.title.isNotBlank()
     val until = item.until?.let(TvStrings::announcementUntil)
+    // Measured as shown: with their phone numbers and dates kept left to right.
+    val title = remember(item) { TvStrings.mosqueText(item.title) }
+    val content = remember(item) { TvStrings.mosqueText(item.content) }
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
     val bodyStyle = remember(item, textWidth, textHeight, density) {
@@ -184,10 +190,10 @@ private fun WrittenCard(item: Announcement.Text, width: Dp, textWidth: Dp, textH
             fun heightOf(text: String, style: TextStyle, maxLines: Int = Int.MAX_VALUE) =
                 measurer.measure(text, style, maxLines = maxLines, constraints = Constraints(maxWidth = widthPx)).size.height
             var room = textHeight.toPx()
-            if (hasTitle) room -= heightOf(item.title, TITLE_STYLE, maxLines = 2) + gap + RULE_STAR.toPx() + gap
+            if (hasTitle) room -= heightOf(title, TITLE_STYLE, maxLines = 2) + gap + RULE_STAR.toPx() + gap
             if (until != null) room -= heightOf(until, UNTIL_STYLE) + gap
             val ladder = if (hasTitle) BODY_SIZES.map(::bodyStyle) else LEAD_SIZES.map(::leadStyle)
-            largestFitting(ladder) { heightOf(item.content, it) <= room }
+            largestFitting(ladder) { heightOf(content, it) <= room }
         }
     }
     Column(
@@ -199,10 +205,10 @@ private fun WrittenCard(item: Announcement.Text, width: Dp, textWidth: Dp, textH
         verticalArrangement = Arrangement.spacedBy(CARD_GAP),
     ) {
         if (hasTitle) {
-            Text(item.title, style = TITLE_STYLE, maxLines = 2, overflow = TextOverflow.Ellipsis)
+            Text(title, style = TITLE_STYLE, maxLines = 2, overflow = TextOverflow.Ellipsis)
             MedallionRule(260.dp, starSize = RULE_STAR, bothSides = false)
         }
-        Text(item.content, style = bodyStyle, overflow = TextOverflow.Ellipsis)
+        Text(content, style = bodyStyle, overflow = TextOverflow.Ellipsis)
         if (until != null) Text(until, style = UNTIL_STYLE)
     }
 }

@@ -2,7 +2,7 @@ package com.tunisianprayertimes.tv.kiosk
 
 /**
  * Decides what happens after a crash, so a bad setting or file cannot restart the app forever.
- * Times are elapsedRealtime (immune to clock changes); times from before a reboot are dropped.
+ * Times are elapsedRealtime (immune to clock changes); KioskStore drops times from before a reboot.
  *
  * One or two crashes within [window]: restart. The [safeModeAfter]th: restart in safe mode (default
  * theme, no custom backgrounds or announcements) until [safeModeFor] passes without a crash.
@@ -47,6 +47,18 @@ class CrashLoopGuard(
     fun isSafeMode(state: State, now: Long): Boolean {
         val until = state.safeModeUntil ?: return false
         return now < until && until - now <= safeModeFor
+    }
+
+    /**
+     * True when the wall is really broken and an update may be installed at once, prayer or not: the app
+     * stopped restarting, or it is in safe mode and either off the screen or crashing since this boot's
+     * update ([packageReplacedAt], elapsedRealtime). Safe mode on its own usually still shows the display.
+     */
+    fun needsRescue(state: State, now: Long, packageReplacedAt: Long?, displayInFront: Boolean): Boolean {
+        if (isGivingUp(state, now)) return true
+        if (!isSafeMode(state, now)) return false
+        val sinceUpdate = packageReplacedAt != null && state.crashes.all { it >= packageReplacedAt }
+        return !displayInFront || sinceUpdate
     }
 
     companion object {

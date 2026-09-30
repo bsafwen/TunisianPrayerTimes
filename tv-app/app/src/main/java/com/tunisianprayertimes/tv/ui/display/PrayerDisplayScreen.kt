@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -32,6 +33,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.DayPrayerTimes
@@ -70,7 +72,7 @@ import java.time.temporal.ChronoUnit
  */
 @Composable
 fun PrayerDisplayScreen(
-    /** Today's prayer times; null while they load (or for a day the data lacks): "no data". */
+    /** Today's prayer times; null for a day the formula cannot give: "no data" (while they load, the caller shows [TimesLoadingScreen]). */
     todayTimes: DayPrayerTimes?,
     /** Tomorrow's: its Fajr fills Fajr's niche after Isha, its Maghrib is the next iftar. */
     tomorrowTimes: DayPrayerTimes?,
@@ -90,6 +92,8 @@ fun PrayerDisplayScreen(
     banner: DayBanner?,
     /** Whether tomorrow is a day of Ramadan: tarawih tonight, and an imsak to show under the iftar countdown. */
     ramadanTomorrow: Boolean,
+    /** The Eid prayer's time under the Hijri date, from the evening before until it begins; null otherwise. */
+    eidNote: String? = null,
     /** The weather at the mosque when the TV is online, it is enabled and recent; null hides it entirely. */
     weather: WeatherNow?,
     /** The ticker's texts, from the reviewed catalog or the mosque's USB file, with its written announcements. */
@@ -119,17 +123,19 @@ fun PrayerDisplayScreen(
             }
             .focusable(),
     ) {
-        Backdrop(sky, backgroundImages)
+        Backdrop(sky, backgroundImages, minute)
         Column(Modifier.fillMaxSize().padding(horizontal = 48.dp, vertical = 27.dp)) {
             Header(
                 mosqueName = mosqueName.ifBlank { TvStrings.MOSQUE_DEFAULT },
                 place = place,
-                verse = state.verse,
+                verses = state.verses,
                 hijriLabel = hijriLabel,
                 dayNote = state.dayNote,
+                eidNote = eidNote,
                 isRamadan = state.isRamadan,
                 gregorian = gregorian,
                 weather = weather,
+                isDay = state.isDay,
             )
             Spacer(Modifier.height(10.dp))
             Hero(clock, state.hero, now)
@@ -143,14 +149,20 @@ fun PrayerDisplayScreen(
 
 /** The sky down to the horizon above the arcade, the mosque's own images in its place, or the plain ground. */
 @Composable
-private fun Backdrop(sky: SkyColors?, images: List<Uri>) {
+private fun Backdrop(sky: SkyColors?, images: List<Uri>, minute: LocalDateTime) {
     if (images.isEmpty()) {
         Box(Modifier.fillMaxSize().skyBackground(sky, horizon = HORIZON, groundAt = GROUND_AT))
     } else {
         Box(Modifier.fillMaxSize().background(Midad.Ground)) {
-            CustomBackground(images, horizon = HORIZON, groundAt = GROUND_AT)
+            CustomBackground(images, minute, horizon = HORIZON, groundAt = GROUND_AT)
         }
     }
+}
+
+/** The wall a moment after the app starts, while the day's times are computed: the bare ground, never "no data". */
+@Composable
+fun TimesLoadingScreen() {
+    Box(Modifier.fillMaxSize().background(Midad.Ground))
 }
 
 // ── Header: the mosque (right), the verse and its medallion (middle), the dates and the weather (left) ──
@@ -159,20 +171,19 @@ private fun Backdrop(sky: SkyColors?, images: List<Uri>) {
 private fun Header(
     mosqueName: String,
     place: String,
-    verse: DisplayTexts.DisplayText,
+    verses: List<DisplayTexts.DisplayText>,
     hijriLabel: String,
     dayNote: String?,
+    eidNote: String?,
     isRamadan: Boolean,
     gregorian: String,
     weather: WeatherNow?,
+    isDay: Boolean?,
 ) {
     Row(Modifier.fillMaxWidth().height(50.dp), verticalAlignment = Alignment.Top) {
         // The blocks may stand a little taller than the header, as on the board, into the hero's empty top.
-        Column(Modifier.wrapContentHeight(Alignment.Top, unbounded = true), verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            Text(mosqueName, style = MOSQUE_NAME, maxLines = 1, modifier = Modifier.lineBox(MOSQUE_NAME))
-            if (place.isNotEmpty()) Text(place, style = PLACE, maxLines = 1)
-        }
-        HeaderVerse(verse, Modifier.weight(1f).padding(horizontal = 16.dp).padding(top = 9.dp))
+        MosqueBlock(mosqueName, place)
+        HeaderVerse(verses, Modifier.weight(1f).padding(horizontal = 16.dp).padding(top = 9.dp))
         Column(
             Modifier.wrapContentHeight(Alignment.Top, unbounded = true),
             horizontalAlignment = Alignment.End,
@@ -183,12 +194,15 @@ private fun Header(
                 Text(hijriLabel, style = HIJRI, maxLines = 1)
                 if (dayNote != null) Text("· $dayNote", style = DAY_NOTE, maxLines = 1)
             }
+            // A line of its own: beside the date it would push the verse out, or be cut with its time.
+            if (eidNote != null) Text(eidNote, style = EID_NOTE, maxLines = 1)
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 Text(gregorian, style = GREGORIAN, maxLines = 1)
                 // Offline, disabled or stale: the weather is not there at all, never a "--".
                 if (weather != null) {
                     Text("·", style = GREGORIAN)
-                    weatherIcon(weather.code, weather.isDay)?.let { WeatherGlyph(it, 14.dp) }
+                    // Day or night from today's times: the weather's own flag is as old as its last fetch.
+                    weatherIcon(weather.code, isDay ?: weather.isDay)?.let { WeatherGlyph(it, 14.dp) }
                     Digits(MainScreenModel.temperatureText(weather), TEMPERATURE)
                     OpenMeteo.describe(weather.code).takeIf { it.isNotEmpty() }?.let { Text(it, style = GREGORIAN, maxLines = 1) }
                 }
@@ -200,23 +214,47 @@ private fun Header(
 }
 
 /**
- * The verse with its silver medallion and reference, centred between the mosque and the dates. On a
- * header too narrow for it (a long mosque name), it is set a little smaller, and left out rather
- * than cut: a verse is never shown in part.
+ * The mosque's name and its place, within [NAME_WIDTH]: a long name is set smaller, then cut with an
+ * ellipsis, rather than squeeze the dates or leave no room for the verse.
  */
 @Composable
-private fun HeaderVerse(verse: DisplayTexts.DisplayText, modifier: Modifier) {
+private fun MosqueBlock(mosqueName: String, place: String) {
+    val measurer = rememberTextMeasurer(cacheSize = 0)
+    val budget = with(LocalDensity.current) { NAME_WIDTH.roundToPx() }
+    val name = remember(mosqueName, budget) {
+        largestFitting(NAME_SIZES.map(::mosqueNameStyle)) { measurer.measure(mosqueName, it, softWrap = false, maxLines = 1).size.width <= budget }
+    }
+    Column(
+        Modifier.widthIn(max = NAME_WIDTH).wrapContentHeight(Alignment.Top, unbounded = true),
+        verticalArrangement = Arrangement.spacedBy(2.dp),
+    ) {
+        Text(mosqueName, style = name, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.lineBox(name))
+        if (place.isNotEmpty()) Text(place, style = PLACE, maxLines = 1, overflow = TextOverflow.Ellipsis)
+    }
+}
+
+/**
+ * The verse with its silver medallion and reference, centred between the mosque and the dates. On a
+ * header too narrow for it (a long mosque name, the weather), it is set a little smaller, else the
+ * next of [verses] that fits takes its place, and the header is empty only if none does: a verse is
+ * never shown in part.
+ */
+@Composable
+private fun HeaderVerse(verses: List<DisplayTexts.DisplayText>, modifier: Modifier) {
     BoxWithConstraints(modifier, contentAlignment = Alignment.TopCenter) {
         val measurer = rememberTextMeasurer(cacheSize = 0)
         val width = constraints.maxWidth
         val fixed = with(LocalDensity.current) { (15.dp + 7.dp * 2).roundToPx() }
-        val style = remember(verse, width) {
-            val reference = measurer.measure(verse.reference, VERSE_REFERENCE, softWrap = false, maxLines = 1).size.width
-            (17 downTo 14).map { verseStyle(it) }.firstOrNull { style ->
-                measurer.measure(verse.text, style, softWrap = false, maxLines = 1).size.width + reference + fixed <= width
+        val fitted = remember(verses, width) {
+            verses.firstNotNullOfOrNull { verse ->
+                val reference = measurer.measure(verse.reference, VERSE_REFERENCE, softWrap = false, maxLines = 1).size.width
+                (17 downTo 14).map { verseStyle(it) }.firstOrNull { style ->
+                    measurer.measure(verse.text, style, softWrap = false, maxLines = 1).size.width + reference + fixed <= width
+                }?.let { verse to it }
             }
         }
-        if (style != null) {
+        if (fitted != null) {
+            val (verse, style) = fitted
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(7.dp)) {
                 Text(verse.text, style = style, maxLines = 1, softWrap = false)
                 Medallion(15.dp)
@@ -317,12 +355,16 @@ private val GROUND_AT = 365.dp
 private val ARCADE_HEIGHT = 160.dp
 private const val PASSED_ALPHA = 0.5f
 
-private val MOSQUE_NAME = midadStyle(29.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.1f)
+private fun mosqueNameStyle(size: Int): TextStyle = midadStyle(size.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.1f)
+/** The name at 29 sp as on the board, a long one smaller, and past this width ellipsized. */
+private val NAME_SIZES = listOf(29, 27, 25, 23, 21)
+private val NAME_WIDTH = 290.dp
 private val PLACE = midadStyle(15.sp, color = Midad.Muted)
 private fun verseStyle(size: Int): TextStyle = midadStyle(size.sp, color = Midad.Verse, family = Amiri, lineHeight = 1.4f)
 private val VERSE_REFERENCE = midadStyle(11.sp, color = Midad.Muted)
 private val HIJRI = midadStyle(19.sp, FontWeight.Medium)
 private val DAY_NOTE = midadStyle(15.sp, color = Midad.Muted)
+private val EID_NOTE = midadStyle(15.sp, FontWeight.Medium)
 private val GREGORIAN = midadStyle(14.sp, color = Midad.Muted)
 private val TEMPERATURE = midadStyle(14.sp)
 private val CREDIT = midadStyle(7.sp, color = Midad.Dim)

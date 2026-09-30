@@ -2,6 +2,7 @@ package com.tunisianprayertimes.tv.ui.display
 
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.mosque.DayBanner
+import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.PrayerEvent
 import java.time.Duration
 import java.time.LocalDateTime
@@ -89,6 +90,65 @@ object EidMorning {
         val end = dhuhrAdhan?.takeIf { it.toLocalDate() == today } ?: today.atTime(NOON)
         return !now.isBefore(start) && now.isBefore(end)
     }
+}
+
+/**
+ * The Eid prayer's time ahead of it, when the congregation asks for it: from the Maghrib before the
+ * Eid, through the night, and on Eid morning until the prayer begins (the Eid screen shows it after
+ * the Fajr adhkar; this covers the hours before).
+ */
+object EidPrayerNotice {
+
+    /**
+     * The next Eid prayer among [events] (today's and tomorrow's) when it is told at [now]: today's
+     * until it begins, tomorrow's from today's [maghrib] adhan; null otherwise, and for a mosque that
+     * holds no Eid prayer (the flow gives it none).
+     */
+    fun at(now: LocalDateTime, events: List<PrayerEvent>, maghrib: LocalDateTime?): PrayerEvent? {
+        val next = events.filter { it.prayer in MosqueSchedule.EID && it.iqamahAt.isAfter(now) }.minByOrNull { it.iqamahAt } ?: return null
+        val today = now.toLocalDate()
+        return when (next.iqamahAt.toLocalDate()) {
+            today -> next
+            today.plusDays(1) -> next.takeIf { maghrib != null && !now.isBefore(maghrib) }
+            else -> null
+        }
+    }
+}
+
+/**
+ * The announcements slideshow: once after each prayer's adhkar, and every few minutes between the
+ * prayers. A pass starts only if it ends [QUIET_BEFORE_ADHAN] before the next adhan, so the timetable
+ * and its «قريبًا» keep the wall then; once started it runs to its end, and only the prayer stops it.
+ * A new list is a new pass, held to the same rule.
+ */
+object AnnouncementsWindow {
+
+    val QUIET_BEFORE_ADHAN: Duration = Duration.ofMinutes(10)
+
+    /**
+     * Whether a pass lasting [pass] may start at [now]: one is owed after a prayer's adhkar
+     * ([afterPrayer]), or [everyMinutes] have gone by since the last one ([lastPassAt]; 0: after the
+     * prayers only), and it would be over before the quiet time ahead of [nextAdhan].
+     */
+    fun mayStart(
+        now: LocalDateTime,
+        afterPrayer: Boolean,
+        lastPassAt: LocalDateTime,
+        everyMinutes: Int,
+        pass: Duration,
+        nextAdhan: LocalDateTime?,
+    ): Boolean {
+        val periodic = everyMinutes > 0 && !now.isBefore(lastPassAt.plusMinutes(everyMinutes.toLong()))
+        val clear = nextAdhan == null || now.plus(pass).plus(QUIET_BEFORE_ADHAN).isBefore(nextAdhan)
+        return (afterPrayer || periodic) && clear
+    }
+
+    /**
+     * The last pass as a time on the wall at [now], from the time since boot that went by after it
+     * ([sinceMillis]): the wall clock can be corrected by hours (the admin, the phone, the network),
+     * and a pass stored as a wall time would then seem hours ahead and hold the next ones back.
+     */
+    fun lastPassAt(now: LocalDateTime, sinceMillis: Long): LocalDateTime = now.minus(Duration.ofMillis(sinceMillis.coerceAtLeast(0)))
 }
 
 /** The wait from the adhan to the iqamah, as the countdown screen shows it. */

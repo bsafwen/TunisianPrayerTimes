@@ -65,4 +65,23 @@ class CrashLoopGuardTest {
         assertEquals(State(), State.decode("garbage;x"))
         assertEquals(State(listOf(5L)), State.decode("5;"))
     }
+
+    @Test
+    fun aRescueUpdateIsOnlyForABrokenWall() {
+        val safe = crashesAt(minute, 2 * minute, 3 * minute).last().first
+        val now = 4 * minute
+        // Safe mode with the display on screen still works: no rescue, whatever the crashes.
+        assertFalse(guard.needsRescue(safe, now, packageReplacedAt = null, displayInFront = true))
+        assertFalse(guard.needsRescue(safe, now, packageReplacedAt = 2 * minute, displayInFront = true))
+        // Off the screen, or crashing ever since this boot's update.
+        assertTrue(guard.needsRescue(safe, now, packageReplacedAt = null, displayInFront = false))
+        assertTrue(guard.needsRescue(safe, now, packageReplacedAt = minute / 2, displayInFront = true))
+        // Having stopped restarting is always broken; a few restarts without safe mode never are.
+        val givenUp = crashesAt(*LongArray(6) { (it + 1) * minute }).last().first
+        assertTrue(guard.needsRescue(givenUp, 7 * minute, packageReplacedAt = null, displayInFront = true))
+        val twice = crashesAt(minute, 2 * minute).last().first
+        assertFalse(guard.needsRescue(twice, now, packageReplacedAt = minute / 2, displayInFront = false))
+        // Safe mode is over.
+        assertFalse(guard.needsRescue(safe, 3 * minute + 31 * minute, packageReplacedAt = null, displayInFront = false))
+    }
 }

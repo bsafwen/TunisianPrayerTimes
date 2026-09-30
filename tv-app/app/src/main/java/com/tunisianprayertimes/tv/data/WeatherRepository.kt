@@ -64,5 +64,14 @@ class WeatherRepository(
             capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) &&
                 capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
         }.getOrDefault(false)
+
+        /**
+         * Whether the TV has a network that claims the internet, validated or not (never throws). The
+         * system's check fails on a box whose clock is years off, which the network time must still reach.
+         */
+        fun hasInternet(context: Context): Boolean = runCatching {
+            val manager = context.getSystemService(ConnectivityManager::class.java)
+            manager.getNetworkCapabilities(manager.activeNetwork)?.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET) == true
+        }.getOrDefault(false)
     }
 }

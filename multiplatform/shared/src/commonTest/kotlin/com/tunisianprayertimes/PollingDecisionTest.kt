@@ -117,6 +117,22 @@ class PollingDecisionTest {
     }
 
     @Test
+    fun ramadanStart_followsTheAppsOwnDateNotTheDeviceClock() {
+        // A TV whose device clock is days off: the screen's corrected date decides the window.
+        RamadanOverrideChecker.testDateOverride = null
+        val previous = RamadanOverrideChecker.todayProvider
+        try {
+            RamadanOverrideChecker.todayProvider = { LocalDate.of(2026, 2, 17) } // 29 Sha'ban
+            assertEquals(LocalDate.of(2026, 2, 17), RamadanOverrideChecker.today())
+            assertTrue(RamadanOverrideChecker.shouldStartPolling())
+            RamadanOverrideChecker.todayProvider = { LocalDate.of(2026, 2, 20) } // 3 Ramadan
+            assertFalse(RamadanOverrideChecker.shouldStartPolling())
+        } finally {
+            RamadanOverrideChecker.todayProvider = previous
+        }
+    }
+
+    @Test
     fun ramadanStart_3Ramadan_noCache_noPoll() {
         // 3 Ramadan → day=3 > 2, no other conditions met with null cache → no poll
         RamadanOverrideChecker.testDateOverride = LocalDate.of(2026, 2, 20)

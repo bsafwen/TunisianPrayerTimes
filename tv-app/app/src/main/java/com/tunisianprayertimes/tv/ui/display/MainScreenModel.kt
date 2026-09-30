@@ -14,6 +14,7 @@ import java.time.Duration
 import java.time.LocalDateTime
 import java.time.LocalTime
 import java.util.Locale
+import kotlin.random.Random
 
 /** One niche of the arcade. Right to left: Fajr, the sunrise, Dhuhr (Jumu'a on Fridays), Asr, Maghrib, Isha. */
 data class ArcadeTile(
@@ -54,12 +55,19 @@ data class MainScreenState(
     val hero: HeroCountdown?,
     val isFriday: Boolean,
     val isRamadan: Boolean,
-    /** The header's verse, from the reviewed texts. */
-    val verse: DisplayTexts.DisplayText,
+    /**
+     * The header's verse, from the reviewed texts, then the verses to try in its place when the header
+     * is too narrow for it (a long mosque name, the weather): the header stays empty only if none fits.
+     */
+    val verses: List<DisplayTexts.DisplayText>,
     /** A word beside the Hijri date on the days that have one: «يوم عرفة», «عيد مبارك». */
     val dayNote: String?,
+    /** Whether the sun is up, by today's sunrise and Maghrib; null while the times are unknown. */
+    val isDay: Boolean? = null,
 ) {
     val next: ArcadeTile? get() = tiles.firstOrNull { it.next }
+    /** The verse of this turn, shown whenever the header has room for it. */
+    val verse: DisplayTexts.DisplayText get() = verses.first()
 }
 
 /**
@@ -73,9 +81,10 @@ object MainScreenModel {
 
     /**
      * The screen at [now]. [today] and [tomorrow] are the prayer times of the two civil days;
-     * [iqamah] is today's per prayer (with [Prayer.JOMOAA] on Fridays), as the prayer flow resolved
-     * it; [tomorrowFajrIqamah] fills Fajr's niche after Isha. [ramadanTomorrow] is whether tomorrow is
-     * a day of Ramadan: tonight has tarawih, and tomorrow a fast whose imsak the iftar countdown shows.
+     * [iqamah] is today's per prayer (with [Prayer.JOMOAA] on Fridays, unless the mosque holds none
+     * and it has Dhuhr), as the prayer flow resolved it; [tomorrowFajrIqamah] fills Fajr's niche after
+     * Isha. [ramadanTomorrow] is whether tomorrow is a day of Ramadan: tonight has tarawih, and tomorrow
+     * a fast whose imsak the iftar countdown shows.
      */
     fun at(
         now: LocalDateTime,
@@ -101,7 +110,23 @@ object MainScreenModel {
             is DayBanner.Eid -> TvStrings.EID_MUBARAK
             else -> null
         }
-        return MainScreenState(tiles, hero, isFriday, isRamadan, DisplayTexts.headerVerse(isRamadan, isFriday, verseTurn(now, today)), dayNote)
+        return MainScreenState(tiles, hero, isFriday, isRamadan, headerVerses(isRamadan, isFriday, verseTurn(now, today)), dayNote, isDaytime(now, today))
+    }
+
+    /** The turn's verse ([DisplayTexts.headerVerse]), then the prayer verses from that turn's on, each once. */
+    internal fun headerVerses(isRamadan: Boolean, isFriday: Boolean, turn: Long): List<DisplayTexts.DisplayText> {
+        val verses = DisplayTexts.PRAYER_VERSES
+        val start = verses.indexOf(DisplayTexts.headerVerse(isRamadan = false, isFriday = false, turn = turn))
+        return (listOf(DisplayTexts.headerVerse(isRamadan, isFriday, turn)) + verses.indices.map { verses[(start + it) % verses.size] }).distinct()
+    }
+
+    /**
+     * Whether the sun is up at [now], from sunrise to Maghrib: the device knows it offline, where the
+     * weather's own flag is as old as its last fetch. Null without [today]'s times.
+     */
+    internal fun isDaytime(now: LocalDateTime, today: DayPrayerTimes?): Boolean? = today?.let {
+        val date = now.toLocalDate()
+        !now.isBefore(date.atTime(it.shurukHour, it.shurukMinute)) && now.isBefore(date.atTime(it.maghrib.hour, it.maghrib.minute))
     }
 
     /** The header verse moves on at each of today's adhans (none passed before Fajr, or without times). */
@@ -121,7 +146,8 @@ object MainScreenModel {
         ramadanTomorrow: Boolean,
     ): List<ArcadeTile> {
         val date = now.toLocalDate()
-        val noon = if (isFriday) Prayer.JOMOAA else Prayer.DHUHR
+        // The flow's own choice: a mosque that holds no Jumu'a has Dhuhr on Fridays.
+        val noon = if (isFriday && Prayer.DHUHR !in iqamah) Prayer.JOMOAA else Prayer.DHUHR
         val isha = date.atTime(today.isha.hour, today.isha.minute)
         // Once Isha has been called, the next adhan is tomorrow's Fajr: it takes Fajr's niche.
         val tomorrowFajr = tomorrow?.takeIf { !isha.isAfter(now) }?.let { date.plusDays(1).atTime(it.fajr.hour, it.fajr.minute) }
@@ -209,6 +235,38 @@ object MainScreenModel {
 
     /** How long the ticker holds [slide]: its reading time, never less than the ticker's minimum. */
     fun tickerDwellMillis(slide: AdhkarSlide): Long = maxOf(MosqueAdhkar.TICKER_MIN_SLIDE_MILLIS, slide.durationMillis)
+
+    /**
+     * Where the ticker starts its round among [items]: any text, so each is on the wall as often
+     * however many times a day the screen gives way, but at its first page, never in its middle.
+     */
+    fun tickerStart(items: List<AdhkarSlide>, random: Random): Int =
+        items.indices.filter { items[it].part == 1 }.randomOrNull(random) ?: 0
+
+    /**
+     * The ticker's source line for [slide], then a shorter one for a line too narrow for it: a long
+     * source's first clause (up to «؛»), which names the text. The narrations and gradings after it go
+     * whole or not at all, so a narration is never cited without the grading that follows it. A page
+     * of a longer text says which it is («الجزء 2 من 3»), as the after-prayer screen does. Empty when
+     * the slide has neither.
+     */
+    fun tickerSources(slide: AdhkarSlide): List<String> {
+        val reference = slide.reference.trim()
+        val part = slide.parts.takeIf { it > 1 }?.let { TvStrings.part(slide.part, it) }
+        val references = listOf(reference, reference.substringBefore('؛').trim()).filter(String::isNotEmpty).distinct()
+        if (references.isEmpty()) return listOfNotNull(part)
+        return references.map { listOfNotNull(TvStrings.source(it), part).joinToString(" · ") }
+    }
+
+    /**
+     * A ticker text laid out in lines ending at [lineEnds], in pages of [linesPerPage] lines shown in
+     * turn: a text too long even for the smallest lines is never cut.
+     */
+    fun tickerPages(text: String, lineEnds: List<Int>, linesPerPage: Int): List<String> {
+        val ends = lineEnds.chunked(linesPerPage.coerceAtLeast(1)).map { it.last() }.dropLast(1) + text.length
+        return (listOf(0) + ends.dropLast(1)).zip(ends) { from, to -> text.substring(from, to).trim() }
+            .filter(String::isNotEmpty).ifEmpty { listOf(text) }
+    }
 
     /** «29°», in whole degrees. */
     fun temperatureText(weather: WeatherNow): String = "${Math.round(weather.temperature)}°"

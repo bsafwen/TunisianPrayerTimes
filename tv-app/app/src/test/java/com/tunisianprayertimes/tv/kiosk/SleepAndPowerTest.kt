@@ -42,6 +42,21 @@ class SleepAndPowerTest {
     }
 
     @Test
+    fun anUnreadableEnergySaverWarnsWhereTheBoxMayHaveOne() {
+        assertEquals(PowerLevel.WARNING, PowerSettingsProbe.probe(reader({ null }, { 7 }), energySaver = true).attentiveTimeout)
+        assertEquals(PowerLevel.UNKNOWN, PowerSettingsProbe.probe(reader({ null }, { 7 }), energySaver = false).attentiveTimeout)
+        assertEquals(PowerLevel.OK, PowerSettingsProbe.probe(reader({ -1L }, { 7 }), energySaver = true).attentiveTimeout)
+    }
+
+    @Test
+    fun aSleepGapIsLoggedAsItsRawTimes() {
+        val gap = SleepGap(1_000L, 3_601_000L, 3_600_000L)
+        assertEquals(gap, SleepGap.parse(gap.detail))
+        assertNull(SleepGap.parse("09-29 03:00 → 09-29 04:00 (60 min)"))
+        assertNull(SleepGap.parse("1 2"))
+    }
+
+    @Test
     fun theScreenDriftsSlowlyAndStaysClose() {
         val week = 7L * 24 * 60
         val start = 29_000_000L

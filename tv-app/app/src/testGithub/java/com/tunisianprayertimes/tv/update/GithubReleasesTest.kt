@@ -50,4 +50,13 @@ class GithubReleasesTest {
         assertNull(GithubReleases.page("""{"message":"API rate limit exceeded"}"""))
         assertEquals("https://api.github.com/repos/bsafwen/TunisianPrayerTimes/releases?per_page=100&page=2", GithubReleases.pageUrl(2))
     }
+
+    @Test
+    fun theReleaseDateIsKeptForTheWaitBeforeANightInstall() {
+        val json = """[{"tag_name":"tv-v1.5","published_at":"2026-09-20T10:00:00Z",
+            "assets":[{"name":"TunisianPrayerTimesTV-github-1.5-15.apk","size":1,"browser_download_url":"$base/tv-v1.5/x.apk"}]}]"""
+        assertEquals(1_789_898_400_000L, GithubReleases.newest(json, 1)!!.publishedAt)
+        assertNull(GithubReleases.newest("[" + release("tv-v1.5", "TunisianPrayerTimesTV-github-1.5-15.apk") + "]", 1)!!.publishedAt)
+        assertEquals("https://api.github.com/repos/bsafwen/TunisianPrayerTimes/releases?per_page=20", GithubReleases.FIRST_PAGE_URL)
+    }
 }

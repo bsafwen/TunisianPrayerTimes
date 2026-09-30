@@ -2,6 +2,7 @@ package com.tunisianprayertimes.tv.kiosk
 
 import android.content.Context
 import android.os.SystemClock
+import com.tunisianprayertimes.tv.BuildConfig
 
 /** Everything the kiosk page shows, read once when it opens. */
 data class KioskReport(
@@ -21,6 +22,8 @@ data class KioskReport(
     /** Fire TV's own sleep timer (0 = never), null elsewhere. */
     val fireTvSleepMillis: Long? = null,
     val lastBootTiming: EventEntry? = null,
+    /** The other build (Play or GitHub) is installed too: each would bring its own display back over the other's. */
+    val otherBuildInstalled: Boolean = false,
     val power: PowerStatus,
     val safeMode: Boolean,
     val uptimeMillis: Long,
@@ -31,7 +34,8 @@ data class KioskReport(
 ) {
     companion object {
         fun collect(context: Context, store: KioskStore, safeMode: Boolean, processStartElapsed: Long): KioskReport {
-            val events = store.eventLog.recent(50)
+            // One read of the log for the whole page: the rows below are all taken from it.
+            val log = LogView(store.eventLog.recent(Int.MAX_VALUE), System.currentTimeMillis())
             val autoStart = KioskController.autoStart(context)
             return KioskReport(
                 packageName = context.packageName,
@@ -46,15 +50,35 @@ data class KioskReport(
                 quickStartRunning = KioskAccessibility.serviceConnected,
                 canWriteSecureSettings = KioskAccessibility.canWriteSecureSettings(context),
                 fireTvSleepMillis = if (autoStart.fireTv) KioskAccessibility.fireTvSleepMillis(context) else null,
-                lastBootTiming = store.eventLog.last(KioskEvent.BOOT_TIMING),
+                lastBootTiming = log.lastBootTiming,
+                otherBuildInstalled = runCatching { context.packageManager.getPackageInfo(BuildConfig.OTHER_BUILD, 0) }.isSuccess,
                 power = KioskController.power(context),
                 safeMode = safeMode,
                 uptimeMillis = SystemClock.elapsedRealtime() - processStartElapsed,
-                lastAutoStart = store.eventLog.last(KioskEvent.AUTOSTART_OK, KioskEvent.AUTOSTART_BLOCKED),
-                lastCrash = store.eventLog.last(KioskEvent.CRASH),
-                sleepGaps = events.filter { it.type == KioskEvent.SLEEP_GAP }.take(3),
-                events = events,
+                lastAutoStart = log.lastAutoStart,
+                lastCrash = log.lastCrash,
+                sleepGaps = log.sleepGaps,
+                events = log.events,
             )
         }
+    }
+}
+
+/**
+ * What the page takes from the log ([all], newest first). A crash or a sleep older than a week no
+ * longer warns: it stays in the event list only, so an old problem does not hide a new one.
+ */
+internal class LogView(all: List<EventEntry>, private val nowMillis: Long) {
+    private fun isRecent(entry: EventEntry) = nowMillis - entry.atMillis < PROBLEM_SHOWN_MILLIS
+
+    val events = all.take(EVENTS_SHOWN)
+    val lastBootTiming = all.firstOrNull { it.type == KioskEvent.BOOT_TIMING }
+    val lastAutoStart = all.firstOrNull { it.type == KioskEvent.AUTOSTART_OK || it.type == KioskEvent.AUTOSTART_BLOCKED }
+    val lastCrash = all.firstOrNull { it.type == KioskEvent.CRASH }?.takeIf(::isRecent)
+    val sleepGaps = events.filter { it.type == KioskEvent.SLEEP_GAP && isRecent(it) }.take(3)
+
+    private companion object {
+        const val EVENTS_SHOWN = 50
+        const val PROBLEM_SHOWN_MILLIS = 7 * 24 * 3_600_000L
     }
 }

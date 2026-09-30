@@ -25,18 +25,23 @@ import com.tunisianprayertimes.tv.ui.common.initialFocus
 import com.tunisianprayertimes.tv.ui.common.rtl
 import com.tunisianprayertimes.tv.ui.theme.Midad
 import com.tunisianprayertimes.tv.ui.theme.midadStyle
+import com.tunisianprayertimes.tv.usb.RejectedFile
+import com.tunisianprayertimes.tv.usb.UsbMediaCopy
 import com.tunisianprayertimes.tv.usb.UsbMediaFound
+import com.tunisianprayertimes.tv.usb.UsbScan
 
 /**
- * Images (and announcement .txt files) found on a USB key: how many of each kind, to copy to the TV
- * or not. Back dismisses, as «إلغاء» does.
+ * Images (and announcement .txt files) found on a USB key: how many of each kind and how many of the
+ * TV's own files each replaces, to copy to the TV or not, then the files left out and why. A key with
+ * nothing to copy only says why. Back dismisses, as «إلغاء» does.
  */
 @Composable
 fun UsbMediaScreen(found: UsbMediaFound, onApply: () -> Unit, onDismiss: () -> Unit) {
     BackHandler(onBack = onDismiss)
     AdminPage(
-        title = TvStrings.USB_MEDIA_TITLE,
+        title = if (found.isEmpty) TvStrings.USB_MEDIA_NONE_TITLE else TvStrings.USB_MEDIA_TITLE,
         modifier = Modifier.background(Midad.Ground).padding(horizontal = 48.dp, vertical = 27.dp),
+        scroll = true,
     ) {
         Column(
             Modifier
@@ -46,15 +51,53 @@ fun UsbMediaScreen(found: UsbMediaFound, onApply: () -> Unit, onDismiss: () -> U
             verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
             found.images.forEach { (kind, files) ->
-                if (files.isNotEmpty()) KindRow(label(kind), TvStrings.filesCount(files.size))
+                if (files.isEmpty()) return@forEach
+                val replaced = found.replaced[kind] ?: 0
+                val count = TvStrings.filesCount(files.size) + if (replaced > 0) " · ${TvStrings.usbMediaReplaces(replaced)}" else ""
+                KindRow(label(kind), count)
             }
-            Text(TvStrings.USB_MEDIA_HINT, style = midadStyle(17.sp, color = Midad.Muted, lineHeight = 1.4f).rtl(), modifier = Modifier.padding(top = 4.dp))
+            rejectedLines(found.rejected).forEach { line ->
+                Text(line, style = midadStyle(17.sp, color = Midad.Alert, lineHeight = 1.4f).rtl())
+            }
+            if (!found.isEmpty) {
+                Text(TvStrings.USB_MEDIA_HINT, style = midadStyle(17.sp, color = Midad.Muted, lineHeight = 1.4f).rtl(), modifier = Modifier.padding(top = 4.dp))
+            }
         }
         DialogButtons {
-            FocusableListItem(TvStrings.USB_APPLY, onApply, Modifier.initialFocus().width(BUTTON_WIDTH))
-            FocusableListItem(TvStrings.CANCEL, onDismiss, Modifier.width(BUTTON_WIDTH))
+            if (found.isEmpty) {
+                FocusableListItem(TvStrings.USB_OK, onDismiss, Modifier.initialFocus().width(BUTTON_WIDTH))
+            } else {
+                FocusableListItem(TvStrings.USB_APPLY, onApply, Modifier.initialFocus().width(BUTTON_WIDTH))
+                FocusableListItem(TvStrings.CANCEL, onDismiss, Modifier.width(BUTTON_WIDTH))
+            }
         }
     }
+}
+
+/** The files left out, one line per reason. */
+internal fun rejectedLines(rejected: List<RejectedFile>): List<String> =
+    rejected.groupingBy { it.reason }.eachCount().toSortedMap().map { (reason, count) ->
+        when (reason) {
+            RejectedFile.Reason.FORMAT -> TvStrings.rejectedFormat(count)
+            RejectedFile.Reason.TOO_LARGE -> TvStrings.rejectedTooLarge(count)
+            RejectedFile.Reason.TOO_MANY -> TvStrings.rejectedTooMany(count)
+            RejectedFile.Reason.TEXT -> TvStrings.rejectedText(count)
+            RejectedFile.Reason.MISPLACED -> TvStrings.rejectedMisplaced(count)
+        }
+    }
+
+/**
+ * The answer to «قراءة مفتاح USB من جديد» when the scan found nothing to offer (no key, or a key with
+ * nothing new on it): the other outcomes already say something (the offer itself, or their notice).
+ */
+fun readAgainNotice(scan: UsbScan, media: UsbMediaFound?): String? =
+    TvStrings.USB_READ_NOTHING.takeIf { scan == UsbScan.Quiet && media == null }
+
+/** What the wall says once a copy from a key has ended. */
+fun copyNotice(copy: UsbMediaCopy): String = when (copy) {
+    is UsbMediaCopy.Done -> TvStrings.usbCopied(copy.files, copy.unreadable)
+    UsbMediaCopy.Failed -> TvStrings.USB_COPY_FAILED
+    UsbMediaCopy.NoRoom -> TvStrings.USB_COPY_NO_ROOM
 }
 
 /** A kind of files on a raised row: its name, and how many the key holds at the end of the line. */

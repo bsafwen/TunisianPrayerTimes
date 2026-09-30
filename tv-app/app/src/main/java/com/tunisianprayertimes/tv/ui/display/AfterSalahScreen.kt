@@ -22,6 +22,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -135,7 +136,8 @@ internal fun FittedText(text: String, style: TextStyle, modifier: Modifier = Mod
         val centred = style.copy(textAlign = TextAlign.Center)
         val fitted = remember(text, centred, widthPx, heightPx, density) { fit(measurer, text, centred, widthPx, heightPx) }
         val width = if (widthPx == Constraints.Infinity) Modifier else Modifier.widthIn(max = with(density) { widthPx.toDp() })
-        Text(text, style = fitted, modifier = width)
+        // Drawn whole even past its space at the smallest size (the pages keep a text short enough for it).
+        Text(text, style = fitted, overflow = TextOverflow.Visible, modifier = width)
     }
 }
 

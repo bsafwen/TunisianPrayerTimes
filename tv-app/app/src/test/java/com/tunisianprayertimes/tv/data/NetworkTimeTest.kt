@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.tv.data
 
+import java.time.Duration
 import java.time.Instant
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -22,9 +23,19 @@ class NetworkTimeTest {
     @Test
     fun theServersDateIsCarriedToNow() {
         // Written half-way through a 400 ms round trip, cut to the second: 200 ms and half a second later.
-        assertEquals(server.plusMillis(700), NetworkTime.fromDateHeader(date, sentAt = 1_000, receivedAt = 1_400, nowElapsed = 1_400))
+        assertEquals(server.plusMillis(700), NetworkTime.fromDateHeader(date, sentAt = 1_000, receivedAt = 1_400, nowElapsed = 1_400)?.instant)
         // Then whatever elapsed since the answer came.
-        assertEquals(server.plusMillis(1_700), NetworkTime.fromDateHeader(date, sentAt = 1_000, receivedAt = 1_400, nowElapsed = 2_400))
+        val reading = NetworkTime.fromDateHeader(date, sentAt = 1_000, receivedAt = 1_400, nowElapsed = 2_400)
+        assertEquals(server.plusMillis(1_700), reading?.instant)
+        // And on to the moment the guard takes it, however late the main thread gets to it.
+        assertEquals(server.plusMillis(2_000), reading?.at(2_700))
+    }
+
+    @Test
+    fun theServersDateIsRightToWithinHalfTheRoundTripAndASecond() {
+        val reading = NetworkTime.fromDateHeader(date, sentAt = 1_000, receivedAt = 1_400, nowElapsed = 1_400)
+        assertEquals(Duration.ofMillis(1_200), reading?.uncertainty)
+        assertEquals("over HTTPS", true, reading?.authenticated)
     }
 
     @Test
@@ -40,7 +51,7 @@ class NetworkTimeTest {
         assertNull("too long", NetworkTime.fromDateHeader(date, 0, NetworkTime.MAX_ROUND_TRIP_MILLIS + 1, NetworkTime.MAX_ROUND_TRIP_MILLIS + 1))
         assertEquals(
             server.plusMillis(NetworkTime.MAX_ROUND_TRIP_MILLIS / 2 + 500),
-            NetworkTime.fromDateHeader(date, 0, NetworkTime.MAX_ROUND_TRIP_MILLIS, NetworkTime.MAX_ROUND_TRIP_MILLIS),
+            NetworkTime.fromDateHeader(date, 0, NetworkTime.MAX_ROUND_TRIP_MILLIS, NetworkTime.MAX_ROUND_TRIP_MILLIS)?.instant,
         )
         assertNull("answer before the request", NetworkTime.fromDateHeader(date, 2_000, 1_000, 2_000))
         assertNull("now before the answer", NetworkTime.fromDateHeader(date, 1_000, 1_400, 1_300))

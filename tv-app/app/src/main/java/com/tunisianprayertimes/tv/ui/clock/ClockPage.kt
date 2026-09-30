@@ -1,5 +1,6 @@
 package com.tunisianprayertimes.tv.ui.clock
 
+import android.os.SystemClock
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -26,6 +27,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
@@ -43,6 +49,7 @@ import com.tunisianprayertimes.tv.ui.common.FocusableSurface
 import com.tunisianprayertimes.tv.ui.common.Stepper
 import com.tunisianprayertimes.tv.ui.common.adminPanel
 import com.tunisianprayertimes.tv.ui.common.initialFocus
+import com.tunisianprayertimes.tv.ui.common.onSurfaceMuted
 import com.tunisianprayertimes.tv.ui.common.onSurfaceText
 import com.tunisianprayertimes.tv.ui.common.rtl
 import com.tunisianprayertimes.tv.ui.kiosk.HealthDot
@@ -50,8 +57,10 @@ import com.tunisianprayertimes.tv.ui.kiosk.HealthLevel
 import com.tunisianprayertimes.tv.ui.kiosk.HealthRow
 import com.tunisianprayertimes.tv.ui.theme.Midad
 import com.tunisianprayertimes.tv.ui.theme.midadStyle
+import java.time.Duration
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.temporal.ChronoField
 import java.util.Locale
 import kotlinx.coroutines.launch
 
@@ -81,6 +90,11 @@ data class ClockView(
     val deviceTime: String,
     val deviceZone: ZoneId,
     val zoneDiffers: Boolean,
+    /**
+     * The zone must be set to Tunisia's first: it reads another time now, or it does part of the year
+     * ([ClockGuard.zoneKeepsTunisTime]), which keeps the clock unconfirmed even while today agrees.
+     */
+    val zoneFirst: Boolean = zoneDiffers,
 ) {
     /** «هذا الوقت صحيح» can be accepted: the time is not confirmed, and not impossible by itself. */
     val confirmable: Boolean
@@ -98,6 +112,7 @@ data class ClockView(
                 deviceTime = deviceTime,
                 deviceZone = guard.deviceZone(),
                 zoneDiffers = guard.zoneDiffers(),
+                zoneFirst = guard.zoneDiffers() || !guard.zoneKeepsTunisTime(),
             )
     }
 }
@@ -118,15 +133,22 @@ internal fun clockLevel(trust: ClockTrust): HealthLevel = when (trust) {
     ClockTrust.IMPLAUSIBLE -> HealthLevel.BAD
 }
 
-/** The clock's rows on the kiosk page and the phone's: its state and, on a box in another zone, that the zone does not matter. */
+/**
+ * The clock's rows on the kiosk page and the phone's: its state and, on a box in another zone whose
+ * time is confirmed, that the zone does not matter. Unconfirmed, the zone may be the very problem.
+ */
 fun clockRows(trust: ClockTrust, source: ClockSource?, deviceZone: ZoneId, zoneDiffers: Boolean): List<HealthRow> = listOfNotNull(
     when (trust) {
         ClockTrust.TRUSTED -> HealthRow(HealthLevel.GOOD, TvStrings.clockGood(source ?: ClockSource.ADMIN))
         ClockTrust.UNVERIFIED -> HealthRow(HealthLevel.WARNING, TvStrings.CLOCK_ROW_UNVERIFIED, fix = TvStrings.CLOCK_ROW_UNVERIFIED_FIX)
         ClockTrust.IMPLAUSIBLE -> HealthRow(HealthLevel.BAD, TvStrings.CLOCK_ROW_WRONG, fix = TvStrings.CLOCK_ROW_UNVERIFIED_FIX)
     },
-    HealthRow(HealthLevel.INFO, TvStrings.clockZoneInfo(deviceZone.id)).takeIf { zoneDiffers },
+    clockZoneNote(trust, deviceZone, zoneDiffers)?.let { HealthRow(HealthLevel.INFO, it) },
 )
+
+/** «لا أثر لها» about the device's zone, only once the time is confirmed: before that, it may be set to another country's time. */
+internal fun clockZoneNote(trust: ClockTrust, deviceZone: ZoneId, zoneDiffers: Boolean): String? =
+    TvStrings.clockZoneInfo(deviceZone.id).takeIf { zoneDiffers && trust == ClockTrust.TRUSTED }
 
 /**
  * The clock's page. On the right what is known and the quick answers (the candidate times, the box's
@@ -136,7 +158,8 @@ fun clockRows(trust: ClockTrust, source: ClockSource?, deviceZone: ZoneId, zoneD
  *
  * [BLOCKING][ClockPageMode.BLOCKING] replaces the prayer times, whose absence is better than wrong
  * ones: Back does nothing. [QUESTION][ClockPageMode.QUESTION] comes once, when an admin is at the
- * remote; Back is «لاحقًا». In [SETTINGS][ClockPageMode.SETTINGS] Back is the settings' own.
+ * remote; Back is «لاحقًا», where the focus starts. In [SETTINGS][ClockPageMode.SETTINGS] Back is the
+ * settings' own.
  */
 @Composable
 fun ClockPage(
@@ -149,8 +172,18 @@ fun ClockPage(
     onLater: () -> Unit = {},
 ) {
     BackHandler(enabled = mode != ClockPageMode.SETTINGS) { if (mode == ClockPageMode.QUESTION) onLater() }
-    val start = if (clock.trust == ClockTrust.IMPLAUSIBLE) clock.suggested else clock.now
-    var time by remember(mode) { mutableStateOf(start.withSecond(0).withNano(0)) }
+    // The steppers' time runs on by itself: its seconds go on, and «اعتماد هذا الوقت» sets the time of
+    // the moment it is pressed. It does not follow the screen's time, which an answer (the phone's, the
+    // network's, this page's own) moves while the page stays open.
+    var stepped by remember(mode) {
+        mutableStateOf(SteppedTime(if (clock.trust == ClockTrust.IMPLAUSIBLE) clock.suggested else clock.now, SystemClock.elapsedRealtime()))
+    }
+    val time = stepped.at(SystemClock.elapsedRealtime())
+    fun step(field: ChronoField, by: Int) {
+        stepped = stepped.step(field, by, SystemClock.elapsedRealtime())
+    }
+    // The question comes up under the presses that opened the settings: those still coming are not an answer.
+    val okBurst = remember(mode) { if (mode == ClockPageMode.QUESTION) OkBurst(SystemClock.uptimeMillis()) else null }
     // In the settings an answer removes the row that had the focus (the candidates, «هذا الوقت صحيح»): it goes to a row that stays.
     val staysFocus = remember { FocusRequester() }
     val scope = rememberCoroutineScope()
@@ -173,7 +206,7 @@ fun ClockPage(
         modifier = if (mode == ClockPageMode.SETTINGS) Modifier else Modifier.background(Midad.Ground).padding(horizontal = 48.dp, vertical = 27.dp),
         hints = if (mode == ClockPageMode.SETTINGS) listOf(TvStrings.HINT_BACK_TO_SETTINGS) else emptyList(),
     ) {
-        Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
+        Row(Modifier.fillMaxSize().ignoringOkBurst(okBurst), horizontalArrangement = Arrangement.spacedBy(24.dp)) {
             Column(Modifier.width(380.dp).fillMaxHeight(), verticalArrangement = Arrangement.spacedBy(7.dp)) {
                 when (mode) {
                     ClockPageMode.BLOCKING -> Text(TvStrings.CLOCK_WRONG_HINT, style = midadStyle(17.sp, color = Midad.Muted, lineHeight = 1.5f).rtl())
@@ -196,16 +229,16 @@ fun ClockPage(
                         label = candidateLabel(index),
                         time = candidate,
                         onClick = { answered { onPick(candidate) } },
-                        modifier = Modifier.initialFocus(mode == ClockPageMode.QUESTION && index == 0),
                     )
                 }
-                if (mode == ClockPageMode.BLOCKING && clock.confirmable) FocusableListItem(TvStrings.CLOCK_CONFIRM, onClick = onConfirm)
+                // With what it confirms, date and all: the device's line above is in the box's own zone.
+                if (mode == ClockPageMode.BLOCKING && clock.confirmable) CandidateRow(TvStrings.CLOCK_CONFIRM, clock.now, onClick = onConfirm, withDate = true)
                 if (mode == ClockPageMode.SETTINGS && clock.trust == ClockTrust.IMPLAUSIBLE && clock.confirmable) {
                     FocusableListItem(TvStrings.CLOCK_CONFIRM, onClick = { answered(onConfirm) })
                 }
                 if (onOpenSystemSettings != null && mode != ClockPageMode.QUESTION) {
                     // On a box in another zone, setting only the time there brings the difference back.
-                    if (clock.zoneDiffers) Text(TvStrings.CLOCK_ZONE_FIRST, style = midadStyle(14.sp, color = Midad.Muted, lineHeight = 1.45f).rtl())
+                    if (clock.zoneFirst) Text(TvStrings.CLOCK_ZONE_FIRST, style = midadStyle(14.sp, color = Midad.Muted, lineHeight = 1.45f).rtl())
                     FocusableListItem(TvStrings.CLOCK_OPEN_SETTINGS, onClick = onOpenSystemSettings)
                 }
                 if (onOpenPhone != null) {
@@ -215,7 +248,8 @@ fun ClockPage(
                         modifier = Modifier.focusRequester(staysFocus).initialFocus(mode == ClockPageMode.SETTINGS),
                     )
                 }
-                if (mode == ClockPageMode.QUESTION) FocusableListItem(TvStrings.CLOCK_LATER, onClick = onLater)
+                // The first focus: an answer is a deliberate move away from it.
+                if (mode == ClockPageMode.QUESTION) FocusableListItem(TvStrings.CLOCK_LATER, onClick = onLater, modifier = Modifier.initialFocus())
             }
             Column(
                 Modifier.weight(1f).fillMaxHeight().adminPanel(),
@@ -225,18 +259,18 @@ fun ClockPage(
                 // What «اعتماد هذا الوقت» will set, written out: the weekday is the easiest check.
                 Text(TvStrings.gregorianDate(time.toLocalDate()), style = midadStyle(17.sp, color = Midad.Muted))
                 Digits(TvStrings.hm(time.toLocalTime()), midadStyle(36.sp, FontWeight.SemiBold))
-                TimeRow(TvStrings.CLOCK_MONTH, TvStrings.monthYear(time.toLocalDate()), { time = time.minusMonths(1) }, { time = time.plusMonths(1) })
+                TimeRow(TvStrings.CLOCK_MONTH, TvStrings.monthYear(time.toLocalDate()), { step(ChronoField.MONTH_OF_YEAR, -1) }, { step(ChronoField.MONTH_OF_YEAR, 1) })
                 TimeRow(
-                    TvStrings.CLOCK_DATE, time.dayOfMonth.toString(), { time = time.minusDays(1) }, { time = time.plusDays(1) },
+                    TvStrings.CLOCK_DATE, time.dayOfMonth.toString(), { step(ChronoField.DAY_OF_MONTH, -1) }, { step(ChronoField.DAY_OF_MONTH, 1) },
                     // Without a clock battery the date is the first thing to set.
                     minusModifier = Modifier.initialFocus(mode == ClockPageMode.BLOCKING),
                 )
-                TimeRow(TvStrings.CLOCK_HOUR, twoDigits(time.hour), { time = time.minusHours(1) }, { time = time.plusHours(1) })
-                TimeRow(TvStrings.CLOCK_MINUTE, twoDigits(time.minute), { time = time.minusMinutes(1) }, { time = time.plusMinutes(1) })
+                TimeRow(TvStrings.CLOCK_HOUR, twoDigits(time.hour), { step(ChronoField.HOUR_OF_DAY, -1) }, { step(ChronoField.HOUR_OF_DAY, 1) })
+                TimeRow(TvStrings.CLOCK_MINUTE, twoDigits(time.minute), { step(ChronoField.MINUTE_OF_HOUR, -1) }, { step(ChronoField.MINUTE_OF_HOUR, 1) })
                 Spacer(Modifier.weight(1f))
                 // Raised off the panel, as the rows above it: the page's one button on this side.
                 FocusableSurface(
-                    onClick = { answered { onPick(time) } },
+                    onClick = { answered { onPick(stepped.at(SystemClock.elapsedRealtime())) } },
                     modifier = Modifier.fillMaxWidth().heightIn(min = 38.dp),
                     rest = Midad.SurfaceRaised,
                 ) { focused ->
@@ -267,23 +301,76 @@ private fun ClockStatus(clock: ClockView, withHint: Boolean) {
     }
 }
 
-/** A candidate time: what it is on the right, the time itself on the left, large enough to compare with a watch. */
+/**
+ * A candidate time: what it is on the right, the time itself on the left, large enough to compare with
+ * a watch. [withDate] writes its date under what it is, where the date is in doubt.
+ */
 @Composable
-private fun CandidateRow(label: String, time: LocalDateTime, onClick: () -> Unit, modifier: Modifier = Modifier) {
+private fun CandidateRow(label: String, time: LocalDateTime, onClick: () -> Unit, modifier: Modifier = Modifier, withDate: Boolean = false) {
     FocusableSurface(
         onClick = onClick,
         modifier = modifier.fillMaxWidth().heightIn(min = 50.dp),
         contentPadding = PaddingValues(horizontal = 14.dp, vertical = 5.dp),
     ) { focused ->
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                label,
-                style = midadStyle(16.sp, if (focused) FontWeight.SemiBold else FontWeight.Normal, onSurfaceText(focused)).rtl(),
-                modifier = Modifier.weight(1f),
-            )
+            Column(Modifier.weight(1f)) {
+                Text(label, style = midadStyle(16.sp, if (focused) FontWeight.SemiBold else FontWeight.Normal, onSurfaceText(focused)).rtl())
+                if (withDate) Text(TvStrings.gregorianDate(time.toLocalDate()), style = midadStyle(14.sp, color = onSurfaceMuted(focused)).rtl())
+            }
             Digits(TvStrings.hm(time.toLocalTime()), midadStyle(26.sp, FontWeight.SemiBold, onSurfaceText(focused)))
         }
     }
+}
+
+/**
+ * [time] with one field stepped [by] on its own: the minute wraps within its hour, the hour within its
+ * day, the day within its month, so setting one never moves another. Only the month carries into the
+ * year, which has no row of its own.
+ */
+internal fun stepTime(time: LocalDateTime, field: ChronoField, by: Int): LocalDateTime {
+    if (field == ChronoField.MONTH_OF_YEAR) return time.plusMonths(by.toLong())
+    val range = time.range(field)
+    val size = range.maximum - range.minimum + 1
+    return time.with(field, range.minimum + Math.floorMod(time.getLong(field) - range.minimum + by, size))
+}
+
+/** The steppers' time: [base] at [since] (elapsed millis since boot), running on from there. */
+internal class SteppedTime(private val base: LocalDateTime, private val since: Long) {
+    fun at(elapsed: Long): LocalDateTime = base.plus(Duration.ofMillis(elapsed - since))
+
+    /** [field] stepped [by] on its own ([stepTime]), at [elapsed]. */
+    fun step(field: ChronoField, by: Int, elapsed: Long): SteppedTime = SteppedTime(stepTime(at(elapsed), field, by), elapsed)
+}
+
+/**
+ * The OK presses still coming as the clock question appears: the ones that opened the settings (five
+ * OKs, a double press on onboarding's «تأكيد»). Every OK is ignored until one is pressed after
+ * [QUIET_MILLIS] without any, from the moment the question was shown ([shownAt], uptime millis).
+ */
+internal class OkBurst(shownAt: Long) {
+    private var lastAt = shownAt
+    private var settled = false
+
+    /** Whether the OK key event at [at] (uptime millis; [down] when pressed, else released) is ignored. */
+    fun ignores(down: Boolean, at: Long): Boolean {
+        if (settled) return false
+        if (down && at - lastAt >= QUIET_MILLIS) {
+            settled = true
+            return false
+        }
+        lastAt = at
+        return true
+    }
+
+    companion object {
+        const val QUIET_MILLIS = 600L
+    }
+}
+
+/** Swallows OK (or Enter) before any element of the page sees it, while [burst] ignores it; without a burst, nothing. */
+private fun Modifier.ignoringOkBurst(burst: OkBurst?): Modifier = if (burst == null) this else onPreviewKeyEvent { event ->
+    val ok = event.key == Key.Enter || event.key == Key.DirectionCenter || event.key == Key.NumPadEnter
+    ok && burst.ignores(event.type == KeyEventType.KeyDown, event.nativeKeyEvent.eventTime)
 }
 
 /** A field of the time on a row of the panel, as in the settings tables: its name, then − value +. */

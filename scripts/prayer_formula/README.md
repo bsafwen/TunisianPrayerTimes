@@ -18,7 +18,9 @@ Per-delegation parameters were fitted on **2026 only**. Model variants were comp
 |------|---------------|-------------|
 | 2026: every delegation and day (`docs/csv`, 258 delegations × 365 days × 6 prayers) | 565,020 | **100 %** |
 | 2020–2025: meteo.tn samples (6 random days per delegation per year, plus full years for 2–5 delegations) | 109,042 | **100 %** |
-| 2020–2026: every day of every delegation, fetched from meteo.tn | *run in progress* | *pending* |
+| 2025: every day of every delegation, fetched from meteo.tn in September 2026 | 561,490 | **100 %** |
+| 2026: every day of every delegation, fetched from meteo.tn in September 2026 | 564,948 | 96.1 %: the rest is INM's later Kairouan / Sidi Bouzid edit (see [INM data quirks](#inm-data-quirks)) |
+| 2020–2024: every day of every delegation | *crawl in progress* | *pending* |
 
 "Exact" means the same `HH:MM` for Fajr, Sunrise (Shuruk), Dhuhr, Asr, Maghrib and Isha. The meteo.tn API also returns solar noon (`pm`) and sunset (`coucher`); both match the formula exactly as well.
 
@@ -141,6 +143,7 @@ Convert every time to minutes after local midnight and round half up: `floor(min
 These are properties of INM's published tables, not of the formula:
 
 - **Zeriba (409), 2026 sunrise only.** INM's 2026 sunrises for Zeriba require an elevation between about 15.4 and 15.8 m, not its 156 m. This is consistent with 15.6 m, a slipped decimal point. Its Fajr, Maghrib and Isha in 2026, and its sunrises in 2020–2025, all use 156 m. It is stored as `"overrides": {"2026": {"sunrise_elevation_m": 15.6}}`, the only non-integer elevation.
+- **Kairouan and Sidi Bouzid, live 2026 tables.** Between 2026-02-18 and 2026-09-29, INM rewrote its 2026 tables for 20 delegations: all 10 of Kairouan (521–529, 630) and 10 of Sidi Bouzid (504–508, 510–512, 628, 1522; not 509 or 513). Their Fajr, Chourouk, sunset and Isha are now computed with an elevation of 0 m, while Maghrib still uses the real elevation. As a result, Fajr and Chourouk are 2–3 min later and Isha 2 min earlier, and Maghrib falls 3–6 min after the published sunset instead of 2. INM's own Ramadan 1447 imsakia (2026-02-18), the scraped 2026 tables, all other years and the SRTM terrain model (66–476 m for these delegations) use the real elevations. The app therefore keeps the real elevations and deliberately differs from today's meteo.tn for those three prayers in these 20 delegations in 2026.
 - **Missing data.** meteo.tn returns `{"data": null}` for some delegation-days:
   - Arram (495) in every year.
   - Frequent sunrise gaps in 2020 and 2023.
@@ -196,7 +199,7 @@ Each part below was tested against the data. The iteration count and angle reduc
   - A precise VSOP87 ephemeris is worse, and so is evaluating the sun at any time other than 0h UT.
   - The 1900-epoch *Astronomical Formulae for Calculators* equations give **zero** Dhuhr and Asr misses in every year.
 - **Offsets.** Dhuhr = noon + 7 min and Maghrib = sunset + 2 min. The API's own `pm` (noon) and `coucher` (sunset) fields match the formula exactly, and shifting either offset by ±0.01 min causes about 950 misses each.
-- **Elevation.** Sunrise and sunset shift symmetrically with terrain height, and Fajr and Isha use the same dip. The fitted elevations are realistic (Tunis 9 m, Béja 242 m, Kesra 1005 m).
+- **Elevation.** Sunrise and sunset shift symmetrically with terrain height, and Fajr and Isha use the same dip. The fitted elevations are realistic (Tunis 9 m, Béja 242 m, Kesra 1005 m). They match the public SRTM terrain model at INM's coordinates: median difference 1 m, 254 of 258 within 25 m, and 59 identical to SRTM 90 m, so INM very likely took them from SRTM. With SRTM elevations instead, about 97.8 % of all 2026 times would still match; the rest would be off by one minute, mostly in coastal cities.
 - **Altitudes.** 0.83° (not 0.8333°, which gives 3,206 misses in 2026) for sunrise/sunset, and exactly 18° for twilight. Moving either by 5×10⁻⁶° breaks exactness.
 - **Evaluation time.** Evaluating the sun at the event's apparent solar time beats UT event time (about 8,900 misses), local mean time and fixed hours.
 - **Single-precision dip.** Solving each delegation's 2026 times backwards gives an exact window of admissible dips.

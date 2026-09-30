@@ -63,14 +63,20 @@ android {
     // Two builds: "play" for Google Play (updated by Play; no update code, as Play requires) and
     // "github" for the many mosque TVs without Play Store, which updates itself from GitHub releases.
     // They have different package names: Play re-signs its builds, so one could not update the other.
+    // Installed side by side, the two would take the screen from each other: each looks for the other
+    // (OTHER_BUILD, named in the manifest's <queries> for Android 11+) and warns on the kiosk page.
     flavorDimensions += "distribution"
     productFlavors {
         create("play") {
             dimension = "distribution"
+            buildConfigField("String", "OTHER_BUILD", "\"com.tunisianprayertimes.tv.github\"")
+            manifestPlaceholders["otherBuild"] = "com.tunisianprayertimes.tv.github"
         }
         create("github") {
             dimension = "distribution"
             applicationIdSuffix = ".github"
+            buildConfigField("String", "OTHER_BUILD", "\"com.tunisianprayertimes.tv\"")
+            manifestPlaceholders["otherBuild"] = "com.tunisianprayertimes.tv"
         }
     }
 
@@ -103,6 +109,12 @@ android {
     buildFeatures {
         compose = true
     }
+
+    // Many mosque boxes run Android 8 or 9: a call newer than minSdk must fail the release build
+    // (lintVital runs with every release assemble), not crash on those boxes only.
+    lint {
+        fatal += "NewApi"
+    }
 }
 
 // JVM unit tests read the canonical inputs the APK bundles, and the app's own sources (to check that
@@ -116,14 +128,15 @@ abstract class TestDataArguments : CommandLineArgumentProvider {
     @get:PathSensitive(PathSensitivity.RELATIVE)
     abstract val tvAssets: DirectoryProperty
 
+    /** Every source set (main, the flavors, debug) with its resources and manifest. */
     @get:InputDirectory
     @get:PathSensitive(PathSensitivity.RELATIVE)
-    abstract val tvSources: DirectoryProperty
+    abstract val tvSourceSets: DirectoryProperty
 
     override fun asArguments() = listOf(
         "-Dtunisianprayertimes.prayerFormulaDir=${prayerFormula.get().asFile.absolutePath}",
         "-Dtunisianprayertimes.tvAssets=${tvAssets.get().asFile.absolutePath}",
-        "-Dtunisianprayertimes.tvSources=${tvSources.get().asFile.absolutePath}",
+        "-Dtunisianprayertimes.tvSourceSets=${tvSourceSets.get().asFile.absolutePath}",
     )
 }
 
@@ -131,7 +144,7 @@ tasks.withType<Test>().configureEach {
     jvmArgumentProviders += objects.newInstance<TestDataArguments>().apply {
         prayerFormula.set(rootProject.layout.projectDirectory.dir("../data/prayer-formula"))
         tvAssets.set(layout.projectDirectory.dir("src/main/assets"))
-        tvSources.set(layout.projectDirectory.dir("src/main/java"))
+        tvSourceSets.set(layout.projectDirectory.dir("src"))
     }
 }
 
@@ -142,7 +155,6 @@ dependencies {
 
     // AndroidX Core
     implementation("androidx.core:core-ktx:1.16.0")
-    implementation("androidx.appcompat:appcompat:1.7.1")
 
     // Compose
     implementation(platform("androidx.compose:compose-bom:2025.04.01"))
@@ -155,16 +167,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.9.0")
     implementation("androidx.compose.ui:ui-tooling-preview")
     debugImplementation("androidx.compose.ui:ui-tooling")
-
-    // TV-specific Compose
-    implementation("androidx.tv:tv-foundation:1.0.0-alpha11")
-    implementation("androidx.tv:tv-material:1.0.0")
-
-    // Navigation
-    implementation("androidx.navigation:navigation-compose:2.9.0")
-
-    // Leanback (for TV launcher intent category)
-    implementation("androidx.leanback:leanback:1.0.0")
 
     // Coil — image loading for custom backgrounds & announcements
     implementation("io.coil-kt:coil-compose:2.6.0")

@@ -1,8 +1,11 @@
 package com.tunisianprayertimes.mosque
 
+import com.tunisianprayertimes.EventDate
+import com.tunisianprayertimes.IslamicDays
 import com.tunisianprayertimes.ManualIslamicDates
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.TunisianHijriCalendar
+import com.tunisianprayertimes.YearDates
 import com.tunisianprayertimes.adhkar.DhikrCatalog
 import com.tunisianprayertimes.adhkar.DhikrCategory
 import com.tunisianprayertimes.adhkar.countForCollection
@@ -30,7 +33,9 @@ import kotlinx.serialization.json.JsonPrimitive
  *       "islamicDates": { "1448": { "ramadanStart": "2027-02-08", "eidFitr": "2027-03-10" } } }
  *
  * "iqamah" is "+N" minutes after the adhan (after sunrise for the Eid prayers) or a fixed "HH:MM";
- * "duration" is the prayer's length in minutes (the black screen). "ramadan" changes prayers on the
+ * "duration" is the prayer's length in minutes (the black screen); "held": false says the mosque
+ * does not hold Jumu'a or an Eid prayer; Jumu'a's "khutba" is the sermon's length in minutes before
+ * its iqamah (0: the whole wait after the adhan). "ramadan" changes prayers on the
  * days of Ramadan (null returns a field to the usual setting). "islamicDates" sets the year's Ramadan
  * and Eid dates by hand (null returns a date to automatic). "mosque" and "display" carry the rest of a
  * TV's settings, so a file written by one TV sets up another. "adhkar" puts the mosque's own texts
@@ -52,9 +57,9 @@ object MosqueSettingsFile {
     /** How far a hand-set Ramadan or Eid date may be from the calendar estimate. */
     private const val MAX_DAYS_FROM_ESTIMATE = 5L
 
-    enum class Field { IQAMAH, DURATION }
+    enum class Field { IQAMAH, DURATION, HELD, KHUTBA }
 
-    /** One setting that the file changes, rendered as in the file ("+15", "20:00", "10"); [ramadan] for Ramadan changes. */
+    /** One setting that the file changes, rendered as in the file ("+15", "20:00", "10", "false"); [ramadan] for Ramadan changes. */
     data class Change(val prayer: Prayer, val field: Field, val before: String, val after: String, val ramadan: Boolean = false)
 
     enum class DateEvent { RAMADAN_START, EID_FITR, EID_ADHA }
@@ -62,21 +67,22 @@ object MosqueSettingsFile {
     /** A Ramadan or Eid date the file sets or returns to automatic (null). */
     data class DateChange(val hijriYear: Int, val event: DateEvent, val before: LocalDate?, val after: LocalDate?)
 
-    enum class ProfileField { NAME, DELEGATION, THEME, WEATHER, BACKGROUNDS, ANNOUNCEMENTS, SLIDE_SECONDS, ANNOUNCEMENTS_EVERY, NIGHT_SCREEN }
+    enum class ProfileField { NAME, DELEGATION, THEME, WEATHER, BACKGROUNDS, ANNOUNCEMENTS, SLIDE_SECONDS, ANNOUNCEMENTS_EVERY, NIGHT_SCREEN, ADHAN_SCREEN }
 
     /**
-     * The mosque's name, place, theme or a display option changed by the file, as the admin reads them
-     * ("—" when unset; a switch reads تشغيل or إيقاف).
+     * The mosque's name, place, theme or a display option changed by the file: the name, place and
+     * theme as the admin reads them, the options as in the file ("true", "15"); "—" when unset.
      */
     data class ProfileChange(val field: ProfileField, val before: String, val after: String)
 
     enum class ContentList { AFTER_SALAH, TICKER, ANNOUNCEMENTS }
 
     /**
-     * The texts shown after the prayer or in the ticker, before and after the file, described for the
-     * admin: a summary of each, the texts [added] and [removed] (by their titles), the texts kept but
-     * changed ([recounted]: another count "title: العدد 3 ← 5", another source, or other wording), or
-     * only a new order ([reordered]).
+     * The texts shown after the prayer or in the ticker, or the written announcements, before and
+     * after the file, described for the admin: a summary of each, the texts [added] and [removed]
+     * (by their titles, or first words), the texts kept but changed ([recounted]: "title: العدد 3 ← 5";
+     * [resourced]: another source; [reworded]: the mosque's own text edited; [redated]: an
+     * announcement's dates), or only a new order ([reordered]).
      */
     data class ContentChange(
         val list: ContentList,
@@ -86,6 +92,9 @@ object MosqueSettingsFile {
         val removed: List<String> = emptyList(),
         val recounted: List<String> = emptyList(),
         val reordered: Boolean = false,
+        val resourced: List<String> = emptyList(),
+        val reworded: List<String> = emptyList(),
+        val redated: List<String> = emptyList(),
     )
 
     enum class ErrorCode {
@@ -93,7 +102,7 @@ object MosqueSettingsFile {
         UNKNOWN_PRAYER, DUPLICATE_PRAYER, NOT_A_PRAYER_OBJECT, UNKNOWN_FIELD, DUPLICATE_FIELD,
         INVALID_IQAMAH, IQAMAH_OUT_OF_RANGE, INVALID_DURATION, DURATION_OUT_OF_RANGE,
         INVALID_YEAR, INVALID_DATE, DATE_OUT_OF_RANGE, INVALID_NAME, UNKNOWN_DELEGATION, UNKNOWN_THEME,
-        INVALID_ADHKAR, INVALID_ANNOUNCEMENT, INVALID_OPTION,
+        INVALID_ADHKAR, INVALID_ANNOUNCEMENT, INVALID_OPTION, DATES_CONFLICT, INVALID_ENCODING,
     }
 
     /** A problem in the file: [path] locates it (for example prayers.isha.iqamah); [message] is for the TV screen. */
@@ -116,8 +125,12 @@ object MosqueSettingsFile {
                 get() = changes.isNotEmpty() || dateChanges.isNotEmpty() || profileChanges.isNotEmpty() || contentChanges.isNotEmpty()
         }
 
-        data class Failure(val errors: List<SettingsError>) : ParseResult
+        /** The first [MAX_ERRORS] mistakes, and how many [more] a hostile or badly broken file has. */
+        data class Failure(val errors: List<SettingsError>, val more: Int = 0) : ParseResult
     }
+
+    /** A screen of mistakes is enough to fix a file by hand; tens of thousands would stall the TV. */
+    const val MAX_ERRORS = 50
 
     @OptIn(ExperimentalSerializationApi::class)
     private val json = Json {
@@ -131,8 +144,13 @@ object MosqueSettingsFile {
      *
      * [stored] is for the TV's own saved state, which passed these checks when it was saved: a
      * reviewed text an app update no longer has, or a count that no longer applies, is then kept
-     * or dropped quietly instead of losing all the mosque's lists (a file from a key or the
-     * dashboard is always checked in full).
+     * or dropped quietly instead of losing all the mosque's lists, and its Ramadan and Eid dates are
+     * not checked again against announcements that arrived since, so undoing an import returns
+     * whole (a file from a key or the dashboard is always checked in full).
+     *
+     * [yearDates] gives the TV's Ramadan and Eid dates of a Hijri year (IslamicDays.yearDates), so a
+     * date the file sets is checked against the announced ones too; null checks it against the
+     * admin's other dates only.
      */
     fun parse(
         text: String,
@@ -143,8 +161,9 @@ object MosqueSettingsFile {
         currentContent: AdhkarContent = AdhkarContent(),
         currentAnnouncements: List<TextAnnouncement> = emptyList(),
         stored: Boolean = false,
+        yearDates: (Int) -> YearDates? = { null },
     ): ParseResult = try {
-        parseOrFail(text, current, currentDates, currentProfile, catalog, currentContent, currentAnnouncements, stored)
+        parseOrFail(text, current, currentDates, currentProfile, catalog, currentContent, currentAnnouncements, stored, yearDates)
     } catch (e: Throwable) {
         ParseResult.Failure(listOf(SettingsError(ErrorCode.INVALID_JSON, "", MESSAGE_INVALID_JSON)))
     }
@@ -158,18 +177,26 @@ object MosqueSettingsFile {
         currentContent: AdhkarContent,
         currentAnnouncements: List<TextAnnouncement>,
         stored: Boolean,
+        yearDates: (Int) -> YearDates?,
     ): ParseResult {
         if (text.length > MAX_CHARS) return fail(ErrorCode.TOO_LARGE, "", "الملف كبير جدًا: هذا ليس ملف إعدادات شاشة المسجد")
+        // What no encoding the TV knows could read (UTF-16 without its mark, a stray binary file).
+        if (text.any { it == '�' || it == '\u0000' }) {
+            return fail(ErrorCode.INVALID_ENCODING, "", "تعذّرت قراءة حروف الملف: احفظه بترميز UTF-8 ثم أعد المحاولة")
+        }
         val keys = scanKeys(text)
         if (keys == KeyScan.TooDeep) return fail(ErrorCode.INVALID_JSON, "", MESSAGE_INVALID_JSON)
-        val root = runCatching { json.parseToJsonElement(text.removePrefix("﻿")) }.getOrNull()
-            ?: return fail(ErrorCode.INVALID_JSON, "", MESSAGE_INVALID_JSON)
+        val root = try {
+            json.parseToJsonElement(text.removePrefix("﻿"))
+        } catch (e: Exception) {
+            return fail(ErrorCode.INVALID_JSON, "", invalidJson(text, e))
+        }
         if (root !is JsonObject) return fail(ErrorCode.NOT_AN_OBJECT, "", MESSAGE_INVALID_JSON)
         // The JSON reader keeps the last of two identical keys: the admin's added line would vanish.
         if (keys is KeyScan.Duplicate) {
-            return fail(ErrorCode.DUPLICATE_FIELD, keys.path, "«${keys.path.substringAfterLast('.')}» مذكور مرتين في الملف: احذف أحدهما")
+            return fail(ErrorCode.DUPLICATE_FIELD, keys.path, "«${short(keys.path.substringAfterLast('.'))}» مذكور مرتين في الملف: احذف أحدهما")
         }
-        rootErrors(root).takeIf { it.isNotEmpty() }?.let { return ParseResult.Failure(it) }
+        rootErrors(root).takeIf { it.isNotEmpty() }?.let { return failure(it) }
 
         root["format"]?.let { format ->
             if (format.stringOrNull()?.let(::clean)?.trim() != FORMAT) {
@@ -178,7 +205,7 @@ object MosqueSettingsFile {
         }
         root["version"]?.let { version ->
             if (version.intOrNull() != VERSION) {
-                return fail(ErrorCode.UNSUPPORTED_VERSION, "version", "إصدار الملف غير مدعوم: حدّث التطبيق أو استعمل \"version\": 1")
+                return fail(ErrorCode.UNSUPPORTED_VERSION, "version", "إصدار الملف غير مدعوم: حدّث التطبيق أو استعمل ${code("\"version\": 1")}")
             }
         }
         val prayers = root.section("prayers", "الصلوات")
@@ -189,17 +216,19 @@ object MosqueSettingsFile {
         val adhkar = root.entries.firstOrNull { (key, _) -> clean(key).trim().lowercase() in ADHKAR_SECTION }
         val announcementsEntry = root.entries.firstOrNull { (key, _) -> clean(key).trim().lowercase() in ANNOUNCEMENTS_SECTION }
         if (adhkar == null && announcementsEntry == null && listOf(prayers, ramadan, dates, mosque, display).all { it == null || it.second.isEmpty() }) {
-            return fail(ErrorCode.NO_PRAYERS, "prayers", "لا يحتوي الملف على إعدادات الصلوات (\"prayers\")")
+            return fail(ErrorCode.NO_PRAYERS, "prayers", "لا يحتوي الملف على إعدادات الصلوات (${code("\"prayers\"")})")
         }
 
         val errors = mutableListOf<SettingsError>()
         var schedule = current
         prayers?.let { (sectionKey, section) ->
             forEachPrayer(section, sectionKey, errors, allowEid = true) { prayer, fields, path ->
-                val settings = readFields(fields, prayer, path, errors, schedule.settings(prayer)) { base, field, value ->
+                val settings = readFields(fields, prayer, path, errors, schedule.settings(prayer), allowHeld = true) { base, field, value ->
                     when (field) {
                         Field.IQAMAH -> base.copy(iqamah = value as IqamahRule)
                         Field.DURATION -> base.copy(salahMinutes = value as Int)
+                        Field.HELD -> base.copy(held = value as Boolean)
+                        Field.KHUTBA -> base.copy(khutbaMinutes = value as Int)
                     }
                 }
                 schedule = schedule.with(prayer, settings)
@@ -211,26 +240,29 @@ object MosqueSettingsFile {
                     when (field) {
                         Field.IQAMAH -> base.copy(iqamah = value as IqamahRule?)
                         Field.DURATION -> base.copy(salahMinutes = value as Int?)
+                        Field.HELD, Field.KHUTBA -> base // refused by readFields: the same all year
                     }
                 }
                 schedule = schedule.withRamadan(prayer, override)
             }
         }
-        val newDates = dates?.let { (sectionKey, section) -> readDates(section, sectionKey, currentDates, errors) }.orEmpty()
+        val newDates = dates?.let { (sectionKey, section) -> readDates(section, sectionKey, currentDates, yearDates.takeUnless { stored }, errors) }.orEmpty()
         val profile = readProfile(mosque, display, currentProfile, catalog, errors)
         val content = adhkar?.let { (key, value) -> readAdhkar(key, value, currentContent, stored, errors) } ?: currentContent
         val announcements = announcementsEntry?.let { (key, value) -> readAnnouncements(key, value, errors) } ?: currentAnnouncements
 
-        if (errors.isNotEmpty()) return ParseResult.Failure(errors)
-        val announcementChange = ContentChange(ContentList.ANNOUNCEMENTS, "${currentAnnouncements.size}", "${announcements.size}")
-            .takeIf { announcements != currentAnnouncements }
+        if (errors.isNotEmpty()) return failure(errors)
         return ParseResult.Success(
             schedule, changes(current, schedule), newDates, dateChanges(currentDates, newDates),
             profile, profileChanges(currentProfile, profile, catalog),
-            content, contentChanges(currentContent, content) + listOfNotNull(announcementChange),
+            content, contentChanges(currentContent, content) + listOfNotNull(announcementChange(currentAnnouncements, announcements)),
             announcements,
         )
     }
+
+    /** At most [MAX_ERRORS] of [errors], and the count of the rest. */
+    private fun failure(errors: List<SettingsError>) =
+        ParseResult.Failure(errors.take(MAX_ERRORS), (errors.size - MAX_ERRORS).coerceAtLeast(0))
 
     /** The "announcements" list, which replaces the TV's; null or [] removes them all. */
     private fun readAnnouncements(sectionKey: String, element: JsonElement, errors: MutableList<SettingsError>): List<TextAnnouncement> {
@@ -238,13 +270,15 @@ object MosqueSettingsFile {
         val items = element as? JsonArray
         if (items == null || items.size > TextAnnouncement.MAX_COUNT) {
             errors += SettingsError(ErrorCode.INVALID_ANNOUNCEMENT, sectionKey,
-                "الإعلانات قائمة مثل [ { \"text\": \"...\", \"until\": \"2026-10-31\" } ]، ${TextAnnouncement.MAX_COUNT} على الأكثر")
+                "الإعلانات قائمة مثل ${code("[ { \"text\": \"...\", \"until\": \"2026-10-31\" } ]")}، ${TextAnnouncement.MAX_COUNT} على الأكثر")
             return emptyList()
         }
         return items.mapIndexedNotNull { index, item ->
             val path = "$sectionKey[$index]"
+            // Which one, as the admin counts them: a date alone does not say.
+            val where = "الإعلان ${index + 1}"
             val fields = item as? JsonObject
-            if (fields != null && !itemKeysOk(path, fields, listOf(TEXT_KEYS, FROM_KEYS, UNTIL_KEYS), "\"text\" و\"from\" و\"until\"", errors)) {
+            if (fields != null && !itemKeysOk(path, fields, listOf(TEXT_KEYS, FROM_KEYS, UNTIL_KEYS), keyList("text", "from", "until"), errors, where)) {
                 return@mapIndexedNotNull null
             }
             fun field(keys: Set<String>) = fields?.entries?.firstOrNull { clean(it.key).trim().lowercase() in keys }?.value
@@ -258,14 +292,14 @@ object MosqueSettingsFile {
             val (fromOk, from) = date(FROM_KEYS)
             val (untilOk, until) = date(UNTIL_KEYS)
             val problem = when {
-                fields == null -> "كل إعلان يُكتب مثل { \"text\": \"...\", \"from\": \"2026-10-01\", \"until\": \"2026-10-31\" }"
+                fields == null -> "كل إعلان يُكتب مثل ${code("{ \"text\": \"...\", \"from\": \"2026-10-01\", \"until\": \"2026-10-31\" }")}"
                 text.isNullOrEmpty() || text.length > TextAnnouncement.MAX_LENGTH -> "نص الإعلان فارغ أو أطول من ${TextAnnouncement.MAX_LENGTH} حرف"
-                !fromOk || !untilOk -> "التاريخ غير صالح: اكتب مثل 2026-10-31"
+                !fromOk || !untilOk -> "التاريخ غير صالح: اكتب مثل ${code("2026-10-31")}"
                 from != null && until != null && until.isBefore(from) -> "تاريخ النهاية قبل تاريخ البداية"
                 else -> null
             }
             if (problem != null) {
-                errors += SettingsError(ErrorCode.INVALID_ANNOUNCEMENT, path, problem)
+                errors += SettingsError(ErrorCode.INVALID_ANNOUNCEMENT, path, "$where: $problem")
                 null
             } else {
                 TextAnnouncement(text!!, from, until)
@@ -277,7 +311,8 @@ object MosqueSettingsFile {
     private fun readAdhkar(sectionKey: String, element: JsonElement, current: AdhkarContent, stored: Boolean, errors: MutableList<SettingsError>): AdhkarContent {
         if (element is JsonNull) return AdhkarContent()
         if (element !is JsonObject) {
-            errors += SettingsError(ErrorCode.INVALID_ADHKAR, sectionKey, "«adhkar» يجب أن يكون مثل { \"afterSalah\": { \"mode\": \"append\", \"items\": [...] } }")
+            errors += SettingsError(ErrorCode.INVALID_ADHKAR, sectionKey,
+                "«adhkar» يجب أن يكون مثل ${code("{ \"afterSalah\": { \"mode\": \"append\", \"items\": [...] } }")}")
             return current
         }
         var content = current
@@ -288,21 +323,31 @@ object MosqueSettingsFile {
             if (cleanKey in IGNORED_FIELDS) continue
             val list = ADHKAR_LISTS[cleanKey]
             if (list == null) {
-                errors += SettingsError(ErrorCode.UNKNOWN_FIELD, path, "حقل غير معروف «$key»: استعمل \"afterSalah\" أو \"ticker\"")
+                errors += SettingsError(ErrorCode.UNKNOWN_FIELD, path, "حقل غير معروف «${short(key)}»: استعمل ${keyList("afterSalah", "ticker", or = true)}")
                 continue
             }
             seenLists.put(list, key)?.let { first ->
-                errors += SettingsError(ErrorCode.DUPLICATE_FIELD, path, "القائمة مذكورة مرتين («$first» و«$key»)")
+                errors += SettingsError(ErrorCode.DUPLICATE_FIELD, path, "القائمة مذكورة مرتين («${short(first)}» و«${short(key)}»)")
                 continue
             }
-            val parsed = if (value is JsonNull) null else readAdhkarList(path, value, list, stored, errors) ?: continue
+            val saved = if (list == ContentList.TICKER) current.ticker else current.afterSalah
+            val before = errors.size
+            var parsed = if (value is JsonNull) null else readAdhkarList(path, value, list, stored, errors)
+            if (value !is JsonNull && parsed == null) {
+                // The TV's own list read back (its template, the dashboard's whole file) stays as it was saved,
+                // even with a text an update retired since: that must not refuse the rest of the file.
+                if (saved == null || readAdhkarList(path, value, list, stored = true, mutableListOf()) != saved) continue
+                errors.subList(before, errors.size).clear()
+                parsed = saved
+            }
             content = when (list) {
                 ContentList.AFTER_SALAH -> content.copy(afterSalah = parsed)
                 ContentList.TICKER -> content.copy(ticker = parsed)
                 ContentList.ANNOUNCEMENTS -> content // not an adhkar list; ADHKAR_LISTS never maps to it
             }
-            // The screen gives the adhkar after the prayer at most FlowTiming.MAX_AFTER_SALAH_MINUTES.
-            if (list == ContentList.AFTER_SALAH && parsed != null && !stored) {
+            // The screen gives the adhkar after the prayer at most FlowTiming.MAX_AFTER_SALAH_MINUTES
+            // (a list the TV already holds is not measured again: slower pacing in an update must not refuse it).
+            if (list == ContentList.AFTER_SALAH && parsed != null && parsed != saved && !stored) {
                 val minutes = (MosqueAdhkar.totalMillis(MosqueAdhkar.afterSalah(content)) + 59_999) / 60_000
                 if (minutes > FlowTiming.MAX_AFTER_SALAH_MINUTES) {
                     errors += SettingsError(ErrorCode.INVALID_ADHKAR, path,
@@ -317,27 +362,28 @@ object MosqueSettingsFile {
         val (mode, items) = when (value) {
             is JsonArray -> CustomAdhkarList.Mode.APPEND to value
             is JsonObject -> {
-                if (!itemKeysOk(path, value, listOf(MODE_KEYS, ITEMS_KEYS), "\"mode\" و\"items\"", errors)) return null
+                if (!itemKeysOk(path, value, listOf(MODE_KEYS, ITEMS_KEYS), keyList("mode", "items"), errors)) return null
                 val modeElement = value.entries.firstOrNull { clean(it.key).trim().lowercase() in MODE_KEYS }?.value
                 val modeText = if (modeElement == null || modeElement is JsonNull) null else modeElement.stringOrNull() ?: "?"
                 val mode = when (modeText?.let { clean(it).trim().lowercase() }) {
                     null, "append", "add", "إضافة", "اضافة" -> CustomAdhkarList.Mode.APPEND
                     "replace", "استبدال" -> CustomAdhkarList.Mode.REPLACE
                     else -> {
-                        errors += SettingsError(ErrorCode.INVALID_ADHKAR, "$path.mode", "«mode» يكون \"append\" (بعد النصوص المضمّنة) أو \"replace\" (بدلها)")
+                        errors += SettingsError(ErrorCode.INVALID_ADHKAR, "$path.mode",
+                            "«mode» يكون ${code("\"append\"")} (بعد النصوص المضمّنة) أو ${code("\"replace\"")} (بدلها)")
                         return null
                     }
                 }
                 val items = value.entries.firstOrNull { clean(it.key).trim().lowercase() in ITEMS_KEYS }?.value as? JsonArray
                 if (items == null) {
                     errors += SettingsError(ErrorCode.INVALID_ADHKAR, "$path.items",
-                        "النصوص تُكتب في «items»: [ { \"id\": \"ayat_kursi\" }, { \"text\": \"...\", \"reference\": \"...\" } ]")
+                        "النصوص تُكتب في «items»: ${code("[ { \"id\": \"ayat_kursi\" }, { \"text\": \"...\", \"reference\": \"...\" } ]")}")
                     return null
                 }
                 mode to items
             }
             else -> {
-                errors += SettingsError(ErrorCode.INVALID_ADHKAR, path, "النصوص تُكتب مثل { \"mode\": \"append\", \"items\": [...] }")
+                errors += SettingsError(ErrorCode.INVALID_ADHKAR, path, "النصوص تُكتب مثل ${code("{ \"mode\": \"append\", \"items\": [...] }")}")
                 return null
             }
         }
@@ -346,23 +392,34 @@ object MosqueSettingsFile {
             return null
         }
         val before = errors.size
-        val parsed = items.mapIndexedNotNull { index, item -> readDhikr("$path.items[$index]", item, list, stored, errors) }
+        val parsed = items.mapIndexedNotNull { index, item ->
+            readDhikr("$path.items[$index]", "${listName(list)}، النص ${index + 1}", item, list, stored, errors)
+        }
         return if (errors.size == before) CustomAdhkarList(mode, parsed) else null
     }
 
-    /** One item of a list: a reviewed text of the app's library by its "id", or the mosque's own "text". */
-    private fun readDhikr(path: String, element: JsonElement, list: ContentList, stored: Boolean, errors: MutableList<SettingsError>): MosqueDhikr? {
+    private fun listName(list: ContentList): String = when (list) {
+        ContentList.AFTER_SALAH -> "أذكار بعد الصلاة"
+        ContentList.TICKER -> "شريط الأذكار"
+        ContentList.ANNOUNCEMENTS -> "الإعلانات المكتوبة"
+    }
+
+    /**
+     * One item of a list: a reviewed text of the app's library by its "id", or the mosque's own "text".
+     * [where] names it as the admin counts («أذكار بعد الصلاة، النص 3») at the head of its mistakes.
+     */
+    private fun readDhikr(path: String, where: String, element: JsonElement, list: ContentList, stored: Boolean, errors: MutableList<SettingsError>): MosqueDhikr? {
         val fields = element as? JsonObject
         val keys = fields?.keys.orEmpty().map { clean(it).trim().lowercase() }
         if (keys.any { it in ID_KEYS }) {
             if (keys.any { it in TEXT_KEYS || it in REFERENCE_KEYS }) {
                 errors += SettingsError(ErrorCode.INVALID_ADHKAR, path,
-                    "النص إما من مكتبة التطبيق («id») وإما نص المسجد («text» و«reference»)، لا الاثنان معًا")
+                    "$where: النص إما من مكتبة التطبيق («id») وإما نص المسجد («text» و«reference»)، لا الاثنان معًا")
                 return null
             }
-            return readReviewed(path, fields!!, list, stored, errors)
+            return readReviewed(path, where, fields!!, list, stored, errors)
         }
-        if (fields != null && !itemKeysOk(path, fields, listOf(TEXT_KEYS, REFERENCE_KEYS, COUNT_KEYS), "\"text\" و\"reference\" و\"count\"", errors)) {
+        if (fields != null && !itemKeysOk(path, fields, listOf(TEXT_KEYS, REFERENCE_KEYS, COUNT_KEYS), keyList("text", "reference", "count"), errors, where)) {
             return null
         }
         fun field(keys: Set<String>) = fields?.entries?.firstOrNull { clean(it.key).trim().lowercase() in keys }?.value
@@ -371,7 +428,7 @@ object MosqueSettingsFile {
         val countElement = field(COUNT_KEYS)
         val count = if (countElement == null || countElement is JsonNull) 1 else countElement.intOrNull()
         val problem = when {
-            fields == null -> "كل نص يُكتب مثل { \"id\": \"ayat_kursi\" } أو { \"text\": \"...\", \"reference\": \"...\", \"count\": 3 }"
+            fields == null -> "كل نص يُكتب مثل ${code("{ \"id\": \"ayat_kursi\" }")} أو ${code("{ \"text\": \"...\", \"reference\": \"...\", \"count\": 3 }")}"
             text.isNullOrEmpty() || text.length > MAX_ADHKAR_TEXT -> "النص فارغ أو أطول من $MAX_ADHKAR_TEXT حرف"
             reference.isNullOrEmpty() -> "لكل نص مصدر في «reference» (مثل «صحيح مسلم 591»)"
             reference.length > MAX_ADHKAR_REFERENCE -> "المصدر أطول من $MAX_ADHKAR_REFERENCE حرف"
@@ -380,7 +437,7 @@ object MosqueSettingsFile {
             else -> null
         }
         if (problem != null) {
-            errors += SettingsError(ErrorCode.INVALID_ADHKAR, path, problem)
+            errors += SettingsError(ErrorCode.INVALID_ADHKAR, path, "$where: $problem")
             return null
         }
         // The ticker shows every text once (an old saved count is dropped).
@@ -391,8 +448,8 @@ object MosqueSettingsFile {
      * A reviewed text by its id. Its text and source stay the catalog's; after the prayer the mosque
      * may change how many times it is said (the ticker reads every text once).
      */
-    private fun readReviewed(path: String, fields: JsonObject, list: ContentList, stored: Boolean, errors: MutableList<SettingsError>): ReviewedDhikr? {
-        if (!itemKeysOk(path, fields, listOf(ID_KEYS, COUNT_KEYS), "\"id\" و\"count\"", errors)) return null
+    private fun readReviewed(path: String, where: String, fields: JsonObject, list: ContentList, stored: Boolean, errors: MutableList<SettingsError>): ReviewedDhikr? {
+        if (!itemKeysOk(path, fields, listOf(ID_KEYS, COUNT_KEYS), keyList("id", "count"), errors, where)) return null
         fun field(keys: Set<String>) = fields.entries.firstOrNull { clean(it.key).trim().lowercase() in keys }?.value
         val id = field(ID_KEYS)?.stringOrNull()?.let { clean(it).trim() }
         val entry = id?.let(DhikrCatalog::find)
@@ -406,15 +463,15 @@ object MosqueSettingsFile {
             return ReviewedDhikr(entry?.id ?: id, count?.takeIf { applies && it != entry!!.countForCollection(DhikrCategory.SALAH) })
         }
         val problem = when {
-            id.isNullOrEmpty() -> "«id» اسم نص من مكتبة التطبيق بين علامتي تنصيص، مثل \"ayat_kursi\""
-            entry == null -> "لا يوجد في مكتبة التطبيق نص باسم «$id»"
+            id.isNullOrEmpty() -> "«id» اسم نص من مكتبة التطبيق بين علامتي تنصيص، مثل ${code("\"ayat_kursi\"")}"
+            entry == null -> "لا يوجد في مكتبة التطبيق نص باسم «${short(id)}»"
             hasCount && list == ContentList.TICKER -> "الشريط يعرض كل نص مرة واحدة: احذف «count»"
             hasCount && entry.steps.isNotEmpty() -> "«${entry.title}» يُقال بالعدد المذكور في خطواته: احذف «count»"
             hasCount && (count == null || count !in 1..MAX_ADHKAR_COUNT) -> "«count» عدد المرات بين 1 و$MAX_ADHKAR_COUNT"
             else -> null
         }
         if (problem != null) {
-            errors += SettingsError(ErrorCode.INVALID_ADHKAR, path, problem)
+            errors += SettingsError(ErrorCode.INVALID_ADHKAR, path, "$where: $problem")
             return null
         }
         // The catalog's own count is kept as "no change", so the same list always reads the same.
@@ -428,55 +485,82 @@ object MosqueSettingsFile {
 
     private fun listChange(list: ContentList, bundledIds: List<String>, before: CustomAdhkarList?, after: CustomAdhkarList?): ContentChange? {
         if (before == after) return null
-        val old = MosqueAdhkar.items(bundledIds, before).map(::shown)
-        val new = MosqueAdhkar.items(bundledIds, after).map(::shown)
-        // Texts matched by identity (a reviewed id, or the mosque's wording), each occurrence once.
-        val unmatchedOld = old.toMutableList()
-        val addedTexts = mutableListOf<Shown>()
-        val recounted = mutableListOf<String>()
-        for (text in new) {
-            val same = unmatchedOld.firstOrNull { it.identity == text.identity }
-            if (same == null) {
-                addedTexts += text
-            } else {
-                unmatchedOld.remove(same)
-                if (same.count != text.count) recounted += "${text.name}: العدد ${same.count} ← ${text.count}"
-                if (same.reference != text.reference) recounted += "${text.name}: ${OTHER_SOURCE}"
-            }
-        }
-        // An own text edited past its first words keeps its short name: an edit, not a text added and removed.
-        for (text in addedTexts.toList()) {
-            val before = unmatchedOld.firstOrNull { it.name == text.name } ?: continue
-            unmatchedOld.remove(before)
-            addedTexts.remove(text)
-            recounted += "${text.name}: ${OTHER_WORDING}"
-        }
-        val added = addedTexts.map { it.name }
-        val removed = unmatchedOld.map { it.name }
-        return ContentChange(
+        return compare(
             list, describe(list, bundledIds, before), describe(list, bundledIds, after),
-            added, removed, recounted,
-            reordered = added.isEmpty() && removed.isEmpty() && old.map { it.identity } != new.map { it.identity },
+            MosqueAdhkar.items(bundledIds, before).map(::shown), MosqueAdhkar.items(bundledIds, after).map(::shown),
         )
     }
 
-    /** A text of a list as the admin knows it: a reviewed text by its title, the mosque's by its first words. */
-    private class Shown(val identity: String, val name: String, val count: Int, val reference: String?)
+    /** The written announcements: how many, and which come, go or change, by their first words. */
+    private fun announcementChange(before: List<TextAnnouncement>, after: List<TextAnnouncement>): ContentChange? {
+        if (before == after) return null
+        return compare(ContentList.ANNOUNCEMENTS, "${before.size}", "${after.size}", before.map(::shown), after.map(::shown))
+    }
+
+    private fun compare(list: ContentList, before: String, after: String, old: List<Shown>, new: List<Shown>): ContentChange {
+        // Texts matched by identity (a reviewed id, or the wording), each occurrence once; [pairs] holds each new text's old one.
+        val unmatchedOld = old.toMutableList()
+        val pairs = arrayOfNulls<Shown>(new.size)
+        val recounted = mutableListOf<String>()
+        val redetailed = mutableListOf<String>()
+        new.forEachIndexed { index, text ->
+            val same = unmatchedOld.firstOrNull { it.identity == text.identity } ?: return@forEachIndexed
+            unmatchedOld.remove(same)
+            pairs[index] = same
+            if (same.count != text.count) {
+                // The wall reads a long text whole each time, at most three times: the preview says so.
+                recounted += "${text.name}: العدد ${same.count} ← ${text.count}" + if (text.count > text.shownTimes) " ($LONG_TEXT_REPEATS)" else ""
+            }
+            if (same.detail != text.detail) redetailed += text.name
+        }
+        // A text edited past its first words keeps its short name: an edit, not a text added and removed.
+        val reworded = mutableListOf<String>()
+        new.forEachIndexed { index, text ->
+            if (pairs[index] != null) return@forEachIndexed
+            val edited = unmatchedOld.firstOrNull { it.name == text.name } ?: return@forEachIndexed
+            unmatchedOld.remove(edited)
+            pairs[index] = edited
+            reworded += text.name
+        }
+        val added = new.filterIndexed { index, _ -> pairs[index] == null }.map { it.name }
+        val removed = unmatchedOld.map { it.name }
+        val announcements = list == ContentList.ANNOUNCEMENTS
+        return ContentChange(
+            list, before, after, added, removed, recounted,
+            reordered = added.isEmpty() && removed.isEmpty() && pairs.map { old.indexOf(it) } != old.indices.toList(),
+            resourced = if (announcements) emptyList() else redetailed,
+            reworded = reworded,
+            redated = if (announcements) redetailed else emptyList(),
+        )
+    }
+
+    /**
+     * A text of a list as the admin knows it: a reviewed text by its title, the mosque's text or an
+     * announcement by its first words. [detail] is its source, or an announcement's dates;
+     * [shownTimes] how many times the wall really shows it.
+     */
+    private class Shown(val identity: String, val name: String, val count: Int, val detail: String?, val shownTimes: Int = count)
 
     private fun shown(item: MosqueDhikr): Shown = when (item) {
         is ReviewedDhikr -> DhikrCatalog.find(item.id).let { entry ->
-            Shown("id:${item.id}", entry?.title ?: item.id, item.count ?: entry?.countForCollection(DhikrCategory.SALAH) ?: 1, null)
+            val count = item.count ?: entry?.countForCollection(DhikrCategory.SALAH) ?: 1
+            val times = if (entry == null || entry.steps.isNotEmpty()) count else shownTimes(entry.text, count)
+            Shown("id:${item.id}", entry?.title ?: item.id, count, null, times)
         }
-        is CustomDhikr -> Shown(
-            "own:${item.text}",
-            "«" + item.text.take(30).trim() + (if (item.text.length > 30) "…" else "") + "»",
-            item.count,
-            item.reference,
-        )
+        is CustomDhikr -> Shown("own:${item.text}", textName(item.text), item.count, item.reference, shownTimes(item.text, item.count))
     }
 
-    private const val OTHER_SOURCE = "مصدر آخر"
-    private const val OTHER_WORDING = "نص معدَّل"
+    private fun shown(announcement: TextAnnouncement) =
+        Shown("text:${announcement.text}", textName(announcement.text), 1, "${announcement.from}/${announcement.until}")
+
+    /** A text longer than a page is read whole for each repetition, at most [MosqueAdhkar.MAX_PAGED_REPETITIONS] times. */
+    private fun shownTimes(text: String, count: Int): Int =
+        if (AdhkarPacer.pages(text).size > 1) minOf(count, MosqueAdhkar.MAX_PAGED_REPETITIONS) else count
+
+    /** A text without a title (the mosque's own, an announcement) named by its first words: «اللهم اجعل هذا المسجد…». */
+    fun textName(text: String): String = "«" + text.take(30).trim() + (if (text.length > 30) "…" else "") + "»"
+
+    private val LONG_TEXT_REPEATS = "النص الطويل يُعرض كاملًا، حتى ${MosqueAdhkar.MAX_PAGED_REPETITIONS} مرات"
 
     /** "النصوص المضمّنة · 8 نصوص · نحو 4 د": where the list comes from, how many texts, and (after the prayer) how long. */
     private fun describe(list: ContentList, bundledIds: List<String>, custom: CustomAdhkarList?): String {
@@ -522,18 +606,18 @@ object MosqueSettingsFile {
                 if (cleanKey in IGNORED_FIELDS || cleanKey in INFORMATION_FIELDS) continue
                 val field = known[cleanKey]
                 if (field == null) {
-                    errors += SettingsError(ErrorCode.UNKNOWN_FIELD, path, "حقل غير معروف «$key»: استعمل $hint")
+                    errors += SettingsError(ErrorCode.UNKNOWN_FIELD, path, "حقل غير معروف «${short(key)}»: استعمل $hint")
                     continue
                 }
                 seen[field]?.let { first ->
-                    errors += SettingsError(ErrorCode.DUPLICATE_FIELD, path, "الحقل مذكور مرتين («$first» و«$key»)")
+                    errors += SettingsError(ErrorCode.DUPLICATE_FIELD, path, "الحقل مذكور مرتين («${short(first)}» و«${short(key)}»)")
                     continue
                 }
                 seen[field] = key
                 read(field, element, path)
             }
         }
-        fields(mosque, MOSQUE_FIELDS, "\"name\" أو \"delegation\"") { field, element, path ->
+        fields(mosque, MOSQUE_FIELDS, keyList("name", "delegation", or = true)) { field, element, path ->
             when (field) {
                 ProfileField.NAME -> {
                     val name = element.stringOrNull()?.let { clean(it).trim().replace(Regex("""\s+"""), " ") }
@@ -556,12 +640,14 @@ object MosqueSettingsFile {
                 }
             }
         }
+        mosque?.let { (sectionKey, values) -> profile = readPlaceName(sectionKey, values, profile, current, catalog, errors) }
         fields(display, DISPLAY_FIELDS,
-            "\"theme\" أو \"weather\" أو \"backgrounds\" أو \"announcements\" أو \"slideSeconds\" أو \"announcementsEveryMinutes\" أو \"nightScreen\"") { field, element, path ->
+            keyList("theme", "weather", "backgrounds", "announcements", "slideSeconds", "announcementsEveryMinutes", "nightScreen", "adhanScreenMinutes", or = true),
+        ) { field, element, path ->
             fun flag(set: (Boolean) -> DisplayOptions) {
                 val value = element.booleanOrNull()
                 if (value == null) {
-                    errors += SettingsError(ErrorCode.INVALID_OPTION, path, "«${path.substringAfterLast('.')}» يكون true (تشغيل) أو false (إيقاف)")
+                    errors += SettingsError(ErrorCode.INVALID_OPTION, path, "«${short(path.substringAfterLast('.'))}» يكون true (تشغيل) أو false (إيقاف)")
                 } else {
                     profile = profile.copy(display = set(value))
                 }
@@ -570,7 +656,7 @@ object MosqueSettingsFile {
                 val value = element.intOrNull()
                 if (value == null || value !in range) {
                     errors += SettingsError(ErrorCode.INVALID_OPTION, path,
-                        "«${path.substringAfterLast('.')}» عدد بين ${range.first} و${range.last} (في الملف: ${element.display()})")
+                        "«${short(path.substringAfterLast('.'))}» عدد بين ${range.first} و${range.last} (في الملف: ${element.display()})")
                 } else {
                     profile = profile.copy(display = set(value))
                 }
@@ -583,6 +669,7 @@ object MosqueSettingsFile {
                 ProfileField.SLIDE_SECONDS -> number(DisplayOptions.SLIDE_SECONDS) { options.copy(slideSeconds = it) }
                 ProfileField.ANNOUNCEMENTS_EVERY -> number(DisplayOptions.EVERY_MINUTES) { options.copy(announcementsEveryMinutes = it) }
                 ProfileField.NIGHT_SCREEN -> flag { options.copy(nightScreen = it) }
+                ProfileField.ADHAN_SCREEN -> number(FlowTiming.ADHAN_SCREEN_MINUTES) { options.copy(adhanScreenMinutes = it) }
                 else -> {
                     val wanted = element.stringOrNull()?.let { clean(it).trim() }
                     val theme = catalog.themes.entries.firstOrNull { (id, name) -> wanted != null && (id.equals(wanted, ignoreCase = true) || name == wanted) }
@@ -597,6 +684,39 @@ object MosqueSettingsFile {
         }
         return profile
     }
+
+    /**
+     * The place's name the TV writes beside its number ("delegationName"), for the admin to read. An
+     * admin who knows only names edits the name: when it no longer names the number's place, the place
+     * is found by that name, unless the number was changed and the name left as it was.
+     */
+    private fun readPlaceName(
+        sectionKey: String,
+        values: JsonObject,
+        profile: MosqueProfile,
+        current: MosqueProfile,
+        catalog: ProfileCatalog,
+        errors: MutableList<SettingsError>,
+    ): MosqueProfile {
+        val (key, element) = values.entries.firstOrNull { clean(it.key).trim().lowercase() in INFORMATION_FIELDS } ?: return profile
+        val name = element.stringOrNull()?.let(::placeName)?.takeIf { it.isNotEmpty() } ?: return profile
+        fun nameOf(id: Int?) = id?.let(catalog.delegationName)?.let(::placeName)
+        val byNumber = profile.delegationId
+        if (name == nameOf(byNumber)) return profile
+        val numberChanged = byNumber != current.delegationId
+        if (numberChanged && name == nameOf(current.delegationId)) return profile
+        val named = catalog.delegationIds().filter { nameOf(it) == name }.distinct()
+        val problem = when {
+            named.size != 1 -> "المعتمدية «${short(name)}» غير معروفة بهذا الاسم: اكتب رقمها في ${code("\"delegation\"")}"
+            numberChanged -> "رقم المعتمدية واسمها لا يدلّان على المكان نفسه: احذف ${code("\"delegationName\"")} أو صحّحه"
+            else -> return profile.copy(delegationId = named.single())
+        }
+        errors += SettingsError(ErrorCode.UNKNOWN_DELEGATION, "$sectionKey.$key", problem)
+        return profile
+    }
+
+    /** A place's name as compared: the catalog's own names carry stray spaces too («بني خيار »). */
+    private fun placeName(text: String): String = clean(text).trim().replace(Regex("""\s+"""), " ")
 
     /** true or false, also written "true"/"false" or نعم/لا by hand. */
     private fun JsonElement.booleanOrNull(): Boolean? {
@@ -620,8 +740,9 @@ object MosqueSettingsFile {
         ) + displayChanges(before.display, after.display)
     }
 
+    /** The options as in the file, "true" or "15" ("—" when unset): the screen says them in its own words. */
     private fun displayChanges(before: DisplayOptions, after: DisplayOptions): List<ProfileChange> {
-        fun flag(value: Boolean?) = when (value) { null -> "—"; true -> "تشغيل"; false -> "إيقاف" }
+        fun flag(value: Boolean?) = value?.toString() ?: "—"
         fun number(value: Int?) = value?.toString() ?: "—"
         return listOfNotNull(
             ProfileChange(ProfileField.WEATHER, flag(before.weather), flag(after.weather)).takeIf { before.weather != after.weather },
@@ -631,6 +752,8 @@ object MosqueSettingsFile {
             ProfileChange(ProfileField.ANNOUNCEMENTS_EVERY, number(before.announcementsEveryMinutes), number(after.announcementsEveryMinutes))
                 .takeIf { before.announcementsEveryMinutes != after.announcementsEveryMinutes },
             ProfileChange(ProfileField.NIGHT_SCREEN, flag(before.nightScreen), flag(after.nightScreen)).takeIf { before.nightScreen != after.nightScreen },
+            ProfileChange(ProfileField.ADHAN_SCREEN, number(before.adhanScreenMinutes), number(after.adhanScreenMinutes))
+                .takeIf { before.adhanScreenMinutes != after.adhanScreenMinutes },
         )
     }
 
@@ -648,19 +771,19 @@ object MosqueSettingsFile {
             val targets = prayersFor(key)?.takeIf { allowEid || it.none(MosqueSchedule.EID::contains) }
             if (targets == null) {
                 val names = if (allowEid) "fajr أو dhuhr أو asr أو maghrib أو isha أو jumua أو eid" else "fajr أو dhuhr أو asr أو maghrib أو isha أو jumua"
-                errors += SettingsError(ErrorCode.UNKNOWN_PRAYER, path, "صلاة غير معروفة «$key»: استعمل $names")
+                errors += SettingsError(ErrorCode.UNKNOWN_PRAYER, path, "صلاة غير معروفة «${short(key)}»: استعمل $names")
                 continue
             }
             val duplicate = targets.firstOrNull { it in seen }
             if (duplicate != null) {
                 errors += SettingsError(ErrorCode.DUPLICATE_PRAYER, path,
-                    "صلاة ${arabicName(duplicate)} مذكورة مرتين («${seen.getValue(duplicate)}» و«$key»)")
+                    "صلاة ${arabicName(duplicate)} مذكورة مرتين («${short(seen.getValue(duplicate))}» و«${short(key)}»)")
                 continue
             }
             targets.forEach { seen[it] = key }
             if (value !is JsonObject) {
                 errors += SettingsError(ErrorCode.NOT_A_PRAYER_OBJECT, path,
-                    "إعدادات صلاة ${arabicName(targets.first())} يجب أن تكون مثل { \"iqamah\": \"+10\", \"duration\": 10 }")
+                    "إعدادات صلاة ${arabicName(targets.first())} يجب أن تكون مثل ${code("{ \"iqamah\": \"+10\", \"duration\": 10 }")}")
                 continue
             }
             targets.forEach { onPrayer(it, value, path) }
@@ -668,8 +791,9 @@ object MosqueSettingsFile {
     }
 
     /**
-     * Applies the "iqamah" and "duration" fields of one prayer object to [start]. A null value is
-     * ignored, or clears the field when [clearOnNull] (Ramadan changes returning to the usual setting).
+     * Applies the "iqamah" and "duration" fields of one prayer object to [start], and "held" for
+     * Jumu'a and the Eids and "khutba" for Jumu'a when [allowHeld] (the usual settings). A null value
+     * is ignored, or clears the field when [clearOnNull] (Ramadan changes returning to the usual setting).
      */
     private fun <T> readFields(
         fields: JsonObject,
@@ -678,10 +802,13 @@ object MosqueSettingsFile {
         errors: MutableList<SettingsError>,
         start: T,
         clearOnNull: Boolean = false,
+        allowHeld: Boolean = false,
         set: (T, Field, Any?) -> T,
     ): T {
         var result = start
         val seen = mutableMapOf<Field, String>()
+        val holdable = allowHeld && prayer in MosqueSchedule.HOLDABLE
+        val khutba = allowHeld && prayer == Prayer.JOMOAA
         for ((fieldKey, element) in fields) {
             val fieldPath = "$path.$fieldKey"
             val cleanKey = clean(fieldKey).trim().lowercase()
@@ -689,13 +816,30 @@ object MosqueSettingsFile {
             val field = FIELD_ALIASES[cleanKey]
             if (field == null) {
                 // Ignoring it would apply the file without the setting the admin meant to change.
+                val names = when {
+                    khutba -> keyList("iqamah", "duration", "held", "khutba", or = true)
+                    holdable -> keyList("iqamah", "duration", "held", or = true)
+                    else -> keyList("iqamah", "duration", or = true)
+                }
                 errors += SettingsError(ErrorCode.UNKNOWN_FIELD, fieldPath,
-                    "حقل غير معروف «$fieldKey» في صلاة ${arabicName(prayer)}: استعمل \"iqamah\" أو \"duration\"")
+                    "حقل غير معروف «${short(fieldKey)}» في صلاة ${arabicName(prayer)}: استعمل $names")
+                continue
+            }
+            if (field == Field.HELD && !holdable) {
+                errors += SettingsError(ErrorCode.UNKNOWN_FIELD, fieldPath,
+                    "«${short(fieldKey)}» يُكتب لصلاة الجمعة وصلاتي العيد في قسم «prayers» فقط، لا لصلاة ${arabicName(prayer)}" +
+                        if (allowHeld) "" else " في رمضان")
+                continue
+            }
+            if (field == Field.KHUTBA && !khutba) {
+                errors += SettingsError(ErrorCode.UNKNOWN_FIELD, fieldPath,
+                    "«${short(fieldKey)}» يُكتب لصلاة الجمعة في قسم «prayers» فقط، لا لصلاة ${arabicName(prayer)}" +
+                        if (allowHeld) "" else " في رمضان")
                 continue
             }
             seen[field]?.let { first ->
                 errors += SettingsError(ErrorCode.DUPLICATE_FIELD, fieldPath,
-                    "الحقل مذكور مرتين في صلاة ${arabicName(prayer)} («$first» و«$fieldKey»)")
+                    "الحقل مذكور مرتين في صلاة ${arabicName(prayer)} («${short(first)}» و«${short(fieldKey)}»)")
                 continue
             }
             seen[field] = fieldKey
@@ -719,16 +863,37 @@ object MosqueSettingsFile {
                         else -> result = set(result, field, minutes)
                     }
                 }
+                Field.HELD -> when (val held = element.booleanOrNull()) {
+                    null -> errors += SettingsError(ErrorCode.INVALID_OPTION, fieldPath,
+                        "«$fieldKey» في صلاة ${arabicName(prayer)} يكون true (تقام في المسجد) أو false (لا تقام فيه)")
+                    else -> result = set(result, field, held)
+                }
+                Field.KHUTBA -> {
+                    val minutes = element.intOrNull()
+                    val range = MosqueSchedule.KHUTBA_MINUTES
+                    when {
+                        minutes == null -> errors += SettingsError(ErrorCode.INVALID_DURATION, fieldPath,
+                            "مدة خطبة الجمعة غير صالحة «${element.display()}»: اكتب عدد الدقائق، مثلًا 30، أو 0 من الأذان إلى الإقامة")
+                        minutes !in range -> errors += SettingsError(ErrorCode.DURATION_OUT_OF_RANGE, fieldPath,
+                            "مدة خطبة الجمعة يجب أن تكون بين ${range.first} و${range.last} دقيقة (في الملف: $minutes)")
+                        else -> result = set(result, field, minutes)
+                    }
+                }
             }
         }
         return result
     }
 
-    /** The admin's Ramadan and Eid dates per Hijri year, checked against the calendar estimate. */
+    /**
+     * The admin's Ramadan and Eid dates per Hijri year, checked against the calendar estimate, and
+     * together against the TV's [yearDates] ([datesConflict]); null for the TV's own former state,
+     * whose dates were accepted then.
+     */
     private fun readDates(
         section: JsonObject,
         sectionKey: String,
         currentDates: Map<Int, ManualIslamicDates>,
+        yearDates: ((Int) -> YearDates?)?,
         errors: MutableList<SettingsError>,
     ): Map<Int, ManualIslamicDates> {
         val estimate = TunisianHijriCalendar()
@@ -740,17 +905,19 @@ object MosqueSettingsFile {
             if (year != null) {
                 val first = seenYears.put(year, yearKey)
                 if (first != null) {
-                    errors += SettingsError(ErrorCode.DUPLICATE_FIELD, path, "السنة $year مذكورة مرتين («$first» و«$yearKey»)")
+                    errors += SettingsError(ErrorCode.DUPLICATE_FIELD, path, "السنة $year مذكورة مرتين («${short(first)}» و«${short(yearKey)}»)")
                     continue
                 }
             }
             val supported = year != null && runCatching { estimate.month(year, 12) }.isSuccess
             if (!supported || value !is JsonObject) {
                 errors += SettingsError(ErrorCode.INVALID_YEAR, path,
-                    "السنة الهجرية «$yearKey» غير صالحة: اكتب مثل \"1448\": { \"ramadanStart\": \"2027-02-08\" }")
+                    "السنة الهجرية «${short(yearKey)}» غير صالحة: اكتب مثل ${code("\"1448\": { \"ramadanStart\": \"2027-02-08\" }")}")
                 continue
             }
-            var dates = currentDates[year] ?: ManualIslamicDates()
+            val before = currentDates[year] ?: ManualIslamicDates()
+            var dates = before
+            val errorsBefore = errors.size
             val seen = mutableMapOf<DateEvent, String>()
             for ((fieldKey, element) in value) {
                 val fieldPath = "$path.$fieldKey"
@@ -759,25 +926,25 @@ object MosqueSettingsFile {
                 val event = DATE_ALIASES[cleanKey]
                 if (event == null) {
                     errors += SettingsError(ErrorCode.UNKNOWN_FIELD, fieldPath,
-                        "حقل غير معروف «$fieldKey»: استعمل \"ramadanStart\" أو \"eidFitr\" أو \"eidAdha\"")
+                        "حقل غير معروف «${short(fieldKey)}»: استعمل ${keyList("ramadanStart", "eidFitr", "eidAdha", or = true)}")
                     continue
                 }
                 seen[event]?.let { first ->
-                    errors += SettingsError(ErrorCode.DUPLICATE_FIELD, fieldPath, "التاريخ مذكور مرتين («$first» و«$fieldKey»)")
+                    errors += SettingsError(ErrorCode.DUPLICATE_FIELD, fieldPath, "التاريخ مذكور مرتين («${short(first)}» و«${short(fieldKey)}»)")
                     continue
                 }
                 seen[event] = fieldKey
                 val date = if (element is JsonNull) null else parseDate(element)
                 if (element !is JsonNull && date == null) {
                     errors += SettingsError(ErrorCode.INVALID_DATE, fieldPath,
-                        "التاريخ «${element.display()}» غير صالح: اكتب مثل 2027-02-08")
+                        "التاريخ «${element.display()}» غير صالح: اكتب مثل ${code("2027-02-08")}")
                     continue
                 }
                 if (date != null) {
                     val expected = estimatedDate(estimate, year, event)
                     if (kotlin.math.abs(ChronoUnit.DAYS.between(expected, date)) > MAX_DAYS_FROM_ESTIMATE) {
                         errors += SettingsError(ErrorCode.DATE_OUT_OF_RANGE, fieldPath,
-                            "التاريخ $date بعيد عن ${dateEventName(event)} المتوقَّع لسنة $year ($expected تقريبًا)")
+                            "التاريخ ${code("$date")} بعيد عن ${dateEventName(event)} المتوقَّع لسنة $year (${code("$expected")} تقريبًا)")
                         continue
                     }
                 }
@@ -786,6 +953,11 @@ object MosqueSettingsFile {
                     DateEvent.EID_FITR -> dates.copy(eidFitr = date)
                     DateEvent.EID_ADHA -> dates.copy(eidAdha = date)
                 }
+            }
+            val changed = DateEvent.entries.filter { dateOf(before, it) != dateOf(dates, it) }.toSet()
+            if (yearDates != null && errors.size == errorsBefore && changed.isNotEmpty()) {
+                val known = yearDates(year) ?: IslamicDays.yearDates(year, estimate, estimate, ManualIslamicDates())
+                datesConflict(known, dates, changed)?.let { errors += SettingsError(ErrorCode.DATES_CONFLICT, path, it) }
             }
             result[year] = dates
         }
@@ -796,6 +968,8 @@ object MosqueSettingsFile {
      * The canonical file for [schedule], the admin's [dates] and the [profile], for exporting the TV's
      * settings to a USB key. The delegation's name is written next to its number for the admin to read.
      * A [complete] file also writes what is unset as null (every Ramadan field, every year of [dates]),
+     * that Jumu'a and the Eid prayers are held ("held" is otherwise written only when false) and a
+     * khutba of 0 ("khutba" is otherwise written only when set),
      * so reading it back returns to exactly this state: the snapshot behind "undo the last import".
      */
     fun write(
@@ -824,6 +998,7 @@ object MosqueSettingsFile {
             profile.display.slideSeconds?.let { "\"slideSeconds\": $it" },
             profile.display.announcementsEveryMinutes?.let { "\"announcementsEveryMinutes\": $it" },
             profile.display.nightScreen?.let { "\"nightScreen\": $it" },
+            profile.display.adhanScreenMinutes?.let { "\"adhanScreenMinutes\": $it" },
         )
         if (display.isNotEmpty()) append("  \"display\": { ").append(display.joinToString(", ")).append(" },\n")
         val daily = MosqueSchedule.CONFIGURABLE + MosqueSchedule.EID
@@ -831,7 +1006,10 @@ object MosqueSettingsFile {
         daily.forEachIndexed { index, prayer ->
             val settings = schedule.settings(prayer)
             append("    \"").append(KEYS.getValue(prayer)).append("\": { \"iqamah\": \"")
-                .append(iqamahText(settings.iqamah)).append("\", \"duration\": ").append(settings.salahMinutes).append(" }")
+                .append(iqamahText(settings.iqamah)).append("\", \"duration\": ").append(settings.salahMinutes)
+            if (prayer in MosqueSchedule.HOLDABLE && (!settings.held || complete)) append(", \"held\": ").append(settings.held)
+            if (prayer == Prayer.JOMOAA && (settings.khutbaMinutes != 0 || complete)) append(", \"khutba\": ").append(settings.khutbaMinutes)
+            append(" }")
             append(if (index < daily.lastIndex) ",\n" else "\n")
         }
         append("  }")
@@ -942,6 +1120,8 @@ object MosqueSettingsFile {
     private val FIELD_ALIASES: Map<String, Field> = buildMap {
         listOf("iqamah", "iqama", "iqamat", "الإقامة", "إقامة", "الاقامة", "اقامة").forEach { put(it, Field.IQAMAH) }
         listOf("duration", "duree", "durée", "المدة", "مدة", "مدة الصلاة").forEach { put(it, Field.DURATION) }
+        listOf("held", "تقام", "تُقام").forEach { put(it, Field.HELD) }
+        listOf("khutba", "الخطبة", "خطبة", "مدة الخطبة").forEach { put(it, Field.KHUTBA) }
     }
 
     private val DATE_ALIASES: Map<String, DateEvent> = buildMap {
@@ -974,7 +1154,7 @@ object MosqueSettingsFile {
     private const val MAX_ADHKAR_REFERENCE = 200
     private const val MAX_ADHKAR_COUNT = 1000
 
-    /** Written by the TV for the admin to read; ignored when read back. */
+    /** Written by the TV for the admin to read; followed only when the admin edited it ([readPlaceName]). */
     private val INFORMATION_FIELDS = setOf("delegationname", "delegation_name")
 
     private val MOSQUE_FIELDS: Map<String, ProfileField> = buildMap {
@@ -990,6 +1170,7 @@ object MosqueSettingsFile {
         listOf("slideseconds", "slide_seconds", "مدة الإعلان").forEach { put(it, ProfileField.SLIDE_SECONDS) }
         listOf("announcementseveryminutes", "announcements_every_minutes", "تكرار الإعلانات").forEach { put(it, ProfileField.ANNOUNCEMENTS_EVERY) }
         listOf("nightscreen", "night_screen", "شاشة الليل").forEach { put(it, ProfileField.NIGHT_SCREEN) }
+        listOf("adhanscreenminutes", "adhan_screen_minutes", "مدة شاشة الأذان").forEach { put(it, ProfileField.ADHAN_SCREEN) }
     }
 
     /** The sections of the file under their accepted names; the first five must be objects. */
@@ -1017,16 +1198,16 @@ object MosqueSettingsFile {
             val index = SECTIONS.indexOfFirst { cleanKey in it.second }
             if (index < 0) {
                 errors += SettingsError(ErrorCode.UNKNOWN_FIELD, key,
-                    "قسم غير معروف «$key»: الأقسام هي ${SECTIONS.joinToString("، ") { it.first }}")
+                    "قسم غير معروف «${short(key)}»: الأقسام هي ${SECTIONS.joinToString("، ") { it.first }}")
                 continue
             }
             val name = SECTIONS[index].first
             seen.put(name, key)?.let { first ->
-                errors += SettingsError(ErrorCode.DUPLICATE_FIELD, key, "القسم «$name» مذكور مرتين («$first» و«$key»)")
+                errors += SettingsError(ErrorCode.DUPLICATE_FIELD, key, "القسم «$name» مذكور مرتين («${short(first)}» و«${short(key)}»)")
                 continue
             }
             if (index < OBJECT_SECTIONS && value !is JsonObject) {
-                errors += SettingsError(ErrorCode.NOT_AN_OBJECT, key, "القسم «$key» يُكتب بين قوسين { }")
+                errors += SettingsError(ErrorCode.NOT_AN_OBJECT, key, "القسم «${short(key)}» يُكتب بين قوسين ${code("{ }")}")
             }
         }
         return errors
@@ -1091,23 +1272,38 @@ object MosqueSettingsFile {
 
     /**
      * An item's keys ({ "text": …, "from": … }): each must be one of [fields] (a field and its other
-     * names) or a note, and no field twice under two of its names. False when one is not.
+     * names) or a note, and no field twice under two of its names. False when one is not. [where]
+     * names the item at the head of its mistakes («الإعلان 4»).
      */
-    private fun itemKeysOk(path: String, item: JsonObject, fields: List<Set<String>>, hint: String, errors: MutableList<SettingsError>): Boolean {
+    private fun itemKeysOk(
+        path: String,
+        item: JsonObject,
+        fields: List<Set<String>>,
+        hint: String,
+        errors: MutableList<SettingsError>,
+        where: String? = null,
+    ): Boolean {
         val before = errors.size
         val seen = mutableMapOf<Set<String>, String>()
+        val prefix = where?.let { "$it: " }.orEmpty()
         for (key in item.keys) {
             val cleanKey = clean(key).trim().lowercase()
             if (cleanKey in IGNORED_FIELDS) continue
             val field = fields.firstOrNull { cleanKey in it }
             if (field == null) {
-                errors += SettingsError(ErrorCode.UNKNOWN_FIELD, "$path.$key", "حقل غير معروف «$key»: استعمل $hint")
+                errors += SettingsError(ErrorCode.UNKNOWN_FIELD, "$path.$key", "${prefix}حقل غير معروف «${short(key)}»: استعمل $hint")
                 continue
             }
-            seen.put(field, key)?.let { first -> errors += SettingsError(ErrorCode.DUPLICATE_FIELD, "$path.$key", "الحقل مذكور مرتين («$first» و«$key»)") }
+            seen.put(field, key)?.let { first ->
+                errors += SettingsError(ErrorCode.DUPLICATE_FIELD, "$path.$key", "${prefix}الحقل مذكور مرتين («${short(first)}» و«${short(key)}»)")
+            }
         }
         return errors.size == before
     }
+
+    /** The accepted names of a field, as the admin types them: "text" و"from" و"until", or with أو. */
+    private fun keyList(vararg keys: String, or: Boolean = false): String =
+        keys.joinToString(if (or) " أو " else " و") { code("\"$it\"") }
 
     /** A top-level section under any of its accepted names, with the name used in the file (for error paths). */
     private fun JsonObject.section(vararg names: String): Pair<String, JsonObject>? =
@@ -1118,6 +1314,49 @@ object MosqueSettingsFile {
     fun acceptedDates(year: Int, event: DateEvent): ClosedRange<LocalDate> {
         val expected = estimatedDate(TunisianHijriCalendar(), year, event)
         return expected.minusDays(MAX_DAYS_FROM_ESTIMATE)..expected.plusDays(MAX_DAYS_FROM_ESTIMATE)
+    }
+
+    /**
+     * Why the admin's [manual] dates for the year of [dates] cannot be used, or null. Each date the
+     * admin changes ([changed]) must leave months of 29 or 30 days between it and the admin's other
+     * dates and the announced ones in [dates]; an estimate moves along and never stands in the way.
+     * Across several months, an announcement of another event keeps its day as the calendar does
+     * (months of 28 to 31 days between): a mosque with its own Eid al-Fitr may follow the nation's
+     * Eid al-Adha. A Ramadan of 28 or 31 days is always refused.
+     * The TV's dates page, a settings file and the phone's page all say it the same way.
+     */
+    fun datesConflict(dates: YearDates, manual: ManualIslamicDates, changed: Set<DateEvent>): String? {
+        // An event's date, where it starts its month ([intoMonth] days after 1 Dhul Hijja for Eid al-Adha).
+        class Anchor(val event: DateEvent, val month: Int, val date: LocalDate, val intoMonth: Long, val admin: Boolean)
+        fun anchor(event: DateEvent, known: EventDate, month: Int, intoMonth: Long): Anchor? {
+            dateOf(manual, event)?.let { return Anchor(event, month, it, intoMonth, admin = true) }
+            val announced = known.withoutManual.takeIf { known.announced } ?: return null
+            return Anchor(event, month, announced, intoMonth, admin = false)
+        }
+        val anchors = listOfNotNull(
+            anchor(DateEvent.RAMADAN_START, dates.ramadanStart, 9, 0),
+            anchor(DateEvent.EID_FITR, dates.eidFitr, 10, 0),
+            anchor(DateEvent.EID_ADHA, dates.eidAdha, 12, 9),
+        )
+        for ((first, second) in anchors.zipWithNext()) {
+            if (first.event !in changed && second.event !in changed) continue
+            val months = (second.month - first.month).toLong()
+            val shift = second.intoMonth - first.intoMonth
+            val lengths = if (months > 1 && first.admin != second.admin) 28L..31L else 29L..30L
+            val possible = (lengths.first * months + shift)..(lengths.last * months + shift)
+            val days = ChronoUnit.DAYS.between(first.date, second.date)
+            if (days in possible) continue
+            val fix = listOf(first, second).firstOrNull { it.event !in changed }?.let { "عدّل ${dateEventName(it.event)} أيضًا" } ?: "عدّل أحدهما"
+            return if (months == 1L) "رمضان سيكون $days يومًا، والشهر 29 أو 30 يومًا: $fix"
+            else "بين ${dateEventName(first.event)} و${dateEventName(second.event)} $days يومًا، والممكن من ${possible.first} إلى ${possible.last}: $fix"
+        }
+        return null
+    }
+
+    private fun dateOf(dates: ManualIslamicDates, event: DateEvent): LocalDate? = when (event) {
+        DateEvent.RAMADAN_START -> dates.ramadanStart
+        DateEvent.EID_FITR -> dates.eidFitr
+        DateEvent.EID_ADHA -> dates.eidAdha
     }
 
     private fun estimatedDate(estimate: TunisianHijriCalendar, year: Int, event: DateEvent): LocalDate = when (event) {
@@ -1156,8 +1395,10 @@ object MosqueSettingsFile {
     private fun iqamahRule(element: JsonElement, prayer: Prayer, path: String): IqamahParse {
         val raw = (element as? JsonPrimitive)?.content
         val text = raw?.let { clean(normalizeDigits(it)) }?.filterNot(Char::isWhitespace).orEmpty()
+        // The Eid prayers have no adhan: their minutes count from sunrise.
+        val after = if (prayer in MosqueSchedule.EID) "بعد الشروق" else "بعد الأذان"
         val invalid = IqamahParse.Error(SettingsError(ErrorCode.INVALID_IQAMAH, path,
-            "وقت الإقامة لصلاة ${arabicName(prayer)} غير صالح «${element.display()}»: اكتب +10 (بعد الأذان) أو 20:00 (وقت ثابت)"))
+            "وقت الإقامة لصلاة ${arabicName(prayer)} غير صالح «${element.display()}»: اكتب ${code("+10")} ($after) أو ${code("20:00")} (وقت ثابت)"))
         FIXED_TIME.matchEntire(text)?.let { match ->
             val hour = match.groupValues[1].toInt()
             val minute = match.groupValues[2].toInt()
@@ -1170,7 +1411,7 @@ object MosqueSettingsFile {
             } else {
                 val range = MosqueSchedule.IQAMAH_MINUTES
                 IqamahParse.Error(SettingsError(ErrorCode.IQAMAH_OUT_OF_RANGE, path,
-                    "الإقامة لصلاة ${arabicName(prayer)} بعد الأذان بـ $minutes دقيقة: اختر بين ${range.first} و${range.last} دقيقة"))
+                    "الإقامة لصلاة ${arabicName(prayer)} $after بـ $minutes دقيقة: اختر بين ${range.first} و${range.last} دقيقة"))
             }
         }
         return invalid
@@ -1184,6 +1425,9 @@ object MosqueSettingsFile {
                 Change(prayer, Field.IQAMAH, iqamahText(old.iqamah), iqamahText(new.iqamah)).takeIf { old.iqamah != new.iqamah },
                 Change(prayer, Field.DURATION, old.salahMinutes.toString(), new.salahMinutes.toString())
                     .takeIf { old.salahMinutes != new.salahMinutes },
+                Change(prayer, Field.HELD, old.held.toString(), new.held.toString()).takeIf { old.held != new.held },
+                Change(prayer, Field.KHUTBA, old.khutbaMinutes.toString(), new.khutbaMinutes.toString())
+                    .takeIf { old.khutbaMinutes != new.khutbaMinutes },
             )
         }
         val ramadan = MosqueSchedule.CONFIGURABLE.flatMap { prayer ->
@@ -1244,6 +1488,63 @@ object MosqueSettingsFile {
         ('\u202A'..'\u202E').toSet() + ('\u2066'..'\u2069').toSet()
 
     private fun fail(code: ErrorCode, path: String, message: String) = ParseResult.Failure(listOf(SettingsError(code, path, message)))
+
+    /**
+     * A sample of the file inside an Arabic message, kept left to right (LRI…PDI, as the TV's verse
+     * ranges): otherwise "+10" reads «10+» and a JSON sample loses its quotes and braces.
+     */
+    private fun code(sample: String): String = "⁦$sample⁩"
+
+    /** A key as quoted in an error: a hostile file's key of a few hundred thousand letters must not fill the screen. */
+    private fun short(key: String): String = if (key.length > 40) key.take(40) + "…" else key
+
+    /** Why [text] is not JSON: the Arabic keyboard's usual culprit, or the line where the reader stopped. */
+    private fun invalidJson(text: String, error: Exception): String {
+        lookalike(text)?.let { (line, char) ->
+            return if (char == '،') {
+                "في السطر $line فاصلة عربية «،»: اكتب الفاصلة ${code(",")} بين العناصر"
+            } else {
+                "في السطر $line علامة تنصيص ${code(char.toString())}: اكتب علامة التنصيص المستقيمة ${code("\"")}"
+            }
+        }
+        val offset = OFFSET.find(error.message.orEmpty())?.groupValues?.get(1)?.toIntOrNull()?.takeIf { it <= text.length }
+            ?: return MESSAGE_INVALID_JSON
+        val line = text.removePrefix("﻿").take(offset).count { it == '\n' } + 1
+        return "تعذّرت قراءة الملف قرب السطر $line: تحقّق من الأقواس والفواصل وعلامات التنصيص"
+    }
+
+    /**
+     * The line and character of the first Arabic comma or typographic quote outside a string and a
+     * comment: Arabic keyboards and word processors put them where JSON wants , and ".
+     */
+    private fun lookalike(text: String): Pair<Int, Char>? {
+        var line = 1
+        var i = 0
+        while (i < text.length) {
+            val c = text[i]
+            when {
+                c == '\n' -> line++
+                c == '"' -> {
+                    i++
+                    // A string never spans lines: one left open ends at the line's end, not the file's.
+                    while (i < text.length && text[i] != '"' && text[i] != '\n') i += if (text[i] == '\\') 2 else 1
+                    if (text.getOrNull(i) == '\n') line++
+                }
+                c == '/' && text.getOrNull(i + 1) == '/' -> while (i + 1 < text.length && text[i + 1] != '\n') i++
+                c == '/' && text.getOrNull(i + 1) == '*' -> {
+                    val end = text.indexOf("*/", i + 2).let { if (it < 0) text.length else it + 1 }
+                    line += text.substring(i, minOf(end, text.length)).count { it == '\n' }
+                    i = end
+                }
+                c in LOOKALIKES -> return line to c
+            }
+            i++
+        }
+        return null
+    }
+
+    private val LOOKALIKES = setOf('،', '“', '”', '„', '‘', '’', '«', '»')
+    private val OFFSET = Regex("""offset (\d+)""")
 
     private const val MESSAGE_INVALID_JSON = "تعذّرت قراءة الملف: تحقّق من الأقواس والفواصل وعلامات التنصيص"
 }

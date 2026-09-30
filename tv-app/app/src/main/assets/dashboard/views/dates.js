@@ -14,7 +14,10 @@
     return el("span", { class: "ltr tabular", text: iso || "—" });
   }
 
-  /** One event: its card, and a reader giving null (automatic), the manual date, or an error. */
+  /**
+   * One event: its card, whether the admin changed it since it was drawn, and a reader giving null
+   * (automatic), the manual date, or an error.
+   */
   function eventCard(ctx, event) {
     var el = ctx.el;
     // "الاثنين 8 فيفري 2027", with the months as Tunisia names them.
@@ -28,10 +31,11 @@
     });
     var badge = el("span", { class: "badge" + (manual ? " current" : ""), text: SOURCES[event.source] || event.source || "" });
 
-    auto.addEventListener("change", function () {
+    auto.addEventListener("change", function (change) {
       date.disabled = auto.checked;
       if (!auto.checked && !date.value) date.value = event.automatic || event.date || "";
-      if (!auto.checked) date.focus();
+      // Only when the admin ticked it: the page restoring a kept edit must not open the keyboard.
+      if (!auto.checked && change.isTrusted) date.focus();
     });
 
     var node = el("section", { class: "card " + (manual ? "level-WARNING" : "level-INFO") },
@@ -46,6 +50,13 @@
         ? el("div", { class: "hint" }, "يُقبل من ", isoSpan(el, event.min), " إلى ", isoSpan(el, event.max))
         : null);
 
+    // As drawn from the TV: an event left alone is not sent, so a date set meanwhile (on the remote,
+    // from a USB key or another phone) is not reverted.
+    var start = { auto: auto.checked, date: date.value };
+    function changed() {
+      return auto.checked !== start.auto || (!auto.checked && date.value !== start.date);
+    }
+
     function read() {
       if (auto.checked) return { value: null };
       var value = date.value;
@@ -56,7 +67,7 @@
       return { value: value };
     }
 
-    return { event: event, node: node, read: read };
+    return { event: event, node: node, changed: changed, read: read };
   }
 
   function render(root, ctx) {
@@ -86,12 +97,17 @@
       var errors = [];
       var dates = {};
       cards.forEach(function (card) {
+        if (!card.changed()) return;
         var result = card.read();
         if (result.error) errors.push(result.error);
         else dates[card.event.id] = result.value;
       });
       if (errors.length) {
         ctx.toast(errors.join(" · "), "error");
+        return;
+      }
+      if (!Object.keys(dates).length) {
+        ctx.toast("لا تغيير");
         return;
       }
       var years = {};
@@ -107,5 +123,5 @@
     root.appendChild(el("div", { class: "actions" }, saveButton));
   }
 
-  Dashboard.registerView({ id: "dates", title: "رمضان والعيد", render: render });
+  Dashboard.registerView({ id: "dates", title: "رمضان والعيد", form: true, render: render });
 })();

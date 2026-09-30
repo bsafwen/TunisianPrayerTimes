@@ -6,12 +6,12 @@ import androidx.core.content.edit
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.mosque.AdhkarContent
 import com.tunisianprayertimes.mosque.DisplayOptions
+import com.tunisianprayertimes.mosque.FlowTiming
 import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.TextAnnouncement
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.PrayerOverride
-import com.tunisianprayertimes.time.ClockStore
 import com.tunisianprayertimes.tv.ui.theme.ThemeRegistry
 
 /** Mosque settings entered by the admin on the TV. */
@@ -77,13 +77,18 @@ class PrefsManager(private val prefs: SharedPreferences) {
         get() = prefs.getBoolean(KEY_NIGHT_SCREEN, true)
         set(value) = prefs.edit { putBoolean(KEY_NIGHT_SCREEN, value) }
 
-    /** What the clock guard remembers (last good time, in-app time correction). */
-    val clockStore: ClockStore by lazy { PrefsClockStore(prefs) }
+    /**
+     * How many minutes the adhan screen lasts ([FlowTiming.ADHAN_SCREEN_MINUTES]); an iqamah set
+     * sooner waits for its end.
+     */
+    var adhanScreenMinutes: Int
+        get() = prefs.getInt(KEY_ADHAN_SCREEN_MINUTES, FlowTiming.DEFAULT_ADHAN_SCREEN_MINUTES).coerceIn(FlowTiming.ADHAN_SCREEN_MINUTES)
+        set(value) = prefs.edit { putInt(KEY_ADHAN_SCREEN_MINUTES, value.coerceIn(FlowTiming.ADHAN_SCREEN_MINUTES)) }
 
-    /** Content signature of the last USB settings file the admin applied or dismissed. */
-    var usbLastHandledSignature: String
-        get() = prefs.getString(KEY_USB_LAST_HANDLED, "").orEmpty()
-        set(value) = prefs.edit { putString(KEY_USB_LAST_HANDLED, value) }
+    /** Content signatures of the last USB settings files the admin applied or dismissed ([com.tunisianprayertimes.tv.usb.HandledSignatures]). */
+    var usbHandledSettings: String
+        get() = prefs.getString(KEY_USB_HANDLED_SETTINGS, "").orEmpty()
+        set(value) = prefs.edit { putString(KEY_USB_HANDLED_SETTINGS, value) }
 
     /** The mosque's name, place, theme and display options, as the settings file carries them. */
     val profile: MosqueProfile
@@ -94,6 +99,7 @@ class PrefsManager(private val prefs: SharedPreferences) {
                 announcementIntervalSec.coerceIn(DisplayOptions.SLIDE_SECONDS),
                 announcementsEveryMinutes.coerceIn(DisplayOptions.EVERY_MINUTES),
                 nightScreenEnabled,
+                adhanScreenMinutes,
             ),
         )
 
@@ -114,12 +120,11 @@ class PrefsManager(private val prefs: SharedPreferences) {
         profile.display.slideSeconds?.let { announcementIntervalSec = it }
         profile.display.announcementsEveryMinutes?.let { announcementsEveryMinutes = it }
         profile.display.nightScreen?.let { nightScreenEnabled = it }
+        profile.display.adhanScreenMinutes?.let { adhanScreenMinutes = it }
     }
 
-    /** Back to a new TV (one moved to another mosque): setup runs again. The clock's memory is kept. */
-    fun resetAll() = prefs.edit {
-        prefs.all.keys.filterNot { it.startsWith(CLOCK_KEY_PREFIX) }.forEach { remove(it) }
-    }
+    /** Back to a new TV (one moved to another mosque): setup runs again. The clock's memory, in its own file, is kept. */
+    fun resetAll() = prefs.edit { clear() }
 
     fun getIqamahConfig(prayer: Prayer): IqamahConfig = readIqamah(prayer)
 
@@ -151,10 +156,10 @@ class PrefsManager(private val prefs: SharedPreferences) {
             if (value.isEmpty()) remove(KEY_ANNOUNCEMENTS) else putString(KEY_ANNOUNCEMENTS, MosqueSettingsFile.write(MosqueSchedule(), announcements = value))
         }
 
-    /** Where the last USB images came from, so a key left in is not offered again. */
-    var usbMediaLastHandled: String
-        get() = prefs.getString(KEY_USB_MEDIA, "").orEmpty()
-        set(value) = prefs.edit { putString(KEY_USB_MEDIA, value) }
+    /** The last sets of USB images the admin copied or dismissed, so a key left in is not offered again. */
+    var usbHandledMedia: String
+        get() = prefs.getString(KEY_USB_HANDLED_MEDIA, "").orEmpty()
+        set(value) = prefs.edit { putString(KEY_USB_HANDLED_MEDIA, value) }
 
     /**
      * Ramadan's changes to the usual settings (for example Isha with tarawih). They come from the
@@ -173,10 +178,10 @@ class PrefsManager(private val prefs: SharedPreferences) {
     /**
      * Every prayer's iqamah and duration, with Ramadan's changes, as the shared prayer flow and the
      * USB file use them. Setting a fixed time keeps the saved minutes-after-adhan (and the reverse),
-     * so switching back loses nothing.
+     * so switching back loses nothing, and a fixed time that cannot apply on a day falls back to them.
      */
     var schedule: MosqueSchedule
-        get() = MosqueSchedule(EDITABLE.associateWith { readIqamah(it).toPrayerSettings() }, ramadanOverrides)
+        get() = IqamahConfig.schedule(iqamahConfigs(), ramadanOverrides)
         set(value) {
             EDITABLE.forEach { prayer ->
                 val saved = readIqamah(prayer)
@@ -202,6 +207,8 @@ class PrefsManager(private val prefs: SharedPreferences) {
             fixedHour = prefs.getInt("iqamah_fixed_h_$name", default.fixedHour),
             fixedMinute = prefs.getInt("iqamah_fixed_m_$name", default.fixedMinute),
             salahMinutes = prefs.getInt("salah_minutes_$name", default.salahMinutes),
+            held = prefs.getBoolean("held_$name", true),
+            khutbaMinutes = prefs.getInt("khutba_minutes_$name", 0),
         )
     }
 
@@ -212,11 +219,12 @@ class PrefsManager(private val prefs: SharedPreferences) {
         putInt("iqamah_fixed_h_$name", config.fixedHour)
         putInt("iqamah_fixed_m_$name", config.fixedMinute)
         putInt("salah_minutes_$name", config.salahMinutes)
+        putBoolean("held_$name", config.held)
+        putInt("khutba_minutes_$name", config.khutbaMinutes)
     }
 
     companion object {
         const val PREFS_NAME = "tv_prefs"
-        private const val CLOCK_KEY_PREFIX = "clock_"
         val EDITABLE: List<Prayer> = MosqueSchedule.CONFIGURABLE + MosqueSchedule.EID
         const val DEFAULT_THEME_ID = "horizon"
         private const val KEY_SETUP_DONE = "setup_done"
@@ -228,13 +236,14 @@ class PrefsManager(private val prefs: SharedPreferences) {
         private const val KEY_ANNOUNCEMENTS_ENABLED = "announcements_enabled"
         private const val KEY_CUSTOM_BG_ENABLED = "custom_bg_enabled"
         private const val KEY_ANNOUNCEMENT_INTERVAL_SEC = "announcement_interval_sec"
-        private const val KEY_USB_LAST_HANDLED = "usb_last_handled_signature"
+        private const val KEY_USB_HANDLED_SETTINGS = "usb_handled_settings"
         private const val KEY_RAMADAN = "ramadan_overrides"
         private const val KEY_ADHKAR = "adhkar_content"
         private const val KEY_ANNOUNCEMENTS = "text_announcements"
-        private const val KEY_USB_MEDIA = "usb_media_last_handled"
+        private const val KEY_USB_HANDLED_MEDIA = "usb_handled_media"
         private const val KEY_ANNOUNCEMENTS_EVERY = "announcements_every_minutes"
         private const val KEY_WEATHER = "weather_enabled"
         private const val KEY_NIGHT_SCREEN = "night_screen_enabled"
+        private const val KEY_ADHAN_SCREEN_MINUTES = "adhan_screen_minutes"
     }
 }

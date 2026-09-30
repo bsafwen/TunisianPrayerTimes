@@ -9,6 +9,7 @@
   var MAX_COUNT = 30;
   var MAX_IMAGES = 20;
   var MAX_BYTES = 15 * 1024 * 1024;
+  var SCREEN = { width: 1920, height: 1080 };
   var DATE = /^\d{4}-\d{2}-\d{2}$/;
   var EXTENSIONS = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
   var GALLERIES = [
@@ -19,18 +20,54 @@
   // The list being edited survives a re-render (an upload, another tab) until the TV's own list changes.
   var draft = null;
   var draftBase = null;
+  // What the list said when drawn from the TV (see signature), and what the page keeps of it
+  // (ctx.keepDraft): a kept draft that is not this one was restored from an earlier page.
+  var draftStart = null;
+  var kept = null;
 
-  function startDraft(settings, force) {
-    settings = settings || {};
+  function entry(item) {
+    if (typeof item === "string") return { text: item, from: "", until: "" };
+    item = item || {};
+    return { text: String(item.text || ""), from: String(item.from || ""), until: String(item.until || "") };
+  }
+
+  /** What a list says, blank entries aside: an added empty entry is not an edit to keep. */
+  function signature(list) {
+    return JSON.stringify(list.filter(function (item) { return item.text.trim(); })
+      .map(function (item) { return [item.text.trim(), item.from.trim(), item.until.trim()]; }));
+  }
+
+  function startDraft(ctx, force) {
+    var settings = ctx.settings || {};
     var base = JSON.stringify(settings.announcements || []);
+    var list = Array.isArray(settings.announcements) ? settings.announcements : [];
+    var restored = ctx.keptDraft();
+    if (!force && restored && restored !== kept && Array.isArray(restored.list)) {
+      // Edits kept by an earlier page, which the admin chose to restore.
+      draftBase = base;
+      draft = restored.list.map(entry);
+      draftStart = typeof restored.start === "string" ? restored.start : signature(list.map(entry));
+      kept = restored;
+      return;
+    }
     if (draft && draftBase === base && !force) return;
     draftBase = base;
-    var list = Array.isArray(settings.announcements) ? settings.announcements : [];
-    draft = list.map(function (item) {
-      if (typeof item === "string") return { text: item, from: "", until: "" };
-      item = item || {};
-      return { text: String(item.text || ""), from: String(item.from || ""), until: String(item.until || "") };
-    });
+    draft = list.map(entry);
+    draftStart = signature(draft);
+    keep(ctx);
+  }
+
+  /** Keeps the list in the browser while it differs from the TV's, for another tab, a reload or a new session. */
+  function keep(ctx) {
+    if (signature(draft) === draftStart) {
+      kept = null;
+      ctx.keepDraft(null);
+      return;
+    }
+    kept = kept || {};
+    kept.list = draft;
+    kept.start = draftStart;
+    ctx.keepDraft(kept);
   }
 
   /**
@@ -80,7 +117,10 @@
   }
 
   function dateField(ctx, id, label, item, key) {
-    function update(event) { item[key] = event.target.value; }
+    function update(event) {
+      item[key] = event.target.value;
+      keep(ctx);
+    }
     return ctx.el("div", { class: "grow date" },
       ctx.el("label", { text: label, attrs: { for: id } }),
       ctx.el("input", { id: id, type: "date", value: item[key], class: "ltr wide", on: { input: update, change: update } }));
@@ -102,7 +142,10 @@
         el("label", { text: "الإعلان " + (i + 1) + " (حتى " + MAX_TEXT + " حرف)", attrs: { for: id + "-text" } }),
         el("textarea", {
           id: id + "-text", value: item.text, attrs: { maxlength: MAX_TEXT, rows: 3 },
-          on: { input: function (event) { item.text = event.target.value; } }
+          on: { input: function (event) {
+            item.text = event.target.value;
+            keep(ctx);
+          } }
         }),
         el("div", { class: "row" },
           dateField(ctx, id + "-from", "من", item, "from"),
@@ -110,6 +153,7 @@
           el("button", { class: "danger", type: "button", text: "حذف", attrs: { "aria-label": "حذف الإعلان " + (i + 1) }, on: { click: function () {
             if (item.text.trim() && !confirm("حذف هذا الإعلان؟")) return;
             draft.splice(i, 1);
+            keep(ctx);
             paint();
           } } }))));
     });
@@ -121,7 +165,7 @@
         if (box) box.focus();
       } } }),
       el("button", { type: "button", class: "quiet", text: "إعادة القيم الحالية", on: { click: function () {
-        startDraft(ctx.settings, true);
+        startDraft(ctx, true);
         paint();
       } } })));
     card.appendChild(el("div", { class: "row" },
@@ -179,8 +223,9 @@
   }
 
   /**
-   * An upload with the name of an image already on the TV replaces it: a taken name gets "_2", "_3", ...
-   * before its extension (compared ignoring case), keeping the base within the 80 characters the TV accepts.
+   * A first guess at a free name: a taken name gets "_2", "_3", ... before its extension (compared
+   * ignoring case), keeping the base within the 80 characters the TV accepts. The TV makes the same
+   * choice again with the names it has now (another phone may have sent one since), and never replaces.
    * `taken` holds lower-case names and receives the one chosen.
    */
   function freeName(name, taken) {
@@ -196,16 +241,48 @@
     return candidate;
   }
 
+  /**
+   * The image to send: scaled down on the phone to fit the screen (1920×1080) when it is larger, in its
+   * own format, so a 50 MP photo crosses a hotspot in seconds and the TV never holds it whole. The
+   * original is sent when it already fits, or when this browser cannot decode or encode it.
+   */
+  function fitScreen(file) {
+    if (typeof createImageBitmap !== "function" || !EXTENSIONS[file.type]) return Promise.resolve(file);
+    return createImageBitmap(file, { imageOrientation: "from-image" }).then(function (bitmap) {
+      var scale = Math.min(1, SCREEN.width / bitmap.width, SCREEN.height / bitmap.height);
+      if (!(scale < 1)) {
+        if (bitmap.close) bitmap.close();
+        return file;
+      }
+      var canvas = document.createElement("canvas");
+      canvas.width = Math.max(1, Math.round(bitmap.width * scale));
+      canvas.height = Math.max(1, Math.round(bitmap.height * scale));
+      canvas.getContext("2d").drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+      if (bitmap.close) bitmap.close();
+      return new Promise(function (resolve) {
+        // A browser that cannot write this format gives another one (PNG): the original then.
+        canvas.toBlob(function (blob) { resolve(blob && blob.type === file.type ? blob : file); }, file.type, 0.85);
+      });
+    }).then(null, function () { return file; });
+  }
+
   function upload(ctx, kind, input, status) {
     var files = Array.prototype.slice.call(input.files || []);
     if (!files.length) return;
-    input.disabled = true;
     // The names on the TV now, then those used by this batch.
     var taken = Object.create(null);
     var listed = ctx.state && ctx.state.images && ctx.state.images[kind];
-    (Array.isArray(listed) ? listed : []).forEach(function (image) {
-      if (image && typeof image.name === "string") taken[image.name.toLowerCase()] = true;
-    });
+    var onTv = (Array.isArray(listed) ? listed : []).filter(function (image) { return image && typeof image.name === "string"; });
+    // Said before sending anything: the TV would refuse the extra ones only after receiving them.
+    if (onTv.length + files.length > MAX_IMAGES) {
+      var room = Math.max(0, MAX_IMAGES - onTv.length);
+      ctx.toast("الصور " + MAX_IMAGES + " على الأكثر وعلى الشاشة " + onTv.length + ": " +
+        (room ? "اختر " + room + " على الأكثر، أو احذف بعض الصور أولًا" : "احذف بعض الصور أولًا"), "error");
+      input.value = "";
+      return;
+    }
+    input.disabled = true;
+    onTv.forEach(function (image) { taken[image.name.toLowerCase()] = true; });
     var sent = 0;
     var errors = [];
     function fail(file, message) {
@@ -216,12 +293,18 @@
     files.forEach(function (file, i) {
       chain = chain.then(function () {
         status.textContent = "جارٍ الرفع " + (i + 1) + " من " + files.length + "…";
-        if (file.size > MAX_BYTES) return fail(file, "أكبر من 15 ميغابايت، لم تُرفع");
         if (file.type && !EXTENSIONS[file.type]) return fail(file, "ليست صورة JPEG أو PNG أو WebP");
-        var path = "/api/image?kind=" + kind + "&name=" + encodeURIComponent(freeName(safeName(file, i), taken));
-        return ctx.api.postBytes(path, file).then(function (result) {
+        return fitScreen(file).then(function (image) {
+          if (image.size > MAX_BYTES) return fail(file, "أكبر من 15 ميغابايت، لم تُرفع");
+          var path = "/api/image?kind=" + kind + "&name=" + encodeURIComponent(freeName(safeName(file, i), taken));
+          return ctx.api.postBytes(path, image);
+        }).then(function (result) {
+          if (result === undefined) return; // refused above, already said
           if (result && result.ok === false) fail(file, result.error || "تعذّر رفع الصورة");
-          else sent++;
+          else {
+            sent++;
+            if (result && typeof result.name === "string") taken[result.name.toLowerCase()] = true;
+          }
         }, function (error) {
           if (error.message === "forbidden" || error.message === "closed") return;
           fail(file, error.message);
@@ -242,7 +325,8 @@
     // Shown and deleted by the exact name listed, whatever its characters (names copied from a USB key).
     var query = "?kind=" + encodeURIComponent(kind) + "&name=" + encodeName(image.name);
     return el("figure", {},
-      el("img", { attrs: { loading: "lazy" }, src: ctx.api.url("/api/image" + query), alt: image.name }),
+      // A small copy made by the TV: the originals weigh up to 15 MB each.
+      el("img", { attrs: { loading: "lazy" }, src: ctx.api.url("/api/image" + query + "&thumb=1"), alt: image.name }),
       el("figcaption", {},
         el("div", {},
           el("div", { class: "ltr", text: image.name }),
@@ -269,7 +353,7 @@
     });
     return el("section", { class: "card" },
       el("h2", { text: spec.title }),
-      el("p", { class: "hint", text: "الصور: " + images.length + " من " + MAX_IMAGES + " على الأكثر · JPEG أو PNG أو WebP، حتى 15 ميغابايت للصورة." }),
+      el("p", { class: "hint", text: "الصور: " + images.length + " من " + MAX_IMAGES + " على الأكثر · JPEG أو PNG أو WebP، حتى 15 ميغابايت للصورة. تُصغَّر الصورة الأكبر من مقاس الشاشة على الهاتف قبل إرسالها." }),
       display[spec.display] === false ? el("p", { class: "muted", text: "عرض هذه الصور متوقف حالياً في إعدادات العرض." }) : null,
       images.length
         ? el("div", { class: "gallery" }, images.map(function (image) { return figure(ctx, spec.kind, image); }))
@@ -282,7 +366,7 @@
     id: "announcements",
     title: "الإعلانات",
     render: function (root, ctx) {
-      startDraft(ctx.settings, false);
+      startDraft(ctx, false);
       var texts = ctx.el("section", { class: "card" });
       function paint() {
         texts.textContent = "";

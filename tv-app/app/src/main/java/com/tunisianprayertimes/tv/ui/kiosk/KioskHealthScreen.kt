@@ -42,10 +42,12 @@ import com.tunisianprayertimes.time.TunisTime
 import com.tunisianprayertimes.tv.kiosk.AutoStartTier
 import com.tunisianprayertimes.tv.kiosk.BootTiming
 import com.tunisianprayertimes.tv.kiosk.KioskAccessibility
+import com.tunisianprayertimes.tv.kiosk.KioskController
 import com.tunisianprayertimes.tv.kiosk.EventEntry
 import com.tunisianprayertimes.tv.kiosk.KioskEvent
 import com.tunisianprayertimes.tv.kiosk.KioskReport
 import com.tunisianprayertimes.tv.kiosk.PowerLevel
+import com.tunisianprayertimes.tv.kiosk.SleepGap
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.common.FocusableListItem
 import com.tunisianprayertimes.tv.ui.common.focusRing
@@ -57,6 +59,7 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
+import kotlin.math.roundToInt
 
 enum class HealthLevel { GOOD, WARNING, BAD, INFO }
 
@@ -77,6 +80,12 @@ fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSet
         AutoStartTier.DEVICE_OWNER -> HealthRow(HealthLevel.GOOD, "التطبيق مالك الجهاز: الشاشة مثبّتة عليه")
         AutoStartTier.ACCESSIBILITY -> if (report.quickStartRunning || quickStartSettling) {
             HealthRow(HealthLevel.GOOD, "البدء السريع مفعّل: تظهر الشاشة فور تشغيل الجهاز، وتعود إذا ظهرت الشاشة الرئيسية للجهاز")
+        } else if (report.autoStart.canBringToFront) {
+            // "Display over other apps" (or Android 8/9) still lets the display come back by itself.
+            HealthRow(
+                HealthLevel.WARNING, "البدء السريع مفعّل لكنه لا يعمل الآن",
+                fix = "أعد تشغيل الجهاز. في الأثناء تعود الشاشة وحدها، لكن أبطأ",
+            )
         } else {
             HealthRow(
                 HealthLevel.BAD, "البدء السريع مفعّل لكنه لا يعمل الآن",
@@ -108,6 +117,7 @@ fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSet
             command = "adb shell appops set $pkg SYSTEM_ALERT_WINDOW allow",
         )
     }
+    if (report.otherBuildInstalled) rows += HealthRow(HealthLevel.BAD, TvStrings.OTHER_BUILD_INSTALLED, fix = TvStrings.OTHER_BUILD_FIX)
     // The quick-start service (GitHub build): the fastest start, and the only way back from Fire TV's own home.
     if (report.quickStartAvailable && !report.quickStartEnabled && report.autoStart.tier != AutoStartTier.NONE &&
         report.autoStart.tier != AutoStartTier.HOME
@@ -124,7 +134,7 @@ fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSet
     }
     report.fireTvSleepMillis?.takeIf { it > 0 }?.let { sleep ->
         rows += HealthRow(
-            HealthLevel.WARNING, "ينام Fire TV بعد ${sleep / 60_000} دقيقة دون ضغط زر إن لم تكن الشاشة ظاهرة",
+            HealthLevel.WARNING, "ينام Fire TV بعد ${TvStrings.minutes((sleep / 60_000).toInt())} دون ضغط زر إن لم تكن الشاشة ظاهرة",
             fix = if (report.canWriteSecureSettings) "اضغط «إيقاف نوم Fire TV» على التلفاز" else null,
             command = "adb shell settings put secure ${KioskAccessibility.FIRE_TV_SLEEP} 0",
         )
@@ -146,13 +156,19 @@ fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSet
     }
 
     if (report.homeModeEnabled && !report.isDefaultHome) {
-        rows += HealthRow(HealthLevel.WARNING, "وضع الشاشة الرئيسية مفعّل لكن التطبيق لم يُختر شاشةً رئيسية", fix = "اختر التطبيق في نافذة اختيار الشاشة الرئيسية")
+        // Many TV boxes never show the Home chooser: adb then sets it (the Home role on Android 10+).
+        rows += HealthRow(
+            HealthLevel.WARNING, "وضع الشاشة الرئيسية مفعّل لكن التطبيق لم يُختر شاشةً رئيسية",
+            fix = "اختر التطبيق في نافذة اختيار الشاشة الرئيسية، وإن لم تظهر فنفّذ الأمر من حاسوب",
+            command = "adb shell cmd package set-home-activity $pkg/${KioskController.HOME_ALIAS}",
+        )
     }
     rows += when (report.power.attentiveTimeout) {
         PowerLevel.OK -> HealthRow(HealthLevel.GOOD, "توفير الطاقة لا يطفئ الجهاز")
         PowerLevel.WARNING -> HealthRow(
             HealthLevel.WARNING,
-            "توفير الطاقة يطفئ الجهاز بعد ${(report.power.attentiveTimeoutMillis ?: 0) / 60_000} دقيقة دون استعمال",
+            report.power.attentiveTimeoutMillis?.let { "توفير الطاقة يطفئ الجهاز بعد ${TvStrings.hoursAndMinutes(it / 60_000)} دون استعمال" }
+                ?: "توفير الطاقة قد يطفئ الجهاز: تعذّرت قراءة مدّته على هذا الجهاز",
             fix = "اضبط «توفير الطاقة» على «أبدًا» من إعدادات الجهاز",
             command = "adb shell settings put secure attentive_timeout -1",
         )
@@ -171,21 +187,53 @@ fun healthRows(report: KioskReport, zone: ZoneId = TunisTime.ZONE, quickStartSet
         val seconds = report.lastBootTiming?.detail
             ?.takeIf { timing -> BootTiming.bootOf(timing) != null && BootTiming.bootOf(timing) == BootTiming.bootOf(it.detail) }
             ?.let(BootTiming::screenSeconds)
-            ?.let { s -> " بعد ${"%.0f".format(Locale.ROOT, s)} ثانية" }.orEmpty()
-        rows += if (it.type == KioskEvent.AUTOSTART_OK) HealthRow(HealthLevel.GOOD, "آخر تشغيل للجهاز: ظهرت الشاشة وحدها$seconds (${time(it, zone)})")
+            ?.let { s -> " بعد ${TvStrings.seconds(s.roundToInt())}" }.orEmpty()
+        rows += if (it.type == KioskEvent.AUTOSTART_OK) HealthRow(HealthLevel.GOOD, "آخر تشغيل للجهاز: ظهرت الشاشة وحدها$seconds (${rowTime(it.atMillis, zone)})")
         // With nothing granted the tier row above already says what to run; otherwise something else was in the way.
         else HealthRow(
-            HealthLevel.BAD, "آخر تشغيل للجهاز: لم تظهر الشاشة وحدها (${time(it, zone)})",
+            HealthLevel.BAD, "آخر تشغيل للجهاز: لم تظهر الشاشة وحدها (${rowTime(it.atMillis, zone)})",
             fix = if (report.autoStart.tier == AutoStartTier.NONE) null
             else "تحقّق أن التطبيق فُتح مرة بعد تثبيته ولم يُوقف قسرًا (Force stop)، وأن لا شاشة أخرى تغطيه عند التشغيل " +
                 "(اختيار ملف شخصي، البحث عن جهاز التحكم)",
         )
     }
-    report.sleepGaps.forEach { rows += HealthRow(HealthLevel.WARNING, "نام الجهاز: ${it.detail}", fix = "تحقّق من توفير الطاقة ومن مؤقّت إطفاء التلفاز") }
-    report.lastCrash?.let { rows += HealthRow(HealthLevel.WARNING, "آخر توقف مفاجئ: ${time(it, zone)}", fix = it.detail.take(160)) }
+    report.sleepGaps.mapNotNull { SleepGap.parse(it.detail) }.forEach {
+        rows += HealthRow(HealthLevel.WARNING, sleepText(it, zone), fix = "تحقّق من توفير الطاقة ومن مؤقّت إطفاء التلفاز")
+    }
+    report.lastCrash?.let { rows += HealthRow(HealthLevel.WARNING, "آخر توقف مفاجئ: ${rowTime(it.atMillis, zone)}", fix = TvStrings.leftToRight(it.detail.take(160))) }
     if (report.safeMode) rows += HealthRow(HealthLevel.BAD, "الوضع الآمن: توقّف التطبيق عدة مرات، فعُطّلت الخلفيات والإعلانات مؤقتًا")
-    rows += HealthRow(HealthLevel.INFO, "مدة التشغيل: ${report.uptimeMillis / 3_600_000} ساعة ${report.uptimeMillis / 60_000 % 60} دقيقة · الإصدار ${report.versionName}")
+    rows += HealthRow(HealthLevel.INFO, "مدة التشغيل: ${TvStrings.hoursAndMinutes(report.uptimeMillis / 60_000)} · الإصدار ${report.versionName}")
     return rows
+}
+
+/**
+ * «نام الجهاز يوم 29 سبتمبر 2026 من 03:00 إلى 04:00 (ساعة)», in Tunisia's time like the rest of the
+ * page, and in words, so right-to-left layout cannot turn an arrow or a date around.
+ */
+internal fun sleepText(gap: SleepGap, zone: ZoneId): String {
+    val from = Instant.ofEpochMilli(gap.fromWall).atZone(zone)
+    val to = Instant.ofEpochMilli(gap.toWall).atZone(zone)
+    val slept = TvStrings.hoursAndMinutes(gap.sleptMillis / 60_000)
+    return if (from.toLocalDate() == to.toLocalDate()) {
+        "نام الجهاز يوم ${TvStrings.gregorianDate(from.toLocalDate(), withWeekday = false)} " +
+            "من ${TvStrings.hm(from.toLocalTime())} إلى ${TvStrings.hm(to.toLocalTime())} ($slept)"
+    } else {
+        "نام الجهاز من ${rowTime(gap.fromWall, zone)} إلى ${rowTime(gap.toWall, zone)} ($slept)"
+    }
+}
+
+/** «29 سبتمبر 2026 03:00»: a date an Arabic line cannot reverse, unlike 2026-09-29. */
+internal fun rowTime(millis: Long, zone: ZoneId): String {
+    val at = Instant.ofEpochMilli(millis).atZone(zone)
+    return "${TvStrings.gregorianDate(at.toLocalDate(), withWeekday = false)} ${TvStrings.hm(at.toLocalTime())}"
+}
+
+/** The event list is left to right and technical; a sleep's raw times are written as clock times there too. */
+private fun eventDetail(event: EventEntry, zone: ZoneId): String {
+    val gap = SleepGap.parse(event.detail).takeIf { event.type == KioskEvent.SLEEP_GAP } ?: return event.detail
+    val format = DateTimeFormatter.ofPattern("MM-dd HH:mm", Locale.ROOT)
+    fun at(millis: Long) = Instant.ofEpochMilli(millis).atZone(zone).format(format)
+    return "${at(gap.fromWall)} -> ${at(gap.toWall)} (${gap.sleptMillis / 60_000} min)"
 }
 
 private fun time(entry: EventEntry, zone: ZoneId): String =
@@ -231,7 +279,7 @@ fun HealthDot(level: HealthLevel, modifier: Modifier = Modifier, size: Dp = 10.d
 }
 
 /** The kiosk page's actions. Each keeps its identity while its label changes (quick start on or off). */
-internal enum class KioskAction { GRANT_OVERLAY, QUICK_START, FIRE_TV_SLEEP, HOME_MODE, ALLOW_UPDATES, INSTALL_UPDATE, BACK }
+internal enum class KioskAction { GRANT_OVERLAY, QUICK_START, FIRE_TV_SLEEP, HOME_MODE, ALLOW_UPDATES, INSTALL_UPDATE, LEAVE_DEVICE_OWNER, BACK }
 
 /**
  * The action that had the focus has left the list (the overlay permission granted, Fire TV's sleep
@@ -272,8 +320,12 @@ fun KioskHealthScreen(
     /** Fire TV, when its sleep timer is on and the app may turn it off. */
     onDisableFireTvSleep: (() -> Unit)? = null,
     quickStartSettling: Boolean = false,
+    /** Device-owner boxes: gives the mode up, so the app can be uninstalled or the other build installed. */
+    onLeaveDeviceOwner: (() -> Unit)? = null,
 ) {
     val rows = remember(report, extraRows, quickStartSettling) { healthRows(report, quickStartSettling = quickStartSettling) + extraRows }
+    // Cannot be undone without a factory reset: the first press only asks for a second.
+    var leaveArmed by remember { mutableStateOf(false) }
     val actions = listOfNotNull(
         onGrantOverlay?.takeIf { !report.canDrawOverlays }?.let { ActionItem(KioskAction.GRANT_OVERLAY, TvStrings.GRANT_OVERLAY, it) },
         onToggleQuickStart?.let {
@@ -285,6 +337,11 @@ fun KioskHealthScreen(
         else ActionItem(KioskAction.HOME_MODE, if (report.homeModeEnabled) TvStrings.HOME_MODE_OFF else TvStrings.HOME_MODE_ON, onToggleHomeMode),
         onAllowUpdates?.let { ActionItem(KioskAction.ALLOW_UPDATES, TvStrings.ALLOW_UPDATES, it) },
         onInstallUpdate?.let { ActionItem(KioskAction.INSTALL_UPDATE, TvStrings.INSTALL_UPDATE, it) },
+        onLeaveDeviceOwner?.takeIf { report.isDeviceOwner }?.let { leave ->
+            ActionItem(KioskAction.LEAVE_DEVICE_OWNER, if (leaveArmed) TvStrings.LEAVE_DEVICE_OWNER_CONFIRM else TvStrings.LEAVE_DEVICE_OWNER) {
+                if (leaveArmed) leave() else leaveArmed = true
+            }
+        },
         ActionItem(KioskAction.BACK, TvStrings.BACK, onBack),
     )
     val ids = actions.map { it.id }
@@ -394,7 +451,7 @@ private fun Command(command: String) {
 private fun EventLine(event: EventEntry) {
     var focused by remember { mutableStateOf(false) }
     Text(
-        "${time(event, TunisTime.ZONE)}  ${event.type}  ${event.detail.take(120)}",
+        "${time(event, TunisTime.ZONE)}  ${event.type}  ${eventDetail(event, TunisTime.ZONE).take(120)}",
         style = midadStyle(13.sp, color = Midad.Dim).copy(textDirection = TextDirection.Ltr, textAlign = TextAlign.Left),
         modifier = Modifier
             .fillMaxWidth()

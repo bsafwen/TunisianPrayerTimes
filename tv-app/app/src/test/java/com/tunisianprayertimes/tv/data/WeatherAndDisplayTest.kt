@@ -39,9 +39,9 @@ class WeatherAndDisplayTest {
     @Test
     fun displayOptionsTravelWithTheProfile() {
         val prefs = PrefsManager(InMemoryPreferences())
-        assertEquals(DisplayOptions(true, true, true, 15, 15, nightScreen = true), prefs.profile.display)
+        assertEquals(DisplayOptions(true, true, true, 15, 15, nightScreen = true, adhanScreenMinutes = 2), prefs.profile.display)
         prefs.applyProfile(MosqueProfile(display = DisplayOptions(weather = false, slideSeconds = 30, announcementsEveryMinutes = 0))) { null }
-        assertEquals(DisplayOptions(false, true, true, 30, 0, nightScreen = true), prefs.profile.display)
+        assertEquals(DisplayOptions(false, true, true, 30, 0, nightScreen = true, adhanScreenMinutes = 2), prefs.profile.display)
         assertEquals(false, prefs.weatherEnabled)
         assertEquals(0, prefs.announcementsEveryMinutes)
     }
@@ -56,7 +56,7 @@ class WeatherAndDisplayTest {
             File(key.appFolder, "announcements/2-binary.txt").writeBytes(byteArrayOf(0x89.toByte(), 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, 0, 0, 0, 0x0D))
             File(key.appFolder, "backgrounds").mkdirs()
             File(key.appFolder, "backgrounds/note.txt").writeText("not an announcement")
-            val found = UsbMedia.find(listOf(key))!!
+            val found = UsbMedia.find(key)!!
             assertEquals(listOf("1-lesson.txt"), found.images.getValue(MediaKind.ANNOUNCEMENTS).map { it.name })
             assertTrue(found.images.getValue(MediaKind.BACKGROUNDS).isEmpty())
             val store = LocalMediaManager(File(root, "tv"))

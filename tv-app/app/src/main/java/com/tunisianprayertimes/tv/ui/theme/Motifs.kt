@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
@@ -102,14 +103,22 @@ fun Modifier.archTile(fill: Color, line: Color): Modifier = drawBehind {
 
 /**
  * The mihrab: the pointed niche, a double carved line, and a silver khatam as its keystone. Drawn
- * across the box's width from its top; its height is 0.78 of the width, the rest is left open below.
+ * across the box's width from its top; the arch takes 0.78 of the width, and its walls run on to the
+ * box's bottom, so what stands in the niche (the adhan's replies) stays between them.
  */
 fun Modifier.mihrab(): Modifier = drawBehind {
     val s = size.width / MIHRAB.width
+    val bottom = size.height / s
     scale(s, s, pivot = Offset.Zero) {
         drawPath(MIHRAB.path, Midad.Niche)
         drawPath(MIHRAB.path, Midad.MihrabLine, style = Stroke(width = 3f))
         drawPath(MIHRAB_LINE.path, Midad.MihrabInner, style = Stroke(width = 2f))
+        if (bottom > MIHRAB.height) {
+            // The walls, where the shape's own end: the outer line at 1.5 and 998.5, the inner at 16 and 984.
+            drawRect(Midad.Niche, Offset(1.5f, MIHRAB.height), Size(997f, bottom - MIHRAB.height))
+            for (x in listOf(1.5f, 998.5f)) drawLine(Midad.MihrabLine, Offset(x, MIHRAB.height), Offset(x, bottom), strokeWidth = 3f)
+            for (x in listOf(16f, 984f)) drawLine(Midad.MihrabInner, Offset(x, MIHRAB.height), Offset(x, bottom), strokeWidth = 2f)
+        }
         drawPath(khatamPath(Offset(500f, 91.5f), 33.5f), Midad.Silver)
     }
 }
