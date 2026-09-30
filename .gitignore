@@ -68,3 +68,5 @@ __pycache__/
 
 # ── Personal notes ──────────────────────────────────────────────────────
 android-app/BUG_REVIEW.md
+
+android-app/app/build/
