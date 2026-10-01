@@ -19,15 +19,23 @@ data class Locality(
     val kind: String = "delegation",
     val pickerGroupId: String? = null,
     val pickerMemberIds: Set<String> = emptySet(),
+    val searchPhrases: List<String> = emptyList(),
 ) {
     val normalizedName: String by lazy { normalizeLocalitySearch(name) }
 
+    internal val compactName: String by lazy { normalizedName.replace(" ", "") }
+
+    private val compactSearchPhrases: List<String> by lazy {
+        (searchPhrases.ifEmpty { listOf(searchText) } + name + parentName)
+            .map { normalizeLocalitySearch(it).replace(" ", "") }.filter { it.isNotEmpty() }.distinct()
+    }
+
     internal val searchTokens: List<String> by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        normalizeLocalitySearch(searchText).split(' ').filter { it.isNotEmpty() }
+        localitySearchTerms(normalizeLocalitySearch(searchText))
     }
 
     internal val fuzzySearchTokens: List<LocalityFuzzyToken> by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        searchTokens.asSequence()
+        (searchTokens.asSequence() + compactSearchPhrases.asSequence())
             .filter { it.length >= MIN_FUZZY_TOKEN_LENGTH }
             .distinct()
             .mapNotNull { token ->
@@ -37,9 +45,39 @@ data class Locality(
             .toList()
     }
 
+    internal val numberedSearchTokens: Map<String, List<LocalityFuzzyToken>> by lazy {
+        val numbered = mutableMapOf<String, MutableSet<String>>()
+        // Keep aliases and administrative context as separate phrases. A
+        // trailing UV4 alias must not attach its 4 to the following parent name.
+        (searchPhrases.ifEmpty { listOf(searchText) } + name + parentName).distinct().forEach { phrase ->
+            val normalized = normalizeLocalitySearch(phrase)
+            listOf(normalized, normalized.replace(" ", "")).distinct().forEach { variant ->
+                val tokens = localitySearchTerms(variant)
+                tokens.forEachIndexed { index, number ->
+                    if (number.isNotEmpty() && number.all { it.isDigit() }) {
+                        listOfNotNull(tokens.getOrNull(index - 1), tokens.getOrNull(index + 1))
+                            .filter { word -> word.none { it.isDigit() } }
+                            .forEach { word -> numbered.getOrPut(number) { mutableSetOf() } += word }
+                    }
+                }
+            }
+        }
+        numbered.mapValues { (_, words) -> words.map { localityFuzzyToken(it) } }
+    }
+
+    internal fun matchesSearchTerm(term: String): Boolean = when {
+        // Keep the full number: 1 must not select a namesake numbered 12.
+        term.all { it.isDigit() } -> term in searchTokens
+        // Keep a joined label's number attached to it instead of matching a
+        // number from unrelated parent context (UV5 must not find UV4 in المنزه 5).
+        term.any { it.isDigit() } -> compactSearchPhrases.any { containsWholeNumberTerm(it, term) }
+        else -> term in searchText || compactSearchPhrases.any { term in it }
+    }
+
     internal fun prewarmSearchIndex() {
         searchTokens.size
         fuzzySearchTokens.size
+        numberedSearchTokens.size
     }
 
     fun representsSelection(selectedId: String): Boolean = id == selectedId || selectedId in pickerMemberIds
@@ -48,6 +86,22 @@ data class Locality(
 private val combiningMarks = Regex("\\p{M}+")
 private val formatCharacters = Regex("[\\p{Cf}]")
 private val wordSeparators = Regex("[^\\p{L}\\p{N}]+")
+private val letterNumberBoundary = Regex("(?<=\\p{L})(?=\\p{N})|(?<=\\p{N})(?=\\p{L})")
+
+// Search-only tokenization; display-name normalization also identifies picker groups.
+private fun localitySearchTerms(normalized: String): List<String> =
+    normalized.replace(letterNumberBoundary, " ").split(' ').filter { it.isNotEmpty() }
+
+private fun containsWholeNumberTerm(text: String, term: String): Boolean {
+    var index = text.indexOf(term)
+    while (index >= 0) {
+        val end = index + term.length
+        if ((!term.first().isDigit() || index == 0 || !text[index - 1].isDigit()) &&
+            (!term.last().isDigit() || end == text.length || !text[end].isDigit())) return true
+        index = text.indexOf(term, index + 1)
+    }
+    return false
+}
 
 internal fun normalizeLocalitySearch(value: String): String =
     Normalizer.normalize(value, Normalizer.Form.NFKD)
@@ -158,7 +212,7 @@ private data class FuzzyLocalityMatch(
 )
 
 private fun primaryLocalityRank(locality: Locality, query: LocalitySearchQuery): Int = when {
-    locality.normalizedName == query.normalized -> 3
+    locality.normalizedName == query.normalized || locality.compactName == query.compact -> 3
     locality.normalizedName.startsWith(query.normalized) -> 2
     query.terms.all { term -> term in locality.normalizedName } -> 1
     else -> 0
@@ -194,10 +248,14 @@ private fun fuzzyMatchCost(
     locality: Locality,
     query: LocalitySearchQuery,
     checkCancellation: () -> Unit,
+    termCosts: MutableMap<String, Int>? = null,
 ): Int? {
     var totalEdits = 0
     for (term in query.fuzzyTerms) {
-        if (term.text in locality.searchText) continue
+        if (locality.matchesSearchTerm(term.text)) {
+            termCosts?.set(term.text, 0)
+            continue
+        }
         val remainingEdits = MAX_FUZZY_EDITS_PER_ROW - totalEdits
         if (remainingEdits < 0) return null
         val cost = fuzzyTermCost(
@@ -206,6 +264,7 @@ private fun fuzzyMatchCost(
             remainingEdits = remainingEdits,
             checkCancellation = checkCancellation,
         ) ?: return null
+        termCosts?.set(term.text, cost)
         totalEdits += cost
         if (totalEdits > MAX_FUZZY_EDITS_PER_ROW) return null
     }
@@ -217,8 +276,10 @@ internal class LocalitySearchQuery private constructor(
     val normalized: String,
     val terms: List<String>,
     internal val fuzzyTerms: List<LocalityFuzzyToken>,
+    internal val numberedWords: Map<String, List<LocalityFuzzyToken>>,
 ) {
     val isEmpty: Boolean get() = terms.isEmpty()
+    internal val compact: String = normalized.replace(" ", "")
 
     companion object {
         fun parse(query: String): LocalitySearchQuery {
@@ -227,8 +288,33 @@ internal class LocalitySearchQuery private constructor(
             val fuzzyTerms = terms.distinct().map { term ->
                 localityFuzzyToken(term, maxFuzzyEditsForTerm(term))
             }
-            return LocalitySearchQuery(normalized, terms, fuzzyTerms)
+            val numberedWords = mutableMapOf<String, MutableList<LocalityFuzzyToken>>()
+            terms.forEachIndexed { index, number ->
+                if (number.all { it.isDigit() }) {
+                    val words = listOfNotNull(terms.getOrNull(index - 1), terms.getOrNull(index + 1))
+                        .filter { word -> word.none { it.isDigit() } }
+                        .map { word -> localityFuzzyToken(word, maxFuzzyEditsForTerm(word)) }
+                    if (words.isNotEmpty()) numberedWords.getOrPut(number) { mutableListOf() } += words
+                }
+            }
+            return LocalitySearchQuery(normalized, terms, fuzzyTerms, numberedWords)
         }
+    }
+}
+
+private fun numberedLocalityTermsMatch(
+    locality: Locality,
+    query: LocalitySearchQuery,
+    allowFuzzy: Boolean,
+    checkCancellation: () -> Unit,
+    termCosts: Map<String, Int> = emptyMap(),
+): Boolean = query.numberedWords.all { (number, words) ->
+    val candidates = locality.numberedSearchTokens[number].orEmpty()
+    words.any { word ->
+        candidates.any { word.text in it.text } || (allowFuzzy && fuzzyTermCost(
+            // Number affinity can only use edits already charged to this word.
+            word, candidates, termCosts[word.text] ?: 0, checkCancellation,
+        ) != null)
     }
 }
 
@@ -248,10 +334,14 @@ internal fun searchLocalities(
     val fuzzy = mutableListOf<FuzzyLocalityMatch>()
     localities.forEachIndexed { index, locality ->
         checkCancellation()
-        if (query.terms.all { it in locality.searchText }) {
+        if (query.terms.all { locality.matchesSearchTerm(it) } &&
+            numberedLocalityTermsMatch(locality, query, allowFuzzy = false, checkCancellation)) {
             direct += locality
         } else {
-            val edits = fuzzyMatchCost(locality, query, checkCancellation) ?: return@forEachIndexed
+            val termCosts = if (query.numberedWords.isEmpty()) null else mutableMapOf<String, Int>()
+            val edits = fuzzyMatchCost(locality, query, checkCancellation, termCosts) ?: return@forEachIndexed
+            if (!numberedLocalityTermsMatch(locality, query, allowFuzzy = true, checkCancellation,
+                    termCosts.orEmpty())) return@forEachIndexed
             fuzzy += FuzzyLocalityMatch(
                 locality = locality,
                 edits = edits,
@@ -321,6 +411,7 @@ private fun mergedPickerRow(
     lat = representative?.lat ?: canonical.lat,
     lng = representative?.lng ?: canonical.lng,
     searchText = members.joinToString(" ") { it.searchText },
+    searchPhrases = members.flatMap { it.searchPhrases.ifEmpty { listOf(it.searchText) } + it.name + it.parentName }.distinct(),
     pickerMemberIds = members.flatMapTo(mutableSetOf()) { it.pickerMemberIds + it.id },
 )
 
@@ -470,7 +561,10 @@ internal fun enrichLocalityCatalog(localities: List<Locality>, governors: List<G
             mapped.searchText, mapped.name, mapped.parentName,
             governor?.nomAr, governor?.nomFr, governor?.nomEn
         )
-        mapped.copy(searchText = normalizeLocalitySearch(terms.joinToString(" ")))
+        mapped.copy(
+            searchText = normalizeLocalitySearch(terms.joinToString(" ")),
+            searchPhrases = (mapped.searchPhrases.ifEmpty { listOf(mapped.searchText) } + terms.drop(1)).distinct(),
+        )
     }
 }
 
@@ -568,7 +662,8 @@ object LocalityRepository {
             gov.delegations.map { d ->
                 LocalityDisplayNames.localize(context,
                     Locality("delegation:${d.id}", d.nomAr, d.nomAr, gov.id, d.id,
-                        normalizeLocalitySearch("${d.nomAr} ${d.nomFr} ${d.nomEn} ${gov.nomAr} ${gov.nomFr} ${gov.nomEn}"))
+                        normalizeLocalitySearch("${d.nomAr} ${d.nomFr} ${d.nomEn} ${gov.nomAr} ${gov.nomFr} ${gov.nomEn}"),
+                        searchPhrases = listOf(d.nomAr, d.nomFr, d.nomEn, gov.nomAr, gov.nomFr, gov.nomEn))
                 )
             }
         }.toMutableList()

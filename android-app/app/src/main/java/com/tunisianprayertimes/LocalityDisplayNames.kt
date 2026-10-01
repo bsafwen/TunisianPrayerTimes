@@ -58,7 +58,12 @@ internal object LocalityDisplayNames {
             (listOf(locality.searchText, locality.name, displayName.nameAr) + displayName.searchAliases)
                 .joinToString(" "),
         )
-        return locality.copy(name = displayName.nameAr, searchText = searchText)
+        return locality.copy(
+            name = displayName.nameAr,
+            searchText = searchText,
+            searchPhrases = (locality.searchPhrases.ifEmpty { listOf(locality.searchText) } +
+                locality.name + displayName.nameAr + displayName.searchAliases).distinct(),
+        )
     }
 
     /** Arabic name for a saved stable ID, or null to keep the saved display name. */

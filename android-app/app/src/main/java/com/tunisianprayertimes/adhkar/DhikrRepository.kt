@@ -28,9 +28,7 @@ class DhikrRepository(context: Context) {
         update { old ->
             val previous = old.reminders.find { it.id == rule.id }
             val changed = previous != null && previous.copy(enabled = rule.enabled) != rule
-            val current = old.occurrences.values.filter { it.ruleId == rule.id && now in it.startMillis until it.endMillis }
-            val saved = if (changed) rule.copy(revision = previous!!.revision + 1,
-                notBeforeMillis = maxOf(now, current.maxOfOrNull { it.endMillis } ?: now)) else rule
+            val saved = old.storedForm(rule, now)
             old.copy(reminders = old.reminders.filterNot { it.id == saved.id } + saved,
                 occurrences = if (!changed) old.occurrences else old.occurrences.mapValues { (_, occurrence) ->
                     if (occurrence.ruleId == rule.id && occurrence.status == DhikrOccurrenceStatus.OPEN)

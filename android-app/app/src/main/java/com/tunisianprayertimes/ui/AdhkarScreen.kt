@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.os.SystemClock
 import android.provider.Settings
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -50,6 +51,7 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
+import kotlin.math.abs
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
@@ -251,9 +253,13 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             }
         }
     }
-    val permissions = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
+    var permissionRequestedAt by remember { mutableLongStateOf(0L) }
+    val permissions = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
         now = System.currentTimeMillis()
         mutate({ DhikrReminderScheduler.refresh(activity, rearm = true) })
+        // Once refused for good, the system answers at once without asking; the settings are then the only way.
+        if (!granted && SystemClock.elapsedRealtime() - permissionRequestedAt < 500)
+            openDhikrNotificationSettings(activity, permissionPromptVibrate)
         if (exactAlarmPromptAfterNotifications) {
             exactAlarmPromptAfterNotifications = false
             exactAlarmPrompt = !DhikrReminderScheduler.exactAlarmsEnabled(activity)
@@ -397,6 +403,13 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                     val reminderId = session.occurrenceId?.let { state.occurrences[it]?.ruleId }
                         ?: readerReminderSource?.takeIf { it.startsWith("$id|") }?.substringAfter('|')
                     val readerReminder = reminderId?.let { sourceId -> state.reminders.firstOrNull { it.id == sourceId } }
+                    // A reading no reminder opened: the menu acts on the whole collection only when all of
+                    // it is being read, otherwise on the dhikr on screen, and edits a reminder that already exists.
+                    val readsCollection = session.collectionPeriodKey != null && session.category in reminderCollections
+                    val ownReminder = state.reminders.firstOrNull {
+                        if (readsCollection) it.collection == session.category
+                        else it.collection == null && it.dhikrId == session.itemId
+                    }
                     val skipWindow = readerReminder?.takeIf { rule ->
                         rule.enabled && rule.collection?.let { state.collectionEntries(it).isNotEmpty() } != false
                     }?.let { readerSkipWindow(it, now) }?.takeIf { window ->
@@ -445,8 +458,14 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                                 targetCountOverride = session.targetCountOverride,
                                 collectionReading = collectionReading)
                         },
-                        onReminder = { draft = defaultDhikrReminder(session.itemId, session.category,
-                            session.category?.let { state.collectionEntries(it) } ?: state.allEntries) },
+                        reminderActionLabel = when {
+                            ownReminder != null && readsCollection -> "تعديل تذكير هذه المجموعة"
+                            ownReminder != null -> "تعديل تذكير هذا الذكر"
+                            readsCollection -> "إنشاء تذكير لهذه المجموعة"
+                            else -> "إنشاء تذكير لهذا الذكر"
+                        },
+                        onReminder = { draft = ownReminder ?: defaultDhikrReminder(session.itemId, session.category,
+                            session.category?.let { state.collectionEntries(it) } ?: state.allEntries, readsCollection) },
                         onConfigureReminder = {
                             reminderId?.let { sourceId -> repo.state.value.reminders.firstOrNull { it.id == sourceId } }
                                 ?.let { current ->
@@ -552,9 +571,10 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
                     text = { Text("يمكنك قراءة الأذكار والعدّ دون إشعارات. اسمح بالإشعارات ليصلك التذكير في الأوقات التي اخترتها.") },
                     confirmButton = { TextButton(onClick = {
                         permissionPrompt = false
-                        if (Build.VERSION.SDK_INT >= 33 && androidx.core.content.ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED)
+                        if (Build.VERSION.SDK_INT >= 33 && androidx.core.content.ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS) != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                            permissionRequestedAt = SystemClock.elapsedRealtime()
                             permissions.launch(Manifest.permission.POST_NOTIFICATIONS)
-                        else openDhikrNotificationSettings(activity, permissionPromptVibrate)
+                        } else openDhikrNotificationSettings(activity, permissionPromptVibrate)
                     }) { Text("السماح") } }, dismissButton = { TextButton(onClick = {
                         permissionPrompt = false
                         if (exactAlarmPromptAfterNotifications) {
@@ -892,7 +912,10 @@ private fun AdhkarLibraryPage(
             }
         }
         items(results, key = { it.id }) { entry ->
-            DhikrEntryCard(entry, { onOpenEntry(entry.id, category) }, displayCategory = category)
+            // The same side margins as everything above the list.
+            Box(Modifier.padding(horizontal = 20.dp)) {
+                DhikrEntryCard(entry, { onOpenEntry(entry.id, category) }, displayCategory = category)
+            }
         }
     }
 }
@@ -933,7 +956,7 @@ private fun DhikrEntryCard(entry: DhikrEntry, onClick: () -> Unit, displayCatego
             Column(Modifier.weight(1f).padding(vertical = 6.dp)) {
                 Text(entry.title, color = AdhkarHeading, fontSize = 15.sp, fontWeight = FontWeight.SemiBold,
                     maxLines = 2, overflow = TextOverflow.Ellipsis)
-                Text(entry.text.replace(Regex("\\s+"), " ").trim(), color = p.muted,
+                Text(dhikrPreview(entry.text), color = p.muted,
                     fontFamily = AdhkarReadingFont, fontSize = 12.sp,
                     maxLines = 1, overflow = TextOverflow.Ellipsis)
                 Text(if (entry.steps.isNotEmpty()) collectionTitle(displayCategory ?: DhikrCategory.SALAH) +
@@ -972,8 +995,8 @@ private fun DhikrRemindersSheet(
             val listState = rememberLazyListState()
             val scrollGuard = rememberSheetScrollGuard(listState)
             LazyColumn(state = listState,
-                modifier = Modifier.nestedScroll(scrollGuard),
-                contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 48.dp),
+                modifier = Modifier.weight(1f).nestedScroll(scrollGuard),
+                contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 12.dp, bottom = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp)) {
                 item {
                     Text("إشعارات التذكير مستقلة عن إنجاز القراءة. افتح الذكر لتقرأه وتتابع تقدّمك.",
@@ -1014,12 +1037,16 @@ private fun DhikrRemindersSheet(
                         onToggle = { checked -> if (checked) onSavePreset(slot.preset.copy(enabled = true)) },
                         tagPrefix = "adhkar_sheet")
                 }
-                item {
-                    Button(onClick = { onDraft(DhikrReminder(dhikrId = DhikrCatalog.entries.first().id)) },
-                        modifier = Modifier.fillMaxWidth().heightIn(min = 54.dp), shape = RoundedCornerShape(16.dp)) {
-                        Text("تذكير جديد", fontWeight = FontWeight.Bold)
-                    }
-                }
+            }
+            // Below the list rather than at its end, so it stays in reach however long the list grows.
+            HorizontalDivider(color = AdhkarBorder)
+            // No dhikr yet: the editor asks for one instead of presuming the first of the catalog.
+            Button(onClick = { onDraft(DhikrReminder(dhikrId = "", targetCount = 1)) },
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp).padding(top = 12.dp, bottom = 16.dp)
+                    .heightIn(min = 54.dp).testTag("adhkar_new_reminder"), shape = RoundedCornerShape(16.dp)) {
+                DhikrIcon(R.drawable.ic_adhkar_plus, tint = Color.White, modifier = Modifier.size(20.dp))
+                Spacer(Modifier.width(8.dp))
+                Text("تذكير جديد", fontWeight = FontWeight.Bold)
             }
         }
     }
@@ -1107,7 +1134,9 @@ private fun DhikrReminderRow(activity: AppCompatActivity, state: DhikrState, rul
                 occurrence?.status == DhikrOccurrenceStatus.COMPLETED ->
                     if (rule.extraIntervals.isEmpty()) "اكتمل هدف هذه الفترة" else "اكتمل هدف اليوم"
                 DhikrReminderScheduler.isCollectionReadingDone(activity, state, rule, now) -> "تمت قراءة المجموعة"
-                window == null -> "المواقيت غير متاحة"
+                // Times that resolve but give no period no longer fit together, e.g. an end that now precedes its start.
+                window == null -> if (remember(rule, now) { DhikrReminderScheduler.prayerTimesAvailable(activity, rule) })
+                    "أوقات هذا التذكير لا تصلح حاليًا · عدّلها" else "المواقيت غير متاحة"
                 !notificationsAvailable -> "الإشعارات غير متاحة"
                 vibrationOff -> "الاهتزاز معطّل في إعدادات إشعارات الأذكار"
                 occurrence != null && occurrence.snoozedUntilMillis > now -> "مؤجل حتى " + formatDhikrTime(occurrence.snoozedUntilMillis, now)
@@ -1222,7 +1251,11 @@ internal fun eveningCollectionPreset() = DhikrReminder(dhikrId = "evening_kingdo
 internal fun nightCollectionPreset() = DhikrReminder(dhikrId = "sleep_last_two_baqarah", collection = DhikrCategory.NIGHT,
     targetCount = 1, daysOfWeek = (1..7).toSet(), start = DhikrTime(DhikrTimeKind.MAGHRIB, offsetMinutes = 15),
     end = DhikrTime(DhikrTimeKind.ISHA), cadence = DhikrCadence.ONCE)
-internal fun defaultDhikrReminder(id: String, category: DhikrCategory?, entries: List<DhikrEntry> = DhikrCatalog.entries): DhikrReminder {
+/** The daily collections a reminder can cover as a whole. */
+private val reminderCollections = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.NIGHT)
+/** [wholeCollection] is false for one dhikr read on its own: it keeps the collection's times but reminds of that dhikr. */
+internal fun defaultDhikrReminder(id: String, category: DhikrCategory?, entries: List<DhikrEntry> = DhikrCatalog.entries,
+    wholeCollection: Boolean = true): DhikrReminder {
     val times = when (category) {
         DhikrCategory.MORNING -> DhikrTime(DhikrTimeKind.FAJR) to DhikrTime(DhikrTimeKind.SHURUK)
         DhikrCategory.EVENING -> DhikrTime(DhikrTimeKind.ASR) to DhikrTime(DhikrTimeKind.MAGHRIB)
@@ -1231,8 +1264,7 @@ internal fun defaultDhikrReminder(id: String, category: DhikrCategory?, entries:
         DhikrCategory.SLEEP -> DhikrTime(minuteOfDay = 22 * 60) to DhikrTime(minuteOfDay = 23 * 60)
         else -> DhikrTime(minuteOfDay = 480) to DhikrTime(minuteOfDay = 1200)
     }
-    val collection = category?.takeIf { it == DhikrCategory.MORNING || it == DhikrCategory.EVENING ||
-        it == DhikrCategory.NIGHT }
+    val collection = category?.takeIf { wholeCollection && it in reminderCollections }
     return DhikrReminder(
         dhikrId = if (collection != null) entries.firstOrNull()?.id ?: id else id,
         collection = collection,
@@ -1247,7 +1279,9 @@ internal fun dhikrTimeLabel(time: DhikrTime): String {
         DhikrTimeKind.FAJR -> "الفجر"; DhikrTimeKind.SHURUK -> "الشروق"; DhikrTimeKind.DHUHR -> "الظهر"
         DhikrTimeKind.ASR -> "العصر"; DhikrTimeKind.MAGHRIB -> "المغرب"; DhikrTimeKind.ISHA -> "العشاء"
     }
-    return base + if (time.offsetMinutes == 0) "" else if (time.offsetMinutes > 0) " + " + latinNumber(time.offsetMinutes) + " د" else " − " + latinNumber(-time.offsetMinutes) + " د"
+    // A signed number reads left to right even inside Arabic, sign first: isolate it so «−30» is not shown as «30−».
+    return base + if (time.offsetMinutes == 0) "" else
+        " " + bidiClock((if (time.offsetMinutes > 0) "+" else "−") + latinNumber(abs(time.offsetMinutes))) + " د"
 }
 internal val dhikrWeekdays = listOf("الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد")
 internal fun dhikrRuleSummary(rule: DhikrReminder): String {
@@ -1261,14 +1295,22 @@ internal fun dhikrRuleSummary(rule: DhikrReminder): String {
         DhikrCadence.ONCE -> "تذكير واحد يوميًا"
         DhikrCadence.GENTLE -> if (rule.intervals().size > 3) "تذكير واحد لكل فترة" else "حتى 3 تذكيرات يوميًا"
         DhikrCadence.BALANCED -> if (rule.intervals().size > 5) "تذكير واحد لكل فترة" else "حتى 5 تذكيرات يوميًا"
-        DhikrCadence.HOURLY -> "كل ساعة"; else -> "كل " + latinNumber(rule.intervalMinutes) + " دقيقة"
+        DhikrCadence.HOURLY -> "كل ساعة"; else -> dhikrEveryMinutesLabel(rule.intervalMinutes)
     }
+}
+/** Whole hours read as hours («كل ساعتين»), anything else as minutes. */
+internal fun dhikrEveryMinutesLabel(minutes: Int): String = when {
+    minutes <= 0 || minutes % 60 != 0 -> "كل " + latinNumber(minutes) + " دقيقة"
+    minutes == 60 -> "كل ساعة"
+    minutes == 120 -> "كل ساعتين"
+    minutes / 60 <= 10 -> "كل " + latinNumber(minutes / 60) + " ساعات"
+    else -> "كل " + latinNumber(minutes / 60) + " ساعة"
 }
 internal fun formatDhikrWindow(window: DhikrWindow): String {
     val zone = ZoneId.systemDefault()
     val start = Instant.ofEpochMilli(window.startMillis).atZone(zone)
     val end = Instant.ofEpochMilli(window.endMillis).atZone(zone)
-    val day = DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.forLanguageTag("ar"))
+    val day = DateTimeFormatter.ofPattern("EEEE d MMMM", calendarLocale)
     val clock = DateTimeFormatter.ofPattern("HH:mm", Locale.US)
     return start.format(day) + " · " + bidiClock(start.format(clock)) + " – " +
         (if (start.toLocalDate() == end.toLocalDate()) "" else end.format(day) + " ") + bidiClock(end.format(clock))
@@ -1279,7 +1321,7 @@ internal fun formatDhikrTime(millis: Long, now: Long = System.currentTimeMillis(
     val time = Instant.ofEpochMilli(millis).atZone(zone)
     val clock = bidiClock(time.format(DateTimeFormatter.ofPattern("HH:mm", Locale.US)))
     return if (time.toLocalDate() == Instant.ofEpochMilli(now).atZone(zone).toLocalDate()) clock
-    else time.format(DateTimeFormatter.ofPattern("EEEE d MMMM", Locale.forLanguageTag("ar"))) + " · " + clock
+    else time.format(DateTimeFormatter.ofPattern("EEEE d MMMM", calendarLocale)) + " · " + clock
 }
 internal fun collectionTitle(category: DhikrCategory) = if (category == DhikrCategory.SALAH) "أذكار بعد الصلاة" else "أذكار " + category.title
 internal fun openDhikrNotificationSettings(activity: AppCompatActivity, vibrate: Boolean = true) {
