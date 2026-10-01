@@ -1,6 +1,7 @@
 package com.tunisianprayertimes.tv.data
 
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerFormulaSettings
 import com.tunisianprayertimes.mosque.DisplayOptions
 import com.tunisianprayertimes.mosque.IqamahRule
 import com.tunisianprayertimes.mosque.MosqueProfile
@@ -93,6 +94,42 @@ class PrefsManagerTest {
         assertEquals(5, prefs.adhanScreenMinutes)
         prefs.adhanScreenMinutes = 0
         assertEquals(1, prefs.adhanScreenMinutes)
+    }
+
+    @Test
+    fun thePrayerTimeValuesAreOfficialUntilAFileSetsOthers() {
+        assertEquals(PrayerFormulaSettings.OFFICIAL, prefs.formula)
+        assertEquals(null, prefs.profile.formula)
+        assertTrue(store.all.isEmpty())
+        val custom = PrayerFormulaSettings(fajrAngle = 17.5, ishaAngle = 16.0, asrShadow = 2, dhuhrMinutes = 5, maghribMinutes = 3, elevation = false)
+            .withAdjustment(Prayer.ISHA, 2).withAdjustment(Prayer.FAJR, -15)
+        prefs.applyProfile(MosqueProfile(formula = custom)) { null }
+        // Kept across a restart, and in the profile the TV's settings file is written from.
+        assertEquals(custom, PrefsManager(store).formula)
+        assertEquals(custom, PrefsManager(store).profile.formula)
+        // A parsed file's profile always carries them: null there is INM's values again, and nothing stays stored.
+        prefs.applyProfile(MosqueProfile(display = DisplayOptions(weather = false))) { null }
+        assertEquals(PrayerFormulaSettings.OFFICIAL, PrefsManager(store).formula)
+        assertTrue(store.all.keys.none { it.startsWith("formula") })
+    }
+
+    @Test
+    fun strayStoredPrayerTimeValuesReadAsOfficial() {
+        prefs.formula = PrayerFormulaSettings(fajrAngle = 16.5).withAdjustment(Prayer.ASR, 4)
+        assertEquals(PrayerFormulaSettings(fajrAngle = 16.5).withAdjustment(Prayer.ASR, 4), prefs.formula)
+        // Values this app never writes (off the 0.5 grid, a shadow of 3, an adjustment past 15) never reach the formula.
+        store.edit().putFloat("formula_fajr_angle", 16.3f).apply()
+        assertEquals(PrayerFormulaSettings.OFFICIAL, prefs.formula)
+        prefs.formula = PrayerFormulaSettings(asrShadow = 2)
+        store.edit().putInt("formula_asr_shadow", 3).apply()
+        assertEquals(PrayerFormulaSettings.OFFICIAL, prefs.formula)
+        prefs.formula = PrayerFormulaSettings(asrShadow = 2)
+        store.edit().putInt("formula_adjust_ISHA", 16).apply()
+        assertEquals(PrayerFormulaSettings.OFFICIAL, prefs.formula)
+        // A stored 0 is no adjustment, not a refused one.
+        prefs.formula = PrayerFormulaSettings(asrShadow = 2)
+        store.edit().putInt("formula_adjust_ISHA", 0).apply()
+        assertEquals(PrayerFormulaSettings(asrShadow = 2), prefs.formula)
     }
 
     @Test

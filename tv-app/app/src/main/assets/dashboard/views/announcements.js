@@ -188,7 +188,7 @@
     card.appendChild(el("p", { class: "hint", text: "إعلانات نُسخت من ملفات نصية على مفتاح USB. لا تُعدَّل من هنا، ويمكن حذفها." }));
     files.forEach(function (file) {
       card.appendChild(el("div", { class: "list-item" },
-        el("p", { text: String(file.text || ""), attrs: { dir: "auto", style: "white-space: pre-wrap; overflow-wrap: anywhere" } }),
+        el("p", { attrs: { dir: "auto", style: "white-space: pre-wrap; overflow-wrap: anywhere" } }, mosqueText(el, String(file.text || ""))),
         el("div", { class: "row" },
           el("span", { class: "muted small ltr grow", text: file.name }),
           el("button", { class: "danger", type: "button", text: "حذف", attrs: { "aria-label": "حذف الإعلان «" + file.name + "»" }, on: { click: function () {
@@ -201,6 +201,37 @@
           } } }))));
     });
   }
+
+  /**
+   * A mosque's own text as the TV shows it (TvStrings.mosqueText): phone numbers, dates, times and
+   * signed numbers stay left to right, so «-3°» never reads «3°-» in Arabic text. Returns the text's
+   * pieces for ctx.el, each such number in a <bdi dir="ltr">; the text itself is never changed.
+   */
+  function mosqueText(el, text) {
+    var pieces = [];
+    var start = 0;
+    var match;
+    DIGIT_GROUPS.lastIndex = 0;
+    while ((match = DIGIT_GROUPS.exec(text))) {
+      // A «-» or «−» right after a letter or a digit is a dash, not a sign: look again from the digits.
+      if (/^[-−]/.test(match[0]) && LETTER_OR_DIGIT.test(text.charAt(match.index - 1))) {
+        DIGIT_GROUPS.lastIndex = match.index + 1;
+        continue;
+      }
+      pieces.push(text.slice(start, match.index), el("bdi", { text: match[0], attrs: { dir: "ltr" } }));
+      start = match.index + match[0].length;
+    }
+    pieces.push(text.slice(start));
+    return pieces;
+  }
+
+  // TvStrings.DIGIT_GROUPS without its look-behind (checked in mosqueText): groups of digits joined by
+  // spaces or dashes, or by a single slash, dot or colon, or a number after a sign; with a «%», «٪»,
+  // «‰» or «°» (and its C or F) that follows.
+  var DIGIT_GROUPS = /[+\-−]?[0-9٠-٩۰-۹]+(?:(?:[  –-]+|[\/.:])[0-9٠-٩۰-۹]+)+(?:[%٪‰]|°[CF]?)?|[+\-−][0-9٠-٩۰-۹]+(?:[.,٫][0-9٠-٩۰-۹]+)?(?:[%٪‰]|°[CF]?)?/g;
+  var LETTER_OR_DIGIT = (function () {
+    try { return new RegExp("[\\p{L}\\p{N}]", "u"); } catch (e) { return /[0-9A-Za-zÀ-ɏء-ي٠-٩ٮ-ۓ۰-ۿ]/; }
+  })();
 
   function formatSize(bytes) {
     if (typeof bytes !== "number") return "";

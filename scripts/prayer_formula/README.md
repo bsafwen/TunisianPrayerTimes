@@ -9,6 +9,8 @@ It is validated on 2020–2026. One-off quirks in INM's future tables, like Zeri
 | `inm_prayer_times.py` | Reference implementation: `--verify` against the meteo.tn CSVs in `docs/csv`, and CSV output for any delegation, year or month |
 | `../../data/prayer-formula/delegation_params.json` | Per-delegation inputs: INM's coordinates and elevation, plus quirks of INM's own tables. Shared with the Android app, which bundles it as an asset. |
 | `multiplatform/shared/.../InmPrayerFormula.kt` | The Kotlin port the Android app computes its prayer times with |
+| `tv-app/app/src/main/assets/dashboard/formula.js` | The JavaScript port the TV's phone dashboard explains and previews the times with (tab «حساب المواقيت») |
+| `check_dashboard_formula.js` | Node check of `formula.js`: every delegation and day of 2026 in `docs/csv`, plus the custom values pinned in the shared tests |
 
 ## Validation
 
@@ -175,6 +177,21 @@ The app computes prayer times on the device with `InmPrayerFormula` (in `multipl
 - `data/prayer-formula/delegation_params.json` is packaged as the asset `prayer-formula/delegation_params.json` by the `bundlePrayerFormulaParams` Gradle task.
 - `InmPrayerFormulaTest` (`./gradlew :shared:javaTest`) checks the Kotlin port against every 2026 day in `docs/csv` and against the sampled 2020–2025 times in `test-data/inm-prayer-times/`.
 
+## Custom Values
+
+INM's values are the default everywhere, and the only ones the phone app uses. The mosque TV lets a mosque change a few of them (the settings file's `prayerTimes` section, or the dashboard's «حساب المواقيت»), as `PrayerFormulaSettings`, passed to `InmPrayerFormula.minutes` / `dayPrayerTimes` and `InmPrayerTimes.loadDayPrayerTimes`:
+
+| Value | Official | Range | Replaces |
+|-------|----------|-------|----------|
+| `fajrAngle`, `ishaAngle` | 18 | 15–20, by 0.5 | the 18° twilight depression of Fajr and Isha |
+| `asrShadow` | 1 | 1, or 2 (the Hanafi rule) | the `1 +` in `a_asr` |
+| `dhuhrMinutes` | 7 | 0–15 | Dhuhr's minutes after solar noon |
+| `maghribMinutes` | 2 | 0–10 | Maghrib's minutes after sunset |
+| `elevation` | true | true / false | false: every dip is 0, the sunrise override included |
+| `adjust` | 0 | −15 to +15 whole minutes | added to Fajr, Dhuhr, Asr, Maghrib or Isha (never the sunrise) |
+
+With the official values the results are INM's, bit for bit. Tunis (615) on 2026-09-30, for example: official 04:47 06:13 12:16 15:31 18:07 19:31; with Fajr at 16°, Asr at two shadows, the elevation off and Isha +2: 04:58 06:14 12:16 16:22 18:06 19:32 (`PrayerFormulaSettingsTest`).
+
 ## Porting to Kotlin/Java
 
 The single-precision step must be reproduced exactly:
@@ -212,6 +229,9 @@ Each part below was tested against the data. The iteration count and angle reduc
 ```bash
 # Check the formula against the meteo.tn 2026 CSVs in docs/csv
 python scripts/prayer_formula/inm_prayer_times.py --verify
+
+# The same for the TV dashboard's JavaScript copy (node, no dependencies); exits 1 on any miss
+node scripts/prayer_formula/check_dashboard_formula.js
 
 # Print one month, in the same layout as android-app/.../csv/<id>/<year>/<MM>.csv
 python scripts/prayer_formula/inm_prayer_times.py --delegation 615 --year 2027 --month 3

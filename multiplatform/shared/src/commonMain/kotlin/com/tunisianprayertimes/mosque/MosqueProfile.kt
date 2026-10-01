@@ -1,16 +1,23 @@
 package com.tunisianprayertimes.mosque
 
+import com.tunisianprayertimes.PrayerFormulaSettings
+
 /**
- * The rest of a mosque screen's settings: its name, where it is and how it looks. With the
- * schedule and the Ramadan and Eid dates, it makes the whole settings file, so one configured
- * TV can be copied to the others of a mosque with a USB key. Null fields are not set.
+ * The rest of a mosque screen's settings: its name, where it is, how it looks and how its prayer
+ * times are computed ([formula]: null for INM's official values). With the schedule and the Ramadan
+ * and Eid dates, it makes the whole settings file, so one configured TV can be copied to the others
+ * of a mosque with a USB key. Null fields are not set.
  */
 data class MosqueProfile(
     val name: String? = null,
     val delegationId: Int? = null,
     val themeId: String? = null,
     val display: DisplayOptions = DisplayOptions(),
+    val formula: PrayerFormulaSettings? = null,
 ) {
+    /** The values the times are computed with: [formula], or INM's official ones. */
+    val formulaSettings: PrayerFormulaSettings get() = formula ?: PrayerFormulaSettings.OFFICIAL
+
     companion object {
         const val MAX_NAME_LENGTH = 60
     }

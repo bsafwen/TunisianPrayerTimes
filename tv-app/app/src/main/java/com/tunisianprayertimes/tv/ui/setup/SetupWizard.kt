@@ -56,25 +56,26 @@ import com.tunisianprayertimes.tv.ui.theme.midadStyle
 private const val STEPS = 4
 
 /**
- * The iqamah table through a recreation of the activity: seven numbers a prayer (every field of
- * [IqamahConfig], held as 1 or 0), in [PrefsManager.EDITABLE]'s order.
+ * The iqamah table through a recreation of the activity: eight numbers a prayer (every field of
+ * [IqamahConfig], held and the Jumu'a dua as 1 or 0), in [PrefsManager.EDITABLE]'s order.
  */
 internal val IqamahConfigsSaver: Saver<Map<Prayer, IqamahConfig>, Any> = listSaver(
     save = { configs ->
         PrefsManager.EDITABLE.flatMap { prayer ->
             configs.getValue(prayer).run {
-                listOf(mode.ordinal, delayMinutes, fixedHour, fixedMinute, salahMinutes, if (held) 1 else 0, khutbaMinutes)
+                listOf(mode.ordinal, delayMinutes, fixedHour, fixedMinute, salahMinutes, if (held) 1 else 0, khutbaMinutes, if (adhanDua) 1 else 0)
             }
         }
     },
     restore = { values ->
         PrefsManager.EDITABLE.zip(values.chunked(CONFIG_VALUES)) { prayer, value ->
-            prayer to IqamahConfig(IqamahMode.entries[value[0]], value[1], value[2], value[3], value[4], held = value[5] == 1, khutbaMinutes = value[6])
+            prayer to IqamahConfig(IqamahMode.entries[value[0]], value[1], value[2], value[3], value[4], held = value[5] == 1, khutbaMinutes = value[6],
+                adhanDua = value[7] == 1)
         }.toMap()
     },
 )
 
-private const val CONFIG_VALUES = 7
+private const val CONFIG_VALUES = 8
 
 /**
  * Onboarding, four steps on the settings' palette:

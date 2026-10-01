@@ -14,7 +14,8 @@ enum class IqamahMode { DELAY, FIXED_TIME }
  * Per-prayer setting edited on the TV: the iqamah (minutes after the adhan, or a fixed clock
  * time) and [salahMinutes], how long the screen stays black while the congregation prays.
  * A fixed time with a negative hour or minute is unset. [held] is false for a Jumu'a or an Eid
- * prayer the mosque does not hold; [khutbaMinutes] is Jumu'a's khutba length (0: the whole wait).
+ * prayer the mosque does not hold; [khutbaMinutes] is Jumu'a's khutba length (0: the whole wait), and
+ * [adhanDua] whether its dua after the adhan shows before the khutba screen (PrayerSettings.adhanDua).
  */
 data class IqamahConfig(
     val mode: IqamahMode = IqamahMode.DELAY,
@@ -24,6 +25,7 @@ data class IqamahConfig(
     val salahMinutes: Int = 10,
     val held: Boolean = true,
     val khutbaMinutes: Int = 0,
+    val adhanDua: Boolean = true,
 ) {
     fun toPrayerSettings(): PrayerSettings = PrayerSettings(
         iqamah = if (mode == IqamahMode.FIXED_TIME && fixedHour in 0..23 && fixedMinute in 0..59) {
@@ -34,17 +36,18 @@ data class IqamahConfig(
         salahMinutes = salahMinutes,
         held = held,
         khutbaMinutes = khutbaMinutes,
+        adhanDua = adhanDua,
     )
 
     companion object {
         fun from(settings: PrayerSettings): IqamahConfig = when (val rule = settings.iqamah) {
             is IqamahRule.AfterAdhan -> IqamahConfig(
                 IqamahMode.DELAY, delayMinutes = rule.minutes, salahMinutes = settings.salahMinutes, held = settings.held,
-                khutbaMinutes = settings.khutbaMinutes,
+                khutbaMinutes = settings.khutbaMinutes, adhanDua = settings.adhanDua,
             )
             is IqamahRule.FixedTime -> IqamahConfig(
                 IqamahMode.FIXED_TIME, fixedHour = rule.time.hour, fixedMinute = rule.time.minute, salahMinutes = settings.salahMinutes,
-                held = settings.held, khutbaMinutes = settings.khutbaMinutes,
+                held = settings.held, khutbaMinutes = settings.khutbaMinutes, adhanDua = settings.adhanDua,
             )
         }
 

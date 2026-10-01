@@ -1,11 +1,14 @@
 package com.tunisianprayertimes.tv.remote
 
+import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerFormulaSettings
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
 import com.tunisianprayertimes.mosque.FlowState
 import com.tunisianprayertimes.time.ClockSource
 import com.tunisianprayertimes.tv.data.MediaKind
+import com.tunisianprayertimes.tv.data.TestData
 import com.tunisianprayertimes.tv.ui.TvStrings
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
@@ -592,6 +595,33 @@ class DashboardTest {
         val none = com.tunisianprayertimes.tv.ui.remote.PhoneAdminSession.of(8080, "abc", active = null, addresses = emptyList())
         assertNull(none.url)
         assertTrue(none.otherUrls.isEmpty())
+    }
+
+    @Test
+    fun theStateCarriesThePrayerTimeValuesAndThePlaceAsTheFormulaSeesIt() {
+        val tunis = FormulaPlace(615, "تونس", "تونس", TestData.prayerTimes.location(615)!!)
+        // The page codes against these exact keys: 18 as the file writes it, every adjustment, no overrides.
+        assertEquals(
+            """{"official":true,"settings":{"fajrAngle":18,"ishaAngle":18,"asrShadow":1,"dhuhrMinutes":7,"maghribMinutes":2,"elevation":true,""" +
+                """"adjust":{"fajr":0,"dhuhr":0,"asr":0,"maghrib":0,"isha":0}},""" +
+                """"location":{"delegationId":615,"delegationName":"تونس","gouvernoratName":"تونس","latitude":36.8,"longitude":10.183,"elevation":9,"sunriseElevations":{}}}""",
+            formulaJson(PrayerFormulaSettings.OFFICIAL, tunis).toString(),
+        )
+        val custom = PrayerFormulaSettings(fajrAngle = 17.5, asrShadow = 2, elevation = false).withAdjustment(Prayer.ISHA, 2).withAdjustment(Prayer.FAJR, -1)
+        val zeriba = FormulaPlace(409, "الزريبة", "زغوان", TestData.prayerTimes.location(409)!!)
+        val state = formulaJson(custom, zeriba)
+        assertFalse(state["official"]!!.jsonPrimitive.boolean)
+        val settings = state["settings"]!!.jsonObject
+        assertEquals("17.5", settings["fajrAngle"].toString())
+        assertEquals("2", settings["asrShadow"].toString())
+        assertEquals("false", settings["elevation"].toString())
+        assertEquals("""{"fajr":-1,"dhuhr":0,"asr":0,"maghrib":0,"isha":2}""", settings["adjust"].toString())
+        // INM's 2026 sunrise for Zeriba counts 15.6 m, not the delegation's 156 m: the page's formula needs it too.
+        val location = state["location"]!!.jsonObject
+        assertEquals("156", location["elevation"].toString())
+        assertEquals("""{"2026":15.6}""", location["sunriseElevations"].toString())
+        // No place yet: the page asks for one first.
+        assertEquals(JsonNull, formulaJson(PrayerFormulaSettings.OFFICIAL, null)["location"])
     }
 
     @Test

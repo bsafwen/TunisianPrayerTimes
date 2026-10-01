@@ -2,6 +2,8 @@ package com.tunisianprayertimes.tv.data
 
 import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.InmPrayerTimes
+import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerFormulaSettings
 import com.tunisianprayertimes.tv.data.TestData.TUNIS
 import java.time.LocalDate
 import org.junit.Assert.assertEquals
@@ -53,6 +55,23 @@ class PrayerTimesRepositoryTest {
             TestData.prayerTimes.loadDayPrayerTimes(TUNIS, 2026, 9, 29),
             repo().loadDay(TUNIS, date),
         )
+    }
+
+    private fun DayPrayerTimes.hm(): String = minutes().joinToString(" ") { String.format(java.util.Locale.ROOT, "%02d:%02d", it / 60, it % 60) }
+
+    @Test
+    fun theMosqueValuesAreReadAtEachCallAndCanBePassedIn() {
+        val date = LocalDate.of(2026, 9, 30)
+        val custom = PrayerFormulaSettings(fajrAngle = 16.0, asrShadow = 2, elevation = false).withAdjustment(Prayer.ISHA, 2)
+        var stored = PrayerFormulaSettings.OFFICIAL
+        val repo = PrayerTimesRepository(source = { TestData.prayerTimes }, settings = { stored })
+        // Tunis on 2026-09-30, as meteo.tn publishes it, then with the values the dashboard's formula gives.
+        assertEquals("04:47 06:13 12:16 15:31 18:07 19:31", repo.loadDay(TUNIS, date)!!.hm())
+        stored = custom
+        assertEquals("04:58 06:14 12:16 16:22 18:06 19:32", repo.loadDay(TUNIS, date)!!.hm())
+        assertEquals("04:47 06:13 12:16 15:31 18:07 19:31", repo.loadDay(TUNIS, date, PrayerFormulaSettings.OFFICIAL)!!.hm())
+        // Without a source of values: INM's.
+        assertEquals("04:47 06:13 12:16 15:31 18:07 19:31", repo().loadDay(TUNIS, date)!!.hm())
     }
 
     @Test

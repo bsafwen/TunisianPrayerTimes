@@ -310,7 +310,7 @@ class DashboardRoutes(private val token: String, private val backend: DashboardB
         const val MAX_CLOCK_BODY = 256
 
         /** The page's own files: nothing else can be read through this path. */
-        private val PAGE_FILE = Regex("""index\.html|app\.js|style\.css|views/[a-z0-9-]{1,40}\.js""")
+        private val PAGE_FILE = Regex("""index\.html|app\.js|formula\.js|style\.css|views/[a-z0-9-]{1,40}\.js""")
 
         /** The fonts the page may ask for at /fonts/NAME: Readex Pro for everything, Amiri for the adhkar texts. */
         val FONTS = setOf("readex-pro.ttf", "amiri.ttf")

@@ -4,6 +4,7 @@ import com.tunisianprayertimes.EventDate
 import com.tunisianprayertimes.IslamicDays
 import com.tunisianprayertimes.ManualIslamicDates
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerFormulaSettings
 import com.tunisianprayertimes.TunisianHijriCalendar
 import com.tunisianprayertimes.YearDates
 import com.tunisianprayertimes.adhkar.DhikrCatalog
@@ -27,6 +28,7 @@ import kotlinx.serialization.json.JsonPrimitive
  *     { "format": "tunisian-prayer-times-tv", "version": 1,
  *       "mosque": { "name": "مسجد الفتح", "delegation": 615 },
  *       "display": { "theme": "horizon" },
+ *       "prayerTimes": { "fajrAngle": 17.5, "asrShadow": 1, "adjust": { "isha": "+2" } },
  *       "prayers": { "fajr": { "iqamah": "+20", "duration": 10 }, "isha": { "iqamah": "20:00" },
  *                    "eid": { "iqamah": "+30", "duration": 30 } },
  *       "ramadan": { "isha": { "duration": 75 } },
@@ -35,13 +37,18 @@ import kotlinx.serialization.json.JsonPrimitive
  * "iqamah" is "+N" minutes after the adhan (after sunrise for the Eid prayers) or a fixed "HH:MM";
  * "duration" is the prayer's length in minutes (the black screen); "held": false says the mosque
  * does not hold Jumu'a or an Eid prayer; Jumu'a's "khutba" is the sermon's length in minutes before
- * its iqamah (0: the whole wait after the adhan). "ramadan" changes prayers on the
+ * its iqamah (0: the whole wait after the adhan), and its "dua": false puts the khutba screen right after
+ * the adhan screen, without the minute of the dua after the adhan (true, as by default, shows it: the imam
+ * says it too). "ramadan" changes prayers on the
  * days of Ramadan (null returns a field to the usual setting). "islamicDates" sets the year's Ramadan
  * and Eid dates by hand (null returns a date to automatic). "mosque" and "display" carry the rest of a
  * TV's settings, so a file written by one TV sets up another. "adhkar" puts the mosque's own texts
  * after the bundled, reviewed ones ("mode": "append") or in their place ("replace"); each needs a
  * "reference"; null returns to the bundled texts. "announcements" lists written announcements with
- * optional "from" and "until" dates, and replaces the TV's list. Every field is optional. Files are edited
+ * optional "from" and "until" dates, and replaces the TV's list. "prayerTimes" changes how the times are
+ * computed (PrayerFormulaSettings: "fajrAngle", "ishaAngle", "asrShadow", "dhuhrMinutes", "maghribMinutes",
+ * "elevation", and "adjust" in whole minutes per prayer); a field left out stays as the TV has it, null
+ * returns a field (or the whole section) to INM's official value. Every field is optional. Files are edited
  * by hand, so Arabic names, Arabic-Indic digits, "20h00", comments and trailing commas are accepted.
  * A file is applied whole or not at all.
  */
@@ -57,7 +64,7 @@ object MosqueSettingsFile {
     /** How far a hand-set Ramadan or Eid date may be from the calendar estimate. */
     private const val MAX_DAYS_FROM_ESTIMATE = 5L
 
-    enum class Field { IQAMAH, DURATION, HELD, KHUTBA }
+    enum class Field { IQAMAH, DURATION, HELD, KHUTBA, DUA }
 
     /** One setting that the file changes, rendered as in the file ("+15", "20:00", "10", "false"); [ramadan] for Ramadan changes. */
     data class Change(val prayer: Prayer, val field: Field, val before: String, val after: String, val ramadan: Boolean = false)
@@ -74,6 +81,15 @@ object MosqueSettingsFile {
      * theme as the admin reads them, the options as in the file ("true", "15"); "—" when unset.
      */
     data class ProfileChange(val field: ProfileField, val before: String, val after: String)
+
+    enum class FormulaField { FAJR_ANGLE, ISHA_ANGLE, ASR_SHADOW, DHUHR_MINUTES, MAGHRIB_MINUTES, ELEVATION, ADJUSTMENT }
+
+    /**
+     * A value of the prayer-time computation ("prayerTimes") that the file changes, rendered as in the
+     * file: "17.5", "2", "7", "false", and an [ADJUSTMENT][FormulaField.ADJUSTMENT] of [prayer] signed
+     * ("+2", "-1", "0"). Every value has an official one, so there is no "—".
+     */
+    data class FormulaChange(val field: FormulaField, val prayer: Prayer?, val before: String, val after: String)
 
     enum class ContentList { AFTER_SALAH, TICKER, ANNOUNCEMENTS }
 
@@ -102,14 +118,17 @@ object MosqueSettingsFile {
         UNKNOWN_PRAYER, DUPLICATE_PRAYER, NOT_A_PRAYER_OBJECT, UNKNOWN_FIELD, DUPLICATE_FIELD,
         INVALID_IQAMAH, IQAMAH_OUT_OF_RANGE, INVALID_DURATION, DURATION_OUT_OF_RANGE,
         INVALID_YEAR, INVALID_DATE, DATE_OUT_OF_RANGE, INVALID_NAME, UNKNOWN_DELEGATION, UNKNOWN_THEME,
-        INVALID_ADHKAR, INVALID_ANNOUNCEMENT, INVALID_OPTION, DATES_CONFLICT, INVALID_ENCODING,
+        INVALID_ADHKAR, INVALID_ANNOUNCEMENT, INVALID_OPTION, DATES_CONFLICT, INVALID_ENCODING, INVALID_FORMULA,
     }
 
     /** A problem in the file: [path] locates it (for example prayers.isha.iqamah); [message] is for the TV screen. */
     data class SettingsError(val code: ErrorCode, val path: String, val message: String)
 
     sealed interface ParseResult {
-        /** [islamicDates] holds the complete admin dates of every year the file mentions. */
+        /**
+         * [islamicDates] holds the complete admin dates of every year the file mentions; the prayer-time
+         * values are the [profile]'s ([formula]), with [formulaChanges] from the TV's.
+         */
         data class Success(
             val schedule: MosqueSchedule,
             val changes: List<Change>,
@@ -120,9 +139,14 @@ object MosqueSettingsFile {
             val content: AdhkarContent = AdhkarContent(),
             val contentChanges: List<ContentChange> = emptyList(),
             val announcements: List<TextAnnouncement> = emptyList(),
+            val formulaChanges: List<FormulaChange> = emptyList(),
         ) : ParseResult {
             val hasChanges: Boolean
-                get() = changes.isNotEmpty() || dateChanges.isNotEmpty() || profileChanges.isNotEmpty() || contentChanges.isNotEmpty()
+                get() = changes.isNotEmpty() || dateChanges.isNotEmpty() || profileChanges.isNotEmpty() || contentChanges.isNotEmpty() ||
+                    formulaChanges.isNotEmpty()
+
+            /** The values the TV computes its times with after the file (INM's official ones unless set). */
+            val formula: PrayerFormulaSettings get() = profile.formulaSettings
         }
 
         /** The first [MAX_ERRORS] mistakes, and how many [more] a hostile or badly broken file has. */
@@ -215,7 +239,10 @@ object MosqueSettingsFile {
         val display = root.section("display", "screen", "العرض", "الشاشة")
         val adhkar = root.entries.firstOrNull { (key, _) -> clean(key).trim().lowercase() in ADHKAR_SECTION }
         val announcementsEntry = root.entries.firstOrNull { (key, _) -> clean(key).trim().lowercase() in ANNOUNCEMENTS_SECTION }
-        if (adhkar == null && announcementsEntry == null && listOf(prayers, ramadan, dates, mosque, display).all { it == null || it.second.isEmpty() }) {
+        // An object or null (rootErrors): null returns the times to INM's official values, which is a setting too.
+        val formulaEntry = root.entries.firstOrNull { (key, _) -> clean(key).trim().lowercase() in FORMULA_SECTION }
+        val noFormula = formulaEntry == null || (formulaEntry.value as? JsonObject)?.isEmpty() == true
+        if (adhkar == null && announcementsEntry == null && noFormula && listOf(prayers, ramadan, dates, mosque, display).all { it == null || it.second.isEmpty() }) {
             return fail(ErrorCode.NO_PRAYERS, "prayers", "لا يحتوي الملف على إعدادات الصلوات (${code("\"prayers\"")})")
         }
 
@@ -229,6 +256,7 @@ object MosqueSettingsFile {
                         Field.DURATION -> base.copy(salahMinutes = value as Int)
                         Field.HELD -> base.copy(held = value as Boolean)
                         Field.KHUTBA -> base.copy(khutbaMinutes = value as Int)
+                        Field.DUA -> base.copy(adhanDua = value as Boolean)
                     }
                 }
                 schedule = schedule.with(prayer, settings)
@@ -240,14 +268,20 @@ object MosqueSettingsFile {
                     when (field) {
                         Field.IQAMAH -> base.copy(iqamah = value as IqamahRule?)
                         Field.DURATION -> base.copy(salahMinutes = value as Int?)
-                        Field.HELD, Field.KHUTBA -> base // refused by readFields: the same all year
+                        Field.HELD, Field.KHUTBA, Field.DUA -> base // refused by readFields: the same all year
                     }
                 }
                 schedule = schedule.withRamadan(prayer, override)
             }
         }
         val newDates = dates?.let { (sectionKey, section) -> readDates(section, sectionKey, currentDates, yearDates.takeUnless { stored }, errors) }.orEmpty()
-        val profile = readProfile(mosque, display, currentProfile, catalog, errors)
+        val profile = readProfile(mosque, display, currentProfile, catalog, errors).let { profile ->
+            val formula = formulaEntry?.let { (key, value) -> readFormula(key, value, currentProfile.formulaSettings, errors) }
+                ?: profile.formula
+            // Stored as null when official, with or without the section (the TV may hand an explicit
+            // OFFICIAL over), so the same times always read as the same profile.
+            profile.copy(formula = formula?.takeUnless { it.isOfficial })
+        }
         val content = adhkar?.let { (key, value) -> readAdhkar(key, value, currentContent, stored, errors) } ?: currentContent
         val announcements = announcementsEntry?.let { (key, value) -> readAnnouncements(key, value, errors) } ?: currentAnnouncements
 
@@ -256,7 +290,7 @@ object MosqueSettingsFile {
             schedule, changes(current, schedule), newDates, dateChanges(currentDates, newDates),
             profile, profileChanges(currentProfile, profile, catalog),
             content, contentChanges(currentContent, content) + listOfNotNull(announcementChange(currentAnnouncements, announcements)),
-            announcements,
+            announcements, formulaChanges(currentProfile.formulaSettings, profile.formulaSettings),
         )
     }
 
@@ -633,7 +667,7 @@ object MosqueSettingsFile {
                         ?.takeIf { Regex("""\d{1,7}""").matches(it) }?.toInt()
                     if (id == null || catalog.delegationName(id) == null) {
                         errors += SettingsError(ErrorCode.UNKNOWN_DELEGATION, path,
-                            "المعتمدية «${element.display()}» غير معروفة: انسخ رقمها من ملف كتبته شاشة أخرى")
+                            "المعتمدية «${element.quoted()}» غير معروفة: انسخ رقمها من ملف كتبته شاشة أخرى")
                     } else {
                         profile = profile.copy(delegationId = id)
                     }
@@ -656,7 +690,7 @@ object MosqueSettingsFile {
                 val value = element.intOrNull()
                 if (value == null || value !in range) {
                     errors += SettingsError(ErrorCode.INVALID_OPTION, path,
-                        "«${short(path.substringAfterLast('.'))}» عدد بين ${range.first} و${range.last} (في الملف: ${element.display()})")
+                        "«${short(path.substringAfterLast('.'))}» عدد بين ${range.first} و${range.last} (في الملف: ${element.quoted()})")
                 } else {
                     profile = profile.copy(display = set(value))
                 }
@@ -675,7 +709,7 @@ object MosqueSettingsFile {
                     val theme = catalog.themes.entries.firstOrNull { (id, name) -> wanted != null && (id.equals(wanted, ignoreCase = true) || name == wanted) }
                     if (theme == null) {
                         errors += SettingsError(ErrorCode.UNKNOWN_THEME, path,
-                            "المظهر «${element.display()}» غير معروف: استعمل ${catalog.themes.keys.joinToString(" أو ")}")
+                            "المظهر «${element.quoted()}» غير معروف: استعمل ${catalog.themes.keys.joinToString(" أو ")}")
                     } else {
                         profile = profile.copy(themeId = theme.key)
                     }
@@ -757,6 +791,147 @@ object MosqueSettingsFile {
         )
     }
 
+    /**
+     * The "prayerTimes" section over the TV's [current] values: a field left out stays, a field set to
+     * null returns to INM's value, and the section set to null returns them all ("adjust": null clears
+     * every adjustment, a prayer's null its own).
+     */
+    private fun readFormula(sectionKey: String, element: JsonElement, current: PrayerFormulaSettings, errors: MutableList<SettingsError>): PrayerFormulaSettings {
+        val official = PrayerFormulaSettings.OFFICIAL
+        if (element is JsonNull) return official
+        val values = element as? JsonObject ?: return current // refused by rootErrors
+        var settings = current
+        val seen = mutableMapOf<FormulaField, String>()
+        for ((key, value) in values) {
+            val path = "$sectionKey.$key"
+            val cleanKey = clean(key).trim().lowercase()
+            if (cleanKey in IGNORED_FIELDS) continue
+            val field = FORMULA_FIELDS[cleanKey]
+            if (field == null) {
+                errors += SettingsError(ErrorCode.UNKNOWN_FIELD, path, "حقل غير معروف «${short(key)}»: استعمل " +
+                    keyList("fajrAngle", "ishaAngle", "asrShadow", "dhuhrMinutes", "maghribMinutes", "elevation", "adjust", or = true))
+                continue
+            }
+            seen.put(field, key)?.let { first ->
+                errors += SettingsError(ErrorCode.DUPLICATE_FIELD, path, "الحقل مذكور مرتين («${short(first)}» و«${short(key)}»)")
+                continue
+            }
+            fun invalid(accepted: String) {
+                errors += SettingsError(ErrorCode.INVALID_FORMULA, path, "«${short(key)}» $accepted (في الملف: ${value.quoted()})")
+            }
+            val isNull = value is JsonNull
+            when (field) {
+                FormulaField.FAJR_ANGLE, FormulaField.ISHA_ANGLE -> {
+                    val fajr = field == FormulaField.FAJR_ANGLE
+                    val angle = when {
+                        isNull -> if (fajr) official.fajrAngle else official.ishaAngle
+                        else -> value.angleOrNull()?.takeIf(PrayerFormulaSettings::angleAccepted)
+                    }
+                    when {
+                        angle == null -> invalid(angleRange(if (fajr) official.fajrAngle else official.ishaAngle))
+                        fajr -> settings = settings.copy(fajrAngle = angle)
+                        else -> settings = settings.copy(ishaAngle = angle)
+                    }
+                }
+                FormulaField.ASR_SHADOW -> when (val shadow = if (isNull) official.asrShadow else value.intOrNull()) {
+                    in PrayerFormulaSettings.ASR_SHADOWS -> settings = settings.copy(asrShadow = shadow!!)
+                    else -> invalid("يكون 1 (ظلّ الشيء مثله، الرسمي) أو 2 (مثلاه) على المذهب الحنفي")
+                }
+                FormulaField.DHUHR_MINUTES -> when (val minutes = if (isNull) official.dhuhrMinutes else value.intOrNull()) {
+                    in PrayerFormulaSettings.DHUHR_MINUTES -> settings = settings.copy(dhuhrMinutes = minutes!!)
+                    else -> invalid(minutesRange("بعد الزوال", PrayerFormulaSettings.DHUHR_MINUTES, official.dhuhrMinutes))
+                }
+                FormulaField.MAGHRIB_MINUTES -> when (val minutes = if (isNull) official.maghribMinutes else value.intOrNull()) {
+                    in PrayerFormulaSettings.MAGHRIB_MINUTES -> settings = settings.copy(maghribMinutes = minutes!!)
+                    else -> invalid(minutesRange("بعد الغروب", PrayerFormulaSettings.MAGHRIB_MINUTES, official.maghribMinutes))
+                }
+                FormulaField.ELEVATION -> when (val counted = if (isNull) official.elevation else value.booleanOrNull()) {
+                    null -> invalid("يكون true (يُحسب ارتفاع المسجد، الرسمي) أو false فلا يُحسب")
+                    else -> settings = settings.copy(elevation = counted)
+                }
+                FormulaField.ADJUSTMENT -> settings = readAdjustments(path, value, settings, errors)
+            }
+        }
+        return settings
+    }
+
+    // The official value inside the sentence, so the only parenthesis left is invalid()'s «(في الملف: …)».
+    private fun minutesRange(after: String, range: IntRange, official: Int) =
+        "عدد الدقائق $after بين ${range.first} و${range.last}، والرسمي $official"
+
+    private fun angleRange(official: Double): String {
+        val angles = PrayerFormulaSettings.ANGLES
+        return "زاوية بين ${angleText(angles.start)} و${angleText(angles.endInclusive)} درجة بخطوة " +
+            "${angleText(PrayerFormulaSettings.ANGLE_STEP)}، مثل 17.5، والرسمية ${angleText(official)}"
+    }
+
+    /** "adjust": { "isha": "+2", "fajr": -1 }: whole minutes added to the five prayers' times, the others left as they are. */
+    private fun readAdjustments(path: String, element: JsonElement, current: PrayerFormulaSettings, errors: MutableList<SettingsError>): PrayerFormulaSettings {
+        if (element is JsonNull) return current.copy(adjustments = emptyMap())
+        val values = element as? JsonObject
+        if (values == null) {
+            errors += SettingsError(ErrorCode.INVALID_FORMULA, path, "التعديل يُكتب مثل ${code("{ \"isha\": \"+2\", \"fajr\": \"-1\" }")}")
+            return current
+        }
+        var settings = current
+        val seen = mutableMapOf<Prayer, String>()
+        val range = PrayerFormulaSettings.ADJUSTMENT_MINUTES
+        for ((key, value) in values) {
+            val itemPath = "$path.$key"
+            val cleanKey = clean(key).trim().lowercase()
+            if (cleanKey in IGNORED_FIELDS) continue
+            val targets = prayersFor(key)
+            if (targets == null && cleanKey !in SHURUK_NAMES) {
+                errors += SettingsError(ErrorCode.UNKNOWN_PRAYER, itemPath, "صلاة غير معروفة «${short(key)}»: استعمل fajr أو dhuhr أو asr أو maghrib أو isha")
+                continue
+            }
+            val prayer = targets?.singleOrNull()?.takeIf { it in PrayerFormulaSettings.ADJUSTABLE }
+            if (prayer == null) {
+                errors += SettingsError(ErrorCode.INVALID_FORMULA, itemPath,
+                    "لا يُعدَّل وقت «${short(key)}»: التعديل للفجر والظهر والعصر والمغرب والعشاء؛ الجمعة تتبع الظهر، والعيدان يتبعان الشروق")
+                continue
+            }
+            seen.put(prayer, key)?.let { first ->
+                errors += SettingsError(ErrorCode.DUPLICATE_PRAYER, itemPath, "صلاة ${arabicName(prayer)} مذكورة مرتين («${short(first)}» و«${short(key)}»)")
+                continue
+            }
+            val minutes = if (value is JsonNull) 0 else value.signedIntOrNull()
+            if (minutes == null || minutes !in range) {
+                errors += SettingsError(ErrorCode.INVALID_FORMULA, itemPath,
+                    "تعديل ${arabicName(prayer)} عدد دقائق بين ${code("${range.first}")} و${code("+${range.last}")}، مثل ${code("\"+2\"")} أو ${code("\"-1\"")} (في الملف: ${value.quoted()})")
+                continue
+            }
+            settings = settings.withAdjustment(prayer, minutes)
+        }
+        return settings
+    }
+
+    /**
+     * What the file changes in the computation, in the order write() emits them (the values, then each
+     * prayer's adjustment from Fajr to Isha), whatever the order of the keys in the file.
+     */
+    private fun formulaChanges(before: PrayerFormulaSettings, after: PrayerFormulaSettings): List<FormulaChange> {
+        fun change(field: FormulaField, old: Any, new: Any) = FormulaChange(field, null, "$old", "$new").takeIf { old != new }
+        return listOfNotNull(
+            change(FormulaField.FAJR_ANGLE, angleText(before.fajrAngle), angleText(after.fajrAngle)),
+            change(FormulaField.ISHA_ANGLE, angleText(before.ishaAngle), angleText(after.ishaAngle)),
+            change(FormulaField.ASR_SHADOW, before.asrShadow, after.asrShadow),
+            change(FormulaField.DHUHR_MINUTES, before.dhuhrMinutes, after.dhuhrMinutes),
+            change(FormulaField.MAGHRIB_MINUTES, before.maghribMinutes, after.maghribMinutes),
+            change(FormulaField.ELEVATION, before.elevation, after.elevation),
+        ) + PrayerFormulaSettings.ADJUSTABLE.mapNotNull { prayer ->
+            val old = before.adjustment(prayer)
+            val new = after.adjustment(prayer)
+            FormulaChange(FormulaField.ADJUSTMENT, prayer, signedText(old), signedText(new)).takeIf { old != new }
+        }
+    }
+
+    /** An angle as in the file: "18", "17.5". */
+    fun angleText(angle: Double): String = if (angle == kotlin.math.floor(angle)) angle.toInt().toString() else angle.toString()
+
+    /** An adjustment as in the file: "+2", "-1", "0". */
+    fun signedText(minutes: Int): String = if (minutes > 0) "+$minutes" else "$minutes"
+
     /** Calls [onPrayer] for each valid prayer object of a section, reporting unknown, duplicate or malformed entries. */
     private fun forEachPrayer(
         section: JsonObject,
@@ -792,7 +967,7 @@ object MosqueSettingsFile {
 
     /**
      * Applies the "iqamah" and "duration" fields of one prayer object to [start], and "held" for
-     * Jumu'a and the Eids and "khutba" for Jumu'a when [allowHeld] (the usual settings). A null value
+     * Jumu'a and the Eids and "khutba" and "dua" for Jumu'a when [allowHeld] (the usual settings). A null value
      * is ignored, or clears the field when [clearOnNull] (Ramadan changes returning to the usual setting).
      */
     private fun <T> readFields(
@@ -817,7 +992,7 @@ object MosqueSettingsFile {
             if (field == null) {
                 // Ignoring it would apply the file without the setting the admin meant to change.
                 val names = when {
-                    khutba -> keyList("iqamah", "duration", "held", "khutba", or = true)
+                    khutba -> keyList("iqamah", "duration", "held", "khutba", "dua", or = true)
                     holdable -> keyList("iqamah", "duration", "held", or = true)
                     else -> keyList("iqamah", "duration", or = true)
                 }
@@ -831,7 +1006,7 @@ object MosqueSettingsFile {
                         if (allowHeld) "" else " في رمضان")
                 continue
             }
-            if (field == Field.KHUTBA && !khutba) {
+            if ((field == Field.KHUTBA || field == Field.DUA) && !khutba) {
                 errors += SettingsError(ErrorCode.UNKNOWN_FIELD, fieldPath,
                     "«${short(fieldKey)}» يُكتب لصلاة الجمعة في قسم «prayers» فقط، لا لصلاة ${arabicName(prayer)}" +
                         if (allowHeld) "" else " في رمضان")
@@ -857,7 +1032,7 @@ object MosqueSettingsFile {
                     val range = MosqueSchedule.SALAH_MINUTES
                     when {
                         minutes == null -> errors += SettingsError(ErrorCode.INVALID_DURATION, fieldPath,
-                            "مدة صلاة ${arabicName(prayer)} غير صالحة «${element.display()}»: اكتب عدد الدقائق، مثلًا 10")
+                            "مدة صلاة ${arabicName(prayer)} غير صالحة «${element.quoted()}»: اكتب عدد الدقائق، مثلًا 10")
                         minutes !in range -> errors += SettingsError(ErrorCode.DURATION_OUT_OF_RANGE, fieldPath,
                             "مدة صلاة ${arabicName(prayer)} يجب أن تكون بين ${range.first} و${range.last} دقيقة (في الملف: $minutes)")
                         else -> result = set(result, field, minutes)
@@ -873,11 +1048,16 @@ object MosqueSettingsFile {
                     val range = MosqueSchedule.KHUTBA_MINUTES
                     when {
                         minutes == null -> errors += SettingsError(ErrorCode.INVALID_DURATION, fieldPath,
-                            "مدة خطبة الجمعة غير صالحة «${element.display()}»: اكتب عدد الدقائق، مثلًا 30، أو 0 من الأذان إلى الإقامة")
+                            "مدة خطبة الجمعة غير صالحة «${element.quoted()}»: اكتب عدد الدقائق، مثلًا 30، أو 0 من الأذان إلى الإقامة")
                         minutes !in range -> errors += SettingsError(ErrorCode.DURATION_OUT_OF_RANGE, fieldPath,
                             "مدة خطبة الجمعة يجب أن تكون بين ${range.first} و${range.last} دقيقة (في الملف: $minutes)")
                         else -> result = set(result, field, minutes)
                     }
+                }
+                Field.DUA -> when (val dua = element.booleanOrNull()) {
+                    null -> errors += SettingsError(ErrorCode.INVALID_OPTION, fieldPath,
+                        "«$fieldKey» في صلاة الجمعة يكون true (الدعاء بعد الأذان دقيقة قبل الخطبة) أو false (شاشة الخطبة بعد الأذان مباشرة)")
+                    else -> result = set(result, field, dua)
                 }
             }
         }
@@ -905,14 +1085,14 @@ object MosqueSettingsFile {
             if (year != null) {
                 val first = seenYears.put(year, yearKey)
                 if (first != null) {
-                    errors += SettingsError(ErrorCode.DUPLICATE_FIELD, path, "السنة $year مذكورة مرتين («${short(first)}» و«${short(yearKey)}»)")
+                    errors += SettingsError(ErrorCode.DUPLICATE_FIELD, path, "السنة ${code("$year")} مذكورة مرتين («${keyQuoted(first)}» و«${keyQuoted(yearKey)}»)")
                     continue
                 }
             }
             val supported = year != null && runCatching { estimate.month(year, 12) }.isSuccess
             if (!supported || value !is JsonObject) {
                 errors += SettingsError(ErrorCode.INVALID_YEAR, path,
-                    "السنة الهجرية «${short(yearKey)}» غير صالحة: اكتب مثل ${code("\"1448\": { \"ramadanStart\": \"2027-02-08\" }")}")
+                    "السنة الهجرية «${keyQuoted(yearKey)}» غير صالحة: اكتب مثل ${code("\"1448\": { \"ramadanStart\": \"2027-02-08\" }")}")
                 continue
             }
             val before = currentDates[year] ?: ManualIslamicDates()
@@ -937,7 +1117,7 @@ object MosqueSettingsFile {
                 val date = if (element is JsonNull) null else parseDate(element)
                 if (element !is JsonNull && date == null) {
                     errors += SettingsError(ErrorCode.INVALID_DATE, fieldPath,
-                        "التاريخ «${element.display()}» غير صالح: اكتب مثل ${code("2027-02-08")}")
+                        "التاريخ «${element.quoted()}» غير صالح: اكتب مثل ${code("2027-02-08")}")
                     continue
                 }
                 if (date != null) {
@@ -967,9 +1147,12 @@ object MosqueSettingsFile {
     /**
      * The canonical file for [schedule], the admin's [dates] and the [profile], for exporting the TV's
      * settings to a USB key. The delegation's name is written next to its number for the admin to read.
-     * A [complete] file also writes what is unset as null (every Ramadan field, every year of [dates]),
-     * that Jumu'a and the Eid prayers are held ("held" is otherwise written only when false) and a
-     * khutba of 0 ("khutba" is otherwise written only when set),
+     * The prayer-time values ("prayerTimes") are written whole, every field and the five prayers'
+     * adjustments (0 included), when the profile's [MosqueProfile.formula] is not INM's, and not at all
+     * when it is. A [complete] file also writes what is unset as null (every Ramadan field, every year
+     * of [dates], "prayerTimes" when official), that Jumu'a and the Eid prayers are held ("held" is
+     * otherwise written only when false), a khutba of 0 ("khutba" is otherwise written only when set) and
+     * Jumu'a's dua after the adhan shown ("dua" is otherwise written only when false),
      * so reading it back returns to exactly this state: the snapshot behind "undo the last import".
      */
     fun write(
@@ -1001,6 +1184,19 @@ object MosqueSettingsFile {
             profile.display.adhanScreenMinutes?.let { "\"adhanScreenMinutes\": $it" },
         )
         if (display.isNotEmpty()) append("  \"display\": { ").append(display.joinToString(", ")).append(" },\n")
+        val formula = profile.formula?.takeUnless { it.isOfficial }
+        if (formula != null) {
+            val adjust = PrayerFormulaSettings.ADJUSTABLE.joinToString(", ") { "\"${KEYS.getValue(it)}\": ${formula.adjustment(it)}" }
+            append("  \"prayerTimes\": { \"fajrAngle\": ").append(angleText(formula.fajrAngle))
+                .append(", \"ishaAngle\": ").append(angleText(formula.ishaAngle))
+                .append(", \"asrShadow\": ").append(formula.asrShadow)
+                .append(", \"dhuhrMinutes\": ").append(formula.dhuhrMinutes)
+                .append(", \"maghribMinutes\": ").append(formula.maghribMinutes)
+                .append(", \"elevation\": ").append(formula.elevation)
+                .append(", \"adjust\": { ").append(adjust).append(" } },\n")
+        } else if (complete) {
+            append("  \"prayerTimes\": null,\n")
+        }
         val daily = MosqueSchedule.CONFIGURABLE + MosqueSchedule.EID
         append("  \"prayers\": {\n")
         daily.forEachIndexed { index, prayer ->
@@ -1009,6 +1205,7 @@ object MosqueSettingsFile {
                 .append(iqamahText(settings.iqamah)).append("\", \"duration\": ").append(settings.salahMinutes)
             if (prayer in MosqueSchedule.HOLDABLE && (!settings.held || complete)) append(", \"held\": ").append(settings.held)
             if (prayer == Prayer.JOMOAA && (settings.khutbaMinutes != 0 || complete)) append(", \"khutba\": ").append(settings.khutbaMinutes)
+            if (prayer == Prayer.JOMOAA && (!settings.adhanDua || complete)) append(", \"dua\": ").append(settings.adhanDua)
             append(" }")
             append(if (index < daily.lastIndex) ",\n" else "\n")
         }
@@ -1122,6 +1319,7 @@ object MosqueSettingsFile {
         listOf("duration", "duree", "durée", "المدة", "مدة", "مدة الصلاة").forEach { put(it, Field.DURATION) }
         listOf("held", "تقام", "تُقام").forEach { put(it, Field.HELD) }
         listOf("khutba", "الخطبة", "خطبة", "مدة الخطبة").forEach { put(it, Field.KHUTBA) }
+        listOf("dua", "adhandua", "adhan_dua", "الدعاء", "دعاء الأذان", "دعاء الاذان").forEach { put(it, Field.DUA) }
     }
 
     private val DATE_ALIASES: Map<String, DateEvent> = buildMap {
@@ -1135,6 +1333,20 @@ object MosqueSettingsFile {
 
     private val ADHKAR_SECTION = setOf("adhkar", "azkar", "الأذكار", "الاذكار")
     private val ANNOUNCEMENTS_SECTION = setOf("announcements", "الإعلانات", "الاعلانات")
+    private val FORMULA_SECTION = setOf("prayertimes", "prayer_times", "formula", "حساب المواقيت")
+
+    private val FORMULA_FIELDS: Map<String, FormulaField> = buildMap {
+        listOf("fajrangle", "fajr_angle", "زاوية الفجر").forEach { put(it, FormulaField.FAJR_ANGLE) }
+        listOf("ishaangle", "isha_angle", "زاوية العشاء").forEach { put(it, FormulaField.ISHA_ANGLE) }
+        listOf("asrshadow", "asr_shadow", "ظل العصر", "ظلّ العصر").forEach { put(it, FormulaField.ASR_SHADOW) }
+        listOf("dhuhrminutes", "dhuhr_minutes", "الظهر بعد الزوال").forEach { put(it, FormulaField.DHUHR_MINUTES) }
+        listOf("maghribminutes", "maghrib_minutes", "المغرب بعد الغروب").forEach { put(it, FormulaField.MAGHRIB_MINUTES) }
+        listOf("elevation", "ارتفاع المكان", "ارتفاع المسجد", "حساب ارتفاع المسجد").forEach { put(it, FormulaField.ELEVATION) }
+        listOf("adjust", "adjustments", "تعديل", "التعديل").forEach { put(it, FormulaField.ADJUSTMENT) }
+    }
+
+    /** The sunrise, named in "adjust" by an admin who expects to move it: refused with a word on why. */
+    private val SHURUK_NAMES = setOf("shuruk", "shurouk", "chourouk", "sunrise", "الشروق")
     private val FROM_KEYS = setOf("from", "start", "من")
     private val UNTIL_KEYS = setOf("until", "to", "end", "إلى", "الى", "حتى")
     private val ADHKAR_LISTS = mapOf(
@@ -1182,6 +1394,7 @@ object MosqueSettingsFile {
         "display" to setOf("display", "screen", "العرض", "الشاشة"),
         "adhkar" to ADHKAR_SECTION,
         "announcements" to ANNOUNCEMENTS_SECTION,
+        "prayerTimes" to FORMULA_SECTION,
     )
     private const val OBJECT_SECTIONS = 5
 
@@ -1208,6 +1421,10 @@ object MosqueSettingsFile {
             }
             if (index < OBJECT_SECTIONS && value !is JsonObject) {
                 errors += SettingsError(ErrorCode.NOT_AN_OBJECT, key, "القسم «${short(key)}» يُكتب بين قوسين ${code("{ }")}")
+            }
+            if (name == "prayerTimes" && value !is JsonObject && value !is JsonNull) {
+                errors += SettingsError(ErrorCode.NOT_AN_OBJECT, key,
+                    "القسم «${short(key)}» يُكتب بين قوسين ${code("{ }")}، أو ${code("null")} للرجوع إلى الأوقات الرسمية")
             }
         }
         return errors
@@ -1398,7 +1615,7 @@ object MosqueSettingsFile {
         // The Eid prayers have no adhan: their minutes count from sunrise.
         val after = if (prayer in MosqueSchedule.EID) "بعد الشروق" else "بعد الأذان"
         val invalid = IqamahParse.Error(SettingsError(ErrorCode.INVALID_IQAMAH, path,
-            "وقت الإقامة لصلاة ${arabicName(prayer)} غير صالح «${element.display()}»: اكتب ${code("+10")} ($after) أو ${code("20:00")} (وقت ثابت)"))
+            "وقت الإقامة لصلاة ${arabicName(prayer)} غير صالح «${element.quoted()}»: اكتب ${code("+10")} ($after) أو ${code("20:00")} (وقت ثابت)"))
         FIXED_TIME.matchEntire(text)?.let { match ->
             val hour = match.groupValues[1].toInt()
             val minute = match.groupValues[2].toInt()
@@ -1428,6 +1645,7 @@ object MosqueSettingsFile {
                 Change(prayer, Field.HELD, old.held.toString(), new.held.toString()).takeIf { old.held != new.held },
                 Change(prayer, Field.KHUTBA, old.khutbaMinutes.toString(), new.khutbaMinutes.toString())
                     .takeIf { old.khutbaMinutes != new.khutbaMinutes },
+                Change(prayer, Field.DUA, old.adhanDua.toString(), new.adhanDua.toString()).takeIf { old.adhanDua != new.adhanDua },
             )
         }
         val ramadan = MosqueSchedule.CONFIGURABLE.flatMap { prayer ->
@@ -1465,12 +1683,35 @@ object MosqueSettingsFile {
         return if (Regex("""\d{1,4}""").matches(text)) text.toInt() else null
     }
 
+    /** Whole minutes with an optional sign: 2, -1, "+2", "−1" (the minus sign), "-١"; null for anything else. */
+    private fun JsonElement.signedIntOrNull(): Int? {
+        val primitive = this as? JsonPrimitive ?: return null
+        val text = clean(normalizeDigits(primitive.content)).replace('−', '-').filterNot(Char::isWhitespace)
+        return if (Regex("""[+-]?\d{1,3}""").matches(text)) text.toInt() else null
+    }
+
+    /** An angle in degrees written 18, 17.5, "17.5", "١٧٫٥" or "17,5"; null for anything else. */
+    private fun JsonElement.angleOrNull(): Double? {
+        val primitive = this as? JsonPrimitive ?: return null
+        val text = clean(normalizeDigits(primitive.content)).trim().replace('٫', '.').replace(',', '.')
+        return if (Regex("""\d{1,2}(\.\d{1,3})?""").matches(text)) text.toDouble() else null
+    }
+
     /** The value as quoted in an error: short, and never a stringified tree (deep nesting would overflow the stack). */
     private fun JsonElement.display(): String = when (this) {
         is JsonPrimitive -> content.let { if (it.length > 40) it.take(40) + "…" else it }
         is JsonObject -> "{…}"
         else -> "[…]"
     }
+
+    /**
+     * The file's value inside an Arabic message, kept left to right as [code] keeps a sample: a refused
+     * "-1" must read «-1», not «1-». The file's own direction marks go first, so none can end the isolate early.
+     */
+    private fun JsonElement.quoted(): String = code(cleanText(display()))
+
+    /** A Hijri year's key inside a message, like [quoted]: the file's "-1448" must read «-1448», not «1448-». */
+    private fun keyQuoted(key: String): String = code(cleanText(short(key)))
 
     /**
      * Without invisible formatting characters (RLM/LRM/ALM, bidi embeddings, ZWJ): Arabic keyboards insert

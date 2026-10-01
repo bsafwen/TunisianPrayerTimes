@@ -179,14 +179,21 @@ object TvStrings {
     /** After a fixed iqamah the flow will not use today (outside 1 to 90 minutes after the adhan, or sunrise for an Eid). */
     fun notTodayAfterAdhan(adhan: String, instead: String) = "لا يناسب أذان اليوم $adhan، فتكون $instead"
     fun notTodayAfterSunrise(sunrise: String, instead: String) = "لا يناسب شروق اليوم $sunrise، فتكون $instead"
-    /** After an iqamah set before the end of the adhan screen, which waits for it ([iqamahWaitsForAdhan]). */
-    fun waitsForAdhanScreen(adhan: String, time: String) = "أقرب إلى أذان اليوم $adhan، فتكون الساعة $time، عند نهاية شاشة الأذان"
+    /**
+     * After an iqamah set before the end of the adhan screen and the dua after it, which waits for them ([iqamahWaitsForAdhan]);
+     * without [withDua] (a Jumu'a whose mosque left the dua out), for the adhan screen only.
+     */
+    fun waitsForAdhanScreen(adhan: String, time: String, withDua: Boolean = true) =
+        "أقرب إلى أذان اليوم $adhan، فتكون الساعة $time، بعد شاشة الأذان${if (withDua) " والدعاء بعده" else ""}"
     /** On the kiosk page: an iqamah the screen moved today from its setting. */
     fun iqamahMoved(prayer: String, time: String) = "إقامة $prayer اليوم الساعة $time، لا كما ضُبطت: الوقت المضبوط لا يناسب أذان اليوم"
     const val IQAMAH_MOVED_FIX = "اضبطها دقائق بعد الأذان، أو وقتًا ثابتًا بين 1 و90 دقيقة بعد أذان كل يوم"
-    /** An iqamah set before the end of the adhan screen, which waits for it. */
-    fun iqamahWaitsForAdhan(prayer: String, time: String) = "إقامة $prayer اليوم الساعة $time، عند نهاية شاشة الأذان: الوقت المضبوط أقرب إلى الأذان"
-    const val IQAMAH_WAITS_FIX = "اضبطها بعد نهاية شاشة الأذان، أو قصّر مدة شاشة الأذان في «الإقامة ومدة الصلاة»"
+    /** An iqamah set before the end of the adhan screen and the dua after it (without [withDua], the adhan screen), which waits for them. */
+    fun iqamahWaitsForAdhan(prayer: String, time: String, withDua: Boolean = true) =
+        "إقامة $prayer اليوم الساعة $time، بعد شاشة الأذان${if (withDua) " والدعاء بعده" else ""}: الوقت المضبوط أقرب إلى الأذان"
+    const val IQAMAH_WAITS_FIX = "اضبطها بعد شاشة الأذان ودقيقة الدعاء بعده، أو قصّر مدة شاشة الأذان في «الإقامة ومدة الصلاة»"
+    /** The same for a Jumu'a without the dua after the adhan. */
+    const val IQAMAH_WAITS_FIX_NO_DUA = "اضبطها بعد شاشة الأذان، أو قصّر مدة شاشة الأذان في «الإقامة ومدة الصلاة»"
     /** The same for an Eid prayer, which has no adhan: its time counts from sunrise. */
     fun eidPrayerMoved(eid: String, time: String) = "صلاة $eid اليوم الساعة $time، لا كما ضُبطت: الوقت المضبوط لا يناسب شروق اليوم"
     const val EID_PRAYER_MOVED_FIX = "اضبطها دقائق بعد الشروق، أو وقتًا ثابتًا بين 1 و90 دقيقة بعد شروق كل يوم"
@@ -276,9 +283,44 @@ object TvStrings {
     const val KHUTBA_LENGTH_HINT = "شاشة الخطبة الهادئة بهذه المدة قبل الإقامة، وقبلها العدّ التنازلي"
     const val KHUTBA_FROM_ADHAN = "من الأذان"
     fun khutbaLength(minutes: Int): String = if (minutes == 0) KHUTBA_FROM_ADHAN else minutesShort(minutes)
+    /**
+     * Under Jumu'a in the iqamah table, the dashboard's same box: whether its adhan is followed by the
+     * minute of the dua after it before the khutba (on by default: the imam says it too).
+     */
+    const val JUMUA_ADHAN_DUA = "الدعاء بعد الأذان قبل الخطبة"
+    const val JUMUA_ADHAN_DUA_HINT = "دقيقة بعد شاشة الأذان، قبل شاشة الخطبة (أو العدّ التنازلي قبلها). دونه تبدأ هذه بعد الأذان مباشرة"
+    /** A settings file's preview: «الدعاء بعد أذان الجمعة: نعم ← لا». */
+    const val JUMUA_ADHAN_DUA_CHANGE = "الدعاء بعد أذان الجمعة"
     /** Over the iqamah table in the settings: how long the adhan screen lasts, and what it means for the iqamah. */
     const val ADHAN_SCREEN_LENGTH = "مدة شاشة الأذان"
-    const val ADHAN_SCREEN_LENGTH_HINT = "الإقامة الأقرب إلى الأذان من هذه المدة تنتظر نهايتها، فلا تسودّ الشاشة والمؤذّن يؤذّن"
+    const val ADHAN_SCREEN_LENGTH_HINT = "يليها الدعاء بعد الأذان دقيقة؛ والإقامة الأقرب إلى الأذان من نهايتهما تنتظرها، فلا تسودّ الشاشة والمؤذّن يؤذّن ولا أثناء الدعاء"
+
+    /**
+     * A settings file's prayer-time values ("prayerTimes", the dashboard's «حساب المواقيت») in its
+     * preview: «زاوية الفجر: 18° ← 16.5°», «تعديل العشاء: 0 د ← +2 د».
+     */
+    const val FAJR_ANGLE = "زاوية الفجر"
+    const val ISHA_ANGLE = "زاوية العشاء"
+    const val ASR_SHADOW = "ظلّ العصر"
+    const val ASR_ONE_SHADOW = "مثل واحد"
+    const val ASR_TWO_SHADOWS = "مثلان"
+    const val DHUHR_AFTER_NOON = "الظهر بعد الزوال"
+    const val MAGHRIB_AFTER_SUNSET = "المغرب بعد الغروب"
+    const val ELEVATION_COUNTED = "حساب ارتفاع المسجد"
+    const val YES = "نعم"
+    const val NO = "لا"
+    const val OFFICIAL_TIMES_BACK = "تعود المواقيت إلى الأوقات الرسمية للمعهد الوطني للرصد الجوي"
+    fun adjustmentOf(prayer: Prayer): String = "تعديل ${prayerName(prayer)}"
+    /** «18°», «16.5°»: left to right, so the degree sign stays after the number. */
+    fun degrees(angle: String): String = "$LEFT_TO_RIGHT$angle°$END_ISOLATE"
+    /** «0 د», «+2 د», «−3 د»: the sign stays before the number, left to right. */
+    fun signedMinutes(minutes: Int): String = when {
+        minutes == 0 -> minutesShort(0)
+        minutes > 0 -> "$LEFT_TO_RIGHT+$minutes$END_ISOLATE $MINUTES_SUFFIX"
+        else -> "$LEFT_TO_RIGHT−${-minutes}$END_ISOLATE $MINUTES_SUFFIX"
+    }
+    /** «الفجر اليوم», «الشروق اليوم»: today's time before and after new prayer-time values. */
+    fun todayTime(name: String): String = "$name اليوم"
 
     /** The Eid prayer's time before it: «صلاة عيد الفطر غدًا 06:45» from the evening before, without «غدًا» on its day. */
     fun eidPrayerNote(prayer: Prayer, at: java.time.LocalDateTime, now: java.time.LocalDateTime): String =
@@ -332,14 +374,20 @@ object TvStrings {
     /**
      * A mosque's own words (an announcement) as the screen shows them. In right-to-left text a phone
      * number «98 123 456» or a date «25-10-2026» would read «456 123 98» and «2026-10-25»: each run of
-     * digit groups is kept left to right, as a verse range in [source].
+     * digit groups is kept left to right, as a verse range in [source]. So is a signed number, with the
+     * symbol after it: «−3°» or «-20%» would otherwise read «3°−» and «20%-».
      */
     fun mosqueText(text: String): String = DIGIT_GROUPS.replace(text) { "$LEFT_TO_RIGHT${it.value}$END_ISOLATE" }
     /**
      * Groups of digits (Western or Arabic-Indic) joined by spaces or dashes, or by a single slash, dot
-     * or colon (25/10/2026, 20:00; not the end of a sentence), or after a «+».
+     * or colon (25/10/2026, 20:00; not the end of a sentence), or after a sign: a «+», or a «-» or «−»
+     * that no letter or digit comes right before (the dashes of «25-10-2026» and «ص-5» are not signs).
+     * A «%», «٪», «‰» or «°» (with its C or F) after the number goes with it: left outside, it would
+     * move to the far side of the isolate.
      */
-    private val DIGIT_GROUPS = Regex("""\+?[0-9٠-٩۰-۹]+(?:(?:[ \u00A0–-]+|[/.:])[0-9٠-٩۰-۹]+)+|\+[0-9٠-٩۰-۹]+""")
+    private val DIGIT_GROUPS = Regex(
+        """(?:\+|(?<![\p{L}\p{N}])[-−])?[0-9٠-٩۰-۹]+(?:(?:[ \u00A0–-]+|[/.:])[0-9٠-٩۰-۹]+)+(?:[%٪‰]|°[CF]?)?""" +
+            """|(?:\+|(?<![\p{L}\p{N}])[-−])[0-9٠-٩۰-۹]+(?:[.,٫][0-9٠-٩۰-۹]+)?(?:[%٪‰]|°[CF]?)?""")
     /** Unicode's left-to-right isolate and its end (LRI, PDI). */
     private val LEFT_TO_RIGHT = Char(0x2066)
     private val END_ISOLATE = Char(0x2069)

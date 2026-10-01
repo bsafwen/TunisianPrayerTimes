@@ -9,6 +9,7 @@ import com.tunisianprayertimes.mosque.MosqueSettingsFile.ErrorCode
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertIs
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull
@@ -18,7 +19,7 @@ class MosqueAdhkarTest {
 
     @Test
     fun everyIdTheScreenUsesIsInTheReviewedCatalog() {
-        val ids = DhikrCatalog.collectionOrder.getValue(DhikrCategory.SALAH) + MosqueAdhkar.TICKER_IDS
+        val ids = DhikrCatalog.collectionOrder.getValue(DhikrCategory.SALAH) + MosqueAdhkar.TICKER_IDS + MosqueAdhkar.ADHAN_DUA_ID
         assertEquals(emptyList(), ids.filter { DhikrCatalog.find(it) == null })
     }
 
@@ -111,6 +112,24 @@ class MosqueAdhkarTest {
         assertTrue(narration.endsWith("— صحيح مسلم 385"), narration)
         // The Fajr-only lines are the only ones without a narration behind them.
         assertEquals(listOf(9, 10), MosqueAdhkar.ADHAN_REPLIES.withIndex().filter { it.value.fajrOnly }.map { it.index })
+    }
+
+    @Test
+    fun theDuaAfterTheAdhanIsTheReviewedCatalogEntry() {
+        // The owner's wording, word for word; the screen shows the catalog's text exactly, full stop included.
+        val dua = assertNotNull(MosqueAdhkar.adhanDua())
+        assertEquals("after_adhan_wasila", MosqueAdhkar.ADHAN_DUA_ID)
+        assertEquals(DhikrCatalog.find(MosqueAdhkar.ADHAN_DUA_ID), dua)
+        assertEquals(
+            "اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ، وَالصَّلَاةِ الْقَائِمَةِ، آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ، " +
+                "وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ.",
+            dua.text,
+        )
+        assertEquals("صحيح البخاري 614", dua.reference)
+        assertEquals("الدعاء بعد الأذان", dua.title)
+        // One sentence, said once: one paragraph on the screen, no line breaks of its own.
+        assertEquals(1, dua.defaultCount)
+        assertFalse(dua.text.contains('\n'))
     }
 
     @Test

@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
 import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerFormulaSettings
 import com.tunisianprayertimes.HijriLabels
 import com.tunisianprayertimes.IslamicDays
 import com.tunisianprayertimes.ManualIslamicDateOverrides
@@ -240,7 +241,8 @@ class MainActivity : ComponentActivity() {
         val app = applicationContext
         prefs = PrefsManager(this)
         // Prayer times are computed offline from the bundled INM formula parameters.
-        prayerRepo = PrayerTimesRepository(source = { PrayerDataLoader.prayerTimes(app) })
+        // With the mosque's formula values (INM's official ones unless the admin set others).
+        prayerRepo = PrayerTimesRepository(source = { PrayerDataLoader.prayerTimes(app) }, settings = { prefs.formula })
         gouvernoratRepo = GouvernoratRepository(
             gouvernoratsJson = { app.assets.open("gouvernorats.json").bufferedReader().use { it.readText() } },
             prayerTimes = { PrayerDataLoader.prayerTimes(app) },
@@ -427,6 +429,8 @@ private fun TvApp(
     val afterSalahSlides = remember(adhkarContent) { MosqueAdhkar.afterSalah(adhkarContent) }
     // How long the adhan screen lasts; an iqamah set sooner waits for its end (PrayerFlow).
     var adhanScreenMinutes by remember { mutableIntStateOf(prefs.adhanScreenMinutes) }
+    // The formula's values (a settings file's "prayerTimes"): every time of the day is computed with them.
+    var formula by remember { mutableStateOf(prefs.formula) }
     val schedule = remember(iqamahConfigs, ramadanOverrides) { IqamahConfig.schedule(iqamahConfigs, ramadanOverrides) }
 
     // Tunisia's time from the guarded device clock, on the second. Every screen of the prayer flow
@@ -459,16 +463,21 @@ private fun TvApp(
     // Computed on the device from the bundled formula: no network, no expiry. Yesterday is kept
     // because an Isha flow can run past midnight; tomorrow for the suhoor after iftar.
     // They take a moment after the app starts: until then the wall stays dark, never "no data".
+    // New formula values recompute all three at once.
     var timesLoaded by remember { mutableStateOf(false) }
-    val todayTimes by produceState<DayPrayerTimes?>(null, delegationId, today) {
-        value = loadDay(prayerRepo, delegationId, today)
+    // The delegation and values today's times were computed with: until they are the current ones,
+    // the phone's page is not told the new settings are loaded (it would show the old times).
+    var todayTimesFor by remember { mutableStateOf<Pair<Int, PrayerFormulaSettings>?>(null) }
+    val todayTimes by produceState<DayPrayerTimes?>(null, delegationId, today, formula) {
+        value = loadDay(prayerRepo, delegationId, today, formula)
+        todayTimesFor = delegationId to formula
         timesLoaded = true
     }
-    val yesterdayTimes by produceState<DayPrayerTimes?>(null, delegationId, today) {
-        value = loadDay(prayerRepo, delegationId, today.minusDays(1))
+    val yesterdayTimes by produceState<DayPrayerTimes?>(null, delegationId, today, formula) {
+        value = loadDay(prayerRepo, delegationId, today.minusDays(1), formula)
     }
-    val tomorrowTimes by produceState<DayPrayerTimes?>(null, delegationId, today) {
-        value = loadDay(prayerRepo, delegationId, today.plusDays(1))
+    val tomorrowTimes by produceState<DayPrayerTimes?>(null, delegationId, today, formula) {
+        value = loadDay(prayerRepo, delegationId, today.plusDays(1), formula)
     }
 
     // The shared Tunisian calendar: the admin's dates, then announcements, then estimates.
@@ -697,6 +706,7 @@ private fun TvApp(
         iqamahConfigs = prefs.iqamahConfigs()
         ramadanOverrides = prefs.ramadanOverrides
         adhanScreenMinutes = prefs.adhanScreenMinutes
+        formula = prefs.formula
         adhkarContent = prefs.adhkarContent
         textAnnouncements = prefs.textAnnouncements
         customBgEnabled = prefs.customBackgroundEnabled
@@ -834,7 +844,7 @@ private fun TvApp(
     // «تطبيق» applies what the dialog says.
     val usbPreview = remember(
         usbFound, settingsLoaded, schedule, manualDates, mosqueName, delegationId, currentThemeId, adhkarContent, textAnnouncements,
-        adhanScreenMinutes, weatherEnabled, nightScreenEnabled, customBgEnabled, announcementsEnabled, announcementSeconds, announcementsEvery,
+        adhanScreenMinutes, weatherEnabled, nightScreenEnabled, customBgEnabled, announcementsEnabled, announcementSeconds, announcementsEvery, formula,
     ) { usbFound?.let(inbox::preview) }
     // Nothing over the prayer's screens and the adhkar after it: a notice waits until they end, and only
     // then starts its time (NoticePlacement).
@@ -1049,6 +1059,10 @@ private fun TvApp(
     val movedIqamahs = remember(events, today) { movedIqamahRows(events, today) }
     val usbOfferOnWall = (usbFound != null && usbPreview != null || usbMedia != null) && (!usbWaiting || currentScreen == Screen.Settings)
     SideEffect {
+        // A new delegation or formula recomputes today's times off the main thread: until they
+        // arrive, the page keeps waiting on the version it had (DashboardLive.awaitSettings).
+        val timesFollowSettings = todayTimesFor == (delegationId to formula)
+        val settingsShown = if (timesFollowSettings) settingsLoaded else dashboardLive.get()?.settingsVersion ?: 0
         dashboardLive.set(DashboardLive(
             now = now,
             clockTrusted = reading.trust != ClockTrust.IMPLAUSIBLE,
@@ -1071,7 +1085,7 @@ private fun TvApp(
             ),
             tomorrowFajr = tomorrowTimes?.let { LocalTime.of(it.fajr.hour, it.fajr.minute) },
             tomorrowFajrIqamah = tomorrowFajrIqamah,
-            settingsVersion = settingsLoaded,
+            settingsVersion = settingsShown,
             movedIqamahs = movedIqamahs,
         ))
     }
@@ -1149,6 +1163,11 @@ private fun TvApp(
                 mosqueName = mosqueName,
                 sky = sky,
             )
+            !inSettings && flow.phase == FlowPhase.ADHAN_DUA -> AdhanDuaScreen(
+                now = now,
+                mosqueName = mosqueName,
+                sky = sky,
+            )
             !inSettings && flow.phase == FlowPhase.IQAMAH_COUNTDOWN -> IqamahCountdownScreen(
                 event = flow.event!!,
                 now = now,
@@ -1175,7 +1194,10 @@ private fun TvApp(
                     found = found,
                     preview = usbPreview,
                     undo = usbFoundIsUndo,
-                    today = SettingsChangeLines.Today.of(today, todayTimes),
+                    // A file that moves the place or the prayer-time values is read against its own times.
+                    today = SettingsChangeLines.Today.of(today, todayTimes) { profile ->
+                        profile.delegationId?.let { id -> runCatching { prayerRepo.loadDay(id, today, profile.formulaSettings) }.getOrNull() }
+                    },
                     onApply = {
                         if (inbox.apply(found, fromKey = !usbFoundIsUndo)) settingsVersion++
                         usbFound = null
@@ -1312,6 +1334,7 @@ private fun TvApp(
                                     settingsWanted = { settingsVersion },
                                     onMediaChanged = { mediaVersion++ },
                                     clock = dashboardClock,
+                                    prayerTimes = { PrayerDataLoader.prayerTimes(context.applicationContext) },
                                 )
                                 val routes = DashboardRoutes(token, backend, SystemClock::elapsedRealtime)
                                 val server = DashboardServer(routes::admit, routes::handle)
@@ -1426,7 +1449,7 @@ private fun TvApp(
                     },
                     onBack = { currentScreen = Screen.Display },
                     startPage = settingsStart,
-                    previewTimes = { id -> runCatching { prayerRepo.loadDay(id, today) }.getOrNull() },
+                    previewTimes = { id -> runCatching { prayerRepo.loadDay(id, today, formula) }.getOrNull() },
                     currentDelegationId = delegationId,
                     canUndoImport = canUndoImport,
                     onUndoImport = {
@@ -1573,7 +1596,7 @@ private fun TvApp(
     }
 }
 
-private val PRAYER_PHASES = setOf(FlowPhase.ADHAN, FlowPhase.IQAMAH_COUNTDOWN, FlowPhase.KHUTBA, FlowPhase.SALAH)
+private val PRAYER_PHASES = setOf(FlowPhase.ADHAN, FlowPhase.ADHAN_DUA, FlowPhase.IQAMAH_COUNTDOWN, FlowPhase.KHUTBA, FlowPhase.SALAH)
 private val QUIET_PHASES = setOf(FlowPhase.KHUTBA, FlowPhase.SALAH)
 private val SETTINGS_IDLE: Duration = Duration.ofMinutes(3)
 private val SETTINGS_IDLE_DURING_PRAYER: Duration = Duration.ofSeconds(30)
@@ -1669,8 +1692,8 @@ private fun dateSettingsIntent() = Intent(Settings.ACTION_DATE_SETTINGS).addFlag
 private fun deviceTimeText(): String =
     LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.ROOT)) + " (" + ZoneId.systemDefault().id + ")"
 
-private suspend fun loadDay(repo: PrayerTimesRepository, delegationId: Int, date: LocalDate): DayPrayerTimes? =
-    if (delegationId > 0) withContext(Dispatchers.Default) { repo.loadDay(delegationId, date) } else null
+private suspend fun loadDay(repo: PrayerTimesRepository, delegationId: Int, date: LocalDate, formula: PrayerFormulaSettings): DayPrayerTimes? =
+    if (delegationId > 0) withContext(Dispatchers.Default) { repo.loadDay(delegationId, date, formula) } else null
 
 /**
  * What the plugged-in keys hold: the settings file, and images the TV has not seen yet. Every key

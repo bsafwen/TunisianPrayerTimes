@@ -11,7 +11,7 @@ import java.time.LocalDateTime
  * so a change during a prayer (an iqamah raised on the remote, the phone or a key, a Ramadan date, a
  * new delegation) or a clock put back by a few minutes would otherwise replay its countdown and its
  * black screen. Once its adhan has passed, the running prayer is kept as it started ([Pin]) until its
- * adhkar end; while the iqamah is still ahead (adhan, countdown or khutba), a new iqamah that is still
+ * adhkar end; while the iqamah is still ahead (adhan, its dua, countdown or khutba), a new iqamah that is still
  * ahead applies, so the admin can extend or shorten the wait. A prayer the settings no longer have (an
  * Eid date moved away, Jumu'a or the Eid prayer no longer held) ends at once.
  */
@@ -23,7 +23,7 @@ object RunningPrayer {
     /** The wall's screen at [now], and the pin to keep for the next tick. */
     data class Result(val state: FlowState, val pin: Pin?)
 
-    private val BEFORE_IQAMAH = setOf(FlowPhase.ADHAN, FlowPhase.IQAMAH_COUNTDOWN, FlowPhase.KHUTBA)
+    private val BEFORE_IQAMAH = setOf(FlowPhase.ADHAN, FlowPhase.ADHAN_DUA, FlowPhase.IQAMAH_COUNTDOWN, FlowPhase.KHUTBA)
 
     /**
      * The screen at [now] from [events] (yesterday's and today's, from the current settings) and the
@@ -63,6 +63,7 @@ object RunningPrayer {
     private fun endOf(phase: FlowPhase, event: PrayerEvent): LocalDateTime? = when (phase) {
         FlowPhase.IDLE -> null
         FlowPhase.ADHAN -> event.adhanScreenEndAt
+        FlowPhase.ADHAN_DUA -> event.adhanDuaEndAt
         FlowPhase.IQAMAH_COUNTDOWN -> event.khutbaAt ?: event.iqamahAt
         FlowPhase.KHUTBA -> event.iqamahAt
         FlowPhase.SALAH -> event.salahEndAt

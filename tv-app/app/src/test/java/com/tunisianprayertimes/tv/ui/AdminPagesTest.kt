@@ -206,8 +206,8 @@ class AdminPagesTest {
     @Test
     fun onboardingsIqamahTableSurvivesARecreation() {
         val configs = PrefsManager.EDITABLE.associateWith { IqamahConfig(delayMinutes = 12) } +
-            // A neighbourhood masjid: no Jumu'a, and a 30-minute khutba kept for when it is held again.
-            (Prayer.JOMOAA to IqamahConfig(IqamahMode.FIXED_TIME, 15, 13, 5, 20, held = false, khutbaMinutes = 30)) +
+            // A neighbourhood masjid: no Jumu'a, and a 30-minute khutba without the dua kept for when it is held again.
+            (Prayer.JOMOAA to IqamahConfig(IqamahMode.FIXED_TIME, 15, 13, 5, 20, held = false, khutbaMinutes = 30, adhanDua = false)) +
             (Prayer.AID_FITR to IqamahConfig(delayMinutes = 30, held = false))
         val saved = with(IqamahConfigsSaver) { SaverScope { true }.save(configs) }!!
         assertEquals(configs, IqamahConfigsSaver.restore(saved))

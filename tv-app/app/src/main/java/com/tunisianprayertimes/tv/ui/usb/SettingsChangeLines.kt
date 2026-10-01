@@ -4,9 +4,11 @@ import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.mosque.FlowTiming
+import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ContentList
+import com.tunisianprayertimes.mosque.MosqueSettingsFile.FormulaField
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ProfileField
 import com.tunisianprayertimes.tv.ui.TvStrings
@@ -23,25 +25,43 @@ object SettingsChangeLines {
 
     /**
      * What a preview is read against: [date], and today's adhan of each prayer ([anchors]; sunrise for
-     * the Eids), to say when a fixed iqamah will not be used today.
+     * the Eids), to say when a fixed iqamah will not be used today. [times] are today's times on the
+     * wall, and [timesWith] computes them for the place and prayer-time values a file leaves (null when
+     * unknown): a file that changes them is then read against its own times, and says how today's move.
      */
-    data class Today(val date: LocalDate, val anchors: Map<Prayer, LocalTime> = emptyMap()) {
+    data class Today(
+        val date: LocalDate,
+        val anchors: Map<Prayer, LocalTime> = emptyMap(),
+        val times: DayPrayerTimes? = null,
+        val timesWith: ((MosqueProfile) -> DayPrayerTimes?)? = null,
+    ) {
+        /** Today as the file would make it, when it changes the place or the values and they can be computed. */
+        internal fun after(result: ParseResult.Success): Today? {
+            val moved = result.formulaChanges.isNotEmpty() || result.profileChanges.any { it.field == ProfileField.DELEGATION }
+            if (!moved) return null
+            val times = timesWith?.let { runCatching { it(result.profile) }.getOrNull() } ?: return null
+            return of(date, times, timesWith)
+        }
+
         companion object {
-            fun of(date: LocalDate, times: DayPrayerTimes?): Today {
-                if (times == null) return Today(date)
+            fun of(date: LocalDate, times: DayPrayerTimes?, timesWith: ((MosqueProfile) -> DayPrayerTimes?)? = null): Today {
+                if (times == null) return Today(date, timesWith = timesWith)
                 val sunrise = LocalTime.of(times.shurukHour, times.shurukMinute)
                 fun at(time: PrayerTime) = LocalTime.of(time.hour, time.minute)
                 return Today(date, mapOf(
                     Prayer.FAJR to at(times.fajr), Prayer.DHUHR to at(times.dhuhr), Prayer.JOMOAA to at(times.dhuhr),
                     Prayer.ASR to at(times.asr), Prayer.MAGHRIB to at(times.maghrib), Prayer.ISHA to at(times.isha),
                     Prayer.AID_FITR to sunrise, Prayer.AID_ADHA to sunrise,
-                ))
+                ), times, timesWith)
             }
         }
     }
 
     fun of(result: ParseResult.Success, today: Today? = null): List<String> {
-        val lines = result.profileChanges.map(::profileLine) + result.changes.map { changeLine(it, today, result) } +
+        // A fixed iqamah is checked against the times the file leaves, not the wall's.
+        val after = today?.after(result)
+        val lines = result.profileChanges.map(::profileLine) + formulaLines(result, today, after) +
+            result.changes.map { changeLine(it, after ?: today, result) } +
             result.dateChanges.map(::dateLine) + result.contentChanges.flatMap(::contentLines) + expired(result, today)
         // A hostile file could list thousands of years: the screen shows enough to judge it.
         return if (lines.size <= MAX_LINES) lines else lines.take(MAX_LINES) + TvStrings.moreChanges(lines.size - MAX_LINES)
@@ -63,6 +83,8 @@ object SettingsChangeLines {
             MosqueSettingsFile.Field.HELD -> return "$prayer: ${held(change.before)} ← ${held(change.after)}"
             MosqueSettingsFile.Field.KHUTBA -> return "$prayer · ${TvStrings.KHUTBA_LENGTH}: " +
                 "${TvStrings.khutbaLength(change.before.toInt())} ← ${TvStrings.khutbaLength(change.after.toInt())}"
+            // «الدعاء بعد أذان الجمعة: نعم ← لا».
+            MosqueSettingsFile.Field.DUA -> return "${TvStrings.JUMUA_ADHAN_DUA_CHANGE}: ${yesNo(change.before)} ← ${yesNo(change.after)}"
         }
         fun show(value: String): String = when {
             value == "—" -> TvStrings.AS_USUAL
@@ -79,23 +101,25 @@ object SettingsChangeLines {
      * The screen puts a fixed iqamah that is not 1 to 90 minutes after today's adhan (sunrise for an
      * Eid) at the mosque's own minutes instead ([MosqueSchedule.fallbackMinutes] of the schedule the
      * file makes, as PrayerFlow does), and an iqamah before the end of the adhan screen (the minutes
-     * the file leaves, [com.tunisianprayertimes.mosque.DisplayOptions.adhanScreenMinutes]) at its end:
+     * the file leaves, [com.tunisianprayertimes.mosque.DisplayOptions.adhanScreenMinutes]) and the dua
+     * after it ([FlowTiming.ADHAN_DUA_MINUTES], unless the file leaves Jumu'a without it) at their end:
      * the admin hears it here, not on the wall.
      */
     private fun notToday(prayer: Prayer, after: String, today: Today?, result: ParseResult.Success): String? {
         val anchor = today?.anchors?.get(prayer) ?: return null
         val eid = prayer in MosqueSchedule.EID
-        // The Eid prayer has no adhan screen: its minutes count from sunrise.
+        // The Eid prayer has no adhan screen and no dua: its minutes count from sunrise.
+        val dua = result.schedule.showsAdhanDua(prayer)
         val screen = if (eid) 0 else (result.profile.display.adhanScreenMinutes ?: FlowTiming.DEFAULT_ADHAN_SCREEN_MINUTES)
-            .coerceIn(FlowTiming.ADHAN_SCREEN_MINUTES)
+            .coerceIn(FlowTiming.ADHAN_SCREEN_MINUTES) + if (dua) FlowTiming.ADHAN_DUA_MINUTES else 0
         val time = fixedTime(after)
         if (time == null) {
             val minutes = after.removePrefix("+").toIntOrNull() ?: return null
-            return if (minutes < screen) waits(anchor, screen) else null
+            return if (minutes < screen) waits(anchor, screen, dua) else null
         }
         val window = MosqueSchedule.IQAMAH_MINUTES.first.toLong()..MosqueSchedule.IQAMAH_MINUTES.last.toLong()
         val set = Duration.between(anchor, time).toMinutes()
-        if (set in window) return if (set < screen) waits(anchor, screen) else null
+        if (set in window) return if (set < screen) waits(anchor, screen, dua) else null
         val minutes = maxOf(result.schedule.fallbackMinutes(prayer), screen)
         return if (eid) {
             TvStrings.notTodayAfterSunrise(TvStrings.hm(anchor), TvStrings.iqamahAfterSunrise(minutes))
@@ -104,9 +128,11 @@ object SettingsChangeLines {
         }
     }
 
-    /** An iqamah before the end of the adhan screen waits for it, as PrayerFlow does. */
-    private fun waits(anchor: LocalTime, screen: Int): String =
-        TvStrings.waitsForAdhanScreen(TvStrings.hm(anchor), TvStrings.hm(anchor.plusMinutes(screen.toLong())))
+    /** An iqamah before the end of the adhan screen and the dua ([screen] minutes) waits for them, as PrayerFlow does. */
+    private fun waits(anchor: LocalTime, screen: Int, dua: Boolean): String =
+        TvStrings.waitsForAdhanScreen(TvStrings.hm(anchor), TvStrings.hm(anchor.plusMinutes(screen.toLong())), dua)
+
+    private fun yesNo(value: String): String = if (value.toBoolean()) TvStrings.YES else TvStrings.NO
 
     private fun fixedTime(value: String): LocalTime? = runCatching { LocalTime.parse(value) }.getOrNull()
 
@@ -136,6 +162,62 @@ object SettingsChangeLines {
             else -> value
         }
         return "$field: ${show(change.before)} ← ${show(change.after)}"
+    }
+
+    /**
+     * The prayer-time values the file changes («زاوية الفجر: 18° ← 16.5°»), a word when they return to
+     * INM's official ones, then today's times that move («الفجر اليوم: 04:47 ← 04:57») when both are known.
+     */
+    private fun formulaLines(result: ParseResult.Success, today: Today?, after: Today?): List<String> {
+        if (result.formulaChanges.isEmpty()) return emptyList()
+        return result.formulaChanges.map(::formulaLine) +
+            listOfNotNull(TvStrings.OFFICIAL_TIMES_BACK.takeIf { result.formula.isOfficial }) +
+            todayTimeLines(today?.times, after?.times)
+    }
+
+    private fun formulaLine(change: MosqueSettingsFile.FormulaChange): String {
+        val field = when (change.field) {
+            FormulaField.FAJR_ANGLE -> TvStrings.FAJR_ANGLE
+            FormulaField.ISHA_ANGLE -> TvStrings.ISHA_ANGLE
+            FormulaField.ASR_SHADOW -> TvStrings.ASR_SHADOW
+            FormulaField.DHUHR_MINUTES -> TvStrings.DHUHR_AFTER_NOON
+            FormulaField.MAGHRIB_MINUTES -> TvStrings.MAGHRIB_AFTER_SUNSET
+            FormulaField.ELEVATION -> TvStrings.ELEVATION_COUNTED
+            FormulaField.ADJUSTMENT -> change.prayer?.let(TvStrings::adjustmentOf).orEmpty()
+        }
+        // The values come as in the file ("17.5", "2", "true", "+2").
+        fun show(value: String): String = when (change.field) {
+            FormulaField.FAJR_ANGLE, FormulaField.ISHA_ANGLE -> TvStrings.degrees(value)
+            FormulaField.ASR_SHADOW -> when (value) {
+                "1" -> TvStrings.ASR_ONE_SHADOW
+                "2" -> TvStrings.ASR_TWO_SHADOWS
+                else -> value
+            }
+            FormulaField.DHUHR_MINUTES, FormulaField.MAGHRIB_MINUTES -> value.toIntOrNull()?.let(TvStrings::minutesShort) ?: value
+            FormulaField.ELEVATION -> when (value) {
+                "true" -> TvStrings.YES
+                "false" -> TvStrings.NO
+                else -> value
+            }
+            FormulaField.ADJUSTMENT -> value.removePrefix("+").toIntOrNull()?.let(TvStrings::signedMinutes) ?: value
+        }
+        return "$field: ${show(change.before)} ← ${show(change.after)}"
+    }
+
+    /** Today's six times that differ between [before] and [after]. */
+    private fun todayTimeLines(before: DayPrayerTimes?, after: DayPrayerTimes?): List<String> {
+        if (before == null || after == null) return emptyList()
+        fun at(time: PrayerTime) = LocalTime.of(time.hour, time.minute)
+        fun sunrise(times: DayPrayerTimes) = LocalTime.of(times.shurukHour, times.shurukMinute)
+        return listOf(
+            Triple(TvStrings.prayerName(Prayer.FAJR), at(before.fajr), at(after.fajr)),
+            Triple(TvStrings.SUNRISE, sunrise(before), sunrise(after)),
+            Triple(TvStrings.prayerName(Prayer.DHUHR), at(before.dhuhr), at(after.dhuhr)),
+            Triple(TvStrings.prayerName(Prayer.ASR), at(before.asr), at(after.asr)),
+            Triple(TvStrings.prayerName(Prayer.MAGHRIB), at(before.maghrib), at(after.maghrib)),
+            Triple(TvStrings.prayerName(Prayer.ISHA), at(before.isha), at(after.isha)),
+        ).filter { (_, old, new) -> old != new }
+            .map { (name, old, new) -> "${TvStrings.todayTime(name)}: ${TvStrings.hm(old)} ← ${TvStrings.hm(new)}" }
     }
 
     /**
@@ -169,8 +251,9 @@ object SettingsChangeLines {
         ContentList.ANNOUNCEMENTS -> TvStrings.TEXT_ANNOUNCEMENTS
     }
 
+    /** The texts by name, as the wall shows them: a «−3°» in an announcement's first words keeps its sign on the left. */
     private fun names(texts: List<String>) =
-        texts.take(MAX_NAMES).joinToString("، ") + if (texts.size > MAX_NAMES) " ${TvStrings.andOthers(texts.size - MAX_NAMES)}" else ""
+        texts.take(MAX_NAMES).joinToString("، ") { TvStrings.mosqueText(it) } + if (texts.size > MAX_NAMES) " ${TvStrings.andOthers(texts.size - MAX_NAMES)}" else ""
 
     private const val MAX_NAMES = 4
     private const val MAX_LINES = 100

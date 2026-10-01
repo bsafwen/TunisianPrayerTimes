@@ -12,7 +12,7 @@ object InstallGate {
 
     const val BEFORE_ADHAN_MINUTES = 15L
 
-    private val PRAYING = setOf(FlowPhase.ADHAN, FlowPhase.IQAMAH_COUNTDOWN, FlowPhase.KHUTBA, FlowPhase.SALAH)
+    private val PRAYING = setOf(FlowPhase.ADHAN, FlowPhase.ADHAN_DUA, FlowPhase.IQAMAH_COUNTDOWN, FlowPhase.KHUTBA, FlowPhase.SALAH)
 
     /** Why installing must wait now (Arabic), or null when it may go ahead. */
     fun refusal(phase: FlowPhase, now: LocalDateTime, nextAdhan: LocalDateTime?): String? = when {

@@ -31,6 +31,8 @@ class AnnouncementsAndNoticesTest {
         assertEquals(NoticePlace.HELD, place(FlowPhase.SALAH))
         assertEquals(NoticePlace.HELD, place(FlowPhase.AFTER_SALAH, adhkar = true))
         assertEquals(NoticePlace.HELD, place(FlowPhase.ADHAN))
+        assertEquals(NoticePlace.HELD, place(FlowPhase.ADHAN_DUA))
+        assertEquals(NoticePlace.WALL_TOP, place(FlowPhase.ADHAN_DUA, copying = true))
         assertEquals(NoticePlace.HELD, place(FlowPhase.IQAMAH_COUNTDOWN))
         // The adhkar played through: the wall is the timetable's or the announcements' again.
         assertEquals(NoticePlace.BOTTOM, place(FlowPhase.AFTER_SALAH, adhkar = false))

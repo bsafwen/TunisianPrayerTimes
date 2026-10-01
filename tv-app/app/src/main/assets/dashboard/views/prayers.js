@@ -1,7 +1,8 @@
 /*
  * How long the adhan screen lasts, the iqamah and prayer duration of every prayer, whether the mosque holds
- * Jumu'a and the Eid prayer, how long its khutba lasts, and what changes in Ramadan. Builds { prayers,
- * ramadan, display: { adhanScreenMinutes } } of the settings file; the TV previews it before applying.
+ * Jumu'a and the Eid prayer, whether the dua after the Jumu'a adhan comes before its khutba, how long the
+ * khutba lasts, and what changes in Ramadan. Builds { prayers, ramadan, display: { adhanScreenMinutes } }
+ * of the settings file; the TV previews it before applying.
  */
 (function () {
   "use strict";
@@ -175,7 +176,7 @@
       usual.appendChild(el("div", { class: "list-item" },
         el("label", { text: "مدة شاشة الأذان بالدقائق", attrs: { for: adhanInput.id } }),
         adhanInput,
-        el("p", { class: "hint", text: "تعرض الشاشة ما يقوله السامع مع المؤذّن طوال هذه المدة. الإقامة الأقرب إلى الأذان من هذه المدة تنتظر نهايتها، فلا تسودّ الشاشة والمؤذّن يؤذّن." })));
+        el("p", { class: "hint", text: "تعرض الشاشة ما يقوله السامع مع المؤذّن طوال هذه المدة، ثم الدعاء بعد الأذان دقيقة. الإقامة الأقرب إلى الأذان من نهايتهما تنتظرها، فلا تسودّ الشاشة والمؤذّن يؤذّن ولا أثناء الدعاء." })));
       ctx.PRAYERS.forEach(function (prayer) {
         var current = prayers[prayer.key] || {};
         var id = "prayer-" + prayer.key;
@@ -217,6 +218,12 @@
             el("p", { class: "hint", text: row.hint }))
         };
       });
+      // ---- whether the dua after the Jumu'a adhan comes before the khutba ("dua", shown unless false)
+      var duaCheck = el("input", {
+        type: "checkbox", id: "jumua-dua",
+        checked: !(prayers.jumua && prayers.jumua.dua === false)
+      });
+      var duaWasChecked = duaCheck.checked;
       // ---- how long Jumu'a's khutba lasts: 0 keeps its quiet screen from the adhan to the iqamah
       var khutbaInput = el("input", {
         type: "number", min: 0, max: 60, step: 1, inputMode: "numeric", class: "tabular", id: "khutba-minutes",
@@ -234,6 +241,9 @@
       root.appendChild(el("section", { class: "card" },
         el("h2", { text: "الجمعة والعيد" }),
         heldRows.map(function (row) { return row.node; }),
+        el("div", { class: "list-item" },
+          el("label", { class: "check", attrs: { for: duaCheck.id } }, duaCheck, "الدعاء بعد الأذان قبل الخطبة"),
+          el("p", { class: "hint", text: "دقيقة بعد شاشة الأذان، قبل شاشة الخطبة (أو العدّ التنازلي قبلها). دونه تبدأ هذه بعد الأذان مباشرة." })),
         el("div", { class: "list-item" },
           el("label", { text: "مدة خطبة الجمعة بالدقائق", attrs: { for: khutbaInput.id } }),
           khutbaInput,
@@ -309,6 +319,11 @@
         if (khutbaChange.changed) {
           partialPrayers.jumua = partialPrayers.jumua || {};
           partialPrayers.jumua.khutba = khutbaChange.value;
+        }
+        // Like the switches above: a box left as drawn sends nothing.
+        if (duaCheck.checked !== duaWasChecked) {
+          partialPrayers.jumua = partialPrayers.jumua || {};
+          partialPrayers.jumua.dua = duaCheck.checked;
         }
         ramadanRows.forEach(function (row) {
           // Unchecking returns the prayer to its usual setting; a box left unchecked sends nothing.

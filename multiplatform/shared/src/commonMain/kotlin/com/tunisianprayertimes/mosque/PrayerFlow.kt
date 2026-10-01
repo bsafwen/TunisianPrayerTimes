@@ -10,14 +10,21 @@ import java.time.LocalDateTime
 
 /**
  * How long the screens around a prayer last, independent of the mosque's per-prayer settings.
- * [adhanScreenMinutes] is the mosque's choice (DisplayOptions.adhanScreenMinutes), within [ADHAN_SCREEN_MINUTES].
+ * [adhanScreenMinutes] is the mosque's choice (DisplayOptions.adhanScreenMinutes), within [ADHAN_SCREEN_MINUTES];
+ * the dua after the adhan follows it for [ADHAN_DUA_MINUTES].
  */
 data class FlowTiming(val adhanScreenMinutes: Int = DEFAULT_ADHAN_SCREEN_MINUTES, val afterSalahMinutes: Int = 10) {
     companion object {
-        /** About as long as the muezzin calls; the iqamah never comes before its end ([PrayerFlow]). */
+        /** About as long as the muezzin calls; the iqamah never comes before its end and the dua's ([PrayerFlow]). */
         const val DEFAULT_ADHAN_SCREEN_MINUTES = 2
         val ADHAN_SCREEN_MINUTES = 1..5
 
+        /**
+         * The dua after the adhan (MosqueAdhkar.adhanDua) alone on the screen once the adhan screen ends,
+         * said once the muezzin is done: the owner's choice of 2026-09-30, not a mosque setting, except on
+         * Friday, where the mosque may leave it out before the khutba ([PrayerSettings.adhanDua]).
+         */
+        const val ADHAN_DUA_MINUTES = 1
 
         /** The longest the adhkar after the prayer may last; a settings file asking for more is refused. */
         const val MAX_AFTER_SALAH_MINUTES = 30
@@ -25,10 +32,25 @@ data class FlowTiming(val adhanScreenMinutes: Int = DEFAULT_ADHAN_SCREEN_MINUTES
 }
 
 /**
- * What the mosque screen shows. [SALAH] is the full black screen while the congregation prays;
- * [KHUTBA] is the quiet screen of the Friday sermon, from [PrayerEvent.khutbaAt] until the Jumu'a iqamah.
+ * What the mosque screen shows, in the order a prayer goes through them. [ADHAN] is the listener's
+ * replies while the muezzin calls, [ADHAN_DUA] the dua after the adhan alone, for a minute.
+ * [SALAH] is the full black screen while the congregation prays; [KHUTBA] is the quiet screen of the
+ * Friday sermon, from [PrayerEvent.khutbaAt] until the Jumu'a iqamah.
  */
-enum class FlowPhase { IDLE, ADHAN, IQAMAH_COUNTDOWN, KHUTBA, SALAH, AFTER_SALAH }
+enum class FlowPhase { IDLE, ADHAN, ADHAN_DUA, IQAMAH_COUNTDOWN, KHUTBA, SALAH, AFTER_SALAH }
+
+/**
+ * Why the flow moved an iqamah from its setting ([PrayerEvent.iqamahMove]), so the admin is told the right
+ * reason: an iqamah at the end of the dua has not always waited for it.
+ */
+enum class IqamahMove {
+    /** A fixed time that does not suit today's adhan (or sunrise), replaced by the mosque's own minutes. */
+    FELL_BACK,
+    /** A setting before the end of the adhan screen and the dua after it, which waits for them. */
+    WAITED_FOR_ADHAN,
+    /** Kept before the next adhan (Fajr's before sunrise, the Eid prayer's before Dhuhr). */
+    CAPPED,
+}
 
 /** One prayer's timeline on a given day. For the Eid prayers, [adhanAt] is sunrise and there is no adhan screen. */
 data class PrayerEvent(
@@ -41,12 +63,23 @@ data class PrayerEvent(
     /** True when the configured iqamah was moved to stay between this adhan and the next one. */
     val iqamahAdjusted: Boolean,
     /**
-     * Jumu'a: when the khutba screen begins, at the end of the adhan screen or, with the mosque's
-     * khutba length, that long before the iqamah (the wait before it is an ordinary countdown).
+     * Jumu'a: when the khutba screen begins, at the end of the dua after the adhan screen (of the adhan screen when
+     * the mosque turned the dua off) or, with the mosque's khutba length, that long before the iqamah (the wait
+     * before it is an ordinary countdown).
      */
     val khutbaAt: LocalDateTime? = null,
     /** True when Ramadan's changes to this prayer replaced its usual settings. */
     val ramadanSettings: Boolean = false,
+    /**
+     * The end of the dua after the adhan, [FlowTiming.ADHAN_DUA_MINUTES] after [adhanScreenEndAt]:
+     * the iqamah never comes before it. An event without it (the Eid prayer, a Jumu'a without the dua) has no dua screen.
+     */
+    val adhanDuaEndAt: LocalDateTime = adhanScreenEndAt,
+    /**
+     * Why [iqamahAdjusted], null when the iqamah is as set. A stale fixed time whose fallback also
+     * waits for the dua is [IqamahMove.FELL_BACK]; a move that ends at the cap is [IqamahMove.CAPPED].
+     */
+    val iqamahMove: IqamahMove? = null,
 )
 
 data class FlowState(val phase: FlowPhase, val event: PrayerEvent?, val phaseEndsAt: LocalDateTime?) {
@@ -122,6 +155,7 @@ object PrayerFlow {
         val khutbaAt = event.khutbaAt
         return when {
             now.isBefore(event.adhanScreenEndAt) -> FlowState(FlowPhase.ADHAN, event, event.adhanScreenEndAt)
+            now.isBefore(event.adhanDuaEndAt) -> FlowState(FlowPhase.ADHAN_DUA, event, event.adhanDuaEndAt)
             khutbaAt != null && now.isBefore(khutbaAt) -> FlowState(FlowPhase.IQAMAH_COUNTDOWN, event, khutbaAt)
             now.isBefore(event.iqamahAt) -> {
                 val waiting = if (khutbaAt != null) FlowPhase.KHUTBA else FlowPhase.IQAMAH_COUNTDOWN
@@ -146,13 +180,17 @@ object PrayerFlow {
         timing: FlowTiming,
     ): PrayerEvent {
         val screenMinutes = if (adhanScreen) timing.adhanScreenMinutes.coerceIn(FlowTiming.ADHAN_SCREEN_MINUTES) else 0
-        val (iqamah, adjusted) = resolveIqamah(date, anchor, latest, settings.iqamah, fallbackMinutes, screenMinutes)
+        // A Friday whose mosque turned the dua off goes from the adhan screen to the khutba, and its iqamah waits for the adhan only.
+        val duaMinutes = if (adhanScreen && settings.showsAdhanDua(prayer)) FlowTiming.ADHAN_DUA_MINUTES else 0
+        val (iqamah, move) = resolveIqamah(date, anchor, latest, settings.iqamah, fallbackMinutes, screenMinutes + duaMinutes)
         val salahEnd = iqamah.plusMinutes(salahMinutes(settings))
-        // Only a day too short for the adhan screen (latest) ends it at the iqamah.
+        // Only a day too short for the adhan screen and the dua (latest) ends them at the iqamah.
         val adhanScreenEnd = minOf(anchor.plusMinutes(screenMinutes.toLong()), iqamah)
+        val duaEnd = minOf(adhanScreenEnd.plusMinutes(duaMinutes.toLong()), iqamah)
         // A long wait for Jumu'a (a late fixed time) counts down until the khutba, so early comers see the time.
+        // The khutba screen follows the dua (the adhan screen without it), as the wait does on other days.
         val khutba = settings.khutbaMinutes.coerceIn(MosqueSchedule.KHUTBA_MINUTES).toLong()
-        val khutbaAt = if (khutba > 0) maxOf(adhanScreenEnd, iqamah.minusMinutes(khutba)) else adhanScreenEnd
+        val khutbaAt = if (khutba > 0) maxOf(duaEnd, iqamah.minusMinutes(khutba)) else duaEnd
         return PrayerEvent(
             prayer = prayer,
             adhanAt = anchor,
@@ -160,8 +198,10 @@ object PrayerFlow {
             iqamahAt = iqamah,
             salahEndAt = salahEnd,
             afterSalahEndAt = salahEnd.plusMinutes(timing.afterSalahMinutes.coerceAtLeast(0).toLong()),
-            iqamahAdjusted = adjusted,
+            iqamahAdjusted = move != null,
             khutbaAt = khutbaAt.takeIf { prayer == Prayer.JOMOAA },
+            adhanDuaEndAt = duaEnd,
+            iqamahMove = move,
         )
     }
 
@@ -169,10 +209,11 @@ object PrayerFlow {
      * The iqamah on [date]. A fixed time that makes no sense today (before the adhan, like a winter
      * time after a summer adhan, or more than 90 minutes after it, like "8:00" meant as 20:00) falls
      * back to [fallbackMinutes] after the adhan (the mosque's own delay), keeping the adhan and countdown screens.
-     * An iqamah before the end of the adhan screen ([screenMinutes] after the adhan: a fixed time close
-     * to the adhan, or +1) waits for its end, so the wall never goes black while the muezzin still calls.
+     * An iqamah before the end of the adhan screen and the dua after it ([screenMinutes] after the adhan:
+     * a fixed time close to the adhan, or +1) waits for their end, so the wall never goes black while the
+     * muezzin still calls, nor takes the dua away before it is said.
      * The result is then kept at or before [latest], but never earlier than a minute after the adhan.
-     * The flag tells the admin the setting was moved.
+     * The reason, null when the setting stands, tells the admin the setting was moved and why.
      */
     private fun resolveIqamah(
         date: LocalDate,
@@ -181,7 +222,7 @@ object PrayerFlow {
         rule: IqamahRule,
         fallbackMinutes: Int,
         screenMinutes: Int,
-    ): Pair<LocalDateTime, Boolean> {
+    ): Pair<LocalDateTime, IqamahMove?> {
         val window = MosqueSchedule.IQAMAH_MINUTES
         val (requested, fellBack) = when (rule) {
             is IqamahRule.AfterAdhan -> adhan.plusMinutes(rule.minutes.coerceIn(window).toLong()) to false
@@ -195,8 +236,9 @@ object PrayerFlow {
             }
         }
         val screenEnd = adhan.plusMinutes(screenMinutes.toLong())
-        val (waited, moved) = if (requested.isBefore(screenEnd)) screenEnd to true else requested to fellBack
+        val stale = if (fellBack) IqamahMove.FELL_BACK else null
+        val (waited, move) = if (requested.isBefore(screenEnd)) screenEnd to (stale ?: IqamahMove.WAITED_FOR_ADHAN) else requested to stale
         val bound = latest?.let { maxOf(it, adhan.plusMinutes(window.first.toLong())) }
-        return if (bound != null && waited.isAfter(bound)) bound to true else waited to moved
+        return if (bound != null && waited.isAfter(bound)) bound to IqamahMove.CAPPED else waited to move
     }
 }

@@ -10,6 +10,7 @@
   var PHASES = {
     IDLE: "أوقات الصلاة",
     ADHAN: "الأذان",
+    ADHAN_DUA: "الدعاء بعد الأذان",
     IQAMAH_COUNTDOWN: "انتظار الإقامة",
     KHUTBA: "الخطبة",
     SALAH: "الصلاة قائمة",
@@ -27,7 +28,7 @@
   };
   var OVER_THE_PRAYER = { SETTINGS: true, CLOCK: true, USB_OFFER: true };
   // While the screen waits for the iqamah, the countdown is to the iqamah; otherwise to the next adhan.
-  var BEFORE_IQAMAH = { ADHAN: true, IQAMAH_COUNTDOWN: true, KHUTBA: true };
+  var BEFORE_IQAMAH = { ADHAN: true, ADHAN_DUA: true, IQAMAH_COUNTDOWN: true, KHUTBA: true };
   var LEVELS = { GOOD: "جيد", WARNING: "تنبيه", BAD: "مشكلة", INFO: "معلومة" };
   // A clock problem is announced when it appears, not again with each redraw every 30 s.
   var clockAnnounced = null;
@@ -141,8 +142,8 @@
     sub.push(until ? ["الشاشة: " + shows + " حتى ", { time: until }] : ["الشاشة: " + shows]);
 
     if (BEFORE_IQAMAH[phase]) {
-      // The adhan screen ends before the iqamah: its own countdown is to the iqamah of today's list.
-      var target = phase === "ADHAN" ? secondsOf(current && current.iqamah) : secondsOf(flow.until);
+      // The adhan screen and the dua after it end before the iqamah: their countdown is to the iqamah of today's list.
+      var target = phase === "ADHAN" || phase === "ADHAN_DUA" ? secondsOf(current && current.iqamah) : secondsOf(flow.until);
       if (target !== null && target >= seconds) {
         var awaited = eid ? "صلاة " + (name || "العيد") : name ? "إقامة " + name : "الإقامة";
         return { label: awaited + " بعد", count: countdown(target - seconds), sub: sub };
@@ -229,6 +230,7 @@
         el("th", { class: "time", text: "الإقامة", attrs: { scope: "col" } }))),
       body));
     if (today.sunrise) card.appendChild(el("p", { class: "muted" }, "الشروق ", ltr(el, today.sunrise)));
+    if (state.formula && state.formula.official === false) card.appendChild(el("p", { class: "muted" }, "المواقيت محسوبة بقيم مخصّصة · ", el("a", { href: "#formula", class: "go", text: "حساب المواقيت" })));
 
     // One row stands out: the prayer the screen is busy with, else the next adhan. Past ones are muted.
     var shown = null;

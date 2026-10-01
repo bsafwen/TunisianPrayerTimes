@@ -26,7 +26,7 @@ session started shows its code without a new session.
   (partial) `mosque-tv.json`, the TV previews what would change (or lists the mistakes, in
   Arabic), and nothing is written until the admin applies it. The previous settings can be
   restored ("undo the last import").
-- The page itself (`/`, `/app.js`, `/style.css`, `/views/*.js`) is static and holds no data;
+- The page itself (`/`, `/app.js`, `/formula.js`, `/style.css`, `/views/*.js`) is static and holds no data;
   it lives in `app/src/main/assets/dashboard/`. Its fonts come from the app too, so it looks like
   the screen without internet: `/fonts/readex-pro.ttf` (everything) and `/fonts/amiri.ttf` (the
   adhkar texts, loaded on that section only), `font/ttf`, public like the page. Any other name is 404.
@@ -53,14 +53,16 @@ what the screen shows now, with the countdown in the screen's stone gold.
   device's zone is shown when it is not Tunisia's, as information. A problem (implausible clock,
   more than a minute apart, unconfirmed) puts the card first and is announced to screen readers
   once, not again at every refresh; a confirmed clock that agrees sits under today's times.
-- «الإقامة», «الأذكار», «المسجد» and «رمضان والعيد» keep their main button at the bottom of the
-  screen while they scroll; a field reached with Tab scrolls clear of it and of the tabs.
+- «الإقامة», «الأذكار», «المسجد», «حساب المواقيت» and «رمضان والعيد» keep their main button at the
+  bottom of the screen while they scroll; a field reached with Tab scrolls clear of it and of the tabs.
   «الإقامة», «المسجد» and «رمضان والعيد» send only the fields (or dates) the admin changed, «الأذكار»
-  only the lists changed; nothing changed gives «لا تغيير». «الإعلانات» sends the whole list of
+  only the lists changed, «حساب المواقيت» its whole `prayerTimes` section (or `null` for the official
+  values); nothing changed gives «لا تغيير». «الإعلانات» sends the whole list of
   written announcements and «متقدّم» the whole settings file, each from a button under its own card.
 - Each tab tapped adds a history entry (`#section`), so the phone's Back button returns to the
   section before instead of leaving the page. Edits not applied yet are kept per section until
-  applied: the edited fields of «الإقامة», «المسجد», «رمضان والعيد» and «متقدّم» (by field id), and the
+  applied: the edited fields of «الإقامة», «المسجد», «حساب المواقيت», «رمضان والعيد» and «متقدّم» (by
+  field id), and the
   lists of «الأذكار» and «الإعلانات». They survive another tab, Back, and a redraw after an upload or
   a clock action (which redraws a section only if it is still the one shown). They are also stored
   in the browser (`localStorage`, key `mosque-tv-drafts:<packageName>:<installedAt>`, for a day): a
@@ -74,6 +76,21 @@ what the screen shows now, with the countdown in the screen's stone gold.
 - Photos larger than the screen are scaled on the phone to fit 1920×1080, in their own format
   (JPEG quality 0.85), before they are sent; the original goes when it fits already or the browser
   cannot decode or encode it. A batch that would pass 20 images is refused before anything is sent.
+- «حساب المواقيت» (after «المسجد») explains how the times of the mosque's delegation are computed:
+  the place (latitude, longitude, elevation, from `formula.location`; without a place it asks for one
+  in «المسجد» first), a day of the TV's year (a slider, with «اليوم», «أطول نهار» and «أقصر نهار»),
+  the sun's altitude through that day with each time on it, the rule of each time, and Asr's stick
+  and shadow. It computes on the phone with `formula.js`, a port of the TV's formula (the same
+  results, checked for every delegation and day of 2026 by `scripts/prayer_formula/check_dashboard_formula.js`).
+  INM's official values are locked: «تخصيص الحساب» unlocks the Fajr and Isha angles (15° to 20°, by
+  0.5°), Asr's shadow (1, or 2 for the Hanafi rule), Dhuhr's minutes after solar noon (0-15), Maghrib's
+  after sunset (0-10), whether the elevation lowers the horizon, and each prayer's own minutes
+  (−15 to +15; not the sunrise). Every change shows at once, each time with its difference from the
+  official one, under a warning that Tunisia's official times are INM's. «معاينة وحفظ» sends the
+  whole `prayerTimes` section (or `null` when the values are the official ones, «الرجوع إلى الأوقات
+  الرسمية» included), through the usual preview. The TV then computes every time with them: the wall,
+  the iqamahs, Jumu'a, the Eid prayers (from sunrise), the night screen, suhoor and iftar. «نظرة
+  عامة» says under today's times when they are computed with the mosque's own values.
 - «متقدّم» shows where the file goes on a USB key: `Android/data/<packageName>/files/mosque-tv.json`,
   under that exact name.
 - Numbers that tick use cells of one width: Readex Pro has proportional figures and no tabular feature.
@@ -128,6 +145,13 @@ Errors: `403 { "error": "..." }` without a valid token (or from a locked-out add
   },
   "flow": { "phase": "IDLE", "prayer": null, "until": null, "screen": null },
   "settingsFile": "{ ... the TV's whole settings file ... }",
+  "formula": {
+    "official": true,
+    "settings": { "fajrAngle": 18, "ishaAngle": 18, "asrShadow": 1, "dhuhrMinutes": 7, "maghribMinutes": 2, "elevation": true,
+                  "adjust": { "fajr": 0, "dhuhr": 0, "asr": 0, "maghrib": 0, "isha": 0 } },
+    "location": { "delegationId": 615, "delegationName": "تونس", "gouvernoratName": "تونس",
+                  "latitude": 36.8, "longitude": 10.183, "elevation": 9, "sunriseElevations": {} }
+  },
   "islamicDates": {
     "hijriYear": 1448,
     "events": [{ "id": "ramadanStart", "name": "بداية رمضان", "date": "2027-02-08", "source": "ESTIMATE",
@@ -150,11 +174,13 @@ Errors: `403 { "error": "..." }` without a valid token (or from a locked-out add
   prayer itself (timed from sunrise), placed at that time; the page counts down to it as
   «صلاة عيد الفطر بعد». `today.tomorrowFajr` is tomorrow's Fajr adhan and iqamah (`iqamah` may be
   null), which the page counts down to after Isha as the wall does; null until the TV has tomorrow's times.
-- `flow.phase`: `IDLE`, `ADHAN`, `IQAMAH_COUNTDOWN`, `KHUTBA`, `SALAH` or `AFTER_SALAH`;
+- `flow.phase`: `IDLE`, `ADHAN`, `ADHAN_DUA`, `IQAMAH_COUNTDOWN`, `KHUTBA`, `SALAH` or `AFTER_SALAH`
+  (`ADHAN_DUA` is the minute of the dua after the adhan, right after the adhan screen);
   `flow.prayer` is the prayer's Arabic name and `flow.until` the end of the phase as `HH:MM`
   (both null when idle). `clock.now` is the TV's time in Tunisia, `YYYY-MM-DDTHH:MM:SS`, no zone.
-  `KHUTBA` follows the Jumu'a adhan until the iqamah; with a khutba length (`khutba`), a longer
-  wait starts as `IQAMAH_COUNTDOWN`, whose `until` is then when the khutba screen begins.
+  `KHUTBA` follows the Jumu'a adhan screen and the dua after it (`ADHAN_DUA`) until the iqamah, or the
+  adhan screen directly when the mosque turned that dua off (`dua`); with a khutba length (`khutba`), a
+  longer wait starts as `IQAMAH_COUNTDOWN`, whose `until` is then when the khutba screen begins.
 - `today.prayers`: on Fridays `JOMOAA` in Dhuhr's place, unless the mosque holds no Jumu'a; an Eid
   prayer only on its day and only when the mosque holds it.
 - `clock`: `trusted` is false when the TV's clock cannot be right (a box reset to a past year): the
@@ -177,7 +203,8 @@ Errors: `403 { "error": "..." }` without a valid token (or from a locked-out add
   file or images offered) say the wall is not the timetable, nor the prayer (`remote/DashboardBackendImpl.kt`,
   `DashboardScreen`). With an impossible clock the flow is `IDLE`: no phantom day's prayer is reported.
 - Right after an apply the page reads the state again at once: the TV answers once the wall was
-  rebuilt from the new settings (the iqamah times of `today`), waiting up to 1 s for it
+  rebuilt from the new settings (the iqamah times of `today`, and its prayer times once recomputed
+  for a new place or new formula values), waiting up to 1 s for it
   (`DashboardLive.awaitSettings`). A clock set or confirmed from the page is in the next state at once.
 - `flow.eid`: `true` when `flow.prayer` is an Eid prayer (absent or false otherwise). It has no
   adhan and no iqamah: from sunrise its `IQAMAH_COUNTDOWN` is the wait for the prayer itself, which
@@ -196,11 +223,21 @@ Errors: `403 { "error": "..." }` without a valid token (or from a locked-out add
   with a text an update retired or an after-prayer list a slower pace made longer than 30 minutes.
 - The preview's `lines` say values as the TV's settings pages do («بعد الأذان 15 د», «الساعة 20:00»,
   «بعد الشروق 45 د» for an Eid, «كل 15 دقيقة», «مفعّل»); a fixed iqamah that today's adhan would not
-  use says what the screen counts instead, an iqamah before the end of the adhan screen says it waits
-  for it, and an announcement whose `until` has passed is named.
+  use says what the screen counts instead, an iqamah before the end of the adhan screen and the dua
+  after it says it waits for them, and an announcement whose `until` has passed is named. The prayer-time values read
+  «زاوية الفجر: 18° ← 16.5°», «ظلّ العصر: مثل واحد ← مثلان», «تعديل العشاء: 0 د ← +2 د» (the degree
+  sign and the signs kept by their numbers, LRI…PDI), with a line when they return to INM's official
+  times, then today's times that move («الفجر اليوم: 04:47 ← 04:57»); a fixed iqamah is then judged
+  against those new times.
   Mistakes name their place («الإعلان 4: …», «قرب السطر 23») and keep the file's samples left to
   right (LRI…PDI). At most 50 mistakes and 100 changes are listed, then one line with the count of
   the rest.
+- `formula` (`formulaJson`): the values the TV computes its times with, under the settings file's
+  `prayerTimes` keys, every prayer's `adjust` written (0 included), angles as the file writes them
+  (`18`, `17.5`); `official` is true when they are INM's. `location` is the delegation as the formula
+  sees it (degrees, metres), or null when no place is set; `sunriseElevations` holds INM's per-year
+  sunrise elevations (`{ "2026": 15.6 }` for Zeriba, 409; `{}` for nearly every delegation), which the
+  sunrise uses instead of `elevation` when the elevation is counted, so the page's sunrise is the TV's.
 - `themes[].description`: one line for the theme picker. A theme id saved by a version before «أفق»
   reads as `horizon`.
 - `islamicDates.events[].id`: `ramadanStart`, `eidFitr`, `eidAdha` (the keys of the settings
@@ -213,7 +250,7 @@ Errors: `403 { "error": "..." }` without a valid token (or from a locked-out add
 - `kiosk[].level`: `GOOD`, `WARNING`, `BAD` or `INFO`. An offline TV adds a `WARNING` row from three
   days before a Ramadan or Eid date that is still the estimate, and a `WARNING` row for each of
   today's iqamahs the wall moved from its setting (a fixed time that does not suit today's adhan, or
-  one before the end of the adhan screen, which waits for it), as on its own kiosk page.
+  one before the end of the adhan screen and the dua after it, which waits for them), as on its own kiosk page.
 
 ### `POST /api/clock`
 
@@ -289,6 +326,8 @@ whole list, and «متقدّم» the whole file:
   "mosque": { "name": "مسجد النور", "delegation": 615 },
   "display": { "theme": "horizon", "weather": true, "backgrounds": true, "announcements": true,
                "slideSeconds": 15, "announcementsEveryMinutes": 15, "nightScreen": true, "adhanScreenMinutes": 2 },
+  "prayerTimes": { "fajrAngle": 17.5, "ishaAngle": 18, "asrShadow": 1, "dhuhrMinutes": 7, "maghribMinutes": 2, "elevation": true,
+                   "adjust": { "fajr": 0, "dhuhr": 0, "asr": 0, "maghrib": 0, "isha": 2 } },
   "prayers": { "fajr": { "iqamah": "+15", "duration": 10 }, "isha": { "iqamah": "20:00", "duration": 10 },
                "jumua": { "iqamah": "+15", "duration": 15 }, "eidFitr": { "iqamah": "+30", "duration": 30 } },
   "ramadan": { "isha": { "duration": 75 }, "fajr": { "iqamah": null } },
@@ -307,11 +346,13 @@ whole list, and «متقدّم» the whole file:
   if it ends 10 minutes before the next adhan, and then runs to its end; a list changed during a
   pass starts a new pass, under the same rule. `adhanScreenMinutes`: how long the adhan screen lasts,
   1-5, 2 by default; it shows, all at once, what the listener says while the muezzin calls (Muslim
-  385, with one line more at Fajr). The «الإقامة» page edits it, with the iqamah, and says what it
-  means for the iqamah.
-- An iqamah before the end of the adhan screen (`"+1"` with the 2-minute default, or a fixed time
-  that close to the adhan) waits for its end, so the wall never goes black while the muezzin still
-  calls; `today.prayers` gives that later time, and the TV's kiosk page names it.
+  385, with two lines more at Fajr), and the dua after the adhan (Bukhari 614) follows it alone for
+  one minute, which is not a setting, except before the Friday khutba (`dua` below). The «الإقامة»
+  page edits it, with the iqamah, and says what it means for the iqamah.
+- An iqamah before the end of the adhan screen and the dua's minute (`"+1"` or `"+2"` with the
+  2-minute default, or a fixed time that close to the adhan) waits for their end, so the wall never
+  goes black while the muezzin still calls or before the dua ends; `today.prayers` gives that later time,
+  and the TV's kiosk page names it. A Jumu'a without the dua (`dua: false`) waits for the adhan screen only.
 - `iqamah`: `"+N"` minutes after the adhan (after sunrise for the Eids, 1-90), or a fixed `"HH:MM"`.
   `duration`: minutes of prayer (the black screen), 1-90. A fixed time that cannot apply on a day
   (before the adhan, or more than 90 minutes after it) falls back to the minutes the TV kept behind it.
@@ -324,6 +365,21 @@ whole list, and «متقدّم» the whole file:
   covers only that long before the iqamah, after the iqamah countdown; 0, the default, keeps it from
   the adhan to the iqamah. The TV writes it when set (and `0` in the undo snapshot); the page sends it
   only when changed.
+- `dua`: whether the dua after the Jumu'a adhan shows for its minute before the khutba screen, `true`
+  by default (the imam says it too); `false` puts the khutba screen (or the countdown before it) right
+  after the adhan screen, and the iqamah then waits for the adhan screen only. Also `adhanDua`,
+  `الدعاء` or `دعاء الأذان`; `jumua` in `prayers` only (the other prayers always have the dua). The TV
+  writes it when `false` (and `true` in the undo snapshot); the page's box «الدعاء بعد الأذان قبل
+  الخطبة», in the Jumu'a card, sends it only when changed.
+- `prayerTimes`: the values the times are computed with, INM's official ones by default:
+  `fajrAngle` and `ishaAngle` 15-20 by 0.5 (18), `asrShadow` 1 or 2 (1), `dhuhrMinutes` 0-15 after
+  solar noon (7), `maghribMinutes` 0-10 after sunset (2), `elevation` `true` or `false` (`true`), and
+  `adjust`, whole minutes −15 to +15 added to `fajr`, `dhuhr`, `asr`, `maghrib` or `isha` (a number,
+  or `"+2"`/`"-1"`). A field left out keeps the TV's value; `null` returns a field (or, for the whole
+  section, every value) to the official one. «حساب المواقيت» sends the whole section, or `null`. The
+  TV writes it whole when its values are not the official ones (`null` in the full file), and keeps
+  them with its settings (`PrefsManager.formula`). A file with only this section is accepted on its
+  own (it does not need a `prayers` section) and leaves every other setting as it is.
 - `ramadan`: only what changes in Ramadan; `null` returns a field to the usual setting.
 - `islamicDates`: `null` returns a date to automatic. The dates are also checked together, with the
   TV's announced ones: a Ramadan of 28 or 31 days is refused (`DATES_CONFLICT`, with the reason and
