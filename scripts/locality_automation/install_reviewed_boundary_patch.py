@@ -65,7 +65,8 @@ def apply(args):
     run = json.loads(before_run)
     previous_ref = run["practicalProgress"]
     previous = read(checked(previous_ref))
-    gps = read(args.gps)
+    gps_bytes = args.gps.read_bytes()
+    gps = json.loads(gps_bytes.decode("utf-8-sig"))
     if not str(gps.get("status", "")).startswith("PASS_OFFLINE_STAGED_") or gps.get("structuralFailures") != [] or gps.get("probeFailures") != []:
         raise ValueError("Independent boundary/GPS replay did not pass")
     check_tree(gps["inputs"])
@@ -86,17 +87,40 @@ def apply(args):
     specs = [(inputs["afterJson"], "android-app/app/src/main/assets/neighborhoods.json", inputs["beforeJson"]["sha256"]),
              (inputs["afterBin"], "android-app/app/src/main/assets/neighborhoods.bin", inputs["beforeBin"]["sha256"])]
     proposal = read(checked(inputs["proposal"]))
+    proposal_codes = [str(patch["officialCode"]) for patch in proposal["patches"]]
+    if len(set(proposal_codes)) != len(proposal_codes) or sorted(proposal_codes) != codes:
+        raise ValueError("GPS checks must cover every proposed locality exactly once")
+    scope_values = {patch.get("boundaryScope") for patch in proposal["patches"]}
+    if not scope_values <= {None, "full-source-face", "scoped-ownership-correction"}:
+        raise ValueError("Unknown boundary scope")
+    if None in scope_values and len(scope_values) > 1:
+        raise ValueError("Boundary scopes must be explicit for the entire package")
+    full_codes = sorted(str(patch["officialCode"]) for patch in proposal["patches"]
+                        if patch.get("boundaryScope") == "full-source-face")
+    scoped_codes = sorted(str(patch["officialCode"]) for patch in proposal["patches"]
+                          if patch.get("boundaryScope") == "scoped-ownership-correction")
+    before_rows = {row["id"]: row for row in read(checked(inputs["beforeJson"]))["features"]}
+    metadata_changes = [{"id": patch["id"], "officialCode": str(patch["officialCode"]),
+                         "fields": {key: {"before": before_rows[patch["id"]].get(key), "after": value}
+                                    for key, value in patch.get("proposedMetadata", {}).items()
+                                    if before_rows[patch["id"]].get(key) != value}}
+                        for patch in proposal["patches"]]
+    metadata_changes = [row for row in metadata_changes if row["fields"]]
     qualification = proposal.get("qualification") or "\n".join(dict.fromkeys(
         patch.get("qualification", "") for patch in proposal.get("patches", [])))
     if not isinstance(qualification, str) or not qualification.strip():
         raise ValueError("Proposal must explicitly describe the correction scope")
     args.output.mkdir(parents=True, exist_ok=True)
+    if args.gps.read_bytes() != gps_bytes:
+        raise ValueError("GPS review changed during installation preflight")
+    frozen_gps = args.output / "accepted-gps-report.json"
+    frozen_gps.write_bytes(gps_bytes)
     (args.output / "before-run.json").write_bytes(before_run)
     (args.output / "before-handoff.json").write_bytes(before_handoff)
     validation = {"status": "READY_TO_INSTALL", "qualification": qualification,
                   "files": [{"sourceSha256": source["sha256"], "destination": dest, "beforeSha256": expected}
                             for source, dest, expected in specs], "issues": [], "unresolvedCaseIds": [],
-                  "gpsEvidence": pin(args.gps)}
+                  "gpsEvidence": pin(frozen_gps)}
     write(args.output / "validation.json", validation)
     manifest = {"schemaVersion": 1, "validation": pin(args.output / "validation.json"),
                 "files": [{"source": source, "destination": dest, "beforeSha256": expected} for source, dest, expected in specs]}
@@ -113,10 +137,18 @@ def apply(args):
     practical = {"schemaVersion": 1, "status": "INSTALLED_SCOPED_PRACTICAL_CORRECTIONS",
                  "appliedAtUtc": datetime.now(timezone.utc).isoformat(), "qualification": qualification,
                  "boundaryLocalityCodes": codes, "boundaryLocalitiesCorrected": len(codes),
+                 "fullSourceBoundaryLocalityCodes": full_codes,
+                 "scopedBoundaryLocalityCodes": scoped_codes,
+                 "boundaryScopeRecorded": None not in scope_values,
+                 "excludedFromDatedRosterCodes": sorted(str(patch["officialCode"]) for patch in proposal["patches"]
+                                                        if patch.get("datedRosterMember") is False),
+                 "datedRosterMembershipRecorded": all(isinstance(patch.get("datedRosterMember"), bool)
+                                                       for patch in proposal["patches"]),
+                 "boundaryMetadataChanges": metadata_changes,
                  "cumulativeBoundaryLocalityCodes": sorted(set(prior_codes) | set(codes)),
                  "previousPracticalProgress": previous_ref,
                  "displayNamesImproved": names["displayRenames"], "officialSearchAliasesAdded": names["aliasOnlyUpdates"],
-                 "nameEvidence": name_ref, "gpsEvidence": pin(args.gps), "installerReceipt": pin(args.output / "installer-receipt.json"),
+                 "nameEvidence": name_ref, "gpsEvidence": pin(frozen_gps), "installerReceipt": pin(args.output / "installer-receipt.json"),
                  "manifest": pin(args.output / "manifest.json"), "installedAssets": assets,
                  "gpsProbeCount": gps["probeCount"], "gpsLookupComparisons": gps["lookupComparisons"],
                  "sourceSupportedImprovedComparisons": gps["totals"]["source_supported_wrong_to_correct"],

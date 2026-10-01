@@ -1,4 +1,4 @@
-"""Stage a pinned locality-boundary patch without changing the live catalog.
+"""Stage source-backed boundaries with an independently justified sector picker split.
 
 The proposal owns source interpretation. This helper preserves record identity,
 unrelated packed bytes and country geometry, and regenerates derived indexes.
@@ -67,6 +67,23 @@ def rebuild_grid(features: list, size: float) -> dict:
     return dict(sorted(cells.items()))
 
 
+def validate_picker_separation(target, patch, proposed_metadata):
+    # A same-name town must not supply an imada's manual coordinates.
+    # Only an independently proved split back to this sector's own ID is allowed.
+    group_ref = patch.get("pickerGroupEvidence")
+    if not isinstance(group_ref, dict):
+        raise ValueError("Picker separation needs independent pinned evidence")
+    group_proof = read(checked(group_ref))
+    if (target.get("kind") != "sector"
+            or proposed_metadata["pickerGroupId"] != target["id"]
+            or group_proof.get("status") != "PASS_SOURCE_SUPPORTED_SECTOR_PICKER_SEPARATION"
+            or group_proof.get("featureId") != target["id"]
+            or str(group_proof.get("officialCode")) != str(patch["officialCode"])
+            or group_proof.get("originalPickerGroupId") != target.get("pickerGroupId")
+            or group_proof.get("proposedPickerGroupId") != target["id"]):
+        raise ValueError("Picker change is not a source-supported self-sector separation")
+
+
 def stage(proposal_path: Path, output: Path) -> dict:
     proposal = read(proposal_path)
     metadata = checked(proposal["baseCatalogMetadata"])
@@ -130,14 +147,16 @@ def stage(proposal_path: Path, output: Path) -> dict:
         target["bbox"] = list(geom.bounds)
         target["areaKm2"] = geom.area * 111.32**2 * math.cos(math.radians(geom.representative_point().y))
         proposed_metadata = patch.get("proposedMetadata", {})
-        if not isinstance(proposed_metadata, dict) or not set(proposed_metadata) <= {"name", "aliases", "lat", "lng"}:
-            raise ValueError("Only explicit name, alias and source-anchor changes are supported")
+        if not isinstance(proposed_metadata, dict) or not set(proposed_metadata) <= {"name", "aliases", "lat", "lng", "pickerGroupId"}:
+            raise ValueError("Only explicit name, alias, source-anchor and self-sector picker changes are supported")
         metadata_delta = {key: value for key, value in proposed_metadata.items() if target.get(key) != value}
         if metadata_delta:
             evidence_ref = patch.get("metadataEvidence")
             if not isinstance(evidence_ref, dict):
                 raise ValueError(f"Metadata change needs pinned identity/anchor evidence: {patch['id']}")
             checked(evidence_ref)
+            if "pickerGroupId" in metadata_delta:
+                validate_picker_separation(target, patch, proposed_metadata)
             if "name" in metadata_delta:
                 if not isinstance(metadata_delta["name"], str) or not metadata_delta["name"].strip():
                     raise ValueError("Proposed name must be nonempty")
