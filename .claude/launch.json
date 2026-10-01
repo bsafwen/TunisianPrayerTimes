@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "formula-mock",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:/Users/barou/AppData/Local/Temp/claude/C--Users-barou-Desktop-Workspace-TunisianPrayerTimes/ffbbbe1c-e4c5-4377-ad77-5c57f4a0a1e5/scratchpad/formula-impl/mock/server.js", "8765"],
+      "port": 8765
+    }
+  ]
+}
