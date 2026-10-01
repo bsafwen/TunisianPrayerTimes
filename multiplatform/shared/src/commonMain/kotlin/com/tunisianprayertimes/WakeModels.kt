@@ -169,12 +169,29 @@ data class PrayerWakeConfig(
     val subAlarms: List<PrayerWakeSubAlarm> = emptyList(),
     val silenceUntilAlarm: Boolean = false,
     val ringDuringSilenceWindow: Boolean = false,
+    /** Main-trigger timestamp identifying the recurring occurrence to skip, including its sub-alarms. */
+    val skipNextOccurrenceAtMillis: Long? = null,
 ) {
     init {
         require(prayer.supportsWakeAlarm()) {
             "Wake alarms are only supported for $WAKE_SUPPORTED_PRAYERS."
         }
     }
+}
+
+fun PrayerWakeConfig.isRepeatingWakeAlarm(): Boolean =
+    repeatMode == WakeRepeatMode.RECURRING && mainAlarm.mode != WakeMainAlarmMode.FROM_NOW
+
+fun PrayerWakeConfig.isSkippingWakeOccurrence(occurrenceAtMillis: Long): Boolean =
+    isRepeatingWakeAlarm() && skipNextOccurrenceAtMillis == occurrenceAtMillis
+
+fun PrayerWakeConfig.hasPendingWakeOccurrenceSkip(nowMillis: Long = System.currentTimeMillis()): Boolean {
+    if (!isRepeatingWakeAlarm()) return false
+    val occurrenceAtMillis = skipNextOccurrenceAtMillis ?: return false
+    val lastTriggerAtMillis = subAlarms.fold(occurrenceAtMillis) { latest, subAlarm ->
+        maxOf(latest, occurrenceAtMillis + subAlarm.signedOffsetMinutes * 60_000L)
+    }
+    return lastTriggerAtMillis > nowMillis
 }
 
 @Serializable

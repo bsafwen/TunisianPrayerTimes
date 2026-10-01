@@ -7,12 +7,22 @@ on:
     paths:
       - "android-app/**"
       - "multiplatform/shared/**"
+      - "multiplatform/*.gradle.kts"
+      - "multiplatform/gradle/**"
+      - "data/prayer-formula/**"
+      - "data/official-islamic-dates/**"
+      - "build-logic/**"
       - ".github/workflows/android-tests.yml"
   pull_request:
     branches: [main]
     paths:
       - "android-app/**"
       - "multiplatform/shared/**"
+      - "multiplatform/*.gradle.kts"
+      - "multiplatform/gradle/**"
+      - "data/prayer-formula/**"
+      - "data/official-islamic-dates/**"
+      - "build-logic/**"
       - ".github/workflows/android-tests.yml"
 
 env:
