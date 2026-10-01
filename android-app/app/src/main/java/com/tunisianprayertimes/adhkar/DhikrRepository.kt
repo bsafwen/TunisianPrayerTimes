@@ -356,6 +356,13 @@ class DhikrRepository(context: Context) {
                     it.itemIds == items && it.category == category && it.occurrenceId == null && it.collectionPeriodKey == null &&
                         it.targetCountOverride == targetCountOverride
                 }.maxByOrNull { it.updatedAtMillis }
+            // Daily collections share one occasion between the Adhkar tab and reminders: carry the
+            // newer reading's progress into the session being opened instead of starting over.
+            val progress = if (periodKey == null || (fresh && occurrence == null)) null else old.sessions.values.filter {
+                it.category == category && it.collectionPeriodKey == periodKey && it.targetCountOverride == targetCountOverride
+            }.maxByOrNull { it.updatedAtMillis }?.takeIf {
+                it.id != existing?.id && (existing == null || it.updatedAtMillis > existing.updatedAtMillis)
+            }
             val migratedCounts = if (occurrence != null && category == null) mapOf(occurrence.dhikrId to occurrence.count)
                 else if (occurrence != null || fresh || periodKey != null) emptyMap() else items.associateWith { id ->
                     store.legacyCount("reading|" + id)
@@ -366,11 +373,13 @@ class DhikrRepository(context: Context) {
                     .maxOfOrNull { it.updatedAtMillis }
                 if (latest != null && latest >= now && latest < Long.MAX_VALUE) latest + 1 else now
             } else now
-            val session = existing?.copy(itemIds = items, category = category,
-                counts = existing.counts.filterKeys { it in items },
-                skippedIds = existing.skippedIds.intersect(items.toSet()),
-                index = items.indexOf(existing.itemId).coerceAtLeast(0),
-                targetCountOverride = targetCountOverride, collectionPeriodKey = periodKey, updatedAtMillis = savedAt)
+            val base = progress ?: existing
+            val session = base?.let { (existing ?: DhikrSession(itemIds = items, occurrenceId = occurrenceId)).copy(
+                itemIds = items, category = category,
+                counts = base.counts.filterKeys { it in items },
+                skippedIds = base.skippedIds.intersect(items.toSet()),
+                index = items.indexOf(base.itemId).coerceAtLeast(0),
+                targetCountOverride = targetCountOverride, collectionPeriodKey = periodKey, updatedAtMillis = savedAt) }
                 ?: DhikrSession(itemIds = items, category = category, occurrenceId = occurrenceId, counts = migratedCounts,
                     targetCountOverride = targetCountOverride, collectionPeriodKey = periodKey, updatedAtMillis = savedAt)
             selected = session.id
@@ -378,7 +387,7 @@ class DhikrRepository(context: Context) {
                 it.occurrenceId != occurrenceId || it.id == session.id
             }
             val membershipChanged = existing != null && existing.itemIds != items
-            val active = membershipChanged && occurrence != null && category != null &&
+            val active = (membershipChanged || progress != null) && occurrence != null && category != null &&
                 now in occurrence.startMillis until occurrence.endMillis &&
                 occurrence.status != DhikrOccurrenceStatus.SKIPPED && occurrence.status != DhikrOccurrenceStatus.REPLACED &&
                 occurrence.status != DhikrOccurrenceStatus.DONE &&
@@ -623,12 +632,12 @@ private fun dhikrStateFromJson(json: JSONObject): DhikrState {
 }
 /** Full-list readings resume within their occasion; other collections reset only on New Session. */
 internal fun collectionReadingPeriodKey(context: Context, category: DhikrCategory, occurrenceId: String?, now: Long): String {
-    if (occurrenceId != null) return "linked:$occurrenceId"
+    // Morning, evening and night readings belong to a daily occasion however they were opened.
     val startKind = when (category) {
         DhikrCategory.MORNING -> DhikrTimeKind.FAJR
         DhikrCategory.EVENING -> DhikrTimeKind.ASR
         DhikrCategory.NIGHT -> DhikrTimeKind.MAGHRIB
-        else -> return "manual:${category.name}"
+        else -> return if (occurrenceId != null) "linked:$occurrenceId" else "manual:${category.name}"
     }
     val date = Instant.ofEpochMilli(now).atZone(ZoneId.systemDefault()).toLocalDate()
     val start = DhikrReminderScheduler.resolveTime(context, DhikrTime(startKind), date)
