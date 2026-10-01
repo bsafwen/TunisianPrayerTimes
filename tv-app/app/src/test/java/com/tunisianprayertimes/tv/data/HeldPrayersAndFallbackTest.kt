@@ -63,4 +63,18 @@ class HeldPrayersAndFallbackTest {
         val line = SettingsChangeLines.of(result as ParseResult.Success).single()
         assertEquals("${MosqueSettingsFile.arabicName(Prayer.JOMOAA)} · مدة الخطبة: 30 د ← من الأذان", line)
     }
+
+    @Test
+    fun theFridayDuaChoiceSurvivesARestartAndIsOnByDefault() {
+        assertTrue(prefs.iqamahConfigs().getValue(Prayer.JOMOAA).adhanDua)
+        assertTrue(prefs.schedule.showsAdhanDua(Prayer.JOMOAA))
+        val jumua = PrayerSettings(IqamahRule.AfterAdhan(15), 15, khutbaMinutes = 20, adhanDua = false)
+        prefs.schedule = MosqueSchedule.DEFAULT.with(Prayer.JOMOAA, jumua)
+        val reloaded = PrefsManager(store)
+        assertEquals(jumua, reloaded.schedule.settings(Prayer.JOMOAA))
+        assertFalse(reloaded.iqamahConfigs().getValue(Prayer.JOMOAA).adhanDua)
+        // Edited on the TV (the iqamah table's switch) and back on.
+        reloaded.setIqamahConfig(Prayer.JOMOAA, reloaded.iqamahConfigs().getValue(Prayer.JOMOAA).copy(adhanDua = true))
+        assertTrue(PrefsManager(store).schedule.settings(Prayer.JOMOAA).adhanDua)
+    }
 }

@@ -15,27 +15,48 @@ class InmPrayerTimes(private val locations: Map<Int, InmLocation>) {
     /** The delegation's latitude and longitude (for the weather at the mosque), or null when unknown. */
     fun coordinates(delegationId: Int): Pair<Double, Double>? = locations[delegationId]?.let { it.latitude to it.longitude }
 
+    /**
+     * The delegation as the formula sees it (latitude, longitude, elevation), or null when unknown:
+     * for the TV's dashboard, which explains and recomputes the times.
+     */
+    fun location(delegationId: Int): InmLocation? = locations[delegationId]
+
     /** True when the delegation is one INM publishes and the month is within [SUPPORTED_YEARS]. */
     fun hasPrayerData(delegationId: Int, year: Int, month: Int): Boolean =
-        month in 1..12 && location(delegationId, year) != null
+        month in 1..12 && supportedLocation(delegationId, year) != null
 
-    /** Prayer times for every day of the month, or an empty list when there is no data. */
-    fun loadPrayerTimes(delegationId: Int, year: Int, month: Int): List<DayPrayerTimes> {
+    /**
+     * Prayer times for every day of the month, or an empty list when there is no data; computed
+     * with [settings] (INM's official values by default).
+     */
+    fun loadPrayerTimes(
+        delegationId: Int,
+        year: Int,
+        month: Int,
+        settings: PrayerFormulaSettings = PrayerFormulaSettings.OFFICIAL,
+    ): List<DayPrayerTimes> {
         if (month !in 1..12) return emptyList()
-        val location = location(delegationId, year) ?: return emptyList()
+        val location = supportedLocation(delegationId, year) ?: return emptyList()
         return (1..YearMonth.of(year, month).lengthOfMonth()).map { day ->
-            InmPrayerFormula.dayPrayerTimes(location, year, month, day)
+            InmPrayerFormula.dayPrayerTimes(location, year, month, day, settings)
         }
     }
 
-    fun loadDayPrayerTimes(delegationId: Int, year: Int, month: Int, day: Int): DayPrayerTimes? {
+    /** One day's prayer times, computed with [settings] (INM's official values by default), or null when there is no data. */
+    fun loadDayPrayerTimes(
+        delegationId: Int,
+        year: Int,
+        month: Int,
+        day: Int,
+        settings: PrayerFormulaSettings = PrayerFormulaSettings.OFFICIAL,
+    ): DayPrayerTimes? {
         if (month !in 1..12) return null
-        val location = location(delegationId, year) ?: return null
+        val location = supportedLocation(delegationId, year) ?: return null
         if (day !in 1..YearMonth.of(year, month).lengthOfMonth()) return null
-        return InmPrayerFormula.dayPrayerTimes(location, year, month, day)
+        return InmPrayerFormula.dayPrayerTimes(location, year, month, day, settings)
     }
 
-    private fun location(delegationId: Int, year: Int): InmLocation? =
+    private fun supportedLocation(delegationId: Int, year: Int): InmLocation? =
         if (year in SUPPORTED_YEARS) locations[delegationId] else null
 
     companion object {

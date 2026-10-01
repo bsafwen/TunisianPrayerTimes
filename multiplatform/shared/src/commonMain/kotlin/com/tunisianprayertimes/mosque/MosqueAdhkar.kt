@@ -67,8 +67,8 @@ object MosqueAdhkar {
      * for each shahada and each «حيّ على». The two Fajr-only lines answering «الصلاة خير من النوم» are
      * the owner's editorial choice of 2026-09-30, by analogy with the two «حيّ على»: no narration gives
      * a reply to it, so they are not attributed to Muslim 385 (docs/adhkar-sources.md).
-     * The reply to the shahada (Muslim 386) and the dua after the adhan (Bukhari 614) stay in the
-     * catalog for the phone app; they are not on the adhan screen.
+     * The reply to the shahada (Muslim 386) stays in the catalog for the phone app; the dua after the
+     * adhan (Bukhari 614) follows these replies on a screen of its own ([adhanDua]).
      */
     val ADHAN_REPLIES: List<AdhanReply> = listOf(
         AdhanReply("اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ"),
@@ -88,6 +88,16 @@ object MosqueAdhkar {
 
     /** The replies of one adhan: Fajr's has the lines for «الصلاة خير من النوم», the others do not. */
     fun adhanReplies(fajr: Boolean): List<AdhanReply> = ADHAN_REPLIES.filter { fajr || !it.fajrOnly }
+
+    /** The catalog's dua after the adhan: «اللهم رب هذه الدعوة التامة…», Bukhari 614. */
+    const val ADHAN_DUA_ID = "after_adhan_wasila"
+
+    /**
+     * The dua after the adhan, alone on the screen for a minute once the adhan screen ends
+     * (FlowTiming.ADHAN_DUA_MINUTES): the reviewed catalog entry, its text and its reference exactly as
+     * reviewed, full stop included. Null only if the catalog lost the entry (a test guards it).
+     */
+    fun adhanDua(): DhikrEntry? = DhikrCatalog.find(ADHAN_DUA_ID)
 
     /**
      * The short daily texts of the ticker under the prayer times. It runs all day, so only texts of the

@@ -82,6 +82,21 @@ class TvStringsTest {
     }
 
     @Test
+    fun signedNumbersInAnnouncementsKeepTheirSignOnTheLeft() {
+        fun ltr(text: String) = "${Char(0x2066)}$text${Char(0x2069)}"
+        // «−3°», not «3°−»: the sign and the symbol after the number go into the isolate with it.
+        assertEquals("الحرارة الليلة ${ltr("−3°")}", TvStrings.mosqueText("الحرارة الليلة −3°"))
+        assertEquals("تخفيض ${ltr("-20%")} هذا الأسبوع", TvStrings.mosqueText("تخفيض -20% هذا الأسبوع"))
+        assertEquals("${ltr("-2.5°C")} صباحًا", TvStrings.mosqueText("-2.5°C صباحًا"))
+        assertEquals("زيادة ${ltr("+15%")}", TvStrings.mosqueText("زيادة +15%"))
+        assertEquals("(${ltr("−٣")})", TvStrings.mosqueText("(−٣)"))
+        // A dash after a letter or a digit is not a sign; nor is one set apart from the number.
+        assertEquals("الباب ب-2", TvStrings.mosqueText("الباب ب-2"))
+        assertEquals("- 5 أيام", TvStrings.mosqueText("- 5 أيام"))
+        assertEquals("مجموعة 5-", TvStrings.mosqueText("مجموعة 5-"))
+    }
+
+    @Test
     fun timesAndCountdowns() {
         assertEquals("05:01", TvStrings.hm(LocalTime.of(5, 1)))
         assertEquals("01:24:48", TvStrings.countdown(3600 + 24 * 60 + 48))

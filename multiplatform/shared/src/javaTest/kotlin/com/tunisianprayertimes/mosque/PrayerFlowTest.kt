@@ -36,13 +36,15 @@ class PrayerFlowTest {
         MosqueSchedule.DEFAULT.with(prayer, PrayerSettings(iqamah, salahMinutes))
 
     @Test
-    fun maghribGoesFromAdhanToCountdownToBlackToAdhkarThenIdle() {
-        // Default Maghrib: iqamah +5, prayer 8 minutes; adhan screen 2 minutes, adhkar 10.
+    fun maghribGoesFromAdhanToDuaToCountdownToBlackToAdhkarThenIdle() {
+        // Default Maghrib: iqamah +5, prayer 8 minutes; adhan screen 2 minutes, then the dua 1, adhkar 10.
         val events = PrayerFlow.eventsFor(tuesday, times(), MosqueSchedule.DEFAULT)
         assertEquals(FlowPhase.IDLE to null, phaseAt(events, tuesday, "18:07:59"))
         assertEquals(FlowPhase.ADHAN to Prayer.MAGHRIB, phaseAt(events, tuesday, "18:08:00"))
         assertEquals(FlowPhase.ADHAN to Prayer.MAGHRIB, phaseAt(events, tuesday, "18:09:59"))
-        assertEquals(FlowPhase.IQAMAH_COUNTDOWN to Prayer.MAGHRIB, phaseAt(events, tuesday, "18:10:00"))
+        assertEquals(FlowPhase.ADHAN_DUA to Prayer.MAGHRIB, phaseAt(events, tuesday, "18:10:00"))
+        assertEquals(FlowPhase.ADHAN_DUA to Prayer.MAGHRIB, phaseAt(events, tuesday, "18:10:59"))
+        assertEquals(FlowPhase.IQAMAH_COUNTDOWN to Prayer.MAGHRIB, phaseAt(events, tuesday, "18:11:00"))
         assertEquals(FlowPhase.IQAMAH_COUNTDOWN to Prayer.MAGHRIB, phaseAt(events, tuesday, "18:12:59"))
         assertEquals(FlowPhase.SALAH to Prayer.MAGHRIB, phaseAt(events, tuesday, "18:13:00"))
         assertEquals(FlowPhase.SALAH to Prayer.MAGHRIB, phaseAt(events, tuesday, "18:20:59"))
@@ -145,30 +147,58 @@ class PrayerFlowTest {
     }
 
     @Test
-    fun theIqamahWaitsForTheEndOfTheAdhanScreen() {
-        // +0 (read as +1) or +1 with the 2-minute adhan screen: the black screen starts when the adhan screen ends.
-        listOf(0, 1).forEach { minutes ->
+    fun theIqamahWaitsForTheEndOfTheAdhanScreenAndTheDua() {
+        // +0 (read as +1), +1 or +2 with the 2-minute adhan screen: the black screen starts when the dua ends.
+        listOf(0, 1, 2).forEach { minutes ->
             val events = PrayerFlow.eventsFor(tuesday, times(), schedule(Prayer.ASR, IqamahRule.AfterAdhan(minutes), 10))
             val asr = events.single { it.prayer == Prayer.ASR }
-            assertEquals(at(tuesday, "15:34:00"), asr.iqamahAt)
+            assertEquals(at(tuesday, "15:35:00"), asr.iqamahAt)
             assertEquals(at(tuesday, "15:34:00"), asr.adhanScreenEndAt)
+            assertEquals(at(tuesday, "15:35:00"), asr.adhanDuaEndAt)
             assertTrue(asr.iqamahAdjusted, "the admin sees the iqamah was moved")
             assertEquals(FlowPhase.ADHAN to Prayer.ASR, phaseAt(events, tuesday, "15:33:59"))
-            assertEquals(FlowPhase.SALAH to Prayer.ASR, phaseAt(events, tuesday, "15:34:00"))
+            assertEquals(FlowPhase.ADHAN_DUA to Prayer.ASR, phaseAt(events, tuesday, "15:34:00"))
+            assertEquals(FlowPhase.ADHAN_DUA to Prayer.ASR, phaseAt(events, tuesday, "15:34:59"))
+            assertEquals(FlowPhase.SALAH to Prayer.ASR, phaseAt(events, tuesday, "15:35:00"))
         }
-        // A fixed time too close to the adhan waits the same way; one at the end of the adhan screen is kept.
-        val close = PrayerFlow.eventsFor(tuesday, times(), schedule(Prayer.MAGHRIB, IqamahRule.FixedTime(LocalTime.of(18, 9)), 8))
+        // A fixed time too close to the adhan waits the same way; one at the end of the dua is kept.
+        listOf(9, 10).forEach { minute ->
+            val close = PrayerFlow.eventsFor(tuesday, times(), schedule(Prayer.MAGHRIB, IqamahRule.FixedTime(LocalTime.of(18, minute)), 8))
+                .single { it.prayer == Prayer.MAGHRIB }
+            assertEquals(at(tuesday, "18:11:00") to true, close.iqamahAt to close.iqamahAdjusted)
+        }
+        val atTheEnd = PrayerFlow.eventsFor(tuesday, times(), schedule(Prayer.MAGHRIB, IqamahRule.FixedTime(LocalTime.of(18, 11)), 8))
             .single { it.prayer == Prayer.MAGHRIB }
-        assertEquals(at(tuesday, "18:10:00") to true, close.iqamahAt to close.iqamahAdjusted)
-        val atTheEnd = PrayerFlow.eventsFor(tuesday, times(), schedule(Prayer.MAGHRIB, IqamahRule.FixedTime(LocalTime.of(18, 10)), 8))
-            .single { it.prayer == Prayer.MAGHRIB }
-        assertEquals(at(tuesday, "18:10:00") to false, atTheEnd.iqamahAt to atTheEnd.iqamahAdjusted)
-        // A longer adhan screen pushes a +3 iqamah to its end; +2 is on time with the default.
+        assertEquals(at(tuesday, "18:11:00") to false, atTheEnd.iqamahAt to atTheEnd.iqamahAdjusted)
+        // A longer adhan screen pushes a +3 iqamah to the end of the dua; +3 is on time with the default.
         val longer = PrayerFlow.eventsFor(tuesday, times(), schedule(Prayer.ASR, IqamahRule.AfterAdhan(3), 10), timing = FlowTiming(adhanScreenMinutes = 5))
             .single { it.prayer == Prayer.ASR }
-        assertEquals(at(tuesday, "15:37:00") to true, longer.iqamahAt to longer.iqamahAdjusted)
-        val onTime = PrayerFlow.eventsFor(tuesday, times(), schedule(Prayer.ASR, IqamahRule.AfterAdhan(2), 10)).single { it.prayer == Prayer.ASR }
-        assertEquals(at(tuesday, "15:34:00") to false, onTime.iqamahAt to onTime.iqamahAdjusted)
+        assertEquals(at(tuesday, "15:38:00") to true, longer.iqamahAt to longer.iqamahAdjusted)
+        val onTime = PrayerFlow.eventsFor(tuesday, times(), schedule(Prayer.ASR, IqamahRule.AfterAdhan(3), 10))
+        assertEquals(at(tuesday, "15:35:00") to false, onTime.single { it.prayer == Prayer.ASR }.let { it.iqamahAt to it.iqamahAdjusted })
+        // With the iqamah right at the end of the dua there is nothing to count down: the black screen follows it.
+        assertEquals(FlowPhase.SALAH to Prayer.ASR, phaseAt(onTime, tuesday, "15:35:00"))
+    }
+
+    @Test
+    fun theEventSaysWhyTheIqamahMoved() {
+        fun maghrib(schedule: MosqueSchedule, times: DayPrayerTimes = times()) =
+            PrayerFlow.eventsFor(tuesday, times, schedule).single { it.prayer == Prayer.MAGHRIB }
+        // As set: no reason.
+        assertEquals(null, maghrib(MosqueSchedule.DEFAULT).iqamahMove)
+        // Set before the end of the adhan screen and the dua: it waited for them.
+        assertEquals(IqamahMove.WAITED_FOR_ADHAN, maghrib(schedule(Prayer.MAGHRIB, IqamahRule.AfterAdhan(1), 8)).iqamahMove)
+        assertEquals(IqamahMove.WAITED_FOR_ADHAN, maghrib(schedule(Prayer.MAGHRIB, IqamahRule.FixedTime(LocalTime.of(18, 9)), 8)).iqamahMove)
+        // A stale fixed time falls back, even when the fallback (+1, or exactly +3) ends with the dua at 18:11.
+        listOf(1, 3, 10).forEach { fallback ->
+            val stale = maghrib(schedule(Prayer.MAGHRIB, IqamahRule.FixedTime(LocalTime.of(8, 0)), 8).copy(delays = mapOf(Prayer.MAGHRIB to fallback)))
+            assertEquals(IqamahMove.FELL_BACK, stale.iqamahMove, "fallback +$fallback")
+            assertTrue(stale.iqamahAdjusted)
+        }
+        // Held before the next adhan, even at the end of the dua (Isha at 18:12 leaves 18:11).
+        val capped = maghrib(schedule(Prayer.MAGHRIB, IqamahRule.AfterAdhan(10), 8), times(isha = "18:12"))
+        assertEquals(at(tuesday, "18:11:00") to IqamahMove.CAPPED, capped.iqamahAt to capped.iqamahMove)
+        assertEquals(capped.iqamahAt, capped.adhanDuaEndAt)
     }
 
     @Test
@@ -176,12 +206,17 @@ class PrayerFlowTest {
         fun maghrib(minutes: Int) = PrayerFlow.eventsFor(tuesday, times(), MosqueSchedule.DEFAULT, timing = FlowTiming(adhanScreenMinutes = minutes))
             .single { it.prayer == Prayer.MAGHRIB }
         assertEquals(at(tuesday, "18:09:00"), maghrib(1).adhanScreenEndAt)
+        assertEquals(at(tuesday, "18:10:00"), maghrib(1).adhanDuaEndAt)
+        assertEquals(at(tuesday, "18:13:00") to false, maghrib(1).iqamahAt to maghrib(1).iqamahAdjusted) // +5: on time
         assertEquals(at(tuesday, "18:13:00"), maghrib(5).adhanScreenEndAt)
-        assertEquals(at(tuesday, "18:13:00"), maghrib(5).iqamahAt) // +5: on time, not moved
-        assertFalse(maghrib(5).iqamahAdjusted)
-        // Out of range, as from a hand-edited setting: kept within 1..5.
+        assertEquals(at(tuesday, "18:14:00"), maghrib(5).adhanDuaEndAt)
+        // +5 after a 5-minute adhan screen waits for the dua, and the admin sees it moved.
+        assertEquals(at(tuesday, "18:14:00") to true, maghrib(5).iqamahAt to maghrib(5).iqamahAdjusted)
+        // Out of range, as from a hand-edited setting: kept within 1..5, the dua a minute after either.
         assertEquals(at(tuesday, "18:09:00"), maghrib(0).adhanScreenEndAt)
+        assertEquals(at(tuesday, "18:10:00"), maghrib(0).adhanDuaEndAt)
         assertEquals(at(tuesday, "18:13:00"), maghrib(30).adhanScreenEndAt)
+        assertEquals(at(tuesday, "18:14:00"), maghrib(30).adhanDuaEndAt)
         // Two minutes unless the mosque chose otherwise.
         assertEquals(2, FlowTiming().adhanScreenMinutes)
     }
@@ -345,5 +380,118 @@ class PrayerFlowTest {
         // +90 and 90 minutes at most; a prayer that cannot end by sunrise starts a minute after the adhan.
         assertEquals(at(tuesday, "04:47:00"), fajr.iqamahAt)
         assertEquals(at(tuesday, "06:17:00"), fajr.salahEndAt)
+        // No time is left for the adhan screen or the dua: both end at the iqamah, and the dua is not shown.
+        assertEquals(fajr.iqamahAt to fajr.iqamahAt, fajr.adhanScreenEndAt to fajr.adhanDuaEndAt)
+        assertEquals(FlowPhase.SALAH to Prayer.FAJR, phaseAt(events, tuesday, "04:47:00"))
+    }
+
+    @Test
+    fun theDuaFollowsEveryAdhanForAMinute() {
+        val schedule = MosqueSchedule.DEFAULT.withRamadan(Prayer.ISHA, PrayerOverride(salahMinutes = 75))
+        val days = listOf(
+            PrayerFlow.eventsFor(tuesday, times(), schedule),
+            PrayerFlow.eventsFor(tuesday, times(), schedule, islamicDay(tuesday, ramadanDay = 5)),
+            PrayerFlow.eventsFor(friday, times(), schedule),
+        )
+        for (day in days) for (event in day) {
+            assertEquals(event.adhanAt.plusMinutes(2), event.adhanScreenEndAt, "${event.prayer}")
+            assertEquals(event.adhanAt.plusMinutes(3), event.adhanDuaEndAt, "${event.prayer}")
+            val state = PrayerFlow.stateAt(event.adhanScreenEndAt, day)
+            assertEquals(FlowState(FlowPhase.ADHAN_DUA, event, event.adhanDuaEndAt), state, "${event.prayer}")
+        }
+        // Fajr's longer adhan changes nothing: its dua follows the adhan screen as the others' do.
+        assertEquals(FlowPhase.ADHAN_DUA to Prayer.FAJR, phaseAt(days[0], tuesday, "04:48:30"))
+        assertEquals(FlowPhase.IQAMAH_COUNTDOWN to Prayer.FAJR, phaseAt(days[0], tuesday, "04:49:00"))
+    }
+
+    @Test
+    fun aRestartInTheMiddleOfTheDuaLandsOnTheDua() {
+        // The phase is a function of the clock: 30 seconds into the dua, a fresh start shows it until its end.
+        val state = PrayerFlow.stateAt(at(tuesday, "18:10:30"), PrayerFlow.eventsFor(tuesday, times(), MosqueSchedule.DEFAULT))
+        assertEquals(FlowPhase.ADHAN_DUA, state.phase)
+        assertEquals(at(tuesday, "18:11:00"), state.phaseEndsAt)
+    }
+
+    @Test
+    fun onFridayTheKhutbaScreenFollowsTheDua() {
+        val events = PrayerFlow.eventsFor(friday, times(), MosqueSchedule.DEFAULT) // Jumu'a +15
+        val jumua = events.single { it.prayer == Prayer.JOMOAA }
+        assertEquals(at(friday, "12:20:00"), jumua.khutbaAt)
+        assertEquals(FlowPhase.ADHAN to Prayer.JOMOAA, phaseAt(events, friday, "12:18:59"))
+        assertEquals(FlowPhase.ADHAN_DUA to Prayer.JOMOAA, phaseAt(events, friday, "12:19:00"))
+        assertEquals(FlowPhase.KHUTBA to Prayer.JOMOAA, phaseAt(events, friday, "12:20:00"))
+        // A khutba as long as the wait, or longer, starts after the dua too, never over it.
+        val long = PrayerFlow.eventsFor(friday, times(), MosqueSchedule.DEFAULT.with(Prayer.JOMOAA, PrayerSettings(IqamahRule.AfterAdhan(15), 15, khutbaMinutes = 14)))
+        assertEquals(at(friday, "12:20:00"), long.single { it.prayer == Prayer.JOMOAA }.khutbaAt)
+        assertEquals(FlowPhase.ADHAN_DUA to Prayer.JOMOAA, phaseAt(long, friday, "12:19:30"))
+    }
+
+    @Test
+    fun onFridayWithoutTheDuaTheKhutbaScreenFollowsTheAdhan() {
+        fun jumua(settings: PrayerSettings, islamicDay: com.tunisianprayertimes.IslamicDay? = null) =
+            PrayerFlow.eventsFor(friday, times(), MosqueSchedule.DEFAULT.with(Prayer.JOMOAA, settings), islamicDay)
+        // Khutba 0: the quiet screen from the end of the adhan screen, no dua minute.
+        val whole = jumua(PrayerSettings(IqamahRule.AfterAdhan(15), 15, adhanDua = false))
+        val event = whole.single { it.prayer == Prayer.JOMOAA }
+        assertEquals(at(friday, "12:19:00"), event.adhanScreenEndAt)
+        assertEquals(event.adhanScreenEndAt, event.adhanDuaEndAt)
+        assertEquals(at(friday, "12:19:00"), event.khutbaAt)
+        assertEquals(at(friday, "12:32:00"), event.iqamahAt)
+        assertEquals(FlowPhase.ADHAN to Prayer.JOMOAA, phaseAt(whole, friday, "12:18:59"))
+        assertEquals(FlowPhase.KHUTBA to Prayer.JOMOAA, phaseAt(whole, friday, "12:19:00"))
+        assertEquals(FlowPhase.KHUTBA to Prayer.JOMOAA, phaseAt(whole, friday, "12:19:30"))
+        // On, as by default, the same settings show the dua a minute first.
+        val on = jumua(PrayerSettings(IqamahRule.AfterAdhan(15), 15))
+        assertEquals(FlowPhase.ADHAN_DUA to Prayer.JOMOAA, phaseAt(on, friday, "12:19:30"))
+        assertEquals(at(friday, "12:20:00"), on.single { it.prayer == Prayer.JOMOAA }.khutbaAt)
+        // With a khutba length: the countdown from the end of the adhan screen until the khutba.
+        val late = jumua(PrayerSettings(IqamahRule.FixedTime(LocalTime.of(13, 15)), 15, khutbaMinutes = 30, adhanDua = false))
+        assertEquals(FlowPhase.IQAMAH_COUNTDOWN to Prayer.JOMOAA, phaseAt(late, friday, "12:19:00"))
+        assertEquals(at(friday, "12:45:00"), PrayerFlow.stateAt(at(friday, "12:19:00"), late).phaseEndsAt)
+        assertEquals(FlowPhase.KHUTBA to Prayer.JOMOAA, phaseAt(late, friday, "12:45:00"))
+        val lateOn = jumua(PrayerSettings(IqamahRule.FixedTime(LocalTime.of(13, 15)), 15, khutbaMinutes = 30))
+        assertEquals(FlowPhase.ADHAN_DUA to Prayer.JOMOAA, phaseAt(lateOn, friday, "12:19:00"))
+        assertEquals(FlowPhase.IQAMAH_COUNTDOWN to Prayer.JOMOAA, phaseAt(lateOn, friday, "12:20:00"))
+        // A khutba as long as the wait starts at the end of the adhan screen, never over it.
+        val long = jumua(PrayerSettings(IqamahRule.AfterAdhan(15), 15, khutbaMinutes = 14, adhanDua = false))
+        assertEquals(at(friday, "12:19:00"), long.single { it.prayer == Prayer.JOMOAA }.khutbaAt)
+        assertEquals(FlowPhase.ADHAN to Prayer.JOMOAA, phaseAt(long, friday, "12:18:30"))
+        // The iqamah rule counts the adhan screen only: +1 waits until 12:19, not 12:20.
+        val soon = jumua(PrayerSettings(IqamahRule.AfterAdhan(1), 15, adhanDua = false)).single { it.prayer == Prayer.JOMOAA }
+        assertEquals(at(friday, "12:19:00") to IqamahMove.WAITED_FOR_ADHAN, soon.iqamahAt to soon.iqamahMove)
+        val soonOn = jumua(PrayerSettings(IqamahRule.AfterAdhan(1), 15)).single { it.prayer == Prayer.JOMOAA }
+        assertEquals(at(friday, "12:20:00") to IqamahMove.WAITED_FOR_ADHAN, soonOn.iqamahAt to soonOn.iqamahMove)
+        val two = jumua(PrayerSettings(IqamahRule.AfterAdhan(2), 15, adhanDua = false)).single { it.prayer == Prayer.JOMOAA }
+        assertEquals(at(friday, "12:19:00") to null, two.iqamahAt to two.iqamahMove)
+        // Ramadan keeps the choice; the other prayers, Friday's included, keep their dua.
+        val ramadan = jumua(PrayerSettings(IqamahRule.AfterAdhan(15), 15, adhanDua = false), islamicDay(friday, ramadanDay = 5))
+        assertEquals(at(friday, "12:19:00"), ramadan.single { it.prayer == Prayer.JOMOAA }.adhanDuaEndAt)
+        for (other in whole.filter { it.prayer != Prayer.JOMOAA }) {
+            assertEquals(other.adhanAt.plusMinutes(3), other.adhanDuaEndAt, "${other.prayer}")
+        }
+        val dhuhr = PrayerFlow.eventsFor(friday, times(), MosqueSchedule.DEFAULT.with(Prayer.JOMOAA,
+            PrayerSettings(IqamahRule.AfterAdhan(15), 15, held = false, adhanDua = false))).single { it.prayer == Prayer.DHUHR }
+        assertEquals(at(friday, "12:20:00"), dhuhr.adhanDuaEndAt)
+        assertTrue(MosqueSchedule.DEFAULT.showsAdhanDua(Prayer.JOMOAA))
+        assertFalse(MosqueSchedule.DEFAULT.with(Prayer.JOMOAA, PrayerSettings(IqamahRule.AfterAdhan(15), 15, adhanDua = false)).showsAdhanDua(Prayer.JOMOAA))
+        assertTrue(PrayerSettings(IqamahRule.AfterAdhan(15), 15, adhanDua = false).showsAdhanDua(Prayer.DHUHR))
+    }
+
+    @Test
+    fun theEidPrayerHasNoAdhanSoNoDua() {
+        val events = PrayerFlow.eventsFor(tuesday, times(), MosqueSchedule.DEFAULT, islamicDay(tuesday, eidFitr = true))
+        val eid = events.single { it.prayer == Prayer.AID_FITR }
+        assertEquals(eid.adhanAt to eid.adhanAt, eid.adhanScreenEndAt to eid.adhanDuaEndAt)
+        assertEquals(FlowPhase.IQAMAH_COUNTDOWN to Prayer.AID_FITR, phaseAt(events, tuesday, "06:12:00"))
+        assertEquals(FlowPhase.IQAMAH_COUNTDOWN to Prayer.AID_FITR, phaseAt(events, tuesday, "06:14:30"))
+    }
+
+    @Test
+    fun aHandBuiltEventWithoutADuaSkipsIt() {
+        // Built without adhanDuaEndAt (as some screens' previews do), the dua ends with the adhan screen.
+        val adhan = at(tuesday, "18:08:00")
+        val event = PrayerEvent(Prayer.MAGHRIB, adhan, adhan.plusMinutes(2), adhan.plusMinutes(5), adhan.plusMinutes(13), adhan.plusMinutes(23), false)
+        assertEquals(event.adhanScreenEndAt, event.adhanDuaEndAt)
+        assertEquals(FlowPhase.IQAMAH_COUNTDOWN, PrayerFlow.stateAt(at(tuesday, "18:10:00"), listOf(event)).phase)
     }
 }

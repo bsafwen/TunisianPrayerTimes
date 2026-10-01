@@ -1,7 +1,9 @@
 package com.tunisianprayertimes.tv.ui
 
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerFormulaSettings
 import com.tunisianprayertimes.mosque.DisplayOptions
+import com.tunisianprayertimes.mosque.IqamahMove
 import com.tunisianprayertimes.mosque.IqamahRule
 import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.mosque.MosqueSchedule
@@ -11,6 +13,7 @@ import com.tunisianprayertimes.mosque.MosqueSettingsFile.ContentList
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
 import com.tunisianprayertimes.mosque.PrayerEvent
 import com.tunisianprayertimes.mosque.PrayerSettings
+import com.tunisianprayertimes.tv.data.TestData
 import com.tunisianprayertimes.tv.ui.kiosk.HealthLevel
 import com.tunisianprayertimes.tv.ui.kiosk.movedIqamahRows
 import com.tunisianprayertimes.tv.ui.settings.everyText
@@ -87,6 +90,69 @@ class SettingsChangeLinesTest {
     }
 
     @Test
+    fun prayerTimeValuesReadBeforeAndAfter() {
+        val lines = lines("""{ "prayerTimes": { "fajrAngle": 16.5, "asrShadow": 2, "dhuhrMinutes": 5, "maghribMinutes": 3,
+            "elevation": false, "adjust": { "isha": "+2", "fajr": -1 } } }""")
+        val ltr = { text: String -> "${Char(0x2066)}$text${Char(0x2069)}" }
+        assertEquals(
+            listOf(
+                // The degree sign and the signs stay by their numbers, left to right.
+                "زاوية الفجر: ${ltr("18°")} ← ${ltr("16.5°")}",
+                "ظلّ العصر: مثل واحد ← مثلان",
+                "الظهر بعد الزوال: 7 د ← 5 د",
+                "المغرب بعد الغروب: 2 د ← 3 د",
+                "حساب ارتفاع المسجد: نعم ← لا",
+                "تعديل الفجر: 0 د ← ${ltr("−1")} د",
+                "تعديل العشاء: 0 د ← ${ltr("+2")} د",
+            ),
+            lines,
+        )
+        // Only what changes: the TV's own values are the "before".
+        val tv = MosqueProfile(formula = PrayerFormulaSettings(ishaAngle = 17.0).withAdjustment(Prayer.ISHA, 2))
+        assertEquals(
+            listOf("${TvStrings.ISHA_ANGLE}: ${TvStrings.degrees("17")} ← ${TvStrings.degrees("18.5")}", "تعديل العشاء: ${ltr("+2")} د ← 0 د"),
+            lines("""{ "prayerTimes": { "ishaAngle": 18.5, "adjust": { "isha": 0 } } }""", tv),
+        )
+    }
+
+    @Test
+    fun aReturnToTheOfficialTimesIsSaid() {
+        val tv = MosqueProfile(formula = PrayerFormulaSettings(fajrAngle = 16.0))
+        assertEquals(
+            listOf("${TvStrings.FAJR_ANGLE}: ${TvStrings.degrees("16")} ← ${TvStrings.degrees("18")}", TvStrings.OFFICIAL_TIMES_BACK),
+            lines("""{ "prayerTimes": null }""", tv),
+        )
+        // Custom values that stay custom are no return.
+        assertFalse(TvStrings.OFFICIAL_TIMES_BACK in lines("""{ "prayerTimes": { "fajrAngle": 17 } }""", tv))
+        // Already official: nothing to say of them.
+        assertEquals(
+            listOf("${TvStrings.WEATHER_ENABLED}: ${TvStrings.ON} ← ${TvStrings.OFF}"),
+            lines("""{ "prayerTimes": null, "display": { "weather": false } }""", MosqueProfile(display = DisplayOptions(weather = true))),
+        )
+    }
+
+    @Test
+    fun newValuesSayHowTodaysTimesMoveAndJudgeTheIqamahByThem() {
+        // Tunis on 2026-09-30: Fajr 04:47 with INM's 18°, 04:57 at 16°.
+        val date = LocalDate.of(2026, 9, 30)
+        val tv = MosqueProfile(delegationId = TestData.TUNIS)
+        fun day(profile: MosqueProfile) = TestData.prayerTimes.loadDayPrayerTimes(profile.delegationId!!, 2026, 9, 30, profile.formulaSettings)
+        val at = SettingsChangeLines.Today.of(date, day(tv), ::day)
+        val file = """{ "prayerTimes": { "fajrAngle": 16 } }"""
+        assertEquals(
+            listOf("${TvStrings.FAJR_ANGLE}: ${TvStrings.degrees("18")} ← ${TvStrings.degrees("16")}", "${TvStrings.todayTime(TvStrings.FAJR)}: 04:47 ← 04:57"),
+            lines(file, tv, at),
+        )
+        // Without a way to compute them, the values alone.
+        assertEquals(1, lines(file, tv, SettingsChangeLines.Today.of(date, day(tv))).size)
+        // Iqamah at 04:55: fine after today's 04:47, but before the 04:57 the file's values give.
+        val iqamah = """{ "prayers": { "fajr": { "iqamah": "04:55" } } }"""
+        assertFalse(lines(iqamah, tv, at).single().endsWith(")"))
+        val both = lines("""{ "prayerTimes": { "fajrAngle": 16 }, "prayers": { "fajr": { "iqamah": "04:55" } } }""", tv, at)
+        assertTrue(both.toString(), both.last().endsWith("(${TvStrings.notTodayAfterAdhan("04:57", TvStrings.iqamahAfterAdhan(usualMinutes(Prayer.FAJR)))})"))
+    }
+
+    @Test
     fun aFixedIqamahTodaysAdhanWouldNotUseIsNamed() {
         val at = SettingsChangeLines.Today(today, mapOf(Prayer.ISHA to LocalTime.of(19, 30), Prayer.AID_ADHA to LocalTime.of(6, 0)))
         // "08:00" meant as 20:00: the screen would count the usual minutes instead.
@@ -104,25 +170,61 @@ class SettingsChangeLinesTest {
     }
 
     @Test
-    fun anIqamahBeforeTheEndOfTheAdhanScreenSaysItWaits() {
+    fun anIqamahBeforeTheEndOfTheAdhanScreenAndTheDuaSaysItWaits() {
         val at = SettingsChangeLines.Today(today, mapOf(Prayer.MAGHRIB to LocalTime.of(18, 8), Prayer.AID_FITR to LocalTime.of(6, 0)))
-        val waits = "(${TvStrings.waitsForAdhanScreen("18:08", "18:10")})"
-        // The 2-minute adhan screen by default: "+1" or a minute after the adhan wait until 18:10.
-        val plusOne = lines("""{ "prayers": { "maghrib": { "iqamah": "+1" } } }""", at = at).single()
-        assertTrue(plusOne, plusOne.endsWith(waits))
-        val fixed = lines("""{ "prayers": { "maghrib": { "iqamah": "18:09" } } }""", at = at).single()
-        assertTrue(fixed, fixed.endsWith(waits))
-        // The file's own adhan screen counts: 4 minutes wait until 18:12, 1 minute does not wait at all.
+        val waits = "(${TvStrings.waitsForAdhanScreen("18:08", "18:11")})"
+        // The 2-minute adhan screen by default, then the minute of the dua: "+1", "+2" or a time before 18:11 wait for 18:11.
+        listOf("+1", "+2", "18:09", "18:10").forEach { iqamah ->
+            val line = lines("""{ "prayers": { "maghrib": { "iqamah": "$iqamah" } } }""", at = at).single()
+            assertTrue(line, line.endsWith(waits))
+        }
+        assertFalse(lines("""{ "prayers": { "maghrib": { "iqamah": "+3" } } }""", at = at).single().endsWith(")"))
+        assertFalse(lines("""{ "prayers": { "maghrib": { "iqamah": "18:11" } } }""", at = at).single().endsWith(")"))
+        // The file's own adhan screen counts: 4 minutes and the dua wait until 18:13; 1 minute until 18:10.
         val longer = lines("""{ "display": { "adhanScreenMinutes": 4 }, "prayers": { "maghrib": { "iqamah": "+3" } } }""", at = at)
-        assertTrue(longer.toString(), longer.any { it.endsWith("(${TvStrings.waitsForAdhanScreen("18:08", "18:12")})") })
+        assertTrue(longer.toString(), longer.any { it.endsWith("(${TvStrings.waitsForAdhanScreen("18:08", "18:13")})") })
         val shorter = MosqueProfile(display = DisplayOptions(adhanScreenMinutes = 1))
-        assertFalse(lines("""{ "prayers": { "maghrib": { "iqamah": "+1" } } }""", shorter, at).single().endsWith(")"))
-        // A stale fixed time falls back to the mosque's minutes, but not before the end of the adhan screen.
+        val plusOne = lines("""{ "prayers": { "maghrib": { "iqamah": "+1" } } }""", shorter, at).single()
+        assertTrue(plusOne, plusOne.endsWith("(${TvStrings.waitsForAdhanScreen("18:08", "18:10")})"))
+        assertFalse(lines("""{ "prayers": { "maghrib": { "iqamah": "+2" } } }""", shorter, at).single().endsWith(")"))
+        // A stale fixed time falls back to the mosque's minutes, but not before the end of the dua.
         val own = MosqueSchedule.DEFAULT.with(Prayer.MAGHRIB, PrayerSettings(IqamahRule.AfterAdhan(1), 10)).copy(delays = mapOf(Prayer.MAGHRIB to 1))
         val stale = lines("""{ "prayers": { "maghrib": { "iqamah": "08:00" } } }""", at = at, schedule = own).single()
-        assertTrue(stale, stale.endsWith("(${TvStrings.notTodayAfterAdhan("18:08", TvStrings.iqamahAfterAdhan(2))})"))
+        assertTrue(stale, stale.endsWith("(${TvStrings.notTodayAfterAdhan("18:08", TvStrings.iqamahAfterAdhan(3))})"))
         // The Eid prayer has no adhan screen.
         assertFalse(lines("""{ "prayers": { "eidFitr": { "iqamah": "+1" } } }""", at = at).single().endsWith(")"))
+    }
+
+    @Test
+    fun theFridayDuaReadsAsYesOrNoAndWithoutItTheIqamahWaitsForTheAdhanScreenOnly() {
+        assertEquals(listOf("الدعاء بعد أذان الجمعة: نعم ← لا"), lines("""{ "prayers": { "jumua": { "dua": false } } }"""))
+        val off = MosqueSchedule.DEFAULT.with(Prayer.JOMOAA, PrayerSettings(IqamahRule.AfterAdhan(15), 15, adhanDua = false))
+        assertEquals(listOf("الدعاء بعد أذان الجمعة: لا ← نعم"), lines("""{ "prayers": { "jumua": { "الدعاء": true } } }""", schedule = off))
+        // Jumu'a at "+2" after a 12:17 adhan: with the dua it waits until 12:20, without it 12:19 stands.
+        val at = SettingsChangeLines.Today(today, mapOf(Prayer.JOMOAA to LocalTime.of(12, 17)))
+        val withDua = lines("""{ "prayers": { "jumua": { "iqamah": "+2" } } }""", at = at).single()
+        assertTrue(withDua, withDua.endsWith("(${TvStrings.waitsForAdhanScreen("12:17", "12:20")})"))
+        val plain = lines("""{ "prayers": { "jumua": { "iqamah": "+2", "dua": false } } }""", at = at)
+        assertFalse(plain.toString(), plain.any { it.endsWith(")") })
+        val early = lines("""{ "prayers": { "jumua": { "iqamah": "+1" } } }""", at = at, schedule = off).single()
+        assertTrue(early, early.endsWith("(${TvStrings.waitsForAdhanScreen("12:17", "12:19", withDua = false)})"))
+        assertFalse(early, "الدعاء" in early)
+        // The kiosk page says the same of today's Jumu'a.
+        val friday = today.plusDays(1)
+        val times = com.tunisianprayertimes.DayPrayerTimes(
+            day = friday.dayOfMonth,
+            fajr = com.tunisianprayertimes.PrayerTime(Prayer.FAJR, 4, 47), shurukHour = 6, shurukMinute = 13,
+            dhuhr = com.tunisianprayertimes.PrayerTime(Prayer.DHUHR, 12, 17), asr = com.tunisianprayertimes.PrayerTime(Prayer.ASR, 15, 31),
+            maghrib = com.tunisianprayertimes.PrayerTime(Prayer.MAGHRIB, 18, 6), isha = com.tunisianprayertimes.PrayerTime(Prayer.ISHA, 19, 30),
+        )
+        fun row(adhanDua: Boolean) = movedIqamahRows(com.tunisianprayertimes.mosque.PrayerFlow.eventsFor(friday, times,
+            MosqueSchedule.DEFAULT.with(Prayer.JOMOAA, PrayerSettings(IqamahRule.AfterAdhan(1), 15, adhanDua = adhanDua))), friday).single()
+        val jumua = MosqueSettingsFile.arabicName(Prayer.JOMOAA)
+        assertEquals(TvStrings.iqamahWaitsForAdhan(jumua, "12:20"), row(adhanDua = true).text)
+        assertEquals(TvStrings.IQAMAH_WAITS_FIX, row(adhanDua = true).fix)
+        assertEquals(TvStrings.iqamahWaitsForAdhan(jumua, "12:19", withDua = false), row(adhanDua = false).text)
+        assertEquals(TvStrings.IQAMAH_WAITS_FIX_NO_DUA, row(adhanDua = false).fix)
+        assertFalse("الدعاء" in row(adhanDua = false).text)
     }
 
     @Test
@@ -153,6 +255,20 @@ class SettingsChangeLinesTest {
             lines.last(),
         )
         assertTrue(lines.none { TvStrings.ANNOUNCEMENTS_EXPIRED in it && "جديد" in it })
+    }
+
+    @Test
+    fun aSignedNumberInATextsNameKeepsItsSignOnTheLeft() {
+        // «−3°», not «3°−»: the preview names a text as the wall shows it.
+        val ltr = { text: String -> "${Char(0x2066)}$text${Char(0x2069)}" }
+        val file = """{ "announcements": [ { "text": "الحرارة الليلة −3° فاحذروا", "until": "2025-10-31" } ] }"""
+        val lines = lines(file, at = SettingsChangeLines.Today(today))
+        val added = lines.single { TvStrings.TEXTS_ADDED in it }
+        val expired = lines.single { TvStrings.ANNOUNCEMENTS_EXPIRED in it }
+        for (line in listOf(added, expired)) assertTrue(line, "الليلة ${ltr("−3°")} فاحذروا" in line)
+        val removed = SettingsChangeLines.of(ParseResult.Success(MosqueSchedule.DEFAULT, emptyList(),
+            contentChanges = listOf(ContentChange(ContentList.TICKER, "أ", "ب", removed = listOf("«خصم -20% للأيتام»")))))
+        assertTrue(removed.toString(), removed.any { TvStrings.TEXTS_REMOVED in it && "«خصم ${ltr("-20%")} للأيتام»" in it })
     }
 
     @Test
@@ -209,14 +325,44 @@ class SettingsChangeLinesTest {
         assertEquals(HealthLevel.WARNING, rows.single().level)
         assertEquals(TvStrings.iqamahMoved(MosqueSettingsFile.arabicName(Prayer.ISHA), "19:40"), rows.single().text)
 
-        // An iqamah set before the end of the adhan screen waits for it, and the page says why.
+        // An iqamah set before the end of the adhan screen and the dua waits for them, and the page says why.
         val waited = movedIqamahRows(
-            listOf(PrayerEvent(Prayer.MAGHRIB, today.atTime(18, 8), today.atTime(18, 10), today.atTime(18, 10),
-                today.atTime(18, 18), today.atTime(18, 28), iqamahAdjusted = true)),
+            listOf(PrayerEvent(Prayer.MAGHRIB, today.atTime(18, 8), today.atTime(18, 10), today.atTime(18, 11),
+                today.atTime(18, 19), today.atTime(18, 29), iqamahAdjusted = true, adhanDuaEndAt = today.atTime(18, 11),
+                iqamahMove = IqamahMove.WAITED_FOR_ADHAN)),
             today,
         ).single()
-        assertEquals(TvStrings.iqamahWaitsForAdhan(MosqueSettingsFile.arabicName(Prayer.MAGHRIB), "18:10"), waited.text)
+        assertEquals(TvStrings.iqamahWaitsForAdhan(MosqueSettingsFile.arabicName(Prayer.MAGHRIB), "18:11"), waited.text)
         assertEquals(TvStrings.IQAMAH_WAITS_FIX, waited.fix)
+        // The same from the flow itself: "+1" after the default 2-minute adhan screen waits for the dua's end.
+        val times = com.tunisianprayertimes.DayPrayerTimes(
+            day = today.dayOfMonth,
+            fajr = com.tunisianprayertimes.PrayerTime(Prayer.FAJR, 4, 46), shurukHour = 6, shurukMinute = 12,
+            dhuhr = com.tunisianprayertimes.PrayerTime(Prayer.DHUHR, 12, 17), asr = com.tunisianprayertimes.PrayerTime(Prayer.ASR, 15, 32),
+            maghrib = com.tunisianprayertimes.PrayerTime(Prayer.MAGHRIB, 18, 8), isha = com.tunisianprayertimes.PrayerTime(Prayer.ISHA, 19, 32),
+        )
+        val flow = com.tunisianprayertimes.mosque.PrayerFlow.eventsFor(
+            today, times, MosqueSchedule.DEFAULT.with(Prayer.MAGHRIB, PrayerSettings(IqamahRule.AfterAdhan(1), 8)),
+        )
+        assertEquals(TvStrings.iqamahWaitsForAdhan(MosqueSettingsFile.arabicName(Prayer.MAGHRIB), "18:11"), movedIqamahRows(flow, today).single().text)
+        // Ending with the dua is not enough: a stale fixed time whose fallback (+1, or exactly +3) lands on the
+        // dua's end, and an iqamah held before the next adhan, say the time does not suit today, as the USB preview does.
+        val maghribMoved = TvStrings.iqamahMoved(MosqueSettingsFile.arabicName(Prayer.MAGHRIB), "18:11")
+        listOf(1, 3).forEach { fallback ->
+            val stale = MosqueSchedule.DEFAULT.with(Prayer.MAGHRIB, PrayerSettings(IqamahRule.FixedTime(LocalTime.of(8, 0)), 8))
+                .copy(delays = mapOf(Prayer.MAGHRIB to fallback))
+            val staleFlow = com.tunisianprayertimes.mosque.PrayerFlow.eventsFor(today, times, stale)
+            assertEquals(today.atTime(18, 11), staleFlow.single { it.prayer == Prayer.MAGHRIB }.adhanDuaEndAt)
+            val row = movedIqamahRows(staleFlow, today).single()
+            assertEquals("fallback +$fallback", maghribMoved, row.text)
+            assertEquals(TvStrings.IQAMAH_MOVED_FIX, row.fix)
+        }
+        val earlyIsha = times.copy(isha = com.tunisianprayertimes.PrayerTime(Prayer.ISHA, 18, 12))
+        val capped = com.tunisianprayertimes.mosque.PrayerFlow.eventsFor(
+            today, earlyIsha, MosqueSchedule.DEFAULT.with(Prayer.MAGHRIB, PrayerSettings(IqamahRule.AfterAdhan(10), 8)),
+        )
+        assertEquals(IqamahMove.CAPPED, capped.single { it.prayer == Prayer.MAGHRIB }.iqamahMove)
+        assertEquals(maghribMoved, movedIqamahRows(capped, today).single { it.text.contains(MosqueSettingsFile.arabicName(Prayer.MAGHRIB)) }.text)
 
         // The Eid prayer counts from sunrise: no adhan in its words.
         val eid = movedIqamahRows(listOf(event(Prayer.AID_FITR, "06:20", "06:50", moved = true)), today).single()

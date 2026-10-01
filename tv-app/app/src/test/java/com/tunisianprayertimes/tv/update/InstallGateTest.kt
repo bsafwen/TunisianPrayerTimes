@@ -13,7 +13,7 @@ class InstallGateTest {
 
     @Test
     fun noInstallOnAPrayerScreen() {
-        for (phase in listOf(FlowPhase.ADHAN, FlowPhase.IQAMAH_COUNTDOWN, FlowPhase.KHUTBA, FlowPhase.SALAH)) {
+        for (phase in listOf(FlowPhase.ADHAN, FlowPhase.ADHAN_DUA, FlowPhase.IQAMAH_COUNTDOWN, FlowPhase.KHUTBA, FlowPhase.SALAH)) {
             assertEquals(phase.name, TvStrings.UPDATE_WAIT_PRAYER, InstallGate.refusal(phase, now, null))
         }
     }

@@ -27,7 +27,7 @@ enum class NoticePlace { BOTTOM, TOP, WALL_TOP, HELD }
 
 /**
  * Notices (a USB key, the clock, the Back hint) never land on the prayer's texts: over the khutba and
- * the salah nothing shows; over the adhan replies, the iqamah countdown and the adhkar after the prayer
+ * the salah nothing shows; over the adhan replies, the dua after them, the iqamah countdown and the adhkar after the prayer
  * (their count and source sit at the bottom) a notice waits for the wall, and only the copy's notice
  * and its outcome ([copying]) show, in the wall's top bar, so the admin does not pull the key and hears
  * at once how the copy ended. On the admin pages and the onboarding they go in the top bar, clear of
@@ -38,7 +38,7 @@ object NoticePlacement {
     fun of(phase: FlowPhase, adhkarOnWall: Boolean, onDisplay: Boolean, inSettings: Boolean, copying: Boolean): NoticePlace = when {
         inSettings || !onDisplay -> NoticePlace.TOP
         phase == FlowPhase.KHUTBA || phase == FlowPhase.SALAH -> NoticePlace.HELD
-        phase == FlowPhase.ADHAN || phase == FlowPhase.IQAMAH_COUNTDOWN || adhkarOnWall ->
+        phase == FlowPhase.ADHAN || phase == FlowPhase.ADHAN_DUA || phase == FlowPhase.IQAMAH_COUNTDOWN || adhkarOnWall ->
             if (copying) NoticePlace.WALL_TOP else NoticePlace.HELD
         else -> NoticePlace.BOTTOM
     }

@@ -25,6 +25,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -340,12 +341,14 @@ import java.time.*
                     startOffset = value
                     replaceInterval(timeDialogIndex, selected.copy(start = selected.start.copy(
                         offsetMinutes = integer(value) ?: 9999)))
-                }, label = { Text("تعديل وقت البداية بالدقائق (− قبل، + بعد)") }, singleLine = true, modifier = Modifier.fillMaxWidth())
+                }, label = { Text("تعديل وقت البداية بالدقائق (− قبل، + بعد)") }, singleLine = true,
+                    textStyle = signedOffsetTextStyle(), modifier = Modifier.fillMaxWidth())
                 if (selected.end.kind != DhikrTimeKind.FIXED) OutlinedTextField(endOffset, { value ->
                     endOffset = value
                     replaceInterval(timeDialogIndex, selected.copy(end = selected.end.copy(
                         offsetMinutes = integer(value) ?: 9999)))
-                }, label = { Text("تعديل وقت النهاية بالدقائق (− قبل، + بعد)") }, singleLine = true, modifier = Modifier.fillMaxWidth())
+                }, label = { Text("تعديل وقت النهاية بالدقائق (− قبل، + بعد)") }, singleLine = true,
+                    textStyle = signedOffsetTextStyle(), modifier = Modifier.fillMaxWidth())
                 val selectedWindow = window?.let { next ->
                     DhikrReminderScheduler.resolveWindows(activity, edited, next.date)
                         .firstOrNull { it.intervalIndex == timeDialogIndex }
@@ -515,6 +518,9 @@ private fun StepButton(icon: Int, description: String, onClick: () -> Unit) {
         hint?.let { Text(it, color = p.muted, fontSize = 11.sp) }
     }
 }
+/** A signed minutes field («-15», «+10») reads as in LTR, sign on the left, but stays right-aligned in the RTL form. */
+@Composable private fun signedOffsetTextStyle() =
+    LocalTextStyle.current.copy(textDirection = TextDirection.Ltr, textAlign = TextAlign.Right)
 @Composable private fun TimeEndpoint(activity: AppCompatActivity, label: String, value: DhikrTime, modifier: Modifier,
     onKind: (DhikrTimeKind) -> Unit, onTime: (Int) -> Unit) {
     val p = LocalAdhkarPalette.current

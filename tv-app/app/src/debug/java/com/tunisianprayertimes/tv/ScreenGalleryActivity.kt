@@ -34,6 +34,7 @@ import com.tunisianprayertimes.tv.ui.clock.ClockPageMode
 import com.tunisianprayertimes.tv.ui.clock.ClockView
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.common.VirtualCanvas
+import com.tunisianprayertimes.tv.ui.display.AdhanDuaScreen
 import com.tunisianprayertimes.tv.ui.display.AdhanScreen
 import com.tunisianprayertimes.tv.ui.display.AfterSalahAzkarScreen
 import com.tunisianprayertimes.tv.ui.display.AnnouncementsSlideshow
@@ -59,7 +60,7 @@ import java.time.ZoneId
  * Debug builds only: one screen of the display at a chosen moment, with the mockups' day, so the
  * design can be checked on an emulator without waiting for a prayer. For example:
  * `adb shell am start -n com.tunisianprayertimes.tv.dev/com.tunisianprayertimes.tv.ScreenGalleryActivity --es screen adhan`
- * Extras: screen (main, adhan, iqamah, salah, khutba, adhkar, announcement, image, night, eid),
+ * Extras: screen (main, adhan, adhan-dua, iqamah, salah, khutba, adhkar, announcement, image, night, eid),
  * at (HH:mm:ss), date (yyyy-MM-dd), day (friday, ramadan), theme (horizon, midad), index (a text's
  * number; for adhan, 1 is Fajr), images (true: the mosque's own background images).
  */
@@ -116,6 +117,7 @@ class ScreenGalleryActivity : ComponentActivity() {
                 val event = event(prayer, date.atTime(15, 32), date.atTime(15, 42))
                 AdhanScreen(event, now, mosque, sky)
             }
+            "adhan-dua" -> AdhanDuaScreen(now, mosque, sky)
             "iqamah" -> IqamahCountdownScreen(event(Prayer.ASR, date.atTime(15, 32), date.atTime(15, 42)), now, mosque, sky)
             "eidprayer" -> IqamahCountdownScreen(event(Prayer.AID_FITR, date.atTime(6, 25), date.atTime(7, 25)), now, mosque, sky)
             "salah" -> PrayerBlackScreen()
@@ -190,7 +192,7 @@ class ScreenGalleryActivity : ComponentActivity() {
     )
 
     private fun event(prayer: Prayer, adhan: LocalDateTime, iqamah: LocalDateTime) =
-        PrayerEvent(prayer, adhan, adhan.plusMinutes(2), iqamah, iqamah.plusMinutes(10), iqamah.plusMinutes(20), false)
+        PrayerEvent(prayer, adhan, adhan.plusMinutes(2), iqamah, iqamah.plusMinutes(10), iqamah.plusMinutes(20), false, adhanDuaEndAt = adhan.plusMinutes(3))
 
     /** A picture the size of a mosque's poster or background, drawn here so the gallery needs no file. */
     private fun sampleImage(name: String, width: Int, height: Int): Uri {

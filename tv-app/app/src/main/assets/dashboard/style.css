@@ -228,6 +228,69 @@ details.dhikr[open] summary { font-family: var(--font); font-size: 14px; color: 
 .lines li { margin: 6px 0; }
 .lines.errors li { color: var(--bad); }
 
+/* ------------------------------------------------------------ prayer-time formula («حساب المواقيت») */
+.view a { color: var(--blue); }
+a.go { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+.intro { display: flex; flex-direction: column; gap: 6px; }
+.intro > * { margin: 0; }
+.caution { padding: 10px 14px; border-radius: 14px; background: var(--warning-soft); color: var(--warning); font-size: 14px; }
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 10px 0; }
+.tile { background: var(--page); border-radius: 12px; padding: 8px 10px; min-width: 0; }
+.tile-name { font-size: 12px; color: var(--muted); }
+.tile-value { font-size: 16px; font-weight: 600; }
+.day-label { margin: 0; font-size: 16px; font-weight: 600; color: var(--ink); }
+.day-text { font-size: 16px; font-weight: 600; color: var(--blue); }
+input[type="range"] { min-height: 44px; margin: 4px 0; padding: 0; border: 0; background: transparent; accent-color: var(--blue); }
+.pills { margin: 4px 0 0; }
+.pills button { border-radius: 999px; padding: 0 14px; }
+.pills button[aria-pressed="true"] { background: var(--blue); color: var(--on-blue); }
+/* The drawings scale to the card; their own layout stays left to right (hours, east to west). */
+svg.chart { display: block; width: 100%; height: auto; direction: ltr; font-family: var(--font); }
+svg.chart.shadow { max-width: 420px; margin: 8px 0; }
+/* ".card." so the phone rule `.card { padding }` at the end does not undo it. */
+.card.chart-card { padding-inline: 10px; }
+.chart-card > :not(svg) { margin-inline: 8px; }
+details.more summary { min-height: 44px; padding: 10px 0; font-size: 14px; font-weight: 600; color: var(--blue); cursor: pointer; }
+.fact { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; color: var(--muted); margin: 6px 0; }
+.fact strong { font-weight: 600; color: var(--ink); white-space: nowrap; }
+.card.rules { padding-inline: 10px; }
+.rules > h2, .rules > .hint { margin-inline: 8px; }
+button.rule { display: block; width: 100%; text-align: right; border: 0; border-radius: 14px; padding: 10px; margin: 0; background: transparent; color: var(--ink); font-size: 14px; font-weight: 400; }
+button.rule[aria-pressed="true"] { background: var(--blue-soft); }
+.rule-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.rule-head strong { font-size: 16px; font-weight: 600; }
+.rule-end { display: flex; align-items: baseline; gap: 8px; }
+.rule-time { font-size: 18px; font-weight: 600; }
+.rule-text { display: block; color: var(--muted); margin-top: 2px; }
+.rule-note { display: block; font-size: 12px; color: var(--warning); margin-top: 2px; }
+.badge.diff { background: var(--warning-soft); color: var(--warning); font-weight: 600; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: var(--muted); }
+.legend > span { display: inline-flex; align-items: center; gap: 4px; }
+.swatch { display: inline-block; width: 14px; height: 6px; border-radius: 3px; }
+.swatch.noon { background: var(--turquoise); }
+.swatch.asr { background: var(--ink); }
+.locked { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border-radius: 14px; background: var(--page); color: var(--muted); font-size: 14px; }
+.locked svg { flex: none; margin-top: 2px; }
+.custom { display: flex; flex-direction: column; gap: 14px; }
+.values { display: grid; grid-template-columns: repeat(auto-fill, minmax(152px, 1fr)); gap: 4px 12px; }
+.value { min-width: 0; }
+.value label, .adjust label { margin-top: 0; }
+.custom .stepper { gap: 4px; }
+.custom .stepper input { width: 3.5em; padding: 8px 4px; -moz-appearance: textfield; appearance: textfield; }
+.custom .stepper input::-webkit-inner-spin-button, .custom .stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.custom .stepper button { flex: none; }
+input[aria-invalid="true"] { border-color: var(--bad); }
+fieldset.choices { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+fieldset.choices legend { font-size: 13px; color: var(--muted); padding: 0; margin-bottom: 6px; }
+label.choice { display: flex; align-items: center; gap: 8px; min-height: 56px; margin: 0; padding: 6px 10px; border: 1px solid var(--field-line); border-radius: 12px; background: var(--field); color: var(--ink); cursor: pointer; }
+label.choice.on { border: 2px solid var(--blue); background: var(--blue-soft); color: var(--blue); }
+label.choice input { flex: none; width: 20px; height: 20px; min-height: 0; margin: 0; accent-color: var(--blue); }
+label.choice strong { display: block; font-size: 15px; font-weight: 600; }
+label.choice .small { display: block; }
+.adjust { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; padding: 4px 0; }
+.adjust label { font-size: 15px; color: var(--ink); margin: 0; }
+button[aria-disabled="true"] { opacity: .45; }
+
 @media (max-width: 400px) {
   /* The adhkar's two buttons can take two rows of the action bar here (129 px). */
   html { scroll-padding-bottom: calc(136px + env(safe-area-inset-bottom, 0px)); }

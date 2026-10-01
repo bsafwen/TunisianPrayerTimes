@@ -62,9 +62,10 @@ private val NOON_TWIN = mapOf(Prayer.JOMOAA to Prayer.DHUHR, Prayer.DHUHR to Pra
 /**
  * The iqamah table shared by onboarding and settings: the daily prayers and Jumu'a, then the two
  * Eids, whose minutes count from sunrise. Under Jumu'a and under the Eids, whether the mosque holds
- * them at all (a neighbourhood masjid holds neither), and under a Jumu'a it holds, its khutba's
- * length. The first row's − takes the focus when the page opens. A plain scrolling column, not a
- * lazy list: a row scrolled away and back must not take the focus again.
+ * them at all (a neighbourhood masjid holds neither), and under a Jumu'a it holds, whether the dua
+ * after the adhan comes before the khutba (on by default) and the khutba's length. The first row's
+ * − takes the focus when the page opens. A plain scrolling column, not a lazy list: a row scrolled
+ * away and back must not take the focus again.
  *
  * In the settings, [today] holds today's prayers as the wall runs them: each row then gets a key that
  * switches its rule between minutes and a fixed time, and the iqamah the wall uses today beside the
@@ -131,7 +132,16 @@ fun IqamahTable(
                     detail = if (prayer == Prayer.JOMOAA) TvStrings.HOLDS_JUMUA_HINT else TvStrings.HOLDS_EID_HINT,
                 )
             }
-            if (prayer == Prayer.JOMOAA && config.held) KhutbaRow(config, withToday = today != null) { onChanged(prayer, it) }
+            if (prayer == Prayer.JOMOAA && config.held) {
+                // The order of the Friday screens: the adhan, its dua (unless off), then the khutba.
+                ToggleRow(
+                    label = TvStrings.JUMUA_ADHAN_DUA,
+                    checked = config.adhanDua,
+                    onToggle = { onChanged(prayer, config.copy(adhanDua = !config.adhanDua)) },
+                    detail = TvStrings.JUMUA_ADHAN_DUA_HINT,
+                )
+                KhutbaRow(config, withToday = today != null) { onChanged(prayer, it) }
+            }
         }
         if (today.orEmpty().values.any { it.iqamahAdjusted }) {
             Text(
@@ -176,7 +186,7 @@ private fun KhutbaRow(config: IqamahConfig, withToday: Boolean, onConfigChanged:
 
 /**
  * How many minutes the adhan screen lasts (1 to 5), under the iqamah's column: an iqamah set closer to
- * the adhan waits for the end of the adhan screen, which the row's hint says.
+ * the adhan waits for the end of the adhan screen and the minute of the dua after it, which the row's hint says.
  */
 @Composable
 private fun AdhanScreenRow(minutes: Int, withToday: Boolean, onChanged: (Int) -> Unit) {

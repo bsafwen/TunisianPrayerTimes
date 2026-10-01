@@ -4,6 +4,7 @@ import com.tunisianprayertimes.DateSource
 import com.tunisianprayertimes.EventDate
 import com.tunisianprayertimes.ManualIslamicDates
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerFormulaSettings
 import com.tunisianprayertimes.YearDates
 import com.tunisianprayertimes.mosque.AdhkarContent
 import com.tunisianprayertimes.mosque.CustomAdhkarList
@@ -298,6 +299,25 @@ class UsbSettingsInboxTest {
         assertEquals(listOf(MosqueSettingsFile.ProfileField.ADHAN_SCREEN), preview.profileChanges.map { it.field })
         assertTrue(inbox.apply(offer.found))
         assertEquals(3, prefs.adhanScreenMinutes)
+    }
+
+    @Test
+    fun aKeyWithOnlyPrayerTimeValuesIsAppliedCopiedAndUndone() {
+        putOnKey("""{ "حساب المواقيت": { "زاوية الفجر": "١٦٫٥", "ظل العصر": 2, "تعديل": { "العشاء": "+2" } } }""")
+        val offer = inbox.scan(listOf(key)) as UsbScan.Offer
+        val preview = inbox.preview(offer.found) as ParseResult.Success
+        assertEquals(3, preview.formulaChanges.size)
+        assertTrue(preview.profileChanges.isEmpty())
+        assertTrue(inbox.apply(offer.found))
+        val custom = PrayerFormulaSettings(fajrAngle = 16.5, asrShadow = 2).withAdjustment(Prayer.ISHA, 2)
+        assertEquals(custom, prefs.formula)
+        // The TV's own file carries them to another TV, whole.
+        val file = inbox.currentFile()
+        assertTrue(file, file.contains(""""prayerTimes": { "fajrAngle": 16.5, "ishaAngle": 18, "asrShadow": 2, "dhuhrMinutes": 7, "maghribMinutes": 2, "elevation": true, "adjust": { "fajr": 0, "dhuhr": 0, "asr": 0, "maghrib": 0, "isha": 2 } }"""))
+        // Undoing the import returns to INM's values, and the file then says so for the next TV.
+        assertTrue(inbox.apply(UsbSettingsFound(File(root, "previous-settings.json"), snapshot!!, "undo"), fromKey = false))
+        assertEquals(PrayerFormulaSettings.OFFICIAL, prefs.formula)
+        assertTrue(inbox.currentFile().contains(""""prayerTimes": null"""))
     }
 
     @Test

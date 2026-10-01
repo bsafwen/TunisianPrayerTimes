@@ -20,6 +20,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TransformOrigin
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineBreak
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.TextUnit
@@ -46,8 +48,9 @@ import java.time.LocalDateTime
 import kotlin.math.roundToInt
 
 /*
- * The screens of the prayer itself: the adhan in its mihrab, the countdown to the iqamah, the black
- * screen of the prayer and the quiet one of the khutba. The prayer flow picks one from the clock.
+ * The screens of the prayer itself: the adhan in its mihrab, the dua after it, the countdown to the
+ * iqamah, the black screen of the prayer and the quiet one of the khutba. The prayer flow picks one
+ * from the clock.
  */
 
 /** The mosque's name on the sky of the adhan: a cooler ivory than the text on the ground. */
@@ -89,6 +92,49 @@ fun AdhanScreen(event: PrayerEvent, now: LocalDateTime, mosqueName: String, sky:
 }
 
 /**
+ * Once the adhan screen ends, the dua after the adhan alone in the same mihrab, for a minute
+ * (FlowTiming.ADHAN_DUA_MINUTES): the catalog's entry ([MosqueAdhkar.adhanDua], Bukhari 614), its
+ * text exactly as reviewed and its source under it. [sky] is null on the «مداد» theme.
+ */
+@Composable
+fun AdhanDuaScreen(now: LocalDateTime, mosqueName: String, sky: SkyColors?) {
+    Box(Modifier.fillMaxSize().skyBackground(sky, 115.dp, 165.dp)) {
+        MosqueClockRow(mosqueName, now, Modifier.padding(top = 27.dp, start = 48.dp, end = 48.dp), nameColor = NameOnSky)
+        Box(
+            Modifier
+                .align(Alignment.TopCenter)
+                .padding(top = 75.dp, bottom = 14.dp)
+                .width(500.dp)
+                .fillMaxHeight()
+                .mihrab()
+                // As on the adhan screen, inside the niche's walls and under its keystone.
+                .padding(top = 78.dp, start = 28.dp, end = 28.dp, bottom = 12.dp),
+            contentAlignment = Alignment.Center,
+        ) {
+            MosqueAdhkar.adhanDua()?.let { AdhanDua(it.text, it.reference) }
+        }
+    }
+}
+
+/**
+ * The dua in Amiri, one sentence set as a centred paragraph that wraps between words, and its source
+ * in the quiet line the replies screen used to have. Set at its size and made smaller as a whole if
+ * the niche is too small for it, so no word is ever cut.
+ */
+@Composable
+private fun AdhanDua(text: String, reference: String) {
+    ShrinkToFit(Modifier, wrap = true) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            // Wider apart than the replies: a paragraph's vowel marks meet the line above sooner at this size.
+            val line = midadStyle(30.sp, family = Amiri, lineHeight = 1.9f)
+                .copy(textAlign = TextAlign.Center, lineBreak = LineBreak.Paragraph)
+            Text(text, style = line)
+            Text(reference, style = midadStyle(15.sp, color = Midad.Muted), modifier = Modifier.padding(top = 12.dp))
+        }
+    }
+}
+
+/**
  * The listener's lines in Amiri, on the niche's axis, two by two where a phrase is said twice in a row
  * ([adhanRows]), with no source line: the owner's choice, since no one hadith covers every line (the
  * sources are in docs/adhkar-sources.md). Set at its size and made smaller as a whole if the niche is
@@ -124,12 +170,14 @@ internal fun adhanRows(replies: List<AdhanReply>): List<List<String>> {
 
 /**
  * [content] measured at its own size, then drawn scaled down (never up) to fit the space it is given,
- * centred at the top: a religious text is shown whole, smaller if need be, never cut.
+ * centred at the top: a religious text is shown whole, smaller if need be, never cut. With [wrap], it
+ * is measured at the width it is given, so a paragraph wraps there and only its height can shrink it.
  */
 @Composable
-private fun ShrinkToFit(modifier: Modifier, content: @Composable () -> Unit) {
+private fun ShrinkToFit(modifier: Modifier, wrap: Boolean = false, content: @Composable () -> Unit) {
     Layout(content, modifier) { measurables, constraints ->
-        val placeable = measurables.single().measure(Constraints())
+        val measureWidth = if (wrap && constraints.hasBoundedWidth) constraints.maxWidth else Constraints.Infinity
+        val placeable = measurables.single().measure(Constraints(maxWidth = measureWidth))
         val scale = listOf(
             1f,
             if (constraints.hasBoundedWidth) constraints.maxWidth / placeable.width.coerceAtLeast(1).toFloat() else 1f,

@@ -175,7 +175,7 @@ sealed interface UsbScan {
  * the TV's settings at the moment they are shown and applied, never against an older snapshot.
  * [readDates] and [writeDates] are the admin's Ramadan and Eid dates by Hijri year, checked together
  * with the TV's [yearDates] (its announced dates); [readProfile]
- * and [writeProfile] the mosque's name, place and theme, checked against [catalog].
+ * and [writeProfile] the mosque's name, place, theme and prayer-time values, checked against [catalog].
  * Before a file is applied, the TV's settings are kept with [saveSnapshot] so the import can be undone;
  * [readSnapshot] reads them back, so the undo is taken as the TV's own former state.
  * [readHandled] and [writeHandled] keep the files already answered ([HandledSignatures]).
@@ -289,7 +289,8 @@ class UsbSettingsInbox(
             ))
             writeSchedule(result.schedule)
             if (result.dateChanges.isNotEmpty()) writeDates(result.islamicDates)
-            if (result.profileChanges.isNotEmpty()) writeProfile(result.profile)
+            // The prayer-time values travel with the profile (MosqueProfile.formula).
+            if (result.profileChanges.isNotEmpty() || result.formulaChanges.isNotEmpty()) writeProfile(result.profile)
             if (result.contentChanges.isNotEmpty()) {
                 writeContent(result.content)
                 writeAnnouncements(result.announcements)

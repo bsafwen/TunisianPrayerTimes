@@ -53,19 +53,24 @@ data class InmLocation(
  * Sun: Meeus, "Astronomical Formulae for Calculators" (1900 epoch), apparent longitude and
  * obliquity. Dhuhr/Asr use the sun at 0h UT; Fajr/Sunrise/Maghrib/Isha re-evaluate it at the
  * event's apparent solar time. Time zone UTC+1 without DST; minutes are rounded half up.
+ * INM's values (twilight 18°, Dhuhr 7 minutes after noon, Maghrib 2 after sunset, a shadow of once
+ * the stick, the elevation's dip) are [PrayerFormulaSettings.OFFICIAL]; a mosque may change them.
  */
 object InmPrayerFormula {
     private const val DEG = PI / 180
     private const val TIME_ZONE_HOURS = 1.0
-    private const val DHUHR_OFFSET_MIN = 7.0
-    private const val MAGHRIB_OFFSET_MIN = 2.0
-    private const val TWILIGHT_ANGLE = 18.0
     private const val HORIZON_ANGLE = 0.83
     private const val EARTH_RADIUS_M = 6378137.0
     private const val ITERATIONS = 5
 
-    fun dayPrayerTimes(location: InmLocation, year: Int, month: Int, day: Int): DayPrayerTimes {
-        val (fajr, sunrise, dhuhr, asr, maghrib, isha) = minutes(location, year, month, day)
+    fun dayPrayerTimes(
+        location: InmLocation,
+        year: Int,
+        month: Int,
+        day: Int,
+        settings: PrayerFormulaSettings = PrayerFormulaSettings.OFFICIAL,
+    ): DayPrayerTimes {
+        val (fajr, sunrise, dhuhr, asr, maghrib, isha) = minutes(location, year, month, day, settings)
             .map { floor(it + 0.5).toInt() }
         fun time(prayer: Prayer, minutes: Int) = PrayerTime(prayer, minutes / 60, minutes % 60)
         return DayPrayerTimes(
@@ -80,24 +85,35 @@ object InmPrayerFormula {
         )
     }
 
-    /** Unrounded minutes after local midnight: Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha. */
-    fun minutes(location: InmLocation, year: Int, month: Int, day: Int): List<Double> {
+    /**
+     * Unrounded minutes after local midnight: Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha, computed with
+     * [settings] (INM's by default), each prayer's adjustment included (whole minutes, so adding it
+     * before rounding gives the same minute as after). The sunrise is never adjusted.
+     */
+    fun minutes(
+        location: InmLocation,
+        year: Int,
+        month: Int,
+        day: Int,
+        settings: PrayerFormulaSettings = PrayerFormulaSettings.OFFICIAL,
+    ): List<Double> {
         val jd0 = julianDay(year, month, day)
         val lat = location.latitude
         val lng = location.longitude
         val (decl0, eot0) = sun(jd0)
         val noon = 12 - eot0 / 60 - lng / 15 + TIME_ZONE_HOURS
-        val asrAltitude = atan(1 / (1 + tan(abs(lat - decl0) * DEG))) / DEG
+        val asrAltitude = atan(1 / (settings.asrShadow + tan(abs(lat - decl0) * DEG))) / DEG
         val asr = noon + hourAngle(asrAltitude, lat, decl0)
-        val dip = dipFromElevation(location.elevationM)
-        val sunriseDip = location.sunriseElevationOverrides[year]?.let(::dipFromElevation) ?: dip
+        val dip = if (settings.elevation) dipFromElevation(location.elevationM) else 0.0
+        val sunriseDip = if (settings.elevation) location.sunriseElevationOverrides[year]?.let(::dipFromElevation) ?: dip else 0.0
+        fun adjust(prayer: Prayer) = settings.adjustment(prayer).toDouble()
         return listOf(
-            horizonEvent(jd0, lat, lng, -(TWILIGHT_ANGLE + dip), -1) * 60,
+            horizonEvent(jd0, lat, lng, -(settings.fajrAngle + dip), -1) * 60 + adjust(Prayer.FAJR),
             horizonEvent(jd0, lat, lng, -(HORIZON_ANGLE + sunriseDip), -1) * 60,
-            noon * 60 + DHUHR_OFFSET_MIN,
-            asr * 60,
-            horizonEvent(jd0, lat, lng, -(HORIZON_ANGLE + dip), 1) * 60 + MAGHRIB_OFFSET_MIN,
-            horizonEvent(jd0, lat, lng, -(TWILIGHT_ANGLE + dip), 1) * 60,
+            noon * 60 + settings.dhuhrMinutes + adjust(Prayer.DHUHR),
+            asr * 60 + adjust(Prayer.ASR),
+            horizonEvent(jd0, lat, lng, -(HORIZON_ANGLE + dip), 1) * 60 + settings.maghribMinutes + adjust(Prayer.MAGHRIB),
+            horizonEvent(jd0, lat, lng, -(settings.ishaAngle + dip), 1) * 60 + adjust(Prayer.ISHA),
         )
     }
 

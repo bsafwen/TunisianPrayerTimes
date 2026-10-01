@@ -3,6 +3,7 @@ package com.tunisianprayertimes.mosque
 import com.tunisianprayertimes.IslamicDays
 import com.tunisianprayertimes.ManualIslamicDates
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerFormulaSettings
 import com.tunisianprayertimes.RamadanOverrideChecker
 import com.tunisianprayertimes.TunisianHijriCalendar
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ErrorCode
@@ -344,6 +345,39 @@ class MosqueSettingsFileTest {
     }
 
     @Test
+    fun aMosqueCanLeaveOutTheFridayDuaAfterTheAdhan() {
+        // Shown by default: the imam says it too.
+        assertTrue(MosqueSchedule.DEFAULT.settings(Prayer.JOMOAA).adhanDua)
+        val result = success("""{ "prayers": { "jumua": { "iqamah": "13:15", "dua": false } } }""")
+        assertEquals(false, result.schedule.settings(Prayer.JOMOAA).adhanDua)
+        assertEquals(MosqueSettingsFile.Change(Prayer.JOMOAA, MosqueSettingsFile.Field.DUA, "true", "false"), result.changes.last())
+        // Written only when off (and in a complete snapshot), and read back to the same state.
+        val written = MosqueSettingsFile.write(result.schedule)
+        assertTrue(written.contains("\"jumua\": { \"iqamah\": \"13:15\", \"duration\": 15, \"dua\": false }"), written)
+        assertTrue("\"dua\"" !in MosqueSettingsFile.write(MosqueSchedule.DEFAULT))
+        assertTrue("\"khutba\": 0, \"dua\": true }" in MosqueSettingsFile.write(MosqueSchedule.DEFAULT, complete = true))
+        assertTrue(!assertIs<ParseResult.Success>(MosqueSettingsFile.parse(written, result.schedule)).hasChanges)
+        val snapshot = MosqueSettingsFile.write(MosqueSchedule.DEFAULT, complete = true)
+        val back = assertIs<ParseResult.Success>(MosqueSettingsFile.parse(snapshot, result.schedule))
+        assertEquals(true, back.schedule.settings(Prayer.JOMOAA).adhanDua)
+        assertEquals(MosqueSettingsFile.Change(Prayer.JOMOAA, MosqueSettingsFile.Field.DUA, "false", "true"), back.changes.single { it.field == MosqueSettingsFile.Field.DUA })
+        // Its other names, with Arabic yes and no; null leaves it as it is.
+        listOf("adhanDua", "الدعاء", "دعاء الأذان").forEach { key ->
+            assertEquals(false, success("""{ "prayers": { "jumua": { "$key": "لا" } } }""").schedule.settings(Prayer.JOMOAA).adhanDua, key)
+        }
+        assertTrue(!success("""{ "prayers": { "jumua": { "dua": null, "duration": 20 } } }""").changes.any { it.field == MosqueSettingsFile.Field.DUA })
+        // Only for Jumu'a, only in "prayers", only true or false, once.
+        assertEquals(listOf(ErrorCode.UNKNOWN_FIELD to "prayers.dhuhr.dua"), errors("""{ "prayers": { "dhuhr": { "dua": false } } }"""))
+        assertEquals(listOf(ErrorCode.UNKNOWN_FIELD to "prayers.eidFitr.dua"), errors("""{ "prayers": { "eidFitr": { "dua": false } } }"""))
+        assertEquals(listOf(ErrorCode.UNKNOWN_FIELD to "ramadan.jumua.dua"), errors("""{ "ramadan": { "jumua": { "dua": false } } }"""))
+        assertEquals(listOf(ErrorCode.INVALID_OPTION to "prayers.jumua.dua"), errors("""{ "prayers": { "jumua": { "dua": "sometimes" } } }"""))
+        assertEquals(listOf(ErrorCode.DUPLICATE_FIELD to "prayers.jumua.الدعاء"), errors("""{ "prayers": { "jumua": { "dua": false, "الدعاء": true } } }"""))
+        // An unknown field of Jumu'a names it among the accepted ones.
+        val unknown = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse("""{ "prayers": { "jumua": { "duaa": false } } }""", current))
+        assertTrue("\"dua\"" in unknown.errors.single().message, unknown.errors.single().message)
+    }
+
+    @Test
     fun everySectionSurvivesAWriteAndRead() {
         val schedule = MosqueSchedule.DEFAULT
             .with(Prayer.AID_ADHA, PrayerSettings(IqamahRule.FixedTime(LocalTime.of(7, 10)), 25))
@@ -567,6 +601,29 @@ class MosqueSettingsFileTest {
     }
 
     @Test
+    fun aRefusedSignedValueIsQuotedLeftToRight() {
+        fun message(result: ParseResult) = assertIs<ParseResult.Failure>(result).errors.single().message
+        fun prayers(text: String) = message(MosqueSettingsFile.parse(text, current))
+        // «-1», not «1-»: the file's value is an isolate wherever the message quotes it.
+        assertTrue("(في الملف: $LRI-1$PDI)" in message(profileParse("""{ "display": { "adhanScreenMinutes": -1 } }""")))
+        assertTrue("(في الملف: $LRI-5$PDI)" in message(profileParse("""{ "display": { "slideSeconds": -5 } }""")))
+        assertTrue("«$LRI-1$PDI»" in message(profileParse("""{ "mosque": { "delegation": -1 } }""")))
+        assertTrue("(في الملف: $LRI-3$PDI)" in message(formulaParse("""{ "prayerTimes": { "dhuhrMinutes": -3 } }""")))
+        assertTrue("(في الملف: $LRI-18$PDI)" in message(formulaParse("""{ "prayerTimes": { "fajrAngle": -18 } }""")))
+        assertTrue("«$LRI-5$PDI»" in prayers("""{ "prayers": { "isha": { "iqamah": "-5" } } }"""))
+        assertTrue("«$LRI-5$PDI»" in prayers("""{ "prayers": { "fajr": { "duration": -5 } } }"""))
+        assertTrue("«$LRI-10$PDI»" in prayers("""{ "prayers": { "jumua": { "khutba": -10 } } }"""))
+        // So is a Hijri year's key, the file's one numeric key.
+        val year = prayers("""{ "islamicDates": { "-1448": { "ramadanStart": "2027-02-08" } } }""")
+        assertTrue("«$LRI-1448$PDI»" in year, year)
+        val twice = prayers("""{ "islamicDates": { "1448": { "eidAdha": "2027-05-17" }, "+1448": { "eidAdha": "2027-05-17" } } }""")
+        assertTrue("«${LRI}1448$PDI» و«$LRI+1448$PDI»" in twice, twice)
+        // A direction mark in the file cannot close the isolate before the value ends.
+        val marked = prayers("""{ "prayers": { "isha": { "iqamah": "-5⁩ x" } } }""")
+        assertTrue("«$LRI-5 x$PDI»" in marked, marked)
+    }
+
+    @Test
     fun anEidIqamahCountsFromSunriseInItsMessages() {
         fun messages(text: String) = assertIs<ParseResult.Failure>(MosqueSettingsFile.parse(text, current)).errors.map { it.message }
         val far = messages("""{ "prayers": { "eidAdha": { "iqamah": "+120" } } }""").single()
@@ -618,6 +675,200 @@ class MosqueSettingsFileTest {
         for (text in listOf("{\u0000 \u0000\"\u0000p\u0000", "{ \"mosque\": { \"name\": \"مسجد \uFFFD\uFFFD\" } }")) {
             assertEquals(listOf(ErrorCode.INVALID_ENCODING to ""), errors(text), text)
         }
+    }
+
+    private val custom = PrayerFormulaSettings(fajrAngle = 17.5, maghribMinutes = 3, adjustments = mapOf(Prayer.ISHA to 2, Prayer.FAJR to -1))
+
+    private fun formulaParse(text: String, formula: PrayerFormulaSettings? = null) =
+        MosqueSettingsFile.parse(text, current, emptyMap(), MosqueProfile(formula = formula))
+
+    private fun formulaErrors(text: String): List<Pair<ErrorCode, String>> =
+        assertIs<ParseResult.Failure>(formulaParse(text)).errors.map { it.code to it.path }
+
+    private fun formulaChange(field: MosqueSettingsFile.FormulaField, before: String, after: String, prayer: Prayer? = null) =
+        MosqueSettingsFile.FormulaChange(field, prayer, before, after)
+
+    @Test
+    fun aFileSetsThePrayerTimeValues() {
+        val result = assertIs<ParseResult.Success>(formulaParse(
+            """{ "prayerTimes": { "fajrAngle": 17.5, "ishaAngle": 18, "asrShadow": 1, "dhuhrMinutes": 7,
+                                  "maghribMinutes": 3, "elevation": true, "adjust": { "isha": 2, "fajr": -1 } } }"""))
+        assertEquals(custom, result.profile.formula)
+        assertEquals(custom, result.formula)
+        assertEquals(
+            listOf(
+                formulaChange(MosqueSettingsFile.FormulaField.FAJR_ANGLE, "18", "17.5"),
+                formulaChange(MosqueSettingsFile.FormulaField.MAGHRIB_MINUTES, "2", "3"),
+                formulaChange(MosqueSettingsFile.FormulaField.ADJUSTMENT, "0", "-1", Prayer.FAJR),
+                formulaChange(MosqueSettingsFile.FormulaField.ADJUSTMENT, "0", "+2", Prayer.ISHA),
+            ),
+            result.formulaChanges,
+        )
+        assertTrue(result.hasChanges)
+        assertTrue(result.changes.isEmpty() && result.profileChanges.isEmpty())
+    }
+
+    @Test
+    fun theSectionReadsArabicKeysSignedStringsAndArabicIndicDigits() {
+        val result = assertIs<ParseResult.Success>(formulaParse(
+            """{ "حساب المواقيت": { "زاوية الفجر": "١٦٫٥", "زاوية العشاء": "17,5", "ظلّ العصر": "٢", "الظهر بعد الزوال": "٥",
+                 "المغرب بعد الغروب": 3, "ارتفاع المكان": "لا", "تعديل": { "العشاء": "+2", "الصبح": "-١", "المغرب": "−3", "الظهر": 0 } } }"""))
+        assertEquals(
+            PrayerFormulaSettings(16.5, 17.5, 2, 5, 3, false, mapOf(Prayer.ISHA to 2, Prayer.FAJR to -1, Prayer.MAGHRIB to -3)),
+            result.formula,
+        )
+        for (section in listOf("prayer_times", "formula", "PrayerTimes")) {
+            assertEquals(2, assertIs<ParseResult.Success>(formulaParse("""{ "$section": { "asr_shadow": 2 } }""")).formula.asrShadow, section)
+        }
+        // The TV and the dashboard name it «حساب ارتفاع المسجد»: an admin copying that name is understood.
+        for (key in listOf("حساب ارتفاع المسجد", "ارتفاع المسجد")) {
+            assertEquals(false, assertIs<ParseResult.Success>(formulaParse("""{ "prayerTimes": { "$key": false } }""")).formula.elevation, key)
+        }
+    }
+
+    @Test
+    fun formulaMistakesAreRefusedWithTheAcceptedValues() {
+        assertEquals(
+            listOf(
+                ErrorCode.INVALID_FORMULA to "prayerTimes.fajrAngle",
+                ErrorCode.INVALID_FORMULA to "prayerTimes.ishaAngle",
+                ErrorCode.INVALID_FORMULA to "prayerTimes.asrShadow",
+                ErrorCode.INVALID_FORMULA to "prayerTimes.dhuhrMinutes",
+                ErrorCode.INVALID_FORMULA to "prayerTimes.maghribMinutes",
+                ErrorCode.INVALID_FORMULA to "prayerTimes.elevation",
+                ErrorCode.UNKNOWN_FIELD to "prayerTimes.fajrAngel",
+            ),
+            formulaErrors(
+                """{ "prayerTimes": { "fajrAngle": 17.3, "ishaAngle": 21, "asrShadow": 3, "dhuhrMinutes": 16,
+                                      "maghribMinutes": -1, "elevation": "maybe", "fajrAngel": 16 } }"""),
+        )
+        for (bad in listOf("14.5", "\"high\"", "true", "{}")) {
+            assertEquals(listOf(ErrorCode.INVALID_FORMULA to "prayerTimes.ishaAngle"), formulaErrors("""{ "prayerTimes": { "ishaAngle": $bad } }"""), bad)
+        }
+        assertEquals(listOf(ErrorCode.INVALID_FORMULA to "prayerTimes.maghribMinutes"), formulaErrors("""{ "prayerTimes": { "maghribMinutes": 11 } }"""))
+        assertEquals(
+            listOf(
+                ErrorCode.INVALID_FORMULA to "prayerTimes.adjust.jumua",
+                ErrorCode.INVALID_FORMULA to "prayerTimes.adjust.eid",
+                ErrorCode.INVALID_FORMULA to "prayerTimes.adjust.الشروق",
+                ErrorCode.UNKNOWN_PRAYER to "prayerTimes.adjust.fajer",
+                ErrorCode.INVALID_FORMULA to "prayerTimes.adjust.isha",
+                ErrorCode.INVALID_FORMULA to "prayerTimes.adjust.asr",
+                ErrorCode.DUPLICATE_PRAYER to "prayerTimes.adjust.الفجر",
+            ),
+            formulaErrors(
+                """{ "prayerTimes": { "adjust": { "jumua": 2, "eid": 2, "الشروق": 1, "fajer": 1, "isha": 16, "asr": "2.5",
+                                                  "fajr": 1, "الفجر": 2 } } }"""),
+        )
+        assertEquals(listOf(ErrorCode.INVALID_FORMULA to "prayerTimes.adjust"), formulaErrors("""{ "prayerTimes": { "adjust": "+2" } }"""))
+        assertEquals(listOf(ErrorCode.DUPLICATE_FIELD to "prayerTimes.زاوية الفجر"),
+            formulaErrors("""{ "prayerTimes": { "fajrAngle": 16, "زاوية الفجر": 17 } }"""))
+        assertEquals(listOf(ErrorCode.NOT_AN_OBJECT to "prayerTimes"), formulaErrors("""{ "prayerTimes": 18 }"""))
+        val message = assertIs<ParseResult.Failure>(formulaParse("""{ "prayerTimes": { "fajrAngle": 17.3 } }""")).errors.single().message
+        assertTrue("15" in message && "20" in message && "0.5" in message && "17.3" in message, message)
+        val shuruk = assertIs<ParseResult.Failure>(formulaParse("""{ "prayerTimes": { "adjust": { "sunrise": 1 } } }""")).errors.single().message
+        assertTrue("الشروق" in shuruk, shuruk)
+        // Below the lower bound, as a number or a signed string; the bound itself is accepted.
+        for (bad in listOf("-16", "\"-16\"")) {
+            assertEquals(listOf(ErrorCode.INVALID_FORMULA to "prayerTimes.adjust.fajr"), formulaErrors("""{ "prayerTimes": { "adjust": { "fajr": $bad } } }"""), bad)
+        }
+        assertEquals(-15, assertIs<ParseResult.Success>(formulaParse("""{ "prayerTimes": { "adjust": { "fajr": "-15" } } }""")).formula.adjustment(Prayer.FAJR))
+        // The file's signed value kept left to right, as the bounds are: not «16-».
+        val below = assertIs<ParseResult.Failure>(formulaParse("""{ "prayerTimes": { "adjust": { "isha": "-16" } } }""")).errors.single().message
+        assertTrue("(في الملف: $LRI-16$PDI)" in below, below)
+        // The accepted values in the sentence, then only the file's value in parentheses.
+        val minutes = assertIs<ParseResult.Failure>(formulaParse("""{ "prayerTimes": { "dhuhrMinutes": 20 } }""")).errors.single().message
+        assertTrue(minutes.endsWith("بين 0 و15، والرسمي 7 (في الملف: ${LRI}20$PDI)"), minutes)
+        for (text in listOf("""{ "prayerTimes": { "asrShadow": 3 } }""", """{ "prayerTimes": { "elevation": 3 } }""")) {
+            val refused = assertIs<ParseResult.Failure>(formulaParse(text)).errors.single().message
+            assertTrue(") (" !in refused && refused.endsWith("(في الملف: ${LRI}3$PDI)"), refused)
+        }
+    }
+
+    @Test
+    fun absentFormulaFieldsStayAndNullReturnsToOfficial() {
+        val tv = custom.copy(asrShadow = 2)
+        val partial = assertIs<ParseResult.Success>(formulaParse("""{ "prayerTimes": { "maghribMinutes": 4, "adjust": { "dhuhr": 1 } } }""", tv))
+        assertEquals(tv.copy(maghribMinutes = 4).withAdjustment(Prayer.DHUHR, 1), partial.formula)
+        assertEquals(
+            listOf(
+                formulaChange(MosqueSettingsFile.FormulaField.MAGHRIB_MINUTES, "3", "4"),
+                formulaChange(MosqueSettingsFile.FormulaField.ADJUSTMENT, "0", "+1", Prayer.DHUHR),
+            ),
+            partial.formulaChanges,
+        )
+        val nullFields = assertIs<ParseResult.Success>(formulaParse("""{ "prayerTimes": { "fajrAngle": null, "adjust": { "isha": null } } }""", tv))
+        assertEquals(tv.copy(fajrAngle = 18.0, adjustments = mapOf(Prayer.FAJR to -1)), nullFields.formula)
+        val noAdjustments = assertIs<ParseResult.Success>(formulaParse("""{ "prayerTimes": { "adjust": null } }""", tv))
+        assertEquals(tv.copy(adjustments = emptyMap()), noAdjustments.formula)
+        // The whole section null: INM's values again, stored as "not set".
+        val official = assertIs<ParseResult.Success>(formulaParse("""{ "prayerTimes": null }""", tv))
+        assertEquals(null, official.profile.formula)
+        assertTrue(official.formula.isOfficial)
+        assertEquals(5, official.formulaChanges.size)
+        // Every value set back by hand is the same as null.
+        val byHand = assertIs<ParseResult.Success>(formulaParse(
+            """{ "prayerTimes": { "fajrAngle": 18, "maghribMinutes": 2, "adjust": { "fajr": 0, "isha": "0" } } }""", custom))
+        assertEquals(MosqueProfile(), byHand.profile)
+        // A TV already official reading null changes nothing.
+        assertTrue(!assertIs<ParseResult.Success>(formulaParse("""{ "prayerTimes": null }""")).hasChanges)
+    }
+
+    @Test
+    fun aFileWithOnlyThePrayerTimeValuesIsAFile() {
+        assertEquals(2, success("""{ "prayerTimes": { "asrShadow": 2 } }""").formula.asrShadow)
+        assertTrue(success("""{ "prayerTimes": null }""").formula.isOfficial)
+        assertEquals(listOf(ErrorCode.NO_PRAYERS to "prayers"), errors("""{ "prayerTimes": {} }"""))
+        // A note, or an empty "adjust", is a section that changes nothing.
+        for (text in listOf("""{ "prayerTimes": { "note": "x" } }""", """{ "prayerTimes": { "adjust": {} } }""")) {
+            val result = success(text)
+            assertTrue(result.formula.isOfficial && !result.hasChanges, text)
+        }
+    }
+
+    @Test
+    fun officialValuesAlwaysReadAsNotSet() {
+        // Without the section too: a TV handing an explicit OFFICIAL over gets the same profile as an official one.
+        val result = assertIs<ParseResult.Success>(formulaParse("""{ "display": { "weather": false } }""", PrayerFormulaSettings.OFFICIAL))
+        assertEquals(null, result.profile.formula)
+        assertTrue(result.formulaChanges.isEmpty())
+        assertEquals(custom, assertIs<ParseResult.Success>(formulaParse("""{ "display": { "weather": false } }""", custom)).profile.formula)
+    }
+
+    @Test
+    fun customValuesSurviveAWriteAndRead() {
+        val text = MosqueSettingsFile.write(MosqueSchedule.DEFAULT, profile = MosqueProfile(formula = custom))
+        assertTrue(
+            "  \"prayerTimes\": { \"fajrAngle\": 17.5, \"ishaAngle\": 18, \"asrShadow\": 1, \"dhuhrMinutes\": 7, \"maghribMinutes\": 3, " +
+                "\"elevation\": true, \"adjust\": { \"fajr\": -1, \"dhuhr\": 0, \"asr\": 0, \"maghrib\": 0, \"isha\": 2 } },\n" in text,
+            text,
+        )
+        val other = PrayerFormulaSettings(fajrAngle = 16.0, asrShadow = 2, elevation = false, adjustments = mapOf(Prayer.ASR to 5))
+        // Written whole: another TV's own values are all replaced.
+        val read = assertIs<ParseResult.Success>(formulaParse(text, other))
+        assertEquals(custom, read.formula)
+        assertTrue(!assertIs<ParseResult.Success>(formulaParse(text, custom)).hasChanges)
+        val hanafi = MosqueSettingsFile.write(MosqueSchedule.DEFAULT, profile = MosqueProfile(formula = other))
+        assertEquals(other, assertIs<ParseResult.Success>(formulaParse(hanafi)).formula)
+        assertTrue("\"ishaAngle\": 18, \"asrShadow\": 2" in hanafi && "\"elevation\": false" in hanafi && "\"asr\": 5" in hanafi, hanafi)
+        // A complete file carries the custom values over another TV's the same way.
+        val complete = MosqueSettingsFile.write(MosqueSchedule.DEFAULT, profile = MosqueProfile(formula = custom), complete = true)
+        assertTrue("\"prayerTimes\": null" !in complete, complete)
+        assertEquals(custom, assertIs<ParseResult.Success>(formulaParse(complete, other)).formula)
+    }
+
+    @Test
+    fun officialValuesAreWrittenOnlyInACompleteFile() {
+        for (profile in listOf(MosqueProfile(), MosqueProfile(formula = PrayerFormulaSettings.OFFICIAL))) {
+            assertTrue("prayerTimes" !in MosqueSettingsFile.write(MosqueSchedule.DEFAULT, profile = profile))
+            assertTrue("  \"prayerTimes\": null,\n" in MosqueSettingsFile.write(MosqueSchedule.DEFAULT, profile = profile, complete = true))
+        }
+        // The snapshot of an official TV undoes an import of custom values.
+        val snapshot = MosqueSettingsFile.write(MosqueSchedule.DEFAULT, profile = MosqueProfile(), complete = true)
+        val imported = assertIs<ParseResult.Success>(formulaParse("""{ "prayerTimes": { "fajrAngle": 16 } }"""))
+        val undo = assertIs<ParseResult.Success>(MosqueSettingsFile.parse(snapshot, imported.schedule, emptyMap(), imported.profile))
+        assertEquals(MosqueProfile(), undo.profile)
+        assertEquals(listOf(formulaChange(MosqueSettingsFile.FormulaField.FAJR_ANGLE, "16", "18")), undo.formulaChanges)
     }
 
     private companion object {

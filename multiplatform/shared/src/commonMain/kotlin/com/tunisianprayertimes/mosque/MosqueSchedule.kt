@@ -17,8 +17,20 @@ sealed interface IqamahRule {
  * false for a Jumu'a or an Eid prayer the mosque does not hold ([MosqueSchedule.HOLDABLE]).
  * [khutbaMinutes] is how long the Jumu'a khutba lasts before its iqamah: the khutba screen covers
  * only that, after a countdown; 0, as by default, covers the whole wait after the adhan.
+ * [adhanDua] is whether the Jumu'a adhan is followed by the minute of the dua after it before the khutba
+ * screen: on by default (the owner's choice of 2026-10-01: the imam says it too), off the khutba screen
+ * follows the adhan screen. Only Jumu'a reads it ([MosqueSchedule.showsAdhanDua]); the other prayers always have the dua.
  */
-data class PrayerSettings(val iqamah: IqamahRule, val salahMinutes: Int, val held: Boolean = true, val khutbaMinutes: Int = 0)
+data class PrayerSettings(
+    val iqamah: IqamahRule,
+    val salahMinutes: Int,
+    val held: Boolean = true,
+    val khutbaMinutes: Int = 0,
+    val adhanDua: Boolean = true,
+)
+
+/** Whether [prayer] with these settings has the dua after the adhan: every prayer but a Jumu'a whose mosque turned it off. */
+fun PrayerSettings.showsAdhanDua(prayer: Prayer): Boolean = prayer != Prayer.JOMOAA || adhanDua
 
 /** Ramadan changes to one prayer (for example a longer Isha with tarawih); unset fields keep the usual setting. */
 data class PrayerOverride(val iqamah: IqamahRule? = null, val salahMinutes: Int? = null) {
@@ -52,6 +64,9 @@ data class MosqueSchedule(
     /** Whether the mosque holds [prayer]: the daily prayers always, Jumu'a and the Eid prayers unless turned off. */
     fun holds(prayer: Prayer): Boolean = prayer !in HOLDABLE || settings(prayer).held
 
+    /** Whether the dua after the adhan follows [prayer]'s adhan screen: always, but on Friday as the mosque chose. */
+    fun showsAdhanDua(prayer: Prayer): Boolean = settings(prayer).showsAdhanDua(prayer)
+
     /**
      * The minutes after the adhan a fixed iqamah falls back to on a day it cannot apply: the mosque's
      * own delay (its usual minutes when a Ramadan fixed time is stale), else the built-in default.
@@ -76,7 +91,9 @@ data class MosqueSchedule(
 
         /**
          * At least a minute after the adhan. A delay shorter than the adhan screen (FlowTiming.adhanScreenMinutes)
-         * is accepted but waits for its end (PrayerFlow), so the screen never goes black during the adhan.
+         * and the minute of the dua after it (FlowTiming.ADHAN_DUA_MINUTES) is accepted but waits for their
+         * end (PrayerFlow), so the screen never goes black during the adhan or its dua. On a Friday without the
+         * dua ([PrayerSettings.adhanDua]) only the adhan screen counts.
          */
         val IQAMAH_MINUTES = 1..90
 

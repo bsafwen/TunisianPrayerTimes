@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerFormulaSettings
 import com.tunisianprayertimes.mosque.AdhkarContent
 import com.tunisianprayertimes.mosque.DisplayOptions
 import com.tunisianprayertimes.mosque.FlowTiming
@@ -85,6 +86,47 @@ class PrefsManager(private val prefs: SharedPreferences) {
         get() = prefs.getInt(KEY_ADHAN_SCREEN_MINUTES, FlowTiming.DEFAULT_ADHAN_SCREEN_MINUTES).coerceIn(FlowTiming.ADHAN_SCREEN_MINUTES)
         set(value) = prefs.edit { putInt(KEY_ADHAN_SCREEN_MINUTES, value.coerceIn(FlowTiming.ADHAN_SCREEN_MINUTES)) }
 
+    /**
+     * The values the prayer times are computed with (the dashboard's «حساب المواقيت», the settings
+     * file's "prayerTimes"): INM's official ones unless a file set others. Nothing is stored for the
+     * official values; stored values that are out of range (never written by this app) read as official.
+     */
+    var formula: PrayerFormulaSettings
+        get() {
+            if (!prefs.contains(KEY_FORMULA_FAJR_ANGLE)) return PrayerFormulaSettings.OFFICIAL
+            val official = PrayerFormulaSettings.OFFICIAL
+            return runCatching {
+                PrayerFormulaSettings.ADJUSTABLE.fold(
+                    PrayerFormulaSettings(
+                        fajrAngle = prefs.getFloat(KEY_FORMULA_FAJR_ANGLE, official.fajrAngle.toFloat()).toDouble(),
+                        ishaAngle = prefs.getFloat(KEY_FORMULA_ISHA_ANGLE, official.ishaAngle.toFloat()).toDouble(),
+                        asrShadow = prefs.getInt(KEY_FORMULA_ASR_SHADOW, official.asrShadow),
+                        dhuhrMinutes = prefs.getInt(KEY_FORMULA_DHUHR_MINUTES, official.dhuhrMinutes),
+                        maghribMinutes = prefs.getInt(KEY_FORMULA_MAGHRIB_MINUTES, official.maghribMinutes),
+                        elevation = prefs.getBoolean(KEY_FORMULA_ELEVATION, official.elevation),
+                    ),
+                ) { settings, prayer -> settings.withAdjustment(prayer, prefs.getInt(formulaAdjustKey(prayer), 0)) }
+            }.getOrNull()?.takeIf { it.isInRange } ?: official
+        }
+        set(value) = prefs.edit {
+            // Angles are on a 0.5 grid, which a Float holds exactly.
+            val keys = FORMULA_KEYS + PrayerFormulaSettings.ADJUSTABLE.map(::formulaAdjustKey)
+            if (value.isOfficial || !value.isInRange) {
+                keys.forEach(::remove)
+                return@edit
+            }
+            putFloat(KEY_FORMULA_FAJR_ANGLE, value.fajrAngle.toFloat())
+            putFloat(KEY_FORMULA_ISHA_ANGLE, value.ishaAngle.toFloat())
+            putInt(KEY_FORMULA_ASR_SHADOW, value.asrShadow)
+            putInt(KEY_FORMULA_DHUHR_MINUTES, value.dhuhrMinutes)
+            putInt(KEY_FORMULA_MAGHRIB_MINUTES, value.maghribMinutes)
+            putBoolean(KEY_FORMULA_ELEVATION, value.elevation)
+            PrayerFormulaSettings.ADJUSTABLE.forEach { prayer ->
+                val minutes = value.adjustment(prayer)
+                if (minutes == 0) remove(formulaAdjustKey(prayer)) else putInt(formulaAdjustKey(prayer), minutes)
+            }
+        }
+
     /** Content signatures of the last USB settings files the admin applied or dismissed ([com.tunisianprayertimes.tv.usb.HandledSignatures]). */
     var usbHandledSettings: String
         get() = prefs.getString(KEY_USB_HANDLED_SETTINGS, "").orEmpty()
@@ -101,9 +143,14 @@ class PrefsManager(private val prefs: SharedPreferences) {
                 nightScreenEnabled,
                 adhanScreenMinutes,
             ),
+            formula = formula.takeUnless { it.isOfficial },
         )
 
-    /** Applies what [profile] sets; [place] gives a delegation's gouvernorat and name, and unknown places are skipped. */
+    /**
+     * Applies what [profile] sets; [place] gives a delegation's gouvernorat and name, and unknown places
+     * are skipped. Its prayer-time values are always applied, null being INM's official ones: a parsed
+     * file's profile carries the TV's own values when the file does not set them.
+     */
     fun applyProfile(profile: MosqueProfile, place: (Int) -> Pair<Int, String>?) {
         profile.name?.let { mosqueName = it }
         profile.delegationId?.let { id ->
@@ -121,6 +168,7 @@ class PrefsManager(private val prefs: SharedPreferences) {
         profile.display.announcementsEveryMinutes?.let { announcementsEveryMinutes = it }
         profile.display.nightScreen?.let { nightScreenEnabled = it }
         profile.display.adhanScreenMinutes?.let { adhanScreenMinutes = it }
+        formula = profile.formulaSettings
     }
 
     /** Back to a new TV (one moved to another mosque): setup runs again. The clock's memory, in its own file, is kept. */
@@ -209,6 +257,7 @@ class PrefsManager(private val prefs: SharedPreferences) {
             salahMinutes = prefs.getInt("salah_minutes_$name", default.salahMinutes),
             held = prefs.getBoolean("held_$name", true),
             khutbaMinutes = prefs.getInt("khutba_minutes_$name", 0),
+            adhanDua = prefs.getBoolean("adhan_dua_$name", true),
         )
     }
 
@@ -221,6 +270,7 @@ class PrefsManager(private val prefs: SharedPreferences) {
         putInt("salah_minutes_$name", config.salahMinutes)
         putBoolean("held_$name", config.held)
         putInt("khutba_minutes_$name", config.khutbaMinutes)
+        putBoolean("adhan_dua_$name", config.adhanDua)
     }
 
     companion object {
@@ -245,5 +295,16 @@ class PrefsManager(private val prefs: SharedPreferences) {
         private const val KEY_WEATHER = "weather_enabled"
         private const val KEY_NIGHT_SCREEN = "night_screen_enabled"
         private const val KEY_ADHAN_SCREEN_MINUTES = "adhan_screen_minutes"
+        private const val KEY_FORMULA_FAJR_ANGLE = "formula_fajr_angle"
+        private const val KEY_FORMULA_ISHA_ANGLE = "formula_isha_angle"
+        private const val KEY_FORMULA_ASR_SHADOW = "formula_asr_shadow"
+        private const val KEY_FORMULA_DHUHR_MINUTES = "formula_dhuhr_minutes"
+        private const val KEY_FORMULA_MAGHRIB_MINUTES = "formula_maghrib_minutes"
+        private const val KEY_FORMULA_ELEVATION = "formula_elevation"
+        private val FORMULA_KEYS = listOf(
+            KEY_FORMULA_FAJR_ANGLE, KEY_FORMULA_ISHA_ANGLE, KEY_FORMULA_ASR_SHADOW,
+            KEY_FORMULA_DHUHR_MINUTES, KEY_FORMULA_MAGHRIB_MINUTES, KEY_FORMULA_ELEVATION,
+        )
+        private fun formulaAdjustKey(prayer: Prayer) = "formula_adjust_${prayer.name}"
     }
 }

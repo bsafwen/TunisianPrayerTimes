@@ -1,8 +1,13 @@
 package com.tunisianprayertimes.tv.ui
 
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.mosque.FlowPhase
+import com.tunisianprayertimes.mosque.IqamahRule
+import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.mosque.PrayerEvent
+import com.tunisianprayertimes.mosque.PrayerFlow
+import com.tunisianprayertimes.mosque.PrayerSettings
 import com.tunisianprayertimes.tv.ui.display.RunningPrayer
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -62,6 +67,52 @@ class RunningPrayerTest {
         val past = RunningPrayer.stateAt(at("19:43:00"), listOf(isha(10)), wall.pin)
         assertEquals(FlowPhase.IQAMAH_COUNTDOWN, past.state.phase)
         assertEquals(at("19:45:00"), past.state.event!!.iqamahAt)
+    }
+
+    /** Isha at 19:30 as the flow makes it: the adhan screen 2 minutes, then the dua until 19:33. */
+    private fun ishaWithDua(iqamahMinutes: Long) = PrayerFlow.eventsFor(
+        day, times, MosqueSchedule.DEFAULT.with(Prayer.ISHA, PrayerSettings(IqamahRule.AfterAdhan(iqamahMinutes.toInt()), 10)),
+    ).filter { it.prayer == Prayer.ISHA }
+
+    private val times = com.tunisianprayertimes.DayPrayerTimes(
+        day = day.dayOfMonth,
+        fajr = PrayerTime(Prayer.FAJR, 4, 46), shurukHour = 6, shurukMinute = 12,
+        dhuhr = PrayerTime(Prayer.DHUHR, 12, 17), asr = PrayerTime(Prayer.ASR, 15, 32),
+        maghrib = PrayerTime(Prayer.MAGHRIB, 18, 8), isha = PrayerTime(Prayer.ISHA, 19, 30),
+    )
+
+    @Test
+    fun theDuaFollowsTheAdhanAndTheWallNeverGoesBackToIt() {
+        val wall = Wall()
+        assertEquals(FlowPhase.ADHAN, wall.at(at("19:31:00"), ishaWithDua(10)))
+        assertEquals(FlowPhase.ADHAN_DUA, wall.at(at("19:32:00"), ishaWithDua(10)))
+        val dua = RunningPrayer.stateAt(at("19:32:30"), ishaWithDua(10), wall.pin)
+        assertEquals(at("19:33:00"), dua.state.phaseEndsAt)
+        assertEquals(FlowPhase.IQAMAH_COUNTDOWN, wall.at(at("19:33:00"), ishaWithDua(10)))
+        // The clock put back by a minute and a half: the countdown stays, the replies and the dua do not come back.
+        assertEquals(FlowPhase.IQAMAH_COUNTDOWN, wall.at(at("19:31:30"), ishaWithDua(10)))
+        // Put back into the dua from the dua itself: it stays the dua, with its own end.
+        val back = Wall()
+        assertEquals(FlowPhase.ADHAN_DUA, back.at(at("19:32:40"), ishaWithDua(10)))
+        val replay = RunningPrayer.stateAt(at("19:31:50"), ishaWithDua(10), back.pin)
+        assertEquals(FlowPhase.ADHAN_DUA, replay.state.phase)
+        assertEquals(at("19:33:00"), replay.state.phaseEndsAt)
+    }
+
+    @Test
+    fun theIqamahCanStillBeChangedDuringTheDua() {
+        val wall = Wall()
+        assertEquals(FlowPhase.ADHAN_DUA, wall.at(at("19:32:10"), ishaWithDua(10)))
+        // Raised to 15 during the dua: the countdown that follows it runs to the new iqamah.
+        assertEquals(FlowPhase.ADHAN_DUA, wall.at(at("19:32:20"), ishaWithDua(15)))
+        val after = RunningPrayer.stateAt(at("19:34:00"), ishaWithDua(15), wall.pin)
+        assertEquals(FlowPhase.IQAMAH_COUNTDOWN, after.state.phase)
+        assertEquals(at("19:45:00"), after.state.event!!.iqamahAt)
+        // Lowered to +1 during the dua: it waits for the dua's end, the black screen follows it.
+        val short = Wall()
+        assertEquals(FlowPhase.ADHAN_DUA, short.at(at("19:32:10"), ishaWithDua(10)))
+        assertEquals(FlowPhase.ADHAN_DUA, short.at(at("19:32:20"), ishaWithDua(1)))
+        assertEquals(FlowPhase.SALAH, short.at(at("19:33:00"), ishaWithDua(1)))
     }
 
     @Test

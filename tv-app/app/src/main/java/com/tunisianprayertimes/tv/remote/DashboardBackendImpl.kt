@@ -7,10 +7,14 @@ import androidx.core.content.pm.PackageInfoCompat
 import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.EventDate
 import com.tunisianprayertimes.Gouvernorat
+import com.tunisianprayertimes.InmLocation
+import com.tunisianprayertimes.InmPrayerTimes
 import com.tunisianprayertimes.IslamicDays
 import com.tunisianprayertimes.ManualIslamicDateOverrides
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerFormulaSettings
 import com.tunisianprayertimes.mosque.FlowState
+import com.tunisianprayertimes.mosque.MosqueProfile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.DateEvent
 import com.tunisianprayertimes.mosque.MosqueSettingsFile.ParseResult
@@ -18,6 +22,7 @@ import com.tunisianprayertimes.time.ClockSource
 import com.tunisianprayertimes.tv.data.LocalMediaManager
 import com.tunisianprayertimes.tv.data.MediaKind
 import com.tunisianprayertimes.tv.data.PrefsManager
+import com.tunisianprayertimes.tv.data.findDelegation
 import com.tunisianprayertimes.tv.ui.TvStrings
 import com.tunisianprayertimes.tv.ui.kiosk.HealthRow
 import com.tunisianprayertimes.tv.ui.settings.automaticDate
@@ -48,6 +53,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.addJsonObject
 import kotlinx.serialization.json.buildJsonArray
 import kotlinx.serialization.json.buildJsonObject
@@ -183,6 +189,47 @@ internal fun todayJson(live: DashboardLive?): JsonObject = buildJsonObject {
 
 private fun hm(time: LocalTime) = time.format(DateTimeFormatter.ofPattern("HH:mm", Locale.ROOT))
 
+/** The mosque's delegation as «حساب المواقيت» shows it: its names, and its place as the formula sees it. */
+data class FormulaPlace(val delegationId: Int, val delegationName: String, val gouvernoratName: String, val location: InmLocation)
+
+/**
+ * The "formula" object of GET /api/state: whether the TV uses INM's official values, the values it
+ * computes its times with (the settings file's "prayerTimes" keys, every prayer's adjustment written,
+ * so the page builds its section from them), and the delegation's [place] for the page's own
+ * computation, with INM's per-year sunrise elevations ("sunriseElevations"); null without a place.
+ */
+internal fun formulaJson(settings: PrayerFormulaSettings, place: FormulaPlace?): JsonObject = buildJsonObject {
+    put("official", settings.isOfficial)
+    putJsonObject("settings") {
+        put("fajrAngle", number(settings.fajrAngle))
+        put("ishaAngle", number(settings.ishaAngle))
+        put("asrShadow", settings.asrShadow)
+        put("dhuhrMinutes", settings.dhuhrMinutes)
+        put("maghribMinutes", settings.maghribMinutes)
+        put("elevation", settings.elevation)
+        putJsonObject("adjust") {
+            PrayerFormulaSettings.ADJUSTABLE.forEach { prayer -> put(prayer.name.lowercase(Locale.ROOT), settings.adjustment(prayer)) }
+        }
+    }
+    put("location", place?.let {
+        buildJsonObject {
+            put("delegationId", it.delegationId)
+            put("delegationName", it.delegationName)
+            put("gouvernoratName", it.gouvernoratName)
+            put("latitude", number(it.location.latitude))
+            put("longitude", number(it.location.longitude))
+            put("elevation", number(it.location.elevationM))
+            putJsonObject("sunriseElevations") {
+                it.location.sunriseElevationOverrides.toSortedMap().forEach { (year, metres) -> put(year.toString(), number(metres)) }
+            }
+        }
+    } ?: JsonNull)
+}
+
+/** 18 rather than 18.0, as the settings file writes it; 17.5 as it is. */
+private fun number(value: Double): JsonPrimitive =
+    if (value == kotlin.math.floor(value) && kotlin.math.abs(value) < 1e9) JsonPrimitive(value.toLong()) else JsonPrimitive(value)
+
 /**
  * The TV's clock for the dashboard, from the clock guard: what the page compares with the phone's own
  * clock, and the two fixes it offers. Called on the server's threads: the guard belongs to the display's
@@ -292,6 +339,11 @@ class DashboardBackendImpl(
     private val settingsWanted: () -> Int = { 0 },
     /** The clock the page checks against the phone; without it the page only knows "now" and "trusted", and cannot set it. */
     private val clock: DashboardClock? = null,
+    /**
+     * The formula's data: the delegation's place for «حساب المواقيت», and today's times a file would
+     * leave, for its preview. Without it the page has no place and the preview no new times.
+     */
+    private val prayerTimes: (() -> InmPrayerTimes)? = null,
 ) : DashboardBackend {
 
     private val updates = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -329,6 +381,7 @@ class DashboardBackendImpl(
             put("today", todayJson(live))
             put("flow", flow(live))
             put("settingsFile", inbox.currentFile())
+            put("formula", formulaJson(prefs.formula, formulaPlace()))
             put("islamicDates", islamicDates(live))
             putJsonObject("images") {
                 MediaKind.entries.forEach { kind ->
@@ -376,6 +429,14 @@ class DashboardBackendImpl(
         // The Eid prayer's wait has no adhan and no iqamah: the page says so.
         if (flow?.event?.prayer in com.tunisianprayertimes.mosque.MosqueSchedule.EID) put("eid", true)
     }
+
+    /** The mosque's delegation for [formulaJson]; null when none is set or its place is unknown. */
+    private fun formulaPlace(): FormulaPlace? = runCatching {
+        val id = prefs.delegationId.takeIf { it > 0 } ?: return null
+        val location = prayerTimes?.invoke()?.location(id) ?: return null
+        val found = gouvernorats.findDelegation(id)
+        FormulaPlace(id, found?.second?.nomAr ?: prefs.delegationName, found?.first?.nomAr.orEmpty(), location)
+    }.getOrNull()
 
     private fun islamicDates(live: DashboardLive?): JsonObject = runCatching {
         val today = live?.now?.toLocalDate() ?: java.time.LocalDate.now(ZoneId.of("Africa/Tunis"))
@@ -426,8 +487,17 @@ class DashboardBackendImpl(
 
     override fun describe(result: ParseResult): List<String> {
         val live = live()
-        val today = live?.let { SettingsChangeLines.Today.of(it.now.toLocalDate(), it.times) }
+        val today = live?.let { SettingsChangeLines.Today.of(it.now.toLocalDate(), it.times, timesOn(it.now.toLocalDate())) }
         return SettingsChangeLines.of(result, today)
+    }
+
+    /** [date]'s times for the place and prayer-time values of a profile (a previewed file's). */
+    private fun timesOn(date: java.time.LocalDate): ((MosqueProfile) -> DayPrayerTimes?)? = prayerTimes?.let { source ->
+        { profile: MosqueProfile ->
+            profile.delegationId?.let { id ->
+                source().loadDayPrayerTimes(id, date.year, date.monthValue, date.dayOfMonth, profile.formulaSettings)
+            }
+        }
     }
 
     override fun undoText(): String? = undoFile.takeIf { it.isFile }?.let { runCatching { it.readText(Charsets.UTF_8) }.getOrNull() }
