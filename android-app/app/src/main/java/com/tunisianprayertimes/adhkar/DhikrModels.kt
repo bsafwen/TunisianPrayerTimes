@@ -243,10 +243,13 @@ fun DhikrState.target(session: DhikrSession, itemId: String = session.itemId): I
 fun DhikrState.isComplete(session: DhikrSession): Boolean =
     session.itemIds.all { it in session.skippedIds || (session.counts[it] ?: 0) >= target(session, it) }
 
-/** The latest independent reading decides whether this collection's current occasion is done. */
+/**
+ * The latest full reading of this occasion decides whether it is done, whether it was opened
+ * from the Adhkar tab or from a reminder notification.
+ */
 fun DhikrState.isCollectionPeriodComplete(category: DhikrCategory, periodKey: String): Boolean =
     sessions.values.asSequence()
-        .filter { it.occurrenceId == null && it.category == category && it.collectionPeriodKey == periodKey }
+        .filter { it.category == category && it.collectionPeriodKey == periodKey }
         .maxByOrNull { it.updatedAtMillis }
         ?.let(::isComplete) == true
 
@@ -267,7 +270,7 @@ internal fun DhikrState.withoutExpiredHistory(now: Long, protectedOccurrenceIds:
         it.endMillis >= cutoff || it.snoozedUntilMillis > now || it.id in protectedOccurrenceIds
     }.map { it.id }.toSet()
     val latestCollectionReadings = sessions.values
-        .filter { it.occurrenceId == null && it.category != null && it.collectionPeriodKey != null }
+        .filter { it.category != null && it.collectionPeriodKey != null }
         .groupBy { it.category }.values.map { readings -> readings.maxBy { it.updatedAtMillis }.id }.toSet()
     val keptSessions = sessions.filterValues { session ->
         session.updatedAtMillis >= cutoff || session.id == lastSessionId || session.id in latestCollectionReadings ||
