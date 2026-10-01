@@ -54,8 +54,11 @@ internal val AdhkarRingTrack = Color(0xFFDCE8E1)
 internal val AdhkarHeart = Color(0xFFE23B3B)
 
 @Composable internal fun AdhkarTheme(content: @Composable () -> Unit) {
-    val scheme = MaterialTheme.colorScheme
-    val p = adhkarPaletteOf(scheme)
+    val app = MaterialTheme.colorScheme
+    val p = adhkarPaletteOf(app)
+    // The app theme leaves these roles at Material's lavender defaults; dialogs, menus and chips read them.
+    val scheme = app.copy(surfaceContainerHigh = AdhkarSurface, surfaceContainer = AdhkarSurface,
+        secondaryContainer = AdhkarSoftGreen, onSecondaryContainer = AdhkarHeading)
     val t = MaterialTheme.typography
     val typography = Typography(
         displayLarge = t.displayLarge.adhkarUi(), displayMedium = t.displayMedium.adhkarUi(), displaySmall = t.displaySmall.adhkarUi(),
@@ -130,3 +133,5 @@ internal val adhkarCategoryOrder = listOf(DhikrCategory.MORNING, DhikrCategory.E
     DhikrCategory.PRAYER, DhikrCategory.SLEEP, DhikrCategory.HOME, DhikrCategory.DAILY)
 internal fun latinNumber(value: Int): String = value.toString()
 internal fun bidiClock(value: String): String = "\u2066" + value + "\u2069"
+/** One-line form of a dhikr for lists; shown with [AdhkarReadingFont] so verse marks keep their numbers. */
+internal fun dhikrPreview(text: String): String = text.replace(Regex("\\s+"), " ").trim()

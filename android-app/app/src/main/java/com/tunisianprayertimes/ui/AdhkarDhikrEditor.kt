@@ -55,9 +55,11 @@ import com.tunisianprayertimes.adhkar.DhikrEntry
         containerColor = p.background, modifier = Modifier.testTag("adhkar_custom_editor")) {
         Column(Modifier.fillMaxWidth().fillMaxHeight(.9f).imePadding()) {
             Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                IconButton(onClick = { if (!saving) onDismiss() }) { DhikrIcon(R.drawable.ic_adhkar_back, "رجوع") }
                 Text(if (initial == null) "إضافة ذكر" else "تعديل الذكر", Modifier.weight(1f), textAlign = TextAlign.Center,
                     fontSize = 20.sp, fontWeight = FontWeight.Bold, color = AdhkarHeading)
-                IconButton(onClick = { if (!saving) onDismiss() }) { DhikrIcon(R.drawable.ic_adhkar_back, "رجوع") }
+                // Balances the back button so the title is centred on the sheet.
+                Spacer(Modifier.size(48.dp))
             }
             Column(Modifier.weight(1f).verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 10.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)) {

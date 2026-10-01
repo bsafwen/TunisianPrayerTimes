@@ -70,7 +70,7 @@ import kotlin.math.abs
     onEditCustom: () -> Unit, onDeleteCustom: () -> Unit,
     onAddToCollection: () -> Unit, onReorderCollection: () -> Unit,
     onTextSize: (Int) -> Unit, onHaptics: (Boolean) -> Unit,
-    onNewSession: () -> Unit, reminder: DhikrReminder?, onReminder: () -> Unit,
+    onNewSession: () -> Unit, reminder: DhikrReminder?, reminderActionLabel: String, onReminder: () -> Unit,
     onConfigureReminder: () -> Unit, onDeleteReminder: () -> Unit,
     skipReminderLabel: String?, onSkipReminder: () -> Unit,
 ) {
@@ -190,8 +190,9 @@ import kotlin.math.abs
                                     onClick = { menu = false; onDeleteReminder() },
                                     modifier = Modifier.testTag("adhkar_reader_delete_reminder"))
                             } else DropdownMenuItem(leadingIcon = { DhikrIcon(R.drawable.ic_adhkar_bell, tint = p.primary, modifier = Modifier.size(20.dp)) },
-                                text = { Text("إنشاء تذكير لهذا الذكر") },
-                                onClick = { menu = false; onReminder() })
+                                text = { Text(reminderActionLabel) },
+                                onClick = { menu = false; onReminder() },
+                                modifier = Modifier.testTag("adhkar_reader_reminder"))
                             HorizontalDivider(color = AdhkarBorder)
                             DropdownMenuItem(
                                 leadingIcon = {

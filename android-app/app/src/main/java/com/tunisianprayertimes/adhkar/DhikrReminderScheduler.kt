@@ -22,6 +22,8 @@ import com.tunisianprayertimes.*
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 import org.json.JSONObject
 
@@ -44,6 +46,9 @@ object DhikrReminderScheduler {
     private const val SILENCE_RETRY_MILLIS = 15 * 60_000L
     private const val BLOCKED_NOTIFICATION_RETRY_MILLIS = 15 * 60_000L
     private val months = linkedMapOf<String, List<DayPrayerTimes>>()
+    @Volatile private var scheduleScan: Pair<List<Any>, String?>? = null
+    private val laterDate = DateTimeFormatter.ofPattern("d MMMM", Locale.forLanguageTag("ar-TN-u-nu-latn"))
+    private const val OVERNIGHT_HINT = " إذا كانت الفترة ليلية، فعّل «تنتهي في اليوم التالي»."
 
     fun ensureChannel(context: Context) {
         val notificationManager = manager(context)
@@ -88,26 +93,59 @@ object DhikrReminderScheduler {
             "هذا الذكر مائة جزء: 33 تسبيحًا و33 تحميدًا و33 تكبيرًا وتهليل مرة واحدة."
         rule.daysOfWeek.isEmpty() || rule.daysOfWeek.any { it !in 1..7 } -> "اختر يومًا واحدًا على الأقل."
         rule.intervalMinutes !in MIN_DHIKR_INTERVAL_MINUTES..1440 && rule.cadence == DhikrCadence.CUSTOM -> "اختر فاصلًا بين 15 دقيقة و24 ساعة."
-        rule.intervals().any { interval -> listOf(interval.start, interval.end).any { it.minuteOfDay !in 0..1439 || it.offsetMinutes !in -720..720 } } -> "راجع أوقات البداية والنهاية، والتعديلات بالدقائق."
+        rule.intervals().any { interval -> listOf(interval.start, interval.end).any {
+            it.minuteOfDay !in 0..1439 || it.offsetMinutes !in -MAX_DHIKR_OFFSET_MINUTES..MAX_DHIKR_OFFSET_MINUTES
+        } } -> "راجع أوقات البداية والنهاية، والتعديلات بالدقائق."
         else -> null
     }
-    fun validate(context: Context, rule: DhikrReminder): String? {
+    fun validate(context: Context, rule: DhikrReminder, today: LocalDate = LocalDate.now()): String? {
         structuralError(context, rule)?.let { return it }
+        scheduleError(context, rule, today)?.let { return it }
+        val periods = rule.intervals().map(DhikrInterval::scheduleIdentity).toSet()
+        val duplicate = DhikrRepository(context).state.value.reminders.any {
+            // A collection rule's dhikrId is only a representative entry; the collection identifies it.
+            it.id != rule.id && it.collection == rule.collection &&
+                (rule.collection != null || it.dhikrId == rule.dhikrId) && it.daysOfWeek == rule.daysOfWeek &&
+                it.intervals().map(DhikrInterval::scheduleIdentity).toSet() == periods
+        }
+        return if (duplicate) "يوجد تذكير " + (if (rule.collection != null) "لهذه المجموعة" else "لهذا الذكر") +
+            " في الأيام والأوقات نفسها. يمكنك تعديله من «تذكيراتي»." else null
+    }
+    /**
+     * Prayer times drift through the year, so periods tied to them are checked on every selected
+     * day of the coming year; clock-only periods repeat unchanged and need only the coming days.
+     */
+    private fun scheduleError(context: Context, rule: DhikrReminder, today: LocalDate): String? {
+        // The editor validates on every change; only a changed schedule is scanned again.
+        val key = listOf(PrefsManager.getDelegationId(context), ZoneId.systemDefault(), today, rule.daysOfWeek, rule.intervals())
+        scheduleScan?.takeIf { it.first == key }?.let { return it.second }
+        val clockOnly = rule.intervals().all { it.start.kind == DhikrTimeKind.FIXED && it.end.kind == DhikrTimeKind.FIXED }
         var available = false
-        for (offset in 0L..8L) {
-            val date = LocalDate.now().plusDays(offset)
+        var error: String? = null
+        for (offset in 0L..(if (clockOnly) 8L else 365L)) {
+            val date = today.plusDays(offset)
             if (date.dayOfWeek.value !in rule.daysOfWeek) continue
             val bounds = resolvedBounds(context, rule, date) ?: continue
+            val problem = windowError(context, rule, date, bounds)
+            if (problem != null) {
+                // Times that work today can stop working later in the year: say from when, and drop the
+                // overnight hint, which would not help.
+                error = if (!available) problem else "ابتداءً من " + date.format(laterDate) + ": " +
+                    problem.removeSuffix(OVERNIGHT_HINT) + " اختر أوقاتًا تصلح طوال السنة."
+                break
+            }
             available = true
-            windowError(context, rule, date, bounds)?.let { return it }
         }
-        if (!available) return "مواقيت الصلاة المطلوبة غير متاحة لموقعك. اختر أوقاتًا ثابتة أو غيّر موقعك."
-        val duplicate = DhikrRepository(context).state.value.reminders.any {
-            it.id != rule.id && it.collection == rule.collection && it.dhikrId == rule.dhikrId && it.daysOfWeek == rule.daysOfWeek &&
-                it.intervals().toSet() == rule.intervals().toSet()
-        }
-        return if (duplicate) "يوجد تذكير لهذا الذكر في الأيام والأوقات نفسها. يمكنك تعديله من «تذكيراتي»." else null
+        if (error == null && !available) error = "مواقيت الصلاة المطلوبة غير متاحة لموقعك. اختر أوقاتًا ثابتة أو غيّر موقعك."
+        scheduleScan = key to error
+        return error
     }
+    /** What is wrong with the periods alone, whatever the dhikr and the goal: the period dialog shows this. */
+    fun periodError(context: Context, rule: DhikrReminder): String? =
+        if (rule.daysOfWeek.isEmpty()) null else scheduleError(context, rule, LocalDate.now())
+    /** False when the prayer times a rule depends on cannot be resolved in the coming days. */
+    fun prayerTimesAvailable(context: Context, rule: DhikrReminder): Boolean =
+        (0L..8L).any { resolvedBounds(context, rule, LocalDate.now().plusDays(it)) != null }
     fun resolveWindows(context: Context, rule: DhikrReminder, date: LocalDate): List<DhikrWindow> {
         if (date.dayOfWeek.value !in rule.daysOfWeek || structuralError(context, rule) != null) return emptyList()
         val bounds = resolvedBounds(context, rule, date) ?: return emptyList()
@@ -128,7 +166,7 @@ object DhikrReminderScheduler {
         val sorted = bounds.sortedBy { it.second.first }
         for ((_, interval) in sorted) {
             val (start, end) = interval
-            if (end <= start) return "يجب أن يكون وقت النهاية بعد وقت البداية. إذا كانت الفترة ليلية، فعّل «تنتهي في اليوم التالي»."
+            if (end <= start) return "يجب أن يكون وقت النهاية بعد وقت البداية.$OVERNIGHT_HINT"
             val nextDayLimit = Instant.ofEpochMilli(start).atZone(ZoneId.systemDefault()).plusDays(1).toInstant().toEpochMilli()
             if (end > nextDayLimit) return "اختر فترة لا تتجاوز يومًا واحدًا."
         }
@@ -192,7 +230,7 @@ object DhikrReminderScheduler {
             val slots = nudgeSlots(context, rule, window)
             val slot = slots.firstOrNull { it.value >= now && !prefs.contains("done:" + window.progressKey + ":" + it.index) }
                 ?: if (now in window.startMillis until window.endMillis)
-                    slots.lastOrNull { !prefs.contains("done:" + window.progressKey + ":" + it.index) }
+                    slots.lastOrNull { it.value >= rule.createdAtMillis && !prefs.contains("done:" + window.progressKey + ":" + it.index) }
                 else null
             if (slot != null) return maxOf(now, slot.value)
         }
@@ -231,7 +269,7 @@ object DhikrReminderScheduler {
         }
         return date.atStartOfDay().plusMinutes((minute + time.offsetMinutes).toLong()).atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
     }
-    fun invalidatePrayerCache() = synchronized(months) { months.clear() }
+    fun invalidatePrayerCache() = synchronized(months) { months.clear(); scheduleScan = null }
 
     /** One inexact pending event per rule. A stable event token survives cold-process delivery. */
     fun refresh(context: Context, rearm: Boolean = false, nowMillis: Long = System.currentTimeMillis()): Unit = synchronized(schedulingLock) {
@@ -282,9 +320,10 @@ object DhikrReminderScheduler {
                     !prefs.contains("done:" + snoozeId)
                 val slot = slots.firstOrNull { it.value >= nowMillis && !prefs.contains("done:" + occurrence.id + ":" + it.index) }
                     // If the last nudge was missed but its window is still open,
-                    // recover just that nudge. Never replay a series of missed alerts.
+                    // recover just that nudge. Never replay a series of missed alerts,
+                    // nor one that predates the rule itself.
                     ?: if (nowMillis in window.startMillis until window.endMillis)
-                        slots.lastOrNull { !prefs.contains("done:" + occurrence.id + ":" + it.index) }
+                        slots.lastOrNull { it.value >= rule.createdAtMillis && !prefs.contains("done:" + occurrence.id + ":" + it.index) }
                     else null
                 val intended = if (unconsumedSnooze) maxOf(snooze, nowMillis) else slot?.let { maxOf(it.value, nowMillis) }
                 val eventId = if (unconsumedSnooze) snoozeId else slot?.let { occurrence.id + ":" + it.index }

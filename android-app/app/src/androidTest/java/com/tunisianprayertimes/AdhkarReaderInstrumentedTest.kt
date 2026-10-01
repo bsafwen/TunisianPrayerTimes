@@ -6,6 +6,7 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createEmptyComposeRule
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.Espresso
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tunisianprayertimes.adhkar.*
 import java.time.LocalDate
@@ -26,12 +27,34 @@ class AdhkarReaderInstrumentedTest {
             .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             .putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_ADHKAR)).use {
             compose.onNodeWithTag("adhkar_reminders_action").performClick()
-            compose.onNodeWithText("ورد الجمعة · تخصيص تذكير").performClick()
-            compose.onAllNodes(hasSetTextAction()).onFirst().performTextReplacement("0")
+            compose.onNodeWithTag("adhkar_new_reminder").performClick()
+            // An untouched new reminder reports nothing until it is edited or saved.
+            compose.onNodeWithTag("adhkar_editor_error").assertDoesNotExist()
+            compose.onNodeWithTag("adhkar_target_input").performTextReplacement("0")
             compose.onNodeWithTag("adhkar_save_reminder").performClick()
             compose.onNodeWithTag("adhkar_editor_error").assertIsDisplayed()
             compose.onNodeWithTag("adhkar_save_reminder").assertIsDisplayed().assertIsEnabled()
             assertEquals(originalRules, DhikrRepository(context).state.value.reminders)
+        }
+    }
+
+    @Test fun backOverUnsavedReminderEditsAsksBeforeDiscarding() {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        ActivityScenario.launch<MainActivity>(Intent(context, MainActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            .putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_ADHKAR)).use { scenario ->
+            compose.onNodeWithTag("adhkar_reminders_action").performClick()
+            compose.onNodeWithTag("adhkar_new_reminder").performClick()
+            compose.onNodeWithTag("adhkar_target_input").performTextReplacement("7")
+            Espresso.closeSoftKeyboard()
+            Espresso.pressBack()
+            compose.onNodeWithText("تجاهل التعديلات؟").assertIsDisplayed()
+            compose.onNodeWithText("متابعة التعديل").performClick()
+            // The edit also survives a re-created activity, and still counts as unsaved.
+            scenario.recreate()
+            compose.onNodeWithTag("adhkar_target_input").assertTextEquals("7")
+            Espresso.pressBack()
+            compose.onNodeWithText("تجاهل التعديلات؟").assertIsDisplayed()
         }
     }
 

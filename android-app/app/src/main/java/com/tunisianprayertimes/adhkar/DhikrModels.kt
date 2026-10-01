@@ -39,10 +39,17 @@ data class DhikrReminder(
     val revision: Int = 1,
     val notBeforeMillis: Long = 0,
     val extraIntervals: List<DhikrInterval> = emptyList(),
+    /** When the rule was first saved; nudges before it were never missed, so they are not recovered. */
+    val createdAtMillis: Long = 0,
 )
 
 fun DhikrReminder.intervals(): List<DhikrInterval> =
     listOf(DhikrInterval(start, end, endNextDay)) + extraIntervals
+
+/** A prayer-relative time never reads its clock minute, so periods differing only by it are the same period. */
+internal fun DhikrInterval.scheduleIdentity(): DhikrInterval =
+    copy(start = start.withoutUnusedMinute(), end = end.withoutUnusedMinute())
+private fun DhikrTime.withoutUnusedMinute(): DhikrTime = if (kind == DhikrTimeKind.FIXED) this else copy(minuteOfDay = 0)
 
 /** The end is exclusive. An overnight window keeps the selected starting day's key. */
 data class DhikrWindow(
@@ -82,6 +89,7 @@ internal fun DhikrReminder.toJson(): JSONObject = JSONObject()
     .put("notBeforeMillis", notBeforeMillis)
     .apply {
         if (extraIntervals.isNotEmpty()) put("extraIntervals", JSONArray(extraIntervals.map { it.toJson() }))
+        if (createdAtMillis != 0L) put("createdAtMillis", createdAtMillis)
     }
 
 internal fun dhikrReminderFromJson(json: JSONObject): DhikrReminder {
@@ -125,6 +133,7 @@ internal fun dhikrReminderFromJson(json: JSONObject): DhikrReminder {
         revision = json.optInt("revision", 1),
         notBeforeMillis = json.optLong("notBeforeMillis", 0),
         extraIntervals = extraIntervals,
+        createdAtMillis = json.optLong("createdAtMillis", 0),
     )
 }
 
@@ -190,6 +199,15 @@ data class DhikrState(
     /** User-defined ordering for collection entries; entries not listed here follow the collection's default order. */
     val collectionOrders: Map<DhikrCategory, List<String>> = emptyMap(),
 )
+
+/** The rule as saving it at [now] stores it; the editor previews the next nudge with the same form. */
+internal fun DhikrState.storedForm(rule: DhikrReminder, now: Long): DhikrReminder {
+    val previous = reminders.find { it.id == rule.id } ?: return rule.copy(createdAtMillis = now)
+    if (previous.copy(enabled = rule.enabled) == rule) return rule
+    val current = occurrences.values.filter { it.ruleId == rule.id && now in it.startMillis until it.endMillis }
+    return rule.copy(revision = previous.revision + 1,
+        notBeforeMillis = maxOf(now, current.maxOfOrNull { it.endMillis } ?: now))
+}
 
 /** Resolves built-in and personal entries through one lookup. */
 fun DhikrState.findDhikr(id: String): DhikrEntry? =
@@ -284,6 +302,8 @@ internal fun DhikrState.withoutExpiredHistory(now: Long, protectedOccurrenceIds:
 
 /** Android can defer closely spaced while-idle alarms; avoid offering a 5-minute cadence. */
 const val MIN_DHIKR_INTERVAL_MINUTES = 15
+/** How far before or after its prayer a period's start or end may be moved. */
+const val MAX_DHIKR_OFFSET_MINUTES = 720
 /** Validation caps a window at one day; this comfortably exceeds the maximum custom count. */
 private const val MAX_NUDGES_PER_WINDOW = 300
 

@@ -41,6 +41,7 @@ internal fun parseNeighborhoodLocalities(json: JSONObject): List<Locality> {
             lat = row.getDouble("lat"), lng = row.getDouble("lng"),
             hasBoundary = row.getBoolean("hasBoundary"), kind = row.getString("kind"),
             pickerGroupId = row.optString("pickerGroupId").takeIf { it.isNotBlank() },
+            searchPhrases = names + contextNames + listOf(row.getString("name"), row.getString("parentName")),
         ).also { locality ->
             require(locality.id.isNotBlank() && locality.name.isNotBlank())
             require(validCoordinates(locality.lat!!, locality.lng!!))

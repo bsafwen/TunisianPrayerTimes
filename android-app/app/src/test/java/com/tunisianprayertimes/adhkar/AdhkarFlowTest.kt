@@ -467,6 +467,28 @@ class AdhkarFlowTest {
         val error = DhikrReminderScheduler.validate(context, reversed)
         assertTrue(error?.contains("يوجد تذكير") == true)
     }
+    @Test fun duplicateIgnoresTheClockMinuteLeftBehindAPrayerTime() {
+        val saved = rule().copy(start = DhikrTime(DhikrTimeKind.ASR), end = DhikrTime(DhikrTimeKind.MAGHRIB))
+        repo.save(saved)
+        // The editor keeps the minute of a fixed time that was then switched to a prayer.
+        val again = saved.copy(id = "other", start = DhikrTime(DhikrTimeKind.ASR, minuteOfDay = 540))
+        assertTrue(DhikrReminderScheduler.validate(context, again)?.contains("يوجد تذكير") == true)
+        assertNull(DhikrReminderScheduler.validate(context, again.copy(start = DhikrTime(DhikrTimeKind.ASR, offsetMinutes = 5))))
+    }
+    @Test fun validationLooksAYearAheadWhenAPeriodFollowsAPrayer() {
+        val summer = LocalDate.of(2026, 6, 5)
+        // Sunset is after 18:00 in June and before it in winter.
+        val seasonal = rule().copy(start = DhikrTime(minuteOfDay = 18 * 60), end = DhikrTime(DhikrTimeKind.MAGHRIB))
+        assertNotNull(DhikrReminderScheduler.resolveWindow(context, seasonal, summer))
+        val later = DhikrReminderScheduler.validate(context, seasonal, summer)
+        assertTrue(later?.startsWith("ابتداءً من") == true)
+        // An overnight period would not fix times that only fail in winter, so that hint is left out.
+        assertTrue(later!!.endsWith("اختر أوقاتًا تصلح طوال السنة.") && "اليوم التالي" !in later)
+        // In December the same period is already wrong, so the error carries no date.
+        val winter = DhikrReminderScheduler.validate(context, seasonal, LocalDate.of(2026, 12, 4))
+        assertTrue(winter != null && !winter.startsWith("ابتداءً من"))
+        assertNull(DhikrReminderScheduler.validate(context, rule().copy(end = DhikrTime(DhikrTimeKind.MAGHRIB)), summer))
+    }
     @Test fun collectionGoalWaitsForEveryItemAndSkipAllStopsNudges() {
         val rule = rule(1).copy(dhikrId = "sayyid_istighfar", collection = DhikrCategory.MORNING)
         repo.save(rule)
@@ -759,7 +781,7 @@ class AdhkarFlowTest {
         val notifications = context.getSystemService(NotificationManager::class.java).activeNotifications
         assertEquals(1, notifications.size)
         assertEquals(0, repo.state.value.occurrences.getValue(window.progressKey).count)
-        assertEquals(listOf("متابعة الذكر", "تأجيل"), notifications.single().notification.actions.map { it.title.toString() })
+        assertEquals(listOf("متابعة الذكر", "تم", "تأجيل"), notifications.single().notification.actions.map { it.title.toString() })
         val open = Shadows.shadowOf(notifications.single().notification.contentIntent).savedIntent
         assertEquals(window.progressKey, open.getStringExtra(DhikrReminderScheduler.EXTRA_OCCURRENCE_ID))
     }
@@ -803,11 +825,45 @@ class AdhkarFlowTest {
         val deferred = prefs.getString("event:" + second.id, null)!!
         assertEquals(window.startMillis + 2 * 60_000L, JSONObject(deferred).getLong("at"))
         assertFalse(prefs.contains("done:" + JSONObject(secondEvent).getString("eventId")))
+        // The saved rule carries its creation time, which is part of the scheduled event's signature.
         assertEquals(window.startMillis + 2 * 60_000L,
-            DhikrReminderScheduler.nextNudge(context, second, window.startMillis + 1))
+            DhikrReminderScheduler.nextNudge(context, repo.state.value.reminders.first { it.id == second.id }, window.startMillis + 1))
 
         deliver(deferred, window.startMillis + 2 * 60_000L)
         assertEquals(2, context.getSystemService(NotificationManager::class.java).activeNotifications.size)
+    }
+    @Test fun newRuleSavedMidWindowDoesNotReplayAnEarlierNudge() {
+        val draft = rule().copy(cadence = DhikrCadence.ONCE)
+        val window = window(draft)
+        val savedAt = window.startMillis + 60 * 60_000L
+        repo.save(draft, savedAt)
+        val saved = repo.state.value.reminders.single()
+        assertEquals(savedAt, saved.createdAtMillis)
+        val next = DhikrReminderScheduler.nextNudge(context, saved, savedAt)
+        assertTrue(next == null || next >= window.endMillis)
+        // A rule that already existed still recovers its one missed nudge.
+        assertEquals(savedAt, DhikrReminderScheduler.nextNudge(context, saved.copy(createdAtMillis = 0), savedAt))
+    }
+    @Test fun editorPreviewOfARuleMatchesWhatSavingStores() {
+        val draft = rule().copy(cadence = DhikrCadence.ONCE)
+        val now = window(draft).startMillis + 60 * 60_000L
+        val preview = repo.state.value.storedForm(draft, now)
+        repo.save(draft, now)
+        assertEquals(repo.state.value.reminders.single(), preview)
+        assertEquals(DhikrReminderScheduler.nextNudge(context, repo.state.value.reminders.single(), now),
+            DhikrReminderScheduler.nextNudge(context, preview, now))
+        // Untouched, a saved rule previews as itself; an edit previews as the revision saving would create.
+        assertEquals(preview, repo.state.value.storedForm(preview, now + 1))
+        val edited = repo.state.value.storedForm(preview.copy(targetCount = 5), now + 1)
+        repo.save(preview.copy(targetCount = 5), now + 1)
+        assertEquals(repo.state.value.reminders.single(), edited)
+    }
+    @Test fun collectionReminderDuplicateIgnoresTheRepresentativeDhikr() {
+        val saved = DhikrReminder(dhikrId = "morning_kingdom", collection = DhikrCategory.MORNING, targetCount = 1,
+            start = DhikrTime(minuteOfDay = 480), end = DhikrTime(minuteOfDay = 540))
+        repo.save(saved)
+        assertNotNull(DhikrReminderScheduler.validate(context, saved.copy(id = "other", dhikrId = "ayat_kursi")))
+        assertNull(DhikrReminderScheduler.validate(context, saved.copy(id = "other", dhikrId = "ayat_kursi", daysOfWeek = setOf(1))))
     }
     @Test fun completionSkipAndDisableRejectAlreadyDispatchedAlarms() {
         val rule = rule(1); repo.save(rule)
@@ -855,7 +911,7 @@ class AdhkarFlowTest {
         DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
         deliver(event(), window.endMillis - 10 * 60_000L)
         val notification = context.getSystemService(NotificationManager::class.java).activeNotifications.single().notification
-        assertEquals(listOf("متابعة الذكر"), notification.actions.map { it.title.toString() })
+        assertEquals(listOf("متابعة الذكر", "تم"), notification.actions.map { it.title.toString() })
 
         DhikrReminderScheduler.receive(context, Intent().setAction(DhikrReminderScheduler.ACTION_SNOOZE)
             .putExtra("occurrence", window.progressKey), window.endMillis - 5 * 60_000L)
@@ -869,7 +925,8 @@ class AdhkarFlowTest {
         val original = event()
         deliver(original, window.startMillis)
         val manager = context.getSystemService(NotificationManager::class.java)
-        val snooze = Shadows.shadowOf(manager.activeNotifications.single().notification.actions[1].actionIntent).savedIntent
+        val snooze = Shadows.shadowOf(manager.activeNotifications.single().notification.actions
+            .first { it.title.toString() == "تأجيل" }.actionIntent).savedIntent
         val clickedAt = window.startMillis + 10 * 60_000L
         DhikrReminderScheduler.receive(context, snooze, clickedAt)
 
