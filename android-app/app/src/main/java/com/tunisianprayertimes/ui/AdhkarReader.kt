@@ -160,17 +160,24 @@ import kotlin.math.sign
     // A long enough drag or a quick flick moves on (readerSwipeDirection); anything else returns the
     // current dhikr. The session changes only once the neighbour has slid fully into place.
     fun settleSwipe(velocity: Float) {
+        swipe.dragging = false
+        // Committed already: one move per swipe, whatever touch lands while it is on its way.
+        if (swipe.moving) return
         swipe.job?.cancel()
         swipe.job = swipeScope.launch {
             val direction = readerSwipeDirection(swipe.offset.floatValue, velocity,
                 swipeDragPx, swipeFlickPx, swipeFlickVelocityPx)
+            if (direction == 0) {
+                // Springing back leaves taps alone, so quick counting carries on after a slipped tap.
+                swipe.animateTo(0f)
+                return@launch
+            }
             swipe.settling = true
             try {
                 swipe.animateTo(direction * paneWidth.floatValue)
             } finally {
                 swipe.settling = false
             }
-            if (direction == 0) return@launch
             swipe.moving = true
             onMove(direction)
             // A landed move replaces this swipe state within a frame or two. If it never lands (the
@@ -276,9 +283,12 @@ import kotlin.math.sign
                 // Only the reading pane slides: the counter and navigation stay put.
                 Column(Modifier.weight(1f).fillMaxWidth()
                     .draggable(swipe.state, Orientation.Horizontal, enabled = canNavigate && !swipe.moving,
-                        // Catch a settling pane under the finger, and keep that touch from counting.
+                        // Catch a pane sliding to a neighbour, and keep that touch from counting.
                         startDragImmediately = swipe.settling,
-                        onDragStarted = { swipe.job?.cancel() },
+                        onDragStarted = {
+                            if (!swipe.moving) swipe.job?.cancel()
+                            swipe.dragging = true
+                        },
                         onDragStopped = { velocity -> settleSwipe(velocity) })
                     .testTag("adhkar_reader_body")) {
                     // The reminder title is the only heading for a reminder reading.
@@ -306,12 +316,14 @@ import kotlin.math.sign
                             DhikrPage(neighbour, readerSourceEntry(neighbour, neighbourTarget), neighbourCount,
                                 complete = neighbourCount >= neighbourTarget, skipped = neighbour.id in session.skippedIds,
                                 textSize = state.textSize, newSessionLabel = newSessionLabel,
-                                scroll = rememberScrollState(),
+                                scroll = rememberScrollState(), scrollEnabled = false,
                                 modifier = Modifier.graphicsLayer {
                                     translationX = swipe.offset.floatValue - side * paneWidth.floatValue
                                 }.clearAndSetSemantics { })
                         }
                         DhikrPage(entry, sourceEntry, count, complete, skipped, state.textSize, newSessionLabel, readingScroll,
+                            // While swiping, the text's scroll must not pick the gesture up and cancel it midway.
+                            scrollEnabled = !swipe.dragging,
                             modifier = Modifier.graphicsLayer { translationX = swipe.offset.floatValue },
                             live = true,
                             activateLabel = when {
@@ -435,7 +447,8 @@ import kotlin.math.sign
 @Composable
 private fun DhikrPage(
     entry: DhikrEntry, sourceEntry: DhikrEntry, count: Int, complete: Boolean, skipped: Boolean, textSize: Int,
-    newSessionLabel: String?, scroll: ScrollState, modifier: Modifier = Modifier, live: Boolean = false,
+    newSessionLabel: String?, scroll: ScrollState, scrollEnabled: Boolean = true, modifier: Modifier = Modifier,
+    live: Boolean = false,
     activateLabel: String? = null, onActivate: () -> Unit = {}, onSources: () -> Unit = {},
     showExplanation: Boolean = false, onToggleExplanation: () -> Unit = {},
     showNarration: Boolean = false, onToggleNarration: () -> Unit = {},
@@ -444,7 +457,8 @@ private fun DhikrPage(
 ) {
     val p = LocalAdhkarPalette.current
     val activate = Modifier.clickable(enabled = live && activateLabel != null, onClickLabel = activateLabel, onClick = onActivate)
-    Column(modifier.fillMaxSize().background(p.background).verticalScroll(scroll).padding(horizontal = 24.dp),
+    Column(modifier.fillMaxSize().background(p.background).verticalScroll(scroll, enabled = scrollEnabled)
+        .padding(horizontal = 24.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(Modifier.height(28.dp))
         if (entry.steps.isEmpty()) {
@@ -537,7 +551,9 @@ private fun readerSourceEntry(entry: DhikrEntry, target: Int): DhikrEntry =
 /** The reading pane's horizontal offset through one swipe; replaced whenever the current dhikr changes. */
 private class ReaderSwipe(private val width: FloatState) {
     val offset = mutableFloatStateOf(0f)
-    /** Released and animating; a touch now catches the pane instead of tapping what is under it. */
+    /** A finger is dragging the pane sideways. */
+    var dragging by mutableStateOf(false)
+    /** Released and sliding to a neighbour; a touch now catches the pane instead of tapping what is under it. */
     var settling by mutableStateOf(false)
     /** The neighbour has slid fully in and the move is on its way to the repository. */
     var moving by mutableStateOf(false)
