@@ -90,7 +90,8 @@ class AdhkarReaderSwipeTest {
     }
 
     @Test fun slowDragAcrossTheMiddleMovesOn() {
-        swipeOnReader(middle, dx = 160f, millis = 400)
+        // Well under flick speed: only the distance can move it on.
+        swipeOnReader(middle, dx = 160f, millis = 1_000)
         assertEquals(listOf(1), moves)
     }
 
@@ -109,14 +110,40 @@ class AdhkarReaderSwipeTest {
         assertEquals(listOf(1), counts)
     }
 
-    @Test fun tapThatSlipsSidewaysNeverNavigates() {
+    @Test fun tapThatSlipsSidewaysNeitherNavigatesNorCounts() {
         reader.performTouchInput {
-            down(middle)
-            moveBy(Offset(12f, 0f), delayMillis = 80)
+            down(bounds("adhkar_count").center)
+            // Just past touch slop, slowly: too short and slow to be a flick.
+            moveBy(Offset(viewConfiguration.touchSlop + 4f, 0f), delayMillis = 80)
             up()
         }
         compose.waitForIdle()
         assertEquals(emptyList<Int>(), moves)
+        assertEquals("past touch slop it is a swipe, not a tap", emptyList<Int>(), counts)
+    }
+
+    @Test fun quickTapWhileThePaneSpringsBackStillCounts() {
+        compose.mainClock.autoAdvance = false
+        var slop = 0f
+        reader.performTouchInput { slop = viewConfiguration.touchSlop }
+        swipeOnReader(bounds("adhkar_count").center, dx = slop + 8f, millis = 100)
+        compose.mainClock.advanceTimeBy(50)
+        // Mid spring-back: the next counting tap must land.
+        compose.onNodeWithTag("adhkar_count").performClick()
+        compose.mainClock.advanceTimeBy(500)
+        assertEquals(listOf(1), counts)
+        assertEquals(emptyList<Int>(), moves)
+    }
+
+    @Test fun touchCatchesAPaneSlidingToItsNeighbourWithoutCounting() {
+        compose.mainClock.autoAdvance = false
+        swipeOnReader(middle, dx = 160f, millis = 100)
+        compose.mainClock.advanceTimeBy(64)
+        assertEquals("still sliding", emptyList<Int>(), moves)
+        compose.onNodeWithTag("adhkar_count").performClick()
+        compose.mainClock.advanceTimeBy(1_000)
+        assertEquals(listOf(1), moves)
+        assertEquals("the caught touch counts nothing", emptyList<Int>(), counts)
     }
 
     @Test fun scrollingLongTextVerticallyNeverNavigates() {
