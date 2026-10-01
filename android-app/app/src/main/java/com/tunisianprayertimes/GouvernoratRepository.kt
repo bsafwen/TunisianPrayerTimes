@@ -7,12 +7,19 @@ import org.json.JSONObject
 
 object GouvernoratRepository {
 
-    private var cachedGouvernorats: List<Gouvernorat>? = null
-    private var cachedDelegations: List<Delegation>? = null
+    @Volatile private var cachedGouvernorats: List<Gouvernorat>? = null
+    private val governorateLock = Any()
+    private data class AvailableDelegations(val year: Int, val month: Int, val values: List<Delegation>)
+    private var cachedDelegations: AvailableDelegations? = null
 
     fun loadAll(context: Context): List<Gouvernorat> {
         cachedGouvernorats?.let { return it }
+        return synchronized(governorateLock) {
+            cachedGouvernorats ?: readGouvernorats(context).also { cachedGouvernorats = it }
+        }
+    }
 
+    private fun readGouvernorats(context: Context): List<Gouvernorat> {
         val json = context.assets.open("gouvernorats.json").bufferedReader().use { it.readText() }
         val root = JSONObject(json)
         val arr = root.getJSONArray("gouvernorats")
@@ -50,19 +57,21 @@ object GouvernoratRepository {
             )
         }
 
-        cachedGouvernorats = result
         return result
     }
 
+    @Synchronized
     fun loadAllDelegations(context: Context): List<Delegation> {
-        cachedDelegations?.let { return it }
         val now = java.util.Calendar.getInstance()
         val year = now.get(java.util.Calendar.YEAR)
         val month = now.get(java.util.Calendar.MONTH) + 1
+        // Assets are fixed for this process, but availability changes at month/year
+        // boundaries. Publish the period and its sources together under one lock.
+        cachedDelegations?.takeIf { it.year == year && it.month == month }?.let { return it.values }
         val all = loadAll(context).flatMap { it.delegations }.filter { delegation ->
             PrayerTimesRepository.hasPrayerData(context, delegation.id, year, month)
         }
-        cachedDelegations = all
+        cachedDelegations = AvailableDelegations(year, month, all)
         return all
     }
 

@@ -1,89 +1,117 @@
 package com.tunisianprayertimes.tv.ui.display
 
 import android.net.Uri
-import androidx.compose.animation.animateColorAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.focusable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.LinearProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.*
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onPreviewKeyEvent
+import androidx.compose.ui.input.key.type
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.rememberTextMeasurer
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.DayPrayerTimes
 import com.tunisianprayertimes.Prayer
-import com.tunisianprayertimes.PrayerTime
-import com.tunisianprayertimes.tv.data.IqamahConfig
-import com.tunisianprayertimes.tv.data.IqamahMode
+import com.tunisianprayertimes.mosque.AdhkarSlide
+import com.tunisianprayertimes.mosque.DayBanner
+import com.tunisianprayertimes.mosque.DisplayTexts
 import com.tunisianprayertimes.tv.ui.TvStrings
-import com.tunisianprayertimes.tv.ui.theme.*
-import kotlinx.coroutines.delay
-import java.time.LocalDate
+import com.tunisianprayertimes.tv.ui.common.Digits
+import com.tunisianprayertimes.tv.ui.theme.Amiri
+import com.tunisianprayertimes.tv.ui.theme.Crescent
+import com.tunisianprayertimes.tv.ui.theme.KhatamStar
+import com.tunisianprayertimes.tv.ui.theme.Kufi
+import com.tunisianprayertimes.tv.ui.theme.LocalDisplayTheme
+import com.tunisianprayertimes.tv.ui.theme.Medallion
+import com.tunisianprayertimes.tv.ui.theme.Midad
+import com.tunisianprayertimes.tv.ui.theme.Sky
+import com.tunisianprayertimes.tv.ui.theme.SkyColors
+import com.tunisianprayertimes.tv.ui.theme.archTile
+import com.tunisianprayertimes.tv.ui.theme.lineBox
+import com.tunisianprayertimes.tv.ui.theme.midadStyle
+import com.tunisianprayertimes.tv.ui.theme.skyBackground
+import com.tunisianprayertimes.weather.OpenMeteo
+import com.tunisianprayertimes.weather.WeatherNow
+import java.time.LocalDateTime
 import java.time.LocalTime
-import java.time.chrono.HijrahDate
-import java.time.format.DateTimeFormatter
-import java.time.temporal.ChronoField
-import java.util.Calendar
-import java.util.Locale
-import androidx.compose.foundation.shape.CircleShape
+import java.time.temporal.ChronoUnit
 
 /**
- * Main 24/7 display screen showing prayer times.
- * Inspired by MAWAQIT & MasjidBox: clean layout, bold times, strong visual hierarchy.
+ * The main screen, shown most of the day («أفق», the Main board): the mosque, the header verse and
+ * the dates; the clock and the countdown to the next adhan (to iftar or imsak in Ramadan); the
+ * prayers as the arcade of Kairouan's courtyard, the next one in gold; and the ticker.
+ *
+ * It recomposes every second with [now]; everything but the clock's countdown is decided once a
+ * minute ([MainScreenModel]) and the parts that did not change are skipped.
  */
 @Composable
 fun PrayerDisplayScreen(
-    dayPrayerTimes: DayPrayerTimes?,
-    shuruk: Pair<Int, Int>?,
+    /** Today's prayer times; null for a day the formula cannot give: "no data" (while they load, the caller shows [TimesLoadingScreen]). */
+    todayTimes: DayPrayerTimes?,
+    /** Tomorrow's: its Fajr fills Fajr's niche after Isha, its Maghrib is the next iftar. */
+    tomorrowTimes: DayPrayerTimes?,
     mosqueName: String,
     delegationName: String,
-    iqamahConfigs: Map<Prayer, IqamahConfig>,
-    jomoaaConfig: IqamahConfig,
-    isRamadan: Boolean,
+    /** The delegation's gouvernorat, after it: «المرسى · تونس». */
+    gouvernoratName: String?,
+    /** The trusted time in Tunisia, ticking every second; the display never reads the device clock itself. */
+    now: LocalDateTime,
+    /** Today's date in the official Tunisian Hijri calendar, «18 ربيع الثاني 1448 هـ». */
+    hijriLabel: String,
+    /** Today's iqamah per prayer (with Jumu'a on Fridays), as resolved by the shared prayer flow the overlays follow. */
+    iqamahTimes: Map<Prayer, LocalTime>,
+    /** Tomorrow's Fajr iqamah, for Fajr's niche after Isha. */
+    tomorrowFajrIqamah: LocalTime?,
+    /** Ramadan's fast countdown, Eid or Arafah; null on ordinary days. */
+    banner: DayBanner?,
+    /** Whether tomorrow is a day of Ramadan: tarawih tonight, and an imsak to show under the iftar countdown. */
+    ramadanTomorrow: Boolean,
+    /** The Eid prayer's time under the Hijri date, from the evening before until it begins; null otherwise. */
+    eidNote: String? = null,
+    /** The weather at the mosque when the TV is online, it is enabled and recent; null hides it entirely. */
+    weather: WeatherNow?,
+    /** The ticker's texts, from the reviewed catalog or the mosque's USB file, with its written announcements. */
+    ticker: List<AdhkarSlide>,
+    /** The sky of the prayer times («أفق»), or null for the plain ground («مداد»). */
+    sky: SkyColors?,
+    /** The mosque's own images, which replace the sky when there are any. */
     backgroundImages: List<Uri> = emptyList(),
     onSettingsRequested: () -> Unit,
-    onAdhanTriggered: (Prayer) -> Unit,
-    onIqamahTriggered: (Prayer) -> Unit
 ) {
-    var currentTime by remember { mutableStateOf(LocalTime.now()) }
-    LaunchedEffect(Unit) {
-        while (true) {
-            currentTime = LocalTime.now()
-            delay(1000L)
-        }
+    val minute = now.truncatedTo(ChronoUnit.MINUTES)
+    val state = remember(minute, todayTimes, tomorrowTimes, iqamahTimes, tomorrowFajrIqamah, banner, ramadanTomorrow) {
+        MainScreenModel.at(minute, todayTimes, tomorrowTimes, iqamahTimes, tomorrowFajrIqamah, banner, ramadanTomorrow)
     }
-
-    val isFriday = Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY
-    val nextPrayer = dayPrayerTimes?.nextPrayer(currentTime.hour, currentTime.minute, isFriday)
-
-    // Adhan/iqamah triggers
-    LaunchedEffect(currentTime.hour, currentTime.minute) {
-        if (dayPrayerTimes == null) return@LaunchedEffect
-        val prayers = dayPrayerTimes.scheduledPrayers(isFriday)
-        for (pt in prayers) {
-            if (pt.hour == currentTime.hour && pt.minute == currentTime.minute && currentTime.second < 2) {
-                onAdhanTriggered(pt.prayer)
-            }
-            val config = if (pt.prayer == Prayer.JOMOAA) jomoaaConfig
-                else iqamahConfigs[pt.prayer] ?: continue
-            val iqTime = computeIqamahTime(pt, config)
-            if (iqTime != null && iqTime.first == currentTime.hour && iqTime.second == currentTime.minute && currentTime.second < 2) {
-                onIqamahTriggered(pt.prayer)
-            }
-        }
-    }
+    val date = minute.toLocalDate()
+    val gregorian = remember(date) { TvStrings.gregorianDate(date) }
+    val place = remember(delegationName, gouvernoratName) { MainScreenModel.placeLine(delegationName, gouvernoratName) }
+    val clock = remember(minute) { TvStrings.hm(minute.toLocalTime()) }
 
     Box(
         modifier = Modifier
@@ -93,475 +121,268 @@ fun PrayerDisplayScreen(
                     onSettingsRequested(); true
                 } else false
             }
-            .focusable()
+            .focusable(),
     ) {
-        // Background
-        if (backgroundImages.isNotEmpty()) {
-            CustomBackground(images = backgroundImages)
-        } else {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            if (isRamadan) listOf(RamadanDeep, RamadanPurple, Color(0xFF1A0F42), RamadanDeep)
-                            else listOf(BackgroundDark, Color(0xFF0D1B2E), SurfaceDark, BackgroundDark)
-                        )
-                    )
+        Backdrop(sky, backgroundImages, minute)
+        Column(Modifier.fillMaxSize().padding(horizontal = 48.dp, vertical = 27.dp)) {
+            Header(
+                mosqueName = mosqueName.ifBlank { TvStrings.MOSQUE_DEFAULT },
+                place = place,
+                verses = state.verses,
+                hijriLabel = hijriLabel,
+                dayNote = state.dayNote,
+                eidNote = eidNote,
+                isRamadan = state.isRamadan,
+                gregorian = gregorian,
+                weather = weather,
+                isDay = state.isDay,
             )
-        }
-
-        Column(
-            modifier = Modifier.fillMaxSize().padding(24.dp),
-            verticalArrangement = Arrangement.SpaceBetween
-        ) {
-            // ── TOP ZONE: Mosque name + Clock + Dates ────────────────────
-            TopHeaderSection(
-                mosqueName = mosqueName,
-                delegationName = delegationName,
-                currentTime = currentTime,
-                isFriday = isFriday,
-                isRamadan = isRamadan
-            )
-
-            // ── RAMADAN BANNER (only during Ramadan) ─────────────────────
-            if (isRamadan) {
-                Spacer(Modifier.height(8.dp))
-                RamadanBanner(
-                    maghribTime = dayPrayerTimes?.maghrib,
-                    fajrTime = dayPrayerTimes?.fajr,
-                    currentTime = currentTime
-                )
-            }
-
-            // Push prayer cards toward bottom
-            Spacer(Modifier.weight(1f))
-
-            // ── MIDDLE: Next prayer countdown + sunrise ──────────────────
-            NextPrayerCountdownBar(
-                shuruk = shuruk,
-                nextPrayer = nextPrayer,
-                dayPrayerTimes = dayPrayerTimes,
-                isFriday = isFriday,
-                currentTime = currentTime
-            )
-
-            Spacer(Modifier.height(16.dp))
-
-            // ── BOTTOM: 5 prayer cards in a row ──────────────────────────
-            if (dayPrayerTimes != null) {
-                PrayerCardsRow(
-                    dayPrayerTimes = dayPrayerTimes,
-                    iqamahConfigs = iqamahConfigs,
-                    jomoaaConfig = jomoaaConfig,
-                    isFriday = isFriday,
-                    nextPrayer = nextPrayer
-                )
-            } else {
-                Box(
-                    modifier = Modifier.fillMaxWidth().height(180.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(TvStrings.NO_DATA, color = TextMuted, fontSize = 24.sp)
-                }
-            }
-
-            Spacer(Modifier.height(12.dp))
-
-            // ── BOTTOM TICKER ────────────────────────────────────────────
-            AzkarTicker(isRamadan = isRamadan)
+            Spacer(Modifier.height(10.dp))
+            Hero(clock, state.hero, now)
+            Spacer(Modifier.height(25.dp))
+            Arcade(state.tiles)
+            Spacer(Modifier.height(15.dp))
+            AzkarTicker(ticker)
         }
     }
 }
 
-// ══════════════════════════════════════════════════════════════════════════
-//  TOP HEADER — Mosque name (right), big clock (center), dates (left)
-// ══════════════════════════════════════════════════════════════════════════
+/** The sky down to the horizon above the arcade, the mosque's own images in its place, or the plain ground. */
 @Composable
-private fun TopHeaderSection(
+private fun Backdrop(sky: SkyColors?, images: List<Uri>, minute: LocalDateTime) {
+    if (images.isEmpty()) {
+        Box(Modifier.fillMaxSize().skyBackground(sky, horizon = HORIZON, groundAt = GROUND_AT))
+    } else {
+        Box(Modifier.fillMaxSize().background(Midad.Ground)) {
+            CustomBackground(images, minute, horizon = HORIZON, groundAt = GROUND_AT)
+        }
+    }
+}
+
+/** The wall a moment after the app starts, while the day's times are computed: the bare ground, never "no data". */
+@Composable
+fun TimesLoadingScreen() {
+    Box(Modifier.fillMaxSize().background(Midad.Ground))
+}
+
+// ── Header: the mosque (right), the verse and its medallion (middle), the dates and the weather (left) ──
+
+@Composable
+private fun Header(
     mosqueName: String,
-    delegationName: String,
-    currentTime: LocalTime,
-    isFriday: Boolean,
-    isRamadan: Boolean
+    place: String,
+    verses: List<DisplayTexts.DisplayText>,
+    hijriLabel: String,
+    dayNote: String?,
+    eidNote: String?,
+    isRamadan: Boolean,
+    gregorian: String,
+    weather: WeatherNow?,
+    isDay: Boolean?,
 ) {
-    val today = LocalDate.now()
-    val hijriDate = HijrahDate.now()
-    val hijriDay = hijriDate.get(ChronoField.DAY_OF_MONTH)
-    val hijriMonth = hijriDate.get(ChronoField.MONTH_OF_YEAR)
-    val hijriYear = hijriDate.get(ChronoField.YEAR_OF_ERA)
-    val hijriStr = "$hijriDay ${TvStrings.HIJRI_MONTHS.getOrElse(hijriMonth - 1) { "" }} $hijriYear هـ"
-    val gregorianStr = today.format(DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.forLanguageTag("ar")))
-    val timeStr = String.format(Locale.US, "%02d:%02d:%02d", currentTime.hour, currentTime.minute, currentTime.second)
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(SurfaceDark.copy(alpha = 0.6f), RoundedCornerShape(16.dp))
-            .border(1.dp, CardBorder, RoundedCornerShape(16.dp))
-            .padding(horizontal = 28.dp, vertical = 14.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        // Right side (RTL): Mosque name
-        Column {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = "🕌",
-                    fontSize = 22.sp,
-                    modifier = Modifier.padding(end = 8.dp)
-                )
-                Text(
-                    text = mosqueName.ifBlank { TvStrings.MOSQUE_DEFAULT },
-                    color = if (isRamadan) RamadanGold else Gold,
-                    fontSize = 26.sp,
-                    fontWeight = FontWeight.Bold
-                )
-            }
-            if (isFriday) {
-                Text(
-                    text = TvStrings.JOMOAA_REMINDER,
-                    color = GoldLight,
-                    fontSize = 14.sp
-                )
-            } else {
-                Text(
-                    text = delegationName,
-                    color = TextMuted,
-                    fontSize = 16.sp
-                )
-            }
-        }
-
-        // Center: Large clock in a highlighted box (MAWAQIT-style)
-        Box(
-            modifier = Modifier
-                .background(
-                    Brush.verticalGradient(
-                        listOf(
-                            if (isRamadan) RamadanGold.copy(alpha = 0.15f) else Gold.copy(alpha = 0.12f),
-                            if (isRamadan) RamadanGold.copy(alpha = 0.05f) else Gold.copy(alpha = 0.04f)
-                        )
-                    ),
-                    RoundedCornerShape(14.dp)
-                )
-                .border(1.dp, if (isRamadan) RamadanGold.copy(alpha = 0.3f) else Gold.copy(alpha = 0.25f), RoundedCornerShape(14.dp))
-                .padding(horizontal = 32.dp, vertical = 8.dp)
+    Row(Modifier.fillMaxWidth().height(50.dp), verticalAlignment = Alignment.Top) {
+        // The blocks may stand a little taller than the header, as on the board, into the hero's empty top.
+        MosqueBlock(mosqueName, place)
+        HeaderVerse(verses, Modifier.weight(1f).padding(horizontal = 16.dp).padding(top = 9.dp))
+        Column(
+            Modifier.wrapContentHeight(Alignment.Top, unbounded = true),
+            horizontalAlignment = Alignment.End,
+            verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
-            Text(
-                text = timeStr,
-                color = TextWhite,
-                fontSize = 52.sp,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 2.sp
-            )
-        }
-
-        // Left side (RTL): Dates
-        Column(horizontalAlignment = Alignment.End) {
-            Text(
-                text = hijriStr,
-                color = GoldLight,
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Medium
-            )
-            Spacer(Modifier.height(2.dp))
-            Text(
-                text = gregorianStr,
-                color = TextMuted,
-                fontSize = 15.sp
-            )
-        }
-    }
-}
-
-// ══════════════════════════════════════════════════════════════════════════
-//  NEXT PRAYER COUNTDOWN BAR — Shows sunrise + countdown to next prayer
-// ══════════════════════════════════════════════════════════════════════════
-@Composable
-private fun NextPrayerCountdownBar(
-    shuruk: Pair<Int, Int>?,
-    nextPrayer: Prayer?,
-    dayPrayerTimes: DayPrayerTimes?,
-    isFriday: Boolean,
-    currentTime: LocalTime
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(SurfaceDark.copy(alpha = 0.5f), RoundedCornerShape(14.dp))
-            .border(1.dp, CardBorder, RoundedCornerShape(14.dp))
-            .padding(horizontal = 24.dp, vertical = 12.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        // Sunrise info
-        if (shuruk != null) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(text = "☀", fontSize = 20.sp)
-                Spacer(Modifier.width(8.dp))
-                Column {
-                    Text(text = TvStrings.SUNRISE, color = TextMuted, fontSize = 12.sp)
-                    Text(
-                        text = String.format(Locale.US, "%02d:%02d", shuruk.first, shuruk.second),
-                        color = GoldLight,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+                Crescent(if (isRamadan) 18.dp else 17.dp, color = if (isRamadan) Midad.Gold else Midad.Silver)
+                Text(hijriLabel, style = HIJRI, maxLines = 1)
+                if (dayNote != null) Text("· $dayNote", style = DAY_NOTE, maxLines = 1)
+            }
+            // A line of its own: beside the date it would push the verse out, or be cut with its time.
+            if (eidNote != null) Text(eidNote, style = EID_NOTE, maxLines = 1)
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+                Text(gregorian, style = GREGORIAN, maxLines = 1)
+                // Offline, disabled or stale: the weather is not there at all, never a "--".
+                if (weather != null) {
+                    Text("·", style = GREGORIAN)
+                    // Day or night from today's times: the weather's own flag is as old as its last fetch.
+                    weatherIcon(weather.code, isDay ?: weather.isDay)?.let { WeatherGlyph(it, 14.dp) }
+                    Digits(MainScreenModel.temperatureText(weather), TEMPERATURE)
+                    OpenMeteo.describe(weather.code).takeIf { it.isNotEmpty() }?.let { Text(it, style = GREGORIAN, maxLines = 1) }
                 }
             }
-        }
-
-        // Next prayer countdown
-        if (nextPrayer != null && dayPrayerTimes != null) {
-            val nextPt = dayPrayerTimes.scheduledPrayers(isFriday).find { it.prayer == nextPrayer }
-            if (nextPt != null) {
-                val nowMin = currentTime.hour * 60 + currentTime.minute
-                val targetMin = nextPt.hour * 60 + nextPt.minute
-                val diff = targetMin - nowMin
-                val h = diff / 60
-                val m = diff % 60
-                val countdownStr = if (h > 0) "${h}س ${m}د" else "${m}د"
-
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = "${TvStrings.NEXT_PRAYER}: ${TvStrings.prayerName(nextPrayer)}",
-                        color = TextWhite,
-                        fontSize = 20.sp
-                    )
-                    Spacer(Modifier.width(16.dp))
-
-                    // Countdown pill (highlighted amber)
-                    Box(
-                        modifier = Modifier
-                            .background(CountdownAmber.copy(alpha = 0.15f), RoundedCornerShape(10.dp))
-                            .border(1.dp, CountdownAmber.copy(alpha = 0.3f), RoundedCornerShape(10.dp))
-                            .padding(horizontal = 16.dp, vertical = 6.dp)
-                    ) {
-                        Text(
-                            text = countdownStr,
-                            color = CountdownAmber,
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
-
-                    Spacer(Modifier.width(16.dp))
-                    val progress = 1f - (diff.toFloat() / 120f).coerceIn(0f, 1f)
-                    LinearProgressIndicator(
-                        progress = { progress },
-                        modifier = Modifier.width(120.dp).height(6.dp).clip(RoundedCornerShape(3.dp)),
-                        color = CountdownAmber,
-                        trackColor = SurfaceDark.copy(alpha = 0.6f),
-                    )
-                }
-            }
-        }
-    }
-}
-
-// ══════════════════════════════════════════════════════════════════════════
-//  PRAYER CARDS ROW — 5 clean cards, next prayer highlighted in gold
-// ══════════════════════════════════════════════════════════════════════════
-@Composable
-private fun PrayerCardsRow(
-    dayPrayerTimes: DayPrayerTimes,
-    iqamahConfigs: Map<Prayer, IqamahConfig>,
-    jomoaaConfig: IqamahConfig,
-    isFriday: Boolean,
-    nextPrayer: Prayer?
-) {
-    val prayers = if (isFriday) {
-        listOf(
-            Triple(TvStrings.FAJR, dayPrayerTimes.fajr, iqamahConfigs[Prayer.FAJR]),
-            Triple(TvStrings.JOMOAA, dayPrayerTimes.dhuhr, jomoaaConfig),
-            Triple(TvStrings.ASR, dayPrayerTimes.asr, iqamahConfigs[Prayer.ASR]),
-            Triple(TvStrings.MAGHRIB, dayPrayerTimes.maghrib, iqamahConfigs[Prayer.MAGHRIB]),
-            Triple(TvStrings.ISHA, dayPrayerTimes.isha, iqamahConfigs[Prayer.ISHA])
-        )
-    } else {
-        listOf(
-            Triple(TvStrings.FAJR, dayPrayerTimes.fajr, iqamahConfigs[Prayer.FAJR]),
-            Triple(TvStrings.DHUHR, dayPrayerTimes.dhuhr, iqamahConfigs[Prayer.DHUHR]),
-            Triple(TvStrings.ASR, dayPrayerTimes.asr, iqamahConfigs[Prayer.ASR]),
-            Triple(TvStrings.MAGHRIB, dayPrayerTimes.maghrib, iqamahConfigs[Prayer.MAGHRIB]),
-            Triple(TvStrings.ISHA, dayPrayerTimes.isha, iqamahConfigs[Prayer.ISHA])
-        )
-    }
-
-    val prayerEnums = if (isFriday) {
-        listOf(Prayer.FAJR, Prayer.JOMOAA, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
-    } else {
-        listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
-    }
-
-    Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        prayers.forEachIndexed { index, (name, prayerTime, iqamahConfig) ->
-            PrayerCard(
-                name = name,
-                prayerTime = prayerTime,
-                iqamahConfig = iqamahConfig ?: IqamahConfig(),
-                isNext = prayerEnums[index] == nextPrayer,
-                modifier = Modifier.weight(1f)
-            )
-        }
-    }
-}
-
-@Composable
-private fun PrayerCard(
-    name: String,
-    prayerTime: PrayerTime,
-    iqamahConfig: IqamahConfig,
-    isNext: Boolean,
-    modifier: Modifier = Modifier
-) {
-    val bgColor by animateColorAsState(
-        targetValue = if (isNext) NextPrayerHighlight else SurfaceCard.copy(alpha = 0.85f),
-        animationSpec = tween(500),
-        label = "cardBg"
-    )
-    val borderColor by animateColorAsState(
-        targetValue = if (isNext) Gold.copy(alpha = 0.7f) else CardBorder,
-        animationSpec = tween(500),
-        label = "cardBorder"
-    )
-
-    val iqamahTime = computeIqamahTime(prayerTime, iqamahConfig)
-    val adhanStr = String.format(Locale.US, "%02d:%02d", prayerTime.hour, prayerTime.minute)
-    val iqamahStr = iqamahTime?.let { String.format(Locale.US, "%02d:%02d", it.first, it.second) } ?: "--:--"
-
-    Column(
-        modifier = modifier
-            .background(bgColor, RoundedCornerShape(16.dp))
-            .border(
-                width = if (isNext) 2.dp else 1.dp,
-                color = borderColor,
-                shape = RoundedCornerShape(16.dp)
-            )
-            .padding(vertical = 14.dp, horizontal = 8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // Prayer name
-        Text(
-            text = name,
-            color = if (isNext) Gold else TextWhite,
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-            textAlign = TextAlign.Center
-        )
-
-        Spacer(Modifier.height(8.dp))
-
-        // Thin decorative line
-        Box(
-            modifier = Modifier
-                .width(40.dp)
-                .height(1.dp)
-                .background(
-                    if (isNext) Gold.copy(alpha = 0.5f) else TextMuted.copy(alpha = 0.2f)
-                )
-        )
-
-        Spacer(Modifier.height(10.dp))
-
-        // Adhan time — BIG and bold (the main info)
-        Text(
-            text = adhanStr,
-            color = TextWhite,
-            fontSize = 36.sp,
-            fontWeight = FontWeight.Bold,
-            letterSpacing = 1.sp
-        )
-
-        Spacer(Modifier.height(6.dp))
-
-        // Iqamah time — smaller, gold-tinted
-        Text(
-            text = iqamahStr,
-            color = if (isNext) Gold else GoldMuted,
-            fontSize = 22.sp,
-            fontWeight = FontWeight.Medium
-        )
-    }
-}
-
-// ══════════════════════════════════════════════════════════════════════════
-//  UTILITY
-// ══════════════════════════════════════════════════════════════════════════
-
-fun computeIqamahTime(prayerTime: PrayerTime, config: IqamahConfig): Pair<Int, Int>? {
-    return when (config.mode) {
-        IqamahMode.DELAY -> {
-            val totalMinutes = prayerTime.hour * 60 + prayerTime.minute + config.delayMinutes
-            Pair(totalMinutes / 60, totalMinutes % 60)
-        }
-        IqamahMode.FIXED_TIME -> {
-            if (config.fixedHour >= 0 && config.fixedMinute >= 0) {
-                Pair(config.fixedHour, config.fixedMinute)
-            } else null
+            // Open-Meteo's data is CC BY 4.0: credited wherever it is shown.
+            if (weather != null) Text(OpenMeteo.ATTRIBUTION, style = CREDIT, maxLines = 1)
         }
     }
 }
 
 /**
- * Ramadan banner with iftar/suhoor countdown.
+ * The mosque's name and its place, within [NAME_WIDTH]: a long name is set smaller, then cut with an
+ * ellipsis, rather than squeeze the dates or leave no room for the verse.
  */
 @Composable
-private fun RamadanBanner(
-    maghribTime: PrayerTime?,
-    fajrTime: PrayerTime?,
-    currentTime: LocalTime
-) {
-    val nowMinutes = currentTime.hour * 60 + currentTime.minute
-
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(RamadanPurple.copy(alpha = 0.6f), RoundedCornerShape(14.dp))
-            .border(1.dp, RamadanGold.copy(alpha = 0.2f), RoundedCornerShape(14.dp))
-            .padding(horizontal = 24.dp, vertical = 10.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+private fun MosqueBlock(mosqueName: String, place: String) {
+    val measurer = rememberTextMeasurer(cacheSize = 0)
+    val budget = with(LocalDensity.current) { NAME_WIDTH.roundToPx() }
+    val name = remember(mosqueName, budget) {
+        largestFitting(NAME_SIZES.map(::mosqueNameStyle)) { measurer.measure(mosqueName, it, softWrap = false, maxLines = 1).size.width <= budget }
+    }
+    Column(
+        Modifier.widthIn(max = NAME_WIDTH).wrapContentHeight(Alignment.Top, unbounded = true),
+        verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {
-        Text(
-            text = TvStrings.RAMADAN_BANNER,
-            color = RamadanGold,
-            fontSize = 22.sp,
-            fontWeight = FontWeight.Bold
-        )
-
-        if (maghribTime != null && fajrTime != null) {
-            val maghribMinutes = maghribTime.hour * 60 + maghribTime.minute
-            val fajrMinutes = fajrTime.hour * 60 + fajrTime.minute
-
-            if (nowMinutes < maghribMinutes) {
-                val diff = maghribMinutes - nowMinutes
-                val h = diff / 60
-                val m = diff % 60
-                val countdownStr = if (h > 0) "${h}س ${m}د" else "${m}د"
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = TvStrings.IFTAR_COUNTDOWN, color = RamadanMoon, fontSize = 18.sp)
-                    Spacer(Modifier.width(12.dp))
-                    Text(text = countdownStr, color = IftarGreen, fontSize = 24.sp, fontWeight = FontWeight.Bold)
-                }
-            } else {
-                val diff = if (nowMinutes < fajrMinutes) fajrMinutes - nowMinutes
-                    else (24 * 60 - nowMinutes) + fajrMinutes
-                val h = diff / 60
-                val m = diff % 60
-                val countdownStr = if (h > 0) "${h}س ${m}د" else "${m}د"
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(text = TvStrings.SUHOOR_REMINDER, color = RamadanMoon, fontSize = 18.sp)
-                    Spacer(Modifier.width(12.dp))
-                    Text(text = countdownStr, color = CountdownOrange, fontSize = 24.sp, fontWeight = FontWeight.Bold)
-                }
-            }
-        }
-
-        Text(text = "🌙", fontSize = 24.sp)
+        Text(mosqueName, style = name, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.lineBox(name))
+        if (place.isNotEmpty()) Text(place, style = PLACE, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
+
+/**
+ * The verse with its silver medallion and reference, centred between the mosque and the dates. On a
+ * header too narrow for it (a long mosque name, the weather), it is set a little smaller, else the
+ * next of [verses] that fits takes its place, and the header is empty only if none does: a verse is
+ * never shown in part.
+ */
+@Composable
+private fun HeaderVerse(verses: List<DisplayTexts.DisplayText>, modifier: Modifier) {
+    BoxWithConstraints(modifier, contentAlignment = Alignment.TopCenter) {
+        val measurer = rememberTextMeasurer(cacheSize = 0)
+        val width = constraints.maxWidth
+        val fixed = with(LocalDensity.current) { (15.dp + 7.dp * 2).roundToPx() }
+        val fitted = remember(verses, width) {
+            verses.firstNotNullOfOrNull { verse ->
+                val reference = measurer.measure(verse.reference, VERSE_REFERENCE, softWrap = false, maxLines = 1).size.width
+                (17 downTo 14).map { verseStyle(it) }.firstOrNull { style ->
+                    measurer.measure(verse.text, style, softWrap = false, maxLines = 1).size.width + reference + fixed <= width
+                }?.let { verse to it }
+            }
+        }
+        if (fitted != null) {
+            val (verse, style) = fitted
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+                Text(verse.text, style = style, maxLines = 1, softWrap = false)
+                Medallion(15.dp)
+                Text(TvStrings.source(verse.reference), style = VERSE_REFERENCE, maxLines = 1, softWrap = false)
+            }
+        }
+    }
+}
+
+// ── Hero: the clock (right), the countdown (left), both on the hero's floor ──
+
+@Composable
+private fun Hero(clock: String, hero: HeroCountdown?, now: LocalDateTime) {
+    Row(
+        Modifier.fillMaxWidth().height(180.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.Bottom,
+    ) {
+        Digits(clock, CLOCK, tracking = (-3).dp)
+        if (hero != null) Countdown(hero, hero.countdownText(now), hero.isSoon(now))
+    }
+}
+
+@Composable
+private fun Countdown(hero: HeroCountdown, left: String, soon: Boolean) {
+    Column(
+        Modifier.padding(bottom = 5.dp),
+        horizontalAlignment = Alignment.End,
+        verticalArrangement = Arrangement.spacedBy(5.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(9.dp)) {
+            // Quiet on purpose: it appears five minutes before and stays still, never blinks.
+            if (soon) {
+                Box(Modifier.border(1.dp, Midad.Gold, RoundedCornerShape(50)).padding(horizontal = 11.dp, vertical = 2.dp)) {
+                    Text(TvStrings.SOON, style = SOON_PILL)
+                }
+            }
+            Text(hero.label, style = HERO_LABEL, maxLines = 1)
+        }
+        Digits(left, COUNTDOWN, tracking = (-1).dp)
+        if (hero.detail != null) Text(hero.detail, style = HERO_DETAIL, maxLines = 1)
+    }
+}
+
+// ── The arcade: one pointed niche per prayer, right to left, the next one in gold ──
+
+@Composable
+private fun Arcade(tiles: List<ArcadeTile>) {
+    if (tiles.isEmpty()) {
+        Box(Modifier.fillMaxWidth().height(ARCADE_HEIGHT), contentAlignment = Alignment.Center) {
+            Text(TvStrings.NO_DATA, style = NO_TIMES)
+        }
+        return
+    }
+    Row(Modifier.fillMaxWidth().height(ARCADE_HEIGHT), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        tiles.forEach { tile -> Niche(tile, Modifier.weight(1f).fillMaxHeight()) }
+    }
+}
+
+@Composable
+private fun Niche(tile: ArcadeTile, modifier: Modifier) {
+    val gold = tile.next
+    val sunrise = tile.prayer == null
+    Column(
+        modifier
+            .then(if (tile.passed && !gold) Modifier.alpha(PASSED_ALPHA) else Modifier)
+            .archTile(if (gold) Midad.Gold else Midad.Surface, if (gold) Midad.GoldLine else Midad.ArchLine)
+            .padding(bottom = if (sunrise) 20.dp else if (tile.note != null) 10.dp else 13.dp),
+        verticalArrangement = Arrangement.spacedBy(if (tile.note != null) 3.dp else 4.dp, Alignment.Bottom),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        if (gold) KhatamStar(16.dp, color = Midad.OnGold)
+        when {
+            sunrise -> {
+                Text(tile.name, style = SUNRISE_NAME, maxLines = 1)
+                Text(TvStrings.hm(tile.time), style = SUNRISE_TIME, maxLines = 1, modifier = Modifier.lineBox(SUNRISE_TIME))
+            }
+            gold -> {
+                Text(tile.name, style = NEXT_NAME, maxLines = 1)
+                Text(TvStrings.hm(tile.time), style = NEXT_TIME, maxLines = 1, modifier = Modifier.lineBox(NEXT_TIME))
+                tile.iqamah?.let { Text("${TvStrings.IQAMAH_IN_TILE} ${TvStrings.hm(it)}", style = NEXT_IQAMAH, maxLines = 1) }
+                tile.note?.let { Text(it, style = NEXT_NOTE, maxLines = 1) }
+            }
+            else -> {
+                Text(tile.name, style = NAME, maxLines = 1)
+                Text(TvStrings.hm(tile.time), style = TIME, maxLines = 1, modifier = Modifier.lineBox(TIME))
+                tile.iqamah?.let { Text("${TvStrings.IQAMAH_IN_TILE} ${TvStrings.hm(it)}", style = TILE_IQAMAH, maxLines = 1) }
+                tile.note?.let { Text(it, style = NOTE, maxLines = 1) }
+            }
+        }
+    }
+}
+
+// Sizes from the Main board, halved (1920 × 1080 px → 960 × 540 dp).
+
+private val HORIZON = 300.dp
+private val GROUND_AT = 365.dp
+private val ARCADE_HEIGHT = 160.dp
+private const val PASSED_ALPHA = 0.5f
+
+private fun mosqueNameStyle(size: Int): TextStyle = midadStyle(size.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.1f)
+/** The name at 29 sp as on the board, a long one smaller, and past this width ellipsized. */
+private val NAME_SIZES = listOf(29, 27, 25, 23, 21)
+private val NAME_WIDTH = 290.dp
+private val PLACE = midadStyle(15.sp, color = Midad.Muted)
+private fun verseStyle(size: Int): TextStyle = midadStyle(size.sp, color = Midad.Verse, family = Amiri, lineHeight = 1.4f)
+private val VERSE_REFERENCE = midadStyle(11.sp, color = Midad.Muted)
+private val HIJRI = midadStyle(19.sp, FontWeight.Medium)
+private val DAY_NOTE = midadStyle(15.sp, color = Midad.Muted)
+private val EID_NOTE = midadStyle(15.sp, FontWeight.Medium)
+private val GREGORIAN = midadStyle(14.sp, color = Midad.Muted)
+private val TEMPERATURE = midadStyle(14.sp)
+private val CREDIT = midadStyle(7.sp, color = Midad.Dim)
+
+private val CLOCK = midadStyle(150.sp, FontWeight.Bold, lineHeight = 0.86f)
+private val HERO_LABEL = midadStyle(20.sp, color = Midad.Muted)
+private val COUNTDOWN = midadStyle(75.sp, FontWeight.SemiBold, Midad.Gold, lineHeight = 0.95f)
+private val HERO_DETAIL = midadStyle(20.sp)
+private val SOON_PILL = midadStyle(15.sp, FontWeight.SemiBold, Midad.Gold)
+
+private val NAME = midadStyle(22.sp, FontWeight.Medium)
+private val TIME = midadStyle(44.sp, FontWeight.SemiBold, lineHeight = 1f)
+private val TILE_IQAMAH = midadStyle(16.sp, color = Midad.Muted)
+private val NOTE = midadStyle(14.sp, color = Midad.Muted)
+private val NEXT_NAME = midadStyle(22.sp, FontWeight.SemiBold, Midad.OnGold)
+private val NEXT_TIME = midadStyle(44.sp, FontWeight.Bold, Midad.OnGold, lineHeight = 1f)
+private val NEXT_IQAMAH = midadStyle(16.sp, FontWeight.Medium, Midad.OnGoldMuted)
+private val NEXT_NOTE = midadStyle(14.sp, color = Midad.OnGoldMuted)
+private val SUNRISE_NAME = midadStyle(22.sp, FontWeight.Medium, Midad.Muted)
+private val SUNRISE_TIME = midadStyle(36.sp, FontWeight.Medium, Midad.Muted, lineHeight = 1f)
+private val NO_TIMES = midadStyle(20.sp, color = Midad.Muted)
