@@ -182,6 +182,60 @@ class AdhkarFlowTest {
         assertTrue(repo.state.value.sessions.getValue(second).skippedIds.isEmpty())
         assertEquals(0, repo.state.value.occurrences.getValue(secondOccurrence.id).count)
     }
+    @Test fun morningReadingFromReminderIsDoneOnTheAdhkarTab() {
+        val items = listOf("sayyid_istighfar", "ayat_kursi")
+        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING)
+        repo.save(rule)
+        val window = window(rule)
+        val occurrence = repo.ensureOccurrence(rule, window)
+        val start = window.startMillis
+        val fromReminder = repo.openSession(items, DhikrCategory.MORNING, occurrence.id, now = start,
+            collectionReading = true)
+        repo.count(fromReminder, 1, start + 1)
+        repo.move(fromReminder, 1)
+        repo.count(fromReminder, 1, start + 2)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+
+        // The tab's morning card and the reminder scheduler both see this occasion as done.
+        val cardKey = collectionReadingPeriodKey(context, DhikrCategory.MORNING, null, start + 3)
+        assertTrue(repo.state.value.isCollectionPeriodComplete(DhikrCategory.MORNING, cardKey))
+        assertTrue(DhikrReminderScheduler.isCollectionReadingDone(context, repo.state.value, rule, start + 3))
+
+        // Reading again from the card, even after the reminder window, keeps the counters.
+        val fromCard = repo.openSession(items, DhikrCategory.MORNING, now = window.endMillis + 1,
+            collectionReading = true)
+        assertNotEquals(fromReminder, fromCard)
+        assertEquals(mapOf(items[0] to 1, items[1] to 1), repo.state.value.sessions.getValue(fromCard).counts)
+        assertTrue(repo.state.value.isCollectionPeriodComplete(DhikrCategory.MORNING, cardKey))
+
+        // New Session still starts the occasion over.
+        val fresh = repo.openSession(items, DhikrCategory.MORNING, fresh = true, now = window.endMillis + 2,
+            collectionReading = true)
+        assertTrue(repo.state.value.sessions.getValue(fresh).counts.isEmpty())
+        assertFalse(repo.state.value.isCollectionPeriodComplete(DhikrCategory.MORNING, cardKey))
+    }
+    @Test fun morningProgressCarriesBetweenTheTabAndTheReminder() {
+        val items = listOf("sayyid_istighfar", "ayat_kursi")
+        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING)
+        repo.save(rule)
+        val window = window(rule)
+        val occurrence = repo.ensureOccurrence(rule, window)
+        val start = window.startMillis
+        val fromReminder = repo.openSession(items, DhikrCategory.MORNING, occurrence.id, now = start,
+            collectionReading = true)
+        repo.count(fromReminder, 1, start + 1)
+
+        val fromCard = repo.openSession(items, DhikrCategory.MORNING, now = start + 2, collectionReading = true)
+        assertEquals(1, repo.state.value.sessions.getValue(fromCard).counts[items.first()])
+        repo.move(fromCard, 1)
+        repo.count(fromCard, 1, start + 3)
+
+        // Tapping the reminder again picks up the tab's newer progress and completes its goal.
+        assertEquals(fromReminder, repo.openSession(items, DhikrCategory.MORNING, occurrence.id, now = start + 4,
+            collectionReading = true))
+        assertEquals(mapOf(items[0] to 1, items[1] to 1), repo.state.value.sessions.getValue(fromReminder).counts)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(occurrence.id).status)
+    }
     @Test fun arabicSearchAndFavouritePreserveExactText() {
         assertEquals(normalizeDhikrSearch("أَذْكَارُ الْمَسَاءِ"), normalizeDhikrSearch("اذكار المساء"))
         val text = DhikrCatalog.find("salah_istighfar")!!.text
