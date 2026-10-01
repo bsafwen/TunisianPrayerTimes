@@ -8,6 +8,7 @@ actual object Preferences {
     private const val PREFS_NAME = "prayer_silence_prefs"
     private const val DEFAULT_DELEGATION_ID = 615
     private const val DEFAULT_MANUAL_SILENCE_DURATION_MINUTES = 30
+    private const val NO_END_OFFSET = Int.MIN_VALUE
 
     private var appContext: Context? = null
 
@@ -150,10 +151,23 @@ actual object Preferences {
     }
 
     actual fun getRamadanOverrideJson(): String? = prefs().getString("ramadan_override_json", null)
+    actual fun getOfficialIslamicDatesJson(hijriYear: Int): String? =
+        prefs().getString("official_islamic_dates_$hijriYear", null)
+    actual fun setOfficialIslamicDatesJson(hijriYear: Int, json: String) {
+        prefs().edit().putString("official_islamic_dates_$hijriYear", json).apply()
+    }
     actual fun setRamadanOverrideJson(json: String?) {
         if (json != null) prefs().edit().putString("ramadan_override_json", json).apply()
         else prefs().edit().remove("ramadan_override_json").apply()
     }
+    actual fun getManualIslamicDatesJson(): String? = prefs().getString("manual_islamic_dates_json", null)
+    actual fun setManualIslamicDatesJson(json: String?) {
+        if (json != null) prefs().edit().putString("manual_islamic_dates_json", json).apply()
+        else prefs().edit().remove("manual_islamic_dates_json").apply()
+    }
+
+    private fun getEndOffsetMinutes(prayer: Prayer): Int? =
+        prefs().getInt("end_offset_${prayer.name}", NO_END_OFFSET).takeIf { it != NO_END_OFFSET }
 
     actual fun getConfig(prayer: Prayer): PrayerSilenceConfig {
         return PrayerSilenceConfig(
@@ -164,7 +178,8 @@ actual object Preferences {
             delayMode = getDelayMode(prayer),
             delayMinutes = getDelayMinutes(prayer),
             delayFixedHour = getDelayFixedHour(prayer),
-            delayFixedMinute = getDelayFixedMinute(prayer)
+            delayFixedMinute = getDelayFixedMinute(prayer),
+            endOffsetMinutes = getEndOffsetMinutes(prayer)
         )
     }
 }

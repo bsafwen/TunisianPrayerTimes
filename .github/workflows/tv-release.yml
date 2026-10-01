@@ -1,0 +1,202 @@
+name: TV Release
+
+# Builds the signed TV app in its two forms, run by hand from the Actions tab, from main only:
+# - "play": the AAB for Google Play, attached to the run for a person to upload in the Play Console;
+# - "github": the APK for boxes without Play Store, published as a GitHub release (tag tv-v<version>),
+#   from which the installed GitHub builds update themselves.
+# Every GitHub build online installs a new release that night by itself, so nothing is built before the
+# inputs and the whole of TV Tests pass, and only the last job, which builds nothing, may write releases.
+on:
+  workflow_dispatch:
+    inputs:
+      versionCode:
+        description: "Version code, higher than every upload before (Play refuses a repeat)"
+        required: true
+      versionName:
+        description: "Version name shown to admins, for example 1.0"
+        required: true
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: tv-release
+  cancel-in-progress: false
+
+jobs:
+  check:
+    name: Branch and version
+    runs-on: ubuntu-latest
+    steps:
+      # main is where TV Tests guard every change; another branch may hold anything.
+      - name: Release from main only
+        run: |
+          [ "$GITHUB_REF" = "refs/heads/main" ] || { echo "::error::TV Release runs from main only, not $GITHUB_REF"; exit 1; }
+
+      - name: Check the version inputs
+        env:
+          VERSION_CODE: ${{ inputs.versionCode }}
+          VERSION_NAME: ${{ inputs.versionName }}
+        run: |
+          [[ "$VERSION_CODE" =~ ^[1-9][0-9]{0,8}$ ]] || { echo "versionCode must be a positive whole number"; exit 1; }
+          [[ "$VERSION_NAME" =~ ^[0-9A-Za-z.\-]{1,20}$ ]] || { echo "versionName must look like 1.0"; exit 1; }
+
+      # The updater installs the TV release with the highest code above its own: a repeated or lower code
+      # would never reach the boxes, or would bring an older release back over this one at night.
+      # Each request is read into a variable on its own, so a failed one (rate limit, outage) stops the
+      # release under bash -e instead of passing the checks with an empty answer.
+      - name: Check the version against the published TV releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION_CODE: ${{ inputs.versionCode }}
+          VERSION_NAME: ${{ inputs.versionName }}
+        run: |
+          tags=$(gh api "repos/$GITHUB_REPOSITORY/git/matching-refs/tags/tv-v" --jq '.[].ref')
+          if grep -qxF "refs/tags/tv-v$VERSION_NAME" <<< "$tags"; then
+            echo "::error::The tag tv-v$VERSION_NAME already exists: choose a new version name"; exit 1
+          fi
+          assets=$(gh api --paginate "repos/$GITHUB_REPOSITORY/releases?per_page=100" \
+            --jq '.[] | select(.tag_name | startswith("tv-v")) | .assets[].name')
+          highest=$(sed -nE 's/^TunisianPrayerTimesTV-github-[0-9A-Za-z.-]+-([0-9]+)\.apk$/\1/p' <<< "$assets" | sort -n | tail -1)
+          if [ -n "$highest" ] && [ "$VERSION_CODE" -le "$highest" ]; then
+            echo "::error::versionCode $VERSION_CODE must be above $highest, the highest TV release's"; exit 1
+          fi
+
+  tests:
+    name: TV Tests
+    needs: check
+    uses: ./.github/workflows/tv-tests.yml
+
+  build:
+    name: Signed AAB + APK
+    needs: tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tv-app
+
+    steps:
+      # No token left on disk while third-party build code runs next to the signing key.
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      # tv-app/gradle/gradle-daemon-jvm.properties asks for a JDK 21 daemon.
+      - name: Set up JDK 21
+        uses: actions/setup-java@v5
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          cache: gradle
+
+      # The same upload key as the phone app (repository secrets); never written to the log.
+      - name: Decode keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+        run: echo "$KEYSTORE_BASE64" | base64 -d > release-keystore.jks
+
+      - name: Create keystore.properties
+        env:
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          {
+            echo "storeFile=../release-keystore.jks"
+            echo "storePassword=$KEYSTORE_PASSWORD"
+            echo "keyAlias=$KEY_ALIAS"
+            echo "keyPassword=$KEY_PASSWORD"
+          } > keystore.properties
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # local.properties points at a developer's SDK; CI uses ANDROID_HOME instead.
+      - name: Remove local SDK path
+        run: rm -f local.properties
+
+      # The tests ran in the tests job, on this same commit.
+      - name: Build the releases
+        env:
+          VERSION_CODE: ${{ inputs.versionCode }}
+          VERSION_NAME: ${{ inputs.versionName }}
+        run: >
+          ./gradlew :app:bundlePlayRelease :app:assembleGithubRelease
+          "-PtvVersionCode=$VERSION_CODE" "-PtvVersionName=$VERSION_NAME"
+
+      - name: Remove signing files
+        if: always()
+        run: rm -f release-keystore.jks keystore.properties
+
+      # An installed GitHub build takes an update only if it is signed with its own key: one signed with
+      # another key (the phone's shared secrets replaced, say) would be refused by every box, which could
+      # then only be reinstalled by hand. tv-app/release-certificate.sha256 pins the key's certificate.
+      - name: The GitHub build is signed with the pinned certificate
+        run: |
+          apksigner=$(ls -d "$ANDROID_HOME"/build-tools/*/ | sort -V | tail -1)apksigner
+          actual=$("$apksigner" verify --print-certs app/build/outputs/apk/github/release/app-github-release.apk |
+            sed -nE 's/^Signer #1 certificate SHA-256 digest: ([0-9a-f]+)$/\1/p')
+          test -n "$actual"
+          if [ ! -s release-certificate.sha256 ]; then
+            echo "::error::tv-app/release-certificate.sha256 is missing. This build is signed with the certificate $actual: if that is the TV's release key, commit its SHA-256 there."
+            exit 1
+          fi
+          pinned=$(tr -dc '0-9a-fA-F' < release-certificate.sha256 | tr 'A-F' 'a-f')
+          [ "$actual" = "$pinned" ] || { echo "::error::Signed with the certificate $actual, not the pinned $pinned: every installed TV would refuse this update."; exit 1; }
+
+      - name: Upload AAB (Google Play)
+        uses: actions/upload-artifact@v6
+        with:
+          name: tv-aab-${{ inputs.versionName }}
+          path: tv-app/app/build/outputs/bundle/playRelease/app-play-release.aab
+
+      # The updater finds the release by its tag prefix and the asset's name (version name, then code).
+      # R8 renames the code: the mapping turns a crash trace from a box's kiosk log back into names.
+      - name: Name the GitHub build's files
+        env:
+          VERSION_CODE: ${{ inputs.versionCode }}
+          VERSION_NAME: ${{ inputs.versionName }}
+        run: |
+          mkdir -p ../release
+          cp app/build/outputs/apk/github/release/app-github-release.apk "../release/TunisianPrayerTimesTV-github-${VERSION_NAME}-${VERSION_CODE}.apk"
+          gzip -9 -c app/build/outputs/mapping/githubRelease/mapping.txt > "../release/TunisianPrayerTimesTV-github-${VERSION_NAME}-${VERSION_CODE}-mapping.txt.gz"
+
+      - name: Upload the GitHub build
+        uses: actions/upload-artifact@v6
+        with:
+          name: tv-github-${{ inputs.versionName }}
+          path: release/
+
+      # Play keeps the AAB's own mapping; this copy is for reading its crash reports anywhere else.
+      - name: Upload the Play build's R8 mapping
+        uses: actions/upload-artifact@v6
+        with:
+          name: tv-play-mapping-${{ inputs.versionName }}-${{ inputs.versionCode }}
+          path: tv-app/app/build/outputs/mapping/playRelease/mapping.txt
+
+  publish:
+    name: Publish the GitHub build
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # the release, and nothing else runs in this job
+
+    steps:
+      - uses: actions/download-artifact@v6
+        with:
+          name: tv-github-${{ inputs.versionName }}
+          path: release
+
+      - name: Publish the GitHub build as a release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION_CODE: ${{ inputs.versionCode }}
+          VERSION_NAME: ${{ inputs.versionName }}
+        run: |
+          notes="شاشة المسجد ${VERSION_NAME} (${VERSION_CODE}): نسخة الأجهزة دون متجر Google Play، تحدّث نفسها من هنا."
+          # --latest=false: the repository's "latest" release stays the phone app's.
+          gh release create "tv-v${VERSION_NAME}" release/* --repo "$GITHUB_REPOSITORY" --target "${GITHUB_SHA}" \
+            --title "Mosque TV ${VERSION_NAME}" --notes "$notes" --latest=false
