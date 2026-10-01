@@ -1,539 +1,311 @@
 package com.tunisianprayertimes.tv.ui.setup
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.focusable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.listSaver
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.key.*
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.Delegation
 import com.tunisianprayertimes.Gouvernorat
 import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.mosque.DisplayTexts
+import com.tunisianprayertimes.mosque.MosqueProfile
+import com.tunisianprayertimes.mosque.MosqueSchedule
 import com.tunisianprayertimes.tv.data.IqamahConfig
 import com.tunisianprayertimes.tv.data.IqamahMode
+import com.tunisianprayertimes.tv.data.PrefsManager
 import com.tunisianprayertimes.tv.ui.TvStrings
-import com.tunisianprayertimes.tv.ui.theme.Gold
-import com.tunisianprayertimes.tv.ui.theme.CardBorder
-import com.tunisianprayertimes.tv.ui.theme.SurfaceElevated
-import com.tunisianprayertimes.tv.ui.theme.TealDark
-import com.tunisianprayertimes.tv.ui.theme.TealPrimary
+import com.tunisianprayertimes.tv.ui.common.ChoiceGrid
+import com.tunisianprayertimes.tv.ui.common.FocusableListItem
+import com.tunisianprayertimes.tv.ui.common.KeyHints
+import com.tunisianprayertimes.tv.ui.common.initialFocus
+import com.tunisianprayertimes.tv.ui.common.rtl
+import com.tunisianprayertimes.tv.ui.theme.Amiri
+import com.tunisianprayertimes.tv.ui.theme.Dots
+import com.tunisianprayertimes.tv.ui.theme.Kufi
+import com.tunisianprayertimes.tv.ui.theme.Medallion
+import com.tunisianprayertimes.tv.ui.theme.MedallionRule
+import com.tunisianprayertimes.tv.ui.theme.Midad
+import com.tunisianprayertimes.tv.ui.theme.midadStyle
+
+/** Location, delegation, iqamah, name. */
+private const val STEPS = 4
 
 /**
- * Setup wizard — 4 step flow:
- * 1. Select gouvernorat
+ * The iqamah table through a recreation of the activity: eight numbers a prayer (every field of
+ * [IqamahConfig], held and the Jumu'a dua as 1 or 0), in [PrefsManager.EDITABLE]'s order.
+ */
+internal val IqamahConfigsSaver: Saver<Map<Prayer, IqamahConfig>, Any> = listSaver(
+    save = { configs ->
+        PrefsManager.EDITABLE.flatMap { prayer ->
+            configs.getValue(prayer).run {
+                listOf(mode.ordinal, delayMinutes, fixedHour, fixedMinute, salahMinutes, if (held) 1 else 0, khutbaMinutes, if (adhanDua) 1 else 0)
+            }
+        }
+    },
+    restore = { values ->
+        PrefsManager.EDITABLE.zip(values.chunked(CONFIG_VALUES)) { prayer, value ->
+            prayer to IqamahConfig(IqamahMode.entries[value[0]], value[1], value[2], value[3], value[4], held = value[5] == 1, khutbaMinutes = value[6],
+                adhanDua = value[7] == 1)
+        }.toMap()
+    },
+)
+
+private const val CONFIG_VALUES = 8
+
+/**
+ * Onboarding, four steps on the settings' palette:
+ * 1. Select gouvernorat (under the welcome)
  * 2. Select delegation
- * 3. Configure iqamah per prayer
+ * 3. Configure iqamah and prayer duration per prayer
  * 4. Mosque name (optional) + confirm
+ *
+ * [onUsbSetup], when a plugged-in key holds a settings file that names the mosque's place, offers
+ * to set the whole TV from it instead. What was entered survives a recreation of the activity (a
+ * change of output mode, a low-memory box back from a system page).
  */
 @Composable
 fun SetupWizard(
     gouvernorats: List<Gouvernorat>,
+    onUsbSetup: (() -> Unit)? = null,
     onComplete: (
         gouvernoratId: Int,
         delegation: Delegation,
         iqamahConfigs: Map<Prayer, IqamahConfig>,
-        jomoaaConfig: IqamahConfig,
         mosqueName: String
     ) -> Unit
 ) {
-    var step by remember { mutableIntStateOf(0) }
-    var selectedGouvernorat by remember { mutableStateOf<Gouvernorat?>(null) }
-    var selectedDelegation by remember { mutableStateOf<Delegation?>(null) }
-    var iqamahConfigs by remember {
-        mutableStateOf(
-            mapOf(
-                Prayer.FAJR to IqamahConfig(delayMinutes = 15),
-                Prayer.DHUHR to IqamahConfig(delayMinutes = 10),
-                Prayer.ASR to IqamahConfig(delayMinutes = 10),
-                Prayer.MAGHRIB to IqamahConfig(delayMinutes = 5),
-                Prayer.ISHA to IqamahConfig(delayMinutes = 10)
-            )
-        )
+    var step by rememberSaveable { mutableIntStateOf(0) }
+    var gouvernoratId by rememberSaveable { mutableStateOf<Int?>(null) }
+    var delegationId by rememberSaveable { mutableStateOf<Int?>(null) }
+    val selectedGouvernorat = gouvernorats.find { it.id == gouvernoratId }
+    val selectedDelegation = selectedGouvernorat?.delegations?.find { it.id == delegationId }
+    // Iqamah and prayer duration per prayer start from the shared defaults.
+    var iqamahConfigs by rememberSaveable(stateSaver = IqamahConfigsSaver) {
+        mutableStateOf(PrefsManager.EDITABLE.associateWith { IqamahConfig.from(MosqueSchedule.DEFAULT.settings(it)) })
     }
-    var jomoaaConfig by remember { mutableStateOf(IqamahConfig(delayMinutes = 15)) }
-    var mosqueName by remember { mutableStateOf("") }
+    var mosqueName by rememberSaveable { mutableStateOf("") }
+    // Where the times will be computed, on the steps after the choice: a delegation chosen by a slip shows at once.
+    val place = selectedGouvernorat?.let { g -> selectedDelegation?.let { "${it.nomAr} — ${g.nomAr}" } }
+
+    // Back returns to the previous step, keeping what was entered; on the first step it stays.
+    BackHandler(enabled = step > 0) { step -= 1 }
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
-            .padding(48.dp)
+            .background(Midad.Ground)
+            .padding(horizontal = 48.dp, vertical = 27.dp)
     ) {
         when (step) {
-            0 -> GouvernoratStep(
+            0 -> WelcomeStep(
                 gouvernorats = gouvernorats,
+                selected = selectedGouvernorat,
                 onSelect = { g ->
-                    selectedGouvernorat = g
+                    gouvernoratId = g.id
                     step = 1
-                }
-            )
-            1 -> DelegationStep(
-                gouvernorat = selectedGouvernorat!!,
-                onSelect = { d ->
-                    selectedDelegation = d
-                    step = 2
                 },
-                onBack = { step = 0 }
+                onUsbSetup = onUsbSetup,
             )
-            2 -> IqamahStep(
-                configs = iqamahConfigs,
-                jomoaaConfig = jomoaaConfig,
-                onConfigsChanged = { iqamahConfigs = it },
-                onJomoaaChanged = { jomoaaConfig = it },
+            1 -> WizardStep(
+                step = 1,
+                title = "${TvStrings.SETUP_SELECT_DELEGATION} — ${selectedGouvernorat!!.nomAr}",
+                onBack = { step = 0 },
+            ) {
+                val delegations = selectedGouvernorat!!.delegations
+                ChoiceGrid(
+                    choices = delegations,
+                    label = { it.nomAr },
+                    onChoose = { d ->
+                        delegationId = d.id
+                        step = 2
+                    },
+                    // Back from the iqamah returns to the delegation chosen, not the top of the list.
+                    focusFirst = selectedDelegation,
+                    modifier = Modifier.fillMaxWidth().weight(1f),
+                )
+            }
+            2 -> WizardStep(
+                step = 2,
+                title = TvStrings.SETUP_IQAMAH_TITLE,
+                subtitle = TvStrings.SETUP_IQAMAH_SUBTITLE,
+                aside = place,
+                onBack = { step = 1 },
                 onNext = { step = 3 },
-                onBack = { step = 1 }
-            )
-            3 -> MosqueNameStep(
-                mosqueName = mosqueName,
-                delegationName = selectedDelegation!!.nomAr,
-                onNameChanged = { mosqueName = it },
-                onConfirm = {
+            ) {
+                IqamahTable(
+                    configs = iqamahConfigs,
+                    onChanged = { prayer, config -> iqamahConfigs = iqamahConfigs + (prayer to config) },
+                    modifier = Modifier.weight(1f),
+                )
+            }
+            3 -> WizardStep(
+                step = 3,
+                title = TvStrings.SETUP_MOSQUE_NAME,
+                onBack = { step = 2 },
+                nextText = TvStrings.CONFIRM,
+                focusNext = true,
+                onNext = {
                     onComplete(
                         selectedGouvernorat!!.id,
                         selectedDelegation!!,
                         iqamahConfigs,
-                        jomoaaConfig,
-                        mosqueName
+                        mosqueName.trim().take(MosqueProfile.MAX_NAME_LENGTH)
                     )
                 },
-                onBack = { step = 2 }
-            )
+            ) {
+                MosqueNameField(mosqueName, onNameChanged = { mosqueName = it })
+                Text(
+                    "${TvStrings.DELEGATION_LABEL}: ${selectedDelegation!!.nomAr} — ${selectedGouvernorat!!.nomAr}",
+                    style = midadStyle(15.sp, color = Midad.Muted),
+                )
+                Spacer(Modifier.weight(1f))
+            }
         }
     }
 }
 
+/**
+ * The first step: a restrained welcome over the choice of gouvernorat. The ornament is the Blue
+ * Qur'an's silver medallion between fading rules, and the app's name in Kufic. [onUsbSetup] puts
+ * «الإعداد من مفتاح USB» beside the title, one press up from the grid, which keeps the focus.
+ */
 @Composable
-private fun GouvernoratStep(
+private fun WelcomeStep(
     gouvernorats: List<Gouvernorat>,
-    onSelect: (Gouvernorat) -> Unit
+    selected: Gouvernorat?,
+    onSelect: (Gouvernorat) -> Unit,
+    onUsbSetup: (() -> Unit)?,
 ) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = TvStrings.SETUP_WELCOME,
-            style = MaterialTheme.typography.headlineLarge,
-            color = Gold,
-            fontSize = 36.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        Text(
-            text = TvStrings.SETUP_SELECT_GOUVERNORAT,
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.onBackground,
-            fontSize = 28.sp,
-            modifier = Modifier.padding(bottom = 24.dp)
-        )
-
-        val listState = rememberLazyListState()
-        LazyColumn(
-            state = listState,
-            modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .weight(1f),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(gouvernorats) { gouvernorat ->
-                FocusableListItem(
-                    text = gouvernorat.nomAr,
-                    onClick = { onSelect(gouvernorat) }
-                )
-            }
-        }
-    }
-}
-
-@Composable
-private fun DelegationStep(
-    gouvernorat: Gouvernorat,
-    onSelect: (Delegation) -> Unit,
-    onBack: () -> Unit
-) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .onPreviewKeyEvent { event ->
-                if (event.key == Key.Back && event.type == KeyEventType.KeyUp) {
-                    onBack(); true
-                } else false
-            },
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "${TvStrings.SETUP_SELECT_DELEGATION} — ${gouvernorat.nomAr}",
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.onBackground,
-            fontSize = 28.sp,
-            modifier = Modifier.padding(bottom = 24.dp)
-        )
-
-        val listState = rememberLazyListState()
-        LazyColumn(
-            state = listState,
-            modifier = Modifier
-                .fillMaxWidth(0.5f)
-                .weight(1f),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            items(gouvernorat.delegations) { delegation ->
-                FocusableListItem(
-                    text = delegation.nomAr,
-                    onClick = { onSelect(delegation) }
-                )
-            }
-        }
-
-        Spacer(Modifier.height(16.dp))
-        NavigationButtons(onBack = onBack)
-    }
-}
-
-@Composable
-private fun IqamahStep(
-    configs: Map<Prayer, IqamahConfig>,
-    jomoaaConfig: IqamahConfig,
-    onConfigsChanged: (Map<Prayer, IqamahConfig>) -> Unit,
-    onJomoaaChanged: (IqamahConfig) -> Unit,
-    onNext: () -> Unit,
-    onBack: () -> Unit
-) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = TvStrings.SETUP_IQAMAH_TITLE,
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.onBackground,
-            fontSize = 28.sp,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        Text(
-            text = TvStrings.SETUP_IQAMAH_SUBTITLE,
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.padding(bottom = 24.dp)
-        )
-
-        val prayers = listOf(Prayer.FAJR, Prayer.DHUHR, Prayer.ASR, Prayer.MAGHRIB, Prayer.ISHA)
-
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxWidth(0.6f)
-                .weight(1f),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            items(prayers) { prayer ->
-                IqamahRow(
-                    prayerName = TvStrings.prayerName(prayer),
-                    config = configs[prayer] ?: IqamahConfig(),
-                    onConfigChanged = { newConfig ->
-                        onConfigsChanged(configs + (prayer to newConfig))
-                    }
-                )
-            }
-            item {
-                IqamahRow(
-                    prayerName = TvStrings.FRIDAY_IQAMAH,
-                    config = jomoaaConfig,
-                    onConfigChanged = onJomoaaChanged
-                )
-            }
-        }
-
-        Spacer(Modifier.height(16.dp))
-        NavigationButtons(onBack = onBack, onNext = onNext)
-    }
-}
-
-@Composable
-private fun IqamahRow(
-    prayerName: String,
-    config: IqamahConfig,
-    onConfigChanged: (IqamahConfig) -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(12.dp))
-            .padding(horizontal = 24.dp, vertical = 16.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(
-            text = prayerName,
-            style = MaterialTheme.typography.titleLarge,
-            color = Gold,
-            fontSize = 22.sp,
-            modifier = Modifier.width(120.dp)
-        )
-
+    Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+        Text(DisplayTexts.BASMALA.text, style = midadStyle(20.sp, color = Midad.Verse, family = Amiri, lineHeight = 1.4f))
+        Text(TvStrings.APP_NAME, style = midadStyle(30.sp, FontWeight.SemiBold, family = Kufi, lineHeight = 1.25f))
+        MedallionRule(width = 260.dp, modifier = Modifier.padding(vertical = 6.dp))
+        Text(TvStrings.SETUP_WELCOME_SUB, style = midadStyle(15.sp, color = Midad.Muted))
         Row(
+            Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 4.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Decrease button
-            FocusableButton(
-                text = "−",
-                onClick = {
-                    if (config.delayMinutes > 1) {
-                        onConfigChanged(config.copy(delayMinutes = config.delayMinutes - 1))
-                    }
+            Text(TvStrings.SETUP_SELECT_GOUVERNORAT, style = midadStyle(21.sp, FontWeight.SemiBold))
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(20.dp)) {
+                if (onUsbSetup != null) {
+                    FocusableListItem(text = TvStrings.USB_SETUP, onClick = onUsbSetup, modifier = Modifier.width(220.dp))
                 }
-            )
-
-            Text(
-                text = "${config.delayMinutes} ${TvStrings.MINUTES_SUFFIX}",
-                style = MaterialTheme.typography.titleLarge,
-                color = MaterialTheme.colorScheme.onSurface,
-                fontSize = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.width(80.dp)
-            )
-
-            // Increase button
-            FocusableButton(
-                text = "+",
-                onClick = {
-                    if (config.delayMinutes < 60) {
-                        onConfigChanged(config.copy(delayMinutes = config.delayMinutes + 1))
-                    }
-                }
-            )
-        }
-    }
-}
-
-@Composable
-private fun MosqueNameStep(
-    mosqueName: String,
-    delegationName: String,
-    onNameChanged: (String) -> Unit,
-    onConfirm: () -> Unit,
-    onBack: () -> Unit
-) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            text = TvStrings.SETUP_MOSQUE_NAME,
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.onBackground,
-            fontSize = 28.sp,
-            modifier = Modifier.padding(bottom = 24.dp)
-        )
-
-        OutlinedTextField(
-            value = mosqueName,
-            onValueChange = onNameChanged,
-            placeholder = {
-                Text(
-                    TvStrings.SETUP_MOSQUE_HINT,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            },
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = Gold,
-                unfocusedBorderColor = MaterialTheme.colorScheme.outline,
-                focusedTextColor = MaterialTheme.colorScheme.onBackground,
-                unfocusedTextColor = MaterialTheme.colorScheme.onBackground,
-                cursorColor = Gold
-            ),
-            textStyle = LocalTextStyle.current.copy(fontSize = 24.sp, textAlign = TextAlign.Center),
-            modifier = Modifier.fillMaxWidth(0.5f),
-            singleLine = true
-        )
-
-        Spacer(Modifier.height(16.dp))
-
-        Text(
-            text = delegationName,
-            style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-            fontSize = 18.sp
-        )
-
-        Spacer(Modifier.height(48.dp))
-
-        NavigationButtons(
-            onBack = onBack,
-            nextText = TvStrings.CONFIRM,
-            onNext = onConfirm
-        )
-    }
-}
-
-// --- Reusable TV-focused components ---
-
-@Composable
-fun FocusableListItem(
-    text: String,
-    onClick: () -> Unit
-) {
-    var isFocused by remember { mutableStateOf(false) }
-
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(
-                if (isFocused) TealPrimary.copy(alpha = 0.8f) else MaterialTheme.colorScheme.surface.copy(alpha = 0.6f),
-                RoundedCornerShape(14.dp)
-            )
-            .border(
-                width = 1.dp,
-                color = if (isFocused) Gold.copy(alpha = 0.7f) else CardBorder,
-                shape = RoundedCornerShape(14.dp)
-            )
-            .onFocusChanged { isFocused = it.isFocused }
-            .focusable()
-            .onKeyEvent { event ->
-                if (event.key == Key.Enter && event.type == KeyEventType.KeyUp ||
-                    event.key == Key.DirectionCenter && event.type == KeyEventType.KeyUp
-                ) {
-                    onClick(); true
-                } else false
+                StepIndicator(0)
             }
-            .padding(horizontal = 24.dp, vertical = 16.dp),
-        contentAlignment = Alignment.CenterStart
-    ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.titleLarge,
-            color = if (isFocused) Color.White else MaterialTheme.colorScheme.onSurface,
-            fontSize = 22.sp
+        }
+        ChoiceGrid(
+            choices = gouvernorats,
+            label = { it.nomAr },
+            onChoose = onSelect,
+            focusFirst = selected,
+            modifier = Modifier.fillMaxWidth().weight(1f),
         )
     }
 }
 
+/**
+ * The frame of the steps after the welcome: the app's name and where the admin is, the step's title,
+ * the step, then Previous and Next (Next on the left, the way Arabic reads forward).
+ */
 @Composable
-fun FocusableButton(
-    text: String,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier
-) {
-    var isFocused by remember { mutableStateOf(false) }
-
-    Box(
-        modifier = modifier
-            .size(48.dp)
-            .background(
-                if (isFocused) Gold else SurfaceElevated,
-                RoundedCornerShape(10.dp)
-            )
-            .border(
-                width = 1.dp,
-                color = if (isFocused) Gold else CardBorder,
-                shape = RoundedCornerShape(10.dp)
-            )
-            .onFocusChanged { isFocused = it.isFocused }
-            .focusable()
-            .onKeyEvent { event ->
-                if (event.key == Key.Enter && event.type == KeyEventType.KeyUp ||
-                    event.key == Key.DirectionCenter && event.type == KeyEventType.KeyUp
-                ) {
-                    onClick(); true
-                } else false
-            },
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = text,
-            fontSize = 24.sp,
-            color = Color.White
-        )
-    }
-}
-
-@Composable
-private fun NavigationButtons(
-    onBack: (() -> Unit)? = null,
+private fun WizardStep(
+    step: Int,
+    title: String,
+    onBack: () -> Unit,
+    subtitle: String? = null,
+    /** At the other end of the title: the place chosen, once it is. */
+    aside: String? = null,
+    onNext: (() -> Unit)? = null,
     nextText: String = TvStrings.NEXT,
-    onNext: (() -> Unit)? = null
+    /** The step's own content does not take the focus: the Next key does. */
+    focusNext: Boolean = false,
+    content: @Composable ColumnScope.() -> Unit,
 ) {
-    Row(
-        horizontalArrangement = Arrangement.spacedBy(24.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        if (onBack != null) {
-            var isFocused by remember { mutableStateOf(false) }
-            Box(
-                modifier = Modifier
-                    .background(
-                        if (isFocused) SurfaceElevated
-                        else MaterialTheme.colorScheme.surface.copy(alpha = 0.6f),
-                        RoundedCornerShape(14.dp)
-                    )
-                    .border(
-                        width = 1.dp,
-                        color = if (isFocused) Gold.copy(alpha = 0.5f) else CardBorder,
-                        shape = RoundedCornerShape(14.dp)
-                    )
-                    .onFocusChanged { isFocused = it.isFocused }
-                    .focusable()
-                    .onKeyEvent { event ->
-                        if (event.key == Key.Enter && event.type == KeyEventType.KeyUp ||
-                            event.key == Key.DirectionCenter && event.type == KeyEventType.KeyUp
-                        ) {
-                            onBack(); true
-                        } else false
-                    }
-                    .padding(horizontal = 32.dp, vertical = 12.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = TvStrings.PREVIOUS,
-                    fontSize = 20.sp,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+    Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
+            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                Medallion(14.dp)
+                Text(TvStrings.APP_NAME, style = midadStyle(17.sp, FontWeight.Medium, family = Kufi))
             }
+            StepIndicator(step)
         }
-        if (onNext != null) {
-            var isFocused by remember { mutableStateOf(false) }
-            Box(
-                modifier = Modifier
-                    .background(
-                        if (isFocused) Gold else TealPrimary,
-                        RoundedCornerShape(14.dp)
-                    )
-                    .border(
-                        width = 1.dp,
-                        color = if (isFocused) Gold else TealPrimary.copy(alpha = 0.5f),
-                        shape = RoundedCornerShape(14.dp)
-                    )
-                    .onFocusChanged { isFocused = it.isFocused }
-                    .focusable()
-                    .onKeyEvent { event ->
-                        if (event.key == Key.Enter && event.type == KeyEventType.KeyUp ||
-                            event.key == Key.DirectionCenter && event.type == KeyEventType.KeyUp
-                        ) {
-                            onNext(); true
-                        } else false
-                    }
-                    .padding(horizontal = 32.dp, vertical = 12.dp),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = nextText,
-                    fontSize = 20.sp,
-                    color = Color.White
-                )
+        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                Text(title, style = midadStyle(26.sp, FontWeight.SemiBold), modifier = Modifier.alignByBaseline())
+                if (aside != null) Text(aside, style = midadStyle(17.sp, FontWeight.Medium).rtl(), modifier = Modifier.alignByBaseline())
             }
+            if (subtitle != null) Text(subtitle, style = midadStyle(14.sp, color = Midad.Muted))
+        }
+        Column(Modifier.fillMaxWidth().weight(1f), verticalArrangement = Arrangement.spacedBy(10.dp), content = content)
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            FocusableListItem(text = TvStrings.PREVIOUS, onClick = onBack, modifier = Modifier.width(160.dp))
+            if (onNext != null) {
+                FocusableListItem(text = nextText, onClick = onNext, modifier = Modifier.width(160.dp).initialFocus(focusNext))
+            }
+            Spacer(Modifier.weight(1f))
+            KeyHints(listOf(TvStrings.HINT_BACK_TO_STEP))
         }
     }
 }
+
+/** «الخطوة 2 من 4» and four dots, lit from the right as the steps are done. */
+@Composable
+private fun StepIndicator(step: Int) {
+    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+        Text(TvStrings.step(step + 1, STEPS), style = midadStyle(14.sp, color = Midad.Muted))
+        Dots(count = STEPS, lit = { it <= step })
+    }
+}
+
+/** The mosque's name; optional, and read from across the room once set. */
+@Composable
+private fun MosqueNameField(name: String, onNameChanged: (String) -> Unit) {
+    OutlinedTextField(
+        value = name,
+        onValueChange = onNameChanged,
+        placeholder = { Text(TvStrings.SETUP_MOSQUE_HINT, style = midadStyle(20.sp, color = Midad.Dim)) },
+        colors = mosqueNameFieldColors(),
+        textStyle = midadStyle(20.sp),
+        shape = RoundedCornerShape(9.dp),
+        modifier = Modifier.width(480.dp).padding(top = 6.dp),
+        singleLine = true
+    )
+}
+
+/** The name field on the ink ground; its focused edge is the gold of the focus ring. */
+@Composable
+internal fun mosqueNameFieldColors() = OutlinedTextFieldDefaults.colors(
+    focusedBorderColor = Midad.Gold,
+    unfocusedBorderColor = Midad.Keyline,
+    focusedContainerColor = Midad.Surface,
+    unfocusedContainerColor = Midad.Surface,
+    focusedTextColor = Midad.Text,
+    unfocusedTextColor = Midad.Text,
+    cursorColor = Midad.Text,
+)

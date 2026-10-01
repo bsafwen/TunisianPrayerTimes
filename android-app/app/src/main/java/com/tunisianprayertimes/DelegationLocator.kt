@@ -14,6 +14,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
 import kotlinx.coroutines.withTimeoutOrNull
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
@@ -21,11 +22,16 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.selects.select
 
 private const val FUSED_TIMEOUT_MS = 8_000L
 private const val LOCATION_PROVIDER_TIMEOUT_MS = 8_000L
 private const val MAX_LAST_LOCATION_AGE_MS = 5 * 60 * 1_000L
 private const val MAX_SILENT_UPDATE_ACCURACY_METERS = 10_000f
+private const val LAST_FUSED_LOCATION_TIMEOUT_MS = 2_000L
+
+/** How long [awaitFirstMatching] waits for a usable answer: the budget each live source gets. */
+internal const val FIRST_LOCATION_TIMEOUT_MS = FUSED_TIMEOUT_MS
 
 /**
  * Simplified polygon of Tunisia's border from OpenStreetMap / Nominatim,
@@ -116,6 +122,28 @@ object DelegationLocator {
     }
 
     /**
+     * The first usable fix from any source. Unlike [detectCurrentLocation], it does not
+     * keep waiting for GPS once fused or network location answers, so use it when speed
+     * matters more than the last few metres of precision.
+     */
+    suspend fun detectFirstLocation(context: Context): Location? {
+        val permissionState = locationPermissionState(context)
+        if (!permissionState.hasAny) return null
+
+        return locationProvider.findFirstLocation(context, permissionState)
+            ?.takeIf { isUsableLocation(it) }
+    }
+
+    /** The best location already known to the phone, no older than [maxAgeMs]; starts no new fix. */
+    suspend fun lastKnownLocation(context: Context, maxAgeMs: Long): Location? {
+        val permissionState = locationPermissionState(context)
+        if (!permissionState.hasAny) return null
+
+        return locationProvider.findLastKnownLocation(context, permissionState, maxAgeMs)
+            ?.takeIf { isUsableLocation(it, maxAgeMs = maxAgeMs) }
+    }
+
+    /**
      * Uses a recent cached or fused location to silently update the saved
      * delegation if the user has moved to a different one. Returns true if the
      * delegation changed.
@@ -153,8 +181,9 @@ object DelegationLocator {
         if (location == null) return false
         if (!isUsableSilentUpdateLocation(location)) return false
 
+        val accuracyMeters = if (location.hasAccuracy()) location.accuracy.toDouble() else null
         val result = withContext(Dispatchers.IO) {
-            resolveGpsLocation(context, location.latitude, location.longitude)
+            resolveGpsLocation(context, location.latitude, location.longitude, accuracyMeters)
         } as? DelegationLocationResult.Success ?: return false
         val currentId = PrefsManager.getDelegationId(context)
         // Refresh the neighborhood even when travel stays within one timetable's area.
@@ -171,8 +200,9 @@ object DelegationLocator {
         val location = findCurrentLocation(context, permissionState)
             ?: return DelegationLocationResult.LocationUnavailable
 
+        val accuracyMeters = if (location.hasAccuracy()) location.accuracy.toDouble() else null
         return withContext(Dispatchers.IO) {
-            resolveGpsLocation(context, location.latitude, location.longitude)
+            resolveGpsLocation(context, location.latitude, location.longitude, accuracyMeters)
         }
     }
 
@@ -188,7 +218,12 @@ object DelegationLocator {
             ?.takeIf { isUsableLocation(it) }
     }
 
-    internal fun resolveGpsLocation(context: Context, lat: Double, lng: Double): DelegationLocationResult {
+    internal fun resolveGpsLocation(
+        context: Context,
+        lat: Double,
+        lng: Double,
+        accuracyMeters: Double? = null,
+    ): DelegationLocationResult {
         if (!validCoordinates(lat, lng)) return DelegationLocationResult.LocationUnavailable
         val index = runCatching { NeighborhoodRepository.load(context) }.getOrNull()
         val insideCountry = index?.isInsideCountry(lat, lng) ?: isInsideTunisiaBounds(lat, lng)
@@ -197,7 +232,7 @@ object DelegationLocator {
             ?: return DelegationLocationResult.NoDelegationFound
         // Containment determines only the user's visible location. Timetables are
         // selected by distance from the GPS fix, never by an administrative alias.
-        val locality = index?.find(lat, lng)?.copy(delegationId = nearest.id)
+        val locality = index?.findWithAccuracy(lat, lng, accuracyMeters)?.copy(delegationId = nearest.id)
         return DelegationLocationResult.Success(nearest, locality)
     }
 
@@ -222,6 +257,17 @@ internal interface DelegationLocationProvider {
         context: Context,
         permissionState: LocationPermissionState
     ): Location?
+
+    suspend fun findFirstLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location? = findCurrentLocation(context, permissionState)
+
+    suspend fun findLastKnownLocation(
+        context: Context,
+        permissionState: LocationPermissionState,
+        maxAgeMs: Long
+    ): Location? = findRecentLocation(context, permissionState)
 }
 
 private object AndroidDelegationLocationProvider : DelegationLocationProvider {
@@ -251,6 +297,44 @@ private object AndroidDelegationLocationProvider : DelegationLocationProvider {
             runCatching { currentFusedLocation(context, permissionState) }.getOrNull(),
             recentKnownLocation(context, permissionState)
         ))
+    }
+
+    @SuppressLint("MissingPermission")
+    override suspend fun findFirstLocation(
+        context: Context,
+        permissionState: LocationPermissionState
+    ): Location? {
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        // Same sources as findCurrentLocationInternal, but the first usable answer wins.
+        return coroutineScope {
+            val requests = mutableListOf(async {
+                runCatching { currentFusedLocation(context, permissionState) }.getOrNull()
+            })
+            fallbackProviders(permissionState)
+                .filter { isProviderEnabled(locationManager, it) }
+                .forEach { provider ->
+                    requests += async { currentProviderLocation(locationManager, provider) }
+                }
+            awaitFirstMatching(requests) { isUsableLocation(it) }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    override suspend fun findLastKnownLocation(
+        context: Context,
+        permissionState: LocationPermissionState,
+        maxAgeMs: Long
+    ): Location? {
+        val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val fusedLocation = withTimeoutOrNull(LAST_FUSED_LOCATION_TIMEOUT_MS) {
+            runCatching { lastFusedLocation(context) }.getOrNull()
+        }
+        val knownLocations = fallbackProviders(permissionState)
+            .filter { isProviderEnabled(locationManager, it) }
+            .mapNotNull { provider ->
+                runCatching { locationManager.getLastKnownLocation(provider) }.getOrNull()
+            }
+        return chooseBestLocation(listOfNotNull(fusedLocation) + knownLocations, maxAgeMs = maxAgeMs)
     }
 
     @SuppressLint("MissingPermission")
@@ -449,19 +533,24 @@ internal fun fallbackProviders(permissionState: LocationPermissionState): List<S
     }
 }
 
-internal fun isUsableLocation(location: Location, nowMs: Long = System.currentTimeMillis()): Boolean {
+internal fun isUsableLocation(
+    location: Location,
+    nowMs: Long = System.currentTimeMillis(),
+    maxAgeMs: Long = MAX_LAST_LOCATION_AGE_MS
+): Boolean {
     if (!validCoordinates(location.latitude, location.longitude)) return false
-    if (location.time <= 0L || location.time > nowMs || nowMs - location.time > MAX_LAST_LOCATION_AGE_MS) return false
+    if (location.time <= 0L || location.time > nowMs || nowMs - location.time > maxAgeMs) return false
     // An omitted accuracy is unknown; a supplied nonpositive/nonfinite value is invalid.
     return !location.hasAccuracy() || (location.accuracy.isFinite() && location.accuracy > 0f)
 }
 
 internal fun chooseBestLocation(
     candidates: List<Location>,
-    nowMs: Long = System.currentTimeMillis()
+    nowMs: Long = System.currentTimeMillis(),
+    maxAgeMs: Long = MAX_LAST_LOCATION_AGE_MS
 ): Location? {
     return chooseBestCandidate(
-        candidates = candidates.filter { isUsableLocation(it, nowMs) },
+        candidates = candidates.filter { isUsableLocation(it, nowMs, maxAgeMs) },
         timeSelector = { it.time },
         accuracySelector = { if (it.hasAccuracy()) it.accuracy else Float.POSITIVE_INFINITY }
     )
@@ -482,5 +571,33 @@ internal fun <T> chooseBestCandidate(
         } else {
             timeSelector(left).compareTo(timeSelector(right))
         }
+    }
+}
+
+/**
+ * Returns the first result that [accept] takes, cancelling the requests still running.
+ * Gives up with null after [timeoutMs], so a source that never answers cannot hold the caller.
+ */
+internal suspend fun <T : Any> awaitFirstMatching(
+    requests: List<Deferred<T?>>,
+    timeoutMs: Long = FIRST_LOCATION_TIMEOUT_MS,
+    accept: (T) -> Boolean
+): T? {
+    val pending = requests.toMutableList()
+    try {
+        return withTimeoutOrNull(timeoutMs) {
+            while (pending.isNotEmpty()) {
+                val (finished, result) = select<Pair<Deferred<T?>, T?>> {
+                    pending.forEach { request ->
+                        request.onAwait { value -> request to value }
+                    }
+                }
+                pending.remove(finished)
+                if (result != null && accept(result)) return@withTimeoutOrNull result
+            }
+            null
+        }
+    } finally {
+        pending.forEach { it.cancel() }
     }
 }

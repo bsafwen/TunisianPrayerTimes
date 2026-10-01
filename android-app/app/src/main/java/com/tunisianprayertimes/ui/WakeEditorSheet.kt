@@ -8,21 +8,25 @@ import android.os.Build
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -32,7 +36,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
@@ -45,6 +54,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
@@ -53,8 +63,13 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -69,27 +84,48 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.ColorMatrix
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.disabled
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.onClick
+import androidx.compose.ui.semantics.role
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.core.view.WindowInsetsControllerCompat
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.ClockTime
@@ -135,6 +171,9 @@ import com.tunisianprayertimes.wake.hasGyroscopeMazeTiltSensor
 import com.tunisianprayertimes.wake.rememberGyroscopeMazeSensorState
 import com.tunisianprayertimes.wake.wakeUpCheckChallengeFor
 import com.tunisianprayertimes.wake.wakeUpCheckChallengeForStep
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -330,37 +369,34 @@ fun WakeEditorSheet(
             ringDuringSilenceWindow = ringDuringSilenceWindow,
         )
     }
-    val preview = remember(delegationId, draftConfig, silenceConfigRevision) {
-        computeWakePreview(context, delegationId, draftConfig)
+    // Silence conflicts follow the draft and the silence settings only, never the clock tick below,
+    // so a conflict the user dismissed or resolved can't reopen by itself.
+    val silenceWarning = remember(delegationId, draftConfig, silenceConfigRevision) {
+        computeWakeDraftSilenceWarning(context, delegationId, draftConfig)
     }
-    val activeRecurringSilenceConflict = preview?.warning?.conflict?.takeIf {
+    // Bumped by the hero once a shown ring time passes, so the next occurrence is computed.
+    var previewRefreshTick by remember { mutableIntStateOf(0) }
+    val heroTimes = remember(delegationId, draftConfig, previewRefreshTick) {
+        computeWakeHeroTimes(context, delegationId, draftConfig)
+    }
+    val activeRecurringSilenceConflict = silenceWarning?.conflict?.takeIf {
         draftConfig.enabled &&
             draftConfig.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
             draftConfig.repeatMode != WakeRepeatMode.ONCE
     }
-    val timelineEntries = remember(delegationId, draftConfig) {
-        computeWakeTimelineEntries(context, delegationId, draftConfig)
-    }
     val behaviorSummary = remember(context, mainPlayback) {
         formatWakeBehaviorSummary(context, mainPlayback)
-    }
-    val advancedSummary = if (subAlarms.isEmpty()) {
-        null
-    } else {
-        stringResource(R.string.wake_editor_subalarms_count_summary, subAlarms.size)
     }
 
     val scrollState = rememberScrollState()
     val coroutineScope = rememberCoroutineScope()
-    val newSubAlarmIds = remember { mutableStateListOf<String>() }
+    val snackbarHostState = remember { SnackbarHostState() }
+    var editingExtraAlarmId by rememberSaveable(initialConfig.id) { mutableStateOf<String?>(null) }
     var modePickerVisible by rememberSaveable(initialConfig.id) { mutableStateOf(false) }
     var silenceConflictDialogVisible by remember(initialConfig.id) { mutableStateOf(false) }
     var dismissedSilenceConflictKey by remember(initialConfig.id) { mutableStateOf<WakeSilenceConflictKey?>(null) }
     var behaviorExpanded by rememberSaveable(initialConfig.id) {
         mutableStateOf(!isNewAlarm && shouldExpandWakeBehavior(initialConfig.playback))
-    }
-    var advancedExpanded by rememberSaveable(initialConfig.id) {
-        mutableStateOf(!isNewAlarm && initialConfig.subAlarms.isNotEmpty())
     }
 
     val unresolvedRecurringConflict = activeRecurringSilenceConflict
@@ -396,8 +432,8 @@ fun WakeEditorSheet(
 
     fun saveDraftConfig() {
         val configToSave = resolveOneTimeWakeTrigger(context, delegationId, draftConfig)
-        val latestPreview = computeWakePreview(context, delegationId, configToSave)
-        val recurringConflict = latestPreview?.warning?.conflict?.takeIf {
+        val latestWarning = computeWakeDraftSilenceWarning(context, delegationId, configToSave)
+        val recurringConflict = latestWarning?.conflict?.takeIf {
             configToSave.enabled &&
                 configToSave.mainAlarm.mode != WakeMainAlarmMode.FROM_NOW &&
                 configToSave.repeatMode != WakeRepeatMode.ONCE &&
@@ -427,6 +463,58 @@ fun WakeEditorSheet(
             repeatMode = WakeRepeatMode.RECURRING
         }
     }
+
+    // The main alarm's next ring, which every extra alarm is measured from.
+    val extraAlarmMainAtMillis: Long? = when {
+        mode == WakeMainAlarmMode.FROM_NOW -> fromNowTriggerAtMillis
+        !heroTimes.anchorIsExtraAlarm -> heroTimes.anchorAtMillis
+        else -> null
+    }
+
+    fun extraAlarmTimeText(signedOffsetMinutes: Int): String = when {
+        extraAlarmMainAtMillis != null ->
+            formatWakeTimelineTime(extraAlarmMainAtMillis + signedOffsetMinutes.toMillis())
+        mode == WakeMainAlarmMode.FIXED_TIME ->
+            formatWakeMinuteOfDay(fixedHour * 60 + fixedMinute + signedOffsetMinutes)
+        else -> "--:--"
+    }
+
+    val extraAlarmDeletedMessage = stringResource(R.string.wake_editor_extra_deleted)
+    val extraAlarmUndoLabel = stringResource(R.string.wake_editor_extra_undo)
+
+    fun deleteExtraAlarm(id: String) {
+        val index = subAlarms.indexOfFirst { subAlarm -> subAlarm.id == id }
+        if (index < 0) return
+        val removed = subAlarms[index]
+        subAlarms = subAlarms.filterNot { subAlarm -> subAlarm.id == id }
+        editingExtraAlarmId = null
+        coroutineScope.launch {
+            snackbarHostState.currentSnackbarData?.dismiss()
+            val result = snackbarHostState.showSnackbar(
+                message = extraAlarmDeletedMessage,
+                actionLabel = extraAlarmUndoLabel,
+                duration = SnackbarDuration.Short,
+            )
+            if (result == SnackbarResult.ActionPerformed && subAlarms.none { subAlarm -> subAlarm.id == removed.id }) {
+                subAlarms = subAlarms.toMutableList().apply { add(index.coerceAtMost(size), removed) }
+            }
+        }
+    }
+
+    editingExtraAlarmId
+        ?.let { id -> subAlarms.firstOrNull { subAlarm -> subAlarm.id == id } }
+        ?.let { editing ->
+            WakeExtraAlarmSheet(
+                subAlarm = editing,
+                resultTimeText = extraAlarmTimeText(editing.signedOffsetMinutes),
+                mainPlayback = mainPlayback,
+                onChange = { updated ->
+                    subAlarms = subAlarms.map { existing -> if (existing.id == updated.id) updated else existing }
+                },
+                onDelete = { deleteExtraAlarm(editing.id) },
+                onDismiss = { editingExtraAlarmId = null },
+            )
+        }
 
     BackHandler(onBack = onDismissRequest)
 
@@ -465,223 +553,232 @@ fun WakeEditorSheet(
     Surface(
         modifier = Modifier.fillMaxSize(),
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .statusBarsPadding()
-                .navigationBarsPadding()
-                .padding(horizontal = 16.dp, vertical = 10.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
+        Box(modifier = Modifier.fillMaxSize()) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .statusBarsPadding()
+                    .navigationBarsPadding()
+                    .padding(horizontal = 16.dp, vertical = 10.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                Text(
-                    text = stringResource(
-                        if (isNewAlarm) R.string.wake_editor_new_title else R.string.wake_editor_title,
-                    ),
-                    fontSize = 19.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = PrayerNameColor,
-                    modifier = Modifier.weight(1f),
-                )
-
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
+                    Text(
+                        text = stringResource(
+                            if (isNewAlarm) R.string.wake_editor_new_title else R.string.wake_editor_title,
+                        ),
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = PrayerNameColor,
+                        modifier = Modifier.weight(1f),
+                    )
+
+                    Row(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        OutlinedButton(
+                            onClick = onDismissRequest,
+                            shape = RoundedCornerShape(10.dp),
+                            modifier = Modifier.heightIn(min = 38.dp),
+                            border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
+                        ) {
+                            Text(text = stringResource(R.string.wake_editor_cancel))
+                        }
+                        Button(
+                            onClick = { saveDraftConfig() },
+                            shape = RoundedCornerShape(10.dp),
+                            modifier = Modifier.heightIn(min = 38.dp),
+                        ) {
+                            Text(text = stringResource(R.string.wake_editor_save))
+                        }
+                    }
+                }
+
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(1f)
+                        .verticalScroll(scrollState),
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    val heroAnchorAtMillis = heroTimes.anchorAtMillis
+                    val heroEffectivePrayer = heroTimes.anchorEffectivePrayer
+                    WakeEditorHeroCard(
+                        enabled = enabled,
+                        timeText = when {
+                            mode == WakeMainAlarmMode.FIXED_TIME && !heroTimes.anchorIsExtraAlarm ->
+                                formatWakeEditorTime(fixedHour, fixedMinute)
+                            heroAnchorAtMillis != null -> formatWakeTimelineTime(heroAnchorAtMillis)
+                            else -> "--:--"
+                        },
+                        ruleText = formatWakeHeroRule(
+                            context = context,
+                            mode = mode,
+                            prayer = selectedPrayer,
+                            offsetDirection = relativeOffsetDirection,
+                            offsetMinutes = parsedRelativeOffset,
+                            repeatMode = effectiveRepeatMode,
+                            scheduledDays = effectiveScheduledDays,
+                        ),
+                        ringIconRes = when (mode) {
+                            WakeMainAlarmMode.FIXED_TIME -> R.drawable.ic_edit
+                            WakeMainAlarmMode.PRAYER_RELATIVE -> prayerHeroIconRes(heroEffectivePrayer ?: selectedPrayer)
+                            WakeMainAlarmMode.FROM_NOW -> R.drawable.ic_hourglass
+                        },
+                        anchorAtMillis = heroAnchorAtMillis,
+                        anchorIsExtraAlarm = heroTimes.anchorIsExtraAlarm,
+                        // Refresh as soon as anything the hero shows has rung, not only the main alarm.
+                        refreshAtMillis = listOfNotNull(
+                            heroAnchorAtMillis,
+                            heroTimes.firstSubAlarm?.triggerAtMillis,
+                        ).minOrNull(),
+                        firstAlertText = heroTimes.firstSubAlarm?.let { firstSubAlarm ->
+                            stringResource(
+                                R.string.wake_editor_hero_first_alert,
+                                formatWakeTimelineTime(firstSubAlarm.triggerAtMillis),
+                                formatWakePreviewOffset(context, firstSubAlarm.signedOffsetMinutes),
+                            )
+                        },
+                        // e.g. a Dhuhr-linked alarm whose next ring is a Friday follows Jumu'ah.
+                        noteText = heroEffectivePrayer
+                            ?.takeIf { effective ->
+                                mode == WakeMainAlarmMode.PRAYER_RELATIVE && effective != selectedPrayer
+                            }
+                            ?.let { effective ->
+                                stringResource(
+                                    R.string.wake_editor_hero_effective_prayer_note,
+                                    prayerDisplayName(context, effective),
+                                )
+                            },
+                        onEditTime = if (mode == WakeMainAlarmMode.FIXED_TIME) {
+                            {
+                                showWakeTimePicker(
+                                    activity = activity,
+                                    tag = "wake_main_time_${initialConfig.id}",
+                                    hour = fixedHour,
+                                    minute = fixedMinute,
+                                ) { hour, minute ->
+                                    fixedHour = hour
+                                    fixedMinute = minute
+                                }
+                            }
+                        } else {
+                            null
+                        },
+                        onTriggerReached = { previewRefreshTick += 1 },
+                    )
+
+                    WakeEditorSectionCard(
+                        title = stringResource(R.string.wake_editor_main_section_title),
+                    ) {
+                        WakeScheduleBuilder(
+                            mode = mode,
+                            onChangeModeClick = { modePickerVisible = true },
+                            selectedPrayer = selectedPrayer,
+                            onPrayerSelected = { prayer -> selectedPrayer = prayer },
+                            offsetDirection = relativeOffsetDirection,
+                            onOffsetDirectionChange = { direction -> relativeOffsetDirection = direction },
+                            offsetText = relativeOffsetText,
+                            onOffsetTextChange = { newValue -> relativeOffsetText = sanitizeMinutesInput(newValue) },
+                            selectedDays = effectiveScheduledDays,
+                            onSelectedDaysChange = { days -> scheduledDays = days.normalizedWakeScheduleDays() },
+                            repeatMode = effectiveRepeatMode,
+                            onRepeatModeChange = { updated -> repeatMode = updated },
+                            fromNowHoursText = fromNowHoursText,
+                            fromNowMinutesText = fromNowMinutesText,
+                            onFromNowDurationMinutesChange = { totalMinutes -> rescheduleFromNowAlarm(totalMinutes) },
+                            silenceUntilAlarm = effectiveSilenceUntilAlarm,
+                            onSilenceUntilAlarmChange = { updated -> silenceUntilAlarm = updated },
+                        )
+                    }
+
+                    if (enabled) {
+                        silenceWarning?.takeIf { warning -> warning.conflict == null }?.let { warning ->
+                            WakeEditorWarningCard(warning = warning)
+                        }
+                    }
+
+                    WakeEditorSectionCard(
+                        title = stringResource(R.string.wake_editor_behavior_section_title),
+                        subtitle = behaviorSummary,
+                        expanded = behaviorExpanded,
+                        onExpandedChange = { behaviorExpanded = !behaviorExpanded },
+                    ) {
+                        WakeSoundControls(
+                            ringtoneLabel = stringResource(R.string.wake_editor_main_ringtone_label),
+                            playback = mainPlayback,
+                            onPlaybackChange = { updated -> mainPlayback = updated },
+                        )
+
+                        HorizontalDivider(color = Gold.copy(alpha = 0.16f))
+
+                        WakeWakeCheckControls(
+                            playback = mainPlayback,
+                            onPlaybackChange = { updated -> mainPlayback = updated },
+                        )
+                    }
+
+                    WakeExtraAlarmsSection(
+                        subAlarms = subAlarms,
+                        mainPlayback = mainPlayback,
+                        timeTextFor = { signedOffsetMinutes -> extraAlarmTimeText(signedOffsetMinutes) },
+                        onAdd = { direction ->
+                            subAlarms = subAlarms + newExtraAlarm(
+                                id = UUID.randomUUID().toString(),
+                                existing = subAlarms,
+                                direction = direction,
+                                mainPlayback = mainPlayback,
+                            )
+                        },
+                        onOpen = { id -> editingExtraAlarmId = id },
+                    )
+
                     OutlinedButton(
                         onClick = onDismissRequest,
-                        shape = RoundedCornerShape(10.dp),
-                        modifier = Modifier.heightIn(min = 38.dp),
-                        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
                     ) {
                         Text(text = stringResource(R.string.wake_editor_cancel))
                     }
-                    Button(
-                        onClick = { saveDraftConfig() },
-                        shape = RoundedCornerShape(10.dp),
-                        modifier = Modifier.heightIn(min = 38.dp),
-                    ) {
-                        Text(text = stringResource(R.string.wake_editor_save))
-                    }
-                }
-            }
 
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .weight(1f)
-                    .verticalScroll(scrollState),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
-            ) {
-                WakeEditorPreviewCard(
-                    enabled = enabled,
-                    preview = preview,
-                )
-
-                WakeEditorSectionCard(
-                    title = stringResource(R.string.wake_editor_main_section_title),
-                ) {
-                    WakeScheduleBuilder(
-                        activity = activity,
-                        alarmId = initialConfig.id,
-                        mode = mode,
-                        onChangeModeClick = { modePickerVisible = true },
-                        selectedPrayer = selectedPrayer,
-                        onPrayerSelected = { prayer -> selectedPrayer = prayer },
-                        offsetDirection = relativeOffsetDirection,
-                        onOffsetDirectionChange = { direction -> relativeOffsetDirection = direction },
-                        offsetText = relativeOffsetText,
-                        onOffsetTextChange = { newValue -> relativeOffsetText = sanitizeMinutesInput(newValue) },
-                        fixedHour = fixedHour,
-                        fixedMinute = fixedMinute,
-                        onFixedTimePicked = { hour, minute ->
-                            fixedHour = hour
-                            fixedMinute = minute
-                        },
-                        selectedDays = effectiveScheduledDays,
-                        onSelectedDaysChange = { days -> scheduledDays = days.normalizedWakeScheduleDays() },
-                        repeatMode = effectiveRepeatMode,
-                        onRepeatModeChange = { updated -> repeatMode = updated },
-                        fromNowHoursText = fromNowHoursText,
-                        fromNowMinutesText = fromNowMinutesText,
-                        onFromNowDurationMinutesChange = { totalMinutes -> rescheduleFromNowAlarm(totalMinutes) },
-                        silenceUntilAlarm = effectiveSilenceUntilAlarm,
-                        onSilenceUntilAlarmChange = { updated -> silenceUntilAlarm = updated },
-                    )
-                }
-
-                if (enabled) {
-                    preview?.warning?.takeIf { warning -> warning.conflict == null }?.let { warning ->
-                        WakeEditorWarningCard(warning = warning)
-                    }
-                }
-
-                WakeEditorSectionCard(
-                    title = stringResource(R.string.wake_editor_behavior_section_title),
-                    subtitle = behaviorSummary,
-                    expanded = behaviorExpanded,
-                    onExpandedChange = { behaviorExpanded = !behaviorExpanded },
-                ) {
-                    WakeSoundControls(
-                        ringtoneLabel = stringResource(R.string.wake_editor_main_ringtone_label),
-                        playback = mainPlayback,
-                        onPlaybackChange = { updated -> mainPlayback = updated },
-                    )
-
-                    HorizontalDivider(color = Gold.copy(alpha = 0.16f))
-
-                    WakeWakeCheckControls(
-                        playback = mainPlayback,
-                        onPlaybackChange = { updated -> mainPlayback = updated },
-                    )
-                }
-
-                WakeEditorSectionCard(
-                    title = stringResource(R.string.wake_editor_advanced_section_title),
-                    subtitle = advancedSummary,
-                    expanded = advancedExpanded,
-                    onExpandedChange = { advancedExpanded = !advancedExpanded },
-                ) {
-                    if (subAlarms.isEmpty()) {
-                        Text(
-                            text = stringResource(R.string.wake_editor_subalarms_empty),
-                            fontSize = 12.sp,
-                            color = TextMuted,
-                            lineHeight = 17.sp,
-                        )
-                    } else {
-                        WakeSubAlarmTimeline(
-                            subAlarms = subAlarms,
-                            entries = timelineEntries,
-                        )
-
-                        subAlarms.forEachIndexed { index, subAlarm ->
-                            AnimatedVisibility(
-                                visible = true,
-                                enter = if (subAlarm.id in newSubAlarmIds) {
-                                    androidx.compose.animation.expandVertically() + androidx.compose.animation.fadeIn()
-                                } else {
-                                    androidx.compose.animation.EnterTransition.None
-                                },
-                            ) {
-                                WakeSubAlarmEditorCard(
-                                    index = index,
-                                    subAlarm = subAlarm,
-                                    onChange = { updated ->
-                                        subAlarms = subAlarms.map { existing ->
-                                            if (existing.id == updated.id) updated else existing
-                                        }
-                                    },
-                                    onRemove = {
-                                        newSubAlarmIds -= subAlarm.id
-                                        subAlarms = subAlarms.filterNot { existing -> existing.id == subAlarm.id }
-                                    },
-                                )
-                            }
-                        }
-                    }
-
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center,
-                    ) {
+                    if (onDelete != null) {
+                        Spacer(modifier = Modifier.height(4.dp))
                         OutlinedButton(
-                            onClick = {
-                                val newId = UUID.randomUUID().toString()
-                                newSubAlarmIds += newId
-                                subAlarms = subAlarms + PrayerWakeSubAlarm(
-                                    id = newId,
-                                    minutesOffset = 10,
-                                    direction = OffsetDirection.BEFORE,
-                                )
-                                coroutineScope.launch {
-                                    scrollState.animateScrollTo(scrollState.maxValue)
-                                }
-                            },
-                            shape = RoundedCornerShape(10.dp),
-                            border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
+                            onClick = onDelete,
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp),
+                            border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.5f)),
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                contentColor = SilenceRed,
+                            ),
                         ) {
-                            Text(text = stringResource(R.string.wake_editor_subalarms_add))
+                            Icon(
+                                painter = painterResource(R.drawable.ic_delete),
+                                contentDescription = null,
+                                modifier = Modifier.size(18.dp),
+                            )
+                            Spacer(modifier = Modifier.size(8.dp))
+                            Text(
+                                text = stringResource(R.string.wake_editor_delete),
+                                fontWeight = FontWeight.SemiBold,
+                            )
                         }
                     }
                 }
-
-                OutlinedButton(
-                    onClick = onDismissRequest,
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp),
-                ) {
-                    Text(text = stringResource(R.string.wake_editor_cancel))
-                }
-
-                if (onDelete != null) {
-                    Spacer(modifier = Modifier.height(4.dp))
-                    OutlinedButton(
-                        onClick = onDelete,
-                        modifier = Modifier.fillMaxWidth(),
-                        shape = RoundedCornerShape(12.dp),
-                        border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.5f)),
-                        colors = ButtonDefaults.outlinedButtonColors(
-                            contentColor = SilenceRed,
-                        ),
-                    ) {
-                        Icon(
-                            painter = painterResource(R.drawable.ic_delete),
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp),
-                        )
-                        Spacer(modifier = Modifier.size(8.dp))
-                        Text(
-                            text = stringResource(R.string.wake_editor_delete),
-                            fontWeight = FontWeight.SemiBold,
-                        )
-                    }
-                }
             }
+
+            SnackbarHost(
+                hostState = snackbarHostState,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .navigationBarsPadding()
+                    .padding(16.dp),
+            )
         }
     }
 }
@@ -736,7 +833,8 @@ private fun WakeEditorSectionCard(
                         color = PrayerNameColor,
                     )
 
-                    if (!subtitle.isNullOrBlank()) {
+                    // Once open, the rows say the same thing as the summary.
+                    if (!subtitle.isNullOrBlank() && !(collapsible && expanded)) {
                         Text(
                             text = subtitle,
                             fontSize = 12.sp,
@@ -775,8 +873,6 @@ private fun WakeEditorSectionCard(
 
 @Composable
 private fun WakeScheduleBuilder(
-    activity: AppCompatActivity,
-    alarmId: String,
     mode: WakeMainAlarmMode,
     onChangeModeClick: () -> Unit,
     selectedPrayer: Prayer,
@@ -785,9 +881,6 @@ private fun WakeScheduleBuilder(
     onOffsetDirectionChange: (OffsetDirection) -> Unit,
     offsetText: String,
     onOffsetTextChange: (String) -> Unit,
-    fixedHour: Int,
-    fixedMinute: Int,
-    onFixedTimePicked: (hour: Int, minute: Int) -> Unit,
     selectedDays: Set<WakeScheduleDay>,
     onSelectedDaysChange: (Set<WakeScheduleDay>) -> Unit,
     repeatMode: WakeRepeatMode,
@@ -798,23 +891,7 @@ private fun WakeScheduleBuilder(
     silenceUntilAlarm: Boolean,
     onSilenceUntilAlarmChange: (Boolean) -> Unit,
 ) {
-    val context = LocalContext.current
-    val summary = formatWakeScheduleSummary(
-        context = context,
-        mode = mode,
-        selectedPrayer = selectedPrayer,
-        offsetDirection = offsetDirection,
-        offsetText = offsetText,
-        fixedHour = fixedHour,
-        fixedMinute = fixedMinute,
-        scheduledDays = selectedDays,
-        repeatMode = repeatMode,
-        fromNowHoursText = fromNowHoursText,
-        fromNowMinutesText = fromNowMinutesText,
-    )
-
     Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-        WakeScheduleSummaryBand(summary = summary)
         WakeScheduleTypeRow(
             mode = mode,
             onChangeModeClick = onChangeModeClick,
@@ -832,15 +909,8 @@ private fun WakeScheduleBuilder(
                 )
             }
 
-            WakeMainAlarmMode.FIXED_TIME -> {
-                WakeFixedTimeModeControls(
-                    activity = activity,
-                    timePickerTag = "wake_main_time_$alarmId",
-                    fixedHour = fixedHour,
-                    fixedMinute = fixedMinute,
-                    onTimePicked = onFixedTimePicked,
-                )
-            }
+            // The hero card above is the time control for this mode.
+            WakeMainAlarmMode.FIXED_TIME -> Unit
 
             WakeMainAlarmMode.FROM_NOW -> {
                 WakeFromNowModeControls(
@@ -862,24 +932,6 @@ private fun WakeScheduleBuilder(
             )
         }
     }
-}
-
-@Composable
-private fun WakeScheduleSummaryBand(summary: String) {
-    val shape = RoundedCornerShape(12.dp)
-    Text(
-        text = summary,
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(shape)
-            .background(GreenPrimary.copy(alpha = 0.10f))
-            .border(BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.18f)), shape)
-            .padding(horizontal = 14.dp, vertical = 12.dp),
-        fontSize = 20.sp,
-        fontWeight = FontWeight.Bold,
-        color = GreenPrimaryDark,
-        lineHeight = 28.sp,
-    )
 }
 
 @Composable
@@ -1050,76 +1102,42 @@ private fun wakeModeHint(mode: WakeMainAlarmMode): String = when (mode) {
     WakeMainAlarmMode.FROM_NOW -> stringResource(R.string.wake_editor_mode_from_now_hint)
 }
 
-private fun formatWakeScheduleSummary(
+/** The hero's "how it repeats" line; the time itself is shown large above it. */
+private fun formatWakeHeroRule(
     context: android.content.Context,
     mode: WakeMainAlarmMode,
-    selectedPrayer: Prayer,
+    prayer: Prayer,
     offsetDirection: OffsetDirection,
-    offsetText: String,
-    fixedHour: Int,
-    fixedMinute: Int,
-    scheduledDays: Set<WakeScheduleDay>,
+    offsetMinutes: Int,
     repeatMode: WakeRepeatMode,
-    fromNowHoursText: String,
-    fromNowMinutesText: String,
+    scheduledDays: Set<WakeScheduleDay>,
 ): String {
-    val normalizedDays = scheduledDays.normalizedWakeScheduleDays()
-    val selectedDaysSummary = formatWakeScheduleDaysSummary(context, normalizedDays)
-    val allDaysSelected = isEveryWakeScheduleDay(normalizedDays)
+    val repeatText = if (repeatMode == WakeRepeatMode.ONCE) {
+        context.getString(R.string.wake_schedule_once)
+    } else {
+        formatWakeScheduleDaysSummary(context, scheduledDays)
+    }
 
     return when (mode) {
+        WakeMainAlarmMode.FIXED_TIME -> repeatText
+        WakeMainAlarmMode.FROM_NOW -> context.getString(R.string.wake_editor_mode_from_now)
         WakeMainAlarmMode.PRAYER_RELATIVE -> {
-            val prayerName = prayerDisplayName(context, selectedPrayer)
-            val offsetMinutes = offsetText.toIntOrNull()?.coerceAtLeast(0) ?: 0
-            val baseSummary = if (offsetMinutes == 0) {
-                context.getString(R.string.wake_editor_schedule_summary_relative_at, prayerName)
-            } else {
-                context.getString(
-                    if (offsetDirection == OffsetDirection.BEFORE) {
-                        R.string.wake_editor_schedule_summary_relative_before
-                    } else {
-                        R.string.wake_editor_schedule_summary_relative_after
-                    },
+            val prayerName = prayerDisplayName(context, prayer)
+            val relation = when {
+                offsetMinutes == 0 -> context.getString(R.string.wake_editor_hero_rule_prayer_at, prayerName)
+                offsetDirection == OffsetDirection.BEFORE -> context.getString(
+                    R.string.wake_editor_hero_rule_prayer_before,
+                    prayerName,
+                    formatArabicMinutes(offsetMinutes),
+                )
+                else -> context.getString(
+                    R.string.wake_editor_hero_rule_prayer_after,
                     prayerName,
                     formatArabicMinutes(offsetMinutes),
                 )
             }
-
-            if (repeatMode == WakeRepeatMode.ONCE) {
-                context.getString(R.string.wake_editor_schedule_summary_once, baseSummary)
-            } else if (allDaysSelected) {
-                baseSummary
-            } else {
-                context.getString(R.string.wake_editor_schedule_summary_with_days, baseSummary, selectedDaysSummary)
-            }
+            context.getString(R.string.wake_editor_hero_rule_with_repeat, relation, repeatText)
         }
-
-        WakeMainAlarmMode.FIXED_TIME -> if (repeatMode == WakeRepeatMode.ONCE) {
-            context.getString(
-                R.string.wake_editor_schedule_summary_fixed_once,
-                formatWakeEditorTime(fixedHour, fixedMinute),
-            )
-        } else if (allDaysSelected) {
-            context.getString(
-                R.string.wake_editor_schedule_summary_fixed,
-                formatWakeEditorTime(fixedHour, fixedMinute),
-            )
-        } else {
-            context.getString(
-                R.string.wake_editor_schedule_summary_fixed_selected_days,
-                formatWakeEditorTime(fixedHour, fixedMinute),
-                selectedDaysSummary,
-            )
-        }
-
-        WakeMainAlarmMode.FROM_NOW -> context.getString(
-            R.string.wake_editor_schedule_summary_from_now,
-            formatWakeScheduleDuration(
-                context = context,
-                hours = fromNowHoursText.toIntOrNull()?.coerceAtLeast(0) ?: 0,
-                minutes = fromNowMinutesText.toIntOrNull()?.coerceAtLeast(0) ?: 0,
-            ),
-        )
     }
 }
 
@@ -1363,45 +1381,28 @@ private fun WakeRelativeMinutesInput(
     )
 }
 
-@Composable
-private fun WakeFixedTimeModeControls(
+private fun showWakeTimePicker(
     activity: AppCompatActivity,
-    timePickerTag: String,
-    fixedHour: Int,
-    fixedMinute: Int,
+    tag: String,
+    hour: Int,
+    minute: Int,
     onTimePicked: (hour: Int, minute: Int) -> Unit,
 ) {
-    val context = LocalContext.current
-    Text(
-        text = stringResource(R.string.wake_editor_fixed_time_title),
-        fontSize = 13.sp,
-        fontWeight = FontWeight.Bold,
-        color = PrayerNameColor,
-    )
-    OutlinedButton(
-        modifier = Modifier.fillMaxWidth(),
-        onClick = {
-            val picker = MaterialTimePicker.Builder()
-                .setTimeFormat(TimeFormat.CLOCK_24H)
-                .setHour(fixedHour)
-                .setMinute(fixedMinute)
-                .setTitleText(context.getString(R.string.wake_editor_pick_time))
-                .build()
-            picker.addOnPositiveButtonClickListener {
-                onTimePicked(picker.hour, picker.minute)
-            }
-            picker.show(activity.supportFragmentManager, timePickerTag)
-        },
-        shape = RoundedCornerShape(10.dp),
-        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.34f)),
-    ) {
-        Text(
-            text = formatWakeEditorTime(fixedHour, fixedMinute),
-            fontSize = 16.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenPrimaryDark,
-        )
+    val fragmentManager = activity.supportFragmentManager
+    if (fragmentManager.isStateSaved || fragmentManager.findFragmentByTag(tag) != null) {
+        return
     }
+    val picker = MaterialTimePicker.Builder()
+        .setTimeFormat(TimeFormat.CLOCK_24H)
+        .setHour(hour)
+        .setMinute(minute)
+        .setTitleText(activity.getString(R.string.wake_editor_pick_time))
+        .build()
+    picker.addOnPositiveButtonClickListener {
+        onTimePicked(picker.hour, picker.minute)
+    }
+    // Synchronous so a fast double tap finds the first picker and doesn't open a second one.
+    picker.showNow(fragmentManager, tag)
 }
 
 @Composable
@@ -1583,50 +1584,210 @@ private fun WakeChoiceButton(
     }
 }
 
+private const val WAKE_HERO_TICK_MILLIS = 60_000L
+private val WakeHeroRingSpacing = 8.dp
+// The ring is 34dp; text lines up with the time next to it, as on the Alarms tab hero.
+private val WakeHeroTextInset = 34.dp + WakeHeroRingSpacing
+
+// Darker toward the text (the right edge; the UI is Arabic-only) so the extra lines stay readable
+// while the skyline still shows on the left.
+private val WakeHeroDim = Brush.horizontalGradient(
+    0f to Color(0xFF003A32).copy(alpha = 0.12f),
+    0.5f to Color(0xFF003A32).copy(alpha = 0.3f),
+    1f to Color(0xFF003A32).copy(alpha = 0.5f),
+)
+private val WakeHeroPausedOverlay = SolidColor(Color(0xFF3B4543).copy(alpha = 0.55f))
+private val WakeHeroPausedArtwork = ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0.2f) })
+
+/**
+ * The one place the editor shows the alarm time. It shares the Alarms tab hero's surface and
+ * reading order; the gold ring shows what kind of time this is (a pencil when it's set directly)
+ * and the pill shows the live countdown, so edits visibly change when it rings.
+ * In fixed-time mode the whole card opens the time picker.
+ */
 @Composable
-private fun WakeEditorPreviewCard(
+private fun WakeEditorHeroCard(
     enabled: Boolean,
-    preview: WakePreview?,
+    timeText: String,
+    ruleText: String,
+    @DrawableRes ringIconRes: Int,
+    anchorAtMillis: Long?,
+    anchorIsExtraAlarm: Boolean,
+    refreshAtMillis: Long?,
+    firstAlertText: String?,
+    noteText: String?,
+    onEditTime: (() -> Unit)?,
+    onTriggerReached: () -> Unit,
 ) {
-    OutlinedCard(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(14.dp),
-        colors = CardDefaults.outlinedCardColors(containerColor = GreenPrimaryDark),
-        border = BorderStroke(1.dp, GreenPrimaryDark),
+    val context = LocalContext.current
+    var nowMillis by remember { mutableLongStateOf(System.currentTimeMillis()) }
+    val lifecycleOwner = LocalLifecycleOwner.current
+    DisposableEffect(lifecycleOwner) {
+        // delay() doesn't advance while the device sleeps, so catch up as soon as the screen is back.
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) nowMillis = System.currentTimeMillis()
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+    }
+    LaunchedEffect(anchorAtMillis, refreshAtMillis) {
+        while (true) {
+            val current = System.currentTimeMillis()
+            nowMillis = current
+            // Tick on minute boundaries, and exactly when the next shown ring time passes.
+            val untilNextMinute = WAKE_HERO_TICK_MILLIS - current % WAKE_HERO_TICK_MILLIS
+            val untilRefresh = refreshAtMillis?.minus(current)?.takeIf { it > 0L } ?: untilNextMinute
+            delay(minOf(untilNextMinute, untilRefresh))
+        }
+    }
+    val triggerReached = refreshAtMillis != null && nowMillis >= refreshAtMillis
+    LaunchedEffect(triggerReached) {
+        if (triggerReached) onTriggerReached()
+    }
+
+    val editTimeLabel = stringResource(R.string.wake_editor_hero_edit_time)
+    val alignWithTime = Modifier.padding(start = WakeHeroTextInset)
+    HeroCardSurface(
+        overlay = if (enabled) WakeHeroDim else WakeHeroPausedOverlay,
+        artworkColorFilter = if (enabled) null else WakeHeroPausedArtwork,
     ) {
         Column(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .then(
+                    if (onEditTime != null) {
+                        Modifier.clickable(onClickLabel = editTimeLabel, role = Role.Button, onClick = onEditTime)
+                    } else {
+                        Modifier.semantics(mergeDescendants = true) {}
+                    },
+                )
+                .padding(horizontal = 17.dp, vertical = 14.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
+            Text(
+                text = stringResource(
+                    when {
+                        !enabled -> R.string.wake_editor_hero_paused_title
+                        anchorIsExtraAlarm -> R.string.wake_editor_hero_extra_title
+                        else -> R.string.wake_alarm_next_title
+                    },
+                ),
+                modifier = alignWithTime,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = Color.White.copy(alpha = 0.78f),
+            )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(WakeHeroRingSpacing),
+            ) {
+                HeroIconRing(iconRes = ringIconRes)
+                Text(
+                    text = timeText,
+                    fontSize = 44.sp,
+                    lineHeight = 50.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    maxLines = 1,
+                    softWrap = false,
+                    style = LocalTextStyle.current.copy(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
+                )
+            }
+            Text(
+                text = ruleText,
+                modifier = alignWithTime,
+                fontSize = 15.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = Color.White.copy(alpha = 0.92f),
+                lineHeight = 21.sp,
+            )
             when {
                 !enabled -> Text(
-                    text = stringResource(R.string.wake_editor_preview_disabled),
+                    text = stringResource(R.string.wake_editor_hero_paused_hint),
+                    modifier = alignWithTime,
                     fontSize = 12.sp,
-                    color = Color.White.copy(alpha = 0.78f),
+                    color = Color.White.copy(alpha = 0.88f),
+                    lineHeight = 17.sp,
                 )
 
-                preview == null -> Text(
+                anchorAtMillis == null -> Text(
                     text = stringResource(R.string.wake_editor_preview_unavailable),
+                    modifier = alignWithTime,
                     fontSize = 12.sp,
-                    color = Color.White.copy(alpha = 0.78f),
+                    color = Color.White.copy(alpha = 0.88f),
+                    lineHeight = 17.sp,
                 )
 
                 else -> {
                     Text(
-                        text = preview.title,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White,
+                        text = formatWakeHeroDate(context, anchorAtMillis, nowMillis),
+                        modifier = alignWithTime,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = Color.White.copy(alpha = 0.9f),
                     )
-                    Text(
-                        text = preview.detail,
-                        fontSize = 12.sp,
-                        color = Color.White.copy(alpha = 0.82f),
-                        lineHeight = 17.sp,
-                    )
+                    if (noteText != null) {
+                        Text(
+                            text = noteText,
+                            modifier = alignWithTime,
+                            fontSize = 12.sp,
+                            color = Color.White.copy(alpha = 0.8f),
+                            lineHeight = 17.sp,
+                        )
+                    }
+                    // Same pill as the Prayer tab's "متبقي" countdown.
+                    Row(
+                        modifier = Modifier
+                            .padding(top = 4.dp)
+                            .clip(RoundedCornerShape(50))
+                            .background(Color.White.copy(alpha = 0.90f))
+                            .padding(horizontal = 10.dp, vertical = 6.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        Text(
+                            text = stringResource(
+                                R.string.wake_editor_hero_countdown,
+                                formatWakeCountdownDuration(anchorAtMillis - nowMillis),
+                            ),
+                            modifier = Modifier.weight(1f, fill = false),
+                            fontSize = 13.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = GreenPrimaryDark,
+                            maxLines = 2,
+                        )
+                        Icon(
+                            painter = painterResource(R.drawable.ic_adhkar_clock),
+                            contentDescription = null,
+                            tint = GreenPrimaryDark,
+                            modifier = Modifier.size(16.dp),
+                        )
+                    }
+                    if (firstAlertText != null) {
+                        Text(
+                            text = firstAlertText,
+                            modifier = Modifier.padding(top = 2.dp),
+                            fontSize = 12.sp,
+                            color = Color.White.copy(alpha = 0.82f),
+                        )
+                    }
                 }
             }
         }
+    }
+}
+
+private fun formatWakeHeroDate(
+    context: android.content.Context,
+    triggerAtMillis: Long,
+    nowMillis: Long,
+): String {
+    val date = SimpleDateFormat("EEEE d MMMM", Locale.forLanguageTag("ar-TN-u-nu-latn"))
+        .format(Date(triggerAtMillis))
+    return when (wakeHeroRelativeDay(triggerAtMillis, nowMillis)) {
+        WakeHeroRelativeDay.TODAY -> context.getString(R.string.wake_editor_hero_date_today, date)
+        WakeHeroRelativeDay.TOMORROW -> context.getString(R.string.wake_editor_hero_date_tomorrow, date)
+        WakeHeroRelativeDay.LATER -> date
     }
 }
 
@@ -1828,16 +1989,28 @@ private fun WakeRecurringSilenceConflictDialog(
     }
 }
 
+/** A setting row where the whole row toggles, so the label (nearest the thumb in RTL) works too. */
 @Composable
 private fun WakeSwitchSettingRow(
     title: String,
     subtitle: String? = null,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
+    enabled: Boolean = true,
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween,
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 48.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .toggleable(
+                value = checked,
+                enabled = enabled,
+                role = Role.Switch,
+                onValueChange = onCheckedChange,
+            )
+            .padding(vertical = 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(modifier = Modifier.weight(1f)) {
@@ -1845,7 +2018,7 @@ private fun WakeSwitchSettingRow(
                 text = title,
                 fontSize = 13.sp,
                 fontWeight = FontWeight.Bold,
-                color = TextDark,
+                color = if (enabled) TextDark else TextMuted,
             )
             if (!subtitle.isNullOrBlank()) {
                 Text(
@@ -1856,55 +2029,44 @@ private fun WakeSwitchSettingRow(
                 )
             }
         }
-        Switch(checked = checked, onCheckedChange = onCheckedChange)
+        WakeSwitch(checked = checked, enabled = enabled)
     }
 }
 
+/**
+ * Display-only switch; its row handles the toggle. The off state uses a solid outline and thumb
+ * so it doesn't read as disabled (the theme's default outline is a faint beige).
+ */
 @Composable
-private fun WakeDisclosureRow(
-    title: String,
-    subtitle: String,
-    expanded: Boolean,
-    onClick: () -> Unit,
+private fun WakeSwitch(
+    checked: Boolean,
+    enabled: Boolean,
 ) {
-    OutlinedButton(
-        onClick = onClick,
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(10.dp),
-        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.28f)),
-        colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White),
-    ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = title,
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = TextDark,
-                )
-                Text(
-                    text = subtitle,
-                    fontSize = 12.sp,
-                    color = TextMuted,
-                    lineHeight = 17.sp,
+    Switch(
+        checked = checked,
+        onCheckedChange = null,
+        enabled = enabled,
+        thumbContent = if (checked) {
+            {
+                Icon(
+                    painter = painterResource(R.drawable.ic_check),
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp),
                 )
             }
-            Icon(
-                painter = painterResource(
-                    if (expanded) R.drawable.ic_expand_less else R.drawable.ic_expand_more,
-                ),
-                contentDescription = null,
-                tint = GreenPrimaryDark,
-                modifier = Modifier
-                    .padding(start = 10.dp)
-                    .size(22.dp),
-            )
-        }
-    }
+        } else {
+            null
+        },
+        colors = SwitchDefaults.colors(
+            checkedThumbColor = Color.White,
+            checkedTrackColor = GreenPrimary,
+            checkedBorderColor = GreenPrimary,
+            checkedIconColor = GreenPrimary,
+            uncheckedThumbColor = TextMuted,
+            uncheckedTrackColor = Color.White,
+            uncheckedBorderColor = TextMuted,
+        ),
+    )
 }
 
 @Composable
@@ -1940,403 +2102,644 @@ private fun WakeAnchorPrayerSelector(
     }
 }
 
+/**
+ * Extra alarms as one list in the order they ring, with the main alarm as its anchor. Each time
+ * appears once; editing happens in [WakeExtraAlarmSheet], and new alarms are added on the side of
+ * the main alarm they belong to.
+ */
 @Composable
-private fun WakeSubAlarmEditorCard(
-    index: Int,
-    subAlarm: PrayerWakeSubAlarm,
-    onChange: (PrayerWakeSubAlarm) -> Unit,
-    onRemove: () -> Unit,
+private fun WakeExtraAlarmsSection(
+    subAlarms: List<PrayerWakeSubAlarm>,
+    mainPlayback: WakePlaybackOptions,
+    timeTextFor: (signedOffsetMinutes: Int) -> String,
+    onAdd: (OffsetDirection) -> Unit,
+    onOpen: (String) -> Unit,
+) {
+    val ordered = subAlarms.inRingOrder()
+    val beforeAlarms = ordered.filter { subAlarm -> subAlarm.direction == OffsetDirection.BEFORE }
+    val afterAlarms = ordered.filter { subAlarm -> subAlarm.direction == OffsetDirection.AFTER }
+    val canAdd = subAlarms.size < WAKE_MAX_EXTRA_ALARMS
+    val summary = listOfNotNull(
+        beforeAlarms.size.takeIf { count -> count > 0 }?.let { count ->
+            pluralStringResource(R.plurals.wake_editor_extra_before_count, count, count)
+        },
+        afterAlarms.size.takeIf { count -> count > 0 }?.let { count ->
+            pluralStringResource(R.plurals.wake_editor_extra_after_count, count, count)
+        },
+    ).joinToString(separator = " · ").ifEmpty { null }
+    val addBeforeLabel = stringResource(R.string.wake_editor_extra_add_before)
+    val addAfterLabel = stringResource(R.string.wake_editor_extra_add_after)
+
+    WakeEditorSectionCard(
+        title = stringResource(R.string.wake_editor_extra_section_title),
+        subtitle = summary,
+    ) {
+        if (subAlarms.isEmpty()) {
+            Text(
+                text = stringResource(R.string.wake_editor_extra_empty),
+                fontSize = 13.sp,
+                color = TextDark,
+                lineHeight = 20.sp,
+            )
+            FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                WakeExtraAddButton(label = addBeforeLabel, onClick = { onAdd(OffsetDirection.BEFORE) })
+                WakeExtraAddButton(label = addAfterLabel, onClick = { onAdd(OffsetDirection.AFTER) })
+            }
+        } else {
+            WakeExtraAlarmTimeline(
+                beforeAlarms = beforeAlarms,
+                afterAlarms = afterAlarms,
+                mainPlayback = mainPlayback,
+                canAdd = canAdd,
+                addBeforeLabel = addBeforeLabel,
+                addAfterLabel = addAfterLabel,
+                timeTextFor = timeTextFor,
+                onAdd = onAdd,
+                onOpen = onOpen,
+            )
+        }
+    }
+}
+
+@Composable
+private fun WakeExtraAlarmTimeline(
+    beforeAlarms: List<PrayerWakeSubAlarm>,
+    afterAlarms: List<PrayerWakeSubAlarm>,
+    mainPlayback: WakePlaybackOptions,
+    canAdd: Boolean,
+    addBeforeLabel: String,
+    addAfterLabel: String,
+    timeTextFor: (signedOffsetMinutes: Int) -> String,
+    onAdd: (OffsetDirection) -> Unit,
+    onOpen: (String) -> Unit,
 ) {
     val context = LocalContext.current
-    val shape = RoundedCornerShape(10.dp)
-    var soundExpanded by rememberSaveable(subAlarm.id) { mutableStateOf(false) }
-    val offsetText = stringResource(
-        if (subAlarm.direction == OffsetDirection.BEFORE) {
-            R.string.wake_editor_subalarm_offset_before_value
-        } else {
-            R.string.wake_editor_subalarm_offset_after_value
-        },
-        formatArabicMinutes(subAlarm.minutesOffset),
-    )
-    val soundSummary = if (subAlarm.playback.vibrationOnly) {
-        stringResource(R.string.wake_editor_vibration_only_title)
-    } else {
-        WakeRingtoneCatalog.titleFor(context, subAlarm.playback.ringtone, subAlarm.playback.customRingtoneUri)
-    }
-
+    val shape = RoundedCornerShape(14.dp)
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .clip(shape)
-            .background(Color.White.copy(alpha = 0.78f))
-            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.22f)), shape)
-            .padding(horizontal = 12.dp, vertical = 10.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp),
+            .background(Color.White)
+            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.22f)), shape),
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Column(
-                modifier = Modifier.weight(1f),
-                verticalArrangement = Arrangement.spacedBy(2.dp),
-            ) {
-                Text(
-                    text = stringResource(R.string.wake_editor_subalarm_title, index + 1),
-                    fontSize = 13.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = PrayerNameColor,
-                )
-                Text(
-                    text = offsetText,
-                    fontSize = 12.sp,
-                    color = TextMuted,
-                    lineHeight = 17.sp,
-                )
-            }
-
-            OutlinedButton(
-                onClick = onRemove,
-                modifier = Modifier.size(36.dp),
-                shape = RoundedCornerShape(10.dp),
-                border = BorderStroke(1.dp, SilenceRed.copy(alpha = 0.42f)),
-                colors = ButtonDefaults.outlinedButtonColors(
-                    containerColor = SilenceRed.copy(alpha = 0.06f),
-                    contentColor = SilenceRed,
-                ),
-                contentPadding = PaddingValues(0.dp),
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_delete),
-                    contentDescription = stringResource(R.string.wake_editor_subalarm_remove),
-                    modifier = Modifier.size(16.dp),
-                )
-            }
+        if (canAdd) {
+            WakeExtraAddRow(label = addBeforeLabel, onClick = { onAdd(OffsetDirection.BEFORE) })
+            HorizontalDivider(color = Gold.copy(alpha = 0.16f))
         }
 
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            WakeChoiceButton(
-                selected = subAlarm.direction == OffsetDirection.BEFORE,
-                onClick = {
-                    onChange(subAlarm.copy(direction = OffsetDirection.BEFORE))
-                },
-                text = stringResource(R.string.wake_editor_subalarm_before_main),
-                modifier = Modifier.weight(1f),
-                compact = true,
-            )
-            WakeChoiceButton(
-                selected = subAlarm.direction == OffsetDirection.AFTER,
-                onClick = {
-                    onChange(subAlarm.copy(direction = OffsetDirection.AFTER))
-                },
-                text = stringResource(R.string.wake_editor_subalarm_after_main),
-                modifier = Modifier.weight(1f),
-                compact = true,
-            )
-        }
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            OutlinedButton(
-                onClick = {
-                    onChange(subAlarm.copy(minutesOffset = maxOf(1, subAlarm.minutesOffset - 1)))
-                },
-                modifier = Modifier.heightIn(min = 38.dp),
-                shape = RoundedCornerShape(10.dp),
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_remove),
-                    contentDescription = stringResource(R.string.wake_editor_subalarm_decrease),
-                    modifier = Modifier.size(18.dp),
+        // null marks the main alarm between the "before" and "after" ones.
+        val timeline: List<PrayerWakeSubAlarm?> = beforeAlarms + listOf(null) + afterAlarms
+        timeline.forEachIndexed { index, subAlarm ->
+            if (subAlarm == null) {
+                WakeExtraTimelineRow(
+                    timeText = timeTextFor(0),
+                    description = stringResource(R.string.wake_editor_extra_main_label),
+                    detail = null,
+                    isMain = true,
+                    isFirst = index == 0,
+                    isLast = index == timeline.lastIndex,
+                    onClick = null,
                 )
-            }
-
-            Text(
-                text = stringResource(
-                    R.string.wake_editor_subalarm_minutes_value,
-                    formatArabicMinutes(subAlarm.minutesOffset),
-                ),
-                modifier = Modifier
-                    .weight(1f)
-                    .heightIn(min = 38.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(GoldLight.copy(alpha = 0.14f))
-                    .padding(horizontal = 10.dp, vertical = 9.dp),
-                textAlign = TextAlign.Center,
-                fontSize = 13.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = TextDark,
-            )
-
-            OutlinedButton(
-                onClick = {
-                    onChange(subAlarm.copy(minutesOffset = subAlarm.minutesOffset + 1))
-                },
-                modifier = Modifier.heightIn(min = 38.dp),
-                shape = RoundedCornerShape(10.dp),
-            ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_add),
-                    contentDescription = stringResource(R.string.wake_editor_subalarm_increase),
-                    modifier = Modifier.size(18.dp),
+            } else {
+                WakeExtraTimelineRow(
+                    timeText = timeTextFor(subAlarm.signedOffsetMinutes),
+                    description = wakeExtraAlarmOffsetText(subAlarm),
+                    detail = if (subAlarm.soundMatches(mainPlayback)) {
+                        null
+                    } else {
+                        wakeExtraAlarmSoundText(context, subAlarm.playback)
+                    },
+                    isMain = false,
+                    isFirst = index == 0,
+                    isLast = index == timeline.lastIndex,
+                    onClick = { onOpen(subAlarm.id) },
                 )
             }
         }
 
         HorizontalDivider(color = Gold.copy(alpha = 0.16f))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
+        if (canAdd) {
+            WakeExtraAddRow(label = addAfterLabel, onClick = { onAdd(OffsetDirection.AFTER) })
+        } else {
             Text(
-                text = stringResource(R.string.wake_editor_subalarm_sound_summary, soundSummary),
-                modifier = Modifier.weight(1f),
+                text = stringResource(R.string.wake_editor_extra_limit, WAKE_MAX_EXTRA_ALARMS),
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
                 fontSize = 12.sp,
                 color = TextMuted,
-                lineHeight = 17.sp,
             )
-            TextButton(
-                onClick = { soundExpanded = !soundExpanded },
-                shape = RoundedCornerShape(10.dp),
-            ) {
-                Text(
-                    text = stringResource(
-                        if (soundExpanded) {
-                            R.string.wake_editor_subalarm_hide_customization
-                        } else {
-                            R.string.wake_editor_subalarm_customize
-                        },
-                    ),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.SemiBold,
-                )
-            }
-        }
-
-        AnimatedVisibility(visible = soundExpanded) {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                WakeSoundControls(
-                    ringtoneLabel = stringResource(R.string.wake_editor_subalarm_ringtone_label),
-                    playback = subAlarm.playback,
-                    onPlaybackChange = { updated -> onChange(subAlarm.copy(playback = updated)) },
-                )
-            }
         }
     }
 }
 
-private data class WakeSubAlarmTimelineEntry(
-    val sortAtMillis: Long,
-    val stableOrder: Int,
-    val title: String,
-    val timing: String,
-    val isMainAlarm: Boolean,
+@Composable
+private fun wakeExtraAlarmOffsetText(subAlarm: PrayerWakeSubAlarm): String = pluralStringResource(
+    if (subAlarm.direction == OffsetDirection.BEFORE) {
+        R.plurals.wake_editor_extra_before_value
+    } else {
+        R.plurals.wake_editor_extra_after_value
+    },
+    subAlarm.minutesOffset,
+    subAlarm.minutesOffset,
 )
 
+private fun wakeExtraAlarmSoundText(
+    context: android.content.Context,
+    playback: WakePlaybackOptions,
+): String = if (playback.vibrationOnly) {
+    context.getString(R.string.wake_editor_vibration_only_title)
+} else {
+    WakeRingtoneCatalog.titleFor(context, playback.ringtone, playback.customRingtoneUri)
+}
+
+private val WAKE_EXTRA_ROW_PADDING = 16.dp
+private val WAKE_EXTRA_MARKER_COLUMN = 22.dp
+
+/** One stop on the vertical timeline; the rail is drawn so rows stay simple to measure. */
 @Composable
-private fun WakeSubAlarmTimeline(
-    subAlarms: List<PrayerWakeSubAlarm>,
-    entries: List<WakeSubAlarmTimelineEntry>,
+private fun WakeExtraTimelineRow(
+    timeText: String,
+    description: String,
+    detail: String?,
+    isMain: Boolean,
+    isFirst: Boolean,
+    isLast: Boolean,
+    onClick: (() -> Unit)?,
 ) {
-    Column(
+    val railColor = Gold.copy(alpha = 0.45f)
+    val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
+    Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clip(RoundedCornerShape(12.dp))
-            .background(Color.White.copy(alpha = 0.92f))
-            .border(BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.32f)), RoundedCornerShape(12.dp))
-            .padding(horizontal = 12.dp, vertical = 10.dp),
-        verticalArrangement = Arrangement.spacedBy(6.dp),
+            .heightIn(min = 56.dp)
+            .then(if (isMain) Modifier.background(GreenPrimary.copy(alpha = 0.05f)) else Modifier)
+            .then(
+                if (onClick != null) {
+                    Modifier.clickable(
+                        onClickLabel = stringResource(R.string.wake_editor_extra_edit),
+                        role = Role.Button,
+                        onClick = onClick,
+                    )
+                } else {
+                    Modifier.semantics(mergeDescendants = true) {}
+                },
+            )
+            .drawBehind {
+                val railCenter = (WAKE_EXTRA_ROW_PADDING + WAKE_EXTRA_MARKER_COLUMN / 2).toPx()
+                val x = if (isRtl) size.width - railCenter else railCenter
+                val middle = size.height / 2
+                val stroke = 2.dp.toPx()
+                if (!isFirst) drawLine(railColor, Offset(x, 0f), Offset(x, middle), stroke)
+                if (!isLast) drawLine(railColor, Offset(x, middle), Offset(x, size.height), stroke)
+            }
+            .padding(horizontal = WAKE_EXTRA_ROW_PADDING, vertical = 8.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.CenterVertically,
+        Box(
+            modifier = Modifier.width(WAKE_EXTRA_MARKER_COLUMN),
+            contentAlignment = Alignment.Center,
+        ) {
+            if (isMain) {
+                Box(
+                    modifier = Modifier
+                        .size(16.dp)
+                        .clip(CircleShape)
+                        .background(GreenPrimary)
+                        .border(BorderStroke(3.dp, Color.White), CircleShape),
+                )
+            } else {
+                Box(
+                    modifier = Modifier
+                        .size(12.dp)
+                        .clip(CircleShape)
+                        .background(Color.White)
+                        .border(BorderStroke(2.5.dp, Gold), CircleShape),
+                )
+            }
+        }
+        Text(
+            text = timeText,
+            modifier = Modifier.widthIn(min = 50.dp),
+            fontSize = if (isMain) 17.sp else 16.sp,
+            fontWeight = FontWeight.Bold,
+            color = if (isMain) GreenPrimaryDark else TextDark,
+            maxLines = 1,
+            style = LocalTextStyle.current.copy(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
+        )
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = description,
+                fontSize = 13.sp,
+                fontWeight = if (isMain) FontWeight.Bold else FontWeight.Medium,
+                color = if (isMain) GreenPrimaryDark else TextDark,
+                lineHeight = 18.sp,
+            )
+            if (detail != null) {
+                Text(
+                    text = detail,
+                    fontSize = 11.sp,
+                    color = TextMuted,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+        }
+        if (onClick != null) {
+            Icon(
+                painter = painterResource(R.drawable.ic_qibla_chevron),
+                contentDescription = null,
+                tint = TextMuted,
+                modifier = Modifier.size(18.dp),
+            )
+        }
+    }
+}
+
+@Composable
+private fun WakeExtraAddRow(
+    label: String,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 48.dp)
+            .clickable(role = Role.Button, onClick = onClick)
+            .padding(horizontal = WAKE_EXTRA_ROW_PADDING),
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier
+                .size(WAKE_EXTRA_MARKER_COLUMN)
+                .border(BorderStroke(1.5.dp, GreenPrimary.copy(alpha = 0.45f)), CircleShape),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_add),
+                contentDescription = null,
+                tint = GreenPrimary,
+                modifier = Modifier.size(14.dp),
+            )
+        }
+        Text(
+            text = label,
+            fontSize = 13.sp,
+            fontWeight = FontWeight.Bold,
+            color = GreenPrimary,
+        )
+    }
+}
+
+@Composable
+private fun WakeExtraAddButton(
+    label: String,
+    onClick: () -> Unit,
+) {
+    OutlinedButton(
+        onClick = onClick,
+        shape = RoundedCornerShape(20.dp),
+        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.4f)),
+        colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White, contentColor = GreenPrimary),
+    ) {
+        Icon(
+            painter = painterResource(R.drawable.ic_add),
+            contentDescription = null,
+            modifier = Modifier.size(16.dp),
+        )
+        Spacer(modifier = Modifier.width(6.dp))
+        Text(text = label, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+    }
+}
+
+/**
+ * Edits one extra alarm: when it rings (shown first, in clock time), which side of the main alarm,
+ * how far, and its sound. Every change applies to the draft immediately; "تم" just closes.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun WakeExtraAlarmSheet(
+    subAlarm: PrayerWakeSubAlarm,
+    resultTimeText: String,
+    mainPlayback: WakePlaybackOptions,
+    onChange: (PrayerWakeSubAlarm) -> Unit,
+    onDelete: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val context = LocalContext.current
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    var soundExpanded by rememberSaveable(subAlarm.id) { mutableStateOf(false) }
+    val soundMatchesMain = subAlarm.soundMatches(mainPlayback)
+    val isBefore = subAlarm.direction == OffsetDirection.BEFORE
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        containerColor = Color.White,
+        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .navigationBarsPadding()
+                .verticalScroll(rememberScrollState())
+                .padding(start = 20.dp, end = 20.dp, bottom = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
             Text(
-                text = stringResource(R.string.wake_editor_subalarms_timeline_title),
-                fontSize = 13.sp,
+                text = stringResource(
+                    if (isBefore) R.string.wake_editor_extra_add_before else R.string.wake_editor_extra_add_after,
+                ),
+                fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 color = PrayerNameColor,
             )
-        }
-        val shouldScroll = subAlarms.size > 3
-        val timelineScrollState = rememberScrollState()
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .then(
-                    if (shouldScroll) {
-                        Modifier.horizontalScroll(timelineScrollState)
-                    } else {
-                        Modifier
-                    },
-                ),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            entries.forEachIndexed { index, entry ->
-                WakeSubAlarmTimelineNode(
-                    entry = entry,
-                    isFirst = index == 0,
-                    isLast = index == entries.lastIndex,
-                    modifier = if (shouldScroll) {
-                        Modifier.width(92.dp)
-                    } else {
-                        Modifier.weight(1f)
-                    },
+
+            Row(
+                modifier = Modifier.semantics(mergeDescendants = true) {},
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalAlignment = Alignment.Bottom,
+            ) {
+                Text(
+                    text = stringResource(R.string.wake_editor_extra_rings_at),
+                    modifier = Modifier.padding(bottom = 6.dp),
+                    fontSize = 13.sp,
+                    color = TextMuted,
                 )
+                Text(
+                    text = resultTimeText,
+                    fontSize = 40.sp,
+                    lineHeight = 44.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = GreenPrimaryDark,
+                    style = LocalTextStyle.current.copy(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
+                )
+            }
+
+            WakeSegmentedChoice(
+                options = listOf(
+                    stringResource(R.string.wake_editor_extra_direction_before),
+                    stringResource(R.string.wake_editor_extra_direction_after),
+                ),
+                selectedIndex = if (isBefore) 0 else 1,
+                onSelect = { index ->
+                    onChange(
+                        subAlarm.copy(direction = if (index == 0) OffsetDirection.BEFORE else OffsetDirection.AFTER),
+                    )
+                },
+            )
+
+            WakeOffsetStepper(
+                minutes = subAlarm.minutesOffset,
+                onChange = { minutes -> onChange(subAlarm.copy(minutesOffset = minutes)) },
+            )
+
+            HorizontalDivider(color = Gold.copy(alpha = 0.16f))
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(min = 52.dp)
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(role = Role.Button, onClick = { soundExpanded = !soundExpanded }),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = stringResource(R.string.wake_editor_extra_sound),
+                        fontSize = 13.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = TextDark,
+                    )
+                    Text(
+                        text = if (soundMatchesMain) {
+                            stringResource(R.string.wake_editor_extra_sound_same)
+                        } else {
+                            wakeExtraAlarmSoundText(context, subAlarm.playback)
+                        },
+                        fontSize = 12.sp,
+                        color = TextMuted,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                }
+                Icon(
+                    painter = painterResource(if (soundExpanded) R.drawable.ic_expand_less else R.drawable.ic_expand_more),
+                    contentDescription = null,
+                    tint = TextMuted,
+                    modifier = Modifier.size(20.dp),
+                )
+            }
+
+            AnimatedVisibility(visible = soundExpanded) {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    WakeSoundControls(
+                        ringtoneLabel = stringResource(R.string.wake_editor_subalarm_ringtone_label),
+                        playback = subAlarm.playback,
+                        onPlaybackChange = { updated -> onChange(subAlarm.copy(playback = updated)) },
+                    )
+                    if (!soundMatchesMain) {
+                        TextButton(
+                            onClick = {
+                                onChange(subAlarm.copy(playback = subAlarm.playback.withSoundOf(mainPlayback)))
+                            },
+                        ) {
+                            Text(
+                                text = stringResource(R.string.wake_editor_extra_use_main_sound),
+                                fontWeight = FontWeight.Bold,
+                            )
+                        }
+                    }
+                }
+            }
+
+            if (!isBefore) {
+                // Stopping the main alarm doesn't cancel pending "after" alarms, so say so.
+                Text(
+                    text = stringResource(R.string.wake_editor_extra_after_note),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color(0xFFFFF4DF))
+                        .padding(horizontal = 12.dp, vertical = 9.dp),
+                    fontSize = 12.sp,
+                    color = Color(0xFF6A4A00),
+                    lineHeight = 17.sp,
+                )
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                TextButton(
+                    onClick = onDelete,
+                    colors = ButtonDefaults.textButtonColors(contentColor = SilenceRed),
+                ) {
+                    Text(
+                        text = stringResource(R.string.wake_editor_extra_delete),
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
+                Button(
+                    onClick = onDismiss,
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier.heightIn(min = 44.dp),
+                ) {
+                    Text(
+                        text = stringResource(R.string.wake_editor_extra_done),
+                        modifier = Modifier.padding(horizontal = 12.dp),
+                        fontWeight = FontWeight.Bold,
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-private fun WakeSubAlarmTimelineNode(
-    entry: WakeSubAlarmTimelineEntry,
-    isFirst: Boolean,
-    isLast: Boolean,
-    modifier: Modifier = Modifier,
+private fun WakeSegmentedChoice(
+    options: List<String>,
+    selectedIndex: Int,
+    onSelect: (Int) -> Unit,
 ) {
-    val markerColor = if (entry.isMainAlarm) GreenPrimary else Gold
-    val markerSize = if (entry.isMainAlarm) 16.dp else 12.dp
-    val trackColor = Gold.copy(alpha = 0.36f)
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
+    val shape = RoundedCornerShape(12.dp)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 48.dp)
+            .height(IntrinsicSize.Min)
+            .clip(shape)
+            .border(BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.35f)), shape)
+            .selectableGroup(),
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(18.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = entry.title,
-                fontSize = 11.sp,
-                fontWeight = if (entry.isMainAlarm) FontWeight.Bold else FontWeight.SemiBold,
-                color = if (entry.isMainAlarm) GreenPrimaryDark else TextDark,
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                softWrap = false,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 2.dp),
-            )
-        }
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(22.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
+        options.forEachIndexed { index, label ->
+            val selected = index == selectedIndex
+            if (index > 0) {
                 Box(
                     modifier = Modifier
-                        .weight(1f)
-                        .height(2.dp)
-                        .clip(RoundedCornerShape(50))
-                        .background(if (isFirst) Color.Transparent else trackColor),
-                )
-                Spacer(modifier = Modifier.width(markerSize))
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(2.dp)
-                        .clip(RoundedCornerShape(50))
-                        .background(if (isLast) Color.Transparent else trackColor),
+                        .width(1.dp)
+                        .fillMaxHeight()
+                        .background(GreenPrimary.copy(alpha = 0.25f)),
                 )
             }
             Box(
                 modifier = Modifier
-                    .size(markerSize)
-                    .clip(RoundedCornerShape(50))
-                    .background(markerColor)
-                    .border(
-                        BorderStroke(2.dp, Color.White),
-                        RoundedCornerShape(50),
-                    ),
-            )
-        }
-
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(18.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = entry.timing,
-                fontSize = 10.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = TextMuted,
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                softWrap = false,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 2.dp),
-            )
+                    .weight(1f)
+                    .fillMaxHeight()
+                    .background(if (selected) GreenPrimary else Color.White)
+                    .selectable(selected = selected, role = Role.RadioButton, onClick = { onSelect(index) })
+                    .padding(horizontal = 8.dp, vertical = 12.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = label,
+                    fontSize = 13.sp,
+                    fontWeight = if (selected) FontWeight.Bold else FontWeight.SemiBold,
+                    color = if (selected) Color.White else TextDark,
+                    textAlign = TextAlign.Center,
+                )
+            }
         }
     }
 }
 
 @Composable
-private fun WakePlaybackControls(
-    title: String,
-    subtitle: String,
-    ringtoneLabel: String,
-    playback: WakePlaybackOptions,
-    onPlaybackChange: (WakePlaybackOptions) -> Unit,
-    showAwakeCheck: Boolean = true,
-    silenceUntilAlarm: Boolean = false,
-    onSilenceUntilAlarmChange: ((Boolean) -> Unit)? = null,
+private fun WakeOffsetStepper(
+    minutes: Int,
+    onChange: (Int) -> Unit,
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-            Text(
-                text = title,
-                fontSize = 13.sp,
-                fontWeight = FontWeight.Bold,
-                color = PrayerNameColor,
-            )
-
-            Text(
-                text = subtitle,
-                fontSize = 12.sp,
-                color = TextMuted,
-                lineHeight = 17.sp,
-            )
-        }
-
-        WakeSoundControls(
-            ringtoneLabel = ringtoneLabel,
-            playback = playback,
-            onPlaybackChange = onPlaybackChange,
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        WakeRepeatingStepButton(
+            iconRes = R.drawable.ic_remove,
+            contentDescription = stringResource(R.string.wake_editor_subalarm_decrease),
+            enabled = minutes > 1,
+            onStep = { onChange(stepExtraAlarmOffset(minutes, increase = false)) },
         )
-
-        WakeWakeCheckControls(
-            playback = playback,
-            onPlaybackChange = onPlaybackChange,
-            showAwakeCheck = showAwakeCheck,
+        Text(
+            text = pluralStringResource(R.plurals.prayer_silence_duration_minutes, minutes, minutes),
+            modifier = Modifier.weight(1f),
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold,
+            color = GreenPrimaryDark,
+            textAlign = TextAlign.Center,
         )
-
-        if (onSilenceUntilAlarmChange != null) {
-            WakeSwitchSettingRow(
-                title = stringResource(R.string.wake_editor_silence_toggle),
-                checked = silenceUntilAlarm,
-                onCheckedChange = onSilenceUntilAlarmChange,
-            )
-        }
+        WakeRepeatingStepButton(
+            iconRes = R.drawable.ic_add,
+            contentDescription = stringResource(R.string.wake_editor_subalarm_increase),
+            enabled = minutes < WAKE_EXTRA_ALARM_MAX_OFFSET_MINUTES,
+            onStep = { onChange(stepExtraAlarmOffset(minutes, increase = true)) },
+        )
     }
 }
+
+/** A round step button that repeats while held, so long jumps don't need many taps. */
+@Composable
+private fun WakeRepeatingStepButton(
+    iconRes: Int,
+    contentDescription: String,
+    enabled: Boolean,
+    onStep: () -> Unit,
+) {
+    val currentOnStep by rememberUpdatedState(onStep)
+    val currentEnabled by rememberUpdatedState(enabled)
+    Box(
+        modifier = Modifier
+            .size(52.dp)
+            .clip(CircleShape)
+            .border(
+                BorderStroke(1.5.dp, if (enabled) GreenPrimary.copy(alpha = 0.45f) else TextMuted.copy(alpha = 0.25f)),
+                CircleShape,
+            )
+            .semantics {
+                role = Role.Button
+                this.contentDescription = contentDescription
+                if (!enabled) disabled()
+                onClick {
+                    if (currentEnabled) currentOnStep()
+                    currentEnabled
+                }
+            }
+            .pointerInput(Unit) {
+                detectTapGestures(
+                    onPress = {
+                        if (!currentEnabled) return@detectTapGestures
+                        currentOnStep()
+                        coroutineScope {
+                            val repeat = launch {
+                                delay(WAKE_STEP_REPEAT_START_MILLIS)
+                                while (isActive && currentEnabled) {
+                                    currentOnStep()
+                                    delay(WAKE_STEP_REPEAT_INTERVAL_MILLIS)
+                                }
+                            }
+                            tryAwaitRelease()
+                            repeat.cancel()
+                        }
+                    },
+                )
+            },
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            painter = painterResource(iconRes),
+            contentDescription = null,
+            tint = if (enabled) GreenPrimary else TextMuted.copy(alpha = 0.4f),
+            modifier = Modifier.size(22.dp),
+        )
+    }
+}
+
+private const val WAKE_STEP_REPEAT_START_MILLIS = 450L
+private const val WAKE_STEP_REPEAT_INTERVAL_MILLIS = 110L
 
 private fun shouldExpandWakeBehavior(playback: WakePlaybackOptions): Boolean =
     playback.vibrationOnly ||
@@ -2379,231 +2782,137 @@ private fun WakeSoundControls(
     playback: WakePlaybackOptions,
     onPlaybackChange: (WakePlaybackOptions) -> Unit,
 ) {
+    // Vibration-only disables the sound rows in place rather than removing them,
+    // so nothing moves under the finger that just toggled it.
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        AnimatedVisibility(visible = !playback.vibrationOnly) {
-            WakeRingtoneSelector(
-                label = ringtoneLabel,
-                selected = playback.ringtone,
-                customRingtoneUri = playback.customRingtoneUri,
-                onSelected = { preset ->
-                    onPlaybackChange(playback.copy(ringtone = preset))
-                },
-                onCustomSelected = { uri ->
-                    onPlaybackChange(playback.copy(ringtone = RingtonePreset.CUSTOM, customRingtoneUri = uri))
-                },
-            )
-        }
+        WakeRingtoneSelector(
+            label = ringtoneLabel,
+            selected = playback.ringtone,
+            customRingtoneUri = playback.customRingtoneUri,
+            onSelected = { preset ->
+                onPlaybackChange(playback.copy(ringtone = preset))
+            },
+            onCustomSelected = { uri ->
+                onPlaybackChange(playback.copy(ringtone = RingtonePreset.CUSTOM, customRingtoneUri = uri))
+            },
+            enabled = !playback.vibrationOnly,
+        )
 
         WakeSwitchSettingRow(
             title = stringResource(R.string.wake_editor_vibration_only_title),
+            subtitle = stringResource(R.string.wake_editor_vibration_only_subtitle),
             checked = playback.vibrationOnly,
             onCheckedChange = { enabled ->
                 onPlaybackChange(playback.copy(vibrationOnly = enabled))
             },
         )
 
-        if (!playback.vibrationOnly) {
-            WakeSwitchSettingRow(
-                title = stringResource(R.string.wake_editor_progressive_volume_title),
-                checked = playback.progressiveVolume,
-                onCheckedChange = { enabled ->
-                    onPlaybackChange(playback.copy(progressiveVolume = enabled))
-                },
-            )
-        }
+        WakeSwitchSettingRow(
+            title = stringResource(R.string.wake_editor_progressive_volume_title),
+            subtitle = stringResource(R.string.wake_editor_progressive_volume_subtitle),
+            checked = playback.progressiveVolume,
+            onCheckedChange = { enabled ->
+                onPlaybackChange(playback.copy(progressiveVolume = enabled))
+            },
+            enabled = !playback.vibrationOnly,
+        )
     }
 }
 
+// Never offer 7: persistence migrates a stored 7 (the old default) back to 3.
+private val WAKE_AWAKE_CHECK_DELAY_CHOICES = listOf(1, 3, 5, 10)
+private val WAKE_STEP_MARKER_COLUMN = 28.dp
+private val WAKE_STEP_MARKER_SIZE = 24.dp
+
+/**
+ * What happens once the alarm rings, in time order: it rings, the stop challenge gates the
+ * stop button, then the awake check asks again a few minutes after the last alert is stopped.
+ */
 @Composable
 private fun WakeWakeCheckControls(
     playback: WakePlaybackOptions,
     onPlaybackChange: (WakePlaybackOptions) -> Unit,
-    showAwakeCheck: Boolean = true,
 ) {
-    val context = LocalContext.current
-    val gyroscopeMazeSupported = remember(context) { hasGyroscopeMazeTiltSensor(context) }
-    var previewStepIndex by remember { mutableStateOf<Int?>(null) }
     var wakeCheckExpanded by rememberSaveable { mutableStateOf(false) }
-    val previewSteps = playback.wakeUpCheckSteps.ifEmpty {
-        listOf(WakeUpCheckStep(playback.wakeUpCheckType, playback.mathDifficulty))
-    }
-    val wakeCheckSummary = if (!playback.wakeUpCheckEnabled) {
-        null
-    } else if (previewSteps.size == 1) {
+    val challengeSteps = playback.effectiveWakeUpCheckSteps
+    val challengeSummary = if (challengeSteps.size == 1) {
         stringResource(
             R.string.wake_editor_wake_up_check_single_summary,
-            wakeCheckTypeLabel(previewSteps.first().type),
-            wakeCheckDifficultyLabel(previewSteps.first().difficulty),
+            wakeCheckTypeLabel(challengeSteps.first().type),
+            wakeCheckDifficultyLabel(challengeSteps.first().difficulty),
         )
     } else {
-        stringResource(R.string.wake_editor_wake_up_check_steps_summary, previewSteps.size)
+        stringResource(R.string.wake_editor_wake_up_check_steps_summary, challengeSteps.size)
     }
+    val awakeCheckDelayChoices = (WAKE_AWAKE_CHECK_DELAY_CHOICES + playback.awakeCheckDelayMinutes)
+        .distinct()
+        .sorted()
 
-    if (previewStepIndex != null && previewStepIndex!! < previewSteps.size) {
-        val step = previewSteps[previewStepIndex!!]
-        WakeUpCheckPreviewDialog(
-            checkType = step.type,
-            difficulty = step.difficulty,
-            onDismiss = { previewStepIndex = null },
-        )
-    }
-
-    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        WakeSwitchSettingRow(
-            title = stringResource(R.string.wake_editor_wake_up_check_title),
-            subtitle = wakeCheckSummary,
-            checked = playback.wakeUpCheckEnabled,
-            onCheckedChange = { enabled ->
-                onPlaybackChange(playback.copy(wakeUpCheckEnabled = enabled))
-                if (enabled) wakeCheckExpanded = true
-            },
+    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        Text(
+            text = stringResource(R.string.wake_editor_after_ring_title),
+            fontSize = 13.sp,
+            fontWeight = FontWeight.Bold,
+            color = PrayerNameColor,
         )
 
-        if (playback.wakeUpCheckEnabled) {
-            WakeDisclosureRow(
-                title = stringResource(R.string.wake_editor_wake_up_check_edit),
-                subtitle = requireNotNull(wakeCheckSummary),
-                expanded = wakeCheckExpanded,
-                onClick = { wakeCheckExpanded = !wakeCheckExpanded },
+        WakeAfterRingStep(
+            number = 1,
+            caption = stringResource(R.string.wake_editor_after_ring_ring_caption),
+            active = true,
+        ) {
+            Text(
+                text = stringResource(R.string.wake_editor_after_ring_ring_title),
+                fontSize = 13.sp,
+                fontWeight = FontWeight.Bold,
+                color = TextDark,
             )
         }
 
-        AnimatedVisibility(visible = playback.wakeUpCheckEnabled && wakeCheckExpanded) {
-            val steps = playback.wakeUpCheckSteps.ifEmpty {
-                listOf(WakeUpCheckStep(playback.wakeUpCheckType, playback.mathDifficulty))
+        WakeAfterRingStep(
+            number = 2,
+            caption = stringResource(R.string.wake_editor_after_ring_stop_caption),
+            active = playback.wakeUpCheckEnabled,
+        ) {
+            WakeSwitchSettingRow(
+                title = stringResource(R.string.wake_editor_wake_up_check_title),
+                subtitle = if (playback.wakeUpCheckEnabled) {
+                    null
+                } else {
+                    stringResource(R.string.wake_editor_wake_up_check_subtitle)
+                },
+                checked = playback.wakeUpCheckEnabled,
+                onCheckedChange = { enabled ->
+                    onPlaybackChange(playback.copy(wakeUpCheckEnabled = enabled))
+                    if (enabled) wakeCheckExpanded = true
+                },
+            )
+
+            if (playback.wakeUpCheckEnabled) {
+                WakeChallengeEditLink(
+                    summary = challengeSummary,
+                    expanded = wakeCheckExpanded,
+                    onClick = { wakeCheckExpanded = !wakeCheckExpanded },
+                )
             }
 
-            Column(
-                modifier = Modifier.padding(start = 6.dp, end = 6.dp, bottom = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-            ) {
-                steps.forEachIndexed { index, step ->
-                    OutlinedCard(
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.08f)),
-                    ) {
-                        Column(
-                            modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
-                            verticalArrangement = Arrangement.spacedBy(6.dp),
-                        ) {
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically,
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.wake_editor_check_step_label, index + 1),
-                                    fontSize = 12.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = TextDark,
-                                )
-                                if (steps.size > 1) {
-                                    OutlinedButton(
-                                        onClick = {
-                                            val updated = steps.toMutableList().apply { removeAt(index) }
-                                            onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
-                                        },
-                                        modifier = Modifier.size(32.dp),
-                                        shape = RoundedCornerShape(8.dp),
-                                        contentPadding = PaddingValues(0.dp),
-                                    ) {
-                                        Icon(
-                                            painter = painterResource(R.drawable.ic_close),
-                                            contentDescription = stringResource(R.string.wake_editor_check_remove_step),
-                                            modifier = Modifier.size(15.dp),
-                                        )
-                                    }
-                                }
-                            }
-                            Text(
-                                text = stringResource(R.string.wake_editor_check_type_title),
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = TextMuted,
-                            )
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                            ) {
-                                WakeUpCheckType.entries.forEach { type ->
-                                    val typeEnabled = type != WakeUpCheckType.GYROSCOPE_MAZE || gyroscopeMazeSupported
-                                    WakeChoiceButton(
-                                        selected = step.type == type,
-                                        onClick = {
-                                            val updated = steps.toMutableList().apply {
-                                                set(index, step.copy(type = type))
-                                            }
-                                            onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
-                                        },
-                                        text = wakeCheckTypeShortLabel(type),
-                                        modifier = Modifier.weight(1f),
-                                        compact = true,
-                                        enabled = typeEnabled,
-                                    )
-                                }
-                            }
-                            if (!gyroscopeMazeSupported) {
-                                Text(
-                                    text = stringResource(R.string.wake_editor_gyroscope_maze_not_supported),
-                                    fontSize = 11.sp,
-                                    color = TextMuted,
-                                    lineHeight = 15.sp,
-                                )
-                            }
-                            HorizontalDivider(modifier = Modifier.padding(vertical = 2.dp))
-                            Text(
-                                text = stringResource(R.string.wake_editor_math_difficulty_title),
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = TextMuted,
-                            )
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.spacedBy(6.dp),
-                            ) {
-                                MathDifficulty.entries.forEach { diff ->
-                                    WakeChoiceButton(
-                                        selected = step.difficulty == diff,
-                                        onClick = {
-                                            val updated = steps.toMutableList().apply {
-                                                set(index, step.copy(difficulty = diff))
-                                            }
-                                            onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
-                                        },
-                                        text = when (diff) {
-                                            MathDifficulty.EASY -> stringResource(R.string.wake_editor_math_difficulty_easy)
-                                            MathDifficulty.INTERMEDIATE -> stringResource(R.string.wake_editor_math_difficulty_intermediate)
-                                            MathDifficulty.HARD -> stringResource(R.string.wake_editor_math_difficulty_hard)
-                                        },
-                                        modifier = Modifier.weight(1f),
-                                        compact = true,
-                                    )
-                                }
-                            }
-                            OutlinedButton(
-                                onClick = { previewStepIndex = index },
-                                modifier = Modifier.fillMaxWidth(),
-                                shape = RoundedCornerShape(10.dp),
-                            ) {
-                                Text(stringResource(R.string.wake_editor_check_preview_button), fontSize = 11.sp)
-                            }
-                        }
-                    }
-                }
-                OutlinedButton(
-                    onClick = {
-                        val updated = steps + WakeUpCheckStep()
-                        onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
-                    },
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(10.dp),
-                ) {
-                    Text(stringResource(R.string.wake_editor_check_add_step))
-                }
+            AnimatedVisibility(visible = playback.wakeUpCheckEnabled && wakeCheckExpanded) {
+                WakeUpCheckStepsEditor(
+                    playback = playback,
+                    onPlaybackChange = onPlaybackChange,
+                )
             }
         }
 
-        if (showAwakeCheck) {
+        WakeAfterRingStep(
+            number = 3,
+            caption = stringResource(
+                R.string.wake_editor_after_ring_awake_caption,
+                formatArabicMinutes(playback.awakeCheckDelayMinutes),
+            ),
+            active = playback.awakeCheckEnabled,
+            isLast = true,
+        ) {
             WakeSwitchSettingRow(
                 title = stringResource(R.string.wake_editor_awake_check_title),
                 subtitle = stringResource(R.string.wake_editor_awake_check_subtitle_compact),
@@ -2612,6 +2921,272 @@ private fun WakeWakeCheckControls(
                     onPlaybackChange(playback.copy(awakeCheckEnabled = enabled))
                 },
             )
+
+            if (playback.awakeCheckEnabled) {
+                // One row; the caption above already spells the delay out in full.
+                WakeSegmentedChoice(
+                    options = awakeCheckDelayChoices.map { minutes ->
+                        stringResource(R.string.wake_editor_minutes_short, minutes)
+                    },
+                    selectedIndex = awakeCheckDelayChoices.indexOf(playback.awakeCheckDelayMinutes),
+                    onSelect = { index ->
+                        onPlaybackChange(playback.copy(awakeCheckDelayMinutes = awakeCheckDelayChoices[index]))
+                    },
+                )
+            }
+        }
+    }
+}
+
+/** A numbered step with a connector line down to the next one (drawn, so no intrinsic measuring). */
+@Composable
+private fun WakeAfterRingStep(
+    number: Int,
+    caption: String,
+    active: Boolean,
+    isLast: Boolean = false,
+    content: @Composable ColumnScope.() -> Unit,
+) {
+    val connectorColor = Gold.copy(alpha = 0.35f)
+    val isRtl = LocalLayoutDirection.current == LayoutDirection.Rtl
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .drawBehind {
+                if (!isLast) {
+                    val markerCenter = (WAKE_STEP_MARKER_COLUMN / 2).toPx()
+                    val x = if (isRtl) size.width - markerCenter else markerCenter
+                    drawLine(
+                        color = connectorColor,
+                        start = Offset(x, WAKE_STEP_MARKER_SIZE.toPx() + 4.dp.toPx()),
+                        end = Offset(x, size.height),
+                        strokeWidth = 2.dp.toPx(),
+                    )
+                }
+            },
+        horizontalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        Box(
+            modifier = Modifier.width(WAKE_STEP_MARKER_COLUMN),
+            contentAlignment = Alignment.TopCenter,
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(WAKE_STEP_MARKER_SIZE)
+                    .clip(CircleShape)
+                    .background(if (active) GreenPrimary else GoldLight)
+                    .clearAndSetSemantics { },
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = number.toString(),
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = if (active) Color.White else TextDark,
+                )
+            }
+        }
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .padding(top = 3.dp, bottom = if (isLast) 0.dp else 14.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Text(
+                text = caption,
+                fontSize = 11.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = TextMuted,
+            )
+            content()
+        }
+    }
+}
+
+@Composable
+private fun WakeChallengeEditLink(
+    summary: String,
+    expanded: Boolean,
+    onClick: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 44.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .clickable(role = Role.Button, onClick = onClick)
+            .padding(horizontal = 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text(
+            text = summary,
+            modifier = Modifier.weight(1f),
+            fontSize = 12.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = GreenPrimaryDark,
+        )
+        Text(
+            text = stringResource(
+                if (expanded) R.string.wake_editor_challenge_hide else R.string.wake_editor_challenge_edit,
+            ),
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+            color = GreenPrimary,
+        )
+        Icon(
+            painter = painterResource(if (expanded) R.drawable.ic_expand_less else R.drawable.ic_expand_more),
+            contentDescription = null,
+            tint = GreenPrimary,
+            modifier = Modifier.size(18.dp),
+        )
+    }
+}
+
+@Composable
+private fun WakeUpCheckStepsEditor(
+    playback: WakePlaybackOptions,
+    onPlaybackChange: (WakePlaybackOptions) -> Unit,
+) {
+    val context = LocalContext.current
+    val gyroscopeMazeSupported = remember(context) { hasGyroscopeMazeTiltSensor(context) }
+    var previewStepIndex by remember { mutableStateOf<Int?>(null) }
+    val steps = playback.effectiveWakeUpCheckSteps
+
+    previewStepIndex?.let { index -> steps.getOrNull(index) }?.let { step ->
+        WakeUpCheckPreviewDialog(
+            checkType = step.type,
+            difficulty = step.difficulty,
+            onDismiss = { previewStepIndex = null },
+        )
+    }
+
+    Column(
+        modifier = Modifier.padding(bottom = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(10.dp),
+    ) {
+        steps.forEachIndexed { index, step ->
+            OutlinedCard(
+                modifier = Modifier.fillMaxWidth(),
+                colors = CardDefaults.outlinedCardColors(containerColor = GoldLight.copy(alpha = 0.08f)),
+            ) {
+                Column(
+                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(6.dp),
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically,
+                    ) {
+                        Text(
+                            text = stringResource(R.string.wake_editor_check_step_label, index + 1),
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = TextDark,
+                        )
+                        if (steps.size > 1) {
+                            OutlinedButton(
+                                onClick = {
+                                    val updated = steps.toMutableList().apply { removeAt(index) }
+                                    onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
+                                },
+                                modifier = Modifier.size(32.dp),
+                                shape = RoundedCornerShape(8.dp),
+                                contentPadding = PaddingValues(0.dp),
+                            ) {
+                                Icon(
+                                    painter = painterResource(R.drawable.ic_close),
+                                    contentDescription = stringResource(R.string.wake_editor_check_remove_step),
+                                    modifier = Modifier.size(15.dp),
+                                )
+                            }
+                        }
+                    }
+                    Text(
+                        text = stringResource(R.string.wake_editor_check_type_title),
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = TextMuted,
+                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        WakeUpCheckType.entries.forEach { type ->
+                            val typeEnabled = type != WakeUpCheckType.GYROSCOPE_MAZE || gyroscopeMazeSupported
+                            WakeChoiceButton(
+                                selected = step.type == type,
+                                onClick = {
+                                    val updated = steps.toMutableList().apply {
+                                        set(index, step.copy(type = type))
+                                    }
+                                    onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
+                                },
+                                text = wakeCheckTypeShortLabel(type),
+                                modifier = Modifier.weight(1f),
+                                compact = true,
+                                enabled = typeEnabled,
+                            )
+                        }
+                    }
+                    if (!gyroscopeMazeSupported) {
+                        Text(
+                            text = stringResource(R.string.wake_editor_gyroscope_maze_not_supported),
+                            fontSize = 11.sp,
+                            color = TextMuted,
+                            lineHeight = 15.sp,
+                        )
+                    }
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 2.dp))
+                    Text(
+                        text = stringResource(R.string.wake_editor_math_difficulty_title),
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = TextMuted,
+                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
+                    ) {
+                        MathDifficulty.entries.forEach { diff ->
+                            WakeChoiceButton(
+                                selected = step.difficulty == diff,
+                                onClick = {
+                                    val updated = steps.toMutableList().apply {
+                                        set(index, step.copy(difficulty = diff))
+                                    }
+                                    onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
+                                },
+                                text = when (diff) {
+                                    MathDifficulty.EASY -> stringResource(R.string.wake_editor_math_difficulty_easy)
+                                    MathDifficulty.INTERMEDIATE -> stringResource(R.string.wake_editor_math_difficulty_intermediate)
+                                    MathDifficulty.HARD -> stringResource(R.string.wake_editor_math_difficulty_hard)
+                                },
+                                modifier = Modifier.weight(1f),
+                                compact = true,
+                            )
+                        }
+                    }
+                    OutlinedButton(
+                        onClick = { previewStepIndex = index },
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(10.dp),
+                    ) {
+                        Text(stringResource(R.string.wake_editor_check_preview_button), fontSize = 11.sp)
+                    }
+                }
+            }
+        }
+        OutlinedButton(
+            onClick = {
+                val updated = steps + WakeUpCheckStep()
+                onPlaybackChange(playback.copy(wakeUpCheckSteps = updated))
+            },
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(10.dp),
+        ) {
+            Text(stringResource(R.string.wake_editor_check_add_step))
         }
     }
 }
@@ -2791,26 +3366,37 @@ private fun WakeRingtoneSelector(
     customRingtoneUri: String?,
     onSelected: (RingtonePreset) -> Unit,
     onCustomSelected: (String) -> Unit,
+    enabled: Boolean = true,
 ) {
-    var expanded by remember { mutableStateOf(false) }
-    var isPlaying by remember { mutableStateOf(false) }
     val context = LocalContext.current
     val previewPlayer = remember(context) { WakeRingtonePreviewPlayer(context) }
-    val canPreview = remember(selected, customRingtoneUri) {
-        selected == RingtonePreset.CUSTOM && !customRingtoneUri.isNullOrBlank() ||
-            WakeRingtoneCatalog.rawResIdFor(selected) != null ||
-            WakeRingtoneCatalog.systemTypeFor(selected) != null
+    var previewingPreset by remember { mutableStateOf<RingtonePreset?>(null) }
+    var pickerVisible by rememberSaveable { mutableStateOf(false) }
+
+    fun stopPreview() {
+        previewPlayer.stop()
+        previewingPreset = null
     }
 
-    DisposableEffect(selected, customRingtoneUri) {
-        previewPlayer.stop()
-        isPlaying = false
-        onDispose { }
+    fun startPreview(preset: RingtonePreset) {
+        val started = previewPlayer.play(preset, customRingtoneUri.takeIf { preset == RingtonePreset.CUSTOM })
+        previewingPreset = preset.takeIf { started }
+    }
+
+    fun togglePreview(preset: RingtonePreset) {
+        if (previewingPreset == preset) stopPreview() else startPreview(preset)
     }
 
     DisposableEffect(previewPlayer) {
         onDispose {
             previewPlayer.release()
+        }
+    }
+
+    LaunchedEffect(enabled) {
+        if (!enabled) {
+            stopPreview()
+            pickerVisible = false
         }
     }
 
@@ -2835,117 +3421,381 @@ private fun WakeRingtoneSelector(
             text = label,
             fontSize = 13.sp,
             fontWeight = FontWeight.Bold,
-            color = PrayerNameColor,
+            color = if (enabled) PrayerNameColor else TextMuted,
         )
 
-        Box(modifier = Modifier.fillMaxWidth()) {
-            OutlinedButton(
-                onClick = { expanded = true },
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(end = previewButtonInset(canPreview)),
-                ) {
-                    Text(
-                        text = WakeRingtoneCatalog.titleFor(context, selected, customRingtoneUri),
-                        color = TextDark,
-                    )
-                    Text(
-                        text = WakeRingtoneCatalog.summaryFor(context, selected),
-                        fontSize = 11.sp,
-                        color = TextMuted,
-                    )
-                }
-            }
+        WakeRingtoneRow(
+            title = WakeRingtoneCatalog.titleFor(context, selected, customRingtoneUri),
+            summary = WakeRingtoneCatalog.summaryFor(context, selected),
+            enabled = enabled,
+            canPreview = canPreviewRingtone(selected, customRingtoneUri),
+            isPreviewing = previewingPreset == selected,
+            onOpenPicker = { pickerVisible = true },
+            onTogglePreview = { togglePreview(selected) },
+        )
+    }
 
-            TextButton(
-                onClick = {
-                    if (isPlaying) {
-                        previewPlayer.stop()
-                        isPlaying = false
-                    } else {
-                        isPlaying = previewPlayer.play(selected, customRingtoneUri)
-                    }
-                },
-                enabled = canPreview,
-                modifier = Modifier
-                    .align(Alignment.CenterEnd)
-                    .padding(end = 8.dp)
-            ) {
-                Text(
-                    text = if (isPlaying) "■" else "▶",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = if (canPreview) GreenPrimaryDark else TextMuted,
-                    textAlign = TextAlign.Center,
-                )
-            }
-
-            DropdownMenu(
-                expanded = expanded,
-                onDismissRequest = { expanded = false },
-            ) {
-                WakeRingtoneCatalog.selectableChoices.forEach { choice ->
-                    DropdownMenuItem(
-                        text = {
-                            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                                Text(text = stringResource(choice.titleResId))
-                                Text(
-                                    text = stringResource(choice.summaryResId),
-                                    fontSize = 11.sp,
-                                    color = TextMuted,
-                                )
-                            }
-                        },
-                        onClick = {
-                            expanded = false
-                            onSelected(choice.preset)
-                        },
-                    )
-                }
-
-                DropdownMenuItem(
-                    text = {
-                        Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                            Text(text = stringResource(R.string.wake_ringtone_custom_title))
-                            Text(
-                                text = stringResource(R.string.wake_ringtone_custom_summary),
-                                fontSize = 11.sp,
-                                color = TextMuted,
+    if (pickerVisible) {
+        WakeRingtonePickerSheet(
+            title = label,
+            selected = selected,
+            customRingtoneUri = customRingtoneUri,
+            previewingPreset = previewingPreset,
+            onChoose = { preset ->
+                onSelected(preset)
+                startPreview(preset)
+            },
+            onTogglePreview = { preset -> togglePreview(preset) },
+            onPickFromPhone = {
+                stopPreview()
+                pickerVisible = false
+                ringtonePickerLauncher.launch(
+                    Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
+                        putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALL)
+                        putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, false)
+                        putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true)
+                        if (selected == RingtonePreset.CUSTOM && customRingtoneUri != null) {
+                            putExtra(
+                                RingtoneManager.EXTRA_RINGTONE_EXISTING_URI,
+                                Uri.parse(customRingtoneUri),
                             )
                         }
                     },
-                    onClick = {
-                        expanded = false
-                        ringtonePickerLauncher.launch(
-                            Intent(RingtoneManager.ACTION_RINGTONE_PICKER).apply {
-                                putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_ALL)
-                                putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, false)
-                                putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, true)
-                                if (selected == RingtonePreset.CUSTOM && customRingtoneUri != null) {
-                                    putExtra(
-                                        RingtoneManager.EXTRA_RINGTONE_EXISTING_URI,
-                                        Uri.parse(customRingtoneUri),
-                                    )
-                                }
-                            },
-                        )
-                    },
+                )
+            },
+            onDismiss = {
+                stopPreview()
+                pickerVisible = false
+            },
+        )
+    }
+}
+
+private fun canPreviewRingtone(preset: RingtonePreset, customRingtoneUri: String?): Boolean =
+    preset == RingtonePreset.CUSTOM && !customRingtoneUri.isNullOrBlank() ||
+        WakeRingtoneCatalog.rawResIdFor(preset) != null ||
+        WakeRingtoneCatalog.systemTypeFor(preset) != null
+
+/** The current tone as a list row: tapping the row opens the picker, the ▶ beside it previews. */
+@Composable
+private fun WakeRingtoneRow(
+    title: String,
+    summary: String,
+    enabled: Boolean,
+    canPreview: Boolean,
+    isPreviewing: Boolean,
+    onOpenPicker: () -> Unit,
+    onTogglePreview: () -> Unit,
+) {
+    val shape = RoundedCornerShape(12.dp)
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 64.dp)
+            .alpha(if (enabled) 1f else 0.45f)
+            .clip(shape)
+            .background(Color.White)
+            .border(BorderStroke(1.dp, Gold.copy(alpha = 0.28f)), shape),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Row(
+            modifier = Modifier
+                .weight(1f)
+                .heightIn(min = 64.dp)
+                .clickable(
+                    enabled = enabled,
+                    onClickLabel = stringResource(R.string.wake_ringtone_change),
+                    role = Role.Button,
+                    onClick = onOpenPicker,
+                )
+                .padding(start = 12.dp, end = 8.dp, top = 10.dp, bottom = 10.dp),
+            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(40.dp)
+                    .clip(CircleShape)
+                    .background(GreenPrimary.copy(alpha = 0.10f)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.ic_volume_on),
+                    contentDescription = null,
+                    tint = GreenPrimaryDark,
+                    modifier = Modifier.size(22.dp),
+                )
+            }
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                Text(
+                    text = title,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = TextDark,
+                    lineHeight = 20.sp,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    text = summary,
+                    fontSize = 12.sp,
+                    color = TextMuted,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+            Icon(
+                painter = painterResource(R.drawable.ic_expand_more),
+                contentDescription = null,
+                tint = TextMuted,
+                modifier = Modifier.size(20.dp),
+            )
+        }
+
+        if (canPreview) {
+            Box(
+                modifier = Modifier
+                    .width(1.dp)
+                    .height(32.dp)
+                    .background(Gold.copy(alpha = 0.28f)),
+            )
+            WakeRingtonePreviewButton(
+                isPreviewing = isPreviewing,
+                enabled = enabled,
+                onClick = onTogglePreview,
+                modifier = Modifier.padding(horizontal = 4.dp),
+            )
+        }
+    }
+}
+
+@Composable
+private fun WakeRingtonePreviewButton(
+    isPreviewing: Boolean,
+    enabled: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    IconButton(
+        onClick = onClick,
+        enabled = enabled,
+        modifier = modifier,
+    ) {
+        Box(
+            modifier = Modifier
+                .size(36.dp)
+                .clip(CircleShape)
+                .background(GreenPrimary.copy(alpha = 0.10f)),
+            contentAlignment = Alignment.Center,
+        ) {
+            // Playback icons keep their direction in RTL.
+            Icon(
+                painter = painterResource(if (isPreviewing) R.drawable.ic_stop else R.drawable.ic_play_arrow),
+                contentDescription = stringResource(
+                    if (isPreviewing) R.string.wake_ringtone_preview_stop else R.string.wake_ringtone_preview_play,
+                ),
+                tint = GreenPrimaryDark,
+                modifier = Modifier.size(20.dp),
+            )
+        }
+    }
+}
+
+/**
+ * Every tone can be heard before choosing it. Tapping a row selects it and plays it; the sheet
+ * stays open so tones can be compared, and closing it stops the preview.
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun WakeRingtonePickerSheet(
+    title: String,
+    selected: RingtonePreset,
+    customRingtoneUri: String?,
+    previewingPreset: RingtonePreset?,
+    onChoose: (RingtonePreset) -> Unit,
+    onTogglePreview: (RingtonePreset) -> Unit,
+    onPickFromPhone: () -> Unit,
+    onDismiss: () -> Unit,
+) {
+    val context = LocalContext.current
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+    val (adhanChoices, phoneChoices) = WakeRingtoneCatalog.selectableChoices.partition { choice ->
+        WakeRingtoneCatalog.rawResIdFor(choice.preset) != null
+    }
+    val customChosen = selected == RingtonePreset.CUSTOM && !customRingtoneUri.isNullOrBlank()
+
+    ModalBottomSheet(
+        onDismissRequest = onDismiss,
+        sheetState = sheetState,
+        containerColor = Color.White,
+        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .navigationBarsPadding()
+                .verticalScroll(rememberScrollState())
+                .padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
+                .selectableGroup(),
+            verticalArrangement = Arrangement.spacedBy(2.dp),
+        ) {
+            Text(
+                text = title,
+                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                fontSize = 17.sp,
+                fontWeight = FontWeight.Bold,
+                color = PrayerNameColor,
+            )
+
+            WakeRingtoneGroupHeader(text = stringResource(R.string.wake_ringtone_group_adhan))
+            adhanChoices.forEach { choice ->
+                WakeRingtoneOptionRow(
+                    title = stringResource(choice.titleResId),
+                    // The group header already says these are bundled adhans.
+                    summary = null,
+                    selected = selected == choice.preset,
+                    isPreviewing = previewingPreset == choice.preset,
+                    canPreview = true,
+                    onClick = { onChoose(choice.preset) },
+                    onTogglePreview = { onTogglePreview(choice.preset) },
+                )
+            }
+
+            WakeRingtoneGroupHeader(text = stringResource(R.string.wake_ringtone_group_phone))
+            phoneChoices.forEach { choice ->
+                WakeRingtoneOptionRow(
+                    title = stringResource(choice.titleResId),
+                    summary = stringResource(choice.summaryResId),
+                    selected = selected == choice.preset,
+                    isPreviewing = previewingPreset == choice.preset,
+                    canPreview = canPreviewRingtone(choice.preset, customRingtoneUri = null),
+                    onClick = { onChoose(choice.preset) },
+                    onTogglePreview = { onTogglePreview(choice.preset) },
+                )
+            }
+            WakeRingtoneOptionRow(
+                title = if (customChosen) {
+                    WakeRingtoneCatalog.titleFor(context, RingtonePreset.CUSTOM, customRingtoneUri)
+                } else {
+                    stringResource(R.string.wake_ringtone_pick_from_phone)
+                },
+                summary = stringResource(R.string.wake_ringtone_custom_summary),
+                selected = selected == RingtonePreset.CUSTOM,
+                isPreviewing = previewingPreset == RingtonePreset.CUSTOM,
+                canPreview = customChosen,
+                onClick = onPickFromPhone,
+                onTogglePreview = { onTogglePreview(RingtonePreset.CUSTOM) },
+            )
+
+            TextButton(
+                onClick = onDismiss,
+                modifier = Modifier.align(Alignment.End),
+            ) {
+                Text(
+                    text = stringResource(R.string.wake_ringtone_done),
+                    fontWeight = FontWeight.Bold,
                 )
             }
         }
     }
 }
 
-private fun previewButtonInset(canPreview: Boolean): Dp =
-    if (canPreview) 44.dp else 0.dp
+@Composable
+private fun WakeRingtoneGroupHeader(text: String) {
+    Text(
+        text = text,
+        modifier = Modifier
+            .padding(start = 8.dp, end = 8.dp, top = 12.dp, bottom = 4.dp)
+            .semantics { heading() },
+        fontSize = 12.sp,
+        fontWeight = FontWeight.Bold,
+        color = TextMuted,
+    )
+}
 
-private data class WakePreview(
-    val title: String,
-    val detail: String,
-    val warning: WakeValidationWarning? = null,
+@Composable
+private fun WakeRingtoneOptionRow(
+    title: String,
+    summary: String?,
+    selected: Boolean,
+    isPreviewing: Boolean,
+    canPreview: Boolean,
+    onClick: () -> Unit,
+    onTogglePreview: () -> Unit,
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(12.dp))
+            .background(if (selected) GreenPrimary.copy(alpha = 0.08f) else Color.Transparent),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Row(
+            modifier = Modifier
+                .weight(1f)
+                .heightIn(min = 56.dp)
+                .selectable(selected = selected, role = Role.RadioButton, onClick = onClick)
+                .padding(horizontal = 4.dp, vertical = 6.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            RadioButton(
+                selected = selected,
+                onClick = null,
+                modifier = Modifier.padding(horizontal = 8.dp),
+                colors = RadioButtonDefaults.colors(
+                    selectedColor = GreenPrimary,
+                    unselectedColor = GreenPrimary.copy(alpha = 0.55f),
+                ),
+            )
+            Column(
+                modifier = Modifier.weight(1f),
+                verticalArrangement = Arrangement.spacedBy(2.dp),
+            ) {
+                Text(
+                    text = title,
+                    fontSize = 14.sp,
+                    fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium,
+                    color = if (selected) GreenPrimaryDark else TextDark,
+                    lineHeight = 20.sp,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                if (summary != null) {
+                    Text(
+                        text = summary,
+                        fontSize = 12.sp,
+                        color = TextMuted,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                    )
+                }
+            }
+        }
+        if (canPreview) {
+            WakeRingtonePreviewButton(
+                isPreviewing = isPreviewing,
+                enabled = true,
+                onClick = onTogglePreview,
+                modifier = Modifier.padding(end = 4.dp),
+            )
+        }
+    }
+}
+
+private data class WakeHeroTimes(
+    /**
+     * What the hero shows: the main alarm's next ring (computed even while paused), or a still-pending
+     * extra alarm once a one-off main alarm has already rung. Null when it can't be computed.
+     */
+    val anchorAtMillis: Long?,
+    val anchorIsExtraAlarm: Boolean,
+    val anchorEffectivePrayer: Prayer?,
+    /** The earliest extra alarm of the same occurrence that rings before the main one. */
+    val firstSubAlarm: WakeAlarmComputer.ScheduledWakeTrigger?,
 )
 
 private data class WakeValidationWarning(
@@ -2970,19 +3820,14 @@ private fun WakeSilenceConflict.toSummary(): WakeSilenceConflictSummary = WakeSi
     triggerAtMillis = triggerAtMillis,
 )
 
-private fun computeWakePreview(
+private fun loadWakePreviewPrayerDays(
     context: android.content.Context,
     delegationId: Int,
-    config: PrayerWakeConfig,
-): WakePreview? {
-    if (!config.enabled) {
-        return null
-    }
-
-    val now = Calendar.getInstance()
+    now: Calendar,
+): List<WakeAlarmComputer.PrayerDayContext> {
     val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
     val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    val prayerDays = (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
+    return (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
         val date = (now.clone() as Calendar).apply {
             add(Calendar.DAY_OF_YEAR, dayOffset)
         }
@@ -3002,71 +3847,53 @@ private fun computeWakePreview(
             )
         }
     }
+}
 
-    val computeResult = WakeAlarmComputer.compute(now, config, prayerDays)
-    val nextTrigger = computeResult.allTriggers.firstOrNull() ?: return null
-    val previewTime = formatWakePreviewDateTime(nextTrigger.triggerAtMillis)
-    val warning = computeWakeSilenceWarning(
-        context = context,
-        triggers = computeResult.allTriggers,
-        prayerDays = prayerDays,
-    )
+private fun computeWakeHeroTimes(
+    context: android.content.Context,
+    delegationId: Int,
+    config: PrayerWakeConfig,
+): WakeHeroTimes {
+    val now = Calendar.getInstance()
+    val prayerDays = loadWakePreviewPrayerDays(context, delegationId, now)
+    val computeResult = WakeAlarmComputer.compute(now, config.copy(enabled = true), prayerDays)
+    val mainTrigger = computeResult.mainAlarm
+        ?: return computeResult.subAlarms.firstOrNull().let { pendingSubAlarm ->
+            WakeHeroTimes(
+                anchorAtMillis = pendingSubAlarm?.triggerAtMillis,
+                anchorIsExtraAlarm = pendingSubAlarm != null,
+                anchorEffectivePrayer = pendingSubAlarm?.effectivePrayer,
+                firstSubAlarm = null,
+            )
+        }
 
-    return WakePreview(
-        title = context.getString(
-            if (nextTrigger.isSubAlarm) {
-                R.string.wake_editor_preview_subalarm
-            } else {
-                R.string.wake_editor_preview_main
-            },
-        ),
-        detail = when {
-            config.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW && nextTrigger.isSubAlarm -> {
-                context.getString(
-                    R.string.wake_editor_preview_detail_from_now_subalarm,
-                    formatWakePreviewOffset(
-                        context,
-                        nextTrigger.signedOffsetMinutes,
-                    ),
-                    previewTime,
-                )
-            }
-
-            config.mainAlarm.mode == WakeMainAlarmMode.FROM_NOW -> {
-                context.getString(
-                    R.string.wake_editor_preview_detail_from_now,
-                    formatArabicMinutes(config.mainAlarm.oneOffOffsetMinutes),
-                    previewTime,
-                )
-            }
-
-            config.mainAlarm.mode == WakeMainAlarmMode.FIXED_TIME && nextTrigger.isSubAlarm -> {
-                context.getString(
-                    R.string.wake_editor_preview_detail_fixed_subalarm,
-                    formatWakePreviewOffset(
-                        context,
-                        nextTrigger.signedOffsetMinutes,
-                    ),
-                    previewTime,
-                )
-            }
-
-            config.mainAlarm.mode == WakeMainAlarmMode.FIXED_TIME -> {
-                context.getString(
-                    R.string.wake_editor_preview_detail_fixed,
-                    previewTime,
-                )
-            }
-
-            else -> {
-                context.getString(
-                    R.string.wake_editor_preview_detail,
-                    prayerDisplayName(context, nextTrigger.effectivePrayer),
-                    previewTime,
-                )
-            }
+    return WakeHeroTimes(
+        anchorAtMillis = mainTrigger.triggerAtMillis,
+        anchorIsExtraAlarm = false,
+        anchorEffectivePrayer = mainTrigger.effectivePrayer,
+        // An "after" extra left over from the occurrence that already rang doesn't belong here.
+        firstSubAlarm = computeResult.subAlarms.firstOrNull { subAlarm ->
+            subAlarm.occurrenceAtMillis == mainTrigger.occurrenceAtMillis &&
+                subAlarm.triggerAtMillis < mainTrigger.triggerAtMillis
         },
-        warning = warning,
+    )
+}
+
+/** A paused alarm never rings, so it can't conflict with a silence window. */
+private fun computeWakeDraftSilenceWarning(
+    context: android.content.Context,
+    delegationId: Int,
+    config: PrayerWakeConfig,
+): WakeValidationWarning? {
+    if (!config.enabled) {
+        return null
+    }
+    val now = Calendar.getInstance()
+    val prayerDays = loadWakePreviewPrayerDays(context, delegationId, now)
+    return computeWakeSilenceWarning(
+        context = context,
+        triggers = WakeAlarmComputer.compute(now, config, prayerDays).allTriggers,
+        prayerDays = prayerDays,
     )
 }
 
@@ -3109,96 +3936,6 @@ private fun resolveOneTimeWakeTrigger(
         ),
     )
 }
-
-private fun computeWakeTimelineEntries(
-    context: android.content.Context,
-    delegationId: Int,
-    config: PrayerWakeConfig,
-): List<WakeSubAlarmTimelineEntry> {
-    val now = Calendar.getInstance()
-    val jomoaaHour = PrefsManager.getJomoaaTimeHour(context)
-    val jomoaaMinute = PrefsManager.getJomoaaTimeMinute(context)
-    val prayerDays = (-1..WAKE_RECURRING_LOOKAHEAD_DAYS).mapNotNull { dayOffset ->
-        val date = (now.clone() as Calendar).apply {
-            add(Calendar.DAY_OF_YEAR, dayOffset)
-        }
-        PrayerTimesRepository.loadDayPrayerTimes(
-            context = context,
-            delegationId = delegationId,
-            year = date.get(Calendar.YEAR),
-            month = date.get(Calendar.MONTH) + 1,
-            day = date.get(Calendar.DAY_OF_MONTH),
-        )?.let { prayerTimes ->
-            WakeAlarmComputer.PrayerDayContext(
-                date = date,
-                prayerTimes = prayerTimes,
-                isFriday = date.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY,
-                jomoaaHour = jomoaaHour,
-                jomoaaMinute = jomoaaMinute,
-            )
-        }
-    }
-
-    val computeResult = WakeAlarmComputer.compute(now, config.copy(enabled = true), prayerDays)
-    val mainTriggerAtMillis = computeResult.mainAlarm?.triggerAtMillis
-        ?: return fallbackWakeTimelineEntries(context, config.subAlarms)
-
-    return buildList {
-        config.subAlarms.forEachIndexed { index, subAlarm ->
-            val triggerAtMillis = mainTriggerAtMillis + subAlarm.signedOffsetMinutes.toMillis()
-            add(
-                WakeSubAlarmTimelineEntry(
-                    sortAtMillis = triggerAtMillis,
-                    stableOrder = index,
-                    title = context.getString(R.string.wake_editor_subalarm_timeline_alarm, index + 1),
-                    timing = formatWakeTimelineTime(triggerAtMillis),
-                    isMainAlarm = false,
-                ),
-            )
-        }
-        add(
-            WakeSubAlarmTimelineEntry(
-                sortAtMillis = mainTriggerAtMillis,
-                stableOrder = Int.MAX_VALUE,
-                title = context.getString(R.string.wake_editor_subalarm_timeline_main),
-                timing = formatWakeTimelineTime(mainTriggerAtMillis),
-                isMainAlarm = true,
-            ),
-        )
-    }.sortedWith(
-        compareBy<WakeSubAlarmTimelineEntry> { entry -> entry.sortAtMillis }
-            .thenBy { entry -> entry.stableOrder },
-    )
-}
-
-private fun fallbackWakeTimelineEntries(
-    context: android.content.Context,
-    subAlarms: List<PrayerWakeSubAlarm>,
-): List<WakeSubAlarmTimelineEntry> = buildList {
-    subAlarms.forEachIndexed { index, subAlarm ->
-        add(
-            WakeSubAlarmTimelineEntry(
-                sortAtMillis = subAlarm.signedOffsetMinutes.toLong(),
-                stableOrder = index,
-                title = context.getString(R.string.wake_editor_subalarm_timeline_alarm, index + 1),
-                timing = "--:--",
-                isMainAlarm = false,
-            ),
-        )
-    }
-    add(
-        WakeSubAlarmTimelineEntry(
-            sortAtMillis = 0L,
-            stableOrder = Int.MAX_VALUE,
-            title = context.getString(R.string.wake_editor_subalarm_timeline_main),
-            timing = "--:--",
-            isMainAlarm = true,
-        ),
-    )
-}.sortedWith(
-    compareBy<WakeSubAlarmTimelineEntry> { entry -> entry.sortAtMillis }
-        .thenBy { entry -> entry.stableOrder },
-)
 
 private fun computeWakeSilenceWarning(
     context: android.content.Context,
@@ -3344,5 +4081,8 @@ private fun formatWakePreviewOffset(
 
 private fun formatWakeEditorTime(hour: Int, minute: Int): String =
     String.format(Locale.US, "%02d:%02d", hour, minute)
+
+private fun formatWakeMinuteOfDay(minuteOfDay: Int): String =
+    Math.floorMod(minuteOfDay, 24 * 60).let { minutes -> formatWakeEditorTime(minutes / 60, minutes % 60) }
 
 private fun Int.toMillis(): Long = this * 60_000L

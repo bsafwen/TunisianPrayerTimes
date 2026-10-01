@@ -108,7 +108,9 @@ class DateNavigationTest {
     @Test
     fun hasPrayerData_farFuture_returnsFalse() {
         assertFalse(
-            PrayerTimesRepository.hasPrayerData(context, delegationId, 2099, 1)
+            PrayerTimesRepository.hasPrayerData(
+                context, delegationId, PrayerTimesRepository.SUPPORTED_YEARS.last + 1, 1
+            )
         )
     }
 

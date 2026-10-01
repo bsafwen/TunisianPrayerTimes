@@ -7,8 +7,21 @@ import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
+import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 object SilenceModeController {
+    private val refreshScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
+
+    /** Adhkar nudges are deferred while DND is active; deliver them once it is lifted. */
+    private fun refreshDhikrReminders(context: Context) {
+        val app = context.applicationContext
+        refreshScope.launch { runCatching { DhikrReminderScheduler.refresh(app, rearm = true) } }
+    }
+
 
 
     /**
@@ -83,6 +96,7 @@ object SilenceModeController {
         )
         PrefsManager.clearAutoSilenceState(context)
         SilenceGuardService.stopIfNotNeeded(context)
+        refreshDhikrReminders(context)
         return true
     }
 
@@ -149,6 +163,7 @@ object SilenceModeController {
         PrefsManager.clearManualSilenceState(context)
         PrefsManager.clearAutoSilenceState(context)
         SilenceGuardService.stopIfNotNeeded(context)
+        refreshDhikrReminders(context)
         return true
     }
 
@@ -171,6 +186,7 @@ object SilenceModeController {
         PrefsManager.clearAutoSilenceState(context)
         PrefsManager.clearManualSilenceState(context)
         SilenceGuardService.stopIfNotNeeded(context)
+        refreshDhikrReminders(context)
         return true
     }
 
