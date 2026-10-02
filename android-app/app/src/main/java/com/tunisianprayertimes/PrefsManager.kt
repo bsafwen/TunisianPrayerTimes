@@ -15,6 +15,7 @@ data class SavedLocationSelection(
     val name: String?,
     val kind: String?,
     val fromGps: Boolean,
+    val manualReferenceId: String? = null,
 )
 
 object PrefsManager {
@@ -24,6 +25,7 @@ object PrefsManager {
     private const val KEY_LOCALITY_NAME = "locality_name"
     private const val KEY_LOCALITY_KIND = "locality_kind"
     private const val KEY_LOCATION_FROM_GPS = "location_from_gps"
+    private const val KEY_MANUAL_REFERENCE_ID = "manual_reference_id"
     private const val KEY_ENABLED = "silence_enabled"
     private const val KEY_FIRST_LAUNCH = "first_launch_done"
     private const val KEY_AUTO_SILENCE_ACTIVE = "auto_silence_active"
@@ -60,6 +62,7 @@ object PrefsManager {
         val edit = settings.edit().putInt(KEY_DELEGATION_ID, id)
         if (getDelegationId(context) != id) {
             edit.remove(KEY_LOCALITY_ID).remove(KEY_LOCALITY_NAME).remove(KEY_LOCALITY_KIND).remove(KEY_LOCATION_FROM_GPS)
+                .remove(KEY_MANUAL_REFERENCE_ID)
         }
         edit.apply()
     }
@@ -77,12 +80,13 @@ object PrefsManager {
             .putString(KEY_LOCALITY_NAME, locality.name)
             .putString(KEY_LOCALITY_KIND, locality.kind)
             .putBoolean(KEY_LOCATION_FROM_GPS, false)
+            .putString(KEY_MANUAL_REFERENCE_ID, locality.manualReferenceId)
             .apply()
     }
 
     fun clearLocality(context: Context) {
         prefs(context).edit().remove(KEY_LOCALITY_ID).remove(KEY_LOCALITY_NAME)
-            .remove(KEY_LOCALITY_KIND).remove(KEY_LOCATION_FROM_GPS).apply()
+            .remove(KEY_LOCALITY_KIND).remove(KEY_LOCATION_FROM_GPS).remove(KEY_MANUAL_REFERENCE_ID).apply()
     }
 
     /** The label and the timetable are independent results of the same GPS fix. */
@@ -93,6 +97,7 @@ object PrefsManager {
             .putString(KEY_LOCALITY_NAME, result.locality?.name)
             .putString(KEY_LOCALITY_KIND, result.locality?.kind)
             .putBoolean(KEY_LOCATION_FROM_GPS, true)
+            .remove(KEY_MANUAL_REFERENCE_ID)
             .apply()
     }
 
@@ -104,6 +109,7 @@ object PrefsManager {
             name = values[KEY_LOCALITY_NAME] as? String,
             kind = values[KEY_LOCALITY_KIND] as? String,
             fromGps = values[KEY_LOCATION_FROM_GPS] as? Boolean ?: false,
+            manualReferenceId = if (values[KEY_LOCATION_FROM_GPS] == true) null else values[KEY_MANUAL_REFERENCE_ID] as? String,
         )
         val localityId = selection.localityId ?: return selection
         // Apply only reviewed stable-ID label changes. GPS selections keep the
@@ -133,7 +139,7 @@ object PrefsManager {
 
     fun observeLocationSelection(context: Context, onChanged: () -> Unit): () -> Unit {
         val settings = prefs(context)
-        val keys = setOf(KEY_DELEGATION_ID, KEY_LOCALITY_ID, KEY_LOCALITY_NAME, KEY_LOCALITY_KIND, KEY_LOCATION_FROM_GPS)
+        val keys = setOf(KEY_DELEGATION_ID, KEY_LOCALITY_ID, KEY_LOCALITY_NAME, KEY_LOCALITY_KIND, KEY_LOCATION_FROM_GPS, KEY_MANUAL_REFERENCE_ID)
         val listener = SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
             if (key == null || key in keys) onChanged()
         }
