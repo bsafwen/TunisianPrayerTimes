@@ -88,6 +88,32 @@ private class QuranPageText(private val entries: List<QuranSearchEntry>) {
 
 object QuranRepository {
     @Volatile private var cached: QuranCatalog? = null
+    @Volatile private var cachedPages: List<QuranPage>? = null
+    private val pagesLock = Any()
+
+    /** What this process has already read, without waiting for anything. */
+    fun loaded(): QuranCatalog? = cached
+
+    fun loadedPages(): List<QuranPage>? = cached?.pages ?: cachedPages
+
+    /**
+     * The page scans alone, not yet named after their chapters: enough to show the mushaf while
+     * the much larger text index is still being read. Call on an IO dispatcher.
+     */
+    fun loadPages(context: Context): List<QuranPage> = loadedPages() ?: synchronized(pagesLock) {
+        cachedPages ?: readPages(context.applicationContext).also { cachedPages = it }
+    }
+
+    private fun readPages(context: Context): List<QuranPage> {
+        val manifest = JSONObject(context.assets.open("quran/pages/pages.json").bufferedReader().use { it.readText() })
+        val images = manifest.getJSONArray("pages")
+        return List(images.length()) { index ->
+            val image = images.getJSONObject(index)
+            val number = image.getInt("n")
+            require(number == index + 1) { "Non-contiguous Quran pages" }
+            QuranPage(number, "quran/pages/${image.getString("file")}", emptyList())
+        }
+    }
 
     /** Call on an IO dispatcher. Scans and the search index work entirely offline. */
     fun load(context: Context): QuranCatalog = cached ?: synchronized(this) {
@@ -118,14 +144,7 @@ object QuranRepository {
         val namesByPage = entries.groupBy { it.page }.mapValues { (_, values) ->
             values.map { surahs[it.surah - 1].name }.distinct()
         }
-        val manifest = JSONObject(context.assets.open("quran/pages/pages.json").bufferedReader().use { it.readText() })
-        val images = manifest.getJSONArray("pages")
-        val pages = List(images.length()) { index ->
-            val image = images.getJSONObject(index)
-            val number = image.getInt("n")
-            require(number == index + 1) { "Non-contiguous Quran pages" }
-            QuranPage(number, "quran/pages/${image.getString("file")}", namesByPage[number].orEmpty())
-        }
+        val pages = loadPages(context).map { it.copy(surahNames = namesByPage[it.number].orEmpty()) }
         require(entries.isNotEmpty() && entries.all {
             it.surah in 1..114 && it.page in 1..pages.size && it.ayah in 0..(surahs[it.surah - 1].verseCount ?: 0)
         }) { "Invalid Quran search index" }

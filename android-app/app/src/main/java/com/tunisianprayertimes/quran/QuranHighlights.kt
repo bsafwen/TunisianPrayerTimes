@@ -44,6 +44,9 @@ class QuranHighlights internal constructor(
 object QuranHighlightRepository {
     @Volatile private var cached: QuranHighlights? = null
 
+    /** What this process has already read, without waiting for anything. */
+    fun loaded(): QuranHighlights? = cached
+
     /** Call on IO, alongside loading the Quran text. */
     fun load(context: Context): QuranHighlights = cached ?: synchronized(this) {
         cached ?: read(context).also { cached = it }

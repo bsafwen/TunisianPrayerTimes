@@ -74,42 +74,76 @@ import com.tunisianprayertimes.ui.theme.*
 import java.util.Locale
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 
 // The first supplied scan includes Fatiha and Baqarah on printed page 2.
 private const val QuranScanCount = 603
 private const val QuranPrintedPageCount = 604
+private const val QuranReaderPreferences = "quran_reader"
 
-/** The original scans are the reading surface; the separate text index is only for finding pages. */
+/**
+ * The original scans are the reading surface, shown as soon as their list is read. The text index
+ * and the verse geometry, which search, recitation and verse selection need, follow behind the page.
+ */
 @Composable
 fun QuranScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current.applicationContext
-    var catalog by remember { mutableStateOf<QuranCatalog?>(null) }
-    var highlights by remember { mutableStateOf<QuranHighlights?>(null) }
+    // A later visit in the same process finds everything already read.
+    var pages by remember { mutableStateOf(QuranRepository.loadedPages()) }
+    var catalog by remember { mutableStateOf(QuranRepository.loaded()) }
+    var highlights by remember { mutableStateOf(QuranHighlightRepository.loaded()) }
     var failed by remember { mutableStateOf(false) }
+    var detailsFailed by remember { mutableStateOf(false) }
     var attempt by remember { mutableIntStateOf(0) }
+    var pageSettled by remember { mutableStateOf(false) }
     LaunchedEffect(context, attempt) {
         failed = false
+        detailsFailed = false
         try {
-            val assets = withContext(Dispatchers.IO) {
-                QuranRepository.load(context) to QuranHighlightRepository.load(context)
+            if (pages == null) pages = withContext(Dispatchers.IO) {
+                // Opening the saved page here keeps that disk read off the main thread.
+                context.getSharedPreferences(QuranReaderPreferences, Context.MODE_PRIVATE).getInt("last_page", 1)
+                QuranRepository.loadPages(context)
             }
-            highlights = assets.second
-            catalog = assets.first
         } catch (e: CancellationException) {
             throw e
         } catch (_: Exception) {
             failed = true
+            return@LaunchedEffect
+        }
+        if (catalog != null && highlights != null) return@LaunchedEffect
+        // The visible page is decoded first: reading the index would compete with it for the processor.
+        withTimeoutOrNull(2_000L) { snapshotFlow { pageSettled }.first { it } }
+        try {
+            coroutineScope {
+                launch { catalog = withContext(Dispatchers.IO) { QuranRepository.load(context) } }
+                launch { highlights = withContext(Dispatchers.IO) { QuranHighlightRepository.load(context) } }
+            }
+        } catch (e: CancellationException) {
+            throw e
+        } catch (_: Exception) {
+            detailsFailed = true
         }
     }
     AdhkarTheme {
         Box(modifier.fillMaxSize().statusBarsPadding()) {
-            val loaded = catalog
+            val scans = pages
             when {
-                loaded != null -> QuranReader(loaded, checkNotNull(highlights))
+                scans != null -> QuranReader(
+                    // The index knows which chapters each page holds.
+                    pages = catalog?.pages ?: scans,
+                    catalog = catalog,
+                    highlights = highlights,
+                    detailsFailed = detailsFailed,
+                    onRetry = { attempt++ },
+                    onPageSettled = { pageSettled = true },
+                )
                 failed -> Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
                     Text("تعذّر فتح المصحف", color = TextMuted)
                     TextButton(onClick = { attempt++ }) { Text("إعادة المحاولة") }
@@ -121,12 +155,21 @@ fun QuranScreen(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
+private fun QuranReader(
+    pages: List<QuranPage>,
+    /** Null while the text index and the verse geometry are still being read. */
+    catalog: QuranCatalog?,
+    highlights: QuranHighlights?,
+    detailsFailed: Boolean,
+    onRetry: () -> Unit,
+    /** The page in view has been drawn, or could not be. */
+    onPageSettled: () -> Unit,
+) {
     val context = LocalContext.current.applicationContext
-    val prefs = remember(context) { context.getSharedPreferences("quran_reader", Context.MODE_PRIVATE) }
+    val prefs = remember(context) { context.getSharedPreferences(QuranReaderPreferences, Context.MODE_PRIVATE) }
     val pager = rememberPagerState(
-        initialPage = remember { prefs.getInt("last_page", 1).coerceIn(1, catalog.pages.size) - 1 },
-        pageCount = { catalog.pages.size },
+        initialPage = remember { prefs.getInt("last_page", 1).coerceIn(1, pages.size) - 1 },
+        pageCount = { pages.size },
     )
     val scope = rememberCoroutineScope()
     val playback by QuranAudioController.state.collectAsStateWithLifecycle()
@@ -137,7 +180,7 @@ private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
     // The verses the repeat sheet opens on, kept across a re-created activity.
     var repeatDraft by rememberSaveable { mutableStateOf<String?>(null) }
     var zoomed by remember { mutableStateOf(false) }
-    val page = catalog.pages[pager.currentPage]
+    val page = pages[pager.currentPage]
     val haptics = LocalHapticFeedback.current
     val repeatSheet = remember(panel, repeatDraft) { if (panel == "repeat") decodeQuranRepeat(repeatDraft)?.first else null }
     var gestureHint by remember { mutableStateOf(!prefs.getBoolean("gesture_hint_seen", false)) }
@@ -149,14 +192,16 @@ private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
     }
     LaunchedEffect(pager.currentPage) { zoomed = false }
     LaunchedEffect(dragging) { if (dragging) followAudio = false }
-    LaunchedEffect(playback.surah, playback.ayah, playback.loading, followAudio) {
+    LaunchedEffect(playback.surah, playback.ayah, playback.loading, followAudio, catalog) {
         if (playback.surah == null) lastFollowedSurah = null
+        // Following a recitation needs the verse index; it starts as soon as that is read.
+        val index = catalog ?: return@LaunchedEffect
         if (followAudio && !playback.loading) {
             val surah = playback.surah
             val ayah = playback.ayah
-            val versePages = if (surah != null && ayah != null) catalog.pagesForVerse(surah, ayah)
+            val versePages = if (surah != null && ayah != null) index.pagesForVerse(surah, ayah)
                 else if (surah != lastFollowedSurah && playback.positionMs < playback.introEndMs)
-                    catalog.surahs.firstOrNull { it.number == surah }?.let { listOf(it.page) }.orEmpty()
+                    index.surahs.firstOrNull { it.number == surah }?.let { listOf(it.page) }.orEmpty()
                 else emptyList()
             if (versePages.isNotEmpty() && pager.currentPage + 1 !in versePages) {
                 pager.scrollToPage(versePages.first() - 1)
@@ -167,7 +212,7 @@ private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
     fun openPage(number: Int) {
         panel = null
         followAudio = false
-        scope.launch { pager.scrollToPage((number - 1).coerceIn(0, catalog.pages.lastIndex)) }
+        scope.launch { pager.scrollToPage((number - 1).coerceIn(0, pages.lastIndex)) }
     }
     fun openRepeat(range: QuranRepeatRange) {
         repeatDraft = range.encode(1)
@@ -194,23 +239,35 @@ private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
                 Icon(painterResource(R.drawable.ic_adhkar_list), "فهرس السور", tint = GreenPrimary)
             }
         }
-        HorizontalDivider(color = CardBorder)
+        if (detailsFailed) {
+            Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+                Text("تعذّر تجهيز البحث والتلاوة", Modifier.weight(1f), fontSize = 12.sp, color = TextMuted)
+                TextButton(onClick = onRetry) { Text("إعادة المحاولة") }
+            }
+        }
+        Box(Modifier.fillMaxWidth().height(2.dp), contentAlignment = Alignment.BottomCenter) {
+            // Search, recitation and verse selection are still being prepared behind the page.
+            if (!detailsFailed && (catalog == null || highlights == null)) {
+                LinearProgressIndicator(Modifier.fillMaxSize().testTag("quran_preparing"), color = GreenPrimary, trackColor = CardBorder)
+            } else HorizontalDivider(color = CardBorder)
+        }
         HorizontalPager(
             state = pager,
             modifier = Modifier.weight(1f).fillMaxWidth().testTag("quran_pages"),
-            key = { catalog.pages[it].number },
+            key = { pages[it].number },
             userScrollEnabled = !zoomed,
             beyondViewportPageCount = 1,
         ) { index ->
-            val number = catalog.pages[index].number
+            val number = pages[index].number
             val chosen = repeatSheet?.from
             QuranPageImage(
-                page = catalog.pages[index],
+                page = pages[index],
                 active = index == pager.currentPage,
-                highlightRects = highlights.rectangles(number, playback.surah, playback.ayah),
-                selectedRects = highlights.rectangles(number, chosen?.surah, chosen?.ayah),
+                highlightRects = highlights?.rectangles(number, playback.surah, playback.ayah).orEmpty(),
+                selectedRects = highlights?.rectangles(number, chosen?.surah, chosen?.ayah).orEmpty(),
                 onVerseLongPress = { x, y ->
-                    val verse = highlights.verseAt(number, x, y)
+                    // Choosing a verse needs both its place on the page and the text index.
+                    val verse = if (catalog != null) highlights?.verseAt(number, x, y) else null
                     if (verse != null) {
                         haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                         hideGestureHint()
@@ -220,6 +277,7 @@ private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
                     verse != null
                 },
                 onZoomChanged = { if (index == pager.currentPage) zoomed = it },
+                onSettled = { if (index == pager.currentPage) onPageSettled() },
             )
         }
         HorizontalDivider(color = CardBorder)
@@ -239,13 +297,14 @@ private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
         }
     }
     when (panel) {
-        "chapters" -> QuranChapterSheet(
+        // A sheet asked for while the index is still being read opens as soon as it is there.
+        "chapters" -> if (catalog != null) QuranChapterSheet(
             catalog, page.number, onDismiss = { panel = null }, onPage = ::openPage, onPageNumber = { panel = "page" },
         )
-        "search" -> QuranSearchSheet(catalog, onDismiss = { panel = null }, onPage = ::openPage)
+        "search" -> if (catalog != null) QuranSearchSheet(catalog, onDismiss = { panel = null }, onPage = ::openPage)
         "page" -> QuranPageDialog(page.number, onDismiss = { panel = null }, onPage = ::openPage)
     }
-    if (repeatSheet != null) {
+    if (repeatSheet != null && catalog != null) {
         // A different pressed verse is a different sheet, never the previous one's saved fields.
         key(repeatDraft) {
             QuranRepeatSheet(
@@ -271,10 +330,13 @@ private fun QuranPageImage(
     /** A long press at a point of the original scan, each coordinate from 0 to 1; true when it chose a verse. */
     onVerseLongPress: (x: Float, y: Float) -> Boolean,
     onZoomChanged: (Boolean) -> Unit,
+    /** The scan is on screen, or could not be read. */
+    onSettled: () -> Unit,
 ) {
     val context = LocalContext.current.applicationContext
     // The gesture detector outlives recompositions; it must call the newest callback.
     val currentOnVerseLongPress by rememberUpdatedState(onVerseLongPress)
+    val currentOnSettled by rememberUpdatedState(onSettled)
     var bitmap by remember(page.assetPath) { mutableStateOf<ImageBitmap?>(null) }
     var failed by remember(page.assetPath) { mutableStateOf(false) }
     var attempt by remember(page.assetPath) { mutableIntStateOf(0) }
@@ -298,6 +360,7 @@ private fun QuranPageImage(
             failed = true
         }
     }
+    LaunchedEffect(bitmap, failed, active) { if (bitmap != null || failed) currentOnSettled() }
     LaunchedEffect(active) { if (!active) { scale = 1f; offset = Offset.Zero } }
     LaunchedEffect(scale, active) { if (active) onZoomChanged(scale > 1.01f) }
     BackHandler(enabled = active && scale > 1f) { scale = 1f; offset = Offset.Zero }
