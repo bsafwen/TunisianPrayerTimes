@@ -8,7 +8,6 @@ from __future__ import annotations
 
 import argparse
 from bisect import bisect_right
-from collections import Counter
 from difflib import SequenceMatcher
 import html
 import json
@@ -21,12 +20,12 @@ import xml.etree.ElementTree as ET
 def normalized(text: str) -> str:
     text = unicodedata.normalize("NFKC", text)
     text = "".join(c for c in text if not unicodedata.category(c).startswith("M") and c not in "ـۥۦ")
-    return text.translate(str.maketrans("أإآٱىئؤةیک", "ااااييوهيك"))
+    return text.translate(str.maketrans("أإآٱىئؤةیکے", "ااااييوهيكي"))
 
 
 def skeleton(text: str) -> str:
     # Used for alignment only; never for user search or displayed text.
-    return normalized(text).replace("ا", "").replace("صلوه", "صله").replace("زكوه", "زكه").replace("حيوه", "حيه")
+    return normalized(text).replace("ا", "").replace("ء", "").replace("صلوه", "صله").replace("زكوه", "زكه").replace("حيوه", "حيه")
 
 
 def spelling_alias(source: str, imlai: str) -> str:
@@ -34,7 +33,11 @@ def spelling_alias(source: str, imlai: str) -> str:
     original, alias = normalized(source), normalized(imlai)
     if original == alias:
         return imlai
+    if original.replace("اليل", "الليل") == alias:
+        return imlai
     if "ٰ" in source and skeleton(original) == skeleton(alias):
+        return imlai
+    if "ء" in source and skeleton(original) == skeleton(alias):
         return imlai
     if any(c in source for c in "ۥۦۧ") and original.replace("ۥ", "و").replace("ۦ", "ي").replace("ۧ", "ي") == alias:
         return imlai
@@ -46,6 +49,7 @@ def spelling_alias(source: str, imlai: str) -> str:
 
 def build(args: argparse.Namespace) -> None:
     source_chapters = json.loads(args.chapter_map.read_text(encoding="utf-8"))["surahs"]
+    page_overrides = json.loads(args.page_overrides.read_text(encoding="utf-8"))["overrides"]
     starts = [(int(p.attrib["sura"]), int(p.attrib["aya"])) for p in ET.parse(args.metadata).getroot().find("pages")]
     assert len(starts) == 604
     simple: dict[int, list[tuple[int, str, int]]] = {n: [] for n in range(1, 115)}
@@ -96,11 +100,21 @@ def build(args: argparse.Namespace) -> None:
                         aliases[i1] = joined
         assert not ambiguous, (number, ambiguous)
         assert all(p is not None for p in locations)
+        # The scans share most Madinah page boundaries, but four verses differ.
+        # These source-image corrections are individually verified, never inferred.
+        for override in page_overrides:
+            if override["surah"] != number:
+                continue
+            positions = [i for i, (ayah, _) in enumerate(words) if ayah == override["ayah"]]
+            assert positions, override
+            assert sorted({locations[i] for i in positions}) == override["expectedAlignedPages"], override
+            for i in positions:
+                locations[i] = override["sourcePage"]
         assert locations == sorted(locations), number
         assert locations[0] == source_chapters[number - 1]["sourcePage"], (number, locations[0])
         chapters.append({"number": number, "name": names[number - 1]["name"], "page": locations[0], "verseCount": len(verses)})
         if number != 9:
-            entries.append({"surah": number, "page": locations[0], "text": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ"})
+            entries.append({"surah": number, "ayah": 0, "page": locations[0], "text": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", "isFirstFragment": True, "isLastFragment": True})
         # Keep true Qaloun verse fragments. Splitting at page boundaries makes every
         # word-search destination unambiguous even when the verse straddles pages.
         start = 0
@@ -108,7 +122,14 @@ def build(args: argparse.Namespace) -> None:
             end = start + 1
             while end < len(words) and words[end][0] == words[start][0] and locations[end] == locations[start]:
                 end += 1
-            entry = {"surah": number, "page": locations[start], "text": " ".join(w for _, w in words[start:end])}
+            entry = {
+                "surah": number,
+                "ayah": words[start][0],
+                "page": locations[start],
+                "text": " ".join(w for _, w in words[start:end]),
+                "isFirstFragment": start == 0 or words[start - 1][0] != words[start][0],
+                "isLastFragment": end == len(words) or words[end][0] != words[start][0],
+            }
             alias = " ".join(aliases[start:end])
             if normalized(alias) != normalized(entry["text"]):
                 entry["searchText"] = alias
@@ -119,18 +140,33 @@ def build(args: argparse.Namespace) -> None:
     assert total_verses == 6214, total_verses
     assert set(e["page"] for e in entries) == set(range(1, 604))
     output = {
-        "version": 1,
+        "version": 2,
         "edition": "Quran_Qaloun.pdf",
+        "verseNumbering": "Qaloun, later Madani (6214 verses); opening basmalah headings use ayah 0",
         "quranPages": 603,
         "totalPages": 621,
         "textSource": "https://quranpedia.net/surah/7/{surah}",
         "pageBoundarySource": "https://tanzil.net/res/text/metadata/quran-data.xml",
+        "spellingSource": "https://tanzil.net/download/",
+        "attribution": "Qaloun text: Quranpedia, مصحف قالون. Page metadata and ordinary-spelling search aliases: Tanzil Project, CC BY 3.0. See SOURCES.txt.",
         "surahs": chapters,
         "entries": entries,
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(output, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-    args.audit.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    args.output.write_text(json.dumps(output, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8", newline="\n")
+    notice = args.imlai.read_text(encoding="utf-8-sig").split("# PLEASE DO NOT REMOVE OR CHANGE THIS COPYRIGHT BLOCK", 1)[1]
+    sources = """Quran reader sources
+
+Reading images: user-supplied Quran_Qaloun_pages, extracted from Quran_Qaloun.pdf.
+Qaloun verse text: https://quranpedia.net/surah/7/{surah}, retrieved 2026-10-02.
+Page-boundary metadata: https://tanzil.net/res/text/metadata/quran-data.xml (CC BY).
+Ordinary-spelling search aliases: Tanzil Project, https://tanzil.net/download/.
+The Qaloun text is displayed in results; the ordinary-spelling aliases are only searched.
+The supplied scan remains the reading surface and determines all chapter destinations.
+
+# PLEASE DO NOT REMOVE OR CHANGE THIS COPYRIGHT BLOCK""" + notice
+    (args.output.parent / "SOURCES.txt").write_text(sources, encoding="utf-8", newline="\n")
+    args.audit.write_text(json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps({"surahs": len(chapters), "verses": total_verses, "entries": len(entries), "pages": len(set(e["page"] for e in entries)), "lowestAlignment": min(a["equalWordRatio"] for a in audit), "bytes": args.output.stat().st_size}))
 
 
@@ -140,6 +176,7 @@ if __name__ == "__main__":
     parser.add_argument("--imlai", type=Path, required=True, help="Tanzil simple-clean txt-2 text")
     parser.add_argument("--metadata", type=Path, required=True, help="Tanzil quran-data.xml")
     parser.add_argument("--chapter-map", type=Path, required=True, help="Visually checked supplied-image chapter map")
+    parser.add_argument("--page-overrides", type=Path, default=Path("scripts/quran-data/qaloun-page-overrides.json"), help="Visually verified differences from the reference page boundaries")
     parser.add_argument("--names", type=Path, default=Path("qaloon-app/app/src/main/assets/quran_qaloon.json"))
     parser.add_argument("--output", type=Path, default=Path("android-app/app/src/main/assets/quran/index.json"))
     parser.add_argument("--audit", type=Path, required=True)

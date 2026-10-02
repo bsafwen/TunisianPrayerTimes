@@ -97,6 +97,11 @@ android {
         compose = true
     }
 
+    androidResources {
+        // MediaPlayer streams the bundled recitations directly through AssetFileDescriptor.
+        noCompress += "mp3"
+    }
+
     testOptions {
         unitTests {
             isIncludeAndroidResources = true

@@ -1,0 +1,5472 @@
+{
+  "version": 1,
+  "source": "User-supplied Quran_Qaloun_pages",
+  "normalizedHeight": 1450,
+  "minimumAcceptedMarkerScore": 0.67,
+  "templateSourceCrops": [
+    {
+      "page": 2,
+      "xyxy": [
+        666,
+        171,
+        725,
+        230
+      ]
+    },
+    {
+      "page": 1,
+      "xyxy": [
+        327,
+        657,
+        389,
+        720
+      ]
+    }
+  ],
+  "digitMaskXyxy": [
+    14,
+    15,
+    46,
+    45
+  ],
+  "manuallyReviewedBannerPages": [
+    384,
+    495,
+    565,
+    567,
+    584,
+    588,
+    596,
+    597,
+    599
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "markers": 11,
+      "rows": 12,
+      "textRows": 10,
+      "banners": 2,
+      "minimumMarkerScore": 0.894,
+      "sourceSha256": "00a6bf84b540ef36921fce38d9b0497602327a881271e6e1bfb69aaa4ff3e465"
+    },
+    {
+      "page": 2,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9183,
+      "sourceSha256": "eb7e788bd6f20c48d918aa29123837f4ff61050c547bc7c16ef9fd050410a61c"
+    },
+    {
+      "page": 3,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9307,
+      "sourceSha256": "c3cf79b2da1b97081d4037f4e8ebad3a221b9142cef943f5d03958f941c7c255"
+    },
+    {
+      "page": 4,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9314,
+      "sourceSha256": "f3e4e1e30a25f9ae8adaf4a1693adca56b41f4acb0042b52fe74494a3b0740c6"
+    },
+    {
+      "page": 5,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9038,
+      "sourceSha256": "2638e9be79825ef8c62f43bdd8ac42438a7356c2c039b67d98e69a093cc4c43c"
+    },
+    {
+      "page": 6,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9326,
+      "sourceSha256": "0b449a009623a0d80c031212e6c79dc93bde18d2d5aa4bc9d7e062ed8d0d7669"
+    },
+    {
+      "page": 7,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9135,
+      "sourceSha256": "23b5954d80b123f3e0b9a4a7bfebd6722706b5f65559b827fd3a3163846ad4c8"
+    },
+    {
+      "page": 8,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9495,
+      "sourceSha256": "64ddd2784d99a43e816a8bc82d933bedd1bf40f4adf38ef72b1ea1318e8df329"
+    },
+    {
+      "page": 9,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9398,
+      "sourceSha256": "5bec83116862753828f68d994baa7b2eb321bcadfa5e87aeca67ffb1a2ff8f52"
+    },
+    {
+      "page": 10,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8953,
+      "sourceSha256": "a236fc452faffda95e360490cd60b2545ca9c2701e6b0af546d394f02238fb0f"
+    },
+    {
+      "page": 11,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9195,
+      "sourceSha256": "e78b410fdd8b309aee7a610697deeb0a5676e5ba61c7f592a392a4f1cd74d213"
+    },
+    {
+      "page": 12,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9353,
+      "sourceSha256": "1eb63cc9ec75faad5a04e9c0fd2d06dea4948f209160c5355798fcccb63d901f"
+    },
+    {
+      "page": 13,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9308,
+      "sourceSha256": "db4ea7acb689a2b6bd852f2f76f3d33a451f6e4514cc57b8be8905a00868551e"
+    },
+    {
+      "page": 14,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8795,
+      "sourceSha256": "896f2e402c420bb81556b2b4cb1d00a35b498c7e3abc24ed709bf15d6357a1ba"
+    },
+    {
+      "page": 15,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9347,
+      "sourceSha256": "b5f728a404e2a97ab01086370fe8b7822e7e07d9c24ec43dca2dde35c498ad19"
+    },
+    {
+      "page": 16,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9354,
+      "sourceSha256": "8685b8f1323188c02209fb9cd564af385c16f8c05642961f0f6d85c10d810d38"
+    },
+    {
+      "page": 17,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9346,
+      "sourceSha256": "40f17806c94a8256d99d48aebce17394b95ed26f20de7ae395b6194156cc0afb"
+    },
+    {
+      "page": 18,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9115,
+      "sourceSha256": "1baaa59f06bb7120ddd7183076030bfcfd4c30da17e10d6a19c5dadd8c9ecdc2"
+    },
+    {
+      "page": 19,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9115,
+      "sourceSha256": "bb52c43fb55e173dfd16a3ef669f7b6d8e56b47f78c6a65786f734da62aafe92"
+    },
+    {
+      "page": 20,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.92,
+      "sourceSha256": "ab30ab7712a0cf382b99b8ecfedfb247a7ded63180b5ee45d4941360932ca7e4"
+    },
+    {
+      "page": 21,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9176,
+      "sourceSha256": "59bf0756a3da8193a5b32a1b83096547bbe64289bfa254a9a75a7d9f7d28a018"
+    },
+    {
+      "page": 22,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9094,
+      "sourceSha256": "ce61b1599487d60d00d271d9f4ad6021964c0be701c5988a62628df2cf3b5b2a"
+    },
+    {
+      "page": 23,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9131,
+      "sourceSha256": "496fa7b2db1b90a08b3d8817a72083928964df4548c70b4386f2b38c6c89b509"
+    },
+    {
+      "page": 24,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9308,
+      "sourceSha256": "37b3cc4fe7d037323ca821983e120074bc2028c60d9928b245a1a8953afed5f2"
+    },
+    {
+      "page": 25,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9219,
+      "sourceSha256": "35b5811bc5f378212e2487e5b2058004101c6a65dfc68e85e069b0537eb67c0b"
+    },
+    {
+      "page": 26,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8986,
+      "sourceSha256": "97d61f77e144ac201f5e8df94c66ad9ac8c8af0684c30ae12dc90efedf7712de"
+    },
+    {
+      "page": 27,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9128,
+      "sourceSha256": "783dba7fa681258bc86fcb8ade57dece8a0d7ad9803a5b03fb3d3fe6ef242ae4"
+    },
+    {
+      "page": 28,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9148,
+      "sourceSha256": "e538626a9cfc66ba8b8ae9762c42d636568189a9c3464b29282bd82e5b32954e"
+    },
+    {
+      "page": 29,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.872,
+      "sourceSha256": "029acac5949732583557032fbcc9231f9d981fa7562442a1f078bbcf44236fc6"
+    },
+    {
+      "page": 30,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9168,
+      "sourceSha256": "1e26be53a2046fccebf8181b04d1dbb6c130f03dd2dca059e852261f37bee9c8"
+    },
+    {
+      "page": 31,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8861,
+      "sourceSha256": "f46db6f3a954b623be73c9660a41d56110719d42e7a7303a1737c8ec9331fea3"
+    },
+    {
+      "page": 32,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.886,
+      "sourceSha256": "a39fc89e987c92083a0c3e9cf414fc1c9ad520f7411a26ca620af8afa2fef220"
+    },
+    {
+      "page": 33,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9014,
+      "sourceSha256": "e282afc77aea1d9c1f68ae4ac6b702411a01bfc2f7a80c6f98cbcabac4fd6c1a"
+    },
+    {
+      "page": 34,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9028,
+      "sourceSha256": "7b0f9030331c815fc9a0c737528d0346d94fba4da0808a52ae92c79cd33125bf"
+    },
+    {
+      "page": 35,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8918,
+      "sourceSha256": "fece1d2eb02340cbbe710a562015f513aa6bcfe78bfc647c1d85316c4d4503f9"
+    },
+    {
+      "page": 36,
+      "markers": 3,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9006,
+      "sourceSha256": "0b293fc88f09b91f2d8f1e9dcabf6d03e35ee7c17a73c19762634ba3d7584d8d"
+    },
+    {
+      "page": 37,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9051,
+      "sourceSha256": "29f7bd2ea3d06ac23386f80aab16c3f530a4e171b1eede85c799250f5d394331"
+    },
+    {
+      "page": 38,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.922,
+      "sourceSha256": "c100b62cb3fbf7e5b36005e74595b6196cc5d8b576fc0f1a256c2d8308188020"
+    },
+    {
+      "page": 39,
+      "markers": 3,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9042,
+      "sourceSha256": "6a6dfb16897df9c6c9de5a72df2e67997552d087f3cf3fb5e138cebbd80c17be"
+    },
+    {
+      "page": 40,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9183,
+      "sourceSha256": "860a8425940d10e0741104004adcf19a317c56ff06ac59a9813d10ab3d3aef30"
+    },
+    {
+      "page": 41,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9113,
+      "sourceSha256": "ccd390b417492e7e0a0e4696619f020c47d10ea17fa17c1c0ff1a45e1a1d789f"
+    },
+    {
+      "page": 42,
+      "markers": 3,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9117,
+      "sourceSha256": "d1e2901d72a0ed1507352498e5b97472265e81d4ac7bf3b4f91317c18ec5dc54"
+    },
+    {
+      "page": 43,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8924,
+      "sourceSha256": "fafa50c77a40d9039a4fc6a292244f4726eadac784cd4bcc14056a284420f574"
+    },
+    {
+      "page": 44,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9029,
+      "sourceSha256": "7c0222ecf6bfebe6986eac498619148184ca7bdaff91877d9e391cba4975f5b8"
+    },
+    {
+      "page": 45,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9126,
+      "sourceSha256": "4959f97602d11049c2c2dd308bc10b7401afc4ab6d187c27eba3a93820a12439"
+    },
+    {
+      "page": 46,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9155,
+      "sourceSha256": "4d7846e3def442d251f3e66f27770de3e3035b7ce57a9652a0f45e0a21c437f9"
+    },
+    {
+      "page": 47,
+      "markers": 1,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9007,
+      "sourceSha256": "28420ed721ea374e67b478b91ac2009d3746a254c63d33be8cf45b05c315e70f"
+    },
+    {
+      "page": 48,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8919,
+      "sourceSha256": "3b4c7f60b3bae2c4e85cd5bfdac933edbeafafe74b7c3e15c1438d33e2a503d5"
+    },
+    {
+      "page": 49,
+      "markers": 9,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9209,
+      "sourceSha256": "d7dbcd1d8cd152286da73985c603c27329910d515aefff5a7191ba2ce9bf82a6"
+    },
+    {
+      "page": 50,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.921,
+      "sourceSha256": "d6e69c6db1f6517dcfba4e4a3ee8ecdff4de1ae9fefacfbef7cbcbf4841e5720"
+    },
+    {
+      "page": 51,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.927,
+      "sourceSha256": "07e3bdb77cb4c1f8bdd57f0c93f8213d9281c69841a91103dcfb869514502ef1"
+    },
+    {
+      "page": 52,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9274,
+      "sourceSha256": "6835838589030bf927e6ef5829d10b31b162656865cc29e2d9bdeadefb149753"
+    },
+    {
+      "page": 53,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9404,
+      "sourceSha256": "c09215d38b97531b5025650df5905ddecb21c328c29513f915d91efa479a2a39"
+    },
+    {
+      "page": 54,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9277,
+      "sourceSha256": "b1619b4fb94b7ce4f258e772760f702b105ed2926bd9db971b104fd32e57cd96"
+    },
+    {
+      "page": 55,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9419,
+      "sourceSha256": "4e266e125583daadd4948a34cfeca874cb5d87bd4224635f4ad96adbc1644bf7"
+    },
+    {
+      "page": 56,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9333,
+      "sourceSha256": "e6d04243ad457a1c1080047049ecf61765eb8a039175245707ad7c2ad0781d04"
+    },
+    {
+      "page": 57,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9113,
+      "sourceSha256": "a23fde422013bb0f71e0b7e5384d2190cdf74d5612545dc3a04d8b5b1908a5f4"
+    },
+    {
+      "page": 58,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9027,
+      "sourceSha256": "942484e2edc325843e1154ccc19c62fdca76f5f560a825b0089fca982dd187d4"
+    },
+    {
+      "page": 59,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.923,
+      "sourceSha256": "04b6b4385e12c3e95cb1344138f8bb7308ac5c123ef9c907cd2651be774dd316"
+    },
+    {
+      "page": 60,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9223,
+      "sourceSha256": "a3b7e6bfdfdaaebd7364c7529c1f7311485baae61330b622a15e21b6e3189788"
+    },
+    {
+      "page": 61,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9132,
+      "sourceSha256": "c104630ddea8e6e798ff573ba333bf36927d2ccd1b3996c9b37d9f5fd01e357f"
+    },
+    {
+      "page": 62,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9398,
+      "sourceSha256": "7e786199b977a8b1078ff0ad84b5e4c6a6e72722798b104c4421a838830f2433"
+    },
+    {
+      "page": 63,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9298,
+      "sourceSha256": "49912da1807ad4541e6eca3294c85009fb6d8aa9878c5d772d3d0b69f3f7e468"
+    },
+    {
+      "page": 64,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9117,
+      "sourceSha256": "728a5734d0dc8f2e4a9152b53928eb1ca1c9e4ea936815f54c6a1b2a2c6fa567"
+    },
+    {
+      "page": 65,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9164,
+      "sourceSha256": "b058f14625d25bc8d1a002696685483f484c12d579a48b3b2d0633e2fe5a0f99"
+    },
+    {
+      "page": 66,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8725,
+      "sourceSha256": "bc97521e852802bcd3ef2e1e78d4344875d1e1ee1f7ba8b8729229fe1897af5c"
+    },
+    {
+      "page": 67,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9156,
+      "sourceSha256": "54e4c70f4153f882a8474816f0ef8531ef02b45ab8d5a8312dcb350e607f59b4"
+    },
+    {
+      "page": 68,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9203,
+      "sourceSha256": "798b440a60c97f1fe73b6a68f86e79526477b225930deaf9d5132f295d6ada6e"
+    },
+    {
+      "page": 69,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9345,
+      "sourceSha256": "30c1ec8c697f14d8533fce5bc8873ec10f0e169f3c50aea26b549ee23acb7089"
+    },
+    {
+      "page": 70,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9201,
+      "sourceSha256": "96042b679e0ff32cf7e3950e43d0e2ddb1224a89dd43945439c93dcedaab9183"
+    },
+    {
+      "page": 71,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9204,
+      "sourceSha256": "b41f8f0f8f6882995056815fa35c9b3f5dee0e51f9a0e7dd37ca8156e5d3fbcb"
+    },
+    {
+      "page": 72,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9358,
+      "sourceSha256": "39efb02f02a71d6307f0607dcb766489e43e24b8129a485b34188448a5fb183c"
+    },
+    {
+      "page": 73,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9,
+      "sourceSha256": "fedf35e7077eb172ff0dbdead63f2799e0c5c2c7de90eee593d0c76a20a09220"
+    },
+    {
+      "page": 74,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9199,
+      "sourceSha256": "299a62cb4b52d69f5b583e19263feedcbc7678fe6009a7b90204a531074c1971"
+    },
+    {
+      "page": 75,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8838,
+      "sourceSha256": "bad05cda7366f8db32cbd122099de5735c528ebb55303fa9d0d9b8757911ea9a"
+    },
+    {
+      "page": 76,
+      "markers": 6,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8925,
+      "sourceSha256": "2074707a83956b630331d67161d580e4a02994aff56d6ea046cd2df22a480d80"
+    },
+    {
+      "page": 77,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9262,
+      "sourceSha256": "cd1ba2330f0ad07f30fee6385e65b436f4d390c2f1265fe4e096cd6bf798bda7"
+    },
+    {
+      "page": 78,
+      "markers": 3,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9463,
+      "sourceSha256": "1e56cab55c0748611f99fad931387f5d3234236bea4562c477a225ba3a710527"
+    },
+    {
+      "page": 79,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9267,
+      "sourceSha256": "53cc57d67824ad86f2f2a0abf46d4c70c0be7679a465a37b8f72d0649bd5d6bc"
+    },
+    {
+      "page": 80,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9227,
+      "sourceSha256": "55da16d29cef50b652f28f2f760db17b6b60e78234408a415f375e59e7b733f2"
+    },
+    {
+      "page": 81,
+      "markers": 3,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9153,
+      "sourceSha256": "780dab0b4d737e888dc19b6880186e29022ade3e06584a7740fd0da528606d6d"
+    },
+    {
+      "page": 82,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9316,
+      "sourceSha256": "cc0092adb21c45ea4799b1d7ea35b0b1d77aa2631339d780c0a429c178118792"
+    },
+    {
+      "page": 83,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9242,
+      "sourceSha256": "df19f56a138512500e715786eb2e6da2dc5bb958fcedcce589ddc27eda9e0026"
+    },
+    {
+      "page": 84,
+      "markers": 7,
+      "rows": 16,
+      "textRows": 16,
+      "banners": 0,
+      "minimumMarkerScore": 0.8975,
+      "sourceSha256": "71ed2570e276d190b6ad0bd200a52a3a73f0f6a3aa0111ea529a6db34ba58dfd"
+    },
+    {
+      "page": 85,
+      "markers": 6,
+      "rows": 14,
+      "textRows": 14,
+      "banners": 0,
+      "minimumMarkerScore": 0.927,
+      "sourceSha256": "e904b024255b9d30e1f22def2f81cabd1a60716402b1fc7c648e2f6c4627b649"
+    },
+    {
+      "page": 86,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9031,
+      "sourceSha256": "789cc7f21f00f815c65b4db535cbe75f1adff008400a045bcb19cfb4124f45a2"
+    },
+    {
+      "page": 87,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9246,
+      "sourceSha256": "93ec0d1fd849061f04d62748a68fed5254b164a52a9b90bf4762a6bf35d9bccb"
+    },
+    {
+      "page": 88,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9248,
+      "sourceSha256": "23b4f5567476ea5b34f4cc67ca213d2c5c967375880f2ddf9284fa513e45b600"
+    },
+    {
+      "page": 89,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9357,
+      "sourceSha256": "dcdf93572ef0f6ef91f9fd7cc8a8ffb9332533b9788ee001f767d95f5e720847"
+    },
+    {
+      "page": 90,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8399,
+      "sourceSha256": "a3b59ae5d273b84c5e23426c8298e3d2df7c99b6c41e487af1c82fa16dc14b74"
+    },
+    {
+      "page": 91,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9388,
+      "sourceSha256": "d98b2b6be7b07bb81f8e502aa854fcba67811d4814ce5fe1d454d426dfd7aea1"
+    },
+    {
+      "page": 92,
+      "markers": 3,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9246,
+      "sourceSha256": "9e3f8cb58adcd6b78ee2e04db080f691ccd835d645ed7bb71efbe57a0f2c6dc4"
+    },
+    {
+      "page": 93,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9205,
+      "sourceSha256": "2826dd0955a67b387a9570415208119d7ea771a6b4f0b13167ecccbeb130399f"
+    },
+    {
+      "page": 94,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.935,
+      "sourceSha256": "c625226df6e1ecc712b9fcfdcfbc9214d1a4d463b060d4566c42bd2a5d34699e"
+    },
+    {
+      "page": 95,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.925,
+      "sourceSha256": "e5e34f4b9e17017ed5d6ca94a347e42b87b5c5ac9811361c8f3c5185e17e1f95"
+    },
+    {
+      "page": 96,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9184,
+      "sourceSha256": "83e54a2deca123addd27ebf218ae9a05e14b00abe2c1449dbb8f0842d6bd5ff8"
+    },
+    {
+      "page": 97,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9261,
+      "sourceSha256": "f14d889bb45c13cb84e02795e5ce18f17a052b5b0336bc136930a21751efc779"
+    },
+    {
+      "page": 98,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9245,
+      "sourceSha256": "471bbbe6ccefe98ecfc55022dbac9fe17505e2dac7f49d34ff8be4a8f0e4b9ec"
+    },
+    {
+      "page": 99,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.917,
+      "sourceSha256": "f0dab7448740961f271f920e17f8b45f4113a9a0ef208269e02ed8411a30b662"
+    },
+    {
+      "page": 100,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9226,
+      "sourceSha256": "3e533eed8b774698390c8f408f9b211e237fff99333d21c1730c9c4e1dbf962f"
+    },
+    {
+      "page": 101,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.917,
+      "sourceSha256": "1f12beba1adeb4da0ad21fe414e4c9dd81c0ff5ff9ab627e9915086553a440d9"
+    },
+    {
+      "page": 102,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9137,
+      "sourceSha256": "87c9393f8182e09ba64b21545cb4aa8525d775ad499678b655a640e35426037a"
+    },
+    {
+      "page": 103,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9235,
+      "sourceSha256": "03f55a311daeca4d9271e0be89d41afb508316baf1ddf74b986ee23fdc498314"
+    },
+    {
+      "page": 104,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9381,
+      "sourceSha256": "095dfb9051a1dec7d124f8cecf8e763b00553b68030d0dfc6306b8ee78b40ec2"
+    },
+    {
+      "page": 105,
+      "markers": 4,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9202,
+      "sourceSha256": "bc01381fa39753e8ab42bfec2d7a5397062dac60411963cf9de4dd70f03c8e2c"
+    },
+    {
+      "page": 106,
+      "markers": 3,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9499,
+      "sourceSha256": "94dae31914a2605b7e8a831b241d3394d3b89c5f09503646ec2808c3fae569a3"
+    },
+    {
+      "page": 107,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9373,
+      "sourceSha256": "99279fc75993d75086e27d758613b4fea6cdae9e849c9fd5d01522b49b019e05"
+    },
+    {
+      "page": 108,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.84,
+      "sourceSha256": "0eb442d600425cf65b1c15de6cef2b2550f5ac343b0a573c3b48305edb707a86"
+    },
+    {
+      "page": 109,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9036,
+      "sourceSha256": "26101c1735ff4a289d77749bfca1309d28074b7b8987990bdb56c240cc9a214d"
+    },
+    {
+      "page": 110,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9254,
+      "sourceSha256": "e325f45751a47020b07a82ea334858e015d16c69c19d8a644d50c3595f26e305"
+    },
+    {
+      "page": 111,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8997,
+      "sourceSha256": "fef1a3172ea196d3e6d63eb6fa174eaddb047c10dd8f79e1a8478d7b69980fda"
+    },
+    {
+      "page": 112,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9325,
+      "sourceSha256": "79e29b7e65085d73b359f0c7629418fe4f12645235f40c826fdf3eb52c5d42ac"
+    },
+    {
+      "page": 113,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9161,
+      "sourceSha256": "60029b58e423ea36d3d2ccc364854e65d680329e3f414541a6b96791487bffd0"
+    },
+    {
+      "page": 114,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9364,
+      "sourceSha256": "f0a2eaf81e04bb9db64797df7b5e63e93647696df711d725d2e938e1106f768a"
+    },
+    {
+      "page": 115,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9294,
+      "sourceSha256": "1e80f99a5fc2513a5384b45c56d70afec8afb166eaad83d4b16cadbf3d7a0a64"
+    },
+    {
+      "page": 116,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9277,
+      "sourceSha256": "bbd5a56e164dac7f8e696c72aa1cd6127f66656c99fabca9d43038078fe58daf"
+    },
+    {
+      "page": 117,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9338,
+      "sourceSha256": "bea69ec96760b4d65ec9057868c368d29d454d19366e2609467a3be35f423180"
+    },
+    {
+      "page": 118,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9306,
+      "sourceSha256": "d6c5509c693e363335bf634f2097227e0f94c3559296d7e9d5ae2a555deff21e"
+    },
+    {
+      "page": 119,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9084,
+      "sourceSha256": "d76b650ddc17b65c647d18e5a43c5b93044288ea41dcd1d591b7d79da8fec877"
+    },
+    {
+      "page": 120,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9138,
+      "sourceSha256": "d0d3735910598a7f5b69d1db05c9de090db2d7f58f3d960416c0e627a624d689"
+    },
+    {
+      "page": 121,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9188,
+      "sourceSha256": "9787590462d0fc406b5455b65b34c4551f4db6ef0413d1da30808c3af010e23e"
+    },
+    {
+      "page": 122,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9183,
+      "sourceSha256": "5e3089937329754e77ef8be0c9615cf06986785f36189a948db98ea4667ff542"
+    },
+    {
+      "page": 123,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9189,
+      "sourceSha256": "b5e937c01c95465ba7391a3e10d331cba59d71348f13f89caf79328a48d3b56e"
+    },
+    {
+      "page": 124,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9156,
+      "sourceSha256": "eac68fabee46cc27ee24eeaa2d57409c3a1acba78e5b6815b595ade256202a45"
+    },
+    {
+      "page": 125,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.897,
+      "sourceSha256": "f2e6a8244ebb5156ba77985fcd9ec0c7aec7697dd5ba8d0a432d2bf626ce8dc0"
+    },
+    {
+      "page": 126,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9038,
+      "sourceSha256": "43cf97eb55f614374f6d3d0140f57dfebc73814b9ccfd975511803e7d385d7aa"
+    },
+    {
+      "page": 127,
+      "markers": 9,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9025,
+      "sourceSha256": "e80adc186a2cb56e83f39b45a5d99f3b1069c337396430c95da1bed89fdd3d1f"
+    },
+    {
+      "page": 128,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.918,
+      "sourceSha256": "d60d7a7c255859d9834d7b06a7cc8e020bdc5d16804fda69642c93d4eba1eb1e"
+    },
+    {
+      "page": 129,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9082,
+      "sourceSha256": "378c83d25dc1a4d16fd3d0597146588cc2dc35d8cbcd30c3942cbecc081a8707"
+    },
+    {
+      "page": 130,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9156,
+      "sourceSha256": "35df582fd03af2ec0aa819ebbc880f8169dfa8deaac020cf6d11fdde50863dd1"
+    },
+    {
+      "page": 131,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.943,
+      "sourceSha256": "bb899b70d67a16bb63ef42ff06db54bfaa260b4d0e4ffa4da7dca79d7ca3e876"
+    },
+    {
+      "page": 132,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9295,
+      "sourceSha256": "1d5eeefcbdddde92c8d4b8bedb645a0b99527d7f8d802d5851b8251161942be9"
+    },
+    {
+      "page": 133,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9238,
+      "sourceSha256": "2ba0ff49a3faa990eb61b8fdd8b382b461e6be72a5f06701982ef45bf19bf0da"
+    },
+    {
+      "page": 134,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9201,
+      "sourceSha256": "5b5cb0d514ba30190cf5bf5f6dfc56c17a3aa9faace2003d144e449486ee4be8"
+    },
+    {
+      "page": 135,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9126,
+      "sourceSha256": "42ba00a62c0d860a7f6b38969cf2089749a44da7018894c83c09a0722df34b99"
+    },
+    {
+      "page": 136,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9398,
+      "sourceSha256": "cd281eb16eb17501c66cbba36e8c0d4ab3179a68c4958da174d3ad13e9cd32ac"
+    },
+    {
+      "page": 137,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9377,
+      "sourceSha256": "111d61c90485ab2f248bda863713d71257699fcb95f1943557835486e1dd8c14"
+    },
+    {
+      "page": 138,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9311,
+      "sourceSha256": "e674642a93ac7f26be8ecf2090e5fd88e7e3c46c3efde637abf3419340a03f64"
+    },
+    {
+      "page": 139,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9289,
+      "sourceSha256": "49635e295488d9eba56ef4ef735df19ed23718476b8e1d014eb5ed6d78aca314"
+    },
+    {
+      "page": 140,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9187,
+      "sourceSha256": "48229b768ec62eaebc8f7ce9889f2aecd7845a71e06977cdf003a0924d0e625b"
+    },
+    {
+      "page": 141,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9206,
+      "sourceSha256": "6f9262077c8ddb959f09c3bf4b369da83178c2de83c3e6c66cffc9797e983dd7"
+    },
+    {
+      "page": 142,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9166,
+      "sourceSha256": "b114fac761a385ef94f5974e6624ef349373447cabdc52d3c62e621ca96949b1"
+    },
+    {
+      "page": 143,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9127,
+      "sourceSha256": "ddb92c307ee875e9c22debc605ada0556a691b87802073a7b92ceebb14b499fa"
+    },
+    {
+      "page": 144,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9085,
+      "sourceSha256": "94c6a028b4d4f4396c0886a539d8045c186c9881cf8602c97f9f47187b3ae6b7"
+    },
+    {
+      "page": 145,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8922,
+      "sourceSha256": "d296c2f9a7e92b1fef15c4faed111a93ee572976bc955efd9e742e4fa0f508a8"
+    },
+    {
+      "page": 146,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9155,
+      "sourceSha256": "a5f76243795b3963c90bd678e78e1e28f8958b6f721936474f6f261451fe4d73"
+    },
+    {
+      "page": 147,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8921,
+      "sourceSha256": "97c8c4d1b5baf94b83bfe118cfe7100ac270d14a79a2ff7d3a6bbd091f1c6600"
+    },
+    {
+      "page": 148,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9301,
+      "sourceSha256": "5698b84202d20f4653b4df93269e3c004fb9c5c23dcb5fbde7608853b1ebf36c"
+    },
+    {
+      "page": 149,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9167,
+      "sourceSha256": "7056ef1529c260092a8cd382f913b15672fc48c9fe3d1b34eba84cacb9f3c4bb"
+    },
+    {
+      "page": 150,
+      "markers": 10,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9156,
+      "sourceSha256": "9f025db06513a1bfbc48491fd1698ef0b45aa780cdbcad9a6258d3bf9751dab4"
+    },
+    {
+      "page": 151,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8688,
+      "sourceSha256": "6c91abc9813b22da4df383b69fc9f2c8e9c29b43aa6f49cac83835a04cca2231"
+    },
+    {
+      "page": 152,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.932,
+      "sourceSha256": "8687c2f2dda8c47a4ed976528b309de2dc0190e451fb6e2081a904ed90664ab2"
+    },
+    {
+      "page": 153,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9114,
+      "sourceSha256": "37b9101adbfe5e737638fab9381dc661a0d69921595bd045475b62f92f39cbc9"
+    },
+    {
+      "page": 154,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9051,
+      "sourceSha256": "958a2fed19d9ca7c0aeff4b60673692020384e57191a2c93e5ee63ca1b27dc31"
+    },
+    {
+      "page": 155,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8806,
+      "sourceSha256": "6a7dfd88e39bfa9ecfccb1793062d63114e7677fac5e3c687f3d1e541571b98c"
+    },
+    {
+      "page": 156,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9259,
+      "sourceSha256": "ea3e4b6fc3b157ca8682e9d634f438988b9328434e602a42e64366eb825acd3e"
+    },
+    {
+      "page": 157,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9093,
+      "sourceSha256": "e81ff76749d28994580ca3e8a053d44325dee3005bbcb888516cdef6682963c0"
+    },
+    {
+      "page": 158,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9196,
+      "sourceSha256": "80b6ef142050645e4c7933e86c9d95e60aa5598792ac8d45860885b9ada063d9"
+    },
+    {
+      "page": 159,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9087,
+      "sourceSha256": "7f109a1adf081c9238360e9049256f632befebac51dfc7eb66129112be958310"
+    },
+    {
+      "page": 160,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9278,
+      "sourceSha256": "7dd253c702236af6fa30db17373eabb2e194a99a012e61097c211f48e8a68299"
+    },
+    {
+      "page": 161,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9369,
+      "sourceSha256": "9ed1f77c2a451f240b72c2931e2f0ad01715fcbadfccfd3581adf0794207716d"
+    },
+    {
+      "page": 162,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9269,
+      "sourceSha256": "0faabd1abd2a65efaf243ac9e1df6bf1dfaad8cb6fe6387bd5c4cc7433e81fd0"
+    },
+    {
+      "page": 163,
+      "markers": 16,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8978,
+      "sourceSha256": "68bd673fe03c4a9dbb9c80288fb03ce4770c50dad82c37086b909e0d7cc9ce64"
+    },
+    {
+      "page": 164,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9284,
+      "sourceSha256": "53c47b30cc901e0513496007f2e6c9925715b9b2dcc08dc41e5e71ec3220c07d"
+    },
+    {
+      "page": 165,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8846,
+      "sourceSha256": "d1909b062e71b94cdc94ff2ca9026efecd3822816f7fcb93b4b35a727bb6cf9d"
+    },
+    {
+      "page": 166,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9026,
+      "sourceSha256": "37bc505bfe104bfc898a0d5a90f51e9aff2dbdad2365b621b53948716a58b998"
+    },
+    {
+      "page": 167,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9166,
+      "sourceSha256": "9baaad96b0dda1365f1c120035d660d2d93ed0b84e30bd72283cab37b8afdd5b"
+    },
+    {
+      "page": 168,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.938,
+      "sourceSha256": "794328f049eb2f04c21ae5fc46b62ef22e113362e19bcaea93cd555610ccd2d7"
+    },
+    {
+      "page": 169,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9358,
+      "sourceSha256": "db7126a45d2e7f893b1b481ae5854df6cf99f3e14df52d9a4d0702ad46cf279d"
+    },
+    {
+      "page": 170,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9138,
+      "sourceSha256": "4a4e0734503efccce9b5ac1cf72d6ddd465473f19a2bd59327f0220889cf653a"
+    },
+    {
+      "page": 171,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9104,
+      "sourceSha256": "12417957eb3dd3fe2e4b269c844d45904d9c5bcb9c28ae0f7052ddf24d010843"
+    },
+    {
+      "page": 172,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9194,
+      "sourceSha256": "bb0531a603f603ed246f0da13fbc99e95c72871cb3b558eff17cfac8f545098d"
+    },
+    {
+      "page": 173,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9335,
+      "sourceSha256": "6efaf07c3633a934d53534faf3bf22fc510c31916628b3a3107758a43110db6f"
+    },
+    {
+      "page": 174,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8972,
+      "sourceSha256": "6a709e4160870b1df816ab8c768fa31f24174ff730caba2558b13e2c8004dd3d"
+    },
+    {
+      "page": 175,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8835,
+      "sourceSha256": "23caef8e96611dc1066805e692291b1c21c09ced9a360d6a3e3e61992c7e8670"
+    },
+    {
+      "page": 176,
+      "markers": 8,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9296,
+      "sourceSha256": "c4c09091057bdb94390f9025ce356b732e458f2c121d80a7d0b9a8bc02195353"
+    },
+    {
+      "page": 177,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9222,
+      "sourceSha256": "5016d4d2b28111710b2b7322bd8dcf36f2124d62bd9cb48772218eca433f3ac5"
+    },
+    {
+      "page": 178,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9356,
+      "sourceSha256": "7cd834a663d901cdb63b76dc8539e0a6600f52451f7b4980ae608430f1a52113"
+    },
+    {
+      "page": 179,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9364,
+      "sourceSha256": "e4d371ba4269ef02629b51763015953ae4fa68076b0bf389c4d588ef3ad24802"
+    },
+    {
+      "page": 180,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9141,
+      "sourceSha256": "82ba1532a7ce2851b05308da05cc6cdd066fa5ffac3409bced1f3562794194da"
+    },
+    {
+      "page": 181,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9232,
+      "sourceSha256": "b53ec71d6e7e5930d8a44d96f84fbf68aa348acb9b89069c029fd5ed24df75ad"
+    },
+    {
+      "page": 182,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9363,
+      "sourceSha256": "404fada12dbcdcfd06e3b3113aecb24de0c927e37f02e9d35dba6df2e78296e4"
+    },
+    {
+      "page": 183,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9208,
+      "sourceSha256": "df6b5ebb23cd2e8bce0f98882ede02cdad714f7e3a6d4fff68e8c97b6e7137e9"
+    },
+    {
+      "page": 184,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9297,
+      "sourceSha256": "75eda1d4af20435a3dd44a3796f47f404e0e851c52c80762654fedaa38436327"
+    },
+    {
+      "page": 185,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.916,
+      "sourceSha256": "b3788492b6c71a3deec27a035f30d3c50760221cee2d3d95ce53fcaea9007427"
+    },
+    {
+      "page": 186,
+      "markers": 6,
+      "rows": 14,
+      "textRows": 14,
+      "banners": 1,
+      "minimumMarkerScore": 0.925,
+      "sourceSha256": "581e154b5f31cd668e6b4c484b11a0dc3a628cfd7a44e97f1a9cdd1e0cfe1e2c"
+    },
+    {
+      "page": 187,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9409,
+      "sourceSha256": "addaf38ec43c3155df6afe4399284ca0806fdf9a2f273f235d34139d5f47b5c6"
+    },
+    {
+      "page": 188,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9408,
+      "sourceSha256": "d0c9b8ddefc488225c9fb3d8cf409e382e48da612d510d0612c50e98cd8fa87e"
+    },
+    {
+      "page": 189,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9254,
+      "sourceSha256": "c30d47dfe605f75b909bef1e47ac356d6792e111d5794632b5bd36245d9e74b2"
+    },
+    {
+      "page": 190,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9398,
+      "sourceSha256": "18eb755956e20ee27f662ac5e27f2a39e17f780a3451e6d7e55f8ed947377c83"
+    },
+    {
+      "page": 191,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9295,
+      "sourceSha256": "5813c881b5b27ad31d804259098534956e288cc740ff6dc3670893bfdb514d2e"
+    },
+    {
+      "page": 192,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9547,
+      "sourceSha256": "27af69fd044719e9808638879d88b07f6743c5a19d4338f98828a45c5a17d0dd"
+    },
+    {
+      "page": 193,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9385,
+      "sourceSha256": "7e639aa835f70dd2dcb44bd49c618652b1cef457e3c64993a240f94da949251f"
+    },
+    {
+      "page": 194,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9355,
+      "sourceSha256": "48066fea9024d1bbfe4cb529d3efab2a0047667f11f8048e5afa28810db7fc25"
+    },
+    {
+      "page": 195,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9054,
+      "sourceSha256": "de8f668689c2d70550e46ac70c2191db500030a29ada23a3eeecfefdef6bfdd3"
+    },
+    {
+      "page": 196,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9299,
+      "sourceSha256": "793f5151b30dfc62dc7d1bf859ab56cc10711630ad17899a2617c7de4f11e13f"
+    },
+    {
+      "page": 197,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9146,
+      "sourceSha256": "2827a8bd262e6f7f026db9b57554a52efaf6ecefb60c861d8cece1522ff5504c"
+    },
+    {
+      "page": 198,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9157,
+      "sourceSha256": "9cdeca35671b529417b124d715ffd0ead53aa9194f4f965a1c099207e0801629"
+    },
+    {
+      "page": 199,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9278,
+      "sourceSha256": "25c9b0928cba9d37b08d9a3e80f2613af5819cfc097c92ae1708816014e77947"
+    },
+    {
+      "page": 200,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9311,
+      "sourceSha256": "4e3d6cd753e6fb5ac977fe608c3294705805528be26cd38f3f3f1a0e31e3d472"
+    },
+    {
+      "page": 201,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.904,
+      "sourceSha256": "6007a066b9fc9203c06139a25f1f8ac1114a527cb2a3c9536d21ae7fa6bb731b"
+    },
+    {
+      "page": 202,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8898,
+      "sourceSha256": "2e0f02518fbf9fc1a283ad9afe2c5027bcef352696cd48a0fa8bd9055c3ea3a3"
+    },
+    {
+      "page": 203,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9272,
+      "sourceSha256": "f28c4ef2fe43c4edd138707c6463663629434d8a2d97a41a7a0982811ccd82ec"
+    },
+    {
+      "page": 204,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9287,
+      "sourceSha256": "fd0169b86757ab24133469f595fc5836eb8c29d1019820d4069310e09a13c50d"
+    },
+    {
+      "page": 205,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8881,
+      "sourceSha256": "5d921eb793c128a7549970fd7fa2da049f04b1607431228be6c29343438aec4e"
+    },
+    {
+      "page": 206,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8994,
+      "sourceSha256": "3b8748ee1898cf2bb0c02feca9bf2ca2cd7639cc9ee5f31a7995af895b6ae912"
+    },
+    {
+      "page": 207,
+      "markers": 6,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9288,
+      "sourceSha256": "6eb994753aa6f2fd99e6f15ba8509bf255d1082fa1c57f214afb133212f41d82"
+    },
+    {
+      "page": 208,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9104,
+      "sourceSha256": "0a88e7dae0f4db037196483b4963dd50eda8c6498f7fceb15ed76c2467d69db3"
+    },
+    {
+      "page": 209,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9356,
+      "sourceSha256": "43906d1961439f1f601941ac4a2a1fffaa85462bfeab8e6db0df8b89d32bd408"
+    },
+    {
+      "page": 210,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9045,
+      "sourceSha256": "8588153daeb8afcfda8289431c67d9a34619e079d8825618967d285923cb9e7b"
+    },
+    {
+      "page": 211,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9184,
+      "sourceSha256": "c90769f60cdbbed82f78f5ccfe4eca3d80af335c7288649f1ccc520f391ca56d"
+    },
+    {
+      "page": 212,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9245,
+      "sourceSha256": "1b803b42ede91ae9e6bc98b1e640ff988d16987f340e4c1d72c0ef78cc142086"
+    },
+    {
+      "page": 213,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9273,
+      "sourceSha256": "fb285d1ba22503200d6fde35df20fbf055a407995cd1b04602a0e1407bfb43c2"
+    },
+    {
+      "page": 214,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8853,
+      "sourceSha256": "6ac0ed49d16df8c0374aa65c3b030185944dd844a49a5426e07ffe5a9a130c29"
+    },
+    {
+      "page": 215,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9251,
+      "sourceSha256": "08b8d418a156003df500d73b242076129848844c6d2f5e3c0cf4b69df5a00e44"
+    },
+    {
+      "page": 216,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9455,
+      "sourceSha256": "d87c8ca835702b3cc3d215267ff636b3501b5b11e57c9a5864484330236404cc"
+    },
+    {
+      "page": 217,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.877,
+      "sourceSha256": "452b876eed646224defb23d53eafc45bda277a3fc12925f40fbdaf8e6bf4d2cc"
+    },
+    {
+      "page": 218,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9199,
+      "sourceSha256": "abeebb3d940230395345907401743b1fa87ff49c010ee4d9fc4a50f92ec0fdff"
+    },
+    {
+      "page": 219,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8953,
+      "sourceSha256": "346989c597039b1c627ae937971722df8a170825128e07569637d4b75168071a"
+    },
+    {
+      "page": 220,
+      "markers": 8,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9071,
+      "sourceSha256": "0119875e994ece38fe2a6d164814132a4d91b080bf047e1262070f92aeb52fc9"
+    },
+    {
+      "page": 221,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9015,
+      "sourceSha256": "4c68542eda44776308ed3342bf9764d7cf58ef7640e1621a4674ad7c93c04672"
+    },
+    {
+      "page": 222,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9405,
+      "sourceSha256": "4ee45a68c2545b1a9904029753b351a3806fa8a69d1bb262e4c3c9d9cc11a371"
+    },
+    {
+      "page": 223,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9097,
+      "sourceSha256": "62a3ecd857bb8f9f0d5bf9760aac635f470658a1b05a754f6e67d4f172da8389"
+    },
+    {
+      "page": 224,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9031,
+      "sourceSha256": "8347f28d1fa6da456403b717cf14267706f88e82732fdff8bfe882f250941c0f"
+    },
+    {
+      "page": 225,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9096,
+      "sourceSha256": "69f744117165fcb84cdd427f75d4c355ed72f2a5cbb39cd87826ca17d9509d7d"
+    },
+    {
+      "page": 226,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9224,
+      "sourceSha256": "2f6026fcf75c813da398e6387ae7e479db6e458a0ab51d60c78e1543ec01484e"
+    },
+    {
+      "page": 227,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8932,
+      "sourceSha256": "e0331bdf942d9f11d8d7a88893cdc0390f02354090a26d90a95c09f52892c4e1"
+    },
+    {
+      "page": 228,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9123,
+      "sourceSha256": "ed4d0fdf893a2797e3e58eca9a90e2542892e550195234f6c34c1640f5533e4c"
+    },
+    {
+      "page": 229,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9248,
+      "sourceSha256": "12a9704a4a22e9eaf99081c39cd861e579bf238318dfc549566fed4ecc2f950e"
+    },
+    {
+      "page": 230,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9324,
+      "sourceSha256": "d045cff51f6878600911cc6ef5c9603fda50faf34fb86b50ae8b452f59d54f69"
+    },
+    {
+      "page": 231,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9334,
+      "sourceSha256": "dac6df086b1640441285dda08455ed0023fcb1c82d3ac8d69975c7290b6ce937"
+    },
+    {
+      "page": 232,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9018,
+      "sourceSha256": "12b21ea29f6703d25eed45cd13503773e73cbd1d286795322f18a72dbfd608bc"
+    },
+    {
+      "page": 233,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9134,
+      "sourceSha256": "87b0f035ce6e35ef47cc9903095359355c4ba9091d0d9c644d96e8886ac241df"
+    },
+    {
+      "page": 234,
+      "markers": 8,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9164,
+      "sourceSha256": "c3fd093a687cb1e1095f2a5efe37e3e096a40eaeb0d5462840d31f8dd85270ed"
+    },
+    {
+      "page": 235,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9212,
+      "sourceSha256": "51d6253984d36d0b4dcc61af4cef7b1a0c178ee3d9539a1697cd612233b44f77"
+    },
+    {
+      "page": 236,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.931,
+      "sourceSha256": "a9797be4a5b0fcb919e8b39b78c300d3eead4ec65de45f67accd8202ac4b2ac4"
+    },
+    {
+      "page": 237,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9274,
+      "sourceSha256": "c072982682c719ffab66dd051f3d45876acb0f341ce34a0817088c469680fff1"
+    },
+    {
+      "page": 238,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9235,
+      "sourceSha256": "59a7b99370c3c5be1da0e800c49c0b394b72f7e85078cf3386f52a3c3f087f7a"
+    },
+    {
+      "page": 239,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.925,
+      "sourceSha256": "87e214c42294736a00d8a99f91305f2b96af1c25b7e263980c05e307c8f4a2d9"
+    },
+    {
+      "page": 240,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9153,
+      "sourceSha256": "6ac850d73ec449bfebe01730f57acef86d2e8ce3ebafd2c6b1f74b4707fd0669"
+    },
+    {
+      "page": 241,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9286,
+      "sourceSha256": "d3979bc8c7cb9aff18efec47e6382e5d7f3d853a897cd3098f27727c0ca0b641"
+    },
+    {
+      "page": 242,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9049,
+      "sourceSha256": "d03643e81268075c99ff311659be3f419c479f929176aaa6ccd3473a6639314f"
+    },
+    {
+      "page": 243,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9254,
+      "sourceSha256": "dc004329f6b0bc2c4b97a3a8227e0765b21ae6f390fc89dd5392837e6df8bd96"
+    },
+    {
+      "page": 244,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9099,
+      "sourceSha256": "19f88e1c2b28498cfa162c1963a36765258d77b97260036dfb5e489cdd6651a2"
+    },
+    {
+      "page": 245,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9096,
+      "sourceSha256": "00b698ea3a7acac8da9ffe84e3b48a020464520804785c9a4e6f55d29fa201ff"
+    },
+    {
+      "page": 246,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9255,
+      "sourceSha256": "b314d5c047f13c641861ea36399bde912560531bb77ef66f1bcac4b15f01b8ae"
+    },
+    {
+      "page": 247,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8913,
+      "sourceSha256": "f3226cf1e8a486390382c526ccdaea37507b68c01e7535c0ec352879d464a675"
+    },
+    {
+      "page": 248,
+      "markers": 6,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9179,
+      "sourceSha256": "33106340b62402057c7a2f2c0cdab25f46f2a28ad1b0752e9f2b78f46ac27ea8"
+    },
+    {
+      "page": 249,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9214,
+      "sourceSha256": "0e2c6b02abfa9443590469d0351b3feb899b9aaf42c12d71e66295e10a115fe9"
+    },
+    {
+      "page": 250,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8879,
+      "sourceSha256": "d566d44fc9dacd16d16e9e3b14985308cd9315cec88a0fedd6b9d55a61d921c6"
+    },
+    {
+      "page": 251,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9319,
+      "sourceSha256": "41cbcea8f80c5b8d62afdb31671c417c4648520047133ee17d2abc5052d36587"
+    },
+    {
+      "page": 252,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9195,
+      "sourceSha256": "2b9fc803f6f1099f05c86a8bf1e1084ff900d7bdf0f16cde0974edccd9848507"
+    },
+    {
+      "page": 253,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9367,
+      "sourceSha256": "6fd4d9d5f1a532af448bd04dd3533b394f17169504eac1aa9e0c370279990021"
+    },
+    {
+      "page": 254,
+      "markers": 8,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9041,
+      "sourceSha256": "f59f064567dcbfc73ad51b05f208d2650d57c6d5199a3eda77c07a5babfce361"
+    },
+    {
+      "page": 255,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9379,
+      "sourceSha256": "5aa97c7047a97fe4a9f4ce4f8cd8fd8ab717237c2e2e4245987b91d5f9a68682"
+    },
+    {
+      "page": 256,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9197,
+      "sourceSha256": "5d1f38578b049276c03f836255ceb541bcb7db7cca4810e3774adede2812b93c"
+    },
+    {
+      "page": 257,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9172,
+      "sourceSha256": "48dd2bf5b50b6c7d4f8d7e2dea5e29f2ed74253208f1fa824c0a568d8f7771b3"
+    },
+    {
+      "page": 258,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9217,
+      "sourceSha256": "1def4c8340c3ff7f65711733538c9832fe404a5f382b01de5b940ff64c407dbe"
+    },
+    {
+      "page": 259,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9151,
+      "sourceSha256": "7853844e09f828222a20650a321a0a5013cadb0fc70a74641218183c0b9a66c7"
+    },
+    {
+      "page": 260,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8974,
+      "sourceSha256": "904eb309185ecb0df858def613e418bbb2263a15a3c318a5a52ebb97fe9d4f72"
+    },
+    {
+      "page": 261,
+      "markers": 15,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8678,
+      "sourceSha256": "ae59045867478ac232467ba418c8a074b67577ff03cec9fcf6acae54e6e4b88f"
+    },
+    {
+      "page": 262,
+      "markers": 16,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9027,
+      "sourceSha256": "2510d15104621933f42d931be451bfc1bcacbe6417d62d5351bcefbf828792bc"
+    },
+    {
+      "page": 263,
+      "markers": 20,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9049,
+      "sourceSha256": "986bfa7d916146e3f2ab5e6a5ee82df426f328ce9963e78cfa4acf52c467a75b"
+    },
+    {
+      "page": 264,
+      "markers": 19,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9195,
+      "sourceSha256": "1ec6c95e198310028c0b6db8b40be3f56309a5c2cd79f99200e16cbb887e43d6"
+    },
+    {
+      "page": 265,
+      "markers": 20,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9209,
+      "sourceSha256": "0bcd1c2381851e09d29d107d3c9fbf834ae9e7b8a7007a80fdc850792f8edc9c"
+    },
+    {
+      "page": 266,
+      "markers": 15,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9205,
+      "sourceSha256": "f1119b36f57e00e114205fe1fe71782267bf89309e30f40ebd48b495d2e8bbd9"
+    },
+    {
+      "page": 267,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9277,
+      "sourceSha256": "d20c47c7953c0694e361dc30746160d26afa95a30e063bfdbdc0a0cedb0e0f53"
+    },
+    {
+      "page": 268,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9243,
+      "sourceSha256": "e7e4e6451d3eb6a158871a7c24a59b741f7aa8458fe7a07de9dff51a75b6005b"
+    },
+    {
+      "page": 269,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9201,
+      "sourceSha256": "350cc3159269d4c87e532ee2293e3e0f60deb51fad40dd78b6fefa2d59c5a8bc"
+    },
+    {
+      "page": 270,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9324,
+      "sourceSha256": "cf32aac66d0aebf3776aa5f646e07e9e6394f90ab211d2816608a5a49c83dbca"
+    },
+    {
+      "page": 271,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9297,
+      "sourceSha256": "6fdccdc0a13eb65be33eb8bea433872bb5fba84663ddda0a8dc9be280201a3f1"
+    },
+    {
+      "page": 272,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8951,
+      "sourceSha256": "0ed5266b63cb8d928f8fc4b192efd8198df761819605428584c7e132fbe55622"
+    },
+    {
+      "page": 273,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9169,
+      "sourceSha256": "7f628dd61c8954b36a209213024afd01f1ef99ed259eb1b0f2a100efc2d8ac55"
+    },
+    {
+      "page": 274,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9168,
+      "sourceSha256": "fa4a5bb98fef69ca080d2a47db87eca51ca432c2ab220f6b9c8d4dce1ac2c8f4"
+    },
+    {
+      "page": 275,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9209,
+      "sourceSha256": "2c87e83f7c647e3e434ca192e0f82a176dbe7a5d8f96a6662c352289e8937a2b"
+    },
+    {
+      "page": 276,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8927,
+      "sourceSha256": "e79d50afdeb315068671917aaa2c4c36e897bd0d6579d4fa6746559df334378f"
+    },
+    {
+      "page": 277,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9116,
+      "sourceSha256": "e87e70718ccfd0afd4b9f2a73fbe7b8778c993ec6fa108f80d473bb760797670"
+    },
+    {
+      "page": 278,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9243,
+      "sourceSha256": "aee70acaa7d77eede0132c136068e3b745d31d8698e1f6dab635d0c26b94352c"
+    },
+    {
+      "page": 279,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9185,
+      "sourceSha256": "10c35eb9421e4ffe7efa7c94ebfeda060665edb1179bcde2cb823c171b54124a"
+    },
+    {
+      "page": 280,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.911,
+      "sourceSha256": "96dec912a1c5f167200219a8c7fad659e981fd439d4220f92464483be205f850"
+    },
+    {
+      "page": 281,
+      "markers": 7,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9348,
+      "sourceSha256": "a797e4e28719e47178304262becf2325a3f8327f7ee8f426028e3eedf800569e"
+    },
+    {
+      "page": 282,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9298,
+      "sourceSha256": "733cddfeabbd8e0be4bc43f75bf4629088b38f19c6a87b0d7f58dfa787c2688c"
+    },
+    {
+      "page": 283,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9266,
+      "sourceSha256": "d83cac345e1152a2a5395995335c8f578dbf5a7fe60b8afe87e626f156822bab"
+    },
+    {
+      "page": 284,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8782,
+      "sourceSha256": "256c673840ce1b67a64ea9deca11d12688fdfe5ced2eb7b543a241d4dd1d5400"
+    },
+    {
+      "page": 285,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9297,
+      "sourceSha256": "cb0b17ce9c806f1f40fbb00a0787e40e208900e37fd5fb59e15f785dc80b87aa"
+    },
+    {
+      "page": 286,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8889,
+      "sourceSha256": "c1a955419035d19442fae99ec407fde857c27a9ed6f9f6ef3cf725ba7984026c"
+    },
+    {
+      "page": 287,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9304,
+      "sourceSha256": "510978d9f5c52b1192f7e12b71ec6e897f4fb388004378ee45a43adc21ea8982"
+    },
+    {
+      "page": 288,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9364,
+      "sourceSha256": "e4c1a039f21b3f4edb4faed09ff91e6c7f7cba795f734bacc93bef954c480b79"
+    },
+    {
+      "page": 289,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9182,
+      "sourceSha256": "28dd8ceb8d5a26d506e6412894b17ca1b426435e1ace0d7a8ff8cadd4d730a19"
+    },
+    {
+      "page": 290,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9366,
+      "sourceSha256": "ef74e8cf66a5b13683f4235ff90d1ea607790f62742f560ff7dab1229b78773e"
+    },
+    {
+      "page": 291,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.909,
+      "sourceSha256": "ced9e8c6b8e253800ca277d2605076c50b65e6325cb4105b3ddbdea6cfe2bd3c"
+    },
+    {
+      "page": 292,
+      "markers": 10,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9044,
+      "sourceSha256": "62d3be49d0ce91f8e140d21241db736f5253879c8d8ccc19a7da1504860d46e4"
+    },
+    {
+      "page": 293,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9191,
+      "sourceSha256": "81bacb87aaddd56d689d1d2f40f929d5d239472ec7c9c3661f499800c73cbbc8"
+    },
+    {
+      "page": 294,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9294,
+      "sourceSha256": "a3a11979f6ad2b594c98c97a7db3787a7e2c1870b81523eda3db689b8039f31c"
+    },
+    {
+      "page": 295,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8998,
+      "sourceSha256": "23cedeb760e8ea1b8068e2ae86284da6657dec1c7e9c0c40f29682742c9e73e9"
+    },
+    {
+      "page": 296,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9116,
+      "sourceSha256": "696b9b3585ace04e1aa48dff1ad1cabfd296b5704aaf60a7bbd3453abbae7045"
+    },
+    {
+      "page": 297,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9037,
+      "sourceSha256": "913b162243908eb2658f7c7ea1fdc69cfd8f09318eb0893dc72613c41df22f1c"
+    },
+    {
+      "page": 298,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9297,
+      "sourceSha256": "53ebda113b71db0444f143f5cd331562bbfd16f73def5e2a46c10244e5b70b58"
+    },
+    {
+      "page": 299,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8779,
+      "sourceSha256": "1cfd89fd9ffd7194044dd460435572b21e81e20ec365327ec9d20640e7418859"
+    },
+    {
+      "page": 300,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9211,
+      "sourceSha256": "d6bee4160d89129947b3a46bd4f21877d5651f39ef1eec91eaa1ae4c90c457f7"
+    },
+    {
+      "page": 301,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9254,
+      "sourceSha256": "da7ab975b9ea29221de208d082fdc6e631066339873965be6c4bd364ec79cec6"
+    },
+    {
+      "page": 302,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9204,
+      "sourceSha256": "235f9e3fb662d35054cf3a0ad83de432019fcbf339cee2225190817bcce4d5f6"
+    },
+    {
+      "page": 303,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8862,
+      "sourceSha256": "5bae920e69121ce67bbf77ef94528a57810d31a1909afa2373fa49e5fe535cd8"
+    },
+    {
+      "page": 304,
+      "markers": 10,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9175,
+      "sourceSha256": "8af91d406a295fc56e079539bafbf42f9479a039b582d24109c7340dc459e447"
+    },
+    {
+      "page": 305,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9209,
+      "sourceSha256": "ebe0a3b3861486a40be6bdbcfdf4921515683d45da26cc150112c5431eac6782"
+    },
+    {
+      "page": 306,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9394,
+      "sourceSha256": "42f145ac37f44d46b72f520da9f9c7afb4f852341759cde82d8f1a781b8ebd08"
+    },
+    {
+      "page": 307,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8564,
+      "sourceSha256": "7b7d784633ac95dbdbf877ef856790377d01e5e9fc7fc431744630a7c87b3597"
+    },
+    {
+      "page": 308,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8838,
+      "sourceSha256": "19d5479c5c77136827886d8a95d1074082f70fe56f31f6a524ce25ebecb19cef"
+    },
+    {
+      "page": 309,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9207,
+      "sourceSha256": "c20aa9a6352187eb9dcdc9de827fc953703e801ed75434c58a6c47c67fb75e94"
+    },
+    {
+      "page": 310,
+      "markers": 19,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9173,
+      "sourceSha256": "56dd80c3328dcd88bcc6925b75790e9dc54c04b6d7bbe3b0c9053096e9348fcf"
+    },
+    {
+      "page": 311,
+      "markers": 14,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.898,
+      "sourceSha256": "149b1149dbadd185bd517a0a786a0653d4d8d813d753affea1b33330e6c1af30"
+    },
+    {
+      "page": 312,
+      "markers": 25,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.88,
+      "sourceSha256": "26ba079860376e43a1dc71331c0a626a872d45a47df4266047d8976fc560383a"
+    },
+    {
+      "page": 313,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8667,
+      "sourceSha256": "7994e82d708d65883a6e06ac7041ab385524e82e3e4ae8fe99f70266f3c84e34"
+    },
+    {
+      "page": 314,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9187,
+      "sourceSha256": "ad0f7a996c22e3a252ef829099bc42aef7d51a1c782aa4df98df5d2dc5d0c385"
+    },
+    {
+      "page": 315,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9128,
+      "sourceSha256": "279035a42c63b2ebc4ffa4663d44d6c7592e54de4d8964fef6a3a41de9fc02a7"
+    },
+    {
+      "page": 316,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8934,
+      "sourceSha256": "321781ded53ba49d28588a5e0c7a1c01cb1a8be39c7d4e28c683dfa6d3b9263c"
+    },
+    {
+      "page": 317,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8974,
+      "sourceSha256": "1c6f6a521a77c1afc64a2d4ee66da47fe4fe25e03614216ae0d96f5b0086387f"
+    },
+    {
+      "page": 318,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8857,
+      "sourceSha256": "5fc831342a2c10be2ee96592e5182a9bc091365c9d26047d6f7bb5c2cd8409b7"
+    },
+    {
+      "page": 319,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9139,
+      "sourceSha256": "0715986ab682c64244e1fd730fec1fb452716f79a16b5c08e6686207d9c00d1c"
+    },
+    {
+      "page": 320,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8758,
+      "sourceSha256": "bf8baec881fb0484dc65651ce69e5efbacf0f6536e22faf5866e21b36c11a10e"
+    },
+    {
+      "page": 321,
+      "markers": 10,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9265,
+      "sourceSha256": "1e1d48b79f86821384909fcc919250b19ae67712fc78392e33d93313d8dbc29b"
+    },
+    {
+      "page": 322,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9223,
+      "sourceSha256": "f5a2787f4217d37fc3fd1cc385712199d06d26fb5e2bd151ede3a0d5b3a929bc"
+    },
+    {
+      "page": 323,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9234,
+      "sourceSha256": "953aa6ee627aab6f86749e678da4e356c2c4a20e86e5852da08def9555f7eb60"
+    },
+    {
+      "page": 324,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9324,
+      "sourceSha256": "876cc99afb91dccc7090e63e430b12212ebb5483da831bc0f6bea7dede4bd4e0"
+    },
+    {
+      "page": 325,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.924,
+      "sourceSha256": "ec353e1a39fcf6ef4716a933de897309b34ff820dc4b7aa9e0839590303c0809"
+    },
+    {
+      "page": 326,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9213,
+      "sourceSha256": "042b913194d128ebef7288e164c0c4e525214fbd5b29d0c689b3a12803bede52"
+    },
+    {
+      "page": 327,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9242,
+      "sourceSha256": "4673944b1834b6501234524b2b6ef2c58b529c99e542ba5e803f9305616a8ea8"
+    },
+    {
+      "page": 328,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9356,
+      "sourceSha256": "1cb5543ebeb9ec48764cf7410fd2d84af1f86e1a226fe05a1aaadd8fd1797f54"
+    },
+    {
+      "page": 329,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.928,
+      "sourceSha256": "6d67503751d7227e339dbc02a83e6874373f58243988a8fab87cd8db07b1275f"
+    },
+    {
+      "page": 330,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9106,
+      "sourceSha256": "d0c9a5e50fb9433fd85bd4d99bf1debbdc17be67f0b82ecb52d95d8774cb6c0e"
+    },
+    {
+      "page": 331,
+      "markers": 5,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9321,
+      "sourceSha256": "0b35884d6bd92409a2d2bd0606df044e45a8d6980239b923e1a462a3e57702f9"
+    },
+    {
+      "page": 332,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9216,
+      "sourceSha256": "626ffdf954fb588855cbba011921650013e96f106594ca812bd87d431b464bfc"
+    },
+    {
+      "page": 333,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.95,
+      "sourceSha256": "8717dbdb36840839136ab7dc9fbc9a1277433879c0eb25bc440da609f066a14f"
+    },
+    {
+      "page": 334,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9487,
+      "sourceSha256": "d7170e5bba0b714b9c06e159604c86fb1fd1dbbac65034655b2dfa143304ef2f"
+    },
+    {
+      "page": 335,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9252,
+      "sourceSha256": "796ad02c54c27b39d9877bc5a0630826600fdd815bdba6275a2db013597520e4"
+    },
+    {
+      "page": 336,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9118,
+      "sourceSha256": "042d80ad2d032e859bfdffea6006d9af9437be893b25c5e92bc93f1450451c95"
+    },
+    {
+      "page": 337,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9051,
+      "sourceSha256": "6a59eed6ae995140731d0fb53b87c51a23a10d3fb51ffb90e7f406c2e7870ade"
+    },
+    {
+      "page": 338,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9128,
+      "sourceSha256": "096f693997ce4acbe6797a3bf325dba7dcccdc704c96afc20801712061ca6a48"
+    },
+    {
+      "page": 339,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9148,
+      "sourceSha256": "5b82cc4ffdf1caebf3d4e078a898b92d797be03423224e60ec19460a5a739ede"
+    },
+    {
+      "page": 340,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8955,
+      "sourceSha256": "8c6e44e52ad390885fe1337fdebb797fcd0966484d928af8661939d4e48c7cb9"
+    },
+    {
+      "page": 341,
+      "markers": 17,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8887,
+      "sourceSha256": "1e148fd8ceea267d4fa5c61848ea7c695c91430219d678823450a939d53136ef"
+    },
+    {
+      "page": 342,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9247,
+      "sourceSha256": "0be52196e492a3725299b9c2eea3d86c1bc0a6acebc7516c7f5bf331ddc2d12e"
+    },
+    {
+      "page": 343,
+      "markers": 15,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9172,
+      "sourceSha256": "9fc2aa16cc8df3c63ec9c95e62105370637af59c9ce8c0d4d950ebc31480abd4"
+    },
+    {
+      "page": 344,
+      "markers": 18,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8977,
+      "sourceSha256": "daafd26accb99fad291540ec49094a2cd8c9892a93f2aaa948b9f66f2b892153"
+    },
+    {
+      "page": 345,
+      "markers": 15,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8962,
+      "sourceSha256": "bc7e927989750fb063d642b860df879960ba713319536e8407bcfe321e6caa51"
+    },
+    {
+      "page": 346,
+      "markers": 15,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9187,
+      "sourceSha256": "4b0bd0605922e92a9e45e4f16fc630f29c96f337895daafa001118d4d470face"
+    },
+    {
+      "page": 347,
+      "markers": 15,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9064,
+      "sourceSha256": "22af0c01058b8a3068ad11b38a5db90f84c00b72802e8191cb055d8d469cc23e"
+    },
+    {
+      "page": 348,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9205,
+      "sourceSha256": "3d615b6b8d6fd57619588117271a28e3b57080740e02b272545f5ef01a7b55a6"
+    },
+    {
+      "page": 349,
+      "markers": 10,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8937,
+      "sourceSha256": "41084bc26f2849638a388fae1bb6062ce4c52b11aa08092890707f9ef1f1c899"
+    },
+    {
+      "page": 350,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9121,
+      "sourceSha256": "8c80e8b0763a66a80978e276ac4f58e04ea47001ea24381c5fb17cb83a41bb9d"
+    },
+    {
+      "page": 351,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9115,
+      "sourceSha256": "fdf821b76d64b9aa5ad1e96284b7e1033f4a52bb622a8109574db464cb45b35a"
+    },
+    {
+      "page": 352,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9428,
+      "sourceSha256": "baeecd14b9b00f27e43232803123596ae9c4dd8e9314cba14cba58bb3cde84d6"
+    },
+    {
+      "page": 353,
+      "markers": 5,
+      "rows": 17,
+      "textRows": 17,
+      "banners": 0,
+      "minimumMarkerScore": 0.9067,
+      "sourceSha256": "9822a46a9f2bb9c0e182e6b5e1dec6c5f24abf63fe605612733cfd74a0360071"
+    },
+    {
+      "page": 354,
+      "markers": 6,
+      "rows": 14,
+      "textRows": 14,
+      "banners": 0,
+      "minimumMarkerScore": 0.9236,
+      "sourceSha256": "a4835bce1b56ac5733294b8b77e780c6359ce62179283a05b50184e37e7dfe00"
+    },
+    {
+      "page": 355,
+      "markers": 9,
+      "rows": 14,
+      "textRows": 14,
+      "banners": 0,
+      "minimumMarkerScore": 0.9029,
+      "sourceSha256": "057320cd657121db3dc5568a0ff6a1139eeac65927bf71118e73881bcc4456fc"
+    },
+    {
+      "page": 356,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9168,
+      "sourceSha256": "b4eda255bdd248a56e197155e0c40cff5908ddf9d1e39d18456ae2baaa9caec4"
+    },
+    {
+      "page": 357,
+      "markers": 3,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9296,
+      "sourceSha256": "694f63003d4c440c446fb70810c5d4b096107b3cf4686ca106a42d7963009555"
+    },
+    {
+      "page": 358,
+      "markers": 5,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9043,
+      "sourceSha256": "8ae436fd71f6cb1bea56e66f715381795fed295a4f7a08e20cdbdaf98342fcf8"
+    },
+    {
+      "page": 359,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9384,
+      "sourceSha256": "94c22417724103522cf4b8b5bd40b3476d974fb589c97667af7805f23165e11d"
+    },
+    {
+      "page": 360,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8766,
+      "sourceSha256": "0e00b0891b910bef6626e92633b3b4da3cf18ff441af4c36ca3f209e0bc11e77"
+    },
+    {
+      "page": 361,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9196,
+      "sourceSha256": "35facec594cde96f2fa87bee8215f43fd95a2689e6292ca240319cbe1c7ba0d7"
+    },
+    {
+      "page": 362,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9043,
+      "sourceSha256": "b199cbfa6dc44240531bc9581cc03c9ca6248bbd90dc72c1918dd5ea4bbcd910"
+    },
+    {
+      "page": 363,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8558,
+      "sourceSha256": "7aebb5b63dd94c90d2c47acca12fa8dbdd9c552e226de6f818c5ee00d7c610e1"
+    },
+    {
+      "page": 364,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9188,
+      "sourceSha256": "34a99121425a0461634ac302811934535742b0bc4cc895a45517185ee6fc41df"
+    },
+    {
+      "page": 365,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9108,
+      "sourceSha256": "2b9643e2294208e80c111acb15973f3b891e5f472c017db780039b70f6c958b5"
+    },
+    {
+      "page": 366,
+      "markers": 18,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.877,
+      "sourceSha256": "9d0c14ad55edb98542521b336c603b6ddf1d63ccb401b42ead3b66f0e633eb5d"
+    },
+    {
+      "page": 367,
+      "markers": 20,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9122,
+      "sourceSha256": "3be5d1dc8819d13464d276e64803a52aa20d781e7749f1bd64c1c80c33afae7d"
+    },
+    {
+      "page": 368,
+      "markers": 22,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8861,
+      "sourceSha256": "3af7638ff0c6d11357aa4dea55790d4e37656160c06a0da4303590c11f9d1da0"
+    },
+    {
+      "page": 369,
+      "markers": 23,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9238,
+      "sourceSha256": "282ab75be776d898bd266d7777e1c0ef517f31e443cce8627b3ca2c332fa2f0f"
+    },
+    {
+      "page": 370,
+      "markers": 28,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9188,
+      "sourceSha256": "77a8d41400f108c096ec4906a59a2f79b92721a3397f47827d095f8c402a2a80"
+    },
+    {
+      "page": 371,
+      "markers": 25,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9149,
+      "sourceSha256": "606d70ec1464d1118780479f4e0f2b8814d503598712139915f986b8f1354a0c"
+    },
+    {
+      "page": 372,
+      "markers": 23,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8787,
+      "sourceSha256": "e94f86fd32f82f6333b8caaf9c092c30ad0dd72f73725948883c862ed980d903"
+    },
+    {
+      "page": 373,
+      "markers": 24,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8766,
+      "sourceSha256": "77593b5708d61a5c3bc738874a79253578ebe78e4374554afa1a644e58b55a6f"
+    },
+    {
+      "page": 374,
+      "markers": 23,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9027,
+      "sourceSha256": "f1fdc2dbffa8cf0314c340e214a038419d3af45685401631e5c41b0d11de682e"
+    },
+    {
+      "page": 375,
+      "markers": 20,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8768,
+      "sourceSha256": "57d0d9ca781aacdf00f1bb4fb67dc8da9727d06a68c092ca70756ce32a03f1b9"
+    },
+    {
+      "page": 376,
+      "markers": 13,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8738,
+      "sourceSha256": "d4f6c716b582b17d4a5fa98af8c0cf2696f5cc8a36ba1cbde27d5c204e00362d"
+    },
+    {
+      "page": 377,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8977,
+      "sourceSha256": "428f1be82238627ca39811191860bc05661382f9e8acb70b0c10cea101edcd05"
+    },
+    {
+      "page": 378,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9079,
+      "sourceSha256": "f76102c34c59d11cb0b53decb86473aeda37356bd6f3993d421ff1d76e8d4c03"
+    },
+    {
+      "page": 379,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9267,
+      "sourceSha256": "f5eae32ee059aa900e3e5078d262b50aec0f164664d6cea8d83720be2df6dfdf"
+    },
+    {
+      "page": 380,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9067,
+      "sourceSha256": "cce90e1c3cf0825b3ec38a723d52d3dc2f2a1c6524599f0eaa18c1c2668998e0"
+    },
+    {
+      "page": 381,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9199,
+      "sourceSha256": "364fdebbf4049a3dbaa5528f03e938b966e8e661b1a07600b65410e581414d04"
+    },
+    {
+      "page": 382,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9084,
+      "sourceSha256": "5f95e97528636a0240d4e002239edfb9f30ef95205239a54241c04ad2e884120"
+    },
+    {
+      "page": 383,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8926,
+      "sourceSha256": "f93d2651b6cc02bd59948da5f42c832c80f8c5a0fd273114fd129e8d3ca929a3"
+    },
+    {
+      "page": 384,
+      "markers": 9,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9026,
+      "sourceSha256": "8869a56137b9ccdc44fbdd96871110b4fb183591070cbbc1fc307e002c942012"
+    },
+    {
+      "page": 385,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9126,
+      "sourceSha256": "4a0439a10d1f9f3c14022451b115ef7d2ace53213f5de5beab923167971a6bdd"
+    },
+    {
+      "page": 386,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9236,
+      "sourceSha256": "49bb952d6ec6648bf64e7b2777c313843d8c7c62d4fd494bab9a17be522ac643"
+    },
+    {
+      "page": 387,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9184,
+      "sourceSha256": "4e72d750404942575769d71cc77ec9651411a7f3d6947fc7e68691c99238e201"
+    },
+    {
+      "page": 388,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9205,
+      "sourceSha256": "a4bc3f5a3b0d9f7fc72e846e0386fc6618cf55d6b1382c36f1f449ec7775121b"
+    },
+    {
+      "page": 389,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9204,
+      "sourceSha256": "76e0e9ebcf9d6eef9f004d17340bb085e3e6648eaa5806c24fbf7494cf72a3f5"
+    },
+    {
+      "page": 390,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9381,
+      "sourceSha256": "64d77c435106761f6a80d8491178c1ba163c8daeb63811363f74d0f6a2a76362"
+    },
+    {
+      "page": 391,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9315,
+      "sourceSha256": "1eefdb5671805b44e2b0cac827d9b87234fe83965d5f5fe1164a851430247bab"
+    },
+    {
+      "page": 392,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9159,
+      "sourceSha256": "7d1347e91dafe13de8d7698b6c824b9ec1e786318709397cc63d7e3fde7acf17"
+    },
+    {
+      "page": 393,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9122,
+      "sourceSha256": "d1eb43270846155baedc22b0c43c9f3138e76f04081ddf89cd4b06e03cb9e5d4"
+    },
+    {
+      "page": 394,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9229,
+      "sourceSha256": "6816be722129d2063893a42ddbf9a1e0aebbe2dfcf7baeb538519f7f0e5a5969"
+    },
+    {
+      "page": 395,
+      "markers": 9,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9139,
+      "sourceSha256": "96fe7dfc397676c873a059c9ef4173b893764cce0b644a9d87374d1b8bf00a62"
+    },
+    {
+      "page": 396,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9346,
+      "sourceSha256": "633c089d720fe780d55ccb709b52833f13e56604ac1ae5c0262b3a0bdd7a8199"
+    },
+    {
+      "page": 397,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9279,
+      "sourceSha256": "ed20668acaf2f39642adc549cd005d9e881607dac9194b858a6816dc1198e4a2"
+    },
+    {
+      "page": 398,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9223,
+      "sourceSha256": "be3bf24118960cadaee2aef6372b71016f3f780ddd44db0a402ccbd5fef99a1b"
+    },
+    {
+      "page": 399,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9281,
+      "sourceSha256": "c2bc13ddf354ff220fcbc3997627bfe79b40170714bce96640ce8af4857fede9"
+    },
+    {
+      "page": 400,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9284,
+      "sourceSha256": "83e9201ac0174ccc67977f0ab69838b34e60b8a4b7b962cba7b52c790f6d9044"
+    },
+    {
+      "page": 401,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9411,
+      "sourceSha256": "9768cd735afba0597dd6d9ed257515b917dbed13a171450c4fef4b7feb9ca345"
+    },
+    {
+      "page": 402,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9071,
+      "sourceSha256": "821e747850234d6c25aa11d418f35421cc94641cd0fdf0cd5b62681c4837cdeb"
+    },
+    {
+      "page": 403,
+      "markers": 10,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8942,
+      "sourceSha256": "2740ac4578eca58be58cf15c832f56c4ca9ad6fae1429974ff6a218358df32d2"
+    },
+    {
+      "page": 404,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9212,
+      "sourceSha256": "e3d0d2947d4f07df594ccce8fb06c00167c1f80a2779132e1fa1461b7363c1b1"
+    },
+    {
+      "page": 405,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9088,
+      "sourceSha256": "314b67c500d566a85e78ec3d3705882bea977d8fb358f7bfd157f3fecc4230ec"
+    },
+    {
+      "page": 406,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9297,
+      "sourceSha256": "7320f9bc829be171347b7c02a6845666b2c4bab13f9f923e54f155e7c1ed8cc1"
+    },
+    {
+      "page": 407,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9376,
+      "sourceSha256": "c52df88a922bcb2cbec2ab35ca4482e648cddba9b5539690f8fc0a9fe245809f"
+    },
+    {
+      "page": 408,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.93,
+      "sourceSha256": "e67454f9fb9fd0fc2a55687e91b27da1d4a40c1e52dfb91867eb514efcdbfa74"
+    },
+    {
+      "page": 409,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8988,
+      "sourceSha256": "ce085b11b016c6d5ea805472b55d59c2cab52298e23abd5f2d3dd8522d6cbf83"
+    },
+    {
+      "page": 410,
+      "markers": 10,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9111,
+      "sourceSha256": "2b0eea950d91b9820d7f8b9898f9cefacfdd96eb67cef1029d41eba8503af9e6"
+    },
+    {
+      "page": 411,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8992,
+      "sourceSha256": "f88915eb3c3773976b5c9916e67d52c40e126a65a557de0edd2cdadf54310cea"
+    },
+    {
+      "page": 412,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9292,
+      "sourceSha256": "6d20144204bf672d2c4a661740a9c6b49713323084b61b73b00222e2daff5793"
+    },
+    {
+      "page": 413,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9172,
+      "sourceSha256": "53d702e442d18dd53c9ca68776ad426aed8a806a7c10fc8485a0297e42fe7169"
+    },
+    {
+      "page": 414,
+      "markers": 11,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9234,
+      "sourceSha256": "2102f2874a9865bfad800f6fa199fe0d771e9569bcaaf819919c77e7b59b0e5e"
+    },
+    {
+      "page": 415,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9102,
+      "sourceSha256": "53751e2cd73628dc4bf62f60f5739060af13f365f10aada2d45033e07a09c912"
+    },
+    {
+      "page": 416,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8967,
+      "sourceSha256": "83585bbfb9f9b2c6664fff050be8d7360c7e25be5fca32a4e1f6f6951aca87ca"
+    },
+    {
+      "page": 417,
+      "markers": 6,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.917,
+      "sourceSha256": "e40ec4d2c957d14e13b68c4920c06c5d5c39b684af9efaedfb38d04f51076c90"
+    },
+    {
+      "page": 418,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9122,
+      "sourceSha256": "3ed7020a4c9ee90749060571f14d50672e60fd2114a1c05d47eb421dfc1697d8"
+    },
+    {
+      "page": 419,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8581,
+      "sourceSha256": "64a9683d8b6954a2d3cc8b9dc2225a992adb535fec749b277dde99d910305b55"
+    },
+    {
+      "page": 420,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9008,
+      "sourceSha256": "93b8f4d80e20fbbba3390c902a192758bd928c22abb53f1fe99a61b3250f1c4e"
+    },
+    {
+      "page": 421,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9345,
+      "sourceSha256": "4a00aef90ec1667d56ed1a8b03be5531c93fbe586dca5cab26b2d055cd5ddf51"
+    },
+    {
+      "page": 422,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8952,
+      "sourceSha256": "dc007d7bf56d798fe9099c59d9364b4cd6fede570a615fce9e3b01a270d32205"
+    },
+    {
+      "page": 423,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9309,
+      "sourceSha256": "3735965a278fa247405b42ce0eb75e7b9026c573d7dab0e3838dd1adaa9e38c1"
+    },
+    {
+      "page": 424,
+      "markers": 4,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9428,
+      "sourceSha256": "9b3203cc27a7984688b21cc07a0bc33fb463af7d8424cc7ee151d5fcbc4ad334"
+    },
+    {
+      "page": 425,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9335,
+      "sourceSha256": "6540440cd0867b87d453af003aee5edd6b8fc4e29eadbfca41f3cb880f82a0ca"
+    },
+    {
+      "page": 426,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9059,
+      "sourceSha256": "7a2827aa1799abfaa8066cb366298fdae0bc6ed84cd4ea46cb9230ea1573244e"
+    },
+    {
+      "page": 427,
+      "markers": 7,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.895,
+      "sourceSha256": "1be8e3162e9224e2280b5a6832b2aff24f08628c4162548dfb6f15c9c7931c5f"
+    },
+    {
+      "page": 428,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9341,
+      "sourceSha256": "7292315f44797645ae1adc3c1721692a652ced455c2f9eff2690deab7f55ecf4"
+    },
+    {
+      "page": 429,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9229,
+      "sourceSha256": "85eb7e2ad172dc14dd5c8c351a38441f4644bc08b0febf1e76f5e93174181616"
+    },
+    {
+      "page": 430,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9244,
+      "sourceSha256": "49a542f53492e24a9fbebfb7faea3fb667ff39c89d077dbdc3397e462e34ea37"
+    },
+    {
+      "page": 431,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9068,
+      "sourceSha256": "adf628beb9aed20e008629302b2a536cb19799934cac4a8151cf249eb4811e96"
+    },
+    {
+      "page": 432,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8993,
+      "sourceSha256": "3743b54be445bb94693b93cbdc2f55ce8ac33a95325d98f50dc6dc493c4fbf0e"
+    },
+    {
+      "page": 433,
+      "markers": 9,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9095,
+      "sourceSha256": "4c820cf8225456a5165b0aa6dcf85176cd598994ed803b7270c0fb22774eaaac"
+    },
+    {
+      "page": 434,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9209,
+      "sourceSha256": "c875a07fd836b9b1d1e9e666235ca46e6d3b69b71b2a44d8fd3378edc4297f1d"
+    },
+    {
+      "page": 435,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9164,
+      "sourceSha256": "8436dcbff4dfdb5c5c7e7e7921913a714d2a8c6ccb429f152f14ec11898a05f6"
+    },
+    {
+      "page": 436,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8942,
+      "sourceSha256": "4bdfce3e6ba7f6fabecabf433574081e59958f3df9925e751e06a31b500c0efc"
+    },
+    {
+      "page": 437,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9142,
+      "sourceSha256": "ee702f3bf30a60ee5b41a604ee4797f77aa3d4b1f679de703351ad1c4156ab53"
+    },
+    {
+      "page": 438,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8268,
+      "sourceSha256": "f8da7cf1db7be816d7a5abdf6268f340a650b276f9b3b77f8d77be451b08aee5"
+    },
+    {
+      "page": 439,
+      "markers": 12,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8896,
+      "sourceSha256": "6e513cfd94c0b3b73bd31b58443aec330bc41ca5b09d757006e0f64ef5bc29c6"
+    },
+    {
+      "page": 440,
+      "markers": 15,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9146,
+      "sourceSha256": "b2fe190326094c3436ddc6422bbc4ad4580d82a51a64c50b043487bb0595465f"
+    },
+    {
+      "page": 441,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9235,
+      "sourceSha256": "fd1a2681d5090f2591ba22d1838ec7f57e714009e9069ea8e37bc89958ca2fb4"
+    },
+    {
+      "page": 442,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9164,
+      "sourceSha256": "9cac2d8505d7b336a9e97e17f1d8529829d408f4d9fcbff687f60bc553c6fb61"
+    },
+    {
+      "page": 443,
+      "markers": 16,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9314,
+      "sourceSha256": "467fee32a106ff468ede02da2568f726488292da946e9df5660683ead2b45ecb"
+    },
+    {
+      "page": 444,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9181,
+      "sourceSha256": "4dddc5d4c7772a211bb9c5da25c2c6d8896339bbffb8a5804a69562d57b37b2d"
+    },
+    {
+      "page": 445,
+      "markers": 24,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8323,
+      "sourceSha256": "e098be5bca3b3e3e137dc662ae36e51fec667a4287cc74d0f2c28016265d2f93"
+    },
+    {
+      "page": 446,
+      "markers": 27,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8822,
+      "sourceSha256": "585663612611125bcfcf0de71cad56f5f8aac2e7f67e4fe6d26e3695d66673c8"
+    },
+    {
+      "page": 447,
+      "markers": 25,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9039,
+      "sourceSha256": "df6ba727e1d7e7c97dc90f20d08edfb96914cbc2d348142490c87f8134ac462a"
+    },
+    {
+      "page": 448,
+      "markers": 26,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9063,
+      "sourceSha256": "926f69e4aa7de1946b03a99bb857b4b0112db6fc8c8df8e9b574fb12504e7162"
+    },
+    {
+      "page": 449,
+      "markers": 24,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8551,
+      "sourceSha256": "be9d2eb65afc97893bc59c3454e0e957db6ca7694fd6bc1d2362c4907ffcc259"
+    },
+    {
+      "page": 450,
+      "markers": 27,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9049,
+      "sourceSha256": "3a5ce734d4587b4b43e3971e396dc3d28bb1e15c3081de5d5c2a8a55f07442ae"
+    },
+    {
+      "page": 451,
+      "markers": 29,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.887,
+      "sourceSha256": "f3ac4689bb43afd36d98293ef93efc135530707ee3ceaecdcf014583a01a97e1"
+    },
+    {
+      "page": 452,
+      "markers": 15,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8668,
+      "sourceSha256": "890b775817c74c07e085f3c0b26476a04acd8146ec738a1af7bd38670692746d"
+    },
+    {
+      "page": 453,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9354,
+      "sourceSha256": "ad623502d226515fb33a9f1d2c10045a757206a4a3b1bc65df1b80c0c61848c7"
+    },
+    {
+      "page": 454,
+      "markers": 16,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9208,
+      "sourceSha256": "aa0ab0386816ad8a823584700ba29490af6daf308a4b76a3178dfac409e4feaf"
+    },
+    {
+      "page": 455,
+      "markers": 19,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9081,
+      "sourceSha256": "3cbcf6fc0635d1ae3dac83fafc4ad564704778ff387d255106910ff875e62c3d"
+    },
+    {
+      "page": 456,
+      "markers": 22,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8746,
+      "sourceSha256": "5c8e1e35efbd2b97740717adefa530035c47882d7b98a559509287b203fd165a"
+    },
+    {
+      "page": 457,
+      "markers": 10,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8636,
+      "sourceSha256": "4c59a36e97c393b9f33a15d232832ce0858648c37f927d25dba227af2e6bbd34"
+    },
+    {
+      "page": 458,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8741,
+      "sourceSha256": "47a64475e5af4326424097505aae4c92ec22ba1648198e068f04b81bd88690a1"
+    },
+    {
+      "page": 459,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9006,
+      "sourceSha256": "dc4259fa5ef624c90a218a68b6408bbecb169c9d97d3c4c2f4aa47c9c1db0cec"
+    },
+    {
+      "page": 460,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9219,
+      "sourceSha256": "fb7a2a50de7e9775881db9929237e148bda1cea5bc85860d0047a94faea79a41"
+    },
+    {
+      "page": 461,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9267,
+      "sourceSha256": "9393c495840e5e7ca023167970f41e81da7173a40acfe87e5c5d5f533428ef6d"
+    },
+    {
+      "page": 462,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9251,
+      "sourceSha256": "083109b4a695cf6661e12862210ff979f3b64e6c447a436d6a7fa63eb65dda6c"
+    },
+    {
+      "page": 463,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.931,
+      "sourceSha256": "d743bb0ed654db203b02ec16f5d15ce1382dc23b7d723b1f874291541c732193"
+    },
+    {
+      "page": 464,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9226,
+      "sourceSha256": "50483b94cbb966cc1b7fc01a134c62de20cd14e3af4028b6a2085ce87138430a"
+    },
+    {
+      "page": 465,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9307,
+      "sourceSha256": "8f77768f7137af0d6cf2c46fec4e17bb788a79246fdc8ff65ac043acef8ed484"
+    },
+    {
+      "page": 466,
+      "markers": 7,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8973,
+      "sourceSha256": "518fc22bf19499c04f57469e6c756c3276785ba834e513c3e3a9b134833dbe9a"
+    },
+    {
+      "page": 467,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9263,
+      "sourceSha256": "742ba4efb389b937a10a3e8ed38e61efa52843b993cdf360fefd4a7d292e909c"
+    },
+    {
+      "page": 468,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9316,
+      "sourceSha256": "81352319417b985360044390e7bc4e65b62a86c0472624a19c32278cc9ece215"
+    },
+    {
+      "page": 469,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8527,
+      "sourceSha256": "2209d83a547626cdaf3da69645105ca7171678cb12b4b55fead21cbdf860f6eb"
+    },
+    {
+      "page": 470,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9215,
+      "sourceSha256": "6ffc3cef44c1ac20c6f46fdfba6e28d0b92d7a0fc6d04ea4eac5af3041cc38eb"
+    },
+    {
+      "page": 471,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9293,
+      "sourceSha256": "4eb9ed3bdb1532c299df3b2615eddfa9a25767a160f7254c8b1cd16b8bcce484"
+    },
+    {
+      "page": 472,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9095,
+      "sourceSha256": "f38b8e373bf04bf1c884075f53ca53cdd3df06a4182106d1eb293430b3f44c28"
+    },
+    {
+      "page": 473,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9352,
+      "sourceSha256": "7857a2908296303a616b39c3a97f979993215fd3a9793ffb532b0ab4bdaf8f93"
+    },
+    {
+      "page": 474,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9161,
+      "sourceSha256": "c1179dcfb8e7c593538e6f7bcf779ba86081e8132740a86294da4eeb2de092fc"
+    },
+    {
+      "page": 475,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9174,
+      "sourceSha256": "4f6eff5cf375444d505551b59c81705f835c0bf349d6114a745823c3463197e7"
+    },
+    {
+      "page": 476,
+      "markers": 10,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9208,
+      "sourceSha256": "45f7bfd58af3ff69b818bc10c5e3471e0c472142d8d4a73b3640b6020b4a8aa0"
+    },
+    {
+      "page": 477,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.902,
+      "sourceSha256": "460b98b7e966800b7f79c189b97ba80ea7e9f50247303df8d3fd53a152d9b789"
+    },
+    {
+      "page": 478,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8582,
+      "sourceSha256": "87c96b286a87fc3d0872901d9e8e151423880b1f4a702af49212e08d9b63bca0"
+    },
+    {
+      "page": 479,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9252,
+      "sourceSha256": "9129c000e1630eb862fb8e15d607af0b9398e0f3ca7bd8323d39a7c4d1b2faba"
+    },
+    {
+      "page": 480,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9226,
+      "sourceSha256": "784ef234f133f186f4ed5265e7a793934fce7e5ddf2ee45e1ace1c44d464b2ec"
+    },
+    {
+      "page": 481,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9138,
+      "sourceSha256": "294d60520e97fad98b24349bd2790b8edb9158c45126ff296703ba8cc53557b0"
+    },
+    {
+      "page": 482,
+      "markers": 8,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8986,
+      "sourceSha256": "f872bc9f9abb11456e2467d98a18a0932ea4fb47cd0198e9f7066413ecf9ddaa"
+    },
+    {
+      "page": 483,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9223,
+      "sourceSha256": "d12031fd69fe84be36d3d6b98a7ec3e7f2c655f8a1f69c61895fa3448ac88bd1"
+    },
+    {
+      "page": 484,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9201,
+      "sourceSha256": "d70d724558cb5c09326a3ec29f981cd4c1283ba397a7d659c42eb254c0a5418b"
+    },
+    {
+      "page": 485,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9186,
+      "sourceSha256": "da2fc0a5518a02c9c4b3e78019178acaa6292c40772b60f18b20910b9f44d255"
+    },
+    {
+      "page": 486,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8882,
+      "sourceSha256": "18a694826b3844b47b852db15fa8a40e664e655275c08f9729f5409a1dd9aa5a"
+    },
+    {
+      "page": 487,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.915,
+      "sourceSha256": "f8d162404cd803148f40e393f440ae539b2162965cfbf56129a7c462962382d3"
+    },
+    {
+      "page": 488,
+      "markers": 11,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9119,
+      "sourceSha256": "62db219802c2ca92b6791df0e798742c045ce10e17542a89e2b45aae12d51216"
+    },
+    {
+      "page": 489,
+      "markers": 12,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9406,
+      "sourceSha256": "6ae5a49fdc5d0bf5b1d2b2a810631a6957a1c456edef78238d6d052a3aa5cee6"
+    },
+    {
+      "page": 490,
+      "markers": 11,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9156,
+      "sourceSha256": "08623fc9f4f88358dc9ff6f2d703becb8e4826ba4691ccd4a4f490fab4a73446"
+    },
+    {
+      "page": 491,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8894,
+      "sourceSha256": "af519b38258351438c4299c5393c4fee5ce34c06289b5f45483eff3a7a73ee7d"
+    },
+    {
+      "page": 492,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9113,
+      "sourceSha256": "a74242ef29018a42a98295f8618636117b2c5c030d29450002b0168c1e96bcb1"
+    },
+    {
+      "page": 493,
+      "markers": 13,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9233,
+      "sourceSha256": "9e07f143f24e1dcf7998a49cd4bbe181794ca0afcf8bfa9c9612bed09f641bbe"
+    },
+    {
+      "page": 494,
+      "markers": 16,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9007,
+      "sourceSha256": "6251973feeebf268d38f088beeae6f8a73c00514595e5db69186977f79a99770"
+    },
+    {
+      "page": 495,
+      "markers": 17,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9136,
+      "sourceSha256": "d25df30900054c7c821a19c7257bda849af04057c18f725f5afed106e3d5f843"
+    },
+    {
+      "page": 496,
+      "markers": 20,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.902,
+      "sourceSha256": "f03ac0f1b5ca1bfca72513f06ccbc64b4ea1ccef1c2c297d13c2c081fc3fda8e"
+    },
+    {
+      "page": 497,
+      "markers": 19,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9053,
+      "sourceSha256": "4de136ad537392f85621c1ecffd326556d596cf7aceb4b8665f8edbc92aad27a"
+    },
+    {
+      "page": 498,
+      "markers": 12,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8969,
+      "sourceSha256": "a8cd2807c2d26d43d5244ba5bb7b7e91d0706df4fd741ff39571d408a835565c"
+    },
+    {
+      "page": 499,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9273,
+      "sourceSha256": "f5609e2492fe64934a6525aff82ac474bbf0adac1de5eeb6b2a5161bba814be6"
+    },
+    {
+      "page": 500,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9444,
+      "sourceSha256": "cfa0b9fc9e22d028fd415ac9af4b58c8a396c4cac922ca60bfe9023256a7d22d"
+    },
+    {
+      "page": 501,
+      "markers": 9,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9018,
+      "sourceSha256": "7ac51f405679c2c55b150a69528c2c70dc09c9bb7e8e44153573d3cf9f9a9628"
+    },
+    {
+      "page": 502,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9283,
+      "sourceSha256": "a23be059c2f0939a8fd0d23a28fd66705baa0a42502990b2da0ae90b12862969"
+    },
+    {
+      "page": 503,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.92,
+      "sourceSha256": "c53a3e7bb7fb2c36d3bdf0188c612ec0827f8d503e8a773dcaf2278aab5d9c68"
+    },
+    {
+      "page": 504,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9023,
+      "sourceSha256": "3d35d9981bde01c7b3c89d9f8b36fd6c8df5e0741ca989aa693605ee35905d17"
+    },
+    {
+      "page": 505,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8787,
+      "sourceSha256": "95dc9b9a7e90979a45fb1518ac8f376f6921640ce6466339fbf5ec38cab3b98c"
+    },
+    {
+      "page": 506,
+      "markers": 12,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8528,
+      "sourceSha256": "fb3c780d96c2064bc352a6d3df5bcb7a455697224c825f9b66403bc6d0b9f883"
+    },
+    {
+      "page": 507,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8362,
+      "sourceSha256": "c64ef6f2015d2d6bbbd44e3e3a0ad8e97bc4c40cff93fe42686a396cc945f166"
+    },
+    {
+      "page": 508,
+      "markers": 10,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9294,
+      "sourceSha256": "7e832aef2dfd096d1d073ffaebd410153a2a130504c83e73b3ea80092670bc2d"
+    },
+    {
+      "page": 509,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9005,
+      "sourceSha256": "4c471699227dd6550c57899498a6eadac98901dfe50021403d23bbd6a57710f3"
+    },
+    {
+      "page": 510,
+      "markers": 9,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9268,
+      "sourceSha256": "9a9b859b38cfcc7617b84b1b36198e215ead960f4570e037ac2ba06b9a343b65"
+    },
+    {
+      "page": 511,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9276,
+      "sourceSha256": "8f00a61f624ef986d8ba0a2d67c55fb9a67734492aa9ba8dba6ca45a8b2cd572"
+    },
+    {
+      "page": 512,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9304,
+      "sourceSha256": "ae5fe7002d5745d0605734a09850622be88f6579f051f612814c805d75a0218a"
+    },
+    {
+      "page": 513,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9368,
+      "sourceSha256": "9530151e9fde39653d831508f65758280e8f2c53066675910fa18bdeceba4c54"
+    },
+    {
+      "page": 514,
+      "markers": 5,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8959,
+      "sourceSha256": "e89915aacd8718cff201084b65441c978caf74a07790d227239ba48c1c130a90"
+    },
+    {
+      "page": 515,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9215,
+      "sourceSha256": "78538ce2d49f05e5770fbfa90e8a2acbec98475dd6038f0c9f18909d4c10cf78"
+    },
+    {
+      "page": 516,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9247,
+      "sourceSha256": "582c507236ee649e137dfc0560f394276122f1003686f40b42bf840fee20c2dd"
+    },
+    {
+      "page": 517,
+      "markers": 15,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9203,
+      "sourceSha256": "a70df5666b02ff44ee382366e3069ad926a640aa1d764d566cdd115fea05c516"
+    },
+    {
+      "page": 518,
+      "markers": 20,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8538,
+      "sourceSha256": "9664d52cd50d8253205c83d69e2d68ad3023663aa0a87f27f607d24089a019aa"
+    },
+    {
+      "page": 519,
+      "markers": 16,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9246,
+      "sourceSha256": "d65c386a8e652b2aff9bc38b95995c6c54d3fb158adddd40be04cbddb74fcd33"
+    },
+    {
+      "page": 520,
+      "markers": 24,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9108,
+      "sourceSha256": "6702a9b23775c1abd61a1dffff47283b1d0276a196c8be8bc7ff8b82b659520e"
+    },
+    {
+      "page": 521,
+      "markers": 21,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8786,
+      "sourceSha256": "b9909aadabc313123601dcfd646dd5fe4781876141df52c3982929a76b561a15"
+    },
+    {
+      "page": 522,
+      "markers": 21,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8746,
+      "sourceSha256": "c8e538d31cacbcadba969eb8c1ac5fc46c5b9aa09875bb2d89c00c9b06eb9a0b"
+    },
+    {
+      "page": 523,
+      "markers": 17,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8383,
+      "sourceSha256": "371a93e385286cd3c4d560fd50ea2a270c7faed6cb88c198f235705b45e31860"
+    },
+    {
+      "page": 524,
+      "markers": 18,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9177,
+      "sourceSha256": "403b2a69d73a21a06c6616f6aa7285a15ecbefb6d5e3b90968b39256be7f4efc"
+    },
+    {
+      "page": 525,
+      "markers": 26,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8764,
+      "sourceSha256": "5ffaf96caec0179e46c72290552885d0e97f4601af6254b625ccbd623e14cd17"
+    },
+    {
+      "page": 526,
+      "markers": 17,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8662,
+      "sourceSha256": "c142f4cbef985cfbf739b7216615e12b6836f6d03942b146bee28d772d14cc63"
+    },
+    {
+      "page": 527,
+      "markers": 24,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.865,
+      "sourceSha256": "39b57389f9e81bd47e71b7a7782f48072cbde49f9d2fcbab709d58a39c59456f"
+    },
+    {
+      "page": 528,
+      "markers": 21,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9056,
+      "sourceSha256": "b74dff1bc06fde05fe01cfd0847cad33026bc791e70d5db69798d9507b0cbf5f"
+    },
+    {
+      "page": 529,
+      "markers": 22,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.902,
+      "sourceSha256": "58183a5eb998365eb64941b8a8eb764e132bb1ed79a00f818fc3671dc5cc156f"
+    },
+    {
+      "page": 530,
+      "markers": 20,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9048,
+      "sourceSha256": "86cc0ab4c1872ec802296f831f4c752d99ad7a3695929d1a3c2971219d9555a2"
+    },
+    {
+      "page": 531,
+      "markers": 25,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8831,
+      "sourceSha256": "4ac2f94cfab498417954f129557e156fb4fb3363afdd00b109ddc530a4abd02c"
+    },
+    {
+      "page": 532,
+      "markers": 27,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8989,
+      "sourceSha256": "4b920ca833df65c30e9b9f2aeac34215ad1cef81506d5acbd6d364fca05bd35d"
+    },
+    {
+      "page": 533,
+      "markers": 29,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.904,
+      "sourceSha256": "3ff5ffdd56850320d3fa734e9572b776ec470ad351917c5c7830f196376c4ad3"
+    },
+    {
+      "page": 534,
+      "markers": 35,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8333,
+      "sourceSha256": "eb49e9cd5d2f9530eb53192d4dedb22e2e22da5dd850cc248b0c59611773003e"
+    },
+    {
+      "page": 535,
+      "markers": 26,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8778,
+      "sourceSha256": "30067c5cac8dbfe8cfef47ca0bc903780e709b90edc246557718fabdd905ef1f"
+    },
+    {
+      "page": 536,
+      "markers": 23,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9158,
+      "sourceSha256": "0fd516db750a6c7f59422244a0d6f32384c530ba5a4d9cae6fe93719aefd52ce"
+    },
+    {
+      "page": 537,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9066,
+      "sourceSha256": "628c9a98b46412c5676e3779e246db7556ad3520bdf5e9a4ce285d95555cee15"
+    },
+    {
+      "page": 538,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8962,
+      "sourceSha256": "6ba8a1085431ff36b3be7bc0f63a4eb8d8ebe45f60dd5ab7d18541a7939c5e70"
+    },
+    {
+      "page": 539,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9092,
+      "sourceSha256": "d9778445a88b0cf8798988a9680edb4c573098b644b582f2f7c1cfeffc2f2e77"
+    },
+    {
+      "page": 540,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8808,
+      "sourceSha256": "40f92eb10902a925e3d16b1640dedc335587404d1d32838f71c7612037cf9b03"
+    },
+    {
+      "page": 541,
+      "markers": 6,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9149,
+      "sourceSha256": "cd65ce04e3bd213628738865568ebb60fd53b49991761af107438e3d4bb14a3d"
+    },
+    {
+      "page": 542,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9468,
+      "sourceSha256": "8cc70da81e542bceb672f851b21e870cca88937bf3bd9aa002da2d8ef1f97cca"
+    },
+    {
+      "page": 543,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9211,
+      "sourceSha256": "c92ec6b4505f37ceb58a68b4ab13eb38f1ddbbb84e385270028d85b049932d10"
+    },
+    {
+      "page": 544,
+      "markers": 4,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.886,
+      "sourceSha256": "3633282a235c9d270dea48a26ee6ab7cdc74c103c93064c0fe4d1546761dd0bd"
+    },
+    {
+      "page": 545,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9233,
+      "sourceSha256": "1ede04cd01e317d86768b3ab6b458e7972f31b966f01cf9705cf252a1fbedaf6"
+    },
+    {
+      "page": 546,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9412,
+      "sourceSha256": "569bc0c9622997ab7a758d528a03c56f1f4e547103b9aa63f0321007841a2f90"
+    },
+    {
+      "page": 547,
+      "markers": 8,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8923,
+      "sourceSha256": "98183ecd919c5413f1da4accdd4bb53a06089391cb78c8cc201b5f6964833b17"
+    },
+    {
+      "page": 548,
+      "markers": 5,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8405,
+      "sourceSha256": "bcac309f0090424f8a651d165f5d0e6d456b186e487b13a3054c1246d0d2a9ef"
+    },
+    {
+      "page": 549,
+      "markers": 6,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9201,
+      "sourceSha256": "44f5e05a3fec3f8a862dda9ec98d795c9e99a4e78ccb4651fe2314bcca839ce8"
+    },
+    {
+      "page": 550,
+      "markers": 7,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8925,
+      "sourceSha256": "d04209616cedea77b170c1ff6d923b89991e0315127ec2f506baa05ca59ef907"
+    },
+    {
+      "page": 551,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8945,
+      "sourceSha256": "cc387b5ce6326c5c25250a7ede61e26ed98c4f0d962d7975e092af37c9cc2dee"
+    },
+    {
+      "page": 552,
+      "markers": 8,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.908,
+      "sourceSha256": "bfa46b28defd372e161f3ec38e2e6d4becf474e7ae9e527920d995effb121486"
+    },
+    {
+      "page": 553,
+      "markers": 7,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9189,
+      "sourceSha256": "9c522b0743403c050327d9db0c24c1c2d3167c4189d4686083ee411c1d077e70"
+    },
+    {
+      "page": 554,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9048,
+      "sourceSha256": "6b36511ff9e525cd45cc715868ea3a591d47273ea80c55f29e3ddc9b45ecfe10"
+    },
+    {
+      "page": 555,
+      "markers": 9,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9043,
+      "sourceSha256": "33bc26ea9ca631f83b5aa3c40dbe873a4efd03380567d7082e3f95664af8d8b3"
+    },
+    {
+      "page": 556,
+      "markers": 9,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9076,
+      "sourceSha256": "1e6c463dedbd00d94b95be047e91b5f7b87a08dd6fb3177d49ac4f7cd65907b5"
+    },
+    {
+      "page": 557,
+      "markers": 5,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.927,
+      "sourceSha256": "03803ef3c42c7e1640f2d6d2b0e00869c0beaa4392f83db995992661d24f09e6"
+    },
+    {
+      "page": 558,
+      "markers": 7,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8658,
+      "sourceSha256": "ca5ee644e167144ebce9ac0b82b43eddf315ea096f9ca2420224a7fc75e20d5e"
+    },
+    {
+      "page": 559,
+      "markers": 7,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9,
+      "sourceSha256": "0086c500155a3117f332096ef867ff11fba29938d2cc718139b660fefe2a692d"
+    },
+    {
+      "page": 560,
+      "markers": 5,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9129,
+      "sourceSha256": "706f45fd1dcdfe59b76e2bda348541c02dc9d96520d3af9929081cb7fd87ebd8"
+    },
+    {
+      "page": 561,
+      "markers": 13,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9133,
+      "sourceSha256": "d7ee13bf208dc9fc41d808c1b2851b3eb69e36946f9343dd1837a158d36c864a"
+    },
+    {
+      "page": 562,
+      "markers": 14,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8936,
+      "sourceSha256": "52b5d6dc8b83446f3639cf4ab5bbc2fd3836ffaa10eed43ac1cfb428f256d32d"
+    },
+    {
+      "page": 563,
+      "markers": 19,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.908,
+      "sourceSha256": "3e791fc9c01720fa8e69816f63e751728f4caa90023089bb863fcc818f8e7aca"
+    },
+    {
+      "page": 564,
+      "markers": 27,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8679,
+      "sourceSha256": "e766e12277cb2dd5290c49f1e3d44e4ab17eaf35939a4e0ee36c3f6e09d38174"
+    },
+    {
+      "page": 565,
+      "markers": 17,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.9007,
+      "sourceSha256": "e0ee23971fe5ba3f743a7464d1b9572f478bcb0e37e2656c02bdb60cffc782ba"
+    },
+    {
+      "page": 566,
+      "markers": 27,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8893,
+      "sourceSha256": "17f9939f622b4272be3fbc67cf390eeb6bbd810ca6b0fe3bc63538c1a8fbb755"
+    },
+    {
+      "page": 567,
+      "markers": 28,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.896,
+      "sourceSha256": "3b68c6eda11f311c2213c9399c78c974f5027eb0a028d441d056dbf375b96f4a"
+    },
+    {
+      "page": 568,
+      "markers": 29,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9044,
+      "sourceSha256": "8c983bda6f1ee18a3381476ec4df24eeab97565be5d70c9a516d488961c6c62f"
+    },
+    {
+      "page": 569,
+      "markers": 15,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8436,
+      "sourceSha256": "748b93db6260199932c0d0220ca175bbcb7a1cc1c69c2fcbc77d3cb8d30d8cd5"
+    },
+    {
+      "page": 570,
+      "markers": 20,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.905,
+      "sourceSha256": "7ef8d9335c96b710474e7a5b6ec98e83d79d1aef60add97545fca82ff399187f"
+    },
+    {
+      "page": 571,
+      "markers": 13,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8119,
+      "sourceSha256": "0f22af0d4933357a5964a67b9f4ed0bc6ac78c0cc9f47a61b799526288508efc"
+    },
+    {
+      "page": 572,
+      "markers": 15,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8588,
+      "sourceSha256": "e714f00cae53c8a89b368d13746c4492cd4d9ec9abdf3a17015f957934162f3a"
+    },
+    {
+      "page": 573,
+      "markers": 17,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8995,
+      "sourceSha256": "d6d7d25f8b2086dab2e3812d6dcc89f68741d331a7489f933eb4ac1e400e3ee6"
+    },
+    {
+      "page": 574,
+      "markers": 18,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8513,
+      "sourceSha256": "3b146f3eb7ee858e6b10d34c37e9f744242ed84f3bfadf29c68a69a186de0ff3"
+    },
+    {
+      "page": 575,
+      "markers": 29,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8626,
+      "sourceSha256": "4855ce0dc390c31f62de1d008e04a0a9be00b057ea8e3742d3a494928a2b654e"
+    },
+    {
+      "page": 576,
+      "markers": 27,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.7755,
+      "sourceSha256": "41e38de345c9bfa130d5fbe5283408d8b034a5f4cfdb36f0c3033a3521b0f877"
+    },
+    {
+      "page": 577,
+      "markers": 26,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8655,
+      "sourceSha256": "c4d78a1a628867414a33dfe197e2a1f5ff2f29511c0b1c2158054809573504aa"
+    },
+    {
+      "page": 578,
+      "markers": 20,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8437,
+      "sourceSha256": "b140eb041a739355e3667e6ae43a393ddb366ed3b1021b7868cf3f062bedc397"
+    },
+    {
+      "page": 579,
+      "markers": 25,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8882,
+      "sourceSha256": "b06a8c69c5fb54bc08ff1808ffb2d4d99ae321b681e47974ab5dfb0487ce8167"
+    },
+    {
+      "page": 580,
+      "markers": 31,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.9011,
+      "sourceSha256": "a09d4102dfb4a2cede498b8958c9d2ae8195db1e3fbdc0ef8b5a806e0190af78"
+    },
+    {
+      "page": 581,
+      "markers": 30,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8878,
+      "sourceSha256": "228bf0f759c0a4510a5368a8d43c5a6fb36f43a6a12f5406e0cdc76d9d308916"
+    },
+    {
+      "page": 582,
+      "markers": 25,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8575,
+      "sourceSha256": "be2ba0ca92c56a1b676ba33a3c0bd8bbdac59557f9e15749e96d3018650040b0"
+    },
+    {
+      "page": 583,
+      "markers": 30,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8909,
+      "sourceSha256": "fda4a9ab2881af8ae3621d4dad7ab265c6d001e577d48d3a396a1ef634197f1c"
+    },
+    {
+      "page": 584,
+      "markers": 42,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8083,
+      "sourceSha256": "cd7e17866a6e5b67909e8eb082cd030e3a5fc9f239253e85212f3863ae2245ed"
+    },
+    {
+      "page": 585,
+      "markers": 29,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8881,
+      "sourceSha256": "e4a0faf4442890581df3841153b5346b138079901bfced6a6914885b916c1154"
+    },
+    {
+      "page": 586,
+      "markers": 25,
+      "rows": 13,
+      "textRows": 11,
+      "banners": 2,
+      "minimumMarkerScore": 0.8151,
+      "sourceSha256": "f69ed8a86f7102def33af375422bae9943ba57e3316a0250e4403dd017b529b8"
+    },
+    {
+      "page": 587,
+      "markers": 28,
+      "rows": 15,
+      "textRows": 15,
+      "banners": 0,
+      "minimumMarkerScore": 0.8605,
+      "sourceSha256": "5805cafc6034f66343a32c88b9e94f0661668770a6d2a3565f7be683fa0da4f6"
+    },
+    {
+      "page": 588,
+      "markers": 27,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8714,
+      "sourceSha256": "f6564878c859f3c6d11fdce6880023ba4bbc80522e1bdab296aa2b15b5d947f4"
+    },
+    {
+      "page": 589,
+      "markers": 22,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8928,
+      "sourceSha256": "4bd9a5003aa2af10590587522565b1668dadad85ee58f8c10a9575e943cdfbbb"
+    },
+    {
+      "page": 590,
+      "markers": 31,
+      "rows": 13,
+      "textRows": 11,
+      "banners": 2,
+      "minimumMarkerScore": 0.8716,
+      "sourceSha256": "dd09f45fe46b53bf8c87d07b6bf94143f8527a5f648e09bf12378cddd61eccf0"
+    },
+    {
+      "page": 591,
+      "markers": 31,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8462,
+      "sourceSha256": "ca55bfc9d300aadb9d06f7ed696f3a3f1c350fbf3a07b693525b2f4563575ffc"
+    },
+    {
+      "page": 592,
+      "markers": 26,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8735,
+      "sourceSha256": "8c3dafe96423f294b2ae622e7621cea53fcde5e51f07113d0c79b114b61f5de4"
+    },
+    {
+      "page": 593,
+      "markers": 26,
+      "rows": 14,
+      "textRows": 13,
+      "banners": 1,
+      "minimumMarkerScore": 0.8853,
+      "sourceSha256": "167f6382fc22773c214dd17397897382d85462da05a6487bc73cf7e2d6f54e79"
+    },
+    {
+      "page": 594,
+      "markers": 29,
+      "rows": 13,
+      "textRows": 11,
+      "banners": 2,
+      "minimumMarkerScore": 0.834,
+      "sourceSha256": "58f9ac31ec36802759270f78d586715102d1d78fe664bc598d21f8460edef759"
+    },
+    {
+      "page": 595,
+      "markers": 26,
+      "rows": 13,
+      "textRows": 11,
+      "banners": 2,
+      "minimumMarkerScore": 0.9026,
+      "sourceSha256": "4bc37fe995a62d841799103522f9b1827a02362d1aae6e472b22dcc45f71847a"
+    },
+    {
+      "page": 596,
+      "markers": 28,
+      "rows": 13,
+      "textRows": 11,
+      "banners": 2,
+      "minimumMarkerScore": 0.8806,
+      "sourceSha256": "9e74262458652eaea322572b991499196443823c9199ae9d304d9ef0e0d603b9"
+    },
+    {
+      "page": 597,
+      "markers": 12,
+      "rows": 13,
+      "textRows": 11,
+      "banners": 2,
+      "minimumMarkerScore": 0.899,
+      "sourceSha256": "a5f70b62b7dcedc9b9dfb4606ea40332c3799b46a6255bdc5fcdb19a3d80b49a"
+    },
+    {
+      "page": 598,
+      "markers": 19,
+      "rows": 13,
+      "textRows": 11,
+      "banners": 2,
+      "minimumMarkerScore": 0.8921,
+      "sourceSha256": "c49fcb5703b78483a14e6b985a7c380ecca3a820e574d35f3b94873376d8e352"
+    },
+    {
+      "page": 599,
+      "markers": 20,
+      "rows": 13,
+      "textRows": 11,
+      "banners": 2,
+      "minimumMarkerScore": 0.8939,
+      "sourceSha256": "d1cf3d0de8b8d7a67194e59bef06c799094e6f0b2ebf04c2f643d8156aea7ba3"
+    },
+    {
+      "page": 600,
+      "markers": 17,
+      "rows": 12,
+      "textRows": 9,
+      "banners": 3,
+      "minimumMarkerScore": 0.8679,
+      "sourceSha256": "7111a90ec03e0e03d8ea6695f3ea1c4628b05045fa1d8afe23dc6645f867cd4a"
+    },
+    {
+      "page": 601,
+      "markers": 14,
+      "rows": 12,
+      "textRows": 9,
+      "banners": 3,
+      "minimumMarkerScore": 0.9071,
+      "sourceSha256": "986963ecad734272bf9fa80394e5e2a766a2e6f30fa9c301f99813d71bc7ee0e"
+    },
+    {
+      "page": 602,
+      "markers": 14,
+      "rows": 12,
+      "textRows": 9,
+      "banners": 3,
+      "minimumMarkerScore": 0.8884,
+      "sourceSha256": "2d3be927d5241f3b57b0f6580f93f4d81d6a7e8edd3209e8a4717c5180927fc3"
+    },
+    {
+      "page": 603,
+      "markers": 15,
+      "rows": 12,
+      "textRows": 9,
+      "banners": 3,
+      "minimumMarkerScore": 0.9125,
+      "sourceSha256": "0710ab6cde2f3cf2b05c1ddb1eb0a5da296a96d6c1015ae6f535b7576182b85e"
+    }
+  ]
+}

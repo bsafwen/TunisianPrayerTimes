@@ -24,6 +24,8 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <!-- Required for media playback foreground services on newer Android versions -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <!-- Keep Quran audio playing when the screen turns off. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- Required for the silence guard keep-alive foreground service -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
     <!-- Needed on Android 13+ so wake playback notifications can surface normally -->
@@ -127,6 +129,11 @@
 
         <service
             android:name=".wake.WakePlaybackService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
+
+        <service
+            android:name=".quran.audio.QuranPlaybackService"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
 
