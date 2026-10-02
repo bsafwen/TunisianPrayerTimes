@@ -86,6 +86,17 @@ internal val AdhkarHeart = Color(0xFFE23B3B)
     }
 }
 
+/**
+ * The app theme gives an unchecked switch a thumb and a track of nearly the same pale colour;
+ * these read as a switch on the white cards.
+ */
+@Composable internal fun AdhkarSwitch(checked: Boolean, onCheckedChange: ((Boolean) -> Unit)?,
+                                      modifier: Modifier = Modifier, enabled: Boolean = true) {
+    val p = LocalAdhkarPalette.current
+    Switch(checked, onCheckedChange, modifier, enabled = enabled, colors = SwitchDefaults.colors(
+        uncheckedThumbColor = p.muted, uncheckedTrackColor = AdhkarSurface, uncheckedBorderColor = p.muted))
+}
+
 /** White rounded card with the mockup's soft border. */
 @Composable internal fun AdhkarCard(
     modifier: Modifier = Modifier,

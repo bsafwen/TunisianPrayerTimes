@@ -26,10 +26,11 @@ class DhikrRepository(context: Context) {
     fun save(rule: DhikrReminder, now: Long = System.currentTimeMillis()) {
         require(DhikrReminderScheduler.validate(app, rule) == null)
         update { old ->
-            val previous = old.reminders.find { it.id == rule.id }
-            val changed = previous != null && previous.copy(enabled = rule.enabled) != rule
-            val saved = old.storedForm(rule, now)
-            old.copy(reminders = old.reminders.filterNot { it.id == saved.id } + saved,
+            val changed = old.changesSchedule(rule)
+            val saved = DhikrReminderScheduler.storedForm(app, old, rule, now)
+            // An edited reminder keeps its place in the list; only a new one goes to the end.
+            old.copy(reminders = if (old.reminders.any { it.id == saved.id }) old.reminders.map { if (it.id == saved.id) saved else it }
+                    else old.reminders + saved,
                 occurrences = if (!changed) old.occurrences else old.occurrences.mapValues { (_, occurrence) ->
                     if (occurrence.ruleId == rule.id && occurrence.status == DhikrOccurrenceStatus.OPEN)
                         occurrence.copy(status = DhikrOccurrenceStatus.REPLACED) else occurrence
@@ -37,17 +38,32 @@ class DhikrRepository(context: Context) {
         }
         DhikrReminderScheduler.refresh(app)
     }
-    /** Delivery stops; history and occurrence snapshots are retained for delete undo. */
-    fun delete(id: String) {
+    /**
+     * Delivery stops; history and occurrence snapshots are retained for delete undo.
+     * Returns the reminder's place in the list, for [restore], or -1 when it was not there.
+     */
+    fun delete(id: String): Int {
+        val index = state.value.reminders.indexOfFirst { it.id == id }
         update { it.copy(reminders = it.reminders.filterNot { rule -> rule.id == id }) }
         DhikrReminderScheduler.refresh(app)
+        return index
     }
-    fun restore(rule: DhikrReminder) {
-        update { it.copy(reminders = it.reminders.filterNot { item -> item.id == rule.id } + rule) }
+    /** Puts a deleted reminder back at [index], or at the end when the list no longer reaches it. */
+    fun restore(rule: DhikrReminder, index: Int = Int.MAX_VALUE) {
+        update { old ->
+            val others = old.reminders.filterNot { item -> item.id == rule.id }
+            val at = if (index < 0) others.size else index.coerceAtMost(others.size)
+            old.copy(reminders = others.take(at) + rule + others.drop(at))
+        }
         DhikrReminderScheduler.refresh(app)
     }
-    fun setEnabled(id: String, enabled: Boolean) {
-        update { it.copy(reminders = it.reminders.map { rule -> if (rule.id == id) rule.copy(enabled = enabled) else rule }) }
+    fun setEnabled(id: String, enabled: Boolean, now: Long = System.currentTimeMillis()) {
+        // Switching back on restarts the missed-nudge recovery: a nudge that fell while the
+        // reminder was off was never missed, so it is not sent the moment the switch flips.
+        update { it.copy(reminders = it.reminders.map { rule ->
+            if (rule.id != id) rule else rule.copy(enabled = enabled,
+                createdAtMillis = if (enabled && !rule.enabled) now else rule.createdAtMillis)
+        }) }
         DhikrReminderScheduler.refresh(app)
     }
     fun toggleFavourite(id: String) = update {
@@ -96,16 +112,26 @@ class DhikrRepository(context: Context) {
         if (countChanged) DhikrReminderScheduler.refresh(app)
         return saved
     }
-    /** Removes the entry with its reminders and reading sessions; the snapshot supports undo. */
+    /**
+     * Removes the entry with its own reminders and reading sessions; the snapshot supports undo.
+     * A whole-collection reminder stays: the entry was at most its representative.
+     */
     fun deleteCustom(id: String): CustomDhikrRemoval? {
         val current = state.value
         val entry = current.customEntries.find { it.id == id } ?: return null
-        val removal = CustomDhikrRemoval(entry, current.reminders.filter { it.dhikrId == id },
+        val removal = CustomDhikrRemoval(entry, current.reminders.filter { it.collection == null && it.dhikrId == id },
             current.sessions.values.filter { id in it.itemIds }, id in current.favourites)
         val sessionIds = removal.sessions.map { it.id }.toSet()
         update { old -> old.copy(
             customEntries = old.customEntries.filterNot { it.id == id },
-            reminders = old.reminders.filterNot { it.dhikrId == id },
+            reminders = old.reminders.filterNot { it.collection == null && it.dhikrId == id }.map { rule ->
+                if (rule.collection != null && rule.dhikrId == id) rule.copy(dhikrId = collectionRepresentative(rule.collection)) else rule
+            },
+            occurrences = old.occurrences.mapValues { (_, occurrence) ->
+                val collection = if (occurrence.dhikrId != id) null
+                    else old.reminders.firstOrNull { it.id == occurrence.ruleId }?.collection
+                if (collection != null) occurrence.copy(dhikrId = collectionRepresentative(collection)) else occurrence
+            },
             sessions = old.sessions.filterKeys { it !in sessionIds },
             favourites = old.favourites - id,
             lastSessionId = old.lastSessionId?.takeIf { it !in sessionIds },
@@ -266,10 +292,17 @@ class DhikrRepository(context: Context) {
         update { old ->
             val existing = old.occurrences[window.progressKey]
             val legacy = if (rule.revision == 1) store.legacyCount(rule.id + "|" + window.date) else 0
+            // An edit made during the day replaced that day's count with a new revision: what was
+            // already read of the same dhikr still counts towards the later periods' goal.
+            val carried = if (existing != null || rule.collection != null) 0 else old.occurrences.values.filter {
+                it.ruleId == rule.id && it.date == window.date.toString() && it.dhikrId == rule.dhikrId &&
+                    it.status == DhikrOccurrenceStatus.REPLACED
+            }.maxOfOrNull { it.count } ?: 0
+            val start = maxOf(legacy, carried)
             val occurrence = existing?.copy(startMillis = window.progressStartMillis, endMillis = window.progressEndMillis)
                 ?: DhikrOccurrence(window.progressKey, rule.id, rule.revision, window.date.toString(), rule.dhikrId,
-                    rule.targetCount, window.progressStartMillis, window.progressEndMillis, legacy.coerceAtMost(rule.targetCount),
-                    if (legacy >= rule.targetCount) DhikrOccurrenceStatus.COMPLETED else DhikrOccurrenceStatus.OPEN)
+                    rule.targetCount, window.progressStartMillis, window.progressEndMillis, start.coerceAtMost(rule.targetCount),
+                    if (start >= rule.targetCount) DhikrOccurrenceStatus.COMPLETED else DhikrOccurrenceStatus.OPEN)
             old.copy(occurrences = old.occurrences + (occurrence.id to occurrence))
         }
         return state.value.occurrences.getValue(window.progressKey)
@@ -311,9 +344,11 @@ class DhikrRepository(context: Context) {
                 runCatching { LocalDate.parse(occurrence.date) }.getOrNull()
                     ?.let { DhikrReminderScheduler.resolveWindows(app, rule, it) }
                     ?.firstOrNull { it.progressKey == occurrence.id && now in it.startMillis until it.endMillis }
-            val snoozeUntil = now + 30 * 60_000L
+            // Thirty minutes, or as late as still leaves five minutes of the period; a postponement
+            // of under ten minutes is not worth coming back for.
+            val snoozeUntil = minOf(now + 30 * 60_000L, (activeWindow?.endMillis ?: now) - 5 * 60_000L)
             if (occurrence == null || occurrence.status != DhikrOccurrenceStatus.OPEN ||
-                activeWindow == null || snoozeUntil > activeWindow.endMillis - 5 * 60_000L) old else {
+                activeWindow == null || snoozeUntil < now + 10 * 60_000L) old else {
                 accepted = true
                 old.copy(occurrences = old.occurrences + (occurrence.id to occurrence.copy(
                     snoozedUntilMillis = snoozeUntil)))
@@ -329,7 +364,11 @@ class DhikrRepository(context: Context) {
         require(items.isNotEmpty() && items.all { known.findDhikr(it) != null })
         require(targetCountOverride == null || targetCountOverride in 1..100_000)
         require(!collectionReading || category != null)
-        val periodKey = if (collectionReading) collectionReadingPeriodKey(app, category!!, occurrenceId, now) else null
+        // A reading opened from a reminder belongs to the occasion its period reads, which the
+        // scheduler judges the same way; any other reading follows the clock.
+        val periodKey = if (!collectionReading) null else occurrenceWindow(known, occurrenceId, now)
+            ?.let { DhikrReminderScheduler.collectionWindowPeriodKey(app, category!!, it) }
+            ?: collectionReadingPeriodKey(app, category!!, occurrenceId, now)
         var selected = ""
         update { old ->
             val occurrence = occurrenceId?.let { old.occurrences[it] }
@@ -401,6 +440,15 @@ class DhikrRepository(context: Context) {
         }
         if (occurrenceId != null || collectionReading) DhikrReminderScheduler.refresh(app, nowMillis = now)
         return selected
+    }
+    /** The period of [occurrenceId]'s day that is running at [now], else the next one, else the last. */
+    private fun occurrenceWindow(known: DhikrState, occurrenceId: String?, now: Long): DhikrWindow? {
+        val occurrence = occurrenceId?.let { known.occurrences[it] } ?: return null
+        val rule = known.reminders.firstOrNull { it.id == occurrence.ruleId && it.revision == occurrence.revision } ?: return null
+        val windows = runCatching { LocalDate.parse(occurrence.date) }.getOrNull()
+            ?.let { DhikrReminderScheduler.resolveWindows(app, rule, it) }.orEmpty()
+        return windows.firstOrNull { now in it.startMillis until it.endMillis }
+            ?: windows.firstOrNull { it.startMillis > now } ?: windows.lastOrNull()
     }
     fun resumeSession(id: String) = update { old ->
         old.sessions[id]?.let { session ->
@@ -580,7 +628,11 @@ private fun dhikrStateFromJson(json: JSONObject): DhikrState {
         runCatching { dhikrReminderFromJson(it) }.getOrNull()
     }
     val migratedDailyRuleIds = savedRules.filter { it.withDailyTahlilEntry() != it }.map { it.id }.toSet()
-    val reminders = savedRules.map(DhikrReminder::withDailyTahlilEntry).filter { it.dhikrId in knownIds }
+    // A whole-collection rule saved with a personal dhikr as its representative no longer depends on it.
+    val reminders = savedRules.map(DhikrReminder::withDailyTahlilEntry).map { rule ->
+        rule.collection?.takeIf { DhikrCatalog.find(rule.dhikrId) == null }
+            ?.let { rule.copy(dhikrId = collectionRepresentative(it)) } ?: rule
+    }.filter { it.dhikrId in knownIds }
     val occurrences = json.optJSONArray("occurrences")?.objects().orEmpty().mapNotNull { o -> runCatching {
         DhikrOccurrence(o.getString("id"), o.getString("ruleId"), o.optInt("revision", 1), o.getString("date"),
             o.getString("dhikrId"), o.getInt("target"), o.getLong("start"), o.getLong("end"), o.optInt("count"),
@@ -628,15 +680,23 @@ private fun dhikrStateFromJson(json: JSONObject): DhikrState {
         json.optBoolean("countHaptics"), customEntries,
         readMembership("collectionAdditions"), removals, collectionOrders)
 }
+/** The prayer at which a daily collection's occasion begins; null for collections that have none. */
+internal fun collectionOccasionStart(category: DhikrCategory): DhikrTimeKind? = when (category) {
+    DhikrCategory.MORNING -> DhikrTimeKind.FAJR
+    DhikrCategory.EVENING -> DhikrTimeKind.ASR
+    DhikrCategory.NIGHT -> DhikrTimeKind.MAGHRIB
+    else -> null
+}
+/** A catalog entry to stand for a whole-collection reminder: it cannot be deleted from under it. */
+internal fun collectionRepresentative(category: DhikrCategory): String =
+    DhikrCatalog.collectionOrder[category].orEmpty().firstOrNull { DhikrCatalog.find(it) != null }
+        ?: DhikrCatalog.entries.firstOrNull { category in it.categories }?.id
+        ?: DhikrCatalog.entries.first().id
 /** Full-list readings resume within their occasion; other collections reset only on New Session. */
 internal fun collectionReadingPeriodKey(context: Context, category: DhikrCategory, occurrenceId: String?, now: Long): String {
     // Morning, evening and night readings belong to a daily occasion however they were opened.
-    val startKind = when (category) {
-        DhikrCategory.MORNING -> DhikrTimeKind.FAJR
-        DhikrCategory.EVENING -> DhikrTimeKind.ASR
-        DhikrCategory.NIGHT -> DhikrTimeKind.MAGHRIB
-        else -> return if (occurrenceId != null) "linked:$occurrenceId" else "manual:${category.name}"
-    }
+    val startKind = collectionOccasionStart(category)
+        ?: return if (occurrenceId != null) "linked:$occurrenceId" else "manual:${category.name}"
     val date = Instant.ofEpochMilli(now).atZone(ZoneId.systemDefault()).toLocalDate()
     val start = DhikrReminderScheduler.resolveTime(context, DhikrTime(startKind), date)
     val occasionDate = if (start != null && now < start) date.minusDays(1) else date

@@ -73,6 +73,7 @@ import kotlin.math.abs
     onNewSession: () -> Unit, reminder: DhikrReminder?, reminderActionLabel: String, onReminder: () -> Unit,
     onConfigureReminder: () -> Unit, onDeleteReminder: () -> Unit,
     skipReminderLabel: String?, onSkipReminder: () -> Unit,
+    snackbar: SnackbarHostState,
 ) {
     val p = LocalAdhkarPalette.current
     val entry = state.findDhikr(session.itemId) ?: return
@@ -461,6 +462,9 @@ import kotlin.math.abs
                         .clip(RoundedCornerShape(2.dp)).background(p.primary))
                 }
             }
+            // This dialog covers the page and its snackbars: messages raised while reading show here.
+            SnackbarHost(snackbar, Modifier.fillMaxSize().wrapContentSize(Alignment.BottomCenter)
+                .navigationBarsPadding().padding(16.dp))
         }
         if (sources) ModalBottomSheet(onDismissRequest = { sources = false },
             sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = p.background) {
@@ -493,7 +497,7 @@ import kotlin.math.abs
                 Text("بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ", fontFamily = AdhkarReadingFont, fontSize = state.textSize.sp, color = p.forest)
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text("الاهتزاز عند العدّ", Modifier.weight(1f), color = AdhkarHeading, fontSize = 14.sp)
-                    Switch(state.countHaptics, onCheckedChange = onHaptics)
+                    AdhkarSwitch(state.countHaptics, onCheckedChange = onHaptics)
                 }
             } }, confirmButton = { TextButton(onClick = { textSettings = false }) { Text("تم") } })
         if (confirmRemove) AlertDialog(onDismissRequest = { confirmRemove = false },

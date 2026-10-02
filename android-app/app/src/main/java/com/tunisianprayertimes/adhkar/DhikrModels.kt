@@ -39,7 +39,10 @@ data class DhikrReminder(
     val revision: Int = 1,
     val notBeforeMillis: Long = 0,
     val extraIntervals: List<DhikrInterval> = emptyList(),
-    /** When the rule was first saved; nudges before it were never missed, so they are not recovered. */
+    /**
+     * When the rule was first saved or last switched back on; nudges before it were never missed,
+     * so they are not recovered.
+     */
     val createdAtMillis: Long = 0,
 )
 
@@ -50,6 +53,17 @@ fun DhikrReminder.intervals(): List<DhikrInterval> =
 internal fun DhikrInterval.scheduleIdentity(): DhikrInterval =
     copy(start = start.withoutUnusedMinute(), end = end.withoutUnusedMinute())
 private fun DhikrTime.withoutUnusedMinute(): DhikrTime = if (kind == DhikrTimeKind.FIXED) this else copy(minuteOfDay = 0)
+
+/**
+ * The form two rules are compared in: fields nothing reads are not differences. That is the clock
+ * minute of a prayer-relative time, the interval of any cadence but the custom one, and the entry
+ * that merely stands for a whole collection.
+ */
+internal fun DhikrReminder.normalized(): DhikrReminder = copy(
+    dhikrId = if (collection != null) "" else dhikrId,
+    start = start.withoutUnusedMinute(), end = end.withoutUnusedMinute(),
+    extraIntervals = extraIntervals.map(DhikrInterval::scheduleIdentity),
+    intervalMinutes = if (cadence == DhikrCadence.CUSTOM) intervalMinutes else 60)
 
 /** The end is exclusive. An overnight window keeps the selected starting day's key. */
 data class DhikrWindow(
@@ -200,13 +214,31 @@ data class DhikrState(
     val collectionOrders: Map<DhikrCategory, List<String>> = emptyMap(),
 )
 
-/** The rule as saving it at [now] stores it; the editor previews the next nudge with the same form. */
-internal fun DhikrState.storedForm(rule: DhikrReminder, now: Long): DhikrReminder {
+/**
+ * The rule as saving it at [now] stores it. An edit starts a new revision that takes effect at
+ * [effectiveFrom]: the end of the stored rule's period that is running, so that period's
+ * notifications stop, or [now] when none is. Use [DhikrReminderScheduler.storedForm], which finds it.
+ */
+internal fun DhikrState.storedForm(rule: DhikrReminder, now: Long, effectiveFrom: Long): DhikrReminder {
     val previous = reminders.find { it.id == rule.id } ?: return rule.copy(createdAtMillis = now)
-    if (previous.copy(enabled = rule.enabled) == rule) return rule
-    val current = occurrences.values.filter { it.ruleId == rule.id && now in it.startMillis until it.endMillis }
-    return rule.copy(revision = previous.revision + 1,
-        notBeforeMillis = maxOf(now, current.maxOfOrNull { it.endMillis } ?: now))
+    // The switch and the vibration change neither what is counted nor when: the stored rule, its
+    // revision and today's progress stay. Switching back on restarts the missed-nudge recovery.
+    if (!changesSchedule(rule)) return previous.copy(enabled = rule.enabled, vibrate = rule.vibrate,
+        createdAtMillis = if (rule.enabled && !previous.enabled) now else previous.createdAtMillis)
+    return rule.copy(revision = previous.revision + 1, notBeforeMillis = maxOf(now, effectiveFrom),
+        createdAtMillis = previous.createdAtMillis)
+}
+
+/**
+ * True when saving [rule] over its stored version starts a new revision: the dhikr, the goal, the
+ * days, the periods or the cadence differ. The revision and the time stamps belong to the stored
+ * rule, so a draft saved twice, which does not carry them, is not an edit.
+ */
+internal fun DhikrState.changesSchedule(rule: DhikrReminder): Boolean {
+    val previous = reminders.find { it.id == rule.id } ?: return false
+    return previous.normalized() != rule.copy(enabled = previous.enabled, vibrate = previous.vibrate,
+        revision = previous.revision, notBeforeMillis = previous.notBeforeMillis,
+        createdAtMillis = previous.createdAtMillis).normalized()
 }
 
 /** Resolves built-in and personal entries through one lookup. */
@@ -244,10 +276,20 @@ data class CustomDhikrRemoval(
     val favourite: Boolean,
 )
 
-/** Matching only: never normalize the stored/displayed religious text. */
+/**
+ * Matching only: never normalize the stored/displayed religious text. Punctuation, verse marks with
+ * their numbers and pause signs become one space, so a phrase typed without them still matches.
+ */
 fun normalizeDhikrSearch(value: String): String = java.text.Normalizer.normalize(value, java.text.Normalizer.Form.NFD)
-    .replace(Regex("[\\p{M}ـ]"), "")
-    .replace('ى', 'ي').replace('ؤ', 'و').replace('ئ', 'ي').replace('ة', 'ه').lowercase().trim()
+    .replace(Regex("۝[0-9٠-٩]*"), " ")
+    .replace(Regex("[\\p{M}\\p{Cf}ـ]"), "")
+    .replace(Regex("[\\p{P}\\p{S}]"), " ")
+    .replace('ى', 'ي').replace('ؤ', 'و').replace('ئ', 'ي').replace('ة', 'ه').lowercase()
+    .replace(Regex("\\s+"), " ").trim()
+
+/** Everything a dhikr can be found by: the library and the reminder editor search the same text. */
+fun dhikrSearchText(entry: DhikrEntry): String =
+    entry.title + " " + entry.text + " " + entry.explanation + " " + entry.categories.joinToString(" ") { it.title }
 
 fun DhikrState.target(session: DhikrSession, itemId: String = session.itemId): Int {
     val entry = findDhikr(itemId)

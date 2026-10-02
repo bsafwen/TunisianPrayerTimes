@@ -24,6 +24,7 @@ import com.tunisianprayertimes.adhkar.DhikrEntry
 import com.tunisianprayertimes.adhkar.DhikrState
 import com.tunisianprayertimes.adhkar.allEntries
 import com.tunisianprayertimes.adhkar.isInCollection
+import com.tunisianprayertimes.adhkar.dhikrSearchText
 import com.tunisianprayertimes.adhkar.normalizeDhikrSearch
 
 @Composable
@@ -39,7 +40,7 @@ internal fun DhikrCollectionAddDialog(
     val available = remember(state.customEntries, state.collectionAdditions, state.collectionRemovals, category, normalized) {
         state.allEntries.filter { entry ->
             !state.isInCollection(entry, category) &&
-                (normalized.isEmpty() || normalizeDhikrSearch(entry.title + " " + entry.text).contains(normalized))
+                (normalized.isEmpty() || normalizeDhikrSearch(dhikrSearchText(entry)).contains(normalized))
         }
     }
 

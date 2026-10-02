@@ -5,11 +5,15 @@ import androidx.activity.compose.BackHandler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -28,14 +32,21 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.LiveRegionMode
+import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.liveRegion
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.fragment.app.DialogFragment
+import androidx.compose.ui.window.DialogProperties
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -43,12 +54,18 @@ import com.google.android.material.timepicker.TimeFormat
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.adhkar.*
 import java.time.*
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
+/**
+ * [onSave] reports back a message when the save failed and null when it worked; the sheet then closes
+ * itself and calls [onDismiss]. [onDirtyChange] tells the screen whether unsaved edits are at stake.
+ */
 @Composable internal fun DhikrReminderEditor(activity: AppCompatActivity, initial: DhikrReminder,
-    exactAlarmsAvailable: Boolean, onDismiss: () -> Unit, onSave: (DhikrReminder, (String) -> Unit) -> Unit) {
+    exactAlarmsAvailable: Boolean, snackbar: SnackbarHostState, onDismiss: () -> Unit,
+    onDirtyChange: (Boolean) -> Unit, onSave: (DhikrReminder, (String?) -> Unit) -> Unit) {
     val p = LocalAdhkarPalette.current
     remember(activity) { DhikrReminderScheduler.ensureChannel(activity) }
     var selectedId by rememberSaveable(initial.id) { mutableStateOf(initial.dhikrId) }
@@ -73,18 +90,27 @@ import org.json.JSONObject
     var interval by rememberSaveable(initial.id) { mutableStateOf(initial.intervalMinutes.coerceAtLeast(MIN_DHIKR_INTERVAL_MINUTES).toString()) }
     var enabled by rememberSaveable(initial.id) { mutableStateOf(initial.enabled) }
     var vibrate by rememberSaveable(initial.id) { mutableStateOf(initial.vibrate) }
-    var selectingDhikr by remember { mutableStateOf(false) }
+    // The dialogs are saved with the form: a re-created activity brings back the one that was open.
+    var selectingDhikr by rememberSaveable(initial.id) { mutableStateOf(false) }
+    var pickerQuery by rememberSaveable(initial.id) { mutableStateOf("") }
     // «100 مرة» needs a single dhikr: without one it opens the list and applies after the choice.
-    var hundredAfterPick by remember { mutableStateOf(false) }
-    var preview by remember { mutableStateOf(false) }
+    var hundredAfterPick by rememberSaveable(initial.id) { mutableStateOf(false) }
+    var pendingHundred by rememberSaveable(initial.id) { mutableStateOf(false) }
+    var preview by rememberSaveable(initial.id) { mutableStateOf(false) }
     var saving by remember { mutableStateOf(false) }
     var saveError by remember { mutableStateOf<String?>(null) }
     var saveAttempted by rememberSaveable(initial.id) { mutableStateOf(false) }
-    var cadenceDialog by remember { mutableStateOf(false) }
-    var discardPrompt by remember { mutableStateOf(false) }
-    var pendingTemplate by remember { mutableStateOf<DhikrReminder?>(null) }
+    // Set once the save went through, so the sheet may hide although the form still differs from what it opened with.
+    var closing by remember { mutableStateOf(false) }
+    var cadenceDialog by rememberSaveable(initial.id) { mutableStateOf(false) }
+    var intervalInput by rememberSaveable(initial.id) { mutableStateOf("") }
+    var discardPrompt by rememberSaveable(initial.id) { mutableStateOf(false) }
+    var pendingTemplate by rememberSaveable(initial.id, stateSaver = DhikrReminderOrNullSaver) { mutableStateOf<DhikrReminder?>(null) }
     // The interval draft as it was when the time dialog opened, so «إلغاء» can restore it.
     var intervalBackup by rememberSaveable(initial.id) { mutableStateOf<String?>(null) }
+    // The end the clock picker is setting, as "period|start" or "period|end": a picker restored with the activity finds it again.
+    var pickerTarget by rememberSaveable(initial.id) { mutableStateOf<String?>(null) }
+    var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
     fun integer(value: String): Int? = parseDhikrInt(value)
     fun replaceInterval(index: Int, value: DhikrInterval) {
         intervalDraft = encodeIntervalDraft(intervals.toMutableList().also { it[index] = value })
@@ -97,6 +123,17 @@ import org.json.JSONObject
         intervalBackup?.let { intervalDraft = it }
         intervalBackup = null
         timeDialogIndex = -1
+    }
+    // Called by the picker, possibly long after this composition: it reads the draft as it is then.
+    fun applyPickedTime(minute: Int) {
+        val target = pickerTarget ?: return
+        pickerTarget = null
+        val periods = decodeIntervalDraft(intervalDraft).toMutableList()
+        val index = target.substringBefore('|').toIntOrNull() ?: return
+        val period = periods.getOrNull(index) ?: return
+        periods[index] = if (target.endsWith("start")) period.copy(start = period.start.copy(minuteOfDay = minute))
+            else period.copy(end = period.end.copy(minuteOfDay = minute))
+        intervalDraft = encodeIntervalDraft(periods)
     }
     val collection = collectionName?.let { runCatching { DhikrCategory.valueOf(it) }.getOrNull() }
     val showTarget = collection == null
@@ -113,23 +150,36 @@ import org.json.JSONObject
         targetCount = if (collection != null) 1 else steppedEntry?.defaultCount ?: integer(target) ?: 0,
         daysOfWeek = days, start = start, end = end, endNextDay = nextDay,
         extraIntervals = intervals.drop(1),
-        cadence = DhikrCadence.valueOf(cadence), intervalMinutes = integer(interval) ?: 0,
+        // Only a custom cadence reads the interval: one tried and then abandoned leaves no trace in the rule.
+        cadence = DhikrCadence.valueOf(cadence),
+        intervalMinutes = if (cadence == DhikrCadence.CUSTOM.name) integer(interval) ?: 0 else initial.intervalMinutes,
         enabled = enabled, vibrate = vibrate)
     val problem = remember(edited) { DhikrReminderScheduler.validate(activity, edited) }
     LaunchedEffect(edited) { saveError = null }
-    val window = remember(edited) { if (problem == null) DhikrReminderScheduler.currentOrNextWindow(activity, edited) else null }
+    val periodProblem = remember(edited) { DhikrReminderScheduler.periodProblem(activity, edited) }
+    // The periods alone, resolved even before a dhikr is chosen: the dialogs show their clock times and counts.
+    val schedulePreview = remember(edited) {
+        if (periodProblem == null) DhikrReminderScheduler.currentOrNextWindow(activity, edited, scheduleOnly = true) else null
+    }
     val large = LocalConfiguration.current.screenHeightDp < 640 || LocalDensity.current.fontScale > 1.3f
-    val isExisting = remember(initial.id) { repoState.reminders.any { it.id == initial.id } }
+    val storedRule = remember(initial.id) { repoState.reminders.firstOrNull { it.id == initial.id } }
+    val isExisting = storedRule != null
     // Saved, so a re-created activity still knows what the form held when it opened.
     val original = rememberSaveable(initial.id, saver = DhikrReminderSaver) { edited }
-    val dirty = edited != original
+    // Compared without the fields nothing reads, so a prayer end that passed through «وقت ثابت» is not an edit.
+    val dirty = edited.normalized() != original.normalized()
+    LaunchedEffect(dirty) { onDirtyChange(dirty) }
+    DisposableEffect(Unit) { onDispose { onDirtyChange(false) } }
     // What the form held after the last ready-made option; later edits on top of it are the user's own.
     var templateBase by rememberSaveable(initial.id, stateSaver = DhikrReminderSaver) { mutableStateOf(edited) }
     var rebaseToken by remember { mutableIntStateOf(0) }
     val currentEdited by rememberUpdatedState(edited)
     LaunchedEffect(rebaseToken) { if (rebaseToken > 0) templateBase = currentEdited }
+    // A form that opened with a dhikr or a collection already holds a choice a ready-made option would replace.
     val customized = edited.copy(enabled = templateBase.enabled, vibrate = templateBase.vibrate) != templateBase ||
-        (isExisting && templateBase == original)
+        (templateBase == original && original.dhikrId.isNotEmpty())
+    // On a blank new reminder the period follows the dhikr chosen, until the user sets the times or the cadence.
+    var scheduleFollowsDhikr by rememberSaveable(initial.id) { mutableStateOf(!isExisting && initial.dhikrId.isEmpty()) }
     val formScroll = rememberScrollState()
     val scope = rememberCoroutineScope()
     fun applyTemplate(value: DhikrReminder) {
@@ -140,33 +190,86 @@ import org.json.JSONObject
         intervalDraft = encodeIntervalDraft(value.intervals())
         timeDialogIndex = -1
         cadence = value.cadence.name; interval = value.intervalMinutes.coerceAtLeast(MIN_DHIKR_INTERVAL_MINUTES).toString()
+        scheduleFollowsDhikr = false
         rebaseToken++
         // The option rewrites the fields above it: show them, rather than let the cards shift under the finger.
         scope.launch { formScroll.animateScrollTo(0) }
     }
     // A ready-made option replaces the whole schedule; ask first when that would drop the user's settings.
     fun requestTemplate(value: DhikrReminder) { if (customized) pendingTemplate = value else applyTemplate(value) }
+    fun applyHundred() {
+        target = "100"; daysText = (1..7).joinToString(",")
+        scope.launch { formScroll.animateScrollTo(0) }
+    }
+    // The times a dhikr is usually said at, as the reader's own shortcut uses them, when it has one
+    // such occasion; any other dhikr gets back the period and cadence the form opened with.
+    fun followDhikr(category: DhikrCategory?, wholeCollection: Boolean) {
+        if (!scheduleFollowsDhikr) return
+        val suggested = if (category in dhikrTimedCategories) defaultDhikrReminder(selectedId, category, knownEntries, wholeCollection)
+            else original
+        intervalDraft = encodeIntervalDraft(suggested.intervals())
+        cadence = suggested.cadence.name
+    }
     // Listed in the order they happen, when the times can be resolved.
     fun chronological(list: List<DhikrInterval>): List<DhikrInterval> {
-        val date = window?.date ?: LocalDate.now()
+        val date = schedulePreview?.date ?: LocalDate.now()
         val starts = list.map { DhikrReminderScheduler.resolveTime(activity, it.start, date) }
         return if (starts.any { it == null }) list else list.indices.sortedBy { starts[it]!! }.map { list[it] }
     }
     var resumeTick by remember { mutableIntStateOf(0) }
     DisposableEffect(activity) {
-        val observer = LifecycleEventObserver { _, event -> if (event == Lifecycle.Event.ON_RESUME) resumeTick++ }
+        val observer = LifecycleEventObserver { _, event ->
+            if (event == Lifecycle.Event.ON_RESUME) { resumeTick++; now = System.currentTimeMillis() }
+        }
         activity.lifecycle.addObserver(observer)
         onDispose { activity.lifecycle.removeObserver(observer) }
+    }
+    // What the bar under the form announces keeps up with the clock while the sheet stays open.
+    LaunchedEffect(Unit) { while (true) { delay(30_000); now = System.currentTimeMillis() } }
+    // The rule as saving it now would store it: its next period and notification are the ones the user gets.
+    val stored = remember(edited, now) {
+        if (problem == null) DhikrReminderScheduler.storedForm(activity, repoState, edited, now) else null
+    }
+    val storedWindow = remember(stored, now) { stored?.let { DhikrReminderScheduler.currentOrNextWindow(activity, it, now) } }
+    val nextNudge = remember(stored, now) {
+        stored?.let { DhikrReminderScheduler.nextNudge(activity, it, now, ignoreNotificationAccess = true) }
+    }
+    val stopsRunningPeriod = remember(edited, now) {
+        storedRule != null && storedRule.enabled && repoState.changesSchedule(edited) &&
+            DhikrReminderScheduler.currentOrNextWindow(activity, storedRule, now)?.let { now >= it.startMillis } == true
+    }
+    // A clock picker restored with the activity has lost its listeners and lies under this sheet and its
+    // dialogs, which are shown after it: it is replaced by a fresh one on top, at the time it had reached.
+    var pickerShownHere by remember { mutableStateOf(false) }
+    LaunchedEffect(pickerTarget) {
+        val manager = activity.supportFragmentManager
+        var picker = manager.findFragmentByTag(DHIKR_TIME_PICKER_TAG) as? MaterialTimePicker
+        val target = pickerTarget
+        if (picker != null && !pickerShownHere && !manager.isStateSaved) {
+            val reached = picker.hour * 60 + picker.minute
+            manager.beginTransaction().remove(picker).commitNow()
+            picker = if (target == null) null else showDhikrTimePicker(activity,
+                if (target.endsWith("start")) "وقت البداية" else "وقت النهاية", reached)
+            pickerShownHere = picker != null
+        }
+        if (picker == null) pickerTarget = null else if (target != null) {
+            val shown = picker
+            shown.clearOnPositiveButtonClickListeners(); shown.clearOnNegativeButtonClickListeners()
+            shown.clearOnCancelListeners()
+            shown.addOnPositiveButtonClickListener { applyPickedTime(shown.hour * 60 + shown.minute) }
+            shown.addOnNegativeButtonClickListener { pickerTarget = null }
+            shown.addOnCancelListener { pickerTarget = null }
+        }
     }
     val blockHide by rememberUpdatedState(saving || dirty)
     // Swipe, scrim and handle taps pass through here: never hide mid-save or over unsaved edits.
     val confirmSheetValue = remember { { value: SheetValue ->
-        if (value != SheetValue.Hidden || !blockHide) true
+        if (value != SheetValue.Hidden || closing || !blockHide) true
         else { if (!saving) discardPrompt = true; false }
     } }
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true, confirmValueChange = confirmSheetValue)
     fun requestClose() {
-        if (saving) return
+        if (saving || closing) return
         if (dirty) discardPrompt = true
         else scope.launch { sheetState.hide() }.invokeOnCompletion { onDismiss() }
     }
@@ -189,7 +292,11 @@ import org.json.JSONObject
             // The guard keeps a scroll that reaches the top from dragging the sheet towards dismissal.
             Column(Modifier.weight(1f).nestedScroll(rememberSheetScrollGuard(formScroll)).verticalScroll(formScroll)
                 .padding(horizontal = 20.dp, vertical = 10.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
-                AdhkarCard(Modifier.fillMaxWidth().testTag("adhkar_reminder_dhikr"), onClick = { selectingDhikr = true }) {
+                // After a refused «حفظ» the card that still needs a choice is outlined, and the form shows it.
+                val dhikrMissing = saveAttempted && collection == null && selectedEntry == null
+                AdhkarCard(Modifier.fillMaxWidth().testTag("adhkar_reminder_dhikr").then(if (!dhikrMissing) Modifier
+                    else Modifier.border(1.5.dp, MaterialTheme.colorScheme.error, RoundedCornerShape(18.dp))),
+                    onClick = { selectingDhikr = true }) {
                     Row(Modifier.fillMaxWidth().padding(14.dp), verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                         Box(Modifier.size(54.dp).clip(RoundedCornerShape(16.dp)).background(AdhkarSoftGreen), contentAlignment = Alignment.Center) {
@@ -200,7 +307,7 @@ import org.json.JSONObject
                             }, modifier = Modifier.size(28.dp))
                         }
                         Column(Modifier.weight(1f)) {
-                            Text(collection?.let(::collectionTitle) ?: selectedEntry?.title ?: "اختر ذكرًا",
+                            Text(collection?.let(::reminderCollectionTitle) ?: selectedEntry?.title ?: "اختر ذكرًا",
                                 color = if (collection == null && selectedEntry == null) p.primary else AdhkarHeading,
                                 fontWeight = FontWeight.Bold, fontSize = 16.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
                             if (collection == null && selectedEntry != null) Text(dhikrPreview(selectedEntry.text),
@@ -215,7 +322,8 @@ import org.json.JSONObject
                         DhikrIcon(R.drawable.ic_adhkar_next, tint = p.muted, modifier = Modifier.size(18.dp))
                     }
                 }
-                Text("الهدف وأوقات التذكير", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 17.sp)
+                Text(if (showTarget) "الهدف وأوقات التذكير" else "أوقات التذكير",
+                    color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 17.sp)
                 AdhkarCard(Modifier.fillMaxWidth()) {
                     Column {
                         if (showTarget && steppedEntry != null) {
@@ -236,10 +344,11 @@ import org.json.JSONObject
                                         target = ((integer(target) ?: 0) + 1).coerceAtMost(100000).toString()
                                     }
                                     OutlinedTextField(
-                                        value = target, onValueChange = { if (it.length <= 6 && it.all(Char::isDigit)) target = it },
+                                        value = target, onValueChange = { typed -> latinDigits(typed)?.takeIf { it.length <= 6 }?.let { target = it } },
                                         singleLine = true,
                                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                                        textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center,
+                                        // A number reads left to right: the caret then sits where the next digit goes.
+                                        textStyle = LocalTextStyle.current.copy(textAlign = TextAlign.Center, textDirection = TextDirection.Ltr,
                                             fontWeight = FontWeight.Bold, fontSize = 18.sp, color = AdhkarHeading),
                                         shape = RoundedCornerShape(14.dp), colors = fieldColors,
                                         modifier = Modifier.weight(1f).testTag("adhkar_target_input"),
@@ -255,9 +364,11 @@ import org.json.JSONObject
                         }
                         intervals.forEachIndexed { index, value ->
                             if (index > 0) HorizontalDivider(color = AdhkarBorder)
+                            // The period a schedule problem concerns is the one shown in the error colour.
                             SettingRow(R.drawable.ic_adhkar_clock,
                                 if (intervals.size == 1) "فترة التذكير" else "الفترة " + latinNumber(index + 1),
-                                dhikrIntervalLabel(value)) { openInterval(index) }
+                                dhikrIntervalLabel(value),
+                                error = periodProblem != null && (intervals.size == 1 || index in periodProblem.periods)) { openInterval(index) }
                         }
                         TextButton(onClick = {
                             intervalBackup = intervalDraft
@@ -269,7 +380,9 @@ import org.json.JSONObject
                             Text("إضافة فترة")
                         }
                         HorizontalDivider(color = AdhkarBorder)
-                        SettingRow(R.drawable.ic_adhkar_bell, "تكرار الإشعارات", cadenceLabel(cadence, interval, intervals.size)) { cadenceDialog = true }
+                        SettingRow(R.drawable.ic_adhkar_bell, "تكرار الإشعارات", cadenceLabel(cadence, interval, intervals.size)) {
+                            intervalInput = interval; cadenceDialog = true
+                        }
                     }
                 }
                 Column {
@@ -291,9 +404,13 @@ import org.json.JSONObject
                 Text("خيارات التذكير", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 17.sp)
                 AdhkarCard(Modifier.fillMaxWidth()) {
                     Column {
-                        ToggleRow("إشعارات التذكير", "تلقّي تذكيرات خلال الفترات المحددة", enabled) { enabled = it }
+                        ToggleRow("إشعارات التذكير", "تلقّي الإشعارات خلال الفترات المحددة", enabled) { enabled = it }
                         HorizontalDivider(color = AdhkarBorder)
-                        ToggleRow("الاهتزاز", "اهتزاز عند وصول التذكير", vibrate) { vibrate = it }
+                        ToggleRow("الاهتزاز", "اهتزاز عند وصول الإشعار", vibrate) { vibrate = it }
+                        HorizontalDivider(color = AdhkarBorder)
+                        // There is nothing to preview until the reminder has something to announce.
+                        TextButton(onClick = { preview = true }, enabled = collection != null || selectedEntry != null,
+                            modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp)) { Text("معاينة الإشعار") }
                     }
                 }
                 Text("خيارات جاهزة", color = AdhkarHeading, fontWeight = FontWeight.Bold, fontSize = 17.sp)
@@ -305,8 +422,13 @@ import org.json.JSONObject
                     TemplateCard("100 مرة", "يوميًا", null,
                         selected = collection == null && edited.targetCount == 100 && days.size == 7,
                         modifier = Modifier.weight(1f)) {
-                            if (collection != null || selectedEntry == null) { hundredAfterPick = true; selectingDhikr = true }
-                            else { target = "100"; daysText = (1..7).joinToString(",") }
+                            when {
+                                collection != null || selectedEntry == null -> { hundredAfterPick = true; selectingDhikr = true }
+                                // Ask before dropping days the user picked or a goal that is their own.
+                                customized && (days.size != 7 || integer(target) !in setOf(100, selectedEntry?.defaultCount)) ->
+                                    pendingHundred = true
+                                else -> applyHundred()
+                            }
                         }
                 }
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -320,22 +442,14 @@ import org.json.JSONObject
                 TemplateCard("أذكار الليل بعد المغرب", collectionSubtitle(repoState, DhikrCategory.NIGHT),
                     R.drawable.ic_adhkar_moon, selected = collection == DhikrCategory.NIGHT,
                     modifier = Modifier.fillMaxWidth()) { requestTemplate(nightCollectionPreset()) }
-                if (window != null) Text("الفترة القادمة: " + formatDhikrWindow(window), color = p.muted, fontSize = 12.sp, lineHeight = 23.sp)
-                if (isExisting) Text("تسري التعديلات على الفترات القادمة. تتوقف إشعارات الفترة الحالية، ويبقى عدد القراءات محفوظًا.", color = p.muted, fontSize = 12.sp, lineHeight = 23.sp)
+                if (stopsRunningPeriod) Text("حفظ هذا التعديل يوقف إشعارات الفترة الحالية، وتسري الإعدادات الجديدة ابتداءً من الفترة التالية.",
+                    color = p.muted, fontSize = 12.sp, lineHeight = 23.sp)
                 if (problem == null) Surface(color = AdhkarSoftGreen, shape = RoundedCornerShape(14.dp)) {
                     Text(dhikrRuleSummary(edited), Modifier.padding(16.dp), color = AdhkarHeading, fontSize = 13.sp, lineHeight = 24.sp)
                 }
-                if (problem == null) {
-                    // Previewed in the form the rule is stored in: a new rule does not replay a nudge that came before it.
-                    val nextReminder = remember(edited) {
-                        DhikrReminderScheduler.nextNudge(activity, repoState.storedForm(edited, System.currentTimeMillis()))
-                    }
-                    if (nextReminder != null) Text("التنبيه القادم: " + formatDhikrTime(nextReminder), color = AdhkarHeading,
-                        fontWeight = FontWeight.SemiBold, fontSize = 13.sp, modifier = Modifier.testTag("adhkar_next_nudge"))
-                }
                 Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     if (collection != null && repoState.collectionEntries(collection).isEmpty()) {
-                        Text("هذه المجموعة فارغة. لن تصلك تذكيراتها حتى تضيف إليها ذكرًا.",
+                        Text("هذه المجموعة فارغة. لن تصلك إشعاراتها حتى تضيف إليها ذكرًا.",
                             color = MaterialTheme.colorScheme.error, fontSize = 13.sp, lineHeight = 24.sp)
                     }
                     // Re-read after returning from the system notification settings.
@@ -349,9 +463,9 @@ import org.json.JSONObject
                     Text(when {
                         !enabled -> "إشعارات هذا التذكير متوقفة."
                         selectedChannel == null || !notificationsAvailable ->
-                            "إشعارات الأذكار غير متاحة حاليًا. سيبقى تذكيرك محفوظًا."
+                            "الإشعارات غير مسموح بها لهذا التطبيق حاليًا، فلن يصلك إشعار حتى تسمح بها. يمكنك حفظ التذكير، وسيُطلب منك السماح بعد الحفظ."
                         selectedChannel.importance < NotificationManager.IMPORTANCE_HIGH ->
-                            "قد لا يظهر التذكير منبثقًا لأن أولوية إشعارات الأذكار منخفضة."
+                            "قد لا يظهر الإشعار منبثقًا لأن أولوية إشعارات الأذكار منخفضة."
                         vibrate && !selectedChannel.shouldVibrate() -> "الاهتزاز معطّل في إعدادات إشعارات الأذكار."
                         !vibrate && selectedChannel.shouldVibrate() -> "الاهتزاز مفعّل في إعدادات إشعارات الأذكار رغم إيقافه هنا."
                         vibrate -> "إشعار مع اهتزاز دون صوت، وفق إعدادات الهاتف."
@@ -359,60 +473,95 @@ import org.json.JSONObject
                     }, color = p.muted, fontSize = 13.sp, lineHeight = 24.sp)
                     TextButton(onClick = { openDhikrNotificationSettings(activity, vibrate) }) { Text("إعدادات إشعارات الأذكار") }
                     if (enabled && !exactAlarmsAvailable) {
-                        Text("لم تُفعّل «المنبّهات والتذكيرات». قد يصلك التذكير متأخرًا أو بعد انتهاء الفترة.",
+                        Text("لم تُفعّل «المنبّهات والتذكيرات». قد يصلك الإشعار متأخرًا، وقد لا يصلك إذا انتهت الفترة قبل وصوله.",
                             color = MaterialTheme.colorScheme.error, fontSize = 13.sp, lineHeight = 24.sp)
                         TextButton(onClick = { openDhikrExactAlarmSettings(activity) }) { Text("تفعيل المنبّهات والتذكيرات") }
                     }
                 }
             }
+            // Messages raised while this sheet covers the page show here, above the bar.
+            SnackbarHost(snackbar, Modifier.padding(horizontal = 12.dp))
             HorizontalDivider(color = AdhkarBorder)
             Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp).padding(top = 12.dp, bottom = 16.dp)) {
                 // An untouched new form stays quiet; once edited, or after «حفظ», it says what is missing.
-                (saveError ?: problem?.takeIf { saveAttempted || dirty || isExisting })?.let { error ->
-                    Text(error, color = MaterialTheme.colorScheme.error, fontSize = 12.sp,
-                        modifier = Modifier.padding(bottom = 8.dp).testTag("adhkar_editor_error"))
+                val error = saveError ?: problem?.takeIf { saveAttempted || dirty || isExisting }
+                if (error != null) Text(error, color = MaterialTheme.colorScheme.error, fontSize = 12.sp,
+                    modifier = Modifier.padding(bottom = 8.dp).testTag("adhkar_editor_error")
+                        .semantics { liveRegion = LiveRegionMode.Polite })
+                // A valid form says what saving gives, where it can be read without scrolling; the keyboard needs the room.
+                else if (storedWindow != null && !WindowInsets.isImeVisible) Column(Modifier.padding(bottom = 8.dp)) {
+                    Text((if (now in storedWindow.startMillis until storedWindow.endMillis) "الفترة الحالية: " else "الفترة القادمة: ") +
+                        formatDhikrWindow(storedWindow), color = p.muted, fontSize = 12.sp, lineHeight = 20.sp)
+                    if (nextNudge != null) Text("الإشعار القادم: " + formatDhikrTime(nextNudge, now), color = AdhkarHeading,
+                        fontWeight = FontWeight.SemiBold, fontSize = 12.sp, lineHeight = 20.sp,
+                        modifier = Modifier.testTag("adhkar_next_nudge"))
                 }
                 Button(onClick = {
-                    if (problem != null) saveAttempted = true else {
+                    if (problem != null) {
+                        saveAttempted = true
+                        if (collection == null && selectedEntry == null) scope.launch { formScroll.animateScrollTo(0) }
+                    } else {
                         saving = true
-                        onSave(edited) { error -> saving = false; saveError = error }
+                        onSave(edited) { failure ->
+                            saving = false
+                            if (failure != null) saveError = failure else {
+                                closing = true
+                                scope.launch { sheetState.hide() }.invokeOnCompletion { onDismiss() }
+                            }
+                        }
                     }
                 },
-                    enabled = !saving, shape = RoundedCornerShape(16.dp),
+                    enabled = !saving && !closing, shape = RoundedCornerShape(16.dp),
                     modifier = Modifier.fillMaxWidth().heightIn(min = 54.dp).testTag("adhkar_save_reminder")) {
                     DhikrIcon(R.drawable.ic_adhkar_check, tint = Color.White, modifier = Modifier.size(18.dp))
                     Spacer(Modifier.width(8.dp))
                     Text(if (saving) "جارٍ الحفظ…" else "حفظ التذكير", fontWeight = FontWeight.Bold)
                 }
-                TextButton(onClick = { preview = true }, modifier = Modifier.fillMaxWidth()) { Text("معاينة الإشعار", fontSize = 12.sp) }
             }
         }
     }
     intervals.getOrNull(timeDialogIndex)?.let { selected ->
-        // A time picker restored with the activity has lost its listener and would set nothing.
-        LaunchedEffect(Unit) {
-            (activity.supportFragmentManager.findFragmentByTag(DHIKR_TIME_PICKER_TAG) as? DialogFragment)?.dismissAllowingStateLoss()
+        val previewDate = schedulePreview?.date ?: LocalDate.now()
+        // A prayer turned into a clock time starts from where that prayer falls, to the nearest five
+        // minutes, rather than from a minute the user never chose.
+        fun clockMinute(time: DhikrTime): Int? = DhikrReminderScheduler.resolveTime(activity, time, previewDate)?.let { millis ->
+            val clock = Instant.ofEpochMilli(millis).atZone(ZoneId.systemDefault()).toLocalTime()
+            ((clock.hour * 60 + clock.minute + 2) / 5 * 5).coerceIn(0, 1435)
         }
-        // Reported whatever the dhikr and the goal, which this dialog cannot change.
-        val periodProblem = remember(edited) { DhikrReminderScheduler.periodError(activity, edited) }
-        AlertDialog(onDismissRequest = { cancelInterval() },
+        fun pickTime(end: String, title: String, time: DhikrTime) {
+            if (showDhikrTimePicker(activity, title, time.minuteOfDay) == null) return
+            pickerShownHere = true
+            pickerTarget = "$timeDialogIndex|$end"
+        }
+        // Only «تم», «إلغاء» and «حذف الفترة» close it: a stray tap outside must not undo the times just set.
+        AlertDialog(onDismissRequest = { cancelInterval() }, properties = DialogProperties(dismissOnClickOutside = false),
             title = { Text(if (intervals.size == 1) "فترة التذكير" else "الفترة " + latinNumber(timeDialogIndex + 1)) },
             text = { Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
                 Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    TimeEndpoint(activity, "من", "وقت البداية", selected.start, Modifier.weight(1f)) {
+                    TimeEndpoint("من", selected.start, Modifier.weight(1f), ::clockMinute,
+                        onPickTime = { pickTime("start", "وقت البداية", selected.start) }) {
                         replaceInterval(timeDialogIndex, selected.copy(start = it))
                     }
-                    TimeEndpoint(activity, "إلى", "وقت النهاية", selected.end, Modifier.weight(1f)) {
+                    TimeEndpoint("إلى", selected.end, Modifier.weight(1f), ::clockMinute,
+                        onPickTime = { pickTime("end", "وقت النهاية", selected.end) }) {
                         replaceInterval(timeDialogIndex, selected.copy(end = it))
                     }
                 }
+                // What the choice comes to, and what is wrong with it, stay next to the two ends: seen without scrolling.
+                val selectedWindow = schedulePreview?.let { next ->
+                    DhikrReminderScheduler.resolveWindows(activity, edited, next.date, scheduleOnly = true)
+                        .firstOrNull { it.intervalIndex == timeDialogIndex }
+                }
+                if (selectedWindow != null) Text(formatDhikrWindow(selectedWindow),
+                    color = p.muted, fontSize = 12.sp, lineHeight = 22.sp)
+                // Reported whatever the dhikr and the goal, which this dialog cannot change.
+                if (periodProblem != null) Text(periodProblem.message, color = MaterialTheme.colorScheme.error,
+                    fontSize = 12.sp, lineHeight = 20.sp, modifier = Modifier.semantics { liveRegion = LiveRegionMode.Polite })
                 Row(verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth().clickable {
-                        replaceInterval(timeDialogIndex, selected.copy(endNextDay = selected.endNextDay != true))
-                    }) {
-                    Checkbox(selected.endNextDay == true, onCheckedChange = {
+                    modifier = Modifier.fillMaxWidth().toggleable(selected.endNextDay == true, role = Role.Checkbox) {
                         replaceInterval(timeDialogIndex, selected.copy(endNextDay = it))
-                    })
+                    }) {
+                    Checkbox(selected.endNextDay == true, onCheckedChange = null, modifier = Modifier.padding(12.dp))
                     Text("تنتهي في اليوم التالي", color = AdhkarHeading, fontSize = 13.sp)
                 }
                 if (selected.start.kind != DhikrTimeKind.FIXED) OffsetStepper("تقديم البداية أو تأخيرها", selected.start) {
@@ -421,16 +570,9 @@ import org.json.JSONObject
                 if (selected.end.kind != DhikrTimeKind.FIXED) OffsetStepper("تقديم النهاية أو تأخيرها", selected.end) {
                     replaceInterval(timeDialogIndex, selected.copy(end = it))
                 }
-                val selectedWindow = window?.let { next ->
-                    DhikrReminderScheduler.resolveWindows(activity, edited, next.date)
-                        .firstOrNull { it.intervalIndex == timeDialogIndex }
-                }
-                if (selectedWindow != null) Text(formatDhikrWindow(selectedWindow),
-                    color = p.muted, fontSize = 12.sp, lineHeight = 22.sp)
-                if (periodProblem != null) Text(periodProblem, color = MaterialTheme.colorScheme.error,
-                    fontSize = 12.sp, lineHeight = 20.sp)
             } },
             confirmButton = { TextButton(onClick = {
+                if (intervalDraft != intervalBackup) scheduleFollowsDhikr = false
                 intervalDraft = encodeIntervalDraft(chronological(intervals))
                 intervalBackup = null
                 timeDialogIndex = -1
@@ -440,53 +582,74 @@ import org.json.JSONObject
                     intervalDraft = encodeIntervalDraft(intervals.filterIndexed { index, _ -> index != timeDialogIndex })
                     intervalBackup = null
                     timeDialogIndex = -1
+                    scheduleFollowsDhikr = false
                 }) { Text("حذف الفترة", color = MaterialTheme.colorScheme.error) }
                 TextButton(onClick = { cancelInterval() }) { Text("إلغاء") }
             } })
     }
     if (selectingDhikr) {
-        var query by remember { mutableStateOf("") }
         val focus = LocalFocusManager.current
-        val normalized = remember(query) { normalizeDhikrSearch(query) }
+        val normalized = remember(pickerQuery) { normalizeDhikrSearch(pickerQuery) }
+        // The same text the library searches, so the occasion a dhikr belongs to finds it here too.
         val results = remember(knownEntries, normalized) {
-            knownEntries.filter { normalized.isEmpty() || normalizeDhikrSearch(it.title + " " + it.text).contains(normalized) }
+            knownEntries.filter { normalized.isEmpty() || normalizeDhikrSearch(dhikrSearchText(it)).contains(normalized) }
         }
-        fun closePicker() { selectingDhikr = false; hundredAfterPick = false }
+        // A whole collection is a choice like any dhikr; «100 مرة» is a goal, which a collection does not have.
+        val collections = remember(normalized, hundredAfterPick) {
+            if (hundredAfterPick) emptyList() else reminderCollectionChoices.filter {
+                normalized.isEmpty() || normalizeDhikrSearch(reminderCollectionTitle(it)).contains(normalized)
+            }
+        }
+        // Opens on the current choice rather than at the top of a hundred entries.
+        val listState = rememberLazyListState(remember {
+            (if (collection != null) collections.indexOf(collection)
+                else results.indexOfFirst { it.id == selectedId }.let { if (it < 0) it else it + collections.size }).coerceAtLeast(0)
+        })
+        // A new search starts from its first match, not from where the previous list stood.
+        LaunchedEffect(normalized) { if (normalized.isNotEmpty()) listState.scrollToItem(0) }
+        fun closePicker() { selectingDhikr = false; hundredAfterPick = false; pickerQuery = "" }
         AlertDialog(onDismissRequest = { closePicker() },
             title = { Text("اختر ذكرًا", color = AdhkarHeading, fontWeight = FontWeight.Bold) },
             text = { Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                OutlinedTextField(query, { query = it }, singleLine = true,
+                OutlinedTextField(pickerQuery, { pickerQuery = it }, singleLine = true,
                     placeholder = { Text("ابحث في الأذكار...", fontSize = 14.sp) },
                     shape = RoundedCornerShape(16.dp), colors = fieldColors,
                     // «بحث» puts the keyboard away so the whole list shows.
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                     keyboardActions = KeyboardActions(onSearch = { focus.clearFocus() }),
                     modifier = Modifier.fillMaxWidth().testTag("adhkar_reminder_dhikr_search"))
-                if (results.isEmpty()) Text("لا توجد نتائج.", color = p.muted, fontSize = 14.sp,
+                if (results.isEmpty() && collections.isEmpty()) Text("لا توجد نتائج.", color = p.muted, fontSize = 14.sp,
                     modifier = Modifier.padding(vertical = 16.dp))
-                else LazyColumn(Modifier.fillMaxWidth().heightIn(max = 320.dp).testTag("adhkar_reminder_dhikr_results")) {
+                // The list takes whatever height the dialog has left, on a short screen as on a tall one.
+                else LazyColumn(Modifier.fillMaxWidth().weight(1f, fill = false).testTag("adhkar_reminder_dhikr_results"), listState) {
+                    items(collections, key = { "collection_" + it.name }) { category ->
+                        PickerRow(reminderCollectionTitle(category), collectionSubtitle(repoState, category), null,
+                            selected = collection == category) {
+                            collectionName = category.name
+                            selectedId = collectionRepresentative(category)
+                            followDhikr(category, wholeCollection = true)
+                            closePicker()
+                        }
+                    }
                     items(results, key = { it.id }) { entry ->
-                        Row(Modifier.fillMaxWidth().clickable {
-                            // A goal the user set stays; one that only followed the previous dhikr follows the new one.
+                        PickerRow(entry.title, remember(entry.id) { dhikrPreview(entry.text) }, AdhkarReadingFont,
+                            selected = collection == null && entry.id == selectedId) {
+                            // A goal the user set stays; one that only followed the previous dhikr, the reading it
+                            // was opened from or a ready-made option follows the new one.
                             val followed = collection != null || steppedEntry != null ||
-                                integer(target) == (selectedEntry?.defaultCount ?: initial.targetCount)
+                                integer(target) == (selectedEntry?.defaultCount ?: initial.targetCount) ||
+                                integer(target) == templateBase.targetCount
                             selectedId = entry.id
                             collectionName = null
                             if (hundredAfterPick) {
-                                daysText = (1..7).joinToString(",")
                                 if (entry.steps.isEmpty()) target = "100"
+                                // The days are the user's own once chosen: the same question as on the card itself.
+                                if (customized && days.size != 7) pendingHundred = true else daysText = (1..7).joinToString(",")
                             } else if (entry.steps.isEmpty() && followed) target = entry.defaultCount.toString()
+                            // A dhikr said on several occasions has no one time of its own.
+                            followDhikr(entry.takeUnless { it.custom }?.categories?.filter { it in dhikrTimedCategories }?.singleOrNull(),
+                                wholeCollection = false)
                             closePicker()
-                        }.padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                            Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
-                                Text(entry.title, color = AdhkarHeading, fontSize = 14.sp, fontWeight = FontWeight.SemiBold,
-                                    maxLines = 1, overflow = TextOverflow.Ellipsis)
-                                Text(remember(entry.id) { dhikrPreview(entry.text) }, color = p.muted, fontFamily = AdhkarReadingFont,
-                                    fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                            }
-                            if (collection == null && entry.id == selectedId)
-                                DhikrIcon(R.drawable.ic_adhkar_check, tint = p.primary, modifier = Modifier.size(18.dp))
                         }
                     }
                 }
@@ -500,6 +663,11 @@ import org.json.JSONObject
             confirmButton = { TextButton(onClick = { pendingTemplate = null; applyTemplate(template) }) { Text("استبدال") } },
             dismissButton = { TextButton(onClick = { pendingTemplate = null }) { Text("إلغاء") } })
     }
+    if (pendingHundred) AlertDialog(onDismissRequest = { pendingHundred = false },
+        title = { Text("استبدال الهدف والأيام؟") },
+        text = { Text("سيجعل هذا الخيار الهدف 100 والتذكير في كل أيام الأسبوع.") },
+        confirmButton = { TextButton(onClick = { pendingHundred = false; applyHundred() }) { Text("استبدال") } },
+        dismissButton = { TextButton(onClick = { pendingHundred = false }) { Text("إلغاء") } })
     if (discardPrompt) AlertDialog(onDismissRequest = { discardPrompt = false },
         title = { Text("تجاهل التعديلات؟") },
         text = { Text("لم تُحفظ التعديلات على هذا التذكير.") },
@@ -511,65 +679,88 @@ import org.json.JSONObject
         text = { Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(2.dp)) {
             val customInterval = integer(interval)
             // Typed here and applied only by «تعيين», so closing the dialog cannot leave an invalid interval.
-            var intervalInput by remember { mutableStateOf(interval) }
             val inputInterval = integer(intervalInput)
             val inputValid = inputInterval != null && inputInterval in MIN_DHIKR_INTERVAL_MINUTES..1440
-            val previewWindows = window?.let { DhikrReminderScheduler.resolveWindows(activity, edited, it.date) }
+            fun choose(value: DhikrCadence, minutes: Int? = null) {
+                cadence = value.name
+                if (minutes != null) interval = minutes.toString()
+                scheduleFollowsDhikr = false; cadenceDialog = false
+            }
+            // First in the dialog: the keyboard then leaves the field and its button in view instead of
+            // pushing the whole dialog off the top of the screen.
+            Text("تحديد الفاصل بالدقائق", color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
+            val rangeHint: (@Composable () -> Unit)? =
+                if (intervalInput.isNotEmpty() && !inputValid) ({ Text("اختر فاصلًا بين 15 و1440 دقيقة.") }) else null
+            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                OutlinedTextField(intervalInput, { typed -> latinDigits(typed)?.takeIf { it.length <= 4 }?.let { intervalInput = it } },
+                    singleLine = true, suffix = { Text("دقيقة", fontSize = 12.sp) },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    textStyle = LocalTextStyle.current.copy(textDirection = TextDirection.Ltr, textAlign = TextAlign.End),
+                    isError = intervalInput.isNotEmpty() && !inputValid, supportingText = rangeHint,
+                    shape = RoundedCornerShape(14.dp), colors = fieldColors,
+                    modifier = Modifier.weight(1f).testTag("adhkar_interval_input"))
+                // One hour is the «كل ساعة» option, so the list below marks it as chosen.
+                TextButton(onClick = {
+                    if (inputInterval == 60) choose(DhikrCadence.HOURLY) else choose(DhikrCadence.CUSTOM, inputInterval)
+                }, enabled = inputValid) { Text("تعيين") }
+            }
+            HorizontalDivider(color = AdhkarBorder, modifier = Modifier.padding(vertical = 8.dp))
+            val previewWindows = schedulePreview?.let { DhikrReminderScheduler.resolveWindows(activity, edited, it.date, scheduleOnly = true) }
             // A full day's count, whatever the time of day the dialog is opened at.
             fun expected(value: DhikrReminder): String = previewWindows
                 ?.let { dhikrNudgeTimes(value, it).size }
-                ?.takeIf { it > 0 }?.let { " · إشعارات في اليوم: " + latinNumber(it) }.orEmpty()
+                ?.takeIf { it > 0 }?.let { " · المتوقع في اليوم: " + latinNumber(it) }.orEmpty()
             val options: List<Triple<String, Boolean, () -> Unit>> = listOf(
-                Triple("مرة واحدة يوميًا" + expected(edited.copy(cadence = DhikrCadence.ONCE)),
-                    cadence == DhikrCadence.ONCE.name) { cadence = DhikrCadence.ONCE.name },
+                Triple("إشعار واحد يوميًا" + expected(edited.copy(cadence = DhikrCadence.ONCE)),
+                    cadence == DhikrCadence.ONCE.name) { choose(DhikrCadence.ONCE) },
                 Triple("خفيف · " + regularCadenceLabel(3, intervals.size) + expected(edited.copy(cadence = DhikrCadence.GENTLE)),
-                    cadence == DhikrCadence.GENTLE.name) { cadence = DhikrCadence.GENTLE.name },
+                    cadence == DhikrCadence.GENTLE.name) { choose(DhikrCadence.GENTLE) },
                 Triple("متوازن · " + regularCadenceLabel(5, intervals.size) + expected(edited.copy(cadence = DhikrCadence.BALANCED)),
-                    cadence == DhikrCadence.BALANCED.name) { cadence = DhikrCadence.BALANCED.name },
+                    cadence == DhikrCadence.BALANCED.name) { choose(DhikrCadence.BALANCED) },
                 Triple("كل ساعة" + expected(edited.copy(cadence = DhikrCadence.HOURLY)),
-                    cadence == DhikrCadence.HOURLY.name) { cadence = DhikrCadence.HOURLY.name },
+                    cadence == DhikrCadence.HOURLY.name) { choose(DhikrCadence.HOURLY) },
             ) + listOf(15, 30, 45, 120, 180).map { minutes ->
                 Triple(dhikrEveryMinutesLabel(minutes) + expected(edited.copy(cadence = DhikrCadence.CUSTOM, intervalMinutes = minutes)),
-                    cadence == DhikrCadence.CUSTOM.name && customInterval == minutes) {
-                    cadence = DhikrCadence.CUSTOM.name
-                    interval = minutes.toString()
-                }
+                    cadence == DhikrCadence.CUSTOM.name && customInterval == minutes) { choose(DhikrCadence.CUSTOM, minutes) }
             }
             options.forEach { (label, selected, apply) ->
-                Row(Modifier.fillMaxWidth().clickable { apply(); cadenceDialog = false }.padding(vertical = 12.dp),
+                Row(Modifier.fillMaxWidth().selectable(selected, role = Role.RadioButton, onClick = apply).padding(vertical = 12.dp),
                     verticalAlignment = Alignment.CenterVertically) {
                     Text(label, Modifier.weight(1f), color = AdhkarHeading, fontSize = 14.sp)
                     if (selected) DhikrIcon(R.drawable.ic_adhkar_check, tint = p.primary, modifier = Modifier.size(18.dp))
                 }
             }
-            HorizontalDivider(color = AdhkarBorder, modifier = Modifier.padding(vertical = 8.dp))
-            Text("تحديد الفاصل بالدقائق", color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-            Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                OutlinedTextField(intervalInput, { if (it.length <= 4 && it.all(Char::isDigit)) intervalInput = it }, singleLine = true,
-                    suffix = { Text("دقيقة", fontSize = 12.sp) },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    isError = intervalInput.isNotEmpty() && !inputValid,
-                    shape = RoundedCornerShape(14.dp), colors = fieldColors,
-                    modifier = Modifier.weight(1f).testTag("adhkar_interval_input"))
-                TextButton(onClick = {
-                    interval = inputInterval.toString()
-                    cadence = DhikrCadence.CUSTOM.name; cadenceDialog = false
-                }, enabled = inputValid) { Text("تعيين") }
-            }
-            Text("«مرة واحدة يوميًا» ترسل إشعارًا واحدًا عند بداية أول فترة. في الخيارين «خفيف» و«متوازن»، يصلك تذكير واحد على الأقل خلال كل فترة ما دام الهدف اليومي غير مكتمل. قد يزيد العدد عن 3 أو 5 إذا أضفت فترات أكثر. يمكنك اختيار فاصل من 15 دقيقة إلى 24 ساعة، وقد يؤخّر الهاتف بعض الإشعارات في وضع توفير البطارية.",
-                color = p.muted, fontSize = 11.sp, lineHeight = 18.sp)
+            Text("«إشعار واحد يوميًا» يُرسَل عند بداية أول فترة. في الخيارين «خفيف» و«متوازن» يصلك إشعار واحد على الأقل خلال كل فترة " +
+                (if (collection != null) "ما دامت قراءة المجموعة لم تكتمل" else "ما دام الهدف اليومي لم يكتمل") +
+                "، وقد يزيد العدد عن 3 أو 5 إذا أضفت فترات أكثر. يمكنك اختيار فاصل من 15 دقيقة إلى 24 ساعة، وقد يؤخّر الهاتف بعض الإشعارات في وضع توفير البطارية.",
+                color = p.muted, fontSize = 11.sp, lineHeight = 18.sp, modifier = Modifier.padding(top = 8.dp))
         } }, confirmButton = { TextButton(onClick = { cadenceDialog = false }) { Text("إغلاق") } })
     if (preview) AlertDialog(onDismissRequest = { preview = false }, title = { Text("معاينة الإشعار") },
-        text = { Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text(collection?.let(::collectionTitle) ?: selectedEntry?.title ?: "اختر ذكرًا", fontWeight = FontWeight.Bold)
+        text = { Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(collection?.let(::collectionTitle) ?: selectedEntry?.title.orEmpty(), fontWeight = FontWeight.Bold)
             Text(if (collection != null) "حان وقت قراءة الأذكار"
                 else "حان وقت الذكر • 0 من " + latinNumber(edited.targetCount.coerceAtLeast(1)))
             Text("متابعة الذكر     ·     تم     ·     تأجيل", color = p.primary)
-            Text("هذه معاينة فقط؛ لن يصلك إشعار. يظهر «تأجيل» إذا بقيت 35 دقيقة على الأقل قبل نهاية الفترة، ويؤخّر التذكير 30 دقيقة.",
+            Text("هذه معاينة فقط، ولن يُرسَل إشعار الآن. «تم» ينهي تذكير اليوم. يظهر «تأجيل» إذا بقيت 35 دقيقة على الأقل قبل نهاية الفترة، ويؤخّر الإشعار 30 دقيقة.",
                 fontSize = 12.sp, color = p.muted)
-        } }, confirmButton = { TextButton(onClick = { preview = false }) { Text("تم") } })
+        } }, confirmButton = { TextButton(onClick = { preview = false }) { Text("إغلاق") } })
 }
+
+/** Saved empty when there is none. */
+internal val DhikrReminderOrNullSaver = Saver<DhikrReminder?, String>(
+    save = { it?.toJson()?.toString().orEmpty() },
+    restore = { if (it.isEmpty()) null else dhikrReminderFromJson(JSONObject(it)) })
+
+/** The daily collections a reminder can cover as a whole, in the order the day runs. */
+private val reminderCollectionChoices = listOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.NIGHT)
+/** Collections whose adhkar are said at a time of their own; a dhikr of any other keeps the form's period. */
+private val dhikrTimedCategories = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING, DhikrCategory.NIGHT,
+    DhikrCategory.SALAH, DhikrCategory.SLEEP)
+
+/** Digits as typed on any keyboard, shown and stored as Latin ones; null when anything else was typed. */
+private fun latinDigits(value: String): String? =
+    if (value.all(Char::isDigit)) value.map { Character.digit(it, 10).digitToChar() }.joinToString("") else null
 
 /** The same JSON the reminder is stored as, so equality survives the round trip. */
 private val DhikrReminderSaver = Saver<DhikrReminder, String>(
@@ -608,10 +799,10 @@ private fun dhikrOffsetLabel(time: DhikrTime): String {
 }
 
 private fun regularCadenceLabel(limit: Int, intervalCount: Int): String =
-    if (intervalCount > limit) "تذكير واحد لكل فترة" else "حتى " + latinNumber(limit) + " تذكيرات يوميًا"
+    if (intervalCount > limit) "إشعار واحد لكل فترة" else "حتى " + latinNumber(limit) + " إشعارات يوميًا"
 
 private fun cadenceLabel(cadence: String, interval: String, intervalCount: Int): String = when (DhikrCadence.valueOf(cadence)) {
-    DhikrCadence.ONCE -> "مرة واحدة يوميًا"
+    DhikrCadence.ONCE -> "إشعار واحد يوميًا"
     DhikrCadence.GENTLE -> regularCadenceLabel(3, intervalCount)
     DhikrCadence.BALANCED -> regularCadenceLabel(5, intervalCount)
     DhikrCadence.HOURLY -> "كل ساعة"
@@ -645,28 +836,45 @@ private fun suggestedExtraInterval(intervals: List<DhikrInterval>): DhikrInterva
 }
 
 @Composable
-private fun SettingRow(icon: Int, title: String, value: String, onClick: () -> Unit) {
+private fun SettingRow(icon: Int, title: String, value: String, error: Boolean = false, onClick: () -> Unit) {
     val p = LocalAdhkarPalette.current
     Row(Modifier.fillMaxWidth().clickable(onClick = onClick).padding(16.dp),
         verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         DhikrIcon(icon, tint = p.primary, modifier = Modifier.size(22.dp))
         Column(Modifier.weight(1f)) {
             Text(title, color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-            Text(value, color = p.muted, fontSize = 12.sp)
+            Text(value, color = if (error) MaterialTheme.colorScheme.error else p.muted, fontSize = 12.sp)
         }
         DhikrIcon(R.drawable.ic_adhkar_next, tint = p.muted, modifier = Modifier.size(18.dp))
     }
 }
 
+/** One control for the screen reader: the whole row toggles and says its title with its state. */
 @Composable
 private fun ToggleRow(title: String, subtitle: String, checked: Boolean, onChange: (Boolean) -> Unit) {
     val p = LocalAdhkarPalette.current
-    Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
+    Row(Modifier.fillMaxWidth().toggleable(checked, role = Role.Switch, onValueChange = onChange)
+        .padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
         Column(Modifier.weight(1f)) {
             Text(title, color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
             Text(subtitle, color = p.muted, fontSize = 12.sp)
         }
-        Switch(checked, onCheckedChange = onChange)
+        AdhkarSwitch(checked, onCheckedChange = null)
+    }
+}
+
+/** One choice of the dhikr picker; the check mark is said by the screen reader as the selected state. */
+@Composable
+private fun PickerRow(title: String, subtitle: String, subtitleFont: FontFamily?, selected: Boolean, onClick: () -> Unit) {
+    val p = LocalAdhkarPalette.current
+    Row(Modifier.fillMaxWidth().selectable(selected, role = Role.RadioButton, onClick = onClick).padding(vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(3.dp)) {
+            Text(title, color = AdhkarHeading, fontSize = 14.sp, fontWeight = FontWeight.SemiBold,
+                maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(subtitle, color = p.muted, fontFamily = subtitleFont, fontSize = 12.sp, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        }
+        if (selected) DhikrIcon(R.drawable.ic_adhkar_check, tint = p.primary, modifier = Modifier.size(18.dp))
     }
 }
 
@@ -674,7 +882,7 @@ private fun ToggleRow(title: String, subtitle: String, checked: Boolean, onChang
 private fun TemplateCard(title: String, subtitle: String, icon: Int?, selected: Boolean, modifier: Modifier = Modifier, onClick: () -> Unit) {
     val p = LocalAdhkarPalette.current
     Box(modifier) {
-        Surface(onClick = onClick, shape = RoundedCornerShape(16.dp),
+        Surface(selected = selected, onClick = onClick, shape = RoundedCornerShape(16.dp),
             color = if (selected) AdhkarSoftGreen else AdhkarSurface,
             border = BorderStroke(if (selected) 1.5.dp else 1.dp, if (selected) p.primary else AdhkarBorder)) {
             Column(Modifier.fillMaxWidth().heightIn(min = 88.dp).padding(12.dp),
@@ -685,7 +893,7 @@ private fun TemplateCard(title: String, subtitle: String, icon: Int?, selected: 
                 }
                 Text(title, color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp, textAlign = TextAlign.Center)
                 if (subtitle.isNotEmpty()) Text(subtitle, color = p.muted, fontSize = 12.sp, textAlign = TextAlign.Center,
-                    maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    maxLines = 2, overflow = TextOverflow.Ellipsis)
             }
         }
         if (selected) Box(Modifier.align(Alignment.TopEnd).padding(10.dp).size(9.dp).clip(CircleShape).background(p.primary))
@@ -718,14 +926,17 @@ private fun StepButton(icon: Int, description: String, enabled: Boolean = true, 
     fun set(minutes: Int) = onChange(time.copy(offsetMinutes = minutes.coerceIn(-MAX_DHIKR_OFFSET_MINUTES, MAX_DHIKR_OFFSET_MINUTES)))
     Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Text(title, color = p.muted, fontSize = 12.sp)
+        // Named for what they do to the time: a «+» would make «قبل الفجر بـ 30 د» count down.
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             // The next multiple of five in each direction, so an older odd value steps cleanly too.
-            StepButton(R.drawable.ic_add, "تأخير خمس دقائق", enabled = offset < MAX_DHIKR_OFFSET_MINUTES) {
-                set(Math.floorDiv(offset, 5) * 5 + 5)
-            }
+            TextButton(onClick = { set(-(Math.floorDiv(-offset, 5) * 5 + 5)) }, enabled = offset > -MAX_DHIKR_OFFSET_MINUTES,
+                contentPadding = PaddingValues(horizontal = 8.dp),
+                modifier = Modifier.semantics { contentDescription = "تقديم خمس دقائق" }) { Text("تقديم", fontSize = 13.sp) }
             Box(Modifier.weight(1f), contentAlignment = Alignment.Center) {
-                TextButton(onClick = { choosing = true }) {
-                    Text(dhikrOffsetLabel(time), color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 14.sp,
+                // Outlined and marked like a menu, because it is one: the usual offsets in one tap.
+                OutlinedButton(onClick = { choosing = true }, shape = RoundedCornerShape(14.dp),
+                    contentPadding = PaddingValues(horizontal = 10.dp, vertical = 6.dp)) {
+                    Text(dhikrOffsetLabel(time) + " ▾", color = AdhkarHeading, fontWeight = FontWeight.SemiBold, fontSize = 13.sp,
                         textAlign = TextAlign.Center)
                 }
                 DropdownMenu(choosing, onDismissRequest = { choosing = false }) {
@@ -735,15 +946,16 @@ private fun StepButton(icon: Int, description: String, enabled: Boolean = true, 
                     }
                 }
             }
-            StepButton(R.drawable.ic_remove, "تقديم خمس دقائق", enabled = offset > -MAX_DHIKR_OFFSET_MINUTES) {
-                set(-(Math.floorDiv(-offset, 5) * 5 + 5))
-            }
+            TextButton(onClick = { set(Math.floorDiv(offset, 5) * 5 + 5) }, enabled = offset < MAX_DHIKR_OFFSET_MINUTES,
+                contentPadding = PaddingValues(horizontal = 8.dp),
+                modifier = Modifier.semantics { contentDescription = "تأخير خمس دقائق" }) { Text("تأخير", fontSize = 13.sp) }
         }
     }
 }
 
-@Composable private fun TimeEndpoint(activity: AppCompatActivity, label: String, pickerTitle: String, value: DhikrTime,
-    modifier: Modifier, onChange: (DhikrTime) -> Unit) {
+/** [clockMinute] gives the minute of the day a prayer-relative time falls at, for a clock time to start from. */
+@Composable private fun TimeEndpoint(label: String, value: DhikrTime, modifier: Modifier, clockMinute: (DhikrTime) -> Int?,
+    onPickTime: () -> Unit, onChange: (DhikrTime) -> Unit) {
     val p = LocalAdhkarPalette.current
     var choosing by remember { mutableStateOf(false) }
     Column(modifier, verticalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -756,16 +968,20 @@ private fun StepButton(icon: Int, description: String, enabled: Boolean = true, 
                 DhikrTimeKind.entries.forEach { kind ->
                     DropdownMenuItem(text = { Text(if (kind == DhikrTimeKind.FIXED) "وقت ثابت" else dhikrTimeLabel(DhikrTime(kind))) },
                         onClick = {
-                            // A clock time carries no adjustment; a prayer keeps the one already set.
-                            onChange(value.copy(kind = kind, offsetMinutes = if (kind == DhikrTimeKind.FIXED) 0 else value.offsetMinutes))
+                            onChange(when {
+                                kind == value.kind -> value
+                                // A clock time carries no adjustment and starts from where the prayer falls.
+                                kind == DhikrTimeKind.FIXED -> DhikrTime(kind, clockMinute(value) ?: value.minuteOfDay)
+                                // A prayer keeps the adjustment already set and no clock minute: it never reads one.
+                                else -> DhikrTime(kind, offsetMinutes = value.offsetMinutes)
+                            })
                             choosing = false
                         })
                 }
             }
         }
-        if (value.kind == DhikrTimeKind.FIXED) TextButton(onClick = {
-            showDhikrTimePicker(activity, pickerTitle, value.minuteOfDay) { onChange(value.copy(minuteOfDay = it)) }
-        }, modifier = Modifier.fillMaxWidth().heightIn(min = 44.dp)) {
+        if (value.kind == DhikrTimeKind.FIXED) TextButton(onClick = onPickTime,
+            modifier = Modifier.fillMaxWidth().heightIn(min = 44.dp)) {
             DhikrIcon(R.drawable.ic_adhkar_clock, modifier = Modifier.size(17.dp))
             Spacer(Modifier.width(8.dp)); Text(dhikrTimeLabel(value.copy(offsetMinutes = 0)))
         }
@@ -774,12 +990,15 @@ private fun StepButton(icon: Int, description: String, enabled: Boolean = true, 
 
 private const val DHIKR_TIME_PICKER_TAG = "adhkar_period_time"
 
-/** The picker the wake editor uses, titled with the end being set; a second tap does not stack another. */
-private fun showDhikrTimePicker(activity: AppCompatActivity, title: String, minuteOfDay: Int, onPicked: (Int) -> Unit) {
+/**
+ * The picker the wake editor uses, titled with the end being set; a second tap does not stack another.
+ * The editor attaches the listeners, so that a picker brought back with the activity gets them too.
+ * Null when it could not be shown.
+ */
+private fun showDhikrTimePicker(activity: AppCompatActivity, title: String, minuteOfDay: Int): MaterialTimePicker? {
     val manager = activity.supportFragmentManager
-    if (manager.isStateSaved || manager.findFragmentByTag(DHIKR_TIME_PICKER_TAG) != null) return
-    val picker = MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_24H)
+    if (manager.isStateSaved || manager.findFragmentByTag(DHIKR_TIME_PICKER_TAG) != null) return null
+    return MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_24H).setTheme(R.style.ThemeOverlay_Adhkar_TimePicker)
         .setHour(minuteOfDay / 60).setMinute(minuteOfDay % 60).setTitleText(title).build()
-    picker.addOnPositiveButtonClickListener { onPicked(picker.hour * 60 + picker.minute) }
-    picker.showNow(manager, DHIKR_TIME_PICKER_TAG)
+        .also { it.showNow(manager, DHIKR_TIME_PICKER_TAG) }
 }

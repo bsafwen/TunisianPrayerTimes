@@ -1,5 +1,73 @@
 # Locality automation
 
+## Offline review preparation
+
+The current source/GPS review helpers can reuse five focused commands without
+launching validation or changing assets. Run these from the repository root
+with the configured Python runtime:
+
+- `python -m scripts.locality_automation.review_preflight`: check an explicitly
+  chosen frozen source package and its declared pins. Required arguments are
+  `--package`, `--base`, one or more `--allow-root`, and a fresh `--output`.
+  Use `--reference-root PREFIX=DIR` for a known legacy namespace such as
+  `official`; there is no fallback path guessing or recursive opening of
+  referenced JSON. Optional `--live-json` and `--live-bin` must appear together;
+  add `--live-names` when the bundle pins display names. `--expected-code` can
+  repeat to bind the exact assigned cluster. Missing packages and holds return
+  exit code 2. A bookkeeping PASS adds zero geographic credit.
+- `python -m scripts.locality_automation.review_checkpoint`: inspect current
+  `--repo`, `--run`, `--handoff`, and `--report` plus optional repeated
+  `--pending-package` paths. Explicit `--validation-state paused|active` is the
+  caller's goal state, not a process-liveness probe. Save to a fresh `--output`.
+  The command verifies current receipt/report file versions and records the
+  existing scoped/full counts without accepting or refreshing anything.
+- `python -m scripts.locality_automation.review_jobs --spec SPEC --output PLAN`:
+  prepare a write-once plan for the existing engine. The spec contains
+  `schemaVersion: 1`, `governorate`, `inputScope: source-only|live-assets`, and
+  `jobs`. Each offline job explicitly declares `id`, `kind`, `argv`, absolute
+  `cwd`, `inputs`, `outputs`, `deps`, `resources`, and
+  `executableDependencies` file/SHA256 pins. Imported results require actual
+  `importedOutputs` pins. Declare all imported/local program dependencies;
+  this adapter does not infer import closure or inspect result status strings.
+- `python -m scripts.locality_automation.review_candidate_queue`: filter an
+  explicitly selected `--triage` cache against `--report`, `--live-json` and
+  `--live-bin` immediately before dispatch. Repeat `--assigned-code` for active
+  cases and save to a fresh `--output`. Already complete source codes are
+  excluded even if old triage recommends them. Unchanged packed slices remain
+  warm leads requiring fresh source/identity/GPS review; compact metadata's
+  absent official codes are disclosed rather than invented. Partial geographic
+  validations can still need complete-source review. Report/receipt/file drift
+  returns HOLD with no queue. Source alternatives are retained, grouped by full
+  path and parent, and no ownership or acceptance is inferred.
+- `python -m scripts.locality_automation.scope_references`: create an immutable
+  canonical companion for an explicitly pinned complete scope before native/GPS
+  review. Supply `--scope`, `--scope-sha`, `--base`, repeated `--allow-root`,
+  explicit `--reference-root PREFIX=DIR`, fresh `--output` and `--receipt`.
+  Optional `--bindings` plus `--bindings-sha` declares exact JSON-pointer,
+  original file/SHA and same-hash target bindings. Every inline explicit pin is
+  checked; referenced JSON files are not hydrated. Original facts, hashes,
+  geometry, styles, qualification and gates remain unchanged. Conflicts, stale
+  references and unequal hashes HOLD; no guessed search or historical-pin
+  demotion. Complete scope preflight and final independent QA both remain
+  required. Existing outputs reject before work, and failed publication does
+  not publish a canonical scope.
+
+Run source directory preparation from an existing repository/evidence parent.
+Do not use a new output directory as the command's `cwd` before creating it.
+The prepared job adapter validates existing cwd and declared outputs; the new
+scope companion validates complete explicit evidence references early. Neither
+tool creates geographic credit.
+
+Prepare later stages only after their input files have real hashes. Keep job
+input sets narrow, with source-only and current GPS dependencies distinct.
+Changed definitions require a new revision/job ID; `contentKey` is a prepared
+identity, not an automatically enabled GPS cache. Independent jobs use the
+existing dependency/resource scheduler. Execute prepared plans only through
+the pause-aware `run-plan` command with its existing workspace lock after
+validation has been resumed. Preparation never resumes the workspace, runs
+supplied commands or grants source/GPS acceptance. Keep the guarded root
+receipt/install helpers as the separate final step.
+
 ## Review the completed automatic pass
 
 The full automatic pass has finished. Its recorded cases and issue lines are
