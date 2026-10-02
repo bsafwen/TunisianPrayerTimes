@@ -238,6 +238,7 @@ private enum class MainDestination(val labelRes: Int, val iconRes: Int) {
     Alarms(R.string.main_tab_alarms, R.drawable.ic_tab_alarms),
     Qibla(R.string.main_tab_qibla, R.drawable.ic_tab_qibla),
     Adhkar(R.string.adhkar_title, R.drawable.ic_tab_adhkar),
+    Quran(R.string.main_tab_quran, R.drawable.ic_tab_quran),
 }
 
 private enum class WakeQuickPreset {
@@ -279,6 +280,7 @@ private fun MainDestination.analyticsName(): String = when (this) {
     MainDestination.Alarms -> "alarms"
     MainDestination.Qibla -> "qibla"
     MainDestination.Adhkar -> "adhkar"
+    MainDestination.Quran -> "quran"
 }
 
 private fun MainDestination.testTag(): String = when (this) {
@@ -286,6 +288,7 @@ private fun MainDestination.testTag(): String = when (this) {
     MainDestination.Alarms -> TestTags.MAIN_TAB_ALARMS
     MainDestination.Qibla -> TestTags.MAIN_TAB_QIBLA
     MainDestination.Adhkar -> TestTags.MAIN_TAB_ADHKAR
+    MainDestination.Quran -> TestTags.MAIN_TAB_QURAN
 }
 
 private fun WakeQuickPreset.testTag(): String = when (this) {
@@ -527,6 +530,7 @@ fun MainScreen(
             MainTabNavigation.DESTINATION_ALARMS -> mainDestinations.indexOf(MainDestination.Alarms)
             MainTabNavigation.DESTINATION_QIBLA -> mainDestinations.indexOf(MainDestination.Qibla)
             MainTabNavigation.DESTINATION_ADHKAR -> mainDestinations.indexOf(MainDestination.Adhkar)
+            MainTabNavigation.DESTINATION_QURAN -> mainDestinations.indexOf(MainDestination.Quran)
             else -> -1
         }
         if (requestedIndex in mainDestinations.indices) {
@@ -550,7 +554,7 @@ fun MainScreen(
         MainDestination.Today -> todayScrollState
         MainDestination.Alarms -> alarmsScrollState
         MainDestination.Qibla -> qiblaScrollState
-        MainDestination.Adhkar -> adhkarScrollState
+        MainDestination.Adhkar, MainDestination.Quran -> adhkarScrollState
     }
 
     LaunchedEffect(selectedDestination) {
@@ -708,6 +712,7 @@ fun MainScreen(
     }
 
     val adhkarStateHolder = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
+    val quranStateHolder = androidx.compose.runtime.saveable.rememberSaveableStateHolder()
     val isAdhkar = selectedDestination == MainDestination.Adhkar
     Box(modifier = Modifier.fillMaxSize().background(BgCream)) {
         if (isAdhkar) {
@@ -717,6 +722,12 @@ fun MainScreen(
                     requestedReminderId = requestedDhikrReminderId,
                     requestedReminderSequence = requestedDestinationSequence,
                     requestedOccurrenceId = requestedDhikrOccurrenceId,
+                    modifier = Modifier.fillMaxSize().padding(bottom = with(density) { bottomNavigationOccupiedPx.toDp() }),
+                )
+            }
+        } else if (selectedDestination == MainDestination.Quran) {
+            quranStateHolder.SaveableStateProvider("quran") {
+                QuranScreen(
                     modifier = Modifier.fillMaxSize().padding(bottom = with(density) { bottomNavigationOccupiedPx.toDp() }),
                 )
             }
@@ -1036,7 +1047,7 @@ fun MainScreen(
                     MainDestination.Qibla -> {
                         QiblaCard(selectedDelegationId = delegationId)
                     }
-                    MainDestination.Adhkar -> Unit
+                    MainDestination.Adhkar, MainDestination.Quran -> Unit
                 }
 
             }
