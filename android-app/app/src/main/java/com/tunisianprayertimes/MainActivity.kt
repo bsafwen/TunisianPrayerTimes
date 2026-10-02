@@ -24,6 +24,7 @@ object MainTabNavigation {
     const val DESTINATION_ALARMS = "alarms"
     const val DESTINATION_QIBLA = "qibla"
     const val DESTINATION_ADHKAR = "adhkar"
+    const val DESTINATION_QURAN = "quran"
     const val EXTRA_DHIKR_REMINDER_ID = "com.tunisianprayertimes.extra.DHIKR_REMINDER_ID"
 }
 
