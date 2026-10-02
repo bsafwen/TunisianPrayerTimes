@@ -42,16 +42,16 @@ class LocalityRepositoryTest {
     }
 
     @Test fun `locality selection persists independently of prayer source`() {
-        val rows = LocalityRepository.loadAll(context).filter { it.delegationId == 394 }
-        val first = rows.first { it.name == "بوشوشة" }
-        val second = rows.first { it.name == "خزندار" }
+        val rows = LocalityRepository.loadAll(context)
+        val first = rows.single { it.id == "osm:relation:7118029" }
+        val second = rows.single { it.id == "osm:relation:7118023" }
         PrefsManager.setLocality(context, first)
         assertEquals(first.id, LocalityRepository.selected(context)?.id)
-        PrefsManager.setDelegationId(context, 394)
+        PrefsManager.setDelegationId(context, first.delegationId)
         assertEquals(first.id, LocalityRepository.selected(context)?.id)
         PrefsManager.setLocality(context, second)
         assertEquals(second.id, LocalityRepository.selected(context)?.id)
-        assertEquals(394, PrefsManager.getDelegationId(context))
+        assertEquals(second.delegationId, PrefsManager.getDelegationId(context))
         PrefsManager.setDelegationId(context, 615)
         assertNull(LocalityRepository.selected(context))
     }
@@ -125,7 +125,13 @@ class LocalityRepositoryTest {
             assertEquals("معتمدية مقرين", matches.single { it.name == name }.parentName)
         }
         assertEquals(matches.map { it.id }, searchLocalities(rows, "Mégrine").map { it.id })
-        assertEquals(matches.map { it.id }.toSet(), searchLocalities(rows, "مقرين").map { it.id }.toSet())
+        val expectedNames = setOf("مقرين", "جوهرة", "مقرين الرياض", "سيدي رزيق", "سيدي رزيق 2", "منزل مبروك")
+        val expectedIds = matches.filter { it.name in expectedNames }.map { it.id }.toSet()
+        val arabicMatches = searchLocalities(rows, "مقرين")
+        expectedNames.forEach { name ->
+            assertEquals("Repeated or missing Arabic result $name", 1, arabicMatches.count { it.name == name })
+        }
+        assertEquals(expectedIds, arabicMatches.filter { it.name in expectedNames }.map { it.id }.toSet())
     }
 
     @Test fun `both original Megrine polygon selections highlight their single picker row`() {
@@ -310,7 +316,11 @@ class LocalityRepositoryTest {
         val invalidSources = sources.map { it.copy(lat = 0.0, lng = 0.0) }
         val unavailable = LocalityRepository.loadAvailable(context, invalidSources)
         assertTrue(unavailable.all { it.lat == null && it.lng == null })
-        assertEquals(sources.size, unavailable.size)
+        // Timetable references merged into coordinate-bearing places are
+        // unavailable when every coordinate source is unusable. The remaining
+        // direct source retains its identity and survives input reordering.
+        assertEquals(listOf("delegation:387"), unavailable.map { it.id })
+        assertSame(unavailable, LocalityRepository.loadAvailable(context, invalidSources.reversed()))
         assertEquals(catalog, LocalityRepository.loadAvailable(context, sources))
         assertTrue(LocalityRepository.loadAvailable(context, emptyList()).isEmpty())
     }
