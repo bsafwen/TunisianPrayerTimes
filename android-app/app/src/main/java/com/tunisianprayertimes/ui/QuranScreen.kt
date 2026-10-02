@@ -12,6 +12,7 @@ import androidx.compose.foundation.gestures.transformable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -278,7 +279,11 @@ private fun QuranPageImage(page: QuranPage, active: Boolean, onZoomChanged: (Boo
 @Composable
 private fun QuranChapterSheet(catalog: QuranCatalog, currentPage: Int, onDismiss: () -> Unit, onPage: (Int) -> Unit) {
     var query by rememberSaveable { mutableStateOf("") }
-    val currentSurah = catalog.surahs.lastOrNull { it.page <= currentPage }
+    val currentSurahNames = catalog.pages[currentPage - 1].surahNames
+    val listState = rememberLazyListState(
+        initialFirstVisibleItemIndex = catalog.surahs.indexOfFirst { it.name in currentSurahNames }.coerceAtLeast(0),
+    )
+    LaunchedEffect(query) { if (query.isNotEmpty()) listState.scrollToItem(0) }
     val chapters = remember(catalog, query) {
         catalog.surahs.filter { query.isBlank() || quranFilter(it.name).contains(quranFilter(query)) || it.number == quranInputNumber(query) }
     }
@@ -291,11 +296,11 @@ private fun QuranChapterSheet(catalog: QuranCatalog, currentPage: Int, onDismiss
                 shape = RoundedCornerShape(14.dp), keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             )
             Spacer(Modifier.height(8.dp))
-            LazyColumn(Modifier.weight(1f), contentPadding = PaddingValues(bottom = 16.dp)) {
+            LazyColumn(Modifier.weight(1f), state = listState, contentPadding = PaddingValues(bottom = 16.dp)) {
                 items(chapters, key = { it.number }) { surah ->
                     Row(
                         Modifier.fillMaxWidth().clip(RoundedCornerShape(12.dp))
-                            .background(if (surah.number == currentSurah?.number && currentPage <= QuranScanCount) AdhkarSoftGreen else Color.Transparent)
+                            .background(if (surah.name in currentSurahNames) AdhkarSoftGreen else Color.Transparent)
                             .clickable { onPage(surah.page) }.padding(horizontal = 12.dp, vertical = 14.dp),
                         verticalAlignment = Alignment.CenterVertically,
                     ) {
