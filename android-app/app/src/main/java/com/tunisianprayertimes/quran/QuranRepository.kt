@@ -11,7 +11,15 @@ data class QuranSurah(val number: Int, val name: String, val page: Int, val vers
 
 data class QuranSearchResult(val surahName: String, val text: String, val page: Int)
 
-internal data class QuranSearchEntry(val surah: Int, val text: String, val page: Int, val searchText: String = text) {
+internal data class QuranSearchEntry(
+    val surah: Int,
+    val ayah: Int,
+    val text: String,
+    val page: Int,
+    val searchText: String = text,
+    val isFirstFragment: Boolean = true,
+    val isLastFragment: Boolean = true,
+) {
     val normalized = normalizeQuranSearch(text)
     val spelling = normalizeQuranSearch(searchText)
 }
@@ -22,6 +30,26 @@ class QuranCatalog internal constructor(
     private val entries: List<QuranSearchEntry>,
 ) {
     private val pageText = entries.groupBy { it.surah to it.page }.values.map { QuranPageText(it) }
+    val verseFragments: List<QuranVerseFragment> = entries.map {
+        QuranVerseFragment(QuranVerseReference(it.surah, it.ayah), it.page, it.text, it.isFirstFragment, it.isLastFragment)
+    }
+    /** Includes the 113 unnumbered opening basmalahs as ayah 0. */
+    val verses: List<QuranVerse> = verseFragments.groupBy { it.reference }.map { (reference, fragments) ->
+        QuranVerse(reference.surah, reference.ayah, fragments.joinToString(" ") { it.text }, fragments.map { it.page }.distinct())
+    }
+    private val versesByReference = verses.associateBy { it.reference }
+    private val versesByPage = verses.flatMap { verse -> verse.pages.map { it to verse } }
+        .groupBy({ it.first }, { it.second })
+
+    fun verse(surah: Int, ayah: Int): QuranVerse? = verse(QuranVerseReference(surah, ayah))
+
+    fun verse(reference: QuranVerseReference): QuranVerse? = versesByReference[reference]
+
+    fun textForVerse(surah: Int, ayah: Int): String? = verse(surah, ayah)?.text
+
+    fun pagesForVerse(surah: Int, ayah: Int): List<Int> = verse(surah, ayah)?.pages.orEmpty()
+
+    fun versesOnPage(page: Int): List<QuranVerse> = versesByPage[page].orEmpty()
 
     /** The index is independent of verse numbering, which differs between mushaf editions. */
     fun search(query: String): List<QuranSearchResult> {
@@ -77,7 +105,15 @@ object QuranRepository {
         val search = source.getJSONArray("entries")
         val entries = List(search.length()) { index ->
             val entry = search.getJSONObject(index)
-            QuranSearchEntry(entry.getInt("surah"), entry.getString("text"), entry.getInt("page"), entry.optString("searchText", entry.getString("text")))
+            QuranSearchEntry(
+                surah = entry.getInt("surah"),
+                ayah = entry.getInt("ayah"),
+                text = entry.getString("text"),
+                page = entry.getInt("page"),
+                searchText = entry.optString("searchText", entry.getString("text")),
+                isFirstFragment = entry.getBoolean("isFirstFragment"),
+                isLastFragment = entry.getBoolean("isLastFragment"),
+            )
         }
         val namesByPage = entries.groupBy { it.page }.mapValues { (_, values) ->
             values.map { surahs[it.surah - 1].name }.distinct()
@@ -90,7 +126,15 @@ object QuranRepository {
             require(number == index + 1) { "Non-contiguous Quran pages" }
             QuranPage(number, "quran/pages/${image.getString("file")}", namesByPage[number].orEmpty())
         }
-        require(entries.isNotEmpty() && entries.all { it.surah in 1..114 && it.page in 1..pages.size }) { "Invalid Quran search index" }
+        require(entries.isNotEmpty() && entries.all {
+            it.surah in 1..114 && it.page in 1..pages.size && it.ayah in 0..(surahs[it.surah - 1].verseCount ?: 0)
+        }) { "Invalid Quran search index" }
+        surahs.forEach { surah ->
+            val expected = if (surah.number == 9) 1 else 0
+            require(entries.filter { it.surah == surah.number }.map { it.ayah }.distinct() == (expected..requireNotNull(surah.verseCount)).toList()) {
+                "Incomplete Qaloun verse index for chapter ${surah.number}"
+            }
+        }
         return QuranCatalog(pages, surahs, entries)
     }
 }
@@ -101,7 +145,7 @@ internal fun normalizeQuranSearch(value: String): String = buildString {
         when {
             char in "ـۥۦ" || Character.getType(char) in markTypes -> Unit
             char in "أإآٱ" -> append('ا')
-            char == 'ى' || char == 'ئ' || char == 'ی' -> append('ي')
+            char == 'ى' || char == 'ئ' || char == 'ی' || char == 'ے' -> append('ي')
             char == 'ؤ' -> append('و')
             char == 'ة' -> append('ه')
             char == 'ک' -> append('ك')

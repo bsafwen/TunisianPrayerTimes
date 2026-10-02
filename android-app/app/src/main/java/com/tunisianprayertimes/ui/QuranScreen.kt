@@ -1,14 +1,18 @@
 package com.tunisianprayertimes.ui
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.transformable
+import androidx.compose.foundation.interaction.collectIsDraggedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -25,6 +29,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.CornerRadius
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
@@ -46,11 +53,16 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranPage
 import com.tunisianprayertimes.quran.QuranRepository
 import com.tunisianprayertimes.quran.QuranSearchResult
+import com.tunisianprayertimes.quran.QuranHighlights
+import com.tunisianprayertimes.quran.QuranHighlightRect
+import com.tunisianprayertimes.quran.QuranHighlightRepository
+import com.tunisianprayertimes.quran.audio.QuranAudioController
 import com.tunisianprayertimes.ui.theme.*
 import java.util.Locale
 import kotlinx.coroutines.CancellationException
@@ -69,12 +81,17 @@ private const val QuranPrintedPageCount = 604
 fun QuranScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current.applicationContext
     var catalog by remember { mutableStateOf<QuranCatalog?>(null) }
+    var highlights by remember { mutableStateOf<QuranHighlights?>(null) }
     var failed by remember { mutableStateOf(false) }
     var attempt by remember { mutableIntStateOf(0) }
     LaunchedEffect(context, attempt) {
         failed = false
         try {
-            catalog = withContext(Dispatchers.IO) { QuranRepository.load(context) }
+            val assets = withContext(Dispatchers.IO) {
+                QuranRepository.load(context) to QuranHighlightRepository.load(context)
+            }
+            highlights = assets.second
+            catalog = assets.first
         } catch (e: CancellationException) {
             throw e
         } catch (_: Exception) {
@@ -85,7 +102,7 @@ fun QuranScreen(modifier: Modifier = Modifier) {
         Box(modifier.fillMaxSize().statusBarsPadding()) {
             val loaded = catalog
             when {
-                loaded != null -> QuranReader(loaded)
+                loaded != null -> QuranReader(loaded, checkNotNull(highlights))
                 failed -> Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
                     Text("تعذّر فتح المصحف", color = TextMuted)
                     TextButton(onClick = { attempt++ }) { Text("إعادة المحاولة") }
@@ -97,7 +114,7 @@ fun QuranScreen(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun QuranReader(catalog: QuranCatalog) {
+private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
     val context = LocalContext.current.applicationContext
     val prefs = remember(context) { context.getSharedPreferences("quran_reader", Context.MODE_PRIVATE) }
     val pager = rememberPagerState(
@@ -105,6 +122,10 @@ private fun QuranReader(catalog: QuranCatalog) {
         pageCount = { catalog.pages.size },
     )
     val scope = rememberCoroutineScope()
+    val playback by QuranAudioController.state.collectAsStateWithLifecycle()
+    val dragging by pager.interactionSource.collectIsDraggedAsState()
+    var followAudio by rememberSaveable { mutableStateOf(true) }
+    var lastFollowedSurah by remember { mutableStateOf<Int?>(null) }
     var panel by rememberSaveable { mutableStateOf<String?>(null) }
     var zoomed by remember { mutableStateOf(false) }
     val page = catalog.pages[pager.currentPage]
@@ -115,8 +136,25 @@ private fun QuranReader(catalog: QuranCatalog) {
         }
     }
     LaunchedEffect(pager.currentPage) { zoomed = false }
+    LaunchedEffect(dragging) { if (dragging) followAudio = false }
+    LaunchedEffect(playback.surah, playback.ayah, playback.loading, followAudio) {
+        if (playback.surah == null) lastFollowedSurah = null
+        if (followAudio && !playback.loading) {
+            val surah = playback.surah
+            val ayah = playback.ayah
+            val versePages = if (surah != null && ayah != null) catalog.pagesForVerse(surah, ayah)
+                else if (surah != lastFollowedSurah && playback.positionMs < playback.introEndMs)
+                    catalog.surahs.firstOrNull { it.number == surah }?.let { listOf(it.page) }.orEmpty()
+                else emptyList()
+            if (versePages.isNotEmpty() && pager.currentPage + 1 !in versePages) {
+                pager.scrollToPage(versePages.first() - 1)
+            }
+            lastFollowedSurah = surah
+        }
+    }
     fun openPage(number: Int) {
         panel = null
+        followAudio = false
         scope.launch { pager.scrollToPage((number - 1).coerceIn(0, catalog.pages.lastIndex)) }
     }
 
@@ -147,13 +185,16 @@ private fun QuranReader(catalog: QuranCatalog) {
             QuranPageImage(
                 page = catalog.pages[index],
                 active = index == pager.currentPage,
+                highlightRects = highlights.rectangles(catalog.pages[index].number, playback.surah, playback.ayah),
                 onZoomChanged = { if (index == pager.currentPage) zoomed = it },
             )
         }
         HorizontalDivider(color = CardBorder)
+        QuranAudioControls(catalog, page.number, followAudio, onFollow = { followAudio = true })
+        HorizontalDivider(color = CardBorder)
         Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
             IconButton(
-                onClick = { scope.launch { pager.animateScrollToPage(pager.currentPage - 1) } },
+                onClick = { followAudio = false; scope.launch { pager.animateScrollToPage(pager.currentPage - 1) } },
                 enabled = pager.currentPage > 0 && !pager.isScrollInProgress,
                 modifier = Modifier.testTag("quran_previous_page"),
             ) { Icon(painterResource(R.drawable.ic_adhkar_back), "الصفحة السابقة", tint = if (pager.currentPage > 0) GreenPrimary else TextMuted) }
@@ -167,13 +208,13 @@ private fun QuranReader(catalog: QuranCatalog) {
                     maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 13.sp, color = GreenPrimaryDark,
                 )
                 Text(
-                    if (page.number <= QuranScanCount) "${quranNumber(page.number + 1)} / ${quranNumber(QuranPrintedPageCount)}"
-                    else "الملحق ${quranNumber(page.number - QuranScanCount)} / ${quranNumber(catalog.pages.size - QuranScanCount)}",
+                    if (page.number <= QuranScanCount) "الصفحة ${quranNumber(page.number + 1)} من ${quranNumber(QuranPrintedPageCount)}"
+                    else "الملحق ${quranNumber(page.number - QuranScanCount)} من ${quranNumber(catalog.pages.size - QuranScanCount)}",
                     fontSize = 12.sp, color = TextMuted,
                 )
             }
             IconButton(
-                onClick = { scope.launch { pager.animateScrollToPage(pager.currentPage + 1) } },
+                onClick = { followAudio = false; scope.launch { pager.animateScrollToPage(pager.currentPage + 1) } },
                 enabled = pager.currentPage < catalog.pages.lastIndex && !pager.isScrollInProgress,
                 modifier = Modifier.testTag("quran_next_page"),
             ) { Icon(painterResource(R.drawable.ic_adhkar_next), "الصفحة التالية", tint = if (pager.currentPage < catalog.pages.lastIndex) GreenPrimary else TextMuted) }
@@ -192,7 +233,7 @@ private fun QuranReader(catalog: QuranCatalog) {
 }
 
 @Composable
-private fun QuranPageImage(page: QuranPage, active: Boolean, onZoomChanged: (Boolean) -> Unit) {
+private fun QuranPageImage(page: QuranPage, active: Boolean, highlightRects: List<QuranHighlightRect>, onZoomChanged: (Boolean) -> Unit) {
     val context = LocalContext.current.applicationContext
     var bitmap by remember(page.assetPath) { mutableStateOf<ImageBitmap?>(null) }
     var failed by remember(page.assetPath) { mutableStateOf(false) }
@@ -257,15 +298,32 @@ private fun QuranPageImage(page: QuranPage, active: Boolean, onZoomChanged: (Boo
     ) {
         val loaded = bitmap
         when {
-            loaded != null -> Image(
-                bitmap = loaded,
-                contentDescription = "${quranPageLabel(page.number)} ${page.surahNames.joinToString("، ")}",
-                modifier = Modifier.fillMaxSize().graphicsLayer {
+            loaded != null -> Box(
+                Modifier.fillMaxSize().graphicsLayer {
                     scaleX = scale; scaleY = scale
                     translationX = offset.x; translationY = offset.y
                 },
-                contentScale = ContentScale.Fit,
-            )
+            ) {
+                Image(
+                    bitmap = loaded,
+                    contentDescription = "${quranPageLabel(page.number)} ${page.surahNames.joinToString("، ")}",
+                    modifier = Modifier.fillMaxSize(), contentScale = ContentScale.Fit,
+                )
+                Canvas(Modifier.fillMaxSize()) {
+                    val fit = minOf(this.size.width / loaded.width, this.size.height / loaded.height)
+                    val imageWidth = loaded.width * fit
+                    val imageHeight = loaded.height * fit
+                    val origin = Offset((this.size.width - imageWidth) / 2f, (this.size.height - imageHeight) / 2f)
+                    highlightRects.forEach { rect ->
+                        drawRoundRect(
+                            color = Color(0x66E9C752),
+                            topLeft = origin + Offset(rect.left * imageWidth, rect.top * imageHeight),
+                            size = Size((rect.right - rect.left) * imageWidth, (rect.bottom - rect.top) * imageHeight),
+                            cornerRadius = CornerRadius(3.dp.toPx()), blendMode = BlendMode.Multiply,
+                        )
+                    }
+                }
+            }
             failed -> Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text("تعذّر عرض الصفحة", color = TextMuted)
                 TextButton(onClick = { attempt++ }) { Text("إعادة المحاولة") }
@@ -321,7 +379,9 @@ private fun QuranChapterSheet(catalog: QuranCatalog, currentPage: Int, onDismiss
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun QuranSearchSheet(catalog: QuranCatalog, onDismiss: () -> Unit, onPage: (Int) -> Unit) {
+    val context = LocalContext.current
     var query by rememberSaveable { mutableStateOf("") }
+    var showSources by rememberSaveable { mutableStateOf(false) }
     var results by remember { mutableStateOf<List<QuranSearchResult>>(emptyList()) }
     var searching by remember { mutableStateOf(false) }
     val focus = LocalFocusManager.current
@@ -372,8 +432,21 @@ private fun QuranSearchSheet(catalog: QuranCatalog, onDismiss: () -> Unit, onPag
                     }
                 }
             }
+            TextButton(onClick = { showSources = true }, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text("مصادر النص") }
         }
     }
+    if (showSources) AlertDialog(
+        onDismissRequest = { showSources = false },
+        title = { Text("مصادر النص") },
+        text = {
+            Column {
+                Text("نص البحث برواية قالون من الموسوعة القرآنية، مع الاستعانة ببيانات Tanzil لأرقام الصفحات والبحث بالإملاء المعتاد.", fontSize = 14.sp)
+                TextButton(onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://quranpedia.net/surah/7/1"))) }) { Text("الموسوعة القرآنية") }
+                TextButton(onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://tanzil.net"))) }) { Text("Tanzil Project · CC BY 3.0") }
+            }
+        },
+        confirmButton = { TextButton(onClick = { showSources = false }) { Text("إغلاق") } },
+    )
 }
 
 @Composable
