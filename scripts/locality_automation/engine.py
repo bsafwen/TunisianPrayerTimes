@@ -7,8 +7,11 @@ Public API:
     set_paused(state_dir, paused) -> dict
 
 The engine writes only under the caller-provided state directory except for
-declared task outputs produced by the task command. It never uses a shell and
-never imports any other package module.
+declared task outputs produced by the task command. It never uses a shell.
+Optional read-only offline preflight/replay jobs call the UTC guard in process
+around their direct child. Recorder/refresh mutation is outside this contract;
+guarded children must not create unsupervised descendants. Execution success
+and receipt/report labels grant no geographic acceptance or verification credit.
 '''
 from __future__ import annotations
 
@@ -23,6 +26,8 @@ import tempfile
 import time
 from pathlib import Path
 from typing import Any
+
+from . import work_window_guard_jobs_v2 as work_window_guard
 
 SCHEMA_VERSION = 1
 DEFAULT_KIND = 'offline'
@@ -141,6 +146,9 @@ def _output_entries(job: dict, base: Path) -> list[tuple[str, Path]]:
     for item in job.get('importedOutputs', []):
         raw = item['file']
         entries.append((raw, _resolve(base, raw)))
+    if 'workWindow' in job:
+        raw = job['workWindow']['executionReceipt']
+        entries.append((raw, _resolve(base, raw)))
     return entries
 
 
@@ -255,6 +263,41 @@ def _check_path_collisions(jobs_by_id: dict) -> None:
                     raise ValueError('output overlaps input without dependency: ' + job_id + ':' + raw)
 
 
+def _validate_work_window(job: dict, where: str) -> None:
+    """Validate launch policy independently of report content or current clock.
+
+    Preparation requires a fresh receipt; engine reservation remains exclusive
+    at execution. A completed state may reuse only its own exact pinned receipt.
+    """
+    window = job['workWindow']
+    fields = {'policyRevision', 'safeStartUtc', 'hardDeadlineUtc',
+              'minimumRemainingSeconds', 'executionReceipt'}
+    if not isinstance(window, dict) or set(window) != fields:
+        raise ValueError(where + ' workWindow requires exactly: ' + ', '.join(sorted(fields)))
+    if type(window['policyRevision']) is not int or window['policyRevision'] != 1:
+        raise ValueError(where + ' workWindow policyRevision must be 1')
+    minimum = window['minimumRemainingSeconds']
+    if isinstance(minimum, bool) or not isinstance(minimum, (int, float)) or minimum < 120:
+        raise ValueError(where + ' minimumRemainingSeconds must be finite and at least 120')
+    work_window_guard._config(window['safeStartUtc'], window['hardDeadlineUtc'], minimum)
+    raw = window['executionReceipt']
+    if (not _valid_file_field(raw) or not Path(raw).is_absolute() or
+            Path(raw) != Path(raw).resolve() or not Path(raw).parent.is_dir()):
+        raise ValueError(where + ' executionReceipt must be absolute and resolved with an existing parent directory')
+    stage = job.get('reviewStage')
+    if (_effective_kind(job) != 'offline' or job.get('readOnlyOffline') is not True or
+            not isinstance(stage, str) or stage not in {'preflight', 'replay'} or 'importedOutputs' in job):
+        raise ValueError(where + ' workWindow supports only runnable readOnlyOffline preflight/replay jobs')
+    executable = _resolve(_base_for(job), job['argv'][0])
+    if _cmp_key(executable) == _cmp_key(Path(raw)):
+        raise ValueError(where + ' executionReceipt cannot be the executable')
+    # A wrapper would supervise the guard CLI, not the approved direct child.
+    if any(Path(arg).name.casefold() in {'work_window_guard.py', 'work_window_guard_jobs_v2.py'} for arg in job['argv']) or any(
+            arg.casefold().removeprefix('-m') in {'scripts.locality_automation.work_window_guard', 'work_window_guard',
+                    'scripts.locality_automation.work_window_guard_jobs_v2', 'work_window_guard_jobs_v2'} for arg in job['argv']):
+        raise ValueError(where + ' workWindow must launch the direct child, not a guard CLI wrapper')
+
+
 def validate_plan(plan: dict) -> None:
     if not isinstance(plan, dict):
         raise ValueError('plan must be an object')
@@ -296,6 +339,8 @@ def validate_plan(plan: dict) -> None:
                 raise ValueError(where + ' non-imported task requires argv')
         elif not imported:
             raise ValueError(where + ' non-imported task requires argv')
+        if 'workWindow' in job:
+            _validate_work_window(job, where)
         if 'cwd' in job:
             cwd = job['cwd']
             if not _valid_file_field(cwd):
@@ -430,8 +475,7 @@ def _pin_imported(job: dict, base: Path) -> tuple[list[dict] | None, str | None]
 
 def _pin_outputs_after_run(job: dict, base: Path) -> tuple[list[dict] | None, str | None]:
     pins: list[dict] = []
-    for raw in job.get('outputs', []):
-        path = _resolve(base, raw)
+    for raw, path in _output_entries(job, base):
         if not _is_regular_nonempty(path):
             return None, 'declared output missing, empty, or not regular: ' + raw
         try:
@@ -479,6 +523,19 @@ def _outputs_absent(job: dict, base: Path) -> tuple[bool, str | None]:
         if path.exists() or path.is_symlink():
             return False, raw
     return True, None
+
+
+def _guard_receipt_error(job: dict, base: Path, expected: Any) -> str | None:
+    """Require this direct execution's completed exit-zero receipt, not labels."""
+    if not isinstance(expected, dict) or expected.get('status') != 'COMPLETED' or expected.get('exitCode') != 0 or expected.get('timedOut') is not False:
+        return 'guard execution did not complete successfully'
+    try:
+        actual = _read_json(_resolve(base, job['workWindow']['executionReceipt']))
+        if actual != expected or actual.get('argv') != job['argv'] or actual.get('cwd') != str(_job_cwd(job, base)):
+            return 'guard receipt binding changed'
+    except (OSError, ValueError, TypeError) as exc:
+        return 'guard receipt unavailable: ' + str(exc)
+    return None
 
 
 def _prepare_state(state: dict, plan: dict, state_dir: Path) -> bool:
@@ -539,6 +596,12 @@ def _prepare_state(state: dict, plan: dict, state_dir: Path) -> bool:
                 _mark_stale(current, 'input pins changed', 'input')
                 changed = True
                 continue
+            if 'workWindow' in job:
+                receipt_error = _guard_receipt_error(job, base, current.get('guardExecution'))
+                if receipt_error:
+                    _mark_stale(current, receipt_error, 'guard')
+                    changed = True
+                    continue
             reuse = _output_reuse_status(job, current.get('outputPins', []), base)
             if reuse == 'ok':
                 continue
@@ -605,34 +668,49 @@ def _execute_job(job: dict, base: Path, log_path: Path, timeout: float | None) -
     if not cwd.is_dir():
         return {'status': 'failed', 'inputPins': pins, 'outputPins': [], 'reasonCode': 'cwd', 'reason': 'cwd is not a directory'}
     argv = list(job.get('argv', []))
+    guard_evidence = {}
     try:
         log_path.parent.mkdir(parents=True, exist_ok=True)
         with open(log_path, 'ab') as handle:
             _write_log_header(handle, job, cwd)
             try:
-                completed = subprocess.run(
-                    argv,
-                    cwd=str(cwd),
-                    stdout=handle,
-                    stderr=subprocess.STDOUT,
-                    shell=False,
-                    timeout=timeout,
-                    check=False,
-                )
-                exit_code = completed.returncode
+                if 'workWindow' in job:
+                    handle.flush()
+                    window = job['workWindow']
+                    guarded = work_window_guard.launch_guarded(
+                        window['safeStartUtc'], window['hardDeadlineUtc'], argv,
+                        window['minimumRemainingSeconds'], record=window['executionReceipt'],
+                        cwd=str(cwd), stdout=handle, stderr=handle, timeout_seconds=timeout,
+                    )
+                    guard_evidence = {'guardExecution': guarded}
+                    exit_code = guarded['exitCode']
+                    if guarded['status'] != 'COMPLETED':
+                        return {'status': 'failed', 'inputPins': pins, 'outputPins': [],
+                                'reasonCode': 'timeout' if guarded['timedOut'] else 'guard',
+                                'reason': guarded.get('reason'), 'exitCode': exit_code, **guard_evidence}
+                else:
+                    completed = subprocess.run(
+                        argv, cwd=str(cwd), stdout=handle, stderr=subprocess.STDOUT,
+                        shell=False, timeout=timeout, check=False,
+                    )
+                    exit_code = completed.returncode
             except subprocess.TimeoutExpired:
                 return {'status': 'failed', 'inputPins': pins, 'outputPins': [], 'reasonCode': 'timeout', 'reason': 'command timed out', 'exitCode': None}
-    except OSError as exc:
+    except (OSError, ValueError) as exc:
         return {'status': 'failed', 'inputPins': pins, 'outputPins': [], 'reasonCode': 'spawn', 'reason': str(exc)}
     if exit_code != 0:
-        return {'status': 'failed', 'inputPins': pins, 'outputPins': [], 'reasonCode': 'exit', 'reason': 'exit status ' + str(exit_code), 'exitCode': exit_code}
+        return {'status': 'failed', 'inputPins': pins, 'outputPins': [], 'reasonCode': 'exit', 'reason': 'exit status ' + str(exit_code), 'exitCode': exit_code, **guard_evidence}
     after_pins, after_error = _compute_input_pins(job, base)
     if after_error or after_pins != pins:
-        return {'status': 'stale', 'inputPins': pins, 'outputPins': [], 'reasonCode': 'input', 'reason': after_error or 'input changed during execution'}
+        return {'status': 'stale', 'inputPins': pins, 'outputPins': [], 'reasonCode': 'input', 'reason': after_error or 'input changed during execution', **guard_evidence}
+    if 'workWindow' in job:
+        receipt_error = _guard_receipt_error(job, base, guard_evidence.get('guardExecution'))
+        if receipt_error:
+            return {'status': 'failed', 'inputPins': pins, 'outputPins': [], 'reasonCode': 'guard', 'reason': receipt_error, **guard_evidence}
     output_pins, output_error = _pin_outputs_after_run(job, base)
     if output_error is not None:
-        return {'status': 'failed', 'inputPins': pins, 'outputPins': [], 'reasonCode': 'output', 'reason': output_error, 'exitCode': exit_code}
-    return {'status': 'success', 'inputPins': pins, 'outputPins': output_pins, 'reasonCode': None, 'reason': None, 'exitCode': exit_code}
+        return {'status': 'failed', 'inputPins': pins, 'outputPins': [], 'reasonCode': 'output', 'reason': output_error, 'exitCode': exit_code, **guard_evidence}
+    return {'status': 'success', 'inputPins': pins, 'outputPins': output_pins, 'reasonCode': None, 'reason': None, 'exitCode': exit_code, **guard_evidence}
 
 
 def _import_job(job: dict, base: Path) -> dict:
@@ -647,7 +725,7 @@ def _import_job(job: dict, base: Path) -> dict:
 
 def _apply_result(state: dict, job_id: str, result: dict) -> None:
     current = state['jobs'][job_id]
-    for key in ('inputPins', 'outputPins', 'reasonCode', 'reason', 'exitCode'):
+    for key in ('inputPins', 'outputPins', 'reasonCode', 'reason', 'exitCode', 'guardExecution'):
         if key in result:
             current[key] = result[key]
     current['status'] = result['status']

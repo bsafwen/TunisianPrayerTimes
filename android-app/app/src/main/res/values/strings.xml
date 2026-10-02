@@ -380,6 +380,7 @@
     <string name="wake_editor_extra_add_before">تنبيه قبل المنبه</string>
     <string name="wake_editor_extra_add_after">تنبيه بعد المنبه</string>
     <string name="wake_editor_extra_limit">الحد الأقصى %1$d تنبيهات إضافية.</string>
+    <string name="wake_editor_extra_slider_hint">اسحب الدائرة لتغيير الوقت، واضغط عليها للصوت والحذف.</string>
     <string name="wake_editor_extra_main_label">المنبه</string>
     <string name="wake_editor_extra_edit">تعديل التنبيه</string>
     <string name="wake_editor_extra_rings_at">يرن الساعة</string>
@@ -406,20 +407,6 @@
         <item quantity="few">بعد المنبه بـ %1$d دقائق</item>
         <item quantity="many">بعد المنبه بـ %1$d دقيقة</item>
         <item quantity="other">بعد المنبه بـ %1$d دقيقة</item>
-    </plurals>
-    <plurals name="wake_editor_extra_before_count">
-        <item quantity="one">تنبيه قبله</item>
-        <item quantity="two">تنبيهان قبله</item>
-        <item quantity="few">%1$d تنبيهات قبله</item>
-        <item quantity="many">%1$d تنبيهًا قبله</item>
-        <item quantity="other">%1$d تنبيه قبله</item>
-    </plurals>
-    <plurals name="wake_editor_extra_after_count">
-        <item quantity="one">تنبيه بعده</item>
-        <item quantity="two">تنبيهان بعده</item>
-        <item quantity="few">%1$d تنبيهات بعده</item>
-        <item quantity="many">%1$d تنبيهًا بعده</item>
-        <item quantity="other">%1$d تنبيه بعده</item>
     </plurals>
     <string name="wake_editor_hero_paused_title">المنبه متوقف</string>
     <string name="wake_editor_hero_extra_title">التنبيه الإضافي القادم</string>

@@ -735,6 +735,9 @@ fun WakeEditorSheet(
                                 mainPlayback = mainPlayback,
                             )
                         },
+                        onChange = { updated ->
+                            subAlarms = subAlarms.map { existing -> if (existing.id == updated.id) updated else existing }
+                        },
                         onOpen = { id -> editingExtraAlarmId = id },
                     )
 
@@ -2103,9 +2106,9 @@ private fun WakeAnchorPrayerSelector(
 }
 
 /**
- * Extra alarms as one list in the order they ring, with the main alarm as its anchor. Each time
- * appears once; editing happens in [WakeExtraAlarmSheet], and new alarms are added on the side of
- * the main alarm they belong to.
+ * Extra alarms around the main alarm. [WakeExtraAlarmSlider] adds them and drags them along one
+ * timeline; the list under it gives each one its clock time and sound, in the order they ring.
+ * Side, sound and delete live in [WakeExtraAlarmSheet], opened from a handle or a row.
  */
 @Composable
 private fun WakeExtraAlarmsSection(
@@ -2113,27 +2116,49 @@ private fun WakeExtraAlarmsSection(
     mainPlayback: WakePlaybackOptions,
     timeTextFor: (signedOffsetMinutes: Int) -> String,
     onAdd: (OffsetDirection) -> Unit,
+    onChange: (PrayerWakeSubAlarm) -> Unit,
     onOpen: (String) -> Unit,
 ) {
-    val ordered = subAlarms.inRingOrder()
+    // The alarm being dragged, with its offset so far: the draft only changes on release, so the
+    // silence-conflict check doesn't run (or open its dialog) for every minute passed on the way.
+    var dragPreview by remember { mutableStateOf<PrayerWakeSubAlarm?>(null) }
+    // The alarm last added, dragged or opened, so its handle and its row can be told apart.
+    var highlightedId by remember { mutableStateOf<String?>(null) }
+    val ids = subAlarms.map { subAlarm -> subAlarm.id }
+    var knownIds by remember { mutableStateOf(ids) }
+    LaunchedEffect(ids) {
+        (ids - knownIds.toSet()).singleOrNull()?.let { addedId -> highlightedId = addedId }
+        knownIds = ids
+    }
+
+    val shownAlarms = subAlarms.map { subAlarm ->
+        dragPreview?.takeIf { preview -> preview.id == subAlarm.id } ?: subAlarm
+    }
+    val ordered = shownAlarms.inRingOrder()
     val beforeAlarms = ordered.filter { subAlarm -> subAlarm.direction == OffsetDirection.BEFORE }
     val afterAlarms = ordered.filter { subAlarm -> subAlarm.direction == OffsetDirection.AFTER }
     val canAdd = subAlarms.size < WAKE_MAX_EXTRA_ALARMS
-    val summary = listOfNotNull(
-        beforeAlarms.size.takeIf { count -> count > 0 }?.let { count ->
-            pluralStringResource(R.plurals.wake_editor_extra_before_count, count, count)
-        },
-        afterAlarms.size.takeIf { count -> count > 0 }?.let { count ->
-            pluralStringResource(R.plurals.wake_editor_extra_after_count, count, count)
-        },
-    ).joinToString(separator = " · ").ifEmpty { null }
-    val addBeforeLabel = stringResource(R.string.wake_editor_extra_add_before)
-    val addAfterLabel = stringResource(R.string.wake_editor_extra_add_after)
 
-    WakeEditorSectionCard(
-        title = stringResource(R.string.wake_editor_extra_section_title),
-        subtitle = summary,
-    ) {
+    // Nothing above the slider changes height when an alarm is added, so the add buttons stay
+    // under the finger for a second tap; the space over it is also where the drag bubble shows.
+    WakeEditorSectionCard(title = stringResource(R.string.wake_editor_extra_section_title)) {
+        WakeExtraAlarmSlider(
+            subAlarms = subAlarms,
+            canAdd = canAdd,
+            highlightedId = highlightedId,
+            timeTextFor = timeTextFor,
+            onAdd = onAdd,
+            onPreview = { preview ->
+                dragPreview = preview
+                if (preview != null) highlightedId = preview.id
+            },
+            onCommit = onChange,
+            onOpen = { id ->
+                highlightedId = id
+                onOpen(id)
+            },
+            modifier = Modifier.padding(top = 14.dp),
+        )
         if (subAlarms.isEmpty()) {
             Text(
                 text = stringResource(R.string.wake_editor_extra_empty),
@@ -2141,24 +2166,30 @@ private fun WakeExtraAlarmsSection(
                 color = TextDark,
                 lineHeight = 20.sp,
             )
-            FlowRow(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                WakeExtraAddButton(label = addBeforeLabel, onClick = { onAdd(OffsetDirection.BEFORE) })
-                WakeExtraAddButton(label = addAfterLabel, onClick = { onAdd(OffsetDirection.AFTER) })
-            }
         } else {
+            Text(
+                text = stringResource(R.string.wake_editor_extra_slider_hint),
+                fontSize = 12.sp,
+                color = TextMuted,
+                lineHeight = 17.sp,
+            )
             WakeExtraAlarmTimeline(
                 beforeAlarms = beforeAlarms,
                 afterAlarms = afterAlarms,
                 mainPlayback = mainPlayback,
-                canAdd = canAdd,
-                addBeforeLabel = addBeforeLabel,
-                addAfterLabel = addAfterLabel,
+                highlightedId = highlightedId,
                 timeTextFor = timeTextFor,
-                onAdd = onAdd,
-                onOpen = onOpen,
+                onOpen = { id ->
+                    highlightedId = id
+                    onOpen(id)
+                },
+            )
+        }
+        if (!canAdd) {
+            Text(
+                text = stringResource(R.string.wake_editor_extra_limit, WAKE_MAX_EXTRA_ALARMS),
+                fontSize = 12.sp,
+                color = TextMuted,
             )
         }
     }
@@ -2169,11 +2200,8 @@ private fun WakeExtraAlarmTimeline(
     beforeAlarms: List<PrayerWakeSubAlarm>,
     afterAlarms: List<PrayerWakeSubAlarm>,
     mainPlayback: WakePlaybackOptions,
-    canAdd: Boolean,
-    addBeforeLabel: String,
-    addAfterLabel: String,
+    highlightedId: String?,
     timeTextFor: (signedOffsetMinutes: Int) -> String,
-    onAdd: (OffsetDirection) -> Unit,
     onOpen: (String) -> Unit,
 ) {
     val context = LocalContext.current
@@ -2185,11 +2213,6 @@ private fun WakeExtraAlarmTimeline(
             .background(Color.White)
             .border(BorderStroke(1.dp, Gold.copy(alpha = 0.22f)), shape),
     ) {
-        if (canAdd) {
-            WakeExtraAddRow(label = addBeforeLabel, onClick = { onAdd(OffsetDirection.BEFORE) })
-            HorizontalDivider(color = Gold.copy(alpha = 0.16f))
-        }
-
         // null marks the main alarm between the "before" and "after" ones.
         val timeline: List<PrayerWakeSubAlarm?> = beforeAlarms + listOf(null) + afterAlarms
         timeline.forEachIndexed { index, subAlarm ->
@@ -2199,6 +2222,7 @@ private fun WakeExtraAlarmTimeline(
                     description = stringResource(R.string.wake_editor_extra_main_label),
                     detail = null,
                     isMain = true,
+                    isHighlighted = false,
                     isFirst = index == 0,
                     isLast = index == timeline.lastIndex,
                     onClick = null,
@@ -2213,23 +2237,12 @@ private fun WakeExtraAlarmTimeline(
                         wakeExtraAlarmSoundText(context, subAlarm.playback)
                     },
                     isMain = false,
+                    isHighlighted = subAlarm.id == highlightedId,
                     isFirst = index == 0,
                     isLast = index == timeline.lastIndex,
                     onClick = { onOpen(subAlarm.id) },
                 )
             }
-        }
-
-        HorizontalDivider(color = Gold.copy(alpha = 0.16f))
-        if (canAdd) {
-            WakeExtraAddRow(label = addAfterLabel, onClick = { onAdd(OffsetDirection.AFTER) })
-        } else {
-            Text(
-                text = stringResource(R.string.wake_editor_extra_limit, WAKE_MAX_EXTRA_ALARMS),
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
-                fontSize = 12.sp,
-                color = TextMuted,
-            )
         }
     }
 }
@@ -2264,6 +2277,7 @@ private fun WakeExtraTimelineRow(
     description: String,
     detail: String?,
     isMain: Boolean,
+    isHighlighted: Boolean,
     isFirst: Boolean,
     isLast: Boolean,
     onClick: (() -> Unit)?,
@@ -2311,11 +2325,12 @@ private fun WakeExtraTimelineRow(
                         .border(BorderStroke(3.dp, Color.White), CircleShape),
                 )
             } else {
+                // Filled for the alarm whose handle is marked on the slider above.
                 Box(
                     modifier = Modifier
                         .size(12.dp)
                         .clip(CircleShape)
-                        .background(Color.White)
+                        .background(if (isHighlighted) Gold else Color.White)
                         .border(BorderStroke(2.5.dp, Gold), CircleShape),
                 )
             }
@@ -2355,63 +2370,6 @@ private fun WakeExtraTimelineRow(
                 modifier = Modifier.size(18.dp),
             )
         }
-    }
-}
-
-@Composable
-private fun WakeExtraAddRow(
-    label: String,
-    onClick: () -> Unit,
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(min = 48.dp)
-            .clickable(role = Role.Button, onClick = onClick)
-            .padding(horizontal = WAKE_EXTRA_ROW_PADDING),
-        horizontalArrangement = Arrangement.spacedBy(10.dp),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Box(
-            modifier = Modifier
-                .size(WAKE_EXTRA_MARKER_COLUMN)
-                .border(BorderStroke(1.5.dp, GreenPrimary.copy(alpha = 0.45f)), CircleShape),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                painter = painterResource(R.drawable.ic_add),
-                contentDescription = null,
-                tint = GreenPrimary,
-                modifier = Modifier.size(14.dp),
-            )
-        }
-        Text(
-            text = label,
-            fontSize = 13.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenPrimary,
-        )
-    }
-}
-
-@Composable
-private fun WakeExtraAddButton(
-    label: String,
-    onClick: () -> Unit,
-) {
-    OutlinedButton(
-        onClick = onClick,
-        shape = RoundedCornerShape(20.dp),
-        border = BorderStroke(1.dp, GreenPrimary.copy(alpha = 0.4f)),
-        colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White, contentColor = GreenPrimary),
-    ) {
-        Icon(
-            painter = painterResource(R.drawable.ic_add),
-            contentDescription = null,
-            modifier = Modifier.size(16.dp),
-        )
-        Spacer(modifier = Modifier.width(6.dp))
-        Text(text = label, fontSize = 12.sp, fontWeight = FontWeight.Bold)
     }
 }
 
