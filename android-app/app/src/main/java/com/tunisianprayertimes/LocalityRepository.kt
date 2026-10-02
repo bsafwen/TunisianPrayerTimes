@@ -20,6 +20,7 @@ data class Locality(
     val pickerGroupId: String? = null,
     val pickerMemberIds: Set<String> = emptySet(),
     val searchPhrases: List<String> = emptyList(),
+    val manualReferenceId: String? = null,
 ) {
     val normalizedName: String by lazy { normalizeLocalitySearch(name) }
 
@@ -410,6 +411,7 @@ private fun mergedPickerRow(
 ): Locality = if (members.size == 1 && representative == null) canonical else canonical.copy(
     lat = representative?.lat ?: canonical.lat,
     lng = representative?.lng ?: canonical.lng,
+    manualReferenceId = representative?.id ?: canonical.manualReferenceId,
     searchText = members.joinToString(" ") { it.searchText },
     searchPhrases = members.flatMap { it.searchPhrases.ifEmpty { listOf(it.searchText) } + it.name + it.parentName }.distinct(),
     pickerMemberIds = members.flatMapTo(mutableSetOf()) { it.pickerMemberIds + it.id },
@@ -698,14 +700,27 @@ object LocalityRepository {
     }
 
     /** Saved manual groups use the same representative as a new picker selection. */
-    fun manualSelection(context: Context, localityId: String): Locality? {
+    fun manualSelection(context: Context, localityId: String, manualReferenceId: String? = null): Locality? {
         val localities = loadAll(context)
-        // A saved raw locality keeps its own ID and representative, including
-        // when its name is currently displayed within a larger picker group.
-        if (!localityId.startsWith("delegation:")) return localities.find { it.id == localityId }
-        val members = localities.filter { (it.pickerGroupId ?: it.id) == localityId }
-        val delegation = members.firstOrNull { it.id == localityId } ?: return null
-        return mergedPickerRow(delegation, members, retainedPickerRepresentative(members))
+        // Legacy raw selections retain their own point. New grouped selections
+        // separately retain the stable ID whose reviewed point was chosen.
+        val locality = if (!localityId.startsWith("delegation:")) {
+            localities.find { it.id == localityId }
+        } else {
+            val members = localities.filter { (it.pickerGroupId ?: it.id) == localityId }
+            val delegation = members.firstOrNull { it.id == localityId } ?: return null
+            mergedPickerRow(delegation, members, retainedPickerRepresentative(members))
+        } ?: return null
+        val referenceId = manualReferenceId?.let { id ->
+            reviewedReplacement(context, id)?.replacementId ?: id.takeUnless { isRetired(context, it) }
+        }
+        val reference = localities.find { it.id == referenceId }?.takeIf { ref ->
+            ref.lat != null && ref.lng != null && validCoordinates(ref.lat, ref.lng) &&
+                (ref.id == locality.id || (ref.pickerGroupId ?: ref.id) == (locality.pickerGroupId ?: locality.id))
+        }
+        // Missing, retired-without-replacement, invalid or unrelated references
+        // use the current raw/legacy point rather than a stale stored coordinate.
+        return reference?.let { locality.copy(lat = it.lat, lng = it.lng, manualReferenceId = it.id) } ?: locality
     }
 
     fun selected(context: Context): Locality? {

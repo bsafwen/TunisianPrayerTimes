@@ -1541,7 +1541,7 @@ private fun LocationPickerCard(
             // Manual groups and raw localities both have retained representatives.
             // Recompute after source changes even when the old source is usable;
             // GPS selections keep the result of their actual fix and are skipped.
-            runCatching { LocalityRepository.manualSelection(context, id) }.getOrNull()
+            runCatching { LocalityRepository.manualSelection(context, id, saved.manualReferenceId) }.getOrNull()
                 ?.takeIf { it.lat != null && it.lng != null }
                 ?.let { withAvailablePrayerSource(it, sources) }
         } ?: return@LaunchedEffect

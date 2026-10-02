@@ -62,6 +62,55 @@ class LocalityRepositoryTest {
         assertNull(LocalityRepository.selected(context))
     }
 
+    @Test fun `new grouped manual selection keeps its reference and source after reload`() {
+        val sources = GouvernoratRepository.loadAllDelegations(context)
+        val row = LocalityRepository.preparePicker(context, sources).localities
+            .single { it.id == "osm:relation:7201552" }
+        val chosen = requireNotNull(withAvailablePrayerSource(row, sources))
+        assertEquals("osm:node:1143501777", chosen.manualReferenceId)
+        assertEquals(403, chosen.delegationId)
+        PrefsManager.setLocality(context, chosen)
+
+        val saved = PrefsManager.getLocationSelection(context)
+        val restored = requireNotNull(LocalityRepository.manualSelection(
+            context, requireNotNull(saved.localityId), saved.manualReferenceId,
+        ))
+        val repaired = requireNotNull(withAvailablePrayerSource(restored, sources))
+        assertEquals(chosen.id, repaired.id)
+        assertEquals(chosen.lat, repaired.lat)
+        assertEquals(chosen.lng, repaired.lng)
+        assertEquals(chosen.delegationId, repaired.delegationId)
+        assertFalse(saved.fromGps)
+    }
+
+    @Test fun `legacy raw manual selection retains its original reference`() {
+        val raw = requireNotNull(LocalityRepository.manualSelection(context, "osm:relation:7201552"))
+        PrefsManager.setLocality(context, raw)
+        val saved = PrefsManager.getLocationSelection(context)
+        assertNull(saved.manualReferenceId)
+        val restored = requireNotNull(LocalityRepository.manualSelection(
+            context, requireNotNull(saved.localityId), saved.manualReferenceId,
+        ))
+        assertEquals(raw.lat, restored.lat)
+        assertEquals(raw.lng, restored.lng)
+    }
+
+    @Test fun `GPS selection clears a manual reference without changing its prayer source`() {
+        val sources = GouvernoratRepository.loadAllDelegations(context)
+        val row = LocalityRepository.preparePicker(context, sources).localities
+            .single { it.id == "osm:relation:7201552" }
+        PrefsManager.setLocality(context, row)
+        assertNotNull(PrefsManager.getLocationSelection(context).manualReferenceId)
+
+        val source = sources.single { it.id == 403 }
+        PrefsManager.setGpsLocation(context, DelegationLocationResult.Success(source, null))
+        val saved = PrefsManager.getLocationSelection(context)
+        assertTrue(saved.fromGps)
+        assertEquals(403, saved.delegationId)
+        assertNull(saved.localityId)
+        assertNull(saved.manualReferenceId)
+    }
+
     @Test fun `unknown query does not guess a location`() {
         assertTrue(searchLocalities(LocalityRepository.loadAll(context), "zzzznonexistent").isEmpty())
     }
