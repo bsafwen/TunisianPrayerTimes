@@ -42,7 +42,8 @@ import java.util.Locale
 /** Playback belongs to the service; the reader only observes it and issues explicit controls. */
 @Composable
 fun QuranAudioControls(
-    catalog: QuranCatalog,
+    /** Null while the text index is still being read; recitation cannot be chosen before it. */
+    catalog: QuranCatalog?,
     currentPage: Int,
     following: Boolean,
     onFollow: () -> Unit,
@@ -52,10 +53,10 @@ fun QuranAudioControls(
 ) {
     val context = LocalContext.current
     val playback by QuranAudioController.state.collectAsStateWithLifecycle()
-    val firstVerse = remember(catalog, currentPage) { catalog.versesOnPage(currentPage).firstOrNull { it.ayah > 0 } }
+    val firstVerse = remember(catalog, currentPage) { catalog?.versesOnPage(currentPage)?.firstOrNull { it.ayah > 0 } }
     val reciter = QuranAudioController.reciters.firstOrNull { it.id == playback.reciterId }
         ?: QuranAudioController.reciters.first()
-    val currentSurah = catalog.surahs.firstOrNull { it.number == playback.surah }
+    val currentSurah = catalog?.surahs?.firstOrNull { it.number == playback.surah }
     var expanded by rememberSaveable { mutableStateOf(false) }
 
     fun playPause() {
@@ -88,7 +89,7 @@ fun QuranAudioControls(
             )
             Column(
                 Modifier.weight(1f).clip(RoundedCornerShape(8.dp))
-                    .clickable(onClickLabel = "خيارات التلاوة") { expanded = true }
+                    .clickable(enabled = catalog != null, onClickLabel = "خيارات التلاوة") { expanded = true }
                     .padding(horizontal = 6.dp, vertical = 4.dp),
             ) {
                 Text(
@@ -96,6 +97,7 @@ fun QuranAudioControls(
                         playback.loading -> "جارٍ تحميل التلاوة…"
                         playback.error != null -> "تعذّر تشغيل التلاوة"
                         currentSurah != null -> "${currentSurah.name} · ${audioVerseLabel(playback.ayah)}"
+                        catalog == null -> "جارٍ تجهيز التلاوة…"
                         firstVerse == null -> "خيارات التلاوة"
                         else -> "استمع من هذه الصفحة"
                     },
@@ -110,12 +112,15 @@ fun QuranAudioControls(
             if (playback.surah != null && !following) {
                 TextButton(onClick = onFollow, contentPadding = PaddingValues(horizontal = 8.dp)) { Text("متابعة", fontSize = 11.sp) }
             }
-            IconButton(onClick = { expanded = true }, modifier = Modifier.testTag("quran_audio_options")) {
-                Icon(painterResource(R.drawable.ic_settings), "خيارات التلاوة", tint = GreenPrimary, modifier = Modifier.size(21.dp))
+            IconButton(onClick = { expanded = true }, enabled = catalog != null, modifier = Modifier.testTag("quran_audio_options")) {
+                Icon(
+                    painterResource(R.drawable.ic_settings), "خيارات التلاوة",
+                    tint = if (catalog != null) GreenPrimary else TextMuted, modifier = Modifier.size(21.dp),
+                )
             }
         }
     }
-    if (expanded) {
+    if (expanded && catalog != null) {
         QuranAudioSheet(
             catalog = catalog,
             playback = playback,
