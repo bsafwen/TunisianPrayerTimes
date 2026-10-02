@@ -29,8 +29,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranVerse
+import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.audio.QuranAudioController
 import com.tunisianprayertimes.quran.audio.QuranPlaybackState
+import com.tunisianprayertimes.quran.audio.QuranRepeatRange
 import com.tunisianprayertimes.ui.theme.BgCream
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
@@ -44,6 +46,8 @@ fun QuranAudioControls(
     currentPage: Int,
     following: Boolean,
     onFollow: () -> Unit,
+    /** Opens the repeat sheet on these verses. */
+    onRepeat: (QuranRepeatRange) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -62,7 +66,9 @@ fun QuranAudioControls(
                 onFollow()
             }
             playback.surah != null -> {
-                QuranAudioController.play(context, playback.reciterId, playback.surah!!, playback.ayah)
+                // A repetition goes on from where it stopped, in the same pass.
+                if (playback.repeat != null) QuranAudioController.resume(context)
+                else QuranAudioController.play(context, playback.reciterId, playback.surah!!, playback.ayah)
                 onFollow()
             }
             firstVerse != null -> {
@@ -96,7 +102,10 @@ fun QuranAudioControls(
                     maxLines = 1, overflow = TextOverflow.Ellipsis,
                     fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark,
                 )
-                Text(reciter.name, maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 10.sp, color = TextMuted)
+                Text(
+                    playback.repeat?.let { quranRepeatStatus(it, playback.repeatRound) } ?: reciter.name,
+                    maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 10.sp, color = TextMuted,
+                )
             }
             if (playback.surah != null && !following) {
                 TextButton(onClick = onFollow, contentPadding = PaddingValues(horizontal = 8.dp)) { Text("متابعة", fontSize = 11.sp) }
@@ -114,6 +123,12 @@ fun QuranAudioControls(
             following = following,
             onFollow = onFollow,
             onPlayPause = ::playPause,
+            onRepeat = {
+                expanded = false
+                // The current repetition, else the verse being recited, else the page's first verse.
+                val verse = playback.surah?.let { QuranVerseReference(it, playback.ayah ?: 1) } ?: firstVerse?.reference
+                (playback.repeat ?: verse?.let { QuranRepeatRange(it, it) })?.let(onRepeat)
+            },
             onDismiss = { expanded = false },
         )
     }
@@ -128,6 +143,7 @@ private fun QuranAudioSheet(
     following: Boolean,
     onFollow: () -> Unit,
     onPlayPause: () -> Unit,
+    onRepeat: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     val context = LocalContext.current
@@ -148,9 +164,12 @@ private fun QuranAudioSheet(
         ?: remember(catalog, chosenSurah) { catalog.verses.filter { it.surah == chosenSurah }.maxOfOrNull { it.ayah } ?: 1 }
     val verseNumber = chosenVerse.trim().map { it.digitToIntOrNull()?.digitToChar() ?: it }.joinToString("").toIntOrNull()
     val validVerse = verseNumber != null && verseNumber in 1..verseCount
-    val duration = playback.durationMs.coerceAtLeast(0L)
-    val fraction = scrubFraction ?: if (duration > 0L) (playback.positionMs.toFloat() / duration).coerceIn(0f, 1f) else 0f
-    val displayedPosition = scrubFraction?.let { (it * duration).toLong() } ?: playback.positionMs
+    // While a range is repeated, the slider covers only its part of the chapter.
+    val sliderStart = playback.repeatWindow?.startMs ?: 0L
+    val duration = ((playback.repeatWindow?.endMs ?: playback.durationMs) - sliderStart).coerceAtLeast(0L)
+    val position = (playback.positionMs - sliderStart).coerceIn(0L, duration)
+    val fraction = scrubFraction ?: if (duration > 0L) (position.toFloat() / duration).coerceIn(0f, 1f) else 0f
+    val displayedPosition = scrubFraction?.let { (it * duration).toLong() } ?: position
 
     fun startSelection() {
         if (!validVerse) return
@@ -201,6 +220,32 @@ private fun QuranAudioSheet(
                 if (activeSurah != null) {
                     Text("سورة ${activeSurah.name} · ${audioVerseLabel(playback.ayah)}", color = GreenPrimaryDark, fontWeight = FontWeight.SemiBold)
                 }
+                val repeat = playback.repeat
+                if (repeat != null) {
+                    Surface(color = AdhkarSoftGreen, shape = RoundedCornerShape(14.dp), modifier = Modifier.fillMaxWidth().testTag("quran_audio_repeat_card")) {
+                        Column(Modifier.padding(start = 14.dp, end = 14.dp, top = 12.dp, bottom = 4.dp)) {
+                            Text(quranRepeatStatus(repeat, playback.repeatRound), fontSize = 12.sp, color = GreenPrimary)
+                            Text(quranRepeatRangeLabel(catalog, repeat), color = GreenPrimaryDark, fontWeight = FontWeight.SemiBold)
+                            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                                TextButton(onClick = onRepeat, modifier = Modifier.testTag("quran_audio_repeat_edit")) { Text("تعديل") }
+                                TextButton(
+                                    onClick = { QuranAudioController.cancelRepeat(context) },
+                                    modifier = Modifier.testTag("quran_audio_repeat_cancel"),
+                                ) { Text("إلغاء التكرار") }
+                            }
+                        }
+                    }
+                } else {
+                    OutlinedButton(
+                        onClick = onRepeat,
+                        enabled = playback.surah != null || firstVerse != null,
+                        modifier = Modifier.fillMaxWidth().testTag("quran_audio_repeat"),
+                    ) {
+                        Icon(painterResource(R.drawable.ic_quran_repeat), null, Modifier.size(18.dp))
+                        Spacer(Modifier.width(8.dp))
+                        Text("تكرار آية أو مقطع")
+                    }
+                }
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly, verticalAlignment = Alignment.CenterVertically) {
                     IconButton(
                         onClick = { QuranAudioController.previousVerse(context); onFollow() },
@@ -230,7 +275,7 @@ private fun QuranAudioSheet(
                             value = fraction,
                             onValueChange = { scrubFraction = it },
                             onValueChangeFinished = {
-                                scrubFraction?.let { QuranAudioController.seekTo(context, (it * duration).toLong()); onFollow() }
+                                scrubFraction?.let { QuranAudioController.seekTo(context, sliderStart + (it * duration).toLong()); onFollow() }
                                 scrubFraction = null
                             },
                             enabled = duration > 0L && !playback.loading,

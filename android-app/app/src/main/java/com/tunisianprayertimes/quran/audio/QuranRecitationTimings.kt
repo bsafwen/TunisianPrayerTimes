@@ -28,6 +28,8 @@ internal data class QuranSurahRecording(
     }
 
     fun startOf(ayah: Int): Long? = timings.getOrNull(ayah - 1)?.takeIf { it.ayah == ayah }?.startMs
+
+    fun endOf(ayah: Int): Long? = timings.getOrNull(ayah - 1)?.takeIf { it.ayah == ayah }?.endMs
 }
 
 internal object QuranRecitationTimings {

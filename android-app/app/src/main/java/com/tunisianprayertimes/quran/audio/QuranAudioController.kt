@@ -25,6 +25,12 @@ data class QuranPlaybackState(
     val durationMs: Long = 0L,
     val introEndMs: Long = 0L,
     val error: String? = null,
+    /** The verse range being recited again and again, if any. */
+    val repeat: QuranRepeatRange? = null,
+    /** The one-based pass over [repeat] being recited; 0 without a repetition. */
+    val repeatRound: Int = 0,
+    /** The part of the current chapter's audio that belongs to [repeat]. */
+    val repeatWindow: QuranRepeatWindow? = null,
 )
 
 /** The service owns playback; screens may disappear without interrupting the recitation. */
@@ -44,6 +50,29 @@ object QuranAudioController {
             putExtra(QuranPlaybackService.EXTRA_RECITER, reciterId)
             putExtra(QuranPlaybackService.EXTRA_SURAH, surah)
             ayah?.let { putExtra(QuranPlaybackService.EXTRA_AYAH, it) }
+        }
+    }
+
+    /** Recites [range] from its first verse, again and again as it asks. */
+    fun repeat(context: Context, range: QuranRepeatRange, reciterId: String = state.value.reciterId) {
+        if (reciters.none { it.id == reciterId } || !range.isValid) return
+        send(context, QuranPlaybackService.ACTION_PLAY, foreground = true) {
+            putExtra(QuranPlaybackService.EXTRA_RECITER, reciterId)
+            putExtra(QuranPlaybackService.EXTRA_SURAH, range.from.surah)
+            putExtra(QuranPlaybackService.EXTRA_AYAH, range.from.ayah)
+            putExtra(QuranPlaybackService.EXTRA_REPEAT_TO_SURAH, range.to.surah)
+            putExtra(QuranPlaybackService.EXTRA_REPEAT_TO_AYAH, range.to.ayah)
+            putExtra(QuranPlaybackService.EXTRA_REPEAT_TIMES, range.times ?: 0)
+        }
+    }
+
+    /** Recitation goes on from where it is, past the end of the range. */
+    fun cancelRepeat(context: Context) {
+        if (serviceRunning) send(context, QuranPlaybackService.ACTION_REPEAT_OFF)
+        else {
+            context.getSharedPreferences(QuranPlaybackService.PREFERENCES, Context.MODE_PRIVATE).edit()
+                .remove(QuranPlaybackService.KEY_REPEAT).apply()
+            publish(state.value.copy(repeat = null, repeatRound = 0, repeatWindow = null))
         }
     }
 
