@@ -12,6 +12,33 @@ class QuranHighlights internal constructor(
     fun rectangles(page: Int, surah: Int?, ayah: Int?): List<QuranHighlightRect> =
         if (surah == null || ayah == null) emptyList()
         else pages[page]?.get(QuranVerseReference(surah, ayah)).orEmpty()
+
+    /**
+     * The verse touched at a point of the original scan. A touch in the thin space between two
+     * lines or two verses selects the nearest one; page margins and chapter headings select nothing.
+     */
+    fun verseAt(page: Int, x: Float, y: Float): QuranVerseReference? {
+        var nearest: QuranVerseReference? = null
+        var nearestDistance = TOUCH_SLOP
+        pages[page]?.forEach { (reference, rects) ->
+            rects.forEach { rect ->
+                val dx = maxOf(rect.left - x, 0f, x - rect.right)
+                val dy = maxOf(rect.top - y, 0f, y - rect.bottom)
+                if (dx == 0f && dy == 0f) return reference
+                val distance = maxOf(dx, dy)
+                if (distance < nearestDistance) {
+                    nearestDistance = distance
+                    nearest = reference
+                }
+            }
+        }
+        return nearest
+    }
+
+    private companion object {
+        /** About a fifth of a text line, in the normalized scan coordinates. */
+        const val TOUCH_SLOP = 0.012f
+    }
 }
 
 object QuranHighlightRepository {

@@ -9,6 +9,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.awaitEachGesture
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.awaitLongPressOrCancellation
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.gestures.transformable
@@ -36,11 +39,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.CustomAccessibilityAction
@@ -49,7 +54,6 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -63,6 +67,9 @@ import com.tunisianprayertimes.quran.QuranHighlights
 import com.tunisianprayertimes.quran.QuranHighlightRect
 import com.tunisianprayertimes.quran.QuranHighlightRepository
 import com.tunisianprayertimes.quran.audio.QuranAudioController
+import com.tunisianprayertimes.quran.audio.QuranRepeatRange
+import com.tunisianprayertimes.quran.audio.decodeQuranRepeat
+import com.tunisianprayertimes.quran.audio.encode
 import com.tunisianprayertimes.ui.theme.*
 import java.util.Locale
 import kotlinx.coroutines.CancellationException
@@ -127,8 +134,13 @@ private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
     var followAudio by rememberSaveable { mutableStateOf(true) }
     var lastFollowedSurah by remember { mutableStateOf<Int?>(null) }
     var panel by rememberSaveable { mutableStateOf<String?>(null) }
+    // The verses the repeat sheet opens on, kept across a re-created activity.
+    var repeatDraft by rememberSaveable { mutableStateOf<String?>(null) }
     var zoomed by remember { mutableStateOf(false) }
     val page = catalog.pages[pager.currentPage]
+    val haptics = LocalHapticFeedback.current
+    val repeatSheet = remember(panel, repeatDraft) { if (panel == "repeat") decodeQuranRepeat(repeatDraft)?.first else null }
+    var gestureHint by remember { mutableStateOf(!prefs.getBoolean("gesture_hint_seen", false)) }
 
     LaunchedEffect(pager) {
         snapshotFlow { pager.settledPage }.distinctUntilChanged().collect {
@@ -157,6 +169,14 @@ private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
         followAudio = false
         scope.launch { pager.scrollToPage((number - 1).coerceIn(0, catalog.pages.lastIndex)) }
     }
+    fun openRepeat(range: QuranRepeatRange) {
+        repeatDraft = range.encode(1)
+        panel = "repeat"
+    }
+    fun hideGestureHint() {
+        gestureHint = false
+        prefs.edit().putBoolean("gesture_hint_seen", true).apply()
+    }
 
     Column(Modifier.fillMaxSize().testTag("quran_reader")) {
         Row(
@@ -182,59 +202,79 @@ private fun QuranReader(catalog: QuranCatalog, highlights: QuranHighlights) {
             userScrollEnabled = !zoomed,
             beyondViewportPageCount = 1,
         ) { index ->
+            val number = catalog.pages[index].number
+            val chosen = repeatSheet?.from
             QuranPageImage(
                 page = catalog.pages[index],
                 active = index == pager.currentPage,
-                highlightRects = highlights.rectangles(catalog.pages[index].number, playback.surah, playback.ayah),
+                highlightRects = highlights.rectangles(number, playback.surah, playback.ayah),
+                selectedRects = highlights.rectangles(number, chosen?.surah, chosen?.ayah),
+                onVerseLongPress = { x, y ->
+                    val verse = highlights.verseAt(number, x, y)
+                    if (verse != null) {
+                        haptics.performHapticFeedback(HapticFeedbackType.LongPress)
+                        hideGestureHint()
+                        // One pressed verse, repeated until the listener stops it.
+                        openRepeat(QuranRepeatRange(verse, verse))
+                    }
+                    verse != null
+                },
                 onZoomChanged = { if (index == pager.currentPage) zoomed = it },
             )
         }
         HorizontalDivider(color = CardBorder)
-        QuranAudioControls(catalog, page.number, followAudio, onFollow = { followAudio = true })
-        HorizontalDivider(color = CardBorder)
-        Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-            IconButton(
-                onClick = { followAudio = false; scope.launch { pager.animateScrollToPage(pager.currentPage - 1) } },
-                enabled = pager.currentPage > 0 && !pager.isScrollInProgress,
-                modifier = Modifier.testTag("quran_previous_page"),
-            ) { Icon(painterResource(R.drawable.ic_adhkar_back), "الصفحة السابقة", tint = if (pager.currentPage > 0) GreenPrimary else TextMuted) }
-            Column(
-                Modifier.weight(1f).clip(RoundedCornerShape(8.dp)).clickable { panel = "page" }.padding(vertical = 4.dp)
-                    .testTag("quran_page_picker"),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
+        QuranAudioControls(catalog, page.number, followAudio, onFollow = { followAudio = true }, onRepeat = ::openRepeat)
+        if (gestureHint) {
+            // Until it is dismissed or a verse is first pressed; afterwards the page keeps this space.
+            HorizontalDivider(color = CardBorder)
+            Row(Modifier.fillMaxWidth().padding(start = 16.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    page.surahNames.joinToString(" · ").ifBlank { "ملحق أحكام القراءة" },
-                    maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 13.sp, color = GreenPrimaryDark,
+                    "انقر مرتين للتكبير · اضغط مطولًا على آية لتكرارها",
+                    Modifier.weight(1f).testTag("quran_gesture_hint"), fontSize = 11.sp, color = TextMuted,
                 )
-                Text(
-                    if (page.number <= QuranScanCount) "الصفحة ${quranNumber(page.number + 1)} من ${quranNumber(QuranPrintedPageCount)}"
-                    else "الملحق ${quranNumber(page.number - QuranScanCount)} من ${quranNumber(catalog.pages.size - QuranScanCount)}",
-                    fontSize = 12.sp, color = TextMuted,
-                )
+                IconButton(onClick = ::hideGestureHint, modifier = Modifier.size(36.dp)) {
+                    Icon(painterResource(R.drawable.ic_adhkar_close), "إخفاء التلميح", Modifier.size(16.dp), tint = TextMuted)
+                }
             }
-            IconButton(
-                onClick = { followAudio = false; scope.launch { pager.animateScrollToPage(pager.currentPage + 1) } },
-                enabled = pager.currentPage < catalog.pages.lastIndex && !pager.isScrollInProgress,
-                modifier = Modifier.testTag("quran_next_page"),
-            ) { Icon(painterResource(R.drawable.ic_adhkar_next), "الصفحة التالية", tint = if (pager.currentPage < catalog.pages.lastIndex) GreenPrimary else TextMuted) }
         }
-        Text(
-            if (zoomed) "انقر مرتين للعودة إلى الصفحة كاملة" else "اسحب يمينًا للصفحة التالية · انقر مرتين للتكبير",
-            Modifier.align(Alignment.CenterHorizontally).padding(bottom = 4.dp),
-            fontSize = 10.sp, color = TextMuted,
-        )
     }
     when (panel) {
-        "chapters" -> QuranChapterSheet(catalog, page.number, onDismiss = { panel = null }, onPage = ::openPage)
+        "chapters" -> QuranChapterSheet(
+            catalog, page.number, onDismiss = { panel = null }, onPage = ::openPage, onPageNumber = { panel = "page" },
+        )
         "search" -> QuranSearchSheet(catalog, onDismiss = { panel = null }, onPage = ::openPage)
         "page" -> QuranPageDialog(page.number, onDismiss = { panel = null }, onPage = ::openPage)
+    }
+    if (repeatSheet != null) {
+        // A different pressed verse is a different sheet, never the previous one's saved fields.
+        key(repeatDraft) {
+            QuranRepeatSheet(
+                catalog = catalog,
+                initial = repeatSheet,
+                onStart = { range ->
+                    QuranAudioController.repeat(context, range)
+                    followAudio = true
+                    panel = null
+                },
+                onDismiss = { panel = null },
+            )
+        }
     }
 }
 
 @Composable
-private fun QuranPageImage(page: QuranPage, active: Boolean, highlightRects: List<QuranHighlightRect>, onZoomChanged: (Boolean) -> Unit) {
+private fun QuranPageImage(
+    page: QuranPage,
+    active: Boolean,
+    highlightRects: List<QuranHighlightRect>,
+    selectedRects: List<QuranHighlightRect>,
+    /** A long press at a point of the original scan, each coordinate from 0 to 1; true when it chose a verse. */
+    onVerseLongPress: (x: Float, y: Float) -> Boolean,
+    onZoomChanged: (Boolean) -> Unit,
+) {
     val context = LocalContext.current.applicationContext
+    // The gesture detector outlives recompositions; it must call the newest callback.
+    val currentOnVerseLongPress by rememberUpdatedState(onVerseLongPress)
     var bitmap by remember(page.assetPath) { mutableStateOf<ImageBitmap?>(null) }
     var failed by remember(page.assetPath) { mutableStateOf(false) }
     var attempt by remember(page.assetPath) { mutableIntStateOf(0) }
@@ -293,6 +333,28 @@ private fun QuranPageImage(page: QuranPage, active: Boolean, highlightRects: Lis
                         offset = boundedOffset((Offset(size.width / 2f, size.height / 2f) - tap) * (scale - 1f), scale)
                     }
                 })
+            }
+            // Its own detector: a long press on a margin, or with two fingers resting before a pinch,
+            // must leave the rest of the gesture to the zoom, the pan and the page swipe.
+            .pointerInput(page.number) {
+                awaitEachGesture {
+                    val down = awaitFirstDown(requireUnconsumed = false)
+                    // Null when the finger lifts or another gesture takes over first.
+                    val press = awaitLongPressOrCancellation(down.id)?.position ?: return@awaitEachGesture
+                    val image = bitmap ?: return@awaitEachGesture
+                    if (currentEvent.changes.count { it.pressed } != 1 || size.width == 0 || size.height == 0) return@awaitEachGesture
+                    // Undo the zoom and pan, then the letterboxing of the fitted scan.
+                    val fit = minOf(size.width.toFloat() / image.width, size.height.toFloat() / image.height)
+                    val x = .5f + (press.x - size.width / 2f - offset.x) / (scale * image.width * fit)
+                    val y = .5f + (press.y - size.height / 2f - offset.y) / (scale * image.height * fit)
+                    if (x in 0f..1f && y in 0f..1f && currentOnVerseLongPress(x, y)) {
+                        // The press chose a verse: nothing else acts on what is left of this gesture.
+                        do {
+                            val event = awaitPointerEvent()
+                            event.changes.forEach { it.consume() }
+                        } while (event.changes.any { it.pressed })
+                    }
+                }
             },
         contentAlignment = Alignment.Center,
     ) {
@@ -314,14 +376,17 @@ private fun QuranPageImage(page: QuranPage, active: Boolean, highlightRects: Lis
                     val imageWidth = loaded.width * fit
                     val imageHeight = loaded.height * fit
                     val origin = Offset((this.size.width - imageWidth) / 2f, (this.size.height - imageHeight) / 2f)
-                    highlightRects.forEach { rect ->
+                    fun tint(rects: List<QuranHighlightRect>, color: Color) = rects.forEach { rect ->
                         drawRoundRect(
-                            color = Color(0x66E9C752),
+                            color = color,
                             topLeft = origin + Offset(rect.left * imageWidth, rect.top * imageHeight),
                             size = Size((rect.right - rect.left) * imageWidth, (rect.bottom - rect.top) * imageHeight),
                             cornerRadius = CornerRadius(3.dp.toPx()), blendMode = BlendMode.Multiply,
                         )
                     }
+                    // Only the recited verse and the pressed one are coloured; the rest of the page stays white.
+                    tint(highlightRects, Color(0x5266BB6A))
+                    tint(selectedRects, Color(0x5200695C))
                 }
             }
             failed -> Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -335,7 +400,13 @@ private fun QuranPageImage(page: QuranPage, active: Boolean, highlightRects: Lis
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun QuranChapterSheet(catalog: QuranCatalog, currentPage: Int, onDismiss: () -> Unit, onPage: (Int) -> Unit) {
+private fun QuranChapterSheet(
+    catalog: QuranCatalog,
+    currentPage: Int,
+    onDismiss: () -> Unit,
+    onPage: (Int) -> Unit,
+    onPageNumber: () -> Unit,
+) {
     var query by rememberSaveable { mutableStateOf("") }
     val currentSurahNames = catalog.pages[currentPage - 1].surahNames
     val listState = rememberLazyListState(
@@ -353,7 +424,9 @@ private fun QuranChapterSheet(catalog: QuranCatalog, currentPage: Int, onDismiss
                 placeholder = { Text("اسم السورة أو رقمها") }, singleLine = true,
                 shape = RoundedCornerShape(14.dp), keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
             )
-            Spacer(Modifier.height(8.dp))
+            TextButton(onClick = onPageNumber, modifier = Modifier.testTag("quran_page_picker")) {
+                Text("الانتقال إلى رقم صفحة")
+            }
             LazyColumn(Modifier.weight(1f), state = listState, contentPadding = PaddingValues(bottom = 16.dp)) {
                 items(chapters, key = { it.number }) { surah ->
                     Row(
@@ -485,7 +558,7 @@ private fun QuranPageDialog(current: Int, onDismiss: () -> Unit, onPage: (Int) -
 
 private fun quranNumber(value: Int): String = String.format(Locale.forLanguageTag("ar"), "%d", value)
 
-private fun quranInputNumber(value: String): Int? = value.trim()
+internal fun quranInputNumber(value: String): Int? = value.trim()
     .map { c -> c.digitToIntOrNull()?.digitToChar() ?: c }.joinToString("").toIntOrNull()
 
 private fun quranPageLabel(scan: Int): String = if (scan <= QuranScanCount) "صفحة ${quranNumber(scan + 1)}"
