@@ -3,6 +3,7 @@ package com.tunisianprayertimes.ui
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,6 +37,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
@@ -49,6 +52,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -187,21 +191,24 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
         ValueRow(
             stringResource(R.string.prayer_method_input_elevation),
             stringResource(R.string.prayer_method_input_elevation_value, "%.0f".us(location.elevationM)),
+            valueStyle = LtrMonospace.copy(textDirection = TextDirection.ContentOrRtl),
         )
     }
 
     MethodSection(stringResource(R.string.prayer_method_step_sun_title), stringResource(R.string.prayer_method_step_sun_body)) {
         Formula(
             "JD  = %.1f".us(explanation.julianDay),
-            "δ   = %+.3f°".us(explanation.declinationDeg),
-            "EoT = %+.2f min".us(explanation.equationOfTimeMin),
+            "δ   = ${signed(explanation.declinationDeg, 3)}°",
+            "EoT = ${signed(explanation.equationOfTimeMin, 2)} min",
         )
     }
 
     MethodSection(stringResource(R.string.prayer_method_step_dhuhr_title), stringResource(R.string.prayer_method_step_dhuhr_body)) {
         Formula(
-            "noon = 12 + 1 − λ/15 − EoT/60",
-            "     = 12 + 1 − %.3f/15 − %.2f/60".us(location.longitude, explanation.equationOfTimeMin),
+            "noon = 12 + 1 − λ/15",
+            "          − EoT/60",
+            "     = 12 + 1 − %.3f/15".us(location.longitude),
+            "          ${minusTerm(explanation.equationOfTimeMin)}/60",
             "     = ${clock(noon)}",
             "t    = noon + 7 min",
         )
@@ -213,17 +220,17 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
         stringResource(R.string.prayer_method_step_hour_angle_body),
     ) {
         Formula(
-            "cos H = (sin a − sin φ · sin δ)",
-            "        / (cos φ · cos δ)",
-            "t     = noon ± H / 15",
+            "cos H = (sin a − sin φ·sin δ)",
+            "        / (cos φ·cos δ)",
+            "t     = noon ± H/15",
         )
     }
 
     val asr = steps.getValue(InmEvent.ASR)
     MethodSection(stringResource(R.string.prayer_method_step_asr_title), stringResource(R.string.prayer_method_step_asr_body)) {
         Formula(
-            "a = atan(1 / (1 + tan|φ − δ|))",
-            "  = atan(1 / (1 + tan %.3f°))".us(abs(location.latitude - explanation.declinationDeg)),
+            "a = atan(1/(1 + tan|φ − δ|))",
+            "  = atan(1/(1 + tan %.3f°))".us(abs(location.latitude - explanation.declinationDeg)),
             "  = %.3f°".us(explanation.asrAltitudeDeg),
             "H = %.3f°  →  %s".us(asr.hourAngleDeg ?: 0.0, duration((asr.hourAngleDeg ?: 0.0) * 4)),
             "t = ${clock(noon)} + ${duration((asr.hourAngleDeg ?: 0.0) * 4)}",
@@ -334,55 +341,101 @@ private fun Formula(vararg lines: String) {
             Modifier
                 .fillMaxWidth()
                 .background(PrayerSilencePalette.TintedStrip, RoundedCornerShape(12.dp))
+                .horizontalScroll(rememberScrollState())
                 .padding(horizontal = 12.dp, vertical = 10.dp),
             verticalArrangement = Arrangement.spacedBy(2.dp),
         ) {
             lines.forEach { line ->
-                Text(line, style = LtrMonospace, color = TextDark)
+                Text(line, style = FormulaStyle, color = TextDark, softWrap = false, maxLines = 1)
             }
         }
     }
 }
 
+/** A short label and a short value on one line; values here are a few characters long. */
 @Composable
-private fun ValueRow(label: String, value: String) {
-    Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+private fun ValueRow(label: String, value: String, valueStyle: TextStyle = LtrMonospace) {
+    Row(
+        Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
         Text(label, fontSize = 13.sp, color = PrayerSilencePalette.SecondaryText, modifier = Modifier.weight(1f))
-        Text(value, style = LtrMonospace, color = TextDark)
+        Text(value, style = valueStyle, color = TextDark, softWrap = false, maxLines = 1)
     }
 }
 
-/** One time's result: its hour angle when it has one, the exact time and the rounded time shown in the app. */
+/**
+ * One time's result: the prayer name with the exact and rounded time, and below it the hour
+ * angle when it has one. Two short lines, so the name always keeps its width.
+ */
 @Composable
 private fun EventResult(name: String, step: InmEventStep) {
-    val angle = step.hourAngleDeg?.let { "H = %.3f°   ".us(it) }.orEmpty()
-    ValueRow(name, "$angle${clock(step.exactMinutes)} → ${hhmm(step.shownMinutes)}")
-}
-
-@Composable
-private fun ResultTable(events: List<InmEventStep>, names: Map<InmEvent, String>) {
-    Column(Modifier.fillMaxWidth()) {
-        TableRow(
-            stringResource(R.string.prayer_method_table_prayer),
-            stringResource(R.string.prayer_method_table_altitude),
-            stringResource(R.string.prayer_method_table_exact),
-            stringResource(R.string.prayer_method_table_shown),
-            header = true,
-        )
-        events.forEach { step ->
-            HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
-            TableRow(
-                names.getValue(step.event),
-                "%.2f°".us(step.altitudeDeg),
-                clock(step.exactMinutes),
-                hhmm(step.shownMinutes),
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .background(BgCream, RoundedCornerShape(10.dp))
+            .padding(horizontal = 12.dp, vertical = 8.dp),
+        verticalArrangement = Arrangement.spacedBy(2.dp),
+    ) {
+        Row(
+            Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Text(name, fontSize = 14.sp, fontWeight = FontWeight.Bold, color = TextDark, modifier = Modifier.weight(1f))
+            Text(
+                "${clock(step.exactMinutes)} → ${hhmm(step.shownMinutes)}",
+                style = LtrMonospace,
+                color = GreenPrimaryDark,
+                softWrap = false,
+                maxLines = 1,
+            )
+        }
+        step.hourAngleDeg?.let { angle ->
+            Text(
+                "H = %.3f°".us(angle),
+                style = LtrMonospace.copy(fontSize = 12.sp),
+                color = PrayerSilencePalette.SecondaryText,
+                softWrap = false,
+                maxLines = 1,
+                modifier = Modifier.align(Alignment.End),
             )
         }
     }
 }
 
 @Composable
-private fun TableRow(name: String, altitude: String, exact: String, shown: String, header: Boolean = false) {
+private fun ResultTable(events: List<InmEventStep>, names: Map<InmEvent, String>) {
+    Column(Modifier.fillMaxWidth()) {
+        val measurer = rememberTextMeasurer()
+        val density = LocalDensity.current
+        val headerStyle = TextStyle(fontSize = 11.sp)
+        // Wide enough for the longest value and its header, whatever the font scale.
+        fun columnWidth(sample: String, style: TextStyle, title: String) = with(density) {
+            maxOf(measurer.measure(sample, style).size.width, measurer.measure(title, headerStyle).size.width).toDp() + 12.dp
+        }
+        val exactTitle = stringResource(R.string.prayer_method_table_exact)
+        val shownTitle = stringResource(R.string.prayer_method_table_shown)
+        val exactWidth = columnWidth("00:00:00", LtrMonospace, exactTitle)
+        val shownWidth = columnWidth("00:00", LtrMonospace.copy(fontWeight = FontWeight.Bold), shownTitle)
+        TableRow(stringResource(R.string.prayer_method_table_prayer), exactTitle, shownTitle, exactWidth, shownWidth, header = true)
+        events.forEach { step ->
+            HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
+            TableRow(names.getValue(step.event), clock(step.exactMinutes), hhmm(step.shownMinutes), exactWidth, shownWidth)
+        }
+    }
+}
+
+@Composable
+private fun TableRow(
+    name: String,
+    exact: String,
+    shown: String,
+    exactWidth: Dp,
+    shownWidth: Dp,
+    header: Boolean = false,
+) {
     val size = if (header) 11.sp else 13.sp
     val cellStyle = if (header) TextStyle(fontSize = size, color = TextMuted) else LtrMonospace.copy(color = TextDark)
     Row(Modifier.fillMaxWidth().padding(vertical = 6.dp), verticalAlignment = Alignment.CenterVertically) {
@@ -391,15 +444,16 @@ private fun TableRow(name: String, altitude: String, exact: String, shown: Strin
             fontSize = size,
             color = if (header) TextMuted else TextDark,
             fontWeight = if (header) FontWeight.Normal else FontWeight.Bold,
-            modifier = Modifier.weight(1.1f),
+            modifier = Modifier.weight(1f),
         )
-        Text(altitude, style = cellStyle, textAlign = TextAlign.Center, modifier = Modifier.weight(1.1f))
-        Text(exact, style = cellStyle, textAlign = TextAlign.Center, modifier = Modifier.weight(1.2f))
+        Text(exact, style = cellStyle, textAlign = TextAlign.Center, softWrap = false, maxLines = 1, modifier = Modifier.width(exactWidth))
         Text(
             shown,
             style = if (header) cellStyle else cellStyle.copy(color = GreenPrimaryDark, fontWeight = FontWeight.Bold),
             textAlign = TextAlign.Center,
-            modifier = Modifier.weight(0.9f),
+            softWrap = false,
+            maxLines = 1,
+            modifier = Modifier.width(shownWidth),
         )
     }
 }
@@ -416,8 +470,8 @@ private fun SunPathChart(
     names: Map<InmEvent, String>,
 ) {
     val steps = explanation.events.associateBy { it.event }
-    val startMinutes = floor((steps.getValue(InmEvent.FAJR).exactMinutes - 60) / 60).coerceAtLeast(0.0) * 60
-    val endMinutes = ceil((steps.getValue(InmEvent.ISHA).exactMinutes + 60) / 60).coerceAtMost(24.0) * 60
+    val startMinutes = (steps.getValue(InmEvent.FAJR).exactMinutes - 30).coerceAtLeast(0.0)
+    val endMinutes = (steps.getValue(InmEvent.ISHA).exactMinutes + 30).coerceAtMost(24.0 * 60)
     val path = remember(location, date) {
         generateSequence(startMinutes) { it + 5 }.takeWhile { it <= endMinutes }.map { minutes ->
             minutes to InmPrayerFormula.sunAltitudeDeg(location, date.year, date.monthValue, date.dayOfMonth, minutes)
@@ -428,9 +482,8 @@ private fun SunPathChart(
             step to InmPrayerFormula.sunAltitudeDeg(location, date.year, date.monthValue, date.dayOfMonth, step.exactMinutes)
         }
     }
-    val maxAltitude = path.maxOf { it.second }
-    val minAltitude = -32.0
-    val topAltitude = maxAltitude + 14
+    val highestMarker = markers.maxOf { it.second }
+    val lowestMarker = markers.minOf { it.second }
     val twilightAltitude = steps.getValue(InmEvent.FAJR).altitudeDeg
     val measurer = rememberTextMeasurer()
     val labelStyle = TextStyle(fontSize = 11.sp, color = TextDark, textAlign = TextAlign.Center)
@@ -439,19 +492,30 @@ private fun SunPathChart(
     val horizonLabel = stringResource(R.string.prayer_method_chart_horizon)
     val twilightLabel = stringResource(R.string.prayer_method_chart_twilight)
     val asrLabel = stringResource(R.string.prayer_method_chart_asr)
-    val description = stringResource(R.string.prayer_method_chart_description)
+    val description = stringResource(
+        R.string.prayer_method_chart_description,
+        explanation.events.joinToString("، ") { "${names.getValue(it.event)} ${hhmm(it.shownMinutes)}" },
+    )
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
         Canvas(
             Modifier
                 .fillMaxWidth()
-                .height(280.dp)
+                .height(300.dp)
                 .semantics { contentDescription = description },
         ) {
-            val axisBand = 18.dp.toPx()
+            val tickLabelSize = measurer.measure("00:00", axisStyle).size
+            val axisBand = tickLabelSize.height + 4.dp.toPx()
             val plotBottom = size.height - axisBand
+            val gap = 6.dp.toPx()
+            val dotRadius = 6.dp.toPx()
+            // Room above Dhuhr's marker and below Fajr's and Isha's for their two-line labels,
+            // measured at the user's font scale.
+            val labelHeight = measurer.measure("${names.getValue(InmEvent.DHUHR)}\n00:00", labelStyle).size.height
+            val pad = labelHeight + gap + dotRadius
             fun x(minutes: Double) = ((minutes - startMinutes) / (endMinutes - startMinutes) * size.width).toFloat()
-            fun y(altitude: Double) = ((topAltitude - altitude) / (topAltitude - minAltitude) * plotBottom).toFloat()
+            fun y(altitude: Double) =
+                (pad + (highestMarker - altitude) / (highestMarker - lowestMarker) * (plotBottom - 2 * pad)).toFloat()
             val horizonY = y(0.0)
             val noonX = x(explanation.solarNoonMinutes)
 
@@ -499,8 +563,10 @@ private fun SunPathChart(
                 drawPath(curve, PrayerSilencePalette.InteractiveTeal, style = stroke)
             }
 
-            // Hour ticks every three hours.
-            var tick = ceil(startMinutes / 180) * 180
+            // Hour ticks every three hours, or six when three-hour labels would touch.
+            val minutesPerPx = (endMinutes - startMinutes) / size.width
+            val tickStep = if ((tickLabelSize.width + 8.dp.toPx()) * minutesPerPx < 180) 180 else 360
+            var tick = ceil(startMinutes / tickStep) * tickStep
             while (tick <= endMinutes) {
                 val layout = measurer.measure(hhmm(tick.toInt()), axisStyle)
                 val left = (x(tick) - layout.size.width / 2f).coerceIn(0f, size.width - layout.size.width)
@@ -511,24 +577,24 @@ private fun SunPathChart(
                     strokeWidth = 1.dp.toPx(),
                 )
                 drawText(layout, topLeft = Offset(left, plotBottom + 2.dp.toPx()))
-                tick += 180
+                tick += tickStep
             }
 
-            // Each time on the curve, labelled where the curve leaves room.
-            val gap = 6.dp.toPx()
+            // Each time on the curve, labelled on the side the curve leaves empty: under the
+            // curve for the morning and evening times, above it for Dhuhr and Asr.
             markers.forEach { (step, altitude) ->
                 val center = Offset(x(step.exactMinutes), y(altitude))
-                drawCircle(Color.White, radius = 6.dp.toPx(), center = center)
+                drawCircle(Color.White, radius = dotRadius, center = center)
                 drawCircle(PrayerSilencePalette.PrimaryText, radius = 4.dp.toPx(), center = center)
                 val layout = measurer.measure("${names.getValue(step.event)}\n${hhmm(step.shownMinutes)}", labelStyle)
                 val w = layout.size.width.toFloat()
                 val h = layout.size.height.toFloat()
+                val below = center.y + dotRadius
                 val topLeft = when (step.event) {
-                    InmEvent.FAJR, InmEvent.ISHA -> Offset(center.x - w / 2, center.y + gap)
+                    InmEvent.FAJR, InmEvent.SUNRISE -> Offset(center.x + gap, below)
+                    InmEvent.MAGHRIB, InmEvent.ISHA -> Offset(center.x - w - gap, below)
                     InmEvent.DHUHR -> Offset(center.x - w / 2, center.y - h - gap)
-                    InmEvent.SUNRISE -> Offset(center.x - w - gap, center.y - h - gap / 2)
-                    InmEvent.ASR -> Offset(center.x + gap, center.y - h / 2)
-                    InmEvent.MAGHRIB -> Offset(center.x + gap, center.y - h - gap / 2)
+                    InmEvent.ASR -> Offset(center.x + gap, center.y - h - gap / 2)
                 }
                 drawText(
                     layout,
@@ -548,7 +614,18 @@ private val LtrMonospace = TextStyle(
     textDirection = TextDirection.Ltr,
 )
 
+/** Slightly smaller than [LtrMonospace] so a formula line fits a phone's width at most font scales. */
+private val FormulaStyle = LtrMonospace.copy(fontSize = 12.sp)
+
 private fun String.us(vararg args: Any): String = String.format(Locale.US, this, *args)
+
+/** [value] with an explicit sign, using the minus sign the formulas use (−), not a hyphen. */
+private fun signed(value: Double, decimals: Int): String =
+    (if (value < 0) "−" else "+") + "%.${decimals}f".us(abs(value))
+
+/** "− x" for a subtracted [value], folding a negative value into "+ |x|". */
+private fun minusTerm(value: Double): String =
+    (if (value < 0) "+ " else "− ") + "%.2f".us(abs(value))
 
 private fun hhmm(minutes: Int): String = "%02d:%02d".us(minutes / 60, minutes % 60)
 
