@@ -18,11 +18,14 @@ Per-delegation parameters were fitted on **2026 only**. Model variants were comp
 
 | Data | Times checked | Exact match |
 |------|---------------|-------------|
-| 2026: every delegation and day (`docs/csv`, 258 delegations × 365 days × 6 prayers) | 565,020 | **100 %** |
-| 2020–2025: meteo.tn samples (6 random days per delegation per year, plus full years for 2–5 delegations) | 109,042 | **100 %** |
+| 2026: every delegation and day (`docs/csv`, scraped March 2026; 258 delegations × 365 days × 6 prayers) | 565,020 | **100 %** |
+| 2020: every day of every delegation, fetched from meteo.tn in October 2026 | 557,958 | **100 %** |
+| 2021: every day of every delegation, fetched from meteo.tn in October 2026 | 565,020 | **100 %** |
+| 2022: every day of every delegation, fetched from meteo.tn in October 2026 | 562,390 | **100 %** |
+| 2023: every day of every delegation, fetched from meteo.tn in October 2026 | 552,273 | **100 %** |
+| 2024: every day of every delegation, fetched from meteo.tn in October 2026 | 566,202 | **100 %** |
 | 2025: every day of every delegation, fetched from meteo.tn in September 2026 | 561,490 | **100 %** |
-| 2026: every day of every delegation, fetched from meteo.tn in September 2026 | 564,948 | 96.1 %: the rest is INM's later Kairouan / Sidi Bouzid edit (see [INM data quirks](#inm-data-quirks)) |
-| 2020–2024: every day of every delegation | *crawl in progress* | *pending* |
+| 2026: every day of every delegation, fetched from meteo.tn in September 2026 | 565,020 | 96.1 %: the rest is INM's later Kairouan / Sidi Bouzid edit (see [INM data quirks](#inm-data-quirks)) |
 
 "Exact" means the same `HH:MM` for Fajr, Sunrise (Shuruk), Dhuhr, Asr, Maghrib and Isha. The meteo.tn API also returns solar noon (`pm`) and sunset (`coucher`); both match the formula exactly as well.
 
