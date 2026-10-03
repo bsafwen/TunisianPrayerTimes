@@ -381,6 +381,7 @@ fun MainScreen(
     var delegationId by rememberSaveable { mutableIntStateOf(PrefsManager.getDelegationId(context)) }
     var locationPickerRequested by remember { mutableStateOf(false) }
     var prayerTabSettingsOpen by rememberSaveable { mutableStateOf(false) }
+    var prayerTimeMethodOpen by rememberSaveable { mutableStateOf(false) }
     DisposableEffect(context) {
         // Background location updates must refresh the timetable alongside the label.
         val unsubscribe = PrefsManager.observeLocationSelection(context) {
@@ -1013,7 +1014,18 @@ fun MainScreen(
                                     autoLocationEnabled = enabled
                                     PrefsManager.setAutoLocationUpdateEnabled(context, enabled)
                                 },
+                                onShowPrayerTimeMethod = {
+                                    prayerTabSettingsOpen = false
+                                    prayerTimeMethodOpen = true
+                                },
                                 onDismiss = { prayerTabSettingsOpen = false },
+                            )
+                        }
+                        if (prayerTimeMethodOpen) {
+                            PrayerTimeMethodDialog(
+                                delegationId = delegationId,
+                                selectedDate = prayerTableSelectedDate,
+                                onDismiss = { prayerTimeMethodOpen = false },
                             )
                         }
 
