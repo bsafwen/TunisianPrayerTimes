@@ -29,6 +29,8 @@ plugins {
     id("com.google.gms.google-services")
     // Bundles data/prayer-formula and data/official-islamic-dates as assets.
     id("tunisianprayertimes.bundled-data")
+    // Ships the Quran's recitations and page scans as Play Asset Delivery packs.
+    id("tunisianprayertimes.quran-assets")
 }
 
 android {
@@ -98,7 +100,7 @@ android {
     }
 
     androidResources {
-        // MediaPlayer streams the bundled recitations directly through AssetFileDescriptor.
+        // MediaPlayer streams recitations that a build bundles directly through AssetFileDescriptor.
         noCompress += "mp3"
     }
 
@@ -117,6 +119,8 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.1.7")
     implementation("com.google.android.gms:play-services-location:21.3.0")
     implementation("androidx.work:work-runtime-ktx:2.10.1")
+    // Quran packs for Play installs; other installs download them from the quran-cdn Worker.
+    implementation("com.google.android.play:asset-delivery-ktx:2.3.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.9.0")
     implementation("net.sf.geographiclib:GeographicLib-Java:2.1")
 

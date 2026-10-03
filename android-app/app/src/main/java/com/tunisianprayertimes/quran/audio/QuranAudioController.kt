@@ -25,6 +25,8 @@ data class QuranPlaybackState(
     val durationMs: Long = 0L,
     val introEndMs: Long = 0L,
     val error: String? = null,
+    /** The recording of [surah] is not on this device yet; playback waits, paused, for its download. */
+    val notDownloaded: Boolean = false,
     /** The verse range being recited again and again, if any. */
     val repeat: QuranRepeatRange? = null,
     /** The one-based pass over [repeat] being recited; 0 without a repetition. */
