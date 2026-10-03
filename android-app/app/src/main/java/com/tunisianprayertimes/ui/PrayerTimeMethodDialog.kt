@@ -196,11 +196,31 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
     }
 
     MethodSection(stringResource(R.string.prayer_method_step_sun_title), stringResource(R.string.prayer_method_step_sun_body)) {
-        Formula(
-            "JD  = %.1f".us(explanation.julianDay),
-            "δ   = ${signed(explanation.declinationDeg, 3)}°",
-            "EoT = ${signed(explanation.equationOfTimeMin, 2)} min",
+        val eotMinutes = "%.2f".us(abs(explanation.equationOfTimeMin))
+        SunQuantity(
+            name = stringResource(R.string.prayer_method_sun_jd_name),
+            value = "%.1f".us(explanation.julianDay),
+            meaning = stringResource(R.string.prayer_method_sun_jd_meaning),
         )
+        SunQuantity(
+            name = stringResource(R.string.prayer_method_sun_decl_name),
+            value = "${signed(explanation.declinationDeg, 3)}°",
+            meaning = stringResource(R.string.prayer_method_sun_decl_meaning),
+            today = stringResource(
+                if (explanation.declinationDeg < 0) R.string.prayer_method_sun_decl_south else R.string.prayer_method_sun_decl_north,
+            ),
+        )
+        SunQuantity(
+            name = stringResource(R.string.prayer_method_sun_eot_name),
+            value = "${signed(explanation.equationOfTimeMin, 2)} min",
+            meaning = stringResource(R.string.prayer_method_sun_eot_meaning),
+            today = if (explanation.equationOfTimeMin < 0) {
+                stringResource(R.string.prayer_method_sun_eot_behind, eotMinutes)
+            } else {
+                stringResource(R.string.prayer_method_sun_eot_ahead, eotMinutes)
+            },
+        )
+        Text(stringResource(R.string.prayer_method_sun_usage), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
     }
 
     MethodSection(stringResource(R.string.prayer_method_step_dhuhr_title), stringResource(R.string.prayer_method_step_dhuhr_body)) {
@@ -351,6 +371,27 @@ private fun Formula(vararg lines: String) {
             lines.forEach { line ->
                 Text(line, style = FormulaStyle, color = TextDark, softWrap = false, maxLines = 1)
             }
+        }
+    }
+}
+
+/** One of the sun's three numbers: its name and value, what it means, and what today's value says. */
+@Composable
+private fun SunQuantity(name: String, value: String, meaning: String, today: String? = null) {
+    Column(
+        Modifier
+            .fillMaxWidth()
+            .background(PrayerSilencePalette.TintedStrip, RoundedCornerShape(12.dp))
+            .padding(horizontal = 12.dp, vertical = 10.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(name, fontSize = 14.sp, fontWeight = FontWeight.Bold, color = TextDark, modifier = Modifier.weight(1f))
+            Text(value, style = LtrMonospace, color = GreenPrimaryDark, softWrap = false, maxLines = 1)
+        }
+        Text(meaning, fontSize = 13.sp, color = TextDark, lineHeight = 19.sp)
+        if (today != null) {
+            Text(today, fontSize = 13.sp, fontWeight = FontWeight.Medium, color = GreenPrimaryDark, lineHeight = 19.sp)
         }
     }
 }

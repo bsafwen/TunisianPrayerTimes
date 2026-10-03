@@ -27,7 +27,18 @@
     <string name="prayer_method_input_elevation_value">%1$s م</string>
 
     <string name="prayer_method_step_sun_title">1. موقع الشمس</string>
-    <string name="prayer_method_step_sun_body">نحسب لليوم الجولياني JD ميلَ الشمس δ (بُعدها شمال خط الاستواء السماوي أو جنوبه) ومعادلةَ الزمن، أي الفرق بين الساعة الشمسية والساعة العادية، بمعادلات جان ميوس الفلكية.</string>
+    <string name="prayer_method_step_sun_body">قبل حساب أي وقت، نحتاج أن نعرف أين الشمس في هذا اليوم. يكفي لذلك ثلاثة أرقام نحسبها بمعادلات جان ميوس الفلكية:</string>
+    <string name="prayer_method_sun_jd_name">اليوم الجولياني JD</string>
+    <string name="prayer_method_sun_jd_meaning">التاريخ مكتوبًا كرقم واحد: عدد الأيام منذ 1 جانفي 4713 قبل الميلاد. هكذا تتعامل المعادلات مع الأيام كأعداد متتالية دون أشهر ولا سنوات كبيسة. ينتهي بـ ‎.5 لأن اليوم الجولياني يبدأ عند الظهر، ونحن نأخذ منتصف الليل بالتوقيت العالمي.</string>
+    <string name="prayer_method_sun_decl_name">ميل الشمس δ</string>
+    <string name="prayer_method_sun_decl_meaning">بُعد الشمس شمال خط الاستواء السماوي (موجب) أو جنوبه (سالب). بسبب ميل محور الأرض يتغيّر خلال السنة بين ‎+23.44°‎ في أول الصيف و‎−23.44°‎ في أول الشتاء، وهو سبب طول النهار صيفًا وقصره شتاءً.</string>
+    <string name="prayer_method_sun_decl_north">اليوم: الشمس شمال خط الاستواء، فهي أعلى في سماء تونس من يوم الاعتدال.</string>
+    <string name="prayer_method_sun_decl_south">اليوم: الشمس جنوب خط الاستواء، فهي أخفض في سماء تونس من يوم الاعتدال.</string>
+    <string name="prayer_method_sun_eot_name">معادلة الزمن EoT</string>
+    <string name="prayer_method_sun_eot_meaning">الساعة العادية تفترض أن الشمس تبلغ أعلى نقطة في نفس الوقت كل يوم، لكنها في الحقيقة تسبق ذلك أو تتأخر عنه حتى 16 دقيقة تقريبًا، بسبب ميل محور الأرض وشكل مدارها البيضوي. معادلة الزمن هي هذا الفرق.</string>
+    <string name="prayer_method_sun_eot_ahead">اليوم: الشمس متقدّمة على الساعة بـ %1$s دقيقة، فيأتي الزوال أبكر بنفس المقدار.</string>
+    <string name="prayer_method_sun_eot_behind">اليوم: الشمس متأخرة عن الساعة بـ %1$s دقيقة، فيأتي الزوال متأخرًا بنفس المقدار.</string>
+    <string name="prayer_method_sun_usage">يدخل الميل δ في كل المعادلات التالية، وتُستعمل معادلة الزمن في حساب الزوال (الخطوة 2).</string>
 
     <string name="prayer_method_step_dhuhr_title">2. الظهر</string>
     <string name="prayer_method_step_dhuhr_body">الزوال هو لحظة بلوغ الشمس أعلى نقطة في السماء. على خط غرينتش يكون في المتوسط على الساعة 12:00 بالتوقيت العالمي، أي 13:00 بتوقيت تونس. ثم يتقدّم بحسب خط الطول لأن تونس شرق غرينتش، ويتغيّر خلال السنة بمعادلة الزمن، ويضيف المعهد بعده 7 دقائق احتياطًا.</string>
