@@ -88,8 +88,16 @@ object QuranAudioController {
         }
     }
 
-    fun seekTo(context: Context, positionMs: Long) = send(context, QuranPlaybackService.ACTION_SEEK) {
-        putExtra(QuranPlaybackService.EXTRA_POSITION, positionMs.coerceAtLeast(0L))
+    fun seekTo(context: Context, positionMs: Long) {
+        val current = state.value
+        if (!serviceRunning && current.notDownloaded && current.surah != null) {
+            // Waiting for its download with no service: the position is where play will start.
+            publish(current.copy(positionMs = positionMs.coerceIn(0L, (current.durationMs - 1L).coerceAtLeast(0L)), ayah = null))
+            return
+        }
+        send(context, QuranPlaybackService.ACTION_SEEK) {
+            putExtra(QuranPlaybackService.EXTRA_POSITION, positionMs.coerceAtLeast(0L))
+        }
     }
 
     fun seekVerse(context: Context, surah: Int, ayah: Int) {

@@ -63,6 +63,25 @@ if (( ${#TOO_BIG[@]} > 0 )); then
   exit 1
 fi
 
+# ── Does this release build the AAB? (only android-app changes count, not the version bump) ──
+LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+ANDROID_CHANGED=false
+if [[ -z "$LAST_TAG" ]]; then
+    ANDROID_CHANGED=true
+elif git diff --name-only "$LAST_TAG" HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
+    ANDROID_CHANGED=true
+elif git diff --name-only HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
+    ANDROID_CHANGED=true
+fi
+
+# ── Building it needs Python to stage the Quran packs; check before bumping the version ──
+QURAN_PACKS=false
+if [[ "$SKIP_LOCAL_BUILD" == "false" && "$ANDROID_CHANGED" == "true" && -f "$APP_DIR/quran-assets/manifest.tsv" ]]; then
+  QURAN_PACKS=true
+  source "$SCRIPT_DIR/scripts/find-python.sh"
+  find_python || exit 1
+fi
+
 # ── Read current version from build.gradle.kts ──
 CURRENT_CODE=$(grep -m1 'versionCode' "$GRADLE_FILE" | sed 's/[^0-9]//g')
 CURRENT_NAME=$(grep -m1 'versionName' "$GRADLE_FILE" | sed 's/.*"\(.*\)".*/\1/')
@@ -90,15 +109,6 @@ mv "$GRADLE_FILE.tmp" "$GRADLE_FILE"
 echo "✓ Bumped version in build.gradle.kts"
 
 # ── Build signed AAB locally (only if android-app source changed, not just version bump) ──
-LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-ANDROID_CHANGED=false
-if [[ -z "$LAST_TAG" ]]; then
-    ANDROID_CHANGED=true
-elif git diff --name-only "$LAST_TAG" HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
-    ANDROID_CHANGED=true
-elif git diff --name-only HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
-    ANDROID_CHANGED=true
-fi
 
 if [[ "$SKIP_LOCAL_BUILD" == "true" ]]; then
     echo ""
@@ -111,9 +121,8 @@ else
     echo ""
     echo "Building signed release AAB..."
     # The bundle carries the Quran packs; fetch any that are not staged yet (cached after the first time).
-    if [[ -f "$APP_DIR/quran-assets/manifest.tsv" ]]; then
-        PYTHON=$(command -v python3 || command -v python) || { echo "✗ Python 3 is needed to stage the Quran packs." >&2; exit 1; }
-        "$PYTHON" "$SCRIPT_DIR/scripts/quran_assets.py" stage
+    if [[ "$QURAN_PACKS" == "true" ]]; then
+        "${PYTHON[@]}" "$SCRIPT_DIR/scripts/quran_assets.py" stage
     fi
     cd "$APP_DIR"
     ./gradlew clean bundleRelease --no-daemon

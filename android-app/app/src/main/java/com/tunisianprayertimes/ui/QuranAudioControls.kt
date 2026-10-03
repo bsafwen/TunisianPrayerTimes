@@ -329,8 +329,9 @@ private fun QuranAudioSheet(
                         modifier = Modifier.testTag("quran_audio_next_verse"),
                     ) { Icon(painterResource(R.drawable.ic_adhkar_next), "الآية التالية") }
                     IconButton(
-                        onClick = { QuranAudioController.stop(context) },
-                        enabled = playback.surah != null || playback.loading,
+                        // Also drops a recitation still waiting for its download.
+                        onClick = { starter.cancel(); QuranAudioController.stop(context) },
+                        enabled = playback.surah != null || playback.loading || starter.pendingPacks.isNotEmpty(),
                         modifier = Modifier.testTag("quran_audio_stop"),
                     ) { Icon(painterResource(R.drawable.ic_stop), "إيقاف التلاوة") }
                 }

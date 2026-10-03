@@ -32,10 +32,22 @@ export default {
     try {
       object = await env.PACKS.get(key, { range: request.headers, onlyIf: request.headers });
     } catch {
-      // R2 rejects a Range it cannot satisfy.
+      // R2 rejects a Range it cannot satisfy. Anything else is passing trouble: clients retry and
+      // resume, so it must not look like a range they should give up on.
       const head = await env.PACKS.head(key);
       if (head === null) return new Response("Not found", { status: 404 });
-      return new Response(null, { status: 416, headers: { "Content-Range": `bytes */${head.size}` } });
+      const range = request.headers.get("Range");
+      if (range !== null && requestedStart(range, head.size) >= head.size) {
+        return new Response(null, { status: 416, headers: { "Content-Range": `bytes */${head.size}` } });
+      }
+      // A Range or condition R2 cannot use is ignored, as HTTP says: serve the whole pack.
+      try {
+        object = await env.PACKS.get(key);
+      } catch {
+        return new Response(null, { status: 503, headers: { "Retry-After": "5" } });
+      }
+      if (object === null) return new Response("Not found", { status: 404 });
+      return new Response(object.body, { headers: packHeaders(object) });
     }
     if (object === null) return new Response("Not found", { status: 404 });
 

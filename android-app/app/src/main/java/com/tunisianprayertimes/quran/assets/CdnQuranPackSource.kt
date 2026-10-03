@@ -70,8 +70,9 @@ internal class CdnQuranPackSource(
         }
     }
 
+    /** Lets the packs that wait for Wi-Fi use mobile data; nothing else is fetched. */
     override fun confirmMobileData(packs: List<QuranPack>, launcher: ActivityResultLauncher<IntentSenderRequest>) =
-        fetch(packs, allowMetered = true)
+        fetch(packs.filter { states.value[it.name]?.status == QuranPackStatus.WaitingForWifi }, allowMetered = true)
 
     override fun remove(packs: List<QuranPack>) {
         packs.forEach { workManager.cancelUniqueWork(workName(it)) }

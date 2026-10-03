@@ -31,11 +31,13 @@ elif ! command -v "$BUNDLETOOL" >/dev/null; then
     echo "  or set BUNDLETOOL=/path/to/bundletool.jar" >&2
     exit 1
 else
-    bundletool() { "$BUNDLETOOL" "$@"; }
+    # "command" runs the program on PATH, not this function.
+    bundletool() { command "$BUNDLETOOL" "$@"; }
 fi
 
-PYTHON=$(command -v python3 || command -v python) || { echo "✗ Python 3 is needed to stage the Quran packs." >&2; exit 1; }
-"$PYTHON" ../scripts/quran_assets.py stage
+source ../scripts/find-python.sh
+find_python || exit 1
+"${PYTHON[@]}" ../scripts/quran_assets.py stage
 
 if [[ "$VARIANT" == release ]]; then TASK=bundleRelease; else TASK=bundleDebug; fi
 ./gradlew "$TASK" --no-daemon
