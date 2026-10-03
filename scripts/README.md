@@ -268,4 +268,6 @@ earlier layout put it, since moving it would rename its packs. When several reci
 together, keep each one's files in a folder named after its folder under `quran/audio/`
 (`hosary/001.mp3`, …).
 
+Adding a reciter, step by step: [docs/adding-a-quran-reciter.md](../docs/adding-a-quran-reciter.md).
+
 Tests: `python3 -m unittest scripts/test_quran_assets.py`.
