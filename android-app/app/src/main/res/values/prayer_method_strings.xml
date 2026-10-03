@@ -34,6 +34,11 @@
     <string name="prayer_method_sun_decl_meaning">في الصيف تمرّ الشمس عالية في السماء ويطول النهار، وفي الشتاء تمرّ منخفضة ويقصر النهار، لأن محور الأرض مائل. الميل δ هو الرقم الذي يقيس ذلك يومًا بيوم: موجب حين تكون الشمس أعلى من منتصف مسارها السنوي، وسالب حين تكون أخفض منه.</string>
     <string name="prayer_method_sun_decl_north">اليوم: الميل موجب، فالشمس أعلى من منتصف مسارها السنوي والنهار أطول من الليل.</string>
     <string name="prayer_method_sun_decl_south">اليوم: الميل سالب، فالشمس أخفض من منتصف مسارها السنوي والنهار أقصر من الليل.</string>
+    <string name="prayer_method_tilt_sun">الشمس</string>
+    <string name="prayer_method_tilt_equator">خط الاستواء</string>
+    <string name="prayer_method_tilt_pole">القطب الشمالي</string>
+    <string name="prayer_method_tilt_caption">محور الأرض مائل 23.44° في اتجاه ثابت. وهي تدور حول الشمس خلال السنة، فيميل نصفها الشمالي نحو الشمس صيفًا وبعيدًا عنها شتاءً. الميل δ هو الزاوية بين خط الاستواء وأشعة الشمس كما في الرسم: موجب حين يميل القطب الشمالي نحو الشمس، وسالب حين يميل بعيدًا عنها.</string>
+    <string name="prayer_method_tilt_description">رسم للأرض من جانبها وأشعة الشمس آتية من اليسار: خط الاستواء مائل عن الأشعة بزاوية %1$s، ونقطة %2$s على الجانب المضاء.</string>
     <string name="prayer_method_decl_summer">أول الصيف</string>
     <string name="prayer_method_decl_equinox">يتساوى الليل والنهار</string>
     <string name="prayer_method_decl_winter">أول الشتاء</string>
