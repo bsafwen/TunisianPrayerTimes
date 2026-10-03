@@ -35,6 +35,43 @@ These programs replace repeated mechanical orchestration and per-window script
 generation. They add no credit by themselves; genuine qualified acceptance
 remains the measure of progress.
 
+`plan_cached_boundary_families.py --manifest MANIFEST --output NEW_FILE --limit 12`
+joins pinned Ministry/INS/current/cached-OSM inventories by literal names and
+codes, excludes conflicts and previously validated places, and ranks neighboring
+delegation families. Positive documented source presence permits preparation;
+unchecked ISIE/Google searches remain unknown. It creates no source approval.
+
+`prepare_cached_osm_sources.py --manifest MANIFEST` downloads the finite released
+relation pool through explicit HTTP/HTTPS proxy `127.0.0.1:8888`, preserves every
+original response and failure, and applies pinned existing literal-native and
+production-packing routines. It records literal assembly separately from the
+production representation and current bytes. These are root-authored source
+preparations requiring disjoint review, with no scope/GPS/acceptance credit.
+
+`packed_decode_cache.py` provides bounded serial call-scoped reuse of identical
+immutable decoded slices. The complete decoder input bytes, identifier and
+scale form the key. Bounds, changed bytes, current metadata, physical reads,
+hashes, source/identity/scope guards and GPS policies still run. Original
+functions are restored on exit. It caches no QA or acceptance result.
+`benchmark_boundary_reader.py` compares the entire stock reader output;
+`benchmark_report_publication.py` runs the complete original publisher into
+isolated output directories and compares every generated report/map/HTML byte
+at a fixed fixture clock. Private Google configuration is never copied/read.
+
+`refresh_report_with_decode_reuse.py --manifest MANIFEST --receipt NEW_FILE`
+is an explicit opt-in sole-root publication wrapper retaining the original
+app's exclusive publication lock and fail-closed checks. Use it only with exact
+verified consumer/decoder/cache pins and the separate map UTC guard/time reserve.
+The original report app and reader remain unmodified.
+
+`packed_decode_cache_caf_v1.py` is a separate versioned CAF compatibility
+candidate. It keeps the complete original record body and adds exact reader
+pin checking/scoped decode reuse at its existing dynamic-loader boundary.
+`benchmark_caf_consumer.py` tests the full CAF/A4 tail on authentic isolated
+ledger copies, verifies both replacements/backups and unchanged live assets,
+and compares all output after narrowly declared fixture-path normalization.
+This candidate has no automatic live recorder activation.
+
 ## Offline review preparation
 
 The current source/GPS review helpers can reuse five focused commands without
