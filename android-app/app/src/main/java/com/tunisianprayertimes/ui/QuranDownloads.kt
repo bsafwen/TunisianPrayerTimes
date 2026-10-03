@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import com.tunisianprayertimes.quran.assets.QuranAssets
+import com.tunisianprayertimes.quran.audio.QuranAudioController
 import com.tunisianprayertimes.quran.assets.QuranDownloadProblem
 import com.tunisianprayertimes.quran.assets.QuranPack
 import com.tunisianprayertimes.quran.assets.QuranPackLayout
@@ -152,6 +153,14 @@ internal fun rememberQuranRecitationStarter(media: QuranMedia?): QuranRecitation
     val starter = remember { QuranRecitationStarter { currentMedia } }
     LaunchedEffect(media?.states) { starter.onStatesChanged() }
     LifecycleEventEffect(Lifecycle.Event.ON_STOP) { starter.cancel() }
+    LaunchedEffect(starter) {
+        // Stopping the recitation, e.g. from its notification, also drops a start waiting for a download.
+        var previous = QuranAudioController.state.value.surah
+        QuranAudioController.state.collect { state ->
+            if (previous != null && state.surah == null) starter.cancel()
+            previous = state.surah
+        }
+    }
     return starter
 }
 
@@ -162,13 +171,16 @@ internal fun rememberMobileDataLauncher(): ActivityResultLauncher<IntentSenderRe
 
 /** Downloaded and total bytes over [packs], for one progress figure. */
 internal fun QuranMedia.progress(packs: List<QuranPack>): Float? {
-    val states = packs.map(::state)
-    val total = packs.zip(states).sumOf { (pack, state) -> state.totalBytes.takeIf { it > 0L } ?: pack.archive.bytes }
-    if (total <= 0L) return null
-    val done = packs.zip(states).sumOf { (pack, state) ->
-        if (state.available) pack.archive.bytes else state.downloadedBytes
+    var total = 0L
+    var done = 0L
+    packs.forEach { pack ->
+        val state = state(pack)
+        val size = state.totalBytes.takeIf { it > 0L } ?: pack.archive.bytes
+        total += size
+        // A pack being unpacked is fully downloaded.
+        done += if (state.available || state.status == QuranPackStatus.Transferring) size else state.downloadedBytes.coerceAtMost(size)
     }
-    return (done.toFloat() / total).coerceIn(0f, 1f)
+    return if (total > 0L) (done.toFloat() / total).coerceIn(0f, 1f) else null
 }
 
 /** The most pressing state among [packs]: a failure, then a wait for the user, then progress. */
@@ -266,6 +278,11 @@ internal fun QuranRecitationDownloadsSection(
     val chapters = downloaded.sumOf { pack -> pack.surahs?.let { it.last - it.first + 1 } ?: 0 }
     val missing = packs - downloaded.toSet()
     val summary = media.summary(missing)
+    // Mobile data is allowed for what waits for it, never for every missing chapter at once.
+    val waiting = missing.filter {
+        val status = media.state(it).status
+        status == QuranPackStatus.WaitingForWifi || status == QuranPackStatus.NeedsConfirmation
+    }
     var confirmDelete by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxWidth().testTag("quran_audio_downloads"), verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Text(
@@ -276,8 +293,8 @@ internal fun QuranRecitationDownloadsSection(
             QuranPackStatus.Failed -> Text(quranDownloadProblemText(summary.problem), fontSize = 12.sp, color = MaterialTheme.colorScheme.error)
             QuranPackStatus.WaitingForWifi, QuranPackStatus.NeedsConfirmation -> Row(verticalAlignment = Alignment.CenterVertically) {
                 Text("بانتظار شبكة Wi-Fi", Modifier.weight(1f), fontSize = 12.sp, color = TextMuted)
-                TextButton(onClick = { onUseMobileData(missing) }, modifier = Modifier.testTag("quran_audio_mobile_data")) {
-                    Text("استخدام بيانات الجوال")
+                TextButton(onClick = { onUseMobileData(waiting) }, modifier = Modifier.testTag("quran_audio_mobile_data")) {
+                    Text("استخدام بيانات الجوال (${quranSize(waiting.sumOf { it.archive.bytes })})")
                 }
             }
             QuranPackStatus.Pending, QuranPackStatus.Downloading, QuranPackStatus.Transferring -> {
@@ -287,9 +304,11 @@ internal fun QuranRecitationDownloadsSection(
             }
             else -> Unit
         }
-        if (missing.isNotEmpty() && summary?.active != true) {
+        // Shown exactly when it would fetch something: packs neither queued nor waiting (incl. failed ones).
+        val fetchable = missing.filterNot { media.state(it).active }
+        if (fetchable.isNotEmpty()) {
             OutlinedButton(onClick = onDownloadAll, modifier = Modifier.fillMaxWidth().testTag("quran_audio_download_all")) {
-                Text("تنزيل كل التلاوات (${quranSize(missing.sumOf { it.archive.bytes })})")
+                Text("تنزيل كل التلاوات (${quranSize(fetchable.sumOf { it.archive.bytes })})")
             }
         }
         val removable = packs.filter(media::downloaded)

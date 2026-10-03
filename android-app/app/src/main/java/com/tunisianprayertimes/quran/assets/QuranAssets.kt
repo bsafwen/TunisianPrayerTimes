@@ -15,8 +15,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
 
@@ -44,9 +46,19 @@ object QuranAssets {
     fun resolve(context: Context, assetPath: String): QuranAssetSource? {
         if (isBundled(context, assetPath)) return QuranAssetSource.Bundled(assetPath)
         val pack = layout(context)?.packOf(assetPath) ?: return null
-        val file = source(context)?.directory(pack)?.let { File(it, assetPath) }?.takeIf { it.isFile } ?: return null
-        return QuranAssetSource.Downloaded(file)
+        val source = source(context) ?: return null
+        val folder = source.directory(pack) ?: return null
+        val file = File(folder, assetPath)
+        if (file.isFile) return QuranAssetSource.Downloaded(file)
+        // A pack on the device without one of its files is damaged: drop it, so that it reads as
+        // missing and the next request downloads it again instead of finding nothing forever.
+        Log.w(TAG, "${pack.name} lacks $assetPath; removing it so it is downloaded again")
+        source.remove(listOf(pack))
+        return null
     }
+
+    /** Whether [assetPath] can come from a download at all; false means no build part carries it. IO thread. */
+    fun downloadable(context: Context, assetPath: String): Boolean = layout(context)?.packOf(assetPath) != null
 
     /** Packs whose every file this build carries itself; they never need a download. IO thread. */
     fun bundledPacks(context: Context): Set<String> =
@@ -66,11 +78,11 @@ object QuranAssets {
         val cdn = lazy { CdnQuranPackSource(context, layout, scope) }
         if (!installedByPlay(context)) return cdn.value
         return try {
-            PlayOrCdnPackSource(layout, cdn, scope) { onUnavailable ->
-                PlayQuranPackSource(layout, AssetPackManagerFactory.getInstance(context), onUnavailable)
+            PlayOrCdnPackSource(layout, cdn, QuranPackInstaller(cdnRoot(context)), scope) { onUnavailable ->
+                PlayQuranPackSource(layout, AssetPackManagerFactory.getInstance(context), scope, onUnavailable)
             }
         } catch (error: Exception) {
-            Log.w("QuranPacks", "Play Asset Delivery is unavailable; using the quran-cdn Worker", error)
+            Log.w(TAG, "Play Asset Delivery is unavailable; using the quran-cdn Worker", error)
             cdn.value
         }
     }
@@ -92,42 +104,91 @@ object QuranAssets {
         return metadata?.containsKey(LOCAL_TESTING) == true
     }
 
+    private const val TAG = "QuranPacks"
     private const val PLAY_STORE = "com.android.vending"
     // Added to the manifest by bundletool build-apks --local-testing.
     private const val LOCAL_TESTING = "local_testing_dir"
 }
 
-/** Play Asset Delivery, until Play reports it can never serve this install; then the quran-cdn Worker. */
+/**
+ * Play Asset Delivery, until Play reports it can never serve this install; then the quran-cdn
+ * Worker. Packs a launch downloaded from the Worker stay usable when a later launch uses Play.
+ */
 @OptIn(ExperimentalCoroutinesApi::class)
 private class PlayOrCdnPackSource(
-    layout: QuranPackLayout,
+    private val layout: QuranPackLayout,
     private val cdn: Lazy<QuranPackSource>,
-    scope: CoroutineScope,
+    /** Finds packs from the Worker without starting its downloads. */
+    private val cdnInstaller: QuranPackInstaller,
+    private val scope: CoroutineScope,
     createPlay: (onUnavailable: () -> Unit) -> QuranPackSource,
 ) : QuranPackSource {
     private val usePlay = MutableStateFlow(true)
-    private val play = createPlay { usePlay.value = false }
+    private val fromCdn = MutableStateFlow<Set<String>>(emptySet())
+    // What Play was asked for and whether mobile data was allowed; the Worker takes over these requests.
+    private val askedOfPlay = ConcurrentHashMap<String, Boolean>()
+    private val play = createPlay(::switchToCdn)
+
+    init {
+        scanCdn()
+    }
 
     override val states: StateFlow<Map<String, QuranPackState>> = usePlay.flatMapLatest { viaPlay ->
-        // Packs Play already delivered stay usable after the switch.
-        if (viaPlay) play.states
-        else combine(play.states, cdn.value.states) { fromPlay, fromCdn -> fromCdn + fromPlay.filterValues { it.available } }
+        if (viaPlay) {
+            combine(play.states, fromCdn) { fromPlay, worker ->
+                fromPlay + worker.filter { fromPlay[it]?.available != true }.associateWith { QuranPackState.Available }
+            }
+        } else combine(play.states, cdn.value.states) { fromPlay, fromWorker -> fromWorker + fromPlay.filterValues { it.available } }
     }.stateIn(scope, SharingStarted.Eagerly, layout.packs.associate { it.name to QuranPackState.Missing })
 
     private val active: QuranPackSource get() = if (usePlay.value) play else cdn.value
 
-    override fun directory(pack: QuranPack): File? =
-        play.directory(pack) ?: if (usePlay.value) null else cdn.value.directory(pack)
+    // The active source's copy first, so that repairing a damaged copy never removes the other one.
+    override fun directory(pack: QuranPack): File? {
+        val fromWorker = { cdnInstaller.installedDirectory(pack).takeIf { it.isDirectory } }
+        return if (usePlay.value) play.directory(pack) ?: fromWorker() else fromWorker() ?: play.directory(pack)
+    }
 
-    override fun fetch(packs: List<QuranPack>, allowMetered: Boolean) = active.fetch(packs, allowMetered)
+    override fun fetch(packs: List<QuranPack>, allowMetered: Boolean) {
+        if (!usePlay.value) return cdn.value.fetch(packs, allowMetered)
+        packs.forEach { pack -> askedOfPlay.merge(pack.name, allowMetered, Boolean::or) }
+        play.fetch(packs, allowMetered)
+    }
 
     override fun confirmMobileData(packs: List<QuranPack>, launcher: ActivityResultLauncher<IntentSenderRequest>) =
         active.confirmMobileData(packs, launcher)
 
     override fun remove(packs: List<QuranPack>) {
+        packs.forEach { askedOfPlay.remove(it.name) }
         play.remove(packs)
         if (!usePlay.value) cdn.value.remove(packs)
+        else scope.launch(Dispatchers.IO) {
+            packs.forEach(cdnInstaller::remove)
+            scanCdn()
+        }
     }
 
-    override fun refresh() = active.refresh()
+    override fun refresh() {
+        active.refresh()
+        scanCdn()
+    }
+
+    private fun scanCdn() {
+        scope.launch(Dispatchers.IO) { fromCdn.value = layout.packs.filter(cdnInstaller::isInstalled).map { it.name }.toSet() }
+    }
+
+    /** Play will never deliver to this install: the Worker does, starting with what Play was asked for. */
+    private fun switchToCdn() {
+        if (!usePlay.compareAndSet(true, false)) return
+        val asked = askedOfPlay.toMap()
+        askedOfPlay.clear()
+        val delivered = play.states.value.filterValues { it.available }.keys
+        val handover = layout.packs.filter { it.name in asked && it.name !in delivered }.groupBy { asked.getValue(it.name) }
+        scope.launch {
+            // The Worker's source decides how to queue from its states; wait until it has read them.
+            val worker = cdn.value
+            worker.states.first { it.isNotEmpty() }
+            handover.forEach { (allowMetered, packs) -> worker.fetch(packs, allowMetered) }
+        }
+    }
 }

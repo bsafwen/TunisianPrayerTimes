@@ -53,8 +53,10 @@ internal class QuranPackInstaller(private val root: File) {
             val code = connection.responseCode
             val resumed = offset > 0L && code == HttpURLConnection.HTTP_PARTIAL &&
                 connection.getHeaderField("Content-Range")?.startsWith("bytes $offset-") == true
-            if (offset > 0L && !resumed && code != HttpURLConnection.HTTP_OK && !restarted) {
-                // The partial file cannot be continued (e.g. 416): start over once.
+            // Only the server's word that the partial file cannot be continued starts it over;
+            // any other failure keeps it, so the next attempt resumes.
+            val unresumable = offset > 0L && !resumed && (code == HTTP_RANGE_NOT_SATISFIABLE || code == HttpURLConnection.HTTP_PARTIAL)
+            if (unresumable && !restarted) {
                 connection.disconnect()
                 part.delete()
                 return transfer(url, part, expected, onProgress, restarted = true)
@@ -120,6 +122,11 @@ internal class QuranPackInstaller(private val root: File) {
             staging.deleteRecursively()
             throw QuranPackException(QuranDownloadProblem.Storage, "Could not unpack ${archive.name}", error)
         }
+        // Whatever happened to the folder meanwhile, only a complete pack goes into place.
+        if (pack.files.any { File(staging, it.path).length() != it.bytes }) {
+            staging.deleteRecursively()
+            throw QuranPackException(QuranDownloadProblem.Integrity, "Incomplete unpack of ${pack.name}")
+        }
         if (!staging.renameTo(target)) {
             staging.deleteRecursively()
             throw QuranPackException(QuranDownloadProblem.Storage, "Could not move ${pack.name} into place")
@@ -128,19 +135,24 @@ internal class QuranPackInstaller(private val root: File) {
         return target
     }
 
+    /** Callers cancel the pack's download first; a half-unpacked copy goes too. */
     fun remove(pack: QuranPack) {
         installedDirectory(pack).deleteRecursively()
+        File(root, "$INSTALLS/${installedDirectory(pack).name}").deleteRecursively()
         partialFile(pack).delete()
     }
 
-    /** Deletes earlier versions of packs and downloads the current layout no longer lists. */
+    /**
+     * Deletes earlier versions of packs and downloads the current layout no longer lists. Work on a
+     * current pack is left alone: a download worker may be writing or unpacking it right now.
+     */
     fun removeStale(layout: QuranPackLayout) {
         val current = layout.packs.map { installedDirectory(it).name }.toSet()
         val archives = layout.packs.map { partialFile(it).name }.toSet()
         root.listFiles()?.forEach { file ->
             if (file.name != DOWNLOADS && file.name != INSTALLS && file.name !in current) file.deleteRecursively()
         }
-        File(root, INSTALLS).deleteRecursively()
+        File(root, INSTALLS).listFiles()?.forEach { if (it.name !in current) it.deleteRecursively() }
         File(root, DOWNLOADS).listFiles()?.forEach { if (it.name !in archives) it.delete() }
     }
 
@@ -148,6 +160,7 @@ internal class QuranPackInstaller(private val root: File) {
         const val DOWNLOADS = ".downloads"
         const val INSTALLS = ".installs"
         const val BUFFER = 64 * 1024
+        const val HTTP_RANGE_NOT_SATISFIABLE = 416
 
         fun sha256(file: File): String {
             val digest = MessageDigest.getInstance("SHA-256")

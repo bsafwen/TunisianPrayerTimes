@@ -21,10 +21,13 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import http.client
 import json
 import os
 import shutil
+import socket
 import subprocess
+import time
 import sys
 import tempfile
 import urllib.error
@@ -53,6 +56,7 @@ MAX_PACK_BYTES = 200 * MB
 MAX_AUDIO_PACKS = 99
 PAGES_PACK = 'quran_pages'
 ARCHIVE_PREFIX = 'v1/packs/'
+DOWNLOAD_TRIES = 5
 # Where each reciter's recordings were originally published, for provenance and fetch-origin.
 ORIGINS = {'hosary': 'https://cdn.mp3quran.net/audio/mahmoud-husary/r5/{name}'}
 GENERATED_BUILD_FILE = (
@@ -342,7 +346,11 @@ def command_publish(args: argparse.Namespace) -> None:
     print('✓ Every pack is published')
 
 
-def download(url: str, target: Path) -> None:
+class Incomplete(OSError):
+    """The connection ended before the whole file arrived; the partial file is kept to resume."""
+
+
+def download(url: str, target: Path, expected: int | None = None) -> None:
     """Downloads to target, resuming a previous partial download when the server allows it."""
     partial = target.with_suffix(target.suffix + '.part')
     offset = partial.stat().st_size if partial.exists() else 0
@@ -353,15 +361,29 @@ def download(url: str, target: Path) -> None:
     except urllib.error.HTTPError as error:
         if offset and error.code == 416:  # The partial file is already complete or too long.
             partial.unlink()
-            return download(url, target)
+            return download(url, target, expected)
         raise
     with response:
         resumed = response.status == 206 and response.headers.get('Content-Range', '').startswith(f'bytes {offset}-')
         if offset and not resumed and response.status != 200:
             partial.unlink()
-            return download(url, target)
-        with partial.open('ab' if offset and resumed else 'wb') as out:
-            shutil.copyfileobj(response, out, 1 << 20)
+            return download(url, target, expected)
+        # The size the server says the whole file has: a changed or wrong file is a layout problem,
+        # not a connection to resume.
+        length = response.headers.get('Content-Length')
+        total = response.headers.get('Content-Range', '').rpartition('/')[2] if resumed else length
+        declared = int(total) if total and total.isdigit() else None
+        if expected is not None and declared is not None and declared != expected:
+            raise LayoutError(f'{url} serves {declared} bytes; the layout says {expected}')
+        expected = expected if expected is not None else declared
+        try:
+            with partial.open('ab' if offset and resumed else 'wb') as out:
+                shutil.copyfileobj(response, out, 1 << 20)
+        # socket.timeout is not a TimeoutError before Python 3.10.
+        except (http.client.IncompleteRead, ConnectionError, TimeoutError, socket.timeout) as error:
+            raise Incomplete(f'{url}: transfer interrupted ({error})') from error
+    if expected is not None and partial.stat().st_size < expected:
+        raise Incomplete(f'{url}: connection closed after {partial.stat().st_size} of {expected} bytes')
     partial.replace(target)
 
 
@@ -376,7 +398,18 @@ def cached_archive(layout: dict, pack: dict, cache: Path) -> Path:
         if attempt == 0:
             print(f"  {pack['name']}: downloading {archive['bytes'] / MB:.1f} MB")
             cache.mkdir(parents=True, exist_ok=True)
-            download(archive_url(layout, pack), path)
+            for tries in range(DOWNLOAD_TRIES):
+                try:
+                    download(archive_url(layout, pack), path, archive['bytes'])
+                    break
+                except Incomplete:  # Resume from what arrived.
+                    if tries == DOWNLOAD_TRIES - 1:
+                        raise
+                except urllib.error.HTTPError as error:  # The CDN is busy: wait, then resume.
+                    if error.code not in (429, 500, 502, 503, 504) or tries == DOWNLOAD_TRIES - 1:
+                        raise
+                    retry_after = error.headers.get('Retry-After', '')
+                    time.sleep(min(int(retry_after), 60) if retry_after.isdigit() else 5)
     raise LayoutError(f"{pack['name']}: the downloaded archive does not match packs.json")
 
 
@@ -469,7 +502,7 @@ def command_fetch_origin(args: argparse.Namespace) -> None:
         if path.exists() and path.stat().st_size == asset.bytes and sha256_of(path) == asset.sha256:
             continue
         print(f'  {path.name}')
-        download(asset.origin, path)
+        download(asset.origin, path, asset.bytes)
         if sha256_of(path) != asset.sha256:
             raise LayoutError(f'{asset.origin} no longer serves the bytes in the layout')
     print(f'✓ Originals in {target}')
@@ -507,10 +540,14 @@ def main(argv: list[str] | None = None) -> int:
     fetch.add_argument('--to', required=True)
     fetch.set_defaults(run=command_fetch_origin)
 
+    # Windows consoles may not encode ✓ and ✗; print a substitute rather than fail after the work is done.
+    for stream in (sys.stdout, sys.stderr):
+        if stream is not None and hasattr(stream, 'reconfigure'):
+            stream.reconfigure(errors='backslashreplace')
     args = parser.parse_args(argv)
     try:
         args.run(args)
-    except (LayoutError, urllib.error.URLError, subprocess.CalledProcessError) as error:
+    except (LayoutError, OSError, subprocess.CalledProcessError) as error:
         print(f'✗ {error}', file=sys.stderr)
         return 1
     return 0
