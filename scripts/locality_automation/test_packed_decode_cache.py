@@ -1,7 +1,10 @@
 """Exact input changes and original validation rejection must survive reuse."""
 import struct
 import importlib.util
+import copy
+import json
 from pathlib import Path
+import tempfile
 import unittest
 from scripts.locality_automation import packed_gps_replay as replay
 from scripts.locality_automation.packed_decode_cache import reuse_identical_packed_slices, PackedSliceDecodeCache
@@ -14,6 +17,47 @@ def triangle(point=1000000):
 
 
 class DecodeReuseContracts(unittest.TestCase):
+    def test_warm_cache_retains_fresh_metadata_grid_policy_and_header_rejections(self):
+        binary, row = triangle()
+        metadata = {'schemaVersion': 1, 'gridSize': 1, 'coordinateScale': 1000000,
+                    'features': [{'id': 'id', 'hasBoundary': True, 'bbox': [0, 0, 1, 1],
+                                  'areaKm2': 1, **row}], 'country': row, 'cells': {'0:0': [0]}}
+        with reuse_identical_packed_slices() as counts:
+            replay.PackedGpsReplay(metadata, binary)
+            for field, value, message in [('cells', {'0:0': [1]}, 'absent boundary'),
+                                           ('gpsConflictPolicies', [{'schemaVersion': 'unknown'}], None)]:
+                changed = copy.deepcopy(metadata)
+                changed[field] = value
+                with self.subTest(field=field), self.assertRaises((ValueError, KeyError)):
+                    replay.PackedGpsReplay(changed, binary)
+            changed = copy.deepcopy(metadata)
+            changed['features'][0]['bbox'] = [0, 0, 0, 1]
+            with self.assertRaisesRegex(ValueError, 'Invalid bbox'):
+                replay.PackedGpsReplay(changed, binary)
+            with self.assertRaisesRegex(ValueError, 'NPOL v1 header'):
+                replay.PackedGpsReplay(metadata, b'INVALID!' + binary[8:])
+            self.assertGreater(counts['hits'], 0)
+
+    def test_second_constructor_reads_and_hashes_changed_physical_bytes(self):
+        binary, row = triangle()
+        changed_binary, _ = triangle(2000000)
+        metadata = {'schemaVersion': 1, 'gridSize': 1, 'coordinateScale': 1000000,
+                    'features': [{'id': 'id', 'hasBoundary': True, 'bbox': [0, 0, 2, 1],
+                                  'areaKm2': 1, **row}], 'country': row, 'cells': {'0:0': [0]}}
+        with tempfile.TemporaryDirectory() as directory, reuse_identical_packed_slices():
+            meta_path, bin_path = Path(directory) / 'metadata.json', Path(directory) / 'boundaries.bin'
+            meta_path.write_text(json.dumps(metadata), encoding='utf-8')
+            bin_path.write_bytes(binary)
+            first = replay.PackedGpsReplay(meta_path, bin_path)
+            bin_path.write_bytes(changed_binary)
+            second = replay.PackedGpsReplay(meta_path, bin_path)
+            self.assertNotEqual(first.binary_sha256, second.binary_sha256)
+            self.assertNotEqual(first.decode_geometry('id'), second.decode_geometry('id'))
+            metadata['cells'] = {'0:0': [999]}
+            meta_path.write_text(json.dumps(metadata), encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'absent boundary'):
+                replay.PackedGpsReplay(meta_path, bin_path)
+
     def test_identical_dynamic_modules_share_only_exact_immutable_slices(self):
         binary, row = triangle()
         cache = PackedSliceDecodeCache()
