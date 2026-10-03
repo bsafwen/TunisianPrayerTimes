@@ -81,6 +81,22 @@ class ArchiveTest(unittest.TestCase):
 
 
 class QuietHandler(http.server.SimpleHTTPRequestHandler):
+    """Serves files like the CDN, which refuses urllib's default user agent."""
+
+    def refused(self):
+        if self.headers.get('User-Agent', '').startswith('Python-urllib'):
+            self.send_error(403)
+            return True
+        return False
+
+    def do_GET(self):
+        if not self.refused():
+            super().do_GET()
+
+    def do_HEAD(self):
+        if not self.refused():
+            super().do_HEAD()
+
     def log_message(self, *args):
         pass
 
