@@ -10,9 +10,7 @@
     <string name="prayer_method_context">%1$s · %2$s</string>
 
     <string name="prayer_method_trust_title">مطابقة لمواقيت المعهد الوطني للرصد الجوي دقيقةً بدقيقة</string>
-    <string name="prayer_method_trust_body">يحسب التطبيق المواقيت على هاتفك، دون إنترنت، بنفس المعادلات الفلكية التي يعتمدها المعهد الوطني للرصد الجوي (meteo.tn) في جداوله الرسمية. قارنّا النتائج بكل ما نشره المعهد:</string>
-    <string name="prayer_method_trust_2026">565,020 توقيتًا لسنة 2026 (كل المعتمديات وكل الأيام): تطابق تام</string>
-    <string name="prayer_method_trust_past">109,042 توقيتًا من 2020 إلى 2025: تطابق تام</string>
+    <string name="prayer_method_trust_body">يحسب التطبيق المواقيت على هاتفك، دون إنترنت، بنفس المعادلات الفلكية التي يعتمدها المعهد الوطني للرصد الجوي (meteo.tn) في جداوله الرسمية.</string>
 
     <string name="prayer_method_chart_title">مسار الشمس في هذا اليوم</string>
     <string name="prayer_method_chart_body">كل صلاة مرتبطة بموضع معيّن للشمس. المنحنى هو ارتفاع الشمس فوق الأفق أو تحته خلال اليوم، والنقاط هي لحظات المواقيت.</string>
