@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="adhkar_notification_channel">تذكير الأذكار</string>
+    <string name="adhkar_notification_channel_description">تذكير بالذكر وهدفك اليومي باهتزاز دون صوت</string>
+    <string name="adhkar_notification_progress">أنجزت %1$d من %2$d</string>
+    <string name="adhkar_notification_add_one">قلتُه مرة (+1)</string>
+    <string name="adhkar_notification_add_ten">قلتُه 10 مرات (+10)</string>
+</resources>

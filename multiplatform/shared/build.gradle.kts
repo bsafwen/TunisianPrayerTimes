@@ -48,6 +48,10 @@ kotlin {
         }
 
         val javaTest by getting {
+            // The Python publisher and app parser verify the same correction payload.
+            resources.srcDir(rootProject.file("../test-data"))
+            // The prayer-formula inputs the Android app bundles.
+            resources.srcDir(rootProject.file("../data/prayer-formula"))
             dependencies {
                 implementation(kotlin("test"))
             }
@@ -58,5 +62,21 @@ kotlin {
                 implementation("androidx.core:core-ktx:1.16.0")
             }
         }
+    }
+}
+
+// The prayer-formula golden test compares against the meteo.tn tables scraped into docs/csv.
+// Declared as an input so the test reruns when the tables change.
+abstract class DocsCsvArgument : CommandLineArgumentProvider {
+    @get:InputDirectory
+    @get:PathSensitive(PathSensitivity.RELATIVE)
+    abstract val directory: DirectoryProperty
+
+    override fun asArguments() = listOf("-Dtunisianprayertimes.docsCsv=${directory.get().asFile.absolutePath}")
+}
+
+tasks.withType<Test>().configureEach {
+    jvmArgumentProviders += objects.newInstance<DocsCsvArgument>().apply {
+        directory.set(rootProject.layout.projectDirectory.dir("../docs/csv"))
     }
 }

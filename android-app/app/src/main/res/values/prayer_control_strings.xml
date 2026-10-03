@@ -1,0 +1,14 @@
+<resources>
+    <string name="prayer_silence_start">بداية الإسكات</string>
+    <string name="prayer_silence_end">نهاية الإسكات</string>
+    <string name="prayer_delay_mode_minutes">دقائق من الأذان</string>
+    <string name="prayer_mode_fixed_time">وقت محدد</string>
+    <string name="prayer_duration_mode_minutes">المدة بالدقائق</string>
+    <string name="prayer_choose_silence_mode">%1$s · %2$s</string>
+    <string name="prayer_control_close">إغلاق</string>
+    <string name="prayer_delay_input_description">%1$s، دقائق بداية الإسكات من الأذان</string>
+    <string name="prayer_duration_input_description">%1$s، مدة الإسكات بالدقائق</string>
+    <string name="prayer_delay_time_description">%1$s، وقت بداية الإسكات</string>
+    <string name="prayer_end_time_description">%1$s، وقت نهاية الإسكات</string>
+    <string name="prayer_negative_delay_hint">القيمة السالبة تعني قبل الأذان</string>
+</resources>

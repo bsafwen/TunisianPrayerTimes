@@ -1,0 +1,8 @@
+<resources>
+    <string name="prayer_timeline_subtitle">الذهبي للأذان، والشريط للإسكات. اسحبه لتعديل الفترة.</string>
+    <string name="prayer_timeline_undo">تراجع</string>
+    <string name="prayer_timeline_saved">تم تعديل فترة الإسكات</string>
+    <string name="prayer_timeline_invalid_window">نهاية الإسكات تسبق بدايته. اضغط على الأوقات لتعديل الفترة.</string>
+    <string name="prayer_timeline_edit_prayer_time">تعديل وقت %1$s</string>
+    <string name="prayer_timeline_up_next">القادمة</string>
+</resources>

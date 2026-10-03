@@ -15,23 +15,38 @@ import com.tunisianprayertimes.PrayerWakeConfig
 import com.tunisianprayertimes.PrayerTimesRepository
 import com.tunisianprayertimes.SilenceAlarmComputer
 import com.tunisianprayertimes.WakeAlarmComputer
+import com.tunisianprayertimes.WakePlaybackOptions
+import com.tunisianprayertimes.MainActivityPendingIntents
 import com.tunisianprayertimes.MathDifficulty
 import com.tunisianprayertimes.WAKE_RECURRING_LOOKAHEAD_DAYS
 import com.tunisianprayertimes.WakeMainAlarmMode
+import com.tunisianprayertimes.hasPendingWakeOccurrenceSkip
+import com.tunisianprayertimes.isRepeatingWakeAlarm
+import com.tunisianprayertimes.isSkippingWakeOccurrence
+import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.nap.NapSilenceController
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 import kotlin.math.abs
 
 object WakeAlarmScheduler {
 	private const val TAG = "WakeAlarmScheduler"
 	private const val SCHEDULER_PREFS = "wake_alarm_scheduler"
 	private const val KEY_SCHEDULED_EVENT_IDS = "scheduled_event_ids"
+	private const val KEY_TRIGGER_PREFIX = "trigger:"
+	private const val KEY_OCCURRENCE_PREFIX = "occurrence:"
+	private const val KEY_DELIVERED_PREFIX = "delivered:"
 	private const val KEY_SILENCED_ALARM_ID = "silenced_alarm_id"
 	private const val KEY_SILENCED_ALARM_IDS = "silenced_alarm_ids"
 	private const val KEY_SILENCE_PAUSED_FOR_ALARM_ID = "silence_paused_for_alarm_id"
 	private const val REPAIR_REQUEST_CODE = 70_001
 	private const val REPAIR_AFTER_LAST_ALARM_DELAY_MINUTES = 2L
+	private val DUE_DELIVERY_GRACE_MILLIS = TimeUnit.HOURS.toMillis(12)
+	private val reminderRefreshScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
 
 	fun activateSilenceUntilAlarm(context: Context, alarmId: String): Boolean {
 		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
@@ -57,6 +72,7 @@ object WakeAlarmScheduler {
 			alarmIds = remainingAlarmIds,
 			pausedForAlarmId = if (remainingAlarmIds.isNotEmpty() && temporarilyLifted) alarmId else null,
 		)
+		if (temporarilyLifted) refreshDhikrRemindersAfterSilenceRelease(context)
 		Log.d(TAG, "Silence released for ringing alarm $alarmId")
 		return true
 	}
@@ -66,14 +82,14 @@ object WakeAlarmScheduler {
 		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
 		val remainingAlarmIds = silencedAlarmIds(context) - alarmId
 		val pausedForAlarmId = prefs.getString(KEY_SILENCE_PAUSED_FOR_ALARM_ID, null)
-		if (remainingAlarmIds.isEmpty() && pausedForAlarmId == null && shouldUseWakeSilence(context)) {
-			NapSilenceController.disableNapSilence(context)
-		}
+		val lifted = remainingAlarmIds.isEmpty() && pausedForAlarmId == null &&
+			shouldUseWakeSilence(context) && NapSilenceController.disableNapSilence(context)
 		persistSilencedAlarmIds(
 			context = context,
 			alarmIds = remainingAlarmIds,
 			pausedForAlarmId = pausedForAlarmId?.takeIf { remainingAlarmIds.isNotEmpty() },
 		)
+		if (lifted) refreshDhikrRemindersAfterSilenceRelease(context)
 		Log.d(TAG, "Silence removed for alarm $alarmId")
 		return true
 	}
@@ -113,6 +129,14 @@ object WakeAlarmScheduler {
 	private fun shouldUseWakeSilence(context: Context): Boolean =
 		!PrefsManager.isAutoSilenceActive(context) && !PrefsManager.isManualSilenceActive(context)
 
+	private fun refreshDhikrRemindersAfterSilenceRelease(context: Context) {
+		val app = context.applicationContext
+		reminderRefreshScope.launch {
+			runCatching { DhikrReminderScheduler.refresh(app, rearm = true) }
+				.onFailure { error -> Log.w(TAG, "Could not refresh reminders after wake silence", error) }
+		}
+	}
+
 	private fun silencedAlarmIds(context: Context): Set<String> {
 		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
 		return buildSet {
@@ -151,15 +175,105 @@ object WakeAlarmScheduler {
 			.alarms
 			.any { config -> config.hasFutureWakeTriggers(System.currentTimeMillis()) }
 
+	suspend fun toggleSkipNextWakeOccurrence(context: Context, alarmId: String): PrayerWakeConfig? {
+		val repository = PrayerWakeRepository(context)
+		val config = repository.getWakeAlarm(alarmId) ?: return null
+		if (!config.isRepeatingWakeAlarm()) return null
+		val now = Calendar.getInstance()
+		if (config.hasPendingWakeOccurrenceSkip(now.timeInMillis)) {
+			val skippedOccurrence = config.skipNextOccurrenceAtMillis
+			val updated = repository.setWakeAlarmSkipOccurrence(alarmId, null) ?: return null
+			skippedOccurrence?.let { occurrenceAtMillis ->
+				WakeOccurrenceSkipRegistry.clear(alarmId, occurrenceAtMillis)
+				WakeAlarmQueueHolder.queue.restorePendingForOccurrence(alarmId, occurrenceAtMillis)
+			}
+			rescheduleAlarmForSkipToggle(context, alarmId)
+			return updated
+		}
+		if (!config.enabled) return null
+
+		val activeOccurrenceAtMillis = WakeAlarmQueueHolder.queue.activeOccurrenceForAlarm(alarmId)
+		val awakeCheckEventId = wakeMainEventId(alarmId)
+		val scheduledAwakeOccurrenceAtMillis = AwakeCheckScheduler.occurrenceAtMillis(context, awakeCheckEventId)
+		val awakeOccurrenceAtMillis = AwakeCheckService.activeOccurrenceForEvent(awakeCheckEventId)
+			?: scheduledAwakeOccurrenceAtMillis
+		val prayerDays = loadPrayerDayContexts(context, PrefsManager.getDelegationId(context), now)
+		val nextOccurrenceAtMillis = activeOccurrenceAtMillis
+			?: awakeOccurrenceAtMillis
+			?: nextWakeOccurrenceAtMillis(now, config, prayerDays)
+			?: return null
+		val updated = repository.setWakeAlarmSkipOccurrence(alarmId, nextOccurrenceAtMillis) ?: return null
+		WakeOccurrenceSkipRegistry.mark(alarmId, nextOccurrenceAtMillis)
+		WakeAlarmQueueHolder.queue.discardSkippedOccurrencesForAlarm(alarmId, nextOccurrenceAtMillis)
+		val removedDeliveredAlarm = WakeAlarmQueueHolder.queue.discardOccurrence(alarmId, nextOccurrenceAtMillis)
+		if (removedDeliveredAlarm) {
+			context.startService(
+				Intent(context, WakePlaybackService::class.java)
+					.setAction(WakePlaybackService.ACTION_REFRESH_FOR_CURRENT),
+			)
+			context.sendBroadcast(
+				Intent(ACTION_SYNC_WAKE_ALERT).setPackage(context.packageName),
+			)
+		}
+		if (scheduledAwakeOccurrenceAtMillis == nextOccurrenceAtMillis ||
+			(nextOccurrenceAtMillis <= now.timeInMillis && scheduledAwakeOccurrenceAtMillis == null)
+		) {
+			AwakeCheckScheduler.cancel(context, awakeCheckEventId)
+		}
+		AwakeCheckService.cancelForOccurrence(context, awakeCheckEventId, nextOccurrenceAtMillis)
+		// Cancel this alarm's remaining triggers now without touching another due alarm.
+		rescheduleAlarmForSkipToggle(context, alarmId)
+		return updated
+	}
+
+	private suspend fun rescheduleAlarmForSkipToggle(context: Context, alarmId: String) {
+		val configs = PrayerWakeRepository(context).getCurrentStore().alarms
+		scheduleAllInternal(context, Calendar.getInstance(), configs, onlyAlarmId = alarmId)
+	}
+
 	suspend fun scheduleAll(context: Context) {
 		val repo = PrayerWakeRepository(context)
-		val configs = repo.getCurrentStore().alarms
-		scheduleAllInternal(context, Calendar.getInstance(), configs)
+		val now = Calendar.getInstance()
+		var configs = repo.getCurrentStore().alarms
+		val staleSkipCutoffMillis = now.timeInMillis - TimeUnit.MINUTES.toMillis(REPAIR_AFTER_LAST_ALARM_DELAY_MINUTES)
+		configs
+			.filter { config ->
+				val skippedOccurrence = config.skipNextOccurrenceAtMillis
+				skippedOccurrence != null &&
+					(!config.isRepeatingWakeAlarm() ||
+						(!config.hasPendingWakeOccurrenceSkip(staleSkipCutoffMillis) &&
+							!WakeOccurrenceSkipRegistry.wasRecentlyMarked(config.id, skippedOccurrence, now.timeInMillis)))
+			}
+			.forEach { config ->
+				config.skipNextOccurrenceAtMillis?.let { occurrenceAtMillis ->
+					WakeAlarmQueueHolder.queue.discardSkippedOccurrence(config.id, occurrenceAtMillis)
+				}
+				runCatching { repo.setWakeAlarmSkipOccurrence(config.id, null) }
+		}
+		configs = repo.getCurrentStore().alarms
+		// Keep each skip on its original occurrence while any of its extras remain pending.
+		scheduleAllInternal(context, now, configs)
 		// Auto-delete one-off (FROM_NOW) alarms once all their triggers are in the past
 		val nowMillis = System.currentTimeMillis()
 		configs
 			.filter { config -> config.isExpiredOneOffWakeAlarm(nowMillis) }
 			.forEach { config -> runCatching { repo.deleteWakeAlarm(config.id) } }
+	}
+
+	private fun nextWakeOccurrenceAtMillis(
+		now: Calendar,
+		config: PrayerWakeConfig,
+		prayerDays: List<WakeAlarmComputer.PrayerDayContext>,
+	): Long? {
+		val futureTriggers = WakeAlarmComputer
+			.scheduledTriggers(config.copy(skipNextOccurrenceAtMillis = null), prayerDays)
+			.filter { trigger -> trigger.triggerAtMillis > now.timeInMillis }
+		// A main alarm that already rang still owns its upcoming extra alarms.
+		return futureTriggers
+			.filter { trigger -> trigger.occurrenceAtMillis <= now.timeInMillis }
+			.maxByOrNull { trigger -> trigger.occurrenceAtMillis }
+			?.occurrenceAtMillis
+			?: futureTriggers.minByOrNull { trigger -> trigger.triggerAtMillis }?.occurrenceAtMillis
 	}
 
 	fun cancelAll(context: Context) {
@@ -197,26 +311,81 @@ object WakeAlarmScheduler {
 		return canScheduleExactAlarms(alarmManager)
 	}
 
+	/** A delivered broadcast can be replaced with the next recurrence during refresh. */
+	fun markDelivered(context: Context, payload: WakeTriggerPayload) {
+		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		if (prefs.getLong(KEY_TRIGGER_PREFIX + payload.eventId, 0L) == payload.triggerAtMillis) {
+			prefs.edit().putBoolean(KEY_DELIVERED_PREFIX + payload.eventId, true).apply()
+		}
+	}
+
+	/** A changed alarm should not keep an old due trigger during the next refresh. */
+	fun invalidateScheduledTriggerMetadata(context: Context, alarmId: String) {
+		val editor = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE).edit()
+		scheduledEventIds(context)
+			.filter { eventId -> wakeAlarmIdFromEventId(eventId) == alarmId }
+			.forEach { eventId ->
+				editor.remove(KEY_TRIGGER_PREFIX + eventId)
+				editor.remove(KEY_OCCURRENCE_PREFIX + eventId)
+				editor.remove(KEY_DELIVERED_PREFIX + eventId)
+			}
+		editor.apply()
+	}
+
 	@VisibleForTesting
 	internal fun scheduleAllInternal(
 		context: Context,
 		now: Calendar,
 		configs: Collection<PrayerWakeConfig>,
+		onlyAlarmId: String? = null,
 	) {
 		val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-		cancelEventIds(context, scheduledEventIds(context))
+		val previousEventIds = scheduledEventIds(context)
+		val scopedEventIds = if (onlyAlarmId == null) previousEventIds else {
+			previousEventIds.filterTo(mutableSetOf()) { eventId ->
+				wakeAlarmIdFromEventId(eventId) == onlyAlarmId
+			}
+		}
+		val prefs = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE)
+		val preservedDueEventIds = if (onlyAlarmId != null) emptySet() else scopedEventIds.filterTo(mutableSetOf()) { eventId ->
+			val alarmId = wakeAlarmIdFromEventId(eventId)
+			val config = configs.firstOrNull { candidate -> candidate.id == alarmId }
+			val triggerAtMillis = prefs.getLong(KEY_TRIGGER_PREFIX + eventId, 0L)
+			val occurrenceAtMillis = prefs.getLong(KEY_OCCURRENCE_PREFIX + eventId, 0L)
+			config?.enabled == true &&
+				!config.isSkippingWakeOccurrence(occurrenceAtMillis) &&
+				triggerAtMillis in (now.timeInMillis - DUE_DELIVERY_GRACE_MILLIS)..now.timeInMillis &&
+				!prefs.getBoolean(KEY_DELIVERED_PREFIX + eventId, false)
+		}
+		val replacedEventIds = scopedEventIds - preservedDueEventIds
+		val retainedEventIds = previousEventIds - replacedEventIds
+		cancelEventIds(context, replacedEventIds)
 
 		if (!canScheduleExactAlarms(alarmManager)) {
 			Log.w(TAG, "Cannot schedule wake alarms because exact alarm permission is missing")
-			persistScheduledEventIds(context, emptySet())
-			cancelRepairAlarm(context)
+			persistScheduledEventIds(context, retainedEventIds)
+			if (onlyAlarmId == null && retainedEventIds.isEmpty()) cancelRepairAlarm(context)
 			return
 		}
 
-		val enabledConfigs = configs.filter { config -> config.hasFutureWakeTriggers(now.timeInMillis) }
+		val enabledConfigs = configs.filter { config ->
+			(onlyAlarmId == null || config.id == onlyAlarmId) &&
+				config.hasFutureWakeTriggers(now.timeInMillis)
+		}
 		if (enabledConfigs.isEmpty()) {
-			persistScheduledEventIds(context, emptySet())
-			cancelRepairAlarm(context)
+			persistScheduledEventIds(context, retainedEventIds)
+			if (onlyAlarmId == null) {
+				val earliestDueAtMillis = preservedDueEventIds
+					.map { eventId -> prefs.getLong(KEY_TRIGGER_PREFIX + eventId, 0L) }
+					.minOrNull()
+				if (earliestDueAtMillis == null) cancelRepairAlarm(context) else {
+					scheduleRepairAlarm(
+						context, alarmManager, now,
+						earliestDueAtMillis + DUE_DELIVERY_GRACE_MILLIS -
+							TimeUnit.MINUTES.toMillis(REPAIR_AFTER_LAST_ALARM_DELAY_MINUTES),
+					)
+				}
+			}
 			return
 		}
 
@@ -233,13 +402,26 @@ object WakeAlarmScheduler {
 			Log.w(TAG, "No prayer day contexts available for wake scheduling")
 		}
 
-		val scheduledEventIds = linkedSetOf<String>()
+		val scheduledEventIds = linkedSetOf<String>().apply { addAll(retainedEventIds) }
 		var latestTriggerAtMillis: Long? = null
 		enabledConfigs.forEach { config ->
 			val autoSilenceOverrideAllowed = config.shouldUseAutoSilenceConflictPlayback()
 			val result = WakeAlarmComputer.compute(now, config, prayerDays)
+			val lastExtraOffset = config.subAlarms
+				.map { subAlarm -> subAlarm.signedOffsetMinutes }
+				.filter { offset -> offset >= 0 }
+				.maxOrNull()
+			// Extras at the same latest time can arrive in either order.
+			val lastExtraIds = config.subAlarms
+				.filter { subAlarm -> subAlarm.signedOffsetMinutes == lastExtraOffset }
+				.mapTo(mutableSetOf()) { subAlarm -> subAlarm.id }
+			val awakeCheckGroupSize = maxOf(
+				1,
+				lastExtraIds.size + if (lastExtraOffset == 0) 1 else 0,
+			)
 			result.mainAlarm?.let { trigger ->
 				val eventId = wakeMainEventId(trigger.alarmId)
+				if (eventId in preservedDueEventIds) return@let
 				val autoSilenceConflictPrayer = trigger.autoSilenceConflictPrayer(prayerDays, silenceConfigs)
 					.takeIf { autoSilenceOverrideAllowed }
 				scheduleTrigger(
@@ -249,6 +431,10 @@ object WakeAlarmScheduler {
 					eventId = eventId,
 					autoSilenceConflictPrayer = autoSilenceConflictPrayer,
 					autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
+					awakeCheckPlayback = config.playback.takeIf {
+						lastExtraOffset == null || lastExtraOffset == 0
+					},
+					awakeCheckGroupSize = awakeCheckGroupSize,
 				)
 				scheduledEventIds += eventId
 				latestTriggerAtMillis = maxOf(latestTriggerAtMillis ?: Long.MIN_VALUE, trigger.triggerAtMillis)
@@ -258,6 +444,7 @@ object WakeAlarmScheduler {
 					alarmId = trigger.alarmId,
 					subAlarmId = requireNotNull(trigger.subAlarmId),
 				)
+				if (eventId in preservedDueEventIds) return@forEach
 				val autoSilenceConflictPrayer = trigger.autoSilenceConflictPrayer(prayerDays, silenceConfigs)
 					.takeIf { autoSilenceOverrideAllowed }
 				scheduleTrigger(
@@ -267,6 +454,10 @@ object WakeAlarmScheduler {
 					eventId = eventId,
 					autoSilenceConflictPrayer = autoSilenceConflictPrayer,
 					autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
+					awakeCheckPlayback = config.playback.takeIf {
+						trigger.subAlarmId?.let { subAlarmId -> subAlarmId in lastExtraIds } == true
+					},
+					awakeCheckGroupSize = awakeCheckGroupSize,
 				)
 				scheduledEventIds += eventId
 				latestTriggerAtMillis = maxOf(latestTriggerAtMillis ?: Long.MIN_VALUE, trigger.triggerAtMillis)
@@ -274,8 +465,19 @@ object WakeAlarmScheduler {
 		}
 
 		persistScheduledEventIds(context, scheduledEventIds)
-		if (scheduledEventIds.isNotEmpty()) {
-			scheduleRepairAlarm(context, alarmManager, now, latestTriggerAtMillis)
+		if (onlyAlarmId != null) return
+		val needsRepairForSkippedOccurrences = enabledConfigs.any { config ->
+			config.skipNextOccurrenceAtMillis != null && config.isRepeatingWakeAlarm()
+		}
+		if (scheduledEventIds.isNotEmpty() || needsRepairForSkippedOccurrences) {
+			val dueGraceEndsAtMillis = preservedDueEventIds
+				.map { eventId -> prefs.getLong(KEY_TRIGGER_PREFIX + eventId, 0L) + DUE_DELIVERY_GRACE_MILLIS }
+				.minOrNull()
+			val repairBaseAtMillis = dueGraceEndsAtMillis
+				?.minus(TimeUnit.MINUTES.toMillis(REPAIR_AFTER_LAST_ALARM_DELAY_MINUTES))
+				?.let { dueBase -> minOf(latestTriggerAtMillis ?: Long.MAX_VALUE, dueBase) }
+				?: latestTriggerAtMillis
+			scheduleRepairAlarm(context, alarmManager, now, repairBaseAtMillis)
 		} else {
 			cancelRepairAlarm(context)
 		}
@@ -326,6 +528,8 @@ object WakeAlarmScheduler {
 		eventId: String,
 		autoSilenceConflictPrayer: Prayer?,
 		autoSilenceOverrideAllowed: Boolean,
+		awakeCheckPlayback: WakePlaybackOptions?,
+		awakeCheckGroupSize: Int,
 	) {
 		val pendingIntent = createPendingIntent(
 			context = context,
@@ -333,6 +537,8 @@ object WakeAlarmScheduler {
 			eventId = eventId,
 			autoSilenceConflictPrayer = autoSilenceConflictPrayer,
 			autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
+			awakeCheckPlayback = awakeCheckPlayback,
+			awakeCheckGroupSize = awakeCheckGroupSize,
 		)
 
 		try {
@@ -346,11 +552,16 @@ object WakeAlarmScheduler {
 				alarmManager.setAlarmClock(
 					AlarmManager.AlarmClockInfo(
 						trigger.triggerAtMillis,
-						WakePlaybackService.alarmClockInfoIntent(context),
+						MainActivityPendingIntents.wakeAlarmClock(context),
 					),
 					pendingIntent,
 				)
 			}
+			context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE).edit()
+				.putLong(KEY_TRIGGER_PREFIX + eventId, trigger.triggerAtMillis)
+				.putLong(KEY_OCCURRENCE_PREFIX + eventId, trigger.occurrenceAtMillis)
+				.putBoolean(KEY_DELIVERED_PREFIX + eventId, false)
+				.apply()
 		} catch (e: SecurityException) {
 			Log.w(TAG, "Exact alarm denied for $eventId; skipping", e)
 		}
@@ -362,11 +573,15 @@ object WakeAlarmScheduler {
 		eventId: String,
 		autoSilenceConflictPrayer: Prayer?,
 		autoSilenceOverrideAllowed: Boolean,
+		awakeCheckPlayback: WakePlaybackOptions?,
+		awakeCheckGroupSize: Int,
 	): PendingIntent {
 		val payload = trigger.toPayload(
 			eventId = eventId,
 			autoSilenceConflictPrayer = autoSilenceConflictPrayer,
 			autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
+			awakeCheckPlayback = awakeCheckPlayback,
+			awakeCheckGroupSize = awakeCheckGroupSize,
 		)
 		val intent = Intent(context, WakeAlarmReceiver::class.java)
 			.populateWakeTriggerPayload(
@@ -391,12 +606,17 @@ object WakeAlarmScheduler {
 				autoSilenceConflictPrayer = payload.autoSilenceConflictPrayer,
 				awakeCheckEnabled = payload.awakeCheckEnabled,
 				awakeCheckDelayMinutes = payload.awakeCheckDelayMinutes,
+				awakeCheckGroupSize = payload.awakeCheckGroupSize,
+				awakeCheckRingtone = payload.awakeCheckRingtone,
+				awakeCheckCustomRingtoneUri = payload.awakeCheckCustomRingtoneUri,
 				wakeUpCheckChallenge = payload.wakeUpCheckChallenge,
 				wakeUpCheckSeed = payload.wakeUpCheckSeed,
 				isSubAlarm = payload.isSubAlarm,
 				subAlarmId = payload.subAlarmId,
 				offsetMinutes = payload.offsetMinutes,
 				offsetDirection = payload.offsetDirection,
+				triggerAtMillis = payload.triggerAtMillis,
+				occurrenceAtMillis = payload.occurrenceAtMillis,
 			)
 			.setAction(eventId)
 			.setData(wakeEventUri(eventId))
@@ -417,6 +637,13 @@ object WakeAlarmScheduler {
 		eventIds.forEach { eventId ->
 			alarmManager.cancel(cancelPendingIntent(context, eventId))
 		}
+		val editor = context.getSharedPreferences(SCHEDULER_PREFS, Context.MODE_PRIVATE).edit()
+		eventIds.forEach { eventId ->
+			editor.remove(KEY_TRIGGER_PREFIX + eventId)
+			editor.remove(KEY_OCCURRENCE_PREFIX + eventId)
+			editor.remove(KEY_DELIVERED_PREFIX + eventId)
+		}
+		editor.apply()
 	}
 
 	private fun cancelRepairAlarm(context: Context) {
@@ -483,6 +710,8 @@ object WakeAlarmScheduler {
 		eventId: String,
 		autoSilenceConflictPrayer: Prayer?,
 		autoSilenceOverrideAllowed: Boolean,
+		awakeCheckPlayback: WakePlaybackOptions?,
+		awakeCheckGroupSize: Int,
 	): WakeTriggerPayload {
 		val mainTriggerAtMillis = triggerAtMillis - signedOffsetMinutes.toMillis()
 		val mainTriggerTime = Calendar.getInstance().apply {
@@ -509,8 +738,12 @@ object WakeAlarmScheduler {
 			autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
 			useAutoSilenceConflictPlayback = autoSilenceConflictPrayer != null,
 			autoSilenceConflictPrayer = autoSilenceConflictPrayer,
-			awakeCheckEnabled = if (isSubAlarm) false else playback.awakeCheckEnabled,
-			awakeCheckDelayMinutes = playback.awakeCheckDelayMinutes,
+			awakeCheckEnabled = awakeCheckPlayback?.awakeCheckEnabled == true,
+			awakeCheckDelayMinutes = awakeCheckPlayback?.awakeCheckDelayMinutes
+				?: playback.awakeCheckDelayMinutes,
+			awakeCheckGroupSize = awakeCheckGroupSize,
+			awakeCheckRingtone = awakeCheckPlayback?.ringtone,
+			awakeCheckCustomRingtoneUri = awakeCheckPlayback?.customRingtoneUri,
 			wakeUpCheckSeed = if (playback.wakeUpCheckEnabled) triggerAtMillis else null,
 			wakeUpCheckChallenge = if (playback.wakeUpCheckEnabled) {
 				wakeUpCheckChallengeFor(eventId, triggerAtMillis, playback.mathDifficulty)
@@ -518,6 +751,8 @@ object WakeAlarmScheduler {
 				null
 			},
 			isSubAlarm = isSubAlarm,
+			triggerAtMillis = triggerAtMillis,
+			occurrenceAtMillis = occurrenceAtMillis,
 			subAlarmId = subAlarmId,
 			offsetMinutes = if (isSubAlarm) abs(signedOffsetMinutes) else null,
 			offsetDirection = if (isSubAlarm) signedOffsetMinutes.toOffsetDirection() else null,

@@ -14,17 +14,17 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
-import androidx.compose.animation.SizeTransform
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -34,7 +34,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -48,9 +47,13 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -64,16 +67,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.BlendMode
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -81,16 +91,21 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.tunisianprayertimes.DelayMode
+import com.tunisianprayertimes.Prayer
+import com.tunisianprayertimes.PrayerSilenceConfig
+import com.tunisianprayertimes.PrayerTime
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.AnalyticsTracker
+import com.tunisianprayertimes.SilenceMode
 import com.tunisianprayertimes.ui.theme.BgCream
 import com.tunisianprayertimes.ui.theme.Gold
 import com.tunisianprayertimes.ui.theme.GoldLight
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
-import com.tunisianprayertimes.ui.theme.PrayerNameColor
 import com.tunisianprayertimes.ui.theme.TextDark
 import com.tunisianprayertimes.ui.theme.TextMuted
+import kotlin.math.roundToInt
 import kotlinx.coroutines.delay
 
 @Composable
@@ -146,7 +161,7 @@ fun OnboardingScreen(
         }
     }
 
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(BgCream)
@@ -157,8 +172,7 @@ fun OnboardingScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 24.dp, end = 24.dp, top = 36.dp)
-                .align(Alignment.TopCenter),
+                .padding(start = 24.dp, end = 24.dp, top = 36.dp),
             horizontalArrangement = Arrangement.spacedBy(4.dp)
         ) {
             for (i in 0 until totalSteps) {
@@ -172,59 +186,61 @@ fun OnboardingScreen(
             }
         }
 
-        // Step content with animated transitions
-        AnimatedContent(
-            targetState = currentStep,
-            transitionSpec = {
-                val slideOffset = { size: Int -> size / 4 }
-                val fadeEnter = tween<Float>(300, easing = FastOutSlowInEasing)
-                val fadeExit = tween<Float>(250, easing = FastOutSlowInEasing)
-                val slideEnter = tween<IntOffset>(300, easing = FastOutSlowInEasing)
-                val slideExit = tween<IntOffset>(250, easing = FastOutSlowInEasing)
-                if (goingForward) {
-                    (slideInHorizontally(slideEnter) { -slideOffset(it) } + fadeIn(fadeEnter)) togetherWith
-                            (slideOutHorizontally(slideExit) { slideOffset(it) } + fadeOut(fadeExit))
-                } else {
-                    (slideInHorizontally(slideEnter) { slideOffset(it) } + fadeIn(fadeEnter)) togetherWith
-                            (slideOutHorizontally(slideExit) { -slideOffset(it) } + fadeOut(fadeExit))
+        // Step content with animated transitions, scrolling above the button band.
+        Box(modifier = Modifier.fillMaxWidth().weight(1f)) {
+            AnimatedContent(
+                targetState = currentStep,
+                transitionSpec = {
+                    val slideOffset = { size: Int -> size / 4 }
+                    val fadeEnter = tween<Float>(300, easing = FastOutSlowInEasing)
+                    val fadeExit = tween<Float>(250, easing = FastOutSlowInEasing)
+                    val slideEnter = tween<IntOffset>(300, easing = FastOutSlowInEasing)
+                    val slideExit = tween<IntOffset>(250, easing = FastOutSlowInEasing)
+                    if (goingForward) {
+                        (slideInHorizontally(slideEnter) { -slideOffset(it) } + fadeIn(fadeEnter)) togetherWith
+                                (slideOutHorizontally(slideExit) { slideOffset(it) } + fadeOut(fadeExit))
+                    } else {
+                        (slideInHorizontally(slideEnter) { slideOffset(it) } + fadeIn(fadeEnter)) togetherWith
+                                (slideOutHorizontally(slideExit) { -slideOffset(it) } + fadeOut(fadeExit))
+                    }
+                },
+                modifier = Modifier.fillMaxSize().padding(top = 14.dp),
+                label = "onboarding_step"
+            ) { step ->
+                when (step) {
+                    0 -> WelcomeStep()
+                    1 -> SilencePeriodStep()
+                    2 -> DragEndpointsStep()
+                    3 -> EndpointRulesStep()
+                    4 -> JomoaaExplanationStep()
+                    5 -> WakeAlarmIntroStep()
+                    6 -> PermissionsStep(
+                        hasDnd = hasDnd,
+                        hasAlarm = hasAlarm,
+                        hasBattery = hasBattery,
+                        hasPhoneState = hasPhoneState,
+                        onRequestPhoneState = {
+                            AnalyticsTracker.permissionStepResult(
+                                context = context,
+                                permissionType = "phone_state",
+                                result = "request_opened",
+                                entryPoint = "onboarding",
+                            )
+                            phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
+                        },
+                        context = context
+                    )
+                    7 -> ReadyStep()
                 }
-            },
-            modifier = Modifier.fillMaxSize(),
-            label = "onboarding_step"
-        ) { step ->
-            when (step) {
-                0 -> WelcomeStep()
-                1 -> DurationExplanationStep()
-                2 -> DelayExplanationStep()
-                3 -> FixedTimeSwitchStep()
-                4 -> JomoaaExplanationStep()
-                5 -> WakeAlarmIntroStep()
-                6 -> PermissionsStep(
-                    hasDnd = hasDnd,
-                    hasAlarm = hasAlarm,
-                    hasBattery = hasBattery,
-                    hasPhoneState = hasPhoneState,
-                    onRequestPhoneState = {
-                        AnalyticsTracker.permissionStepResult(
-                            context = context,
-                            permissionType = "phone_state",
-                            result = "request_opened",
-                            entryPoint = "onboarding",
-                        )
-                        phoneStatePermissionLauncher.launch(Manifest.permission.READ_PHONE_STATE)
-                    },
-                    context = context
-                )
-                7 -> ReadyStep()
             }
         }
 
-        // Navigation buttons
+        // Navigation buttons occupy their own band, so they can never overlap
+        // the scrollable step content.
         Row(
             modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 100.dp, start = 32.dp, end = 32.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(start = 32.dp, end = 32.dp, top = 8.dp, bottom = 12.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -288,19 +304,113 @@ fun OnboardingScreen(
 
 // --- Steps ---
 
+private val OnboardingTitleSlotHeight = 48.dp
+private val OnboardingNarrationSlotHeight = 36.dp
+private val OnboardingStageHeight = 376.dp
+
+/**
+ * Shared page geometry for every onboarding step: the title, the optional
+ * narration chip, the animation/content stage and the description always sit in
+ * the same slots, so nothing shifts between steps or between a step's animations.
+ */
+@Composable
+private fun OnboardingStepLayout(
+    title: @Composable () -> Unit,
+    description: @Composable () -> Unit,
+    narration: (@Composable () -> Unit)? = null,
+    content: @Composable () -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 24.dp)
+            .padding(top = 16.dp)
+            .padding(bottom = 12.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(OnboardingTitleSlotHeight),
+            contentAlignment = Alignment.Center,
+        ) {
+            title()
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(OnboardingNarrationSlotHeight),
+            contentAlignment = Alignment.Center,
+        ) {
+            narration?.invoke()
+        }
+        Spacer(Modifier.height(10.dp))
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(OnboardingStageHeight),
+            contentAlignment = Alignment.Center,
+        ) {
+            content()
+        }
+        Spacer(Modifier.height(16.dp))
+        Box(
+            modifier = Modifier.fillMaxWidth(),
+            contentAlignment = Alignment.TopCenter,
+        ) {
+            description()
+        }
+    }
+}
+
 @Composable
 private fun WelcomeStep() {
+    val flourish = remember { Animatable(0f) }
+    LaunchedEffect(Unit) {
+        flourish.animateTo(1f, tween(1000, easing = FastOutSlowInEasing))
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 32.dp, vertical = 32.dp)
-            .padding(bottom = 160.dp),
+            .padding(bottom = 12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("﷽", fontSize = 28.sp, color = GreenPrimaryDark)
-        Spacer(Modifier.height(24.dp))
+        // Gilded basmalah: same artwork as the app header, painted with a
+        // metallic gold gradient so it reads like embossed gold leaf.
+        Image(
+            painter = painterResource(R.drawable.basmalah),
+            contentDescription = "بِسْمِ اللهِ الرَّحْمَٰنِ الرَّحِيمِ",
+            modifier = Modifier
+                .fillMaxWidth(0.98f)
+                .height(74.dp)
+                .graphicsLayer {
+                    alpha = flourish.value
+                    val scale = 0.94f + flourish.value * 0.06f
+                    scaleX = scale
+                    scaleY = scale
+                    compositingStrategy = CompositingStrategy.Offscreen
+                }
+                .drawWithContent {
+                    drawContent()
+                    drawRect(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color(0xFFF8E7A0),
+                                Color(0xFFE3BE55),
+                                Color(0xFFC79B2F),
+                                Color(0xFF8F6A1C),
+                            ),
+                        ),
+                        blendMode = BlendMode.SrcAtop,
+                    )
+                },
+            contentScale = ContentScale.Fit,
+        )
+        Spacer(Modifier.height(30.dp))
         Image(
             painter = painterResource(R.drawable.mosque_silhouette),
             contentDescription = stringResource(R.string.app_name),
@@ -326,345 +436,327 @@ private fun WelcomeStep() {
 }
 
 @Composable
-private fun DurationExplanationStep() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 32.dp)
-            .padding(bottom = 160.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+private fun SilencePeriodStep() {
+    OnboardingStepLayout(
+        title = {
+            Text(
+                text = stringResource(R.string.onboarding_period_title),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 24.sp
+            )
+        },
+        description = {
+            Text(
+                text = stringResource(R.string.onboarding_period_desc),
+                fontSize = 14.sp,
+                color = TextDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 20.sp
+            )
+        },
     ) {
-        Text(
-            text = stringResource(R.string.onboarding_step2_title),
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenPrimaryDark,
-            textAlign = TextAlign.Center,
-            lineHeight = 24.sp
-        )
-        Spacer(Modifier.height(16.dp))
-        DemoPrayerRowCard(
-            delayValue = "0",
-            delayLabel = stringResource(R.string.label_delay_minutes),
-            durationValue = "60",
-            durationLabel = stringResource(R.string.label_duration),
-            delayLabelColor = TextMuted,
-            durationLabelColor = Gold,
-        )
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = stringResource(R.string.onboarding_step2_desc),
-            fontSize = 14.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
-            lineHeight = 20.sp
+        DemoPrayerSilenceRow(
+            prayer = Prayer.DHUHR,
+            prayerName = stringResource(R.string.prayer_dhuhr),
+            prayerHour = 12,
+            prayerMinute = 21,
+            initialStartOffset = 0,
+            initialEndOffset = 47,
         )
     }
 }
 
 @Composable
-private fun DelayExplanationStep() {
-    var showAfter by remember { mutableStateOf(false) }
-    val tapScale = remember { Animatable(1f) }
-    val tapHighlight = remember { Animatable(0f) }
-    val shakeOffset = remember { Animatable(0f) }
-
-    LaunchedEffect(Unit) {
-        showAfter = false
-        delay(1400)
-        // Simulate tap: press down
-        tapHighlight.animateTo(1f, tween(100))
-        tapScale.animateTo(0.85f, tween(100))
-        delay(150)
-        // Release
-        tapScale.animateTo(1f, spring(dampingRatio = 0.4f, stiffness = 300f))
-        tapHighlight.animateTo(0f, tween(200))
-        delay(200)
-        // Shake the value + swap at midpoint
-        shakeOffset.animateTo(20f, tween(50))
-        shakeOffset.animateTo(-15f, tween(50))
-        showAfter = true
-        shakeOffset.animateTo(10f, tween(50))
-        shakeOffset.animateTo(-5f, tween(50))
-        shakeOffset.animateTo(0f, tween(60))
-    }
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 32.dp)
-            .padding(bottom = 160.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+private fun DragEndpointsStep() {
+    OnboardingStepLayout(
+        title = {
+            Text(
+                text = stringResource(R.string.onboarding_drag_title),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 24.sp
+            )
+        },
+        description = {
+            Text(
+                text = stringResource(R.string.onboarding_drag_desc),
+                fontSize = 14.sp,
+                color = TextDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 20.sp
+            )
+        },
     ) {
-        Text(
-            text = stringResource(R.string.onboarding_delay_title),
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenPrimaryDark,
-            textAlign = TextAlign.Center
-        )
-        Spacer(Modifier.height(16.dp))
-
-        DemoPrayerRowCard(
-            delayValue = if (showAfter) "05:20" else "5",
-            delayLabel = stringResource(if (showAfter) R.string.label_delay_at else R.string.label_delay_minutes),
-            durationValue = "60",
-            durationLabel = stringResource(R.string.label_duration),
-            delayLabelColor = if (showAfter) GreenPrimary else Gold,
-            delayValueColor = GreenPrimary,
-            durationLabelColor = Gold,
-            tapTargetDelay = true,
-            tapScale = tapScale.value,
-            tapHighlight = tapHighlight.value,
-            shakeOffset = shakeOffset.value
-        )
-
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = stringResource(R.string.onboarding_delay_desc),
-            fontSize = 14.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
-            lineHeight = 20.sp
+        DemoPrayerSilenceRow(
+            prayer = Prayer.DHUHR,
+            prayerName = stringResource(R.string.prayer_dhuhr),
+            prayerHour = 12,
+            prayerMinute = 21,
+            initialStartOffset = 0,
+            initialEndOffset = 47,
+            autoDemo = true,
         )
     }
 }
 
-@Composable
-private fun FixedTimeSwitchStep() {
-    var showAfter by remember { mutableStateOf(false) }
-    val tapScale = remember { Animatable(1f) }
-    val tapHighlight = remember { Animatable(0f) }
-    val shakeOffset = remember { Animatable(0f) }
+private enum class EndpointRulePhase {
+    TAP_START, CHOOSE_START, APPLY_START,
+    TAP_END, CHOOSE_END, APPLY_END,
+    IMPACT,
+}
 
-    LaunchedEffect(Unit) {
-        showAfter = false
-        delay(1400)
-        // Simulate tap: press down
-        tapHighlight.animateTo(1f, tween(100))
-        tapScale.animateTo(0.85f, tween(100))
-        delay(150)
-        // Release
-        tapScale.animateTo(1f, spring(dampingRatio = 0.4f, stiffness = 300f))
-        tapHighlight.animateTo(0f, tween(200))
-        delay(200)
-        // Shake the value + swap at midpoint
-        shakeOffset.animateTo(20f, tween(50))
-        shakeOffset.animateTo(-15f, tween(50))
-        showAfter = true
-        shakeOffset.animateTo(10f, tween(50))
-        shakeOffset.animateTo(-5f, tween(50))
-        shakeOffset.animateTo(0f, tween(60))
+@Composable
+private fun EndpointRulesStep() {
+    var editorEndpoint by remember { mutableStateOf(SilenceEndpoint.START) }
+    var editorFixed by remember { mutableStateOf(false) }
+    var rowStartFixed by remember { mutableStateOf(false) }
+    var rowEndFixed by remember { mutableStateOf(false) }
+    var phase by remember { mutableStateOf(EndpointRulePhase.TAP_START) }
+    val startGlow = remember { Animatable(0f) }
+    val endGlow = remember { Animatable(0f) }
+    val applyPress = remember { Animatable(0f) }
+    val sheetProgress = remember { Animatable(0f) }
+
+    // Dhuhr at 12:21. Initially the silence follows the adhan (starts at 12:21,
+    // ends 47 minutes later at 13:08); the demo pins it to 12:45 - 13:15.
+    val config = remember(rowStartFixed, rowEndFixed) {
+        PrayerSilenceConfig(
+            mode = if (rowEndFixed) SilenceMode.FIXED_TIME else SilenceMode.DURATION,
+            afterMinutes = if (rowEndFixed) 30 else 47,
+            fixedHour = if (rowEndFixed) 13 else -1,
+            fixedMinute = if (rowEndFixed) 15 else -1,
+            delayMode = if (rowStartFixed) DelayMode.FIXED_TIME else DelayMode.MINUTES,
+            delayMinutes = 0,
+            delayFixedHour = if (rowStartFixed) 12 else -1,
+            delayFixedMinute = if (rowStartFixed) 45 else -1,
+            endOffsetMinutes = if (rowEndFixed) null else 47,
+        )
     }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 32.dp)
-            .padding(bottom = 160.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+    LaunchedEffect(Unit) {
+        while (true) {
+            editorEndpoint = SilenceEndpoint.START
+            editorFixed = false
+            rowStartFixed = false
+            rowEndFixed = false
+            phase = EndpointRulePhase.TAP_START
+            startGlow.snapTo(0f)
+            endGlow.snapTo(0f)
+            applyPress.snapTo(0f)
+            sheetProgress.snapTo(0f)
+            delay(1000)
+            // 1. Tap the start endpoint (currently at adhan).
+            startGlow.animateTo(0.4f, tween(450))
+            startGlow.animateTo(0f, tween(450))
+            startGlow.animateTo(0.85f, tween(110))
+            delay(140)
+            startGlow.animateTo(0.3f, tween(200))
+            editorEndpoint = SilenceEndpoint.START
+            sheetProgress.animateTo(1f, tween(320, easing = FastOutSlowInEasing))
+            phase = EndpointRulePhase.CHOOSE_START
+            delay(1000)
+            editorFixed = true
+            delay(1300)
+            phase = EndpointRulePhase.APPLY_START
+            delay(700)
+            // 2. Apply; the start is pinned to 12:45.
+            applyPress.animateTo(1f, tween(110))
+            delay(130)
+            applyPress.animateTo(0f, tween(180))
+            sheetProgress.animateTo(0f, tween(280, easing = FastOutSlowInEasing))
+            startGlow.snapTo(0f)
+            delay(260)
+            rowStartFixed = true
+            phase = EndpointRulePhase.TAP_END
+            startGlow.animateTo(0.6f, tween(300))
+            startGlow.animateTo(0f, tween(1000))
+            delay(1200)
+            // 3. Tap the end endpoint (currently 47 minutes after adhan).
+            endGlow.animateTo(0.4f, tween(450))
+            endGlow.animateTo(0f, tween(450))
+            endGlow.animateTo(0.85f, tween(110))
+            delay(140)
+            endGlow.animateTo(0.3f, tween(200))
+            editorEndpoint = SilenceEndpoint.END
+            editorFixed = false
+            sheetProgress.animateTo(1f, tween(320, easing = FastOutSlowInEasing))
+            phase = EndpointRulePhase.CHOOSE_END
+            delay(1000)
+            editorFixed = true
+            delay(1300)
+            phase = EndpointRulePhase.APPLY_END
+            delay(700)
+            // 4. Apply; the end is pinned to 13:15.
+            applyPress.animateTo(1f, tween(110))
+            delay(130)
+            applyPress.animateTo(0f, tween(180))
+            sheetProgress.animateTo(0f, tween(280, easing = FastOutSlowInEasing))
+            endGlow.snapTo(0f)
+            delay(260)
+            rowEndFixed = true
+            phase = EndpointRulePhase.IMPACT
+            endGlow.animateTo(0.6f, tween(300))
+            endGlow.animateTo(0f, tween(1100))
+            delay(2300)
+        }
+    }
+
+    val editorIsStart = editorEndpoint == SilenceEndpoint.START
+
+    OnboardingStepLayout(
+        title = {
+            Text(
+                text = stringResource(R.string.onboarding_rule_title),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 24.sp
+            )
+        },
+        narration = {
+            AnimatedContent(
+                targetState = phase,
+                transitionSpec = { fadeIn(tween(200)) togetherWith fadeOut(tween(150)) },
+                label = "onboarding_rule_phase",
+            ) { current ->
+                Text(
+                    text = stringResource(
+                        when (current) {
+                            EndpointRulePhase.TAP_START -> R.string.onboarding_rule_step_tap
+                            EndpointRulePhase.CHOOSE_START -> R.string.onboarding_rule_step_choose
+                            EndpointRulePhase.APPLY_START -> R.string.onboarding_rule_step_apply
+                            EndpointRulePhase.TAP_END -> R.string.onboarding_rule_step_tap_end
+                            EndpointRulePhase.CHOOSE_END -> R.string.onboarding_rule_step_choose_end
+                            EndpointRulePhase.APPLY_END -> R.string.onboarding_rule_step_apply_end
+                            EndpointRulePhase.IMPACT -> R.string.onboarding_rule_step_impact
+                        }
+                    ),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = GreenPrimary,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(50))
+                        .background(GoldLight.copy(alpha = 0.35f))
+                        .padding(horizontal = 12.dp, vertical = 6.dp),
+                )
+            }
+        },
+        description = {
+            Text(
+                text = stringResource(R.string.onboarding_rule_desc),
+                fontSize = 14.sp,
+                color = TextDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 20.sp
+            )
+        },
     ) {
-        Text(
-            text = stringResource(R.string.onboarding_step3_title),
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenPrimaryDark,
-            textAlign = TextAlign.Center
-        )
-        Spacer(Modifier.height(16.dp))
-
-        DemoPrayerRowCard(
-            delayValue = "0",
-            delayLabel = stringResource(R.string.label_delay_minutes),
-            durationValue = if (showAfter) "06:15" else "60",
-            durationLabel = stringResource(if (showAfter) R.string.label_fixed_time else R.string.label_duration),
-            delayLabelColor = TextMuted,
-            durationLabelColor = if (showAfter) GreenPrimary else Gold,
-            durationValueColor = if (showAfter) GreenPrimary else TextDark,
-            tapTargetDuration = true,
-            tapScale = tapScale.value,
-            tapHighlight = tapHighlight.value,
-            shakeOffset = shakeOffset.value
-        )
-
-        Spacer(Modifier.height(12.dp))
-        Text(
-            text = stringResource(R.string.onboarding_step3_desc),
-            fontSize = 14.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
-            lineHeight = 20.sp
-        )
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(RoundedCornerShape(20.dp)),
+        ) {
+            DemoPrayerSilenceRow(
+                prayer = Prayer.DHUHR,
+                prayerName = stringResource(R.string.prayer_dhuhr),
+                prayerHour = 12,
+                prayerMinute = 21,
+                initialStartOffset = 0,
+                initialEndOffset = 47,
+                controlledConfig = config,
+                interactive = false,
+                startHighlight = startGlow.value,
+                endHighlight = endGlow.value,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .graphicsLayer { alpha = 1f - sheetProgress.value },
+            )
+            DemoEndpointRuleCard(
+                endpoint = editorEndpoint,
+                fixedMode = editorFixed,
+                fixedClock = if (editorIsStart) "12:45" else "13:15",
+                fixedHour = if (editorIsStart) "12" else "13",
+                fixedMinute = if (editorIsStart) "45" else "15",
+                relativeDirection = if (editorIsStart) EndpointDirection.AT_ADHAN else EndpointDirection.AFTER,
+                relativeMinutes = if (editorIsStart) null else "47",
+                resolvedTime = if (editorIsStart) "12:21" else "13:08",
+                sheet = true,
+                applyPressed = applyPress.value,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .graphicsLayer { translationY = (1f - sheetProgress.value) * size.height },
+            )
+        }
     }
 }
 
 @Composable
 private fun JomoaaExplanationStep() {
-    var showAfter by remember { mutableStateOf(false) }
-    val tapScale = remember { Animatable(1f) }
-    val tapHighlight = remember { Animatable(0f) }
-
-    LaunchedEffect(Unit) {
-        showAfter = false
-        delay(1400)
-        // Simulate tap on time
-        tapHighlight.animateTo(1f, tween(100))
-        tapScale.animateTo(0.9f, tween(100))
-        delay(150)
-        tapScale.animateTo(1f, spring(dampingRatio = 0.4f, stiffness = 300f))
-        tapHighlight.animateTo(0f, tween(200))
-        delay(200)
-        showAfter = true
-    }
-
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 32.dp)
-            .padding(bottom = 160.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+    OnboardingStepLayout(
+        title = {
+            Text(
+                text = stringResource(R.string.onboarding_jomoaa_title),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+                textAlign = TextAlign.Center
+            )
+        },
+        description = {
+            Text(
+                text = stringResource(R.string.onboarding_jomoaa_desc),
+                fontSize = 14.sp,
+                color = TextDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 20.sp
+            )
+        },
     ) {
-        Text(
-            text = stringResource(R.string.onboarding_jomoaa_title),
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenPrimaryDark,
-            textAlign = TextAlign.Center
-        )
-        Spacer(Modifier.height(16.dp))
-
-        // Demo Jomoaa row
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 8.dp),
-            shape = RoundedCornerShape(12.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
-            elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-            border = androidx.compose.foundation.BorderStroke(1.dp, GoldLight)
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(IntrinsicSize.Min)
-                    .padding(12.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(R.string.prayer_jomoaa),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = PrayerNameColor,
-                    maxLines = 1,
-                    modifier = Modifier.weight(1.6f)
-                )
-                // Tappable time
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier
-                        .weight(1.6f)
-                        .clip(RoundedCornerShape(6.dp))
-                        .background(GoldLight.copy(alpha = 0.3f + tapHighlight.value * 0.3f))
-                        .graphicsLayer {
-                            scaleX = tapScale.value
-                            scaleY = tapScale.value
-                        }
-                        .padding(vertical = 4.dp)
-                ) {
-                    Text(
-                        text = if (showAfter) "12:40" else "12:30",
-                        fontSize = 13.sp,
-                        color = if (showAfter) GreenPrimary else TextDark,
-                        textAlign = TextAlign.Center,
-                        fontWeight = if (showAfter) FontWeight.Bold else FontWeight.Normal
-                    )
-                }
-                Spacer(Modifier.width(8.dp))
-                // Duration placeholder
-                Row(
-                    modifier = Modifier.weight(2f),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    DemoInputBox(text = "0", modifier = Modifier.weight(1f))
-                    Text(
-                        text = stringResource(R.string.label_delay_minutes),
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = TextMuted,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.weight(0.6f).padding(2.dp)
-                    )
-                }
-                Row(
-                    modifier = Modifier.weight(2.3f),
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    DemoInputBox(text = "13:15", modifier = Modifier.weight(1f))
-                    Text(
-                        text = stringResource(R.string.label_fixed_time),
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Gold,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.weight(0.6f).padding(2.dp)
-                    )
-                }
-            }
-        }
-
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = stringResource(R.string.onboarding_jomoaa_desc),
-            fontSize = 14.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
-            lineHeight = 20.sp
+        DemoPrayerSilenceRow(
+            prayer = Prayer.JOMOAA,
+            prayerName = stringResource(R.string.prayer_jomoaa),
+            prayerHour = 12,
+            prayerMinute = 21,
+            initialStartOffset = 0,
+            initialEndOffset = 60,
+            pulseTime = true,
         )
     }
 }
 
 @Composable
 private fun WakeAlarmIntroStep() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 32.dp, vertical = 32.dp)
-            .padding(bottom = 160.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+    OnboardingStepLayout(
+        title = {
+            Text(
+                text = stringResource(R.string.onboarding_wake_alarm_title),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+                textAlign = TextAlign.Center
+            )
+        },
+        description = {
+            Text(
+                text = stringResource(R.string.onboarding_wake_alarm_desc),
+                fontSize = 14.sp,
+                color = TextDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 22.sp
+            )
+        },
     ) {
         Icon(
             painter = painterResource(R.drawable.ic_tab_alarms),
             contentDescription = null,
             tint = GreenPrimary,
-            modifier = Modifier.size(56.dp),
-        )
-        Spacer(Modifier.height(24.dp))
-        Text(
-            text = stringResource(R.string.onboarding_wake_alarm_title),
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenPrimaryDark,
-            textAlign = TextAlign.Center
-        )
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = stringResource(R.string.onboarding_wake_alarm_desc),
-            fontSize = 14.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
-            lineHeight = 22.sp
+            modifier = Modifier.size(72.dp),
         )
     }
 }
@@ -678,97 +770,94 @@ private fun PermissionsStep(
     onRequestPhoneState: () -> Unit,
     context: Context
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 24.dp, vertical = 48.dp)
-            .padding(bottom = 160.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+    OnboardingStepLayout(
+        title = {
+            Text(
+                text = stringResource(R.string.onboarding_perm_title),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark
+            )
+        },
+        description = {},
     ) {
-        Text(
-            text = stringResource(R.string.onboarding_perm_title),
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenPrimaryDark
-        )
-        Spacer(Modifier.height(2.dp))
-        Text(
-            text = stringResource(R.string.onboarding_perm_desc),
-            fontSize = 12.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
-            lineHeight = 16.sp
-        )
-        Spacer(Modifier.height(8.dp))
-
-        PermissionRow(
-            title = stringResource(R.string.onboarding_perm_dnd),
-            description = stringResource(R.string.onboarding_perm_dnd_desc),
-            isGranted = hasDnd,
-            grantLabel = stringResource(R.string.onboarding_perm_grant),
-            grantedLabel = stringResource(R.string.onboarding_perm_granted),
-            onClick = {
-                AnalyticsTracker.permissionStepResult(
-                    context = context,
-                    permissionType = "dnd",
-                    result = "request_opened",
-                    entryPoint = "onboarding",
-                )
-                context.startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
-            }
-        )
-        Spacer(Modifier.height(4.dp))
-
-        PermissionRow(
-            title = stringResource(R.string.onboarding_perm_alarm),
-            description = stringResource(R.string.onboarding_perm_alarm_desc),
-            isGranted = hasAlarm,
-            grantLabel = stringResource(R.string.onboarding_perm_grant),
-            grantedLabel = stringResource(R.string.onboarding_perm_granted),
-            onClick = {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Text(
+                text = stringResource(R.string.onboarding_perm_desc),
+                fontSize = 12.sp,
+                color = TextDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 16.sp,
+                modifier = Modifier.padding(bottom = 6.dp),
+            )
+            PermissionRow(
+                title = stringResource(R.string.onboarding_perm_dnd),
+                description = stringResource(R.string.onboarding_perm_dnd_desc),
+                isGranted = hasDnd,
+                grantLabel = stringResource(R.string.onboarding_perm_grant),
+                grantedLabel = stringResource(R.string.onboarding_perm_granted),
+                onClick = {
                     AnalyticsTracker.permissionStepResult(
                         context = context,
-                        permissionType = "exact_alarm",
+                        permissionType = "dnd",
                         result = "request_opened",
                         entryPoint = "onboarding",
                     )
-                    context.startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
+                    context.startActivity(Intent(Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS))
                 }
-            }
-        )
-        Spacer(Modifier.height(4.dp))
+            )
 
-        PermissionRow(
-            title = stringResource(R.string.onboarding_perm_battery),
-            description = stringResource(R.string.onboarding_perm_battery_desc),
-            isGranted = hasBattery,
-            grantLabel = stringResource(R.string.onboarding_perm_grant),
-            grantedLabel = stringResource(R.string.onboarding_perm_granted),
-            onClick = {
-                AnalyticsTracker.permissionStepResult(
-                    context = context,
-                    permissionType = "battery_optimization",
-                    result = "request_opened",
-                    entryPoint = "onboarding",
-                )
-                val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
-                intent.data = Uri.parse("package:${context.packageName}")
-                context.startActivity(intent)
-            }
-        )
+            PermissionRow(
+                title = stringResource(R.string.onboarding_perm_alarm),
+                description = stringResource(R.string.onboarding_perm_alarm_desc),
+                isGranted = hasAlarm,
+                grantLabel = stringResource(R.string.onboarding_perm_grant),
+                grantedLabel = stringResource(R.string.onboarding_perm_granted),
+                onClick = {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                        AnalyticsTracker.permissionStepResult(
+                            context = context,
+                            permissionType = "exact_alarm",
+                            result = "request_opened",
+                            entryPoint = "onboarding",
+                        )
+                        context.startActivity(Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM))
+                    }
+                }
+            )
 
-        Spacer(Modifier.height(4.dp))
+            PermissionRow(
+                title = stringResource(R.string.onboarding_perm_battery),
+                description = stringResource(R.string.onboarding_perm_battery_desc),
+                isGranted = hasBattery,
+                grantLabel = stringResource(R.string.onboarding_perm_grant),
+                grantedLabel = stringResource(R.string.onboarding_perm_granted),
+                onClick = {
+                    AnalyticsTracker.permissionStepResult(
+                        context = context,
+                        permissionType = "battery_optimization",
+                        result = "request_opened",
+                        entryPoint = "onboarding",
+                    )
+                    val intent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+                    intent.data = Uri.parse("package:${context.packageName}")
+                    context.startActivity(intent)
+                }
+            )
 
-        PermissionRow(
-            title = stringResource(R.string.onboarding_perm_phone_state),
-            description = stringResource(R.string.onboarding_perm_phone_state_desc),
-            isGranted = hasPhoneState,
-            grantLabel = stringResource(R.string.onboarding_perm_grant),
-            grantedLabel = stringResource(R.string.onboarding_perm_granted),
-            onClick = onRequestPhoneState
-        )
+            PermissionRow(
+                title = stringResource(R.string.onboarding_perm_phone_state),
+                description = stringResource(R.string.onboarding_perm_phone_state_desc),
+                isGranted = hasPhoneState,
+                grantLabel = stringResource(R.string.onboarding_perm_grant),
+                grantedLabel = stringResource(R.string.onboarding_perm_granted),
+                onClick = onRequestPhoneState
+            )
+        }
     }
 }
 
@@ -833,197 +922,524 @@ private fun PermissionRow(
 
 @Composable
 private fun ReadyStep() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(horizontal = 32.dp, vertical = 32.dp)
-            .padding(bottom = 160.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+    OnboardingStepLayout(
+        title = {
+            Text(
+                text = stringResource(R.string.onboarding_ready_title),
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+                textAlign = TextAlign.Center
+            )
+        },
+        description = {
+            Text(
+                text = stringResource(R.string.onboarding_ready_desc),
+                fontSize = 15.sp,
+                color = TextDark,
+                textAlign = TextAlign.Center,
+                lineHeight = 23.sp
+            )
+        },
     ) {
-        Text(
-            text = stringResource(R.string.onboarding_ready_title),
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = GreenPrimaryDark
-        )
-        Spacer(Modifier.height(16.dp))
-        Text(
-            text = stringResource(R.string.onboarding_ready_desc),
-            fontSize = 16.sp,
-            color = TextDark,
-            textAlign = TextAlign.Center,
-            lineHeight = 24.sp
-        )
+        // Visible "all set" badge; the cream mosque artwork would disappear here.
+        Box(
+            modifier = Modifier
+                .size(104.dp)
+                .clip(CircleShape)
+                .background(GoldLight.copy(alpha = 0.55f))
+                .border(
+                    width = 1.dp,
+                    color = Gold.copy(alpha = 0.45f),
+                    shape = CircleShape,
+                ),
+            contentAlignment = Alignment.Center,
+        ) {
+            Icon(
+                painter = painterResource(R.drawable.ic_check),
+                contentDescription = null,
+                tint = GreenPrimary,
+                modifier = Modifier.size(52.dp),
+            )
+        }
     }
 }
 
-// --- Demo prayer row card ---
+// --- Demo prayer silence row ---
 
 @Composable
-private fun DemoPrayerRowCard(
-    delayValue: String,
-    delayLabel: String,
-    durationValue: String,
-    durationLabel: String,
-    delayLabelColor: Color = TextMuted,
-    durationLabelColor: Color = Gold,
-    delayValueColor: Color = TextDark,
-    durationValueColor: Color = TextDark,
-    tapTargetDelay: Boolean = false,
-    tapTargetDuration: Boolean = false,
-    tapScale: Float = 1f,
-    tapHighlight: Float = 0f,
-    shakeOffset: Float = 0f
+private fun DemoPrayerSilenceRow(
+    prayer: Prayer,
+    prayerName: String,
+    prayerHour: Int,
+    prayerMinute: Int,
+    initialStartOffset: Int,
+    initialEndOffset: Int,
+    modifier: Modifier = Modifier,
+    autoDemo: Boolean = false,
+    pulseTime: Boolean = false,
+    controlledConfig: PrayerSilenceConfig? = null,
+    interactive: Boolean = true,
+    startHighlight: Float = 0f,
+    endHighlight: Float = 0f,
 ) {
+    val prayerTime = remember(prayerHour, prayerMinute) { PrayerTime(prayer, prayerHour, prayerMinute) }
+    val prayerMinutes = prayerMinutesOfDay(prayerTime)
+    var enabled by remember { mutableStateOf(true) }
+    var startOffset by remember { mutableIntStateOf(initialStartOffset) }
+    var endOffset by remember { mutableIntStateOf(initialEndOffset) }
+    var autoRunning by remember(autoDemo) { mutableStateOf(autoDemo) }
+    val scale = remember {
+        PrayerTimelineScale(DEFAULT_TIMELINE_START_OFFSET_MINUTES, DEFAULT_TIMELINE_END_OFFSET_MINUTES)
+    }
+    val baseConfig = remember(startOffset, endOffset) {
+        PrayerSilenceConfig(
+            mode = SilenceMode.DURATION,
+            afterMinutes = (endOffset - startOffset).coerceAtLeast(1),
+            delayMode = DelayMode.MINUTES,
+            delayMinutes = startOffset,
+            endOffsetMinutes = endOffset,
+        )
+    }
+    val config = controlledConfig ?: baseConfig
+    val targetWindow = remember(prayerTime, config) { resolvePrayerTimelineWindow(prayerTime, config) }
+    val animatedStartMinutes by animateIntAsState(
+        targetValue = targetWindow.startMinutes,
+        animationSpec = tween(520, easing = FastOutSlowInEasing),
+    )
+    val animatedEndMinutes by animateIntAsState(
+        targetValue = targetWindow.endMinutes,
+        animationSpec = tween(520, easing = FastOutSlowInEasing),
+    )
+    val window = if (controlledConfig != null) {
+        PrayerTimelineWindow(animatedStartMinutes, animatedEndMinutes)
+    } else {
+        targetWindow
+    }
+    val timePulse = remember { Animatable(0f) }
+
+    LaunchedEffect(autoDemo, autoRunning) {
+        if (!autoDemo || !autoRunning) return@LaunchedEffect
+        val startAnimation = Animatable(initialStartOffset.toFloat())
+        while (autoRunning) {
+            delay(1200)
+            startAnimation.animateTo(
+                (initialStartOffset + 10).toFloat(),
+                tween(650, easing = FastOutSlowInEasing),
+            ) { startOffset = value.roundToInt() }
+            delay(500)
+            startAnimation.animateTo(
+                initialStartOffset.toFloat(),
+                tween(650, easing = FastOutSlowInEasing),
+            ) { startOffset = value.roundToInt() }
+        }
+    }
+
+    LaunchedEffect(pulseTime) {
+        if (!pulseTime) return@LaunchedEffect
+        while (true) {
+            timePulse.animateTo(1f, tween(700, easing = FastOutSlowInEasing))
+            timePulse.animateTo(0f, tween(700, easing = FastOutSlowInEasing))
+            delay(400)
+        }
+    }
+
     Card(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(horizontal = 8.dp),
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
-        border = androidx.compose.foundation.BorderStroke(1.dp, GoldLight)
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(containerColor = PrayerSilencePalette.Surface),
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
+        border = androidx.compose.foundation.BorderStroke(1.dp, PrayerSilencePalette.SoftBorder),
     ) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(IntrinsicSize.Min)
-                .padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .padding(horizontal = 12.dp, vertical = 10.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
-            // Prayer name
-            Text(
-                text = stringResource(R.string.prayer_fajr),
-                fontSize = 14.sp,
-                fontWeight = FontWeight.Bold,
-                color = PrayerNameColor,
-                maxLines = 1,
-                softWrap = false,
-                modifier = Modifier.weight(1.6f)
-            )
-            // Time
-            Text(
-                text = "05:15",
-                fontSize = 13.sp,
-                color = TextDark,
-                textAlign = TextAlign.Center,
-                maxLines = 1,
-                softWrap = false,
-                modifier = Modifier.weight(1.6f)
-            )
-            // Delay
             Row(
-                modifier = Modifier.weight(2f),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
             ) {
-                val delayShake = if (tapTargetDelay) shakeOffset else 0f
-                DemoInputBox(
-                    text = delayValue,
-                    textColor = delayValueColor,
-                    modifier = Modifier
-                        .weight(1f)
-                        .graphicsLayer { translationX = delayShake }
+                Text(
+                    text = prayerName,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PrayerSilencePalette.PrimaryText,
+                    maxLines = 1,
+                    softWrap = false,
                 )
-                Box(modifier = Modifier.weight(0.6f)) {
-                    val bgAlpha = if (tapTargetDelay) tapHighlight * 0.3f else 0f
-                    val labelScale = if (tapTargetDelay) tapScale else 1f
-                    Box(
-                        modifier = Modifier
-                            .matchParentSize()
-                            .graphicsLayer { alpha = bgAlpha }
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(Gold)
-                    )
+                Spacer(Modifier.width(8.dp))
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(GoldLight.copy(alpha = timePulse.value * 0.5f))
+                        .padding(horizontal = 6.dp, vertical = 2.dp),
+                ) {
                     Text(
-                        text = delayLabel,
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = delayLabelColor,
-                        textAlign = TextAlign.Center,
+                        text = prayerClockText(prayerMinutes),
+                        fontSize = 19.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = PrayerSilencePalette.GoldAccent,
+                        style = TextStyle(textDirection = TextDirection.Ltr),
                         maxLines = 1,
                         softWrap = false,
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .graphicsLayer {
-                                scaleX = labelScale
-                                scaleY = labelScale
-                                translationX = delayShake
-                            }
-                            .padding(2.dp)
                     )
                 }
+                Spacer(Modifier.weight(1f))
+                Text(
+                    text = stringResource(R.string.prayer_silence_switch),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = PrayerSilencePalette.PrimaryText,
+                )
+                Spacer(Modifier.width(6.dp))
+                Switch(
+                    checked = enabled,
+                    onCheckedChange = { enabled = it },
+                    thumbContent = if (enabled) {
+                        {
+                            Icon(
+                                painter = painterResource(R.drawable.ic_check),
+                                contentDescription = null,
+                                tint = PrayerSilencePalette.InteractiveTeal,
+                                modifier = Modifier.size(16.dp),
+                            )
+                        }
+                    } else {
+                        null
+                    },
+                    colors = SwitchDefaults.colors(
+                        checkedThumbColor = Color.White,
+                        checkedTrackColor = PrayerSilencePalette.InteractiveTeal,
+                        checkedBorderColor = PrayerSilencePalette.InteractiveTeal,
+                        uncheckedThumbColor = Color.White,
+                        uncheckedTrackColor = PrayerSilencePalette.InactiveTrack,
+                        uncheckedBorderColor = PrayerSilencePalette.InactiveTrack,
+                    ),
+                )
             }
-            // Duration
-            Row(
-                modifier = Modifier.weight(2.3f),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .alpha(if (enabled) 1f else PrayerSilencePalette.DeemphasisAlpha),
+                verticalArrangement = Arrangement.spacedBy(6.dp),
             ) {
-                val durShake = if (tapTargetDuration) shakeOffset else 0f
-                DemoInputBox(
-                    text = durationValue,
-                    textColor = durationValueColor,
-                    modifier = Modifier
-                        .weight(1f)
-                        .graphicsLayer { translationX = durShake }
+                DemoEndpointSummary(
+                    prayerTime = prayerTime,
+                    config = config,
+                    window = window,
+                    startHighlight = startHighlight,
+                    endHighlight = endHighlight,
                 )
-                Box(modifier = Modifier.weight(0.6f)) {
-                    val bgAlpha = if (tapTargetDuration) tapHighlight * 0.3f else 0f
-                    val labelScale = if (tapTargetDuration) tapScale else 1f
-                    Box(
-                        modifier = Modifier
-                            .matchParentSize()
-                            .graphicsLayer { alpha = bgAlpha }
-                            .clip(RoundedCornerShape(6.dp))
-                            .background(Gold)
-                    )
-                    Text(
-                        text = durationLabel,
-                        fontSize = 11.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = durationLabelColor,
-                        textAlign = TextAlign.Center,
-                        maxLines = 1,
-                        softWrap = false,
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .graphicsLayer {
-                                scaleX = labelScale
-                                scaleY = labelScale
-                                translationX = durShake
-                            }
-                            .padding(2.dp)
-                    )
-                }
+                PrayerSilenceRangeSlider(
+                    prayer = prayer,
+                    prayerName = prayerName,
+                    prayerTime = prayerTime,
+                    config = config,
+                    scale = scale,
+                    window = window,
+                    enabled = enabled && interactive,
+                    onPreviewWindow = { autoRunning = false },
+                    onCommitWindow = { candidate ->
+                        autoRunning = false
+                        val candidateStart = candidate.startMinutes - prayerMinutes
+                        val candidateEnd = candidate.endMinutes - prayerMinutes
+                        if (candidateEnd - candidateStart >= 1) {
+                            startOffset = candidateStart
+                            endOffset = candidateEnd
+                        }
+                    },
+                    onEditEndpoint = {},
+                )
             }
         }
     }
 }
 
 @Composable
-private fun DemoInputBox(
-    text: String,
-    textColor: Color = TextDark,
-    modifier: Modifier = Modifier
+private fun DemoEndpointSummary(
+    prayerTime: PrayerTime,
+    config: PrayerSilenceConfig,
+    window: PrayerTimelineWindow,
+    startHighlight: Float = 0f,
+    endHighlight: Float = 0f,
 ) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier
-            .heightIn(min = 32.dp)
-            .clip(RoundedCornerShape(6.dp))
-            .background(GoldLight.copy(alpha = 0.3f))
-            .padding(horizontal = 2.dp, vertical = 4.dp)
+    val prayerMinutes = prayerMinutesOfDay(prayerTime)
+    val startCaption = stringResource(
+        R.string.prayer_silence_endpoint_caption,
+        stringResource(R.string.prayer_silence_start_label),
+        endpointRuleCaption(config, window, SilenceEndpoint.START, prayerMinutes),
+    )
+    val endCaption = stringResource(
+        R.string.prayer_silence_endpoint_caption,
+        stringResource(R.string.prayer_silence_end_label),
+        endpointRuleCaption(config, window, SilenceEndpoint.END, prayerMinutes),
+    )
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        DemoEndpointColumn(
+            time = silenceClockText(window.startMinutes),
+            caption = startCaption,
+            modifier = Modifier
+                .weight(1f)
+                .scale(1f - startHighlight * 0.04f)
+                .clip(RoundedCornerShape(10.dp))
+                .background(GoldLight.copy(alpha = startHighlight * 0.55f))
+                .padding(vertical = 2.dp),
+        )
+        Row(
+            modifier = Modifier.padding(horizontal = 6.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
+        ) {
+            Text(
+                text = pluralStringResource(
+                    R.plurals.prayer_silence_duration_minutes,
+                    window.durationMinutes,
+                    window.durationMinutes,
+                ),
+                fontSize = 14.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = PrayerSilencePalette.InteractiveTeal,
+                maxLines = 1,
+                softWrap = false,
+            )
+            Icon(
+                painter = painterResource(R.drawable.ic_bell_off),
+                contentDescription = null,
+                tint = PrayerSilencePalette.SecondaryText,
+                modifier = Modifier.size(15.dp),
+            )
+        }
+        DemoEndpointColumn(
+            time = silenceClockText(window.endMinutes),
+            caption = endCaption,
+            modifier = Modifier
+                .weight(1f)
+                .scale(1f - endHighlight * 0.04f)
+                .clip(RoundedCornerShape(10.dp))
+                .background(GoldLight.copy(alpha = endHighlight * 0.55f))
+                .padding(vertical = 2.dp),
+        )
+    }
+}
+
+@Composable
+private fun DemoEndpointColumn(
+    time: String,
+    caption: String,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {
         Text(
-            text = text,
-            fontSize = 13.sp,
-            color = textColor,
-            textAlign = TextAlign.Center,
+            text = time,
+            fontSize = 19.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = PrayerSilencePalette.PrimaryText,
+            style = TextStyle(textDirection = TextDirection.Ltr),
             maxLines = 1,
-            softWrap = false
+            softWrap = false,
+        )
+        Text(
+            text = caption,
+            fontSize = 11.sp,
+            color = PrayerSilencePalette.SecondaryText,
+            textAlign = TextAlign.Center,
+            lineHeight = 15.sp,
+            maxLines = 2,
+        )
+    }
+}
+
+@Composable
+private fun DemoEndpointRuleCard(
+    endpoint: SilenceEndpoint,
+    fixedMode: Boolean,
+    fixedClock: String,
+    fixedHour: String,
+    fixedMinute: String,
+    relativeDirection: EndpointDirection,
+    relativeMinutes: String?,
+    resolvedTime: String,
+    sheet: Boolean = false,
+    applyPressed: Float = 0f,
+    modifier: Modifier = Modifier,
+) {
+    val startEndpoint = endpoint == SilenceEndpoint.START
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(horizontal = if (sheet) 0.dp else 8.dp),
+        shape = if (sheet) {
+            RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp)
+        } else {
+            RoundedCornerShape(16.dp)
+        },
+        colors = CardDefaults.cardColors(containerColor = PrayerSilencePalette.Surface),
+        elevation = CardDefaults.cardElevation(defaultElevation = if (sheet) 6.dp else 2.dp),
+        border = androidx.compose.foundation.BorderStroke(1.dp, PrayerSilencePalette.SoftBorder),
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+        ) {
+            if (sheet) {
+                Box(
+                    modifier = Modifier.fillMaxWidth(),
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .width(40.dp)
+                            .height(4.dp)
+                            .clip(RoundedCornerShape(2.dp))
+                            .background(PrayerSilencePalette.SoftBorder),
+                    )
+                }
+            }
+            Text(
+                text = stringResource(
+                    R.string.prayer_editor_endpoint_title,
+                    stringResource(
+                        if (startEndpoint) R.string.prayer_silence_start_group
+                        else R.string.prayer_silence_end_group
+                    ),
+                    stringResource(R.string.prayer_dhuhr),
+                ),
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                color = GreenPrimaryDark,
+            )
+            EndpointModeChoices(
+                choices = listOf(
+                    stringResource(R.string.prayer_silence_mode_adhan),
+                    stringResource(R.string.prayer_silence_mode_fixed),
+                ),
+                selected = if (fixedMode) 1 else 0,
+                enabled = false,
+                onSelected = {},
+            )
+            AnimatedContent(
+                targetState = fixedMode,
+                transitionSpec = { fadeIn(tween(220)) togetherWith fadeOut(tween(220)) },
+                label = "onboarding_rule_mode",
+            ) { fixed ->
+                if (fixed) {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Text(
+                            text = stringResource(R.string.prayer_silence_explain_fixed, fixedClock),
+                            fontSize = 13.sp,
+                            color = PrayerSilencePalette.SecondaryText,
+                            lineHeight = 19.sp,
+                        )
+                        EndpointInlineClockInput(
+                            hourValue = fixedHour,
+                            minuteValue = fixedMinute,
+                            enabled = false,
+                            onHourValueChange = {},
+                            onMinuteValueChange = {},
+                        )
+                    }
+                } else {
+                    Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                        Text(
+                            text = if (relativeDirection == EndpointDirection.AT_ADHAN) {
+                                stringResource(R.string.prayer_silence_explain_follows_adhan)
+                            } else {
+                                endpointRelationText(relativeMinutes?.toIntOrNull() ?: 0)
+                            },
+                            fontSize = 13.sp,
+                            color = PrayerSilencePalette.SecondaryText,
+                            lineHeight = 19.sp,
+                        )
+                        EndpointDirectionChoices(
+                            selected = relativeDirection,
+                            enabled = false,
+                            onSelected = {},
+                        )
+                        if (relativeDirection == EndpointDirection.AT_ADHAN) {
+                            DemoResolvedTime(resolvedTime)
+                        } else {
+                            EndpointMinuteStepper(
+                                value = relativeMinutes ?: "0",
+                                enabled = false,
+                                decreaseLabel = stringResource(R.string.prayer_silence_decrease_minute),
+                                increaseLabel = stringResource(R.string.prayer_silence_increase_minute),
+                                unitLabel = stringResource(R.string.prayer_editor_minutes_unit),
+                                onDecrease = {},
+                                onIncrease = {},
+                                onValueChange = {},
+                            )
+                        }
+                    }
+                }
+            }
+            if (sheet) {
+                HorizontalDivider(color = GreenPrimaryDark.copy(alpha = 0.10f))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Button(
+                        onClick = {},
+                        modifier = Modifier
+                            .weight(1.4f)
+                            .heightIn(min = 48.dp)
+                            .scale(1f - applyPressed * 0.05f),
+                        shape = RoundedCornerShape(10.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = GreenPrimaryDark),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.prayer_editor_apply),
+                            fontWeight = FontWeight.Bold,
+                        )
+                    }
+                    TextButton(
+                        onClick = {},
+                        modifier = Modifier.weight(1f).heightIn(min = 48.dp),
+                        shape = RoundedCornerShape(10.dp),
+                    ) {
+                        Text(
+                            text = stringResource(R.string.prayer_editor_cancel),
+                            color = GreenPrimaryDark,
+                        )
+                    }
+                }
+            }
+        }
+    }
+}
+
+/** Compact resolved clock shown for the at-adhan rule, matching the real editor. */
+@Composable
+private fun DemoResolvedTime(resolvedTime: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 48.dp),
+        contentAlignment = Alignment.Center,
+    ) {
+        Text(
+            text = resolvedTime,
+            color = PrayerSilencePalette.PrimaryText,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.SemiBold,
+            style = TextStyle(textDirection = TextDirection.Ltr),
+            maxLines = 1,
+            softWrap = false,
         )
     }
 }

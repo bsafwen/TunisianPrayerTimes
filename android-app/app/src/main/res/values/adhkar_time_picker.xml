@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The Compose screens are light only; without this the picker alone turns dark with the system. -->
+    <style name="ThemeOverlay.Adhkar.TimePicker" parent="ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/text_dark</item>
+        <item name="colorPrimary">@color/green_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:textColorPrimary">@color/text_dark</item>
+        <item name="android:textColorSecondary">@color/text_muted</item>
+        <item name="android:textColorHint">@color/text_muted</item>
+        <item name="colorControlNormal">@color/text_muted</item>
+    </style>
+</resources>

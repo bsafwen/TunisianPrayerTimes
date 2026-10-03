@@ -4,6 +4,7 @@ import androidx.compose.ui.test.assertIsOff
 import androidx.compose.ui.test.assertIsOn
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.compose.ui.test.performSemanticsAction
 import androidx.compose.ui.test.SemanticsNodeInteraction
@@ -56,9 +57,18 @@ class FlagToggleIndependenceInstrumentedTest {
         performSemanticsAction(SemanticsActions.OnClick)
     }
 
+    /** All three flags live in the settings sheet beside the location header. */
+    private fun openPrayerTabSettings() {
+        composeRule.onNodeWithTag(TestTags.PRAYER_TAB_SETTINGS_BUTTON)
+            .performScrollTo()
+            .performClick()
+        composeRule.waitForIdle()
+    }
+
     @Test
     fun togglingAutoLocation_persistsAndUpdatesUiImmediately() {
         val ctx = composeRule.activity
+        openPrayerTabSettings()
         val switch = composeRule.onNodeWithTag(TestTags.AUTO_LOCATION_SWITCH)
 
         switch.performScrollTo().assertIsOn()
@@ -83,6 +93,7 @@ class FlagToggleIndependenceInstrumentedTest {
     @Test
     fun togglingCallEndVibration_persistsAndUpdatesUiImmediately() {
         val ctx = composeRule.activity
+        openPrayerTabSettings()
         val switch = composeRule.onNodeWithTag(TestTags.CALL_END_VIBRATION_SWITCH)
 
         switch.performScrollTo().assertIsOn()
@@ -105,6 +116,7 @@ class FlagToggleIndependenceInstrumentedTest {
         val ctx = composeRule.activity
 
         // Turn auto-location OFF first
+        openPrayerTabSettings()
         composeRule.onNodeWithTag(TestTags.AUTO_LOCATION_SWITCH)
             .performToggle()
         composeRule.waitForIdle()
@@ -130,6 +142,7 @@ class FlagToggleIndependenceInstrumentedTest {
     @Test
     fun togglingCallEndVibration_doesNotAffectAutoLocationSwitch() {
         val ctx = composeRule.activity
+        openPrayerTabSettings()
 
         composeRule.onNodeWithTag(TestTags.AUTO_LOCATION_SWITCH)
             .performToggle()
@@ -152,15 +165,16 @@ class FlagToggleIndependenceInstrumentedTest {
     @Test
     fun togglingAutoLocation_doesNotAffectOtherSwitches() {
         val ctx = composeRule.activity
+        openPrayerTabSettings()
 
         composeRule.onNodeWithTag(TestTags.AUTO_LOCATION_SWITCH)
             .performToggle()
         composeRule.waitForIdle()
 
-        composeRule.onNodeWithTag(TestTags.AUTO_SILENCE_SWITCH)
+        composeRule.onNodeWithTag(TestTags.CALL_END_VIBRATION_SWITCH)
             .performScrollTo()
             .assertIsOn()
-        composeRule.onNodeWithTag(TestTags.CALL_END_VIBRATION_SWITCH)
+        composeRule.onNodeWithTag(TestTags.AUTO_SILENCE_SWITCH)
             .performScrollTo()
             .assertIsOn()
         assert(PrefsManager.isEnabled(ctx))

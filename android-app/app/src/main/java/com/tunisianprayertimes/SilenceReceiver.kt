@@ -16,10 +16,16 @@ class SilenceReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val action = intent.action ?: return
         Log.d(TAG, "Received action: $action")
+        if (SilenceScheduler.handleEidAlarm(context, intent)) return
 
         when (action) {
             "com.tunisianprayertimes.ACTION_SILENCE" -> {
                 val prayerName = intent.getStringExtra("extra_prayer") ?: "UNKNOWN"
+                val prayer = runCatching { Prayer.valueOf(prayerName) }.getOrNull()
+                if (prayer != null && !PrefsManager.isPrayerSilenceEnabled(context, prayer)) {
+                    Log.d(TAG, "Silence disabled for $prayerName, skipping")
+                    return
+                }
                 Log.d(TAG, "Silencing phone for $prayerName")
                 // Check if the user already dismissed silence for this prayer.
                 // A delegation change may have rescheduled this alarm to a slightly
@@ -32,7 +38,7 @@ class SilenceReceiver : BroadcastReceiver() {
                 PrefsManager.clearAutoSilenceDismissed(context)
                 SilenceModeController.enableAutoSilence(
                     context,
-                    runCatching { Prayer.valueOf(prayerName) }.getOrNull(),
+                    prayer,
                 )
                 // Update delegation from cached location in the background,
                 // so the next reschedule uses the correct prayer times.

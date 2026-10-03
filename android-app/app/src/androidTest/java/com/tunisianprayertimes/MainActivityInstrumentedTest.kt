@@ -5,6 +5,7 @@ import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -39,6 +40,14 @@ class MainActivityInstrumentedTest {
     @get:Rule
     val ruleChain: RuleChain = RuleChain.outerRule(prefsRule).around(composeRule)
 
+    /** Automatic silencing lives in the settings sheet beside the location header. */
+    private fun openPrayerTabSettings() {
+        composeRule.onNodeWithTag(TestTags.PRAYER_TAB_SETTINGS_BUTTON)
+            .performScrollTo()
+            .performClick()
+        composeRule.waitForIdle()
+    }
+
     // --- UI presence tests ---
 
     @Test
@@ -48,6 +57,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun autoSilenceSwitchIsDisplayed() {
+        openPrayerTabSettings()
         composeRule.onNodeWithTag(TestTags.AUTO_SILENCE_SWITCH)
             .performScrollTo()
             .assertIsDisplayed()
@@ -76,6 +86,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun autoSilenceLabelIsInArabic() {
+        openPrayerTabSettings()
         composeRule.onNodeWithText("الإسكات التلقائي أثناء الصلاة")
             .performScrollTo()
             .assertIsDisplayed()
@@ -95,6 +106,7 @@ class MainActivityInstrumentedTest {
 
     @Test
     fun autoSilenceToggleIsClickable() {
+        openPrayerTabSettings()
         composeRule.onNodeWithTag(TestTags.AUTO_SILENCE_SWITCH)
             .performScrollTo()
             .assertIsEnabled()

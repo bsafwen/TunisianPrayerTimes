@@ -9,8 +9,7 @@ import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.tunisianprayertimes.MainActivity
-import com.tunisianprayertimes.MainTabNavigation
+import com.tunisianprayertimes.MainActivityPendingIntents
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.Prayer
 import com.tunisianprayertimes.RingtonePreset
@@ -39,11 +38,40 @@ class AwakeCheckService : Service() {
     private val serviceScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     private val audioController by lazy { AlarmAudioController(this, serviceScope) }
     private var escalationJob: Job? = null
+    private var runningScheduledTriggerAtMillis: Long? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        if (intent?.action == ACTION_CANCEL_OCCURRENCE) {
+            val targetEventId = intent.getStringExtra(EXTRA_EVENT_ID)
+            val targetOccurrenceAtMillis = intent.getLongExtra(EXTRA_WAKE_OCCURRENCE_AT_MILLIS, 0L)
+            if (runningEventId == null ||
+                (runningEventId == targetEventId &&
+                    (runningOccurrenceAtMillis == targetOccurrenceAtMillis || runningOccurrenceAtMillis == 0L))
+            ) {
+                stopSelf(startId)
+            }
+            return START_NOT_STICKY
+        }
         val eventId = intent?.getStringExtra(EXTRA_EVENT_ID) ?: return START_NOT_STICKY
+        val occurrenceAtMillis = intent.getLongExtra(EXTRA_WAKE_OCCURRENCE_AT_MILLIS, 0L)
+        val scheduledTriggerAtMillis = intent.getLongExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, 0L)
+            .takeIf { millis -> millis > 0L }
+        if (AwakeCheckScheduler.wasCancelled(this, eventId, scheduledTriggerAtMillis)) {
+            if (runningEventId == null) stopSelf(startId)
+            return START_NOT_STICKY
+        }
+        val alarmId = wakeAlarmIdFromEventId(eventId)
+        if (alarmId != null && occurrenceAtMillis > 0L &&
+            WakeOccurrenceSkipRegistry.contains(alarmId, occurrenceAtMillis)
+        ) {
+            AwakeCheckScheduler.cancelIfMatching(
+                this, eventId, occurrenceAtMillis, scheduledTriggerAtMillis,
+            )
+            if (runningEventId == null) stopSelf(startId)
+            return START_NOT_STICKY
+        }
         val ringtonePreset = intent.getStringExtra(EXTRA_RINGTONE)
             ?.let { raw -> runCatching { RingtonePreset.valueOf(raw) }.getOrNull() }
         val customRingtoneUri = intent.getStringExtra(EXTRA_CUSTOM_RINGTONE_URI)
@@ -53,11 +81,18 @@ class AwakeCheckService : Service() {
         )
         val autoSilenceConflictPrayer = intent.getStringExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER)
             ?.let { rawPrayer -> runCatching { Prayer.valueOf(rawPrayer) }.getOrNull() }
-        val scheduledTriggerAtMillis = intent.getLongExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, 0L)
-            .takeIf { millis -> millis > 0L }
+        if (scheduledTriggerAtMillis != null &&
+            AwakeCheckScheduler.triggerAtMillis(this, eventId)?.let { stored ->
+                stored != scheduledTriggerAtMillis
+            } == true
+        ) {
+            if (runningEventId == null) stopSelf(startId)
+            return START_NOT_STICKY
+        }
 
         if (cancelIfSilenceActive(
                 eventId = eventId,
+                occurrenceAtMillis = occurrenceAtMillis,
                 autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
                 autoSilenceConflictPrayer = autoSilenceConflictPrayer,
                 scheduledTriggerAtMillis = scheduledTriggerAtMillis,
@@ -68,12 +103,19 @@ class AwakeCheckService : Service() {
             return START_NOT_STICKY
         }
 
+        runningEventId?.takeIf { previous -> previous != eventId }
+            ?.let { previous -> AwakeCheckScheduler.cancel(this, previous) }
+        runningEventId = eventId
+        runningOccurrenceAtMillis = occurrenceAtMillis
+        runningScheduledTriggerAtMillis = scheduledTriggerAtMillis
+        runningTriggerAtMillis = scheduledTriggerAtMillis ?: 0L
         _isRunning.value = true
 
         createChannel()
         startForeground(NOTIFICATION_ID, buildQuietNotification(eventId))
         startEscalation(
             eventId = eventId,
+            occurrenceAtMillis = occurrenceAtMillis,
             ringtonePreset = ringtonePreset,
             customRingtoneUri = customRingtoneUri,
             autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
@@ -84,6 +126,15 @@ class AwakeCheckService : Service() {
     }
 
     override fun onDestroy() {
+        runningEventId?.let { eventId ->
+            AwakeCheckScheduler.cancelIfMatching(
+                this, eventId, runningOccurrenceAtMillis, runningScheduledTriggerAtMillis,
+            )
+        }
+        runningEventId = null
+        runningOccurrenceAtMillis = 0L
+        runningScheduledTriggerAtMillis = null
+        runningTriggerAtMillis = 0L
         _isRunning.value = false
         escalationJob?.cancel()
         stopPlayback()
@@ -94,6 +145,7 @@ class AwakeCheckService : Service() {
 
     private fun startEscalation(
         eventId: String,
+        occurrenceAtMillis: Long,
         ringtonePreset: RingtonePreset?,
         customRingtoneUri: String?,
         autoSilenceOverrideAllowed: Boolean,
@@ -105,6 +157,7 @@ class AwakeCheckService : Service() {
             delay(QUIET_WAIT_MILLIS)
             if (cancelIfSilenceActive(
                     eventId = eventId,
+                    occurrenceAtMillis = occurrenceAtMillis,
                     autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
                     autoSilenceConflictPrayer = autoSilenceConflictPrayer,
                     scheduledTriggerAtMillis = scheduledTriggerAtMillis,
@@ -123,6 +176,7 @@ class AwakeCheckService : Service() {
                 remainingVibrationMillis -= stepMillis
                 if (cancelIfSilenceActive(
                         eventId = eventId,
+                        occurrenceAtMillis = occurrenceAtMillis,
                         autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
                         autoSilenceConflictPrayer = autoSilenceConflictPrayer,
                         scheduledTriggerAtMillis = scheduledTriggerAtMillis,
@@ -146,6 +200,7 @@ class AwakeCheckService : Service() {
                 delay(SILENCE_RECHECK_INTERVAL_MILLIS)
                 if (cancelIfSilenceActive(
                         eventId = eventId,
+                        occurrenceAtMillis = occurrenceAtMillis,
                         autoSilenceOverrideAllowed = autoSilenceOverrideAllowed,
                         autoSilenceConflictPrayer = autoSilenceConflictPrayer,
                         scheduledTriggerAtMillis = scheduledTriggerAtMillis,
@@ -219,6 +274,7 @@ class AwakeCheckService : Service() {
 
     private fun cancelIfSilenceActive(
         eventId: String,
+        occurrenceAtMillis: Long,
         autoSilenceOverrideAllowed: Boolean,
         autoSilenceConflictPrayer: Prayer?,
         scheduledTriggerAtMillis: Long?,
@@ -240,7 +296,9 @@ class AwakeCheckService : Service() {
         if (!shouldCancel) return false
 
         Log.d(TAG, "Awake check suppressed during app-controlled silence eventId=$eventId")
-        AwakeCheckScheduler.cancel(this, eventId)
+        AwakeCheckScheduler.cancelIfMatching(
+            this, eventId, occurrenceAtMillis, scheduledTriggerAtMillis,
+        )
         stopPlayback()
         stopForeground(STOP_FOREGROUND_REMOVE)
         stopSelf()
@@ -259,7 +317,9 @@ class AwakeCheckService : Service() {
     private fun dismissPendingIntent(eventId: String): PendingIntent {
         val intent = Intent(this, AwakeCheckReceiver::class.java)
             .setAction(ACTION_AWAKE_CHECK_CONFIRMED)
+            .setData(wakeEventUri("awake-check-confirm:$eventId:${runningScheduledTriggerAtMillis ?: 0L}"))
             .putExtra(EXTRA_EVENT_ID, eventId)
+            .putExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, runningScheduledTriggerAtMillis ?: 0L)
 
         return PendingIntent.getBroadcast(
             this,
@@ -269,14 +329,7 @@ class AwakeCheckService : Service() {
         )
     }
 
-    private fun appPendingIntent(): PendingIntent = PendingIntent.getActivity(
-        this,
-        0,
-        Intent(this, MainActivity::class.java)
-            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            .putExtra(MainTabNavigation.EXTRA_DESTINATION, MainTabNavigation.DESTINATION_ALARMS),
-        PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
-    )
+    private fun appPendingIntent(): PendingIntent = MainActivityPendingIntents.awakeCheck(this)
 
     companion object {
         private const val CHANNEL_ID = "tunisianprayertimes.awake.check.silent"
@@ -285,12 +338,38 @@ class AwakeCheckService : Service() {
 
         const val ACTION_AWAKE_CHECK_CONFIRMED =
             "com.tunisianprayertimes.action.AWAKE_CHECK_CONFIRMED"
+        private const val ACTION_CANCEL_OCCURRENCE =
+            "com.tunisianprayertimes.action.CANCEL_AWAKE_CHECK_OCCURRENCE"
 
         private const val QUIET_WAIT_MILLIS = 60_000L
         private const val SILENCE_RECHECK_INTERVAL_MILLIS = 5_000L
 
         private val _isRunning = MutableStateFlow(false)
         val isRunning: StateFlow<Boolean> = _isRunning
+        @Volatile private var runningEventId: String? = null
+        @Volatile private var runningOccurrenceAtMillis: Long = 0L
+        @Volatile private var runningTriggerAtMillis: Long = 0L
+
+        fun activeOccurrenceForEvent(eventId: String): Long? =
+            runningOccurrenceAtMillis.takeIf { runningEventId == eventId && it > 0L }
+
+        fun cancelForOccurrence(context: Context, eventId: String, occurrenceAtMillis: Long) {
+            if (runningEventId != eventId) return
+            context.startService(
+                Intent(context, AwakeCheckService::class.java)
+                    .setAction(ACTION_CANCEL_OCCURRENCE)
+                    .putExtra(EXTRA_EVENT_ID, eventId)
+                    .putExtra(EXTRA_WAKE_OCCURRENCE_AT_MILLIS, occurrenceAtMillis),
+            )
+        }
+
+        fun confirmRunningFromNotification(context: Context, eventId: String, triggerAtMillis: Long) {
+            if (runningEventId == eventId &&
+                (triggerAtMillis == 0L || runningTriggerAtMillis == triggerAtMillis)
+            ) {
+                context.stopService(Intent(context, AwakeCheckService::class.java))
+            }
+        }
 
         /** Confirm awake from the app UI — stops the service. */
         fun confirmAwake(context: Context) {
@@ -305,12 +384,14 @@ class AwakeCheckService : Service() {
             autoSilenceOverrideAllowed: Boolean = false,
             autoSilenceConflictPrayer: Prayer? = null,
             scheduledTriggerAtMillis: Long? = null,
+            occurrenceAtMillis: Long = 0L,
         ): Intent = Intent(context, AwakeCheckService::class.java).apply {
             putExtra(EXTRA_EVENT_ID, eventId)
             ringtonePreset?.let { putExtra(EXTRA_RINGTONE, it.name) }
             customRingtoneUri?.let { putExtra(EXTRA_CUSTOM_RINGTONE_URI, it) }
             putExtra(EXTRA_AUTO_SILENCE_OVERRIDE_ALLOWED, autoSilenceOverrideAllowed)
             scheduledTriggerAtMillis?.let { putExtra(EXTRA_AWAKE_CHECK_TRIGGER_AT_MILLIS, it) }
+            putExtra(EXTRA_WAKE_OCCURRENCE_AT_MILLIS, occurrenceAtMillis)
             autoSilenceConflictPrayer?.let { putExtra(EXTRA_AUTO_SILENCE_CONFLICT_PRAYER, it.name) }
         }
     }
