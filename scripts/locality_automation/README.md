@@ -72,7 +72,79 @@ ledger copies, verifies both replacements/backups and unchanged live assets,
 and compares all output after narrowly declared fixture-path normalization.
 This candidate has no automatic live recorder activation.
 
+`record_with_decode_reuse.py` offers an explicit per-case recorder adapter with
+the standard recorder arguments, plus pinned `--manifest` and fresh
+`--cache-receipt`. It checks the exact active writer, per-case report/ledger
+paths, immutable helpers/assets, current intake UTC margin, and both actual
+ledger receipt links. It retains the complete standard CAF record tail. A
+future window must explicitly release each input; no generic batch or new
+source/QA acceptance is inferred from the adapter verification.
+
+`prepare_source_family_context.py --manifest MANIFEST --output NEW_FILE` joins
+literal nodes and member ways across a finite source-preparation family. It
+rejects changed shared elements, records common-way roles and projected raw
+pair areas, and leaves neighbor/scope/ownership acceptance unclaimed. Use these
+facts to focus the next disjoint review, including adjoining official sheets
+where label or boundary placement is ambiguous.
+
+`summarize_work_window.py --manifest MANIFEST --output NEW_FILE` computes
+qualified geographic/full-body/correction gains from pinned baseline and
+current publications, observes guarded child spans, counts concurrent process
+time once, and summarizes complete-output counterbalanced benchmarks. It never
+credits source preparation or tooling, or infers model attention/user wait
+time from child receipts.
+
 ## Offline review preparation
+
+### Artifact-first planning and source reconciliation
+
+`plan_source_review_actions.py --manifest MANIFEST --output NEW_FILE` verifies
+the current report epoch, filters already complete locations before reopening
+their source payloads, and records the actual source author. It supports the
+historical nested and flat source-index schemas without guessing paths. A
+root-authored preparation remains pending disjoint review; this planner cannot
+approve source facts, assign a reviewer or create an acceptance packet.
+
+`audit_source_face_reconciliation.py --manifest MANIFEST --output NEW_FILE
+--geojson NEW_FILE` compares the explicitly released source-only faces with
+current packed bodies and nearby source/current neighbors. Exact gain, loss,
+intersection and unique neighbor-covered area are diagnostics. Cross-sheet
+intersection does not prove official overlap. The helper checks pinned inputs,
+uses the current root/control release and never repairs or installs geometry.
+
+`render_source_reconciliation.py --manifest MANIFEST --output NEW_FILE` creates
+an offline comparison page with current/source/gain/loss layers and links to
+the original pages. `verify_source_reconciliation_ui.cjs HTML SHA256 PROOF` checks
+its coordinates and controls in an offline synthetic DOM. That check is not a
+browser rendering test. Browser policy must be respected; do not serve or open
+the page through another surface to work around a rejected preview.
+
+`plot_source_reconciliation.py --manifest MANIFEST --output NEW_PNG --proof
+NEW_JSON` renders the eight pinned diagnostic coordinate comparisons directly
+with a standard plotting library. This is a standalone scientific artifact,
+separate from HTML/browser content, with exact current/source gain/loss layers
+and pending qualifications. Review the saved PNG visually before sharing it.
+
+`append_phase_tasks.py --manifest MANIFEST --output NEW_FILE` batches activity
+events through the unchanged report app's append function and exclusive lock.
+It accepts only finite real successful guarded process receipts from the
+current window, keeps actual UTC spans and makes an exclusive before-events
+backup. Run the original locked publisher once afterwards with fresh live
+pins. Shared per-location process clocks are not individual labor measurements.
+No source/acceptance ledger or app asset is changed by the activity batch.
+
+`verify_retained_activity_publication.py --manifest MANIFEST --output NEW_FILE`
+checks a zero-addition refresh against its pinned baseline. All accepted history
+and map data remain exact; only the map publication clock may change. New graph
+hours must remain flat, and new textual unverified claims must belong to the
+finite activity batch with zero credit. Every published task retains its actual
+start/end, attribution, status and result. This is separate from packed-coordinate
+and export checks, and does not assert browser rendering.
+
+`oracle_clearance_reuse.py` and `benchmark_oracle_clearance_reuse.py` are
+**inactive experiments**. Their exact finite oracle outputs matched, but the
+counterbalanced window-016 trial gained only 0.4%, within run variation. They
+were rejected for live use. The benchmark is not a full CAF/A4 or GPS review.
 
 The current source/GPS review helpers can reuse five focused commands without
 launching validation or changing assets. Run these from the repository root
