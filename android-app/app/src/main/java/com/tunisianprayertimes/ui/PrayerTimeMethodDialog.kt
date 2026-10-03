@@ -209,13 +209,14 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
             meaning = stringResource(R.string.prayer_method_sun_decl_meaning),
             diagram = {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    EarthTiltDiagram(location.latitude, explanation.declinationDeg, delegationName)
-                    DeclinationDiagram(location.latitude, explanation.declinationDeg, sunYear)
+                    EarthTiltDiagram(location.latitude, delegationName)
+                    DeclinationDiagram(location.latitude, sunYear)
                     DeclinationYearChart(sunYear, date, explanation.declinationDeg)
                 }
             },
             today = stringResource(
                 if (explanation.declinationDeg < 0) R.string.prayer_method_sun_decl_south else R.string.prayer_method_sun_decl_north,
+                "\u2066${signed(explanation.declinationDeg, 2)}°\u2069",
             ),
         )
         SunQuantity(
