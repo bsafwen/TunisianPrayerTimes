@@ -370,11 +370,12 @@ private fun DrawScope.drawSunbeams(fromX: Float, center: Offset, radius: Float, 
 /**
  * Step 1, the cause: the Sun's level rays and the Earth seen from the side with its axis and
  * equator. Three small Earths show the tilt on the first day of summer, at the equinox and on
- * the first day of winter; the large one shows today, with δ as the angle between the equator
- * and the sunlight, its two lines drawn out toward the Sun so even a small angle can be seen.
+ * the first day of winter; the large one takes the first day of summer as a worked example,
+ * with δ as the angle between the equator and the sunlight, shaded and drawn out toward the Sun.
  */
 @Composable
-internal fun EarthTiltDiagram(latitude: Double, declination: Double, placeName: String) {
+internal fun EarthTiltDiagram(latitude: Double, placeName: String) {
+    val declination = EXAMPLE_DECLINATION
     val references = listOf(
         stringResource(R.string.prayer_method_decl_summer) to MAX_DECLINATION,
         stringResource(R.string.prayer_method_decl_equinox) to 0.0,
@@ -383,12 +384,8 @@ internal fun EarthTiltDiagram(latitude: Double, declination: Double, placeName: 
     val sunLabel = stringResource(R.string.prayer_method_tilt_sun)
     val equatorLabel = stringResource(R.string.prayer_method_tilt_equator)
     val poleLabel = stringResource(R.string.prayer_method_tilt_pole)
-    val todayLabel = stringResource(R.string.prayer_method_tilt_today)
-    val description = stringResource(
-        R.string.prayer_method_tilt_description,
-        (if (declination < 0) "−" else "+") + "%.2f°".format(Locale.US, abs(declination)),
-        placeName,
-    )
+    val exampleLabel = stringResource(R.string.prayer_method_tilt_example)
+    val description = stringResource(R.string.prayer_method_tilt_description, placeName)
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
 
@@ -412,7 +409,7 @@ internal fun EarthTiltDiagram(latitude: Double, declination: Double, placeName: 
             val sunLayout = measurer.measure(sunLabel, muted)
             val equatorLayout = measurer.measure(equatorLabel, muted)
             val poleLayout = measurer.measure(poleLabel, muted)
-            val todayLayout = measurer.measure(todayLabel, muted)
+            val exampleLayout = measurer.measure(exampleLabel, muted)
             val placeLayout = measurer.measure(placeName, LabelStyle.copy(color = PrayerSilencePalette.PrimaryText, fontWeight = FontWeight.Bold))
             val deltaLayout = measurer.measure(deltaText(declination), NumberStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold))
 
@@ -426,12 +423,12 @@ internal fun EarthTiltDiagram(latitude: Double, declination: Double, placeName: 
             val referenceLabelTop = smallCenterY + smallRadius + smallOverhang + px(3.dp)
             val rowBottom = referenceLabelTop + referenceLayouts.maxOf { it.size.height }
 
-            // Today's Earth, large, below the row.
+            // The worked example, large, below the row.
             val (axis, equator) = earthFrame(declination)
             val earthRadius = px(44.dp)
             val axisOverhang = px(14.dp)
             val sunRadius = px(16.dp)
-            val centerY = rowBottom + px(10.dp) + poleLayout.size.height + px(4.dp) + earthRadius + axisOverhang
+            val centerY = rowBottom + px(8.dp) + exampleLayout.size.height + px(4.dp) + poleLayout.size.height + px(4.dp) + earthRadius + axisOverhang
             val centerX = width - equatorLayout.size.width - px(8.dp) - earthRadius
             val sunX = maxOf(sunRadius + px(4.dp), sunLayout.size.width / 2f)
             val height = centerY + earthRadius + axisOverhang + px(4.dp)
@@ -458,7 +455,7 @@ internal fun EarthTiltDiagram(latitude: Double, declination: Double, placeName: 
                     drawCircle(PrayerSilencePalette.GoldAccent, sunRadius, sunCenter)
                     drawSunbeams(beamsFrom, center, earthRadius, 5, earthRadius * 0.45f)
                     drawText(sunLayout, topLeft = Offset(sunCenter.x - sunLayout.size.width / 2f, sunCenter.y + sunRadius + 4.dp.toPx()))
-                    drawText(todayLayout, topLeft = Offset(sunCenter.x - todayLayout.size.width / 2f, rowBottom + 8.dp.toPx()))
+                    drawText(exampleLayout, topLeft = Offset((size.width - exampleLayout.size.width) / 2, rowBottom + 8.dp.toPx()))
 
                     // δ: the wedge between the level beam through the centre and the equator, both
                     // drawn out toward the Sun so the angle shows even when it is small.
@@ -526,19 +523,17 @@ internal fun EarthTiltDiagram(latitude: Double, declination: Double, placeName: 
             }
         }
         Text(stringResource(R.string.prayer_method_tilt_caption), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
-        if (abs(declination) < 8) {
-            Text(stringResource(R.string.prayer_method_tilt_small_note), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
-        }
     }
 }
 
 /**
  * Step 1, the sky: facing south at noon, the sun stands highest on the first day of summer and
  * lowest on the first day of winter; halfway between are the two days night equals day. δ is
- * today's angle above or below that halfway sun.
+ * a day's angle above or below that halfway sun, shown for the first day of summer.
  */
 @Composable
-internal fun DeclinationDiagram(latitude: Double, declination: Double, sunYear: SunYear) {
+internal fun DeclinationDiagram(latitude: Double, sunYear: SunYear) {
+    val declination = EXAMPLE_DECLINATION
     val references = listOf(
         Triple(stringResource(R.string.prayer_method_decl_summer), sunYear.summer.dayMonth(), MAX_DECLINATION),
         Triple(
@@ -557,7 +552,6 @@ internal fun DeclinationDiagram(latitude: Double, declination: Double, sunYear: 
         degrees(noonAltitude(MAX_DECLINATION)),
         degrees(noonAltitude(0.0)),
         degrees(noonAltitude(-MAX_DECLINATION)),
-        degrees(noonAltitude(declination)),
     )
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
@@ -638,7 +632,7 @@ internal fun DeclinationDiagram(latitude: Double, declination: Double, sunYear: 
                         drawLabel(placed[i])
                     }
 
-                    // Today's sun, and δ as the wedge between the halfway ray and today's ray.
+                    // The example sun, and δ as the wedge between the halfway ray and its ray.
                     val today = Math.toRadians(noonAltitude(declination))
                     val wedgeEdge = at(today, radius * 0.95f)
                     val halfwayEdge = at(angles[1], radius * 0.95f)
@@ -661,7 +655,7 @@ internal fun DeclinationDiagram(latitude: Double, declination: Double, sunYear: 
                         size = Size(2 * arcRadius, 2 * arcRadius),
                         style = Stroke(2.dp.toPx()),
                     )
-                    // The value just outside the wedge, on today's side of it, partway along today's ray.
+                    // The value just outside the wedge, on the example's side of it, partway along its ray.
                     val along = at(today, radius * 0.62f)
                     val away = (if (declination < 0) 1f else -1f) * (10.dp.toPx() + deltaLayout.size.height / 2f)
                     val deltaAt = Offset(along.x + sin(today).toFloat() * away, along.y + cos(today).toFloat() * away)
@@ -678,16 +672,6 @@ internal fun DeclinationDiagram(latitude: Double, declination: Double, sunYear: 
                     drawText(horizonLayout, topLeft = Offset(size.width - horizonLayout.size.width, labelTop))
                 }
             }
-        }
-        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            Canvas(Modifier.width(14.dp).height(14.dp)) {
-                drawCircle(PrayerSilencePalette.GoldAccent, 6.dp.toPx())
-            }
-            Text(
-                stringResource(R.string.prayer_method_decl_today, "\u2066${degrees(noonAltitude(declination))}\u2069"),
-                fontSize = 12.sp,
-                color = TextDark,
-            )
         }
         Text(stringResource(R.string.prayer_method_decl_caption), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
     }
@@ -723,8 +707,7 @@ internal fun DeclinationYearChart(sunYear: SunYear, date: LocalDate, declination
             val dateLayouts = keyDates.map { measurer.measure(it.dayMonth(), LabelStyle.copy(color = TextMuted)) }
             val longerLayout = measurer.measure(longerDays, LabelStyle.copy(color = TextMuted))
             val shorterLayout = measurer.measure(shorterDays, LabelStyle.copy(color = TextMuted))
-            val todayValue = (if (declination < 0) "−" else "+") + "%.2f°".format(Locale.US, abs(declination))
-            val todayLayout = measurer.measure("$todayLabel \u2066$todayValue\u2069", LabelStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold))
+            val todayLayout = measurer.measure(todayLabel, LabelStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold))
             val plotLeft = axisLayouts.maxOf { it.size.width } + px(6.dp)
             val plotTop = axisLayouts[0].size.height / 2f
             val plotBottom = plotTop + px(96.dp)
@@ -826,6 +809,9 @@ internal fun DeclinationYearChart(sunYear: SunYear, date: LocalDate, declination
 
 /** The obliquity of the ecliptic: how far the sun gets from the celestial equator each year. */
 private const val MAX_DECLINATION = 23.44
+
+/** The δ the explainer's drawings use as their worked example: the first day of summer, where it is easiest to see. */
+private const val EXAMPLE_DECLINATION = MAX_DECLINATION
 
 /**
  * Step 4: a stick and its shadow. Asr begins when the shadow is the stick's length plus its
