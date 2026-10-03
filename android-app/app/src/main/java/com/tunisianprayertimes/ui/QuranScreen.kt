@@ -402,8 +402,10 @@ private fun QuranPageImage(
             failed = true
         }
     }
-    // The pages arrived after this one was found missing: read it again.
+    // The pages arrived after this one was found missing: read it again. A page that failed because
+    // its pack was damaged waits for the pack's new download the same way.
     LaunchedEffect(pagesReady, missing) { if (pagesReady && missing) attempt++ }
+    LaunchedEffect(pagesReady) { if (!pagesReady && failed) { failed = false; missing = true } }
     LaunchedEffect(bitmap, failed, missing, active) { if (bitmap != null || failed || missing) currentOnSettled() }
     LaunchedEffect(active) { if (!active) { scale = 1f; offset = Offset.Zero } }
     LaunchedEffect(scale, active) { if (active) onZoomChanged(scale > 1.01f) }
