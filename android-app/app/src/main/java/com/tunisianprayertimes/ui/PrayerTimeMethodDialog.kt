@@ -178,6 +178,7 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
     val names = eventNames()
     val steps = explanation.events.associateBy { it.event }
     val noon = explanation.solarNoonMinutes
+    val sunYear = remember(date.year) { SunYear(date.year) }
 
     TrustCard()
 
@@ -206,7 +207,12 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
             name = stringResource(R.string.prayer_method_sun_decl_name),
             value = "${signed(explanation.declinationDeg, 3)}°",
             meaning = stringResource(R.string.prayer_method_sun_decl_meaning),
-            diagram = { DeclinationDiagram(location.latitude, explanation.declinationDeg) },
+            diagram = {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    DeclinationDiagram(location.latitude, explanation.declinationDeg, sunYear)
+                    DeclinationYearChart(sunYear, date, explanation.declinationDeg)
+                }
+            },
             today = stringResource(
                 if (explanation.declinationDeg < 0) R.string.prayer_method_sun_decl_south else R.string.prayer_method_sun_decl_north,
             ),
