@@ -25,7 +25,9 @@ import http.client
 import json
 import os
 import shutil
+import socket
 import subprocess
+import time
 import sys
 import tempfile
 import urllib.error
@@ -366,13 +368,19 @@ def download(url: str, target: Path, expected: int | None = None) -> None:
         if offset and not resumed and response.status != 200:
             partial.unlink()
             return download(url, target, expected)
+        # The size the server says the whole file has: a changed or wrong file is a layout problem,
+        # not a connection to resume.
         length = response.headers.get('Content-Length')
-        if expected is None and length is not None:
-            expected = (offset if resumed else 0) + int(length)
+        total = response.headers.get('Content-Range', '').rpartition('/')[2] if resumed else length
+        declared = int(total) if total and total.isdigit() else None
+        if expected is not None and declared is not None and declared != expected:
+            raise LayoutError(f'{url} serves {declared} bytes; the layout says {expected}')
+        expected = expected if expected is not None else declared
         try:
             with partial.open('ab' if offset and resumed else 'wb') as out:
                 shutil.copyfileobj(response, out, 1 << 20)
-        except (http.client.IncompleteRead, ConnectionError, TimeoutError) as error:
+        # socket.timeout is not a TimeoutError before Python 3.10.
+        except (http.client.IncompleteRead, ConnectionError, TimeoutError, socket.timeout) as error:
             raise Incomplete(f'{url}: transfer interrupted ({error})') from error
     if expected is not None and partial.stat().st_size < expected:
         raise Incomplete(f'{url}: connection closed after {partial.stat().st_size} of {expected} bytes')
@@ -397,6 +405,11 @@ def cached_archive(layout: dict, pack: dict, cache: Path) -> Path:
                 except Incomplete:  # Resume from what arrived.
                     if tries == DOWNLOAD_TRIES - 1:
                         raise
+                except urllib.error.HTTPError as error:  # The CDN is busy: wait, then resume.
+                    if error.code not in (429, 500, 502, 503, 504) or tries == DOWNLOAD_TRIES - 1:
+                        raise
+                    retry_after = error.headers.get('Retry-After', '')
+                    time.sleep(min(int(retry_after), 60) if retry_after.isdigit() else 5)
     raise LayoutError(f"{pack['name']}: the downloaded archive does not match packs.json")
 
 

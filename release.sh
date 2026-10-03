@@ -63,9 +63,20 @@ if (( ${#TOO_BIG[@]} > 0 )); then
   exit 1
 fi
 
-# ── The local bundle needs Python to stage the Quran packs; check before bumping the version ──
+# ── Does this release build the AAB? (only android-app changes count, not the version bump) ──
+LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+ANDROID_CHANGED=false
+if [[ -z "$LAST_TAG" ]]; then
+    ANDROID_CHANGED=true
+elif git diff --name-only "$LAST_TAG" HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
+    ANDROID_CHANGED=true
+elif git diff --name-only HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
+    ANDROID_CHANGED=true
+fi
+
+# ── Building it needs Python to stage the Quran packs; check before bumping the version ──
 QURAN_PACKS=false
-if [[ "$SKIP_LOCAL_BUILD" == "false" && -f "$APP_DIR/quran-assets/manifest.tsv" ]]; then
+if [[ "$SKIP_LOCAL_BUILD" == "false" && "$ANDROID_CHANGED" == "true" && -f "$APP_DIR/quran-assets/manifest.tsv" ]]; then
   QURAN_PACKS=true
   source "$SCRIPT_DIR/scripts/find-python.sh"
   find_python || exit 1
@@ -98,15 +109,6 @@ mv "$GRADLE_FILE.tmp" "$GRADLE_FILE"
 echo "✓ Bumped version in build.gradle.kts"
 
 # ── Build signed AAB locally (only if android-app source changed, not just version bump) ──
-LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
-ANDROID_CHANGED=false
-if [[ -z "$LAST_TAG" ]]; then
-    ANDROID_CHANGED=true
-elif git diff --name-only "$LAST_TAG" HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
-    ANDROID_CHANGED=true
-elif git diff --name-only HEAD -- android-app/ ':!android-app/app/build.gradle.kts' | grep -q .; then
-    ANDROID_CHANGED=true
-fi
 
 if [[ "$SKIP_LOCAL_BUILD" == "true" ]]; then
     echo ""
