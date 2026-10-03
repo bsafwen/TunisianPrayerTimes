@@ -3,8 +3,10 @@ package com.tunisianprayertimes.ui
 import android.app.Application
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
@@ -61,8 +63,9 @@ class AdhkarReaderSwipeTest {
                 },
                 onSkip = {}, onRemove = {}, onFavourite = {}, onCollections = {}, onEditCustom = {},
                 onDeleteCustom = {}, onAddToCollection = {}, onReorderCollection = {}, onTextSize = {},
-                onHaptics = {}, onNewSession = {}, reminder = null, onReminder = {}, onConfigureReminder = {},
-                onDeleteReminder = {}, skipReminderLabel = null, onSkipReminder = {})
+                onHaptics = {}, onNewSession = {}, reminder = null, reminderActionLabel = "إنشاء تذكير لهذا الذكر",
+                onReminder = {}, onConfigureReminder = {}, onDeleteReminder = {}, skipReminderLabel = null,
+                onSkipReminder = {}, snackbar = remember { SnackbarHostState() })
         }
         compose.waitForIdle()
     }
