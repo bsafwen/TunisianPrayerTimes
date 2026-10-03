@@ -63,6 +63,14 @@ if (( ${#TOO_BIG[@]} > 0 )); then
   exit 1
 fi
 
+# ── The local bundle needs Python to stage the Quran packs; check before bumping the version ──
+QURAN_PACKS=false
+if [[ "$SKIP_LOCAL_BUILD" == "false" && -f "$APP_DIR/quran-assets/manifest.tsv" ]]; then
+  QURAN_PACKS=true
+  source "$SCRIPT_DIR/scripts/find-python.sh"
+  find_python || exit 1
+fi
+
 # ── Read current version from build.gradle.kts ──
 CURRENT_CODE=$(grep -m1 'versionCode' "$GRADLE_FILE" | sed 's/[^0-9]//g')
 CURRENT_NAME=$(grep -m1 'versionName' "$GRADLE_FILE" | sed 's/.*"\(.*\)".*/\1/')
@@ -111,9 +119,8 @@ else
     echo ""
     echo "Building signed release AAB..."
     # The bundle carries the Quran packs; fetch any that are not staged yet (cached after the first time).
-    if [[ -f "$APP_DIR/quran-assets/manifest.tsv" ]]; then
-        PYTHON=$(command -v python3 || command -v python) || { echo "✗ Python 3 is needed to stage the Quran packs." >&2; exit 1; }
-        "$PYTHON" "$SCRIPT_DIR/scripts/quran_assets.py" stage
+    if [[ "$QURAN_PACKS" == "true" ]]; then
+        "${PYTHON[@]}" "$SCRIPT_DIR/scripts/quran_assets.py" stage
     fi
     cd "$APP_DIR"
     ./gradlew clean bundleRelease --no-daemon

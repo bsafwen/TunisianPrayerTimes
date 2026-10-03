@@ -212,8 +212,11 @@ class QuranPlaybackService : Service() {
                     require(chapters.size == timings.size && chapters.zip(timings).all { (chapter, track) ->
                         chapter.verseCount == track.timings.size
                     }) { "Mushaf and recitation numbering differ" }
-                    // Null until the chapter's pack is downloaded.
-                    Triple(timings, chapters.map { it.name }, QuranAssets.resolve(applicationContext, timings[surah - 1].assetPath))
+                    val path = timings[surah - 1].assetPath
+                    // Null until the chapter's pack is downloaded; a recording no pack holds cannot come at all.
+                    val audio = QuranAssets.resolve(applicationContext, path)
+                    require(audio != null || QuranAssets.downloadable(applicationContext, path)) { "No source for $path" }
+                    Triple(timings, chapters.map { it.name }, audio)
                 }
                 if (request != generation) return@launch
                 recordings = allRecordings
@@ -404,6 +407,15 @@ class QuranPlaybackService : Service() {
     /** [quiet] keeps the controls steady while a repeated range silently returns to its start. */
     private fun seek(positionMs: Long, quiet: Boolean = false) {
         val current = QuranAudioController.state.value
+        val waiting = recording
+        if (!prepared && player == null && loadJob?.isActive != true && current.notDownloaded && waiting != null) {
+            // The chapter waits for its download: move where it will start once it is there.
+            val bounded = positionMs.coerceIn(0L, (current.durationMs - 1L).coerceAtLeast(0L))
+            val target = current.repeatWindow?.clamp(bounded) ?: bounded
+            publish(current.copy(positionMs = target, ayah = waiting.ayahAt(target)))
+            persistPosition()
+            return
+        }
         if (!prepared) { pendingSeekMs = positionMs.coerceAtLeast(0L); return }
         val media = player ?: return
         val bounded = positionMs.coerceIn(0L, (current.durationMs - 1L).coerceAtLeast(0L))

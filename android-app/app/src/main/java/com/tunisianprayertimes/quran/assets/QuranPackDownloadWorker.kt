@@ -31,12 +31,16 @@ class QuranPackDownloadWorker(context: Context, params: WorkerParameters) : Coro
         val installer = QuranPackInstaller(QuranAssets.cdnRoot(applicationContext))
         if (withContext(Dispatchers.IO) { installer.isInstalled(pack) }) return Result.success()
         // Longer than WorkManager's ten minutes on a slow connection: keep it in the foreground when allowed.
-        try {
+        // Android refuses that to work started in the background; the download then goes on without a
+        // notification, since an ongoing one of its own would outlive the work.
+        val foreground = try {
             setForeground(foregroundInfo(pack, 0L))
+            true
         } catch (error: CancellationException) {
             throw error
         } catch (error: Exception) {
             Log.w(TAG, "Downloading ${pack.name} without a foreground notification", error)
+            false
         }
         val downloaded = AtomicLong(0L)
         return try {
@@ -48,7 +52,7 @@ class QuranPackDownloadWorker(context: Context, params: WorkerParameters) : Coro
                         if (bytes != reported) {
                             reported = bytes
                             setProgress(workDataOf(KEY_BYTES to bytes, KEY_PHASE to PHASE_DOWNLOAD))
-                            notify(pack, bytes)
+                            if (foreground) notify(pack, bytes)
                         }
                         delay(PROGRESS_INTERVAL_MS)
                     }
