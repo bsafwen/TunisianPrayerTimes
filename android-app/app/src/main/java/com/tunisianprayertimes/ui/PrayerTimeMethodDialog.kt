@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -204,6 +205,7 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
     }
 
     MethodSection(stringResource(R.string.prayer_method_step_dhuhr_title), stringResource(R.string.prayer_method_step_dhuhr_body)) {
+        NoonShiftDiagram(location.longitude, explanation, steps.getValue(InmEvent.DHUHR))
         Formula(
             "noon = 12 + 1 − λ/15",
             "          − EoT/60",
@@ -219,6 +221,7 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
         stringResource(R.string.prayer_method_step_hour_angle_title),
         stringResource(R.string.prayer_method_step_hour_angle_body),
     ) {
+        HourAngleDial(explanation, names)
         Formula(
             "cos H = (sin a − sin φ·sin δ)",
             "        / (cos φ·cos δ)",
@@ -227,28 +230,37 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
     }
 
     val asr = steps.getValue(InmEvent.ASR)
+    // Taken from the two clock times shown, so noon + this reads exactly as Asr's exact time.
+    val asrAfterNoon = duration((floor(asr.exactMinutes * 60) - floor(noon * 60) + 0.5) / 60)
     MethodSection(stringResource(R.string.prayer_method_step_asr_title), stringResource(R.string.prayer_method_step_asr_body)) {
+        AsrShadowDiagram(location.latitude, explanation)
         Formula(
             "a = atan(1/(1 + tan|φ − δ|))",
             "  = atan(1/(1 + tan %.3f°))".us(abs(location.latitude - explanation.declinationDeg)),
             "  = %.3f°".us(explanation.asrAltitudeDeg),
-            "H = %.3f°  →  %s".us(asr.hourAngleDeg ?: 0.0, duration((asr.hourAngleDeg ?: 0.0) * 4)),
-            "t = ${clock(noon)} + ${duration((asr.hourAngleDeg ?: 0.0) * 4)}",
+            "H = %.3f°  →  %s".us(asr.hourAngleDeg ?: 0.0, asrAfterNoon),
+            "t = ${clock(noon)} + $asrAfterNoon",
         )
         EventResult(names.getValue(InmEvent.ASR), asr)
     }
 
     MethodSection(stringResource(R.string.prayer_method_step_horizon_title), stringResource(R.string.prayer_method_step_horizon_body)) {
         val sunriseDip = if (explanation.sunriseDipDeg != explanation.dipDeg) {
-            listOf("d(sunrise) = %.3f°".us(explanation.sunriseDipDeg))
+            // INM uses another elevation for this delegation's sunrise in some years.
+            listOfNotNull(
+                location.sunriseElevationOverrides[date.year]?.let { "h(sunrise) = %s m".us(it.toString()) },
+                "d(sunrise) = %.3f°".us(explanation.sunriseDipDeg),
+                "a(sunrise) = ${signed(steps.getValue(InmEvent.SUNRISE).altitudeDeg, 3)}°",
+            )
         } else {
             emptyList()
         }
+        SunriseDiagram(explanation, steps.getValue(InmEvent.MAGHRIB))
         Formula(
             *(listOf(
                 "d = acos(R / (R + h))",
                 "  = %.3f°   (R = 6378137 m)".us(explanation.dipDeg),
-                "a = −(0.83° + d) = %.3f°".us(steps.getValue(InmEvent.MAGHRIB).altitudeDeg),
+                "a = −(0.83° + d) = ${signed(steps.getValue(InmEvent.MAGHRIB).altitudeDeg, 3)}°",
             ) + sunriseDip).toTypedArray(),
         )
         EventResult(names.getValue(InmEvent.SUNRISE), steps.getValue(InmEvent.SUNRISE))
@@ -256,13 +268,15 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
     }
 
     MethodSection(stringResource(R.string.prayer_method_step_twilight_title), stringResource(R.string.prayer_method_step_twilight_body)) {
-        Formula("a = −(18° + d) = %.3f°".us(steps.getValue(InmEvent.FAJR).altitudeDeg))
+        TwilightDiagram(explanation, names)
+        Formula("a = −(18° + d) = ${signed(steps.getValue(InmEvent.FAJR).altitudeDeg, 3)}°")
         EventResult(names.getValue(InmEvent.FAJR), steps.getValue(InmEvent.FAJR))
         EventResult(names.getValue(InmEvent.ISHA), steps.getValue(InmEvent.ISHA))
         Text(stringResource(R.string.prayer_method_step_iteration_note), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
     }
 
     MethodSection(stringResource(R.string.prayer_method_step_rounding_title), stringResource(R.string.prayer_method_step_rounding_body)) {
+        RoundingDiagram(explanation.events, names)
         ResultTable(explanation.events, names)
     }
 
@@ -367,10 +381,15 @@ private fun ValueRow(label: String, value: String, valueStyle: TextStyle = LtrMo
 
 /**
  * One time's result: the prayer name with the exact and rounded time, and below it the hour
- * angle when it has one. Two short lines, so the name always keeps its width.
+ * angle when it has one. The time moves under the name when both don't fit on one line (narrow
+ * phones, large fonts), so the name is never squeezed into a letter per line.
  */
 @Composable
 private fun EventResult(name: String, step: InmEventStep) {
+    val nameStyle = TextStyle(fontSize = 14.sp, fontWeight = FontWeight.Bold, color = TextDark)
+    val valueStyle = LtrMonospace.copy(color = GreenPrimaryDark)
+    val value = "${clock(step.exactMinutes)} → ${hhmm(step.shownMinutes)}"
+    val measurer = rememberTextMeasurer()
     Column(
         Modifier
             .fillMaxWidth()
@@ -378,19 +397,26 @@ private fun EventResult(name: String, step: InmEventStep) {
             .padding(horizontal = 12.dp, vertical = 8.dp),
         verticalArrangement = Arrangement.spacedBy(2.dp),
     ) {
-        Row(
-            Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-        ) {
-            Text(name, fontSize = 14.sp, fontWeight = FontWeight.Bold, color = TextDark, modifier = Modifier.weight(1f))
-            Text(
-                "${clock(step.exactMinutes)} → ${hhmm(step.shownMinutes)}",
-                style = LtrMonospace,
-                color = GreenPrimaryDark,
-                softWrap = false,
-                maxLines = 1,
-            )
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val spacing = 12.dp
+            val oneLine = with(LocalDensity.current) {
+                measurer.measure(name, nameStyle).size.width + spacing.roundToPx() + measurer.measure(value, valueStyle).size.width
+            } <= constraints.maxWidth
+            if (oneLine) {
+                Row(
+                    Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(spacing),
+                ) {
+                    Text(name, style = nameStyle, modifier = Modifier.weight(1f))
+                    Text(value, style = valueStyle, softWrap = false, maxLines = 1)
+                }
+            } else {
+                Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+                    Text(name, style = nameStyle)
+                    Text(value, style = valueStyle, modifier = Modifier.align(Alignment.End))
+                }
+            }
         }
         step.hourAngleDeg?.let { angle ->
             Text(
@@ -405,9 +431,13 @@ private fun EventResult(name: String, step: InmEventStep) {
     }
 }
 
+/**
+ * Every time, exact and as shown. A three-column table when the longest name fits beside the two
+ * time columns; otherwise each time on two lines, so no name is ever squeezed.
+ */
 @Composable
 private fun ResultTable(events: List<InmEventStep>, names: Map<InmEvent, String>) {
-    Column(Modifier.fillMaxWidth()) {
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
         val measurer = rememberTextMeasurer()
         val density = LocalDensity.current
         val headerStyle = TextStyle(fontSize = 11.sp)
@@ -419,10 +449,31 @@ private fun ResultTable(events: List<InmEventStep>, names: Map<InmEvent, String>
         val shownTitle = stringResource(R.string.prayer_method_table_shown)
         val exactWidth = columnWidth("00:00:00", LtrMonospace, exactTitle)
         val shownWidth = columnWidth("00:00", LtrMonospace.copy(fontWeight = FontWeight.Bold), shownTitle)
-        TableRow(stringResource(R.string.prayer_method_table_prayer), exactTitle, shownTitle, exactWidth, shownWidth, header = true)
-        events.forEach { step ->
-            HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
-            TableRow(names.getValue(step.event), clock(step.exactMinutes), hhmm(step.shownMinutes), exactWidth, shownWidth)
+        val nameWidth = with(density) {
+            events.maxOf { measurer.measure(names.getValue(it.event), TextStyle(fontSize = 13.sp, fontWeight = FontWeight.Bold)).size.width }.toDp()
+        }
+        if (nameWidth + exactWidth + shownWidth <= maxWidth) {
+            Column(Modifier.fillMaxWidth()) {
+                TableRow(stringResource(R.string.prayer_method_table_prayer), exactTitle, shownTitle, exactWidth, shownWidth, header = true)
+                events.forEach { step ->
+                    HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
+                    TableRow(names.getValue(step.event), clock(step.exactMinutes), hhmm(step.shownMinutes), exactWidth, shownWidth)
+                }
+            }
+        } else {
+            Column(Modifier.fillMaxWidth()) {
+                events.forEachIndexed { index, step ->
+                    if (index > 0) HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
+                    Column(Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
+                        Text(names.getValue(step.event), fontSize = 13.sp, fontWeight = FontWeight.Bold, color = TextDark)
+                        Text(
+                            "${clock(step.exactMinutes)} → ${hhmm(step.shownMinutes)}",
+                            style = LtrMonospace.copy(color = GreenPrimaryDark),
+                            modifier = Modifier.align(Alignment.End),
+                        )
+                    }
+                }
+            }
         }
     }
 }
