@@ -304,13 +304,11 @@ internal fun QuranRecitationDownloadsSection(
             }
             else -> Unit
         }
-        val downloading = missing.any {
-            val status = media.state(it).status
-            status == QuranPackStatus.Pending || status == QuranPackStatus.Downloading || status == QuranPackStatus.Transferring
-        }
-        if (missing.isNotEmpty() && !downloading) {
+        // Shown exactly when it would fetch something: packs neither queued nor waiting (incl. failed ones).
+        val fetchable = missing.filterNot { media.state(it).active }
+        if (fetchable.isNotEmpty()) {
             OutlinedButton(onClick = onDownloadAll, modifier = Modifier.fillMaxWidth().testTag("quran_audio_download_all")) {
-                Text("تنزيل كل التلاوات (${quranSize(missing.sumOf { it.archive.bytes })})")
+                Text("تنزيل كل التلاوات (${quranSize(fetchable.sumOf { it.archive.bytes })})")
             }
         }
         val removable = packs.filter(media::downloaded)

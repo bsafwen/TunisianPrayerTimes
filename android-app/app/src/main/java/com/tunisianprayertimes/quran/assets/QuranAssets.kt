@@ -15,6 +15,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -142,8 +143,11 @@ private class PlayOrCdnPackSource(
 
     private val active: QuranPackSource get() = if (usePlay.value) play else cdn.value
 
-    override fun directory(pack: QuranPack): File? =
-        play.directory(pack) ?: cdnInstaller.installedDirectory(pack).takeIf { it.isDirectory }
+    // The active source's copy first, so that repairing a damaged copy never removes the other one.
+    override fun directory(pack: QuranPack): File? {
+        val fromWorker = { cdnInstaller.installedDirectory(pack).takeIf { it.isDirectory } }
+        return if (usePlay.value) play.directory(pack) ?: fromWorker() else fromWorker() ?: play.directory(pack)
+    }
 
     override fun fetch(packs: List<QuranPack>, allowMetered: Boolean) {
         if (!usePlay.value) return cdn.value.fetch(packs, allowMetered)
@@ -179,8 +183,12 @@ private class PlayOrCdnPackSource(
         val asked = askedOfPlay.toMap()
         askedOfPlay.clear()
         val delivered = play.states.value.filterValues { it.available }.keys
-        layout.packs.filter { it.name in asked && it.name !in delivered }
-            .groupBy { asked.getValue(it.name) }
-            .forEach { (allowMetered, packs) -> cdn.value.fetch(packs, allowMetered) }
+        val handover = layout.packs.filter { it.name in asked && it.name !in delivered }.groupBy { asked.getValue(it.name) }
+        scope.launch {
+            // The Worker's source decides how to queue from its states; wait until it has read them.
+            val worker = cdn.value
+            worker.states.first { it.isNotEmpty() }
+            handover.forEach { (allowMetered, packs) -> worker.fetch(packs, allowMetered) }
+        }
     }
 }

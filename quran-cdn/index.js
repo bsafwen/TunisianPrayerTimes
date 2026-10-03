@@ -40,7 +40,14 @@ export default {
       if (range !== null && requestedStart(range, head.size) >= head.size) {
         return new Response(null, { status: 416, headers: { "Content-Range": `bytes */${head.size}` } });
       }
-      return new Response(null, { status: 503, headers: { "Retry-After": "5" } });
+      // A Range or condition R2 cannot use is ignored, as HTTP says: serve the whole pack.
+      try {
+        object = await env.PACKS.get(key);
+      } catch {
+        return new Response(null, { status: 503, headers: { "Retry-After": "5" } });
+      }
+      if (object === null) return new Response("Not found", { status: 404 });
+      return new Response(object.body, { headers: packHeaders(object) });
     }
     if (object === null) return new Response("Not found", { status: 404 });
 

@@ -135,8 +135,10 @@ internal class QuranPackInstaller(private val root: File) {
         return target
     }
 
+    /** Callers cancel the pack's download first; a half-unpacked copy goes too. */
     fun remove(pack: QuranPack) {
         installedDirectory(pack).deleteRecursively()
+        File(root, "$INSTALLS/${installedDirectory(pack).name}").deleteRecursively()
         partialFile(pack).delete()
     }
 
