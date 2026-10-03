@@ -1,0 +1,9 @@
+name = "tunisian-quran-cdn"
+main = "index.js"
+compatibility_date = "2025-09-01"
+workers_dev = true
+
+# Read-only: the Worker only serves objects. scripts/quran_assets.py publish uploads them.
+[[r2_buckets]]
+binding = "PACKS"
+bucket_name = "tunisian-quran-assets"
