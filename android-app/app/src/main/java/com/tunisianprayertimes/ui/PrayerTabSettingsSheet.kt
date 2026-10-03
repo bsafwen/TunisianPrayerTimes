@@ -77,6 +77,7 @@ internal fun PrayerTabSettingsSheet(
     onCallEndVibrationChange: (Boolean) -> Unit,
     autoLocationEnabled: Boolean,
     onAutoLocationChange: (Boolean) -> Unit,
+    onShowPrayerTimeMethod: () -> Unit,
     onDismiss: () -> Unit,
 ) {
     ModalBottomSheet(
@@ -118,7 +119,44 @@ internal fun PrayerTabSettingsSheet(
                 onCheckedChange = onAutoLocationChange,
                 testTag = TestTags.AUTO_LOCATION_SWITCH,
             )
+            HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
+            PrayerTimeMethodRow(onClick = onShowPrayerTimeMethod)
         }
+    }
+}
+
+/** Opens [PrayerTimeMethodDialog], which shows how the prayer times are computed. */
+@Composable
+private fun PrayerTimeMethodRow(onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 56.dp)
+            .clickable(role = Role.Button, onClick = onClick)
+            .testTag(TestTags.PRAYER_TIME_METHOD_ROW)
+            .padding(vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
+    ) {
+        Column(Modifier.weight(1f)) {
+            Text(
+                text = stringResource(R.string.prayer_method_entry_title),
+                fontSize = 15.sp,
+                fontWeight = FontWeight.Bold,
+                color = TextDark,
+            )
+            Text(
+                text = stringResource(R.string.prayer_method_entry_subtitle),
+                fontSize = 12.sp,
+                color = PrayerSilencePalette.SecondaryText,
+            )
+        }
+        Icon(
+            painter = painterResource(R.drawable.ic_qibla_chevron),
+            contentDescription = null,
+            tint = PrayerSilencePalette.SecondaryText,
+            modifier = Modifier.size(20.dp),
+        )
     }
 }
 
