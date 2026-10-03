@@ -15,15 +15,16 @@ import java.util.UUID
 class QuranPackStatesTest {
     @Test
     fun playStatesMapToWhatTheReaderShows() {
-        assertEquals(QuranPackState(QuranPackStatus.Available, 50, 50), playPackState(AssetPackStatus.COMPLETED, 0, 50, 50, 100))
-        assertEquals(QuranPackState(QuranPackStatus.Downloading, 20, 50), playPackState(AssetPackStatus.DOWNLOADING, 0, 20, 50, 0))
-        assertEquals(QuranPackState(QuranPackStatus.Transferring, 25, 50), playPackState(AssetPackStatus.TRANSFERRING, 0, 50, 50, 50))
-        assertEquals(QuranPackStatus.WaitingForWifi, playPackState(AssetPackStatus.WAITING_FOR_WIFI, 0, 0, 300, 0).status)
-        assertEquals(QuranPackStatus.NeedsConfirmation, playPackState(AssetPackStatus.REQUIRES_USER_CONFIRMATION, 0, 0, 300, 0).status)
+        assertEquals(QuranPackState(QuranPackStatus.Available, 50, 50), playPackState(AssetPackStatus.COMPLETED, 0, 50, 50))
+        assertEquals(QuranPackState(QuranPackStatus.Downloading, 20, 50), playPackState(AssetPackStatus.DOWNLOADING, 0, 20, 50))
+        // Play has the whole pack; it is only unpacked now, so progress stays at 100%.
+        assertEquals(QuranPackState(QuranPackStatus.Transferring, 50, 50), playPackState(AssetPackStatus.TRANSFERRING, 0, 50, 50))
+        assertEquals(QuranPackStatus.WaitingForWifi, playPackState(AssetPackStatus.WAITING_FOR_WIFI, 0, 0, 300).status)
+        assertEquals(QuranPackStatus.NeedsConfirmation, playPackState(AssetPackStatus.REQUIRES_USER_CONFIRMATION, 0, 0, 300).status)
         for (absent in listOf(AssetPackStatus.NOT_INSTALLED, AssetPackStatus.CANCELED, AssetPackStatus.UNKNOWN)) {
-            assertEquals(QuranPackStatus.Missing, playPackState(absent, 0, 0, 50, 0).status)
+            assertEquals(QuranPackStatus.Missing, playPackState(absent, 0, 0, 50).status)
         }
-        val failed = playPackState(AssetPackStatus.FAILED, AssetPackErrorCode.INSUFFICIENT_STORAGE, 10, 50, 0)
+        val failed = playPackState(AssetPackStatus.FAILED, AssetPackErrorCode.INSUFFICIENT_STORAGE, 10, 50)
         assertEquals(QuranPackState(QuranPackStatus.Failed, 10, 50, QuranDownloadProblem.Storage), failed)
     }
 

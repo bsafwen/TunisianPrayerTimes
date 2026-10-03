@@ -378,7 +378,8 @@ private fun QuranPageImage(
     var size by remember { mutableStateOf(IntSize.Zero) }
     var scale by remember(page.number) { mutableFloatStateOf(1f) }
     var offset by remember(page.number) { mutableStateOf(Offset.Zero) }
-    LaunchedEffect(page.assetPath, attempt, pagesReady) {
+    val currentPagesReady by rememberUpdatedState(pagesReady)
+    LaunchedEffect(page.assetPath, attempt) {
         if (bitmap != null) return@LaunchedEffect
         failed = false
         missing = false
@@ -394,13 +395,15 @@ private fun QuranPageImage(
                 }
             }
             // Pages said to be on the device but not found is a failure the reader can retry.
-            if (decoded == null) { if (pagesReady) failed = true else missing = true } else bitmap = decoded
+            if (decoded == null) { if (currentPagesReady) failed = true else missing = true } else bitmap = decoded
         } catch (e: CancellationException) {
             throw e
         } catch (_: Exception) {
             failed = true
         }
     }
+    // The pages arrived after this one was found missing: read it again.
+    LaunchedEffect(pagesReady, missing) { if (pagesReady && missing) attempt++ }
     LaunchedEffect(bitmap, failed, missing, active) { if (bitmap != null || failed || missing) currentOnSettled() }
     LaunchedEffect(active) { if (!active) { scale = 1f; offset = Offset.Zero } }
     LaunchedEffect(scale, active) { if (active) onZoomChanged(scale > 1.01f) }

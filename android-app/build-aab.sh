@@ -17,8 +17,9 @@ fi
 
 # The bundle carries the Quran packs; fetch any that are not staged yet (cached after the first time).
 if [[ -f quran-assets/manifest.tsv ]]; then
-    PYTHON=$(command -v python3 || command -v python) || { echo "✗ Python 3 is needed to stage the Quran packs." >&2; exit 1; }
-    "$PYTHON" ../scripts/quran_assets.py stage
+    source ../scripts/find-python.sh
+    find_python || exit 1
+    "${PYTHON[@]}" ../scripts/quran_assets.py stage
 fi
 
 echo "Building release AAB ($SIGNING_LABEL)..."

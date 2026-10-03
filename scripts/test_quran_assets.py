@@ -206,6 +206,32 @@ class EndToEndTest(unittest.TestCase):
         self.assertEqual(0, code, output)
         self.assertFalse(partial.exists())
 
+    def test_a_download_cut_short_is_kept_and_resumed(self):
+        target = self.repo / 'cache' / 'pack.zip'
+        target.parent.mkdir()
+        body = bytes(range(256)) * 400
+
+        class CutShort(QuietHandler):
+            # Promises the whole file, then closes after the first half.
+            def do_GET(self):
+                if self.refused():
+                    return
+                self.send_response(200)
+                self.send_header('Content-Length', str(len(body)))
+                self.end_headers()
+                self.wfile.write(body[:len(body) // 2])
+                self.wfile.flush()
+                self.close_connection = True
+
+        server = http.server.ThreadingHTTPServer(('127.0.0.1', 0), CutShort)
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+        self.addCleanup(server.server_close)
+        self.addCleanup(server.shutdown)
+        with self.assertRaises(assets.Incomplete):
+            assets.download(f'http://127.0.0.1:{server.server_address[1]}/pack.zip', target, len(body))
+        self.assertFalse(target.exists())
+        self.assertEqual(len(body) // 2, (target.parent / 'pack.zip.part').stat().st_size)
+
     def test_check_finds_a_changed_local_file(self):
         self.layout()
         code, _ = self.run_command('check', '--from-dir', str(self.media / 'audio'), '--from-dir', str(self.media / 'pages'))
