@@ -51,6 +51,7 @@ Fetches daily prayer times for **every delegation in Tunisia** from the [Institu
 │   └── data/             # Audio segments, metadata, text references
 ├── qaloon-app/           # Qaloon recitation Android app (Kotlin + C++ Whisper)
 ├── worker/               # Cloudflare Worker — mawaqit proxy + contributions API
+├── quran-cdn/            # Cloudflare Worker — serves the Quran media packs from R2
 ├── .github/workflows/    # CI/CD (ingest, release, android-tests, desktop-tests)
 ├── release.sh            # Local release: bump version, build, tag, publish
 └── fix.sh                # RTL/LTR layout fixer for Android XML layouts
@@ -103,8 +104,29 @@ Requires Android SDK and JDK 17+.
 ```bash
 cd android-app
 ./gradlew assembleRelease    # Build APK
-./gradlew bundleRelease      # Build AAB for Play Store
+./gradlew bundleRelease      # Build AAB for Play Store (stage the Quran packs first, see below)
 ```
+
+#### Quran pages and recitations
+
+The mushaf page scans and Al-Husary's Qaloun recitation (about 2.4 GB) are in neither git nor
+the base app. `scripts/quran_assets.py` groups them into packs, described by
+`android-app/quran-assets/manifest.tsv` and the app asset `quran/packs.json`, with one Gradle
+module per pack under `android-app/quran-packs/`:
+
+- Google Play installs receive the packs through Play Asset Delivery when the reader needs them.
+- Other installs (the GitHub APK, Android Studio runs) download the same packs from the
+  [`quran-cdn`](quran-cdn/README.md) Worker.
+
+```bash
+python3 scripts/quran_assets.py stage   # fetch every pack into android-app/quran-packs (cached in ~/.cache/quran-assets)
+cd android-app
+./gradlew bundleRelease                 # ~2.4 GB AAB; refuses to run until every pack is staged
+./test-asset-packs.sh                   # install with locally served packs (bundletool --local-testing)
+```
+
+`assembleRelease` builds the APK without any pack. The AAB is too large for GitHub Releases, so
+`release.sh` builds it locally and you upload it to the Play Console yourself.
 
 **Key capabilities:**
 - Auto-silence / Do Not Disturb during prayer times
@@ -188,11 +210,11 @@ Four GitHub Actions workflows automate the project:
 | Workflow | Trigger | Purpose |
 |----------|---------|---------|
 | `ingest.yml` | Jan 1 yearly + manual | Fetch prayer data for the new year, commit CSVs |
-| `release.yml` | Tag push (`v*`) | Build Android APK/AAB + desktop installers (macOS/Windows/Linux), publish GitHub Release |
+| `release.yml` | Push to `main` with a `v…` commit message | Build the Android APK + desktop installers (macOS/Windows/Linux), publish GitHub Release |
 | `android-tests.yml` | Push / PR | Unit tests (Robolectric) + instrumented tests on emulator (API 26/30/33/34) |
 | `desktop-tests.yml` | Push / PR | Desktop build verification |
 
-Local releases can also be created with `./release.sh "description"`, which bumps the version, builds all artifacts, tags, and publishes.
+Releases are created with `./release.sh "description"`, which bumps the version, builds the Play bundle locally, tags, and pushes; CI then publishes the APK and desktop installers.
 
 ---
 

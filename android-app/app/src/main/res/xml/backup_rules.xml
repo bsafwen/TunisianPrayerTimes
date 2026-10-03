@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 11 and earlier. Everything is backed up as before, except the Quran packs that
+     Play Asset Delivery downloads: they would push the backup past its 25 MB limit, and Play
+     restores them itself. Packs from the quran-cdn Worker live in noBackupFilesDir. -->
+<full-backup-content>
+    <exclude domain="file" path="assetpacks" />
+</full-backup-content>

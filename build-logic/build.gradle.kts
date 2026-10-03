@@ -19,5 +19,13 @@ gradlePlugin {
             id = "tunisianprayertimes.bundled-data"
             implementationClass = "com.tunisianprayertimes.buildlogic.BundledDataPlugin"
         }
+        create("quranAssets") {
+            id = "tunisianprayertimes.quran-assets"
+            implementationClass = "com.tunisianprayertimes.buildlogic.QuranAssetsPlugin"
+        }
+        create("quranAssetPack") {
+            id = "tunisianprayertimes.quran-asset-pack"
+            implementationClass = "com.tunisianprayertimes.buildlogic.QuranAssetPackPlugin"
+        }
     }
 }
