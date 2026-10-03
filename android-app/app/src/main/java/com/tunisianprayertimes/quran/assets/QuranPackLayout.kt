@@ -11,12 +11,13 @@ data class QuranPackFile(val path: String, val bytes: Long)
 data class QuranPackArchive(val key: String, val bytes: Long, val sha256: String)
 
 /**
- * Media the base app does not carry: Google Play delivers each pack through Play Asset Delivery,
- * and installs from elsewhere download the same pack's archive from the quran-cdn Worker.
+ * Media the base app does not carry. Every install can download a pack's archive from the
+ * quran-cdn Worker; Google Play also delivers [Delivery.Play] packs to Play installs.
  */
 data class QuranPack(
     val name: String,
     val kind: Kind,
+    val delivery: Delivery,
     /** For recitations: whose, and which consecutive chapters. */
     val reciterId: String?,
     val surahs: IntRange?,
@@ -25,6 +26,13 @@ data class QuranPack(
     val files: List<QuranPackFile>,
 ) {
     enum class Kind { Pages, Audio }
+
+    enum class Delivery {
+        /** A Play Asset Delivery pack in the bundle: the page scans and the first ten reciters. */
+        Play,
+        /** Only the quran-cdn Worker serves it, on Play installs too. */
+        Cdn,
+    }
 }
 
 /** quran/packs.json, written by scripts/quran_assets.py layout. */
@@ -36,6 +44,9 @@ class QuranPackLayout(
     private val byPath = packs.flatMap { pack -> pack.files.map { it.path to pack } }.toMap()
 
     val pages: QuranPack? = packs.firstOrNull { it.kind == QuranPack.Kind.Pages }
+
+    /** The same layout limited to the packs Google Play delivers. */
+    fun playPacks(): QuranPackLayout = QuranPackLayout(cdn, packs.filter { it.delivery == QuranPack.Delivery.Play })
 
     fun packOf(assetPath: String): QuranPack? = byPath[assetPath]
 
@@ -80,6 +91,11 @@ class QuranPackLayout(
                         "pages" -> QuranPack.Kind.Pages
                         "audio" -> QuranPack.Kind.Audio
                         else -> error("Unknown Quran pack kind $kind")
+                    },
+                    delivery = when (val delivery = item.optString("delivery", "play")) {
+                        "play" -> QuranPack.Delivery.Play
+                        "cdn" -> QuranPack.Delivery.Cdn
+                        else -> error("Unknown Quran pack delivery $delivery")
                     },
                     reciterId = item.optString("reciterId").takeIf { it.isNotEmpty() },
                     surahs = range?.let { it.getInt(0)..it.getInt(1) },

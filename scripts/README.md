@@ -249,14 +249,23 @@ The scraping approach extracts **text from HTML pages** using basic tag strippin
 # Quran Media Packs
 
 [`quran_assets.py`](quran_assets.py) builds, publishes and stages the packs that carry the
-mushaf page scans and the recitations outside git and the base app (standard library only):
+mushaf page scans and the recitations outside git and the base app (standard library only;
+`convert` also needs ffmpeg):
 
 | Command | Purpose |
 |---------|---------|
-| `layout --from-dir … --cdn …` | Hash the media, group it into packs, write the committed layout and pack modules |
+| `convert --from-dir … --to …` | Re-encode one reciter's recordings as 64 kbps mono MP3 at a constant bitrate; keep the output, it is what the layout records |
+| `layout --from-dir … --cdn …` | Hash the media, group it into packs, write the committed layout and the Play pack modules |
 | `publish` | Upload the pack archives the [`quran-cdn`](../quran-cdn/README.md) Worker does not serve yet |
-| `stage [--from-dir …]` | Put every pack's files where `bundleRelease` packages them |
+| `stage [--from-dir …]` | Put every Play pack's files where `bundleRelease` packages them |
 | `check --from-dir …` | Confirm local media matches the layout byte for byte |
-| `fetch-origin --to …` | Download the original recordings listed in the manifest |
+| `fetch-origin --to …` | Download the recordings the recitations were converted from |
+
+The page scans and the first ten reciters are Play Asset Delivery packs (9 per reciter, split as
+evenly as consecutive surahs allow), so a bundle stays under Play's 100 packs; the Worker serves
+them too. Later reciters get ~30 MB packs that only the Worker serves. A reciter keeps where an
+earlier layout put it, since moving it would rename its packs. When several reciters are laid out
+together, keep each one's files in a folder named after its folder under `quran/audio/`
+(`hosary/001.mp3`, …).
 
 Tests: `python3 -m unittest scripts/test_quran_assets.py`.

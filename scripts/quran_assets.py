@@ -2,31 +2,37 @@
 """Builds, publishes and stages the Quran media packs.
 
 The recitations and mushaf page scans never go into git or the base app. They are
-grouped into packs: Google Play serves the packs through Play Asset Delivery, and the
-quran-cdn Worker serves the same packs from R2 to installs that did not come from Play.
+grouped into packs, which the quran-cdn Worker serves from R2. Google Play also serves the
+page scans and the first ten reciters' packs through Play Asset Delivery to Play installs;
+later reciters come from the Worker on every install.
 
+    convert  re-encode recordings as 64 kbps mono MP3 at a constant bitrate (needs ffmpeg).
     layout   (once, or whenever the media changes) hash the media, group surahs into
              packs, build one deterministic zip per pack and write the committed layout:
              android-app/quran-assets/manifest.tsv, the app asset quran/packs.json and one
-             android-app/quran-packs/<pack>/build.gradle.kts per pack.
+             android-app/quran-packs/<pack>/build.gradle.kts per Play pack.
     publish  upload the zips that the CDN does not serve yet (needs CLOUDFLARE_API_TOKEN and
              CLOUDFLARE_ACCOUNT_ID; the token needs Workers R2 Storage: Edit).
-    stage    put every pack's files in android-app/quran-packs/<pack>/src/main/assets so
+    stage    put every Play pack's files in android-app/quran-packs/<pack>/src/main/assets so
              bundleRelease can package them; downloads from the CDN unless --from-dir.
     check    confirm local folders hold exactly the bytes the layout describes.
-    fetch-origin  download the original recordings listed in the manifest.
+    fetch-origin  download the recordings the recitations were converted from.
 
-Only the standard library is used, so this runs the same way on Windows, macOS and CI.
+Only the standard library is used, so this runs the same way on Windows, macOS and CI;
+convert alone also needs ffmpeg.
 """
 from __future__ import annotations
 
 import argparse
+import concurrent.futures
 import hashlib
 import http.client
 import json
 import os
+import re
 import shutil
 import socket
+import subprocess
 import time
 import sys
 import tempfile
@@ -51,11 +57,20 @@ MAX_UPLOAD_BYTES = 300 * 1024 * 1024
 DEFAULT_CACHE = Path.home() / '.cache' / 'quran-assets'
 
 MB = 1_000_000
+# Packs of reciters only the Worker serves: small, so starting a surah downloads little.
 TARGET_PACK_BYTES = 30 * MB
 # Play asks for consent before downloading more than 200 MB over mobile data.
 MAX_PACK_BYTES = 200 * MB
-# A bundle holds at most 100 asset packs; one of them is the pages pack.
-MAX_AUDIO_PACKS = 99
+# A bundle holds at most 100 asset packs: the pages pack, then 9 per Play reciter for the first
+# 10 reciters. Later reciters are served by the Worker alone, on Play installs too.
+MAX_PLAY_PACKS = 100
+PLAY_RECITERS = 10
+PLAY_PACKS_PER_RECITER = 9
+PLAY, CDN = 'play', 'cdn'
+# Half the size of mp3quran's 128 kbps stereo files with no audible loss on these old tape
+# recordings, and constant: Android seeks to a verse exactly only in constant-bitrate MP3.
+AUDIO_KBPS = 64
+PACK_NAME = re.compile(r'[a-z][a-z0-9_]*')
 PAGES_PACK = 'quran_pages'
 ARCHIVE_PREFIX = 'v1/packs/'
 DOWNLOAD_TRIES = 5
@@ -82,6 +97,7 @@ class Asset:
     bytes: int
     sha256: str
     origin: str = '-'
+    delivery: str = PLAY
 
 
 def sha256_of(path: Path) -> str:
@@ -108,6 +124,80 @@ def group_surahs(sizes: list[int], target: int = TARGET_PACK_BYTES, limit: int =
     if current:
         packs.append(current)
     return packs
+
+
+def split_surahs(sizes: list[int], count: int, limit: int = MAX_PACK_BYTES) -> list[list[int]]:
+    """At most [count] packs of consecutive surahs, as even as can be: the largest is as small as possible."""
+    low, high = max(sizes), sum(sizes)
+    while low < high:
+        middle = (low + high) // 2
+        if len(group_surahs(sizes, middle, limit)) <= count:
+            high = middle
+        else:
+            low = middle + 1
+    return group_surahs(sizes, low, limit)
+
+
+def assign_deliveries(reciters: list[str], previous: dict[str, str]) -> dict[str, str]:
+    """Google Play for the first PLAY_RECITERS reciters laid out, the Worker for the rest.
+
+    Reciters new to this layout fill the free Play places in [reciters] order (their folder names).
+
+    A reciter keeps what an earlier layout gave it: moving one would rename its packs and make
+    everyone who downloaded it download it again.
+    """
+    kept = {reciter: previous[reciter] for reciter in reciters if reciter in previous}
+    free = PLAY_RECITERS - list(kept.values()).count(PLAY)
+    deliveries = {}
+    for reciter in reciters:
+        if reciter in kept:
+            deliveries[reciter] = kept[reciter]
+        elif free > 0:
+            deliveries[reciter] = PLAY
+            free -= 1
+        else:
+            deliveries[reciter] = CDN
+    return deliveries
+
+
+MPEG1_LAYER3_KBPS = (0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320)
+
+
+def mp3_format(path: Path) -> tuple[int, bool, bool] | None:
+    """(kbps, mono, constant bitrate) from an MPEG-1 Layer III file's first frame; None for anything else."""
+    with path.open('rb') as stream:
+        tag = stream.read(10)
+        if len(tag) == 10 and tag[:3] == b'ID3':
+            size = (tag[6] & 0x7f) << 21 | (tag[7] & 0x7f) << 14 | (tag[8] & 0x7f) << 7 | tag[9] & 0x7f
+            stream.seek(10 + size + (10 if tag[5] & 0x10 else 0))
+        else:
+            stream.seek(0)
+        data = stream.read(8192)
+    for i in range(len(data) - 3):
+        # Frame sync, MPEG-1, Layer III; then a valid bitrate and sample rate.
+        if data[i] != 0xFF or data[i + 1] & 0xFE != 0xFA:
+            continue
+        bitrate, rate = data[i + 2] >> 4, (data[i + 2] >> 2) & 3
+        if not 0 < bitrate < 15 or rate == 3:
+            continue
+        # Encoders announce a variable bitrate in a Xing or VBRI header inside the first frame.
+        first_frame = data[i:i + 200]
+        return MPEG1_LAYER3_KBPS[bitrate], data[i + 3] >> 6 == 3, b'Xing' not in first_frame and b'VBRI' not in first_frame
+    return None
+
+
+def is_recitation_format(path: Path) -> bool:
+    return mp3_format(path) == (AUDIO_KBPS, True, True)
+
+
+def check_recitation_format(path: Path) -> None:
+    if is_recitation_format(path):
+        return
+    found = mp3_format(path)
+    described = 'not an MPEG-1 Layer III file' if found is None else \
+        f"{found[0]} kbps {'mono' if found[1] else 'stereo'}{'' if found[2] else ' at a variable bitrate'}"
+    raise LayoutError(f'{path} is {described}; recitations are {AUDIO_KBPS} kbps mono at a constant bitrate. '
+                      f'Convert them first: quran_assets.py convert --from-dir <originals> --to <folder>')
 
 
 def safe_member(name: str) -> str:
@@ -167,17 +257,19 @@ def read_manifest(path: Path | None = None) -> list[Asset]:
     for line in path.read_text(encoding='utf-8').splitlines():
         if not line or line.startswith('#') or line.startswith('pack\t'):
             continue
-        pack, asset_path, size, digest, origin = line.split('\t')
-        rows.append(Asset(pack, asset_path, int(size), digest, origin))
+        pack, asset_path, size, digest, origin, *delivery = line.split('\t')
+        rows.append(Asset(pack, asset_path, int(size), digest, origin, *delivery))
     return rows
 
 
 def write_manifest(assets: list[Asset], path: Path | None = None) -> None:
     path = path or MANIFEST
     path.parent.mkdir(parents=True, exist_ok=True)
+    # origin: the recording a recitation was converted from. delivery: play packs are also
+    # Play Asset Delivery modules; cdn packs come from the quran-cdn Worker alone.
     lines = ['# Quran media packs. Generated by scripts/quran_assets.py layout; do not edit by hand.',
-             'pack\tpath\tbytes\tsha256\torigin']
-    lines += [f'{a.pack}\t{a.path}\t{a.bytes}\t{a.sha256}\t{a.origin}' for a in assets]
+             'pack\tpath\tbytes\tsha256\torigin\tdelivery']
+    lines += [f'{a.pack}\t{a.path}\t{a.bytes}\t{a.sha256}\t{a.origin}\t{a.delivery}' for a in assets]
     path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
@@ -190,6 +282,17 @@ def read_layout(path: Path | None = None) -> dict:
 
 def archive_url(layout: dict, pack: dict) -> str:
     return layout['cdn'].rstrip('/') + '/' + pack['archive']['key']
+
+
+def delivery_of(pack: dict) -> str:
+    return pack.get('delivery', PLAY)
+
+
+def previous_deliveries() -> dict[str, str]:
+    """Each reciter's delivery in the layout being replaced; empty for the first layout."""
+    if not LAYOUT_JSON.exists():
+        return {}
+    return {pack['reciterId']: delivery_of(pack) for pack in read_layout()['packs'] if pack['kind'] == 'audio'}
 
 
 def recitations() -> list[dict]:
@@ -214,10 +317,14 @@ def page_paths() -> list[str]:
 
 
 class LocalFiles:
-    """Finds media by file name in folders and zip files (zips are extracted to a temp folder)."""
+    """Finds media by file name in folders and zip files (zips are extracted to a temp folder).
+
+    Reciters share file names (001.mp3 …): when several files have the name, the one in a folder
+    named like the asset's (quran/audio/hosary/001.mp3 → …/hosary/001.mp3) is used.
+    """
 
     def __init__(self, sources: list[Path]):
-        self.by_name: dict[str, Path] = {}
+        self.by_name: dict[str, list[Path]] = {}
         self.temp = tempfile.TemporaryDirectory(prefix='quran-assets-')
         for source in sources:
             if source.is_file() and source.suffix.lower() == '.zip':
@@ -235,13 +342,22 @@ class LocalFiles:
                 raise LayoutError(f'{source} is neither a folder nor a zip file')
             for file in source.rglob('*'):
                 if file.is_file():
-                    self.by_name.setdefault(file.name, file)
+                    found = self.by_name.setdefault(file.name, [])
+                    if all(file.resolve() != known.resolve() for known in found):
+                        found.append(file)
 
     def find(self, asset_path: str) -> Path:
-        name = PurePosixPath(asset_path).name
-        if name not in self.by_name:
-            raise LayoutError(f'No local file named {name} (for {asset_path})')
-        return self.by_name[name]
+        path = PurePosixPath(asset_path)
+        candidates = self.by_name.get(path.name, [])
+        if not candidates:
+            raise LayoutError(f'No local file named {path.name} (for {asset_path})')
+        if len(candidates) == 1:
+            return candidates[0]
+        in_folder = [c for c in candidates if c.parent.name == path.parent.name]
+        if len(in_folder) != 1:
+            raise LayoutError(f'{len(candidates)} local files are named {path.name}: put each reciter\'s files '
+                              f'in a folder named after it ({path.parent.name}/ for {asset_path})')
+        return in_folder[0]
 
     def close(self) -> None:
         self.temp.cleanup()
@@ -262,30 +378,42 @@ def command_layout(args: argparse.Namespace) -> None:
                 source = files.find(asset_path)
                 sources[asset_path] = source
                 size = source.stat().st_size
-                assets.append(Asset(name, asset_path, size, sha256_of(source), origin_of(asset_path)))
+                assets.append(Asset(name, asset_path, size, sha256_of(source), origin_of(asset_path), extra['delivery']))
                 entries.append({'path': asset_path, 'bytes': size})
             packs.append({'name': name, 'kind': kind, **extra, 'bytes': sum(e['bytes'] for e in entries), 'files': entries})
 
         pages = page_paths()
-        add_pack(PAGES_PACK, 'pages', pages, {}, lambda _: '-')
-        for recitation in recitations():
+        add_pack(PAGES_PACK, 'pages', pages, {'delivery': PLAY}, lambda _: '-')
+        found = recitations()
+        deliveries = assign_deliveries([r['reciterId'] for r in found], previous_deliveries())
+        for recitation in found:
             folder = recitation['folder']
+            if not PACK_NAME.fullmatch(folder):
+                raise LayoutError(f'Reciter folder {folder!r} must be lowercase letters, digits and underscores')
+            delivery = deliveries[recitation['reciterId']]
             pattern = ORIGINS.get(folder)
-            sizes = [files.find(p).stat().st_size for p in recitation['paths']]
-            groups = group_surahs(sizes, int(args.target_mb * MB))
-            if len(groups) > MAX_AUDIO_PACKS:
-                raise LayoutError(f'{len(groups)} packs for {folder}; raise --target-mb')
+            recordings = [files.find(p) for p in recitation['paths']]
+            for recording in recordings:
+                check_recitation_format(recording)
+            sizes = [recording.stat().st_size for recording in recordings]
+            if delivery == PLAY:
+                groups = split_surahs(sizes, PLAY_PACKS_PER_RECITER)
+            else:
+                groups = group_surahs(sizes, int(args.target_mb * MB))
             for index, surahs in enumerate(groups, start=1):
                 add_pack(f'quran_{folder}_{index:02d}', 'audio',
                          [recitation['paths'][n - 1] for n in surahs],
-                         {'reciterId': recitation['reciterId'], 'surahs': [surahs[0], surahs[-1]]},
+                         {'delivery': delivery, 'reciterId': recitation['reciterId'], 'surahs': [surahs[0], surahs[-1]]},
                          lambda p: pattern.format(name=PurePosixPath(p).name) if pattern else '-')
-        if len(packs) > MAX_AUDIO_PACKS + 1:
-            raise LayoutError(f'{len(packs)} packs exceed the 100-pack limit of an app bundle')
+            print(f"  {recitation['reciterId']}: {'Google Play and the Worker' if delivery == PLAY else 'the Worker only'}, "
+                  f"{len(groups)} pack{'' if len(groups) == 1 else 's'}, {sum(sizes) / MB:.0f} MB")
+        play_packs = [p['name'] for p in packs if p['delivery'] == PLAY]
+        if len(play_packs) > MAX_PLAY_PACKS:
+            raise LayoutError(f'{len(play_packs)} Play packs exceed the {MAX_PLAY_PACKS}-pack limit of an app bundle')
 
         BUILD.mkdir(parents=True, exist_ok=True)
         for pack in packs:
-            if pack['bytes'] >= MAX_PACK_BYTES:
+            if pack['delivery'] == PLAY and pack['bytes'] >= MAX_PACK_BYTES:
                 print(f"! {pack['name']} is {pack['bytes'] / MB:.0f} MB: Play asks before using mobile data", file=sys.stderr)
             archive = BUILD / f"{pack['name']}.zip"
             digest = build_archive([(e['path'], sources[e['path']]) for e in pack['files']], archive)
@@ -298,7 +426,7 @@ def command_layout(args: argparse.Namespace) -> None:
         layout = {'version': 1, 'cdn': args.cdn.rstrip('/') + '/', 'packs': packs}
         LAYOUT_JSON.write_text(json.dumps(layout, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
         write_manifest(assets)
-        write_pack_modules([p['name'] for p in packs])
+        write_pack_modules(play_packs)
         print(f'✓ {len(packs)} packs, {sum(a.bytes for a in assets) / MB:.0f} MB. Archives in {BUILD.relative_to(REPO)}')
     finally:
         files.close()
@@ -461,8 +589,9 @@ def command_stage(args: argparse.Namespace) -> None:
     manifest = {a.path: a for a in read_manifest()}
     files = LocalFiles([Path(p) for p in args.from_dir]) if args.from_dir else None
     try:
+        # Only Play packs go into the bundle; the Worker alone serves the others.
         for pack in layout['packs']:
-            if wanted and pack['name'] not in wanted:
+            if delivery_of(pack) != PLAY or wanted and pack['name'] not in wanted:
                 continue
             if is_staged(pack):
                 continue
@@ -493,7 +622,7 @@ def command_stage(args: argparse.Namespace) -> None:
     finally:
         if files:
             files.close()
-    print('✓ Every pack is staged for bundleRelease')
+    print('✓ Every Play pack is staged for bundleRelease')
 
 
 def command_check(args: argparse.Namespace) -> None:
@@ -519,30 +648,92 @@ def command_check(args: argparse.Namespace) -> None:
 
 
 def command_fetch_origin(args: argparse.Namespace) -> None:
+    """Downloads the recordings the recitations were converted from. The layout records the
+    converted files, so these cannot be checked against it: convert them, then use check."""
     target = Path(args.to)
     target.mkdir(parents=True, exist_ok=True)
     for asset in read_manifest():
         if asset.origin == '-':
             continue
         path = target / PurePosixPath(asset.path).name
-        if path.exists() and path.stat().st_size == asset.bytes and sha256_of(path) == asset.sha256:
+        if path.exists():  # download() only names a file once all of it arrived.
             continue
         print(f'  {path.name}')
-        download(asset.origin, path, asset.bytes)
-        if sha256_of(path) != asset.sha256:
-            raise LayoutError(f'{asset.origin} no longer serves the bytes in the layout')
-    print(f'✓ Originals in {target}')
+        download(asset.origin, path)
+    print(f'✓ Originals in {target}. Next: quran_assets.py convert --from-dir {target} --to <folder>')
+
+
+def convert_recording(ffmpeg: str, source: Path, target: Path) -> None:
+    """Writes [source] to [target] as AUDIO_KBPS mono MP3 at a constant bitrate, with no tags or cover art.
+
+    One ffmpeg gives the same bytes every time; another version may not, so keep the converted
+    files: the layout records them, not the originals.
+    """
+    partial = target.with_name(target.name + '.part')
+    if is_recitation_format(source):  # Already converted: a second encoding would only lose quality.
+        shutil.copyfile(source, partial)
+    else:
+        command = [ffmpeg, '-nostdin', '-hide_banner', '-loglevel', 'error', '-y', '-i', str(source),
+                   '-map', '0:a:0', '-map_metadata', '-1', '-ac', '1', '-c:a', 'libmp3lame', '-b:a', f'{AUDIO_KBPS}k',
+                   '-id3v2_version', '0', '-fflags', '+bitexact', '-flags:a', '+bitexact', '-f', 'mp3', str(partial)]
+        result = subprocess.run(command, capture_output=True, text=True, errors='replace')
+        if result.returncode != 0:
+            partial.unlink(missing_ok=True)
+            raise LayoutError(f'ffmpeg could not convert {source}: {result.stderr.strip()[-500:]}')
+    if not is_recitation_format(partial):
+        partial.unlink()
+        raise LayoutError(f'Converting {source} did not give {AUDIO_KBPS} kbps mono MP3')
+    partial.replace(target)
+
+
+def command_convert(args: argparse.Namespace) -> None:
+    ffmpeg = shutil.which('ffmpeg')
+    if not ffmpeg:
+        raise LayoutError('convert needs ffmpeg on the PATH. On Windows: winget install Gyan.FFmpeg, then open a new terminal')
+    target = Path(args.to)
+    files = LocalFiles([Path(p) for p in args.from_dir])
+    try:
+        mp3s = {name: paths for name, paths in files.by_name.items() if name.lower().endswith('.mp3')}
+        if not mp3s:
+            raise LayoutError('No MP3 files in ' + ', '.join(args.from_dir))
+        if any(len(paths) > 1 for paths in mp3s.values()):
+            raise LayoutError('Several recordings share a file name: convert one reciter at a time')
+        recordings = sorted((name, paths[0]) for name, paths in mp3s.items())
+        target.mkdir(parents=True, exist_ok=True)
+        if any((target / name).resolve() == path.resolve() for name, path in recordings):
+            raise LayoutError('--to must be another folder: converting in place would overwrite the originals')
+        # A file already in the target format was finished by an earlier run.
+        todo = [(path, target / name) for name, path in recordings
+                if not ((target / name).exists() and is_recitation_format(target / name))]
+        with concurrent.futures.ThreadPoolExecutor(max_workers=args.jobs) as pool:
+            done = {pool.submit(convert_recording, ffmpeg, source, out): (source, out) for source, out in todo}
+            for future in concurrent.futures.as_completed(done):
+                future.result()
+                source, out = done[future]
+                print(f'  {out.name}: {source.stat().st_size / MB:.1f} MB → {out.stat().st_size / MB:.1f} MB')
+        before = sum(path.stat().st_size for _, path in recordings)
+        after = sum((target / name).stat().st_size for name, _ in recordings)
+        print(f'✓ {len(recordings)} recordings in {target}: {before / MB:.0f} MB → {after / MB:.0f} MB')
+    finally:
+        files.close()
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     commands = parser.add_subparsers(dest='command', required=True)
 
+    convert = commands.add_parser('convert', help=f're-encode recordings as {AUDIO_KBPS} kbps mono MP3 (needs ffmpeg)')
+    convert.add_argument('--from-dir', action='append', required=True, help='folder or zip of original MP3s (repeatable)')
+    convert.add_argument('--to', required=True, help='folder for the converted MP3s; keep it, layout reads it')
+    convert.add_argument('--jobs', type=int, default=os.cpu_count() or 1, help='recordings converted at once')
+    convert.set_defaults(run=command_convert)
+
     layout = commands.add_parser('layout', help='hash media, group packs, build zips, write the layout')
     layout.add_argument('--from-dir', action='append', required=True,
                         help='folder or zip holding the MP3s or page scans (repeatable)')
     layout.add_argument('--cdn', required=True, help='base URL of the quran-cdn Worker')
-    layout.add_argument('--target-mb', type=float, default=TARGET_PACK_BYTES / MB)
+    layout.add_argument('--target-mb', type=float, default=TARGET_PACK_BYTES / MB,
+                        help='pack size for reciters only the Worker serves')
     layout.set_defaults(run=command_layout)
 
     publish = commands.add_parser('publish', help='upload pack zips the CDN does not serve yet')
@@ -550,7 +741,7 @@ def main(argv: list[str] | None = None) -> int:
     publish.add_argument('--force', action='store_true', help='upload even if the CDN already serves the key')
     publish.set_defaults(run=command_publish)
 
-    stage = commands.add_parser('stage', help='put pack files where bundleRelease packages them')
+    stage = commands.add_parser('stage', help='put Play pack files where bundleRelease packages them')
     stage.add_argument('--cache', default=str(DEFAULT_CACHE))
     stage.add_argument('--no-cache', action='store_true', help='delete each archive after extracting it')
     stage.add_argument('--from-dir', action='append', help='use local folders or zips instead of the CDN')
@@ -562,7 +753,7 @@ def main(argv: list[str] | None = None) -> int:
     check.add_argument('--only-present', action='store_true', help='ignore layout files the folders lack')
     check.set_defaults(run=command_check)
 
-    fetch = commands.add_parser('fetch-origin', help='download the original recordings in the manifest')
+    fetch = commands.add_parser('fetch-origin', help='download the recordings the recitations were converted from')
     fetch.add_argument('--to', required=True)
     fetch.set_defaults(run=command_fetch_origin)
 

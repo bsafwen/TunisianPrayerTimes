@@ -45,7 +45,7 @@ class QuranDownloadsTest {
     }
 
     private fun pack(name: String, kind: QuranPack.Kind, surahs: IntRange? = null, bytes: Long = 30_000_000L) = QuranPack(
-        name, kind, if (kind == QuranPack.Kind.Audio) "hosary-qaloun" else null, surahs, bytes,
+        name, kind, QuranPack.Delivery.Play, if (kind == QuranPack.Kind.Audio) "hosary-qaloun" else null, surahs, bytes,
         QuranPackArchive("v1/packs/$name-0123456789ab.zip", bytes, "0".repeat(64)), listOf(QuranPackFile("quran/x/$name", bytes)),
     )
 
