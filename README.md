@@ -109,19 +109,22 @@ cd android-app
 
 #### Quran pages and recitations
 
-The mushaf page scans and Al-Husary's Qaloun recitation (about 2.4 GB) are in neither git nor
-the base app. `scripts/quran_assets.py` groups them into packs, described by
-`android-app/quran-assets/manifest.tsv` and the app asset `quran/packs.json`, with one Gradle
-module per pack under `android-app/quran-packs/`:
+The mushaf page scans and the recitations are in neither git nor the base app. Recitations are
+64 kbps mono MP3 at a constant bitrate (Al-Husary's Qaloun recitation is about 1.1 GB), made from
+the published recordings by `scripts/quran_assets.py convert`. The script groups the media into
+packs, described by `android-app/quran-assets/manifest.tsv` and the app asset `quran/packs.json`:
 
-- Google Play installs receive the packs through Play Asset Delivery when the reader needs them.
-- Other installs (the GitHub APK, Android Studio runs) download the same packs from the
-  [`quran-cdn`](quran-cdn/README.md) Worker.
+- The page scans and the first ten reciters (9 packs each) are Play Asset Delivery packs, one
+  Gradle module each under `android-app/quran-packs/`. Google Play installs receive them through
+  Play when the reader needs them.
+- The [`quran-cdn`](quran-cdn/README.md) Worker serves every pack. Installs from elsewhere (the
+  GitHub APK, Android Studio runs) download all of them from it; Play installs download only the
+  reciters after the tenth from it.
 
 ```bash
-python3 scripts/quran_assets.py stage   # fetch every pack into android-app/quran-packs (cached in ~/.cache/quran-assets)
+python3 scripts/quran_assets.py stage   # fetch every Play pack into android-app/quran-packs (cached in ~/.cache/quran-assets)
 cd android-app
-./gradlew bundleRelease                 # ~2.4 GB AAB; refuses to run until every pack is staged
+./gradlew bundleRelease                 # the AAB carries every Play pack; refuses to run until they are staged
 ./test-asset-packs.sh                   # install with locally served packs (bundletool --local-testing)
 ```
 
