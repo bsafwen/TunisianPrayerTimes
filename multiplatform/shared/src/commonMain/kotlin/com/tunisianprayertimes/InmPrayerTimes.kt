@@ -35,7 +35,8 @@ class InmPrayerTimes(private val locations: Map<Int, InmLocation>) {
         return InmPrayerFormula.dayPrayerTimes(location, year, month, day)
     }
 
-    private fun location(delegationId: Int, year: Int): InmLocation? =
+    /** The delegation's formula inputs for [year], or null when it has no data that year. */
+    fun location(delegationId: Int, year: Int): InmLocation? =
         if (year in SUPPORTED_YEARS) locations[delegationId] else null
 
     companion object {

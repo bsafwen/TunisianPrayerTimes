@@ -65,8 +65,8 @@ object InmPrayerFormula {
     private const val ITERATIONS = 5
 
     fun dayPrayerTimes(location: InmLocation, year: Int, month: Int, day: Int): DayPrayerTimes {
-        val (fajr, sunrise, dhuhr, asr, maghrib, isha) = minutes(location, year, month, day)
-            .map { floor(it + 0.5).toInt() }
+        val (fajr, sunrise, dhuhr, asr, maghrib, isha) = explain(location, year, month, day).events
+            .map { it.shownMinutes }
         fun time(prayer: Prayer, minutes: Int) = PrayerTime(prayer, minutes / 60, minutes % 60)
         return DayPrayerTimes(
             day = day,
@@ -81,24 +81,60 @@ object InmPrayerFormula {
     }
 
     /** Unrounded minutes after local midnight: Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha. */
-    fun minutes(location: InmLocation, year: Int, month: Int, day: Int): List<Double> {
+    fun minutes(location: InmLocation, year: Int, month: Int, day: Int): List<Double> =
+        explain(location, year, month, day).events.map { it.exactMinutes }
+
+    /**
+     * The whole computation for one day with its intermediate values, so the app can show
+     * users the working behind each time. [minutes] is derived from it, so the two never drift.
+     */
+    fun explain(location: InmLocation, year: Int, month: Int, day: Int): InmDayExplanation {
         val jd0 = julianDay(year, month, day)
         val lat = location.latitude
         val lng = location.longitude
         val (decl0, eot0) = sun(jd0)
         val noon = 12 - eot0 / 60 - lng / 15 + TIME_ZONE_HOURS
         val asrAltitude = atan(1 / (1 + tan(abs(lat - decl0) * DEG))) / DEG
-        val asr = noon + hourAngle(asrAltitude, lat, decl0)
+        val asrHourAngle = hourAngle(asrAltitude, lat, decl0)
         val dip = dipFromElevation(location.elevationM)
         val sunriseDip = location.sunriseElevationOverrides[year]?.let(::dipFromElevation) ?: dip
-        return listOf(
-            horizonEvent(jd0, lat, lng, -(TWILIGHT_ANGLE + dip), -1) * 60,
-            horizonEvent(jd0, lat, lng, -(HORIZON_ANGLE + sunriseDip), -1) * 60,
-            noon * 60 + DHUHR_OFFSET_MIN,
-            asr * 60,
-            horizonEvent(jd0, lat, lng, -(HORIZON_ANGLE + dip), 1) * 60 + MAGHRIB_OFFSET_MIN,
-            horizonEvent(jd0, lat, lng, -(TWILIGHT_ANGLE + dip), 1) * 60,
+        val fajr = horizonEvent(jd0, lat, lng, -(TWILIGHT_ANGLE + dip), -1)
+        val sunrise = horizonEvent(jd0, lat, lng, -(HORIZON_ANGLE + sunriseDip), -1)
+        val maghrib = horizonEvent(jd0, lat, lng, -(HORIZON_ANGLE + dip), 1)
+        val isha = horizonEvent(jd0, lat, lng, -(TWILIGHT_ANGLE + dip), 1)
+        fun step(event: InmEvent, altitude: Double, hourAngleHours: Double?, exactMinutes: Double) =
+            InmEventStep(event, altitude, hourAngleHours?.let { it * 15 }, exactMinutes, floor(exactMinutes + 0.5).toInt())
+        return InmDayExplanation(
+            julianDay = jd0,
+            declinationDeg = decl0,
+            equationOfTimeMin = eot0,
+            solarNoonMinutes = noon * 60,
+            dipDeg = dip,
+            sunriseDipDeg = sunriseDip,
+            asrAltitudeDeg = asrAltitude,
+            events = listOf(
+                step(InmEvent.FAJR, -(TWILIGHT_ANGLE + dip), fajr.hourAngle, fajr.localHours * 60),
+                step(InmEvent.SUNRISE, -(HORIZON_ANGLE + sunriseDip), sunrise.hourAngle, sunrise.localHours * 60),
+                step(InmEvent.DHUHR, 90 - abs(lat - decl0), null, noon * 60 + DHUHR_OFFSET_MIN),
+                step(InmEvent.ASR, asrAltitude, asrHourAngle, (noon + asrHourAngle) * 60),
+                step(InmEvent.MAGHRIB, -(HORIZON_ANGLE + dip), maghrib.hourAngle, maghrib.localHours * 60 + MAGHRIB_OFFSET_MIN),
+                step(InmEvent.ISHA, -(TWILIGHT_ANGLE + dip), isha.hourAngle, isha.localHours * 60),
+            ),
         )
+    }
+
+    /**
+     * The sun's altitude in degrees at [localMinutes] after local midnight (UTC+1), with the
+     * same sun model the times use. For drawing the sun's path, not for computing times.
+     */
+    fun sunAltitudeDeg(location: InmLocation, year: Int, month: Int, day: Int, localMinutes: Double): Double {
+        val localHours = localMinutes / 60
+        val (decl, eot) = sun(julianDay(year, month, day) + (localHours - TIME_ZONE_HOURS) / 24)
+        val noon = 12 - eot / 60 - location.longitude / 15 + TIME_ZONE_HOURS
+        val hourAngle = (localHours - noon) * 15
+        val lat = location.latitude
+        val sinAltitude = sin(lat * DEG) * sin(decl * DEG) + cos(lat * DEG) * cos(decl * DEG) * cos(hourAngle * DEG)
+        return asin(sinAltitude.coerceIn(-1.0, 1.0)) / DEG
     }
 
     /** Julian day at 0h UT of a Gregorian civil date. */
@@ -145,16 +181,47 @@ object InmPrayerFormula {
         return acos(cosH.coerceIn(-1.0, 1.0)) / DEG / 15
     }
 
-    /** Local time in hours; [sign] -1 = morning, +1 = evening. */
-    private fun horizonEvent(jd0: Double, lat: Double, lng: Double, altitude: Double, sign: Int): Double {
+    private class HorizonEvent(val localHours: Double, val hourAngle: Double)
+
+    /** Local time in hours, with the final hour angle in hours; [sign] -1 = morning, +1 = evening. */
+    private fun horizonEvent(jd0: Double, lat: Double, lng: Double, altitude: Double, sign: Int): HorizonEvent {
         var (decl, eot) = sun(jd0)
         repeat(ITERATIONS) {
             val next = sun(jd0 + (12 + sign * hourAngle(altitude, lat, decl)) / 24)
             decl = next.first
             eot = next.second
         }
-        return 12 + sign * hourAngle(altitude, lat, decl) - eot / 60 - lng / 15 + TIME_ZONE_HOURS
+        val hourAngle = hourAngle(altitude, lat, decl)
+        return HorizonEvent(12 + sign * hourAngle - eot / 60 - lng / 15 + TIME_ZONE_HOURS, hourAngle)
     }
 
     private operator fun <T> List<T>.component6(): T = this[5]
 }
+
+/** The six times INM publishes, in the order of the day. */
+enum class InmEvent { FAJR, SUNRISE, DHUHR, ASR, MAGHRIB, ISHA }
+
+/**
+ * How one time was reached: the sun [altitudeDeg] that defines it (for Dhuhr, the noon
+ * altitude), the hour angle from solar noon (null for Dhuhr), and the minutes after local
+ * midnight before and after rounding.
+ */
+data class InmEventStep(
+    val event: InmEvent,
+    val altitudeDeg: Double,
+    val hourAngleDeg: Double?,
+    val exactMinutes: Double,
+    val shownMinutes: Int,
+)
+
+/** One day's computation with the intermediate values [InmPrayerFormula.explain] used. */
+data class InmDayExplanation(
+    val julianDay: Double,
+    val declinationDeg: Double,
+    val equationOfTimeMin: Double,
+    val solarNoonMinutes: Double,
+    val dipDeg: Double,
+    val sunriseDipDeg: Double,
+    val asrAltitudeDeg: Double,
+    val events: List<InmEventStep>,
+)
