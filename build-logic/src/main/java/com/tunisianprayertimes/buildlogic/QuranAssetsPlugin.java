@@ -21,7 +21,7 @@ import org.gradle.api.tasks.TaskProvider;
  * Ships the Quran's large media as Play Asset Delivery packs instead of base-module assets.
  * The packs come from android-app/quran-assets/manifest.tsv (scripts/quran_assets.py layout):
  * <ul>
- *   <li>the app declares every pack;</li>
+ *   <li>the app declares every pack scripts/quran_assets.py stage has filled;</li>
  *   <li>{@code verifyQuranPacks} stops bundleRelease when a pack's files were not staged, or when
  *       media still sits in the base module's assets;</li>
  *   <li>{@code check<Variant>QuranBundle} reads the finished bundle and fails if any media reached
@@ -38,8 +38,14 @@ public class QuranAssetsPlugin implements Plugin<Project> {
             List<String> packs = packs(manifest.getAsFile());
             if (packs.isEmpty()) return;
 
+            // Packs not staged yet stay out of the bundle: debug builds download them from the CDN, and
+            // verifyQuranPacks stops a release bundle until every pack is staged.
             ApplicationExtension android = project.getExtensions().getByType(ApplicationExtension.class);
-            for (String pack : packs) android.getAssetPacks().add(":" + pack);
+            for (String pack : packs) {
+                if (root.file("quran-packs/" + pack + "/src/.staged").getAsFile().isFile()) {
+                    android.getAssetPacks().add(":" + pack);
+                }
+            }
 
             TaskProvider<VerifyQuranPacks> verify = project.getTasks().register("verifyQuranPacks", VerifyQuranPacks.class, task -> {
                 task.setGroup("verification");
