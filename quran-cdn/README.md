@@ -44,7 +44,8 @@ CLOUDFLARE_API_TOKEN=… CLOUDFLARE_ACCOUNT_ID=… python3 scripts/quran_assets.
 ```
 
 `layout` rewrites `android-app/quran-assets/manifest.tsv`, `quran/packs.json` and the pack
-modules; commit them. `publish` uploads only the archives the CDN does not serve yet.
+modules; commit them. `publish` uploads only the archives the CDN does not serve yet, through
+Cloudflare's R2 API: it needs Python alone, not Node or wrangler.
 
 Changing which files a pack holds makes Play users download that pack again, so keep the layout
 stable once it has shipped. The token needs *Workers R2 Storage: Edit* to publish and

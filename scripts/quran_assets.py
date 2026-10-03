@@ -9,7 +9,8 @@ quran-cdn Worker serves the same packs from R2 to installs that did not come fro
              packs, build one deterministic zip per pack and write the committed layout:
              android-app/quran-assets/manifest.tsv, the app asset quran/packs.json and one
              android-app/quran-packs/<pack>/build.gradle.kts per pack.
-    publish  upload the zips that the CDN does not serve yet (needs wrangler + API token).
+    publish  upload the zips that the CDN does not serve yet (needs CLOUDFLARE_API_TOKEN and
+             CLOUDFLARE_ACCOUNT_ID; the token needs Workers R2 Storage: Edit).
     stage    put every pack's files in android-app/quran-packs/<pack>/src/main/assets so
              bundleRelease can package them; downloads from the CDN unless --from-dir.
     check    confirm local folders hold exactly the bytes the layout describes.
@@ -26,7 +27,6 @@ import json
 import os
 import shutil
 import socket
-import subprocess
 import time
 import sys
 import tempfile
@@ -45,7 +45,9 @@ LAYOUT_JSON = BASE_ASSETS / 'quran' / 'packs.json'
 MANIFEST = ANDROID / 'quran-assets' / 'manifest.tsv'
 BUILD = ANDROID / 'quran-assets' / 'build'
 PACKS_ROOT = ANDROID / 'quran-packs'
-WORKER_DIR = REPO / 'quran-cdn'
+CLOUDFLARE_API = 'https://api.cloudflare.com/client/v4'
+# The R2 API takes uploads of up to 300 MiB in one request.
+MAX_UPLOAD_BYTES = 300 * 1024 * 1024
 DEFAULT_CACHE = Path.home() / '.cache' / 'quran-assets'
 
 MB = 1_000_000
@@ -325,11 +327,34 @@ def served_size(url: str) -> int | None:
         raise
 
 
+def upload(account: str, token: str, bucket: str, key: str, path: Path) -> None:
+    """Uploads one archive through Cloudflare's R2 API, which needs nothing but Python."""
+    size = path.stat().st_size
+    if size > MAX_UPLOAD_BYTES:
+        raise LayoutError(f'{path.name} is {size / MB:.0f} MB, over the R2 API upload limit; lower --target-mb')
+    url = f'{CLOUDFLARE_API}/accounts/{account}/r2/buckets/{bucket}/objects/{key}'
+    headers = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/zip',
+               'Content-Length': str(size), 'User-Agent': USER_AGENT}
+    with path.open('rb') as body:
+        request = urllib.request.Request(url, data=body, method='PUT', headers=headers)
+        try:
+            with urllib.request.urlopen(request, timeout=300) as response:
+                result = json.load(response)
+        except urllib.error.HTTPError as error:
+            try:
+                result = json.load(error)
+            except ValueError:
+                result = {'errors': [f'HTTP {error.code}']}
+    if not result.get('success'):
+        raise LayoutError(f'Cloudflare refused {key}: {result.get("errors")}')
+
+
 def command_publish(args: argparse.Namespace) -> None:
     layout = read_layout()
-    wrangler = shutil.which('npx')
-    if wrangler is None:
-        raise LayoutError('npx (Node.js) is needed to run wrangler')
+    account = os.environ.get('CLOUDFLARE_ACCOUNT_ID')
+    token = os.environ.get('CLOUDFLARE_API_TOKEN')
+    if not account or not token:
+        raise LayoutError('Set CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN to publish')
     for pack in layout['packs']:
         archive = pack['archive']
         url = archive_url(layout, pack)
@@ -340,9 +365,10 @@ def command_publish(args: argparse.Namespace) -> None:
         if not local.exists() or sha256_of(local) != archive['sha256']:
             raise LayoutError(f'{local.relative_to(REPO)} is missing or stale; run layout with the same media')
         print(f"  {pack['name']}: uploading {archive['bytes'] / MB:.1f} MB")
-        subprocess.run([wrangler, 'wrangler', 'r2', 'object', 'put', f"{args.bucket}/{archive['key']}",
-                        '--file', str(local), '--content-type', 'application/zip', '--remote'],
-                       cwd=WORKER_DIR, check=True)
+        upload(account, token, args.bucket, archive['key'], local)
+        # The CDN must now serve exactly this archive.
+        if served_size(url) != archive['bytes']:
+            raise LayoutError(f"{url} does not serve the uploaded {pack['name']}")
     print('✓ Every pack is published')
 
 
@@ -547,7 +573,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         args.run(args)
-    except (LayoutError, OSError, subprocess.CalledProcessError) as error:
+    except (LayoutError, OSError) as error:
         print(f'✗ {error}', file=sys.stderr)
         return 1
     return 0
