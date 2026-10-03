@@ -209,6 +209,7 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
             meaning = stringResource(R.string.prayer_method_sun_decl_meaning),
             diagram = {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    SeasonShadowPair(location.latitude)
                     EarthTiltDiagram(location.latitude, delegationName)
                     DeclinationDiagram(location.latitude, sunYear)
                     DeclinationYearChart(sunYear, date, explanation.declinationDeg)

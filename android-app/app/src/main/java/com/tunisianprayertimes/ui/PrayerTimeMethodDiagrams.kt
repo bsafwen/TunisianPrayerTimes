@@ -327,6 +327,105 @@ internal class SunYear(year: Int) {
     }
 }
 
+/**
+ * Step 1, what everyone sees: noon on the first day of summer and on the first day of winter,
+ * side by side. The sun stands high and a person's shadow is short in summer; the sun stays low
+ * and the shadow is long in winter. The sun's height is the real one for this latitude.
+ */
+@Composable
+internal fun SeasonShadowPair(latitude: Double) {
+    val seasons = listOf(
+        Triple(stringResource(R.string.prayer_method_season_summer), stringResource(R.string.prayer_method_season_summer_note), MAX_DECLINATION),
+        Triple(stringResource(R.string.prayer_method_season_winter), stringResource(R.string.prayer_method_season_winter_note), -MAX_DECLINATION),
+    )
+    val shadowLabel = stringResource(R.string.prayer_method_season_shadow)
+    fun noonAltitude(decl: Double) = 90 - latitude + decl
+    val description = stringResource(
+        R.string.prayer_method_season_description,
+        "%.0f°".format(Locale.US, noonAltitude(MAX_DECLINATION)),
+        "%.0f°".format(Locale.US, noonAltitude(-MAX_DECLINATION)),
+    )
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+
+    BoxWithConstraints(Modifier.fillMaxWidth()) {
+        val width = constraints.maxWidth.toFloat()
+        fun px(dp: Dp) = with(density) { dp.toPx() }
+        val gap = px(10.dp)
+        val panel = (width - gap) / 2
+        val titleLayouts = seasons.map { measurer.measure(it.first, LabelStyle.copy(fontWeight = FontWeight.Bold, color = PrayerSilencePalette.PrimaryText)) }
+        val noteLayouts = seasons.map {
+            measurer.measure(it.second, LabelStyle.copy(color = TextMuted, textAlign = TextAlign.Center), constraints = Constraints(maxWidth = panel.toInt()))
+        }
+        val shadowLayout = measurer.measure(shadowLabel, LabelStyle.copy(color = TextMuted))
+        val angleLayouts = seasons.map { measurer.measure("%.0f°".format(Locale.US, noonAltitude(it.third)), NumberStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold)) }
+        val person = px(40.dp)
+        val sunRadius = px(8.dp)
+        val sunReach = px(34.dp)
+        val titleHeight = titleLayouts.maxOf { it.size.height }
+        val skyTop = titleHeight + px(6.dp)
+        // Room above the person for the summer sun, which stands nearly overhead.
+        val ground = skyTop + sunRadius + px(4.dp) + sunReach * sin(Math.toRadians(noonAltitude(MAX_DECLINATION))).toFloat() + person
+        val groundLabelTop = ground + px(5.dp)
+        val notesTop = groundLabelTop + shadowLayout.size.height + px(6.dp)
+        val height = notesTop + noteLayouts.maxOf { it.size.height } + px(2.dp)
+
+        LeftToRight {
+            Canvas(
+                Modifier
+                    .fillMaxWidth()
+                    .height(with(density) { height.toDp() })
+                    .semantics { contentDescription = description },
+            ) {
+                seasons.forEachIndexed { i, (_, _, decl) ->
+                    val left = i * (panel + gap)
+                    val altitude = Math.toRadians(noonAltitude(decl))
+                    // The person stands right of centre; the shadow falls away from the sun, to the left.
+                    val personX = left + panel * 0.62f
+                    val head = Offset(personX, ground - person)
+                    val shadowTip = Offset(personX - person / tan(altitude).toFloat(), ground)
+                    val sun = Offset(head.x + sunReach * cos(altitude).toFloat(), head.y - sunReach * sin(altitude).toFloat())
+
+                    drawRect(DayFill, Offset(left, skyTop), Size(panel, ground - skyTop))
+                    drawRect(GroundFill, Offset(left, ground), Size(panel, 3.dp.toPx()))
+                    drawText(titleLayouts[i], topLeft = Offset(left + (panel - titleLayouts[i].size.width) / 2, 0f))
+
+                    // Sunlight past the head to the tip of the shadow, and the shadow itself.
+                    drawLine(PrayerSilencePalette.GoldAccent, sun, shadowTip, 1.5.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(5.dp.toPx(), 4.dp.toPx())))
+                    drawCircle(PrayerSilencePalette.GoldAccent, sunRadius, sun)
+                    drawLine(PrayerSilencePalette.PrimaryText.copy(alpha = 0.45f), shadowTip, Offset(personX, ground), 5.dp.toPx())
+                    // The person: a head and a body.
+                    drawLine(PrayerSilencePalette.PrimaryText, Offset(personX, ground), Offset(personX, head.y + 7.dp.toPx()), 3.dp.toPx(), StrokeCap.Round)
+                    drawCircle(PrayerSilencePalette.PrimaryText, 5.dp.toPx(), Offset(personX, head.y + 4.dp.toPx()))
+
+                    // The sun's height above the horizon, as the angle at the tip of the shadow.
+                    val arcRadius = minOf(px(18.dp), (personX - shadowTip.x) * 0.9f)
+                    drawArc(
+                        color = PrayerSilencePalette.GoldAccent,
+                        startAngle = -Math.toDegrees(altitude).toFloat(),
+                        sweepAngle = Math.toDegrees(altitude).toFloat(),
+                        useCenter = false,
+                        topLeft = Offset(shadowTip.x - arcRadius, ground - arcRadius),
+                        size = Size(2 * arcRadius, 2 * arcRadius),
+                        style = Stroke(1.5.dp.toPx()),
+                    )
+                    // The value left of the shadow's tip, where neither the ray nor the person is.
+                    drawText(
+                        angleLayouts[i],
+                        topLeft = Offset(
+                            (shadowTip.x - 4.dp.toPx() - angleLayouts[i].size.width).coerceAtLeast(left),
+                            ground - angleLayouts[i].size.height - 2.dp.toPx(),
+                        ),
+                    )
+
+                    drawText(shadowLayout, topLeft = Offset(((shadowTip.x + personX) / 2 - shadowLayout.size.width / 2f).coerceIn(left, left + panel - shadowLayout.size.width), groundLabelTop))
+                    drawText(noteLayouts[i], topLeft = Offset(left + (panel - noteLayouts[i].size.width) / 2, notesTop))
+                }
+            }
+        }
+    }
+}
+
 /** "δ = −3.88°", the minus sign the formulas use and an explicit plus. */
 private fun deltaText(declination: Double): String =
     "δ = " + (if (declination < 0) "−" else "+") + "%.2f°".format(Locale.US, abs(declination))
