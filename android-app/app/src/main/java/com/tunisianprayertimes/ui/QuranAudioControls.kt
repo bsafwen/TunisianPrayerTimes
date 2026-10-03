@@ -1,5 +1,7 @@
 package com.tunisianprayertimes.ui
 
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.IntentSenderRequest
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -33,6 +35,7 @@ import com.tunisianprayertimes.quran.QuranVerseReference
 import com.tunisianprayertimes.quran.audio.QuranAudioController
 import com.tunisianprayertimes.quran.audio.QuranPlaybackState
 import com.tunisianprayertimes.quran.audio.QuranRepeatRange
+import com.tunisianprayertimes.quran.assets.QuranPackStatus
 import com.tunisianprayertimes.ui.theme.BgCream
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
@@ -41,7 +44,7 @@ import java.util.Locale
 
 /** Playback belongs to the service; the reader only observes it and issues explicit controls. */
 @Composable
-fun QuranAudioControls(
+internal fun QuranAudioControls(
     /** Null while the text index is still being read; recitation cannot be chosen before it. */
     catalog: QuranCatalog?,
     currentPage: Int,
@@ -49,6 +52,11 @@ fun QuranAudioControls(
     onFollow: () -> Unit,
     /** Opens the repeat sheet on these verses. */
     onRepeat: (QuranRepeatRange) -> Unit,
+    /** Null while the pack layout is read. */
+    media: QuranMedia?,
+    /** Downloads what a recitation needs before starting it. */
+    starter: QuranRecitationStarter,
+    mobileData: ActivityResultLauncher<IntentSenderRequest>,
     modifier: Modifier = Modifier,
 ) {
     val context = LocalContext.current
@@ -58,22 +66,37 @@ fun QuranAudioControls(
         ?: QuranAudioController.reciters.first()
     val currentSurah = catalog?.surahs?.firstOrNull { it.number == playback.surah }
     var expanded by rememberSaveable { mutableStateOf(false) }
+    // A recitation waiting for its chapters to download, and how that download is going.
+    val pending = starter.pendingPacks
+    val download = media?.takeIf { pending.isNotEmpty() }?.summary(pending)
+    val downloadProgress = media?.takeIf { pending.isNotEmpty() }?.progress(pending)
+    val downloading = download?.active == true && download.status != QuranPackStatus.WaitingForWifi &&
+        download.status != QuranPackStatus.NeedsConfirmation
 
     fun playPause() {
+        val surah = playback.surah
+        val repeat = playback.repeat
         when {
             playback.playing -> QuranAudioController.pause(context)
-            playback.surah != null && playback.error == null -> {
-                QuranAudioController.resume(context)
+            surah != null && playback.error == null -> {
+                // A chapter that was not on the device continues once it is downloaded.
+                starter.start(playback.reciterId, repeat?.let { it.from.surah..it.to.surah } ?: surah..surah) {
+                    QuranAudioController.resume(context)
+                }
                 onFollow()
             }
-            playback.surah != null -> {
+            surah != null -> {
                 // A repetition goes on from where it stopped, in the same pass.
-                if (playback.repeat != null) QuranAudioController.resume(context)
-                else QuranAudioController.play(context, playback.reciterId, playback.surah!!, playback.ayah)
+                starter.start(playback.reciterId, repeat?.let { it.from.surah..it.to.surah } ?: surah..surah) {
+                    if (repeat != null) QuranAudioController.resume(context)
+                    else QuranAudioController.play(context, playback.reciterId, surah, playback.ayah)
+                }
                 onFollow()
             }
             firstVerse != null -> {
-                QuranAudioController.play(context, playback.reciterId, firstVerse.surah, firstVerse.ayah.takeIf { it > 1 })
+                starter.start(playback.reciterId, firstVerse.surah..firstVerse.surah) {
+                    QuranAudioController.play(context, playback.reciterId, firstVerse.surah, firstVerse.ayah.takeIf { it > 1 })
+                }
                 onFollow()
             }
         }
@@ -85,6 +108,7 @@ fun QuranAudioControls(
                 playback = playback,
                 enabled = playback.surah != null || firstVerse != null,
                 onClick = ::playPause,
+                downloading = downloading,
                 modifier = Modifier.testTag("quran_audio_play_pause"),
             )
             Column(
@@ -94,8 +118,13 @@ fun QuranAudioControls(
             ) {
                 Text(
                     when {
+                        download?.status == QuranPackStatus.Failed -> quranDownloadProblemText(download.problem)
+                        download?.status == QuranPackStatus.WaitingForWifi -> "التلاوة بانتظار شبكة Wi-Fi"
+                        download?.status == QuranPackStatus.NeedsConfirmation -> "يحتاج تنزيل التلاوة إلى تأكيد"
+                        download != null -> "جارٍ تنزيل التلاوة… ${quranPercent(downloadProgress ?: 0f)}"
                         playback.loading -> "جارٍ تحميل التلاوة…"
                         playback.error != null -> "تعذّر تشغيل التلاوة"
+                        playback.notDownloaded && currentSurah != null -> "سورة ${currentSurah.name} غير محمّلة · اضغط للتنزيل"
                         currentSurah != null -> "${currentSurah.name} · ${audioVerseLabel(playback.ayah)}"
                         catalog == null -> "جارٍ تجهيز التلاوة…"
                         firstVerse == null -> "خيارات التلاوة"
@@ -109,7 +138,13 @@ fun QuranAudioControls(
                     maxLines = 1, overflow = TextOverflow.Ellipsis, fontSize = 10.sp, color = TextMuted,
                 )
             }
-            if (playback.surah != null && !following) {
+            if (download?.status == QuranPackStatus.WaitingForWifi || download?.status == QuranPackStatus.NeedsConfirmation) {
+                TextButton(
+                    onClick = { media?.source?.confirmMobileData(pending, mobileData) },
+                    contentPadding = PaddingValues(horizontal = 8.dp),
+                    modifier = Modifier.testTag("quran_audio_bar_mobile_data"),
+                ) { Text(if (download.status == QuranPackStatus.WaitingForWifi) "بيانات الجوال" else "متابعة", fontSize = 11.sp) }
+            } else if (playback.surah != null && !following) {
                 TextButton(onClick = onFollow, contentPadding = PaddingValues(horizontal = 8.dp)) { Text("متابعة", fontSize = 11.sp) }
             }
             IconButton(onClick = { expanded = true }, enabled = catalog != null, modifier = Modifier.testTag("quran_audio_options")) {
@@ -126,6 +161,10 @@ fun QuranAudioControls(
             playback = playback,
             firstVerse = firstVerse,
             following = following,
+            media = media,
+            starter = starter,
+            mobileData = mobileData,
+            downloading = downloading,
             onFollow = onFollow,
             onPlayPause = ::playPause,
             onRepeat = {
@@ -146,6 +185,10 @@ private fun QuranAudioSheet(
     playback: QuranPlaybackState,
     firstVerse: QuranVerse?,
     following: Boolean,
+    media: QuranMedia?,
+    starter: QuranRecitationStarter,
+    mobileData: ActivityResultLauncher<IntentSenderRequest>,
+    downloading: Boolean,
     onFollow: () -> Unit,
     onPlayPause: () -> Unit,
     onRepeat: () -> Unit,
@@ -178,7 +221,9 @@ private fun QuranAudioSheet(
 
     fun startSelection() {
         if (!validVerse) return
-        QuranAudioController.play(context, playback.reciterId, chosenSurah, verseNumber!!.takeIf { it > 1 })
+        val surah = chosenSurah
+        val verse = verseNumber!!.takeIf { it > 1 }
+        starter.start(playback.reciterId, surah..surah) { QuranAudioController.play(context, playback.reciterId, surah, verse) }
         onFollow()
         onDismiss()
     }
@@ -222,6 +267,20 @@ private fun QuranAudioSheet(
                         }
                     }
                 }
+                if (media != null) {
+                    QuranRecitationDownloadsSection(
+                        media = media,
+                        reciterId = playback.reciterId,
+                        // Wi-Fi first: over mobile data the listener is asked before the whole recitation is fetched.
+                        onDownloadAll = { media.fetch(media.layout?.audioPacks(playback.reciterId).orEmpty(), allowMetered = false) },
+                        onUseMobileData = { packs -> media.source?.confirmMobileData(packs, mobileData) },
+                        onDelete = { packs ->
+                            QuranAudioController.stop(context)
+                            starter.cancel()
+                            media.source?.remove(packs)
+                        },
+                    )
+                }
                 if (activeSurah != null) {
                     Text("سورة ${activeSurah.name} · ${audioVerseLabel(playback.ayah)}", color = GreenPrimaryDark, fontWeight = FontWeight.SemiBold)
                 }
@@ -261,6 +320,7 @@ private fun QuranAudioSheet(
                         playback = playback,
                         enabled = playback.surah != null || firstVerse != null,
                         onClick = onPlayPause,
+                        downloading = downloading,
                         modifier = Modifier.size(56.dp).background(AdhkarSoftGreen, RoundedCornerShape(28.dp)),
                     )
                     IconButton(
@@ -359,10 +419,13 @@ private fun QuranAudioPlayButton(
     playback: QuranPlaybackState,
     enabled: Boolean,
     onClick: () -> Unit,
+    /** The chapters to recite are being downloaded first. */
+    downloading: Boolean = false,
     modifier: Modifier = Modifier,
 ) {
-    IconButton(onClick = onClick, enabled = enabled && !playback.loading, modifier = modifier) {
-        if (playback.loading) {
+    val busy = playback.loading || downloading
+    IconButton(onClick = onClick, enabled = enabled && !busy, modifier = modifier) {
+        if (busy) {
             CircularProgressIndicator(Modifier.size(22.dp), color = GreenPrimary, strokeWidth = 2.dp)
         } else {
             Icon(

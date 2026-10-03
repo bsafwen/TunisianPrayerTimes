@@ -26,6 +26,8 @@ import com.tunisianprayertimes.MainTabNavigation
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranRepository
 import com.tunisianprayertimes.quran.QuranVerseReference
+import com.tunisianprayertimes.quran.assets.QuranAssets
+import com.tunisianprayertimes.quran.assets.attachTo
 import com.tunisianprayertimes.wake.AwakeCheckService
 import com.tunisianprayertimes.wake.WakeAlarmQueueHolder
 import kotlinx.coroutines.CancellationException
@@ -204,18 +206,25 @@ class QuranPlaybackService : Service() {
         if (autoPlay) ensureForeground()
         loadJob = scope.launch {
             try {
-                val (allRecordings, names) = withContext(Dispatchers.IO) {
+                val (allRecordings, names, audio) = withContext(Dispatchers.IO) {
                     val timings = QuranRecitationTimings.load(applicationContext, reciter)
                     val chapters = QuranRepository.load(applicationContext).surahs
                     require(chapters.size == timings.size && chapters.zip(timings).all { (chapter, track) ->
                         chapter.verseCount == track.timings.size
                     }) { "Mushaf and recitation numbering differ" }
-                    timings to chapters.map { it.name }
+                    // Null until the chapter's pack is downloaded.
+                    Triple(timings, chapters.map { it.name }, QuranAssets.resolve(applicationContext, timings[surah - 1].assetPath))
                 }
                 if (request != generation) return@launch
                 recordings = allRecordings
                 surahNames = names
                 val track = allRecordings[surah - 1]
+                if (audio == null) {
+                    recording = track
+                    // Resuming after the download starts from the verse that was asked for.
+                    awaitDownload(track, pendingSeekMs ?: ayah?.let(track::startOf) ?: 0L)
+                    return@launch
+                }
                 repeat?.let { range ->
                     requireNotNull(allRecordings[range.from.surah - 1].startOf(range.from.ayah)) { "Unknown verse" }
                     requireNotNull(allRecordings[range.to.surah - 1].endOf(range.to.ayah)) { "Unknown verse" }
@@ -227,10 +236,7 @@ class QuranPlaybackService : Service() {
                 player = media
                 media.setAudioAttributes(audioAttributes)
                 media.setWakeMode(applicationContext, PowerManager.PARTIAL_WAKE_LOCK)
-                // openFd uses a long APK offset and length, including assets beyond the 2 GB mark.
-                assets.openFd(track.assetPath).use { file ->
-                    media.setDataSource(file.fileDescriptor, file.startOffset, file.length)
-                }
+                audio.attachTo(media, applicationContext)
                 media.setOnPreparedListener { loaded ->
                     if (player !== loaded || request != generation) return@setOnPreparedListener
                     prepared = true
@@ -288,7 +294,7 @@ class QuranPlaybackService : Service() {
                 throw error
             } catch (error: Exception) {
                 if (request == generation) {
-                    android.util.Log.e("QuranPlayback", "Cannot load bundled recitation $reciterId/$surah", error)
+                    android.util.Log.e("QuranPlayback", "Cannot load recitation $reciterId/$surah", error)
                     fail("تعذّر تحميل التلاوة وتوقيت الآيات. أعد المحاولة.")
                 }
             }
@@ -516,7 +522,7 @@ class QuranPlaybackService : Service() {
             repeatWindow = range?.let { recording?.takeIf { track -> track.number == value.surah }?.repeatWindow(it) },
         )
         QuranAudioController.publish(state)
-        val key = "${state.reciterId}:${state.surah}:${state.ayah}:${state.playing}:${state.loading}:${state.error}:$range:$repeatRound"
+        val key = "${state.reciterId}:${state.surah}:${state.ayah}:${state.playing}:${state.loading}:${state.error}:${state.notDownloaded}:$range:$repeatRound"
         if (key != notificationKey) {
             notificationKey = key
             if (state.surah != null) notifications.notify(NOTIFICATION_ID, buildNotification())
@@ -580,7 +586,7 @@ class QuranPlaybackService : Service() {
         return Notification.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_tab_quran)
             .setContentTitle(surahTitle(current.surah))
-            .setContentText(current.error ?: detail)
+            .setContentText(current.error ?: if (current.notDownloaded) "السورة غير محمّلة على الجهاز · افتح التطبيق لتنزيلها" else detail)
             .setContentIntent(openReaderIntent())
             .setDeleteIntent(actionIntent(ACTION_STOP))
             .setVisibility(Notification.VISIBILITY_PUBLIC)
@@ -641,6 +647,24 @@ class QuranPlaybackService : Service() {
             old.release()
         }
         player = null
+    }
+
+    /**
+     * The chapter's recording is not on this device yet. Playback rests, paused, at the chapter so that
+     * the reader can download it and resume; the notification stays to say why the recitation stopped.
+     */
+    private fun awaitDownload(track: QuranSurahRecording, positionMs: Long) {
+        playWhenReady = false
+        pendingSeekMs = null
+        releasePlayer()
+        abandonFocus()
+        publish(QuranAudioController.state.value.copy(
+            playing = false, loading = false, error = null, notDownloaded = true, positionMs = positionMs,
+            durationMs = track.durationMs, introEndMs = track.timings.first().startMs,
+        ))
+        updateMetadata()
+        persistPosition()
+        leaveForeground()
     }
 
     private fun fail(message: String) {
