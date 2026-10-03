@@ -23,20 +23,24 @@ import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
@@ -45,10 +49,14 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.InmDayExplanation
 import com.tunisianprayertimes.InmEvent
 import com.tunisianprayertimes.InmEventStep
+import com.tunisianprayertimes.InmPrayerFormula
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.TextDark
 import com.tunisianprayertimes.ui.theme.TextMuted
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.format.DecimalStyle
 import java.util.Locale
 import kotlin.math.abs
 import kotlin.math.ceil
@@ -273,17 +281,66 @@ internal fun HourAngleDial(explanation: InmDayExplanation, names: Map<InmEvent, 
     Text(stringResource(R.string.prayer_method_dial_caption), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
 }
 
+/** Dates in the explainer's diagrams: "21 جوان". */
+private val dayMonthFormatter: DateTimeFormatter =
+    DateTimeFormatter.ofPattern("d MMMM", calendarLocale).withDecimalStyle(DecimalStyle.STANDARD)
+
+private fun LocalDate.dayMonth(): String = dayMonthFormatter.format(this)
+
 /**
- * Step 1: the declination δ seen from the ground. Facing south at noon, the sun stands highest on
- * the first day of summer and lowest on the first day of winter; at the equinoxes it is on the
- * celestial equator. δ is today's angle from that line.
+ * The sun's declination on every day of one year, and the four days the seasons turn on: the
+ * highest and the lowest δ, and the two days it crosses zero, when night and day are equal.
+ */
+internal class SunYear(year: Int) {
+    val days: List<LocalDate> = LocalDate.of(year, 1, 1).let { first ->
+        List(first.lengthOfYear()) { first.plusDays(it.toLong()) }
+    }
+
+    /** δ at 0h UT of each day, as the formula computes it for that day's times. */
+    val declinations: List<Double> = days.map {
+        InmPrayerFormula.declinationDeg(InmPrayerFormula.julianDay(it.year, it.monthValue, it.dayOfMonth))
+    }
+
+    val summer: LocalDate = dayOf(extremeNear(declinations.indices.maxBy { declinations[it] }))
+    val winter: LocalDate = dayOf(extremeNear(declinations.indices.minBy { declinations[it] }))
+    val spring: LocalDate = dayOf(crossing(upward = true))
+    val autumn: LocalDate = dayOf(crossing(upward = false))
+
+    /** The day in Tunisia (UTC+1) of a moment given in days after 0h UT of 1 January. */
+    private fun dayOf(moment: Double): LocalDate = days[floor(moment + 1.0 / 24).toInt().coerceIn(days.indices)]
+
+    /** When δ peaks near sample [i]: the vertex of the parabola through it and its neighbours. */
+    private fun extremeNear(i: Int): Double {
+        val before = declinations[i - 1]
+        val at = declinations[i]
+        val after = declinations[i + 1]
+        return i + (before - after) / (2 * (before - 2 * at + after))
+    }
+
+    /** When δ crosses zero, going up if [upward], interpolated between the samples either side. */
+    private fun crossing(upward: Boolean): Double {
+        val i = (1 until declinations.size).first {
+            if (upward) declinations[it - 1] < 0 && declinations[it] >= 0 else declinations[it - 1] > 0 && declinations[it] <= 0
+        }
+        return i - 1 + declinations[i - 1] / (declinations[i - 1] - declinations[i])
+    }
+}
+
+/**
+ * Step 1, the sky: facing south at noon, the sun stands highest on the first day of summer and
+ * lowest on the first day of winter; halfway between are the two days night equals day. δ is
+ * today's angle above or below that halfway sun.
  */
 @Composable
-internal fun DeclinationDiagram(latitude: Double, declination: Double) {
+internal fun DeclinationDiagram(latitude: Double, declination: Double, sunYear: SunYear) {
     val references = listOf(
-        stringResource(R.string.prayer_method_decl_summer) to MAX_DECLINATION,
-        stringResource(R.string.prayer_method_decl_equinox) to 0.0,
-        stringResource(R.string.prayer_method_decl_winter) to -MAX_DECLINATION,
+        Triple(stringResource(R.string.prayer_method_decl_summer), sunYear.summer.dayMonth(), MAX_DECLINATION),
+        Triple(
+            stringResource(R.string.prayer_method_decl_equinox),
+            stringResource(R.string.prayer_method_decl_two_dates, sunYear.spring.dayMonth(), sunYear.autumn.dayMonth()),
+            0.0,
+        ),
+        Triple(stringResource(R.string.prayer_method_decl_winter), sunYear.winter.dayMonth(), -MAX_DECLINATION),
     )
     val horizonLabel = stringResource(R.string.prayer_method_decl_south)
     val placeLabel = stringResource(R.string.prayer_method_decl_place)
@@ -303,30 +360,43 @@ internal fun DeclinationDiagram(latitude: Double, declination: Double) {
         BoxWithConstraints(Modifier.fillMaxWidth()) {
             val width = constraints.maxWidth.toFloat()
             fun px(dp: Dp) = with(density) { dp.toPx() }
-            val names = references.map { measurer.measure(it.first, LabelStyle) }
-            val numbers = references.map { (_, decl) ->
-                val text = if (decl == 0.0) "0°" else (if (decl > 0) "+" else "−") + "%.2f°".format(Locale.US, abs(decl))
-                measurer.measure(text, NumberStyle)
+            // Each sun's name with its dates under it in grey.
+            val labels = references.map { (name, dates, _) ->
+                measurer.measure(
+                    buildAnnotatedString {
+                        append(name)
+                        withStyle(SpanStyle(color = TextMuted)) { append("\n$dates") }
+                    },
+                    LabelStyle,
+                )
             }
-            val gap = px(4.dp)
-            val labelWidths = names.indices.map { names[it].size.width + gap + numbers[it].size.width }
-            val labelHeight = names.indices.maxOf { maxOf(names[it].size.height, numbers[it].size.height) }
             val horizonLayout = measurer.measure(horizonLabel, LabelStyle.copy(color = TextMuted))
             val placeLayout = measurer.measure(placeLabel, LabelStyle.copy(color = TextMuted))
             val deltaLayout = measurer.measure("δ", NumberStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold))
             val sunRadius = px(7.dp)
             val labelGap = px(6.dp)
             val observerX = maxOf(px(12.dp), placeLayout.size.width / 2f)
-            val angles = references.map { Math.toRadians(noonAltitude(it.second)) }
+            val angles = references.map { Math.toRadians(noonAltitude(it.third)) }
             // Labels start this far out along their ray, past today's sun wherever it is on the arc.
             val labelOffset = sunRadius + px(2.dp) + labelGap
             // The rays fan out from the observer; the radius is as large as the widest label allows.
             val radius = references.indices.minOf { i ->
-                (width - observerX - labelWidths[i]) / cos(angles[i]).toFloat() - labelOffset
-            }.coerceIn(px(80.dp), px(150.dp))
-            val top = maxOf(labelOffset * sin(angles[0]).toFloat() + labelHeight / 2f, sunRadius + px(2.dp)) + px(2.dp)
+                (width - observerX - labels[i].size.width) / cos(angles[i]).toFloat() - labelOffset
+            }.coerceIn(px(80.dp), px(120.dp))
+            val top = maxOf(labelOffset * sin(angles[0]).toFloat() + labels[0].size.height / 2f, sunRadius + px(2.dp)) + px(2.dp)
             val ground = top + radius * sin(angles[0]).toFloat()
-            val height = ground + px(6.dp) + maxOf(horizonLayout.size.height, placeLayout.size.height) + px(2.dp)
+            fun at(angle: Double, distance: Float) =
+                Offset(observerX + distance * cos(angle).toFloat(), ground - distance * sin(angle).toFloat())
+            // Each label beside the end of its ray, moved down where the one above would overlap it.
+            val placed = separated(
+                references.indices.map { i ->
+                    val anchor = at(angles[i], radius + labelOffset)
+                    PlacedLabel(labels[i], anchor.x.fitIn(width, labels[i].size.width), anchor.y - labels[i].size.height / 2f)
+                },
+                px(4.dp),
+            )
+            val groundLabels = ground + px(6.dp) + maxOf(horizonLayout.size.height, placeLayout.size.height)
+            val height = maxOf(groundLabels, placed.maxOf { it.bottom }) + px(2.dp)
 
             LeftToRight {
                 Canvas(
@@ -336,8 +406,6 @@ internal fun DeclinationDiagram(latitude: Double, declination: Double) {
                         .semantics { contentDescription = description },
                 ) {
                     val observer = Offset(observerX, ground)
-                    fun at(angle: Double, distance: Float) =
-                        Offset(observer.x + distance * cos(angle).toFloat(), observer.y - distance * sin(angle).toFloat())
                     val box = Size(2 * radius, 2 * radius)
                     val boxTopLeft = Offset(observer.x - radius, observer.y - radius)
 
@@ -361,13 +429,10 @@ internal fun DeclinationDiagram(latitude: Double, declination: Double) {
                             pathEffect = PathEffect.dashPathEffect(floatArrayOf(5.dp.toPx(), 4.dp.toPx())),
                         )
                         drawCircle(PrayerSilencePalette.Tick, sunRadius * 0.75f, sun)
-                        val anchor = at(angles[i], radius + labelOffset)
-                        val left = anchor.x.fitIn(size.width, labelWidths[i])
-                        drawText(numbers[i], topLeft = Offset(left, anchor.y - numbers[i].size.height / 2f))
-                        drawText(names[i], topLeft = Offset(left + numbers[i].size.width + gap, anchor.y - names[i].size.height / 2f))
+                        drawLabel(placed[i])
                     }
 
-                    // Today's sun, and δ as the angle between the equator's ray and today's ray.
+                    // Today's sun, and δ as the angle between the halfway ray and today's ray.
                     val today = Math.toRadians(noonAltitude(declination))
                     val arcRadius = radius * 0.4f
                     drawArc(
@@ -410,6 +475,136 @@ internal fun DeclinationDiagram(latitude: Double, declination: Double) {
             )
         }
         Text(stringResource(R.string.prayer_method_decl_caption), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
+    }
+}
+
+/**
+ * Step 1, the year: δ day by day. It climbs to +23.44° on the first day of summer, falls to
+ * −23.44° on the first day of winter, and crosses zero on the two days night equals day.
+ */
+@Composable
+internal fun DeclinationYearChart(sunYear: SunYear, date: LocalDate, declination: Double) {
+    val keyDates = listOf(sunYear.spring, sunYear.summer, sunYear.autumn, sunYear.winter)
+    val longerDays = stringResource(R.string.prayer_method_decl_longer_days)
+    val shorterDays = stringResource(R.string.prayer_method_decl_shorter_days)
+    val todayLabel = stringResource(R.string.prayer_method_decl_today_marker)
+    val description = stringResource(
+        R.string.prayer_method_decl_year_description,
+        sunYear.summer.dayMonth(),
+        sunYear.winter.dayMonth(),
+        sunYear.spring.dayMonth(),
+        sunYear.autumn.dayMonth(),
+        (if (declination < 0) "−" else "+") + "%.2f°".format(Locale.US, abs(declination)),
+    )
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val width = constraints.maxWidth.toFloat()
+            fun px(dp: Dp) = with(density) { dp.toPx() }
+            val axisLayouts = listOf("+%.2f°".format(Locale.US, MAX_DECLINATION), "0°", "−%.2f°".format(Locale.US, MAX_DECLINATION))
+                .map { measurer.measure(it, NumberStyle) }
+            val dateLayouts = keyDates.map { measurer.measure(it.dayMonth(), LabelStyle.copy(color = TextMuted)) }
+            val longerLayout = measurer.measure(longerDays, LabelStyle.copy(color = TextMuted))
+            val shorterLayout = measurer.measure(shorterDays, LabelStyle.copy(color = TextMuted))
+            val todayLayout = measurer.measure(todayLabel, LabelStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold))
+            val plotLeft = axisLayouts.maxOf { it.size.width } + px(6.dp)
+            val plotTop = axisLayouts[0].size.height / 2f
+            val plotBottom = plotTop + px(96.dp)
+            val lastDay = sunYear.days.size
+            fun x(dayOfYear: Int) = plotLeft + (dayOfYear - 1) * (width - plotLeft) / (lastDay - 1)
+            fun y(decl: Double) = plotTop + ((MAX_DECLINATION - decl) / (2 * MAX_DECLINATION)).toFloat() * (plotBottom - plotTop)
+            // The dates under the baseline, each dropped to a second row when it would touch the one before.
+            val dateLefts = keyDates.indices.map { i ->
+                (x(keyDates[i].dayOfYear) - dateLayouts[i].size.width / 2f).fitIn(width, dateLayouts[i].size.width)
+            }
+            var rowEnd = Float.NEGATIVE_INFINITY
+            val dateRows = keyDates.indices.map { i ->
+                if (dateLefts[i] >= rowEnd + px(8.dp)) {
+                    rowEnd = dateLefts[i] + dateLayouts[i].size.width
+                    0
+                } else {
+                    1
+                }
+            }
+            val rowHeight = dateLayouts.maxOf { it.size.height } + px(2.dp)
+            val datesTop = plotBottom + px(5.dp)
+            val height = datesTop + (dateRows.max() + 1) * rowHeight
+
+            LeftToRight {
+                Canvas(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(with(density) { height.toDp() })
+                        .semantics { contentDescription = description },
+                ) {
+                    val zero = y(0.0)
+                    val curve = Path().apply {
+                        sunYear.declinations.forEachIndexed { i, decl ->
+                            if (i == 0) moveTo(x(i + 1), y(decl)) else lineTo(x(i + 1), y(decl))
+                        }
+                    }
+                    val area = Path().apply {
+                        addPath(curve)
+                        lineTo(x(lastDay), zero)
+                        lineTo(x(1), zero)
+                        close()
+                    }
+                    // Above the halfway line the sun is high and days are long; below, the opposite.
+                    clipRect(plotLeft, plotTop, size.width, zero) { drawPath(area, DayFill) }
+                    clipRect(plotLeft, zero, size.width, plotBottom) { drawPath(area, TwilightFill) }
+                    val dash = PathEffect.dashPathEffect(floatArrayOf(4.dp.toPx(), 4.dp.toPx()))
+                    listOf(plotTop, plotBottom).forEach {
+                        drawLine(PrayerSilencePalette.SoftBorder, Offset(plotLeft, it), Offset(size.width, it), 1.dp.toPx())
+                    }
+                    drawLine(PrayerSilencePalette.Tick, Offset(plotLeft, zero), Offset(size.width, zero), 1.5.dp.toPx(), pathEffect = dash)
+                    listOf(plotTop, zero, plotBottom).forEachIndexed { i, lineY ->
+                        drawText(axisLayouts[i], topLeft = Offset(0f, lineY - axisLayouts[i].size.height / 2f))
+                    }
+                    // A tick on the baseline at the first of each month.
+                    (1..12).forEach { month ->
+                        val tickX = x(LocalDate.of(date.year, month, 1).dayOfYear)
+                        drawLine(PrayerSilencePalette.Tick, Offset(tickX, plotBottom), Offset(tickX, plotBottom + 3.dp.toPx()), 1.dp.toPx())
+                    }
+                    drawPath(curve, PrayerSilencePalette.Tick, style = Stroke(2.dp.toPx()))
+                    drawText(longerLayout, topLeft = Offset(size.width - longerLayout.size.width, plotTop + 3.dp.toPx()))
+                    drawText(
+                        shorterLayout,
+                        topLeft = Offset(
+                            (x(sunYear.summer.dayOfYear) - shorterLayout.size.width / 2f).fitIn(size.width, shorterLayout.size.width),
+                            plotBottom - shorterLayout.size.height - 3.dp.toPx(),
+                        ),
+                    )
+
+                    // The four turning days: a marker on the curve, the date under the baseline.
+                    keyDates.forEachIndexed { i, day ->
+                        val point = Offset(x(day.dayOfYear), y(sunYear.declinations[day.dayOfYear - 1]))
+                        drawMarker(point, PrayerSilencePalette.Tick)
+                        drawLine(PrayerSilencePalette.Tick, Offset(point.x, plotBottom), Offset(point.x, plotBottom + 6.dp.toPx()), 1.dp.toPx())
+                        drawText(dateLayouts[i], topLeft = Offset(dateLefts[i], datesTop + dateRows[i] * rowHeight))
+                    }
+
+                    val today = Offset(x(date.dayOfYear), y(declination))
+                    drawLine(PrayerSilencePalette.GoldAccent, today, Offset(today.x, plotBottom), 1.dp.toPx(), pathEffect = dash)
+                    drawCircle(Color.White, 7.dp.toPx(), today)
+                    drawCircle(PrayerSilencePalette.GoldAccent, 5.dp.toPx(), today)
+                    // "Today" beside its dot, or above it when the dot sits on the baseline.
+                    val todayGap = 9.dp.toPx()
+                    val todayTopLeft = when {
+                        today.y + todayLayout.size.height / 2f > plotBottom -> Offset(
+                            (today.x - todayLayout.size.width / 2f).fitIn(size.width, todayLayout.size.width),
+                            today.y - todayGap - todayLayout.size.height,
+                        )
+                        today.x + todayGap + todayLayout.size.width <= size.width ->
+                            Offset(today.x + todayGap, today.y - todayLayout.size.height / 2f)
+                        else -> Offset(today.x - todayGap - todayLayout.size.width, today.y - todayLayout.size.height / 2f)
+                    }
+                    drawText(todayLayout, topLeft = todayTopLeft)
+                }
+            }
+        }
+        Text(stringResource(R.string.prayer_method_decl_year_caption), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
     }
 }
 
