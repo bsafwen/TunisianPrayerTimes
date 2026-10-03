@@ -243,3 +243,20 @@ The scraping approach extracts **text from HTML pages** using basic tag strippin
 | [`scripts/check_islamic_dates.py`](check_islamic_dates.py) | Scraper + LLM extractor (zero external dependencies) |
 | [`.github/workflows/check-islamic-dates.yml`](../.github/workflows/check-islamic-dates.yml) | GitHub Actions cron workflow |
 | [`data/official-islamic-dates/{year}.json`](../data/official-islamic-dates/) | Official date files consumed by the apps |
+
+---
+
+# Quran Media Packs
+
+[`quran_assets.py`](quran_assets.py) builds, publishes and stages the packs that carry the
+mushaf page scans and the recitations outside git and the base app (standard library only):
+
+| Command | Purpose |
+|---------|---------|
+| `layout --from-dir … --cdn …` | Hash the media, group it into packs, write the committed layout and pack modules |
+| `publish` | Upload the pack archives the [`quran-cdn`](../quran-cdn/README.md) Worker does not serve yet |
+| `stage [--from-dir …]` | Put every pack's files where `bundleRelease` packages them |
+| `check --from-dir …` | Confirm local media matches the layout byte for byte |
+| `fetch-origin --to …` | Download the original recordings listed in the manifest |
+
+Tests: `python3 -m unittest scripts/test_quran_assets.py`.
