@@ -69,7 +69,6 @@ import com.tunisianprayertimes.InmPrayerTimes
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.platform.PrayerDataLoader
 import com.tunisianprayertimes.ui.theme.BgCream
-import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 import com.tunisianprayertimes.ui.theme.TextDark
 import com.tunisianprayertimes.ui.theme.TextMuted
@@ -313,16 +312,6 @@ private fun TrustCard() {
             color = GreenPrimaryDark,
         )
         Text(stringResource(R.string.prayer_method_trust_body), fontSize = 13.sp, color = TextDark, lineHeight = 19.sp)
-        TrustLine(stringResource(R.string.prayer_method_trust_2026))
-        TrustLine(stringResource(R.string.prayer_method_trust_past))
-    }
-}
-
-@Composable
-private fun TrustLine(text: String) {
-    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-        Text("✓", fontSize = 14.sp, fontWeight = FontWeight.Bold, color = GreenPrimary)
-        Text(text, fontSize = 13.sp, color = TextDark, lineHeight = 19.sp, modifier = Modifier.weight(1f))
     }
 }
 
