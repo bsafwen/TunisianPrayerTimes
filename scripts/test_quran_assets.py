@@ -1,4 +1,5 @@
 """Quran media pack checks: python3 -m unittest scripts/test_quran_assets.py."""
+import collections
 import contextlib
 import functools
 import http.server
@@ -6,6 +7,8 @@ import importlib.util
 import io
 import json
 from pathlib import Path
+import shutil
+import subprocess
 import tempfile
 import sys
 import threading
@@ -18,6 +21,20 @@ sys.modules[SPEC.name] = assets  # dataclasses look the module up while it loads
 SPEC.loader.exec_module(assets)
 
 MB = assets.MB
+
+
+def recording(fill: int, size: int, kbps_index: int = 5, mono: bool = True, tag: bytes = b'Info') -> bytes:
+    """Starts like an MPEG-1 Layer III file (64 kbps mono CBR by default): a frame header, then the tag."""
+    header = bytes([0xFF, 0xFB, kbps_index << 4 | 0x00, 0xC0 if mono else 0x00])
+    start = header + bytes(17 if mono else 32) + tag
+    return start + bytes([fill]) * max(0, size - len(start))
+
+
+def run(*argv):
+    output = io.StringIO()
+    with contextlib.redirect_stdout(output), contextlib.redirect_stderr(output):
+        code = assets.main(list(argv))
+    return code, output.getvalue()
 
 
 class GroupingTest(unittest.TestCase):
@@ -33,11 +50,51 @@ class GroupingTest(unittest.TestCase):
         with self.assertRaises(assets.LayoutError):
             assets.group_surahs([5, 200], target=30, limit=200)
 
-    def test_the_real_recitation_sizes_fit_play_limits(self):
-        # Measured Content-Length of mp3quran r5 001..114 is too long to inline; check the shape instead.
-        sizes = [168 * MB] + [10 * MB] * 113
-        groups = assets.group_surahs(sizes)
-        self.assertLessEqual(len(groups), assets.MAX_AUDIO_PACKS)
+    def test_play_reciters_are_split_as_evenly_as_consecutive_packs_allow(self):
+        sizes = [1, 84, 50, 40, 9, 30] + [n % 7 + 1 for n in range(108)]
+        groups = assets.split_surahs(sizes, 9, limit=200)
+        self.assertLessEqual(len(groups), 9)
+        self.assertEqual(list(range(1, 115)), [n for group in groups for n in group])
+        largest = max(sum(sizes[n - 1] for n in group) for group in groups)
+        # The best largest pack over every split into 9 runs of consecutive surahs.
+        best = [[float('inf')] * (len(sizes) + 1) for _ in range(10)]
+        best[0][0] = 0
+        for packs in range(1, 10):
+            for end in range(1, len(sizes) + 1):
+                best[packs][end] = min(max(best[packs - 1][start], sum(sizes[start:end])) for start in range(end))
+        self.assertEqual(best[9][len(sizes)], largest)
+
+    def test_the_first_ten_reciters_get_play_and_keep_it(self):
+        reciters = [f'r{n:02d}' for n in range(12)]
+        first = assets.assign_deliveries(reciters, {})
+        self.assertEqual(['play'] * 10 + ['cdn'] * 2, [first[r] for r in reciters])
+        # A new reciter that sorts first does not take the place of one already laid out.
+        later = assets.assign_deliveries(['a_new'] + reciters, first)
+        self.assertEqual('cdn', later['a_new'])
+        self.assertEqual(first, {r: later[r] for r in reciters})
+        # A place a removed reciter frees goes to a new reciter; the others stay where they are.
+        freed = assets.assign_deliveries(reciters[1:] + ['z_new'], first)
+        self.assertEqual('play', freed['z_new'])
+        self.assertEqual('cdn', freed['r10'])
+
+
+class Mp3FormatTest(unittest.TestCase):
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+
+    def format_of(self, content):
+        path = self.root / 'x.mp3'
+        path.write_bytes(content)
+        return assets.mp3_format(path)
+
+    def test_reads_bitrate_channels_and_constant_bitrate_from_the_first_frame(self):
+        self.assertEqual((64, True, True), self.format_of(recording(1, 600)))
+        self.assertEqual((128, False, True), self.format_of(recording(1, 600, kbps_index=9, mono=False)))
+        self.assertEqual((64, True, False), self.format_of(recording(1, 600, tag=b'Xing')))
+        # An ID3v2 tag with cover art comes first in mp3quran's files.
+        tagged = b'ID3\x04\x00\x00\x00\x00\x00\x20' + b'\xff' * 32 + recording(1, 600, kbps_index=9, mono=False)
+        self.assertEqual((128, False, True), self.format_of(tagged))
+        self.assertIsNone(self.format_of(b'RIFF' + bytes(600)))
 
 
 class ArchiveTest(unittest.TestCase):
@@ -147,10 +204,11 @@ class EndToEndTest(unittest.TestCase):
         assets.PAGES_JSON.write_text(json.dumps({'pages': [{'n': n, 'file': f'{n:03d}.webp'} for n in (1, 2, 3)]}))
 
         self.media = self.repo / 'media'
-        (self.media / 'audio').mkdir(parents=True)
+        self.audio = self.media / 'hosary'
+        self.audio.mkdir(parents=True)
         (self.media / 'pages').mkdir()
         for n in range(1, 115):
-            (self.media / 'audio' / f'{n:03d}.mp3').write_bytes(bytes([n]) * (4000 if n == 2 else 300))
+            (self.audio / f'{n:03d}.mp3').write_bytes(recording(n, 4000 if n == 2 else 300))
         for n in (1, 2, 3):
             (self.media / 'pages' / f'{n:03d}.webp').write_bytes(b'page%d' % n)
 
@@ -162,35 +220,87 @@ class EndToEndTest(unittest.TestCase):
         self.cdn = f'http://127.0.0.1:{server.server_address[1]}/'
 
     def run_command(self, *argv):
-        output = io.StringIO()
-        with contextlib.redirect_stdout(output), contextlib.redirect_stderr(output):
-            code = assets.main(list(argv))
-        return code, output.getvalue()
+        return run(*argv)
 
-    def layout(self):
-        code, output = self.run_command('layout', '--from-dir', str(self.media / 'audio'),
-                                        '--from-dir', str(self.media / 'pages'), '--cdn', self.cdn,
-                                        '--target-mb', str(1000 / MB))
+    def add_reciter(self, folder):
+        timings = assets.TIMINGS_DIR / folder / 'timings.json'
+        timings.parent.mkdir(parents=True)
+        timings.write_text(json.dumps({'version': 1, 'reciterId': f'{folder}-id', 'surahs': [
+            {'number': n, 'assetPath': f'quran/audio/{folder}/{n:03d}.mp3'} for n in range(1, 115)]}))
+        (self.media / folder).mkdir()
+        for n in range(1, 115):
+            (self.media / folder / f'{n:03d}.mp3').write_bytes(recording(n, 200 + n))
+
+    def layout(self, *sources):
+        sources = sources or (self.audio, self.media / 'pages')
+        code, output = self.run_command('layout', *[a for s in sources for a in ('--from-dir', str(s))],
+                                        '--cdn', self.cdn, '--target-mb', str(1000 / MB))
         self.assertEqual(0, code, output)
         for archive in assets.BUILD.glob('*.zip'):
             (self.repo / 'served' / 'v1' / 'packs' / archive.name).write_bytes(archive.read_bytes())
         return json.loads(assets.LAYOUT_JSON.read_text())
+
+    def pack_holding(self, layout, path):
+        return next(p for p in layout['packs'] if any(f['path'] == path for f in p['files']))
 
     def test_layout_covers_every_file_once_and_writes_pack_modules(self):
         layout = self.layout()
         names = [p['name'] for p in layout['packs']]
         self.assertEqual('quran_pages', names[0])
         audio = [p for p in layout['packs'] if p['kind'] == 'audio']
+        self.assertLessEqual(len(audio), assets.PLAY_PACKS_PER_RECITER)
         surahs = [n for p in audio for n in range(p['surahs'][0], p['surahs'][1] + 1)]
         self.assertEqual(list(range(1, 115)), surahs)
-        self.assertEqual(['quran/audio/hosary/002.mp3'], [f['path'] for f in audio[1]['files']])
+        self.assertEqual({'play'}, {p['delivery'] for p in layout['packs']})
         rows = assets.read_manifest()
         self.assertEqual(114 + 3, len(rows))
+        self.assertEqual({'play'}, {r.delivery for r in rows})
         self.assertEqual('https://cdn.mp3quran.net/audio/mahmoud-husary/r5/001.mp3',
                          next(r.origin for r in rows if r.path.endswith('/001.mp3')))
         for name in names:
             self.assertEqual(assets.GENERATED_BUILD_FILE, (assets.PACKS_ROOT / name / 'build.gradle.kts').read_text())
             self.assertRegex(name, r'^[A-Za-z][A-Za-z0-9_]*$')
+
+    def test_reciters_after_the_tenth_come_from_the_worker_only(self):
+        for n in range(1, 11):  # With hosary, r10 is the eleventh reciter.
+            self.add_reciter(f'r{n:02d}')
+        layout = self.layout(self.media)
+        deliveries = collections.defaultdict(set)
+        for pack in layout['packs']:
+            if pack['kind'] == 'audio':
+                deliveries[pack['reciterId']].add(pack['delivery'])
+        self.assertEqual({'cdn'}, deliveries.pop('r10-id'))
+        self.assertEqual({'play'}, set.union(*deliveries.values()))
+        self.assertEqual(10, len(deliveries))
+        play = [p for p in layout['packs'] if p['delivery'] == 'play']
+        cdn = [p for p in layout['packs'] if p['delivery'] == 'cdn']
+        self.assertLessEqual(len(play), assets.MAX_PLAY_PACKS)
+        # Each reciter's files come from its own folder, though every reciter has a 001.mp3.
+        r05 = self.pack_holding(layout, 'quran/audio/r05/001.mp3')
+        self.assertEqual(200 + 1, r05['files'][0]['bytes'])
+        # Only Play packs become modules and get staged; the Worker serves the rest.
+        self.assertTrue(all((assets.PACKS_ROOT / p['name'] / 'build.gradle.kts').is_file() for p in play))
+        self.assertFalse(any((assets.PACKS_ROOT / p['name']).exists() for p in cdn))
+        self.assertEqual({'cdn'}, {r.delivery for r in assets.read_manifest() if r.pack in {p['name'] for p in cdn}})
+        code, output = self.run_command('stage', '--from-dir', str(self.media))
+        self.assertEqual(0, code, output)
+        self.assertTrue(all(assets.is_staged(p) for p in play))
+        self.assertFalse(any((assets.PACKS_ROOT / p['name']).exists() for p in cdn))
+
+        # A reciter added later goes to the Worker, though its folder sorts first; the others stay.
+        self.add_reciter('a_new')
+        again = self.layout(self.media)
+        self.assertEqual({p['name']: p['delivery'] for p in layout['packs']},
+                         {p['name']: p['delivery'] for p in again['packs'] if p.get('reciterId') != 'a_new-id'})
+        self.assertEqual({'cdn'}, {p['delivery'] for p in again['packs'] if p.get('reciterId') == 'a_new-id'})
+
+    def test_layout_refuses_recordings_not_yet_converted(self):
+        (self.audio / '050.mp3').write_bytes(recording(50, 300, kbps_index=9, mono=False))
+        code, output = self.run_command('layout', '--from-dir', str(self.audio), '--from-dir', str(self.media / 'pages'),
+                                        '--cdn', self.cdn)
+        self.assertEqual(1, code)
+        self.assertIn('050.mp3 is 128 kbps stereo', output)
+        self.assertIn('convert', output)
 
     def publish(self, token):
         api, environ = assets.CLOUDFLARE_API, dict(assets.os.environ)
@@ -285,19 +395,54 @@ class EndToEndTest(unittest.TestCase):
 
     def test_check_finds_a_changed_local_file(self):
         self.layout()
-        code, _ = self.run_command('check', '--from-dir', str(self.media / 'audio'), '--from-dir', str(self.media / 'pages'))
+        code, _ = self.run_command('check', '--from-dir', str(self.audio), '--from-dir', str(self.media / 'pages'))
         self.assertEqual(0, code)
-        (self.media / 'audio' / '050.mp3').write_bytes(b're-encoded')
-        code, output = self.run_command('check', '--from-dir', str(self.media / 'audio'), '--only-present')
+        (self.audio / '050.mp3').write_bytes(b're-encoded')
+        code, output = self.run_command('check', '--from-dir', str(self.audio), '--only-present')
         self.assertEqual(1, code)
         self.assertIn('050.mp3', output)
 
     def test_stage_from_local_folders_needs_no_network(self):
-        self.layout()
-        code, output = self.run_command('stage', '--from-dir', str(self.media / 'audio'),
-                                        '--from-dir', str(self.media / 'pages'), '--packs', 'quran_hosary_02')
+        pack = self.pack_holding(self.layout(), 'quran/audio/hosary/002.mp3')['name']
+        code, output = self.run_command('stage', '--from-dir', str(self.audio),
+                                        '--from-dir', str(self.media / 'pages'), '--packs', pack)
         self.assertEqual(0, code, output)
-        self.assertEqual(4000, (assets.PACKS_ROOT / 'quran_hosary_02/src/main/assets/quran/audio/hosary/002.mp3').stat().st_size)
+        self.assertEqual(4000, (assets.PACKS_ROOT / pack / 'src/main/assets/quran/audio/hosary/002.mp3').stat().st_size)
+
+
+@unittest.skipUnless(shutil.which('ffmpeg'), 'needs ffmpeg')
+class ConvertTest(unittest.TestCase):
+    def setUp(self):
+        self.root = Path(tempfile.mkdtemp())
+        self.originals = self.root / 'originals'
+        self.originals.mkdir()
+
+    def encode(self, name, *options):
+        subprocess.run(['ffmpeg', '-v', 'error', '-f', 'lavfi', '-i', 'sine=frequency=440:duration=3', *options,
+                        str(self.originals / name)], check=True)
+
+    def test_convert_gives_constant_bitrate_mono_and_resumes(self):
+        self.encode('001.mp3', '-ac', '2', '-c:a', 'libmp3lame', '-b:a', '128k')
+        self.encode('002.mp3', '-ac', '1', '-c:a', 'libmp3lame', '-b:a', '64k')
+        out = self.root / 'converted'
+        code, output = run('convert', '--from-dir', str(self.originals), '--to', str(out), '--jobs', '2')
+        self.assertEqual(0, code, output)
+        self.assertEqual((64, True, True), assets.mp3_format(out / '001.mp3'))
+        # Already in the format: copied, not encoded a second time.
+        self.assertEqual((self.originals / '002.mp3').read_bytes(), (out / '002.mp3').read_bytes())
+        converted = (out / '001.mp3').read_bytes()
+        self.assertNotIn(b'ID3', converted[:3])
+        code, output = run('convert', '--from-dir', str(self.originals), '--to', str(out))
+        self.assertEqual(0, code, output)
+        self.assertNotIn('001.mp3:', output)
+        self.assertEqual(converted, (out / '001.mp3').read_bytes())
+
+    def test_convert_never_writes_over_the_originals(self):
+        self.encode('001.mp3', '-ac', '2', '-c:a', 'libmp3lame', '-b:a', '128k')
+        before = (self.originals / '001.mp3').read_bytes()
+        code, output = run('convert', '--from-dir', str(self.originals), '--to', str(self.originals))
+        self.assertEqual(1, code, output)
+        self.assertEqual(before, (self.originals / '001.mp3').read_bytes())
 
 
 if __name__ == '__main__':
