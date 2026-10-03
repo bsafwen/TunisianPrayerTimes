@@ -88,7 +88,7 @@ class QuranPackInstallerTest {
 
     private fun pack(archive: ByteArray, files: List<Pair<String, Int>> = listOf("quran/pages/1.webp" to page1.size, "quran/pages/2.webp" to page2.size)) =
         QuranPack(
-            "quran_pages", QuranPack.Kind.Pages, null, null, files.sumOf { it.second.toLong() },
+            "quran_pages", QuranPack.Kind.Pages, QuranPack.Delivery.Play, null, null, files.sumOf { it.second.toLong() },
             QuranPackArchive("v1/packs/quran_pages-${sha256(archive).take(12)}.zip", archive.size.toLong(), sha256(archive)),
             files.map { QuranPackFile(it.first, it.second.toLong()) },
         )

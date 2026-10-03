@@ -1,8 +1,9 @@
 # Quran CDN — Cloudflare Worker
 
-Serves the Quran media packs (mushaf page scans and recitations) to app installs that did not
-come from Google Play: the APK on GitHub Releases and Android Studio runs. Play installs get the
-same packs through Play Asset Delivery.
+Serves the Quran media packs (mushaf page scans and recitations). Installs that did not come from
+Google Play (the APK on GitHub Releases, Android Studio runs) download every pack from it. Play
+installs get the page scans and the first ten reciters through Play Asset Delivery, and only later
+reciters from here.
 
 ```
 GET | HEAD  https://tunisian-quran-cdn.baroudi-safwen.workers.dev/v1/packs/<pack>-<sha12>.zip
@@ -18,9 +19,10 @@ It is separate from the legacy `worker/` (mawaqit proxy), which can be removed i
 
 ## Cost
 
-Within the free plans: the packs take about 2.4 GB of R2's free 10 GB, R2 never charges for
-downloads, and one pack is one request (about 60 for the whole recitation) against the
-account's 100,000 free Worker requests a day.
+R2 never charges for downloads, and each reciter takes about 1.1 GB of R2's free 10 GB. One pack
+is one request: 9 for a whole Play reciter, about 40 for a later one, against the account's
+100,000 free Worker requests a day. Past that, the Workers Paid plan ($5 a month) includes 10
+million requests a month.
 
 ## Deploy
 
@@ -35,10 +37,12 @@ The bucket was created once with `npx wrangler r2 bucket create tunisian-quran-a
 ## Publish new or changed media
 
 From the repository root, with the media in local folders (the MP3s and the page scans, as
-folders or zips):
+folders or zips). Recitations are first converted to 64 kbps mono MP3 at a constant bitrate (needs
+ffmpeg); keep the converted folder, since the layout records those exact files:
 
 ```bash
-python3 scripts/quran_assets.py layout --from-dir path/to/mp3s --from-dir path/to/pages.zip \
+python3 scripts/quran_assets.py convert --from-dir path/to/original-mp3s --to path/to/hosary
+python3 scripts/quran_assets.py layout --from-dir path/to/hosary --from-dir path/to/pages.zip \
     --cdn https://tunisian-quran-cdn.baroudi-safwen.workers.dev/
 CLOUDFLARE_API_TOKEN=… CLOUDFLARE_ACCOUNT_ID=… python3 scripts/quran_assets.py publish
 ```
