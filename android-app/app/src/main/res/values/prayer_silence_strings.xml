@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="prayer_silence_edit_jomoaa_time">تعديل وقت صلاة الجمعة</string>
+    <string name="prayer_silence_edit_aid_fitr_time">تعديل وقت صلاة عيد الفطر</string>
+    <string name="prayer_silence_edit_aid_adha_time">تعديل وقت صلاة عيد الأضحى</string>
+    <string name="prayer_silence_recurrence_adhan">تتكرر يوميًا حسب وقت الأذان</string>
+    <string name="prayer_silence_recurrence_fixed">تتكرر يوميًا حسب أوقات ثابتة</string>
+    <string name="prayer_silence_recurrence_mixed">تتكرر يوميًا حسب إعداد كل صلاة</string>
+    <string name="prayer_silence_switch">الإسكات</string>
+    <string name="prayer_silence_switch_desc">تفعيل الإسكات لصلاة %1$s</string>
+    <string name="prayer_silence_start_label">البداية</string>
+    <string name="prayer_silence_end_label">النهاية</string>
+    <string name="prayer_silence_endpoint_caption">%1$s · %2$s</string>
+    <string name="prayer_silence_inline_fixed_value">وقت ثابت · %1$s</string>
+    <string name="prayer_silence_adhan_label">الأذان</string>
+    <string name="prayer_silence_scale_before">%1$s د</string>
+    <string name="prayer_silence_scale_after">%1$s د</string>
+    <string name="prayer_silence_previous_day">اليوم السابق</string>
+    <string name="prayer_silence_next_day">اليوم التالي</string>
+    <string name="prayer_silence_days_earlier">قبل %1$d أيام</string>
+    <string name="prayer_silence_days_later">بعد %1$d أيام</string>
+
+    <string name="prayer_silence_start_field_desc">بداية الإسكات لصلاة %1$s، %2$s. اضغط للتعديل بدقة.</string>
+    <string name="prayer_silence_end_field_desc">نهاية الإسكات لصلاة %1$s، %2$s. اضغط للتعديل بدقة.</string>
+    <string name="prayer_silence_start_handle_desc">بداية الإسكات لصلاة %1$s، %2$s</string>
+    <string name="prayer_silence_end_handle_desc">نهاية الإسكات لصلاة %1$s، %2$s</string>
+    <string name="prayer_silence_window_handle_desc">فترة الصمت لصلاة %1$s، %2$s</string>
+    <string name="prayer_silence_track_desc">شريط فترة الصمت لصلاة %1$s</string>
+    <string name="prayer_silence_fixed_time_desc">عند وقت ثابت %1$s</string>
+    <string name="prayer_silence_adjust_earlier">تقديم دقيقة واحدة</string>
+    <string name="prayer_silence_adjust_later">تأخير دقيقة واحدة</string>
+    <string name="prayer_silence_value_label">%1$s · %2$s</string>
+    <string name="prayer_silence_at_adhan">مع الأذان</string>
+    <string name="prayer_silence_extend_earlier">استمر للسحب إلى وقت أبكر</string>
+    <string name="prayer_silence_extend_later">استمر للسحب إلى وقت لاحق</string>
+    <string name="prayer_silence_permission_needed">تم حفظ الإعداد، لكن الإسكات التلقائي يحتاج صلاحية عدم الإزعاج والمنبهات الدقيقة.</string>
+    <string name="prayer_silence_saved">تم تعديل فترة الإسكات</string>
+    <string name="prayer_silence_save_failed">تعذّر حفظ الإعداد، ولم يتم تغيير فترة الإسكات.</string>
+
+    <string name="prayer_silence_shared_title">إعداد موحّد لكل الصلوات</string>
+    <string name="prayer_silence_shared_body">طبّق فترة نسبية على الصلوات الخمس اليومية. لا يتضمن هذا الإعداد صلاة الجمعة أو صلاة العيد، ولن تتغير حالات التفعيل الفردية.</string>
+    <string name="prayer_silence_shared_select_prayers">الصلوات المتأثرة</string>
+    <string name="prayer_silence_shared_start">بداية الصمت من الأذان (دقائق)</string>
+    <string name="prayer_silence_shared_end">نهاية الصمت من الأذان (دقائق)</string>
+    <string name="prayer_silence_shared_help">القيمة السالبة قبل الأذان والموجبة بعده. مثال: من -5 إلى +15 يعني صمتًا مدته 20 دقيقة.</string>
+    <string name="prayer_silence_shared_result">المدة الناتجة: %1$s</string>
+    <string name="prayer_silence_shared_apply">تطبيق على المختارة</string>
+    <string name="prayer_silence_shared_cancel">إلغاء</string>
+    <string name="prayer_silence_shared_invalid">يجب أن تكون النهاية بعد البداية بدقيقة واحدة على الأقل.</string>
+    <string name="prayer_silence_shared_empty">اختر صلاة واحدة على الأقل.</string>
+    <string name="prayer_silence_shared_applied">تم تطبيق الإعداد الموحّد</string>
+    <string name="prayer_silence_undo">تراجع</string>
+    <string name="prayer_silence_numeric_field">قيمة رقمية بالدقائق</string>
+
+    <!-- Independent endpoint rules -->
+    <string name="prayer_silence_start_group">بداية الصمت</string>
+    <string name="prayer_silence_end_group">نهاية الصمت</string>
+    <string name="prayer_editor_endpoint_title">%1$s — %2$s</string>
+    <string name="prayer_silence_mode_adhan">حسب الأذان</string>
+    <string name="prayer_silence_mode_fixed">وقت ثابت</string>
+    <string name="prayer_silence_direction_before">قبل الأذان</string>
+    <string name="prayer_silence_direction_at">مع الأذان</string>
+    <string name="prayer_silence_direction_after">بعد الأذان</string>
+    <string name="prayer_silence_caption_before_adhan">قبل الأذان بـ %1$d د</string>
+    <string name="prayer_silence_caption_after_adhan">بعد الأذان بـ %1$d د</string>
+    <string name="prayer_silence_summary_duration">مدة الصمت: %1$s</string>
+    <string name="prayer_silence_summary_start_at">تبدأ مع الأذان</string>
+    <string name="prayer_silence_summary_start_before">تبدأ قبل الأذان بـ %1$d د</string>
+    <string name="prayer_silence_summary_start_after">تبدأ بعد الأذان بـ %1$d د</string>
+    <string name="prayer_silence_summary_start_fixed">تبدأ عند %1$s بوقت ثابت</string>
+    <string name="prayer_silence_summary_end_at">وتنتهي مع الأذان</string>
+    <string name="prayer_silence_summary_end_before">وتنتهي قبل الأذان بـ %1$d د</string>
+    <string name="prayer_silence_summary_end_after">وتنتهي بعد الأذان بـ %1$d د</string>
+    <string name="prayer_silence_summary_end_fixed">وتنتهي عند %1$s بوقت ثابت</string>
+    <string name="prayer_silence_decrease_minute">إنقاص دقيقة</string>
+    <string name="prayer_silence_increase_minute">زيادة دقيقة</string>
+    <string name="prayer_silence_expand_desc">توسيع إعدادات صلاة %1$s</string>
+    <string name="prayer_silence_collapse_desc">طي إعدادات صلاة %1$s</string>
+    <string name="prayer_silence_expanded_state">موسّع</string>
+    <string name="prayer_silence_collapsed_state">مطوي</string>
+    <string name="prayer_silence_end_before_start_error">نهاية الصمت يجب أن تكون بعد بدايته.</string>
+    <string name="prayer_silence_shared_start_rule">بداية الصمت</string>
+    <string name="prayer_silence_shared_end_rule">نهاية الصمت</string>
+    <string name="prayer_silence_shared_relative_help">الدقائق نسبية من وقت أذان كل صلاة: السالبة قبل الأذان والموجبة بعده.</string>
+    <string name="prayer_silence_shared_fixed_help">سيُطبَّق الوقت الثابت نفسه على الصلوات المختارة.</string>
+    <string name="prayer_silence_shared_invalid_prayer">الإعداد غير صالح لصلاة %1$s.</string>
+
+    <string name="prayer_editor_at_adhan">مع الأذان</string>
+    <string name="prayer_editor_editing_start">تعديل بداية الصمت · الأذان %1$s</string>
+    <string name="prayer_editor_editing_end">تعديل نهاية الصمت · الأذان %1$s</string>
+    <string name="prayer_silence_explain_follows_adhan">يتبع موعد الأذان</string>
+    <string name="prayer_silence_explain_fixed">يبقى عند %1$s حتى لو تغيّر موعد الأذان</string>
+    <string name="prayer_editor_result_label">للتاريخ المعروض</string>
+    <string name="prayer_editor_invalid_time">أدخل وقتاً صالحاً: الساعة من 0 إلى 23 والدقيقة من 0 إلى 59.</string>
+    <string name="prayer_editor_hour_label">الساعة</string>
+    <string name="prayer_editor_minute_label">الدقيقة</string>
+
+    <plurals name="prayer_silence_duration_minutes">
+        <item quantity="zero">0 دقيقة</item>
+        <item quantity="one">دقيقة واحدة</item>
+        <item quantity="two">دقيقتان</item>
+        <item quantity="few">%1$d دقائق</item>
+        <item quantity="many">%1$d دقيقة</item>
+        <item quantity="other">%1$d دقيقة</item>
+    </plurals>
+    <plurals name="prayer_silence_before_adhan">
+        <item quantity="one">قبل الأذان بدقيقة</item>
+        <item quantity="two">قبل الأذان بدقيقتين</item>
+        <item quantity="few">قبل الأذان بـ %1$d دقائق</item>
+        <item quantity="many">قبل الأذان بـ %1$d دقيقة</item>
+        <item quantity="other">قبل الأذان بـ %1$d دقيقة</item>
+    </plurals>
+    <plurals name="prayer_silence_after_adhan">
+        <item quantity="one">بعد الأذان بدقيقة</item>
+        <item quantity="two">بعد الأذان بدقيقتين</item>
+        <item quantity="few">بعد الأذان بـ %1$d دقائق</item>
+        <item quantity="many">بعد الأذان بـ %1$d دقيقة</item>
+        <item quantity="other">بعد الأذان بـ %1$d دقيقة</item>
+    </plurals>
+    <plurals name="prayer_silence_start_offset_after">
+        <item quantity="zero">تبدأ مع الأذان</item>
+        <item quantity="one">تبدأ بعد الأذان بدقيقة</item>
+        <item quantity="two">تبدأ بعد الأذان بدقيقتين</item>
+        <item quantity="few">تبدأ بعد الأذان بـ %1$d دقائق</item>
+        <item quantity="many">تبدأ بعد الأذان بـ %1$d دقيقة</item>
+        <item quantity="other">تبدأ بعد الأذان بـ %1$d دقيقة</item>
+    </plurals>
+    <plurals name="prayer_silence_start_offset_before">
+        <item quantity="zero">تبدأ مع الأذان</item>
+        <item quantity="one">تبدأ قبل الأذان بدقيقة</item>
+        <item quantity="two">تبدأ قبل الأذان بدقيقتين</item>
+        <item quantity="few">تبدأ قبل الأذان بـ %1$d دقائق</item>
+        <item quantity="many">تبدأ قبل الأذان بـ %1$d دقيقة</item>
+        <item quantity="other">تبدأ قبل الأذان بـ %1$d دقيقة</item>
+    </plurals>
+</resources>

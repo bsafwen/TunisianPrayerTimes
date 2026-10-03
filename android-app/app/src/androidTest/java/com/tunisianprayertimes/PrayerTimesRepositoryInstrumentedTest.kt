@@ -11,7 +11,7 @@ import java.util.Calendar
 
 /**
  * Instrumented tests for PrayerTimesRepository on a real device.
- * Verifies CSV asset loading works correctly across Android versions.
+ * Verifies the bundled formula inputs load and compute correctly across Android versions.
  */
 @RunWith(AndroidJUnit4::class)
 class PrayerTimesRepositoryInstrumentedTest {

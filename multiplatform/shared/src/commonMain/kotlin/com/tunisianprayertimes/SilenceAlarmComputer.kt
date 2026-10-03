@@ -44,7 +44,7 @@ object SilenceAlarmComputer {
             val config = configs[prayerTime.prayer] ?: PrayerSilenceConfig()
 
             val silenceTime = computeSilenceStart(now, prayerTime, config)
-            val unsilenceTime = computeUnsilenceEnd(now, silenceTime, config)
+            val unsilenceTime = computeUnsilenceEndForDay(now, prayerTime, silenceTime, config)
 
             if (!now.before(silenceTime) && now.before(unsilenceTime)) {
                 currentlyInSilenceWindow = true
@@ -64,13 +64,13 @@ object SilenceAlarmComputer {
         if (tomorrowTimes != null) {
             val ishaConfig = configs[Prayer.ISHA] ?: PrayerSilenceConfig()
             val ishaSilence = computeSilenceStart(now, todayTimes.isha, ishaConfig)
-            val ishaUnsilence = computeUnsilenceEnd(now, ishaSilence, ishaConfig)
+            val ishaUnsilence = computeUnsilenceEndForDay(now, todayTimes.isha, ishaSilence, ishaConfig)
 
             if (!now.before(ishaUnsilence) && !currentlyInSilenceWindow) {
                 val fajrConfig = configs[Prayer.FAJR] ?: PrayerSilenceConfig()
                 val tomorrow = (now.clone() as Calendar).apply { add(Calendar.DAY_OF_YEAR, 1) }
                 val fajrSilence = computeSilenceStartForDay(tomorrow, tomorrowTimes.fajr, fajrConfig)
-                val fajrUnsilence = computeUnsilenceEndForDay(tomorrow, fajrSilence, fajrConfig)
+                val fajrUnsilence = computeUnsilenceEndForDay(tomorrow, tomorrowTimes.fajr, fajrSilence, fajrConfig)
 
                 if (fajrSilence.after(now)) {
                     alarms += ScheduledAlarm(fajrSilence.timeInMillis, AlarmAction.SILENCE, Prayer.FAJR)
@@ -113,6 +113,10 @@ object SilenceAlarmComputer {
         }
     }
 
+    /**
+     * Legacy duration/fixed-clock end, kept for callers that only have the start.
+     * New adhan-relative ends need the prayer time; see [computeUnsilenceEndForDay].
+     */
     internal fun computeUnsilenceEnd(now: Calendar, silenceStart: Calendar, config: PrayerSilenceConfig): Calendar {
         return if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
             (now.clone() as Calendar).apply {
@@ -150,21 +154,35 @@ object SilenceAlarmComputer {
         }
     }
 
-    private fun computeUnsilenceEndForDay(day: Calendar, silenceStart: Calendar, config: PrayerSilenceConfig): Calendar {
-        return if (config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0) {
-            (day.clone() as Calendar).apply {
-                set(Calendar.HOUR_OF_DAY, config.fixedHour)
-                set(Calendar.MINUTE, config.fixedMinute)
-                set(Calendar.SECOND, 0)
-                set(Calendar.MILLISECOND, 0)
-                if (before(silenceStart)) {
-                    add(Calendar.DAY_OF_YEAR, 1)
+    private fun computeUnsilenceEndForDay(
+        day: Calendar,
+        prayerTime: PrayerTime,
+        silenceStart: Calendar,
+        config: PrayerSilenceConfig,
+    ): Calendar {
+        return when {
+            config.mode == SilenceMode.FIXED_TIME && config.fixedHour >= 0 && config.fixedMinute >= 0 ->
+                (day.clone() as Calendar).apply {
+                    set(Calendar.HOUR_OF_DAY, config.fixedHour)
+                    set(Calendar.MINUTE, config.fixedMinute)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                    if (before(silenceStart)) {
+                        add(Calendar.DAY_OF_YEAR, 1)
+                    }
                 }
-            }
-        } else {
-            (silenceStart.clone() as Calendar).apply {
-                add(Calendar.MINUTE, config.afterMinutes)
-            }
+            config.endOffsetMinutes != null ->
+                (day.clone() as Calendar).apply {
+                    set(Calendar.HOUR_OF_DAY, prayerTime.hour)
+                    set(Calendar.MINUTE, prayerTime.minute)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                    add(Calendar.MINUTE, config.endOffsetMinutes)
+                }
+            else ->
+                (silenceStart.clone() as Calendar).apply {
+                    add(Calendar.MINUTE, config.afterMinutes)
+                }
         }
     }
 
@@ -175,7 +193,7 @@ object SilenceAlarmComputer {
     ): Boolean {
         val now = Calendar.getInstance()
         val silenceStart = computeSilenceStart(now, prayerTime, config)
-        val unsilenceEnd = computeUnsilenceEnd(now, silenceStart, config)
+        val unsilenceEnd = computeUnsilenceEndForDay(now, prayerTime, silenceStart, config)
 
         val nextStart = (now.clone() as Calendar).apply {
             set(Calendar.HOUR_OF_DAY, nextPrayerTime.hour)
@@ -206,7 +224,7 @@ object SilenceAlarmComputer {
             .firstNotNullOfOrNull { prayerTime ->
                 val config = configs[prayerTime.prayer] ?: PrayerSilenceConfig()
                 val silenceStart = computeSilenceStart(day, prayerTime, config)
-                val unsilenceEnd = computeUnsilenceEnd(day, silenceStart, config)
+                val unsilenceEnd = computeUnsilenceEndForDay(day, prayerTime, silenceStart, config)
 
                 if (triggerAtMillis in silenceStart.timeInMillis until unsilenceEnd.timeInMillis) {
                     SilenceWindowOverlap(

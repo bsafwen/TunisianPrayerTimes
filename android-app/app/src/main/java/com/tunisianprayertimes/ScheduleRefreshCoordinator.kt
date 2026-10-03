@@ -4,6 +4,9 @@ import android.app.AlarmManager
 import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
+import android.util.Log
+import com.tunisianprayertimes.adhkar.DhikrReminderReceiver
+import com.tunisianprayertimes.adhkar.DhikrReminderScheduler
 import com.tunisianprayertimes.wake.WakeAlarmScheduler
 import com.tunisianprayertimes.wake.WakeAlarmVerifyWorker
 
@@ -79,13 +82,21 @@ object ScheduleRefreshCoordinator {
     suspend fun syncAll(
         context: Context,
         skipSilenceWhileManualSilence: Boolean = false,
-    ): RefreshResult = RefreshResult(
-        silenceResult = syncSilence(
-            context = context,
-            skipWhileManualSilence = skipSilenceWhileManualSilence,
-        ),
-        wakeResult = syncWake(context),
-    )
+    ): RefreshResult {
+        try {
+            DhikrReminderScheduler.refresh(context.applicationContext, rearm = true)
+        } catch (error: Exception) {
+            Log.w("ScheduleRefresh", "Could not restore Adhkar reminders", error)
+            runCatching { DhikrReminderReceiver.enqueueFailureRepair(context.applicationContext) }
+        }
+        return RefreshResult(
+            silenceResult = syncSilence(
+                context = context,
+                skipWhileManualSilence = skipSilenceWhileManualSilence,
+            ),
+            wakeResult = syncWake(context),
+        )
+    }
 
     private fun hasSilencePermissions(context: Context): Boolean {
         val notificationManager =

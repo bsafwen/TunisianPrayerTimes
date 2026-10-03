@@ -254,6 +254,26 @@ class PrefsManagerTest {
     }
 
     @Test
+    fun qiblaMethod_defaultsToGreatCircle() {
+        assertEquals(QiblaMethod.GreatCircle, PrefsManager.getQiblaMethod(context))
+    }
+
+    @Test
+    fun qiblaMethod_persistsTheChoice() {
+        PrefsManager.setQiblaMethod(context, QiblaMethod.RhumbLine)
+        assertEquals(QiblaMethod.RhumbLine, PrefsManager.getQiblaMethod(context))
+        PrefsManager.setQiblaMethod(context, QiblaMethod.GreatCircle)
+        assertEquals(QiblaMethod.GreatCircle, PrefsManager.getQiblaMethod(context))
+    }
+
+    @Test
+    fun qiblaMethod_unknownStoredValue_fallsBackToGreatCircle() {
+        context.getSharedPreferences("prayer_silence_prefs", Context.MODE_PRIVATE)
+            .edit().putString("qibla_method", "Loxodrome").commit()
+        assertEquals(QiblaMethod.GreatCircle, PrefsManager.getQiblaMethod(context))
+    }
+
+    @Test
     fun jomoaaConfig_isIndependentFromDhuhr() {
         PrefsManager.setAfterMinutes(context, Prayer.JOMOAA, 90)
         PrefsManager.setAfterMinutes(context, Prayer.DHUHR, 45)
