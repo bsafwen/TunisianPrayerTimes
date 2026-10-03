@@ -32,23 +32,52 @@
     <string name="prayer_method_step_sun_body">نحسب لليوم الجولياني JD ميلَ الشمس δ (بُعدها شمال خط الاستواء السماوي أو جنوبه) ومعادلةَ الزمن، أي الفرق بين الساعة الشمسية والساعة العادية، بمعادلات جان ميوس الفلكية.</string>
 
     <string name="prayer_method_step_dhuhr_title">2. الظهر</string>
-    <string name="prayer_method_step_dhuhr_body">الزوال هو لحظة بلوغ الشمس أعلى نقطة في السماء. يتأخر عن الساعة 12:00 بحسب خط الطول ومعادلة الزمن، ويضيف المعهد 7 دقائق احتياطًا.</string>
+    <string name="prayer_method_step_dhuhr_body">الزوال هو لحظة بلوغ الشمس أعلى نقطة في السماء. على خط غرينتش يكون في المتوسط على الساعة 12:00 بالتوقيت العالمي، أي 13:00 بتوقيت تونس. ثم يتقدّم بحسب خط الطول لأن تونس شرق غرينتش، ويتغيّر خلال السنة بمعادلة الزمن، ويضيف المعهد بعده 7 دقائق احتياطًا.</string>
+    <string name="prayer_method_noon_zone">توقيت تونس (UTC+1)</string>
+    <string name="prayer_method_noon_longitude">خط الطول λ</string>
+    <string name="prayer_method_noon_eot">معادلة الزمن EoT</string>
+    <string name="prayer_method_noon_margin">احتياط المعهد للظهر</string>
+    <string name="prayer_method_noon_description">من الساعة 12:00 بالتوقيت العالمي: ساعة لتوقيت تونس، ثم %1$s لخط الطول، ثم %2$s لمعادلة الزمن، فيكون الزوال %3$s، ثم 7 دقائق فيكون الظهر %4$s.</string>
 
     <string name="prayer_method_step_hour_angle_title">3. المعادلة الأساسية</string>
     <string name="prayer_method_step_hour_angle_body">لكل وقت ارتفاع معيّن a للشمس. منه نحسب الزاوية الساعية H، أي بُعد ذلك الوقت عن الزوال: كل 15° تساوي ساعة واحدة. قبل الزوال نطرح H وبعده نضيفها.</string>
 
+    <string name="prayer_method_dial_noon">الزوال</string>
+    <string name="prayer_method_dial_caption">الدائرة دورة الشمس الظاهرية في 24 ساعة، فكل تدريجة 15° تساوي ساعة. H هي بُعد كل وقت عن الزوال: يسارًا قبله ويمينًا بعده.</string>
+    <string name="prayer_method_dial_description">دائرة الزاوية الساعية، الزوال في أعلاها وكل 15° ساعة: %1$s</string>
+
     <string name="prayer_method_step_asr_title">4. العصر</string>
     <string name="prayer_method_step_asr_body">يدخل العصر حين يصير ظل الشيء مثل طوله زائدًا ظلَّه عند الزوال. هذا يحدد ارتفاع الشمس a:</string>
+
+    <string name="prayer_method_shadow_stick">العصا</string>
+    <string name="prayer_method_shadow_length">طول العصا</string>
+    <string name="prayer_method_shadow_noon">ظل الزوال</string>
+    <string name="prayer_method_shadow_asr">ظل العصر</string>
+    <string name="prayer_method_shadow_description">عصا وظلها: ظل الزوال %1$s من طول العصا، وظل العصر طول العصا زائدًا ظل الزوال أي %2$s، فتكون الشمس على ارتفاع %3$s.</string>
 
     <string name="prayer_method_step_horizon_title">5. الشروق والمغرب</string>
     <string name="prayer_method_step_horizon_body">تشرق الشمس وتغرب حين تلامس حافتها العليا الأفق، أي حين يكون مركزها 0.83° تحت الأفق (انكسار الضوء في الجو ونصف قطر قرص الشمس)، مع زاوية d لانخفاض الأفق بسبب ارتفاع المكان. يضيف المعهد دقيقتين للمغرب.</string>
 
+    <string name="prayer_method_sunrise_dip">انخفاض الأفق d</string>
+    <string name="prayer_method_sunrise_radius">نصف قطر الشمس</string>
+    <string name="prayer_method_sunrise_refraction">انكسار الضوء</string>
+    <string name="prayer_method_sunrise_seen">الشمس كما نراها</string>
+    <string name="prayer_method_sunrise_true">موقعها الفعلي</string>
+    <string name="prayer_method_sunrise_description">لحظة الشروق والغروب مكبّرة: حافة الشمس العليا على الأفق، وانكسار الضوء يُظهرها أعلى من موقعها الفعلي، فيكون مركزها على ارتفاع %1$s.</string>
+
     <string name="prayer_method_step_twilight_title">6. الفجر والعشاء</string>
     <string name="prayer_method_step_twilight_body">يطلع الفجر حين تكون الشمس 18° تحت الأفق قبل الشروق، ويدخل العشاء حين تبلغ 18° تحته بعد الغروب، مع نفس زاوية الأفق d.</string>
-    <string name="prayer_method_step_iteration_note">في الشروق والمغرب والفجر والعشاء يُعاد الحساب 5 مرات بموقع الشمس في تلك اللحظة نفسها لزيادة الدقة.</string>
+    <string name="prayer_method_step_iteration_note">في الشروق والمغرب والفجر والعشاء يُعاد حساب ميل الشمس ومعادلة الزمن 5 مرات للحظة الوقت نفسها لزيادة الدقة، لذلك قد يختلف الناتج ببضع ثوانٍ عن حسابه بقيم الخطوة 1.</string>
+    <string name="prayer_method_twilight_day">النهار</string>
+    <string name="prayer_method_twilight_night">الليل</string>
+    <string name="prayer_method_twilight_description">الشمس تحت الأفق: الفجر والعشاء على ارتفاع %1$s، والشروق والمغرب على %2$s.</string>
 
     <string name="prayer_method_step_rounding_title">7. التقريب</string>
     <string name="prayer_method_step_rounding_body">تُقرَّب كل نتيجة إلى أقرب دقيقة: 30 ثانية فما فوق تُجبر إلى الدقيقة الموالية.</string>
+
+    <string name="prayer_method_rounding_seconds">%1$d ث</string>
+    <string name="prayer_method_rounding_up">%1$s: الثواني %2$d، فيُجبر إلى الدقيقة الموالية</string>
+    <string name="prayer_method_rounding_down">%1$s: الثواني %2$d، فتُحذف</string>
 
     <string name="prayer_method_table_title">النتيجة</string>
     <string name="prayer_method_table_prayer">الوقت</string>
