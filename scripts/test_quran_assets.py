@@ -97,6 +97,24 @@ class QuietHandler(http.server.SimpleHTTPRequestHandler):
         if not self.refused():
             super().do_HEAD()
 
+    def do_PUT(self):
+        # Cloudflare's R2 API: PUT /accounts/<id>/r2/buckets/<bucket>/objects/<key> with a bearer token.
+        prefix = '/accounts/test-account/r2/buckets/test-bucket/objects/'
+        if self.refused():
+            return
+        if self.headers.get('Authorization') != 'Bearer test-token' or not self.path.startswith(prefix):
+            body = b'{"success": false, "errors": [{"code": 10000, "message": "Authentication error"}]}'
+            self.send_response(403)
+        else:
+            target = Path(self.directory) / self.path[len(prefix):]
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(self.rfile.read(int(self.headers['Content-Length'])))
+            body = b'{"success": true, "errors": []}'
+            self.send_response(200)
+        self.send_header('Content-Length', str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
     def log_message(self, *args):
         pass
 
@@ -173,6 +191,39 @@ class EndToEndTest(unittest.TestCase):
         for name in names:
             self.assertEqual(assets.GENERATED_BUILD_FILE, (assets.PACKS_ROOT / name / 'build.gradle.kts').read_text())
             self.assertRegex(name, r'^[A-Za-z][A-Za-z0-9_]*$')
+
+    def publish(self, token):
+        api, environ = assets.CLOUDFLARE_API, dict(assets.os.environ)
+        assets.CLOUDFLARE_API = self.cdn.rstrip('/')
+        assets.os.environ.update(CLOUDFLARE_ACCOUNT_ID='test-account', CLOUDFLARE_API_TOKEN=token)
+        try:
+            return self.run_command('publish', '--bucket', 'test-bucket')
+        finally:
+            assets.CLOUDFLARE_API = api
+            assets.os.environ.clear()
+            assets.os.environ.update(environ)
+
+    def test_publish_uploads_what_the_cdn_lacks_and_skips_the_rest(self):
+        self.layout()
+        served = self.repo / 'served' / 'v1' / 'packs'
+        kept = sorted(served.iterdir())[0]
+        for archive in served.iterdir():
+            if archive != kept:
+                archive.unlink()
+        code, output = self.publish('test-token')
+        self.assertEqual(0, code, output)
+        self.assertIn('already published', output)
+        self.assertEqual(sorted(p.name for p in assets.BUILD.glob('*.zip')), sorted(p.name for p in served.iterdir()))
+        for archive in assets.BUILD.glob('*.zip'):
+            self.assertEqual(archive.read_bytes(), (served / archive.name).read_bytes())
+
+    def test_publish_reports_what_cloudflare_refused(self):
+        self.layout()
+        for archive in (self.repo / 'served' / 'v1' / 'packs').iterdir():
+            archive.unlink()
+        code, output = self.publish('wrong-token')
+        self.assertEqual(1, code)
+        self.assertIn('Authentication error', output)
 
     def test_stage_downloads_verifies_and_skips_what_is_already_staged(self):
         layout = self.layout()
