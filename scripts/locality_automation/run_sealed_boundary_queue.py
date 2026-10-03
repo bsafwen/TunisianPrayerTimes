@@ -95,6 +95,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--audit-existing", type=Path,
+                        help="Verify completed physical receipts and write a fresh audit; never record")
     args = parser.parse_args()
     manifest = read(args.manifest)
     work = Path(manifest["outputDirectory"])
@@ -114,6 +116,30 @@ def main():
                 or report.get("structuralFailures") != [] or report.get("probeFailures") != []
                 or set(report.get("decodedCurrentChecks", {})) != {item["code"]}):
             raise ValueError("Sealed independent report does not pass finite-case contract")
+    if args.audit_existing:
+        progress = read(work / "queue-progress.json")
+        if progress.get("status") != "COMPLETED" or [row["code"] for row in progress["completed"]] != codes:
+            raise ValueError("Complete queue progress/code set required for audit")
+        rows, log_reference_errors = [], []
+        for item, logged in zip(manifest["items"], progress["completed"]):
+            code = item["code"]
+            actual = verify_linked_acceptance(item, manifest, work / (code + "-current-source-validation-v1"))
+            receipts = [read(work / (code + "-" + phase + ".execution.json")) for phase in ("preflight", "record")]
+            if any(row.get("status") != "COMPLETED" or row.get("exitCode") != 0 for row in receipts):
+                raise ValueError("Physical queue phase did not complete successfully")
+            if logged["receipt"] != actual:
+                log_reference_errors.append(code)
+            gap = (datetime.fromisoformat(receipts[1]["startedAtUtc"].replace("Z", "+00:00"))
+                   - datetime.fromisoformat(receipts[0]["finishedAtUtc"].replace("Z", "+00:00"))).total_seconds()
+            rows.append({"code": code, "actualReceipt": actual, "preflightToRecordGapSeconds": gap,
+                         "phaseReceipts": [pin(work / (code + "-" + phase + ".execution.json")) for phase in ("preflight", "record")]})
+        result = {"status": "PASS_PHYSICAL_SEALED_QUEUE_ACCEPTANCE_AUDIT", "rows": rows,
+                  "progressLogReceiptReferenceErrors": log_reference_errors,
+                  "historicalProgressPreserved": True, "manifest": pin(args.manifest), "newCredit": 0}
+        with args.audit_existing.open("x", encoding="utf-8") as stream:
+            stream.write(json.dumps(result, indent=2) + "\n")
+        print(json.dumps({"status": result["status"], "count": len(rows), "logReferenceErrors": log_reference_errors}))
+        return
     if args.dry_run:
         print(json.dumps({"status": "PASS_PINNED_QUEUE_DRY_RUN", "codes": codes,
                           "writes": False, "modelCalls": 0}))

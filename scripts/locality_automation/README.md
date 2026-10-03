@@ -1,5 +1,40 @@
 # Locality automation
 
+## Reusing completed independent boundary reviews
+
+`run_sealed_boundary_queue.py --manifest MANIFEST` executes a finite released
+queue through separate guarded preflight and unchanged stock recorder phases.
+The manifest pins the helpers, original independent reports, exact live assets,
+owner, iteration and UTC window. Run from the declared existing producer cwd.
+`--dry-run` checks the finite queue without launching phases. Actual execution
+holds one exclusive queue lock, preserves each fresh phase receipt, verifies
+both live ledger links and unchanged assets, and stops at the first failure.
+It does not interpret new sources or replace any source/QA acceptance gate.
+Partially produced outputs require explicit reconciliation before a new run.
+
+`extend_accepted_body_registry.py --manifest MANIFEST --output NEW_FILE` preserves
+the previous heterogeneous bindings verbatim and joins additional actual full
+NoOp receipts, source proofs and current asset bytes. Its output is reference
+lineage only: historical behavioral scopes and dates remain unchanged, and no
+fresh GPS behavior or geographic credit is claimed.
+
+`prepare_boundary_map_audit.py --manifest MANIFEST` prepares a finite map audit
+in an existing empty output directory. It extracts the exact map JavaScript
+and reuses the established offline UI harness. Run the resulting `verify-map.cjs`
+with Node as its own guarded leaf, then run
+`verify_boundary_publication.py --manifest MANIFEST --output NEW_FILE` as another
+guarded leaf. The final verifier checks report code/count unions, retained
+acceptance history, every current packed map body, NEW visibility, actual
+GeoJSON/KML exports, source qualifications and exact adopted ring equivalence.
+Each manifest explicitly pins its baseline, publication, map, UI source,
+harness and independent coordinate primitives. No private Google configuration
+or network is accessed. These checks do not assert browser authentication or
+map rendering. Use the existing per-phase UTC guard and map time reserve.
+
+These programs replace repeated mechanical orchestration and per-window script
+generation. They add no credit by themselves; genuine qualified acceptance
+remains the measure of progress.
+
 ## Offline review preparation
 
 The current source/GPS review helpers can reuse five focused commands without
