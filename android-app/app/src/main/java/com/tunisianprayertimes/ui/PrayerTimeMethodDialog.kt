@@ -206,6 +206,7 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
             name = stringResource(R.string.prayer_method_sun_decl_name),
             value = "${signed(explanation.declinationDeg, 3)}°",
             meaning = stringResource(R.string.prayer_method_sun_decl_meaning),
+            diagram = { DeclinationDiagram(location.latitude, explanation.declinationDeg) },
             today = stringResource(
                 if (explanation.declinationDeg < 0) R.string.prayer_method_sun_decl_south else R.string.prayer_method_sun_decl_north,
             ),
@@ -375,9 +376,15 @@ private fun Formula(vararg lines: String) {
     }
 }
 
-/** One of the sun's three numbers: its name and value, what it means, and what today's value says. */
+/** One of the sun's three numbers: its name and value, what it means, an optional drawing, and what today's value says. */
 @Composable
-private fun SunQuantity(name: String, value: String, meaning: String, today: String? = null) {
+private fun SunQuantity(
+    name: String,
+    value: String,
+    meaning: String,
+    today: String? = null,
+    diagram: (@Composable () -> Unit)? = null,
+) {
     Column(
         Modifier
             .fillMaxWidth()
@@ -390,6 +397,7 @@ private fun SunQuantity(name: String, value: String, meaning: String, today: Str
             Text(value, style = LtrMonospace, color = GreenPrimaryDark, softWrap = false, maxLines = 1)
         }
         Text(meaning, fontSize = 13.sp, color = TextDark, lineHeight = 19.sp)
+        diagram?.invoke()
         if (today != null) {
             Text(today, fontSize = 13.sp, fontWeight = FontWeight.Medium, color = GreenPrimaryDark, lineHeight = 19.sp)
         }

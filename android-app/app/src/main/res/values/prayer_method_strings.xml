@@ -34,6 +34,14 @@
     <string name="prayer_method_sun_decl_meaning">بُعد الشمس شمال خط الاستواء السماوي (موجب) أو جنوبه (سالب). بسبب ميل محور الأرض يتغيّر خلال السنة بين &#x2066;+23.44°&#x2069; في أول الصيف و&#x2066;−23.44°&#x2069; في أول الشتاء، وهو سبب طول النهار صيفًا وقصره شتاءً.</string>
     <string name="prayer_method_sun_decl_north">اليوم: الشمس شمال خط الاستواء، فهي أعلى في سماء تونس من يوم الاعتدال.</string>
     <string name="prayer_method_sun_decl_south">اليوم: الشمس جنوب خط الاستواء، فهي أخفض في سماء تونس من يوم الاعتدال.</string>
+    <string name="prayer_method_decl_summer">أول الصيف</string>
+    <string name="prayer_method_decl_equinox">الاعتدال</string>
+    <string name="prayer_method_decl_winter">أول الشتاء</string>
+    <string name="prayer_method_decl_south">الجنوب</string>
+    <string name="prayer_method_decl_place">أنت</string>
+    <string name="prayer_method_decl_today">الشمس اليوم عند الزوال، على ارتفاع %1$s</string>
+    <string name="prayer_method_decl_caption">قف وانظر جنوبًا عند الزوال: الشمس أعلى ما تكون في أول الصيف وأخفض ما تكون في أول الشتاء، وتتنقّل بينهما على القوس خلال السنة. الخط الأوسط هو خط الاستواء السماوي، والشمس عليه يومَي الاعتدال. الميل δ هو الزاوية بين هذا الخط وشمس اليوم: موجب إذا كانت فوقه وسالب إذا كانت تحته.</string>
+    <string name="prayer_method_decl_description">رسم لارتفاع الشمس عند الزوال: %1$s في أول الصيف، و%2$s في الاعتدال، و%3$s في أول الشتاء، واليوم %4$s.</string>
     <string name="prayer_method_sun_eot_name">معادلة الزمن EoT</string>
     <string name="prayer_method_sun_eot_meaning">الساعة العادية تفترض أن الشمس تبلغ أعلى نقطة في نفس الوقت كل يوم، لكنها في الحقيقة تسبق ذلك أو تتأخر عنه حتى 16 دقيقة تقريبًا، بسبب ميل محور الأرض وشكل مدارها البيضوي. معادلة الزمن هي هذا الفرق.</string>
     <string name="prayer_method_sun_eot_ahead">اليوم: الشمس متقدّمة على الساعة بـ %1$s دقيقة، فيأتي الزوال أبكر بنفس المقدار.</string>

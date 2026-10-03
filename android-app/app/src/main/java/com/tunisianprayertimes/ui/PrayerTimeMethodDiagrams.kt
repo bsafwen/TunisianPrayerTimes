@@ -274,6 +274,149 @@ internal fun HourAngleDial(explanation: InmDayExplanation, names: Map<InmEvent, 
 }
 
 /**
+ * Step 1: the declination δ seen from the ground. Facing south at noon, the sun stands highest on
+ * the first day of summer and lowest on the first day of winter; at the equinoxes it is on the
+ * celestial equator. δ is today's angle from that line.
+ */
+@Composable
+internal fun DeclinationDiagram(latitude: Double, declination: Double) {
+    val references = listOf(
+        stringResource(R.string.prayer_method_decl_summer) to MAX_DECLINATION,
+        stringResource(R.string.prayer_method_decl_equinox) to 0.0,
+        stringResource(R.string.prayer_method_decl_winter) to -MAX_DECLINATION,
+    )
+    val horizonLabel = stringResource(R.string.prayer_method_decl_south)
+    val placeLabel = stringResource(R.string.prayer_method_decl_place)
+    fun noonAltitude(decl: Double) = 90 - latitude + decl
+    fun degrees(value: Double) = "%.1f°".format(Locale.US, value)
+    val description = stringResource(
+        R.string.prayer_method_decl_description,
+        degrees(noonAltitude(MAX_DECLINATION)),
+        degrees(noonAltitude(0.0)),
+        degrees(noonAltitude(-MAX_DECLINATION)),
+        degrees(noonAltitude(declination)),
+    )
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val width = constraints.maxWidth.toFloat()
+            fun px(dp: Dp) = with(density) { dp.toPx() }
+            val names = references.map { measurer.measure(it.first, LabelStyle) }
+            val numbers = references.map { (_, decl) ->
+                val text = if (decl == 0.0) "0°" else (if (decl > 0) "+" else "−") + "%.2f°".format(Locale.US, abs(decl))
+                measurer.measure(text, NumberStyle)
+            }
+            val gap = px(4.dp)
+            val labelWidths = names.indices.map { names[it].size.width + gap + numbers[it].size.width }
+            val labelHeight = names.indices.maxOf { maxOf(names[it].size.height, numbers[it].size.height) }
+            val horizonLayout = measurer.measure(horizonLabel, LabelStyle.copy(color = TextMuted))
+            val placeLayout = measurer.measure(placeLabel, LabelStyle.copy(color = TextMuted))
+            val deltaLayout = measurer.measure("δ", NumberStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold))
+            val sunRadius = px(7.dp)
+            val labelGap = px(6.dp)
+            val observerX = maxOf(px(12.dp), placeLayout.size.width / 2f)
+            val angles = references.map { Math.toRadians(noonAltitude(it.second)) }
+            // Labels start this far out along their ray, past today's sun wherever it is on the arc.
+            val labelOffset = sunRadius + px(2.dp) + labelGap
+            // The rays fan out from the observer; the radius is as large as the widest label allows.
+            val radius = references.indices.minOf { i ->
+                (width - observerX - labelWidths[i]) / cos(angles[i]).toFloat() - labelOffset
+            }.coerceIn(px(80.dp), px(150.dp))
+            val top = maxOf(labelOffset * sin(angles[0]).toFloat() + labelHeight / 2f, sunRadius + px(2.dp)) + px(2.dp)
+            val ground = top + radius * sin(angles[0]).toFloat()
+            val height = ground + px(6.dp) + maxOf(horizonLayout.size.height, placeLayout.size.height) + px(2.dp)
+
+            LeftToRight {
+                Canvas(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(with(density) { height.toDp() })
+                        .semantics { contentDescription = description },
+                ) {
+                    val observer = Offset(observerX, ground)
+                    fun at(angle: Double, distance: Float) =
+                        Offset(observer.x + distance * cos(angle).toFloat(), observer.y - distance * sin(angle).toFloat())
+                    val box = Size(2 * radius, 2 * radius)
+                    val boxTopLeft = Offset(observer.x - radius, observer.y - radius)
+
+                    // Where the noon sun can be over the year.
+                    drawArc(
+                        color = PrayerSilencePalette.GoldAccent.copy(alpha = 0.18f),
+                        startAngle = -Math.toDegrees(angles[0]).toFloat(),
+                        sweepAngle = Math.toDegrees(angles[0] - angles[2]).toFloat(),
+                        useCenter = false,
+                        topLeft = boxTopLeft,
+                        size = box,
+                        style = Stroke(10.dp.toPx(), cap = StrokeCap.Round),
+                    )
+                    references.indices.forEach { i ->
+                        val sun = at(angles[i], radius)
+                        drawLine(
+                            PrayerSilencePalette.Tick,
+                            observer,
+                            sun,
+                            if (i == 1) 1.5.dp.toPx() else 1.dp.toPx(),
+                            pathEffect = PathEffect.dashPathEffect(floatArrayOf(5.dp.toPx(), 4.dp.toPx())),
+                        )
+                        drawCircle(PrayerSilencePalette.Tick, sunRadius * 0.75f, sun)
+                        val anchor = at(angles[i], radius + labelOffset)
+                        val left = anchor.x.fitIn(size.width, labelWidths[i])
+                        drawText(numbers[i], topLeft = Offset(left, anchor.y - numbers[i].size.height / 2f))
+                        drawText(names[i], topLeft = Offset(left + numbers[i].size.width + gap, anchor.y - names[i].size.height / 2f))
+                    }
+
+                    // Today's sun, and δ as the angle between the equator's ray and today's ray.
+                    val today = Math.toRadians(noonAltitude(declination))
+                    val arcRadius = radius * 0.4f
+                    drawArc(
+                        color = PrayerSilencePalette.GoldAccent,
+                        startAngle = -Math.toDegrees(maxOf(today, angles[1])).toFloat(),
+                        sweepAngle = abs(declination).toFloat(),
+                        useCenter = false,
+                        topLeft = Offset(observer.x - arcRadius, observer.y - arcRadius),
+                        size = Size(2 * arcRadius, 2 * arcRadius),
+                        style = Stroke(2.dp.toPx()),
+                    )
+                    // Between the two rays when they are far enough apart, otherwise just outside them.
+                    val deltaAt = when {
+                        abs(declination) >= 10 -> at((today + angles[1]) / 2, arcRadius + 10.dp.toPx())
+                        declination < 0 -> at(today - Math.toRadians(6.0), arcRadius)
+                        else -> at(today + Math.toRadians(6.0), arcRadius)
+                    }
+                    drawText(deltaLayout, topLeft = Offset(deltaAt.x - deltaLayout.size.width / 2f, deltaAt.y - deltaLayout.size.height / 2f))
+                    val sun = at(today, radius)
+                    drawLine(PrayerSilencePalette.GoldAccent, observer, sun, 2.dp.toPx())
+                    drawCircle(Color.White, sunRadius + 2.dp.toPx(), sun)
+                    drawCircle(PrayerSilencePalette.GoldAccent, sunRadius, sun)
+
+                    drawLine(PrayerSilencePalette.Tick, Offset(0f, ground), Offset(size.width, ground), 1.5.dp.toPx())
+                    drawCircle(PrayerSilencePalette.PrimaryText, 4.dp.toPx(), observer)
+                    val labelTop = ground + 6.dp.toPx()
+                    drawText(placeLayout, topLeft = Offset((observer.x - placeLayout.size.width / 2f).fitIn(size.width, placeLayout.size.width), labelTop))
+                    drawText(horizonLayout, topLeft = Offset(size.width - horizonLayout.size.width, labelTop))
+                }
+            }
+        }
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(6.dp)) {
+            Canvas(Modifier.width(14.dp).height(14.dp)) {
+                drawCircle(PrayerSilencePalette.GoldAccent, 6.dp.toPx())
+            }
+            Text(
+                stringResource(R.string.prayer_method_decl_today, "\u2066${degrees(noonAltitude(declination))}\u2069"),
+                fontSize = 12.sp,
+                color = TextDark,
+            )
+        }
+        Text(stringResource(R.string.prayer_method_decl_caption), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
+    }
+}
+
+/** The obliquity of the ecliptic: how far the sun gets from the celestial equator each year. */
+private const val MAX_DECLINATION = 23.44
+
+/**
  * Step 4: a stick and its shadow. Asr begins when the shadow is the stick's length plus its
  * noon shadow, which fixes the sun's altitude a.
  */
