@@ -66,6 +66,9 @@ import com.tunisianprayertimes.quran.QuranSearchResult
 import com.tunisianprayertimes.quran.QuranHighlights
 import com.tunisianprayertimes.quran.QuranHighlightRect
 import com.tunisianprayertimes.quran.QuranHighlightRepository
+import com.tunisianprayertimes.quran.assets.QuranAssets
+import com.tunisianprayertimes.quran.assets.QuranPackStatus
+import com.tunisianprayertimes.quran.assets.open
 import com.tunisianprayertimes.quran.audio.QuranAudioController
 import com.tunisianprayertimes.quran.audio.QuranRepeatRange
 import com.tunisianprayertimes.quran.audio.decodeQuranRepeat
@@ -184,6 +187,22 @@ private fun QuranReader(
     val haptics = LocalHapticFeedback.current
     val repeatSheet = remember(panel, repeatDraft) { if (panel == "repeat") decodeQuranRepeat(repeatDraft)?.first else null }
     var gestureHint by remember { mutableStateOf(!prefs.getBoolean("gesture_hint_seen", false)) }
+    // Pages and recitations this install downloads rather than carries.
+    val media = rememberQuranMedia()
+    val starter = rememberQuranRecitationStarter(media)
+    val mobileData = rememberMobileDataLauncher()
+    // Unknown until the layout is read: a missing page waits quietly rather than showing an error.
+    val pagesReady = media?.pagesReady ?: false
+    var pagesRequested by rememberSaveable { mutableStateOf(false) }
+    LaunchedEffect(media, pagesReady) {
+        // The first visit fetches the pages by itself, unless that would use mobile data.
+        val pagesPack = media?.pages ?: return@LaunchedEffect
+        if (!pagesReady && !pagesRequested && media.state(pagesPack).status == QuranPackStatus.Missing &&
+            !withContext(Dispatchers.IO) { media.isMetered() }) {
+            pagesRequested = true
+            media.fetch(listOf(pagesPack), allowMetered = false)
+        }
+    }
 
     LaunchedEffect(pager) {
         snapshotFlow { pager.settledPage }.distinctUntilChanged().collect {
@@ -239,6 +258,13 @@ private fun QuranReader(
                 Icon(painterResource(R.drawable.ic_adhkar_list), "فهرس السور", tint = GreenPrimary)
             }
         }
+        media?.let { downloads ->
+            QuranPagesDownloadBanner(
+                media = downloads,
+                onDownload = { allowMetered -> downloads.fetch(listOfNotNull(downloads.pages), allowMetered) },
+                onUseMobileData = { downloads.source?.confirmMobileData(listOfNotNull(downloads.pages), mobileData) },
+            )
+        }
         if (detailsFailed) {
             Row(Modifier.fillMaxWidth().padding(start = 16.dp, end = 8.dp), verticalAlignment = Alignment.CenterVertically) {
                 Text("تعذّر تجهيز البحث والتلاوة", Modifier.weight(1f), fontSize = 12.sp, color = TextMuted)
@@ -263,6 +289,7 @@ private fun QuranReader(
             QuranPageImage(
                 page = pages[index],
                 active = index == pager.currentPage,
+                pagesReady = pagesReady,
                 highlightRects = highlights?.rectangles(number, playback.surah, playback.ayah).orEmpty(),
                 selectedRects = highlights?.rectangles(number, chosen?.surah, chosen?.ayah).orEmpty(),
                 onVerseLongPress = { x, y ->
@@ -281,7 +308,10 @@ private fun QuranReader(
             )
         }
         HorizontalDivider(color = CardBorder)
-        QuranAudioControls(catalog, page.number, followAudio, onFollow = { followAudio = true }, onRepeat = ::openRepeat)
+        QuranAudioControls(
+            catalog, page.number, followAudio, onFollow = { followAudio = true }, onRepeat = ::openRepeat,
+            media = media, starter = starter, mobileData = mobileData,
+        )
         if (gestureHint) {
             // Until it is dismissed or a verse is first pressed; afterwards the page keeps this space.
             HorizontalDivider(color = CardBorder)
@@ -311,7 +341,9 @@ private fun QuranReader(
                 catalog = catalog,
                 initial = repeatSheet,
                 onStart = { range ->
-                    QuranAudioController.repeat(context, range)
+                    starter.start(QuranAudioController.state.value.reciterId, range.from.surah..range.to.surah) {
+                        QuranAudioController.repeat(context, range)
+                    }
                     followAudio = true
                     panel = null
                 },
@@ -325,6 +357,8 @@ private fun QuranReader(
 private fun QuranPageImage(
     page: QuranPage,
     active: Boolean,
+    /** False while the pages are still to be downloaded; the page decodes again once they arrive. */
+    pagesReady: Boolean,
     highlightRects: List<QuranHighlightRect>,
     selectedRects: List<QuranHighlightRect>,
     /** A long press at a point of the original scan, each coordinate from 0 to 1; true when it chose a verse. */
@@ -339,28 +373,35 @@ private fun QuranPageImage(
     val currentOnSettled by rememberUpdatedState(onSettled)
     var bitmap by remember(page.assetPath) { mutableStateOf<ImageBitmap?>(null) }
     var failed by remember(page.assetPath) { mutableStateOf(false) }
+    var missing by remember(page.assetPath) { mutableStateOf(false) }
     var attempt by remember(page.assetPath) { mutableIntStateOf(0) }
     var size by remember { mutableStateOf(IntSize.Zero) }
     var scale by remember(page.number) { mutableFloatStateOf(1f) }
     var offset by remember(page.number) { mutableStateOf(Offset.Zero) }
-    LaunchedEffect(page.assetPath, attempt) {
+    LaunchedEffect(page.assetPath, attempt, pagesReady) {
+        if (bitmap != null) return@LaunchedEffect
         failed = false
+        missing = false
         try {
-            bitmap = withContext(Dispatchers.IO) {
+            val decoded = withContext(Dispatchers.IO) {
+                // Null until the pages are downloaded, on installs that do not carry them.
+                val scan = QuranAssets.resolve(context, page.assetPath) ?: return@withContext null
                 // Decode only the visible page and its two neighbours. Keep native scan detail for zoom.
-                context.assets.open(page.assetPath).use { stream ->
+                scan.open(context).use { stream ->
                     checkNotNull(BitmapFactory.decodeStream(stream, null, BitmapFactory.Options().apply {
                         inPreferredConfig = android.graphics.Bitmap.Config.RGB_565
                     })).asImageBitmap()
                 }
             }
+            // Pages said to be on the device but not found is a failure the reader can retry.
+            if (decoded == null) { if (pagesReady) failed = true else missing = true } else bitmap = decoded
         } catch (e: CancellationException) {
             throw e
         } catch (_: Exception) {
             failed = true
         }
     }
-    LaunchedEffect(bitmap, failed, active) { if (bitmap != null || failed) currentOnSettled() }
+    LaunchedEffect(bitmap, failed, missing, active) { if (bitmap != null || failed || missing) currentOnSettled() }
     LaunchedEffect(active) { if (!active) { scale = 1f; offset = Offset.Zero } }
     LaunchedEffect(scale, active) { if (active) onZoomChanged(scale > 1.01f) }
     BackHandler(enabled = active && scale > 1f) { scale = 1f; offset = Offset.Zero }
@@ -456,6 +497,7 @@ private fun QuranPageImage(
                 Text("تعذّر عرض الصفحة", color = TextMuted)
                 TextButton(onClick = { attempt++ }) { Text("إعادة المحاولة") }
             }
+            missing -> Text("الصفحة غير محمّلة بعد", Modifier.testTag("quran_page_missing"), color = TextMuted)
             else -> CircularProgressIndicator()
         }
     }
