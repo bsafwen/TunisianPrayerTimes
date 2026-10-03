@@ -246,7 +246,12 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
 
     MethodSection(stringResource(R.string.prayer_method_step_horizon_title), stringResource(R.string.prayer_method_step_horizon_body)) {
         val sunriseDip = if (explanation.sunriseDipDeg != explanation.dipDeg) {
-            listOf("d(sunrise) = %.3f°".us(explanation.sunriseDipDeg))
+            // INM uses another elevation for this delegation's sunrise in some years.
+            listOfNotNull(
+                location.sunriseElevationOverrides[date.year]?.let { "h(sunrise) = %s m".us(it.toString()) },
+                "d(sunrise) = %.3f°".us(explanation.sunriseDipDeg),
+                "a(sunrise) = ${signed(steps.getValue(InmEvent.SUNRISE).altitudeDeg, 3)}°",
+            )
         } else {
             emptyList()
         }
