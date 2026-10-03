@@ -17,6 +17,8 @@ object TestTags {
     const val CALL_END_VIBRATION_SWITCH = "call_end_vibration_switch"
     const val AUTO_LOCATION_SWITCH = "auto_location_switch"
     const val PRAYER_TAB_SETTINGS_BUTTON = "prayer_tab_settings_button"
+    const val PRAYER_TIME_METHOD_ROW = "prayer_time_method_row"
+    const val PRAYER_TIME_METHOD_DIALOG = "prayer_time_method_dialog"
     const val MANUAL_SILENCE_BUTTON = "manual_silence_button"
     const val MANUAL_SILENCE_MODE_UNTIL = "manual_silence_mode_until"
     const val MANUAL_SILENCE_MODE_DURATION = "manual_silence_mode_duration"

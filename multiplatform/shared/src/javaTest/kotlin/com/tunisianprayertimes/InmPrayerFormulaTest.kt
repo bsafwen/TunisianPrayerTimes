@@ -40,6 +40,40 @@ class InmPrayerFormulaTest {
     }
 
     @Test
+    fun explanationShowsTheWorkingBehindEachPublishedTime() {
+        val tunis = checkNotNull(locations[615])
+        val explanation = InmPrayerFormula.explain(tunis, 2026, 10, 3)
+        // meteo.tn's Tunis row for 2026-10-03 (docs/csv/615/2026/10.csv).
+        assertEquals(
+            listOf("04:50", "06:16", "12:15", "15:28", "18:02", "19:26"),
+            explanation.events.map { hhmm(it.shownMinutes / 60 to it.shownMinutes % 60) },
+        )
+        assertEquals(InmPrayerFormula.minutes(tunis, 2026, 10, 3), explanation.events.map { it.exactMinutes })
+
+        val byEvent = explanation.events.associateBy { it.event }
+        assertEquals(explanation.solarNoonMinutes + 7, byEvent.getValue(InmEvent.DHUHR).exactMinutes, 1e-9)
+        val asr = byEvent.getValue(InmEvent.ASR)
+        assertEquals(explanation.solarNoonMinutes + checkNotNull(asr.hourAngleDeg) * 4, asr.exactMinutes, 1e-9)
+        assertEquals(explanation.dipDeg, InmPrayerFormula.dipFromElevation(tunis.elevationM))
+        assertEquals(-(18 + explanation.dipDeg), byEvent.getValue(InmEvent.FAJR).altitudeDeg)
+    }
+
+    @Test
+    fun drawnSunPathCrossesEachEventAltitudeAtItsTime() {
+        val tunis = checkNotNull(locations[615])
+        val explanation = InmPrayerFormula.explain(tunis, 2026, 10, 3)
+        for (step in explanation.events) {
+            val atMinutes = when (step.event) {
+                InmEvent.DHUHR -> explanation.solarNoonMinutes
+                InmEvent.MAGHRIB -> step.exactMinutes - 2
+                else -> step.exactMinutes
+            }
+            val drawn = InmPrayerFormula.sunAltitudeDeg(tunis, 2026, 10, 3, atMinutes)
+            assertEquals(step.altitudeDeg, drawn, 0.3, "${step.event}")
+        }
+    }
+
+    @Test
     fun zeribaSunriseQuirkOnlyAppliesToIts2026Table() {
         val zeriba = checkNotNull(locations[409])
         assertEquals(mapOf(2026 to 15.6), zeriba.sunriseElevationOverrides)
