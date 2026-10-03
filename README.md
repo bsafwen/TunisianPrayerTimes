@@ -131,6 +131,8 @@ cd android-app
 `assembleRelease` builds the APK without any pack. The AAB is too large for GitHub Releases, so
 `release.sh` builds it locally and you upload it to the Play Console yourself.
 
+To add a reciter, follow [docs/adding-a-quran-reciter.md](docs/adding-a-quran-reciter.md).
+
 **Key capabilities:**
 - Auto-silence / Do Not Disturb during prayer times
 - GPS-based delegation auto-detection
