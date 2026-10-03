@@ -137,7 +137,7 @@ internal fun PrayerTimeMethodDialog(
                             if (location == null || explanation == null) {
                                 Text(stringResource(R.string.prayer_method_unavailable), fontSize = 14.sp, color = TextMuted)
                             } else {
-                                MethodContent(location, date, explanation, delegationName)
+                                MethodContent(location, date, explanation)
                             }
                         }
                     }
@@ -174,7 +174,7 @@ private fun MethodHeader(subtitle: String, onDismiss: () -> Unit) {
 }
 
 @Composable
-private fun MethodContent(location: InmLocation, date: LocalDate, explanation: InmDayExplanation, delegationName: String) {
+private fun MethodContent(location: InmLocation, date: LocalDate, explanation: InmDayExplanation) {
     val names = eventNames()
     val steps = explanation.events.associateBy { it.event }
     val noon = explanation.solarNoonMinutes
@@ -203,21 +203,32 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
             value = "%.1f".us(explanation.julianDay),
             meaning = stringResource(R.string.prayer_method_sun_jd_meaning),
         )
+        val declination = explanation.declinationDeg
+        // Whether today is shorter than the night is read off the times the app shows, not the sign
+        // of δ: for a degree or so below zero the day in Tunisia still exceeds twelve hours.
+        val shownDayMinutes = steps.getValue(InmEvent.MAGHRIB).shownMinutes - steps.getValue(InmEvent.SUNRISE).shownMinutes
+        val closing = when {
+            declination >= 0 -> R.string.prayer_method_sun_decl_north
+            shownDayMinutes < 12 * 60 -> R.string.prayer_method_sun_decl_south
+            else -> R.string.prayer_method_sun_decl_near_zero
+        }
         SunQuantity(
             name = stringResource(R.string.prayer_method_sun_decl_name),
-            value = "${signed(explanation.declinationDeg, 3)}°",
-            meaning = stringResource(R.string.prayer_method_sun_decl_meaning),
+            value = "${signed(declination, 2)}°",
+            meaning = stringResource(R.string.prayer_method_sun_decl_meaning, sunYear.spring.dayMonth(), sunYear.autumn.dayMonth()),
             diagram = {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    SeasonShadowPair(location.latitude)
-                    EarthTiltDiagram(location.latitude, delegationName)
+                    SeasonShadowPair(location.latitude, sunYear)
                     DeclinationDiagram(location.latitude, sunYear)
-                    DeclinationYearChart(sunYear, date, explanation.declinationDeg)
+                    DeclinationYearChart(sunYear, date, declination)
                 }
             },
             today = stringResource(
-                if (explanation.declinationDeg < 0) R.string.prayer_method_sun_decl_south else R.string.prayer_method_sun_decl_north,
-                "\u2066${signed(explanation.declinationDeg, 2)}°\u2069",
+                closing,
+                "\u2066${signed(declination, 2)}°\u2069",
+                "\u2066${"%.2f".us(abs(declination))}°\u2069",
+                "\u2066${"%.0f".us(90 - location.latitude)}°\u2069",
+                "\u2066${"%.0f".us(steps.getValue(InmEvent.DHUHR).altitudeDeg)}°\u2069",
             ),
         )
         SunQuantity(
