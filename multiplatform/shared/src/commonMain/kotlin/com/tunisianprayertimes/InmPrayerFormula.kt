@@ -177,6 +177,9 @@ object InmPrayerFormula {
     fun dipFromElevation(elevationM: Double): Double =
         acos((EARTH_RADIUS_M / (EARTH_RADIUS_M + elevationM)).toFloat().toDouble()) / DEG
 
+    /** The sun's declination in degrees at Julian day [jd], for drawing its course over a year. */
+    fun declinationDeg(jd: Double): Double = sun(jd).first
+
     /** Meeus 1900-epoch sun: declination (degrees) and equation of time (minutes). */
     internal fun sun(jd: Double): Pair<Double, Double> {
         val t = (jd - 2415020.0) / 36525
