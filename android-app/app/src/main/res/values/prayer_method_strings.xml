@@ -37,8 +37,10 @@
     <string name="prayer_method_tilt_sun">الشمس</string>
     <string name="prayer_method_tilt_equator">خط الاستواء</string>
     <string name="prayer_method_tilt_pole">القطب الشمالي</string>
-    <string name="prayer_method_tilt_caption">محور الأرض مائل 23.44° في اتجاه ثابت. وهي تدور حول الشمس خلال السنة، فيميل نصفها الشمالي نحو الشمس صيفًا وبعيدًا عنها شتاءً. الميل δ هو الزاوية بين خط الاستواء وأشعة الشمس كما في الرسم: موجب حين يميل القطب الشمالي نحو الشمس، وسالب حين يميل بعيدًا عنها.</string>
-    <string name="prayer_method_tilt_description">رسم للأرض من جانبها وأشعة الشمس آتية من اليسار: خط الاستواء مائل عن الأشعة بزاوية %1$s، ونقطة %2$s على الجانب المضاء.</string>
+    <string name="prayer_method_tilt_today">اليوم</string>
+    <string name="prayer_method_tilt_caption">محور الأرض مائل 23.44° في اتجاه ثابت. وهي تدور حول الشمس خلال السنة، فيميل نصفها الشمالي نحو الشمس في أول الصيف وبعيدًا عنها في أول الشتاء، وفي الاعتدال لا نحوها ولا بعيدًا عنها. الميل δ هو الزاوية بين خط الاستواء وأشعة الشمس، المظلّلة في الرسم: موجب حين يميل القطب الشمالي نحو الشمس، وسالب حين يميل بعيدًا عنها.</string>
+    <string name="prayer_method_tilt_small_note">الزاوية صغيرة اليوم لأننا قريبون من الاعتدال، فتبدو الأرض شبه مستقيمة.</string>
+    <string name="prayer_method_tilt_description">رسم للأرض من جانبها وأشعة الشمس آتية من اليسار. ثلاث أرض صغيرة تبيّن ميلها في أول الصيف وفي الاعتدال وفي أول الشتاء، وأرض كبيرة لليوم: خط الاستواء مائل عن الأشعة بزاوية %1$s، ونقطة %2$s على الجانب المضاء.</string>
     <string name="prayer_method_decl_summer">أول الصيف</string>
     <string name="prayer_method_decl_equinox">يتساوى الليل والنهار</string>
     <string name="prayer_method_decl_winter">أول الشتاء</string>
