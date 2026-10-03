@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Prayer tab settings: entry to the prayer-time computation explainer -->
+    <string name="prayer_method_entry_title">كيف تُحسب مواقيت الصلاة؟</string>
+    <string name="prayer_method_entry_subtitle">طريقة المعهد الوطني للرصد الجوي خطوة بخطوة</string>
+
+    <!-- Explainer dialog -->
+    <string name="prayer_method_title">كيف تُحسب مواقيت الصلاة</string>
+    <string name="prayer_method_close">إغلاق</string>
+    <string name="prayer_method_context">%1$s · %2$s</string>
+
+    <string name="prayer_method_trust_title">مطابقة لمواقيت المعهد الوطني للرصد الجوي دقيقةً بدقيقة</string>
+    <string name="prayer_method_trust_body">يحسب التطبيق المواقيت على هاتفك، دون إنترنت، بنفس المعادلات الفلكية التي يعتمدها المعهد الوطني للرصد الجوي (meteo.tn) في جداوله الرسمية. قارنّا النتائج بكل ما نشره المعهد:</string>
+    <string name="prayer_method_trust_2026">565,020 توقيتًا لسنة 2026 (كل المعتمديات وكل الأيام): تطابق تام</string>
+    <string name="prayer_method_trust_past">109,042 توقيتًا من 2020 إلى 2025: تطابق تام</string>
+
+    <string name="prayer_method_chart_title">مسار الشمس في هذا اليوم</string>
+    <string name="prayer_method_chart_body">كل صلاة مرتبطة بموضع معيّن للشمس. المنحنى هو ارتفاع الشمس فوق الأفق أو تحته خلال اليوم، والنقاط هي لحظات المواقيت.</string>
+    <string name="prayer_method_chart_horizon">الأفق 0°</string>
+    <string name="prayer_method_chart_twilight">الفجر والعشاء −18°</string>
+    <string name="prayer_method_chart_asr">ارتفاع العصر</string>
+    <string name="prayer_method_chart_description">رسم بياني لارتفاع الشمس خلال اليوم مع مواقيت الصلوات الست</string>
+
+    <string name="prayer_method_inputs_title">المعطيات</string>
+    <string name="prayer_method_inputs_body">إحداثيات المعتمدية وارتفاعها كما ينشرها المعهد، والتوقيت المعتمد هو توقيت تونس (UTC+1) دون توقيت صيفي.</string>
+    <string name="prayer_method_input_latitude">خط العرض φ</string>
+    <string name="prayer_method_input_longitude">خط الطول λ</string>
+    <string name="prayer_method_input_elevation">الارتفاع h</string>
+    <string name="prayer_method_input_elevation_value">%1$s م</string>
+
+    <string name="prayer_method_step_sun_title">1. موقع الشمس</string>
+    <string name="prayer_method_step_sun_body">نحسب لليوم الجولياني JD ميلَ الشمس δ (بُعدها شمال خط الاستواء السماوي أو جنوبه) ومعادلةَ الزمن، أي الفرق بين الساعة الشمسية والساعة العادية، بمعادلات جان ميوس الفلكية.</string>
+
+    <string name="prayer_method_step_dhuhr_title">2. الظهر</string>
+    <string name="prayer_method_step_dhuhr_body">الزوال هو لحظة بلوغ الشمس أعلى نقطة في السماء. يتأخر عن الساعة 12:00 بحسب خط الطول ومعادلة الزمن، ويضيف المعهد 7 دقائق احتياطًا.</string>
+
+    <string name="prayer_method_step_hour_angle_title">3. المعادلة الأساسية</string>
+    <string name="prayer_method_step_hour_angle_body">لكل وقت ارتفاع معيّن a للشمس. منه نحسب الزاوية الساعية H، أي بُعد ذلك الوقت عن الزوال: كل 15° تساوي ساعة واحدة. قبل الزوال نطرح H وبعده نضيفها.</string>
+
+    <string name="prayer_method_step_asr_title">4. العصر</string>
+    <string name="prayer_method_step_asr_body">يدخل العصر حين يصير ظل الشيء مثل طوله زائدًا ظلَّه عند الزوال. هذا يحدد ارتفاع الشمس a:</string>
+
+    <string name="prayer_method_step_horizon_title">5. الشروق والمغرب</string>
+    <string name="prayer_method_step_horizon_body">تشرق الشمس وتغرب حين تلامس حافتها العليا الأفق، أي حين يكون مركزها 0.83° تحت الأفق (انكسار الضوء في الجو ونصف قطر قرص الشمس)، مع زاوية d لانخفاض الأفق بسبب ارتفاع المكان. يضيف المعهد دقيقتين للمغرب.</string>
+
+    <string name="prayer_method_step_twilight_title">6. الفجر والعشاء</string>
+    <string name="prayer_method_step_twilight_body">يطلع الفجر حين تكون الشمس 18° تحت الأفق قبل الشروق، ويدخل العشاء حين تبلغ 18° تحته بعد الغروب، مع نفس زاوية الأفق d.</string>
+    <string name="prayer_method_step_iteration_note">في الشروق والمغرب والفجر والعشاء يُعاد الحساب 5 مرات بموقع الشمس في تلك اللحظة نفسها لزيادة الدقة.</string>
+
+    <string name="prayer_method_step_rounding_title">7. التقريب</string>
+    <string name="prayer_method_step_rounding_body">تُقرَّب كل نتيجة إلى أقرب دقيقة: 30 ثانية فما فوق تُجبر إلى الدقيقة الموالية.</string>
+
+    <string name="prayer_method_table_title">النتيجة</string>
+    <string name="prayer_method_table_prayer">الوقت</string>
+    <string name="prayer_method_table_altitude">ارتفاع الشمس</string>
+    <string name="prayer_method_table_exact">الحساب</string>
+    <string name="prayer_method_table_shown">المعروض</string>
+
+    <string name="prayer_method_source">الطريقة كاملة ومصدرها مفتوحان في مستودع التطبيق على GitHub (scripts/prayer_formula).</string>
+    <string name="prayer_method_unavailable">لا تتوفر معطيات الحساب لهذه المعتمدية في هذا التاريخ.</string>
+</resources>
