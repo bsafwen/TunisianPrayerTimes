@@ -64,6 +64,7 @@ import kotlin.math.cos
 import kotlin.math.floor
 import kotlin.math.min
 import kotlin.math.sin
+import kotlin.math.sqrt
 import kotlin.math.tan
 
 /*
@@ -323,6 +324,140 @@ internal class SunYear(year: Int) {
             if (upward) declinations[it - 1] < 0 && declinations[it] >= 0 else declinations[it - 1] > 0 && declinations[it] <= 0
         }
         return i - 1 + declinations[i - 1] / (declinations[i - 1] - declinations[i])
+    }
+}
+
+/**
+ * Step 1, the cause: the Sun on the left, its rays coming in level, and the Earth seen from the
+ * side with its axis and equator. Over the year the Earth's fixed tilt turns toward and away from
+ * the Sun, so seen from the Sun the equator leans by δ: the northern half toward the Sun when δ
+ * is positive (long days), away from it when δ is negative (short days).
+ */
+@Composable
+internal fun EarthTiltDiagram(latitude: Double, declination: Double, placeName: String) {
+    val sunLabel = stringResource(R.string.prayer_method_tilt_sun)
+    val equatorLabel = stringResource(R.string.prayer_method_tilt_equator)
+    val poleLabel = stringResource(R.string.prayer_method_tilt_pole)
+    val description = stringResource(
+        R.string.prayer_method_tilt_description,
+        (if (declination < 0) "−" else "+") + "%.2f°".format(Locale.US, abs(declination)),
+        placeName,
+    )
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val width = constraints.maxWidth.toFloat()
+            fun px(dp: Dp) = with(density) { dp.toPx() }
+            val muted = LabelStyle.copy(color = TextMuted)
+            val sunLayout = measurer.measure(sunLabel, muted)
+            val equatorLayout = measurer.measure(equatorLabel, muted)
+            val poleLayout = measurer.measure(poleLabel, muted)
+            val placeLayout = measurer.measure(placeName, LabelStyle.copy(color = PrayerSilencePalette.PrimaryText, fontWeight = FontWeight.Bold))
+            val deltaLayout = measurer.measure("δ", NumberStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold))
+            val tilt = Math.toRadians(declination)
+            val earthRadius = px(44.dp)
+            val axisOverhang = px(14.dp)
+            val sunRadius = px(16.dp)
+            // The axis and the equator in screen directions (y down); the north pole leans toward the
+            // Sun, on the left, when δ is positive.
+            val axis = Offset(-sin(tilt).toFloat(), -cos(tilt).toFloat())
+            val equator = Offset(cos(tilt).toFloat(), -sin(tilt).toFloat())
+            val top = poleLayout.size.height + px(4.dp) + earthRadius + axisOverhang
+            val centerY = top
+            // The Earth sits right of centre, leaving the equator label room on its right.
+            val centerX = width - equatorLayout.size.width - px(8.dp) - earthRadius
+            val height = centerY + earthRadius + axisOverhang + px(4.dp)
+            val sunX = maxOf(sunRadius + px(4.dp), sunLayout.size.width / 2f)
+
+            LeftToRight {
+                Canvas(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(with(density) { height.toDp() })
+                        .semantics { contentDescription = description },
+                ) {
+                    val center = Offset(centerX, centerY)
+                    fun on(direction: Offset, distance: Float) = Offset(center.x + direction.x * distance, center.y + direction.y * distance)
+
+                    // The Sun and its level rays, stopping at the Earth's lit edge.
+                    val sunCenter = Offset(sunX, centerY)
+                    drawCircle(PrayerSilencePalette.GoldAccent, sunRadius, sunCenter)
+                    val rayGap = earthRadius * 0.45f
+                    for (k in -2..2) {
+                        val rayY = centerY + k * rayGap
+                        val dy = rayY - centerY
+                        val edgeX = center.x - sqrt(earthRadius * earthRadius - dy * dy)
+                        drawLine(
+                            PrayerSilencePalette.GoldAccent.copy(alpha = 0.55f),
+                            Offset(sunCenter.x + sunRadius + 4.dp.toPx(), rayY),
+                            Offset(edgeX - 3.dp.toPx(), rayY),
+                            1.5.dp.toPx(),
+                        )
+                        drawArrowHead(Offset(edgeX - 3.dp.toPx(), rayY), 1f, PrayerSilencePalette.GoldAccent.copy(alpha = 0.55f))
+                    }
+                    drawText(sunLayout, topLeft = Offset(sunCenter.x - sunLayout.size.width / 2f, sunCenter.y + sunRadius + 4.dp.toPx()))
+
+                    // The Earth: day on the side facing the Sun, night on the other.
+                    drawCircle(DayFill, earthRadius, center)
+                    clipRect(center.x, center.y - earthRadius, center.x + earthRadius, center.y + earthRadius) {
+                        drawCircle(NightFill, earthRadius, center)
+                    }
+                    drawCircle(PrayerSilencePalette.Tick, earthRadius, center, style = Stroke(1.5.dp.toPx()))
+
+                    // The equator, leaning by δ from the rays, and the axis through the poles.
+                    drawLine(PrayerSilencePalette.PrimaryText, on(equator, -earthRadius), on(equator, earthRadius), 2.dp.toPx())
+                    drawLine(
+                        PrayerSilencePalette.PrimaryText,
+                        on(axis, -(earthRadius + axisOverhang)),
+                        on(axis, earthRadius + axisOverhang),
+                        1.5.dp.toPx(),
+                        pathEffect = PathEffect.dashPathEffect(floatArrayOf(5.dp.toPx(), 3.dp.toPx())),
+                    )
+                    val pole = on(axis, earthRadius + axisOverhang)
+                    drawText(poleLayout, topLeft = Offset((pole.x - poleLayout.size.width / 2f).fitIn(size.width, poleLayout.size.width), pole.y - poleLayout.size.height - 2.dp.toPx()))
+                    val equatorEnd = on(equator, earthRadius)
+                    drawText(equatorLayout, topLeft = Offset(equatorEnd.x + 6.dp.toPx(), equatorEnd.y - equatorLayout.size.height / 2f))
+
+                    // δ: the angle at the centre between the level ray and the equator, toward the Sun.
+                    drawLine(
+                        PrayerSilencePalette.GoldAccent,
+                        Offset(center.x - earthRadius, centerY),
+                        center,
+                        1.dp.toPx(),
+                        pathEffect = PathEffect.dashPathEffect(floatArrayOf(3.dp.toPx(), 3.dp.toPx())),
+                    )
+                    val arcRadius = earthRadius * 0.55f
+                    val equatorAngle = Math.toDegrees(tilt).toFloat() // of the sunward half, from the ray
+                    drawArc(
+                        color = PrayerSilencePalette.GoldAccent,
+                        startAngle = 180f - maxOf(0f, equatorAngle),
+                        sweepAngle = abs(equatorAngle),
+                        useCenter = false,
+                        topLeft = Offset(center.x - arcRadius, center.y - arcRadius),
+                        size = Size(2 * arcRadius, 2 * arcRadius),
+                        style = Stroke(1.5.dp.toPx()),
+                    )
+                    val deltaDirection = Math.toRadians(180.0 - equatorAngle / 2 + (if (declination < 0) 8.0 else -8.0) * (if (abs(declination) < 10) 1 else 0))
+                    val deltaAt = Offset(
+                        center.x + (arcRadius + 9.dp.toPx()) * cos(deltaDirection).toFloat(),
+                        center.y + (arcRadius + 9.dp.toPx()) * sin(deltaDirection).toFloat(),
+                    )
+                    drawText(deltaLayout, topLeft = Offset(deltaAt.x - deltaLayout.size.width / 2f, deltaAt.y - deltaLayout.size.height / 2f))
+
+                    // The place at noon: on the lit side, at its latitude up from the equator.
+                    val lat = Math.toRadians(latitude)
+                    val place = Offset(
+                        center.x + earthRadius * (-cos(lat).toFloat() * equator.x + sin(lat).toFloat() * axis.x),
+                        center.y + earthRadius * (-cos(lat).toFloat() * equator.y + sin(lat).toFloat() * axis.y),
+                    )
+                    drawMarker(place, PrayerSilencePalette.GoldAccent)
+                    drawText(placeLayout, topLeft = Offset(place.x + 8.dp.toPx(), place.y - placeLayout.size.height / 2f))
+                }
+            }
+        }
+        Text(stringResource(R.string.prayer_method_tilt_caption), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
     }
 }
 
