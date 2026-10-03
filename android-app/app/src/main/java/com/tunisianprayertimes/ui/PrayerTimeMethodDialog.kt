@@ -137,7 +137,7 @@ internal fun PrayerTimeMethodDialog(
                             if (location == null || explanation == null) {
                                 Text(stringResource(R.string.prayer_method_unavailable), fontSize = 14.sp, color = TextMuted)
                             } else {
-                                MethodContent(location, date, explanation)
+                                MethodContent(location, date, explanation, delegationName)
                             }
                         }
                     }
@@ -174,7 +174,7 @@ private fun MethodHeader(subtitle: String, onDismiss: () -> Unit) {
 }
 
 @Composable
-private fun MethodContent(location: InmLocation, date: LocalDate, explanation: InmDayExplanation) {
+private fun MethodContent(location: InmLocation, date: LocalDate, explanation: InmDayExplanation, delegationName: String) {
     val names = eventNames()
     val steps = explanation.events.associateBy { it.event }
     val noon = explanation.solarNoonMinutes
@@ -209,6 +209,7 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
             meaning = stringResource(R.string.prayer_method_sun_decl_meaning),
             diagram = {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    EarthTiltDiagram(location.latitude, explanation.declinationDeg, delegationName)
                     DeclinationDiagram(location.latitude, explanation.declinationDeg, sunYear)
                     DeclinationYearChart(sunYear, date, explanation.declinationDeg)
                 }
