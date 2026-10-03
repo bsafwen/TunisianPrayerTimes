@@ -61,6 +61,8 @@ GENERATED_BUILD_FILE = (
 )
 # Every zip entry gets the same timestamp and mode so equal files give equal archives.
 ZIP_EPOCH = (1980, 1, 1, 0, 0, 0)
+# Cloudflare answers 403 to urllib's default "Python-urllib/3.x" user agent.
+USER_AGENT = 'TunisianPrayerTimes-quran-assets/1 (+https://github.com/bsafwen/TunisianPrayerTimes)'
 
 
 class LayoutError(Exception):
@@ -309,7 +311,7 @@ def write_pack_modules(names: list[str]) -> None:
 
 
 def served_size(url: str) -> int | None:
-    request = urllib.request.Request(url, method='HEAD')
+    request = urllib.request.Request(url, method='HEAD', headers={'User-Agent': USER_AGENT})
     try:
         with urllib.request.urlopen(request, timeout=60) as response:
             return int(response.headers.get('Content-Length', '-1'))
@@ -344,7 +346,8 @@ def download(url: str, target: Path) -> None:
     """Downloads to target, resuming a previous partial download when the server allows it."""
     partial = target.with_suffix(target.suffix + '.part')
     offset = partial.stat().st_size if partial.exists() else 0
-    request = urllib.request.Request(url, headers={'Range': f'bytes={offset}-'} if offset else {})
+    headers = {'User-Agent': USER_AGENT, **({'Range': f'bytes={offset}-'} if offset else {})}
+    request = urllib.request.Request(url, headers=headers)
     try:
         response = urllib.request.urlopen(request, timeout=120)
     except urllib.error.HTTPError as error:
