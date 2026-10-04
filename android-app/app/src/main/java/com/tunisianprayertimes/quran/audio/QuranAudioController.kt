@@ -41,6 +41,7 @@ object QuranAudioController {
 
     val reciters: List<QuranReciter> = listOf(
         QuranReciter(DEFAULT_RECITER_ID, "محمود خليل الحصري", "قالون عن نافع", "quran/audio/hosary/timings.json"),
+        QuranReciter("bilel-qaloun", "بلال بن محمود", "قالون عن نافع", "quran/audio/bilel/timings.json"),
     )
     private val mutableState = MutableStateFlow(QuranPlaybackState())
     val state: StateFlow<QuranPlaybackState> = mutableState.asStateFlow()
