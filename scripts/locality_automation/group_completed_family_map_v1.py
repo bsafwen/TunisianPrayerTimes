@@ -18,21 +18,23 @@ def main():
   new.update(b['newLocationCodes']);upgraded.update(b['fullScopeUpgradeCodes'])
   rows.extend({**deepcopy(r),'originalAcceptedBatchId':b['id']}for r in b['locations'])
  if len({r['code']for r in rows})!=len(rows)or new&upgraded or {r['code']for r in rows}!=new|upgraded:raise ValueError('Group must contain disjoint real additions and upgrades only')
- latest=max(children,key=lambda b:datetime.fromisoformat(b['atUtc']));ident='view:'+a.family+'-complete-'+str(c['iteration']);label=a.family.capitalize()+' complete · '+str(a.family_total)+'/'+str(a.family_total)+' · '+str(len(new))+' NEW · '+str(len(upgraded))+' FULL upgrades'
+ accepted_codes=set(model['summary']['explicitFullSourceBoundaryLocalityCodes'])&set(c['allFamilyOfficialCodes']);complete=len(accepted_codes)==a.family_total
+ latest=max(children,key=lambda b:datetime.fromisoformat(b['atUtc']));ident='view:'+a.family+'-group-'+str(c['iteration']);label=a.family.capitalize()+(' complete'if complete else '')+' · '+str(len(accepted_codes))+'/'+str(a.family_total)+' · '+str(len(new))+' NEW · '+str(len(upgraded))+' FULL upgrades'
  group={**deepcopy(latest),'id':ident,'label':label,'kind':'presentation_group','presentationOnly':True,'sourceBatchIds':ids,'atUtc':latest['atUtc'],'locationCount':len(rows),'locations':sorted(rows,key=lambda r:r['code']),'newLocationCodes':sorted(new),'fullScopeUpgradeCodes':sorted(upgraded),'fullCount':len(rows),'scopeCount':0,'reviewContextPoints':[p for b in children for p in b.get('reviewContextPoints',[])],'probeCount':sum(b.get('probeCount',0)or 0 for b in children),'qualification':'Display group of existing accepted batches only; zero new validation or installation credit. Every row keeps its originalAcceptedBatchId so inspection, export and issue points retain the original time, evidence and snapshot.'}
- m['batches'].insert(0,group);m['latestBatchId']=ident;m['preferredViewId']=ident;m['generatedAtUtc']=datetime.now(timezone.utc).isoformat();model['generatedAtUtc']=m['generatedAtUtc'];model.setdefault('completedFamilies',{})[a.family]={'officialEntries':a.family_total,'completeAcceptedEntries':a.family_total,'reviewViewId':ident,'currentWorkNewLocations':len(new),'currentWorkFullUpgrades':len(upgraded)}
+ m['batches'].insert(0,group);m['latestBatchId']=ident;m['preferredViewId']=ident;m['generatedAtUtc']=datetime.now(timezone.utc).isoformat();model['generatedAtUtc']=m['generatedAtUtc'];family_progress={'officialEntries':a.family_total,'completeAcceptedEntries':len(accepted_codes),'pendingCodes':sorted(set(c['allFamilyOfficialCodes'])-accepted_codes),'reviewViewId':ident,'currentWorkNewLocations':len(new),'currentWorkFullUpgrades':len(upgraded)};model.setdefault('familyProgress',{})[a.family]=family_progress
+ if complete:model.setdefault('completedFamilies',{})[a.family]=family_progress
  for name in ['task-report.json','boundary-map.json']:
   with (w/('before-completed-family-group-'+name)).open('xb')as f:f.write((public/name).read_bytes())
  ui=public/'boundary_map_ui.py';source=ui.read_text(encoding='utf-8');before=source
  loop="for(const b of [...D.batches].sort((a,z)=>new Date(a.atUtc)-new Date(z.atUtc)))for(const r of b.locations)"
  default="el('map-batch').value=latestAdditionRows.length?LATEST_ADDITIONS_VIEW:(D.latestBatchId||'all');"
- if source.count(loop)!=1 or source.count(default)!=1:raise ValueError('Expected original group-compatible map UI anchors')
  grouped_loop=loop.replace(')for(const r',')if(!b.presentationOnly)for(const r')
  preferred="el('map-batch').value=D.preferredViewId===D.latestBatchId&&byBatch.has(D.preferredViewId)?D.preferredViewId:(latestAdditionRows.length?LATEST_ADDITIONS_VIEW:(D.latestBatchId||'all'));"
+ if source.count(loop)+source.count(grouped_loop)!=1 or source.count(default)+source.count(preferred)!=1:raise ValueError('Expected original or already installed group-compatible map UI anchors')
  source=source.replace(loop,grouped_loop).replace(default,preferred)
  ast.parse(source)
  with (w/'boundary-map-ui-before-family-group.py').open('x',encoding='utf-8')as f:f.write(before)
- ui.write_text(source,encoding='utf-8')
+ if source!=before:ui.write_text(source,encoding='utf-8')
  sys.path.insert(0,str(public));import task_report_app as app
  original=(app.build_task_report,app.build_boundary_map,app.refresh_frina_investigation,sys.argv)
  try:

@@ -7,9 +7,9 @@ only on these coordinates. Java is a separate directly guarded leaf phase.
 import argparse,importlib.util,json,sys
 from datetime import datetime,timezone
 from pathlib import Path
-from shapely import from_wkb
+from shapely import from_wkb,set_precision
 from shapely.geometry import MultiPolygon,Polygon
-from shapely.ops import transform
+from shapely.ops import transform,unary_union
 from pyproj import Transformer
 ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT))
 from scripts.locality_automation.run_sealed_boundary_queue import active_control,read,checked
@@ -43,10 +43,21 @@ def prepare(w,control,pool):
         if not scope['sourceScopeAccepted'] or scope['boundaryScope']!='full-source-face' or not scope['datedRosterMember'] or scope['sourcePdf']!=patch['sourcePdf'] or scope['geometry']!=patch['geometry']:raise ValueError('Source decision differs')
         raw=from_wkb(checked(patch['rawSourceGeometry']).read_bytes());grid=from_wkb(checked(patch['geometry']).read_bytes());decoded=after.geometry(patch['id'])
         delta=transform(to_m,raw).hausdorff_distance(transform(to_m,decoded))
-        if not decoded.is_valid or not decoded.equals(grid) or delta>=.1:raise ValueError('Reviewed exact packed body differs')
+        rounding={'rawToGridHausdorffM':delta,'metricMethod':'original GEOS vertex Hausdorff','maximumErrorM':.1}
+        if delta>=.1 and scope.get('literalConstituentUnion'):
+            parts=scope['constituentNativeFacts']
+            expected=unary_union([from_wkb(checked(v['rawSourceGeometry']).read_bytes())for v in parts])
+            if not raw.equals(expected)or not grid.equals(set_precision(expected,1e-6)):raise ValueError('Exact original constituent union differs')
+            component_deltas=[transform(to_m,from_wkb(checked(v['rawSourceGeometry']).read_bytes())).hausdorff_distance(transform(to_m,from_wkb(checked(v['geometry']).read_bytes())))for v in parts]
+            source_m,decoded_m=transform(to_m,raw),transform(to_m,decoded)
+            source_outside=source_m.difference(decoded_m.buffer(.1));decoded_outside=decoded_m.difference(source_m.buffer(.1))
+            if any(v>=.1 for v in component_deltas)or not source_outside.is_empty or not decoded_outside.is_empty:raise ValueError('Constituent union exceeds original 10cm rounding bound')
+            rounding.update(metricMethod='Per-constituent original Hausdorff plus mutual 10cm filled-polygon domain enclosure for literal union; tiny sub-grid seam holes may close',componentRawToGridHausdorffM=component_deltas,sourceOutsideDecoded10cmBufferM2=source_outside.area,decodedOutsideSource10cmBufferM2=decoded_outside.area)
+        elif delta>=.1:raise ValueError('Reviewed original body exceeds 10cm rounding bound')
+        if not decoded.is_valid or not decoded.equals(grid):raise ValueError('Reviewed exact packed body differs')
         p=grid.representative_point();name=FAMILY+'-minimum-'+patch['officialCode'];expected=nearest_source(eligible,p.y,p.x)
         point={'name':name,'id':name,'lat':p.y,'lng':p.x,'expectedSourceId':expected,'officialCode':patch['officialCode']};points.append(point)
-        checks[patch['officialCode']]={'id':patch['id'],'valid':True,'equalFinalPatchCoordinates':True,'boundaryScope':'full-source-face','sourceScopeAccepted':True,'sourcePdf':patch['sourcePdf'],'rawSourceGeometry':patch['rawSourceGeometry'],'expectedAdoptedGeometry':patch['geometry'],'sourceScopeReview':patch['sourceScopeReview'],'rawToGridHausdorffM':delta}
+        checks[patch['officialCode']]={'id':patch['id'],'valid':True,'equalFinalPatchCoordinates':True,'boundaryScope':'full-source-face','sourceScopeAccepted':True,'sourcePdf':patch['sourcePdf'],'rawSourceGeometry':patch['rawSourceGeometry'],'expectedAdoptedGeometry':patch['geometry'],'sourceScopeReview':patch['sourceScopeReview'],**rounding}
         for mode_index,mode in enumerate((None,5,20,50)):
             actual=after.find(p.y,p.x,mode);ex=exhaustive(after,p.y,p.x,mode);predicted,near=oracle.find(p.y,p.x,mode);prior=before.find(p.y,p.x,mode)
             if actual['winnerId']!=ex or any(actual[k]!=predicted[k]for k in ['winnerId','candidateIds','qualifiedIds','suppressedIds']):failures.append({'code':patch['officialCode'],'mode':mode,'indexed':actual,'oracle':predicted,'exhaustive':ex})

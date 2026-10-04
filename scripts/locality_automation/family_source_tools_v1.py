@@ -68,4 +68,4 @@ def roster(a):
     print(json.dumps({'pages':pages,'credit':0}))
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('phase',choices=['fetch','contacts','roster']);p.add_argument('--manifest',type=Path,required=True);p.add_argument('--source',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args();globals()[a.phase](a)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('phase',choices=['fetch','contacts','roster']);p.add_argument('--manifest',type=Path,required=True);p.add_argument('--source',type=Path);p.add_argument('--output',type=Path,required=True);a=p.parse_args();a.output=a.output.resolve();a.manifest=a.manifest.resolve();a.source=a.source.resolve()if a.source else None;globals()[a.phase](a)
