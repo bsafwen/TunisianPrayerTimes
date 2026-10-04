@@ -95,22 +95,29 @@ internal fun PrayerTimeMethodDialog(
     val date = remember(selectedDate) {
         Instant.ofEpochMilli(selectedDate).atZone(ZoneId.systemDefault()).toLocalDate()
     }
-    val location = remember(delegationId, date) {
+    val todayLocation = remember(delegationId, date) {
         PrayerDataLoader.prayerTimes(context).location(delegationId)
             ?.takeIf { date.year in InmPrayerTimes.SUPPORTED_YEARS }
     }
-    // The steps are explained on the first day of summer of the chosen year, where the sun's
-    // position is easiest to picture; the chosen day's own result comes at the end.
+    // The steps are explained for Tunis on the first day of summer of the chosen year, where the
+    // sun's position is easiest to picture; the chosen delegation and day get their result at the end.
     val sunYear = remember(date.year) { SunYear(date.year) }
     val exampleDate = sunYear.summer
+    val location = remember(date.year) {
+        PrayerDataLoader.prayerTimes(context).location(EXAMPLE_DELEGATION_ID)
+            ?.takeIf { date.year in InmPrayerTimes.SUPPORTED_YEARS }
+    }
     val explanation = remember(location, exampleDate) {
         location?.let { InmPrayerFormula.explain(it, exampleDate.year, exampleDate.monthValue, exampleDate.dayOfMonth) }
     }
-    val todayExplanation = remember(location, date) {
-        location?.let { InmPrayerFormula.explain(it, date.year, date.monthValue, date.dayOfMonth) }
+    val todayExplanation = remember(todayLocation, date) {
+        todayLocation?.let { InmPrayerFormula.explain(it, date.year, date.monthValue, date.dayOfMonth) }
     }
     val delegationName = remember(delegationId) {
         GouvernoratRepository.findDelegationById(context, delegationId)?.displayName().orEmpty()
+    }
+    val exampleName = remember {
+        GouvernoratRepository.findDelegationById(context, EXAMPLE_DELEGATION_ID)?.displayName().orEmpty()
     }
 
     Dialog(onDismissRequest = onDismiss, properties = DialogProperties(usePlatformDefaultWidth = false)) {
@@ -129,7 +136,7 @@ internal fun PrayerTimeMethodDialog(
                 ) {
                     Column(Modifier.fillMaxSize()) {
                         MethodHeader(
-                            subtitle = stringResource(R.string.prayer_method_context, delegationName, gregorianDateLabel(exampleDate)),
+                            subtitle = stringResource(R.string.prayer_method_context, exampleName, gregorianDateLabel(exampleDate)),
                             onDismiss = onDismiss,
                         )
                         HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
@@ -144,7 +151,7 @@ internal fun PrayerTimeMethodDialog(
                             if (location == null || explanation == null || todayExplanation == null) {
                                 Text(stringResource(R.string.prayer_method_unavailable), fontSize = 14.sp, color = TextMuted)
                             } else {
-                                MethodContent(location, exampleDate, explanation, sunYear, date, todayExplanation)
+                                MethodContent(location, exampleDate, explanation, sunYear, date, delegationName, todayExplanation)
                             }
                         }
                     }
@@ -187,6 +194,7 @@ private fun MethodContent(
     explanation: InmDayExplanation,
     sunYear: SunYear,
     today: LocalDate,
+    todayName: String,
     todayExplanation: InmDayExplanation,
 ) {
     val names = eventNames()
@@ -195,7 +203,7 @@ private fun MethodContent(
 
     TrustCard()
     Text(
-        stringResource(R.string.prayer_method_example_note, gregorianDateLabel(date), gregorianDateLabel(today)),
+        stringResource(R.string.prayer_method_example_note, gregorianDateLabel(date), gregorianDateLabel(today), todayName),
         fontSize = 13.sp,
         color = TextDark,
         lineHeight = 19.sp,
@@ -339,7 +347,7 @@ private fun MethodContent(
     }
 
     MethodSection(
-        stringResource(R.string.prayer_method_today_title, gregorianDateLabel(today)),
+        stringResource(R.string.prayer_method_today_title, todayName, gregorianDateLabel(today)),
         stringResource(R.string.prayer_method_today_body),
     ) {
         ResultTable(todayExplanation.events, names)
@@ -762,6 +770,9 @@ private fun minusTerm(value: Double): String =
     (if (value < 0) "+ " else "− ") + "%.2f".us(abs(value))
 
 /** A latitude or height in whole degrees, as the declination card writes them. */
+/** The delegation the explainer's worked example uses: Tunis. */
+private const val EXAMPLE_DELEGATION_ID = 615
+
 private fun wholeDegreesOf(value: Double): String = "%.0f°".us(value)
 
 private fun hhmm(minutes: Int): String = "%02d:%02d".us(minutes / 60, minutes % 60)
