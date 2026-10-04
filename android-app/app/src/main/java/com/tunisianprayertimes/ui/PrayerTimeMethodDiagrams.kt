@@ -641,7 +641,7 @@ internal fun SubsolarGlobes(latitude: Double) {
             }
             val gapLayouts = examples.map { measurer.measure(wholeDegrees(gap(it.declination)), NumberStyle.copy(color = PrayerSilencePalette.PrimaryText, fontWeight = FontWeight.Bold)) }
             val globeHeight = northLayout.size.height + px(2.dp) + 2 * radius + px(4.dp)
-            val rowHeights = examples.indices.map { maxOf(globeHeight, textLayouts[it].size.height) + px(10.dp) }
+            val rowHeights = examples.indices.map { maxOf(globeHeight, textLayouts[it].size.height.toFloat()) + px(10.dp) }
             val height = rowHeights.sum()
 
             LeftToRight {
