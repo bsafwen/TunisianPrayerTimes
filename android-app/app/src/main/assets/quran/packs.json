@@ -2508,21 +2508,21 @@
     1,
     2
    ],
-   "bytes": 47048408,
+   "bytes": 47047992,
    "files": [
     {
      "path": "quran/audio/ayoub/001.mp3",
-     "bytes": 239489
+     "bytes": 239281
     },
     {
      "path": "quran/audio/ayoub/002.mp3",
-     "bytes": 46808919
+     "bytes": 46808711
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_01-742dd0917000.zip",
-    "bytes": 47048682,
-    "sha256": "742dd09170002581c2e1b538a63c73ffc179807b2e1dc572eb2160b98a3c000c"
+    "key": "v1/packs/quran_ayoub_01-13f5ba3f2ad5.zip",
+    "bytes": 47048266,
+    "sha256": "13f5ba3f2ad565c679dc7a5e3b706c46823f2f78ed3d31ebffefd6b14c415a71"
    }
   },
   {
@@ -2534,21 +2534,21 @@
     3,
     4
    ],
-   "bytes": 54285580,
+   "bytes": 54285164,
    "files": [
     {
      "path": "quran/audio/ayoub/003.mp3",
-     "bytes": 27200155
+     "bytes": 27199947
     },
     {
      "path": "quran/audio/ayoub/004.mp3",
-     "bytes": 27085425
+     "bytes": 27085217
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_02-4da9710757e5.zip",
-    "bytes": 54285854,
-    "sha256": "4da9710757e58f5f4396d62804b5e30311635cfaab8124bdfc4733468cc337b9"
+    "key": "v1/packs/quran_ayoub_02-41a50258e4e2.zip",
+    "bytes": 54285438,
+    "sha256": "41a50258e4e2a5f4e0b95f5dd87836eeb4f33f46702deb65f07b6b20c8c3cce7"
    }
   },
   {
@@ -2560,25 +2560,25 @@
     5,
     7
    ],
-   "bytes": 66701265,
+   "bytes": 66700641,
    "files": [
     {
      "path": "quran/audio/ayoub/005.mp3",
-     "bytes": 20072070
+     "bytes": 20071862
     },
     {
      "path": "quran/audio/ayoub/006.mp3",
-     "bytes": 21977964
+     "bytes": 21977756
     },
     {
      "path": "quran/audio/ayoub/007.mp3",
-     "bytes": 24651231
+     "bytes": 24651023
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_03-6303147b2dd2.zip",
-    "bytes": 66701665,
-    "sha256": "6303147b2dd2d6b093dc2e88721acd2fb1f3fc0cab4dcd29c94b9cd0a07d9dd8"
+    "key": "v1/packs/quran_ayoub_03-bfea52acfd58.zip",
+    "bytes": 66701041,
+    "sha256": "bfea52acfd58664c2cf229a47959ed9b88a356e8ada945544cfda3424be664d0"
    }
   },
   {
@@ -2590,33 +2590,33 @@
     8,
     12
    ],
-   "bytes": 69205675,
+   "bytes": 69204635,
    "files": [
     {
      "path": "quran/audio/ayoub/008.mp3",
-     "bytes": 8977344
+     "bytes": 8977136
     },
     {
      "path": "quran/audio/ayoub/009.mp3",
-     "bytes": 18829687
+     "bytes": 18829479
     },
     {
      "path": "quran/audio/ayoub/010.mp3",
-     "bytes": 13547936
+     "bytes": 13547728
     },
     {
      "path": "quran/audio/ayoub/011.mp3",
-     "bytes": 14171323
+     "bytes": 14171115
     },
     {
      "path": "quran/audio/ayoub/012.mp3",
-     "bytes": 13679385
+     "bytes": 13679177
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_04-c5a379ba8afd.zip",
-    "bytes": 69206327,
-    "sha256": "c5a379ba8afd7be5fd9e758a639f9134fe6e7ab34b87dfd02e311014fa26aa8a"
+    "key": "v1/packs/quran_ayoub_04-712c1d992f51.zip",
+    "bytes": 69205287,
+    "sha256": "712c1d992f51a77f351facaaba561b510987edde208b1d53209301b3405e45ed"
    }
   },
   {
@@ -2628,45 +2628,45 @@
     13,
     20
    ],
-   "bytes": 74150126,
+   "bytes": 74148462,
    "files": [
     {
      "path": "quran/audio/ayoub/013.mp3",
-     "bytes": 6862679
+     "bytes": 6862471
     },
     {
      "path": "quran/audio/ayoub/014.mp3",
-     "bytes": 6699257
+     "bytes": 6699049
     },
     {
      "path": "quran/audio/ayoub/015.mp3",
-     "bytes": 5289899
+     "bytes": 5289691
     },
     {
      "path": "quran/audio/ayoub/016.mp3",
-     "bytes": 14588864
+     "bytes": 14588656
     },
     {
      "path": "quran/audio/ayoub/017.mp3",
-     "bytes": 12056031
+     "bytes": 12055823
     },
     {
      "path": "quran/audio/ayoub/018.mp3",
-     "bytes": 11786656
+     "bytes": 11786448
     },
     {
      "path": "quran/audio/ayoub/019.mp3",
-     "bytes": 7072077
+     "bytes": 7071869
     },
     {
      "path": "quran/audio/ayoub/020.mp3",
-     "bytes": 9794663
+     "bytes": 9794455
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_05-3000d106da80.zip",
-    "bytes": 74151156,
-    "sha256": "3000d106da80f510f9db830215654c4c2838277b4f943c800dcbc0baecdeea7e"
+    "key": "v1/packs/quran_ayoub_05-f475c9621de6.zip",
+    "bytes": 74149492,
+    "sha256": "f475c9621de68d2473fb32da55357ba9f5ed80aea5d530f390bdc175f6fbebcf"
    }
   },
   {
@@ -2678,45 +2678,45 @@
     21,
     28
    ],
-   "bytes": 74009483,
+   "bytes": 74007819,
    "files": [
     {
      "path": "quran/audio/ayoub/021.mp3",
-     "bytes": 8869510
+     "bytes": 8869302
     },
     {
      "path": "quran/audio/ayoub/022.mp3",
-     "bytes": 9551620
+     "bytes": 9551412
     },
     {
      "path": "quran/audio/ayoub/023.mp3",
-     "bytes": 8493347
+     "bytes": 8493139
     },
     {
      "path": "quran/audio/ayoub/024.mp3",
-     "bytes": 10317530
+     "bytes": 10317322
     },
     {
      "path": "quran/audio/ayoub/025.mp3",
-     "bytes": 6895280
+     "bytes": 6895072
     },
     {
      "path": "quran/audio/ayoub/026.mp3",
-     "bytes": 9949726
+     "bytes": 9949518
     },
     {
      "path": "quran/audio/ayoub/027.mp3",
-     "bytes": 9115479
+     "bytes": 9115271
     },
     {
      "path": "quran/audio/ayoub/028.mp3",
-     "bytes": 10816991
+     "bytes": 10816783
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_06-88a4a5e84c26.zip",
-    "bytes": 74010513,
-    "sha256": "88a4a5e84c261c94d66d6dcf4e9178d6b54a439825f3390ad3c0c926426f4424"
+    "key": "v1/packs/quran_ayoub_06-e485394de8a6.zip",
+    "bytes": 74008849,
+    "sha256": "e485394de8a6dfff4627b530e6c98c636a6350c529d4e501d023af6ef9091e70"
    }
   },
   {
@@ -2728,57 +2728,57 @@
     29,
     39
    ],
-   "bytes": 71940583,
+   "bytes": 71938295,
    "files": [
     {
      "path": "quran/audio/ayoub/029.mp3",
-     "bytes": 7800580
+     "bytes": 7800372
     },
     {
      "path": "quran/audio/ayoub/030.mp3",
-     "bytes": 6210872
+     "bytes": 6210664
     },
     {
      "path": "quran/audio/ayoub/031.mp3",
-     "bytes": 4185442
+     "bytes": 4185234
     },
     {
      "path": "quran/audio/ayoub/032.mp3",
-     "bytes": 2985063
+     "bytes": 2984855
     },
     {
      "path": "quran/audio/ayoub/033.mp3",
-     "bytes": 10618252
+     "bytes": 10618044
     },
     {
      "path": "quran/audio/ayoub/034.mp3",
-     "bytes": 6178062
+     "bytes": 6177854
     },
     {
      "path": "quran/audio/ayoub/035.mp3",
-     "bytes": 6089873
+     "bytes": 6089665
     },
     {
      "path": "quran/audio/ayoub/036.mp3",
-     "bytes": 5853517
+     "bytes": 5853309
     },
     {
      "path": "quran/audio/ayoub/037.mp3",
-     "bytes": 7543117
+     "bytes": 7542909
     },
     {
      "path": "quran/audio/ayoub/038.mp3",
-     "bytes": 5693021
+     "bytes": 5692813
     },
     {
      "path": "quran/audio/ayoub/039.mp3",
-     "bytes": 8782784
+     "bytes": 8782576
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_07-09ef7dcc56b4.zip",
-    "bytes": 71941991,
-    "sha256": "09ef7dcc56b4711d9ee809c402b9938d31473116d10ac126301797e619eb85b4"
+    "key": "v1/packs/quran_ayoub_07-388911ea182c.zip",
+    "bytes": 71939703,
+    "sha256": "388911ea182c818b9eee7ec2720f5bef4a43939e967ff86fd9a0dc552ed272e2"
    }
   },
   {
@@ -2790,81 +2790,81 @@
     40,
     56
    ],
-   "bytes": 72508159,
+   "bytes": 72504623,
    "files": [
     {
      "path": "quran/audio/ayoub/040.mp3",
-     "bytes": 9190503
+     "bytes": 9190295
     },
     {
      "path": "quran/audio/ayoub/041.mp3",
-     "bytes": 6333543
+     "bytes": 6333335
     },
     {
      "path": "quran/audio/ayoub/042.mp3",
-     "bytes": 6452243
+     "bytes": 6452035
     },
     {
      "path": "quran/audio/ayoub/043.mp3",
-     "bytes": 6851812
+     "bytes": 6851604
     },
     {
      "path": "quran/audio/ayoub/044.mp3",
-     "bytes": 2922578
+     "bytes": 2922370
     },
     {
      "path": "quran/audio/ayoub/045.mp3",
-     "bytes": 3818892
+     "bytes": 3818684
     },
     {
      "path": "quran/audio/ayoub/046.mp3",
-     "bytes": 4767868
+     "bytes": 4767660
     },
     {
      "path": "quran/audio/ayoub/047.mp3",
-     "bytes": 3833520
+     "bytes": 3833312
     },
     {
      "path": "quran/audio/ayoub/048.mp3",
-     "bytes": 4273422
+     "bytes": 4273214
     },
     {
      "path": "quran/audio/ayoub/049.mp3",
-     "bytes": 2767306
+     "bytes": 2767098
     },
     {
      "path": "quran/audio/ayoub/050.mp3",
-     "bytes": 3138663
+     "bytes": 3138455
     },
     {
      "path": "quran/audio/ayoub/051.mp3",
-     "bytes": 2784652
+     "bytes": 2784444
     },
     {
      "path": "quran/audio/ayoub/052.mp3",
-     "bytes": 2623737
+     "bytes": 2623529
     },
     {
      "path": "quran/audio/ayoub/053.mp3",
-     "bytes": 2800325
+     "bytes": 2800117
     },
     {
      "path": "quran/audio/ayoub/054.mp3",
-     "bytes": 2696044
+     "bytes": 2695836
     },
     {
      "path": "quran/audio/ayoub/055.mp3",
-     "bytes": 3645856
+     "bytes": 3645648
     },
     {
      "path": "quran/audio/ayoub/056.mp3",
-     "bytes": 3607195
+     "bytes": 3606987
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_08-0187570f72aa.zip",
-    "bytes": 72510323,
-    "sha256": "0187570f72aa7c71d08670b449b3dde4b6ddba854604b44ff31d68d1ebccbfce"
+    "key": "v1/packs/quran_ayoub_08-c0cb842825e6.zip",
+    "bytes": 72506787,
+    "sha256": "c0cb842825e6696e92dd6031cce73a45e2e2b235298752d615819cbb1ccd5ddb"
    }
   },
   {
@@ -2876,245 +2876,245 @@
     57,
     114
    ],
-   "bytes": 71986068,
+   "bytes": 71974004,
    "files": [
     {
      "path": "quran/audio/ayoub/057.mp3",
-     "bytes": 4656900
+     "bytes": 4656692
     },
     {
      "path": "quran/audio/ayoub/058.mp3",
-     "bytes": 3736136
+     "bytes": 3735928
     },
     {
      "path": "quran/audio/ayoub/059.mp3",
-     "bytes": 3844596
+     "bytes": 3844388
     },
     {
      "path": "quran/audio/ayoub/060.mp3",
-     "bytes": 3032501
+     "bytes": 3032293
     },
     {
      "path": "quran/audio/ayoub/061.mp3",
-     "bytes": 1898160
+     "bytes": 1897952
     },
     {
      "path": "quran/audio/ayoub/062.mp3",
-     "bytes": 1381354
+     "bytes": 1381146
     },
     {
      "path": "quran/audio/ayoub/063.mp3",
-     "bytes": 1641951
+     "bytes": 1641743
     },
     {
      "path": "quran/audio/ayoub/064.mp3",
-     "bytes": 1968377
+     "bytes": 1968169
     },
     {
      "path": "quran/audio/ayoub/065.mp3",
-     "bytes": 2264292
+     "bytes": 2264084
     },
     {
      "path": "quran/audio/ayoub/066.mp3",
-     "bytes": 2167117
+     "bytes": 2166909
     },
     {
      "path": "quran/audio/ayoub/067.mp3",
-     "bytes": 2729272
+     "bytes": 2729064
     },
     {
      "path": "quran/audio/ayoub/068.mp3",
-     "bytes": 2640456
+     "bytes": 2640248
     },
     {
      "path": "quran/audio/ayoub/069.mp3",
-     "bytes": 2367946
+     "bytes": 2367738
     },
     {
      "path": "quran/audio/ayoub/070.mp3",
-     "bytes": 1941210
+     "bytes": 1941002
     },
     {
      "path": "quran/audio/ayoub/071.mp3",
-     "bytes": 1847587
+     "bytes": 1847379
     },
     {
      "path": "quran/audio/ayoub/072.mp3",
-     "bytes": 2009755
+     "bytes": 2009547
     },
     {
      "path": "quran/audio/ayoub/073.mp3",
-     "bytes": 1658879
+     "bytes": 1658671
     },
     {
      "path": "quran/audio/ayoub/074.mp3",
-     "bytes": 2148309
+     "bytes": 2148101
     },
     {
      "path": "quran/audio/ayoub/075.mp3",
-     "bytes": 1502144
+     "bytes": 1501936
     },
     {
      "path": "quran/audio/ayoub/076.mp3",
-     "bytes": 2291042
+     "bytes": 2290834
     },
     {
      "path": "quran/audio/ayoub/077.mp3",
-     "bytes": 1938493
+     "bytes": 1938285
     },
     {
      "path": "quran/audio/ayoub/078.mp3",
-     "bytes": 1982379
+     "bytes": 1982171
     },
     {
      "path": "quran/audio/ayoub/079.mp3",
-     "bytes": 1637981
+     "bytes": 1637773
     },
     {
      "path": "quran/audio/ayoub/080.mp3",
-     "bytes": 1376547
+     "bytes": 1376339
     },
     {
      "path": "quran/audio/ayoub/081.mp3",
-     "bytes": 1010624
+     "bytes": 1010416
     },
     {
      "path": "quran/audio/ayoub/082.mp3",
-     "bytes": 795584
+     "bytes": 795376
     },
     {
      "path": "quran/audio/ayoub/083.mp3",
-     "bytes": 1683329
+     "bytes": 1683121
     },
     {
      "path": "quran/audio/ayoub/084.mp3",
-     "bytes": 959842
+     "bytes": 959634
     },
     {
      "path": "quran/audio/ayoub/085.mp3",
-     "bytes": 1058271
+     "bytes": 1058063
     },
     {
      "path": "quran/audio/ayoub/086.mp3",
-     "bytes": 588067
+     "bytes": 587859
     },
     {
      "path": "quran/audio/ayoub/087.mp3",
-     "bytes": 660792
+     "bytes": 660584
     },
     {
      "path": "quran/audio/ayoub/088.mp3",
-     "bytes": 814810
+     "bytes": 814602
     },
     {
      "path": "quran/audio/ayoub/089.mp3",
-     "bytes": 1243845
+     "bytes": 1243637
     },
     {
      "path": "quran/audio/ayoub/090.mp3",
-     "bytes": 680018
+     "bytes": 679810
     },
     {
      "path": "quran/audio/ayoub/091.mp3",
-     "bytes": 544390
+     "bytes": 544182
     },
     {
      "path": "quran/audio/ayoub/092.mp3",
-     "bytes": 690885
+     "bytes": 690677
     },
     {
      "path": "quran/audio/ayoub/093.mp3",
-     "bytes": 422555
+     "bytes": 422347
     },
     {
      "path": "quran/audio/ayoub/094.mp3",
-     "bytes": 221935
+     "bytes": 221727
     },
     {
      "path": "quran/audio/ayoub/095.mp3",
-     "bytes": 325171
+     "bytes": 324963
     },
     {
      "path": "quran/audio/ayoub/096.mp3",
-     "bytes": 604576
+     "bytes": 604368
     },
     {
      "path": "quran/audio/ayoub/097.mp3",
-     "bytes": 278777
+     "bytes": 278569
     },
     {
      "path": "quran/audio/ayoub/098.mp3",
-     "bytes": 728710
+     "bytes": 728502
     },
     {
      "path": "quran/audio/ayoub/099.mp3",
-     "bytes": 372400
+     "bytes": 372192
     },
     {
      "path": "quran/audio/ayoub/100.mp3",
-     "bytes": 389536
+     "bytes": 389328
     },
     {
      "path": "quran/audio/ayoub/101.mp3",
-     "bytes": 332067
+     "bytes": 331859
     },
     {
      "path": "quran/audio/ayoub/102.mp3",
-     "bytes": 316812
+     "bytes": 316604
     },
     {
      "path": "quran/audio/ayoub/103.mp3",
-     "bytes": 145866
+     "bytes": 145658
     },
     {
      "path": "quran/audio/ayoub/104.mp3",
-     "bytes": 336247
+     "bytes": 336039
     },
     {
      "path": "quran/audio/ayoub/105.mp3",
-     "bytes": 233429
+     "bytes": 233221
     },
     {
      "path": "quran/audio/ayoub/106.mp3",
-     "bytes": 226323
+     "bytes": 226115
     },
     {
      "path": "quran/audio/ayoub/107.mp3",
-     "bytes": 269791
+     "bytes": 269583
     },
     {
      "path": "quran/audio/ayoub/108.mp3",
-     "bytes": 120162
+     "bytes": 119954
     },
     {
      "path": "quran/audio/ayoub/109.mp3",
-     "bytes": 217964
+     "bytes": 217756
     },
     {
      "path": "quran/audio/ayoub/110.mp3",
-     "bytes": 202500
+     "bytes": 202292
     },
     {
      "path": "quran/audio/ayoub/111.mp3",
-     "bytes": 217128
+     "bytes": 216920
     },
     {
      "path": "quran/audio/ayoub/112.mp3",
-     "bytes": 125177
+     "bytes": 124969
     },
     {
      "path": "quran/audio/ayoub/113.mp3",
-     "bytes": 201873
+     "bytes": 201665
     },
     {
      "path": "quran/audio/ayoub/114.mp3",
-     "bytes": 303228
+     "bytes": 303020
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_09-fc04873e197e.zip",
-    "bytes": 71993398,
-    "sha256": "fc04873e197e280013b3e440ce9caf888c72d76036a2eba135fef03f6817df5c"
+    "key": "v1/packs/quran_ayoub_09-b1ea61a6818d.zip",
+    "bytes": 71981334,
+    "sha256": "b1ea61a6818da7464950b1c5b862f80b1cd40300cb21d00aff6ae66549cbfaf3"
    }
   },
   {
@@ -3126,25 +3126,25 @@
     1,
     3
    ],
-   "bytes": 132073634,
+   "bytes": 132073010,
    "files": [
     {
      "path": "quran/audio/hosary/001.mp3",
-     "bytes": 422346
+     "bytes": 422138
     },
     {
      "path": "quran/audio/hosary/002.mp3",
-     "bytes": 84196204
+     "bytes": 84195996
     },
     {
      "path": "quran/audio/hosary/003.mp3",
-     "bytes": 47455084
+     "bytes": 47454876
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_01-6af63b4ec063.zip",
-    "bytes": 132074040,
-    "sha256": "6af63b4ec063d16d9e8bcceb2fc3090f78b6b69ee3243572d36ac96a2a5e03ae"
+    "key": "v1/packs/quran_hosary_01-b18170ad4782.zip",
+    "bytes": 132073416,
+    "sha256": "b18170ad4782f347656bd93a6322cccd590489a788cdf5e6b482d31d6037f2c8"
    }
   },
   {
@@ -3156,21 +3156,21 @@
     4,
     5
    ],
-   "bytes": 95729786,
+   "bytes": 95729370,
    "files": [
     {
      "path": "quran/audio/hosary/004.mp3",
-     "bytes": 54385892
+     "bytes": 54385684
     },
     {
      "path": "quran/audio/hosary/005.mp3",
-     "bytes": 41343894
+     "bytes": 41343686
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_02-783ed9334ab1.zip",
-    "bytes": 95730064,
-    "sha256": "783ed9334ab19274000a3c4d9ea54ba92a9462a27785ef519f23c52dd102ecc4"
+    "key": "v1/packs/quran_hosary_02-581dbdac4ada.zip",
+    "bytes": 95729648,
+    "sha256": "581dbdac4adab2af03d5483224908035c401cd87d8e0f42f78db952b06858347"
    }
   },
   {
@@ -3182,25 +3182,25 @@
     6,
     8
    ],
-   "bytes": 114128557,
+   "bytes": 114127933,
    "files": [
     {
      "path": "quran/audio/hosary/006.mp3",
-     "bytes": 47247985
+     "bytes": 47247777
     },
     {
      "path": "quran/audio/hosary/007.mp3",
-     "bytes": 48400926
+     "bytes": 48400718
     },
     {
      "path": "quran/audio/hosary/008.mp3",
-     "bytes": 18479646
+     "bytes": 18479438
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_03-e0ec6fc93cab.zip",
-    "bytes": 114128963,
-    "sha256": "e0ec6fc93cabd3bf8d8844e451dbcd85017635afb9bf96fa11c65527f7479293"
+    "key": "v1/packs/quran_hosary_03-1b3b2f178ef1.zip",
+    "bytes": 114128339,
+    "sha256": "1b3b2f178ef104bcdeafed4096b90b23b044a0152a0486cc29c58787dc9389ce"
    }
   },
   {
@@ -3212,37 +3212,37 @@
     9,
     14
    ],
-   "bytes": 135173217,
+   "bytes": 135171969,
    "files": [
     {
      "path": "quran/audio/hosary/009.mp3",
-     "bytes": 37281749
+     "bytes": 37281541
     },
     {
      "path": "quran/audio/hosary/010.mp3",
-     "bytes": 24346748
+     "bytes": 24346540
     },
     {
      "path": "quran/audio/hosary/011.mp3",
-     "bytes": 25742941
+     "bytes": 25742733
     },
     {
      "path": "quran/audio/hosary/012.mp3",
-     "bytes": 24401292
+     "bytes": 24401084
     },
     {
      "path": "quran/audio/hosary/013.mp3",
-     "bytes": 11411329
+     "bytes": 11411121
     },
     {
      "path": "quran/audio/hosary/014.mp3",
-     "bytes": 11989158
+     "bytes": 11988950
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_04-0449a5224635.zip",
-    "bytes": 135174007,
-    "sha256": "0449a52246358b8e3116a7dd0fdc327371f67a622269381f259b3358b870d67a"
+    "key": "v1/packs/quran_hosary_04-a599e9d7b02c.zip",
+    "bytes": 135172759,
+    "sha256": "a599e9d7b02cf86c2c5e0a146d1a3b506f18a9841d1c1ca1de8b99018fdcb0b0"
    }
   },
   {
@@ -3254,41 +3254,41 @@
     15,
     21
    ],
-   "bytes": 126090543,
+   "bytes": 126089087,
    "files": [
     {
      "path": "quran/audio/hosary/015.mp3",
-     "bytes": 9749314
+     "bytes": 9749106
     },
     {
      "path": "quran/audio/hosary/016.mp3",
-     "bytes": 25975744
+     "bytes": 25975536
     },
     {
      "path": "quran/audio/hosary/017.mp3",
-     "bytes": 20565053
+     "bytes": 20564845
     },
     {
      "path": "quran/audio/hosary/018.mp3",
-     "bytes": 20545618
+     "bytes": 20545410
     },
     {
      "path": "quran/audio/hosary/019.mp3",
-     "bytes": 12037641
+     "bytes": 12037433
     },
     {
      "path": "quran/audio/hosary/020.mp3",
-     "bytes": 18897814
+     "bytes": 18897606
     },
     {
      "path": "quran/audio/hosary/021.mp3",
-     "bytes": 18319359
+     "bytes": 18319151
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_05-d3a21f3cccd0.zip",
-    "bytes": 126091461,
-    "sha256": "d3a21f3cccd0b4500edc3af975dff291ce100c3056eaefe13e55c29cb66dc302"
+    "key": "v1/packs/quran_hosary_05-193e6724c3ca.zip",
+    "bytes": 126090005,
+    "sha256": "193e6724c3ca3e40ec550f65011eea6fa357ffc3ac336a7a0dde1b9621dcc321"
    }
   },
   {
@@ -3300,45 +3300,45 @@
     22,
     29
    ],
-   "bytes": 134631745,
+   "bytes": 134630081,
    "files": [
     {
      "path": "quran/audio/hosary/022.mp3",
-     "bytes": 18545056
+     "bytes": 18544848
     },
     {
      "path": "quran/audio/hosary/023.mp3",
-     "bytes": 15055097
+     "bytes": 15054889
     },
     {
      "path": "quran/audio/hosary/024.mp3",
-     "bytes": 20451577
+     "bytes": 20451369
     },
     {
      "path": "quran/audio/hosary/025.mp3",
-     "bytes": 12775757
+     "bytes": 12775549
     },
     {
      "path": "quran/audio/hosary/026.mp3",
-     "bytes": 18393337
+     "bytes": 18393129
     },
     {
      "path": "quran/audio/hosary/027.mp3",
-     "bytes": 15841279
+     "bytes": 15841071
     },
     {
      "path": "quran/audio/hosary/028.mp3",
-     "bytes": 19559234
+     "bytes": 19559026
     },
     {
      "path": "quran/audio/hosary/029.mp3",
-     "bytes": 14010408
+     "bytes": 14010200
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_06-876981411106.zip",
-    "bytes": 134632791,
-    "sha256": "8769814111067ff0689b3672b253f4dbb1a4bd3b2c0f246136d1e35ddea6791c"
+    "key": "v1/packs/quran_hosary_06-9ed7dce9b4f6.zip",
+    "bytes": 134631127,
+    "sha256": "9ed7dce9b4f66a900489cb1da11d78839a1f7c8c75207daaa0259df699298449"
    }
   },
   {
@@ -3350,53 +3350,53 @@
     30,
     39
    ],
-   "bytes": 120854764,
+   "bytes": 120852684,
    "files": [
     {
      "path": "quran/audio/hosary/030.mp3",
-     "bytes": 12143176
+     "bytes": 12142968
     },
     {
      "path": "quran/audio/hosary/031.mp3",
-     "bytes": 7513233
+     "bytes": 7513025
     },
     {
      "path": "quran/audio/hosary/032.mp3",
-     "bytes": 5457292
+     "bytes": 5457084
     },
     {
      "path": "quran/audio/hosary/033.mp3",
-     "bytes": 19735195
+     "bytes": 19734987
     },
     {
      "path": "quran/audio/hosary/034.mp3",
-     "bytes": 12852870
+     "bytes": 12852662
     },
     {
      "path": "quran/audio/hosary/035.mp3",
-     "bytes": 12012981
+     "bytes": 12012773
     },
     {
      "path": "quran/audio/hosary/036.mp3",
-     "bytes": 10634552
+     "bytes": 10634344
     },
     {
      "path": "quran/audio/hosary/037.mp3",
-     "bytes": 13525785
+     "bytes": 13525577
     },
     {
      "path": "quran/audio/hosary/038.mp3",
-     "bytes": 10753252
+     "bytes": 10753044
     },
     {
      "path": "quran/audio/hosary/039.mp3",
-     "bytes": 16226428
+     "bytes": 16226220
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_07-3947363bfddc.zip",
-    "bytes": 120856066,
-    "sha256": "3947363bfddc471b960547b75bc9116602025e87addb710be4f146c4043cb273"
+    "key": "v1/packs/quran_hosary_07-09d441039882.zip",
+    "bytes": 120853986,
+    "sha256": "09d441039882c6a7b2e8b7f4a6c4c6a079f0a2748c3bf9468e8af2a5dad22fca"
    }
   },
   {
@@ -3408,81 +3408,81 @@
     40,
     56
    ],
-   "bytes": 135050946,
+   "bytes": 135047410,
    "files": [
     {
      "path": "quran/audio/hosary/040.mp3",
-     "bytes": 16787329
+     "bytes": 16787121
     },
     {
      "path": "quran/audio/hosary/041.mp3",
-     "bytes": 11714350
+     "bytes": 11714142
     },
     {
      "path": "quran/audio/hosary/042.mp3",
-     "bytes": 10369148
+     "bytes": 10368940
     },
     {
      "path": "quran/audio/hosary/043.mp3",
-     "bytes": 11828452
+     "bytes": 11828244
     },
     {
      "path": "quran/audio/hosary/044.mp3",
-     "bytes": 5663763
+     "bytes": 5663555
     },
     {
      "path": "quran/audio/hosary/045.mp3",
-     "bytes": 7293804
+     "bytes": 7293596
     },
     {
      "path": "quran/audio/hosary/046.mp3",
-     "bytes": 9230627
+     "bytes": 9230419
     },
     {
      "path": "quran/audio/hosary/047.mp3",
-     "bytes": 8832939
+     "bytes": 8832731
     },
     {
      "path": "quran/audio/hosary/048.mp3",
-     "bytes": 7831718
+     "bytes": 7831510
     },
     {
      "path": "quran/audio/hosary/049.mp3",
-     "bytes": 5714963
+     "bytes": 5714755
     },
     {
      "path": "quran/audio/hosary/050.mp3",
-     "bytes": 5599189
+     "bytes": 5598981
     },
     {
      "path": "quran/audio/hosary/051.mp3",
-     "bytes": 5023032
+     "bytes": 5022824
     },
     {
      "path": "quran/audio/hosary/052.mp3",
-     "bytes": 4889494
+     "bytes": 4889286
     },
     {
      "path": "quran/audio/hosary/053.mp3",
-     "bytes": 5508701
+     "bytes": 5508493
     },
     {
      "path": "quran/audio/hosary/054.mp3",
-     "bytes": 5286973
+     "bytes": 5286765
     },
     {
      "path": "quran/audio/hosary/055.mp3",
-     "bytes": 6712423
+     "bytes": 6712215
     },
     {
      "path": "quran/audio/hosary/056.mp3",
-     "bytes": 6764041
+     "bytes": 6763833
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_08-698a69302312.zip",
-    "bytes": 135053144,
-    "sha256": "698a69302312fb0d9a47bda7164b0831a7f293982f167b419dafda8d0b7fe0f8"
+    "key": "v1/packs/quran_hosary_08-f9885303cf68.zip",
+    "bytes": 135049608,
+    "sha256": "f9885303cf684b815a63ea5752e61b5c289f38832eadd33903f6bd88fc465244"
    }
   },
   {
@@ -3494,245 +3494,245 @@
     57,
     114
    ],
-   "bytes": 127522192,
+   "bytes": 127510128,
    "files": [
     {
      "path": "quran/audio/hosary/057.mp3",
-     "bytes": 8177579
+     "bytes": 8177371
     },
     {
      "path": "quran/audio/hosary/058.mp3",
-     "bytes": 6968423
+     "bytes": 6968215
     },
     {
      "path": "quran/audio/hosary/059.mp3",
-     "bytes": 7209168
+     "bytes": 7208960
     },
     {
      "path": "quran/audio/hosary/060.mp3",
-     "bytes": 5554049
+     "bytes": 5553841
     },
     {
      "path": "quran/audio/hosary/061.mp3",
-     "bytes": 3397798
+     "bytes": 3397590
     },
     {
      "path": "quran/audio/hosary/062.mp3",
-     "bytes": 2683296
+     "bytes": 2683088
     },
     {
      "path": "quran/audio/hosary/063.mp3",
-     "bytes": 2904815
+     "bytes": 2904607
     },
     {
      "path": "quran/audio/hosary/064.mp3",
-     "bytes": 3846477
+     "bytes": 3846269
     },
     {
      "path": "quran/audio/hosary/065.mp3",
-     "bytes": 3714402
+     "bytes": 3714194
     },
     {
      "path": "quran/audio/hosary/066.mp3",
-     "bytes": 3880541
+     "bytes": 3880333
     },
     {
      "path": "quran/audio/hosary/067.mp3",
-     "bytes": 4760763
+     "bytes": 4760555
     },
     {
      "path": "quran/audio/hosary/068.mp3",
-     "bytes": 4704756
+     "bytes": 4704548
     },
     {
      "path": "quran/audio/hosary/069.mp3",
-     "bytes": 3994643
+     "bytes": 3994435
     },
     {
      "path": "quran/audio/hosary/070.mp3",
-     "bytes": 3377318
+     "bytes": 3377110
     },
     {
      "path": "quran/audio/hosary/071.mp3",
-     "bytes": 3369794
+     "bytes": 3369586
     },
     {
      "path": "quran/audio/hosary/072.mp3",
-     "bytes": 3862777
+     "bytes": 3862569
     },
     {
      "path": "quran/audio/hosary/073.mp3",
-     "bytes": 2912756
+     "bytes": 2912548
     },
     {
      "path": "quran/audio/hosary/074.mp3",
-     "bytes": 3928188
+     "bytes": 3927980
     },
     {
      "path": "quran/audio/hosary/075.mp3",
-     "bytes": 2274532
+     "bytes": 2274324
     },
     {
      "path": "quran/audio/hosary/076.mp3",
-     "bytes": 3744077
+     "bytes": 3743869
     },
     {
      "path": "quran/audio/hosary/077.mp3",
-     "bytes": 3149739
+     "bytes": 3149531
     },
     {
      "path": "quran/audio/hosary/078.mp3",
-     "bytes": 3081403
+     "bytes": 3081195
     },
     {
      "path": "quran/audio/hosary/079.mp3",
-     "bytes": 2966255
+     "bytes": 2966047
     },
     {
      "path": "quran/audio/hosary/080.mp3",
-     "bytes": 2289370
+     "bytes": 2289162
     },
     {
      "path": "quran/audio/hosary/081.mp3",
-     "bytes": 1648848
+     "bytes": 1648640
     },
     {
      "path": "quran/audio/hosary/082.mp3",
-     "bytes": 1340603
+     "bytes": 1340395
     },
     {
      "path": "quran/audio/hosary/083.mp3",
-     "bytes": 2962911
+     "bytes": 2962703
     },
     {
      "path": "quran/audio/hosary/084.mp3",
-     "bytes": 1820420
+     "bytes": 1820212
     },
     {
      "path": "quran/audio/hosary/085.mp3",
-     "bytes": 1673507
+     "bytes": 1673299
     },
     {
      "path": "quran/audio/hosary/086.mp3",
-     "bytes": 1063287
+     "bytes": 1063079
     },
     {
      "path": "quran/audio/hosary/087.mp3",
-     "bytes": 1215842
+     "bytes": 1215634
     },
     {
      "path": "quran/audio/hosary/088.mp3",
-     "bytes": 1576541
+     "bytes": 1576333
     },
     {
      "path": "quran/audio/hosary/089.mp3",
-     "bytes": 2233781
+     "bytes": 2233573
     },
     {
      "path": "quran/audio/hosary/090.mp3",
-     "bytes": 1187839
+     "bytes": 1187631
     },
     {
      "path": "quran/audio/hosary/091.mp3",
-     "bytes": 1006862
+     "bytes": 1006654
     },
     {
      "path": "quran/audio/hosary/092.mp3",
-     "bytes": 1298807
+     "bytes": 1298599
     },
     {
      "path": "quran/audio/hosary/093.mp3",
-     "bytes": 722650
+     "bytes": 722442
     },
     {
      "path": "quran/audio/hosary/094.mp3",
-     "bytes": 436975
+     "bytes": 436767
     },
     {
      "path": "quran/audio/hosary/095.mp3",
-     "bytes": 579499
+     "bytes": 579291
     },
     {
      "path": "quran/audio/hosary/096.mp3",
-     "bytes": 1120547
+     "bytes": 1120339
     },
     {
      "path": "quran/audio/hosary/097.mp3",
-     "bytes": 472710
+     "bytes": 472502
     },
     {
      "path": "quran/audio/hosary/098.mp3",
-     "bytes": 1483127
+     "bytes": 1482919
     },
     {
      "path": "quran/audio/hosary/099.mp3",
-     "bytes": 647417
+     "bytes": 647209
     },
     {
      "path": "quran/audio/hosary/100.mp3",
-     "bytes": 696110
+     "bytes": 695902
     },
     {
      "path": "quran/audio/hosary/101.mp3",
-     "bytes": 649716
+     "bytes": 649508
     },
     {
      "path": "quran/audio/hosary/102.mp3",
-     "bytes": 541256
+     "bytes": 541048
     },
     {
      "path": "quran/audio/hosary/103.mp3",
-     "bytes": 304900
+     "bytes": 304692
     },
     {
      "path": "quran/audio/hosary/104.mp3",
-     "bytes": 620668
+     "bytes": 620460
     },
     {
      "path": "quran/audio/hosary/105.mp3",
-     "bytes": 426317
+     "bytes": 426109
     },
     {
      "path": "quran/audio/hosary/106.mp3",
-     "bytes": 346278
+     "bytes": 346070
     },
     {
      "path": "quran/audio/hosary/107.mp3",
-     "bytes": 426526
+     "bytes": 426318
     },
     {
      "path": "quran/audio/hosary/108.mp3",
-     "bytes": 213367
+     "bytes": 213159
     },
     {
      "path": "quran/audio/hosary/109.mp3",
-     "bytes": 388701
+     "bytes": 388493
     },
     {
      "path": "quran/audio/hosary/110.mp3",
-     "bytes": 328932
+     "bytes": 328724
     },
     {
      "path": "quran/audio/hosary/111.mp3",
-     "bytes": 360697
+     "bytes": 360489
     },
     {
      "path": "quran/audio/hosary/112.mp3",
-     "bytes": 232175
+     "bytes": 231967
     },
     {
      "path": "quran/audio/hosary/113.mp3",
-     "bytes": 326843
+     "bytes": 326635
     },
     {
      "path": "quran/audio/hosary/114.mp3",
-     "bytes": 414614
+     "bytes": 414406
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_09-a4286d502233.zip",
-    "bytes": 127529638,
-    "sha256": "a4286d5022332925a2d7e8d440b5867244a2cdb8e0dcbd6f7e0ef58939c52a38"
+    "key": "v1/packs/quran_hosary_09-6ab85c394b25.zip",
+    "bytes": 127517574,
+    "sha256": "6ab85c394b251909ccbd2662e4ee0a04b90f62c0e357c92a4f0fad7115ab84a0"
    }
   }
  ]
