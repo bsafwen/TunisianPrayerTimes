@@ -371,6 +371,8 @@
     <string name="wake_alarm_skip_next">تخطي المنبه التالي</string>
     <string name="wake_alarm_undo_skip_next">إلغاء تخطي المنبه التالي</string>
     <string name="wake_alarm_skip_next_short">تخطي التالي</string>
+    <string name="wake_alarm_cancel_current">إلغاء المنبه الحالي</string>
+    <string name="wake_alarm_cancel_current_short">إلغاء الحالي</string>
     <string name="wake_alarm_undo_skip_next_short">إلغاء التخطي</string>
     <string name="wake_editor_progressive_volume_title">رفع الصوت تدريجيًا</string>
     <string name="wake_editor_progressive_volume_subtitle">يبدأ المنبه بصوت منخفض ثم يرتفع خلال أول 30 ثانية.</string>
