@@ -42,6 +42,7 @@ object DhikrReminderScheduler {
     internal const val ACTION_REMIND = "com.tunisianprayertimes.action.DHIKR_REMIND"
     internal const val ACTION_SNOOZE = "com.tunisianprayertimes.action.DHIKR_SNOOZE"
     internal const val ACTION_DONE = "com.tunisianprayertimes.action.DHIKR_DONE"
+    internal const val ACTION_COUNT = "com.tunisianprayertimes.action.DHIKR_COUNT"
     internal const val WORK_NAME = "adhkar_schedule_repair"
     internal val schedulingLock = Any()
     private const val PREFS = "adhkar_schedule_v2"
@@ -513,6 +514,11 @@ object DhikrReminderScheduler {
             repo.markDone(id, now)
             return@synchronized
         }
+        if (intent.action == ACTION_COUNT) {
+            val id = intent.getStringExtra("occurrence") ?: return@synchronized
+            countFromNotification(context, repo, id, now)
+            return@synchronized
+        }
         if (intent.action == ACTION_SNOOZE) {
             val id = intent.getStringExtra("occurrence") ?: return@synchronized
             val occurrence = repo.state.value.occurrences[id] ?: return@synchronized
@@ -585,7 +591,7 @@ object DhikrReminderScheduler {
             deferEvent(context, prefs, ruleId, event, nextUnspaced, "spacing")
             return@synchronized
         }
-        val posted = eligible && !reading && postNotification(context, occurrence!!, window!!, now)
+        val posted = eligible && !reading && postNotification(context, occurrence!!, window!!.endMillis, now)
         if (eligible && !reading && !posted && now + 60_000L < window!!.endMillis) {
             deferEvent(context, prefs, ruleId, event, now + 60_000L, "retry")
             return@synchronized
@@ -609,6 +615,29 @@ object DhikrReminderScheduler {
         if (posted) prefs.edit().putLong("lastAlert", now).commit()
         refresh(context, nowMillis = now + 1)
     }
+    /**
+     * Adds one recitation to a single-dhikr reminder straight from its notification. It goes through
+     * the reader's own counting, so the Adhkar tab, the goal and the completion state stay in step.
+     */
+    private fun countFromNotification(context: Context, repo: DhikrRepository, occurrenceId: String, now: Long) {
+        val occurrence = repo.state.value.occurrences[occurrenceId] ?: return
+        val rule = repo.state.value.reminders.find {
+            it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision
+        }
+        if (rule == null || rule.collection != null || occurrence.status != DhikrOccurrenceStatus.OPEN ||
+            now !in occurrence.startMillis until occurrence.endMillis) {
+            manager(context).cancel(occurrenceId, 1)
+            return
+        }
+        val sessionId = runCatching {
+            repo.openSession(listOf(occurrence.dhikrId), occurrenceId = occurrenceId, now = now)
+        }.getOrNull() ?: return
+        repo.count(sessionId, 1, now)
+        // A finished goal is cancelled by the refresh inside count(); an open one shows the new total.
+        repo.state.value.occurrences[occurrenceId]?.takeIf { it.status == DhikrOccurrenceStatus.OPEN }?.let {
+            postNotification(context, it, it.endMillis, now, alert = false)
+        }
+    }
     private fun deferEvent(context: Context, prefs: SharedPreferences, ruleId: String, event: JSONObject, at: Long,
                            reason: String? = null) {
         cancelDelivery(context, ruleId, event)
@@ -617,7 +646,8 @@ object DhikrReminderScheduler {
         prefs.edit().putString("event:" + ruleId, event.toString()).commit()
         scheduleDelivery(context, ruleId, event)
     }
-    private fun postNotification(context: Context, occurrence: DhikrOccurrence, window: DhikrWindow, now: Long): Boolean {
+    private fun postNotification(context: Context, occurrence: DhikrOccurrence, endMillis: Long, now: Long,
+                                 alert: Boolean = true): Boolean {
         val rule = DhikrRepository(context).state.value.reminders.find { it.id == occurrence.ruleId }
         val collection = rule?.collection
         // A collection is announced by its own name; only a single dhikr needs its entry.
@@ -635,14 +665,23 @@ object DhikrReminderScheduler {
             .setCategory(NotificationCompat.CATEGORY_REMINDER).setContentIntent(open).setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-            .setTimeoutAfter((window.endMillis - now).coerceAtLeast(1)).addAction(0, "متابعة الذكر", open)
+            .setTimeoutAfter((endMillis - now).coerceAtLeast(1)).setOnlyAlertOnce(!alert)
+        // Android shows three actions. A single dhikr trades "continue" (the tap on the notification
+        // opens the same reader) for a counter; a collection has no single count to raise.
+        if (collection == null) {
+            val count = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_COUNT)
+                .setData(Uri.parse("tunisianprayertimes://adhkar/count/" + Uri.encode(occurrence.id)))
+                .putExtra("occurrence", occurrence.id)
+            builder.addAction(0, "+1", PendingIntent.getBroadcast(context, 0, count,
+                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
+        } else builder.addAction(0, "متابعة الذكر", open)
         val done = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_DONE)
             .setData(Uri.parse("tunisianprayertimes://adhkar/done/" + Uri.encode(occurrence.id)))
             .putExtra("occurrence", occurrence.id)
         builder.addAction(0, "تم", PendingIntent.getBroadcast(context, 0, done,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
-        builder.setVibrate(if (rule?.vibrate == false) longArrayOf(0L) else longArrayOf(0, 250, 120, 250))
-        if (now + 35 * 60_000L <= window.endMillis) {
+        builder.setVibrate(if (rule?.vibrate == false || !alert) longArrayOf(0L) else longArrayOf(0, 250, 120, 250))
+        if (now + 35 * 60_000L <= endMillis) {
             val snooze = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_SNOOZE)
                 .setData(Uri.parse("tunisianprayertimes://adhkar/snooze/" + Uri.encode(occurrence.id)))
                 .putExtra("occurrence", occurrence.id)

@@ -781,7 +781,7 @@ class AdhkarFlowTest {
         val notifications = context.getSystemService(NotificationManager::class.java).activeNotifications
         assertEquals(1, notifications.size)
         assertEquals(0, repo.state.value.occurrences.getValue(window.progressKey).count)
-        assertEquals(listOf("متابعة الذكر", "تم", "تأجيل"), notifications.single().notification.actions.map { it.title.toString() })
+        assertEquals(listOf("+1", "تم", "تأجيل"), notifications.single().notification.actions.map { it.title.toString() })
         val open = Shadows.shadowOf(notifications.single().notification.contentIntent).savedIntent
         assertEquals(window.progressKey, open.getStringExtra(DhikrReminderScheduler.EXTRA_OCCURRENCE_ID))
     }
@@ -904,6 +904,22 @@ class AdhkarFlowTest {
         assertFalse(repo.snooze(occurrence.id, window.endMillis - 1))
         assertEquals(0, repo.state.value.occurrences.getValue(occurrence.id).count)
     }
+    @Test fun notificationCounterActionRaisesTheCountWithoutOpeningTheApp() {
+        val rule = rule().copy(targetCount = 2); repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        deliver(event(), window.startMillis)
+        val manager = context.getSystemService(NotificationManager::class.java)
+        fun count() = DhikrReminderScheduler.receive(context, Intent().setAction(DhikrReminderScheduler.ACTION_COUNT)
+            .putExtra("occurrence", window.progressKey), window.startMillis + 1)
+        count()
+        assertEquals(1, repo.state.value.occurrences.getValue(window.progressKey).count)
+        assertEquals(1, manager.activeNotifications.size)
+        count()
+        assertEquals(2, repo.state.value.occurrences.getValue(window.progressKey).count)
+        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(window.progressKey).status)
+        assertEquals(0, manager.activeNotifications.size)
+    }
     @Test fun nearEndNotificationDoesNotOfferAnUndeliverableSnooze() {
         val rule = rule().copy(end = DhikrTime(minuteOfDay = 540))
         repo.save(rule)
@@ -911,7 +927,7 @@ class AdhkarFlowTest {
         DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
         deliver(event(), window.endMillis - 10 * 60_000L)
         val notification = context.getSystemService(NotificationManager::class.java).activeNotifications.single().notification
-        assertEquals(listOf("متابعة الذكر", "تم"), notification.actions.map { it.title.toString() })
+        assertEquals(listOf("+1", "تم"), notification.actions.map { it.title.toString() })
 
         DhikrReminderScheduler.receive(context, Intent().setAction(DhikrReminderScheduler.ACTION_SNOOZE)
             .putExtra("occurrence", window.progressKey), window.endMillis - 5 * 60_000L)

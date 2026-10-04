@@ -4724,13 +4724,16 @@ private fun WakeAlarmListPanel(
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         wakeAlarms.forEachIndexed { index, wakeAlarm ->
-            val nextMillis = remember(wakeAlarm, delegationId) {
-                nextWakeAlarmMillis(context, delegationId, wakeAlarm.copy(enabled = true))
+            val nextTrigger = remember(wakeAlarm, delegationId) {
+                nextWakeAlarmTrigger(context, delegationId, wakeAlarm.copy(enabled = true))
             }
+            val nextMillis = nextTrigger?.triggerAtMillis
             WakeAlarmRow(
                 alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
                 wakeConfig = wakeAlarm,
                 nextAlarmMillis = nextMillis,
+                // The main alarm (or one of its extras) already rang for the upcoming trigger's occurrence.
+                currentOccurrenceStarted = nextTrigger?.let { it.occurrenceAtMillis <= nowMillis } == true,
                 nowMillis = nowMillis,
                 onClick = { onEditAlarm(wakeAlarm) },
                 onEnabledChange = { enabled -> onEnabledChange(wakeAlarm, enabled) },
@@ -5588,6 +5591,7 @@ private fun WakeAlarmRow(
     alarmName: String,
     wakeConfig: PrayerWakeConfig,
     nextAlarmMillis: Long?,
+    currentOccurrenceStarted: Boolean,
     nowMillis: Long,
     onClick: () -> Unit,
     onEnabledChange: (Boolean) -> Unit,
@@ -5599,7 +5603,11 @@ private fun WakeAlarmRow(
     val isSkipPending = wakeConfig.hasPendingWakeOccurrenceSkip(nowMillis)
     val showSkipNextAction = isRepeatingAlarm && (isSkipPending || (enabled && nextAlarmMillis != null))
     val skipActionDescription = stringResource(
-        if (isSkipPending) R.string.wake_alarm_undo_skip_next else R.string.wake_alarm_skip_next,
+        when {
+            isSkipPending -> R.string.wake_alarm_undo_skip_next
+            currentOccurrenceStarted -> R.string.wake_alarm_cancel_current
+            else -> R.string.wake_alarm_skip_next
+        },
     )
     val deleteActionDescription = stringResource(R.string.wake_alarm_delete_action)
     val alarmDisplayName = wakeAlarmDisplayName(wakeConfig)
@@ -5742,8 +5750,11 @@ private fun WakeAlarmRow(
                         ) {
                             Text(
                                 text = stringResource(
-                                    if (isSkipPending) R.string.wake_alarm_undo_skip_next_short
-                                    else R.string.wake_alarm_skip_next_short,
+                                    when {
+                                        isSkipPending -> R.string.wake_alarm_undo_skip_next_short
+                                        currentOccurrenceStarted -> R.string.wake_alarm_cancel_current_short
+                                        else -> R.string.wake_alarm_skip_next_short
+                                    },
                                 ),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.SemiBold,
