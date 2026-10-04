@@ -9,7 +9,24 @@ data class QuranPage(val number: Int, val assetPath: String, val surahNames: Lis
 
 data class QuranSurah(val number: Int, val name: String, val page: Int, val verseCount: Int? = null)
 
-data class QuranSearchResult(val surahName: String, val text: String, val page: Int)
+/** [verses] are the ones the query touches on [page], in mushaf order. */
+data class QuranSearchResult(val surahName: String, val text: String, val page: Int, val verses: List<QuranVerseReference>) {
+    val hit: QuranSearchHit get() = QuranSearchHit(page, verses)
+}
+
+/** What a tapped search result leaves on the page it opens: the verses to colour there. */
+data class QuranSearchHit(val page: Int, val verses: List<QuranVerseReference>) {
+    fun encode(): String = (listOf(page) + verses.flatMap { listOf(it.surah, it.ayah) }).joinToString(":")
+
+    companion object {
+        /** Null for anything [encode] could not have written, so a stale saved value shows nothing. */
+        fun decode(value: String?): QuranSearchHit? {
+            val numbers = value?.split(':')?.map { it.toIntOrNull() ?: return null } ?: return null
+            if (numbers.size < 3 || numbers.size % 2 == 0 || numbers[0] < 1) return null
+            return QuranSearchHit(numbers[0], numbers.drop(1).chunked(2).map { QuranVerseReference(it[0], it[1]) })
+        }
+    }
+}
 
 internal data class QuranSearchEntry(
     val surah: Int,
@@ -56,8 +73,13 @@ class QuranCatalog internal constructor(
         val needle = normalizeQuranSearch(query)
         if (needle.isBlank()) return emptyList()
         return pageText.mapNotNull { page ->
-            page.excerpt(needle)?.let { text ->
-                QuranSearchResult(surahs[page.surah - 1].name, text, page.number)
+            page.match(needle)?.let { found ->
+                QuranSearchResult(
+                    surahs[page.surah - 1].name,
+                    found.joinToString(" ") { it.text },
+                    page.number,
+                    found.map { QuranVerseReference(it.surah, it.ayah) }.distinct(),
+                )
             }
         }
     }
@@ -70,7 +92,8 @@ private class QuranPageText(private val entries: List<QuranSearchEntry>) {
     private val original = entries.joinToString(" ") { it.normalized }
     private val spelling = entries.joinToString(" ") { it.spelling }
 
-    fun excerpt(query: String): String? {
+    /** The source fragments the query runs through, or null when this page does not contain it. */
+    fun match(query: String): List<QuranSearchEntry>? {
         val originalStart = original.indexOf(query)
         val spellingStart = if (originalStart < 0) spelling.indexOf(query) else -1
         val start = maxOf(originalStart, spellingStart)
@@ -82,7 +105,7 @@ private class QuranPageText(private val entries: List<QuranSearchEntry>) {
             val intersects = offset < end && offset + length > start
             offset += length + 1
             intersects
-        }.joinToString(" ") { it.text }
+        }
     }
 }
 

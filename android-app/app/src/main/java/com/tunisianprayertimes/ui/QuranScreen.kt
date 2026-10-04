@@ -62,6 +62,7 @@ import com.tunisianprayertimes.R
 import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranPage
 import com.tunisianprayertimes.quran.QuranRepository
+import com.tunisianprayertimes.quran.QuranSearchHit
 import com.tunisianprayertimes.quran.QuranSearchResult
 import com.tunisianprayertimes.quran.QuranHighlights
 import com.tunisianprayertimes.quran.QuranHighlightRect
@@ -182,6 +183,9 @@ private fun QuranReader(
     var panel by rememberSaveable { mutableStateOf<String?>(null) }
     // The verses the repeat sheet opens on, kept across a re-created activity.
     var repeatDraft by rememberSaveable { mutableStateOf<String?>(null) }
+    // The verses a tapped search result found, coloured until the reader leaves their page(s).
+    var foundDraft by rememberSaveable { mutableStateOf<String?>(null) }
+    val found = remember(foundDraft) { QuranSearchHit.decode(foundDraft) }
     var zoomed by remember { mutableStateOf(false) }
     val page = pages[pager.currentPage]
     val haptics = LocalHapticFeedback.current
@@ -210,6 +214,13 @@ private fun QuranReader(
         }
     }
     LaunchedEffect(pager.currentPage) { zoomed = false }
+    LaunchedEffect(pager.currentPage) {
+        // Keyed on the page alone: a result tapped just now is set before the pager has moved to it.
+        val hit = found ?: return@LaunchedEffect
+        val index = catalog ?: return@LaunchedEffect
+        val shownOn = hit.verses.flatMap { index.pagesForVerse(it.surah, it.ayah) } + hit.page
+        if (pager.currentPage + 1 !in shownOn) foundDraft = null
+    }
     LaunchedEffect(dragging) { if (dragging) followAudio = false }
     LaunchedEffect(playback.surah, playback.ayah, playback.loading, followAudio, catalog) {
         if (playback.surah == null) lastFollowedSurah = null
@@ -228,9 +239,10 @@ private fun QuranReader(
             lastFollowedSurah = surah
         }
     }
-    fun openPage(number: Int) {
+    fun openPage(number: Int, hit: QuranSearchHit? = null) {
         panel = null
         followAudio = false
+        foundDraft = hit?.encode()
         scope.launch { pager.scrollToPage((number - 1).coerceIn(0, pages.lastIndex)) }
     }
     fun openRepeat(range: QuranRepeatRange) {
@@ -291,6 +303,7 @@ private fun QuranReader(
                 active = index == pager.currentPage,
                 pagesReady = pagesReady,
                 highlightRects = highlights?.rectangles(number, playback.surah, playback.ayah).orEmpty(),
+                foundRects = if (highlights != null && found != null) found.verses.flatMap { highlights.rectangles(number, it.surah, it.ayah) } else emptyList(),
                 selectedRects = highlights?.rectangles(number, chosen?.surah, chosen?.ayah).orEmpty(),
                 onVerseLongPress = { x, y ->
                     // Choosing a verse needs both its place on the page and the text index.
@@ -331,7 +344,7 @@ private fun QuranReader(
         "chapters" -> if (catalog != null) QuranChapterSheet(
             catalog, page.number, onDismiss = { panel = null }, onPage = ::openPage, onPageNumber = { panel = "page" },
         )
-        "search" -> if (catalog != null) QuranSearchSheet(catalog, onDismiss = { panel = null }, onPage = ::openPage)
+        "search" -> if (catalog != null) QuranSearchSheet(catalog, onDismiss = { panel = null }, onResult = { openPage(it.page, it.hit) })
         "page" -> QuranPageDialog(page.number, onDismiss = { panel = null }, onPage = ::openPage)
     }
     if (repeatSheet != null && catalog != null) {
@@ -360,6 +373,8 @@ private fun QuranPageImage(
     /** False while the pages are still to be downloaded; the page decodes again once they arrive. */
     pagesReady: Boolean,
     highlightRects: List<QuranHighlightRect>,
+    /** The verses a search result found. */
+    foundRects: List<QuranHighlightRect>,
     selectedRects: List<QuranHighlightRect>,
     /** A long press at a point of the original scan, each coordinate from 0 to 1; true when it chose a verse. */
     onVerseLongPress: (x: Float, y: Float) -> Boolean,
@@ -493,7 +508,8 @@ private fun QuranPageImage(
                             cornerRadius = CornerRadius(3.dp.toPx()), blendMode = BlendMode.Multiply,
                         )
                     }
-                    // Only the recited verse and the pressed one are coloured; the rest of the page stays white.
+                    // Only the found, recited and pressed verses are coloured; the rest of the page stays white.
+                    tint(foundRects, Color(0x575BB8E8))
                     tint(highlightRects, Color(0x5266BB6A))
                     tint(selectedRects, Color(0x5200695C))
                 }
@@ -561,7 +577,7 @@ private fun QuranChapterSheet(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun QuranSearchSheet(catalog: QuranCatalog, onDismiss: () -> Unit, onPage: (Int) -> Unit) {
+private fun QuranSearchSheet(catalog: QuranCatalog, onDismiss: () -> Unit, onResult: (QuranSearchResult) -> Unit) {
     val context = LocalContext.current
     var query by rememberSaveable { mutableStateOf("") }
     var showSources by rememberSaveable { mutableStateOf(false) }
@@ -605,7 +621,7 @@ private fun QuranSearchSheet(catalog: QuranCatalog, onDismiss: () -> Unit, onPag
                 items(results) { result ->
                     Column(
                         Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color.White)
-                            .clickable { focus.clearFocus(); onPage(result.page) }.padding(14.dp),
+                            .clickable { focus.clearFocus(); onResult(result) }.padding(14.dp),
                     ) {
                         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                             Text(result.surahName, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary)
