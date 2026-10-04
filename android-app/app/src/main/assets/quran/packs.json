@@ -5,6 +5,7 @@
   {
    "name": "quran_pages",
    "kind": "pages",
+   "delivery": "play",
    "bytes": 184660886,
    "files": [
     {
@@ -2499,1462 +2500,1239 @@
    }
   },
   {
-   "name": "quran_hosary_01",
+   "name": "quran_ayoub_01",
    "kind": "audio",
-   "reciterId": "hosary-qaloun",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
    "surahs": [
     1,
-    1
+    2
    ],
-   "bytes": 850752,
+   "bytes": 47091667,
    "files": [
     {
-     "path": "quran/audio/hosary/001.mp3",
-     "bytes": 850752
+     "path": "quran/audio/ayoub/001.mp3",
+     "bytes": 258924
+    },
+    {
+     "path": "quran/audio/ayoub/002.mp3",
+     "bytes": 46832743
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_01-4658ef3b2605.zip",
-    "bytes": 850902,
-    "sha256": "4658ef3b260554332e54a2a5e93f1802044dfb1e0bd6e7a837230bd14e1fa964"
+    "key": "v1/packs/quran_ayoub_01-e604955c8c09.zip",
+    "bytes": 47091941,
+    "sha256": "e604955c8c09e351e641da25c4d94857698d42d26e4a5794b4853b65c17c7720"
+   }
+  },
+  {
+   "name": "quran_ayoub_02",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    3,
+    4
+   ],
+   "bytes": 54285580,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/003.mp3",
+     "bytes": 27200155
+    },
+    {
+     "path": "quran/audio/ayoub/004.mp3",
+     "bytes": 27085425
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_02-4da9710757e5.zip",
+    "bytes": 54285854,
+    "sha256": "4da9710757e58f5f4396d62804b5e30311635cfaab8124bdfc4733468cc337b9"
+   }
+  },
+  {
+   "name": "quran_ayoub_03",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    5,
+    7
+   ],
+   "bytes": 66701265,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/005.mp3",
+     "bytes": 20072070
+    },
+    {
+     "path": "quran/audio/ayoub/006.mp3",
+     "bytes": 21977964
+    },
+    {
+     "path": "quran/audio/ayoub/007.mp3",
+     "bytes": 24651231
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_03-6303147b2dd2.zip",
+    "bytes": 66701665,
+    "sha256": "6303147b2dd2d6b093dc2e88721acd2fb1f3fc0cab4dcd29c94b9cd0a07d9dd8"
+   }
+  },
+  {
+   "name": "quran_ayoub_04",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    8,
+    12
+   ],
+   "bytes": 69205675,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/008.mp3",
+     "bytes": 8977344
+    },
+    {
+     "path": "quran/audio/ayoub/009.mp3",
+     "bytes": 18829687
+    },
+    {
+     "path": "quran/audio/ayoub/010.mp3",
+     "bytes": 13547936
+    },
+    {
+     "path": "quran/audio/ayoub/011.mp3",
+     "bytes": 14171323
+    },
+    {
+     "path": "quran/audio/ayoub/012.mp3",
+     "bytes": 13679385
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_04-c5a379ba8afd.zip",
+    "bytes": 69206327,
+    "sha256": "c5a379ba8afd7be5fd9e758a639f9134fe6e7ab34b87dfd02e311014fa26aa8a"
+   }
+  },
+  {
+   "name": "quran_ayoub_05",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    13,
+    20
+   ],
+   "bytes": 74150126,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/013.mp3",
+     "bytes": 6862679
+    },
+    {
+     "path": "quran/audio/ayoub/014.mp3",
+     "bytes": 6699257
+    },
+    {
+     "path": "quran/audio/ayoub/015.mp3",
+     "bytes": 5289899
+    },
+    {
+     "path": "quran/audio/ayoub/016.mp3",
+     "bytes": 14588864
+    },
+    {
+     "path": "quran/audio/ayoub/017.mp3",
+     "bytes": 12056031
+    },
+    {
+     "path": "quran/audio/ayoub/018.mp3",
+     "bytes": 11786656
+    },
+    {
+     "path": "quran/audio/ayoub/019.mp3",
+     "bytes": 7072077
+    },
+    {
+     "path": "quran/audio/ayoub/020.mp3",
+     "bytes": 9794663
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_05-3000d106da80.zip",
+    "bytes": 74151156,
+    "sha256": "3000d106da80f510f9db830215654c4c2838277b4f943c800dcbc0baecdeea7e"
+   }
+  },
+  {
+   "name": "quran_ayoub_06",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    21,
+    28
+   ],
+   "bytes": 74009483,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/021.mp3",
+     "bytes": 8869510
+    },
+    {
+     "path": "quran/audio/ayoub/022.mp3",
+     "bytes": 9551620
+    },
+    {
+     "path": "quran/audio/ayoub/023.mp3",
+     "bytes": 8493347
+    },
+    {
+     "path": "quran/audio/ayoub/024.mp3",
+     "bytes": 10317530
+    },
+    {
+     "path": "quran/audio/ayoub/025.mp3",
+     "bytes": 6895280
+    },
+    {
+     "path": "quran/audio/ayoub/026.mp3",
+     "bytes": 9949726
+    },
+    {
+     "path": "quran/audio/ayoub/027.mp3",
+     "bytes": 9115479
+    },
+    {
+     "path": "quran/audio/ayoub/028.mp3",
+     "bytes": 10816991
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_06-88a4a5e84c26.zip",
+    "bytes": 74010513,
+    "sha256": "88a4a5e84c261c94d66d6dcf4e9178d6b54a439825f3390ad3c0c926426f4424"
+   }
+  },
+  {
+   "name": "quran_ayoub_07",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    29,
+    39
+   ],
+   "bytes": 72027727,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/029.mp3",
+     "bytes": 7887724
+    },
+    {
+     "path": "quran/audio/ayoub/030.mp3",
+     "bytes": 6210872
+    },
+    {
+     "path": "quran/audio/ayoub/031.mp3",
+     "bytes": 4185442
+    },
+    {
+     "path": "quran/audio/ayoub/032.mp3",
+     "bytes": 2985063
+    },
+    {
+     "path": "quran/audio/ayoub/033.mp3",
+     "bytes": 10618252
+    },
+    {
+     "path": "quran/audio/ayoub/034.mp3",
+     "bytes": 6178062
+    },
+    {
+     "path": "quran/audio/ayoub/035.mp3",
+     "bytes": 6089873
+    },
+    {
+     "path": "quran/audio/ayoub/036.mp3",
+     "bytes": 5853517
+    },
+    {
+     "path": "quran/audio/ayoub/037.mp3",
+     "bytes": 7543117
+    },
+    {
+     "path": "quran/audio/ayoub/038.mp3",
+     "bytes": 5693021
+    },
+    {
+     "path": "quran/audio/ayoub/039.mp3",
+     "bytes": 8782784
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_07-dedd349e28c0.zip",
+    "bytes": 72029135,
+    "sha256": "dedd349e28c0cb79ca8c1d534171d776609c0838f2b23a97e932134a77e523db"
+   }
+  },
+  {
+   "name": "quran_ayoub_08",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    40,
+    56
+   ],
+   "bytes": 72508159,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/040.mp3",
+     "bytes": 9190503
+    },
+    {
+     "path": "quran/audio/ayoub/041.mp3",
+     "bytes": 6333543
+    },
+    {
+     "path": "quran/audio/ayoub/042.mp3",
+     "bytes": 6452243
+    },
+    {
+     "path": "quran/audio/ayoub/043.mp3",
+     "bytes": 6851812
+    },
+    {
+     "path": "quran/audio/ayoub/044.mp3",
+     "bytes": 2922578
+    },
+    {
+     "path": "quran/audio/ayoub/045.mp3",
+     "bytes": 3818892
+    },
+    {
+     "path": "quran/audio/ayoub/046.mp3",
+     "bytes": 4767868
+    },
+    {
+     "path": "quran/audio/ayoub/047.mp3",
+     "bytes": 3833520
+    },
+    {
+     "path": "quran/audio/ayoub/048.mp3",
+     "bytes": 4273422
+    },
+    {
+     "path": "quran/audio/ayoub/049.mp3",
+     "bytes": 2767306
+    },
+    {
+     "path": "quran/audio/ayoub/050.mp3",
+     "bytes": 3138663
+    },
+    {
+     "path": "quran/audio/ayoub/051.mp3",
+     "bytes": 2784652
+    },
+    {
+     "path": "quran/audio/ayoub/052.mp3",
+     "bytes": 2623737
+    },
+    {
+     "path": "quran/audio/ayoub/053.mp3",
+     "bytes": 2800325
+    },
+    {
+     "path": "quran/audio/ayoub/054.mp3",
+     "bytes": 2696044
+    },
+    {
+     "path": "quran/audio/ayoub/055.mp3",
+     "bytes": 3645856
+    },
+    {
+     "path": "quran/audio/ayoub/056.mp3",
+     "bytes": 3607195
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_08-0187570f72aa.zip",
+    "bytes": 72510323,
+    "sha256": "0187570f72aa7c71d08670b449b3dde4b6ddba854604b44ff31d68d1ebccbfce"
+   }
+  },
+  {
+   "name": "quran_ayoub_09",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "ayoub-qaloun",
+   "surahs": [
+    57,
+    114
+   ],
+   "bytes": 72797745,
+   "files": [
+    {
+     "path": "quran/audio/ayoub/057.mp3",
+     "bytes": 4656900
+    },
+    {
+     "path": "quran/audio/ayoub/058.mp3",
+     "bytes": 3736136
+    },
+    {
+     "path": "quran/audio/ayoub/059.mp3",
+     "bytes": 3844596
+    },
+    {
+     "path": "quran/audio/ayoub/060.mp3",
+     "bytes": 3844178
+    },
+    {
+     "path": "quran/audio/ayoub/061.mp3",
+     "bytes": 1898160
+    },
+    {
+     "path": "quran/audio/ayoub/062.mp3",
+     "bytes": 1381354
+    },
+    {
+     "path": "quran/audio/ayoub/063.mp3",
+     "bytes": 1641951
+    },
+    {
+     "path": "quran/audio/ayoub/064.mp3",
+     "bytes": 1968377
+    },
+    {
+     "path": "quran/audio/ayoub/065.mp3",
+     "bytes": 2264292
+    },
+    {
+     "path": "quran/audio/ayoub/066.mp3",
+     "bytes": 2167117
+    },
+    {
+     "path": "quran/audio/ayoub/067.mp3",
+     "bytes": 2729272
+    },
+    {
+     "path": "quran/audio/ayoub/068.mp3",
+     "bytes": 2640456
+    },
+    {
+     "path": "quran/audio/ayoub/069.mp3",
+     "bytes": 2367946
+    },
+    {
+     "path": "quran/audio/ayoub/070.mp3",
+     "bytes": 1941210
+    },
+    {
+     "path": "quran/audio/ayoub/071.mp3",
+     "bytes": 1847587
+    },
+    {
+     "path": "quran/audio/ayoub/072.mp3",
+     "bytes": 2009755
+    },
+    {
+     "path": "quran/audio/ayoub/073.mp3",
+     "bytes": 1658879
+    },
+    {
+     "path": "quran/audio/ayoub/074.mp3",
+     "bytes": 2148309
+    },
+    {
+     "path": "quran/audio/ayoub/075.mp3",
+     "bytes": 1502144
+    },
+    {
+     "path": "quran/audio/ayoub/076.mp3",
+     "bytes": 2291042
+    },
+    {
+     "path": "quran/audio/ayoub/077.mp3",
+     "bytes": 1938493
+    },
+    {
+     "path": "quran/audio/ayoub/078.mp3",
+     "bytes": 1982379
+    },
+    {
+     "path": "quran/audio/ayoub/079.mp3",
+     "bytes": 1637981
+    },
+    {
+     "path": "quran/audio/ayoub/080.mp3",
+     "bytes": 1376547
+    },
+    {
+     "path": "quran/audio/ayoub/081.mp3",
+     "bytes": 1010624
+    },
+    {
+     "path": "quran/audio/ayoub/082.mp3",
+     "bytes": 795584
+    },
+    {
+     "path": "quran/audio/ayoub/083.mp3",
+     "bytes": 1683329
+    },
+    {
+     "path": "quran/audio/ayoub/084.mp3",
+     "bytes": 959842
+    },
+    {
+     "path": "quran/audio/ayoub/085.mp3",
+     "bytes": 1058271
+    },
+    {
+     "path": "quran/audio/ayoub/086.mp3",
+     "bytes": 588067
+    },
+    {
+     "path": "quran/audio/ayoub/087.mp3",
+     "bytes": 660792
+    },
+    {
+     "path": "quran/audio/ayoub/088.mp3",
+     "bytes": 814810
+    },
+    {
+     "path": "quran/audio/ayoub/089.mp3",
+     "bytes": 1243845
+    },
+    {
+     "path": "quran/audio/ayoub/090.mp3",
+     "bytes": 680018
+    },
+    {
+     "path": "quran/audio/ayoub/091.mp3",
+     "bytes": 544390
+    },
+    {
+     "path": "quran/audio/ayoub/092.mp3",
+     "bytes": 690885
+    },
+    {
+     "path": "quran/audio/ayoub/093.mp3",
+     "bytes": 422555
+    },
+    {
+     "path": "quran/audio/ayoub/094.mp3",
+     "bytes": 221935
+    },
+    {
+     "path": "quran/audio/ayoub/095.mp3",
+     "bytes": 325171
+    },
+    {
+     "path": "quran/audio/ayoub/096.mp3",
+     "bytes": 604576
+    },
+    {
+     "path": "quran/audio/ayoub/097.mp3",
+     "bytes": 278777
+    },
+    {
+     "path": "quran/audio/ayoub/098.mp3",
+     "bytes": 728710
+    },
+    {
+     "path": "quran/audio/ayoub/099.mp3",
+     "bytes": 372400
+    },
+    {
+     "path": "quran/audio/ayoub/100.mp3",
+     "bytes": 389536
+    },
+    {
+     "path": "quran/audio/ayoub/101.mp3",
+     "bytes": 332067
+    },
+    {
+     "path": "quran/audio/ayoub/102.mp3",
+     "bytes": 316812
+    },
+    {
+     "path": "quran/audio/ayoub/103.mp3",
+     "bytes": 145866
+    },
+    {
+     "path": "quran/audio/ayoub/104.mp3",
+     "bytes": 336247
+    },
+    {
+     "path": "quran/audio/ayoub/105.mp3",
+     "bytes": 233429
+    },
+    {
+     "path": "quran/audio/ayoub/106.mp3",
+     "bytes": 226323
+    },
+    {
+     "path": "quran/audio/ayoub/107.mp3",
+     "bytes": 269791
+    },
+    {
+     "path": "quran/audio/ayoub/108.mp3",
+     "bytes": 120162
+    },
+    {
+     "path": "quran/audio/ayoub/109.mp3",
+     "bytes": 217964
+    },
+    {
+     "path": "quran/audio/ayoub/110.mp3",
+     "bytes": 202500
+    },
+    {
+     "path": "quran/audio/ayoub/111.mp3",
+     "bytes": 217128
+    },
+    {
+     "path": "quran/audio/ayoub/112.mp3",
+     "bytes": 125177
+    },
+    {
+     "path": "quran/audio/ayoub/113.mp3",
+     "bytes": 201873
+    },
+    {
+     "path": "quran/audio/ayoub/114.mp3",
+     "bytes": 303228
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_ayoub_09-4f15b2c83eb8.zip",
+    "bytes": 72805075,
+    "sha256": "4f15b2c83eb895679ae53cb1730d511758eb5b100bd5b379259c60ebf81c0b5f"
+   }
+  },
+  {
+   "name": "quran_hosary_01",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "hosary-qaloun",
+   "surahs": [
+    1,
+    3
+   ],
+   "bytes": 132073634,
+   "files": [
+    {
+     "path": "quran/audio/hosary/001.mp3",
+     "bytes": 422346
+    },
+    {
+     "path": "quran/audio/hosary/002.mp3",
+     "bytes": 84196204
+    },
+    {
+     "path": "quran/audio/hosary/003.mp3",
+     "bytes": 47455084
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_hosary_01-6af63b4ec063.zip",
+    "bytes": 132074040,
+    "sha256": "6af63b4ec063d16d9e8bcceb2fc3090f78b6b69ee3243572d36ac96a2a5e03ae"
    }
   },
   {
    "name": "quran_hosary_02",
    "kind": "audio",
+   "delivery": "play",
    "reciterId": "hosary-qaloun",
    "surahs": [
-    2,
-    2
+    4,
+    5
    ],
-   "bytes": 168398468,
+   "bytes": 95729786,
    "files": [
     {
-     "path": "quran/audio/hosary/002.mp3",
-     "bytes": 168398468
+     "path": "quran/audio/hosary/004.mp3",
+     "bytes": 54385892
+    },
+    {
+     "path": "quran/audio/hosary/005.mp3",
+     "bytes": 41343894
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_02-3cebfa9f934f.zip",
-    "bytes": 168398618,
-    "sha256": "3cebfa9f934f92e05318fa5b0ad2d30f7a473036d20de3a7e6fcae41513d4e58"
+    "key": "v1/packs/quran_hosary_02-783ed9334ab1.zip",
+    "bytes": 95730064,
+    "sha256": "783ed9334ab19274000a3c4d9ea54ba92a9462a27785ef519f23c52dd102ecc4"
    }
   },
   {
    "name": "quran_hosary_03",
    "kind": "audio",
+   "delivery": "play",
    "reciterId": "hosary-qaloun",
    "surahs": [
-    3,
-    3
+    6,
+    8
    ],
-   "bytes": 94916226,
+   "bytes": 114128557,
    "files": [
     {
-     "path": "quran/audio/hosary/003.mp3",
-     "bytes": 94916226
+     "path": "quran/audio/hosary/006.mp3",
+     "bytes": 47247985
+    },
+    {
+     "path": "quran/audio/hosary/007.mp3",
+     "bytes": 48400926
+    },
+    {
+     "path": "quran/audio/hosary/008.mp3",
+     "bytes": 18479646
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_03-bfa3d69b1e07.zip",
-    "bytes": 94916376,
-    "sha256": "bfa3d69b1e0768e07d049bd700ff66de769b68cd34b712d3f3d2dfde705dae0f"
+    "key": "v1/packs/quran_hosary_03-e0ec6fc93cab.zip",
+    "bytes": 114128963,
+    "sha256": "e0ec6fc93cabd3bf8d8844e451dbcd85017635afb9bf96fa11c65527f7479293"
    }
   },
   {
    "name": "quran_hosary_04",
    "kind": "audio",
+   "delivery": "play",
    "reciterId": "hosary-qaloun",
    "surahs": [
-    4,
-    4
+    9,
+    14
    ],
-   "bytes": 108777842,
+   "bytes": 135173217,
    "files": [
     {
-     "path": "quran/audio/hosary/004.mp3",
-     "bytes": 108777842
+     "path": "quran/audio/hosary/009.mp3",
+     "bytes": 37281749
+    },
+    {
+     "path": "quran/audio/hosary/010.mp3",
+     "bytes": 24346748
+    },
+    {
+     "path": "quran/audio/hosary/011.mp3",
+     "bytes": 25742941
+    },
+    {
+     "path": "quran/audio/hosary/012.mp3",
+     "bytes": 24401292
+    },
+    {
+     "path": "quran/audio/hosary/013.mp3",
+     "bytes": 11411329
+    },
+    {
+     "path": "quran/audio/hosary/014.mp3",
+     "bytes": 11989158
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_04-176e238c7d64.zip",
-    "bytes": 108777992,
-    "sha256": "176e238c7d64fdd8febea54bde8b1d24a1492c6be2ab4538d456f4d585b5a345"
+    "key": "v1/packs/quran_hosary_04-0449a5224635.zip",
+    "bytes": 135174007,
+    "sha256": "0449a52246358b8e3116a7dd0fdc327371f67a622269381f259b3358b870d67a"
    }
   },
   {
    "name": "quran_hosary_05",
    "kind": "audio",
+   "delivery": "play",
    "reciterId": "hosary-qaloun",
    "surahs": [
-    5,
-    5
+    15,
+    21
    ],
-   "bytes": 82693848,
+   "bytes": 126090543,
    "files": [
     {
-     "path": "quran/audio/hosary/005.mp3",
-     "bytes": 82693848
+     "path": "quran/audio/hosary/015.mp3",
+     "bytes": 9749314
+    },
+    {
+     "path": "quran/audio/hosary/016.mp3",
+     "bytes": 25975744
+    },
+    {
+     "path": "quran/audio/hosary/017.mp3",
+     "bytes": 20565053
+    },
+    {
+     "path": "quran/audio/hosary/018.mp3",
+     "bytes": 20545618
+    },
+    {
+     "path": "quran/audio/hosary/019.mp3",
+     "bytes": 12037641
+    },
+    {
+     "path": "quran/audio/hosary/020.mp3",
+     "bytes": 18897814
+    },
+    {
+     "path": "quran/audio/hosary/021.mp3",
+     "bytes": 18319359
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_05-c4f442a82479.zip",
-    "bytes": 82693998,
-    "sha256": "c4f442a8247957e58a3e20bc27ba3f3717ab17ecf18001f2c3bbd34f8e8f4d41"
+    "key": "v1/packs/quran_hosary_05-d3a21f3cccd0.zip",
+    "bytes": 126091461,
+    "sha256": "d3a21f3cccd0b4500edc3af975dff291ce100c3056eaefe13e55c29cb66dc302"
    }
   },
   {
    "name": "quran_hosary_06",
    "kind": "audio",
+   "delivery": "play",
    "reciterId": "hosary-qaloun",
    "surahs": [
-    6,
-    6
+    22,
+    29
    ],
-   "bytes": 94502028,
+   "bytes": 134631745,
    "files": [
     {
-     "path": "quran/audio/hosary/006.mp3",
-     "bytes": 94502028
+     "path": "quran/audio/hosary/022.mp3",
+     "bytes": 18545056
+    },
+    {
+     "path": "quran/audio/hosary/023.mp3",
+     "bytes": 15055097
+    },
+    {
+     "path": "quran/audio/hosary/024.mp3",
+     "bytes": 20451577
+    },
+    {
+     "path": "quran/audio/hosary/025.mp3",
+     "bytes": 12775757
+    },
+    {
+     "path": "quran/audio/hosary/026.mp3",
+     "bytes": 18393337
+    },
+    {
+     "path": "quran/audio/hosary/027.mp3",
+     "bytes": 15841279
+    },
+    {
+     "path": "quran/audio/hosary/028.mp3",
+     "bytes": 19559234
+    },
+    {
+     "path": "quran/audio/hosary/029.mp3",
+     "bytes": 14010408
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_06-531c7271cd97.zip",
-    "bytes": 94502178,
-    "sha256": "531c7271cd9714c7a47ecf96615e9d471117d11c0bc6f179634f368a631ff4ea"
+    "key": "v1/packs/quran_hosary_06-876981411106.zip",
+    "bytes": 134632791,
+    "sha256": "8769814111067ff0689b3672b253f4dbb1a4bd3b2c0f246136d1e35ddea6791c"
    }
   },
   {
    "name": "quran_hosary_07",
    "kind": "audio",
+   "delivery": "play",
    "reciterId": "hosary-qaloun",
    "surahs": [
-    7,
-    7
+    30,
+    39
    ],
-   "bytes": 96807909,
+   "bytes": 120854764,
    "files": [
     {
-     "path": "quran/audio/hosary/007.mp3",
-     "bytes": 96807909
+     "path": "quran/audio/hosary/030.mp3",
+     "bytes": 12143176
+    },
+    {
+     "path": "quran/audio/hosary/031.mp3",
+     "bytes": 7513233
+    },
+    {
+     "path": "quran/audio/hosary/032.mp3",
+     "bytes": 5457292
+    },
+    {
+     "path": "quran/audio/hosary/033.mp3",
+     "bytes": 19735195
+    },
+    {
+     "path": "quran/audio/hosary/034.mp3",
+     "bytes": 12852870
+    },
+    {
+     "path": "quran/audio/hosary/035.mp3",
+     "bytes": 12012981
+    },
+    {
+     "path": "quran/audio/hosary/036.mp3",
+     "bytes": 10634552
+    },
+    {
+     "path": "quran/audio/hosary/037.mp3",
+     "bytes": 13525785
+    },
+    {
+     "path": "quran/audio/hosary/038.mp3",
+     "bytes": 10753252
+    },
+    {
+     "path": "quran/audio/hosary/039.mp3",
+     "bytes": 16226428
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_07-9c6175247e59.zip",
-    "bytes": 96808059,
-    "sha256": "9c6175247e5909723297761754a4a80d2f794675ffc25889878f5029dce750c7"
+    "key": "v1/packs/quran_hosary_07-3947363bfddc.zip",
+    "bytes": 120856066,
+    "sha256": "3947363bfddc471b960547b75bc9116602025e87addb710be4f146c4043cb273"
    }
   },
   {
    "name": "quran_hosary_08",
    "kind": "audio",
+   "delivery": "play",
    "reciterId": "hosary-qaloun",
    "surahs": [
-    8,
-    8
+    40,
+    56
    ],
-   "bytes": 36965349,
+   "bytes": 135050946,
    "files": [
     {
-     "path": "quran/audio/hosary/008.mp3",
-     "bytes": 36965349
+     "path": "quran/audio/hosary/040.mp3",
+     "bytes": 16787329
+    },
+    {
+     "path": "quran/audio/hosary/041.mp3",
+     "bytes": 11714350
+    },
+    {
+     "path": "quran/audio/hosary/042.mp3",
+     "bytes": 10369148
+    },
+    {
+     "path": "quran/audio/hosary/043.mp3",
+     "bytes": 11828452
+    },
+    {
+     "path": "quran/audio/hosary/044.mp3",
+     "bytes": 5663763
+    },
+    {
+     "path": "quran/audio/hosary/045.mp3",
+     "bytes": 7293804
+    },
+    {
+     "path": "quran/audio/hosary/046.mp3",
+     "bytes": 9230627
+    },
+    {
+     "path": "quran/audio/hosary/047.mp3",
+     "bytes": 8832939
+    },
+    {
+     "path": "quran/audio/hosary/048.mp3",
+     "bytes": 7831718
+    },
+    {
+     "path": "quran/audio/hosary/049.mp3",
+     "bytes": 5714963
+    },
+    {
+     "path": "quran/audio/hosary/050.mp3",
+     "bytes": 5599189
+    },
+    {
+     "path": "quran/audio/hosary/051.mp3",
+     "bytes": 5023032
+    },
+    {
+     "path": "quran/audio/hosary/052.mp3",
+     "bytes": 4889494
+    },
+    {
+     "path": "quran/audio/hosary/053.mp3",
+     "bytes": 5508701
+    },
+    {
+     "path": "quran/audio/hosary/054.mp3",
+     "bytes": 5286973
+    },
+    {
+     "path": "quran/audio/hosary/055.mp3",
+     "bytes": 6712423
+    },
+    {
+     "path": "quran/audio/hosary/056.mp3",
+     "bytes": 6764041
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_08-47fd8ce751f3.zip",
-    "bytes": 36965499,
-    "sha256": "47fd8ce751f3d7d918d9954b582a88f46df6b5f5ae30a12b7aa120726996be2d"
+    "key": "v1/packs/quran_hosary_08-698a69302312.zip",
+    "bytes": 135053144,
+    "sha256": "698a69302312fb0d9a47bda7164b0831a7f293982f167b419dafda8d0b7fe0f8"
    }
   },
   {
    "name": "quran_hosary_09",
    "kind": "audio",
+   "delivery": "play",
    "reciterId": "hosary-qaloun",
    "surahs": [
-    9,
-    9
+    57,
+    114
    ],
-   "bytes": 74569556,
+   "bytes": 127522192,
    "files": [
-    {
-     "path": "quran/audio/hosary/009.mp3",
-     "bytes": 74569556
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_09-591fe93275ce.zip",
-    "bytes": 74569706,
-    "sha256": "591fe93275ce1f1a1d27813abf60ae533fad6abd18f97f374ff235e82fe7cd53"
-   }
-  },
-  {
-   "name": "quran_hosary_10",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    10,
-    10
-   ],
-   "bytes": 48699550,
-   "files": [
-    {
-     "path": "quran/audio/hosary/010.mp3",
-     "bytes": 48699550
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_10-3d6112323432.zip",
-    "bytes": 48699700,
-    "sha256": "3d611232343204df6924611973892d15698f7adcc8a1746a0b49e6d11cb6c9bf"
-   }
-  },
-  {
-   "name": "quran_hosary_11",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    11,
-    11
-   ],
-   "bytes": 51491935,
-   "files": [
-    {
-     "path": "quran/audio/hosary/011.mp3",
-     "bytes": 51491935
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_11-afe62bd2112e.zip",
-    "bytes": 51492085,
-    "sha256": "afe62bd2112ee9db27f2a387c1bc5ee6f3fdf7e708a1de4880ca96ea60ea5925"
-   }
-  },
-  {
-   "name": "quran_hosary_12",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    12,
-    12
-   ],
-   "bytes": 48808638,
-   "files": [
-    {
-     "path": "quran/audio/hosary/012.mp3",
-     "bytes": 48808638
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_12-f1451d02c94f.zip",
-    "bytes": 48808788,
-    "sha256": "f1451d02c94fda0186b4ddb10aebbf66faf20ca209437330eaa8512890d224a7"
-   }
-  },
-  {
-   "name": "quran_hosary_13",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    13,
-    13
-   ],
-   "bytes": 22828715,
-   "files": [
-    {
-     "path": "quran/audio/hosary/013.mp3",
-     "bytes": 22828715
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_13-53dd270b6a52.zip",
-    "bytes": 22828865,
-    "sha256": "53dd270b6a52ce3978c3c8f2175df0cb3f1f99d773e042e38638d0a90d72e9db"
-   }
-  },
-  {
-   "name": "quran_hosary_14",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    14,
-    14
-   ],
-   "bytes": 23984372,
-   "files": [
-    {
-     "path": "quran/audio/hosary/014.mp3",
-     "bytes": 23984372
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_14-8ffeba4a8d0d.zip",
-    "bytes": 23984522,
-    "sha256": "8ffeba4a8d0d072528299a999dd07e2a5240e6b2c19ae65f8b88815f0de05d38"
-   }
-  },
-  {
-   "name": "quran_hosary_15",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    15,
-    15
-   ],
-   "bytes": 19504685,
-   "files": [
-    {
-     "path": "quran/audio/hosary/015.mp3",
-     "bytes": 19504685
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_15-7a40237c06da.zip",
-    "bytes": 19504835,
-    "sha256": "7a40237c06da7ef9ef79a581490114de1a0ba7687afc16c2e90b7cb759dceb6e"
-   }
-  },
-  {
-   "name": "quran_hosary_16",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    16,
-    16
-   ],
-   "bytes": 51957544,
-   "files": [
-    {
-     "path": "quran/audio/hosary/016.mp3",
-     "bytes": 51957544
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_16-154d15fd59b0.zip",
-    "bytes": 51957694,
-    "sha256": "154d15fd59b0816ca8fab02b3bfe5e38b7524c29ab05ddd70047e96586cea183"
-   }
-  },
-  {
-   "name": "quran_hosary_17",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    17,
-    17
-   ],
-   "bytes": 41136163,
-   "files": [
-    {
-     "path": "quran/audio/hosary/017.mp3",
-     "bytes": 41136163
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_17-5f1ece9c0d9d.zip",
-    "bytes": 41136313,
-    "sha256": "5f1ece9c0d9d98fc649c55c14000d2abcecc5dd8aaa10ecc1a057c12f88dc57b"
-   }
-  },
-  {
-   "name": "quran_hosary_18",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    18,
-    18
-   ],
-   "bytes": 41097293,
-   "files": [
-    {
-     "path": "quran/audio/hosary/018.mp3",
-     "bytes": 41097293
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_18-85d9eac4dcf9.zip",
-    "bytes": 41097443,
-    "sha256": "85d9eac4dcf9050cac3f9293a2dad8471aae43cc49de0db84492e9c2258ae9d1"
-   }
-  },
-  {
-   "name": "quran_hosary_19",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    19,
-    19
-   ],
-   "bytes": 24081338,
-   "files": [
-    {
-     "path": "quran/audio/hosary/019.mp3",
-     "bytes": 24081338
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_19-9f88f2a50788.zip",
-    "bytes": 24081488,
-    "sha256": "9f88f2a5078868872f73474c7604b0d1dd57ad0b6d119e274c5b98dd00834ea4"
-   }
-  },
-  {
-   "name": "quran_hosary_20",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    20,
-    20
-   ],
-   "bytes": 37801684,
-   "files": [
-    {
-     "path": "quran/audio/hosary/020.mp3",
-     "bytes": 37801684
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_20-66ebc1db7229.zip",
-    "bytes": 37801834,
-    "sha256": "66ebc1db72290b95b63aa865d2b380edf244ab27282d3b12fa6914b9b1eb897b"
-   }
-  },
-  {
-   "name": "quran_hosary_21",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    21,
-    21
-   ],
-   "bytes": 36644777,
-   "files": [
-    {
-     "path": "quran/audio/hosary/021.mp3",
-     "bytes": 36644777
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_21-2f23a75958bf.zip",
-    "bytes": 36644927,
-    "sha256": "2f23a75958bf3cc9618f959eb8bd4822a6179b7cbb2af278c7e3820c7c10b2e2"
-   }
-  },
-  {
-   "name": "quran_hosary_22",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    22,
-    22
-   ],
-   "bytes": 37096170,
-   "files": [
-    {
-     "path": "quran/audio/hosary/022.mp3",
-     "bytes": 37096170
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_22-8f5d1425d530.zip",
-    "bytes": 37096320,
-    "sha256": "8f5d1425d530532d9e552d2378a22baa88e40f5e50b8b3a25a8bdf1fe4d85840"
-   }
-  },
-  {
-   "name": "quran_hosary_23",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    23,
-    23
-   ],
-   "bytes": 30116255,
-   "files": [
-    {
-     "path": "quran/audio/hosary/023.mp3",
-     "bytes": 30116255
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_23-f89b134796ff.zip",
-    "bytes": 30116405,
-    "sha256": "f89b134796ff9254ee62c1bf33fc310d5719cf4535c68c751bec672c0d789de6"
-   }
-  },
-  {
-   "name": "quran_hosary_24",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    24,
-    24
-   ],
-   "bytes": 40909210,
-   "files": [
-    {
-     "path": "quran/audio/hosary/024.mp3",
-     "bytes": 40909210
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_24-e10d057d99f1.zip",
-    "bytes": 40909360,
-    "sha256": "e10d057d99f137e6fc9d439ed057dfdfff4313c6ef47d71f9bb8d427720dab2e"
-   }
-  },
-  {
-   "name": "quran_hosary_25",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    25,
-    25
-   ],
-   "bytes": 25557572,
-   "files": [
-    {
-     "path": "quran/audio/hosary/025.mp3",
-     "bytes": 25557572
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_25-ca2af06dcee4.zip",
-    "bytes": 25557722,
-    "sha256": "ca2af06dcee48e74dac842c7ac163bf89482917a8a7a78e90304ae8a2560967d"
-   }
-  },
-  {
-   "name": "quran_hosary_26",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    26,
-    26
-   ],
-   "bytes": 36792736,
-   "files": [
-    {
-     "path": "quran/audio/hosary/026.mp3",
-     "bytes": 36792736
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_26-1ad258368eae.zip",
-    "bytes": 36792886,
-    "sha256": "1ad258368eae2c0b4dd75b86e1f74d813297d3884b9aa32945908cba2cde67d3"
-   }
-  },
-  {
-   "name": "quran_hosary_27",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    27,
-    27
-   ],
-   "bytes": 31688614,
-   "files": [
-    {
-     "path": "quran/audio/hosary/027.mp3",
-     "bytes": 31688614
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_27-2f311e9672fe.zip",
-    "bytes": 31688764,
-    "sha256": "2f311e9672feb8bd2db5bd122d6c74e980dbc733a94a67d34df87faa6b8a88f1"
-   }
-  },
-  {
-   "name": "quran_hosary_28",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    28,
-    28
-   ],
-   "bytes": 39124526,
-   "files": [
-    {
-     "path": "quran/audio/hosary/028.mp3",
-     "bytes": 39124526
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_28-00c82c781ae0.zip",
-    "bytes": 39124676,
-    "sha256": "00c82c781ae09de60d474ab28ba5b4c7316071e8b4f9b1828a2962ba0002e20f"
-   }
-  },
-  {
-   "name": "quran_hosary_29",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    29,
-    29
-   ],
-   "bytes": 28026877,
-   "files": [
-    {
-     "path": "quran/audio/hosary/029.mp3",
-     "bytes": 28026877
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_29-dc9815a2f97f.zip",
-    "bytes": 28027027,
-    "sha256": "dc9815a2f97f3864b42c14cd0b388008f3ce38f2b8a310711d89f238204b37b6"
-   }
-  },
-  {
-   "name": "quran_hosary_30",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    30,
-    30
-   ],
-   "bytes": 24292409,
-   "files": [
-    {
-     "path": "quran/audio/hosary/030.mp3",
-     "bytes": 24292409
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_30-7a6390da0a7a.zip",
-    "bytes": 24292559,
-    "sha256": "7a6390da0a7acc1dc42a0a95efbf3d743dbc675ff236e6caf10ee391d05136c6"
-   }
-  },
-  {
-   "name": "quran_hosary_31",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    31,
-    32
-   ],
-   "bytes": 25970063,
-   "files": [
-    {
-     "path": "quran/audio/hosary/031.mp3",
-     "bytes": 15049420
-    },
-    {
-     "path": "quran/audio/hosary/032.mp3",
-     "bytes": 10920643
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_31-f07034a49bf5.zip",
-    "bytes": 25970341,
-    "sha256": "f07034a49bf5a76688de1867d76ac2f47640147b21144d4bf7a8671212297331"
-   }
-  },
-  {
-   "name": "quran_hosary_32",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    33,
-    33
-   ],
-   "bytes": 39476449,
-   "files": [
-    {
-     "path": "quran/audio/hosary/033.mp3",
-     "bytes": 39476449
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_32-9ae339c0ed51.zip",
-    "bytes": 39476599,
-    "sha256": "9ae339c0ed517549275a937e251f1d46493fc51cf1cdeab910e2e1364cf63747"
-   }
-  },
-  {
-   "name": "quran_hosary_33",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    34,
-    34
-   ],
-   "bytes": 25711795,
-   "files": [
-    {
-     "path": "quran/audio/hosary/034.mp3",
-     "bytes": 25711795
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_33-f54204bfbcb4.zip",
-    "bytes": 25711945,
-    "sha256": "f54204bfbcb4f6ec30b0cd5429a5400b9ae1b78353848231973046f7f1309944"
-   }
-  },
-  {
-   "name": "quran_hosary_34",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    35,
-    35
-   ],
-   "bytes": 24032017,
-   "files": [
-    {
-     "path": "quran/audio/hosary/035.mp3",
-     "bytes": 24032017
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_34-fb10e75f6c34.zip",
-    "bytes": 24032167,
-    "sha256": "fb10e75f6c344895faeec6a9e8b1e8182080849143c553e501d2991813a1fa24"
-   }
-  },
-  {
-   "name": "quran_hosary_35",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    36,
-    36
-   ],
-   "bytes": 21275161,
-   "files": [
-    {
-     "path": "quran/audio/hosary/036.mp3",
-     "bytes": 21275161
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_35-9c6294595341.zip",
-    "bytes": 21275311,
-    "sha256": "9c62945953419430a1100a50754d42d70b1c06c324589fa1d98b5f693dd57598"
-   }
-  },
-  {
-   "name": "quran_hosary_36",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    37,
-    37
-   ],
-   "bytes": 27057628,
-   "files": [
-    {
-     "path": "quran/audio/hosary/037.mp3",
-     "bytes": 27057628
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_36-0f9555431c5a.zip",
-    "bytes": 27057778,
-    "sha256": "0f9555431c5a5c74d7dfb99cfd81d6d5f4df6fa0feace17b0c01f829e9bb9589"
-   }
-  },
-  {
-   "name": "quran_hosary_37",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    38,
-    38
-   ],
-   "bytes": 21512557,
-   "files": [
-    {
-     "path": "quran/audio/hosary/038.mp3",
-     "bytes": 21512557
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_37-32c8629de27f.zip",
-    "bytes": 21512707,
-    "sha256": "32c8629de27fc2cfb77aafc28c32309129945a1fa78409d4a066d1fab8a6e9d7"
-   }
-  },
-  {
-   "name": "quran_hosary_38",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    39,
-    39
-   ],
-   "bytes": 32458913,
-   "files": [
-    {
-     "path": "quran/audio/hosary/039.mp3",
-     "bytes": 32458913
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_38-72ed838c5d8a.zip",
-    "bytes": 32459063,
-    "sha256": "72ed838c5d8a27938d664411bdaebfcb150c028d98435366a13fdfe83bbd1116"
-   }
-  },
-  {
-   "name": "quran_hosary_39",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    40,
-    40
-   ],
-   "bytes": 33580714,
-   "files": [
-    {
-     "path": "quran/audio/hosary/040.mp3",
-     "bytes": 33580714
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_39-60ca1952f275.zip",
-    "bytes": 33580864,
-    "sha256": "60ca1952f275bded5f9437538c2d5d77d0800e4bae1a4e75e7e62aaf2ff1fa5c"
-   }
-  },
-  {
-   "name": "quran_hosary_40",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    41,
-    41
-   ],
-   "bytes": 23434757,
-   "files": [
-    {
-     "path": "quran/audio/hosary/041.mp3",
-     "bytes": 23434757
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_40-3496a4c67b54.zip",
-    "bytes": 23434907,
-    "sha256": "3496a4c67b544a09bc7f9ffecf02c54e0d86e22ad28be53cf987c0140ae63cb3"
-   }
-  },
-  {
-   "name": "quran_hosary_41",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    42,
-    42
-   ],
-   "bytes": 20744354,
-   "files": [
-    {
-     "path": "quran/audio/hosary/042.mp3",
-     "bytes": 20744354
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_41-9d9fb7256d2f.zip",
-    "bytes": 20744504,
-    "sha256": "9d9fb7256d2f389ac672b0cb8478dabeee0e3af3270e201e196c88f157d2af6b"
-   }
-  },
-  {
-   "name": "quran_hosary_42",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    43,
-    43
-   ],
-   "bytes": 23662964,
-   "files": [
-    {
-     "path": "quran/audio/hosary/043.mp3",
-     "bytes": 23662964
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_42-dd6e41238a8d.zip",
-    "bytes": 23663114,
-    "sha256": "dd6e41238a8d4e1190d69dcd430ef13d2d1cfc7d2c8b8ed788b3147898896a57"
-   }
-  },
-  {
-   "name": "quran_hosary_43",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    44,
-    45
-   ],
-   "bytes": 25927253,
-   "files": [
-    {
-     "path": "quran/audio/hosary/044.mp3",
-     "bytes": 11333585
-    },
-    {
-     "path": "quran/audio/hosary/045.mp3",
-     "bytes": 14593668
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_43-7c4e9d53e49b.zip",
-    "bytes": 25927531,
-    "sha256": "7c4e9d53e49b532458ff576c50eb42b4e2ca35bd76596a4eda222ad728a791e7"
-   }
-  },
-  {
-   "name": "quran_hosary_44",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    46,
-    46
-   ],
-   "bytes": 18467312,
-   "files": [
-    {
-     "path": "quran/audio/hosary/046.mp3",
-     "bytes": 18467312
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_44-999a232f7539.zip",
-    "bytes": 18467462,
-    "sha256": "999a232f7539bc98531a604a70f6add82ff3b28878fc309d8fbc61c4010e1a9b"
-   }
-  },
-  {
-   "name": "quran_hosary_45",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    47,
-    47
-   ],
-   "bytes": 17671935,
-   "files": [
-    {
-     "path": "quran/audio/hosary/047.mp3",
-     "bytes": 17671935
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_45-a07a1b45e29c.zip",
-    "bytes": 17672085,
-    "sha256": "a07a1b45e29cbb496fcb33b8eb69d4ead27a8559b82a4631f6e5e38e5cc79ca2"
-   }
-  },
-  {
-   "name": "quran_hosary_46",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    48,
-    49
-   ],
-   "bytes": 27105478,
-   "files": [
-    {
-     "path": "quran/audio/hosary/048.mp3",
-     "bytes": 15669492
-    },
-    {
-     "path": "quran/audio/hosary/049.mp3",
-     "bytes": 11435986
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_46-ac83cb39673e.zip",
-    "bytes": 27105756,
-    "sha256": "ac83cb39673e038788ae8a467b36b60c41a40233d7c8bea6c1d92c3f5890f0f0"
-   }
-  },
-  {
-   "name": "quran_hosary_47",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    50,
-    51
-   ],
-   "bytes": 21256554,
-   "files": [
-    {
-     "path": "quran/audio/hosary/050.mp3",
-     "bytes": 11204430
-    },
-    {
-     "path": "quran/audio/hosary/051.mp3",
-     "bytes": 10052124
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_47-5e5316f63ca6.zip",
-    "bytes": 21256832,
-    "sha256": "5e5316f63ca6de0fa35e7bcc4a3127e37711fca2eeaa23637bf9f378fff7d936"
-   }
-  },
-  {
-   "name": "quran_hosary_48",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    52,
-    53
-   ],
-   "bytes": 20808502,
-   "files": [
-    {
-     "path": "quran/audio/hosary/052.mp3",
-     "bytes": 9785044
-    },
-    {
-     "path": "quran/audio/hosary/053.mp3",
-     "bytes": 11023458
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_48-e77712a250bc.zip",
-    "bytes": 20808780,
-    "sha256": "e77712a250bcec8d8b1b51f4fe9a4a4612c7f99841e9c7185d7e0711160c2c1e"
-   }
-  },
-  {
-   "name": "quran_hosary_49",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    54,
-    55
-   ],
-   "bytes": 24010909,
-   "files": [
-    {
-     "path": "quran/audio/hosary/054.mp3",
-     "bytes": 10580004
-    },
-    {
-     "path": "quran/audio/hosary/055.mp3",
-     "bytes": 13430905
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_49-a2cd94296a8a.zip",
-    "bytes": 24011187,
-    "sha256": "a2cd94296a8a002be8e37404c72e23256d1da0a4e0ceaf3d34b0093e9c6f2358"
-   }
-  },
-  {
-   "name": "quran_hosary_50",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    56,
-    57
-   ],
-   "bytes": 29895357,
-   "files": [
-    {
-     "path": "quran/audio/hosary/056.mp3",
-     "bytes": 13534142
-    },
     {
      "path": "quran/audio/hosary/057.mp3",
-     "bytes": 16361215
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_50-ac4ecbd9acc5.zip",
-    "bytes": 29895635,
-    "sha256": "ac4ecbd9acc597dd24c5591c73640332771671c2268bd355b8d90ffd19d9d6bb"
-   }
-  },
-  {
-   "name": "quran_hosary_51",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    58,
-    59
-   ],
-   "bytes": 28360667,
-   "files": [
+     "bytes": 8177579
+    },
     {
      "path": "quran/audio/hosary/058.mp3",
-     "bytes": 13942908
+     "bytes": 6968423
     },
     {
      "path": "quran/audio/hosary/059.mp3",
-     "bytes": 14417759
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_51-6fc80d67b2ca.zip",
-    "bytes": 28360945,
-    "sha256": "6fc80d67b2caa891da7e6d7f090d8d8af8068776076196aa67490da4e8f93772"
-   }
-  },
-  {
-   "name": "quran_hosary_52",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    60,
-    63
-   ],
-   "bytes": 29104157,
-   "files": [
+     "bytes": 7209168
+    },
     {
      "path": "quran/audio/hosary/060.mp3",
-     "bytes": 11114161
+     "bytes": 5554049
     },
     {
      "path": "quran/audio/hosary/061.mp3",
-     "bytes": 6801652
+     "bytes": 3397798
     },
     {
      "path": "quran/audio/hosary/062.mp3",
-     "bytes": 5372653
+     "bytes": 2683296
     },
     {
      "path": "quran/audio/hosary/063.mp3",
-     "bytes": 5815691
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_52-c88d28a14fa6.zip",
-    "bytes": 29104691,
-    "sha256": "c88d28a14fa67a99d0e411af8145f745b7f883c65bdf0236d7f3111d22b3c07c"
-   }
-  },
-  {
-   "name": "quran_hosary_53",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    64,
-    66
-   ],
-   "bytes": 22901015,
-   "files": [
+     "bytes": 2904815
+    },
     {
      "path": "quran/audio/hosary/064.mp3",
-     "bytes": 7699014
+     "bytes": 3846477
     },
     {
      "path": "quran/audio/hosary/065.mp3",
-     "bytes": 7434861
+     "bytes": 3714402
     },
     {
      "path": "quran/audio/hosary/066.mp3",
-     "bytes": 7767140
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_53-d684c1e4048c.zip",
-    "bytes": 22901421,
-    "sha256": "d684c1e4048cd4a5409f2af9f6997f4aa05304f0ca15e5895ba0e2cdc6997070"
-   }
-  },
-  {
-   "name": "quran_hosary_54",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    67,
-    69
-   ],
-   "bytes": 26938497,
-   "files": [
+     "bytes": 3880541
+    },
     {
      "path": "quran/audio/hosary/067.mp3",
-     "bytes": 9527582
+     "bytes": 4760763
     },
     {
      "path": "quran/audio/hosary/068.mp3",
-     "bytes": 9415570
+     "bytes": 4704756
     },
     {
      "path": "quran/audio/hosary/069.mp3",
-     "bytes": 7995345
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_54-733eb05411df.zip",
-    "bytes": 26938903,
-    "sha256": "733eb05411df515a5ae810b9c218dae33f9b410168eb94081bbcb2179469b251"
-   }
-  },
-  {
-   "name": "quran_hosary_55",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    70,
-    73
-   ],
-   "bytes": 27069522,
-   "files": [
+     "bytes": 3994643
+    },
     {
      "path": "quran/audio/hosary/070.mp3",
-     "bytes": 6760695
+     "bytes": 3377318
     },
     {
      "path": "quran/audio/hosary/071.mp3",
-     "bytes": 6745642
+     "bytes": 3369794
     },
     {
      "path": "quran/audio/hosary/072.mp3",
-     "bytes": 7731611
+     "bytes": 3862777
     },
     {
      "path": "quran/audio/hosary/073.mp3",
-     "bytes": 5831574
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_55-af5482331339.zip",
-    "bytes": 27070056,
-    "sha256": "af5482331339ebff48e21bb233770b4d2d42cce8dc13cb2bd182c57f2d9ec8ef"
-   }
-  },
-  {
-   "name": "quran_hosary_56",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    74,
-    77
-   ],
-   "bytes": 26217312,
-   "files": [
+     "bytes": 2912756
+    },
     {
      "path": "quran/audio/hosary/074.mp3",
-     "bytes": 7862439
+     "bytes": 3928188
     },
     {
      "path": "quran/audio/hosary/075.mp3",
-     "bytes": 4555124
+     "bytes": 2274532
     },
     {
      "path": "quran/audio/hosary/076.mp3",
-     "bytes": 7494211
+     "bytes": 3744077
     },
     {
      "path": "quran/audio/hosary/077.mp3",
-     "bytes": 6305538
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_56-c8aead5681a2.zip",
-    "bytes": 26217846,
-    "sha256": "c8aead5681a209fdc176d82f3c4f61fe2d30e650f1ac11984b7c2a8cd77245ba"
-   }
-  },
-  {
-   "name": "quran_hosary_57",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    78,
-    83
-   ],
-   "bytes": 28615131,
-   "files": [
+     "bytes": 3149739
+    },
     {
      "path": "quran/audio/hosary/078.mp3",
-     "bytes": 6168863
+     "bytes": 3081403
     },
     {
      "path": "quran/audio/hosary/079.mp3",
-     "bytes": 5938569
+     "bytes": 2966255
     },
     {
      "path": "quran/audio/hosary/080.mp3",
-     "bytes": 4584795
+     "bytes": 2289370
     },
     {
      "path": "quran/audio/hosary/081.mp3",
-     "bytes": 3303754
+     "bytes": 1648848
     },
     {
      "path": "quran/audio/hosary/082.mp3",
-     "bytes": 2687265
+     "bytes": 1340603
     },
     {
      "path": "quran/audio/hosary/083.mp3",
-     "bytes": 5931885
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_57-c7970df93358.zip",
-    "bytes": 28615921,
-    "sha256": "c7970df93358aa9c77f46ce98abf0a19000f84b18746f6515c00037705282d9f"
-   }
-  },
-  {
-   "name": "quran_hosary_58",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    84,
-    95
-   ],
-   "bytes": 29704710,
-   "files": [
+     "bytes": 2962911
+    },
     {
      "path": "quran/audio/hosary/084.mp3",
-     "bytes": 3646900
+     "bytes": 1820420
     },
     {
      "path": "quran/audio/hosary/085.mp3",
-     "bytes": 3353072
+     "bytes": 1673507
     },
     {
      "path": "quran/audio/hosary/086.mp3",
-     "bytes": 2132631
+     "bytes": 1063287
     },
     {
      "path": "quran/audio/hosary/087.mp3",
-     "bytes": 2437740
+     "bytes": 1215842
     },
     {
      "path": "quran/audio/hosary/088.mp3",
-     "bytes": 3159143
+     "bytes": 1576541
     },
     {
      "path": "quran/audio/hosary/089.mp3",
-     "bytes": 4473619
+     "bytes": 2233781
     },
     {
      "path": "quran/audio/hosary/090.mp3",
-     "bytes": 2381735
+     "bytes": 1187839
     },
     {
      "path": "quran/audio/hosary/091.mp3",
-     "bytes": 2019783
+     "bytes": 1006862
     },
     {
      "path": "quran/audio/hosary/092.mp3",
-     "bytes": 2603670
+     "bytes": 1298807
     },
     {
      "path": "quran/audio/hosary/093.mp3",
-     "bytes": 1451356
+     "bytes": 722650
     },
     {
      "path": "quran/audio/hosary/094.mp3",
-     "bytes": 880008
+     "bytes": 436975
     },
     {
      "path": "quran/audio/hosary/095.mp3",
-     "bytes": 1165053
-    }
-   ],
-   "archive": {
-    "key": "v1/packs/quran_hosary_58-e507cc7f15f4.zip",
-    "bytes": 29706268,
-    "sha256": "e507cc7f15f4e7120b3156cfaf7d91e63018596174f19917a3fa6b628d2a7a45"
-   }
-  },
-  {
-   "name": "quran_hosary_59",
-   "kind": "audio",
-   "reciterId": "hosary-qaloun",
-   "surahs": [
-    96,
-    114
-   ],
-   "bytes": 20116904,
-   "files": [
+     "bytes": 579499
+    },
     {
      "path": "quran/audio/hosary/096.mp3",
-     "bytes": 2247152
+     "bytes": 1120547
     },
     {
      "path": "quran/audio/hosary/097.mp3",
-     "bytes": 951477
+     "bytes": 472710
     },
     {
      "path": "quran/audio/hosary/098.mp3",
-     "bytes": 2972314
+     "bytes": 1483127
     },
     {
      "path": "quran/audio/hosary/099.mp3",
-     "bytes": 1300895
+     "bytes": 647417
     },
     {
      "path": "quran/audio/hosary/100.mp3",
-     "bytes": 1398279
+     "bytes": 696110
     },
     {
      "path": "quran/audio/hosary/101.mp3",
-     "bytes": 1305492
+     "bytes": 649716
     },
     {
      "path": "quran/audio/hosary/102.mp3",
-     "bytes": 1088572
+     "bytes": 541256
     },
     {
      "path": "quran/audio/hosary/103.mp3",
-     "bytes": 615856
+     "bytes": 304900
     },
     {
      "path": "quran/audio/hosary/104.mp3",
-     "bytes": 1247395
+     "bytes": 620668
     },
     {
      "path": "quran/audio/hosary/105.mp3",
-     "bytes": 858689
+     "bytes": 426317
     },
     {
      "path": "quran/audio/hosary/106.mp3",
-     "bytes": 698612
+     "bytes": 346278
     },
     {
      "path": "quran/audio/hosary/107.mp3",
-     "bytes": 859109
+     "bytes": 426526
     },
     {
      "path": "quran/audio/hosary/108.mp3",
-     "bytes": 432793
+     "bytes": 213367
     },
     {
      "path": "quran/audio/hosary/109.mp3",
-     "bytes": 783461
+     "bytes": 388701
     },
     {
      "path": "quran/audio/hosary/110.mp3",
-     "bytes": 663921
+     "bytes": 328932
     },
     {
      "path": "quran/audio/hosary/111.mp3",
-     "bytes": 727452
+     "bytes": 360697
     },
     {
      "path": "quran/audio/hosary/112.mp3",
-     "bytes": 470408
+     "bytes": 232175
     },
     {
      "path": "quran/audio/hosary/113.mp3",
-     "bytes": 659743
+     "bytes": 326843
     },
     {
      "path": "quran/audio/hosary/114.mp3",
-     "bytes": 835284
+     "bytes": 414614
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_hosary_59-188844ecb017.zip",
-    "bytes": 20119358,
-    "sha256": "188844ecb0173c2a1ae8f15ae4ce745ff3b3e566d9b9e9516140641fcba5daf7"
+    "key": "v1/packs/quran_hosary_09-a4286d502233.zip",
+    "bytes": 127529638,
+    "sha256": "a4286d5022332925a2d7e8d440b5867244a2cdb8e0dcbd6f7e0ef58939c52a38"
    }
   }
  ]
