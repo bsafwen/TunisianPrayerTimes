@@ -192,17 +192,34 @@ def mp3_format(path: Path) -> tuple[int, bool, bool] | None:
     return None
 
 
+def has_seek_header(path: Path) -> bool:
+    """Whether the first frame is a Xing, Info or VBRI header rather than audio.
+
+    Android's MediaPlayer seeks by the header's table, which places a position only to the
+    nearest 1/256 of the file: tens of seconds off in a long surah. Without it, it seeks a
+    constant-bitrate file exactly.
+    """
+    data = path.read_bytes()[:16384]
+    start = 10 + ((data[6] & 0x7f) << 21 | (data[7] & 0x7f) << 14 | (data[8] & 0x7f) << 7 | data[9] & 0x7f)         if data[:3] == b'ID3' else 0
+    return any(tag in data[start:start + 400] for tag in (b'Xing', b'Info', b'VBRI'))
+
+
 def is_recitation_format(path: Path) -> bool:
-    return mp3_format(path) == (AUDIO_KBPS, True, True)
+    return mp3_format(path) == (AUDIO_KBPS, True, True) and not has_seek_header(path)
 
 
 def check_recitation_format(path: Path) -> None:
     if is_recitation_format(path):
         return
     found = mp3_format(path)
-    described = 'not an MPEG Layer III file' if found is None else         f"{found[0]} kbps {'mono' if found[1] else 'stereo'}{'' if found[2] else ' at a variable bitrate'}"
-    raise LayoutError(f'{path} is {described}; recitations are {AUDIO_KBPS} kbps mono at a constant bitrate. '
-                      f'Convert them first: quran_assets.py convert --from-dir <originals> --to <folder>')
+    if found == (AUDIO_KBPS, True, True):
+        described = f'{AUDIO_KBPS} kbps mono with a Xing/Info header, by which Android seeks to the nearest 1/256 of the file'
+    elif found is None:
+        described = 'not an MPEG Layer III file'
+    else:
+        described = f"{found[0]} kbps {'mono' if found[1] else 'stereo'}{'' if found[2] else ' at a variable bitrate'}"
+    raise LayoutError(f'{path} is {described}; recitations are {AUDIO_KBPS} kbps mono at a constant bitrate, '
+                      f'with no Xing/Info header. Convert them first: quran_assets.py convert --from-dir <originals> --to <folder>')
 
 
 def safe_member(name: str) -> str:
@@ -677,7 +694,7 @@ def sample_rate(ffmpeg: str, source: Path) -> int | None:
 
 
 def convert_recording(ffmpeg: str, source: Path, target: Path) -> None:
-    """Writes [source] to [target] as AUDIO_KBPS mono MP3 at a constant bitrate, with no tags or cover art.
+    """Writes [source] to [target] as AUDIO_KBPS mono MP3 at a constant bitrate, with no tags, cover art or Xing/Info header.
 
     One ffmpeg gives the same bytes every time; another version may not, so keep the converted
     files: the layout records them, not the originals.
@@ -685,12 +702,21 @@ def convert_recording(ffmpeg: str, source: Path, target: Path) -> None:
     partial = target.with_name(target.name + '.part')
     if is_recitation_format(source):  # Already converted: a second encoding would only lose quality.
         shutil.copyfile(source, partial)
+    elif mp3_format(source) == (AUDIO_KBPS, True, True):  # Right audio, but a Xing/Info header: drop only that.
+        command = [ffmpeg, '-nostdin', '-hide_banner', '-loglevel', 'error', '-y', '-i', str(source), '-map', '0:a:0',
+                   '-c', 'copy', '-map_metadata', '-1', '-id3v2_version', '0', '-write_xing', '0',
+                   '-fflags', '+bitexact', '-f', 'mp3', str(partial)]
+        result = subprocess.run(command, capture_output=True, text=True, errors='replace')
+        if result.returncode != 0:
+            partial.unlink(missing_ok=True)
+            raise LayoutError(f'ffmpeg could not rewrite {source}: {result.stderr.strip()[-500:]}')
     else:
         # MPEG-1 Layer III only exists at 32, 44.1 and 48 kHz; a lower rate would give an MPEG-2 file.
         resample = [] if sample_rate(ffmpeg, source) in (32000, 44100, 48000) else ['-ar', '44100']
         command = [ffmpeg, '-nostdin', '-hide_banner', '-loglevel', 'error', '-y', '-i', str(source),
                    '-map', '0:a:0', '-map_metadata', '-1', '-ac', '1', *resample, '-c:a', 'libmp3lame', '-b:a', f'{AUDIO_KBPS}k',
-                   '-id3v2_version', '0', '-fflags', '+bitexact', '-flags:a', '+bitexact', '-f', 'mp3', str(partial)]
+                   '-id3v2_version', '0', '-write_xing', '0', '-fflags', '+bitexact', '-flags:a', '+bitexact',
+                   '-f', 'mp3', str(partial)]
         result = subprocess.run(command, capture_output=True, text=True, errors='replace')
         if result.returncode != 0:
             partial.unlink(missing_ok=True)

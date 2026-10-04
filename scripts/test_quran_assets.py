@@ -23,8 +23,8 @@ SPEC.loader.exec_module(assets)
 MB = assets.MB
 
 
-def recording(fill: int, size: int, kbps_index: int = 5, mono: bool = True, tag: bytes = b'Info') -> bytes:
-    """Starts like an MPEG-1 Layer III file (64 kbps mono CBR by default): a frame header, then the tag."""
+def recording(fill: int, size: int, kbps_index: int = 5, mono: bool = True, tag: bytes = b'') -> bytes:
+    """Starts like an MPEG-1 Layer III file (64 kbps mono CBR by default): a frame header, then the tag if any."""
     header = bytes([0xFF, 0xFB, kbps_index << 4 | 0x00, 0xC0 if mono else 0x00])
     start = header + bytes(17 if mono else 32) + tag
     return start + bytes([fill]) * max(0, size - len(start))
@@ -111,6 +111,9 @@ class Mp3FormatTest(unittest.TestCase):
         self.assertFalse(accepted(recording(1, 600, kbps_index=7)))  # 96 kbps
         self.assertFalse(accepted(recording(1, 600, mono=False)))
         self.assertFalse(accepted(recording(1, 600, tag=b'Xing')))
+        # A constant-bitrate Info header still makes Android seek by its coarse table.
+        self.assertEqual((64, True, True), self.format_of(recording(1, 600, tag=b'Info')))
+        self.assertFalse(accepted(recording(1, 600, tag=b'Info')))
 
 
 class ArchiveTest(unittest.TestCase):
@@ -443,9 +446,12 @@ class ConvertTest(unittest.TestCase):
         out = self.root / 'converted'
         code, output = run('convert', '--from-dir', str(self.originals), '--to', str(out), '--jobs', '2')
         self.assertEqual(0, code, output)
-        self.assertEqual((64, True, True), assets.mp3_format(out / '001.mp3'))
-        # Already in the format: copied, not encoded a second time.
-        self.assertEqual((self.originals / '002.mp3').read_bytes(), (out / '002.mp3').read_bytes())
+        self.assertTrue(assets.is_recitation_format(out / '001.mp3'))
+        # Already 64 kbps mono: its audio frames are kept as they are, only the tag and Info header go.
+        kept = (out / '002.mp3').read_bytes()
+        self.assertTrue(assets.is_recitation_format(out / '002.mp3'))
+        self.assertTrue(assets.has_seek_header(self.originals / '002.mp3'))
+        self.assertTrue((self.originals / '002.mp3').read_bytes().endswith(kept))
         converted = (out / '001.mp3').read_bytes()
         self.assertNotIn(b'ID3', converted[:3])
         code, output = run('convert', '--from-dir', str(self.originals), '--to', str(out))
