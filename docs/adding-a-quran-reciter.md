@@ -295,7 +295,8 @@ assets = Path('android-app/app/src/main/assets/quran')
 index = json.loads((assets / 'index.json').read_text(encoding='utf-8'))
 verses = {}
 for entry in index['entries']:
-    verses.setdefault(entry['surah'], set()).add(entry['ayah'])
+    if entry['ayah']:  # ayah 0 is a surah's basmala, which is not a verse
+        verses.setdefault(entry['surah'], set()).add(entry['ayah'])
 timings = json.loads((assets / 'audio' / folder / 'timings.json').read_text(encoding='utf-8'))
 problems = []
 if timings.get('version') != 1 or timings.get('numbering') != 'madani-later' or timings.get('reciterId') != reciter_id:

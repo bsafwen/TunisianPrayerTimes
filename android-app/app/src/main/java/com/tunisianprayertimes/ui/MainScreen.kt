@@ -4733,6 +4733,8 @@ private fun WakeAlarmListPanel(
                 alarmName = context.getString(R.string.wake_alarm_row_title, index + 1),
                 wakeConfig = wakeAlarm,
                 nextAlarmMillis = nextMillis,
+                nextIsExtraAlarm = nextTrigger?.isSubAlarm == true,
+                mainAlarmMillis = nextTrigger?.occurrenceAtMillis,
                 // The main alarm (or one of its extras) already rang for the upcoming trigger's occurrence.
                 currentOccurrenceStarted = nextTrigger?.let { it.occurrenceAtMillis <= nowMillis } == true,
                 nowMillis = nowMillis,
@@ -5594,6 +5596,9 @@ private fun WakeAlarmRow(
     alarmName: String,
     wakeConfig: PrayerWakeConfig,
     nextAlarmMillis: Long?,
+    // When the next ring is an extra, the big time is that extra's, so say so and show the main alarm's time.
+    nextIsExtraAlarm: Boolean,
+    mainAlarmMillis: Long?,
     currentOccurrenceStarted: Boolean,
     nowMillis: Long,
     onClick: () -> Unit,
@@ -5654,14 +5659,28 @@ private fun WakeAlarmRow(
                         verticalArrangement = Arrangement.spacedBy(2.dp),
                     ) {
                         if (nextAlarmMillis != null) {
-                            Text(
-                                text = formatTimeOfDay(nextAlarmMillis),
-                                fontSize = 24.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = GreenPrimaryDark,
-                                maxLines = 1,
-                                style = TextStyle(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
-                            )
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(6.dp),
+                            ) {
+                                if (nextIsExtraAlarm) {
+                                    // The same bell the hero uses for an extra alert.
+                                    Icon(
+                                        painter = painterResource(R.drawable.ic_adhkar_bell),
+                                        contentDescription = null,
+                                        tint = Gold,
+                                        modifier = Modifier.size(18.dp),
+                                    )
+                                }
+                                Text(
+                                    text = formatTimeOfDay(nextAlarmMillis),
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = GreenPrimaryDark,
+                                    maxLines = 1,
+                                    style = TextStyle(textDirection = TextDirection.Ltr, fontFeatureSettings = "tnum"),
+                                )
+                            }
                         }
                         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             Text(
@@ -5709,6 +5728,18 @@ private fun WakeAlarmRow(
                             color = GreenPrimaryDark,
                             lineHeight = 16.sp,
                         )
+                        if (nextIsExtraAlarm && mainAlarmMillis != null) {
+                            Text(
+                                text = stringResource(
+                                    R.string.wake_alarm_row_extra_next,
+                                    formatTimeOfDay(mainAlarmMillis),
+                                ),
+                                fontSize = 12.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = GreenPrimaryDark,
+                                lineHeight = 16.sp,
+                            )
+                        }
                         Text(
                             text = summaryText,
                             fontSize = 12.sp,

@@ -174,9 +174,12 @@ def mp3_format(path: Path) -> tuple[int, bool, bool] | None:
             stream.seek(0)
         data = stream.read(8192)
     for i in range(len(data) - 3):
-        # Frame sync, MPEG-1, Layer III; then a valid bitrate and sample rate.
-        if data[i] != 0xFF or data[i + 1] & 0xFE != 0xFA:
+        # Frame sync of any MPEG audio frame; the first one must be MPEG-1 Layer III, then a valid bitrate and
+        # sample rate. Scanning on past an MPEG-2 frame would find look-alike headers in its audio data.
+        if data[i] != 0xFF or data[i + 1] & 0xE0 != 0xE0:
             continue
+        if data[i + 1] & 0xFE != 0xFA:
+            return None
         bitrate, rate = data[i + 2] >> 4, (data[i + 2] >> 2) & 3
         if not 0 < bitrate < 15 or rate == 3:
             continue
@@ -663,6 +666,14 @@ def command_fetch_origin(args: argparse.Namespace) -> None:
     print(f'✓ Originals in {target}. Next: quran_assets.py convert --from-dir {target} --to <folder>')
 
 
+def sample_rate(ffmpeg: str, source: Path) -> int | None:
+    """The first audio stream's sample rate, read with the ffprobe next to [ffmpeg]."""
+    ffprobe = str(Path(ffmpeg).with_name(Path(ffmpeg).name.replace('ffmpeg', 'ffprobe')))
+    result = subprocess.run([ffprobe, '-v', 'error', '-select_streams', 'a:0', '-show_entries', 'stream=sample_rate',
+                             '-of', 'csv=p=0', str(source)], capture_output=True, text=True)
+    return int(result.stdout.strip()) if result.returncode == 0 and result.stdout.strip().isdigit() else None
+
+
 def convert_recording(ffmpeg: str, source: Path, target: Path) -> None:
     """Writes [source] to [target] as AUDIO_KBPS mono MP3 at a constant bitrate, with no tags or cover art.
 
@@ -673,8 +684,10 @@ def convert_recording(ffmpeg: str, source: Path, target: Path) -> None:
     if is_recitation_format(source):  # Already converted: a second encoding would only lose quality.
         shutil.copyfile(source, partial)
     else:
+        # MPEG-1 Layer III only exists at 32, 44.1 and 48 kHz; a lower rate would give an MPEG-2 file.
+        resample = [] if sample_rate(ffmpeg, source) in (32000, 44100, 48000) else ['-ar', '44100']
         command = [ffmpeg, '-nostdin', '-hide_banner', '-loglevel', 'error', '-y', '-i', str(source),
-                   '-map', '0:a:0', '-map_metadata', '-1', '-ac', '1', '-c:a', 'libmp3lame', '-b:a', f'{AUDIO_KBPS}k',
+                   '-map', '0:a:0', '-map_metadata', '-1', '-ac', '1', *resample, '-c:a', 'libmp3lame', '-b:a', f'{AUDIO_KBPS}k',
                    '-id3v2_version', '0', '-fflags', '+bitexact', '-flags:a', '+bitexact', '-f', 'mp3', str(partial)]
         result = subprocess.run(command, capture_output=True, text=True, errors='replace')
         if result.returncode != 0:
