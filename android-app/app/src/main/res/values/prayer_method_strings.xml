@@ -2,17 +2,18 @@
 <resources>
     <!-- Prayer tab settings: entry to the prayer-time computation explainer -->
     <string name="prayer_method_entry_title">كيف تُحسب مواقيت الصلاة؟</string>
-    <string name="prayer_method_entry_subtitle">طريقة المعهد الوطني للرصد الجوي خطوة بخطوة</string>
+    <string name="prayer_method_entry_subtitle">طريقة المعهد الوطني للرصد الجوي خطوة بخطوة، بمثال يوم واضح</string>
 
     <!-- Explainer dialog -->
+    <string name="prayer_method_example_note">نشرح الحساب بمثال يوم واضح، أول الصيف (%1$s)، حيث يسهل تصوّر موضع الشمس. وفي آخر الشرح نعرض نتيجة اليوم الذي اخترته (%2$s) بالخطوات نفسها.</string>
     <string name="prayer_method_title">كيف تُحسب مواقيت الصلاة</string>
     <string name="prayer_method_close">إغلاق</string>
-    <string name="prayer_method_context">%1$s · %2$s</string>
+    <string name="prayer_method_context">%1$s · مثال الشرح: %2$s</string>
 
     <string name="prayer_method_trust_title">مطابقة لمواقيت المعهد الوطني للرصد الجوي دقيقةً بدقيقة</string>
     <string name="prayer_method_trust_body">يحسب التطبيق المواقيت على هاتفك، دون إنترنت، بنفس المعادلات الفلكية التي يعتمدها المعهد الوطني للرصد الجوي (meteo.tn) في جداوله الرسمية.</string>
 
-    <string name="prayer_method_chart_title">مسار الشمس في هذا اليوم</string>
+    <string name="prayer_method_chart_title">مسار الشمس في يوم المثال</string>
     <string name="prayer_method_chart_body">كل صلاة مرتبطة بموضع معيّن للشمس. المنحنى هو ارتفاع الشمس فوق الأفق أو تحته خلال اليوم، والنقاط هي لحظات المواقيت.</string>
     <string name="prayer_method_chart_horizon">الأفق &#x2066;0°&#x2069;</string>
     <string name="prayer_method_chart_twilight">الفجر والعشاء &#x2066;−18°&#x2069;</string>
@@ -27,14 +28,14 @@
     <string name="prayer_method_input_elevation_value">%1$s م</string>
 
     <string name="prayer_method_step_sun_title">1. موقع الشمس</string>
-    <string name="prayer_method_step_sun_body">قبل حساب أي وقت، نحتاج أن نعرف أين الشمس في هذا اليوم. يكفي لذلك ثلاثة أرقام نحسبها بمعادلات جان ميوس الفلكية:</string>
+    <string name="prayer_method_step_sun_body">قبل حساب أي وقت، نحتاج أن نعرف أين الشمس في ذلك اليوم. يكفي لذلك ثلاثة أرقام نحسبها بمعادلات جان ميوس الفلكية:</string>
     <string name="prayer_method_sun_jd_name">اليوم الجولياني JD</string>
     <string name="prayer_method_sun_jd_meaning">التاريخ مكتوبًا كرقم واحد: عدد الأيام منذ 1 جانفي 4713 قبل الميلاد. تعتمده وكالة ناسا والفلكيون لأنه يبسّط الحسابات: تصبح الأيام أعدادًا متتالية دون أشهر ولا سنوات كبيسة، والمدة بين تاريخين مجرد طرح. ينتهي بـ &#x2066;.5&#x2069; لأن اليوم الجولياني يبدأ عند الظهر، ونحن نأخذ منتصف الليل بالتوقيت العالمي.</string>
     <string name="prayer_method_sun_decl_name">ميل الشمس δ</string>
     <string name="prayer_method_sun_decl_meaning">ميل الشمس هو الرقم الذي يصف كيف تتغيّر الشمس في سمائنا من فصل إلى فصل. نبدأ بما نراه كل يوم: عند الزوال، أي منتصف النهار، تبلغ الشمس أعلى نقطة لها في ذلك اليوم. في الصيف تكون هذه النقطة عالية جدًا والنهار طويل، وفي الشتاء تكون منخفضة والنهار قصير. سنأخذ في الأمثلة يومين واضحين: أول الصيف (%1$s) وأول الشتاء (%2$s).</string>
     <string name="prayer_method_sun_decl_definition">لماذا تختلف الشمس هكذا؟ في كل لحظة هناك مكان واحد على الأرض تكون فيه الشمس فوق الرأس تمامًا. هذا المكان ليس ثابتًا: في أول الصيف يكون على بعد 23.44° شمال خط الاستواء (الخط الذي يقسم الأرض إلى نصف شمالي ونصف جنوبي)، وفي أول الشتاء على بعد 23.44° جنوبه، ويمرّ بخط الاستواء نفسه مرّتين في السنة، يومَي تساوي الليل والنهار. ميل الشمس δ هو ببساطة: كم درجة يقع هذا المكان شمال خط الاستواء (+) أو جنوبه (−). ونحن في مكاننا على خط عرض &#x2066;%1$s&#x2069; شمال خط الاستواء، فكلما كان ذلك المكان أقرب إلينا رأينا شمس الزوال أقرب إلى فوق الرأس.</string>
-    <string name="prayer_method_sun_decl_today_north">قيمة اليوم: δ = %1$s، أي أن الشمس فوق الرأس تمامًا على %2$s شمال خط الاستواء، فتبلغ عند الزوال في مكانك ارتفاع نحو %3$s.</string>
-    <string name="prayer_method_sun_decl_today_south">قيمة اليوم: δ = %1$s، أي أن الشمس فوق الرأس تمامًا على %2$s جنوب خط الاستواء، فتبلغ عند الزوال في مكانك ارتفاع نحو %3$s.</string>
+    <string name="prayer_method_sun_decl_today_north">أما اليوم (%1$s) فـ δ = %2$s، أي أن الشمس فوق الرأس تمامًا على %3$s شمال خط الاستواء، فتبلغ عند الزوال في مكانك ارتفاع نحو %4$s.</string>
+    <string name="prayer_method_sun_decl_today_south">أما اليوم (%1$s) فـ δ = %2$s، أي أن الشمس فوق الرأس تمامًا على %3$s جنوب خط الاستواء، فتبلغ عند الزوال في مكانك ارتفاع نحو %4$s.</string>
     <string name="prayer_method_course_summer">الصيف</string>
     <string name="prayer_method_course_winter">الشتاء</string>
     <string name="prayer_method_course_peak">%1$s · &#x2066;%2$s&#x2069; · &#x2066;%3$s&#x2069;</string>
@@ -67,8 +68,8 @@
     <string name="prayer_method_decl_year_description">رسم لميل الشمس خلال السنة: يبلغ أعلاه في %1$s وأدناه في %2$s، ويمرّ بالصفر في %3$s و%4$s. اليوم %5$s.</string>
     <string name="prayer_method_sun_eot_name">معادلة الزمن EoT</string>
     <string name="prayer_method_sun_eot_meaning">الساعة العادية تفترض أن الشمس تبلغ أعلى نقطة في نفس الوقت كل يوم، لكنها في الحقيقة تسبق ذلك أو تتأخر عنه حتى 16 دقيقة تقريبًا، بسبب ميل محور الأرض وشكل مدارها البيضوي. معادلة الزمن هي هذا الفرق.</string>
-    <string name="prayer_method_sun_eot_ahead">اليوم: الشمس متقدّمة على الساعة بـ %1$s دقيقة، فيأتي الزوال أبكر بنفس المقدار.</string>
-    <string name="prayer_method_sun_eot_behind">اليوم: الشمس متأخرة عن الساعة بـ %1$s دقيقة، فيأتي الزوال متأخرًا بنفس المقدار.</string>
+    <string name="prayer_method_sun_eot_ahead">في يوم المثال: الشمس متقدّمة على الساعة بـ %1$s دقيقة، فيأتي الزوال أبكر بنفس المقدار.</string>
+    <string name="prayer_method_sun_eot_behind">في يوم المثال: الشمس متأخرة عن الساعة بـ %1$s دقيقة، فيأتي الزوال متأخرًا بنفس المقدار.</string>
     <string name="prayer_method_sun_usage">يدخل الميل δ في كل المعادلات التالية، وتُستعمل معادلة الزمن في حساب الزوال (الخطوة 2).</string>
 
     <string name="prayer_method_step_dhuhr_title">2. الظهر</string>
@@ -119,7 +120,9 @@
     <string name="prayer_method_rounding_up">%1$s: الثواني %2$d، فيُجبر إلى الدقيقة الموالية</string>
     <string name="prayer_method_rounding_down">%1$s: الثواني %2$d، فتُحذف</string>
 
-    <string name="prayer_method_table_title">النتيجة</string>
+    <string name="prayer_method_table_title">نتيجة يوم المثال</string>
+    <string name="prayer_method_today_title">النتيجة لليوم: %1$s</string>
+    <string name="prayer_method_today_body">نفس الخطوات السبع، بأرقام هذا اليوم، تعطي المواقيت المعروضة في التطبيق:</string>
     <string name="prayer_method_table_prayer">الوقت</string>
     <string name="prayer_method_table_exact">الحساب</string>
     <string name="prayer_method_table_shown">المعروض</string>
