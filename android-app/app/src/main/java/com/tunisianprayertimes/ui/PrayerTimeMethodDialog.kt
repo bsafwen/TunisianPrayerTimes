@@ -204,30 +204,28 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
             meaning = stringResource(R.string.prayer_method_sun_jd_meaning),
         )
         val declination = explanation.declinationDeg
-        // Whether today is shorter than the night is read off the times the app shows, not the sign
-        // of δ: for a degree or so below zero the day in Tunisia still exceeds twelve hours.
-        val shownDayMinutes = steps.getValue(InmEvent.MAGHRIB).shownMinutes - steps.getValue(InmEvent.SUNRISE).shownMinutes
-        val closing = when {
-            declination >= 0 -> R.string.prayer_method_sun_decl_north
-            shownDayMinutes < 12 * 60 -> R.string.prayer_method_sun_decl_south
-            else -> R.string.prayer_method_sun_decl_near_zero
-        }
         SunQuantity(
             name = stringResource(R.string.prayer_method_sun_decl_name),
             value = "${signed(declination, 2)}°",
-            meaning = stringResource(R.string.prayer_method_sun_decl_meaning, sunYear.spring.dayMonth(), sunYear.autumn.dayMonth()),
+            meaning = stringResource(R.string.prayer_method_sun_decl_meaning, sunYear.summer.dayMonth(), sunYear.winter.dayMonth()),
             diagram = {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                    SeasonShadowPair(location.latitude, sunYear)
-                    DeclinationDiagram(location.latitude, sunYear)
+                    DayAltitudeChart(location, sunYear)
+                    AltitudeProtractor(location.latitude)
+                    Text(
+                        stringResource(R.string.prayer_method_sun_decl_definition, wholeDegreesOf(location.latitude)),
+                        fontSize = 13.sp,
+                        color = TextDark,
+                        lineHeight = 19.sp,
+                    )
+                    SubsolarGlobes(location.latitude)
                     DeclinationYearChart(sunYear, date, declination)
                 }
             },
             today = stringResource(
-                closing,
+                if (declination < 0) R.string.prayer_method_sun_decl_today_south else R.string.prayer_method_sun_decl_today_north,
                 "\u2066${signed(declination, 2)}°\u2069",
                 "\u2066${"%.2f".us(abs(declination))}°\u2069",
-                "\u2066${"%.0f".us(90 - location.latitude)}°\u2069",
                 "\u2066${"%.0f".us(steps.getValue(InmEvent.DHUHR).altitudeDeg)}°\u2069",
             ),
         )
@@ -735,6 +733,9 @@ private fun signed(value: Double, decimals: Int): String =
 /** "− x" for a subtracted [value], folding a negative value into "+ |x|". */
 private fun minusTerm(value: Double): String =
     (if (value < 0) "+ " else "− ") + "%.2f".us(abs(value))
+
+/** A latitude or height in whole degrees, as the declination card writes them. */
+private fun wholeDegreesOf(value: Double): String = "%.0f°".us(value)
 
 private fun hhmm(minutes: Int): String = "%02d:%02d".us(minutes / 60, minutes % 60)
 

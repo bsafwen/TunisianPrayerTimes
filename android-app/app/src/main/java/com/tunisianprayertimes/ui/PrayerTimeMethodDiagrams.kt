@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -24,6 +25,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipRect
+import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
@@ -49,6 +51,7 @@ import androidx.compose.ui.unit.sp
 import com.tunisianprayertimes.InmDayExplanation
 import com.tunisianprayertimes.InmEvent
 import com.tunisianprayertimes.InmEventStep
+import com.tunisianprayertimes.InmLocation
 import com.tunisianprayertimes.InmPrayerFormula
 import com.tunisianprayertimes.R
 import com.tunisianprayertimes.ui.theme.GreenPrimary
@@ -63,6 +66,7 @@ import kotlin.math.ceil
 import kotlin.math.cos
 import kotlin.math.floor
 import kotlin.math.min
+import kotlin.math.roundToInt
 import kotlin.math.sin
 import kotlin.math.tan
 
@@ -331,141 +335,6 @@ internal class SunYear(year: Int) {
     }
 }
 
-private class Season(val name: String, val date: String, val note: String, val declination: Double)
-
-/**
- * Step 1, what everyone sees: noon on the first day of summer and on the first day of winter,
- * side by side, summer on the right as the text reads. The sun stands high and a person's
- * shadow is short in summer; the sun stays low and the shadow is long in winter. The sun's
- * height is the real one for this latitude.
- */
-@Composable
-internal fun SeasonShadowPair(latitude: Double, sunYear: SunYear) {
-    val seasons = listOf(
-        Season(
-            stringResource(R.string.prayer_method_season_summer),
-            sunYear.summer.dayMonth(),
-            stringResource(R.string.prayer_method_season_summer_note),
-            MAX_DECLINATION,
-        ),
-        Season(
-            stringResource(R.string.prayer_method_season_winter),
-            sunYear.winter.dayMonth(),
-            stringResource(R.string.prayer_method_season_winter_note),
-            -MAX_DECLINATION,
-        ),
-    )
-    val shadowLabel = stringResource(R.string.prayer_method_season_shadow)
-    fun noonAltitude(decl: Double) = 90 - latitude + decl
-    val summerHeight = wholeDegrees(noonAltitude(MAX_DECLINATION))
-    val winterHeight = wholeDegrees(noonAltitude(-MAX_DECLINATION))
-    val difference = wholeDegrees(2 * MAX_DECLINATION)
-    val heightLabels = seasons.map { stringResource(R.string.prayer_method_season_altitude, wholeDegrees(noonAltitude(it.declination))) }
-    val description = stringResource(R.string.prayer_method_season_description, summerHeight, winterHeight, difference)
-    val measurer = rememberTextMeasurer()
-    val density = LocalDensity.current
-
-    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        BoxWithConstraints(Modifier.fillMaxWidth()) {
-            val width = constraints.maxWidth.toFloat()
-            fun px(dp: Dp) = with(density) { dp.toPx() }
-            val gap = px(10.dp)
-            val panel = (width - gap) / 2
-            val titleLayouts = seasons.map { season ->
-                measurer.measure(
-                    buildAnnotatedString {
-                        withStyle(SpanStyle(color = PrayerSilencePalette.PrimaryText, fontWeight = FontWeight.Bold)) { append(season.name) }
-                        withStyle(SpanStyle(color = TextMuted)) { append("\n" + season.date) }
-                    },
-                    LabelStyle.copy(textAlign = TextAlign.Center),
-                    constraints = Constraints(maxWidth = panel.toInt()),
-                )
-            }
-            val noteLayouts = seasons.map {
-                measurer.measure(it.note, LabelStyle.copy(color = TextMuted, textAlign = TextAlign.Center), constraints = Constraints(maxWidth = panel.toInt()))
-            }
-            val heightLayouts = heightLabels.map {
-                measurer.measure(it, LabelStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold))
-            }
-            val shadowLayout = measurer.measure(shadowLabel, LabelStyle.copy(color = TextMuted))
-            val person = px(40.dp)
-            val sunRadius = px(8.dp)
-            val sunReach = px(34.dp)
-            val skyTop = titleLayouts.maxOf { it.size.height } + px(6.dp)
-            // Room above the person for the summer sun, which stands nearly overhead.
-            val ground = skyTop + sunRadius + px(4.dp) + sunReach * sin(Math.toRadians(noonAltitude(MAX_DECLINATION))).toFloat() + person
-            val groundLabelTop = ground + px(5.dp)
-            val notesTop = groundLabelTop + shadowLayout.size.height + px(6.dp)
-            val height = notesTop + noteLayouts.maxOf { it.size.height } + px(2.dp)
-
-            LeftToRight {
-                Canvas(
-                    Modifier
-                        .fillMaxWidth()
-                        .height(with(density) { height.toDp() })
-                        .semantics { contentDescription = description },
-                ) {
-                    seasons.forEachIndexed { i, season ->
-                        // Summer, first in the list, is the right-hand panel: the order the text reads.
-                        val left = (seasons.lastIndex - i) * (panel + gap)
-                        val altitude = Math.toRadians(noonAltitude(season.declination))
-                        // The person stands right of centre; the shadow falls away from the sun, to the left.
-                        val personX = left + panel * 0.68f
-                        val head = Offset(personX, ground - person)
-                        val shadowTip = Offset(personX - person / tan(altitude).toFloat(), ground)
-                        val sun = Offset(head.x + sunReach * cos(altitude).toFloat(), head.y - sunReach * sin(altitude).toFloat())
-
-                        drawRect(DayFill, Offset(left, skyTop), Size(panel, ground - skyTop))
-                        drawRect(GroundFill, Offset(left, ground), Size(panel, 3.dp.toPx()))
-                        drawText(titleLayouts[i], topLeft = Offset(left + (panel - titleLayouts[i].size.width) / 2, 0f))
-
-                        // Sunlight past the head to the tip of the shadow, and the shadow itself.
-                        drawLine(
-                            PrayerSilencePalette.GoldAccent,
-                            sun,
-                            shadowTip,
-                            1.5.dp.toPx(),
-                            pathEffect = PathEffect.dashPathEffect(floatArrayOf(5.dp.toPx(), 4.dp.toPx())),
-                        )
-                        drawCircle(PrayerSilencePalette.GoldAccent, sunRadius, sun)
-                        drawLine(PrayerSilencePalette.PrimaryText.copy(alpha = 0.45f), shadowTip, Offset(personX, ground), 5.dp.toPx())
-                        drawPerson(Offset(personX, ground), person)
-
-                        // The sun's height above the horizon: the angle at the tip of the shadow, named in
-                        // the panel's top-left corner, which both seasons leave empty.
-                        val arcRadius = px(14.dp)
-                        drawArc(
-                            color = PrayerSilencePalette.GoldAccent,
-                            startAngle = -Math.toDegrees(altitude).toFloat(),
-                            sweepAngle = Math.toDegrees(altitude).toFloat(),
-                            useCenter = false,
-                            topLeft = Offset(shadowTip.x - arcRadius, ground - arcRadius),
-                            size = Size(2 * arcRadius, 2 * arcRadius),
-                            style = Stroke(1.5.dp.toPx()),
-                        )
-                        drawText(
-                            heightLayouts[i],
-                            topLeft = Offset((left + 4.dp.toPx()).coerceAtMost(left + panel - heightLayouts[i].size.width), skyTop + 3.dp.toPx()),
-                        )
-
-                        drawText(
-                            shadowLayout,
-                            topLeft = Offset(((shadowTip.x + personX) / 2 - shadowLayout.size.width / 2f).coerceIn(left, left + panel - shadowLayout.size.width), groundLabelTop),
-                        )
-                        drawText(noteLayouts[i], topLeft = Offset(left + (panel - noteLayouts[i].size.width) / 2, notesTop))
-                    }
-                }
-            }
-        }
-        Text(
-            stringResource(R.string.prayer_method_season_caption, summerHeight, winterHeight, difference),
-            fontSize = 12.sp,
-            color = TextMuted,
-            lineHeight = 17.sp,
-        )
-    }
-}
-
 /** A height in whole degrees, the one way every height is written on the declination card. */
 private fun wholeDegrees(value: Double): String = "%.0f°".format(Locale.US, value)
 
@@ -479,37 +348,39 @@ private fun DrawScope.drawPerson(feet: Offset, height: Float) {
 private fun deltaText(declination: Double): String =
     "δ = " + (if (declination < 0) "−" else "+") + "%.2f°".format(Locale.US, abs(declination))
 
+/** The sun's course over one day: its altitude every [COURSE_STEP_MINUTES], and its noon. */
+private class DayCourse(val altitudes: List<Double>, val noonMinutes: Double, val noonAltitudeDeg: Double)
+
+private const val COURSE_STEP_MINUTES = 10
+
+private fun dayCourse(location: InmLocation, day: LocalDate): DayCourse {
+    val altitudes = (0..24 * 60 step COURSE_STEP_MINUTES).map {
+        InmPrayerFormula.sunAltitudeDeg(location, day.year, day.monthValue, day.dayOfMonth, it.toDouble())
+    }
+    val explanation = InmPrayerFormula.explain(location, day.year, day.monthValue, day.dayOfMonth)
+    return DayCourse(altitudes, explanation.solarNoonMinutes, explanation.events.first { it.event == InmEvent.DHUHR }.altitudeDeg)
+}
+
 /**
- * Step 1, the sky: you seen from the side, south to your right, and the three noon suns of the
- * year: the first day of summer, the middle position (the days night equals day) and the first
- * day of winter. δ is a day's angle above or below that middle sun, shown for the first day of
- * summer, where it is widest.
+ * Step 1, what everyone sees: the sun's height above the horizon through the day, on the first
+ * day of summer and on the first day of winter, with the real noon of each. Summer climbs high
+ * and lasts long; winter stays low even at its peak.
  */
 @Composable
-internal fun DeclinationDiagram(latitude: Double, sunYear: SunYear) {
-    val twoDates = stringResource(R.string.prayer_method_decl_two_dates, sunYear.spring.dayMonth(), sunYear.autumn.dayMonth())
-    // The three noon suns, highest first: a name, then the grey lines under it.
-    val references = listOf(
-        Triple(stringResource(R.string.prayer_method_decl_example_summer), listOf(sunYear.summer.dayMonth()), MAX_DECLINATION),
-        Triple(stringResource(R.string.prayer_method_decl_middle), listOf(stringResource(R.string.prayer_method_decl_equinox), twoDates), 0.0),
-        Triple(stringResource(R.string.prayer_method_decl_winter), listOf(sunYear.winter.dayMonth()), -MAX_DECLINATION),
-    )
-    val northLabel = stringResource(R.string.prayer_method_decl_north)
-    val placeLabel = stringResource(R.string.prayer_method_decl_place)
-    val southLabel = stringResource(R.string.prayer_method_decl_south)
-    fun noonAltitude(decl: Double) = 90 - latitude + decl
-    val summerHeight = wholeDegrees(noonAltitude(MAX_DECLINATION))
-    val middleHeight = wholeDegrees(noonAltitude(0.0))
-    val winterHeight = wholeDegrees(noonAltitude(-MAX_DECLINATION))
-    val description = stringResource(R.string.prayer_method_decl_description, summerHeight, middleHeight, winterHeight)
-    val caption = stringResource(
-        R.string.prayer_method_decl_caption,
-        summerHeight,
-        middleHeight,
-        winterHeight,
-        sunYear.spring.dayMonth(),
-        sunYear.autumn.dayMonth(),
-        wholeDegrees(latitude),
+internal fun DayAltitudeChart(location: InmLocation, sunYear: SunYear) {
+    val courses = remember(location, sunYear) { listOf(dayCourse(location, sunYear.summer), dayCourse(location, sunYear.winter)) }
+    val names = listOf(stringResource(R.string.prayer_method_course_summer), stringResource(R.string.prayer_method_course_winter))
+    val noons = courses.map { hhmmOf(it.noonMinutes.roundToInt()) }
+    val peakLabels = courses.mapIndexed { i, course ->
+        stringResource(R.string.prayer_method_course_peak, names[i], wholeDegrees(course.noonAltitudeDeg), noons[i])
+    }
+    val overheadLabel = stringResource(R.string.prayer_method_course_overhead)
+    val description = stringResource(
+        R.string.prayer_method_course_description,
+        wholeDegrees(courses[0].noonAltitudeDeg),
+        noons[0],
+        wholeDegrees(courses[1].noonAltitudeDeg),
+        noons[1],
     )
     val measurer = rememberTextMeasurer()
     val density = LocalDensity.current
@@ -518,53 +389,22 @@ internal fun DeclinationDiagram(latitude: Double, sunYear: SunYear) {
         BoxWithConstraints(Modifier.fillMaxWidth()) {
             val width = constraints.maxWidth.toFloat()
             fun px(dp: Dp) = with(density) { dp.toPx() }
-            val labels = references.map { (name, lines, _) ->
-                measurer.measure(
-                    buildAnnotatedString {
-                        withStyle(SpanStyle(color = PrayerSilencePalette.PrimaryText, fontWeight = FontWeight.Bold)) { append(name) }
-                        withStyle(SpanStyle(color = TextMuted)) { lines.forEach { append("\n" + it) } }
-                    },
-                    LabelStyle,
-                )
+            val axisValues = listOf(90, 60, 30, 0)
+            val axisLayouts = axisValues.map { measurer.measure("$it°", NumberStyle) }
+            val hours = listOf(4, 8, 12, 16, 20)
+            val hourLayouts = hours.map { measurer.measure(hhmmOf(it * 60), NumberStyle.copy(color = TextMuted)) }
+            val peakLayouts = peakLabels.mapIndexed { i, label ->
+                measurer.measure(label, LabelStyle.copy(color = if (i == 0) PrayerSilencePalette.GoldAccent else PrayerSilencePalette.PrimaryText, fontWeight = FontWeight.Bold))
             }
-            val gold = NumberStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold)
-            val valueLayout = measurer.measure(deltaText(EXAMPLE_DECLINATION), gold)
-            val glyphLayout = measurer.measure("δ", gold)
-            val northLayout = measurer.measure(northLabel, LabelStyle.copy(color = TextMuted))
-            val placeLayout = measurer.measure(placeLabel, LabelStyle.copy(color = TextMuted))
-            val southLayout = measurer.measure(southLabel, LabelStyle.copy(color = TextMuted))
-            val sunRadius = px(7.dp)
-            val labelGap = px(6.dp)
-            val person = px(40.dp)
-            val observerX = maxOf(px(40.dp), northLayout.size.width + px(8.dp) + placeLayout.size.width / 2f)
-            val angles = references.map { Math.toRadians(noonAltitude(it.third)) }
-            val exampleAngle = Math.toRadians(noonAltitude(EXAMPLE_DECLINATION))
-            // Labels start this far out along their ray, past the sun at its end.
-            val labelOffset = sunRadius + px(2.dp) + labelGap
-            // The rays fan out from the person's head; the radius is as large as the widest label allows.
-            val radius = references.indices.minOf { i ->
-                (width - observerX - labels[i].size.width) / cos(angles[i]).toFloat() - labelOffset
-            }.coerceIn(px(80.dp), px(120.dp))
-            val top = maxOf(labelOffset * sin(angles[0]).toFloat() + labels[0].size.height / 2f, sunRadius + px(2.dp)) + px(2.dp)
-            val ground = top + radius * sin(angles[0]).toFloat() + person
-            val origin = Offset(observerX, ground - person)
-            fun at(angle: Double, distance: Float) =
-                Offset(origin.x + distance * cos(angle).toFloat(), origin.y - distance * sin(angle).toFloat())
-            // Each label beside the end of its ray, clear of the sun there, moved down where the one
-            // above would overlap it; the example's value hangs under its label.
-            val placed = separated(
-                references.indices.map { i ->
-                    val anchor = at(angles[i], radius + labelOffset)
-                    val left = maxOf(anchor.x, at(angles[i], radius).x + sunRadius + px(8.dp)).fitIn(width, labels[i].size.width)
-                    PlacedLabel(labels[i], left, anchor.y - labels[i].size.height / 2f, extra = valueLayout.takeIf { i == 0 })
-                },
-                px(4.dp),
-            )
-            val labelTop = ground + px(6.dp)
-            val height = maxOf(
-                labelTop + maxOf(northLayout.size.height, placeLayout.size.height, southLayout.size.height),
-                placed.maxOf { it.bottom },
-            ) + px(2.dp)
+            val overheadLayout = measurer.measure(overheadLabel, LabelStyle.copy(color = TextMuted))
+            val plotLeft = axisLayouts.maxOf { it.size.width } + px(6.dp)
+            val plotTop = axisLayouts[0].size.height / 2f
+            val plotBottom = plotTop + px(120.dp)
+            val firstMinute = hours.first() * 60
+            val lastMinute = hours.last() * 60
+            fun x(minute: Double) = plotLeft + ((minute - firstMinute) / (lastMinute - firstMinute)).toFloat() * (width - plotLeft)
+            fun y(altitude: Double) = plotBottom - (altitude / 90).toFloat() * (plotBottom - plotTop)
+            val height = plotBottom + px(4.dp) + hourLayouts.maxOf { it.size.height } + px(2.dp)
 
             LeftToRight {
                 Canvas(
@@ -573,68 +413,307 @@ internal fun DeclinationDiagram(latitude: Double, sunYear: SunYear) {
                         .height(with(density) { height.toDp() })
                         .semantics { contentDescription = description },
                 ) {
-                    // Where the noon sun can be over the year.
-                    drawArc(
-                        color = PrayerSilencePalette.GoldAccent.copy(alpha = 0.18f),
-                        startAngle = -Math.toDegrees(angles[0]).toFloat(),
-                        sweepAngle = Math.toDegrees(angles[0] - angles[2]).toFloat(),
-                        useCenter = false,
-                        topLeft = Offset(origin.x - radius, origin.y - radius),
-                        size = Size(2 * radius, 2 * radius),
-                        style = Stroke(10.dp.toPx(), cap = StrokeCap.Round),
-                    )
-                    references.indices.forEach { i ->
-                        val sun = at(angles[i], radius)
-                        drawLine(
-                            PrayerSilencePalette.Tick,
-                            origin,
-                            sun,
-                            if (i == 1) 1.5.dp.toPx() else 1.dp.toPx(),
-                            pathEffect = PathEffect.dashPathEffect(floatArrayOf(5.dp.toPx(), 4.dp.toPx())),
-                        )
-                        drawCircle(PrayerSilencePalette.Tick, sunRadius * 0.75f, sun)
+                    // The part of each course above the horizon, as a line and the area under it.
+                    fun coursePath(course: DayCourse, closed: Boolean): Path {
+                        val path = Path()
+                        var started = false
+                        course.altitudes.forEachIndexed { i, altitude ->
+                            val minute = (i * COURSE_STEP_MINUTES).toDouble()
+                            if (altitude < 0 || minute < firstMinute || minute > lastMinute) return@forEachIndexed
+                            val point = Offset(x(minute), y(altitude))
+                            if (!started) {
+                                if (closed) path.moveTo(point.x, plotBottom) else path.moveTo(point.x, point.y)
+                                if (closed) path.lineTo(point.x, point.y)
+                                started = true
+                            } else {
+                                path.lineTo(point.x, point.y)
+                            }
+                        }
+                        if (closed) {
+                            val lastAbove = course.altitudes.indices.last { course.altitudes[it] >= 0 }
+                            path.lineTo(x((lastAbove * COURSE_STEP_MINUTES).toDouble()), plotBottom)
+                            path.close()
+                        }
+                        return path
                     }
-
-                    // The example: δ as the wedge between the middle ray and the summer ray.
-                    val wedgeEdge = at(exampleAngle, radius * 0.95f)
-                    val middleEdge = at(angles[1], radius * 0.95f)
+                    drawPath(coursePath(courses[0], closed = true), DayFill)
+                    drawPath(coursePath(courses[1], closed = true), NightFill.copy(alpha = 0.6f))
+                    axisValues.forEachIndexed { i, value ->
+                        val lineY = y(value.toDouble())
+                        drawLine(PrayerSilencePalette.SoftBorder, Offset(plotLeft, lineY), Offset(size.width, lineY), 1.dp.toPx())
+                        drawText(axisLayouts[i], topLeft = Offset(0f, lineY - axisLayouts[i].size.height / 2f))
+                    }
+                    drawLine(PrayerSilencePalette.Tick, Offset(plotLeft, plotBottom), Offset(size.width, plotBottom), 1.5.dp.toPx())
+                    hours.forEachIndexed { i, hour ->
+                        val tickX = x(hour * 60.0)
+                        drawLine(PrayerSilencePalette.Tick, Offset(tickX, plotBottom), Offset(tickX, plotBottom + 3.dp.toPx()), 1.dp.toPx())
+                        drawText(hourLayouts[i], topLeft = Offset((tickX - hourLayouts[i].size.width / 2f).fitIn(size.width, hourLayouts[i].size.width), plotBottom + 4.dp.toPx()))
+                    }
+                    // "Overhead" in the morning corner, which both courses leave empty; the horizon is the baseline itself.
+                    drawText(overheadLayout, topLeft = Offset(plotLeft + 3.dp.toPx(), plotTop + 2.dp.toPx()))
+                    drawPath(coursePath(courses[0], closed = false), PrayerSilencePalette.GoldAccent, style = Stroke(2.dp.toPx()))
                     drawPath(
-                        Path().apply {
-                            moveTo(origin.x, origin.y)
-                            lineTo(wedgeEdge.x, wedgeEdge.y)
-                            lineTo(middleEdge.x, middleEdge.y)
-                            close()
-                        },
-                        PrayerSilencePalette.GoldAccent.copy(alpha = 0.22f),
+                        coursePath(courses[1], closed = false),
+                        PrayerSilencePalette.PrimaryText,
+                        style = Stroke(2.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(6.dp.toPx(), 4.dp.toPx()))),
                     )
-                    val arcRadius = radius * 0.4f
-                    drawArc(
-                        color = PrayerSilencePalette.GoldAccent,
-                        startAngle = -Math.toDegrees(maxOf(exampleAngle, angles[1])).toFloat(),
-                        sweepAngle = abs(EXAMPLE_DECLINATION).toFloat(),
-                        useCenter = false,
-                        topLeft = Offset(origin.x - arcRadius, origin.y - arcRadius),
-                        size = Size(2 * arcRadius, 2 * arcRadius),
-                        style = Stroke(2.dp.toPx()),
-                    )
-                    val sun = at(exampleAngle, radius)
-                    drawLine(PrayerSilencePalette.GoldAccent, origin, sun, 2.dp.toPx())
-                    drawCircle(Color.White, sunRadius + 2.dp.toPx(), sun)
-                    drawCircle(PrayerSilencePalette.GoldAccent, sunRadius, sun)
-                    // The glyph on the wedge's bisector, just outside the arc.
-                    val glyphAt = at((exampleAngle + angles[1]) / 2, arcRadius + 6.dp.toPx() + glyphLayout.size.height / 2f)
-                    drawText(glyphLayout, topLeft = Offset(glyphAt.x - glyphLayout.size.width / 2f, glyphAt.y - glyphLayout.size.height / 2f))
-
-                    drawLine(PrayerSilencePalette.Tick, Offset(0f, ground), Offset(size.width, ground), 1.5.dp.toPx())
-                    drawPerson(Offset(observerX, ground), person)
-                    drawText(northLayout, topLeft = Offset(0f, labelTop))
-                    drawText(placeLayout, topLeft = Offset((observerX - placeLayout.size.width / 2f).fitIn(size.width, placeLayout.size.width), labelTop))
-                    drawText(southLayout, topLeft = Offset(size.width - southLayout.size.width, labelTop))
-                    placed.forEach { drawLabel(it) }
+                    // Each peak: a drop line to its noon, a marker, and its label. The summer label
+                    // goes beside its peak, which sits near the top; the winter label above its peak.
+                    courses.forEachIndexed { i, course ->
+                        val peak = Offset(x(course.noonMinutes), y(course.noonAltitudeDeg))
+                        val color = if (i == 0) PrayerSilencePalette.GoldAccent else PrayerSilencePalette.PrimaryText
+                        drawLine(color, peak, Offset(peak.x, plotBottom), 1.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(3.dp.toPx(), 3.dp.toPx())))
+                        drawCircle(Color.White, 6.dp.toPx(), peak)
+                        drawCircle(color, 4.5.dp.toPx(), peak)
+                        val label = peakLayouts[i]
+                        val topLeft = if (i == 0) {
+                            Offset((peak.x + 9.dp.toPx()).fitIn(size.width, label.size.width), peak.y - label.size.height / 2f)
+                        } else {
+                            Offset((peak.x - label.size.width / 2f).fitIn(size.width, label.size.width), peak.y - 9.dp.toPx() - label.size.height)
+                        }
+                        drawText(label, topLeft = topLeft)
+                    }
                 }
             }
         }
-        Text(caption, fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
+        Text(
+            stringResource(R.string.prayer_method_course_caption, noons[0], noons[1]),
+            fontSize = 12.sp,
+            color = TextMuted,
+            lineHeight = 17.sp,
+        )
+    }
+}
+
+/**
+ * Step 1, what the numbers mean: a protractor over the person's head, 0° on the horizon and 90°
+ * straight up, with the summer and winter noon suns on it and the shadow each one casts.
+ */
+@Composable
+internal fun AltitudeProtractor(latitude: Double) {
+    fun noonAltitude(decl: Double) = 90 - latitude + decl
+    val summerAltitude = noonAltitude(MAX_DECLINATION)
+    val winterAltitude = noonAltitude(-MAX_DECLINATION)
+    val sunLabels = listOf(
+        stringResource(R.string.prayer_method_protractor_sun, stringResource(R.string.prayer_method_course_summer), wholeDegrees(summerAltitude)),
+        stringResource(R.string.prayer_method_protractor_sun, stringResource(R.string.prayer_method_course_winter), wholeDegrees(winterAltitude)),
+    )
+    val horizonLabel = stringResource(R.string.prayer_method_protractor_horizon)
+    val overheadLabel = stringResource(R.string.prayer_method_protractor_overhead)
+    val shadowLabels = listOf(stringResource(R.string.prayer_method_protractor_short), stringResource(R.string.prayer_method_protractor_long))
+    val description = stringResource(R.string.prayer_method_protractor_description, wholeDegrees(summerAltitude), wholeDegrees(winterAltitude))
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val width = constraints.maxWidth.toFloat()
+            fun px(dp: Dp) = with(density) { dp.toPx() }
+            val tickLayouts = listOf(30, 60).map { measurer.measure("$it°", NumberStyle.copy(color = TextMuted)) }
+            val horizonLayout = measurer.measure(horizonLabel, LabelStyle.copy(color = TextMuted))
+            val overheadLayout = measurer.measure(overheadLabel, LabelStyle.copy(color = TextMuted))
+            val sunLayouts = sunLabels.mapIndexed { i, label ->
+                measurer.measure(label, LabelStyle.copy(color = if (i == 0) PrayerSilencePalette.GoldAccent else PrayerSilencePalette.PrimaryText, fontWeight = FontWeight.Bold))
+            }
+            val shadowLayouts = shadowLabels.map { measurer.measure(it, LabelStyle.copy(color = TextMuted)) }
+            val person = px(40.dp)
+            val sunRadius = px(7.dp)
+            val altitudes = listOf(Math.toRadians(summerAltitude), Math.toRadians(winterAltitude))
+            // The person stands far enough right for the long winter shadow, and the protractor is
+            // as wide as the horizon label at its right end allows.
+            val personX = maxOf(px(30.dp) + person / tan(altitudes[1]).toFloat(), shadowLayouts[1].size.width / 2f + px(4.dp))
+            val radius = (width - personX - px(6.dp) - horizonLayout.size.width).coerceIn(px(80.dp), px(120.dp))
+            val top = overheadLayout.size.height + px(4.dp)
+            val headY = top + radius
+            val ground = headY + person
+            val head = Offset(personX, headY)
+            fun at(angle: Double, distance: Float) = Offset(head.x + distance * cos(angle).toFloat(), head.y - distance * sin(angle).toFloat())
+            val rowHeight = shadowLayouts.maxOf { it.size.height } + px(2.dp)
+            val height = ground + px(5.dp) + 2 * rowHeight
+
+            LeftToRight {
+                Canvas(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(with(density) { height.toDp() })
+                        .semantics { contentDescription = description },
+                ) {
+                    // The protractor: a quarter circle from the horizon to straight up, ticked every 30°.
+                    drawArc(
+                        color = PrayerSilencePalette.Tick,
+                        startAngle = -90f,
+                        sweepAngle = 90f,
+                        useCenter = false,
+                        topLeft = Offset(head.x - radius, head.y - radius),
+                        size = Size(2 * radius, 2 * radius),
+                        style = Stroke(1.5.dp.toPx()),
+                    )
+                    listOf(0, 30, 60, 90).forEach { degrees ->
+                        val angle = Math.toRadians(degrees.toDouble())
+                        drawLine(PrayerSilencePalette.Tick, at(angle, radius - 6.dp.toPx()), at(angle, radius), 1.5.dp.toPx())
+                    }
+                    listOf(30, 60).forEachIndexed { i, degrees ->
+                        val anchor = at(Math.toRadians(degrees.toDouble()), radius - 24.dp.toPx())
+                        drawText(tickLayouts[i], topLeft = Offset(anchor.x - tickLayouts[i].size.width / 2f, anchor.y - tickLayouts[i].size.height / 2f))
+                    }
+                    drawLine(PrayerSilencePalette.Tick, head, at(0.0, radius), 1.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(3.dp.toPx(), 3.dp.toPx())))
+                    drawLine(PrayerSilencePalette.Tick, head, at(Math.PI / 2, radius), 1.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(3.dp.toPx(), 3.dp.toPx())))
+                    drawText(horizonLayout, topLeft = Offset(head.x + radius + 4.dp.toPx(), head.y - horizonLayout.size.height / 2f))
+                    drawText(overheadLayout, topLeft = Offset((head.x - overheadLayout.size.width - 6.dp.toPx()).coerceAtLeast(0f), head.y - radius - overheadLayout.size.height - 2.dp.toPx()))
+
+                    // Each sun on the protractor, its light past the head to the ground, and its shadow.
+                    altitudes.forEachIndexed { i, altitude ->
+                        val color = if (i == 0) PrayerSilencePalette.GoldAccent else PrayerSilencePalette.PrimaryText
+                        val sun = at(altitude, radius)
+                        val shadowTip = Offset(personX - person / tan(altitude).toFloat(), ground)
+                        drawLine(color, sun, shadowTip, 1.5.dp.toPx(), pathEffect = PathEffect.dashPathEffect(floatArrayOf(5.dp.toPx(), 4.dp.toPx())))
+                        drawLine(color.copy(alpha = if (i == 0) 0.6f else 0.35f), shadowTip, Offset(personX, ground), 5.dp.toPx())
+                        drawCircle(Color.White, sunRadius + 2.dp.toPx(), sun)
+                        drawCircle(color, sunRadius, sun)
+                        val label = sunLayouts[i]
+                        val anchor = at(altitude, radius + sunRadius + 6.dp.toPx())
+                        drawText(label, topLeft = Offset(anchor.x.fitIn(size.width, label.size.width), anchor.y - label.size.height / 2f))
+                        // The shadow's name under it: the long winter one on the first row, the short summer one below.
+                        val shadowLabel = shadowLayouts[i]
+                        val row = if (i == 0) 1 else 0
+                        drawText(shadowLabel, topLeft = Offset(((shadowTip.x + personX) / 2 - shadowLabel.size.width / 2f).fitIn(size.width, shadowLabel.size.width), ground + 5.dp.toPx() + row * rowHeight))
+                    }
+                    drawLine(PrayerSilencePalette.Tick, Offset(0f, ground), Offset(size.width, ground), 1.5.dp.toPx())
+                    drawPerson(Offset(personX, ground), person)
+                }
+            }
+        }
+        Text(
+            stringResource(R.string.prayer_method_protractor_caption, wholeDegrees(summerAltitude), wholeDegrees(winterAltitude)),
+            fontSize = 12.sp,
+            color = TextMuted,
+            lineHeight = 17.sp,
+        )
+    }
+}
+
+/** One of the three example days on the globes: its title lines and its declination. */
+private class GlobeExample(val title: String, val where: String, val declination: Double)
+
+/**
+ * Step 1, what δ is: three globes, each lit by a Sun whose light hits one place straight from
+ * overhead. δ is that place's distance north (+) or south (−) of the equator. The reader's own
+ * place is marked, so the gap between the two shows how far from overhead the noon sun is.
+ */
+@Composable
+internal fun SubsolarGlobes(latitude: Double) {
+    val maxText = "%.2f°".format(Locale.US, MAX_DECLINATION)
+    val examples = listOf(
+        GlobeExample(stringResource(R.string.prayer_method_globe_title_north), stringResource(R.string.prayer_method_globe_where_north, maxText), MAX_DECLINATION),
+        GlobeExample(stringResource(R.string.prayer_method_globe_title_zero), stringResource(R.string.prayer_method_globe_where_zero), 0.0),
+        GlobeExample(stringResource(R.string.prayer_method_globe_title_south), stringResource(R.string.prayer_method_globe_where_south, maxText), -MAX_DECLINATION),
+    )
+    val northLabel = stringResource(R.string.prayer_method_globe_north)
+    fun gap(decl: Double) = abs(latitude - decl)
+    val youLines = examples.map { stringResource(R.string.prayer_method_globe_you, wholeDegrees(gap(it.declination)), wholeDegrees(90 - gap(it.declination))) }
+    val description = stringResource(R.string.prayer_method_globe_description, wholeDegrees(latitude))
+    val measurer = rememberTextMeasurer()
+    val density = LocalDensity.current
+
+    Column(Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+        BoxWithConstraints(Modifier.fillMaxWidth()) {
+            val width = constraints.maxWidth.toFloat()
+            fun px(dp: Dp) = with(density) { dp.toPx() }
+            val radius = px(40.dp)
+            val sunDistance = radius + px(48.dp)
+            val sunRadius = px(7.dp)
+            val centerX = px(10.dp) + radius
+            val textLeft = centerX + sunDistance + sunRadius + px(8.dp)
+            val textWidth = (width - textLeft).toInt()
+            val northLayout = measurer.measure(northLabel, LabelStyle.copy(fontSize = 10.sp, color = TextMuted))
+            val textLayouts = examples.mapIndexed { i, example ->
+                measurer.measure(
+                    buildAnnotatedString {
+                        withStyle(SpanStyle(color = PrayerSilencePalette.PrimaryText, fontWeight = FontWeight.Bold)) { append(example.title) }
+                        withStyle(SpanStyle(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Monospace)) {
+                            append("\n\u2066" + deltaText(example.declination) + "\u2069")
+                        }
+                        withStyle(SpanStyle(color = TextMuted)) { append("\n" + example.where + "\n" + youLines[i]) }
+                    },
+                    LabelStyle,
+                    constraints = Constraints(maxWidth = textWidth),
+                )
+            }
+            val gapLayouts = examples.map { measurer.measure(wholeDegrees(gap(it.declination)), NumberStyle.copy(color = PrayerSilencePalette.PrimaryText, fontWeight = FontWeight.Bold)) }
+            val globeHeight = northLayout.size.height + px(2.dp) + 2 * radius + px(4.dp)
+            val rowHeights = examples.indices.map { maxOf(globeHeight, textLayouts[it].size.height) + px(10.dp) }
+            val height = rowHeights.sum()
+
+            LeftToRight {
+                Canvas(
+                    Modifier
+                        .fillMaxWidth()
+                        .height(with(density) { height.toDp() })
+                        .semantics { contentDescription = description },
+                ) {
+                    var rowTop = 0f
+                    examples.forEachIndexed { i, example ->
+                        val center = Offset(centerX, rowTop + northLayout.size.height + px(2.dp) + radius)
+                        val tilt = Math.toRadians(example.declination)
+                        fun at(angle: Double, distance: Float) = Offset(center.x + distance * cos(angle).toFloat(), center.y - distance * sin(angle).toFloat())
+
+                        // The globe, north up, its night half facing away from the Sun.
+                        drawCircle(DayFill, radius, center)
+                        rotate(-example.declination.toFloat(), center) {
+                            clipRect(center.x - radius, center.y - radius, center.x, center.y + radius) {
+                                drawCircle(NightFill, radius, center)
+                            }
+                        }
+                        drawCircle(PrayerSilencePalette.Tick, radius, center, style = Stroke(1.5.dp.toPx()))
+                        drawText(northLayout, topLeft = Offset(center.x - northLayout.size.width / 2f, rowTop))
+                        // The equator, and δ as the wedge from it up or down to the Sun's direction.
+                        drawLine(PrayerSilencePalette.PrimaryText, Offset(center.x - radius, center.y), Offset(center.x + radius, center.y), 1.5.dp.toPx())
+                        if (example.declination != 0.0) {
+                            drawArc(
+                                color = PrayerSilencePalette.GoldAccent.copy(alpha = 0.25f),
+                                startAngle = -maxOf(0f, example.declination.toFloat()),
+                                sweepAngle = abs(example.declination).toFloat(),
+                                useCenter = true,
+                                topLeft = Offset(center.x - radius, center.y - radius),
+                                size = Size(2 * radius, 2 * radius),
+                            )
+                        }
+                        val sun = at(tilt, sunDistance)
+                        drawLine(PrayerSilencePalette.GoldAccent, center, sun, 1.5.dp.toPx())
+                        drawCircle(PrayerSilencePalette.GoldAccent, sunRadius, sun)
+                        // Where the Sun is straight overhead (gold), and you (dark), on the lit side.
+                        val overhead = at(tilt, radius)
+                        val you = at(Math.toRadians(latitude), radius)
+                        // The rim between the two: how far from overhead the noon sun is here.
+                        val from = minOf(example.declination, latitude)
+                        drawArc(
+                            color = PrayerSilencePalette.PrimaryText,
+                            startAngle = -(from + gap(example.declination)).toFloat(),
+                            sweepAngle = gap(example.declination).toFloat(),
+                            useCenter = false,
+                            topLeft = Offset(center.x - radius - 3.dp.toPx(), center.y - radius - 3.dp.toPx()),
+                            size = Size(2 * (radius + 3.dp.toPx()), 2 * (radius + 3.dp.toPx())),
+                            style = Stroke(2.dp.toPx()),
+                        )
+                        // The rim's value beside its middle, or just past your dot when the rim is too short for that.
+                        val gapAt = if (gap(example.declination) >= 30) {
+                            at(Math.toRadians(from + gap(example.declination) / 2), radius + 16.dp.toPx())
+                        } else {
+                            at(Math.toRadians(latitude + 6), radius + 14.dp.toPx())
+                        }
+                        drawText(gapLayouts[i], topLeft = Offset(gapAt.x - gapLayouts[i].size.width / 2f, gapAt.y - gapLayouts[i].size.height / 2f))
+                        drawCircle(Color.White, 6.dp.toPx(), overhead)
+                        drawCircle(PrayerSilencePalette.GoldAccent, 4.5.dp.toPx(), overhead)
+                        drawCircle(Color.White, 5.dp.toPx(), you)
+                        drawCircle(PrayerSilencePalette.PrimaryText, 3.5.dp.toPx(), you)
+
+                        drawText(textLayouts[i], topLeft = Offset(size.width - textLayouts[i].size.width, rowTop + (rowHeights[i] - px(10.dp) - textLayouts[i].size.height) / 2))
+                        rowTop += rowHeights[i]
+                    }
+                }
+            }
+        }
+        Text(stringResource(R.string.prayer_method_globe_caption, wholeDegrees(latitude)), fontSize = 12.sp, color = TextMuted, lineHeight = 17.sp)
     }
 }
 
@@ -648,6 +727,7 @@ internal fun DeclinationYearChart(sunYear: SunYear, date: LocalDate, declination
     val longerDays = stringResource(R.string.prayer_method_decl_longer_days)
     val shorterDays = stringResource(R.string.prayer_method_decl_shorter_days)
     val todayLabel = stringResource(R.string.prayer_method_decl_today_marker)
+    val exampleLabel = stringResource(R.string.prayer_method_decl_example)
     val todayValue = (if (declination < 0) "−" else "+") + "%.2f°".format(Locale.US, abs(declination))
     val description = stringResource(
         R.string.prayer_method_decl_year_description,
@@ -671,7 +751,8 @@ internal fun DeclinationYearChart(sunYear: SunYear, date: LocalDate, declination
             val longerLayout = measurer.measure(longerDays, LabelStyle.copy(color = TextMuted))
             val middleLayout = measurer.measure(middleLabel, LabelStyle.copy(color = TextMuted))
             val shorterLayout = measurer.measure(shorterDays, LabelStyle.copy(color = TextMuted))
-            val todayLayout = measurer.measure(todayLabel, LabelStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold))
+            val todayLayout = measurer.measure(todayLabel, LabelStyle.copy(color = PrayerSilencePalette.PrimaryText, fontWeight = FontWeight.Bold))
+            val exampleLayout = measurer.measure(exampleLabel, LabelStyle.copy(color = PrayerSilencePalette.GoldAccent, fontWeight = FontWeight.Bold))
             // January and December in the plot's top corners, which the curve leaves empty.
             val monthLayouts = listOf(LocalDate.of(date.year, 1, 1), LocalDate.of(date.year, 12, 1)).map {
                 measurer.measure(monthFormatter.format(it), LabelStyle.copy(fontSize = 10.sp, color = TextMuted))
@@ -737,16 +818,23 @@ internal fun DeclinationYearChart(sunYear: SunYear, date: LocalDate, declination
                     // The four turning days: a marker on the curve, and a tick down to its date's own row.
                     keyDates.forEachIndexed { i, day ->
                         val point = Offset(x(day.dayOfYear), y(sunYear.declinations[day.dayOfYear - 1]))
-                        drawMarker(point, PrayerSilencePalette.Tick)
+                        // The first day of summer is the example the drawings above use.
+                        if (day == sunYear.summer) {
+                            drawCircle(Color.White, 7.dp.toPx(), point)
+                            drawCircle(PrayerSilencePalette.GoldAccent, 5.dp.toPx(), point)
+                            drawText(exampleLayout, topLeft = Offset(point.x + 9.dp.toPx(), point.y - exampleLayout.size.height / 2f))
+                        } else {
+                            drawMarker(point, PrayerSilencePalette.Tick)
+                        }
                         val dateTop = datesTop + dateRows[i] * rowHeight
                         drawLine(PrayerSilencePalette.Tick, Offset(point.x, plotBottom), Offset(point.x, dateTop - 1.dp.toPx()), 1.dp.toPx())
                         drawText(dateLayouts[i], topLeft = Offset(dateLefts[i], dateTop))
                     }
 
                     val today = Offset(x(date.dayOfYear), y(declination))
-                    drawLine(PrayerSilencePalette.GoldAccent, today, Offset(today.x, plotBottom), 1.dp.toPx(), pathEffect = dash)
-                    drawCircle(Color.White, 7.dp.toPx(), today)
-                    drawCircle(PrayerSilencePalette.GoldAccent, 5.dp.toPx(), today)
+                    drawLine(PrayerSilencePalette.PrimaryText, today, Offset(today.x, plotBottom), 1.dp.toPx(), pathEffect = dash)
+                    drawCircle(Color.White, 6.dp.toPx(), today)
+                    drawCircle(PrayerSilencePalette.PrimaryText, 4.dp.toPx(), today)
                     // "Today" beside its dot, or above it when the dot sits on the baseline.
                     val todayGap = 9.dp.toPx()
                     val todayTopLeft = when {
@@ -780,9 +868,6 @@ internal fun DeclinationYearChart(sunYear: SunYear, date: LocalDate, declination
 
 /** The obliquity of the ecliptic: how far the sun gets from the celestial equator each year. */
 private const val MAX_DECLINATION = 23.44
-
-/** The δ the explainer's drawings use as their worked example: the first day of summer, where it is easiest to see. */
-private const val EXAMPLE_DECLINATION = MAX_DECLINATION
 
 /**
  * Step 4: a stick and its shadow. Asr begins when the shadow is the stick's length plus its
