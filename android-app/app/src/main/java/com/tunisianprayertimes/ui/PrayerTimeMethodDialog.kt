@@ -99,7 +99,14 @@ internal fun PrayerTimeMethodDialog(
         PrayerDataLoader.prayerTimes(context).location(delegationId)
             ?.takeIf { date.year in InmPrayerTimes.SUPPORTED_YEARS }
     }
-    val explanation = remember(location, date) {
+    // The steps are explained on the first day of summer of the chosen year, where the sun's
+    // position is easiest to picture; the chosen day's own result comes at the end.
+    val sunYear = remember(date.year) { SunYear(date.year) }
+    val exampleDate = sunYear.summer
+    val explanation = remember(location, exampleDate) {
+        location?.let { InmPrayerFormula.explain(it, exampleDate.year, exampleDate.monthValue, exampleDate.dayOfMonth) }
+    }
+    val todayExplanation = remember(location, date) {
         location?.let { InmPrayerFormula.explain(it, date.year, date.monthValue, date.dayOfMonth) }
     }
     val delegationName = remember(delegationId) {
@@ -122,7 +129,7 @@ internal fun PrayerTimeMethodDialog(
                 ) {
                     Column(Modifier.fillMaxSize()) {
                         MethodHeader(
-                            subtitle = stringResource(R.string.prayer_method_context, delegationName, gregorianDateLabel(date)),
+                            subtitle = stringResource(R.string.prayer_method_context, delegationName, gregorianDateLabel(exampleDate)),
                             onDismiss = onDismiss,
                         )
                         HorizontalDivider(color = PrayerSilencePalette.SoftBorder)
@@ -134,10 +141,10 @@ internal fun PrayerTimeMethodDialog(
                                 .padding(16.dp),
                             verticalArrangement = Arrangement.spacedBy(12.dp),
                         ) {
-                            if (location == null || explanation == null) {
+                            if (location == null || explanation == null || todayExplanation == null) {
                                 Text(stringResource(R.string.prayer_method_unavailable), fontSize = 14.sp, color = TextMuted)
                             } else {
-                                MethodContent(location, date, explanation)
+                                MethodContent(location, exampleDate, explanation, sunYear, date, todayExplanation)
                             }
                         }
                     }
@@ -174,13 +181,25 @@ private fun MethodHeader(subtitle: String, onDismiss: () -> Unit) {
 }
 
 @Composable
-private fun MethodContent(location: InmLocation, date: LocalDate, explanation: InmDayExplanation) {
+private fun MethodContent(
+    location: InmLocation,
+    date: LocalDate,
+    explanation: InmDayExplanation,
+    sunYear: SunYear,
+    today: LocalDate,
+    todayExplanation: InmDayExplanation,
+) {
     val names = eventNames()
     val steps = explanation.events.associateBy { it.event }
     val noon = explanation.solarNoonMinutes
-    val sunYear = remember(date.year) { SunYear(date.year) }
 
     TrustCard()
+    Text(
+        stringResource(R.string.prayer_method_example_note, gregorianDateLabel(date), gregorianDateLabel(today)),
+        fontSize = 13.sp,
+        color = TextDark,
+        lineHeight = 19.sp,
+    )
 
     MethodSection(stringResource(R.string.prayer_method_chart_title), stringResource(R.string.prayer_method_chart_body)) {
         SunPathChart(location, date, explanation, names)
@@ -219,14 +238,15 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
                         lineHeight = 19.sp,
                     )
                     SubsolarGlobes(location.latitude)
-                    DeclinationYearChart(sunYear, date, declination)
+                    DeclinationYearChart(sunYear, today, todayExplanation.declinationDeg)
                 }
             },
             today = stringResource(
-                if (declination < 0) R.string.prayer_method_sun_decl_today_south else R.string.prayer_method_sun_decl_today_north,
-                "\u2066${signed(declination, 2)}°\u2069",
-                "\u2066${"%.2f".us(abs(declination))}°\u2069",
-                "\u2066${"%.0f".us(steps.getValue(InmEvent.DHUHR).altitudeDeg)}°\u2069",
+                if (todayExplanation.declinationDeg < 0) R.string.prayer_method_sun_decl_today_south else R.string.prayer_method_sun_decl_today_north,
+                gregorianDateLabel(today),
+                "\u2066${signed(todayExplanation.declinationDeg, 2)}°\u2069",
+                "\u2066${"%.2f".us(abs(todayExplanation.declinationDeg))}°\u2069",
+                "\u2066${"%.0f".us(todayExplanation.events.first { it.event == InmEvent.DHUHR }.altitudeDeg)}°\u2069",
             ),
         )
         SunQuantity(
@@ -316,6 +336,13 @@ private fun MethodContent(location: InmLocation, date: LocalDate, explanation: I
     MethodSection(stringResource(R.string.prayer_method_step_rounding_title), stringResource(R.string.prayer_method_step_rounding_body)) {
         RoundingDiagram(explanation.events, names)
         ResultTable(explanation.events, names)
+    }
+
+    MethodSection(
+        stringResource(R.string.prayer_method_today_title, gregorianDateLabel(today)),
+        stringResource(R.string.prayer_method_today_body),
+    ) {
+        ResultTable(todayExplanation.events, names)
     }
 
     Text(
