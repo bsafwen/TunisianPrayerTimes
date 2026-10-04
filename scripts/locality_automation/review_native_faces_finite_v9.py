@@ -18,6 +18,7 @@ from scripts.locality_automation.run_sealed_boundary_queue import read, pin, che
 from scripts.locality_automation.isie_pdf_inventory import _georeferences, _path_runs
 from scripts.locality_automation.isie_candidate_comparison import _map_geometry, _name_match
 from scripts.locality_automation.audit_reviewed_source_family import put
+from scripts.locality_automation.registration_policy_v1 import registration_limits
 
 
 def review(spec, output):
@@ -40,14 +41,15 @@ def review(spec, output):
                 original = pypdf.PdfReader(pdf)
                 references = _georeferences(original.pages[0], page)
                 reference = next(r for r in references if r['status'] == 'fitted')
-                if reference['crsEpsg'] != 32632 or reference['controlCount'] != 4 or reference['maxControlResidualMeters'] > .5:
+                limits = registration_limits(code,case['sourcePdf'],control)
+                if reference['crsEpsg'] != 32632 or reference['controlCount'] != 4 or reference['maxControlResidualMeters'] > limits['fitResidualM']:
                     raise ValueError('Original registration held: ' + code)
                 matrix = np.asarray(reference['affineMapUnitsFromPagePoints'])
                 design = np.column_stack((reference['pageControls'], np.ones(4)))
                 projection = Transformer.from_crs(4326, 32632, always_xy=True)
                 targets = np.asarray([projection.transform(lon, lat) for lat, lon in reference['geographicControlsLatLon']])
                 loo = [float(np.linalg.norm(design[i] @ np.linalg.solve(np.delete(design, i, 0), np.delete(targets, i, 0)) - targets[i])) for i in range(4)]
-                if max(loo) > 1.5:
+                if max(loo) > limits['looMaxM']:
                     raise ValueError('Original held-out controls held: ' + code)
                 drawings = page.get_drawings()
                 source_lines = {'red': [], 'blue': [], 'black': []}
@@ -140,7 +142,7 @@ def review(spec, output):
                     'sourceMetricGeometry': metric_ref, 'nativePageGeometry': native_ref, 'originalRender': pin(picture),
                     'sourceMethod': method, 'nativeDrawingIndexes': native_matches, 'originalNativePointsMatchSavedInventory': True,
                     'registration': {'fitResidualM': reference['maxControlResidualMeters'], 'looMaxM': max(loo), 'matrix': matrix.tolist()},
-                    'sourceAreaM2': metric.area, 'nativeInteriorAdminLengthsPagePoints': admin_inside,
+                    'registrationPolicy': limits, 'sourceAreaM2': metric.area, 'nativeInteriorAdminLengthsPagePoints': admin_inside,
                     'wholeNativeFaceInsidePage': box(*page.rect).covers(native), 'redInvalidCount': len(invalid.geoms),
                     'insideLabels': labels, 'sourceScopeAccepted': False, 'credit': 0,
                     'originalComparatorStatus': case.get('status'), 'originalHoldReasons': case.get('holdReasons', []),
