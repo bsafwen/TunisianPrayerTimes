@@ -431,6 +431,7 @@
     <string name="wake_editor_hero_rule_prayer_after">بعد %1$s بـ %2$s</string>
     <string name="wake_editor_hero_rule_with_repeat">%1$s • %2$s</string>
     <string name="wake_alarm_row_next_at">التالي: %1$s</string>
+    <string name="wake_alarm_row_extra_next">تنبيه إضافي • المنبه الرئيسي %1$s</string>
     <string name="wake_editor_warning_title">تنبيه تعارض</string>
     <string name="wake_editor_warning_trigger_main">المنبه الرئيسي</string>
     <string name="wake_editor_warning_trigger_subalarm">التنبيه الإضافي: %1$s</string>
