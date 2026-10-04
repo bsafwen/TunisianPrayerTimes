@@ -621,8 +621,8 @@ quran_pages	quran/pages/page_618.webp	260004	8bca9076789f911c824580fb789798b28e0
 quran_pages	quran/pages/page_619.webp	191628	91c9cdafe0ad1ea6fa463e826c10f91dd7ae4b9af5ebf999f4fd7bb8d4a84fde	-	play
 quran_pages	quran/pages/page_620.webp	177780	b095dcd11559b63bd0c254c64794b900fce956238e0a5c8f7aaa39ccd521a2cc	-	play
 quran_pages	quran/pages/page_621.webp	178840	99c33a89e42852af821a3915971b7d96f1c20ff95aedf3c3c88c3cb9fad81580	-	play
-quran_ayoub_01	quran/audio/ayoub/001.mp3	258924	a3c99b5b468782242f82b1a65ea409210175e6e86b3c942c977e8c928449c21d	-	play
-quran_ayoub_01	quran/audio/ayoub/002.mp3	46832743	fe35510ab2ae1abccc76e516c3a514f649afed63bfe0800403e1225d8f35dec7	-	play
+quran_ayoub_01	quran/audio/ayoub/001.mp3	239489	83e11a9145c2c56c6d091ff3a04a6c0dc1960081350ccb9b26ccfe78ed15bfde	-	play
+quran_ayoub_01	quran/audio/ayoub/002.mp3	46808919	59d9d55a375cc7553a51bd53123c57b82a1b505912c223d89cf28f4414721714	-	play
 quran_ayoub_02	quran/audio/ayoub/003.mp3	27200155	b69cd1af4d35e181054d6c03839597aad0d7cf323d4c9c01bc41b80b2f894df2	-	play
 quran_ayoub_02	quran/audio/ayoub/004.mp3	27085425	0e147441e6b0c851f0ed32f8802266c5e0a38696ea193f0d69c7c90a9fcfeef8	-	play
 quran_ayoub_03	quran/audio/ayoub/005.mp3	20072070	c16a7f968ceb9adfc71178838887cafd6451c815fd3161106a64e5f15fb19129	-	play
@@ -649,7 +649,7 @@ quran_ayoub_06	quran/audio/ayoub/025.mp3	6895280	b71f732018c5240eeb5d4f9fd6fd4d0
 quran_ayoub_06	quran/audio/ayoub/026.mp3	9949726	fe28820a319ba75ece190e1f80dcd775ec7bbe5dcb2d020dbb289c4c04682601	-	play
 quran_ayoub_06	quran/audio/ayoub/027.mp3	9115479	edd0d24e9aa11101da2aa4bc14de3946e2434abbceacdcf1ded44a8b50ae7cd0	-	play
 quran_ayoub_06	quran/audio/ayoub/028.mp3	10816991	a2e0930a9fdf0843352d952cc2f39fef918cc6baec3bdda5f0cfcae78ad06acd	-	play
-quran_ayoub_07	quran/audio/ayoub/029.mp3	7887724	847a44ec7dbb5c7a8c968b2f8bbd4245a16137a5f8c79a6826b263f3ae17d213	-	play
+quran_ayoub_07	quran/audio/ayoub/029.mp3	7800580	85e5a1465ef485c1ac92f8a57714c6eab5e1e1bb323b0e138eafbadbe0181a87	-	play
 quran_ayoub_07	quran/audio/ayoub/030.mp3	6210872	164882f02fcf75c5ae6108d81bf312154782ed8104ed746eb4f1b315b0fc8f34	-	play
 quran_ayoub_07	quran/audio/ayoub/031.mp3	4185442	dbfdbac15b52587ca571b524682b04250604efd28bff7511cce6871357fcfbbe	-	play
 quran_ayoub_07	quran/audio/ayoub/032.mp3	2985063	4f9e7624cdf5ee6e686fd4cf66d8b1deaee79605f48cd5bb9efc734f7326342f	-	play
@@ -680,7 +680,7 @@ quran_ayoub_08	quran/audio/ayoub/056.mp3	3607195	ab47e2e6c53342dff8ffe2e85e76747
 quran_ayoub_09	quran/audio/ayoub/057.mp3	4656900	eac0345c11cbaa658321b9f7ada7a22f6d628f4ccae3921cc84e73873ce79580	-	play
 quran_ayoub_09	quran/audio/ayoub/058.mp3	3736136	34746b70ce9cc731392cc089de6ccf8c8e814ad02b68f2875b7823ac6d367573	-	play
 quran_ayoub_09	quran/audio/ayoub/059.mp3	3844596	8a7c1ea23b4dc54bb674235fb55e35f7b739a1aa61b93b48d0e437513e25ea3b	-	play
-quran_ayoub_09	quran/audio/ayoub/060.mp3	3844178	7f181bfd8f3714d6b1878079a4a1450a12771735954af06cc714e9400a7d75be	-	play
+quran_ayoub_09	quran/audio/ayoub/060.mp3	3032501	5625c38e0b7e02fbe13568c8ddf81efcd2521c5d99113620d4b43284bb90ffc3	-	play
 quran_ayoub_09	quran/audio/ayoub/061.mp3	1898160	6dc24ae505105c37d98dbcadd39d0231546c186d348ef7fa7c6ec9943211b791	-	play
 quran_ayoub_09	quran/audio/ayoub/062.mp3	1381354	3a982714480eda5c7400bc427255cca947987f537268307e22a8bd2a100edec6	-	play
 quran_ayoub_09	quran/audio/ayoub/063.mp3	1641951	ca83e63359523a861781e755f8f491bf2075c0f8ef0b030212e8cd217f7b7c77	-	play

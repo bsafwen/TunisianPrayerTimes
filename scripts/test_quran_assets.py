@@ -96,6 +96,22 @@ class Mp3FormatTest(unittest.TestCase):
         self.assertEqual((128, False, True), self.format_of(tagged))
         self.assertIsNone(self.format_of(b'RIFF' + bytes(600)))
 
+    def test_reads_mpeg2_frames_without_matching_look_alikes_in_their_audio(self):
+        # MPEG-2 Layer III, index 4 = 32 kbps, 16 kHz, mono; its audio data happens to hold an MPEG-1 header.
+        mpeg2 = bytes([0xFF, 0xF3, 4 << 4 | 0x08, 0xC0]) + bytes(17) + b'Info' + b'\xff\xfb\x90\x00' + bytes(600)
+        self.assertEqual((32, True, True), self.format_of(mpeg2))
+
+    def test_recitations_are_64_kbps_mono_constant_bitrate(self):
+        def accepted(content):
+            path = self.root / 'x.mp3'
+            path.write_bytes(content)
+            return assets.is_recitation_format(path)
+        self.assertTrue(accepted(recording(1, 600)))
+        self.assertFalse(accepted(recording(1, 600, kbps_index=1)))  # 32 kbps
+        self.assertFalse(accepted(recording(1, 600, kbps_index=7)))  # 96 kbps
+        self.assertFalse(accepted(recording(1, 600, mono=False)))
+        self.assertFalse(accepted(recording(1, 600, tag=b'Xing')))
+
 
 class ArchiveTest(unittest.TestCase):
     def setUp(self):
