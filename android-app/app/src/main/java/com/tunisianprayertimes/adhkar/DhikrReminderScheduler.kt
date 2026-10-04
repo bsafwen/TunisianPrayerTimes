@@ -621,13 +621,20 @@ object DhikrReminderScheduler {
      * Adds one recitation to a single-dhikr reminder straight from its notification. It goes through
      * the reader's own counting, so the Adhkar tab, the goal and the completion state stay in step.
      */
+    /**
+     * A tap-to-count button only suits a plain repeated phrase: a collection has no single count, a
+     * stepped dhikr counts several phrases in turn, and a goal of one is finished by "تم".
+     */
+    internal fun supportsNotificationCounter(state: DhikrState, rule: DhikrReminder?, occurrence: DhikrOccurrence): Boolean =
+        rule != null && rule.collection == null && occurrence.target >= 2 &&
+            state.findDhikr(occurrence.dhikrId)?.let { it.steps.isEmpty() } == true
     private fun countFromNotification(context: Context, repo: DhikrRepository, occurrenceId: String, now: Long) {
         val occurrence = repo.state.value.occurrences[occurrenceId] ?: return
         val rule = repo.state.value.reminders.find {
             it.id == occurrence.ruleId && it.enabled && it.revision == occurrence.revision
         }
-        if (rule == null || rule.collection != null || occurrence.status != DhikrOccurrenceStatus.OPEN ||
-            now !in occurrence.startMillis until occurrence.endMillis) {
+        if (!supportsNotificationCounter(repo.state.value, rule, occurrence) ||
+            occurrence.status != DhikrOccurrenceStatus.OPEN || now !in occurrence.startMillis until occurrence.endMillis) {
             manager(context).cancel(occurrenceId, 1)
             return
         }
@@ -668,9 +675,9 @@ object DhikrReminderScheduler {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setTimeoutAfter((endMillis - now).coerceAtLeast(1)).setOnlyAlertOnce(!alert)
-        // Android shows three actions. A single dhikr trades "continue" (the tap on the notification
-        // opens the same reader) for a counter; a collection has no single count to raise.
-        if (collection == null) {
+        // Android shows three actions. A countable dhikr trades "continue" (the tap on the notification
+        // opens the same reader) for a counter; anything else keeps "continue".
+        if (supportsNotificationCounter(DhikrRepository(context).state.value, rule, occurrence)) {
             val count = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_COUNT)
                 .setData(Uri.parse("tunisianprayertimes://adhkar/count/" + Uri.encode(occurrence.id)))
                 .putExtra("occurrence", occurrence.id)
