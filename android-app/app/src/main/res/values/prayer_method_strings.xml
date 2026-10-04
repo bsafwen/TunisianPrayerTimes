@@ -5,7 +5,7 @@
     <string name="prayer_method_entry_subtitle">طريقة المعهد الوطني للرصد الجوي خطوة بخطوة، بمثال يوم واضح</string>
 
     <!-- Explainer dialog -->
-    <string name="prayer_method_example_note">نشرح الحساب بمثال يوم واضح، أول الصيف (%1$s)، حيث يسهل تصوّر موضع الشمس. وفي آخر الشرح نعرض نتيجة اليوم الذي اخترته (%2$s) بالخطوات نفسها.</string>
+    <string name="prayer_method_example_note">نشرح الحساب بمثال واضح: مدينة تونس في أول الصيف (%1$s)، حيث يسهل تصوّر موضع الشمس. وفي آخر الشرح نعرض بالخطوات نفسها نتيجة اليوم الذي اخترته (%2$s) في %3$s.</string>
     <string name="prayer_method_title">كيف تُحسب مواقيت الصلاة</string>
     <string name="prayer_method_close">إغلاق</string>
     <string name="prayer_method_context">%1$s · مثال الشرح: %2$s</string>
@@ -21,7 +21,7 @@
     <string name="prayer_method_chart_description">رسم بياني لارتفاع الشمس خلال اليوم، عليه مواقيت الصلوات الخمس والشروق: %1$s</string>
 
     <string name="prayer_method_inputs_title">المعطيات</string>
-    <string name="prayer_method_inputs_body">إحداثيات المعتمدية وارتفاعها كما ينشرها المعهد، والتوقيت المعتمد هو توقيت تونس (UTC+1) دون توقيت صيفي.</string>
+    <string name="prayer_method_inputs_body">إحداثيات المعتمدية وارتفاعها كما ينشرها المعهد (هنا مدينة تونس)، والتوقيت المعتمد هو توقيت تونس (UTC+1) دون توقيت صيفي.</string>
     <string name="prayer_method_input_latitude">خط العرض φ</string>
     <string name="prayer_method_input_longitude">خط الطول λ</string>
     <string name="prayer_method_input_elevation">الارتفاع h</string>
@@ -33,21 +33,21 @@
     <string name="prayer_method_sun_jd_meaning">التاريخ مكتوبًا كرقم واحد: عدد الأيام منذ 1 جانفي 4713 قبل الميلاد. تعتمده وكالة ناسا والفلكيون لأنه يبسّط الحسابات: تصبح الأيام أعدادًا متتالية دون أشهر ولا سنوات كبيسة، والمدة بين تاريخين مجرد طرح. ينتهي بـ &#x2066;.5&#x2069; لأن اليوم الجولياني يبدأ عند الظهر، ونحن نأخذ منتصف الليل بالتوقيت العالمي.</string>
     <string name="prayer_method_sun_decl_name">ميل الشمس δ</string>
     <string name="prayer_method_sun_decl_meaning">ميل الشمس هو الرقم الذي يصف كيف تتغيّر الشمس في سمائنا من فصل إلى فصل. نبدأ بما نراه كل يوم: عند الزوال، أي منتصف النهار، تبلغ الشمس أعلى نقطة لها في ذلك اليوم. في الصيف تكون هذه النقطة عالية جدًا والنهار طويل، وفي الشتاء تكون منخفضة والنهار قصير. سنأخذ في الأمثلة يومين واضحين: أول الصيف (%1$s) وأول الشتاء (%2$s).</string>
-    <string name="prayer_method_sun_decl_definition">لماذا تختلف الشمس هكذا؟ في كل لحظة هناك مكان واحد على الأرض تكون فيه الشمس فوق الرأس تمامًا. هذا المكان ليس ثابتًا: في أول الصيف يكون على بعد 23.44° شمال خط الاستواء (الخط الذي يقسم الأرض إلى نصف شمالي ونصف جنوبي)، وفي أول الشتاء على بعد 23.44° جنوبه، ويمرّ بخط الاستواء نفسه مرّتين في السنة، يومَي تساوي الليل والنهار. ميل الشمس δ هو ببساطة: كم درجة يقع هذا المكان شمال خط الاستواء (+) أو جنوبه (−). ونحن في مكاننا على خط عرض &#x2066;%1$s&#x2069; شمال خط الاستواء، فكلما كان ذلك المكان أقرب إلينا رأينا شمس الزوال أقرب إلى فوق الرأس.</string>
+    <string name="prayer_method_sun_decl_definition">لماذا تختلف الشمس هكذا؟ في كل لحظة هناك مكان واحد على الأرض تكون فيه الشمس فوق الرأس تمامًا. هذا المكان ليس ثابتًا: في أول الصيف يكون على بعد 23.44° شمال خط الاستواء (الخط الذي يقسم الأرض إلى نصف شمالي ونصف جنوبي)، وفي أول الشتاء على بعد 23.44° جنوبه، ويمرّ بخط الاستواء نفسه مرّتين في السنة، يومَي تساوي الليل والنهار. ميل الشمس δ هو ببساطة: كم درجة يقع هذا المكان شمال خط الاستواء (+) أو جنوبه (−). ومدينة تونس، مثالنا، على خط عرض &#x2066;%1$s&#x2069; شمال خط الاستواء، فكلما كان ذلك المكان أقرب إليها رأى أهلها شمس الزوال أقرب إلى فوق الرأس.</string>
     <string name="prayer_method_sun_decl_today_north">أما اليوم (%1$s) فـ δ = %2$s، أي أن الشمس فوق الرأس تمامًا على %3$s شمال خط الاستواء، فتبلغ عند الزوال في مكانك ارتفاع نحو %4$s.</string>
     <string name="prayer_method_sun_decl_today_south">أما اليوم (%1$s) فـ δ = %2$s، أي أن الشمس فوق الرأس تمامًا على %3$s جنوب خط الاستواء، فتبلغ عند الزوال في مكانك ارتفاع نحو %4$s.</string>
     <string name="prayer_method_course_summer">الصيف</string>
     <string name="prayer_method_course_winter">الشتاء</string>
     <string name="prayer_method_course_peak">%1$s · &#x2066;%2$s&#x2069; · &#x2066;%3$s&#x2069;</string>
     <string name="prayer_method_course_overhead">فوق الرأس</string>
-    <string name="prayer_method_course_caption">ارتفاع الشمس فوق الأفق خلال اليوم في مكانك، من الشروق إلى الغروب، بتوقيت الساعة. في أول الصيف (الخط الذهبي) تصعد الشمس عاليًا ويطول النهار، وفي أول الشتاء (الخط المتقطّع) تبقى منخفضة حتى في أعلى نقطة لها ويقصر النهار. أعلى نقطة هي الزوال، وهو هنا نحو الساعة &#x2066;%1$s&#x2069; في الصيف و&#x2066;%2$s&#x2069; في الشتاء لا 12:00 بالضبط؛ الخطوة 2 تشرح السبب.</string>
+    <string name="prayer_method_course_caption">ارتفاع الشمس فوق الأفق خلال اليوم في مدينة تونس، من الشروق إلى الغروب، بتوقيت الساعة. في أول الصيف (الخط الذهبي) تصعد الشمس عاليًا ويطول النهار، وفي أول الشتاء (الخط المتقطّع) تبقى منخفضة حتى في أعلى نقطة لها ويقصر النهار. أعلى نقطة هي الزوال، وهو هنا نحو الساعة &#x2066;%1$s&#x2069; في الصيف و&#x2066;%2$s&#x2069; في الشتاء لا 12:00 بالضبط؛ الخطوة 2 تشرح السبب.</string>
     <string name="prayer_method_course_description">رسم لارتفاع الشمس خلال اليوم: في أول الصيف تبلغ %1$s عند الزوال على الساعة %2$s، وفي أول الشتاء %3$s على الساعة %4$s.</string>
     <string name="prayer_method_protractor_sun">%1$s &#x2066;%2$s&#x2069;</string>
     <string name="prayer_method_protractor_horizon">0° الأفق</string>
     <string name="prayer_method_protractor_overhead">90° فوق الرأس</string>
     <string name="prayer_method_protractor_short">ظل الصيف قصير</string>
     <string name="prayer_method_protractor_long">ظل الشتاء طويل</string>
-    <string name="prayer_method_protractor_caption">ما معنى هذه الدرجات؟ ارتفاع الشمس هو الزاوية بين الأفق أمامك واتجاه الشمس، كما على هذا المنقلة: 0° على الأفق، و90° فوق الرأس تمامًا. شمس أول الصيف على نحو &#x2066;%1$s&#x2069;، أي قريبة من فوق الرأس، فظلّك قصير. وشمس أول الشتاء على نحو &#x2066;%2$s&#x2069;، أي ثلث الطريق فقط، فظلّك طويل.</string>
+    <string name="prayer_method_protractor_caption">ما معنى هذه الدرجات؟ ارتفاع الشمس هو الزاوية بين الأفق أمام الناظر واتجاه الشمس، كما على هذا المنقلة: 0° على الأفق، و90° فوق الرأس تمامًا. شمس أول الصيف على نحو &#x2066;%1$s&#x2069;، أي قريبة من فوق الرأس، فالظل قصير. وشمس أول الشتاء على نحو &#x2066;%2$s&#x2069;، أي ثلث الطريق فقط، فالظل طويل.</string>
     <string name="prayer_method_protractor_description">منقلة فوق رأس شخص: الأفق عند 0° وفوق الرأس عند 90°، شمس الصيف على %1$s بظل قصير وشمس الشتاء على %2$s بظل طويل.</string>
     <string name="prayer_method_globe_north">شمال</string>
     <string name="prayer_method_globe_title_north">ميل موجب: أول الصيف</string>
@@ -56,9 +56,9 @@
     <string name="prayer_method_globe_where_north">الشمس فوق الرأس تمامًا على &#x2066;%1$s&#x2069; شمال خط الاستواء</string>
     <string name="prayer_method_globe_where_zero">الشمس فوق الرأس تمامًا على خط الاستواء</string>
     <string name="prayer_method_globe_where_south">الشمس فوق الرأس تمامًا على &#x2066;%1$s&#x2069; جنوب خط الاستواء</string>
-    <string name="prayer_method_globe_you">بُعد ذلك المكان عنك &#x2066;%1$s&#x2069;، فارتفاع الشمس عندك عند الزوال &#x2066;%2$s&#x2069;</string>
-    <string name="prayer_method_globe_caption">في كل كرة: الخط الأفقي هو خط الاستواء، والشمس على اليمين، والنقطة الذهبية هي المكان الذي تكون فيه الشمس فوق الرأس تمامًا، والنقطة الداكنة هي أنت على خط عرض &#x2066;%1$s&#x2069;. الزاوية المظلّلة عند مركز الأرض بين خط الاستواء واتجاه الشمس هي الميل δ. والقوس على حافة الكرة هو بُعدك عن مكان الشمس فوق الرأس: كلما قصر رأيت الشمس أعلى. القاعدة: ارتفاع الشمس عند الزوال = 90° ناقص هذا البعد.</string>
-    <string name="prayer_method_globe_description">ثلاث كرات أرضية: الشمس فوق الرأس على 23.44° شمال خط الاستواء، ثم على خط الاستواء، ثم على 23.44° جنوبه، مع موقعك على خط عرض %1$s وبعدك عن مكان الشمس فوق الرأس في كل حالة.</string>
+    <string name="prayer_method_globe_you">بُعد ذلك المكان عن تونس &#x2066;%1$s&#x2069;، فارتفاع الشمس فيها عند الزوال &#x2066;%2$s&#x2069;</string>
+    <string name="prayer_method_globe_caption">في كل كرة: الخط الأفقي هو خط الاستواء، والشمس على اليمين، والنقطة الذهبية هي المكان الذي تكون فيه الشمس فوق الرأس تمامًا، والنقطة الداكنة هي مدينة تونس على خط عرض &#x2066;%1$s&#x2069;. الزاوية المظلّلة عند مركز الأرض بين خط الاستواء واتجاه الشمس هي الميل δ. والقوس على حافة الكرة هو بُعد تونس عن مكان الشمس فوق الرأس: كلما قصر رأيت الشمس أعلى. القاعدة: ارتفاع الشمس عند الزوال = 90° ناقص هذا البعد.</string>
+    <string name="prayer_method_globe_description">ثلاث كرات أرضية: الشمس فوق الرأس على 23.44° شمال خط الاستواء، ثم على خط الاستواء، ثم على 23.44° جنوبه، مع مدينة تونس على خط عرض %1$s وبعدها عن مكان الشمس فوق الرأس في كل حالة.</string>
     <string name="prayer_method_decl_example">المثال</string>
     <string name="prayer_method_decl_longer_days">النهار أطول</string>
     <string name="prayer_method_decl_shorter_days">النهار أقصر</string>
@@ -121,8 +121,8 @@
     <string name="prayer_method_rounding_down">%1$s: الثواني %2$d، فتُحذف</string>
 
     <string name="prayer_method_table_title">نتيجة يوم المثال</string>
-    <string name="prayer_method_today_title">النتيجة لليوم: %1$s</string>
-    <string name="prayer_method_today_body">نفس الخطوات السبع، بأرقام هذا اليوم، تعطي المواقيت المعروضة في التطبيق:</string>
+    <string name="prayer_method_today_title">النتيجة لليوم: %1$s · %2$s</string>
+    <string name="prayer_method_today_body">نفس الخطوات السبع، بإحداثيات معتمديتك وأرقام هذا اليوم، تعطي المواقيت المعروضة في التطبيق:</string>
     <string name="prayer_method_table_prayer">الوقت</string>
     <string name="prayer_method_table_exact">الحساب</string>
     <string name="prayer_method_table_shown">المعروض</string>
