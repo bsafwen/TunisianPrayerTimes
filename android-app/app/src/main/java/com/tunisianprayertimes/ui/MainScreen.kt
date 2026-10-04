@@ -4476,6 +4476,7 @@ private fun WakeAlarmCard(
             WakeNextAlarmPanel(
                 wakeConfig = alarm,
                 trigger = trigger,
+                nowMillis = nowMillis,
             )
         }
 
@@ -4748,9 +4749,12 @@ private fun WakeAlarmListPanel(
 private fun WakeNextAlarmPanel(
     wakeConfig: PrayerWakeConfig,
     trigger: WakeAlarmComputer.ScheduledWakeTrigger,
+    nowMillis: Long,
 ) {
     val prayerName = wakeAlarmPrayerName(wakeConfig.prayer)
-    val summaryText = wakeNextAlarmSummaryText(prayerName, wakeConfig, trigger)
+    // An alarm with extras shows every ring of the coming occurrence; its rule stays in the row below.
+    val hasExtras = wakeConfig.subAlarms.isNotEmpty()
+    val summaryText = if (hasExtras) null else wakeSummaryText(prayerName, wakeConfig)
     HeroCardSurface(modifier = Modifier.heightIn(min = MainHeroCardHeight)) {
         BoxWithConstraints(
             modifier = Modifier
@@ -4759,25 +4763,37 @@ private fun WakeNextAlarmPanel(
                 .heightIn(min = 122.dp),
         ) {
             val sideBySide = maxWidth >= 270.dp && LocalDensity.current.fontScale <= 1.3f
-            WakeNextAlarmDetails(
-                timeText = formatTimeOfDay(trigger.triggerAtMillis),
-                dateText = formatWakeAlarmDate(trigger.triggerAtMillis),
-                summaryText = summaryText,
-                modifier = if (sideBySide) {
-                    Modifier.width(maxWidth * 0.55f).align(Alignment.TopStart)
-                } else {
-                    Modifier.fillMaxWidth().align(Alignment.TopStart)
-                },
-            )
+            val detailsWidth = maxWidth * 0.55f
+            Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                WakeNextAlarmDetails(
+                    isExtraAlarm = trigger.isSubAlarm,
+                    timeText = formatTimeOfDay(trigger.triggerAtMillis),
+                    dateText = formatWakeAlarmDate(trigger.triggerAtMillis),
+                    summaryText = summaryText,
+                    modifier = if (sideBySide) Modifier.width(detailsWidth) else Modifier.fillMaxWidth(),
+                )
+                if (hasExtras) {
+                    WakeNextAlarmTimeline(
+                        stops = wakeTimelineStops(
+                            subAlarms = wakeConfig.subAlarms,
+                            occurrenceAtMillis = trigger.occurrenceAtMillis,
+                            nextTriggerAtMillis = trigger.triggerAtMillis,
+                        ),
+                        nowMillis = nowMillis,
+                        formatTime = ::formatTimeOfDay,
+                    )
+                }
+            }
         }
     }
 }
 
 @Composable
 private fun WakeNextAlarmDetails(
+    isExtraAlarm: Boolean,
     timeText: String,
     dateText: String,
-    summaryText: String,
+    summaryText: String?,
     modifier: Modifier = Modifier,
 ) {
     val largeText = LocalDensity.current.fontScale > 1.3f
@@ -4788,7 +4804,9 @@ private fun WakeNextAlarmDetails(
         verticalArrangement = Arrangement.spacedBy(4.dp),
     ) {
         Text(
-            text = stringResource(R.string.wake_alarm_next_title),
+            text = stringResource(
+                if (isExtraAlarm) R.string.wake_editor_hero_extra_title else R.string.wake_alarm_next_title,
+            ),
             fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
             color = Color.White.copy(alpha = 0.78f),
@@ -4798,7 +4816,8 @@ private fun WakeNextAlarmDetails(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            HeroIconRing(iconRes = R.drawable.ic_tab_alarms)
+            // The bell tells an extra alert from the alarm itself.
+            HeroIconRing(iconRes = if (isExtraAlarm) R.drawable.ic_adhkar_bell else R.drawable.ic_tab_alarms)
             Text(
                 text = timeText,
                 fontSize = 29.sp,
@@ -4818,51 +4837,35 @@ private fun WakeNextAlarmDetails(
             maxLines = 2,
             modifier = Modifier.padding(start = alarmTextInset),
         )
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(RoundedCornerShape(50))
-                .background(Color.White.copy(alpha = 0.91f))
-                .padding(horizontal = 10.dp, vertical = 6.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(6.dp),
-        ) {
-            Text(
-                text = summaryText,
-                fontSize = 12.sp,
-                lineHeight = 16.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = GreenPrimaryDark,
-                maxLines = if (largeText) Int.MAX_VALUE else 3,
-                overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.weight(1f),
-            )
-            Icon(
-                painter = painterResource(R.drawable.ic_adhkar_bell),
-                contentDescription = null,
-                tint = Gold,
-                modifier = Modifier.size(16.dp),
-            )
+        if (summaryText != null) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(50))
+                    .background(Color.White.copy(alpha = 0.91f))
+                    .padding(horizontal = 10.dp, vertical = 6.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                Text(
+                    text = summaryText,
+                    fontSize = 12.sp,
+                    lineHeight = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = GreenPrimaryDark,
+                    maxLines = if (largeText) Int.MAX_VALUE else 3,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.weight(1f),
+                )
+                Icon(
+                    painter = painterResource(R.drawable.ic_adhkar_bell),
+                    contentDescription = null,
+                    tint = Gold,
+                    modifier = Modifier.size(16.dp),
+                )
+            }
         }
     }
-}
-
-@Composable
-private fun wakeNextAlarmSummaryText(
-    prayerName: String,
-    wakeConfig: PrayerWakeConfig,
-    trigger: WakeAlarmComputer.ScheduledWakeTrigger,
-): String {
-    val baseSummary = wakeSummaryText(prayerName, wakeConfig)
-    if (!trigger.isSubAlarm) {
-        return baseSummary
-    }
-
-    return stringResource(
-        R.string.wake_alarm_next_subalarm_summary,
-        formatWakeAlarmOffset(trigger.signedOffsetMinutes),
-        baseSummary,
-    )
 }
 
 @Composable
@@ -6699,16 +6702,6 @@ private fun wakeGuideTriggerLabel(
 } else {
     context.getString(R.string.wake_editor_warning_trigger_main)
 }
-
-@Composable
-private fun formatWakeAlarmOffset(signedOffsetMinutes: Int): String = stringResource(
-    if (signedOffsetMinutes < 0) {
-        R.string.wake_alarm_offset_before
-    } else {
-        R.string.wake_alarm_offset_after
-    },
-    formatArabicMinutes(abs(signedOffsetMinutes)),
-)
 
 private fun formatWakeAlarmDateTime(timeInMillis: Long): String {
     val formatter = SimpleDateFormat("EEE d MMM - HH:mm", Locale.forLanguageTag("ar-TN-u-nu-latn"))

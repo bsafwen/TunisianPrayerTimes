@@ -268,7 +268,13 @@
     <string name="wake_quick_add_timer_title">مؤقت سريع</string>
     <string name="wake_quick_add_timer_subtitle">منبه لمرة واحدة بعد مدة محددة.</string>
     <string name="wake_alarm_next_title">المنبه القادم</string>
-    <string name="wake_alarm_next_subalarm_summary">تنبيه إضافي %1$s • %2$s</string>
+    <string name="wake_timeline_main">الرئيسي</string>
+    <string name="wake_timeline_before">قبل %1$s د</string>
+    <string name="wake_timeline_after">بعد %1$s د</string>
+    <string name="wake_timeline_a11y_main">المنبه الرئيسي %1$s</string>
+    <string name="wake_timeline_a11y_extra">تنبيه إضافي %1$s، %2$s</string>
+    <string name="wake_timeline_state_rung">رنّ</string>
+    <string name="wake_timeline_state_next">التالي</string>
     <string name="wake_alarm_empty_title">ابدأ بمنبه بسيط</string>
     <string name="wake_alarm_empty_body_modern">أضف منبها واحدا، ثم خصص الصوت وتحدي الإيقاف عند الحاجة.</string>
     <string name="wake_alarm_empty_body">لا توجد منبهات بعد. أضف منبها جديدا، ثم اختر له وقتا ثابتا أو اربطه بصلاة أو اضبطه بعد مدة من الآن.</string>

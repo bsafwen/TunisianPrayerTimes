@@ -30,7 +30,7 @@ import com.tunisianprayertimes.ui.theme.GreenPrimary
 import com.tunisianprayertimes.ui.theme.GreenPrimaryDark
 
 internal val HeroCardShape = RoundedCornerShape(18.dp)
-private val HeroIconRingIconTint = Color(0xFFFFD479)
+internal val HeroIconRingIconTint = Color(0xFFFFD479)
 
 /**
  * The skyline card behind the Prayer and Alarms tab heroes and the alarm editor's hero, so the

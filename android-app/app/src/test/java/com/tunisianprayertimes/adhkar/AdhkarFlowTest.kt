@@ -920,6 +920,30 @@ class AdhkarFlowTest {
         assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(window.progressKey).status)
         assertEquals(0, manager.activeNotifications.size)
     }
+    @Test fun counterActionIsOfferedOnlyWhereCountingMakesSense() {
+        fun titles(rule: DhikrReminder): List<String> {
+            repo.save(rule)
+            val window = window(rule)
+            DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+            deliver(event(), window.startMillis)
+            return context.getSystemService(NotificationManager::class.java).activeNotifications.single()
+                .notification.actions.map { it.title.toString() }
+        }
+        // A goal of one is finished with "تم", so there is nothing to count.
+        assertFalse(DhikrReminderScheduler.COUNT_ACTION_TITLE in titles(rule(1)))
+    }
+    @Test fun collectionReminderHasNoCounterAction() {
+        val items = DhikrCatalog.entries.filter { DhikrCategory.MORNING in it.categories }.map { it.id }
+        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING)
+        repo.save(rule)
+        val window = window(rule)
+        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
+        deliver(event(), window.startMillis)
+        val titles = context.getSystemService(NotificationManager::class.java).activeNotifications.single()
+            .notification.actions.map { it.title.toString() }
+        assertFalse(DhikrReminderScheduler.COUNT_ACTION_TITLE in titles)
+        assertTrue("متابعة الذكر" in titles)
+    }
     @Test fun nearEndNotificationDoesNotOfferAnUndeliverableSnooze() {
         val rule = rule().copy(end = DhikrTime(minuteOfDay = 540))
         repo.save(rule)
