@@ -43,6 +43,8 @@ object DhikrReminderScheduler {
     internal const val ACTION_SNOOZE = "com.tunisianprayertimes.action.DHIKR_SNOOZE"
     internal const val ACTION_DONE = "com.tunisianprayertimes.action.DHIKR_DONE"
     internal const val ACTION_COUNT = "com.tunisianprayertimes.action.DHIKR_COUNT"
+    /** Left-to-right marks keep the plus on the left of the number inside the right-to-left notification. */
+    internal const val COUNT_ACTION_TITLE = "\u200E+1\u200E"
     internal const val WORK_NAME = "adhkar_schedule_repair"
     internal val schedulingLock = Any()
     private const val PREFS = "adhkar_schedule_v2"
@@ -672,7 +674,7 @@ object DhikrReminderScheduler {
             val count = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_COUNT)
                 .setData(Uri.parse("tunisianprayertimes://adhkar/count/" + Uri.encode(occurrence.id)))
                 .putExtra("occurrence", occurrence.id)
-            builder.addAction(0, "+1", PendingIntent.getBroadcast(context, 0, count,
+            builder.addAction(0, COUNT_ACTION_TITLE, PendingIntent.getBroadcast(context, 0, count,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
         } else builder.addAction(0, "متابعة الذكر", open)
         val done = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_DONE)

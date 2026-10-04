@@ -781,7 +781,7 @@ class AdhkarFlowTest {
         val notifications = context.getSystemService(NotificationManager::class.java).activeNotifications
         assertEquals(1, notifications.size)
         assertEquals(0, repo.state.value.occurrences.getValue(window.progressKey).count)
-        assertEquals(listOf("+1", "تم", "تأجيل"), notifications.single().notification.actions.map { it.title.toString() })
+        assertEquals(listOf(DhikrReminderScheduler.COUNT_ACTION_TITLE, "تم", "تأجيل"), notifications.single().notification.actions.map { it.title.toString() })
         val open = Shadows.shadowOf(notifications.single().notification.contentIntent).savedIntent
         assertEquals(window.progressKey, open.getStringExtra(DhikrReminderScheduler.EXTRA_OCCURRENCE_ID))
     }
@@ -927,7 +927,7 @@ class AdhkarFlowTest {
         DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
         deliver(event(), window.endMillis - 10 * 60_000L)
         val notification = context.getSystemService(NotificationManager::class.java).activeNotifications.single().notification
-        assertEquals(listOf("+1", "تم"), notification.actions.map { it.title.toString() })
+        assertEquals(listOf(DhikrReminderScheduler.COUNT_ACTION_TITLE, "تم"), notification.actions.map { it.title.toString() })
 
         DhikrReminderScheduler.receive(context, Intent().setAction(DhikrReminderScheduler.ACTION_SNOOZE)
             .putExtra("occurrence", window.progressKey), window.endMillis - 5 * 60_000L)
