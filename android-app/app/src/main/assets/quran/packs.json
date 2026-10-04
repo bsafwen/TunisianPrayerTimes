@@ -2508,21 +2508,21 @@
     1,
     2
    ],
-   "bytes": 47091667,
+   "bytes": 47048408,
    "files": [
     {
      "path": "quran/audio/ayoub/001.mp3",
-     "bytes": 258924
+     "bytes": 239489
     },
     {
      "path": "quran/audio/ayoub/002.mp3",
-     "bytes": 46832743
+     "bytes": 46808919
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_01-e604955c8c09.zip",
-    "bytes": 47091941,
-    "sha256": "e604955c8c09e351e641da25c4d94857698d42d26e4a5794b4853b65c17c7720"
+    "key": "v1/packs/quran_ayoub_01-742dd0917000.zip",
+    "bytes": 47048682,
+    "sha256": "742dd09170002581c2e1b538a63c73ffc179807b2e1dc572eb2160b98a3c000c"
    }
   },
   {
@@ -2728,11 +2728,11 @@
     29,
     39
    ],
-   "bytes": 72027727,
+   "bytes": 71940583,
    "files": [
     {
      "path": "quran/audio/ayoub/029.mp3",
-     "bytes": 7887724
+     "bytes": 7800580
     },
     {
      "path": "quran/audio/ayoub/030.mp3",
@@ -2776,9 +2776,9 @@
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_07-dedd349e28c0.zip",
-    "bytes": 72029135,
-    "sha256": "dedd349e28c0cb79ca8c1d534171d776609c0838f2b23a97e932134a77e523db"
+    "key": "v1/packs/quran_ayoub_07-09ef7dcc56b4.zip",
+    "bytes": 71941991,
+    "sha256": "09ef7dcc56b4711d9ee809c402b9938d31473116d10ac126301797e619eb85b4"
    }
   },
   {
@@ -2876,7 +2876,7 @@
     57,
     114
    ],
-   "bytes": 72797745,
+   "bytes": 71986068,
    "files": [
     {
      "path": "quran/audio/ayoub/057.mp3",
@@ -2892,7 +2892,7 @@
     },
     {
      "path": "quran/audio/ayoub/060.mp3",
-     "bytes": 3844178
+     "bytes": 3032501
     },
     {
      "path": "quran/audio/ayoub/061.mp3",
@@ -3112,9 +3112,9 @@
     }
    ],
    "archive": {
-    "key": "v1/packs/quran_ayoub_09-4f15b2c83eb8.zip",
-    "bytes": 72805075,
-    "sha256": "4f15b2c83eb895679ae53cb1730d511758eb5b100bd5b379259c60ebf81c0b5f"
+    "key": "v1/packs/quran_ayoub_09-fc04873e197e.zip",
+    "bytes": 71993398,
+    "sha256": "fc04873e197e280013b3e440ce9caf888c72d76036a2eba135fef03f6817df5c"
    }
   },
   {

@@ -68,7 +68,9 @@ PLAY_RECITERS = 10
 PLAY_PACKS_PER_RECITER = 9
 PLAY, CDN = 'play', 'cdn'
 # Half the size of mp3quran's 128 kbps stereo files with no audible loss on these old tape
-# recordings, and constant: Android seeks to a verse exactly only in constant-bitrate MP3.
+# recordings, and constant: Android seeks to a verse exactly only in constant-bitrate MP3. One
+# bitrate for every reciter: at lower ones the encoder's header frame can't keep the audio's
+# bitrate, and Android's MediaPlayer then times and seeks the whole file at the wrong rate.
 AUDIO_KBPS = 64
 PACK_NAME = re.compile(r'[a-z][a-z0-9_]*')
 PAGES_PACK = 'quran_pages'
@@ -160,11 +162,13 @@ def assign_deliveries(reciters: list[str], previous: dict[str, str]) -> dict[str
     return deliveries
 
 
+# Layer III bitrates by header index: MPEG-1, then MPEG-2 and 2.5 (the low sample rates of 8 to 24 kHz).
 MPEG1_LAYER3_KBPS = (0, 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320)
+MPEG2_LAYER3_KBPS = (0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160)
 
 
 def mp3_format(path: Path) -> tuple[int, bool, bool] | None:
-    """(kbps, mono, constant bitrate) from an MPEG-1 Layer III file's first frame; None for anything else."""
+    """(kbps, mono, constant bitrate) from an MPEG Layer III file's first frame; None for anything else."""
     with path.open('rb') as stream:
         tag = stream.read(10)
         if len(tag) == 10 and tag[:3] == b'ID3':
@@ -174,18 +178,17 @@ def mp3_format(path: Path) -> tuple[int, bool, bool] | None:
             stream.seek(0)
         data = stream.read(8192)
     for i in range(len(data) - 3):
-        # Frame sync of any MPEG audio frame; the first one must be MPEG-1 Layer III, then a valid bitrate and
-        # sample rate. Scanning on past an MPEG-2 frame would find look-alike headers in its audio data.
+        # Frame sync, then a known MPEG version, Layer III, a valid bitrate and sample rate.
         if data[i] != 0xFF or data[i + 1] & 0xE0 != 0xE0:
             continue
-        if data[i + 1] & 0xFE != 0xFA:
-            return None
+        version, layer = (data[i + 1] >> 3) & 3, (data[i + 1] >> 1) & 3
         bitrate, rate = data[i + 2] >> 4, (data[i + 2] >> 2) & 3
-        if not 0 < bitrate < 15 or rate == 3:
+        if version == 1 or layer != 1 or not 0 < bitrate < 15 or rate == 3:
             continue
         # Encoders announce a variable bitrate in a Xing or VBRI header inside the first frame.
         first_frame = data[i:i + 200]
-        return MPEG1_LAYER3_KBPS[bitrate], data[i + 3] >> 6 == 3, b'Xing' not in first_frame and b'VBRI' not in first_frame
+        table = MPEG1_LAYER3_KBPS if version == 3 else MPEG2_LAYER3_KBPS
+        return table[bitrate], data[i + 3] >> 6 == 3, b'Xing' not in first_frame and b'VBRI' not in first_frame
     return None
 
 
@@ -197,8 +200,7 @@ def check_recitation_format(path: Path) -> None:
     if is_recitation_format(path):
         return
     found = mp3_format(path)
-    described = 'not an MPEG-1 Layer III file' if found is None else \
-        f"{found[0]} kbps {'mono' if found[1] else 'stereo'}{'' if found[2] else ' at a variable bitrate'}"
+    described = 'not an MPEG Layer III file' if found is None else         f"{found[0]} kbps {'mono' if found[1] else 'stereo'}{'' if found[2] else ' at a variable bitrate'}"
     raise LayoutError(f'{path} is {described}; recitations are {AUDIO_KBPS} kbps mono at a constant bitrate. '
                       f'Convert them first: quran_assets.py convert --from-dir <originals> --to <folder>')
 
