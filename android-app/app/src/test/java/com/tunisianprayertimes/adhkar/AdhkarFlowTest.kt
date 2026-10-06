@@ -100,9 +100,10 @@ class AdhkarFlowTest {
         assertNotEquals(first, fresh)
         assertEquals(0, repo.state.value.sessions.getValue(fresh).counts["salah_istighfar"] ?: 0)
     }
-    @Test fun morningCollectionResetsAtNextFajrAndSurvivesRestartBeforeThen() {
+    @Test fun morningCollectionRunsFromFajrToDhuhrAndSurvivesRestart() {
         val items = listOf("sayyid_istighfar", "ayat_kursi")
         val firstFajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), friday)!!
+        val dhuhr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.DHUHR), friday)!!
         val nextFajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), friday.plusDays(1))!!
         val first = repo.openSession(items, DhikrCategory.MORNING, now = firstFajr,
             collectionReading = true)
@@ -112,11 +113,18 @@ class AdhkarFlowTest {
         DhikrRepository.clearMemoryCache()
         val restored = DhikrRepository(context)
 
-        val beforeNextFajr = restored.openSession(items, DhikrCategory.MORNING,
-            now = nextFajr - 1, collectionReading = true)
-        assertEquals(first, beforeNextFajr)
+        val beforeDhuhr = restored.openSession(items, DhikrCategory.MORNING,
+            now = dhuhr - 1, collectionReading = true)
+        assertEquals(first, beforeDhuhr)
         assertEquals(1, restored.state.value.sessions.getValue(first).counts[items.first()])
         assertTrue(items.last() in restored.state.value.sessions.getValue(first).skippedIds)
+        // After Dhuhr the morning is over: a count then is kept apart and never reaches the next morning.
+        val afterDhuhr = restored.openSession(items, DhikrCategory.MORNING, now = dhuhr, collectionReading = true)
+        assertNotEquals(first, afterDhuhr)
+        assertTrue(restored.state.value.sessions.getValue(afterDhuhr).counts.isEmpty())
+        restored.count(afterDhuhr, 1, dhuhr + 1)
+        assertEquals(afterDhuhr, restored.openSession(items, DhikrCategory.MORNING,
+            now = nextFajr - 1, collectionReading = true))
 
         val next = restored.openSession(items, DhikrCategory.MORNING, now = nextFajr,
             collectionReading = true)
@@ -125,9 +133,10 @@ class AdhkarFlowTest {
         assertTrue(restored.state.value.sessions.getValue(next).skippedIds.isEmpty())
         assertEquals(0, restored.state.value.sessions.getValue(next).index)
     }
-    @Test fun eveningCollectionResetsAtAsrAndKeepsProgressAcrossListEdits() {
+    @Test fun eveningCollectionRunsFromAsrToFajrAndKeepsProgressAcrossListEdits() {
         val items = listOf("sayyid_istighfar", "ayat_kursi")
         val firstAsr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.ASR), friday)!!
+        val nextFajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), friday.plusDays(1))!!
         val nextAsr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.ASR), friday.plusDays(1))!!
         val first = repo.openSession(items, DhikrCategory.EVENING, now = firstAsr,
             collectionReading = true)
@@ -140,12 +149,20 @@ class AdhkarFlowTest {
         assertEquals(first, repo.openSession(expandedItems, DhikrCategory.EVENING,
             now = firstAsr + 3, collectionReading = true))
         assertEquals(1, repo.state.value.sessions.getValue(first).counts[items.first()])
+        assertEquals(first, repo.openSession(expandedItems, DhikrCategory.EVENING,
+            now = nextFajr - 1, collectionReading = true))
+        // From Fajr to Asr is no evening: a count then is kept apart and dropped when Asr comes.
         val beforeNextAsr = repo.openSession(expandedItems, DhikrCategory.EVENING,
-            now = nextAsr - 1, collectionReading = true)
-        assertEquals(first, beforeNextAsr)
+            now = nextFajr, collectionReading = true)
+        assertNotEquals(first, beforeNextAsr)
+        assertTrue(repo.state.value.sessions.getValue(beforeNextAsr).counts.isEmpty())
+        repo.count(beforeNextAsr, 1, nextFajr + 1)
+        assertEquals(beforeNextAsr, repo.openSession(expandedItems, DhikrCategory.EVENING,
+            now = nextAsr - 1, collectionReading = true))
         val next = repo.openSession(expandedItems, DhikrCategory.EVENING,
             now = nextAsr, collectionReading = true)
         assertNotEquals(first, next)
+        assertNotEquals(beforeNextAsr, next)
         assertTrue(repo.state.value.sessions.getValue(next).counts.isEmpty())
         val newReading = repo.openSession(expandedItems, DhikrCategory.EVENING, fresh = true,
             now = nextAsr + 1, collectionReading = true)
@@ -165,7 +182,7 @@ class AdhkarFlowTest {
     }
     @Test fun scheduledCollectionGetsFreshCountersForEachWindow() {
         val items = listOf("sayyid_istighfar", "ayat_kursi")
-        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING,
+        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING, end = DhikrTime(minuteOfDay = 690),
             daysOfWeek = (1..7).toSet())
         repo.save(rule)
         val firstWindow = window(rule)
@@ -184,7 +201,7 @@ class AdhkarFlowTest {
     }
     @Test fun morningReadingFromReminderIsDoneOnTheAdhkarTab() {
         val items = listOf("sayyid_istighfar", "ayat_kursi")
-        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING)
+        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING, end = DhikrTime(minuteOfDay = 690))
         repo.save(rule)
         val window = window(rule)
         val occurrence = repo.ensureOccurrence(rule, window)
@@ -216,7 +233,7 @@ class AdhkarFlowTest {
     }
     @Test fun morningProgressCarriesBetweenTheTabAndTheReminder() {
         val items = listOf("sayyid_istighfar", "ayat_kursi")
-        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING)
+        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING, end = DhikrTime(minuteOfDay = 690))
         repo.save(rule)
         val window = window(rule)
         val occurrence = repo.ensureOccurrence(rule, window)
@@ -490,7 +507,7 @@ class AdhkarFlowTest {
         assertNull(DhikrReminderScheduler.validate(context, rule().copy(end = DhikrTime(DhikrTimeKind.MAGHRIB)), summer))
     }
     @Test fun collectionGoalWaitsForEveryItemAndSkipAllStopsNudges() {
-        val rule = rule(1).copy(dhikrId = "sayyid_istighfar", collection = DhikrCategory.MORNING)
+        val rule = rule(1).copy(dhikrId = "sayyid_istighfar", collection = DhikrCategory.MORNING, end = DhikrTime(minuteOfDay = 690))
         repo.save(rule)
         val window = window(rule)
         val occurrence = repo.ensureOccurrence(rule, window)
@@ -518,7 +535,7 @@ class AdhkarFlowTest {
         assertTrue(DhikrReminderScheduler.nextNudge(context, rule, next.startMillis + 3)!! >= next.endMillis)
     }
     @Test fun collectionMembershipKeepsOneSessionAndReopensExpandedGoal() {
-        val rule = rule(1).copy(dhikrId = "sayyid_istighfar", collection = DhikrCategory.MORNING)
+        val rule = rule(1).copy(dhikrId = "sayyid_istighfar", collection = DhikrCategory.MORNING, end = DhikrTime(minuteOfDay = 690))
         repo.save(rule)
         val occurrence = repo.ensureOccurrence(rule, window(rule))
         val start = occurrence.startMillis
@@ -934,7 +951,7 @@ class AdhkarFlowTest {
     }
     @Test fun collectionReminderHasNoCounterAction() {
         val items = DhikrCatalog.entries.filter { DhikrCategory.MORNING in it.categories }.map { it.id }
-        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING)
+        val rule = rule(1).copy(dhikrId = items.first(), collection = DhikrCategory.MORNING, end = DhikrTime(minuteOfDay = 690))
         repo.save(rule)
         val window = window(rule)
         DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
@@ -1063,7 +1080,7 @@ class AdhkarFlowTest {
     }
     @Test fun emptyCollectionSuspendsAndMembershipRestoresReminder() {
         val members = repo.state.value.collectionEntries(DhikrCategory.MORNING).map { it.id }
-        val rule = rule(1).copy(dhikrId = members.first(), collection = DhikrCategory.MORNING)
+        val rule = rule(1).copy(dhikrId = members.first(), collection = DhikrCategory.MORNING, end = DhikrTime(minuteOfDay = 690))
         repo.save(rule)
         val window = window(rule)
         DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
@@ -1424,31 +1441,30 @@ class AdhkarFlowTest {
         assertTrue(repo.snooze(window.progressKey, at(tuesday, 8, 40)))
         assertEquals(at(tuesday, 8, 55), repo.state.value.occurrences.getValue(window.progressKey).snoozedUntilMillis)
     }
-    @Test fun collectionPeriodOpeningBeforeItsPrayerBelongsToThatDay() {
-        val day = LocalDate.of(2026, 10, 5); val next = day.plusDays(1)
-        repo.save(com.tunisianprayertimes.ui.eveningCollectionPreset().copy(start = DhikrTime(minuteOfDay = 15 * 60)),
-            at(day.minusDays(1), 12))
-        val rule = repo.state.value.reminders.single()
-        val items = repo.state.value.collectionEntries(DhikrCategory.EVENING).map { it.id }
-        // Day one: the whole list is read after Asr, from the reminder.
-        var tick = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.ASR), day)!! + 10 * 60_000L
-        DhikrReminderScheduler.refresh(context, nowMillis = tick)
-        val read = repo.ensureOccurrence(rule, window(rule, day))
-        val session = repo.openSession(items, DhikrCategory.EVENING, read.id, now = tick, collectionReading = true)
-        items.forEach { _ ->
-            repeat(repo.state.value.target(repo.state.value.sessions.getValue(session))) { repo.count(session, 1, ++tick) }
-            repo.move(session, 1)
-        }
-        assertEquals(DhikrOccurrenceStatus.COMPLETED, repo.state.value.occurrences.getValue(read.id).status)
-        // Day two starts at 15:00, before Asr: it is a new occasion, not yesterday's finished one.
-        assertTrue(DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.ASR), next)!! > at(next, 15))
-        DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = at(next, 14))
-        assertEquals(at(next, 15), JSONObject(eventOf(rule.id)!!).getLong("at"))
-        assertEquals(at(next, 15), DhikrReminderScheduler.nextNudge(context, rule, at(next, 14)))
-        val occurrence = repo.ensureOccurrence(rule, window(rule, next))
-        val reopened = repo.openSession(items, DhikrCategory.EVENING, occurrence.id, now = at(next, 15, 5), collectionReading = true)
-        assertTrue(repo.state.value.sessions.getValue(reopened).counts.values.all { it == 0 })
-        assertEquals(DhikrOccurrenceStatus.OPEN, repo.state.value.occurrences.getValue(occurrence.id).status)
+    @Test fun outsideItsOccasionACollectionSaysWhenItOpens() {
+        fun time(kind: DhikrTimeKind, day: LocalDate) = DhikrReminderScheduler.resolveTime(context, DhikrTime(kind), day)!!
+        val next = friday.plusDays(1)
+        assertNull(collectionOccasionOpensAt(context, DhikrCategory.EVENING, time(DhikrTimeKind.ASR, friday)))
+        assertNull(collectionOccasionOpensAt(context, DhikrCategory.EVENING, time(DhikrTimeKind.FAJR, next) - 1))
+        assertEquals(time(DhikrTimeKind.ASR, next), collectionOccasionOpensAt(context, DhikrCategory.EVENING, time(DhikrTimeKind.FAJR, next)))
+        assertNull(collectionOccasionOpensAt(context, DhikrCategory.MORNING, time(DhikrTimeKind.DHUHR, friday) - 1))
+        assertEquals(time(DhikrTimeKind.FAJR, next), collectionOccasionOpensAt(context, DhikrCategory.MORNING, time(DhikrTimeKind.DHUHR, friday)))
+        assertEquals(time(DhikrTimeKind.FAJR, next), collectionOccasionOpensAt(context, DhikrCategory.MORNING, time(DhikrTimeKind.FAJR, next) - 1))
+        assertNull(collectionOccasionOpensAt(context, DhikrCategory.NIGHT, time(DhikrTimeKind.FAJR, next)))
+    }
+    @Test fun morningAndEveningRemindersStayWithinTheirOccasion() {
+        fun problem(rule: DhikrReminder) = DhikrReminderScheduler.validate(context, rule, LocalDate.of(2026, 10, 5))
+        val evening = com.tunisianprayertimes.ui.eveningCollectionPreset()
+        val morning = com.tunisianprayertimes.ui.morningCollectionPreset()
+        assertNull(problem(evening))
+        assertNull(problem(evening.copy(end = DhikrTime(DhikrTimeKind.FAJR), endNextDay = true)))
+        assertNull(problem(morning.copy(end = DhikrTime(DhikrTimeKind.DHUHR))))
+        // Before Asr, past Fajr or past Dhuhr is outside the occasion.
+        assertTrue(problem(evening.copy(start = DhikrTime(DhikrTimeKind.ASR, offsetMinutes = -10)))!!.contains("من العصر إلى الفجر"))
+        assertNotNull(problem(evening.copy(end = DhikrTime(DhikrTimeKind.FAJR, offsetMinutes = 10), endNextDay = true)))
+        assertTrue(problem(morning.copy(end = DhikrTime(DhikrTimeKind.DHUHR, offsetMinutes = 10)))!!.contains("من الفجر إلى الظهر"))
+        // A clock time that fits in autumn falls before Asr in summer.
+        assertTrue(problem(evening.copy(start = DhikrTime(minuteOfDay = 16 * 60)))!!.startsWith("ابتداءً من"))
     }
     @Test fun searchMatchesAcrossPunctuationVerseMarksAndPauseSigns() {
         fun find(query: String) = normalizeDhikrSearch(query).let { wanted ->
