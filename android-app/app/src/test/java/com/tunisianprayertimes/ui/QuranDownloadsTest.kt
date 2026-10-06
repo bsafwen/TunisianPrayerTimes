@@ -158,7 +158,7 @@ class QuranDownloadsTest {
             QuranRecitationDownloadsSection(media, "hosary-qaloun", onDownloadAll = { downloadAll++ }, onUseMobileData = {},
                 onDelete = { packs -> deleted += packs.map { it.name } })
         }
-        compose.onNodeWithText("التلاوات المحمّلة: ٢ من ١١٤ سورة").assertIsDisplayed()
+        compose.onNodeWithText("التلاوات المحمّلة: 2 من 114 سورة").assertIsDisplayed()
         compose.onNodeWithTag("quran_audio_download_all").performSemanticsAction(SemanticsActions.OnClick)
         assertEquals(1, downloadAll)
 
