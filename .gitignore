@@ -44,6 +44,18 @@ keystore.properties
 # Local captures and reports that once leaked into android-app/build/.
 android-app/build/
 
+# Screen recordings (Play policy declaration videos) are far too large for git.
+*.mp4
+*.mov
+
+# Build output and tool caches that were once committed by accident: tv-app and
+# build-logic caches, the Kotlin session dir, R8 mappings and dex/jar intermediates.
+**/.gradle/
+**/.kotlin/
+/tv-app/build/
+/tv-app/app/build/
+/build-logic/build/
+
 # Quran media ships through Play Asset Delivery and the quran-cdn Worker, never through git.
 # Only the small JSON indexes under assets/quran are committed.
 android-app/app/src/main/assets/quran/**/*.mp3
