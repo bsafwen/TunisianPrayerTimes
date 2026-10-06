@@ -521,6 +521,8 @@ object DhikrReminderScheduler {
             countFromNotification(context, repo, id, now)
             return@synchronized
         }
+        // New notifications no longer offer snooze (a swipe does the same job); this still serves
+        // the button on notifications posted by an older build.
         if (intent.action == ACTION_SNOOZE) {
             val id = intent.getStringExtra("occurrence") ?: return@synchronized
             val occurrence = repo.state.value.occurrences[id] ?: return@synchronized
@@ -690,12 +692,6 @@ object DhikrReminderScheduler {
         builder.addAction(0, "تم", PendingIntent.getBroadcast(context, 0, done,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
         builder.setVibrate(if (rule?.vibrate == false || !alert) longArrayOf(0L) else longArrayOf(0, 250, 120, 250))
-        if (now + 35 * 60_000L <= endMillis) {
-            val snooze = Intent(context, DhikrReminderReceiver::class.java).setAction(ACTION_SNOOZE)
-                .setData(Uri.parse("tunisianprayertimes://adhkar/snooze/" + Uri.encode(occurrence.id)))
-                .putExtra("occurrence", occurrence.id)
-            builder.addAction(0, "تأجيل", PendingIntent.getBroadcast(context, 0, snooze, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE))
-        }
         Log.d(TAG, "posting " + occurrence.id + " title=$title")
         return runCatching { manager(context).notify(occurrence.id, 1, builder.build()) }
             .onFailure { Log.w(TAG, "Could not post reminder for " + occurrence.id, it) }.isSuccess

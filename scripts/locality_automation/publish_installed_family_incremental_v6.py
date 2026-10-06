@@ -12,7 +12,7 @@ from scripts.locality_automation.run_sealed_boundary_queue import read,pin,check
 from scripts.locality_automation.audit_reviewed_source_family import put
 
 
-def publish(work,evidence,receipt,family_slug,family_label,install_execution=None):
+def publish(work,evidence,receipt,family_slug,family_label,install_execution=None,practical_receipt=None):
     control=read(work.parent/'control.json')
     spec={k:control[k]for k in ['iteration','windowStartUtc','deadlineUtc']}
     spec.update(control=str(work.parent/'control.json'),owner='/root');active_control(spec)
@@ -22,7 +22,9 @@ def publish(work,evidence,receipt,family_slug,family_label,install_execution=Non
     import task_report_app as app
     before=read(work/('before-'+family_slug+'-publication-task-report.json'))
     oldmap=read(work/('before-'+family_slug+'-publication-boundary-map.json'))
-    practical_ref=pin(work/(family_slug+'-live-reviewed-install-v1/practical-receipt.json'))
+    practical_path=practical_receipt or work/(family_slug+'-live-reviewed-install-v1/practical-receipt.json')
+    assert practical_path.is_relative_to(work)
+    practical_ref=pin(practical_path)
     practical=read(checked(practical_ref));gps=read(checked(practical['gpsEvidence']))
     codes=practical['boundaryLocalityCodes']
     if codes!=control['approvedCycle'+str(control['iteration'])+'AcceptancePool']:raise ValueError('Current family scope differs')
@@ -171,5 +173,5 @@ def publish(work,evidence,receipt,family_slug,family_label,install_execution=Non
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     for n in ['work','evidence','receipt']:p.add_argument('--'+n,type=Path,required=True)
-    p.add_argument('--family-slug',required=True);p.add_argument('--family-label',required=True);p.add_argument('--install-execution',type=Path)
-    args=p.parse_args();publish(args.work.resolve(),args.evidence.resolve(),args.receipt.resolve(),args.family_slug,args.family_label,args.install_execution.resolve() if args.install_execution else None)
+    p.add_argument('--family-slug',required=True);p.add_argument('--family-label',required=True);p.add_argument('--install-execution',type=Path);p.add_argument('--practical-receipt',type=Path)
+    args=p.parse_args();publish(args.work.resolve(),args.evidence.resolve(),args.receipt.resolve(),args.family_slug,args.family_label,args.install_execution.resolve() if args.install_execution else None,args.practical_receipt.resolve()if args.practical_receipt else None)
