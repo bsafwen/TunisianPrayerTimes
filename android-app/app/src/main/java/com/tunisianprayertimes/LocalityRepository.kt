@@ -660,22 +660,11 @@ object LocalityRepository {
 
     private fun readCatalog(context: Context): List<Locality> {
         val governors = GouvernoratRepository.loadAll(context)
-        val result = governors.flatMap { gov ->
-            gov.delegations.map { d ->
-                LocalityDisplayNames.localize(context,
-                    Locality("delegation:${d.id}", d.nomAr, d.nomAr, gov.id, d.id,
-                        normalizeLocalitySearch("${d.nomAr} ${d.nomFr} ${d.nomEn} ${gov.nomAr} ${gov.nomFr} ${gov.nomEn}"),
-                        searchPhrases = listOf(d.nomAr, d.nomFr, d.nomEn, gov.nomAr, gov.nomFr, gov.nomEn))
-                )
-            }
-        }.toMutableList()
         // Browsing names does not read the polygon binary or validate its geometry.
-        // The original delegations remain usable if the metadata asset is damaged.
-        val extra = runCatching {
+        // A damaged catalogue must not restore the retired main-branch choices.
+        return runCatching {
             enrichLocalityCatalog(NeighborhoodRepository.loadLocalities(context), governors)
         }.getOrDefault(emptyList())
-        result += extra
-        return result.toList()
     }
 
     fun loadAvailable(context: Context, available: List<Delegation>): List<Locality> =

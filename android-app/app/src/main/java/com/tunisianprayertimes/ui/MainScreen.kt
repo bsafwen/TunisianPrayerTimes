@@ -1700,9 +1700,8 @@ private fun LocationPickerCard(
 
     val locationTitle = selectedLocation.name
         ?: if (selectedLocation.fromGps) stringResource(R.string.location_current_position)
-        else savedDelegation?.nomAr
-        ?: stringResource(R.string.hint_search_delegation)
-    val hasLocation = savedDelegation != null || selectedLocation.fromGps
+        else stringResource(R.string.hint_search_delegation)
+    val hasLocation = selectedLocation.name != null || selectedLocation.fromGps
     val governorateName = remember(gouvernorats, delegationId) {
         gouvernorats.firstOrNull { gov -> gov.delegations.any { it.id == delegationId } }?.nomAr
     }
@@ -1823,7 +1822,7 @@ private fun LocationPickerCard(
         LocalityPickerSheet(
             catalog = pickerCatalog,
             gouvernorats = gouvernorats,
-            selectedId = selectedLocation.localityId ?: if (selectedLocation.fromGps) "" else "delegation:$delegationId",
+            selectedId = selectedLocation.localityId.orEmpty(),
             onDismiss = {
                 selectionJob?.cancel()
                 showSheet = false
