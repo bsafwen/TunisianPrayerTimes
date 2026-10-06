@@ -132,3 +132,6 @@ __pycache__/
 android-app/BUG_REVIEW.md
 
 android-app/app/build/
+
+# Neighborhood research workspace (evidence PDFs, review batches) is local only.
+/scripts/neighborhoods/
