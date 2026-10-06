@@ -202,12 +202,13 @@ internal fun quranDownloadProblemText(problem: QuranDownloadProblem?): String = 
 }
 
 internal fun quranSize(bytes: Long): String {
-    val arabic = Locale.forLanguageTag("ar")
+    // Digits are always 0-9, never the Arabic-Indic ones.
+    val arabic = Locale.ROOT
     return if (bytes >= 1_000_000_000L) String.format(arabic, "%.1f غيغابايت", bytes / 1e9)
     else String.format(arabic, "%d ميغابايت", ((bytes + 999_999L) / 1_000_000L).coerceAtLeast(1L))
 }
 
-internal fun quranPercent(fraction: Float): String = String.format(Locale.forLanguageTag("ar"), "%d٪", (fraction * 100).toInt())
+internal fun quranPercent(fraction: Float): String = String.format(Locale.ROOT, "%d%%", (fraction * 100).toInt())
 
 /**
  * The mushaf's pages, until they are on the device: their size and a download button, the
@@ -286,7 +287,7 @@ internal fun QuranRecitationDownloadsSection(
     var confirmDelete by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxWidth().testTag("quran_audio_downloads"), verticalArrangement = Arrangement.spacedBy(4.dp)) {
         Text(
-            "التلاوات المحمّلة: ${String.format(Locale.forLanguageTag("ar"), "%d", chapters)} من ١١٤ سورة",
+            "التلاوات المحمّلة: $chapters من 114 سورة",
             fontSize = 13.sp, color = TextMuted,
         )
         when (summary?.status) {

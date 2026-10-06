@@ -1,9 +1,7 @@
 package com.tunisianprayertimes.ui
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.BitmapFactory
-import android.net.Uri
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Canvas
@@ -63,7 +61,7 @@ import com.tunisianprayertimes.quran.QuranCatalog
 import com.tunisianprayertimes.quran.QuranPage
 import com.tunisianprayertimes.quran.QuranRepository
 import com.tunisianprayertimes.quran.QuranSearchHit
-import com.tunisianprayertimes.quran.QuranSearchResult
+import com.tunisianprayertimes.quran.withRecentSearch
 import com.tunisianprayertimes.quran.QuranHighlights
 import com.tunisianprayertimes.quran.QuranHighlightRect
 import com.tunisianprayertimes.quran.QuranHighlightRepository
@@ -186,6 +184,9 @@ private fun QuranReader(
     // The verses a tapped search result found, coloured until the reader leaves their page(s).
     var foundDraft by rememberSaveable { mutableStateOf<String?>(null) }
     val found = remember(foundDraft) { QuranSearchHit.decode(foundDraft) }
+    // The last search, kept while the reader is open so its results can be come back to and walked through.
+    val search = rememberQuranSearch(catalog)
+    var recentSearches by remember { mutableStateOf(readRecentSearches(prefs)) }
     var zoomed by remember { mutableStateOf(false) }
     val page = pages[pager.currentPage]
     val haptics = LocalHapticFeedback.current
@@ -244,6 +245,12 @@ private fun QuranReader(
         followAudio = false
         foundDraft = hit?.encode()
         scope.launch { pager.scrollToPage((number - 1).coerceIn(0, pages.lastIndex)) }
+    }
+    fun openResult(position: Int) {
+        val result = search.visible.getOrNull(position) ?: return
+        search.current = position
+        recentSearches = recentSearches.withRecentSearch(search.query).also { writeRecentSearches(prefs, it) }
+        openPage(result.page, result.hit)
     }
     fun openRepeat(range: QuranRepeatRange) {
         repeatDraft = range.encode(1)
@@ -320,6 +327,10 @@ private fun QuranReader(
                 onSettled = { if (index == pager.currentPage) onPageSettled() },
             )
         }
+        QuranResultStepper(
+            search, found, onOpen = ::openResult, onList = { panel = "search" },
+            onClose = { foundDraft = null; search.current = -1 },
+        )
         HorizontalDivider(color = CardBorder)
         QuranAudioControls(
             catalog, page.number, followAudio, onFollow = { followAudio = true }, onRepeat = ::openRepeat,
@@ -344,7 +355,11 @@ private fun QuranReader(
         "chapters" -> if (catalog != null) QuranChapterSheet(
             catalog, page.number, onDismiss = { panel = null }, onPage = ::openPage, onPageNumber = { panel = "page" },
         )
-        "search" -> if (catalog != null) QuranSearchSheet(catalog, onDismiss = { panel = null }, onResult = { openPage(it.page, it.hit) })
+        "search" -> if (catalog != null) QuranSearchSheet(
+            search, recentSearches,
+            onClearRecents = { recentSearches = emptyList(); writeRecentSearches(prefs, emptyList()) },
+            onDismiss = { panel = null }, onResult = ::openResult,
+        )
         "page" -> QuranPageDialog(page.number, onDismiss = { panel = null }, onPage = ::openPage)
     }
     if (repeatSheet != null && catalog != null) {
@@ -509,7 +524,7 @@ private fun QuranPageImage(
                         )
                     }
                     // Only the found, recited and pressed verses are coloured; the rest of the page stays white.
-                    tint(foundRects, Color(0x575BB8E8))
+                    tint(foundRects, QuranFoundColor)
                     tint(highlightRects, Color(0x5266BB6A))
                     tint(selectedRects, Color(0x5200695C))
                 }
@@ -543,7 +558,7 @@ private fun QuranChapterSheet(
         catalog.surahs.filter { query.isBlank() || quranFilter(it.name).contains(quranFilter(query)) || it.number == quranInputNumber(query) }
     }
     ModalBottomSheet(onDismissRequest = onDismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = BgCream) {
-        Column(Modifier.fillMaxWidth().fillMaxHeight(.88f).imePadding().padding(horizontal = 16.dp)) {
+        Column(Modifier.fillMaxWidth().quranSheetHeight().padding(horizontal = 16.dp)) {
             QuranPanelHeader("فهرس السور", onDismiss)
             OutlinedTextField(
                 value = query, onValueChange = { query = it }, modifier = Modifier.fillMaxWidth(),
@@ -575,81 +590,8 @@ private fun QuranChapterSheet(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun QuranSearchSheet(catalog: QuranCatalog, onDismiss: () -> Unit, onResult: (QuranSearchResult) -> Unit) {
-    val context = LocalContext.current
-    var query by rememberSaveable { mutableStateOf("") }
-    var showSources by rememberSaveable { mutableStateOf(false) }
-    var results by remember { mutableStateOf<List<QuranSearchResult>>(emptyList()) }
-    var searching by remember { mutableStateOf(false) }
-    val focus = LocalFocusManager.current
-    LaunchedEffect(query, catalog) {
-        results = emptyList()
-        searching = query.isNotBlank()
-        if (query.isNotBlank()) {
-            delay(180)
-            results = withContext(Dispatchers.Default) { catalog.search(query) }
-        }
-        searching = false
-    }
-    ModalBottomSheet(onDismissRequest = onDismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true), containerColor = BgCream) {
-        Column(Modifier.fillMaxWidth().fillMaxHeight(.9f).imePadding().padding(horizontal = 16.dp)) {
-            QuranPanelHeader("البحث في القرآن", onDismiss)
-            OutlinedTextField(
-                value = query, onValueChange = { query = it }, modifier = Modifier.fillMaxWidth().testTag("quran_search_input"),
-                placeholder = { Text("اكتب كلمة أو كلمات من الآية") }, singleLine = true,
-                leadingIcon = { Icon(painterResource(R.drawable.ic_adhkar_search), null) },
-                trailingIcon = {
-                    if (query.isNotEmpty()) IconButton(onClick = { query = "" }) {
-                        Icon(painterResource(R.drawable.ic_adhkar_close), "مسح البحث")
-                    }
-                },
-                shape = RoundedCornerShape(14.dp), keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
-                keyboardActions = KeyboardActions(onSearch = { focus.clearFocus() }),
-            )
-            Text(
-                when {
-                    query.isBlank() -> "ابحث مع التشكيل أو بدونه"
-                    searching -> "جارٍ البحث…"
-                    results.isEmpty() -> "لا توجد نتائج. جرّب كلمة أخرى."
-                    else -> "${quranNumber(results.size)} نتيجة · اضغط لفتح الصفحة"
-                },
-                Modifier.padding(vertical = 12.dp), fontSize = 12.sp, color = TextMuted,
-            )
-            LazyColumn(Modifier.weight(1f).testTag("quran_search_results"), contentPadding = PaddingValues(bottom = 16.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                items(results) { result ->
-                    Column(
-                        Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color.White)
-                            .clickable { focus.clearFocus(); onResult(result) }.padding(14.dp),
-                    ) {
-                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            Text(result.surahName, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimary)
-                            Text(quranPageLabel(result.page), fontSize = 12.sp, color = TextMuted)
-                        }
-                        Text(result.text, Modifier.padding(top = 8.dp), fontFamily = AdhkarReadingFont, fontSize = 22.sp, lineHeight = 36.sp, color = TextDark)
-                    }
-                }
-            }
-            TextButton(onClick = { showSources = true }, modifier = Modifier.align(Alignment.CenterHorizontally)) { Text("مصادر النص") }
-        }
-    }
-    if (showSources) AlertDialog(
-        onDismissRequest = { showSources = false },
-        title = { Text("مصادر النص") },
-        text = {
-            Column {
-                Text("نص البحث برواية قالون من الموسوعة القرآنية، مع الاستعانة ببيانات Tanzil لأرقام الصفحات والبحث بالإملاء المعتاد.", fontSize = 14.sp)
-                TextButton(onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://quranpedia.net/surah/7/1"))) }) { Text("الموسوعة القرآنية") }
-                TextButton(onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://tanzil.net"))) }) { Text("Tanzil Project · CC BY 3.0") }
-            }
-        },
-        confirmButton = { TextButton(onClick = { showSources = false }) { Text("إغلاق") } },
-    )
-}
-
-@Composable
-private fun QuranPanelHeader(title: String, onDismiss: () -> Unit) {
+internal fun QuranPanelHeader(title: String, onDismiss: () -> Unit) {
     Row(Modifier.fillMaxWidth().padding(bottom = 8.dp), verticalAlignment = Alignment.CenterVertically) {
         Text(title, Modifier.weight(1f), fontSize = 20.sp, fontWeight = FontWeight.SemiBold, color = GreenPrimaryDark)
         IconButton(onClick = onDismiss) { Icon(painterResource(R.drawable.ic_adhkar_close), "إغلاق") }
@@ -682,12 +624,12 @@ private fun QuranPageDialog(current: Int, onDismiss: () -> Unit, onPage: (Int) -
     )
 }
 
-private fun quranNumber(value: Int): String = String.format(Locale.forLanguageTag("ar"), "%d", value)
+internal fun quranNumber(value: Int): String = value.toString()
 
 internal fun quranInputNumber(value: String): Int? = value.trim()
     .map { c -> c.digitToIntOrNull()?.digitToChar() ?: c }.joinToString("").toIntOrNull()
 
-private fun quranPageLabel(scan: Int): String = if (scan <= QuranScanCount) "صفحة ${quranNumber(scan + 1)}"
+internal fun quranPageLabel(scan: Int): String = if (scan <= QuranScanCount) "صفحة ${quranNumber(scan + 1)}"
     else "الملحق ${quranNumber(scan - QuranScanCount)}"
 
 private fun quranFilter(value: String): String = value.trim()

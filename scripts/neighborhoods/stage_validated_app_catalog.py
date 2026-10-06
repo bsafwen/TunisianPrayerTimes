@@ -15,6 +15,8 @@ def main():
  a=p.parse_args();out=a.output.resolve();out.mkdir()
  assets=a.assets.resolve();names=['neighborhoods.json','neighborhoods.bin','retired-localities.json','locality-display-names.json']
  for n in names:(out/('before-'+n)).write_bytes((assets/n).read_bytes())
+ for label,path in [('accepted-map.json',a.map),('accepted-report.json',a.report)]:
+  (out/label).write_bytes(path.read_bytes())
  m=read(a.map);report=read(a.report);before=read(assets/names[0]);blob=(assets/names[1]).read_bytes()
  assert m['currentAssets']['metadata']==pin(assets/names[0]) and m['currentAssets']['binary']==pin(assets/names[1])
  assert len(m['locations'])==report['summary']['explicitFullSourceBoundaryLocationCount']
@@ -50,6 +52,12 @@ def main():
  after['retiredLocalityIds']=sorted(retired_ids)
  put(out/names[0],after);(out/names[1]).write_bytes(packed);put(out/names[2],retired);put(out/names[3],display)
  receipt={'status':'STAGED_VALIDATED_ONLY_CATALOGUE_WITH_IDENTICAL_RETAINED_GEOMETRY_BYTES','acceptedMap':pin(a.map),'acceptedReport':pin(a.report),'mainCatalog':pin(a.main_catalog),'beforeAssets':{n:pin(assets/n)for n in names},'stagedAssets':{n:pin(out/n)for n in names},'validatedLocations':len(keep),'removedLegacyEntries':len(removed),'removedLegacyIds':sorted(removed),'removedDelegationPickerRows':len(delegates),'allValidatedIdsRetained':True,'everyRetainedPackedSliceByteIdentical':True,'countryBytesIdentical':True,'coordinatesAndNamesUnchanged':True,'allPickerGroupsUseOwnValidatedId':True,'derivedCellIndexesOnlyRemapped':True,'existingConflictsOnlyFilteredByRetainedIds':True,'oldSavedLocationsRetired':True,'geographicValidationCredit':0,'gpsProbes':0}
+ receipt['frozenBeforeAssets']={n:pin(out/('before-'+n))for n in names}
+ receipt['frozenAcceptedMap']=pin(out/'accepted-map.json')
+ receipt['frozenAcceptedReport']=pin(out/'accepted-report.json')
+ assert all(receipt['frozenBeforeAssets'][n]['sha256']==receipt['beforeAssets'][n]['sha256']for n in names)
+ assert receipt['frozenAcceptedMap']['sha256']==receipt['acceptedMap']['sha256']
+ assert receipt['frozenAcceptedReport']['sha256']==receipt['acceptedReport']['sha256']
  put(out/'stage-receipt.json',receipt)
  print(json.dumps({k:receipt[k]for k in ['status','validatedLocations','removedLegacyEntries','removedDelegationPickerRows','everyRetainedPackedSliceByteIdentical','gpsProbes']}))
 if __name__=='__main__':main()

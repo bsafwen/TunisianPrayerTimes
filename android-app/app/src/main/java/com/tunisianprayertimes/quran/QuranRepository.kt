@@ -9,25 +9,6 @@ data class QuranPage(val number: Int, val assetPath: String, val surahNames: Lis
 
 data class QuranSurah(val number: Int, val name: String, val page: Int, val verseCount: Int? = null)
 
-/** [verses] are the ones the query touches on [page], in mushaf order. */
-data class QuranSearchResult(val surahName: String, val text: String, val page: Int, val verses: List<QuranVerseReference>) {
-    val hit: QuranSearchHit get() = QuranSearchHit(page, verses)
-}
-
-/** What a tapped search result leaves on the page it opens: the verses to colour there. */
-data class QuranSearchHit(val page: Int, val verses: List<QuranVerseReference>) {
-    fun encode(): String = (listOf(page) + verses.flatMap { listOf(it.surah, it.ayah) }).joinToString(":")
-
-    companion object {
-        /** Null for anything [encode] could not have written, so a stale saved value shows nothing. */
-        fun decode(value: String?): QuranSearchHit? {
-            val numbers = value?.split(':')?.map { it.toIntOrNull() ?: return null } ?: return null
-            if (numbers.size < 3 || numbers.size % 2 == 0 || numbers[0] < 1) return null
-            return QuranSearchHit(numbers[0], numbers.drop(1).chunked(2).map { QuranVerseReference(it[0], it[1]) })
-        }
-    }
-}
-
 internal data class QuranSearchEntry(
     val surah: Int,
     val ayah: Int,
@@ -37,8 +18,9 @@ internal data class QuranSearchEntry(
     val isFirstFragment: Boolean = true,
     val isLastFragment: Boolean = true,
 ) {
-    val normalized = normalizeQuranSearch(text)
-    val spelling = normalizeQuranSearch(searchText)
+    // Read when the first search is prepared, not while the index loads.
+    val normalized: String by lazy { normalizeQuranSearch(text) }
+    val spelling: String by lazy { normalizeQuranSearch(searchText) }
 }
 
 class QuranCatalog internal constructor(
@@ -46,7 +28,7 @@ class QuranCatalog internal constructor(
     val surahs: List<QuranSurah>,
     private val entries: List<QuranSearchEntry>,
 ) {
-    private val pageText = entries.groupBy { it.surah to it.page }.values.map { QuranPageText(it) }
+    private val searchIndex by lazy { QuranSearchIndex(entries, surahs) }
     val verseFragments: List<QuranVerseFragment> = entries.map {
         QuranVerseFragment(QuranVerseReference(it.surah, it.ayah), it.page, it.text, it.isFirstFragment, it.isLastFragment)
     }
@@ -68,44 +50,15 @@ class QuranCatalog internal constructor(
 
     fun versesOnPage(page: Int): List<QuranVerse> = versesByPage[page].orEmpty()
 
-    /** The index is independent of verse numbering, which differs between mushaf editions. */
-    fun search(query: String): List<QuranSearchResult> {
-        val needle = normalizeQuranSearch(query)
-        if (needle.isBlank()) return emptyList()
-        return pageText.mapNotNull { page ->
-            page.match(needle)?.let { found ->
-                QuranSearchResult(
-                    surahs[page.surah - 1].name,
-                    found.joinToString(" ") { it.text },
-                    page.number,
-                    found.map { QuranVerseReference(it.surah, it.ayah) }.distinct(),
-                )
-            }
-        }
-    }
-}
+    /**
+     * Verses holding the words, best matches first; see [QuranSearchKind]. The index is independent
+     * of verse numbering, which differs between mushaf editions.
+     */
+    fun search(query: String): List<QuranSearchResult> = searchIndex.search(query)
 
-/** Search across verse boundaries while showing only the matching source verse fragments. */
-private class QuranPageText(private val entries: List<QuranSearchEntry>) {
-    val surah = entries.first().surah
-    val number = entries.first().page
-    private val original = entries.joinToString(" ") { it.normalized }
-    private val spelling = entries.joinToString(" ") { it.spelling }
-
-    /** The source fragments the query runs through, or null when this page does not contain it. */
-    fun match(query: String): List<QuranSearchEntry>? {
-        val originalStart = original.indexOf(query)
-        val spellingStart = if (originalStart < 0) spelling.indexOf(query) else -1
-        val start = maxOf(originalStart, spellingStart)
-        if (start < 0) return null
-        val end = start + query.length
-        var offset = 0
-        return entries.filter { entry ->
-            val length = if (originalStart >= 0) entry.normalized.length else entry.spelling.length
-            val intersects = offset < end && offset + length > start
-            offset += length + 1
-            intersects
-        }
+    /** Builds what the first search needs. Call on a background dispatcher once the catalog is read. */
+    fun prepareSearch() {
+        searchIndex
     }
 }
 
@@ -195,7 +148,9 @@ internal fun normalizeQuranSearch(value: String): String = buildString {
             else -> append(' ')
         }
     }
-}.replace(Regex("\\s+"), " ").trim()
+}.replace(whitespace, " ").trim()
+
+private val whitespace = Regex("\\s+")
 
 private val markTypes = setOf(
     Character.NON_SPACING_MARK.toInt(),
