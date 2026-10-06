@@ -781,7 +781,7 @@ class AdhkarFlowTest {
         val notifications = context.getSystemService(NotificationManager::class.java).activeNotifications
         assertEquals(1, notifications.size)
         assertEquals(0, repo.state.value.occurrences.getValue(window.progressKey).count)
-        assertEquals(listOf(DhikrReminderScheduler.COUNT_ACTION_TITLE, "تم", "تأجيل"), notifications.single().notification.actions.map { it.title.toString() })
+        assertEquals(listOf(DhikrReminderScheduler.COUNT_ACTION_TITLE, "تم"), notifications.single().notification.actions.map { it.title.toString() })
         val open = Shadows.shadowOf(notifications.single().notification.contentIntent).savedIntent
         assertEquals(window.progressKey, open.getStringExtra(DhikrReminderScheduler.EXTRA_OCCURRENCE_ID))
     }
@@ -965,8 +965,7 @@ class AdhkarFlowTest {
         val original = event()
         deliver(original, window.startMillis)
         val manager = context.getSystemService(NotificationManager::class.java)
-        val snooze = Shadows.shadowOf(manager.activeNotifications.single().notification.actions
-            .first { it.title.toString() == "تأجيل" }.actionIntent).savedIntent
+        val snooze = legacySnoozeIntent(manager.activeNotifications.single().tag)
         val clickedAt = window.startMillis + 10 * 60_000L
         DhikrReminderScheduler.receive(context, snooze, clickedAt)
 
@@ -1235,6 +1234,9 @@ class AdhkarFlowTest {
     private fun eventOf(id: String): String? = context.getSharedPreferences("adhkar_schedule_v2", 0).getString("event:$id", null)
     private fun stored(id: String) = repo.state.value.reminders.first { it.id == id }
     private fun notifications() = context.getSystemService(NotificationManager::class.java).activeNotifications
+    /** What the snooze button on a notification from an older build sends. */
+    private fun legacySnoozeIntent(occurrenceId: String) = Intent(context, DhikrReminderReceiver::class.java)
+        .setAction(DhikrReminderScheduler.ACTION_SNOOZE).putExtra("occurrence", occurrenceId)
 
     @Test fun samePrayerOnTheNextDayIsAValidPeriod() {
         val thursdayNight = DhikrReminder(dhikrId = DhikrCatalog.SALAWAT_ID, targetCount = 100, daysOfWeek = setOf(4),
@@ -1413,8 +1415,7 @@ class AdhkarFlowTest {
         val window = window(stored(rule.id), tuesday)
         DhikrReminderScheduler.refresh(context, rearm = true, nowMillis = window.startMillis - 1)
         deliver(eventOf(rule.id)!!, window.startMillis)
-        val snooze = Shadows.shadowOf(notifications().single().notification.actions
-            .first { it.title.toString() == "تأجيل" }.actionIntent).savedIntent
+        val snooze = legacySnoozeIntent(window.progressKey)
         // Too late to come back: the tap is not ignored, the notification goes.
         DhikrReminderScheduler.receive(context, snooze, at(tuesday, 8, 52))
         assertEquals(0L, repo.state.value.occurrences.getValue(window.progressKey).snoozedUntilMillis)

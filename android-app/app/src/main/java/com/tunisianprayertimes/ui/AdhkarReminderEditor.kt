@@ -741,8 +741,8 @@ import org.json.JSONObject
             Text(collection?.let(::collectionTitle) ?: selectedEntry?.title.orEmpty(), fontWeight = FontWeight.Bold)
             Text(if (collection != null) "حان وقت قراءة الأذكار"
                 else "حان وقت الذكر • 0 من " + latinNumber(edited.targetCount.coerceAtLeast(1)))
-            Text("متابعة الذكر     ·     تم     ·     تأجيل", color = p.primary)
-            Text("هذه معاينة فقط، ولن يُرسَل إشعار الآن. «تم» ينهي تذكير اليوم. يظهر «تأجيل» إذا بقيت 35 دقيقة على الأقل قبل نهاية الفترة، ويؤخّر الإشعار 30 دقيقة.",
+            Text("متابعة الذكر     ·     تم", color = p.primary)
+            Text("هذه معاينة فقط، ولن يُرسَل إشعار الآن. «تم» ينهي تذكير اليوم.",
                 fontSize = 12.sp, color = p.muted)
         } }, confirmButton = { TextButton(onClick = { preview = false }) { Text("إغلاق") } })
 }

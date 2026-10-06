@@ -25,7 +25,9 @@ def replace(p,v):
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     for k in ['work','stage','gps','run','handoff','output','transaction']:p.add_argument('--'+k,type=Path,required=True)
-    a=p.parse_args();w=a.work.resolve();assert Path.cwd().resolve()==w
+    a=p.parse_args()
+    for k in ['work','stage','gps','run','handoff','output','transaction']:setattr(a,k,getattr(a,k).resolve())
+    w=a.work;assert Path.cwd().resolve()==w
     c=read(w.parent/'control.json');s={k:c[k]for k in ['iteration','windowStartUtc','deadlineUtc']};s.update(control=str(w.parent/'control.json'),owner='/root');active_control(s)
     stage=read(a.stage);gps=read(a.gps);check_tree(stage);check_tree(gps);proposal=read(checked(stage['proposal']));assert stage['status']=='STAGED_NEW_PROVED_OFFICIAL_ENTRY_REQUIRES_TARGET_GPS'
     codes=[p['officialCode']for p in proposal['patches']];assert codes==c['approvedCycle'+str(c['iteration'])+'AcceptancePool'] and len(codes)==1
