@@ -170,6 +170,22 @@ fun AdhkarScreen(activity: AppCompatActivity, requestedReminderId: String? = nul
             return
         }
         openItems(items, value, collectionReading = true)
+        // Once ever per collection: read outside its occasion, the morning or evening list counts for nothing.
+        if (value == DhikrCategory.MORNING || value == DhikrCategory.EVENING) scope.launch {
+            val prefs = activity.getSharedPreferences(ADHKAR_HINTS_PREFS, Context.MODE_PRIVATE)
+            val hint = "outsideOccasion:" + value.name
+            if (prefs.getBoolean(hint, false)) return@launch
+            val opensAt = withContext(Dispatchers.IO) {
+                collectionOccasionOpensAt(activity, value, System.currentTimeMillis())
+            } ?: return@launch
+            prefs.edit().putBoolean(hint, true).apply()
+            val clock = bidiClock(Instant.ofEpochMilli(opensAt).atZone(ZoneId.systemDefault())
+                .format(DateTimeFormatter.ofPattern("HH:mm", Locale.US)))
+            snackbar.showSnackbar(if (value == DhikrCategory.MORNING)
+                "انتهى وقت أذكار الصباح مع الظهر، ويعود مع الفجر ($clock). ما تقرؤه الآن لا يُحسب لأذكار الصباح."
+                else "لم يحن وقت أذكار المساء بعد؛ يبدأ مع العصر ($clock). ما تقرؤه الآن لا يُحسب لأذكار المساء.",
+                duration = SnackbarDuration.Long)
+        }
     }
     fun showEmptyReminderCollection() {
         showReminders = false
@@ -1472,6 +1488,7 @@ internal fun formatDhikrTime(millis: Long, now: Long = System.currentTimeMillis(
     return if (time.toLocalDate() == Instant.ofEpochMilli(now).atZone(zone).toLocalDate()) clock
     else time.format(DateTimeFormatter.ofPattern("EEEE d MMMM", calendarLocale)) + " · " + clock
 }
+private const val ADHKAR_HINTS_PREFS = "adhkar_hints"
 internal const val EMPTY_COLLECTION_HINT =
     "هذه المجموعة فارغة. افتح ذكرًا من المكتبة، ثم اختر «إضافة هذا الذكر إلى مجموعة» من قائمة الخيارات."
 internal fun collectionTitle(category: DhikrCategory) = if (category == DhikrCategory.SALAH) "أذكار بعد الصلاة" else "أذكار " + category.title

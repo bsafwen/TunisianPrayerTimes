@@ -145,9 +145,12 @@ object DhikrReminderScheduler {
      */
     private fun scheduleProblem(context: Context, rule: DhikrReminder, today: LocalDate): DhikrPeriodProblem? {
         // The editor validates on every change; only a changed schedule is scanned again.
-        val key = listOf(PrefsManager.getDelegationId(context), ZoneId.systemDefault(), today, rule.daysOfWeek, rule.intervals())
+        val key = listOf(PrefsManager.getDelegationId(context), ZoneId.systemDefault(), today, rule.daysOfWeek, rule.intervals(),
+            rule.collection ?: "")
         scheduleScan?.takeIf { it.first == key }?.let { return it.second }
-        val clockOnly = rule.intervals().all { it.start.kind == DhikrTimeKind.FIXED && it.end.kind == DhikrTimeKind.FIXED }
+        // A clock time can drift out of a collection's occasion as the prayers move: scan the year for those too.
+        val clockOnly = rule.collection !in occasionCollections &&
+            rule.intervals().all { it.start.kind == DhikrTimeKind.FIXED && it.end.kind == DhikrTimeKind.FIXED }
         val several = rule.intervals().size > 1
         var available = false
         // Weekdays whose periods already worked on an earlier date of the scan.
@@ -206,9 +209,14 @@ object DhikrReminderScheduler {
     }
     fun resolveWindow(context: Context, rule: DhikrReminder, date: LocalDate): DhikrWindow? =
         resolveWindows(context, rule, date).firstOrNull()
-    private enum class WindowIssue { END_BEFORE_START, TOO_LONG, TOO_LONG_NEXT_DAY_TICKED, OVERLAP, RUNS_INTO_NEXT_DAY }
+    private enum class WindowIssue { END_BEFORE_START, TOO_LONG, TOO_LONG_NEXT_DAY_TICKED, OVERLAP, RUNS_INTO_NEXT_DAY, OUTSIDE_OCCASION }
     /** [period] is the period at fault and [other] the one it collides with, as indices into the rule's periods. */
-    private class WindowProblem(val issue: WindowIssue, val period: Int, val other: Int? = null) {
+    private class WindowProblem(val issue: WindowIssue, val period: Int, val other: Int? = null,
+                                val collection: DhikrCategory? = null) {
+        private val occasion get() = when (collection) {
+            DhikrCategory.MORNING -> "وقت أذكار الصباح (من الفجر إلى الظهر)"
+            else -> "وقت أذكار المساء (من العصر إلى الفجر)"
+        }
         /**
          * With [several] periods the message names the one concerned. [since] is the date from which
          * times that work today stop working; the overnight hint would not help there, so it is left out.
@@ -220,6 +228,7 @@ object DhikrReminderScheduler {
                 WindowIssue.TOO_LONG, WindowIssue.TOO_LONG_NEXT_DAY_TICKED -> "تتجاوز الفترة يومًا واحدًا"
                 WindowIssue.OVERLAP -> "تتداخل الفترتان " + (period + 1) + " و" + ((other ?: period) + 1)
                 WindowIssue.RUNS_INTO_NEXT_DAY -> "تنتهي الفترة بعد بدء فترة اليوم التالي"
+                WindowIssue.OUTSIDE_OCCASION -> "تخرج الفترة عن $occasion"
             } + "، لأن مواقيت الصلاة تتغيّر على مدار السنة. اختر أوقاتًا تصلح طوال السنة."
             return when (issue) {
                 WindowIssue.END_BEFORE_START -> (if (several) "$name: " else "") + "يجب أن يكون وقت النهاية بعد وقت البداية.$OVERNIGHT_HINT"
@@ -228,6 +237,8 @@ object DhikrReminderScheduler {
                     "تتجاوز هذه الفترة يومًا واحدًا. نهايتها تأتي بعد بدايتها من غير «تنتهي في اليوم التالي»، فأزل هذه العلامة."
                 WindowIssue.OVERLAP -> "الفترتان " + (period + 1) + " و" + ((other ?: period) + 1) +
                     " متداخلتان. غيّر وقت بداية إحداهما أو نهايتها."
+                WindowIssue.OUTSIDE_OCCASION -> (if (several) "$name: " else "") +
+                    "تخرج هذه الفترة عن $occasion. اختر أوقاتًا داخله" + (if (several) "، وكل الفترات في الوقت نفسه." else ".")
                 WindowIssue.RUNS_INTO_NEXT_DAY -> when {
                     !several -> "تنتهي هذه الفترة بعد بدء فترة اليوم التالي. اختر وقت نهاية أبكر."
                     other == null || other == period -> "$name: تنتهي بعد بدء موعدها في اليوم التالي. اختر وقت نهاية أبكر."
@@ -255,6 +266,7 @@ object DhikrReminderScheduler {
                     else WindowIssue.TOO_LONG, index)
             }
         }
+        occasionProblem(context, rule, date, sorted)?.let { return it }
         sorted.zipWithNext().firstOrNull { (first, second) -> first.second.second > second.second.first }
             ?.let { (first, second) -> return WindowProblem(WindowIssue.OVERLAP, minOf(first.first, second.first), maxOf(first.first, second.first)) }
         // Even on an unselected weekday, an overnight interval cannot run into
@@ -267,6 +279,26 @@ object DhikrReminderScheduler {
             ?.let { return WindowProblem(WindowIssue.RUNS_INTO_NEXT_DAY, it.first, nextFirst.first) }
         return null
     }
+    /**
+     * The morning adhkar are read from Fajr to Dhuhr and the evening ones from Asr to Fajr at the
+     * latest, so a reminder of either collection keeps all its periods inside one such occasion: the
+     * reading it opens then counts towards the same occasion as the Adhkar tab at that moment.
+     */
+    private fun occasionProblem(context: Context, rule: DhikrReminder, date: LocalDate,
+                                sorted: List<Pair<Int, Pair<Long, Long>>>): WindowProblem? {
+        val collection = rule.collection?.takeIf { it in occasionCollections } ?: return null
+        fun at(kind: DhikrTimeKind, day: LocalDate) = resolveTime(context, DhikrTime(kind), day)
+        val occasions = if (collection == DhikrCategory.MORNING) listOf(at(DhikrTimeKind.FAJR, date) to at(DhikrTimeKind.DHUHR, date))
+            else listOf(date.minusDays(1), date).map { at(DhikrTimeKind.ASR, it) to at(DhikrTimeKind.FAJR, it.plusDays(1)) }
+        // Without the prayer times there is nothing to hold the periods to; the schedule cannot resolve either.
+        if (occasions.any { it.first == null || it.second == null }) return null
+        val first = sorted.first().second
+        val occasion = occasions.firstOrNull { first.first >= it.first!! && first.second <= it.second!! }
+            ?: return WindowProblem(WindowIssue.OUTSIDE_OCCASION, sorted.first().first, collection = collection)
+        return sorted.firstOrNull { it.second.first < occasion.first!! || it.second.second > occasion.second!! }
+            ?.let { WindowProblem(WindowIssue.OUTSIDE_OCCASION, it.first, collection = collection) }
+    }
+    private val occasionCollections = setOf(DhikrCategory.MORNING, DhikrCategory.EVENING)
     private fun resolvedBounds(context: Context, rule: DhikrReminder, date: LocalDate): List<Pair<Int, Pair<Long, Long>>>? {
         return rule.intervals().mapIndexed { index, interval ->
             val start = resolveTime(context, interval.start, date) ?: return null

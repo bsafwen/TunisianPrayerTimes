@@ -699,8 +699,31 @@ internal fun collectionReadingPeriodKey(context: Context, category: DhikrCategor
         ?: return if (occurrenceId != null) "linked:$occurrenceId" else "manual:${category.name}"
     val date = Instant.ofEpochMilli(now).atZone(ZoneId.systemDefault()).toLocalDate()
     val start = DhikrReminderScheduler.resolveTime(context, DhikrTime(startKind), date)
+    if (category == DhikrCategory.EVENING && start != null && now < start) {
+        // The evening adhkar run from Asr to Fajr at the latest: after Fajr the night's reading is
+        // over, and a count made before Asr is its own period, dropped when the evening begins.
+        val fajr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.FAJR), date)
+        if (fajr != null && now >= fajr) return "${category.name}:$date$OUTSIDE_OCCASION_SUFFIX"
+    }
     val occasionDate = if (start != null && now < start) date.minusDays(1) else date
+    if (category == DhikrCategory.MORNING && start != null) {
+        // The morning adhkar run from Fajr to Dhuhr: a count made after Dhuhr is its own period,
+        // dropped at the next Fajr.
+        val dhuhr = DhikrReminderScheduler.resolveTime(context, DhikrTime(DhikrTimeKind.DHUHR), date)
+        if (now < start || (dhuhr != null && now >= dhuhr)) return "${category.name}:$occasionDate$OUTSIDE_OCCASION_SUFFIX"
+    }
     return "${category.name}:$occasionDate"
+}
+/** Marks the period of a morning or evening reading made outside its occasion. */
+private const val OUTSIDE_OCCASION_SUFFIX = ":outside"
+/** When the occasion of [category] next begins, if [now] lies outside it; null inside it, or for other collections. */
+internal fun collectionOccasionOpensAt(context: Context, category: DhikrCategory, now: Long): Long? {
+    if (!collectionReadingPeriodKey(context, category, null, now).endsWith(OUTSIDE_OCCASION_SUFFIX)) return null
+    val kind = collectionOccasionStart(category) ?: return null
+    val date = Instant.ofEpochMilli(now).atZone(ZoneId.systemDefault()).toLocalDate()
+    return listOf(date, date.plusDays(1)).firstNotNullOfOrNull { day ->
+        DhikrReminderScheduler.resolveTime(context, DhikrTime(kind), day)?.takeIf { it > now }
+    }
 }
 /** Lifecycle-controlled presence, not a background timer. */
 object DhikrReadingPresence {
