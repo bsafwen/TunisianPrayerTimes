@@ -3734,6 +3734,624 @@
     "bytes": 127517574,
     "sha256": "6ab85c394b251909ccbd2662e4ee0a04b90f62c0e357c92a4f0fad7115ab84a0"
    }
+  },
+  {
+   "name": "quran_trabelsi_01",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    1,
+    2
+   ],
+   "bytes": 75484263,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/001.mp3",
+     "bytes": 392254
+    },
+    {
+     "path": "quran/audio/trabelsi/002.mp3",
+     "bytes": 75092009
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_01-d3d6f6015e45.zip",
+    "bytes": 75484549,
+    "sha256": "d3d6f6015e45a752033e80a09c07ec9fc19ad3f8959d8a01421dcc5a0452ae17"
+   }
+  },
+  {
+   "name": "quran_trabelsi_02",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    3,
+    4
+   ],
+   "bytes": 90205204,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/003.mp3",
+     "bytes": 45736437
+    },
+    {
+     "path": "quran/audio/trabelsi/004.mp3",
+     "bytes": 44468767
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_02-34fa40aa98a6.zip",
+    "bytes": 90205490,
+    "sha256": "34fa40aa98a68c4cc7e9bdfb6d989f386c6e7b1253069a7683706712dc7e226d"
+   }
+  },
+  {
+   "name": "quran_trabelsi_03",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    5,
+    7
+   ],
+   "bytes": 113237263,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/005.mp3",
+     "bytes": 33687510
+    },
+    {
+     "path": "quran/audio/trabelsi/006.mp3",
+     "bytes": 37221982
+    },
+    {
+     "path": "quran/audio/trabelsi/007.mp3",
+     "bytes": 42327771
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_03-b510188bbc1b.zip",
+    "bytes": 113237681,
+    "sha256": "b510188bbc1b536de48bfee07c62a72f816cad8e9b9ca59a0378ba56d89aae70"
+   }
+  },
+  {
+   "name": "quran_trabelsi_04",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    8,
+    12
+   ],
+   "bytes": 113689284,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/008.mp3",
+     "bytes": 15959353
+    },
+    {
+     "path": "quran/audio/trabelsi/009.mp3",
+     "bytes": 31240568
+    },
+    {
+     "path": "quran/audio/trabelsi/010.mp3",
+     "bytes": 22032091
+    },
+    {
+     "path": "quran/audio/trabelsi/011.mp3",
+     "bytes": 23157655
+    },
+    {
+     "path": "quran/audio/trabelsi/012.mp3",
+     "bytes": 21299617
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_04-8d10037b8812.zip",
+    "bytes": 113689966,
+    "sha256": "8d10037b8812daebb5c67348e3ab2f7b8f72dd53e766513315a9caea1df612e7"
+   }
+  },
+  {
+   "name": "quran_trabelsi_05",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    13,
+    20
+   ],
+   "bytes": 112307718,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/013.mp3",
+     "bytes": 10000509
+    },
+    {
+     "path": "quran/audio/trabelsi/014.mp3",
+     "bytes": 9840431
+    },
+    {
+     "path": "quran/audio/trabelsi/015.mp3",
+     "bytes": 7599542
+    },
+    {
+     "path": "quran/audio/trabelsi/016.mp3",
+     "bytes": 20665782
+    },
+    {
+     "path": "quran/audio/trabelsi/017.mp3",
+     "bytes": 18112052
+    },
+    {
+     "path": "quran/audio/trabelsi/018.mp3",
+     "bytes": 18515382
+    },
+    {
+     "path": "quran/audio/trabelsi/019.mp3",
+     "bytes": 12289462
+    },
+    {
+     "path": "quran/audio/trabelsi/020.mp3",
+     "bytes": 15284558
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_05-139bf92c5b5c.zip",
+    "bytes": 112308796,
+    "sha256": "139bf92c5b5cd5aea8d252b5df8d357e534f8289b7974436019869cd4adf65a5"
+   }
+  },
+  {
+   "name": "quran_trabelsi_06",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    21,
+    27
+   ],
+   "bytes": 96239903,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/021.mp3",
+     "bytes": 14175085
+    },
+    {
+     "path": "quran/audio/trabelsi/022.mp3",
+     "bytes": 15984848
+    },
+    {
+     "path": "quran/audio/trabelsi/023.mp3",
+     "bytes": 12303046
+    },
+    {
+     "path": "quran/audio/trabelsi/024.mp3",
+     "bytes": 15698128
+    },
+    {
+     "path": "quran/audio/trabelsi/025.mp3",
+     "bytes": 10078249
+    },
+    {
+     "path": "quran/audio/trabelsi/026.mp3",
+     "bytes": 14152515
+    },
+    {
+     "path": "quran/audio/trabelsi/027.mp3",
+     "bytes": 13848032
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_06-464cdbf9d34c.zip",
+    "bytes": 96240849,
+    "sha256": "464cdbf9d34ca24ce720b4a10e71f47f984dc1a305a8d6e08251609dbeb94b12"
+   }
+  },
+  {
+   "name": "quran_trabelsi_07",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    28,
+    38
+   ],
+   "bytes": 112233739,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/028.mp3",
+     "bytes": 17928568
+    },
+    {
+     "path": "quran/audio/trabelsi/029.mp3",
+     "bytes": 11682377
+    },
+    {
+     "path": "quran/audio/trabelsi/030.mp3",
+     "bytes": 9676591
+    },
+    {
+     "path": "quran/audio/trabelsi/031.mp3",
+     "bytes": 6027180
+    },
+    {
+     "path": "quran/audio/trabelsi/032.mp3",
+     "bytes": 4674664
+    },
+    {
+     "path": "quran/audio/trabelsi/033.mp3",
+     "bytes": 16128835
+    },
+    {
+     "path": "quran/audio/trabelsi/034.mp3",
+     "bytes": 9378168
+    },
+    {
+     "path": "quran/audio/trabelsi/035.mp3",
+     "bytes": 9166471
+    },
+    {
+     "path": "quran/audio/trabelsi/036.mp3",
+     "bytes": 8563565
+    },
+    {
+     "path": "quran/audio/trabelsi/037.mp3",
+     "bytes": 10442083
+    },
+    {
+     "path": "quran/audio/trabelsi/038.mp3",
+     "bytes": 8565237
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_07-1406a372b714.zip",
+    "bytes": 112235213,
+    "sha256": "1406a372b714464ac13080256111a6331391f0c9f1974f3611de4770bd2d0731"
+   }
+  },
+  {
+   "name": "quran_trabelsi_08",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    39,
+    54
+   ],
+   "bytes": 111506278,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/039.mp3",
+     "bytes": 13582419
+    },
+    {
+     "path": "quran/audio/trabelsi/040.mp3",
+     "bytes": 14595552
+    },
+    {
+     "path": "quran/audio/trabelsi/041.mp3",
+     "bytes": 10017645
+    },
+    {
+     "path": "quran/audio/trabelsi/042.mp3",
+     "bytes": 9788186
+    },
+    {
+     "path": "quran/audio/trabelsi/043.mp3",
+     "bytes": 10072398
+    },
+    {
+     "path": "quran/audio/trabelsi/044.mp3",
+     "bytes": 4283245
+    },
+    {
+     "path": "quran/audio/trabelsi/045.mp3",
+     "bytes": 5546736
+    },
+    {
+     "path": "quran/audio/trabelsi/046.mp3",
+     "bytes": 6950661
+    },
+    {
+     "path": "quran/audio/trabelsi/047.mp3",
+     "bytes": 6125400
+    },
+    {
+     "path": "quran/audio/trabelsi/048.mp3",
+     "bytes": 6165315
+    },
+    {
+     "path": "quran/audio/trabelsi/049.mp3",
+     "bytes": 3900604
+    },
+    {
+     "path": "quran/audio/trabelsi/050.mp3",
+     "bytes": 4239360
+    },
+    {
+     "path": "quran/audio/trabelsi/051.mp3",
+     "bytes": 4153260
+    },
+    {
+     "path": "quran/audio/trabelsi/052.mp3",
+     "bytes": 3759751
+    },
+    {
+     "path": "quran/audio/trabelsi/053.mp3",
+     "bytes": 4154096
+    },
+    {
+     "path": "quran/audio/trabelsi/054.mp3",
+     "bytes": 4171650
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_08-3e4045cc2b5a.zip",
+    "bytes": 111508412,
+    "sha256": "3e4045cc2b5afd74d0c85770324f2fc76aabadae0f2f42ec03679ae9c88d2679"
+   }
+  },
+  {
+   "name": "quran_trabelsi_09",
+   "kind": "audio",
+   "delivery": "play",
+   "reciterId": "trabelsi-qaloun",
+   "surahs": [
+    55,
+    114
+   ],
+   "bytes": 110073072,
+   "files": [
+    {
+     "path": "quran/audio/trabelsi/055.mp3",
+     "bytes": 5315186
+    },
+    {
+     "path": "quran/audio/trabelsi/056.mp3",
+     "bytes": 5319993
+    },
+    {
+     "path": "quran/audio/trabelsi/057.mp3",
+     "bytes": 6814824
+    },
+    {
+     "path": "quran/audio/trabelsi/058.mp3",
+     "bytes": 5547781
+    },
+    {
+     "path": "quran/audio/trabelsi/059.mp3",
+     "bytes": 5776404
+    },
+    {
+     "path": "quran/audio/trabelsi/060.mp3",
+     "bytes": 4528169
+    },
+    {
+     "path": "quran/audio/trabelsi/061.mp3",
+     "bytes": 2557283
+    },
+    {
+     "path": "quran/audio/trabelsi/062.mp3",
+     "bytes": 2074331
+    },
+    {
+     "path": "quran/audio/trabelsi/063.mp3",
+     "bytes": 2248202
+    },
+    {
+     "path": "quran/audio/trabelsi/064.mp3",
+     "bytes": 2718406
+    },
+    {
+     "path": "quran/audio/trabelsi/065.mp3",
+     "bytes": 3322148
+    },
+    {
+     "path": "quran/audio/trabelsi/066.mp3",
+     "bytes": 3332179
+    },
+    {
+     "path": "quran/audio/trabelsi/067.mp3",
+     "bytes": 3753691
+    },
+    {
+     "path": "quran/audio/trabelsi/068.mp3",
+     "bytes": 3794860
+    },
+    {
+     "path": "quran/audio/trabelsi/069.mp3",
+     "bytes": 3347435
+    },
+    {
+     "path": "quran/audio/trabelsi/070.mp3",
+     "bytes": 2746409
+    },
+    {
+     "path": "quran/audio/trabelsi/071.mp3",
+     "bytes": 2723004
+    },
+    {
+     "path": "quran/audio/trabelsi/072.mp3",
+     "bytes": 3208254
+    },
+    {
+     "path": "quran/audio/trabelsi/073.mp3",
+     "bytes": 2343079
+    },
+    {
+     "path": "quran/audio/trabelsi/074.mp3",
+     "bytes": 3173564
+    },
+    {
+     "path": "quran/audio/trabelsi/075.mp3",
+     "bytes": 1909864
+    },
+    {
+     "path": "quran/audio/trabelsi/076.mp3",
+     "bytes": 3131768
+    },
+    {
+     "path": "quran/audio/trabelsi/077.mp3",
+     "bytes": 2407444
+    },
+    {
+     "path": "quran/audio/trabelsi/078.mp3",
+     "bytes": 2186135
+    },
+    {
+     "path": "quran/audio/trabelsi/079.mp3",
+     "bytes": 2221244
+    },
+    {
+     "path": "quran/audio/trabelsi/080.mp3",
+     "bytes": 1744352
+    },
+    {
+     "path": "quran/audio/trabelsi/081.mp3",
+     "bytes": 1198915
+    },
+    {
+     "path": "quran/audio/trabelsi/082.mp3",
+     "bytes": 922226
+    },
+    {
+     "path": "quran/audio/trabelsi/083.mp3",
+     "bytes": 2009129
+    },
+    {
+     "path": "quran/audio/trabelsi/084.mp3",
+     "bytes": 1225874
+    },
+    {
+     "path": "quran/audio/trabelsi/085.mp3",
+     "bytes": 1295882
+    },
+    {
+     "path": "quran/audio/trabelsi/086.mp3",
+     "bytes": 773851
+    },
+    {
+     "path": "quran/audio/trabelsi/087.mp3",
+     "bytes": 846576
+    },
+    {
+     "path": "quran/audio/trabelsi/088.mp3",
+     "bytes": 1085857
+    },
+    {
+     "path": "quran/audio/trabelsi/089.mp3",
+     "bytes": 1577168
+    },
+    {
+     "path": "quran/audio/trabelsi/090.mp3",
+     "bytes": 917002
+    },
+    {
+     "path": "quran/audio/trabelsi/091.mp3",
+     "bytes": 701544
+    },
+    {
+     "path": "quran/audio/trabelsi/092.mp3",
+     "bytes": 881684
+    },
+    {
+     "path": "quran/audio/trabelsi/093.mp3",
+     "bytes": 509283
+    },
+    {
+     "path": "quran/audio/trabelsi/094.mp3",
+     "bytes": 318693
+    },
+    {
+     "path": "quran/audio/trabelsi/095.mp3",
+     "bytes": 413570
+    },
+    {
+     "path": "quran/audio/trabelsi/096.mp3",
+     "bytes": 777404
+    },
+    {
+     "path": "quran/audio/trabelsi/097.mp3",
+     "bytes": 320992
+    },
+    {
+     "path": "quran/audio/trabelsi/098.mp3",
+     "bytes": 1069557
+    },
+    {
+     "path": "quran/audio/trabelsi/099.mp3",
+     "bytes": 479399
+    },
+    {
+     "path": "quran/audio/trabelsi/100.mp3",
+     "bytes": 497371
+    },
+    {
+     "path": "quran/audio/trabelsi/101.mp3",
+     "bytes": 459546
+    },
+    {
+     "path": "quran/audio/trabelsi/102.mp3",
+     "bytes": 394135
+    },
+    {
+     "path": "quran/audio/trabelsi/103.mp3",
+     "bytes": 193515
+    },
+    {
+     "path": "quran/audio/trabelsi/104.mp3",
+     "bytes": 394971
+    },
+    {
+     "path": "quran/audio/trabelsi/105.mp3",
+     "bytes": 310961
+    },
+    {
+     "path": "quran/audio/trabelsi/106.mp3",
+     "bytes": 249939
+    },
+    {
+     "path": "quran/audio/trabelsi/107.mp3",
+     "bytes": 351712
+    },
+    {
+     "path": "quran/audio/trabelsi/108.mp3",
+     "bytes": 155271
+    },
+    {
+     "path": "quran/audio/trabelsi/109.mp3",
+     "bytes": 292989
+    },
+    {
+     "path": "quran/audio/trabelsi/110.mp3",
+     "bytes": 247222
+    },
+    {
+     "path": "quran/audio/trabelsi/111.mp3",
+     "bytes": 270419
+    },
+    {
+     "path": "quran/audio/trabelsi/112.mp3",
+     "bytes": 156734
+    },
+    {
+     "path": "quran/audio/trabelsi/113.mp3",
+     "bytes": 236982
+    },
+    {
+     "path": "quran/audio/trabelsi/114.mp3",
+     "bytes": 290690
+    }
+   ],
+   "archive": {
+    "key": "v1/packs/quran_trabelsi_09-b7f3e86bf91b.zip",
+    "bytes": 110081014,
+    "sha256": "b7f3e86bf91b79f332fd0300c5cc49c81dde34ef1aeb7208ce9282a62873702c"
+   }
   }
  ]
 }

@@ -437,6 +437,9 @@ object NeighborhoodRepository {
             metadata ?: run {
                 val json = JSONObject(context.assets.open("neighborhoods.json").bufferedReader().use { it.readText() })
                 val localities = parseNeighborhoodLocalities(json)
+                require(json.getString("catalogScope") == "validated-official-sectors")
+                require(localities.size == json.getInt("validatedLocationCount"))
+                require(localities.all { it.kind == "sector" && it.hasBoundary })
                 Metadata(json, localities.map { LocalityDisplayNames.localize(context, it) }).also { metadata = it }
             }
         }
